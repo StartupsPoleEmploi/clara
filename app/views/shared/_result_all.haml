@@ -1,0 +1,8 @@
+- lines ||= []
+
+.c-result-all
+  .grid
+    .col-8_md-12
+      - lines.each do |line|
+        = render 'shared/result_line', {line: line}
+    .col-4_md-12

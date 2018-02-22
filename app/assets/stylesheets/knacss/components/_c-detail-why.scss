@@ -1,0 +1,50 @@
+.c-detail-why {
+  h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+}
+
+.c-detail-why--endresult {
+  color: #136FB6;
+}
+
+.c-detail-why__explanation {
+  background-color: white;
+  border-radius: $tiny-value;
+  padding-top: $small-plus-value;
+  padding-bottom: $small-plus-value;
+  padding-right: $medium-plus-value;
+  padding-left: $medium-plus-value;
+  margin-right: $o-gutter;
+  margin-top: $small-value;
+}
+
+// based on gridlex vars
+@media screen and (max-width: 64em)  {
+  .c-detail-why__explanation {
+    margin-left: 0;
+    margin-right: 0;
+  }  
+  .c-detail-why-container {
+    margin-left: $small-value;
+    margin-right: $small-value;
+  }
+  .c-detail-void {
+    margin-left: $small-value;
+    margin-right: $small-value;
+  }
+  .c-detail-warning {
+    margin-left: $small-value;
+    margin-right: $small-value;
+  }
+}
+
+
+.c-detail-why__intro {
+  margin-top: $small-value;
+}
+
+.c-detail-haveto {
+  margin-top: $tiny-value;
+}

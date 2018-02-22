@@ -1,0 +1,11 @@
+- title_data ||= ''
+- actual_title = TabTitleHelper::TitleCalculator.new(request).calculate_title(title_data)
+- prime_url = request.scheme + '://' + request.host
+
+%title= actual_title
+%meta{:content => "website", :property => "og:type", :class => "og-type"}/
+%meta{:content => "https://res.cloudinary.com/bdavidxyz-com/image/upload/v1517222293/clara_nbhywg.png", :property => "og:image", :class => "og-image"}/
+%meta{:content => "Clara | Un service Pôle emploi", :property => "og:site_name", :class => "og-site-name"}/
+%meta{:content => actual_title, :property => "og:title", :class => "og-title"}/
+%meta{:content => "Clara est un service Pôle emploi qui permet de découvrir en 2 minutes les aides et mesures dont vous pouvez bénéficier", :property => "og:description", :class => "og-description"}/
+%meta{:content => "#{prime_url}#{request.fullpath}", :property => "og:url", :class => "og-url"}/

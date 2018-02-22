@@ -1,0 +1,19 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      what: Description
+      how_much: Montant
+      how_and_when: Comment faire la demande ? 
+      additionnal_conditions: Critères complémentaires
+      limitations: Réserves et dérogations
+      short_description: Résumé
+    models: 
+      aid: Aides
+    attributes:
+      aid:
+        <<: *labels
+  helpers:
+    label:
+      aid:
+        <<: *labels

@@ -1,0 +1,82 @@
+<header class='main-content__header'>
+  <h2 class='main-content__page-title'>
+    Simulation
+  </h2>
+</header>
+<section style="clear:both">
+  <div class="simulator" id="simulator">
+    <div class="simulator-left">
+
+
+      <c-simulator-form :asker="asker"></c-simulator-form>
+
+      <div class="simulation-actions">
+        <c-simulator-result :simulation_result="simulation_result"></c-simulator-result>
+        <c-simulator-submit :url="simulator_form_url"></c-simulator-submit>
+      </div>
+
+      <c-simulator-registration 
+      :is_registerable="is_registerable" 
+      :save_simulation_url="save_simulation_url"
+      :simulation_name="simulation_name">
+    </c-simulator-registration>
+
+
+  </div>
+
+  <div class="simulator-right">
+    <div class="simulation-past">
+      <c-simulator-table 
+        :custom_rule_checks="custom_rule_checks"
+        :del_simulation_url="del_simulation_url">
+      </c-simulator-table>
+    </div>
+  </div>
+
+</div>
+
+
+
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+<%= render "admin/shared/c-simulator-form" %>
+<%= render "admin/shared/c-simulator-result" %>
+<%= render "admin/shared/c-simulator-submit" %>
+<%= render "admin/shared/c-simulator-registration" %>
+<%= render "admin/shared/c-simulator-table" %>
+<%= render "admin/shared/c-simulator-table-row" %>
+
+<% content_for :javascript do %> 
+<script type="text/javascript">
+  if (clara) {
+    // do nothing
+  } else {
+    clara = {};
+  }
+  clara.vm = null;
+  $(function() {
+    clara.vm = new Vue({
+      el: '#simulator',
+      data: {
+        asker: _.toPropArray(<%= raw asker.to_json %>),
+        simulator_form_url: '<%= raw url %>',
+        is_registerable: false,
+        save_simulation_url: '<%= raw save_simulation_admin_rule_path %>',
+        del_simulation_url: '<%= raw delete_simulation_admin_rule_path("__id__") %>',
+        simulation_result: {val:''},
+        simulation_name: {val:''},
+        custom_rule_checks: <%= raw @custom_rule_checks.to_json %>,
+        reset_registration: function() {
+          this.is_registerable = false;
+          this.simulation_result.val = '';
+        },
+        remove_crc: function(id) {
+          var currentIndex = _.findIndex(this.custom_rule_checks, function(e){return _.isEqual(e.id, id);});
+          this.custom_rule_checks.splice(currentIndex, 1);
+        }
+      }
+    });
+  });
+</script>
+<% end %>
+
+</section>

@@ -1,0 +1,9 @@
+- number_of_aids ||= 0
+- business_id ||= 'none'
+- v = view_object(:type_explanation, {number_of_aids: number_of_aids, business_id: business_id})
+
+- if v.has_text
+  .c-type-explanation
+    %big
+      =v.full_text
+  

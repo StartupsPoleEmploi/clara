@@ -1,0 +1,90 @@
+- v = view_object(:result_situation, {asker: asker})
+
+#c-result-situation
+  .c-result-situation
+    .c-situation
+      %h4.c-situation-title 
+        Récapitulatif de votre situation
+
+      .c-situation-paragraph
+        .c-situation__header
+          %span.c-situation__header-title Votre situation actuelle
+          %span.c-situation__header-link
+            %a{href: new_inscription_question_path} Modifier
+        .c-situation__data-list
+          .c-situation__data-line
+            %span.c-situation__data-prop Durée d'inscription :
+            %span.c-situation__data-val.c-situation--inscription 
+              =v.duree_d_inscription
+          - if v.category != 'indisponible'
+            .c-situation__data-line
+              %span.c-situation__data-prop Catégorie demandeur d'emploi :
+              %span.c-situation__data-val.c-situation--category 
+                =v.category
+          .c-situation__data-line
+            %span.c-situation__data-prop Type d'allocation :
+            %span.c-situation__data-val.c-situation--allocation-type 
+              =v.allocation_type
+          - if v.allocation_value_min != 'indisponible' && v.allocation_value_min != 'not_applicable'
+            .c-situation__data-line
+              %span.c-situation__data-prop Montant d'allocation :
+              %span.c-situation__data-val.c-situation--allocation-montant 
+                =v.allocation_value_min
+
+      .c-situation-paragraph
+        .c-situation__header
+          %span.c-situation__header-title Vos données personnelles
+          %span.c-situation__header-link 
+            %a{href: new_age_question_path} Modifier
+        .c-situation__data-list
+          .c-situation__data-line
+            %span.c-situation__data-prop Âge :
+            %span.c-situation__data-val.c-situation--age
+              =v.age
+          .c-situation__data-line
+            %span.c-situation__data-prop Diplôme :
+            %span.c-situation__data-val.c-situation--grade
+              =v.diplome
+          .c-situation__data-line
+            %span.c-situation__data-prop Adresse :
+            %span.c-situation__data-val.c-situation--address
+              =v.location_label
+          .c-situation__data-line
+            %span.c-situation__data-prop Zone de revitalisation rurale :
+            %span.c-situation__data-val.c-situation--zrr
+              =v.zrr
+          .c-situation__data-line
+            %span.c-situation__data-prop Quartier prioritaire de la ville :
+            %span.c-situation__data-val.c-situation--qpv
+              =v.qpv
+
+      .c-situation-paragraph.c-situation-paragraph--last
+        .c-situation__header
+          %span.c-situation__header-title Autres situations
+          %span.c-situation__header-link
+            %a{href: new_other_question_path} Modifier
+        .c-situation__data-list
+          .c-situation__data-line
+            %span.c-situation__data-prop Enfant, petit-enfant de harkis :
+            %span.c-situation__data-val.c-situation--harki
+              =v.harki
+          .c-situation__data-line
+            %span.c-situation__data-prop Ancien(ne) détenu(e) :
+            %span.c-situation__data-val.c-situation--detenu
+              =v.detenu
+          .c-situation__data-line
+            %span.c-situation__data-prop Protection internationale :
+            %span.c-situation__data-val.c-situation--pi
+              =v.protection_internationale
+          .c-situation__data-line
+            %span.c-situation__data-prop Travailleur(euse) handicapé(e) :
+            %span.c-situation__data-val.c-situation--handicap
+              =v.handicap
+
+      .c-situation-reset
+        = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button'
+
+      .c-result-warning
+        %p.result-warning Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
+        %p.result-warning Clara n'intègre pas encore les spécificités des aides et mesures applicables dans les régions et collectivités d'Outre Mer.
+  

@@ -1,0 +1,72 @@
+
+.simulator {
+  display: flex;
+}
+
+.simulator-right {
+  padding-left: 2rem;
+}
+
+.simulator-field {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.simulator-field__left {
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right:0.5rem;
+}
+
+.simulation-past {
+  display: flex;
+  flex-direction: column;
+}
+
+.simulation-save {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.simulation-save__name {
+  text-align: center;
+}
+
+.simulation-actions {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: flex-end;
+} 
+
+.eligibility-ok {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: white;
+  background-color: green;
+}
+
+.eligibility-nok {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: white;
+  background-color: red;
+}
+
+.eligibility-uncertain {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: white;
+  background-color: orange;
+}
+
+tr[data-carrier='error'] { 
+  color: white; 
+  background-color: red; 
+  &:hover {
+    background-color: darkred; 
+  }
+}
+
+

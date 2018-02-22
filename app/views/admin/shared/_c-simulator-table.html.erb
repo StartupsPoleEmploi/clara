@@ -1,0 +1,25 @@
+<script id="c-simulator-table" type="text/template">
+  <div class="c-simulator-table">
+
+    <table id="simulation-table" class="simulation-table">
+
+      <tr>
+        <th>nom simulation</th>
+        <th>eligible?</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <c-simulator-table-row 
+        v-for="crc in custom_rule_checks" 
+        :custom_rule_check="crc"
+        :del_simulation_url="del_simulation_url"
+        :key="crc.id"
+        />
+
+
+    </table>
+
+  </div>
+</script>
+

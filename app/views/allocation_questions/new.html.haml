@@ -1,0 +1,27 @@
+- e = view_object(:error_view_object, {errors: flash[:error]})
+- title_data 'Vos allocations'
+
+= render 'shared/breadcrumb', {where: 'question'}
+
+%main#main.mw1140p.center{role: "main"}
+
+  .o-card.c-question
+
+    = form_for @allocation, url: allocation_questions_path do |f|
+
+      = render 'shared/a_form_header', {e: e, title: "Quelle allocation percevez-vous actuellement ?"}
+    
+      .c-question__form
+        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+          %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
+          
+          = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'une prestation d’assurance chômage : ARE / ASP'} 
+          = render 'shared/allocation_form_line', {id: 'ASS_AER_ATA_APS_AS-FNE',       value: @allocation.type, text: 'une prestation de solidarité : ASS / AER / ATA / APS / AS-FNE'} 
+          = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'une autre indemnité parmi les suivantes : RPS / RFPE / RFF / pension de retraite'} 
+          = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
+          = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
+          = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé(e)', hide_svg: true} 
+        
+        = render 'shared/error_in_form', e: e     
+   
+      = render 'nav/next_previous', f: f

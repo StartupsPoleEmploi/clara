@@ -1,0 +1,4 @@
+%p.c-navbuttons
+  = f.submit 'Continuer', "class" => "c-navbutton c-navbutton--continue js-next", "data-turbolinks"=>"true"
+  %span.c-navbuttons__separator
+  = link_to 'Revenir', '/go_back', method: :post, class: 'c-navbutton c-navbutton--back js-previous', onclick: 'return false;';

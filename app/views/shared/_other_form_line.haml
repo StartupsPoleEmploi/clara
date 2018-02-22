@@ -1,0 +1,17 @@
+- id ||= ""
+- current_val ||= ""
+- current_text ||= ""
+
+%div.d-flex.mbs.tooltip-responsive-swap--bottom
+  .c-radiolist__element.u-focusable{tabindex: "0", id: "radio_#{id}"}
+    = check_box_tag "other_form[#{id}]", |
+                    "#{id}", |
+                    "#{current_val}" == "oui", | 
+                    id: "#{id}", |
+                    tabindex: -1, |
+                    class: "c-radioinput", |
+                    onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
+                    onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+    %label.c-radiolabel{for: "#{id}"}
+      =current_text
+    

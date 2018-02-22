@@ -1,0 +1,22 @@
+<script id="c-simulator-result" type="text/template">
+  <div class="c-simulator-result" v-on:dblclick="change_output">
+
+    <div v-if="simulation_result.val === 'eligible'" class="eligibility-ok eligibility-sth">
+      &#x2714; Le DE est éligible
+    </div>
+    <div v-else-if="simulation_result.val === 'ineligible'" class="eligibility-nok eligibility-sth">
+      &#x2716; Le DE est inéligible
+    </div>
+    <div v-else-if="simulation_result.val === 'uncertain'" class="eligibility-uncertain eligibility-sth">
+      &#9888; Le résultat est incertain
+    </div>
+    <div v-else-if="simulation_result.val === ''" class="eligibility-nothing">
+        <!-- Nothing is displayed, by default -->
+    </div>
+    <div v-else class="eligibility-failure">
+      !! Erreur inconnue, veuillez contacter le support
+    </div>
+
+  </div>
+</script>
+

@@ -1,0 +1,13 @@
+.c-other__form {
+  @extend .h1-like;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: space(3);
+  text-align: center;
+  &.is-error {
+    padding-bottom: space(0);
+  }  
+}
+

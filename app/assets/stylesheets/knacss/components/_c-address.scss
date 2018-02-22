@@ -1,0 +1,27 @@
+.c-address__explanation {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.c-address__content {
+  display: flex;
+  margin-top: space(7);
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.c-address__form {
+  display: flex;
+  text-align: center;
+  margin-top: $large-value;
+  justify-content: center;
+  align-items: center; 
+}
+
+#a11yAutocomplete [data-widget="accessible-autocomplete"] {
+    margin-bottom: 0;
+}
+      // .flex-container.mtl.txtcenter.justify-content-center.align-items-center

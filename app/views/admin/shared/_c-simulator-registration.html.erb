@@ -1,0 +1,11 @@
+<script id="c-simulator-registration" type="text/template">
+  <div class="c-simulator-registration">
+    
+    <div class="simulation-save" v-if="is_registerable">
+      <input type="text" class="simulation-save__name" v-model="simulation_name.val"></input>
+      <button v-on:click="onclick" class="simulation-save__action" >&#x1f4be;</button>
+    </div>
+
+  </div>
+</script>
+

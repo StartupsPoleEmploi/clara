@@ -1,0 +1,11 @@
+.c-help {
+  margin-left: space(1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: space(5);
+  justify-content: center;
+  @include respond-to("small-up") {
+    justify-content: flex-end;
+  }  
+}

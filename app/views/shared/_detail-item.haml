@@ -1,0 +1,7 @@
+- if html_content.present?
+  .c-detail-item
+    .c-detail-item__content
+      %h3.c-detail-item__title
+        =description 
+      .c-detail-item__text
+        =html_content.html_safe

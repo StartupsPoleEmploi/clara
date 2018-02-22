@@ -1,0 +1,5 @@
+.is-hidden-not-desktop {
+  @include respond-to("large") {
+    display: none;
+  }
+}

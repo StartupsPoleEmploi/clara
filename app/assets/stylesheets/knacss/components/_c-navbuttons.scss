@@ -1,0 +1,30 @@
+.c-navbuttons {
+  margin-top: space(4);  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include respond-to("medium-up") {
+    flex-direction: row-reverse;
+  }
+}
+
+.c-navbuttons__separator {
+  margin-top: $small-value;  
+  @include respond-to("medium-up") {
+    margin-top: 0;  
+    margin-left: $small-value;  
+  }
+}
+
+.c-navbutton {
+  @extend .bigger, .c-button, .w200p;
+}
+
+.c-navbutton--back {
+  
+}
+
+.c-navbutton--continue {
+  @extend .c-button--brand-secondary;
+}

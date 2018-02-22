@@ -1,0 +1,54 @@
+<%#
+# Index
+
+This view is the template for the index page.
+It is responsible for rendering the search bar, header and pagination.
+It renders the `_table` partial to display details about the resources.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Collection][1].
+  Contains helper methods to help display a table,
+  and knows which attributes should be displayed in the resource's table.
+- `resources`:
+  An instance of `ActiveRecord::Relation` containing the resources
+  that match the user's search criteria.
+  By default, these resources are passed to the table partial to be displayed.
+- `search_term`:
+  A string containing the term the user has searched for, if any.
+- `show_search_bar`:
+  A boolean that determines if the search bar should be shown.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
+%>
+
+<% content_for(:title) do %>
+  <%= 'RuleCheck!' %>
+<% end %>
+
+<header class="main-content__header" role="banner">
+
+</header>
+
+<section class="main-content__body main-content__body--flush">
+
+<table id="table-rule-check">
+  <tr>
+    <th>output</th>
+    <th>check</th> 
+    <th>rule</th>
+    <th>description</th>
+  </tr>
+  <% @all_rules_composition.each do |r| %>
+    <tr data-carrier="<%= r[:result] %>" data-link="<%= r[:link] %>">
+      <td class='rule-result'><%= r[:result] %></td>
+      <td><%= r[:type] %></td> 
+      <td><%= r[:name] %></td>
+      <td><%= r[:description] %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+</section>

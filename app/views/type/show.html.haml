@@ -1,0 +1,19 @@
+- @loaded ||= {}
+- v = view_object(:type_show, {contract_type: @loaded[:contract_type], aids: @loaded[:aids]})
+- title_data v.title_of_tab
+
+= render 'shared/breadcrumb', {where: 'detail'}
+
+%main#main.c-type-show{role: "main"}
+
+  %h2.c-detail-title{"class" => v.clazz}
+    .c-detail-title-inside
+      =v.title
+
+  .grid.c-type-show-grid
+    .col-8_md-12
+      - if v.has_line
+        = render 'shared/result_line', {line: v.line, contract_type: v.contract_type}
+    .col-4_md-12
+      = render 'shared/detail_void'
+

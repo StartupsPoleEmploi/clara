@@ -1,0 +1,6 @@
+- e ||= OpenStruct.new(has_error:false, main_error:'')
+.c-error-in-form
+  - if e.has_error
+    %label.c-label.is-error  &#x2716; #{e.main_error}
+  - else
+    %label.c-label.flex-container.h4-like.visibility-hidden &nbsp;

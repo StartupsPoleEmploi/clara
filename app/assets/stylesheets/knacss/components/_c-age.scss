@@ -1,0 +1,26 @@
+.c-age__form {
+  @extend .h1-like;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: space(6);
+  text-align: center;
+  &.is-error {
+    padding-bottom: space(0);
+  }  
+}
+
+.c-age__title {
+  text-align: center;
+}
+
+.c-age-error__label {
+  @extend .h4-like;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+

@@ -1,0 +1,2 @@
+class RuleCheck < ApplicationRecord
+end

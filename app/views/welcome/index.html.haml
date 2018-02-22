@@ -1,0 +1,20 @@
+- title_data "Clara | Découvrez les aides de retour à l’emploi - un service Pôle emploi"
+- nb_of_active_aids = @loaded ? @loaded[:nb_of_active_aids] : 0
+- type_aides = @loaded ? @loaded[:type_aides] : []
+- type_dispositifs = @loaded ? @loaded[:type_dispositifs] : []
+- slug_of_creation = @loaded ? @loaded[:slug_of_creation] : "not_found"
+- slug_of_amob = @loaded ? @loaded[:slug_of_amob] : "not_found"
+- slug_of_alternance = @loaded ? @loaded[:slug_of_alternance] : "not_found"
+- slug_of_project = @loaded ? @loaded[:slug_of_project] : "not_found"
+
+.c-newhome
+
+  = render partial: 'shared/home_hero'
+  = render partial: 'shared/home_example', locals: {nb_of_active_aids: nb_of_active_aids, slug_of_creation: slug_of_creation, slug_of_amob: slug_of_amob, slug_of_alternance: slug_of_alternance, slug_of_project: slug_of_project}
+  = render partial: 'shared/home_number', locals: {nb_of_active_aids: nb_of_active_aids}
+  = render partial: 'shared/home_user'
+  = render partial: 'shared/home_recall'
+
+
+  - content_for :footer do
+    = render partial: 'shared/footer', locals: {aides: type_aides, dispositifs: type_dispositifs, the_request: request}

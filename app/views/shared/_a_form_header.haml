@@ -1,0 +1,14 @@
+- e ||= OpenStruct.new(has_error:false, main_error:'')
+- title ||= nil
+- subtitle ||= nil
+
+
+%h1.mbs.txtcenter.u-focusable{tabindex: "0"}
+  =title
+
+- if subtitle
+  .flex-container.txtcenter.justify-content-center.align-items-center
+    .h3-like.w75.u-focusable{tabindex: "0"}
+      =subtitle
+
+

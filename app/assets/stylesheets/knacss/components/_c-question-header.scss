@@ -1,0 +1,37 @@
+
+.c-qh {
+  display: flex;
+  background-color: #1F2532;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  a {
+   color: $color-white;
+  }
+}
+
+.c-qh > * {
+  display: flex;
+  align-items: center;
+}
+
+
+.c-qh__logo {
+  line-height: 0;
+  min-width: space(8);
+  margin: space(3) 0 space(3) 0;
+}
+
+.c-qh > :first-child {
+  margin-left: $o-small-gutter;
+  @include respond-to("medium-up") {
+    margin-left: $o-gutter;
+  }  
+}
+
+.c-qh > :last-child {
+  margin-left: auto;
+  margin-right: $o-small-gutter;
+  @include respond-to("medium-up") {
+    margin-right: $o-gutter;
+  } 
+}
+

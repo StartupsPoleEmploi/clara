@@ -1,0 +1,13 @@
+.c-body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.c-body__container {
+  flex: 1;
+}
+
+.c-body.errors {
+  background-color:#e2eaf5;
+}

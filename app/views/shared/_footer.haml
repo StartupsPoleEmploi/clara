@@ -1,0 +1,38 @@
+- aides ||= []
+- dispositifs ||= []
+- the_request ||= OpenStruct.new
+
+- v = view_object(:footer, {aides: aides, dispositifs: dispositifs, the_request: the_request})
+
+.c-footer{"class" => v.current_mode}
+  .grid
+  
+    .col-4_md-12
+      .c-footer__content.first
+        .c-footer-cgu
+          = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
+          = mail_to "clara.59224@pole-emploi.fr", "Nous contacter"
+        - if v.current_mode == 'home'
+          .mts
+          = render 'shared/footer_motherhome'
+
+    .col-4_md-12
+      .c-footer__content.second{"class" => v.content_css}
+        - if v.current_mode == 'home'
+          - if v.display_title_aides
+            .c-footer__contenttitle.c-footer__contenttitle--aides
+              AIDES
+          - v.type_aides.each_with_index do |type_aide, i|
+            = link_to "#{type_aide['name']}", type_path(type_aide['slug']), {"class" => ["c-footer-internal-link", "c-footer__link-to-aides"]}
+        = v.link_to_all_aides
+        
+    .col-4_md-12
+      .c-footer__content.third
+        - if v.current_mode == 'home'
+          - if v.display_title_dispositifs
+            .c-footer__contenttitle.c-footer__contenttitle--dispositifs
+              DISPOSITIFS
+          - v.type_dispositifs.each_with_index do |type_aide, i|
+            = link_to "#{type_aide['name']}", type_path(type_aide['slug']), {"class" => ["c-footer-internal-link", "c-footer__link-to-dispositifs"]}
+        - else
+          = render 'shared/footer_motherhome'

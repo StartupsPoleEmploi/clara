@@ -1,0 +1,19 @@
+%header.main-content__header
+  %h2.main-content__page-title
+    Historique
+- resource.versions.reverse_order.each  do |version|
+  %section.main-content__body
+    %h3
+      #{version.whodunnit}, le #{l version.created_at}
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Propriété
+          %th Avant
+          %th Après
+      %tbody
+        - version.changeset.each do |property,change|
+          %tr
+            %td=property
+            %td=change.first.to_s.html_safe
+            %td=change.last.to_s.html_safe

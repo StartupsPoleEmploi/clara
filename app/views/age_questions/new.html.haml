@@ -1,0 +1,34 @@
+- title_data 'Votre âge'
+- has_error = !(flash[:error].blank?)
+- if has_error
+  - classes_of_input = ['c-field', 'w100p', 'is-error']
+  - aria_described_by_of_input = ['age', 'c-age-error__label']
+- else
+  - classes_of_input = ['c-field', 'w100p']
+  - aria_described_by_of_input = ['age']
+
+= render 'shared/breadcrumb', {where: 'question'}
+
+%main#main.mw1140p.center{role: "main"}
+  .o-card.c-question
+    = form_for @age, url: age_questions_path do |f|
+      %h1.c-age__title
+        %span.u-focusable{tabindex: "0"} Quel est votre âge ?
+      .c-age__form
+        = f.number_field :number_of_years, 
+            class: classes_of_input, 
+            id: 'age', 
+            value: @age.number_of_years, 
+            autofocus: true, 
+            autocomplete: 'off',
+            'aria-describedby' => aria_described_by_of_input, 
+            'aria-required' => 'true',
+            tabindex: '0'
+        .c-age-error
+          - if has_error
+            %label.c-age-error__label.c-label.is-error.u-focusable{tabindex: "0"}
+              =flash[:error][0]
+          - else
+            .c-age-error__label.visibility-hidden &nbsp;
+
+      = render 'nav/next_previous', f: f

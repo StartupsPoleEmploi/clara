@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "initial-scale=1, maximum-scale=1", :name => "viewport"}
+
+    = render 'shared/tab_title', {title_data: (yield :title_data) }
+
+    = include_gon 
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'print', media: 'print'
+    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700", rel: "stylesheet"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag 'favicon.ico'
+    
+    - if Rails.env.production?
+      :javascript
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');        
+        ga("create", "#{ENV['ARA_GOOGLE_ANALYTICS_ID']}", "auto");
+        (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:"#{ENV['ARA_HOTJAR_ID']}",hjsv:5}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+    
+  %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env}}
+    .c-turbolinks-transition.is-hidden
+      .sk-circle
+        .sk-circle1.sk-child
+        .sk-circle2.sk-child
+        .sk-circle3.sk-child
+        .sk-circle4.sk-child
+        .sk-circle5.sk-child
+        .sk-circle6.sk-child
+        .sk-circle7.sk-child
+        .sk-circle8.sk-child
+        .sk-circle9.sk-child
+        .sk-circle10.sk-child
+        .sk-circle11.sk-child
+        .sk-circle12.sk-child
+  
+    = render 'shared/browser-depreciation', locals: {browser: browser}
+
+    %div.c-body__container
+      = yield
+    %footer
+
+  = javascript_tag "window.clara = window.clara || {}; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json}"

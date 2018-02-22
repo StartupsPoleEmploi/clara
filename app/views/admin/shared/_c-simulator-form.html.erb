@@ -1,0 +1,18 @@
+<script id="c-simulator-form" type="text/template">
+  <div class="c-simulator-form">
+  
+    <div class="simulator-field" 
+          v-for="asker_characteristic in asker">
+
+      <div class="simulator-field__left">
+        <label>{{ asker_characteristic.prop }}</label>
+      </div>
+      <div class="simulator-field__right">
+        <input type="text" :name="'asker[' + asker_characteristic.prop + ']'" v-model="asker_characteristic.value">
+      </div>
+
+    </div>
+
+  </div>
+</script>
+

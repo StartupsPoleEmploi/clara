@@ -1,0 +1,51 @@
+- v = view_object(:detail_why, local_assigns)
+
+- if v.root_condition.present?
+  .c-detail-why
+    .c-detail-why__intro
+      
+    - if v.ability == "eligible"
+      %h4.c-detail-why--endresult.c-detail-why--eligible
+        Vous êtes éligible
+    - if v.ability == "ineligible"
+      %h4.c-detail-why--endresult.c-detail-why--ineligible
+        Vous n'êtes pas éligible
+    - if v.ability == "uncertain"
+      %h4.c-detail-why--endresult.c-detail-why--uncertain
+        Vous êtes peut-être éligible
+      
+    .c-detail-why--endresult.c-detail-why--finally.h5-like
+      à cette aide 
+
+    .c-detail-why__explanation
+      %strong.h5-like Critères d'éligibilité
+      
+      - if v.root_condition == "or"
+        .c-detail-haveto.c-detail-haveto--or
+          Il faut remplir <strong>au moins l'une</strong> des conditions ci-dessous.
+      - if v.root_condition == "and"
+        .c-detail-haveto.c-detail-haveto--and
+          Il faut remplir <strong>toutes</strong> les conditions ci-dessous.
+      - if v.root_condition == "one"
+        .c-detail-haveto.c-detail-haveto--one
+          Il faut remplir <strong>la</strong> condition ci-dessous.
+      
+      .c-detail-why__addendum
+        - if v.all_conditions
+          .c-detail-addendum.c-detail-addendum--all
+            (Vous remplissez toutes les conditions)
+        - if v.no_condition
+          .c-detail-addendum.c-detail-addendum--none
+            (Vous ne remplissez aucune condition)
+        - if v.uncertain_sentence == "single-alone"
+          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-alone
+            Nous n'avons pas pu vérifier la condition suivante:
+        - if v.uncertain_sentence == "single-amongst"
+          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-amongst
+            Nous n'avons pas pu vérifier une des conditions :
+        - if v.uncertain_sentence == "plural"
+          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural
+            Nous n'avons pas pu vérifier les conditions suivantes :
+
+      = render partial: 'shared/detail_condition_list.haml', locals: { conditions: v.root_rules }
+

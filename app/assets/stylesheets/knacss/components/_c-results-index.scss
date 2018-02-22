@@ -1,0 +1,14 @@
+.c-results-index {
+  display: flex;
+  flex-direction: column;
+  margin-left: $o-gutter/3;
+  margin-right: $o-gutter/3;
+  @include respond-to("large-up") {
+    flex-direction: row;
+    margin-left: $o-gutter;
+    margin-right: $o-gutter;
+  }
+
+}
+
+

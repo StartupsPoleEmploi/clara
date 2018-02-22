@@ -1,0 +1,18 @@
+.c-detail-item-remark {
+  background-color: white;
+  border-radius: $tiny-value;
+  padding: $small-plus-value;
+  margin-top: $small-plus-value;
+  background-color: #f0f7fc;
+  border: 1px solid #80b9db;
+  display: flex;
+}
+
+.c-detail-item-remark__content {
+  padding-left: $small-value;
+}
+
+.c-detail-item-remark__svg {
+  max-width: 35px;
+  min-width: 35px;
+}

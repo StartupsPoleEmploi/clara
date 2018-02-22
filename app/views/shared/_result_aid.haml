@@ -1,0 +1,13 @@
+- aid ||= {}
+- for_id ||= ''
+- the_index ||= 1
+- v = view_object(:result_aid, {aid: aid, the_index: the_index, for_id: for_id})
+
+%a.c-result-aid.js-possible-name{"class" => v.css_addendum(the_index), "href" => v.link_to_detailed_aid}
+  .c-result-aid__text
+    .h4-like.c-result-aid__title
+      =v.name
+    .c-result-aid__subtitle
+      =v.short_description
+  .c-result-aid__cta
+    En savoir plus&nbsp;>
