@@ -4,7 +4,7 @@
 
 ## Installation from scratch sur un poste de dev
 
-### Prerequis
+### Prérequis
 
  - ruby 2.4.1, installé de préférence avec rbenv
  - postgre 9.5
@@ -12,7 +12,7 @@
 
 ### Installation
 
-clonez clara depuis GitHub, puis
+Clonez clara depuis GitHub, puis
 
 ```
 $ cd clara
