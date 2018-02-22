@@ -1,26 +1,9 @@
 # CONTRIBUTING
 
-## Modifications initiales
-
-Changer le fichier init.rb et augmenter le numéro de version, en utilisant la convention semver.
-
-Changer le fichier CHANGELOG.md en s'inspirant des versions précédente.
-
-Créer un PR qui commence par le numéro du ticket.
-
-Pusher la PR.
-
-## Modifications terminées
-
-Merger la PR.
-
-En local, se remettre sur la master, faire un pull.
-
-Tagger la version conformément au CHANGELOG.md
-
-Pusher le tag.
-
-
-## Déploiement en prod
-
-Réservé aux administrateurs.
+1. Forkez le repository
+2. Suivez le README pour installer le projet en local
+3. Lancez la suite de tests unitaires back ET front comme indiqué dans le README, avant de faire des modifications
+4. Ajoutez un test qui ne passe pas
+5. Faites passer le test 
+6. Ecrivez un message de commit [compréhensible](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+7. Faites une PR

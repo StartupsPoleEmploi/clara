@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 6.4.1 (20/02/2018)
+-[#629][TECH] Refaire le contributing.md
+
+
 ## 6.4.0 (20/02/2018)
 -[#625][TECH] Preparation pour Open Source
 
