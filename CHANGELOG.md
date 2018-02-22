@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.0.0 (20/02/2018)
+-[#626][FEATURE] Enlever le bouton "Imprimer" de la page de résultats
+
+
 ## 6.4.1 (20/02/2018)
 -[#629][TECH] Refaire le contributing.md
 
