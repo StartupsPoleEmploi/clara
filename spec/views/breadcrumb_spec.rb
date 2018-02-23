@@ -37,7 +37,7 @@ describe 'Breadcrumb partial' do
     end
 
     # it 'Display breadcrumb for question when a question is displayed' do
-    #   all_question_path = RoutesList.get_questions.values.map {|v| v[0...-10]}
+    #   all_question_path = RoutesList.asked_questions.values.map {|v| v[0...-10]}
     #   all_question_path.each do |question_path|
     #     visit question_path
     #     expect(page).to have_css('.c-breadcrumb-current--question')

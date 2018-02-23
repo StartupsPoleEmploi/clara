@@ -1,4 +1,4 @@
-class StringToRoute
+class StringToRouteService
 
   attr_reader :fullpath, :verb
 
