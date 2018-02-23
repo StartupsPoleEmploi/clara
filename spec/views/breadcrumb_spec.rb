@@ -78,19 +78,19 @@ describe 'Breadcrumb partial' do
       build_req(detail_path('pmsmp'), "any")
     end
     def context_question
-      OpenStruct.new({request: OpenStruct.new({request_method: 'GET', fullpath: new_age_question_path, path: new_age_question_path})})
+      build_req(new_age_question_path)
     end
     def context_not_question
-      OpenStruct.new({request: OpenStruct.new({request_method: 'GET', fullpath: root_path, path: root_path})})
+      build_req(root_path)
     end
     def context_aides_with_forid
-      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({request_method: 'GET', fullpath: aides_path, path: aides_path})})
+      build_req(aides_path, "any")
     end
     def context_not_aides_with_forid
-      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({request_method: 'GET', fullpath: root_path, path: root_path})})
+      build_req(root_path, "any")
     end
     def context_aides_without_forid
-      OpenStruct.new({params: {}, request: OpenStruct.new({request_method: 'GET', fullpath: aides_path, path: aides_path})})
+      build_req(aides_path)
     end
 
     def build_req(path, for_id=nil)
