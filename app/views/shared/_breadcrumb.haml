@@ -16,7 +16,7 @@
       &nbsp;/&nbsp;
       %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail
 
-  - if params[:controller] == 'aides'
+  - if v.display_print?
     .c-breadcrumb-print
       %div 
         <small>Imprimer&nbsp;</small>

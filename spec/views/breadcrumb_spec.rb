@@ -52,6 +52,22 @@ describe 'Breadcrumb partial' do
       end
     end
 
+    context 'Display print' do
+      selector_under_test = '.c-breadcrumb-print'
+      it 'Display print, when aides_path, with for_id', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_without_forid}
+        expect(rendered).to have_css(selector_under_test)
+      end
+      it 'Display print, when aides_path, without for_id', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_without_forid}
+        expect(rendered).to have_css(selector_under_test)
+      end
+      it 'DONT Display print, when question_path', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_question}
+        expect(rendered).not_to have_css(selector_under_test)
+      end
+    end
+
     # it 'Display breadcrumb for question when a question is displayed' do
     #   all_question_path = RoutesList.asked_questions.values.map {|v| v[0...-10]}
     #   all_question_path.each do |question_path|
