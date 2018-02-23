@@ -4,7 +4,7 @@
       all_pathes.select {|key| key.to_s.include?('_question')}      
     end    
 
-    def self.get_questions
+    def self.asked_questions
       questions.select {|key| key.to_s.start_with?('new_')}      
     end  
 

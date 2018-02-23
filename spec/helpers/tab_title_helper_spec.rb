@@ -28,7 +28,7 @@ describe TabTitleHelper do
       expect(output).to eq ('[given title]')
     end
     it 'returns the calculated title for a all questions asked' do
-      RoutesList.get_questions.each do |route, route_val|
+      RoutesList.asked_questions.each do |route, route_val|
         request = OpenStruct.new({path: route_val})
         sut = TabTitleHelper::TitleCalculator.new(request)
         output = sut.calculate_title('[given title]')
