@@ -9,7 +9,7 @@ describe 'Breadcrumb partial' do
     # end
 
     context 'Display form' do
-      selector_under_test = 'c-breadcrumb-current--question'
+      selector_under_test = '.c-breadcrumb-current--question'
       it 'Display form, when a question is displayed', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_question}
         expect(rendered).to have_css(selector_under_test)
@@ -66,20 +66,20 @@ describe 'Breadcrumb partial' do
     #   expect(page).to have_css('.c-breadcrumb .js-printer')
     # end
 
-    def context_not_question
-      OpenStruct.new({request: OpenStruct.new({path: root_path})})
-    end
     def context_question
-      OpenStruct.new({request: OpenStruct.new({path: new_age_question_path})})
+      OpenStruct.new({request: OpenStruct.new({request_method: 'GET', fullpath: new_age_question_path, path: new_age_question_path})})
+    end
+    def context_not_question
+      OpenStruct.new({request: OpenStruct.new({request_method: 'GET', fullpath: root_path, path: root_path})})
     end
     def context_aides_with_forid
-      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({path: aides_path})})
+      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({request_method: 'GET', fullpath: aides_path, path: aides_path})})
     end
     def context_not_aides_with_forid
-      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({path: root_path})})
+      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({request_method: 'GET', fullpath: root_path, path: root_path})})
     end
     def context_aides_without_forid
-      OpenStruct.new({params: {}, request: OpenStruct.new({path: aides_path})})
+      OpenStruct.new({params: {}, request: OpenStruct.new({request_method: 'GET', fullpath: aides_path, path: aides_path})})
     end
 
 end

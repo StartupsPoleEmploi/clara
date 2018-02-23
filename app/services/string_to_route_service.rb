@@ -4,7 +4,7 @@ class StringToRouteService
 
   def initialize(request)
     @fullpath = request.fullpath
-    @verb = request.request_method.downcase
+    @verb = request.request_method.downcase.to_sym
   end
 
   def path

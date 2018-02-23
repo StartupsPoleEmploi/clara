@@ -9,9 +9,9 @@
     &nbsp;/&nbsp;
     - if v.display_form?
       %span.c-breadcrumb-current.c-breadcrumb-current--question Formulaire de calcul de vos aides
-    - elsif v.display_result?
+    - elsif v.display_results?
       %span.c-breadcrumb-current.c-breadcrumb-current--results Résultats pour mes aides
-    - elsif request.url.include?('aides') && request.url.include?('aides/') && params[:for_id]
+    - elsif v.display_detail?
       %a{ :href => aides_path + '?for_id=' + params[:for_id], :class => 'c-breadcrumb-link' } Résultats pour mes aides
       &nbsp;/&nbsp;
       %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail
