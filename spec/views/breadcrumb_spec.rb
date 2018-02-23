@@ -49,13 +49,13 @@ describe 'Breadcrumb partial' do
 
     context 'Display print' do
       selector_under_test = '.c-breadcrumb-print'
-      it 'Display print, when aides_path, with for_id', type: :view do
+      it 'DONT Display print, when aides_path, with for_id', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_without_forid}
-        expect(rendered).to have_css(selector_under_test)
+        expect(rendered).not_to have_css(selector_under_test)
       end
-      it 'Display print, when aides_path, without for_id', type: :view do
+      it 'DONT Display print, when aides_path, without for_id', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_without_forid}
-        expect(rendered).to have_css(selector_under_test)
+        expect(rendered).not_to have_css(selector_under_test)
       end
       it 'Display print, when detail_path, with for_id', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_detail_with_forid}

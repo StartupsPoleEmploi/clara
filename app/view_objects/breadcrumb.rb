@@ -20,7 +20,7 @@ class Breadcrumb < ViewObject
   end
 
   def display_print?
-    @current_path == "detail_path" ||  @current_path == "aides_path"
+    @current_path == "detail_path"
   end
 
   def link_to_aides
