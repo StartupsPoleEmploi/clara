@@ -7,14 +7,6 @@ class StringToRoute
     @verb = request.request_method.downcase
   end
 
-  def routes
-    Hash[Rails.application.routes.routes.map { |r| [r.name, r.defaults] }]
-  end
-
-  def recognize_path
-    Rails.application.routes.recognize_path(fullpath, method: verb)
-  end
-
   def path
     _recognize_path = recognize_path
     selected = routes.select do |key, value|
@@ -23,4 +15,13 @@ class StringToRoute
     "#{selected.keys[0]}_path"
   end
 
+private
+
+  def routes
+    Hash[Rails.application.routes.routes.map { |r| [r.name, r.defaults] }]
+  end
+
+  def recognize_path
+    Rails.application.routes.recognize_path(fullpath, method: verb)
+  end
 end

@@ -12,52 +12,8 @@ class Breadcrumb < ViewObject
   end
 
   def display_form?
-    # @where == "question"
-    # p '- - - - - - - - - - - - - - @context.request.path- - - - - - - - - - - - - - - -' 
-    # p @context.request.path.inspect
-    # p ''
-    # questions = RoutesList.get_questions.keys
-    # p '- - - - - - - - - - - - - - questions- - - - - - - - - - - - - - - -' 
-    # p questions => ["new_age_question_path", "new_address_question_path", "new_allocation_question_path", "new_category_question_path", "new_grade_question_path", "new_inscription_question_path", "new_are_question_path", "new_other_question_path"]
-    # p ''
-
-    # p '- - - - - - - - - - - - - - truc- - - - - - - - - - - - - - - -' 
-    # p current_path
-    # p ''
-
-
-    # aaa = Rails.application.routes.recognized_request_for(@context.request.path)
-
-    # aaa = url_for(@context.request.fullpath).inspect
-    # p '- - - - - - - - - - - - - - aaa- - - - - - - - - - - - - - - -' 
-    # p aaa => Donne "\"/inscription_questions/new\""
-    # p ''
-
-    # bbb = Rails.application.routes.recognize_path(aaa)
-    # p '- - - - - - - - - - - - - - bbb- - - - - - - - - - - - - - - -' 
-    # p bbb.inspect => Donne {controller:"machin" action:"truc"}
-    # p ''
-    # StringToRoute.
-    # c = StringToRoute.new(@context.request).path
-    # p '- - - - - - - - - - - - - - c- - - - - - - - - - - - - - - -' 
-    # p c.inspect
-    # p ''
-    # current@context.current_page?(my_path)
-
-    # current_named_route = RoutesList.all_pathes.select{|p| @context.current_page?(p)}
-    # p '- - - - - - - - - - - - - - current_named_route- - - - - - - - - - - - - - - -' 
-    # p current_named_route.inspect
-    # p ''
-
-    # recognized = Rails.application.routes.recognize_path(current_path)
-    # RoutesList.all_simplified_pathes.select
-
     current_path = StringToRoute.new(@context.request).path
-    p '- - - - - - - - - - - - - - current_path- - - - - - - - - - - - - - - -' 
-    p current_path.inspect
-    p ''
-
-    return false
+    return RoutesList.get_questions.include?(current_path)
   end
 
   def display_result?
