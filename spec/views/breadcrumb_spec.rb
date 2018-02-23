@@ -26,13 +26,21 @@ describe 'Breadcrumb partial' do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_with_forid}
         expect(rendered).to have_css(selector_under_test)
       end
-      it 'Do not display results, when /aides without for_id query string param', type: :view do
+      it 'DONT display results, when /aides without for_id query string param', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_without_forid}
         expect(rendered).not_to have_css(selector_under_test)
       end
-      it 'Do not display results, when NOT /aides, with for_id query string param', type: :view do
+      it 'DONT display results, when NOT /aides, with for_id query string param', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_not_aides_with_forid}
         expect(rendered).not_to have_css(selector_under_test)
+      end
+    end
+
+    context 'Display details' do
+      selector_under_test = '.c-breadcrumb-current--detail'
+      it 'Display results, when /aides/detail/:id?for_id=', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_detail_with_forid}
+        expect(rendered).to have_css(selector_under_test)
       end
     end
 
@@ -66,6 +74,9 @@ describe 'Breadcrumb partial' do
     #   expect(page).to have_css('.c-breadcrumb .js-printer')
     # end
 
+    def context_detail_with_forid
+      build_req(detail_path('pmsmp'), "any")
+    end
     def context_question
       OpenStruct.new({request: OpenStruct.new({request_method: 'GET', fullpath: new_age_question_path, path: new_age_question_path})})
     end
@@ -80,6 +91,10 @@ describe 'Breadcrumb partial' do
     end
     def context_aides_without_forid
       OpenStruct.new({params: {}, request: OpenStruct.new({request_method: 'GET', fullpath: aides_path, path: aides_path})})
+    end
+
+    def build_req(path, for_id=nil)
+      OpenStruct.new({params: {for_id: for_id}, request: OpenStruct.new({request_method: 'GET', fullpath: path, path: path})})
     end
 
 end

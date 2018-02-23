@@ -12,7 +12,7 @@
     - elsif v.display_results?
       %span.c-breadcrumb-current.c-breadcrumb-current--results Résultats pour mes aides
     - elsif v.display_detail?
-      %a{ :href => aides_path + '?for_id=' + params[:for_id], :class => 'c-breadcrumb-link' } Résultats pour mes aides
+      %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats pour mes aides
       &nbsp;/&nbsp;
       %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail
 
