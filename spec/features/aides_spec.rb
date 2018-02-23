@@ -4,19 +4,19 @@ require 'support/gon_extraction_helper'
 feature 'Aides page' do 
 
   context 'No active user' do
-    before(:all) do
+    before do
       create_2_different_aids
       disable_http_service
       visit aides_path
+    end
+    after do
+      enable_http_service
     end
     scenario 'Should display 2 aids NOT related to any eligibility' do
       display_2_aids_unrelated_to_eligibility
     end
     scenario 'Should not display breadcrumb' do
       expect(page).not_to have_css('.c-breadcrumb')
-    end
-    after(:all) do
-      enable_http_service
     end
   end
   
