@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+## 7.0.2 (21/02/2018)
+-[#649][TECH] préfixer toutes les spec "feature" par "feature_spec"
+-[#650][TECH] préfixer toutes les specs de "view" par "view_spec"
+
+
 ## 7.0.1 (21/02/2018)
 -[#626][FEATURE] Enlever le bouton "Imprimer" de la page de résultats, suite et fin
 
