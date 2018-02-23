@@ -38,9 +38,17 @@ describe 'Breadcrumb partial' do
 
     context 'Display details' do
       selector_under_test = '.c-breadcrumb-current--detail'
-      it 'Display results, when /aides/detail/:id?for_id=', type: :view do
+      it 'Display details, with detail_path with for_id', type: :view do
         render partial: 'shared/breadcrumb.haml', locals: {context: context_detail_with_forid}
         expect(rendered).to have_css(selector_under_test)
+      end
+      it 'DONT display details, without detail_path with for_id', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_not_detail_with_forid}
+        expect(rendered).not_to have_css(selector_under_test)
+      end
+      it 'DONT display details, with detail_path without for_id', type: :view do
+        render partial: 'shared/breadcrumb.haml', locals: {context: context_detail_without_forid}
+        expect(rendered).not_to have_css(selector_under_test)
       end
     end
 
@@ -76,6 +84,12 @@ describe 'Breadcrumb partial' do
 
     def context_detail_with_forid
       build_req(detail_path('pmsmp'), "any")
+    end
+    def context_detail_without_forid
+      build_req(detail_path('pmsmp'))
+    end
+    def context_not_detail_with_forid
+      build_req(root_path, "any")
     end
     def context_question
       build_req(new_age_question_path)
