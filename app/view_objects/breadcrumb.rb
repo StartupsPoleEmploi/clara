@@ -6,10 +6,11 @@ class Breadcrumb < ViewObject
   end
 
   def display_form?
-    where == "question"
+    @where == "question"
   end
 
   def display_result?
+    @context.request.path == aides_path && @context.params[:for_id]
   end
 
   def display_detail?
