@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.0.1 (21/02/2018)
+-[#626][FEATURE] Enlever le bouton "Imprimer" de la page de résultats, suite et fin
+
+
 ## 7.0.0 (20/02/2018)
 -[#626][FEATURE] Enlever le bouton "Imprimer" de la page de résultats
 
