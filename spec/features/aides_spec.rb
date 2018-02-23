@@ -12,9 +12,6 @@ feature 'Aides page' do
     scenario 'Should display 2 aids NOT related to any eligibility' do
       display_2_aids_unrelated_to_eligibility
     end
-    scenario 'Should not display breadcrumb' do
-      expect(page).not_to have_css('.c-breadcrumb')
-    end
     after do
       enable_http_service
     end

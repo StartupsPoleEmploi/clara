@@ -3,6 +3,7 @@ class StringToRouteService
   attr_reader :fullpath, :verb
 
   def initialize(request)
+    return unless request && request.respond_to?(:fullpath) && request.respond_to?(:request_method)
     @fullpath = request.fullpath
     @verb = request.request_method.downcase.to_sym
   end
@@ -22,6 +23,12 @@ private
   end
 
   def recognize_path
-    Rails.application.routes.recognize_path(fullpath, method: verb)
+    result = {}
+    begin
+      result = Rails.application.routes.recognize_path(fullpath, method: verb)
+    rescue
+      result = {}
+    end
+    result
   end
 end
