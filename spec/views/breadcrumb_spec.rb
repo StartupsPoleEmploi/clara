@@ -3,11 +3,6 @@ require 'spec_helper'
 
 describe 'Breadcrumb partial' do 
 
-    # it 'Can print and mail to product owner', type: :view do
-    #   render partial: 'shared/breadcrumb.haml', locals: { where: 'finals' }
-    #   expect(rendered).to have_css('.c-breadcrumb')
-    # end
-
     context 'Display form' do
       selector_under_test = '.c-breadcrumb-current--question'
       it 'Display form, when a question is displayed', type: :view do
