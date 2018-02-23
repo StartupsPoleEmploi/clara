@@ -24,8 +24,4 @@
       all_routes.transform_keys{ |key| key.to_s + '_path' }.transform_values{ |value| value[0..-11]}
     end    
 
-    def self.recognize(str)
-      Rails.application.routes.recognize_path(str)
-    end
-
   end
