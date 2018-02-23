@@ -11,9 +11,6 @@ class Breadcrumb < ViewObject
   end
 
   def display_result?
-    p '- - - - - - - - - - - - - - @context- - - - - - - - - - - - - - - -' 
-    p @context.request.path.inspect
-    p ''
     @context.request.path == aides_path && @context.params[:for_id]
   end
 

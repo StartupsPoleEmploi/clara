@@ -3,13 +3,17 @@ require 'spec_helper'
 
 feature 'Breadcrumb partial' do 
 
+    def context_aides_with_forid
+      OpenStruct.new({params: {for_id: "any"}, request: OpenStruct.new({path: aides_path})})
+    end
+
     # scenario 'Can print and mail to product owner', type: :view do
     #   render partial: 'shared/breadcrumb.haml', locals: { where: 'finals' }
     #   expect(rendered).to have_css('.c-breadcrumb')
     # end
 
     scenario 'Display results, when /aides?for_id=', type: :view do
-      render partial: 'shared/breadcrumb.haml', locals: { }
+      render partial: 'shared/breadcrumb.haml', locals: {context: context_aides_with_forid}
       expect(rendered).to have_css('.c-breadcrumb-current--results')
     end
 
