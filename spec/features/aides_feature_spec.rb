@@ -30,6 +30,9 @@ feature 'Aides page' do
     scenario 'Should NOT have .c-result-default displayed' do
       should_have seen, 0, ".c-result-default"
     end
+    scenario 'Should have .c-detail-void' do
+      should_have seen, 1, ".c-detail-void"
+    end
     after do
       enable_http_service
     end
@@ -64,6 +67,9 @@ feature 'Aides page' do
     scenario 'Should have .c-result-default displayed' do
       should_have seen, 1, ".c-result-default"
     end
+    scenario 'Should NOT have .c-detail-void' do
+      should_have seen, 0, ".c-detail-void"
+    end
     after do
       enable_http_service
     end
@@ -95,6 +101,9 @@ feature 'Aides page' do
     end
     scenario 'Should have .c-result-default displayed' do
       should_have seen, 1, ".c-result-default"
+    end
+    scenario 'Should NOT have .c-detail-void' do
+      should_have seen, 0, ".c-detail-void"
     end
     after do
       enable_http_service
