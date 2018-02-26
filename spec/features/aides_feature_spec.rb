@@ -3,7 +3,7 @@ require 'support/gon_extraction_helper'
 
 feature 'Aides page' do 
 
-  context 'No active user', focus: true do
+  context 'No active user' do
     seen = nil
     before do
       if !seen
@@ -14,16 +14,21 @@ feature 'Aides page' do
       end
     end
     scenario 'Should display 2 aids NOT related to any eligibility' do
-      should_have seen, 1, ".c-result-aid"
+      should_have seen, 2, ".c-result-aid"
       should_have seen, 0, ".c-result-list--eligible .c-result-aid"
       should_have seen, 0, ".c-result-list--ineligible .c-result-aid"
-      # display_2_aids_unrelated_to_eligibility
-      # expect(page).to have_css('.c-result-aid', count: raw_aids_number)
-      # expect(page).to have_css('.c-result-list--eligible .c-result-aid', count: eligible_aids_number)
-      # expect(page).to have_css('.c-result-list--ineligible .c-result-aid', count: ineligible_aids_number)
     end
-    scenario 'Should have title "Découvrez toutes les aides et mesures de retour à l\'emploi"' do
-      should_have seen, 1, "title", :with_text_that_include, "Découvrez toutes les aides et mesures de retour à l'emploi"
+    scenario 'Should have in the title "Découvrez toutes les aides et mesures de retour à l\'emploi"' do
+      should_have seen, "1st", "title", :with_text_that_include, "Découvrez toutes les aides et mesures de retour à l'emploi"
+    end
+    scenario 'Should have .c-result-all displayed' do
+      should_have seen, 1, ".c-result-all"
+    end
+    scenario 'Should have a breadcrumb displayed' do
+      should_have seen, 1, ".c-breadcrumb"
+    end
+    scenario 'Should NOT have .c-result-default displayed' do
+      should_have seen, 0, ".c-result-default"
     end
     after do
       enable_http_service
@@ -31,15 +36,33 @@ feature 'Aides page' do
   end
   
   context 'An active asker DOESNT Exist already in the cache' do
+    seen = nil
     before do
-      asker = create_realistic_asker
-      create_eligible_aid_for(asker)
-      create_ineligible_aid_for(asker)
-      disable_http_service
-      visit_aides_for_asker(asker)
+      if !seen
+        asker = create_realistic_asker
+        create_eligible_aid_for(asker)
+        create_ineligible_aid_for(asker)
+        disable_http_service
+        visit_aides_for_asker(asker)
+        seen = Nokogiri::HTML(page.html)
+      end
     end
     scenario 'Should display 1 eligible and 1 ineligible aid' do
-      display_1_eligible_1_ineligible
+      should_have seen, 2, ".c-result-aid"
+      should_have seen, 1, ".c-result-list--eligible .c-result-aid"
+      should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
+    end
+    scenario 'Should have in the title "Vos résultats"' do
+      should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
+    end
+    scenario 'Should NOT have .c-result-all displayed' do
+      should_have seen, 0, ".c-result-all"
+    end
+    scenario 'Should have a breadcrumb displayed' do
+      should_have seen, 1, ".c-breadcrumb"
+    end
+    scenario 'Should have .c-result-default displayed' do
+      should_have seen, 1, ".c-result-default"
     end
     after do
       enable_http_service
