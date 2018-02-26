@@ -102,8 +102,13 @@ def tih(selector)
   res = find(selector, visible: false).value
 end
 
-def should_have(seen, size, selector)
+def should_have(seen, size, selector, with=nil, with_arg=nil)
   expect(seen.css(selector).size).to eq(size)
+  if with
+    if with == :with_text
+      expect(seen.css(selector)[0].text.strip).to eq(with_arg)
+    end
+  end
 end
 
 def zthe_first_occurence_of(seen, selector)
