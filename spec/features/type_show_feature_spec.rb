@@ -11,7 +11,6 @@ feature 'A show type page' do
         create(:aid, :aid_harki, name: "aid_harki_1", contract_type: @contract_type)
         create(:aid, :aid_not_harki, name: "aid_not_harki_1", contract_type: @contract_type)
         visit type_path(@contract_type.slug)
-        save_and_open_page
         seen = Nokogiri::HTML(page.html)
       end
     end
@@ -23,6 +22,12 @@ feature 'A show type page' do
     end
     it 'Should have 2 aids' do
       should_have seen, 2, ".c-result-aid"
+    end
+    it "Title of first active aid must be aid_not_harki_1" do
+      first_occ = zthe_first_occurence_of(seen, ".c-result-aid__title")
+      zshould_have_text(first_occ, "aid_not_harki_1")
+      # expect(seen.css(".c-result-aid__title")[0].text.strip).to eq 'aid_not_harki_1'
+      # should_have seen, 2, ".c-result-aid__title"
     end
   end
 end

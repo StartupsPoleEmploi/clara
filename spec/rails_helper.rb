@@ -106,6 +106,35 @@ def should_have(seen, size, selector)
   expect(seen.css(selector).size).to eq(size)
 end
 
+def zthe_first_occurence_of(seen, selector)
+  seen.css(selector)[0]
+end
+
+def zshould_have_text(seen, text)
+  expect(seen.text.strip).to eq text 
+end
+
+# class Visual
+#   def initialize(visual, expect)
+#     @visual = visual
+#     @expect = expect
+#   end
+
+#   def should_have(size, selector)
+#     (@expect.call(@visual.css(selector).size)).to eq(size)
+#   end
+
+#   def the_first_occurence_of(selector)
+#     @selector = @visual.css(selector)[0]
+#     self
+#   end
+
+#   def should_have_text(text)
+#     (@expect.call(@selector.text.trim)).to eq text 
+#   end
+
+# end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
