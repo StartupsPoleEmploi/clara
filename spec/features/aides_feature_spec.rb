@@ -70,13 +70,31 @@ feature 'Aides page' do
   end
 
   context 'An active asker ALREADY Exist already in the cache' do
+    seen = nil
     before do
-      disable_http_service
-      stub_cache_with_1_eligible_2_ineligible
-      visit_aides_for_id('any')
+      if !seen
+        disable_http_service
+        stub_cache_with_1_eligible_2_ineligible
+        visit_aides_for_id('any')
+        seen = Nokogiri::HTML(page.html)
+      end
     end
     scenario 'Should display 1 eligible and 2 ineligible aid' do
-      display_1_eligible_2_ineligible
+      should_have seen, 3, ".c-result-aid"
+      should_have seen, 1, ".c-result-list--eligible .c-result-aid"
+      should_have seen, 2, ".c-result-list--ineligible .c-result-aid"
+    end
+    scenario 'Should have in the title "Vos résultats"' do
+      should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
+    end
+    scenario 'Should NOT have .c-result-all displayed' do
+      should_have seen, 0, ".c-result-all"
+    end
+    scenario 'Should have a breadcrumb displayed' do
+      should_have seen, 1, ".c-breadcrumb"
+    end
+    scenario 'Should have .c-result-default displayed' do
+      should_have seen, 1, ".c-result-default"
     end
     after do
       enable_http_service
@@ -121,24 +139,6 @@ feature 'Aides page' do
   def create_2_different_aids
     create(:aid, :aid_harki)
     create(:aid, :aid_agepi)
-  end
-
-  def display_2_aids_unrelated_to_eligibility
-    check_count(2,0,0)
-  end
-
-  def display_1_eligible_1_ineligible
-    check_count(2,1,1)
-  end
-
-  def display_1_eligible_2_ineligible
-    check_count(3,1,2)
-  end
-
-  def check_count(raw_aids_number, eligible_aids_number, ineligible_aids_number)
-    expect(page).to have_css('.c-result-aid', count: raw_aids_number)
-    expect(page).to have_css('.c-result-list--eligible .c-result-aid', count: eligible_aids_number)
-    expect(page).to have_css('.c-result-list--ineligible .c-result-aid', count: ineligible_aids_number)
   end
 
   def realistic_cache_value
