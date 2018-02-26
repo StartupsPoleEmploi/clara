@@ -12,6 +12,7 @@ feature 'A show type page' do
         create(:aid, :aid_harki, name: "aid_harki_1", contract_type: @contract_type)
         create(:aid, :aid_not_harki, name: "aid_not_harki_1", contract_type: @contract_type)
         visit type_path(@contract_type.slug)
+        save_and_open_page
         seen = Nokogiri::HTML(page.html)
       end
     end
@@ -30,15 +31,12 @@ feature 'A show type page' do
     it "Title of second active aid must be aid_harki_1" do
       should_have seen, "2nd", ".c-result-aid__title", :with_text, "aid_harki_1"
     end
-  end
-
-  def selected(txt)
-    seen.css(txt)
-  end
-
-  def should_have_size(sel)
-    expect(sel)
-    sel
+    it "Call to action with text \"Je commence\" must be present" do
+      should_have seen, 1, ".c-detail-cta", :with_text, "Je commence"
+    end
+    it "Must have explanation block with correct number of aids" do
+      should_have seen, 1, ".c-type-explanation .aid-nb-txt", :with_text, "2 aides"
+    end
   end
 
 end
