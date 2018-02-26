@@ -13,4 +13,4 @@
     = render 'shared/result_default', {asker: loaded[:asker], flat_all_eligible: loaded[:flat_all_eligible], flat_all_uncertain: loaded[:flat_all_uncertain], flat_all_ineligible: loaded[:flat_all_ineligible]}
   - else
     = render 'shared/result_all', {lines: FilterRawAidsService.new(@loaded['aids']).go}
-    = render 'shared/detail_void'  
+      
