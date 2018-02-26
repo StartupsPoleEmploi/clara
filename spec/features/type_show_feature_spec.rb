@@ -16,30 +16,20 @@ feature 'A show type page' do
       end
     end
     it 'Should have css of contract_type business id' do
-      # selected = seen.css('.c-detail-title--amob')
-      # expect(selected.size)
-      # expect(seen.css('.c-detail-title--amob').size).to eq(1)
-      # expect(seen).to have_tag('.c-detail-title--amob').exactly(1).elements
-      # expect(seen).to have(1, ".c-detail-title--amob")
       should_have seen, 1, ".c-detail-title--amob"
     end
     it 'Should have title of contract_type' do
       should_have seen, 1, ".c-detail-title-inside", :with_text, "d3"
-      # expect(seen.css('.c-detail-title-inside').size).to eq(1)
-      # should_have seen, 1, ".c-detail-title-inside"
     end
-    # it 'Should have 2 aids' do
-    #   # should_have seen, 2, ".c-result-aid"
-    # end
-    # it "Title of first active aid must be aid_not_harki_1" do
-    #   # expect(seen).to have(".blabla").with_text("trucmuche")
-    #   # expect(seen.first_occurence(".blabla").trimmedtxt).to eq ""
-    #   # first_occ = zthe_first_occurence_of(seen, ".c-result-aid__title")
-    #   # expect(first_occ)
-    #   # zshould_have_text(first_occ, "aid_not_harki_1")
-    #   # expect(seen.css(".c-result-aid__title")[0].text.strip).to eq 'aid_not_harki_1'
-    #   # should_have seen, 2, ".c-result-aid__title"
-    # end
+    it 'Should have 2 aids' do
+      should_have seen, 2, ".c-result-aid"
+    end
+    it "Title of first active aid must be aid_not_harki_1" do
+      should_have seen, "1st", ".c-result-aid__title", :with_text, "aid_not_harki_1"
+    end
+    it "Title of second active aid must be aid_harki_1" do
+      should_have seen, "2nd", ".c-result-aid__title", :with_text, "aid_harki_1"
+    end
   end
 
   def selected(txt)

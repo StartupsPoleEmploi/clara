@@ -103,10 +103,15 @@ def tih(selector)
 end
 
 def should_have(seen, size, selector, with=nil, with_arg=nil)
-  expect(seen.css(selector).size).to eq(size)
+  position = 0
+  if size.is_a?(Integer)
+    expect(seen.css(selector).size).to eq(size)
+  elsif size.is_a?(String)
+    position = size.to_i - 1
+  end
   if with
     if with == :with_text
-      expect(seen.css(selector)[0].text.strip).to eq(with_arg)
+      expect(seen.css(selector)[position].text.strip).to eq(with_arg)
     end
   end
 end
