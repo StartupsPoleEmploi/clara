@@ -118,14 +118,6 @@ def should_have(seen, size, selector, with=nil, with_arg=nil)
   end
 end
 
-def zthe_first_occurence_of(seen, selector)
-  seen.css(selector)[0]
-end
-
-def zshould_have_text(seen, text)
-  expect(seen.text.strip).to eq text 
-end
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
