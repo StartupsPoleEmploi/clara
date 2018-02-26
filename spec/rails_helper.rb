@@ -112,6 +112,8 @@ def should_have(seen, size, selector, with=nil, with_arg=nil)
   if with
     if with == :with_text
       expect(seen.css(selector)[position].text.strip).to eq(with_arg)
+    elsif with == :with_text_that_include
+      expect(seen.css(selector)[position].text.strip).to include(with_arg)
     end
   end
 end

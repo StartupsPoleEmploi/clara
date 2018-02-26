@@ -3,14 +3,27 @@ require 'support/gon_extraction_helper'
 
 feature 'Aides page' do 
 
-  context 'No active user' do
+  context 'No active user', focus: true do
+    seen = nil
     before do
-      create_2_different_aids
-      disable_http_service
-      visit aides_path
+      if !seen
+        create_2_different_aids
+        disable_http_service
+        visit aides_path
+        seen = Nokogiri::HTML(page.html)        
+      end
     end
     scenario 'Should display 2 aids NOT related to any eligibility' do
-      display_2_aids_unrelated_to_eligibility
+      should_have seen, 1, ".c-result-aid"
+      should_have seen, 0, ".c-result-list--eligible .c-result-aid"
+      should_have seen, 0, ".c-result-list--ineligible .c-result-aid"
+      # display_2_aids_unrelated_to_eligibility
+      # expect(page).to have_css('.c-result-aid', count: raw_aids_number)
+      # expect(page).to have_css('.c-result-list--eligible .c-result-aid', count: eligible_aids_number)
+      # expect(page).to have_css('.c-result-list--ineligible .c-result-aid', count: ineligible_aids_number)
+    end
+    scenario 'Should have title "Découvrez toutes les aides et mesures de retour à l\'emploi"' do
+      should_have seen, 1, "title", :with_text_that_include, "Découvrez toutes les aides et mesures de retour à l'emploi"
     end
     after do
       enable_http_service
