@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.1.0 (26/02/2018)
+-[#558][SEO] page seo footer "toutes nos aides" : ajouter CTA
+
+
 ## 7.0.2 (21/02/2018)
 -[#649][TECH] préfixer toutes les spec "feature" par "feature_spec"
 -[#650][TECH] préfixer toutes les specs de "view" par "view_spec"
