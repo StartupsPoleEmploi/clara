@@ -102,6 +102,22 @@ def tih(selector)
   res = find(selector, visible: false).value
 end
 
+def should_have(seen, size, selector, with=nil, with_arg=nil)
+  position = 0
+  if size.is_a?(Integer)
+    expect(seen.css(selector).size).to eq(size)
+  elsif size.is_a?(String)
+    position = size.to_i - 1
+  end
+  if with
+    if with == :with_text
+      expect(seen.css(selector)[position].text.strip).to eq(with_arg)
+    elsif with == :with_text_that_include
+      expect(seen.css(selector)[position].text.strip).to include(with_arg)
+    end
+  end
+end
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
