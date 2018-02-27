@@ -1,5 +1,7 @@
 # ARA Changelog
 
+## 7.1.3 (27/02/2018)
+-[#658][BUG] Adresse timeout
 
 ## 7.1.2 (27/02/2018)
 -[#629][BUG] Form - message d'erreur adresse mal positionné
