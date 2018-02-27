@@ -1,0 +1,512 @@
+Searching 799 files for "timeout"
+
+/Users/maxime/Documents/GitHub/clara/CHANGELOG.md:
+    2  
+    3  ## 7.1.3 (27/02/2018)
+    4: -[#658][BUG] Adresse timeout
+    5  
+    6  ## 7.1.2 (27/02/2018)
+
+/Users/maxime/Documents/GitHub/clara/app/assets/javascripts/address_questions.js:
+  103      if (PNotify && localStorage && _.isEmpty(localStorage.getItem("soon_finished_info"))) {
+  104       localStorage.setItem("soon_finished_info", "true");
+  105:      setTimeout(function(){
+  106         PNotify.removeAll();
+  107         new PNotify({
+
+/Users/maxime/Documents/GitHub/clara/app/assets/javascripts/button_next.js:
+    2  
+    3    $('.js-next').click(function(e){
+    4:     setTimeout(function(){ 
+    5        $('.c-turbolinks-transition').removeClass('is-hidden');
+    6        Turbolinks.controller.adapter.progressBar.setValue(0);
+
+/Users/maxime/Documents/GitHub/clara/app/assets/javascripts/administrate/components/_search.js:
+    4    var $input = $(".search__input");
+    5    var activeSuffix = "--active";
+    6:   var timeout;
+    7  
+    8    $.fn.textWidth = function(text, font) {
+    .
+   34  
+   35    $input.on("keyup", function() {
+   36:     clearTimeout(timeout);
+   37  
+   38      if($input.val().length) {
+   39        $(".search__hint").css("left", $input.textWidth() + 75);
+   40:       timeout = setTimeout(showHint, 250);
+   41      }
+   42    });
+
+/Users/maxime/Documents/GitHub/clara/app/services/http_service.rb:
+    2  require 'net/http'
+    3  require 'json'
+    4: require 'timeout'
+    5  
+    6  class HttpService
+    .
+   23    def post(scheme, host, port, path, json_params, headers)
+   24      begin
+   25:       Timeout::timeout(2) do
+   26          http = Net::HTTP.new(host, port)
+   27          http.use_ssl = true if scheme == 'https'
+   ..
+   30      rescue Exception => e 
+   31         p "Net::HTTP POST request failed with #{e.message}" unless Rails.env.test?
+   32:        return "timeout"
+   33      end
+   34    end
+   ..
+   36    def get(uri)
+   37      begin
+   38:       Timeout::timeout(2) do
+   39          return Net::HTTP.get(uri)
+   40        end
+   41      rescue Exception => e 
+   42         p "Net::HTTP GET request failed with #{e.message}" unless Rails.env.test?
+   43:        return "timeout"
+   44      end
+   45    end
+
+/Users/maxime/Documents/GitHub/clara/app/services/qpv_service.rb:
+   67      elsif response && response.include?('error')
+   68        return 'est_indertermine'
+   69:     elsif response && response.include?('timeout')
+   70        return 'service_indisponible'
+   71      else
+
+/Users/maxime/Documents/GitHub/clara/app/services/zrr_service.rb:
+   30        uri = URI.parse(escaped_address)
+   31        response = HttpService.get_instance.get(uri)
+   32:       if !response.blank? && response.include?("timeout")
+   33          return 'service_indisponible'
+   34        elsif !response.blank? && response.include?("id")
+
+/Users/maxime/Documents/GitHub/clara/config/nginx.conf:
+   28    error_page 500 502 503 504 /500.html;
+   29    client_max_body_size 10M;
+   30:   keepalive_timeout 10;
+   31  }
+   32  
+
+/Users/maxime/Documents/GitHub/clara/spec/services/http_service_spec.rb:
+   46  
+   47    describe " | send a invalid GET HTTP request" do    
+   48:     it ' | Returns "timeout" if any error occurs' do
+   49:       expect(HttpService.get_instance.get("invalid_string")).to eq "timeout"
+   50      end
+   51    end
+   ..
+   67  
+   68    describe " | send a invalid POST HTTP request" do    
+   69:     it ' | Returns "timeout" if any error occurs' do
+   70:       expect(HttpService.get_instance.post('scheme', 'host', 'port', 'path', {}, {})).to eq "timeout"
+   71      end
+   72    end
+
+/Users/maxime/Documents/GitHub/clara/spec/services/qpv_service_spec.rb:
+   64        end
+   65      end
+   66:     describe 'http service returns a timeout' do
+   67        before do
+   68          http_layer = instance_double("HttpService")
+   69:         allow(http_layer).to receive(:get).and_return("timeout")
+   70          HttpService.set_instance(http_layer)
+   71        end
+
+/Users/maxime/Documents/GitHub/clara/spec/services/zrr_service_spec.rb:
+  108        end
+  109      end
+  110:     describe 'timeout' do
+  111        before(:each) do
+  112          env_layer = instance_double("EnvService")
+  ...
+  114          EnvService.set_instance(env_layer)
+  115          http_layer = instance_double("HttpService")
+  116:         allow(http_layer).to receive(:get).and_return('timeout')
+  117          HttpService.set_instance(http_layer)
+  118        end
+
+/Users/maxime/Documents/GitHub/clara/tmp/cache/assets/sprockets/v3.0/XC/XCyQOMB7bfuzvAvKmS-hl95p6zno2QY66K5YKYFTNHE.cache:
+    <binary>
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/a11y-autocomplete/accessibility-helpers.js:
+   44      NAME.general.debounce = function (func, delay, immediate) {
+   45          console.log('test');
+   46:         var timeout, result;
+   47          return function () {
+   48              var context = this,
+   49                  args = arguments;
+   50              var later = function () {
+   51:                 timeout = null;
+   52                  if (!immediate) {
+   53                      result = func.apply(context, args);
+   54                  }
+   55              };
+   56:             var callNow = immediate && !timeout;
+   57:             clearTimeout(timeout);
+   58:             timeout = setTimeout(later, delay);
+   59              if (callNow) {
+   60                  result = func.apply(context, args);
+   ..
+  162      NAME.access.announcements = function ($ariaContainer, textToRead) {
+  163          $ariaContainer.text(textToRead);
+  164:         setTimeout(function () {
+  165              $ariaContainer.text('');
+  166          }, 10000);
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/a11y-autocomplete/accessible_autocomplete.js:
+  102              options.errorOccured(e);
+  103            },
+  104:           timeout:2002
+  105          });
+  106        }
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/jquery/jquery.js:
+ 3687                    process.stackTrace = jQuery.Deferred.getStackHook();
+ 3688                  }
+ 3689:                 window.setTimeout( process );
+ 3690                }
+ 3691              };
+ ....
+ 3866  
+ 3867  jQuery.readyException = function( error ) {
+ 3868:   window.setTimeout( function() {
+ 3869      throw error;
+ 3870    } );
+ ....
+ 3939  
+ 3940    // Handle it asynchronously to allow scripts the opportunity to delay ready
+ 3941:   window.setTimeout( jQuery.ready );
+ 3942  
+ 3943  } else {
+ ....
+ 6778        window.requestAnimationFrame( schedule );
+ 6779      } else {
+ 6780:       window.setTimeout( schedule, jQuery.fx.interval );
+ 6781      }
+ 6782  
+ ....
+ 6787  // Animations created synchronously will run synchronously
+ 6788  function createFxNow() {
+ 6789:   window.setTimeout( function() {
+ 6790      fxNow = undefined;
+ 6791    } );
+ ....
+ 7449  
+ 7450    return this.queue( type, function( next, hooks ) {
+ 7451:     var timeout = window.setTimeout( next, time );
+ 7452      hooks.stop = function() {
+ 7453:       window.clearTimeout( timeout );
+ 7454      };
+ 7455    } );
+ ....
+ 8787  
+ 8788      /*
+ 8789:     timeout: 0,
+ 8790      data: null,
+ 8791      dataType: null,
+ ....
+ 8882        responseHeaders,
+ 8883  
+ 8884:       // timeout handle
+ 8885:       timeoutTimer,
+ 8886  
+ 8887        // Url cleanup var
+ ....
+ 9162        }
+ 9163  
+ 9164:       // Timeout
+ 9165:       if ( s.async && s.timeout > 0 ) {
+ 9166:         timeoutTimer = window.setTimeout( function() {
+ 9167:           jqXHR.abort( "timeout" );
+ 9168:         }, s.timeout );
+ 9169        }
+ 9170  
+ ....
+ 9196        completed = true;
+ 9197  
+ 9198:       // Clear timeout if it exists
+ 9199:       if ( timeoutTimer ) {
+ 9200:         window.clearTimeout( timeoutTimer );
+ 9201        }
+ 9202  
+ ....
+ 9542            xhr.onreadystatechange = function() {
+ 9543  
+ 9544:             // Check readyState before timeout as it changes
+ 9545              if ( xhr.readyState === 4 ) {
+ 9546  
+ ....
+ 9549                // Also, save errorCallback to a variable
+ 9550                // as xhr.onerror cannot be accessed
+ 9551:               window.setTimeout( function() {
+ 9552                  if ( callback ) {
+ 9553                    errorCallback();
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/lodash/lodash.js:
+  286      'Promise', 'RegExp', 'Set', 'String', 'Symbol', 'TypeError', 'Uint8Array',
+  287      'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap',
+  288:     '_', 'clearTimeout', 'isFinite', 'parseInt', 'setTimeout'
+  289    ];
+  290  
+  ...
+ 1423     *
+ 1424     * // Create a suped-up `defer` in Node.js.
+ 1425:    * var defer = _.runInContext({ 'setTimeout': setImmediate }).defer;
+ 1426     */
+ 1427    var runInContext = (function runInContext(context) {
+ ....
+ 1503  
+ 1504      /** Mocked built-ins. */
+ 1505:     var ctxClearTimeout = context.clearTimeout !== root.clearTimeout && context.clearTimeout,
+ 1506          ctxNow = Date && Date.now !== root.Date.now && Date.now,
+ 1507:         ctxSetTimeout = context.setTimeout !== root.setTimeout && context.setTimeout;
+ 1508  
+ 1509      /* Built-in method references for those with the same name as other `lodash` methods. */
+ ....
+ 2753       * @param {number} wait The number of milliseconds to delay invocation.
+ 2754       * @param {Array} args The arguments to provide to `func`.
+ 2755:      * @returns {number|Object} Returns the timer id or timeout object.
+ 2756       */
+ 2757      function baseDelay(func, wait, args) {
+ ....
+ 2759          throw new TypeError(FUNC_ERROR_TEXT);
+ 2760        }
+ 2761:       return setTimeout(function() { func.apply(undefined, args); }, wait);
+ 2762      }
+ 2763  
+ ....
+ 4498  
+ 4499      /**
+ 4500:      * A simple wrapper around the global [`clearTimeout`](https://mdn.io/clearTimeout).
+ 4501       *
+ 4502       * @private
+ 4503:      * @param {number|Object} id The timer id or timeout object of the timer to clear.
+ 4504       */
+ 4505:     var clearTimeout = ctxClearTimeout || function(id) {
+ 4506:       return root.clearTimeout(id);
+ 4507      };
+ 4508  
+ ....
+ 6653  
+ 6654      /**
+ 6655:      * A simple wrapper around the global [`setTimeout`](https://mdn.io/setTimeout).
+ 6656       *
+ 6657       * @private
+ 6658       * @param {Function} func The function to delay.
+ 6659       * @param {number} wait The number of milliseconds to delay invocation.
+ 6660:      * @returns {number|Object} Returns the timer id or timeout object.
+ 6661       */
+ 6662:     var setTimeout = ctxSetTimeout || function(func, wait) {
+ 6663:       return root.setTimeout(func, wait);
+ 6664      };
+ 6665  
+ ....
+ 10271       * delayed `func` invocations and a `flush` method to immediately invoke them.
+ 10272       * Provide `options` to indicate whether `func` should be invoked on the
+ 10273:      * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ 10274       * with the last arguments provided to the debounced function. Subsequent
+ 10275       * calls to the debounced function return the result of the last `func`
+ .....
+ 10277       *
+ 10278       * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ 10279:      * invoked on the trailing edge of the timeout only if the debounced function
+ 10280:      * is invoked more than once during the `wait` timeout.
+ 10281       *
+ 10282       * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ 10283:      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ 10284       *
+ 10285       * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ .....
+ 10294       * @param {Object} [options={}] The options object.
+ 10295       * @param {boolean} [options.leading=false]
+ 10296:      *  Specify invoking on the leading edge of the timeout.
+ 10297       * @param {number} [options.maxWait]
+ 10298       *  The maximum time `func` is allowed to be delayed before it's invoked.
+ 10299       * @param {boolean} [options.trailing=true]
+ 10300:      *  Specify invoking on the trailing edge of the timeout.
+ 10301       * @returns {Function} Returns the new debounced function.
+ 10302       * @example
+ .....
+ 10356          lastInvokeTime = time;
+ 10357          // Start the timer for the trailing edge.
+ 10358:         timerId = setTimeout(timerExpired, wait);
+ 10359          // Invoke the leading edge.
+ 10360          return leading ? invokeFunc(time) : result;
+ .....
+ 10386          }
+ 10387          // Restart the timer.
+ 10388:         timerId = setTimeout(timerExpired, remainingWait(time));
+ 10389        }
+ 10390  
+ .....
+ 10403        function cancel() {
+ 10404          if (timerId !== undefined) {
+ 10405:           clearTimeout(timerId);
+ 10406          }
+ 10407          lastInvokeTime = 0;
+ .....
+ 10427            if (maxing) {
+ 10428              // Handle invocations in a tight loop.
+ 10429:             timerId = setTimeout(timerExpired, wait);
+ 10430              return invokeFunc(lastCallTime);
+ 10431            }
+ 10432          }
+ 10433          if (timerId === undefined) {
+ 10434:           timerId = setTimeout(timerExpired, wait);
+ 10435          }
+ 10436          return result;
+ .....
+ 10871       * immediately invoke them. Provide `options` to indicate whether `func`
+ 10872       * should be invoked on the leading and/or trailing edge of the `wait`
+ 10873:      * timeout. The `func` is invoked with the last arguments provided to the
+ 10874       * throttled function. Subsequent calls to the throttled function return the
+ 10875       * result of the last `func` invocation.
+ 10876       *
+ 10877       * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ 10878:      * invoked on the trailing edge of the timeout only if the throttled function
+ 10879:      * is invoked more than once during the `wait` timeout.
+ 10880       *
+ 10881       * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ 10882:      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ 10883       *
+ 10884       * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ .....
+ 10893       * @param {Object} [options={}] The options object.
+ 10894       * @param {boolean} [options.leading=true]
+ 10895:      *  Specify invoking on the leading edge of the timeout.
+ 10896       * @param {boolean} [options.trailing=true]
+ 10897:      *  Specify invoking on the trailing edge of the timeout.
+ 10898       * @returns {Function} Returns the new throttled function.
+ 10899       * @example
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/pnotify/pnotify.js:
+    1: !function(t,i){"function"==typeof define&&define.amd?define("pnotify",["jquery"],function(s){return i(s,t)}):"object"==typeof exports&&"undefined"!=typeof module?module.exports=i(require("jquery"),global||t):t.PNotify=i(t.jQuery,t)}("undefined"!=typeof window?window:this,function(t,i){var s=function(i){var e,o,n={dir1:"down",dir2:"left",push:"bottom",spacing1:36,spacing2:36,context:t("body"),modal:!1},a=t(i),r=function(){o=t("body"),c.prototype.options.stack.context=o,a=t(i),a.bind("resize",function(){e&&clearTimeout(e),e=setTimeout(function(){c.positionAll(!0)},10)})},h=function(i){var s=t("<div />",{class:"ui-pnotify-modal-overlay"});return s.prependTo(i.context),i.overlay_close&&s.click(function(){c.removeStack(i)}),s},c=function(t){this.state="initializing",this.timer=null,this.animTimer=null,this.styles=null,this.elem=null,this.container=null,this.title_container=null,this.text_container=null,this.animating=!1,this.timerHide=!1,this.parseOptions(t),this.init()};return t.extend(c.prototype,{version:"3.2.0",options:{title:!1,title_escape:!1,text:!1,text_escape:!1,styling:"brighttheme",addclass:"",cornerclass:"",auto_display:!0,width:"300px",min_height:"16px",type:"notice",icon:!0,animation:"fade",animate_speed:"normal",shadow:!0,hide:!0,delay:8e3,mouse_reset:!0,remove:!0,insert_brs:!0,destroy:!0,stack:n},modules:{},runModules:function(t,i){var s;for(var e in this.modules)s="object"==typeof i&&e in i?i[e]:i,"function"==typeof this.modules[e][t]&&(this.modules[e].notice=this,this.modules[e].options="object"==typeof this.options[e]?this.options[e]:{},this.modules[e][t](this,"object"==typeof this.options[e]?this.options[e]:{},s))},init:function(){var i=this;return this.modules={},t.extend(!0,this.modules,c.prototype.modules),"object"==typeof this.options.styling?this.styles=this.options.styling:this.styles=c.styling[this.options.styling],this.elem=t("<div />",{class:"ui-pnotify "+this.options.addclass,css:{display:"none"},"aria-live":"assertive","aria-role":"alertdialog",mouseenter:function(t){if(i.options.mouse_reset&&"out"===i.animating){if(!i.timerHide)return;i.cancelRemove()}i.options.hide&&i.options.mouse_reset&&i.cancelRemove()},mouseleave:function(t){i.options.hide&&i.options.mouse_reset&&"out"!==i.animating&&i.queueRemove(),c.positionAll()}}),"fade"===this.options.animation&&this.elem.addClass("ui-pnotify-fade-"+this.options.animate_speed),this.container=t("<div />",{class:this.styles.container+" ui-pnotify-container "+("error"===this.options.type?this.styles.error:"info"===this.options.type?this.styles.info:"success"===this.options.type?this.styles.success:this.styles.notice),role:"alert"}).appendTo(this.elem),""!==this.options.cornerclass&&this.container.removeClass("ui-corner-all").addClass(this.options.cornerclass),this.options.shadow&&this.container.addClass("ui-pnotify-shadow"),!1!==this.options.icon&&t("<div />",{class:"ui-pnotify-icon"}).append(t("<span />",{class:!0===this.options.icon?"error"===this.options.type?this.styles.error_icon:"info"===this.options.type?this.styles.info_icon:"success"===this.options.type?this.styles.success_icon:this.styles.notice_icon:this.options.icon})).prependTo(this.container),this.title_container=t("<h4 />",{class:"ui-pnotify-title"}).appendTo(this.container),!1===this.options.title?this.title_container.hide():this.options.title_escape?this.title_container.text(this.options.title):this.title_container.html(this.options.title),this.text_container=t("<div />",{class:"ui-pnotify-text","aria-role":"alert"}).appendTo(this.container),!1===this.options.text?this.text_container.hide():this.options.text_escape?this.text_container.text(this.options.text):this.text_container.html(this.options.insert_brs?String(this.options.text).replace(/\n/g,"<br />"):this.options.text),"string"==typeof this.options.width&&this.elem.css("width",this.options.width),"string"==typeof this.options.min_height&&this.container.css("min-height",this.options.min_height),"top"===this.options.stack.push?c.notices=t.merge([this],c.notices):c.notices=t.merge(c.notices,[this]),"top"===this.options.stack.push&&this.queuePosition(!1,1),this.options.stack.animation=!1,this.runModules("init"),this.state="closed",this.options.auto_display&&this.open(),this},update:function(i){var s=this.options;return this.parseOptions(s,i),this.elem.removeClass("ui-pnotify-fade-slow ui-pnotify-fade-normal ui-pnotify-fade-fast"),"fade"===this.options.animation&&this.elem.addClass("ui-pnotify-fade-"+this.options.animate_speed),this.options.cornerclass!==s.cornerclass&&this.container.removeClass("ui-corner-all "+s.cornerclass).addClass(this.options.cornerclass),this.options.shadow!==s.shadow&&(this.options.shadow?this.container.addClass("ui-pnotify-shadow"):this.container.removeClass("ui-pnotify-shadow")),!1===this.options.addclass?this.elem.removeClass(s.addclass):this.options.addclass!==s.addclass&&this.elem.removeClass(s.addclass).addClass(this.options.addclass),!1===this.options.title?this.title_container.slideUp("fast"):this.options.title!==s.title&&(this.options.title_escape?this.title_container.text(this.options.title):this.title_container.html(this.options.title),!1===s.title&&this.title_container.slideDown(200)),!1===this.options.text?this.text_container.slideUp("fast"):this.options.text!==s.text&&(this.options.text_escape?this.text_container.text(this.options.text):this.text_container.html(this.options.insert_brs?String(this.options.text).replace(/\n/g,"<br />"):this.options.text),!1===s.text&&this.text_container.slideDown(200)),this.options.type!==s.type&&this.container.removeClass(this.styles.error+" "+this.styles.notice+" "+this.styles.success+" "+this.styles.info).addClass("error"===this.options.type?this.styles.error:"info"===this.options.type?this.styles.info:"success"===this.options.type?this.styles.success:this.styles.notice),(this.options.icon!==s.icon||!0===this.options.icon&&this.options.type!==s.type)&&(this.container.find("div.ui-pnotify-icon").remove(),!1!==this.options.icon&&t("<div />",{class:"ui-pnotify-icon"}).append(t("<span />",{class:!0===this.options.icon?"error"===this.options.type?this.styles.error_icon:"info"===this.options.type?this.styles.info_icon:"success"===this.options.type?this.styles.success_icon:this.styles.notice_icon:this.options.icon})).prependTo(this.container)),this.options.width!==s.width&&this.elem.animate({width:this.options.width}),this.options.min_height!==s.min_height&&this.container.animate({minHeight:this.options.min_height}),this.options.hide?s.hide||this.queueRemove():this.cancelRemove(),this.queuePosition(!0),this.runModules("update",s),this},open:function(){this.state="opening",this.runModules("beforeOpen");var t=this;return this.elem.parent().length||this.elem.appendTo(this.options.stack.context?this.options.stack.context:o),"top"!==this.options.stack.push&&this.position(!0),this.animateIn(function(){t.queuePosition(!0),t.options.hide&&t.queueRemove(),t.state="open",t.runModules("afterOpen")}),this},remove:function(s){this.state="closing",this.timerHide=!!s,this.runModules("beforeClose");var e=this;return this.timer&&(i.clearTimeout(this.timer),this.timer=null),this.animateOut(function(){if(e.state="closed",e.runModules("afterClose"),e.queuePosition(!0),e.options.remove&&e.elem.detach(),e.runModules("beforeDestroy"),e.options.destroy&&null!==c.notices){var i=t.inArray(e,c.notices);-1!==i&&c.notices.splice(i,1)}e.runModules("afterDestroy")}),this},get:function(){return this.elem},parseOptions:function(i,s){this.options=t.extend(!0,{},c.prototype.options),this.options.stack=c.prototype.options.stack;for(var e,o=[i,s],n=0;n<o.length&&void 0!==(e=o[n]);n++)if("object"!=typeof e)this.options.text=e;else for(var a in e)this.modules[a]?t.extend(!0,this.options[a],e[a]):this.options[a]=e[a]},animateIn:function(t){this.animating="in";var i=this,s=function(){i.animTimer&&clearTimeout(i.animTimer),"in"===i.animating&&(i.elem.is(":visible")?(t&&t.call(),i.animating=!1):i.animTimer=setTimeout(s,40))};"fade"===this.options.animation?(this.elem.one("webkitTransitionEnd mozTransitionEnd MSTransitionEnd oTransitionEnd transitionend",s).addClass("ui-pnotify-in"),this.elem.css("opacity"),this.elem.addClass("ui-pnotify-fade-in"),this.animTimer=setTimeout(s,650)):(this.elem.addClass("ui-pnotify-in"),s())},animateOut:function(i){this.animating="out";var s=this,e=function(){if(s.animTimer&&clearTimeout(s.animTimer),"out"===s.animating)if("0"!=s.elem.css("opacity")&&s.elem.is(":visible"))s.animTimer=setTimeout(e,40);else{if(s.elem.removeClass("ui-pnotify-in"),s.options.stack.overlay){var o=!1;t.each(c.notices,function(t,i){i!=s&&i.options.stack===s.options.stack&&"closed"!=i.state&&(o=!0)}),o||s.options.stack.overlay.hide()}i&&i.call(),s.animating=!1}};"fade"===this.options.animation?(this.elem.one("webkitTransitionEnd mozTransitionEnd MSTransitionEnd oTransitionEnd transitionend",e).removeClass("ui-pnotify-fade-in"),this.animTimer=setTimeout(e,650)):(this.elem.removeClass("ui-pnotify-in"),e())},position:function(t){var i=this.options.stack,s=this.elem;if(void 0===i.context&&(i.context=o),i){"number"!=typeof i.nextpos1&&(i.nextpos1=i.firstpos1),"number"!=typeof i.nextpos2&&(i.nextpos2=i.firstpos2),"number"!=typeof i.addpos2&&(i.addpos2=0);var e=!s.hasClass("ui-pnotify-in");if(!e||t){i.modal&&(i.overlay?i.overlay.show():i.overlay=h(i)),s.addClass("ui-pnotify-move");var n,r,c;switch(i.dir1){case"down":c="top";break;case"up":c="bottom";break;case"left":c="right";break;case"right":c="left"}n=parseInt(s.css(c).replace(/(?:\..*|[^0-9.])/g,"")),isNaN(n)&&(n=0),void 0!==i.firstpos1||e||(i.firstpos1=n,i.nextpos1=i.firstpos1);var p;switch(i.dir2){case"down":p="top";break;case"up":p="bottom";break;case"left":p="right";break;case"right":p="left"}switch(r=parseInt(s.css(p).replace(/(?:\..*|[^0-9.])/g,"")),isNaN(r)&&(r=0),void 0!==i.firstpos2||e||(i.firstpos2=r,i.nextpos2=i.firstpos2),("down"===i.dir1&&i.nextpos1+s.height()>(i.context.is(o)?a.height():i.context.prop("scrollHeight"))||"up"===i.dir1&&i.nextpos1+s.height()>(i.context.is(o)?a.height():i.context.prop("scrollHeight"))||"left"===i.dir1&&i.nextpos1+s.width()>(i.context.is(o)?a.width():i.context.prop("scrollWidth"))||"right"===i.dir1&&i.nextpos1+s.width()>(i.context.is(o)?a.width():i.context.prop("scrollWidth")))&&(i.nextpos1=i.firstpos1,i.nextpos2+=i.addpos2+(void 0===i.spacing2?25:i.spacing2),i.addpos2=0),"number"==typeof i.nextpos2&&(i.animation?s.css(p,i.nextpos2+"px"):(s.removeClass("ui-pnotify-move"),s.css(p,i.nextpos2+"px"),s.css(p),s.addClass("ui-pnotify-move"))),i.dir2){case"down":case"up":s.outerHeight(!0)>i.addpos2&&(i.addpos2=s.height());break;case"left":case"right":s.outerWidth(!0)>i.addpos2&&(i.addpos2=s.width())}switch("number"==typeof i.nextpos1&&(i.animation?s.css(c,i.nextpos1+"px"):(s.removeClass("ui-pnotify-move"),s.css(c,i.nextpos1+"px"),s.css(c),s.addClass("ui-pnotify-move"))),i.dir1){case"down":case"up":i.nextpos1+=s.height()+(void 0===i.spacing1?25:i.spacing1);break;case"left":case"right":i.nextpos1+=s.width()+(void 0===i.spacing1?25:i.spacing1)}}return this}},queuePosition:function(t,i){return e&&clearTimeout(e),i||(i=10),e=setTimeout(function(){c.positionAll(t)},i),this},cancelRemove:function(){return this.timer&&i.clearTimeout(this.timer),this.animTimer&&i.clearTimeout(this.animTimer),"closing"===this.state&&(this.state="open",this.animating=!1,this.elem.addClass("ui-pnotify-in"),"fade"===this.options.animation&&this.elem.addClass("ui-pnotify-fade-in")),this},queueRemove:function(){var t=this;return this.cancelRemove(),this.timer=i.setTimeout(function(){t.remove(!0)},isNaN(this.options.delay)?0:this.options.delay),this}}),t.extend(c,{notices:[],reload:s,removeAll:function(){t.each(c.notices,function(t,i){i.remove&&i.remove(!1)})},removeStack:function(i){t.each(c.notices,function(t,s){s.remove&&s.options.stack===i&&s.remove(!1)})},positionAll:function(i){if(e&&clearTimeout(e),e=null,c.notices&&c.notices.length)t.each(c.notices,function(t,s){var e=s.options.stack;e&&(e.overlay&&e.overlay.hide(),e.nextpos1=e.firstpos1,e.nextpos2=e.firstpos2,e.addpos2=0,e.animation=i)}),t.each(c.notices,function(t,i){i.position()});else{var s=c.prototype.options.stack;s&&(delete s.nextpos1,delete s.nextpos2)}},styling:{brighttheme:{container:"brighttheme",notice:"brighttheme-notice",notice_icon:"brighttheme-icon-notice",info:"brighttheme-info",info_icon:"brighttheme-icon-info",success:"brighttheme-success",success_icon:"brighttheme-icon-success",error:"brighttheme-error",error_icon:"brighttheme-icon-error"},bootstrap3:{container:"alert",notice:"alert-warning",notice_icon:"glyphicon glyphicon-exclamation-sign",info:"alert-info",info_icon:"glyphicon glyphicon-info-sign",success:"alert-success",success_icon:"glyphicon glyphicon-ok-sign",error:"alert-danger",error_icon:"glyphicon glyphicon-warning-sign"}}}),c.styling.fontawesome=t.extend({},c.styling.bootstrap3),t.extend(c.styling.fontawesome,{notice_icon:"fa fa-exclamation-circle",info_icon:"fa fa-info",success_icon:"fa fa-check",error_icon:"fa fa-warning"}),i.document.body?r():t(r),c};return s(i)});
+    2  !function(o,s){"function"==typeof define&&define.amd?define("pnotify.buttons",["jquery","pnotify"],s):"object"==typeof exports&&"undefined"!=typeof module?module.exports=s(require("jquery"),require("./pnotify")):s(o.jQuery,o.PNotify)}("undefined"!=typeof window?window:this,function(o,s){return s.prototype.options.buttons={closer:!0,closer_hover:!0,sticker:!0,sticker_hover:!0,show_on_nonblock:!1,labels:{close:"Close",stick:"Stick",unstick:"Unstick"},classes:{closer:null,pin_up:null,pin_down:null}},s.prototype.modules.buttons={init:function(s,i){var n=this;s.elem.on({mouseenter:function(o){!n.options.sticker||s.options.nonblock&&s.options.nonblock.nonblock&&!n.options.show_on_nonblock||n.sticker.trigger("pnotify:buttons:toggleStick").css("visibility","visible"),!n.options.closer||s.options.nonblock&&s.options.nonblock.nonblock&&!n.options.show_on_nonblock||n.closer.css("visibility","visible")},mouseleave:function(o){n.options.sticker_hover&&n.sticker.css("visibility","hidden"),n.options.closer_hover&&n.closer.css("visibility","hidden")}}),this.sticker=o("<div />",{class:"ui-pnotify-sticker","aria-role":"button","aria-pressed":s.options.hide?"false":"true",tabindex:"0",title:s.options.hide?i.labels.stick:i.labels.unstick,css:{cursor:"pointer",visibility:i.sticker_hover?"hidden":"visible"},click:function(){s.options.hide=!s.options.hide,s.options.hide?s.queueRemove():s.cancelRemove(),o(this).trigger("pnotify:buttons:toggleStick")}}).bind("pnotify:buttons:toggleStick",function(){var i=null===n.options.classes.pin_up?s.styles.pin_up:n.options.classes.pin_up,e=null===n.options.classes.pin_down?s.styles.pin_down:n.options.classes.pin_down;o(this).attr("title",s.options.hide?n.options.labels.stick:n.options.labels.unstick).children().attr("class","").addClass(s.options.hide?i:e).attr("aria-pressed",s.options.hide?"false":"true")}).append("<span />").trigger("pnotify:buttons:toggleStick").prependTo(s.container),(!i.sticker||s.options.nonblock&&s.options.nonblock.nonblock&&!i.show_on_nonblock)&&this.sticker.css("display","none"),this.closer=o("<div />",{class:"ui-pnotify-closer","aria-role":"button",tabindex:"0",title:i.labels.close,css:{cursor:"pointer",visibility:i.closer_hover?"hidden":"visible"},click:function(){s.remove(!1),n.sticker.css("visibility","hidden"),n.closer.css("visibility","hidden")}}).append(o("<span />",{class:null===i.classes.closer?s.styles.closer:i.classes.closer})).prependTo(s.container),(!i.closer||s.options.nonblock&&s.options.nonblock.nonblock&&!i.show_on_nonblock)&&this.closer.css("display","none")},update:function(o,s){!s.closer||o.options.nonblock&&o.options.nonblock.nonblock&&!s.show_on_nonblock?this.closer.css("display","none"):s.closer&&this.closer.css("display","block"),!s.sticker||o.options.nonblock&&o.options.nonblock.nonblock&&!s.show_on_nonblock?this.sticker.css("display","none"):s.sticker&&this.sticker.css("display","block"),this.sticker.trigger("pnotify:buttons:toggleStick"),this.closer.find("span").attr("class","").addClass(null===s.classes.closer?o.styles.closer:s.classes.closer),s.sticker_hover?this.sticker.css("visibility","hidden"):o.options.nonblock&&o.options.nonblock.nonblock&&!s.show_on_nonblock||this.sticker.css("visibility","visible"),s.closer_hover?this.closer.css("visibility","hidden"):o.options.nonblock&&o.options.nonblock.nonblock&&!s.show_on_nonblock||this.closer.css("visibility","visible")}},o.extend(s.styling.brighttheme,{closer:"brighttheme-icon-closer",pin_up:"brighttheme-icon-sticker",pin_down:"brighttheme-icon-sticker brighttheme-icon-stuck"}),o.extend(s.styling.bootstrap3,{closer:"glyphicon glyphicon-remove",pin_up:"glyphicon glyphicon-pause",pin_down:"glyphicon glyphicon-play"}),o.extend(s.styling.fontawesome,{closer:"fa fa-times",pin_up:"fa fa-pause",pin_down:"fa fa-play"}),s});
+    3  !function(i,t){"function"==typeof define&&define.amd?define("pnotify.desktop",["jquery","pnotify"],t):"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("jquery"),require("./pnotify")):t(i.jQuery,i.PNotify)}("undefined"!=typeof window?window:this,function(i,t){var o,n=function(i,t){return(n="Notification"in window?function(i,t){return new Notification(i,t)}:"mozNotification"in navigator?function(i,t){return navigator.mozNotification.createNotification(i,t.body,t.icon).show()}:"webkitNotifications"in window?function(i,t){return window.webkitNotifications.createNotification(t.icon,i,t.body)}:function(i,t){return null})(i,t)};return t.prototype.options.desktop={desktop:!1,fallback:!0,icon:null,tag:null,title:null,text:null},t.prototype.modules.desktop={genNotice:function(i,t){null===t.icon?this.icon="http://sciactive.com/pnotify/includes/desktop/"+i.options.type+".png":!1===t.icon?this.icon=null:this.icon=t.icon,null!==this.tag&&null===t.tag||(this.tag=null===t.tag?"PNotify-"+Math.round(1e6*Math.random()):t.tag),i.desktop=n(t.title||i.options.title,{icon:this.icon,body:t.text||i.options.text,tag:this.tag}),!("close"in i.desktop)&&"cancel"in i.desktop&&(i.desktop.close=function(){i.desktop.cancel()}),i.desktop.onclick=function(){i.elem.trigger("click")},i.desktop.onclose=function(){"closing"!==i.state&&"closed"!==i.state&&i.remove()}},init:function(i,n){if(n.desktop){if(0!==(o=t.desktop.checkPermission()))return void(n.fallback||(i.options.auto_display=!1));this.genNotice(i,n)}},update:function(i,t,n){0!==o&&t.fallback||!t.desktop||this.genNotice(i,t)},beforeOpen:function(i,t){0!==o&&t.fallback||!t.desktop||i.elem.css({left:"-10000px"}).removeClass("ui-pnotify-in")},afterOpen:function(i,t){0!==o&&t.fallback||!t.desktop||(i.elem.css({left:"-10000px"}).removeClass("ui-pnotify-in"),"show"in i.desktop&&i.desktop.show())},beforeClose:function(i,t){0!==o&&t.fallback||!t.desktop||i.elem.css({left:"-10000px"}).removeClass("ui-pnotify-in")},afterClose:function(i,t){0!==o&&t.fallback||!t.desktop||(i.elem.css({left:"-10000px"}).removeClass("ui-pnotify-in"),"close"in i.desktop&&i.desktop.close())}},t.desktop={permission:function(){"undefined"!=typeof Notification&&"requestPermission"in Notification?Notification.requestPermission():"webkitNotifications"in window&&window.webkitNotifications.requestPermission()},checkPermission:function(){return"undefined"!=typeof Notification&&"permission"in Notification?"granted"===Notification.permission?0:1:"webkitNotifications"in window&&0==window.webkitNotifications.checkPermission()?0:1}},o=t.desktop.checkPermission(),t});
+
+/Users/maxime/Documents/GitHub/clara/vendor/assets/javascripts/vuejs/vue.js:
+  673        // needs to do some other work, e.g. handle a timer. Therefore we can
+  674        // "force" the microtask queue to be flushed by adding an empty timer.
+  675:       if (isIOS) { setTimeout(noop); }
+  676      };
+  677    } else if (typeof MutationObserver !== 'undefined' && (
+  ...
+  693      };
+  694    } else {
+  695:     // fallback to setTimeout
+  696      /* istanbul ignore next */
+  697      timerFunc = function () {
+  698:       setTimeout(nextTickHandler, 0);
+  699      };
+  700    }
+  ...
+ 2133              factory.loading = true;
+ 2134            } else {
+ 2135:             setTimeout(function () {
+ 2136                if (isUndef(factory.resolved) && isUndef(factory.error)) {
+ 2137                  factory.loading = true;
+ ....
+ 2142          }
+ 2143  
+ 2144:         if (isDef(res.timeout)) {
+ 2145:           setTimeout(function () {
+ 2146              if (isUndef(factory.resolved)) {
+ 2147                reject(
+ 2148:                 "timeout (" + (res.timeout) + "ms)"
+ 2149                );
+ 2150              }
+ 2151:           }, res.timeout);
+ 2152          }
+ 2153        }
+ ....
+ 6823  var raf = inBrowser && window.requestAnimationFrame
+ 6824    ? window.requestAnimationFrame.bind(window)
+ 6825:   : setTimeout;
+ 6826  
+ 6827  function nextFrame (fn) {
+ ....
+ 6853    var ref = getTransitionInfo(el, expectedType);
+ 6854    var type = ref.type;
+ 6855:   var timeout = ref.timeout;
+ 6856    var propCount = ref.propCount;
+ 6857    if (!type) { return cb() }
+ ....
+ 6869      }
+ 6870    };
+ 6871:   setTimeout(function () {
+ 6872      if (ended < propCount) {
+ 6873        end();
+ 6874      }
+ 6875:   }, timeout + 1);
+ 6876    el.addEventListener(event, onEnd);
+ 6877  }
+ ....
+ 6883    var transitionDelays = styles[transitionProp + 'Delay'].split(', ');
+ 6884    var transitionDurations = styles[transitionProp + 'Duration'].split(', ');
+ 6885:   var transitionTimeout = getTimeout(transitionDelays, transitionDurations);
+ 6886    var animationDelays = styles[animationProp + 'Delay'].split(', ');
+ 6887    var animationDurations = styles[animationProp + 'Duration'].split(', ');
+ 6888:   var animationTimeout = getTimeout(animationDelays, animationDurations);
+ 6889  
+ 6890    var type;
+ 6891:   var timeout = 0;
+ 6892    var propCount = 0;
+ 6893    /* istanbul ignore if */
+ 6894    if (expectedType === TRANSITION) {
+ 6895:     if (transitionTimeout > 0) {
+ 6896        type = TRANSITION;
+ 6897:       timeout = transitionTimeout;
+ 6898        propCount = transitionDurations.length;
+ 6899      }
+ 6900    } else if (expectedType === ANIMATION) {
+ 6901:     if (animationTimeout > 0) {
+ 6902        type = ANIMATION;
+ 6903:       timeout = animationTimeout;
+ 6904        propCount = animationDurations.length;
+ 6905      }
+ 6906    } else {
+ 6907:     timeout = Math.max(transitionTimeout, animationTimeout);
+ 6908:     type = timeout > 0
+ 6909:       ? transitionTimeout > animationTimeout
+ 6910          ? TRANSITION
+ 6911          : ANIMATION
+ ....
+ 6922    return {
+ 6923      type: type,
+ 6924:     timeout: timeout,
+ 6925      propCount: propCount,
+ 6926      hasTransform: hasTransform
+ ....
+ 6928  }
+ 6929  
+ 6930: function getTimeout (delays, durations) {
+ 6931    /* istanbul ignore next */
+ 6932    while (delays.length < durations.length) {
+ ....
+ 7076        if (!cb.cancelled && !userWantsControl) {
+ 7077          if (isValidDuration(explicitEnterDuration)) {
+ 7078:           setTimeout(cb, explicitEnterDuration);
+ 7079          } else {
+ 7080            whenTransitionEnds(el, type, cb);
+ ....
+ 7182          if (!cb.cancelled && !userWantsControl) {
+ 7183            if (isValidDuration(explicitLeaveDuration)) {
+ 7184:             setTimeout(cb, explicitLeaveDuration);
+ 7185            } else {
+ 7186              whenTransitionEnds(el, type, cb);
+ ....
+ 7303        /* istanbul ignore if */
+ 7304        if (isIE || isEdge) {
+ 7305:         setTimeout(cb, 0);
+ 7306        }
+ 7307        el._vOptions = [].map.call(el.options, getValue);
+ ....
+ 7857  // devtools global hook
+ 7858  /* istanbul ignore next */
+ 7859: setTimeout(function () {
+ 7860    if (config.devtools) {
+ 7861      if (devtools) {
+
+157 matches across 18 files
