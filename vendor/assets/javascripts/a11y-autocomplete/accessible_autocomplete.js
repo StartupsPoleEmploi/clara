@@ -117,7 +117,6 @@
         $nextMenuItem =
           $thisActiveItem.length !== 0
             ? $thisActiveItem.next("li")
-
             : $results.children().eq(0); //first item in list
       }
       if (kc === key.up) {
