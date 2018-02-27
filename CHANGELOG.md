@@ -1,5 +1,10 @@
 # ARA Changelog
 
+
+## 7.1.2 (27/02/2018)
+-[#629][BUG] Form - message d'erreur adresse mal positionné
+
+
 ## 7.1.1 (27/02/2018)
 -[#561][HTTPS] Force SSL in production
 
@@ -103,7 +108,7 @@
 
 
 ## 5.6.3 (26/01/2018)
-- [#582][BUG] results - ne pas faire apparaître la rubrique "reserves et deorgation" s'il n'y a aucun caractère en admin
+- [#582][BUG] results - ne pas faire apparaître la rubrique "reserves et derogation" s'il n'y a aucun caractère en admin
 
 
 ## 5.6.2 (26/01/2018)
