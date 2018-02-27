@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 7.1.1 (27/02/2018)
+-[#561][HTTPS] Force SSL in production
+
 
 ## 7.1.0 (26/02/2018)
 -[#558][SEO] page seo footer "toutes nos aides" : ajouter CTA

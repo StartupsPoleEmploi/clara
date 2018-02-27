@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    redirect_to(session[:user_email] ? admin_root_path : google_oauth_path(secure: request.ssl?))
+    redirect_to(session[:user_email] ? admin_root_path : google_oauth_path)
   end
 
   def create
