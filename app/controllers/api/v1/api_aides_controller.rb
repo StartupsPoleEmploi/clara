@@ -3,12 +3,12 @@ module Api
     class ApiAidesController < Api::V1::ApiController
 
       before_action :authenticate_user
-      respond_to :json
 
       def index
         if current_user
           p '- - - - - - - - - - - - - - current_user- - - - - - - - - - - - - - - -' 
           p current_user.inspect
+          p params[:v_duree_d_inscription]
           p ''
 
         else

@@ -25,14 +25,14 @@
     "http"
   ],
   "paths": {
-    "/aid": {
+    "/aides": {
       "get": {
         "tags": [
           "aid"
         ],
         "summary": "List all aids",
         "description": "",
-        "operationId": "addPet",
+        "operationId": "getAides",
         "consumes": [
           "application/json",
         ],
