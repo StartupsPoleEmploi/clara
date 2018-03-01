@@ -33,4 +33,3 @@ ara
 coverage
 
 /config/deploy/*
-/public/apidocs/
