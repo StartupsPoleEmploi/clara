@@ -25,13 +25,20 @@ Récupérez le fichier d'environnement .env  auprès des administrateurs, puis
 $ bin/rails db:setup
 ```
 
+
 ### Lancer le site en local
 ```
 $ bin/rails server
 ```
 le site est disponible sous http://localhost:3000
 
+Dans un autre terminal, lancer
 
+```
+$ bundle exec guard -P livereload
+```
+
+Pour ne pas avoir besoin de rafraîchir manuellement le navigateur à chaque changement de code.
 
 ### Lancement des tests unitaires back
 
