@@ -28,7 +28,6 @@ gem 'bulk_insert'
 gem 'gon'
 gem 'whenever', :require => false
 gem 'browser'
-gem 'swagger-docs'
 
 ## Devops
 gem 'newrelic_rpm'
