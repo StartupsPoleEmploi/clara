@@ -13,7 +13,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "clara.pole-emploi.fr/api",
+  "host": "http://localhost:3000/api",
   "basePath": "/v1",
   "tags": [
     {
@@ -22,33 +22,31 @@
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
-    "/pet": {
-      "post": {
+    "/aid": {
+      "get": {
         "tags": [
-          "pet"
+          "aid"
         ],
-        "summary": "Add a new pet to the store",
+        "summary": "List all aids",
         "description": "",
         "operationId": "addPet",
         "consumes": [
           "application/json",
-          "application/xml"
         ],
         "produces": [
           "application/xml",
-          "application/json"
         ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "Pet object that needs to be added to the store",
-            "required": true,
+            "description": "Params of asker",
+            "required": false,
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "$ref": "#/definitions/Asker"
             }
           }
         ],
@@ -65,27 +63,27 @@
             ]
           }
         ]
-      },
-      "put": {
+      }
+    },
+    "/user_token": {
+      "post": {
         "tags": [
-          "pet"
+          "user"
         ],
-        "summary": "Update an existing pet",
+        "summary": "Ask to authenticate",
         "description": "",
-        "operationId": "updatePet",
+        "operationId": "user_token",
         "consumes": [
-          "application/json",
-          "application/xml"
+          "application/json"
         ],
         "produces": [
-          "application/xml",
           "application/json"
         ],
         "parameters": [
           {
             "in": "body",
             "name": "body",
-            "description": "Pet object that needs to be added to the store",
+            "description": "Credential for authentication",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Pet"
@@ -93,78 +91,30 @@
           }
         ],
         "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          },
-          "405": {
-            "description": "Validation exception"
+          "401": {
+            "description": "Unauthorized"
           }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
+        }
       }
     }
   },
   "definitions": {
-    "Pet": {
+    "Asker": {
       "type": "object",
       "required": [
         "name",
         "photoUrls"
       ],
       "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "category": {
-          "$ref": "#/definitions/Category"
-        },
-        "name": {
+        "v_duree_d_inscription": {
           "type": "string",
-          "example": "doggie"
-        },
-        "photoUrls": {
-          "type": "array",
-          "xml": {
-            "name": "photoUrl",
-            "wrapped": true
-          },
-          "items": {
-            "type": "string"
-          }
-        },
-        "tags": {
-          "type": "array",
-          "xml": {
-            "name": "tag",
-            "wrapped": true
-          },
-          "items": {
-            "$ref": "#/definitions/Tag"
-          }
-        },
-        "status": {
-          "type": "string",
-          "description": "pet status in the store",
+          "description": "Durée d'inscription du DE",
           "enum": [
-            "available",
-            "pending",
-            "sold"
+            "plus_d_un_an",
+            "moins_d_un_an",
+            "non_inscrit"
           ]
         }
-      },
-      "xml": {
-        "name": "Pet"
       }
     },
     "ApiResponse": {
