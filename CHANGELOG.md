@@ -1,5 +1,7 @@
 # ARA Changelog
 
+## 7.1.5 (27/02/2018)
+-[#657][BUG] Bug affichage clavier num sur mobile pour alloc
 
 ## 7.1.4 (27/02/2018)
 -[#658][TECH] Ajout livereload
