@@ -1,8 +1,13 @@
 # ARA Changelog
 
 
+## 7.2.0 (27/02/2018)
+-[#661][TECH] 1er essai API
+
+
 ## 7.1.4 (27/02/2018)
 -[#658][TECH] Ajout livereload
+
 
 ## 7.1.3 (27/02/2018)
 -[#658][BUG] Adresse timeout
