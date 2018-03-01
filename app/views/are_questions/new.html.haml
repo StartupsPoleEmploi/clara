@@ -22,7 +22,7 @@
 
       .c-are__form{:class => classes_of_are_form}
         %label.c-label.u-focusable{tabindex: "0", id: "minimum-descr"} Montant par mois
-        = f.text_field :minimum_income, 
+        = f.number_field :minimum_income, 
           class: classes_of_input,    
           id: 'inputmin',            
           value: @are.minimum_income,            
