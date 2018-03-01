@@ -86,7 +86,7 @@
             "description": "Credential for authentication",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Pet"
+              "$ref": "#/definitions/Auth"
             }
           }
         ],
@@ -101,10 +101,6 @@
   "definitions": {
     "Asker": {
       "type": "object",
-      "required": [
-        "name",
-        "photoUrls"
-      ],
       "properties": {
         "v_duree_d_inscription": {
           "type": "string",
@@ -114,6 +110,22 @@
             "moins_d_un_an",
             "non_inscrit"
           ]
+        }
+      }
+    },
+    "Auth": {
+      "type": "object",
+      "properties": {
+        "auth" : {
+          "type": "object",
+          "properties" : {
+            "email": {
+              "type": "string",
+             },
+            "password": {
+              "type": "string",
+            }
+          }
         }
       }
     },
