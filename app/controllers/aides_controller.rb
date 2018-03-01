@@ -11,9 +11,9 @@ class AidesController < ApplicationController
       else
         pull_asker_from_query_param
         augment_asker_with_qpv_zrr
-        create_cacheable_version_of_asker
-        write_to_cache
-        hashified = hashify_results(@cacheable)
+        cacheable = create_cacheable_results_from_asker
+        write_to_cache(cacheable)
+        hashified = hashify_results(cacheable)
         hydrate_view(hashified)
       end
     else
@@ -43,16 +43,16 @@ class AidesController < ApplicationController
     @existing = CacheService.get_instance.read(params[:for_id])
   end
 
-  def write_to_cache
-    CacheService.get_instance.write(params[:for_id], @cacheable)
+  def write_to_cache(cacheable)
+    CacheService.get_instance.write(params[:for_id], cacheable)
   end
 
   def augment_asker_with_qpv_zrr
     CalculateAskerService.new(@asker).calculate_zrr_qpv
   end
 
-  def create_cacheable_version_of_asker
-    @cacheable = SerializeResultsService.new(@asker).go
+  def create_cacheable_results_from_asker
+    SerializeResultsService.new(@asker).go
   end
 
   def hashify_results(stuff)
