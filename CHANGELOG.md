@@ -1,5 +1,9 @@
 # ARA Changelog
 
+
+## 7.1.6 (27/02/2018)
+-[#660][TECH] Tester les cases à cocher de la question "autres"
+
 ## 7.1.5 (27/02/2018)
 -[#657][BUG] Bug affichage clavier num sur mobile pour alloc
 
