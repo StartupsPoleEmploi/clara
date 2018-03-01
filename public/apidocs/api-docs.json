@@ -41,13 +41,11 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "description": "Params of asker",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/Asker"
-            }
+            "in": "query",
+            "name": "v_duree_d_inscription",
+            "type": "string",
+            "description": "plus_d_un_an,moins_d_un_an,non_inscrit",
+            "required": false
           }
         ],
         "responses": {
