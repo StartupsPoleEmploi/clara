@@ -431,6 +431,7 @@ DEPENDENCIES
   administrate-field-ckeditor (~> 0.0.8)
   annotate (= 2.4.0)
   autoprefixer-rails
+  bcrypt (~> 3.1.7)
   browser
   bulk_insert
   byebug
