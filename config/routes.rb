@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    post 'user_token' => 'user_token#create'
+    get 'aides' => 'api_aides#index'
+  end
+  
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'

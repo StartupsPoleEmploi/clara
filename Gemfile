@@ -46,6 +46,7 @@ gem 'mina-multistage', require: false
 gem 'climate_control'
 gem 'fuubar'
 gem 'dotenv-rails'
+gem 'knock'
 
 group :development, :test do
   gem 'byebug', platform: :mri
