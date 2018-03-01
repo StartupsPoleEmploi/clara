@@ -13,7 +13,7 @@
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "http://localhost:3000/api",
+  "host": "localhost:3000/api",
   "basePath": "/v1",
   "tags": [
     {
@@ -91,8 +91,14 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "Found"
+          },
           "401": {
             "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
