@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :api do
+  namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       post 'user_token' => 'user_token#create'
       get 'aides' => 'api_aides#index'

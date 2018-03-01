@@ -6,15 +6,14 @@ module Api
 
       def index
         if current_user
-          p '- - - - - - - - - - - - - - current_user- - - - - - - - - - - - - - - -' 
-          p current_user.inspect
-          p params[:v_duree_d_inscription]
-          a = Asker.new(asker_params)
-          p a.inspect
-          p ''
-
+          asker = Asker.new(asker_params)
+          p asker.inspect
+          p '-----------------------------------------------------------'
+          result = SerializeResultsService.new(asker).go
+          result[:asker] = nil
+          render json: result.to_json
         else
-          p ' - - - - - - - -no current_user'
+          render json: {'nothing'  => 'found'}.to_json
         end
       end
 
