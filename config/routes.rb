@@ -4,12 +4,13 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create'
     get 'aides' => 'api_aides#index'
   end
-  
+
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
 
   namespace :admin do
+    resources :users
     resources :aids
     resources :rules do 
       get 'resolve', on: :member
