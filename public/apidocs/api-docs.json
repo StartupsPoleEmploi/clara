@@ -1,0 +1,198 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Ceci est la documentation de l'API Clara.",
+    "version": "1.0.0",
+    "title": "Clara API",
+    "termsOfService": "https://clara.pole-emploi.fr/conditions-generales-d-utilisation",
+    "contact": {
+      "email": "bdavidxyz@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "aides",
+      "description": "Calcul d'éligibilité de vos aides"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/aides": {
+      "get": {
+        "tags": [
+          "aid"
+        ],
+        "summary": "List all aids",
+        "description": "",
+        "operationId": "getAides",
+        "consumes": [
+          "application/json",
+        ],
+        "produces": [
+          "application/json",
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "v_handicap",
+            "type": "string",
+            "description": "oui,non",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_harki",
+            "type": "string",
+            "description": "oui,non",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_detenu",
+            "type": "string",
+            "description": "oui,non",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_protection_internationale",
+            "type": "string",
+            "description": "oui,non",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_diplome",
+            "type": "string",
+            "description": "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_category",
+            "type": "string",
+            "description": "cat_12345,autres_cat",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_duree_d_inscription",
+            "type": "string",
+            "description": "plus_d_un_an,moins_d_un_an,non_inscrit",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_allocation_value_min",
+            "type": "integer",
+            "description": "Montant estimé d'allocation par mois",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_allocation_type",
+            "type": "string",
+            "description": "ARE_ASP,ASS_AER_ATA_APS_AS-FNE,RSA,RPS_RFPA_RFF_pe",
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "v_age",
+            "type": "integer",
+            "description": "Age du DE",
+            "required": false
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/user_token": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Ask to authenticate",
+        "description": "",
+        "operationId": "user_token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Credential for authentication",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Auth"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Found"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Auth": {
+      "type": "object",
+      "properties": {
+        "auth" : {
+          "type": "object",
+          "properties" : {
+            "email": {
+              "type": "string",
+             },
+            "password": {
+              "type": "string",
+            }
+          }
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
