@@ -25,6 +25,9 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
     end
+    it 'With code 201' do
+      expect(response_returned).to be_success
+    end
     it 'Returns all eligible aids' do
       expect(json_returned["all_eligible"].size).to eq 1
       expect(json_returned["all_eligible"][0]["name"]).to eq 'aide harki'
@@ -36,6 +39,19 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns all uncertain aids' do
       expect(json_returned["all_uncertain"].size).to eq 1
       expect(json_returned["all_uncertain"][0]["name"]).to eq 'aide aid_adult_and_harki'
+    end
+  end
+
+  describe 'Unauthenticated' do
+    it 'Without header, refuses to answer' do
+      get '/api/v1/aides?v_harki=oui'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer' do
+      get '/api/v1/aides?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
     end
   end
 
