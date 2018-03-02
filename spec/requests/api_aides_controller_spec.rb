@@ -25,8 +25,8 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
     end
-    it 'With code 201' do
-      expect(response_returned).to be_success
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
     end
     it 'Returns all eligible aids' do
       expect(json_returned["all_eligible"].size).to eq 1

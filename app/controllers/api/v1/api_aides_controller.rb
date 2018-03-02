@@ -7,8 +7,6 @@ module Api
       def index
         if current_user
           asker = Asker.new(asker_params)
-          p asker.inspect
-          p '-----------------------------------------------------------'
           result = SerializeResultsService.new(asker).go
           result.delete :asker
           result[:all_eligible] = result.delete :flat_all_eligible
