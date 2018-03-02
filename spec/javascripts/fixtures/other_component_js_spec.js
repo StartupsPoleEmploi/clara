@@ -10,4 +10,9 @@ describe('other_component_spec.js', function() {
     expect(clara.other_component).toBeDefined();
   });
 
+  describe('Instanciation', function() {
+    it('Needs to be initiated from a DOM element', function() {
+      expect(clara.other_component()).toEqual(false);  
+    });
+  });
 });
