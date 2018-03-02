@@ -1,10 +1,15 @@
 # ARA Changelog
 
-## 7.2.1 (27/02/2018)
+
+## 7.2.2 (02/03/2018)
+-[#663][TECH] Ajout Authent dans swagger
+
+
+## 7.2.1 (02/03/2018)
 -[#662][TECH] Ajout HTTPS pour API
 
 
-## 7.2.0 (27/02/2018)
+## 7.2.0 (01/03/2018)
 -[#661][TECH] 1er essai API
 
 

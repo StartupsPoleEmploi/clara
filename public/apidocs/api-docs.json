@@ -42,6 +42,13 @@
         ],
         "parameters": [
           {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "description": "Bearer suivi du token",
+            "required": true
+          },
+          {
             "in": "query",
             "name": "v_handicap",
             "type": "string",
