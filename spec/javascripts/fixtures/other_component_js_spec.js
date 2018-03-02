@@ -25,6 +25,7 @@ describe('other_component_spec.js', function() {
       expect(clara.other_component("#valid-root")).toEqual(true);  
     });
     it('If bad input return false', function() {
+      $('#val_harki').attr('id', 'azerty')
       expect(clara.other_component("#valid-root")).toEqual(true);  
     });
   });
