@@ -24,6 +24,3 @@ class Asker < ActiveType::Object
   attribute :v_location_state,            :string
 
 end
-
-
-          
