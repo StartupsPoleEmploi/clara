@@ -11,8 +11,11 @@ describe('other_component_spec.js', function() {
   });
 
   describe('Instanciation', function() {
-    it('Needs to be initiated from a DOM element', function() {
+    it('Return false when not instanciated', function() {
       expect(clara.other_component()).toEqual(false);  
+    });
+    it('Needs to be initiated from a DOM element', function() {
+      expect(clara.other_component("#valid-root")).toEqual(true);  
     });
   });
 });
