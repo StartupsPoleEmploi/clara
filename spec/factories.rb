@@ -1,5 +1,13 @@
 FactoryBot.define do
 
+  factory :user do
+    trait :fake do
+      email "foo@bar.com"
+      password "secret"
+      password_confirmation "secret"
+    end
+  end
+
   factory :variable do 
     trait :age  do 
       name 'v_age'

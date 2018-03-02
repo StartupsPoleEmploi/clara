@@ -20,8 +20,6 @@ module Api
           format_bunch_of_eligies(result[:all_ineligible])
 
           render json: result.to_json
-        else
-          render json: {'nothing'  => 'found'}.to_json
         end
       end
 
