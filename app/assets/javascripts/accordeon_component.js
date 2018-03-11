@@ -1,4 +1,3 @@
-
 _.set(window, 'clara.accordeon_component',
 
     function accordeon_component(discriminator, has_collapsed_lines_initially, localStorageService, urlExtractorService) {
