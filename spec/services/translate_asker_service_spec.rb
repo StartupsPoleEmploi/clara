@@ -6,34 +6,60 @@ describe TranslateAskerService do
   describe "looped .to_french" do
     
     inputs = [
-      {english: {harki: true},             french_key: :v_harki, french_value: "oui"},
-      {english: {harki: "true"},           french_key: :v_harki, french_value: "oui"},
-      {english: {harki: false},            french_key: :v_harki, french_value: "non"},
-      {english: {harki: "false"},          french_key: :v_harki, french_value: "non"},
-      {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
-      {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
-      {english: {disabled: "true"},        french_key: :v_handicap, french_value: "oui"},
-      {english: {disabled: false},         french_key: :v_handicap, french_value: "non"},
-      {english: {disabled: "false"},       french_key: :v_handicap, french_value: "non"},
-      {english: {disabled: "wrong_input"}, french_key: :v_handicap, french_value: nil},
-      {english: {ex_invict: true},          french_key: :v_detenu, french_value: "oui"},
-      {english: {ex_invict: "true"},        french_key: :v_detenu, french_value: "oui"},
-      {english: {ex_invict: false},         french_key: :v_detenu, french_value: "non"},
-      {english: {ex_invict: "false"},       french_key: :v_detenu, french_value: "non"},
-      {english: {ex_invict: "wrong_input"}, french_key: :v_detenu, french_value: nil},
-      {english: {international_protection: true},          french_key: :v_protection_internationale, french_value: "oui"},
-      {english: {international_protection: "true"},        french_key: :v_protection_internationale, french_value: "oui"},
-      {english: {international_protection: false},         french_key: :v_protection_internationale, french_value: "non"},
-      {english: {international_protection: "false"},       french_key: :v_protection_internationale, french_value: "non"},
-      {english: {international_protection: "wrong_input"}, french_key: :v_protection_internationale, french_value: nil},
+      {english: {harki: true},             french: {v_harki: "oui"}},
+      {english: {harki: "true"},           french: {v_harki: "oui"}},
+      {english: {harki: false},            french: {v_harki: "non"}},
+      {english: {harki: "false"},          french: {v_harki: "non"}},
+      {english: {harki: "wrong_input"},    french: {v_harki: nil}},
+      
+      {english: {disabled: true},          french: {v_handicap: "oui"}},
+      {english: {disabled: "true"},        french: {v_handicap: "oui"}},
+      {english: {disabled: false},         french: {v_handicap: "non"}},
+      {english: {disabled: "false"},       french: {v_handicap: "non"}},
+      {english: {disabled: "wrong_input"}, french: {v_handicap: nil}},
+
+      {english: {ex_invict: true},         french: {v_detenu: "oui"}},
+      {english: {ex_invict: "true"},       french: {v_detenu: "oui"}},
+      {english: {ex_invict: false},        french: {v_detenu: "non"}},
+      {english: {ex_invict: "false"},      french: {v_detenu: "non"}},
+      {english: {ex_invict: "wrong_input"},french: {v_detenu: nil}},
+
+      {english: {international_protection: true},          french: {v_protection_internationale: "oui"}},
+      {english: {international_protection: "true"},        french: {v_protection_internationale: "oui"}},
+      {english: {international_protection: false},         french: {v_protection_internationale: "non"}},
+      {english: {international_protection: "false"},       french: {v_protection_internationale: "non"}},
+      {english: {international_protection: "wrong_input"}, french: {v_protection_internationale: nil}},
+
+      {english: {diploma: "level_1"},      french: {v_diplome: "niveau_1"}},
+      {english: {diploma: "level_2"},      french: {v_diplome: "niveau_2"}},
+      {english: {diploma: "level_3"},      french: {v_diplome: "niveau_3"}},
+      {english: {diploma: "level_4"},      french: {v_diplome: "niveau_4"}},
+      {english: {diploma: "level_5"},      french: {v_diplome: "niveau_5"}},
+      {english: {diploma: "level_below_5"},french: {v_diplome: "niveau_infra_5"}},
+      {english: {diploma: "wrong_input"},  french: {v_diplome: nil}},
+
+      # {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
+      # {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
+      # {english: {disabled: "true"},        french_key: :v_handicap, french_value: "oui"},
+      # {english: {disabled: false},         french_key: :v_handicap, french_value: "non"},
+      # {english: {disabled: "false"},       french_key: :v_handicap, french_value: "non"},
+      # {english: {disabled: "wrong_input"}, french_key: :v_handicap, french_value: nil},
+      # {english: {ex_invict: true},          french_key: :v_detenu, french_value: "oui"},
+      # {english: {ex_invict: "true"},        french_key: :v_detenu, french_value: "oui"},
+      # {english: {ex_invict: false},         french_key: :v_detenu, french_value: "non"},
+      # {english: {ex_invict: "false"},       french_key: :v_detenu, french_value: "non"},
+      # {english: {ex_invict: "wrong_input"}, french_key: :v_detenu, french_value: nil},
+      # {english: {international_protection: true},          french_key: :v_protection_internationale, french_value: "oui"},
+      # {english: {international_protection: "true"},        french_key: :v_protection_internationale, french_value: "oui"},
+      # {english: {international_protection: false},         french_key: :v_protection_internationale, french_value: "non"},
+      # {english: {international_protection: "false"},       french_key: :v_protection_internationale, french_value: "non"},
+      # {english: {international_protection: "wrong_input"}, french_key: :v_protection_internationale, french_value: nil},
     ]
 
     inputs.each do |i|
-      final_expectation = {}
-      final_expectation[i[:french_key]] = i[:french_value]
-      it "Should translate #{i[:english]} to #{final_expectation}" do
+      it "Should translate #{i[:english]} to #{i[:french]}" do
         asker = TranslateAskerService.new(i[:english]).to_french
-        expect(asker[i[:french_key]]).to eq(i[:french_value])        
+        expect(asker[i[:french].keys.first]).to eq(i[:french].values.first)        
       end
     end
   end
