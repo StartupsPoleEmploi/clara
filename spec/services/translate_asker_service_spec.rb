@@ -67,25 +67,6 @@ describe TranslateAskerService do
       {english: {allocation_type: "RFF"},         french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
       {english: {allocation_type: "PENSION"},     french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
       {english: {allocation_type: "wrong_input"}, french: {v_allocation_type: nil}},
-      # asker = TranslateAskerService.new({allocation_type: "ARE"}).to_french
-      # expect(asker.v_allocation_type).to eq("ARE_ASP")
-
-      # {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
-      # {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
-      # {english: {disabled: "true"},        french_key: :v_handicap, french_value: "oui"},
-      # {english: {disabled: false},         french_key: :v_handicap, french_value: "non"},
-      # {english: {disabled: "false"},       french_key: :v_handicap, french_value: "non"},
-      # {english: {disabled: "wrong_input"}, french_key: :v_handicap, french_value: nil},
-      # {english: {ex_invict: true},          french_key: :v_detenu, french_value: "oui"},
-      # {english: {ex_invict: "true"},        french_key: :v_detenu, french_value: "oui"},
-      # {english: {ex_invict: false},         french_key: :v_detenu, french_value: "non"},
-      # {english: {ex_invict: "false"},       french_key: :v_detenu, french_value: "non"},
-      # {english: {ex_invict: "wrong_input"}, french_key: :v_detenu, french_value: nil},
-      # {english: {international_protection: true},          french_key: :v_protection_internationale, french_value: "oui"},
-      # {english: {international_protection: "true"},        french_key: :v_protection_internationale, french_value: "oui"},
-      # {english: {international_protection: false},         french_key: :v_protection_internationale, french_value: "non"},
-      # {english: {international_protection: "false"},       french_key: :v_protection_internationale, french_value: "non"},
-      # {english: {international_protection: "wrong_input"}, french_key: :v_protection_internationale, french_value: nil},
     ]
 
     inputs.each do |i|
