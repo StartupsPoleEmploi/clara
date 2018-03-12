@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.3.0 (12/03/2018)
+-[#667][FEATURE] Traduction de l'API
+
+
 ## 7.2.2 (02/03/2018)
 -[#663][TECH] Ajout Authent dans swagger
 
