@@ -14,6 +14,7 @@ class TranslateAskerService
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
     asker.v_category                  = category_to_french(@english_asker[:category])
     asker.v_duree_d_inscription       = inscription_period_to_french(@english_asker[:inscription_period])
+    asker.v_allocation_type           = allocation_type_to_french(@english_asker[:allocation_type])
     asker.v_allocation_value_min      = integer_to_french(@english_asker[:monthly_allocation_value])
     asker.v_age                       = integer_to_french(@english_asker[:age])
     asker
@@ -43,6 +44,19 @@ class TranslateAskerService
   def inscription_period_to_french(period)
     return unless period != nil
     {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registered: "non_inscrit"}[period.to_s.to_sym]
+  end
+
+  def allocation_type_to_french(allocation_type)
+    return unless allocation_type != nil
+    {ARE: "ARE_ASP", 
+      ASP: "ARE_ASP", 
+      ASS: "ASS_AER_ATA_APS_AS", 
+      AER: "ASS_AER_ATA_APS_AS", 
+      ATA: "ASS_AER_ATA_APS_AS",
+      APS: "ASS_AER_ATA_APS_AS",
+      AS: "ASS_AER_ATA_APS_AS",
+      FNE: "ASS_AER_ATA_APS_AS",
+    }[allocation_type.to_s.to_sym]
   end
 
 end

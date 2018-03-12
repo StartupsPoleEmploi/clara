@@ -42,11 +42,30 @@ describe TranslateAskerService do
       {english: {category: "other_categories"},  french: {v_category: "autres_cat"}},
       {english: {category: "wrong_input"},       french: {v_category: nil}},
       
-
       {english: {inscription_period: "more_than_a_year"},  french: {v_duree_d_inscription: "plus_d_un_an"}},
       {english: {inscription_period: "less_than_a_year"},  french: {v_duree_d_inscription: "moins_d_un_an"}},
-      {english: {inscription_period: "not_registered"},  french: {v_duree_d_inscription: "non_inscrit"}},
-      {english: {inscription_period: "wrong_input"},  french: {v_duree_d_inscription: nil}},
+      {english: {inscription_period: "not_registered"},    french: {v_duree_d_inscription: "non_inscrit"}},
+      {english: {inscription_period: "wrong_input"},       french: {v_duree_d_inscription: nil}},
+
+      {english: {monthly_allocation_value: "1242"},       french: {v_allocation_value_min: "1242"}},
+      {english: {monthly_allocation_value: 1242},         french: {v_allocation_value_min: "1242"}},
+      {english: {monthly_allocation_value: "wrong_input"},french: {v_allocation_value_min: nil}},
+
+      {english: {age: "42"},       french: {v_age: "42"}},
+      {english: {age: 42},         french: {v_age: "42"}},
+      {english: {age: "wrong_input"},french: {v_age: nil}},
+
+      {english: {allocation_type: "ARE"},         french: {v_allocation_type: "ARE_ASP"}},
+      {english: {allocation_type: "ASP"},         french: {v_allocation_type: "ARE_ASP"}},
+      {english: {allocation_type: "ASS"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "AER"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "ATA"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "APS"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "AS"},          french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "FNE"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS"}},
+      {english: {allocation_type: "wrong_input"}, french: {v_allocation_type: nil}},
+      # asker = TranslateAskerService.new({allocation_type: "ARE"}).to_french
+      # expect(asker.v_allocation_type).to eq("ARE_ASP")
 
       # {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
       # {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
