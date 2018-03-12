@@ -14,11 +14,17 @@ class TranslateAskerService
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
     asker.v_category                  = category_to_french(@english_asker[:category])
     asker.v_duree_d_inscription       = inscription_period_to_french(@english_asker[:inscription_period])
-    asker.v_allocation_value_min      = @english_asker[:monthly_allocation_value]
-    asker.v_age                       = @english_asker[:age]
+    asker.v_allocation_value_min      = integer_to_french(@english_asker[:monthly_allocation_value])
+    asker.v_age                       = integer_to_french(@english_asker[:age])
     asker
   end
   
+  def integer_to_french(the_int)
+    if the_int != nil && (the_int.is_a?(Integer) || !!the_int.match(/^(\d)+$/))
+      return the_int.to_s
+    end
+  end
+
   def diploma_to_french(diploma)
     return unless diploma != nil
     {level_1: "niveau_1", level_2: "niveau_2", level_3: "niveau_3", level_4: "niveau_4", level_5: "niveau_5", level_below_5: "niveau_infra_5"}[diploma.to_s.to_sym]

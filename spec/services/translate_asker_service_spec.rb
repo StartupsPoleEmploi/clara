@@ -119,9 +119,17 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({monthly_allocation_value: 1242}).to_french
       expect(asker.v_allocation_value_min).to eq("1242")
     end
+    it 'Translates monthly_allocation_value azerty into v_allocation_value_min nil' do
+      asker = TranslateAskerService.new({monthly_allocation_value: "azerty"}).to_french
+      expect(asker.v_allocation_value_min).to eq(nil)
+    end
     it 'Translates age into v_age' do
-      asker = TranslateAskerService.new({age: 42}).to_french
+      asker = TranslateAskerService.new({age: "42"}).to_french
       expect(asker.v_age).to eq("42")
+    end
+    it 'Translates age azerty into v_age nil' do
+      asker = TranslateAskerService.new({age: "azerty"}).to_french
+      expect(asker.v_age).to eq(nil)
     end
   end
 
