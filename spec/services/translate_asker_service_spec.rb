@@ -8,11 +8,11 @@ describe TranslateAskerService do
       expect(asker.attributes).to eq(Asker.new.attributes)
     end
     it 'Translates harki true to v_harki oui' do
-      asker = TranslateAskerService.new({harki: "true"}).to_french
+      asker = TranslateAskerService.new({harki: true}).to_french
       expect(asker.v_harki).to eq("oui")
     end
     it 'Translates harki false to v_harki non' do
-      asker = TranslateAskerService.new({harki: "false"}).to_french
+      asker = TranslateAskerService.new({harki: false}).to_french
       expect(asker.v_harki).to eq("non")
     end
     it 'Translates harki azerty to v_harki nil' do
@@ -98,6 +98,10 @@ describe TranslateAskerService do
     it 'Translates category azerty to v_category nil' do
       asker = TranslateAskerService.new({category: "azerty"}).to_french
       expect(asker.v_category).to eq(nil)
+    end
+    it 'Translates monthly_allocation_value into v_allocation_value_min' do
+      asker = TranslateAskerService.new({monthly_allocation_value: 1242}).to_french
+      expect(asker.v_allocation_value_min).to eq("1242")
     end
   end
 
