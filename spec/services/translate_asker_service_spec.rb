@@ -123,6 +123,10 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({monthly_allocation_value: "azerty"}).to_french
       expect(asker.v_allocation_value_min).to eq(nil)
     end
+    it 'Translates allocation_type ARE into v_allocation_type ARE_ASP' do
+      asker = TranslateAskerService.new({allocation_type: "ARE"}).to_french
+      expect(asker.v_allocation_type).to eq("ARE_ASP")
+    end
     it 'Translates age into v_age' do
       asker = TranslateAskerService.new({age: "42"}).to_french
       expect(asker.v_age).to eq("42")
