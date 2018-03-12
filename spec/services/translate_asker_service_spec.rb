@@ -59,6 +59,30 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({diploma: "level_1"}).to_french
       expect(asker.v_diplome).to eq("niveau_1")
     end
+    it 'Translates diploma level_2 to v_diplome niveau_2' do
+      asker = TranslateAskerService.new({diploma: "level_2"}).to_french
+      expect(asker.v_diplome).to eq("niveau_2")
+    end
+    it 'Translates diploma level_2 to v_diplome niveau_2' do
+      asker = TranslateAskerService.new({diploma: "level_2"}).to_french
+      expect(asker.v_diplome).to eq("niveau_2")
+    end
+    it 'Translates diploma level_3 to v_diplome niveau_3' do
+      asker = TranslateAskerService.new({diploma: "level_3"}).to_french
+      expect(asker.v_diplome).to eq("niveau_3")
+    end
+    it 'Translates diploma level_4 to v_diplome niveau_4' do
+      asker = TranslateAskerService.new({diploma: "level_4"}).to_french
+      expect(asker.v_diplome).to eq("niveau_4")
+    end
+    it 'Translates diploma level_5 to v_diplome niveau_5' do
+      asker = TranslateAskerService.new({diploma: "level_5"}).to_french
+      expect(asker.v_diplome).to eq("niveau_5")
+    end
+    it 'Translates diploma level_below_5 to v_diplome niveau_infra_5' do
+      asker = TranslateAskerService.new({diploma: "level_below_5"}).to_french
+      expect(asker.v_diplome).to eq("niveau_infra_5")
+    end
   end
 
 end

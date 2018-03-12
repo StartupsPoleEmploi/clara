@@ -12,7 +12,7 @@ class TranslateAskerService
     asker.v_handicap                  = other_to_french(@english_asker[:disabled])
     asker.v_detenu                    = other_to_french(@english_asker[:ex_invict])
     asker.v_protection_internationale = other_to_french(@english_asker[:international_protection])
-    
+
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
     asker
   end
@@ -25,6 +25,11 @@ class TranslateAskerService
   def other_to_french(other)
     return unless other.is_a?(String)
     {true: "oui", false: "non"}[other.to_sym]
+  end
+
+  def category_to_french(category)
+    return unless category.is_a?(String)
+    {categories_12345: "cat_12345", other_categories: "autres_cat"}[category.to_sym]
   end
 
 end
