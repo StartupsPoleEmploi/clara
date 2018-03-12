@@ -6,14 +6,32 @@ describe TranslateAskerService do
   describe "looped .to_french" do
     
     inputs = [
-      {english: {harki: true}, french_key: :v_harki, french_value: "oui"}
+      {english: {harki: true},             french_key: :v_harki, french_value: "oui"},
+      {english: {harki: "true"},           french_key: :v_harki, french_value: "oui"},
+      {english: {harki: false},            french_key: :v_harki, french_value: "non"},
+      {english: {harki: "false"},          french_key: :v_harki, french_value: "non"},
+      {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
+      {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
+      {english: {disabled: "true"},        french_key: :v_handicap, french_value: "oui"},
+      {english: {disabled: false},         french_key: :v_handicap, french_value: "non"},
+      {english: {disabled: "false"},       french_key: :v_handicap, french_value: "non"},
+      {english: {disabled: "wrong_input"}, french_key: :v_handicap, french_value: nil},
+      {english: {ex_invict: true},          french_key: :v_detenu, french_value: "oui"},
+      {english: {ex_invict: "true"},        french_key: :v_detenu, french_value: "oui"},
+      {english: {ex_invict: false},         french_key: :v_detenu, french_value: "non"},
+      {english: {ex_invict: "false"},       french_key: :v_detenu, french_value: "non"},
+      {english: {ex_invict: "wrong_input"}, french_key: :v_detenu, french_value: nil},
+      {english: {international_protection: true},          french_key: :v_protection_internationale, french_value: "oui"},
+      {english: {international_protection: "true"},        french_key: :v_protection_internationale, french_value: "oui"},
+      {english: {international_protection: false},         french_key: :v_protection_internationale, french_value: "non"},
+      {english: {international_protection: "false"},       french_key: :v_protection_internationale, french_value: "non"},
+      {english: {international_protection: "wrong_input"}, french_key: :v_protection_internationale, french_value: nil},
     ]
 
-    it "does something" do
-      expect(true).to eq(true)
-    end
     inputs.each do |i|
-      it "Should translate #{i[:english]} to #{i[:french_key]} = #{i[:french_value]}" do
+      final_expectation = {}
+      final_expectation[i[:french_key]] = i[:french_value]
+      it "Should translate #{i[:english]} to #{final_expectation}" do
         asker = TranslateAskerService.new(i[:english]).to_french
         expect(asker[i[:french_key]]).to eq(i[:french_value])        
       end
