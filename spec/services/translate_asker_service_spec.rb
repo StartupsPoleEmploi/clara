@@ -99,6 +99,10 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({category: "azerty"}).to_french
       expect(asker.v_category).to eq(nil)
     end
+    it 'Translates inscription_period more_than_a_year to v_duree_d_inscription plus_d_un_an' do
+      asker = TranslateAskerService.new({inscription_period: "more_than_a_year"}).to_french
+      expect(asker.v_duree_d_inscription).to eq("plus_d_un_an")
+    end
     it 'Translates monthly_allocation_value into v_allocation_value_min' do
       asker = TranslateAskerService.new({monthly_allocation_value: 1242}).to_french
       expect(asker.v_allocation_value_min).to eq("1242")
