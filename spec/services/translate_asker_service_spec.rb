@@ -83,6 +83,22 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({diploma: "level_below_5"}).to_french
       expect(asker.v_diplome).to eq("niveau_infra_5")
     end
+    it 'Translates diploma azerty to v_diplome nil' do
+      asker = TranslateAskerService.new({diploma: "azerty"}).to_french
+      expect(asker.v_diplome).to eq(nil)
+    end
+    it 'Translates category categories_12345 to v_category cat_12345' do
+      asker = TranslateAskerService.new({category: "categories_12345"}).to_french
+      expect(asker.v_category).to eq("cat_12345")
+    end
+    it 'Translates category other_categories to v_category autres_cat' do
+      asker = TranslateAskerService.new({category: "other_categories"}).to_french
+      expect(asker.v_category).to eq("autres_cat")
+    end
+    it 'Translates category azerty to v_category nil' do
+      asker = TranslateAskerService.new({category: "azerty"}).to_french
+      expect(asker.v_category).to eq(nil)
+    end
   end
 
 end

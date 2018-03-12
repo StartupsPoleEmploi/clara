@@ -12,6 +12,7 @@ class TranslateAskerService
     asker.v_detenu                    = other_to_french(@english_asker[:ex_invict])
     asker.v_protection_internationale = other_to_french(@english_asker[:international_protection])
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
+    asker.v_category                  = category_to_french(@english_asker[:category])
     asker
   end
   
