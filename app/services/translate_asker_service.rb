@@ -7,12 +7,10 @@ class TranslateAskerService
 
   def to_french
     asker = Asker.new
-
     asker.v_harki                     = other_to_french(@english_asker[:harki])
     asker.v_handicap                  = other_to_french(@english_asker[:disabled])
     asker.v_detenu                    = other_to_french(@english_asker[:ex_invict])
     asker.v_protection_internationale = other_to_french(@english_asker[:international_protection])
-
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
     asker
   end
@@ -30,6 +28,11 @@ class TranslateAskerService
   def category_to_french(category)
     return unless category.is_a?(String)
     {categories_12345: "cat_12345", other_categories: "autres_cat"}[category.to_sym]
+  end
+
+  def inscription_period_to_french(period)
+    return unless period.is_a?(String)
+    {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registrered: "non_inscrit"}[period.to_sym]
   end
 
 end
