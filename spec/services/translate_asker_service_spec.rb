@@ -35,6 +35,14 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({ex_invict: "true"}).to_french
       expect(asker.v_detenu).to eq("oui")
     end
+    it 'Translates ex_invict false to v_detenu non' do
+      asker = TranslateAskerService.new({ex_invict: "false"}).to_french
+      expect(asker.v_detenu).to eq("non")
+    end
+    it 'Translates ex_invict azerty to v_detenu nil' do
+      asker = TranslateAskerService.new({ex_invict: "azerty"}).to_french
+      expect(asker.v_detenu).to eq(nil)
+    end
   end
 
 end
