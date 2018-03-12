@@ -103,9 +103,25 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({inscription_period: "more_than_a_year"}).to_french
       expect(asker.v_duree_d_inscription).to eq("plus_d_un_an")
     end
+    it 'Translates inscription_period less_than_a_year to v_duree_d_inscription moins_d_un_an' do
+      asker = TranslateAskerService.new({inscription_period: "less_than_a_year"}).to_french
+      expect(asker.v_duree_d_inscription).to eq("moins_d_un_an")
+    end
+    it 'Translates inscription_period not_registered to v_duree_d_inscription non_inscrit' do
+      asker = TranslateAskerService.new({inscription_period: "not_registered"}).to_french
+      expect(asker.v_duree_d_inscription).to eq("non_inscrit")
+    end
+    it 'Translates inscription_period azerty to v_duree_d_inscription nil' do
+      asker = TranslateAskerService.new({inscription_period: "azerty"}).to_french
+      expect(asker.v_duree_d_inscription).to eq(nil)
+    end
     it 'Translates monthly_allocation_value into v_allocation_value_min' do
       asker = TranslateAskerService.new({monthly_allocation_value: 1242}).to_french
       expect(asker.v_allocation_value_min).to eq("1242")
+    end
+    it 'Translates age into v_age' do
+      asker = TranslateAskerService.new({age: 42}).to_french
+      expect(asker.v_age).to eq("42")
     end
   end
 

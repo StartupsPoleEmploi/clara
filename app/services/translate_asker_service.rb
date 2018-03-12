@@ -15,6 +15,7 @@ class TranslateAskerService
     asker.v_category                  = category_to_french(@english_asker[:category])
     asker.v_duree_d_inscription       = inscription_period_to_french(@english_asker[:inscription_period])
     asker.v_allocation_value_min      = @english_asker[:monthly_allocation_value]
+    asker.v_age                       = @english_asker[:age]
     asker
   end
   
@@ -35,7 +36,7 @@ class TranslateAskerService
 
   def inscription_period_to_french(period)
     return unless period != nil
-    {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registrered: "non_inscrit"}[period.to_s.to_sym]
+    {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registered: "non_inscrit"}[period.to_s.to_sym]
   end
 
 end
