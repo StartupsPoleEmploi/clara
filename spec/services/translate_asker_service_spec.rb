@@ -38,6 +38,16 @@ describe TranslateAskerService do
       {english: {diploma: "level_below_5"},french: {v_diplome: "niveau_infra_5"}},
       {english: {diploma: "wrong_input"},  french: {v_diplome: nil}},
 
+      {english: {category: "categories_12345"},  french: {v_category: "cat_12345"}},
+      {english: {category: "other_categories"},  french: {v_category: "autres_cat"}},
+      {english: {category: "wrong_input"},       french: {v_category: nil}},
+      
+
+      {english: {inscription_period: "more_than_a_year"},  french: {v_duree_d_inscription: "plus_d_un_an"}},
+      {english: {inscription_period: "less_than_a_year"},  french: {v_duree_d_inscription: "moins_d_un_an"}},
+      {english: {inscription_period: "not_registered"},  french: {v_duree_d_inscription: "non_inscrit"}},
+      {english: {inscription_period: "wrong_input"},  french: {v_duree_d_inscription: nil}},
+
       # {english: {harki: "wrong_input"},    french_key: :v_harki, french_value: nil},
       # {english: {disabled: true},          french_key: :v_handicap, french_value: "oui"},
       # {english: {disabled: "true"},        french_key: :v_handicap, french_value: "oui"},
