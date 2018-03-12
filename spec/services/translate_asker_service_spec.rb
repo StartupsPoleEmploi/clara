@@ -55,6 +55,10 @@ describe TranslateAskerService do
       asker = TranslateAskerService.new({international_protection: "azerty"}).to_french
       expect(asker.v_protection_internationale).to eq(nil)
     end
+    it 'Translates diploma level_1 to v_diplome niveau_1' do
+      asker = TranslateAskerService.new({diploma: "level_1"}).to_french
+      expect(asker.v_diplome).to eq("niveau_1")
+    end
   end
 
 end
