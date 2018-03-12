@@ -10,6 +10,7 @@ class TranslateAskerService
 
     asker.v_harki = @english_asker[:harki] == "true" ? "oui" : @english_asker[:harki] == "false" ? "non" : nil
     asker.v_handicap = @english_asker[:disabled] == "true" ? "oui" : @english_asker[:disabled] == "false" ? "non" : nil
+    asker.v_detenu = @english_asker[:ex_invict] == "true" ? "oui" : @english_asker[:ex_invict] == "false" ? "non" : nil
 
     asker
   end
