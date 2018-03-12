@@ -10,8 +10,8 @@ class TranslateAskerService
 
     asker.v_harki = other_to_french(@english_asker[:harki])
     asker.v_handicap = other_to_french(@english_asker[:disabled])
-    asker.v_detenu = @english_asker[:ex_invict] == "true" ? "oui" : @english_asker[:ex_invict] == "false" ? "non" : nil
-    asker.v_protection_internationale = @english_asker[:international_protection] == "true" ? "oui" : @english_asker[:international_protection] == "false" ? "non" : nil
+    asker.v_detenu = other_to_french(@english_asker[:ex_invict])
+    asker.v_protection_internationale = other_to_french(@english_asker[:international_protection])
 
     asker.v_diplome = diploma_to_french(@english_asker[:diploma])
 
