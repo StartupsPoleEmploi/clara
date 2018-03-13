@@ -17,11 +17,15 @@ module Api
       end
 
       def ineligible
-        
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.new(asker).jsonify_ineligible
+        render json: result        
       end
 
       def uncertain
-        
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.new(asker).jsonify_uncertain
+        render json: result        
       end
 
       def english_asker

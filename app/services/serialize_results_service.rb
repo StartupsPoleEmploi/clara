@@ -40,6 +40,22 @@ class SerializeResultsService
     result.to_json
   end
 
+  def jsonify_ineligible
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(@asker))
+    }
+    format_bunch_of_eligies(result[:aids])
+    result.to_json
+  end
+
+  def jsonify_uncertain
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(@asker))
+    }
+    format_bunch_of_eligies(result[:aids])
+    result.to_json
+  end
+
 private
   def format_bunch_of_eligies(hash_of_eligies)
     hash_of_eligies.each do |e|  
