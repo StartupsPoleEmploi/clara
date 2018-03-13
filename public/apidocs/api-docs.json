@@ -1,14 +1,17 @@
 {
   "swagger": "2.0",
-  "info": {
+  "info":
+  {
     "description": "Ceci est la documentation de l'API Clara.",
     "version": "1.0.0",
     "title": "Clara API",
     "termsOfService": "https://clara.pole-emploi.fr/conditions-generales-d-utilisation",
-    "contact": {
+    "contact":
+    {
       "email": "bdavidxyz@gmail.com"
     },
-    "license": {
+    "license":
+    {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
@@ -16,24 +19,26 @@
   "host": "",
   "basePath": "/api/v1",
   "tags": [
-    {
-      "name": "aides",
-      "description": "Calcul d'éligibilité de vos aides"
-    }
-  ],
+  {
+    "name": "aides",
+    "description": "Calcul d'éligibilité de vos aides"
+  }],
   "schemes": [
     "http",
     "https"
   ],
-  "paths": {
-    "/aides": {
-      "get": {
+  "paths":
+  {
+    "/aids/eligible":
+    {
+      "get":
+      {
         "tags": [
           "aid"
         ],
-        "summary": "List all aids",
+        "summary": "List all eligible aids",
         "description": "",
-        "operationId": "getAides",
+        "operationId": "getEligibleAids",
         "consumes": [
           "application/json",
         ],
@@ -41,101 +46,103 @@
           "application/json",
         ],
         "parameters": [
+        {
+          "in": "header",
+          "name": "Authorization",
+          "type": "string",
+          "description": "Bearer [your JWT token here]",
+          "required": true
+        },
+        {
+          "in": "query",
+          "name": "disabled",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "harki",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "ex_invict",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "international_protection",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "diploma",
+          "type": "string",
+          "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "category",
+          "type": "string",
+          "description": "categories_12345,other_categories",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "inscription_period",
+          "type": "string",
+          "description": "more_than_a_year,less_than_a_year,not_registered",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "monthly_allocation_value",
+          "type": "integer",
+          "description": "Estimated allocation per month",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "age",
+          "type": "integer",
+          "description": "Age of asker",
+          "required": false
+        }],
+        "responses":
+        {
+          "405":
           {
-            "in": "header",
-            "name": "Authorization",
-            "type": "string",
-            "description": "Bearer [your JWT token here]",
-            "required": true
-          },
-          {
-            "in": "query",
-            "name": "disabled",
-            "type": "string",
-            "description": "true,false",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "harki",
-            "type": "string",
-            "description": "true,false",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "ex_invict",
-            "type": "string",
-            "description": "true,false",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "international_protection",
-            "type": "string",
-            "description": "true,false",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "diploma",
-            "type": "string",
-            "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "category",
-            "type": "string",
-            "description": "categories_12345,other_categories",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "inscription_period",
-            "type": "string",
-            "description": "more_than_a_year,less_than_a_year,not_registered",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "monthly_allocation_value",
-            "type": "integer",
-            "description": "Estimated allocation per month",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "allocation_type",
-            "type": "string",
-            "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
-            "required": false
-          },
-          {
-            "in": "query",
-            "name": "age",
-            "type": "integer",
-            "description": "Age of asker",
-            "required": false
-          }
-        ],
-        "responses": {
-          "405": {
             "description": "Invalid input"
           }
         },
         "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ]
+        {
+          "petstore_auth": [
+            "write:pets",
+            "read:pets"
+          ]
+        }]
       }
     },
-    "/user_token": {
-      "post": {
+    "/user_token":
+    {
+      "post":
+      {
         "tags": [
           "user"
         ],
@@ -149,55 +156,70 @@
           "application/json"
         ],
         "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "description": "Credential for authentication",
+          "required": true,
+          "schema":
           {
-            "in": "body",
-            "name": "body",
-            "description": "Credential for authentication",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Auth"
-            }
+            "$ref": "#/definitions/Auth"
           }
-        ],
-        "responses": {
-          "201": {
+        }],
+        "responses":
+        {
+          "201":
+          {
             "description": "Found"
           },
-          "404": {
+          "404":
+          {
             "description": "Not found"
           }
         }
       }
     }
   },
-  "definitions": {
-    "Auth": {
+  "definitions":
+  {
+    "Auth":
+    {
       "type": "object",
-      "properties": {
-        "auth" : {
+      "properties":
+      {
+        "auth":
+        {
           "type": "object",
-          "properties" : {
-            "email": {
+          "properties":
+          {
+            "email":
+            {
               "type": "string",
-             },
-            "password": {
+            },
+            "password":
+            {
               "type": "string",
             }
           }
         }
       }
     },
-    "ApiResponse": {
+    "ApiResponse":
+    {
       "type": "object",
-      "properties": {
-        "code": {
+      "properties":
+      {
+        "code":
+        {
           "type": "integer",
           "format": "int32"
         },
-        "type": {
+        "type":
+        {
           "type": "string"
         },
-        "message": {
+        "message":
+        {
           "type": "string"
         }
       }
