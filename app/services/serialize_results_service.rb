@@ -32,6 +32,14 @@ class SerializeResultsService
     result.to_json
   end
 
+  def jsonify_eligible
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(@asker))
+    }
+    format_bunch_of_eligies(result[:aids])
+    result.to_json
+  end
+
 private
   def format_bunch_of_eligies(hash_of_eligies)
     hash_of_eligies.each do |e|  

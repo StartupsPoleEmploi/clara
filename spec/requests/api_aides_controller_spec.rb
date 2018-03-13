@@ -9,7 +9,7 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
-  describe 'Nominal' do
+  describe 'Nominal aids/eligible' do
     json_returned = nil
     response_returned = nil
     before do
@@ -17,7 +17,7 @@ describe Api::V1::ApiAidesController, type: :request do
         create(:aid, :aid_harki, name: "aide harki")
         create(:aid, :aid_not_harki, name: "aide not_harki")
         create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")
-        get '/api/v1/aides?harki=true', headers: authenticated_header
+        get '/api/v1/aids/eligible?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
@@ -29,27 +29,47 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(response_returned).to have_http_status(200)
     end
     it 'Returns all eligible aids' do
-      expect(json_returned["all_eligible"].size).to eq 1
-      expect(json_returned["all_eligible"][0]["name"]).to eq 'aide harki'
+      expect(json_returned["aids"].size).to eq 1
+      expect(json_returned["aids"][0]["name"]).to eq 'aide harki'
     end
-    it 'Returns all ineligible aids' do
-      expect(json_returned["all_ineligible"].size).to eq 1
-      expect(json_returned["all_ineligible"][0]["name"]).to eq 'aide not_harki'
-    end
-    it 'Returns all uncertain aids' do
-      expect(json_returned["all_uncertain"].size).to eq 1
-      expect(json_returned["all_uncertain"][0]["name"]).to eq 'aide aid_adult_and_harki'
-    end
+    # it 'Returns all ineligible aids' do
+    #   expect(json_returned["all_ineligible"].size).to eq 1
+    #   expect(json_returned["all_ineligible"][0]["name"]).to eq 'aide not_harki'
+    # end
+    # it 'Returns all uncertain aids' do
+    #   expect(json_returned["all_uncertain"].size).to eq 1
+    #   expect(json_returned["all_uncertain"][0]["name"]).to eq 'aide aid_adult_and_harki'
+    # end
   end
 
   describe 'Unauthenticated' do
-    it 'Without header, refuses to answer' do
-      get '/api/v1/aides?v_harki=oui'
+    it 'Without header, refuses to answer to aids/eligible' do
+      get '/api/v1/aids/eligible?v_harki=oui'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'With a bad header, refuses to answer' do
-      get '/api/v1/aides?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+    it 'With a bad header, refuses to answer to aids/eligible' do
+      get '/api/v1/aids/eligible?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'Without header, refuses to answer to aids/ineligible' do
+      get '/api/v1/aids/ineligible?v_harki=oui'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/uncertain' do
+      get '/api/v1/aids/uncertain?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'Without header, refuses to answer to aids/uncertain' do
+      get '/api/v1/aids/uncertain?v_harki=oui'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/ineligible' do
+      get '/api/v1/aids/ineligible?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
