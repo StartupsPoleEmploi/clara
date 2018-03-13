@@ -2,7 +2,12 @@ require "rails_helper"
 
 describe TranslateAskerService do
 
-  describe "looped .to_french" do
+  it ".to_french Resists to badly initialized service" do
+     asker = TranslateAskerService.new("wrong_input").to_french
+     expect(asker.attributes).to eq(Asker.new.attributes)
+  end
+
+  describe ".to_french Nominal cases" do
     
     inputs = [
       {english: {harki: true},             french: {v_harki: "oui"}},
