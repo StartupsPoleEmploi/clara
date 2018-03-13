@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe Api::V1::ApiAidesController, type: :request do
   
-  before(:all) do
+  before(:each) do
     create(:aid, :aid_harki, name: "aide harki")
     create(:aid, :aid_not_harki, name: "aide not_harki")
     create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    

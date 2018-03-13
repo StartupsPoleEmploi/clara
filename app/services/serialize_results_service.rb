@@ -19,19 +19,6 @@ class SerializeResultsService
     res
   end
 
-  def jsonify
-    result = go
-    result.delete :asker
-    result[:all_eligible] = result.delete :flat_all_eligible
-    result[:all_uncertain] = result.delete :flat_all_uncertain
-    result[:all_ineligible] = result.delete :flat_all_ineligible
-
-    format_bunch_of_eligies(result[:all_eligible])
-    format_bunch_of_eligies(result[:all_uncertain])
-    format_bunch_of_eligies(result[:all_ineligible])
-    result.to_json
-  end
-
   def jsonify_eligible
     result = {
       aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(@asker))
