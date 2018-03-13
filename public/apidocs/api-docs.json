@@ -45,77 +45,77 @@
             "in": "header",
             "name": "Authorization",
             "type": "string",
-            "description": "Bearer suivi du token",
+            "description": "Bearer [your JWT token here]",
             "required": true
           },
           {
             "in": "query",
-            "name": "v_handicap",
+            "name": "disabled",
             "type": "string",
-            "description": "oui,non",
+            "description": "true,false",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_harki",
+            "name": "harki",
             "type": "string",
-            "description": "oui,non",
+            "description": "true,false",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_detenu",
+            "name": "ex_invict",
             "type": "string",
-            "description": "oui,non",
+            "description": "true,false",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_protection_internationale",
+            "name": "international_protection",
             "type": "string",
-            "description": "oui,non",
+            "description": "true,false",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_diplome",
+            "name": "diploma",
             "type": "string",
-            "description": "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5",
+            "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_category",
+            "name": "category",
             "type": "string",
-            "description": "cat_12345,autres_cat",
+            "description": "categories_12345,other_categories",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_duree_d_inscription",
+            "name": "inscription_period",
             "type": "string",
-            "description": "plus_d_un_an,moins_d_un_an,non_inscrit",
+            "description": "more_than_a_year,less_than_a_year,not_registered",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_allocation_value_min",
+            "name": "monthly_allocation_value",
             "type": "integer",
-            "description": "Montant estimé d'allocation par mois",
+            "description": "Estimated allocation per month",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_allocation_type",
+            "name": "allocation_type",
             "type": "string",
-            "description": "ARE_ASP,ASS_AER_ATA_APS_AS-FNE,RSA,RPS_RFPA_RFF_pe",
+            "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
             "required": false
           },
           {
             "in": "query",
-            "name": "v_age",
+            "name": "age",
             "type": "integer",
-            "description": "Age du DE",
+            "description": "Age of asker",
             "required": false
           }
         ],

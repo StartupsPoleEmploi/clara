@@ -17,7 +17,7 @@ describe Api::V1::ApiAidesController, type: :request do
         create(:aid, :aid_harki, name: "aide harki")
         create(:aid, :aid_not_harki, name: "aide not_harki")
         create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")
-        get '/api/v1/aides?v_harki=oui', headers: authenticated_header
+        get '/api/v1/aides?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
