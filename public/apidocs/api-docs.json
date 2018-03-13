@@ -87,7 +87,7 @@
             "in": "query",
             "name": "category",
             "type": "string",
-            "description": "cat_12345,autres_cat",
+            "description": "categories_12345,other_categories",
             "required": false
           },
           {
