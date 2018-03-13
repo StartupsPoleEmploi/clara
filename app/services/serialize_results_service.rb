@@ -36,6 +36,9 @@ class SerializeResultsService
   end
 
   def jsonify_uncertain
+    p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
+    p @asker.inspect
+    p ''
     result = {
       aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(@asker))
     }

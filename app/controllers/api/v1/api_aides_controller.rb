@@ -23,7 +23,7 @@ module Api
       end
 
       def english_asker
-        params.permit(:disabled, :harki, :ex_invict, :international_protection, :diploma, :category, :inscrition_period, :monthly_allocation, :allocation_type, :age).to_h
+        params.permit(:disabled, :harki, :ex_invict, :international_protection, :diploma, :category, :inscription_period, :monthly_allocation_value, :allocation_type, :age).to_h
       end
 
     end
