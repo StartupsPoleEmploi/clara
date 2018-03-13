@@ -5,11 +5,9 @@ module Api
       before_action :authenticate_user
 
       def index
-        if current_user
-          asker = TranslateAskerService.new(english_asker).to_french
-          result = SerializeResultsService.new(asker).jsonify
-          render json: result
-        end
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.new(asker).jsonify
+        render json: result
       end
 
       def english_asker
