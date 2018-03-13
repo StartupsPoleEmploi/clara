@@ -4,12 +4,6 @@ module Api
 
       before_action :authenticate_user
 
-      # def index
-      #   asker = TranslateAskerService.new(english_asker).to_french
-      #   result = SerializeResultsService.new(asker).jsonify
-      #   render json: result
-      # end
-
       def eligible
         asker = TranslateAskerService.new(english_asker).to_french
         result = SerializeResultsService.new(asker).jsonify_eligible

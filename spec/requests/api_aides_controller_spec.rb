@@ -57,10 +57,6 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'aide not_harki'
     end
-    # it 'Returns all uncertain aids' do
-    #   expect(json_returned["all_uncertain"].size).to eq 1
-    #   expect(json_returned["all_uncertain"][0]["name"]).to eq 'aide aid_adult_and_harki'
-    # end
   end
 
   describe 'Nominal aids/uncertain' do
