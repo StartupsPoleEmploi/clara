@@ -5,12 +5,7 @@ module Api
       before_action :authenticate_user
 
       def eligible
-        p '- - - - - - - - - - - - - - eligible- - - - - - - - - - - - - - - -' 
-        p ''
         asker = TranslateAskerService.get_instance(english_asker).to_french
-        p '- - - - - - - - - - - - - - english_asker- - - - - - - - - - - - - - - -' 
-        p english_asker.inspect
-        p ''
         result = SerializeResultsService.get_instance.jsonify_eligible(asker)
         render json: result        
       end

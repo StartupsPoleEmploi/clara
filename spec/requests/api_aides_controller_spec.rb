@@ -40,10 +40,10 @@ describe Api::V1::ApiAidesController, type: :request do
       #    "v_location_street_number"=>nil,
       #    "v_location_state"=>nil
       #  }
-      asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui")
-      fake_layer = instance_double("SerializeResultsService")
-      expect(fake_layer).to receive(:jsonify_eligible).with(asker_called)
-      SerializeResultsService.set_instance(fake_layer)
+      asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui")
+      result_layer = instance_double("SerializeResultsService")
+      expect(result_layer).to receive(:jsonify_eligible).with(asker_called)
+      SerializeResultsService.set_instance(result_layer)
     end
     after do
       SerializeResultsService.set_instance(nil)
@@ -51,9 +51,9 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Should translate all params properly' do
       #given
       #when
-      get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true} } 
+      get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true} } 
       #then
-      # See above : expect(fake_layer)... 
+      # See above : expect(result_layer)... 
     end
   end
 
