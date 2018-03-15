@@ -1,8 +1,8 @@
 
 class TranslateAskerService
   
-  def initialize(english_asker)
-    @english_asker = english_asker.is_a?(Hash) ? english_asker.symbolize_keys : {}
+  def initialize(english_asker_attr)
+    @english_asker = english_asker_attr.is_a?(Hash) ? english_asker_attr.symbolize_keys : {}
   end
 
   def to_french

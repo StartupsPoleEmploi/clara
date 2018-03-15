@@ -9,11 +9,14 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
-  describe 'Nominal translation' do
-    result_layer = nil
-    asker_called = nil
-    before do
 
+  describe 'Nominal translation' do
+
+    result_layer = nil
+    hydratation_layer = nil
+    asker_called = nil
+
+    before do
       asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui", v_diplome: "niveau_1", v_category: "cat_12345", v_duree_d_inscription: "plus_d_un_an", v_allocation_type: "ARE_ASP", v_allocation_value_min: 1242, v_age: "42", v_location_street_number: "9 BIS", v_location_label: "Boulevard d'Alsace", v_location_citycode: "59350")
       
       result_layer = instance_double("SerializeResultsService")
@@ -23,18 +26,20 @@ describe Api::V1::ApiAidesController, type: :request do
       hydratation_layer = instance_double("RehydrateAddressService")
       allow(hydratation_layer).to receive(:from_citycode!).and_return(Asker.new)
       RehydrateAddressService.set_instance(hydratation_layer)
-
-
     end
+
     after do
       SerializeResultsService.set_instance(nil)
       RehydrateAddressService.set_instance(nil)
     end    
+
     it 'Should translate all params properly' do
       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true, diploma: "level_1", category: "categories_12345", inscription_period: "more_than_a_year", allocation_type: "ARE", monthly_allocation_value: 1242, age: 42, location_street_number: "9 BIS", location_label: "Boulevard d'Alsace", location_citycode: "59350"} } 
-      expect(result_layer).to have_received(:jsonify_eligible).with(asker_called)
+      expect(hydratation_layer).to have_received(:from_citycode!).with(asker_called)
     end
+
   end
+
 
   describe 'Without GeoLoc aids/eligible' do
     json_returned = nil
