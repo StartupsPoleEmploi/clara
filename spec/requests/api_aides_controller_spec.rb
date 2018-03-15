@@ -2,12 +2,6 @@ require "rails_helper"
 
 describe Api::V1::ApiAidesController, type: :request do
   
-  before(:each) do
-    create(:aid, :aid_harki, name: "aide harki")
-    create(:aid, :aid_not_harki, name: "aide not_harki")
-    create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
-  end
-
   def authenticated_header
     token = Knock::AuthToken.new(payload: { sub: create(:user, :fake).id }).token
     {
@@ -19,7 +13,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui", v_diplome: "niveau_1", v_category: "cat_12345", v_duree_d_inscription: "plus_d_un_an", v_allocation_type: "ARE_ASP", v_allocation_value_min: 1242, v_age: "42")
       result_layer = instance_double("SerializeResultsService")
-      expect(result_layer).to receive(:jsonify_eligible).with(asker_called)
+      allow(result_layer).to receive(:jsonify_eligible).with(asker_called)
       SerializeResultsService.set_instance(result_layer)
     end
     after do
@@ -27,15 +21,18 @@ describe Api::V1::ApiAidesController, type: :request do
     end    
     it 'Should translate all params properly' do
       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true, diploma: "level_1", category: "categories_12345", inscription_period: "more_than_a_year", allocation_type: "ARE", monthly_allocation_value: 1242, age: 42} } 
-      # Expectation settled above : expect(result_layer)... 
+      # Expectation settled above : allow(result_layer)... 
     end
   end
 
-  describe 'Nominal aids/eligible' do
+  describe 'Without GeoLoc aids/eligible' do
     json_returned = nil
     response_returned = nil
     before do
       if !json_returned
+        create(:aid, :aid_harki, name: "aide harki")
+        create(:aid, :aid_not_harki, name: "aide not_harki")
+        create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
         get '/api/v1/aids/eligible?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
@@ -53,11 +50,14 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'Nominal aids/ineligible' do
+  describe 'Without GeoLoc aids/ineligible' do
     json_returned = nil
     response_returned = nil
     before do
       if !json_returned
+        create(:aid, :aid_harki, name: "aide harki")
+        create(:aid, :aid_not_harki, name: "aide not_harki")
+        create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
         get '/api/v1/aids/ineligible?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
@@ -75,15 +75,22 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'Nominal aids/uncertain' do
+  describe 'Without GeoLoc aids/uncertain' do
     json_returned = nil
     response_returned = nil
     before do
       if !json_returned
+        create(:aid, :aid_harki, name: "aide harki")
+        create(:aid, :aid_not_harki, name: "aide not_harki")
+        create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
+        qpv_and_zrr_both_ok
         get '/api/v1/aids/uncertain?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
+    end
+    after do
+      enable_qpv_zrr_service
     end
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
@@ -99,32 +106,32 @@ describe Api::V1::ApiAidesController, type: :request do
 
   describe 'Unauthenticated' do
     it 'Without header, refuses to answer to aids/eligible' do
-      get '/api/v1/aids/eligible?v_harki=oui'
+      get '/api/v1/aids/eligible?harki=true'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
     it 'With a bad header, refuses to answer to aids/eligible' do
-      get '/api/v1/aids/eligible?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+      get '/api/v1/aids/eligible?harki=true', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
     it 'Without header, refuses to answer to aids/ineligible' do
-      get '/api/v1/aids/ineligible?v_harki=oui'
-      expect(response).not_to be_success
-      expect(response).to have_http_status(401)
-    end
-    it 'With a bad header, refuses to answer to aids/uncertain' do
-      get '/api/v1/aids/uncertain?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
-      expect(response).not_to be_success
-      expect(response).to have_http_status(401)
-    end
-    it 'Without header, refuses to answer to aids/uncertain' do
-      get '/api/v1/aids/uncertain?v_harki=oui'
+      get '/api/v1/aids/ineligible?harki=true'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
     it 'With a bad header, refuses to answer to aids/ineligible' do
-      get '/api/v1/aids/ineligible?v_harki=oui', headers: { "Authorization": "Bearer foobar"}
+      get '/api/v1/aids/ineligible?harki=true', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'Without header, refuses to answer to aids/uncertain' do
+      get '/api/v1/aids/uncertain?harki=true'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/uncertain' do
+      get '/api/v1/aids/uncertain?harki=true', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
