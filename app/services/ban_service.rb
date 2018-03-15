@@ -29,13 +29,11 @@ class BanService
       escaped_address = URI.escape(@base_url + "rue&citycode=" + citycode) 
       uri = URI.parse(escaped_address)
       response = HttpService.get_instance.get(uri)
-      p '- - - - - - - - - - - - - - response- - - - - - - - - - - - - - - -' 
-      p response.inspect
-      p ''
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
       elsif !response.blank?
-        return response
+        props = JSON.parse(response)["features"][0]["properties"]
+        return [props["postcode"], props["city"]]
       else
         return 'erreur_communication'
       end

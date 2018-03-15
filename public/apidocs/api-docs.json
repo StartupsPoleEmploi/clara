@@ -118,6 +118,27 @@
           "type": "integer",
           "description": "Age of asker",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_street_number",
+          "type": "integer",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_label",
+          "type": "integer",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "integer",
+          "description": "Address : INSEE code of city",
+          "required": false
         }],
         "responses":
         {

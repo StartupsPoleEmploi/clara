@@ -33,7 +33,7 @@ module Api
       end
 
       def rehydrate_from_citycode!(asker)
-        RehydrateAddressService.new.from_citycode(asker)
+        RehydrateAddressService.new.from_citycode!(asker)
       end
 
       def jsonify_eligible_aids_from(asker)

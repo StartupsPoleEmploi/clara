@@ -42,12 +42,12 @@ describe BanService do
         # then
         expect(http_layer).to have_received(:get).with URI.parse('https://url_of_ban?q=rue&citycode=59035') 
       end
-      # it 'Should return "59035" and "Lille"' do
-      #   http_layer = instance_double("HttpService")
-      #   allow(http_layer).to receive(:get).and_return('{"id":"29123"}')
-      #   HttpService.set_instance(http_layer)
-      #   expect(BanService.get_instance.isZRR('29123')).to eq 'en_ban'
-      # end
+      it 'Should return "59440" and "Avesnelles"' do
+        http_layer = instance_double("HttpService")
+        allow(http_layer).to receive(:get).and_return({"version"=>"draft", "limit"=>5, "features"=>[{"type"=>"Feature", "properties"=>{"x"=>767428.1, "postcode"=>"59440", "context"=>"59, Nord, Hauts-de-France (Nord-Pas-de-Calais)", "city"=>"Avesnelles", "score"=>0.8216363636363636, "type"=>"street", "name"=>"Rue Léo Lagrange", "y"=>7002706.3, "label"=>"Rue Léo Lagrange 59440 Avesnelles", "importance"=>0.038, "citycode"=>"59035", "id"=>"59035_0260_2fca35"}, "geometry"=>{"type"=>"Point", "coordinates"=>[3.941823, 50.118996]}}, {"type"=>"Feature", "properties"=>{"x"=>767600.2, "postcode"=>"59440", "context"=>"59, Nord, Hauts-de-France (Nord-Pas-de-Calais)", "city"=>"Avesnelles", "score"=>0.8213818181818181, "type"=>"street", "name"=>"Rue Charles Sery", "y"=>7002491.2, "label"=>"Rue Charles Sery 59440 Avesnelles", "importance"=>0.0352, "citycode"=>"59035", "id"=>"59035_0060_8cc5ff"}, "geometry"=>{"type"=>"Point", "coordinates"=>[3.944191, 50.117046]}}, {"type"=>"Feature", "properties"=>{"x"=>767062.3, "postcode"=>"59440", "context"=>"59, Nord, Hauts-de-France (Nord-Pas-de-Calais)", "city"=>"Avesnelles", "score"=>0.8213636363636363, "type"=>"street", "name"=>"Rue du Mont Inculte", "y"=>7002203.4, "label"=>"Rue du Mont Inculte 59440 Avesnelles", "importance"=>0.035, "citycode"=>"59035", "id"=>"59035_0321_5a6091"}, "geometry"=>{"type"=>"Point", "coordinates"=>[3.936631, 50.114519]}}, {"type"=>"Feature", "properties"=>{"x"=>767225.3, "postcode"=>"59440", "context"=>"59, Nord, Hauts-de-France (Nord-Pas-de-Calais)", "city"=>"Avesnelles", "score"=>0.8213454545454545, "type"=>"street", "name"=>"Rue Victor Hugo", "y"=>7002182.2, "label"=>"Rue Victor Hugo 59440 Avesnelles", "importance"=>0.0348, "citycode"=>"59035", "id"=>"59035_0480_269769"}, "geometry"=>{"type"=>"Point", "coordinates"=>[3.938904, 50.114311]}}, {"type"=>"Feature", "properties"=>{"x"=>767813.0, "postcode"=>"59440", "context"=>"59, Nord, Hauts-de-France (Nord-Pas-de-Calais)", "city"=>"Avesnelles", "score"=>0.8212545454545455, "type"=>"street", "name"=>"Rue du Moulinet", "y"=>7003027.0, "label"=>"Rue du Moulinet 59440 Avesnelles", "importance"=>0.0338, "citycode"=>"59035", "id"=>"59035_0340_820624"}, "geometry"=>{"type"=>"Point", "coordinates"=>[3.947252, 50.121834]}}], "filters"=>{"citycode"=>"59035"}, "attribution"=>"BAN", "type"=>"FeatureCollection", "licence"=>"ODbL 1.0", "query"=>"rue"}.to_json)
+        HttpService.set_instance(http_layer)
+        expect(BanService.get_instance.get_zipcode_and_cityname('59035')).to eq ['59440', 'Avesnelles']
+      end
     end
     
 

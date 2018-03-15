@@ -34,9 +34,6 @@ class HttpService
   end
 
   def get(uri)
-    p '- - - - - - - - - - - - - - uri- - - - - - - - - - - - - - - -' 
-    p uri.inspect
-    p ''
     begin
       Timeout::timeout(2) do
         return Net::HTTP.get(uri)
