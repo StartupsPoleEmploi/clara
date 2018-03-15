@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.5.0 (15/03/2018)
+-[#665][FEATURE] API : ajouter la geolocalisation
+
+
 ## 7.4.0 (15/03/2018)
 -[#668][FEATURE] API : rendre paginable l'API
 
