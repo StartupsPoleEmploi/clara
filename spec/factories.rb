@@ -136,10 +136,10 @@ FactoryBot.define do
       end
     end
 
-    trait :be_in_zrr_and_in_qpv do 
+    trait :be_in_qpv_and_in_zrr do 
       composition_type :and_rule
       before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_in_zrr, name: 'composed_be_in_zrrgeo'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpvgeo')]
+        rule.slave_rules << [FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpvgeo'), FactoryBot.create(:rule, :be_in_zrr, name: 'composed_be_in_zrrgeo')]
       end
     end
 
@@ -184,6 +184,11 @@ FactoryBot.define do
         aid.what = 'what value'
         aid.additionnal_conditions = 'additionnal conditions value'
         aid.short_description = 'a short description'
+      end
+    end
+    trait :aid_qpv_and_zrr do
+      before :create do |aid|
+        aid.rule = create(:rule, :be_in_qpv_and_in_zrr)
       end
     end
     trait :aid_adult_and_harki do
