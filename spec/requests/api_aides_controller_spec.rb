@@ -50,32 +50,32 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  # describe 'WITH GEOLOC aids/eligible' do
-  #   json_returned = nil
-  #   response_returned = nil
-  #   before do
-  #     qpv_and_zrr_both_ok
-  #     if !json_returned
-  #       create(:aid, :aid_qpv_and_zrr)    
-  #       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
-  #       json_returned = JSON.parse(response.body)
-  #       response_returned = response
-  #     end
-  #   end
-  #   after do
-  #     enable_qpv_zrr_service
-  #   end
-  #   it 'Returns a successful answer' do
-  #     expect(response_returned).to be_success
-  #   end
-  #   it 'With code 200' do
-  #     expect(response_returned).to have_http_status(200)
-  #   end
-  #   it 'Returns all eligible aids' do
-  #     expect(json_returned["aids"].size).to eq 1
-  #     expect(json_returned["aids"][0]["name"]).to eq 'aide blabla'
-  #   end
-  # end
+  describe 'WITH GEOLOC aids/eligible' do
+    json_returned = nil
+    response_returned = nil
+    before do
+      qpv_and_zrr_both_ok
+      if !json_returned
+        create(:aid, :aid_qpv_and_zrr)    
+        get '/api/v1/aids/eligible', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      enable_qpv_zrr_service
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
+    end
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'Returns all eligible aids' do
+      expect(json_returned["aids"].size).to eq 1
+      expect(json_returned["aids"][0]["name"]).to eq 'aide blabla'
+    end
+  end
 
   describe 'Without GeoLoc aids/ineligible' do
     json_returned = nil
