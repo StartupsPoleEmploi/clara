@@ -34,6 +34,8 @@ class BanService
       p ''
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
+      elsif !response.blank?
+        return response
       else
         return 'erreur_communication'
       end

@@ -42,7 +42,7 @@ class HttpService
         return Net::HTTP.get(uri)
       end
     rescue Exception => e 
-       p "Net::HTTP GET request failed with #{e.message}" unless Rails.env.test?
+       p "Net::HTTP GET request failed with #{e.message}" 
        return "timeout"
     end
   end

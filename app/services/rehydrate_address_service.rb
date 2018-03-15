@@ -4,6 +4,9 @@ class RehydrateAddressService
     return Asker.new unless asker.is_a?(Asker)
 
     zipcode_and_cityname = BanService.get_instance.get_zipcode_and_cityname(asker.v_location_citycode)
+    p '- - - - - - - - - - - - - - zipcode_and_cityname- - - - - - - - - - - - - - - -' 
+    p zipcode_and_cityname.inspect
+    p ''
 
     if zipcode_and_cityname.is_a?(String) && zipcode_and_cityname.include?("erreur_") 
       return asker
