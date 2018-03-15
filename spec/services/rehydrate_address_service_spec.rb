@@ -19,7 +19,7 @@ describe RehydrateAddressService do
         QpvService.set_instance(qpv_layer)
 
         zrr_layer = instance_double("ZrrService")
-        allow(zrr_layer).to receive(:isZRR).with("59035")
+        allow(zrr_layer).to receive(:isZRR).with("59035").and_return("en_zrr")
         ZrrService.set_instance(zrr_layer)
 
         #when
@@ -44,10 +44,15 @@ describe RehydrateAddressService do
     it 'Must ask for QPV .isDetailedQPV' do
       expect(qpv_layer).to have_received(:isDetailedQPV).with("9 BIS", "Avenue des champs", "59440", "Avesnelles")
     end
-    it 'Must hydrate v_qpv from .isDetailedQPV' do
+    it 'Must hydrate v_qpv' do
       expect(sut.v_qpv).to eq("en_qpv")
     end
-    it 'Must hydrate v_zrr from .isZRR'
+    it 'Must ask for ZRR .isZRR' do
+      expect(zrr_layer).to have_received(:isZRR).with("59035")
+    end
+    it 'Must hydrate v_zrr' do
+      expect(sut.v_zrr).to eq("en_zrr")
+    end
   end
 
 end
