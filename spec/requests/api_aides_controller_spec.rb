@@ -15,6 +15,48 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
+  describe 'Nominal translation' do
+    spied_result_service = nil
+    before do
+      # asker_called = {
+      #    "v_handicap"=>nil,
+      #    "v_harki"=>"oui",
+      #    "v_detenu"=>nil,
+      #    "v_protection_internationale"=>nil,
+      #    "v_diplome"=>nil,
+      #    "v_category"=>nil,
+      #    "v_duree_d_inscription"=>nil,
+      #    "v_allocation_value_min"=>nil,
+      #    "v_allocation_type"=>nil,
+      #    "v_qpv"=>nil,
+      #    "v_zrr"=>nil,
+      #    "v_age"=>nil,
+      #    "v_location_label"=>nil,
+      #    "v_location_route"=>nil,
+      #    "v_location_city"=>nil,
+      #    "v_location_country"=>nil,
+      #    "v_location_zipcode"=>nil,
+      #    "v_location_citycode"=>nil,
+      #    "v_location_street_number"=>nil,
+      #    "v_location_state"=>nil
+      #  }
+      asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui")
+      fake_layer = instance_double("SerializeResultsService")
+      expect(fake_layer).to receive(:jsonify_eligible).with(asker_called)
+      SerializeResultsService.set_instance(fake_layer)
+    end
+    after do
+      SerializeResultsService.set_instance(nil)
+    end    
+    it 'Should translate all params properly' do
+      #given
+      #when
+      get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true} } 
+      #then
+      # See above : expect(fake_layer)... 
+    end
+  end
+
   describe 'Nominal aids/eligible' do
     json_returned = nil
     response_returned = nil

@@ -5,20 +5,25 @@ module Api
       before_action :authenticate_user
 
       def eligible
-        asker = TranslateAskerService.new(english_asker).to_french
-        result = SerializeResultsService.new(asker).jsonify_eligible
+        p '- - - - - - - - - - - - - - eligible- - - - - - - - - - - - - - - -' 
+        p ''
+        asker = TranslateAskerService.get_instance(english_asker).to_french
+        p '- - - - - - - - - - - - - - english_asker- - - - - - - - - - - - - - - -' 
+        p english_asker.inspect
+        p ''
+        result = SerializeResultsService.get_instance.jsonify_eligible(asker)
         render json: result        
       end
 
       def ineligible
-        asker = TranslateAskerService.new(english_asker).to_french
-        result = SerializeResultsService.new(asker).jsonify_ineligible
+        asker = TranslateAskerService.get_instance(english_asker).to_french
+        result = SerializeResultsService.get_instance.jsonify_ineligible(asker)
         render json: result        
       end
 
       def uncertain
-        asker = TranslateAskerService.new(english_asker).to_french
-        result = SerializeResultsService.new(asker).jsonify_uncertain
+        asker = TranslateAskerService.get_instance(english_asker).to_french
+        result = SerializeResultsService.get_instance.jsonify_uncertain(asker)
         render json: result        
       end
 

@@ -31,7 +31,7 @@ feature 'detail of a result page' do
       aid = create(:aid, :aid_adult_or_harkis_or_qpv, name: 'ze_name_for_adult_or_harki')
       disable_http_service
       cache_layer = instance_double("CacheService")
-      allow(cache_layer).to receive(:read).and_return(SerializeResultsService.new(asker).go)
+      allow(cache_layer).to receive(:read).and_return(SerializeResultsService.get_instance.go(asker))
       CacheService.set_instance(cache_layer)
 
       a = ConvertAskerInBase64Service.new.into_base64(asker)

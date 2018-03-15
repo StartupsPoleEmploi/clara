@@ -1,14 +1,25 @@
 
 class SerializeResultsService
 
-  def initialize(asker)
-    @asker = asker
+  class << self
+    protected :new
+  end
+  
+  @@the_double = nil
+
+  # Allow DI for testing purpose
+  def SerializeResultsService.set_instance(the_double)
+    @@the_double = the_double
   end
 
-  def go
-    all_eligible = AidService.all_eligible(@asker)
-    all_uncertain = AidService.all_uncertain(@asker)
-    all_ineligible = AidService.all_ineligible(@asker)
+  def SerializeResultsService.get_instance
+    @@the_double.nil? ? SerializeResultsService.new : @@the_double
+  end
+
+  def go(asker)
+    all_eligible = AidService.all_eligible(asker)
+    all_uncertain = AidService.all_uncertain(asker)
+    all_ineligible = AidService.all_ineligible(asker)
 
     res = {
      flat_all_eligible: ResultService.new.convert_to_displayable_hash(all_eligible),
@@ -19,25 +30,25 @@ class SerializeResultsService
     res
   end
 
-  def jsonify_eligible
+  def jsonify_eligible(asker)
     result = {
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(@asker))
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(asker))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json
   end
 
-  def jsonify_ineligible
+  def jsonify_ineligible(asker)
     result = {
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(@asker))
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(asker))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json
   end
 
-  def jsonify_uncertain
+  def jsonify_uncertain(asker)
     result = {
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(@asker))
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(asker))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json

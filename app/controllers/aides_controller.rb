@@ -52,7 +52,7 @@ class AidesController < ApplicationController
   end
 
   def create_cacheable_results_from_asker
-    SerializeResultsService.new(@asker).go
+    SerializeResultsService.get_instance.go(@asker)
   end
 
   def hashify_results(stuff)
