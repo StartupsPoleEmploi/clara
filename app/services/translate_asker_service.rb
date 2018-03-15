@@ -1,20 +1,5 @@
 
 class TranslateAskerService
-
-  class << self
-    protected :new
-  end
-  
-  @@the_double = nil
-
-  # Allow DI for testing purpose
-  def TranslateAskerService.set_instance(the_double)
-    @@the_double = the_double
-  end
-
-  def TranslateAskerService.get_instance(english_asker)
-    @@the_double.nil? ? TranslateAskerService.new(english_asker) : @@the_double
-  end
   
   def initialize(english_asker)
     @english_asker = english_asker.is_a?(Hash) ? english_asker.symbolize_keys : {}

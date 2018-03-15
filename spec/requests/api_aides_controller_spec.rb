@@ -16,30 +16,7 @@ describe Api::V1::ApiAidesController, type: :request do
   end
 
   describe 'Nominal translation' do
-    spied_result_service = nil
     before do
-      # asker_called = {
-      #    "v_handicap"=>nil,
-      #    "v_harki"=>"oui",
-      #    "v_detenu"=>nil,
-      #    "v_protection_internationale"=>nil,
-      #    "v_diplome"=>nil,
-      #    "v_category"=>nil,
-      #    "v_duree_d_inscription"=>nil,
-      #    "v_allocation_value_min"=>nil,
-      #    "v_allocation_type"=>nil,
-      #    "v_qpv"=>nil,
-      #    "v_zrr"=>nil,
-      #    "v_age"=>nil,
-      #    "v_location_label"=>nil,
-      #    "v_location_route"=>nil,
-      #    "v_location_city"=>nil,
-      #    "v_location_country"=>nil,
-      #    "v_location_zipcode"=>nil,
-      #    "v_location_citycode"=>nil,
-      #    "v_location_street_number"=>nil,
-      #    "v_location_state"=>nil
-      #  }
       asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui", v_diplome: "niveau_1", v_category: "cat_12345", v_duree_d_inscription: "plus_d_un_an", v_allocation_type: "ARE_ASP", v_allocation_value_min: 1242, v_age: "42")
       result_layer = instance_double("SerializeResultsService")
       expect(result_layer).to receive(:jsonify_eligible).with(asker_called)
@@ -49,11 +26,8 @@ describe Api::V1::ApiAidesController, type: :request do
       SerializeResultsService.set_instance(nil)
     end    
     it 'Should translate all params properly' do
-      #given
-      #when
       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true, diploma: "level_1", category: "categories_12345", inscription_period: "more_than_a_year", allocation_type: "ARE", monthly_allocation_value: 1242, age: 42} } 
-      #then
-      # See above : expect(result_layer)... 
+      # Expectation settled above : expect(result_layer)... 
     end
   end
 

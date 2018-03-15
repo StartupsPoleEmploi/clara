@@ -25,7 +25,7 @@ class SerializeResultsService
      flat_all_eligible: ResultService.new.convert_to_displayable_hash(all_eligible),
      flat_all_uncertain: ResultService.new.convert_to_displayable_hash(all_uncertain),
      flat_all_ineligible: ResultService.new.convert_to_displayable_hash(all_ineligible),
-     asker: @asker.attributes
+     asker: asker.attributes
     }
     res
   end
