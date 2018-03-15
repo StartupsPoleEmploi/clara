@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      post 'user_token' => 'user_token#create'
-      get 'aides' => 'api_aides#index'
+      post 'user_token'     => 'user_token#create'
+      get 'aids/eligible'   => 'api_aides#eligible'
+      get 'aids/ineligible' => 'api_aides#ineligible'
+      get 'aids/uncertain'  => 'api_aides#uncertain'
     end
   end
 

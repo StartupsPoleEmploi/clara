@@ -23,4 +23,9 @@ class Asker < ActiveType::Object
   attribute :v_location_street_number,    :string
   attribute :v_location_state,            :string
 
+  # Ability to compare 2 askers properly
+  def ==(o)
+    self.attributes.symbolize_keys == o.attributes.symbolize_keys 
+  end
+
 end

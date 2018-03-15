@@ -12,7 +12,7 @@ class Aid < ApplicationRecord
   scope :unarchived, -> { where(archived_at: nil) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
   scope :activated,  -> { self.unarchived.linked_to_rule }
-
+  
   def should_generate_new_friendly_id?
     name_changed?
   end

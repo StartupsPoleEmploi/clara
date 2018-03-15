@@ -4,16 +4,26 @@ module Api
 
       before_action :authenticate_user
 
-      def index
-        if current_user
-          asker = TranslateAskerService.new(english_asker).to_french
-          result = SerializeResultsService.new(asker).jsonify
-          render json: result
-        end
+      def eligible
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.get_instance.jsonify_eligible(asker)
+        render json: result        
+      end
+
+      def ineligible
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.get_instance.jsonify_ineligible(asker)
+        render json: result        
+      end
+
+      def uncertain
+        asker = TranslateAskerService.new(english_asker).to_french
+        result = SerializeResultsService.get_instance.jsonify_uncertain(asker)
+        render json: result        
       end
 
       def english_asker
-        params.permit(:disabled, :harki, :ex_invict, :international_protection, :diploma, :category, :inscrition_period, :monthly_allocation, :allocation_type, :age).to_h
+        params.permit(:disabled, :harki, :ex_invict, :international_protection, :diploma, :category, :inscription_period, :monthly_allocation_value, :allocation_type, :age).to_h
       end
 
     end

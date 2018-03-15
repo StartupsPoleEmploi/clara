@@ -1,34 +1,56 @@
 
 class SerializeResultsService
 
-  def initialize(asker)
-    @asker = asker
+  class << self
+    protected :new
+  end
+  
+  @@the_double = nil
+
+  # Allow DI for testing purpose
+  def SerializeResultsService.set_instance(the_double)
+    @@the_double = the_double
   end
 
-  def go
-    all_eligible = AidService.all_eligible(@asker)
-    all_uncertain = AidService.all_uncertain(@asker)
-    all_ineligible = AidService.all_ineligible(@asker)
+  def SerializeResultsService.get_instance
+    @@the_double.nil? ? SerializeResultsService.new : @@the_double
+  end
+
+  def go(asker)
+    all_eligible = AidService.all_eligible(asker)
+    all_uncertain = AidService.all_uncertain(asker)
+    all_ineligible = AidService.all_ineligible(asker)
 
     res = {
      flat_all_eligible: ResultService.new.convert_to_displayable_hash(all_eligible),
      flat_all_uncertain: ResultService.new.convert_to_displayable_hash(all_uncertain),
      flat_all_ineligible: ResultService.new.convert_to_displayable_hash(all_ineligible),
-     asker: @asker.attributes
+     asker: asker.attributes
     }
     res
   end
 
-  def jsonify
-    result = go
-    result.delete :asker
-    result[:all_eligible] = result.delete :flat_all_eligible
-    result[:all_uncertain] = result.delete :flat_all_uncertain
-    result[:all_ineligible] = result.delete :flat_all_ineligible
+  def jsonify_eligible(asker)
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(asker))
+    }
+    format_bunch_of_eligies(result[:aids])
+    result.to_json
+  end
 
-    format_bunch_of_eligies(result[:all_eligible])
-    format_bunch_of_eligies(result[:all_uncertain])
-    format_bunch_of_eligies(result[:all_ineligible])
+  def jsonify_ineligible(asker)
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(asker))
+    }
+    format_bunch_of_eligies(result[:aids])
+    result.to_json
+  end
+
+  def jsonify_uncertain(asker)
+    result = {
+      aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(asker))
+    }
+    format_bunch_of_eligies(result[:aids])
     result.to_json
   end
 
