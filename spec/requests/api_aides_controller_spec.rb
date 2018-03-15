@@ -50,6 +50,33 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
+  describe 'WITH GEOLOC aids/eligible' do
+    json_returned = nil
+    response_returned = nil
+    before do
+      if !json_returned
+        qpv_and_zrr_both_ok
+        create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
+        get '/api/v1/aids/eligible?harki=true', headers: authenticated_header
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      enable_qpv_zrr_service
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
+    end
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'Returns all eligible aids' do
+      expect(json_returned["aids"].size).to eq 1
+      expect(json_returned["aids"][0]["name"]).to eq 'aide harki'
+    end
+  end
+
   describe 'Without GeoLoc aids/ineligible' do
     json_returned = nil
     response_returned = nil
@@ -83,14 +110,10 @@ describe Api::V1::ApiAidesController, type: :request do
         create(:aid, :aid_harki, name: "aide harki")
         create(:aid, :aid_not_harki, name: "aide not_harki")
         create(:aid, :aid_adult_and_harki, name: "aide aid_adult_and_harki")    
-        qpv_and_zrr_both_ok
         get '/api/v1/aids/uncertain?harki=true', headers: authenticated_header
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
-    end
-    after do
-      enable_qpv_zrr_service
     end
     it 'Returns a successful answer' do
       expect(response_returned).to be_success

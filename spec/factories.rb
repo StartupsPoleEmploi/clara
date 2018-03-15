@@ -72,6 +72,13 @@ FactoryBot.define do
       value_ineligible 'hors_qpv'
     end
 
+    trait :be_in_zrr do
+      name 'be_in_zrr' 
+      association :variable, :zrr
+      operator_type :eq
+      value_eligible 'en_zrr'
+    end
+
     trait :not_be_an_adult do
       name 'not_be_an_adult' 
       association :variable, :age
@@ -126,6 +133,13 @@ FactoryBot.define do
       composition_type :and_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult2'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv1')]
+      end
+    end
+
+    trait :be_in_zrr_and_in_qpv do 
+      composition_type :and_rule
+      before :create do |rule|
+        rule.slave_rules << [FactoryBot.create(:rule, :be_in_zrr, name: 'composed_be_in_zrrgeo'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpvgeo')]
       end
     end
 
