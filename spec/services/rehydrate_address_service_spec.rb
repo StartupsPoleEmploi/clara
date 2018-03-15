@@ -32,23 +32,23 @@ describe RehydrateAddressService do
         ZrrService.set_instance(nil)
     end
     it 'Must ask for BAN get_zipcode_and_cityname' do
-      expect(ban_layer).to have_received(:get_zipcode_and_cityname).with("59035")
+      expect(ban_layer).to have_received(:get_zipcode_and_cityname).with("59035").once
     end
     it 'Must hydrate v_location_zipcode and v_location_city' do
       expect(sut.v_location_zipcode).to eq("59440")
       expect(sut.v_location_city).to eq("Avesnelles")
     end
     it 'Must ask for QPV .setDetailedQPV' do
-      expect(qpv_layer).to have_received(:setDetailedQPV).with("9 BIS", "Avenue des champs", "59440", "Avesnelles")
+      expect(qpv_layer).to have_received(:setDetailedQPV).with("9 BIS", "Avenue des champs", "59440", "Avesnelles").once
     end
     it 'Must ask for QPV .isDetailedQPV' do
-      expect(qpv_layer).to have_received(:isDetailedQPV).with("9 BIS", "Avenue des champs", "59440", "Avesnelles")
+      expect(qpv_layer).to have_received(:isDetailedQPV).with("9 BIS", "Avenue des champs", "59440", "Avesnelles").once
     end
     it 'Must hydrate v_qpv' do
       expect(sut.v_qpv).to eq("en_qpv")
     end
     it 'Must ask for ZRR .isZRR' do
-      expect(zrr_layer).to have_received(:isZRR).with("59035")
+      expect(zrr_layer).to have_received(:isZRR).with("59035").once
     end
     it 'Must hydrate v_zrr' do
       expect(sut.v_zrr).to eq("en_zrr")
