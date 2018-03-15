@@ -36,22 +36,26 @@ class QpvService
   end
 
   def setDetailedQPV(num_adresse, nom_voie, code_postal, nom_commune)
-    return if num_adresse.blank? 
+    return false if num_adresse.blank? 
+    return false if nom_voie.blank? 
+    return false if code_postal.blank? 
+    return false if nom_commune.blank? 
     full_url = "#{@base_url}/setqpv"
     uri = URI.parse(full_url)
     header = {'Content-Type': 'text/json'}   
     full_address = {
-      num_adresse: num_adresse.blank? ? '' : num_adresse,
-      nom_voie: nom_voie.blank?       ? '' : nom_voie,
-      code_postal: code_postal.blank? ? '' : code_postal,
-      nom_commune: nom_commune.blank? ? '' : nom_commune
+      num_adresse: num_adresse,
+      nom_voie: nom_voie,
+      code_postal: code_postal,
+      nom_commune: nom_commune
     }  
     params = full_address
     json_headers = {"Content-Type" => "application/json",
                     "Accept" => "application/json"}
     uri = URI.parse(full_url)
 
-    HttpService.get_instance.post(uri.scheme, uri.host, uri.port, uri.path, params.to_json, json_headers)
+    result = HttpService.get_instance.post(uri.scheme, uri.host, uri.port, uri.path, params.to_json, json_headers)
+    return result != "timeout"
   end
 
   def _getQPV(address)
