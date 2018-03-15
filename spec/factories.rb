@@ -30,6 +30,11 @@ FactoryBot.define do
       variable_type :string
     end
 
+    trait :zrr do 
+      name 'v_zrr'
+      variable_type :string
+    end
+
     trait :categorie do 
       name 'v_category'
       variable_type :string
