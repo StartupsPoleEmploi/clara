@@ -20,7 +20,7 @@ describe Api::V1::ApiAidesController, type: :request do
       SerializeResultsService.set_instance(nil)
     end    
     it 'Should translate all params properly' do
-      get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true, diploma: "level_1", category: "categories_12345", inscription_period: "more_than_a_year", allocation_type: "ARE", monthly_allocation_value: 1242, age: 42} } 
+      get '/api/v1/aids/eligible', { headers: authenticated_header, params: {harki: true, disabled: true, ex_invict: true, international_protection: true, diploma: "level_1", category: "categories_12345", inscription_period: "more_than_a_year", allocation_type: "ARE", monthly_allocation_value: 1242, age: 42, location_street_number: "9 BIS", location_label: "Boulevard d'Alsace", location_citycode: "59350"} } 
       # Expectation settled above : allow(result_layer)... 
     end
   end

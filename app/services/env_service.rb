@@ -23,4 +23,8 @@ class EnvService
     ENV['ARA_URL_QPVZRR'] || ''
   end
   
+  def ara_url_ban
+    ENV['ARA_URL_BAN'] || ''
+  end
+  
 end

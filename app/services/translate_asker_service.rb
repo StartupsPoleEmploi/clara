@@ -17,6 +17,9 @@ class TranslateAskerService
     asker.v_allocation_type           = allocation_type_to_french(@english_asker[:allocation_type])
     asker.v_allocation_value_min      = integer_to_french(@english_asker[:monthly_allocation_value])
     asker.v_age                       = integer_to_french(@english_asker[:age])
+    asker.v_location_street_number    = @english_asker[:location_street_number]
+    asker.v_location_label            = @english_asker[:location_label]
+    asker.v_location_citycode         = integer_to_french(@english_asker[:location_citycode])
     asker
   end
   
