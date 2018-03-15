@@ -25,8 +25,8 @@ module Api
 
       private
 
-      def process_asker(english_asker)
-        asker = TranslateAskerService.new(english_asker)
+      def process_asker(given_asker)
+        asker = TranslateAskerService.new(given_asker).to_french
         RehydrateAddressService.new.from_citycode!(asker)
       end
 
