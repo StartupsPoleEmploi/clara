@@ -23,10 +23,6 @@
     "name": "aides",
     "description": "Calcul d'éligibilité de vos aides"
   }],
-  "schemes": [
-    "http",
-    "https"
-  ],
   "paths":
   {
     "/aids/eligible":
