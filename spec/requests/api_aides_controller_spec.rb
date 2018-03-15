@@ -11,7 +11,7 @@ describe Api::V1::ApiAidesController, type: :request do
 
   describe 'Nominal translation' do
     before do
-      asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui", v_diplome: "niveau_1", v_category: "cat_12345", v_duree_d_inscription: "plus_d_un_an", v_allocation_type: "ARE_ASP", v_allocation_value_min: 1242, v_age: "42")
+      asker_called = Asker.new(v_harki: "oui", v_handicap: "oui", v_detenu: "oui", v_protection_internationale: "oui", v_diplome: "niveau_1", v_category: "cat_12345", v_duree_d_inscription: "plus_d_un_an", v_allocation_type: "ARE_ASP", v_allocation_value_min: 1242, v_age: "42", v_location_street_number: "9 BIS", v_location_label: "Boulevard d'Alsace", v_location_citycode: "59350")
       result_layer = instance_double("SerializeResultsService")
       allow(result_layer).to receive(:jsonify_eligible).with(asker_called)
       SerializeResultsService.set_instance(result_layer)
