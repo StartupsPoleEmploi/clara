@@ -5,22 +5,18 @@ module Api
       before_action :authenticate_user
 
       def eligible
-        asker = translate(english_asker).to_french
-        rehydrate_from_citycode!(asker)
-        result = jsonify_eligible_aids_from(asker)
-        render json: result        
+        asker = process_asker(english_asker)
+        render json: eligible_aids_for(asker)        
       end
 
       def ineligible
-        asker = TranslateAskerService.new(english_asker).to_french
-        result = SerializeResultsService.get_instance.jsonify_ineligible(asker)
-        render json: result        
+        asker = process_asker(english_asker)
+        render json: ineligible_aids_for(asker)        
       end
 
       def uncertain
-        asker = TranslateAskerService.new(english_asker).to_french
-        result = SerializeResultsService.get_instance.jsonify_uncertain(asker)
-        render json: result        
+        asker = process_asker(english_asker)
+        render json: uncertain_aids_for(asker)        
       end
 
       def english_asker
@@ -28,16 +24,22 @@ module Api
       end
 
       private
-      def translate(english_asker)
-        TranslateAskerService.new(english_asker)
-      end
 
-      def rehydrate_from_citycode!(asker)
+      def process_asker(english_asker)
+        asker = TranslateAskerService.new(english_asker)
         RehydrateAddressService.new.from_citycode!(asker)
       end
 
-      def jsonify_eligible_aids_from(asker)
+      def eligible_aids_for(asker)
         SerializeResultsService.get_instance.jsonify_eligible(asker)
+      end
+
+      def ineligible_aids_for(asker)
+        SerializeResultsService.get_instance.jsonify_ineligible(asker)
+      end
+
+      def uncertain_aids_for(asker)
+        SerializeResultsService.get_instance.jsonify_uncertain(asker)
       end
 
     end
