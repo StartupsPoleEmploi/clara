@@ -27,7 +27,7 @@ module Api
 
       def process_asker(given_asker)
         asker = TranslateAskerService.new(given_asker).to_french
-        RehydrateAddressService.new.from_citycode!(asker)
+        RehydrateAddressService.get_instance.from_citycode!(asker)
       end
 
       def eligible_aids_for(asker)
