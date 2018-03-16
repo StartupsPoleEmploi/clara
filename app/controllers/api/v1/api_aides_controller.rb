@@ -4,6 +4,11 @@ module Api
 
       before_action :authenticate_user
 
+      def detail
+        theaid = Aid.first
+        render json: {aid: processed_aid_attr}
+      end
+
       def eligible
         render json: eligible_aids_for(processed_asker)        
       end
@@ -16,14 +21,22 @@ module Api
         render json: uncertain_aids_for(processed_asker)        
       end
 
-      def english_asker_attr
+      def slug_param
+        (params.permit(:aid_slug).to_h)[:aid_slug]
+      end
+
+      def english_asker_params
         params.permit(:disabled, :harki, :ex_invict, :international_protection, :diploma, :category, :inscription_period, :monthly_allocation_value, :allocation_type, :age, :location_street_number, :location_route, :location_citycode).to_h
       end
 
       private
 
+      def processed_aid_attr
+        FindOneAidService.new.from_slug(slug_param)
+      end
+
       def processed_asker
-        asker = TranslateAskerService.new(english_asker_attr).to_french
+        asker = TranslateAskerService.new(english_asker_params).to_french
         RehydrateAddressService.get_instance.from_citycode!(asker)
       end
 

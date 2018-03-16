@@ -62,6 +62,7 @@ private
     hash_of_eligies.each do |e|  
       e.delete "contract_type_icon"
       e.delete "contract_type_id"
+      e.delete "id"
       e.delete "how_much"
       e.delete "how_and_when"
       e.delete "limitations"

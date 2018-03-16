@@ -18,13 +18,48 @@
   },
   "host": "",
   "basePath": "/api/v1",
-  "tags": [
-  {
-    "name": "aides",
-    "description": "Calcul d'éligibilité de vos aides"
-  }],
   "paths":
   {
+    "/aids/detail/{aidSlug}":
+    {
+      "get":
+      {
+        "tags": [
+          "aid"
+        ],
+        "summary": "Get Detail of an Aid",
+        "description": "",
+        "operationId": "getAidDetail",
+        "consumes": [
+          "application/json",
+        ],
+        "produces": [
+          "application/json",
+        ],
+        "parameters": [
+        {
+          "in": "header",
+          "name": "Authorization",
+          "type": "string",
+          "description": "Bearer [your JWT token here]",
+          "required": true
+        },
+        {
+          "in": "path",
+          "name": "aidSlug",
+          "type": "string",
+          "description": "Slug of aid",
+          "required": true
+        }],
+        "responses":
+        {
+          "405":
+          {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
     "/aids/eligible":
     {
       "get":
@@ -102,7 +137,7 @@
           "in": "query",
           "name": "allocation_type",
           "type": "string",
-          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH,none",
           "required": false
         },
         {
@@ -146,14 +181,7 @@
           {
             "description": "Invalid input"
           }
-        },
-        "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }]
+        }
       }
     },
     "/aids/ineligible":
@@ -233,7 +261,7 @@
           "in": "query",
           "name": "allocation_type",
           "type": "string",
-          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH,none",
           "required": false
         },
         {
@@ -277,14 +305,7 @@
           {
             "description": "Invalid input"
           }
-        },
-        "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }]
+        }
       }
     },
     "/aids/uncertain":
@@ -364,7 +385,7 @@
           "in": "query",
           "name": "allocation_type",
           "type": "string",
-          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH,none",
           "required": false
         },
         {
@@ -408,14 +429,7 @@
           {
             "description": "Invalid input"
           }
-        },
-        "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }]
+        }
       }
     },
     "/user_token":
