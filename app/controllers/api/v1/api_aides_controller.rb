@@ -6,7 +6,7 @@ module Api
 
       def detail
         theaid = Aid.first
-        render json: {aid: (Aid.find_by!(slug: slug_param)).attributes}
+        render json: {aid: processed_aid_attr}
       end
 
       def eligible
@@ -30,6 +30,13 @@ module Api
       end
 
       private
+
+      def processed_aid_attr
+        res = {}
+        found = Aid.find_by(slug: slug_param)
+        res = found.attributes if found
+        res
+      end
 
       def processed_asker
         asker = TranslateAskerService.new(english_asker_params).to_french
