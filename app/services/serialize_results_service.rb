@@ -32,6 +32,7 @@ class SerializeResultsService
 
   def jsonify_eligible(asker)
     result = {
+      asker: asker.attributes,
       aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(asker))
     }
     format_bunch_of_eligies(result[:aids])
@@ -40,6 +41,7 @@ class SerializeResultsService
 
   def jsonify_ineligible(asker)
     result = {
+      asker: asker.attributes,
       aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(asker))
     }
     format_bunch_of_eligies(result[:aids])
@@ -48,6 +50,7 @@ class SerializeResultsService
 
   def jsonify_uncertain(asker)
     result = {
+      asker: asker.attributes,
       aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(asker))
     }
     format_bunch_of_eligies(result[:aids])

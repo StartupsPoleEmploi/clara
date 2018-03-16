@@ -122,21 +122,21 @@
         {
           "in": "query",
           "name": "location_street_number",
-          "type": "integer",
+          "type": "string",
           "description": "Address : street number",
           "required": false
         },
         {
           "in": "query",
           "name": "location_route",
-          "type": "integer",
+          "type": "string",
           "description": "Address : Name of road",
           "required": false
         },
         {
           "in": "query",
           "name": "location_citycode",
-          "type": "integer",
+          "type": "string",
           "description": "Address : INSEE code of city",
           "required": false
         }],
@@ -249,6 +249,27 @@
           "type": "integer",
           "description": "Age of asker",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_street_number",
+          "type": "string",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_route",
+          "type": "string",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "string",
+          "description": "Address : INSEE code of city",
+          "required": false
         }],
         "responses":
         {
@@ -358,6 +379,27 @@
           "name": "age",
           "type": "integer",
           "description": "Age of asker",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_street_number",
+          "type": "string",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_route",
+          "type": "string",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "string",
+          "description": "Address : INSEE code of city",
           "required": false
         }],
         "responses":
