@@ -100,6 +100,13 @@
         },
         {
           "in": "query",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "monthly_allocation_value",
           "type": "integer",
           "description": "Estimated allocation per month",
@@ -107,16 +114,30 @@
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "age",
+          "type": "integer",
+          "description": "Age of asker",
           "required": false
         },
         {
           "in": "query",
-          "name": "age",
-          "type": "integer",
-          "description": "Age of asker",
+          "name": "location_street_number",
+          "type": "string",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_route",
+          "type": "string",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "string",
+          "description": "Address : INSEE code of city",
           "required": false
         }],
         "responses":
@@ -210,6 +231,13 @@
         },
         {
           "in": "query",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "monthly_allocation_value",
           "type": "integer",
           "description": "Estimated allocation per month",
@@ -217,16 +245,30 @@
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "age",
+          "type": "integer",
+          "description": "Age of asker",
           "required": false
         },
         {
           "in": "query",
-          "name": "age",
-          "type": "integer",
-          "description": "Age of asker",
+          "name": "location_street_number",
+          "type": "string",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_route",
+          "type": "string",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "string",
+          "description": "Address : INSEE code of city",
           "required": false
         }],
         "responses":
@@ -320,6 +362,13 @@
         },
         {
           "in": "query",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "monthly_allocation_value",
           "type": "integer",
           "description": "Estimated allocation per month",
@@ -327,16 +376,30 @@
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "age",
+          "type": "integer",
+          "description": "Age of asker",
           "required": false
         },
         {
           "in": "query",
-          "name": "age",
-          "type": "integer",
-          "description": "Age of asker",
+          "name": "location_street_number",
+          "type": "string",
+          "description": "Address : street number",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_route",
+          "type": "string",
+          "description": "Address : Name of road",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "location_citycode",
+          "type": "string",
+          "description": "Address : INSEE code of city",
           "required": false
         }],
         "responses":

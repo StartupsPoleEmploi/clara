@@ -58,9 +58,9 @@ describe QpvService do
       after do
         enable_http_service
       end
-      it 'Should return "est_indertermine" if remote service returns explicitly "error"' do
+      it 'Should return "est_indetermine" if remote service returns explicitly "error"' do
         output = QpvService.get_instance.isDetailedQPV('11', 'rue du bar', '81523', 'Chem')
-        expect(output).to eq 'est_indertermine'
+        expect(output).to eq 'est_indetermine'
       end
     end
     describe 'http service returns a timeout' do

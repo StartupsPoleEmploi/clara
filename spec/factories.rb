@@ -30,6 +30,11 @@ FactoryBot.define do
       variable_type :string
     end
 
+    trait :zrr do 
+      name 'v_zrr'
+      variable_type :string
+    end
+
     trait :categorie do 
       name 'v_category'
       variable_type :string
@@ -70,6 +75,13 @@ FactoryBot.define do
       operator_type :eq
       value_eligible 'en_qpv'
       value_ineligible 'hors_qpv'
+    end
+
+    trait :be_in_zrr do
+      name 'be_in_zrr' 
+      association :variable, :zrr
+      operator_type :eq
+      value_eligible 'en_zrr'
     end
 
     trait :not_be_an_adult do
@@ -129,6 +141,13 @@ FactoryBot.define do
       end
     end
 
+    trait :be_in_qpv_and_in_zrr do 
+      composition_type :and_rule
+      before :create do |rule|
+        rule.slave_rules << [FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpvgeo'), FactoryBot.create(:rule, :be_in_zrr, name: 'composed_be_in_zrrgeo')]
+      end
+    end
+
     trait :be_an_adult_or_in_qpv do 
       composition_type :or_rule
       before :create do |rule|
@@ -170,6 +189,11 @@ FactoryBot.define do
         aid.what = 'what value'
         aid.additionnal_conditions = 'additionnal conditions value'
         aid.short_description = 'a short description'
+      end
+    end
+    trait :aid_qpv_and_zrr do
+      before :create do |aid|
+        aid.rule = create(:rule, :be_in_qpv_and_in_zrr)
       end
     end
     trait :aid_adult_and_harki do

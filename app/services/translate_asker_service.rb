@@ -1,8 +1,8 @@
 
 class TranslateAskerService
   
-  def initialize(english_asker)
-    @english_asker = english_asker.is_a?(Hash) ? english_asker.symbolize_keys : {}
+  def initialize(english_asker_attr)
+    @english_asker = english_asker_attr.is_a?(Hash) ? english_asker_attr.symbolize_keys : {}
   end
 
   def to_french
@@ -17,6 +17,9 @@ class TranslateAskerService
     asker.v_allocation_type           = allocation_type_to_french(@english_asker[:allocation_type])
     asker.v_allocation_value_min      = integer_to_french(@english_asker[:monthly_allocation_value])
     asker.v_age                       = integer_to_french(@english_asker[:age])
+    asker.v_location_street_number    = @english_asker[:location_street_number]
+    asker.v_location_route            = @english_asker[:location_route]
+    asker.v_location_citycode         = integer_to_french(@english_asker[:location_citycode])
     asker
   end
   
@@ -49,17 +52,11 @@ class TranslateAskerService
   def allocation_type_to_french(allocation_type)
     return unless allocation_type != nil
     {
-      ARE: "ARE_ASP", 
-      ASP: "ARE_ASP", 
-      ASS: "ASS_AER_ATA_APS_AS-FNE", 
-      AER: "ASS_AER_ATA_APS_AS-FNE", 
-      ATA: "ASS_AER_ATA_APS_AS-FNE", 
-      APS: "ASS_AER_ATA_APS_AS-FNE", 
-      ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
-      RPS: "RPS_RFPA_RFF_pensionretraite",
-      RFPA: "RPS_RFPA_RFF_pensionretraite",
-      RFF: "RPS_RFPA_RFF_pensionretraite",
-      PENSION: "RPS_RFPA_RFF_pensionretraite",
+      ARE_ASP: "ARE_ASP", 
+      ASS_AER_ATA_APS_ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
+      RPS_RFPA_RFF_PENSION: "RPS_RFPA_RFF_pensionretraite",
+      RSA: "RSA", 
+      AAH: "AAH", 
     }[allocation_type.to_s.to_sym]
   end
 
