@@ -40,6 +40,27 @@ describe Api::V1::ApiAidesController, type: :request do
 
   end
 
+  describe 'aids/detail/:aid_slug' do
+    response_returned = nil
+    json_returned = nil
+    before do
+      create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr", slug: "aid-qpv-and-zrr")    
+      get '/api/v1/aids/detail/aid-qpv-and-zrr', {headers: authenticated_header} 
+      json_returned = JSON.parse(response.body)
+      response_returned = response
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
+    end
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'Returns detail of an aid' do
+      expect(json_returned["aid"].size).to eq 1
+      expect(json_returned["aid"]["name"]).to eq 'Bon de transport'
+    end
+  end
+
   describe 'aids/eligible' do
     response_returned = nil
     json_returned = nil
