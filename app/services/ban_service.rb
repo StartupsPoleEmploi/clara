@@ -34,7 +34,11 @@ class BanService
       elsif !response.blank?
         begin
           props = JSON.parse(response)["features"][0]["properties"]
-          return [props["postcode"], props["city"]]
+          if props["postcode"] != nil && props["city"] != nil
+            return [props["postcode"], props["city"]]
+          else
+            return "erreur_ville_introuvable"
+          end
         rescue
           return "erreur_ville_introuvable"
         end
