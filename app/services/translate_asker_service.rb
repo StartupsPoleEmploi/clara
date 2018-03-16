@@ -57,6 +57,7 @@ class TranslateAskerService
       RPS_RFPA_RFF_PENSION: "RPS_RFPA_RFF_pensionretraite",
       RSA: "RSA", 
       AAH: "AAH", 
+      none: "pas_indemnise"
     }[allocation_type.to_s.to_sym]
   end
 
