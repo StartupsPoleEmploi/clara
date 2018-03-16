@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.6.0 (15/03/2018)
+-[#666][FEATURE] API : détail d'une aide
+
+
 ## 7.5.0 (15/03/2018)
 -[#665][FEATURE] API : ajouter la geolocalisation
 
