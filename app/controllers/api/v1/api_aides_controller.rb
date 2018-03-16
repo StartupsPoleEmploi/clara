@@ -32,10 +32,7 @@ module Api
       private
 
       def processed_aid_attr
-        res = {}
-        found = Aid.find_by(slug: slug_param)
-        res = found.attributes if found
-        res
+        FindOneAidService.new.from_slug(slug_param)
       end
 
       def processed_asker
