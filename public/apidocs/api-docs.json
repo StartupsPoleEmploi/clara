@@ -18,11 +18,6 @@
   },
   "host": "",
   "basePath": "/api/v1",
-  "tags": [
-  {
-    "name": "aides",
-    "description": "Calcul d'éligibilité de vos aides"
-  }],
   "paths":
   {
     "/aids/detail/{aidSlug}":
