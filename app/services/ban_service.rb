@@ -32,8 +32,12 @@ class BanService
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
       elsif !response.blank?
-        props = JSON.parse(response)["features"][0]["properties"]
-        return [props["postcode"], props["city"]]
+        begin
+          props = JSON.parse(response)["features"][0]["properties"]
+          return [props["postcode"], props["city"]]
+        rescue
+          return "erreur_ville_introuvable"
+        end
       else
         return 'erreur_communication'
       end
