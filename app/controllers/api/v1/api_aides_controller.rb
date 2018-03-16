@@ -5,18 +5,15 @@ module Api
       before_action :authenticate_user
 
       def eligible
-        asker = process_asker(english_asker_attr)
-        render json: eligible_aids_for(asker)        
+        render json: eligible_aids_for(process_asker)        
       end
 
       def ineligible
-        asker = process_asker(english_asker_attr)
-        render json: ineligible_aids_for(asker)        
+        render json: ineligible_aids_for(process_asker)        
       end
 
       def uncertain
-        asker = process_asker(english_asker_attr)
-        render json: uncertain_aids_for(asker)        
+        render json: uncertain_aids_for(process_asker)        
       end
 
       def english_asker_attr
@@ -25,8 +22,8 @@ module Api
 
       private
 
-      def process_asker(given_asker_attr)
-        asker = TranslateAskerService.new(given_asker_attr).to_french
+      def process_asker
+        asker = TranslateAskerService.new(english_asker_attr).to_french
         RehydrateAddressService.get_instance.from_citycode!(asker)
       end
 
