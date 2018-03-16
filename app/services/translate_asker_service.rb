@@ -52,17 +52,11 @@ class TranslateAskerService
   def allocation_type_to_french(allocation_type)
     return unless allocation_type != nil
     {
-      ARE: "ARE_ASP", 
-      ASP: "ARE_ASP", 
-      ASS: "ASS_AER_ATA_APS_AS-FNE", 
-      AER: "ASS_AER_ATA_APS_AS-FNE", 
-      ATA: "ASS_AER_ATA_APS_AS-FNE", 
-      APS: "ASS_AER_ATA_APS_AS-FNE", 
-      ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
-      RPS: "RPS_RFPA_RFF_pensionretraite",
-      RFPA: "RPS_RFPA_RFF_pensionretraite",
-      RFF: "RPS_RFPA_RFF_pensionretraite",
-      PENSION: "RPS_RFPA_RFF_pensionretraite",
+      ARE_ASP: "ARE_ASP", 
+      ASS_AER_ATA_APS_ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
+      RPS_RFPA_RFF_PENSION: "RPS_RFPA_RFF_pensionretraite",
+      RSA: "RSA", 
+      AAH: "AAH", 
     }[allocation_type.to_s.to_sym]
   end
 

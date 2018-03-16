@@ -59,18 +59,12 @@ describe TranslateAskerService do
       {english: {age: 42},         french: {v_age: "42"}},
       {english: {age: "wrong_input"},french: {v_age: nil}},
 
-      {english: {allocation_type: "ARE"},         french: {v_allocation_type: "ARE_ASP"}},
-      {english: {allocation_type: "ASP"},         french: {v_allocation_type: "ARE_ASP"}},
-      {english: {allocation_type: "ASS"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
-      {english: {allocation_type: "AER"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
-      {english: {allocation_type: "ATA"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
-      {english: {allocation_type: "APS"},         french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
-      {english: {allocation_type: "ASFNE"},       french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
-      {english: {allocation_type: "RPS"},         french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
-      {english: {allocation_type: "RFPA"},        french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
-      {english: {allocation_type: "RFF"},         french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
-      {english: {allocation_type: "PENSION"},     french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
-      {english: {allocation_type: "wrong_input"}, french: {v_allocation_type: nil}},
+      {english: {allocation_type: "ARE_ASP"},               french: {v_allocation_type: "ARE_ASP"}},
+      {english: {allocation_type: "ASS_AER_ATA_APS_ASFNE"}, french: {v_allocation_type: "ASS_AER_ATA_APS_AS-FNE"}},
+      {english: {allocation_type: "RPS_RFPA_RFF_PENSION"},  french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
+      {english: {allocation_type: "RSA"},                    french: {v_allocation_type: "RSA"}},
+      {english: {allocation_type: "AAH"},                    french: {v_allocation_type: "AAH"}},
+      {english: {allocation_type: "wrong_input"},           french: {v_allocation_type: nil}},
     ]
 
     inputs.each do |i|
