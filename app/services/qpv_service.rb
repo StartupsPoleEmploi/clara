@@ -55,7 +55,7 @@ class QpvService
     uri = URI.parse(full_url)
 
     result = HttpService.get_instance.post(uri.scheme, uri.host, uri.port, uri.path, params.to_json, json_headers)
-    return result != "timeout"
+    return true
   end
 
   def _getQPV(address)
