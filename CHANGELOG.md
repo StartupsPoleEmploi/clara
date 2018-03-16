@@ -4,7 +4,7 @@
 ## 7.6.0 (15/03/2018)
 -[#666][FEATURE] API : détail d'une aide
 -[#669][BUG] API : ne pas faire planter si ZIPCODE au lieu de code INSEE
--[#670][FEATBUGURE] API : manque l'item "none" à "allocation_type"
+-[#670][BUG] API : manque l'item "none" à "allocation_type"
 
 
 ## 7.5.0 (15/03/2018)
