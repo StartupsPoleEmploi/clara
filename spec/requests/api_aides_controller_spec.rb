@@ -66,35 +66,24 @@ describe Api::V1::ApiAidesController, type: :request do
   #   end
   # end
 
-  describe 'WITH GEOLOC aids/eligible' do
 
+
+  describe 'WITH GEOLOC aids/eligible' do
     response_returned = nil
     json_returned = nil
     before do
-      
-      qpv_layer = instance_double("QpvService")
-      allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-      allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
-      QpvService.set_instance(qpv_layer)
-      
-      zrr_layer = instance_double("ZrrService")
-      allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
-      ZrrService.set_instance(zrr_layer)
-      
-      ban_layer = instance_double("BanService")
-      allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
-      BanService.set_instance(ban_layer)
-      
+      _stub_qpv_with_INSIDE_QPV
+      _stub_zrr_with_INSIDE_ZRR
+      _stub_ban_with_correct_values
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
-      
       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
     after do
-      QpvService.set_instance(nil)
-      ZrrService.set_instance(nil)
-      BanService.set_instance(nil)
+      _unstub_qpv
+      _unstub_zrr
+      _unstub_ban
     end
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
@@ -190,5 +179,37 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(response).to have_http_status(401)
     end
   end
+
+  def _stub_qpv_with_INSIDE_QPV
+      qpv_layer = instance_double("QpvService")
+      allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
+      allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
+      QpvService.set_instance(qpv_layer)
+  end
+
+  def _stub_zrr_with_INSIDE_ZRR    
+      zrr_layer = instance_double("ZrrService")
+      allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
+      ZrrService.set_instance(zrr_layer)
+  end
+
+  def _stub_ban_with_correct_values
+      ban_layer = instance_double("BanService")
+      allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
+      BanService.set_instance(ban_layer)    
+  end
+
+  def _unstub_qpv
+      QpvService.set_instance(nil)
+  end
+
+  def _unstub_zrr
+      ZrrService.set_instance(nil)
+  end
+
+  def _unstub_ban
+      BanService.set_instance(nil)
+  end
+
 
 end
