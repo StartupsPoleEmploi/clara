@@ -100,16 +100,16 @@
         },
         {
           "in": "query",
-          "name": "monthly_allocation_value",
-          "type": "integer",
-          "description": "Estimated allocation per month",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
           "required": false
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "monthly_allocation_value",
+          "type": "integer",
+          "description": "Estimated allocation per month",
           "required": false
         },
         {
@@ -231,16 +231,16 @@
         },
         {
           "in": "query",
-          "name": "monthly_allocation_value",
-          "type": "integer",
-          "description": "Estimated allocation per month",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
           "required": false
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "monthly_allocation_value",
+          "type": "integer",
+          "description": "Estimated allocation per month",
           "required": false
         },
         {
@@ -362,16 +362,16 @@
         },
         {
           "in": "query",
-          "name": "monthly_allocation_value",
-          "type": "integer",
-          "description": "Estimated allocation per month",
+          "name": "allocation_type",
+          "type": "string",
+          "description": "ARE_ASP,ASS_AER_ATA_APS_ASFNE,RPS_RFPA_RFF_PENSION,RSA,AAH",
           "required": false
         },
         {
           "in": "query",
-          "name": "allocation_type",
-          "type": "string",
-          "description": "ARE,ASP,ASS,AER,ATA,APS,ASFNE,RSA,RPS,RFPA,RFF,PENSION",
+          "name": "monthly_allocation_value",
+          "type": "integer",
+          "description": "Estimated allocation per month",
           "required": false
         },
         {

@@ -17,7 +17,8 @@ class RehydrateAddressService
 
 
   def from_citycode!(asker)
-    return Asker.new unless asker.is_a?(Asker) && asker.v_location_citycode != nil
+    return asker unless asker.is_a?(Asker) && asker.v_location_citycode != nil
+
 
     zipcode_and_cityname = BanService.get_instance.get_zipcode_and_cityname(asker.v_location_citycode)
 

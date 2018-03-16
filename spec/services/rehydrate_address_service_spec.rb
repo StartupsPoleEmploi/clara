@@ -23,7 +23,7 @@ describe RehydrateAddressService do
         ZrrService.set_instance(zrr_layer)
 
         #when
-        sut = RehydrateAddressService.new.from_citycode!(Asker.new(v_location_street_number: "9 BIS", v_location_route: "Avenue des champs", v_location_citycode: "59035"))
+        sut = RehydrateAddressService.get_instance.from_citycode!(Asker.new(v_location_street_number: "9 BIS", v_location_route: "Avenue des champs", v_location_citycode: "59035"))
 
     end
     after do
