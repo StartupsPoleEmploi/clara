@@ -1,6 +1,5 @@
 class FindOneAidService
 
-
   def from_slug(slug)
     res = {}
     found = Aid.find_by(slug: slug)
@@ -12,4 +11,5 @@ class FindOneAidService
     end
     res
   end
+  
 end
