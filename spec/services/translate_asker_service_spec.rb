@@ -64,6 +64,7 @@ describe TranslateAskerService do
       {english: {allocation_type: "RPS_RFPA_RFF_PENSION"},  french: {v_allocation_type: "RPS_RFPA_RFF_pensionretraite"}},
       {english: {allocation_type: "RSA"},                    french: {v_allocation_type: "RSA"}},
       {english: {allocation_type: "AAH"},                    french: {v_allocation_type: "AAH"}},
+      {english: {allocation_type: "none"},                    french: {v_allocation_type: "pas_indemnise"}},
       {english: {allocation_type: "wrong_input"},           french: {v_allocation_type: nil}},
     ]
 
