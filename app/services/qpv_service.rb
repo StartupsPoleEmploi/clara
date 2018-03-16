@@ -69,7 +69,7 @@ class QpvService
     elsif response && response.include?('is_not_qpv')
       return 'hors_qpv'
     elsif response && response.include?('error')
-      return 'est_indertermine'
+      return 'est_indetermine'
     elsif response && response.include?('timeout')
       return 'service_indisponible'
     else
