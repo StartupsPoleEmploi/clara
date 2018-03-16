@@ -5,7 +5,8 @@ module Api
       before_action :authenticate_user
 
       def detail
-        render json: (Aid.find_by!(slug: slug_param)).attributes
+        theaid = Aid.first
+        render json: {aid: (Aid.find_by!(slug: slug_param)).attributes}
       end
 
       def eligible
