@@ -128,7 +128,7 @@
         },
         {
           "in": "query",
-          "name": "location_label",
+          "name": "location_route",
           "type": "integer",
           "description": "Address : Name of road",
           "required": false
