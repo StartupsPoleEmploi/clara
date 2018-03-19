@@ -2,6 +2,10 @@
 
 
 
+## 7.6.2 (19/03/2018)
+-[#672][TECH] API : whitelister les clés
+
+
 ## 7.6.1 (19/03/2018)
 -[#671][FEATURE] API : mise à jour apidocs
 
