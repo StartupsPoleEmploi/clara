@@ -16,3 +16,20 @@ class ContractType < ApplicationRecord
   end
   
 end
+
+# == Schema Information
+#
+# Table name: contract_types
+#
+#  id              :integer(8)      not null, primary key
+#  name            :string
+#  description     :text
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  ordre_affichage :integer         default("0")
+#  icon            :string
+#  slug            :string
+#  category        :string
+#  business_id     :string
+#
+

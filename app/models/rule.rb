@@ -155,3 +155,20 @@ class Rule < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: rules
+#
+#  id               :integer         not null, primary key
+#  name             :string
+#  value_eligible   :string
+#  operator_type    :integer
+#  composition_type :integer
+#  variable_id      :integer
+#  created_at       :datetime        not null
+#  updated_at       :datetime        not null
+#  description      :text
+#  value_ineligible :string
+#
+
