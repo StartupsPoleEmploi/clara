@@ -17,14 +17,10 @@ class SerializeResultsService
   end
 
   def go(asker)
-    all_eligible = AidService.all_eligible(asker)
-    all_uncertain = AidService.all_uncertain(asker)
-    all_ineligible = AidService.all_ineligible(asker)
-
     res = {
-     flat_all_eligible: ResultService.new.convert_to_displayable_hash(all_eligible),
-     flat_all_uncertain: ResultService.new.convert_to_displayable_hash(all_uncertain),
-     flat_all_ineligible: ResultService.new.convert_to_displayable_hash(all_ineligible),
+     flat_all_eligible: displayable_hash(all_eligible(asker)),
+     flat_all_uncertain: displayable_hash(all_uncertain(asker)),
+     flat_all_ineligible: displayable_hash(all_ineligible(asker)),
      asker: asker.attributes
     }
     res
@@ -33,7 +29,7 @@ class SerializeResultsService
   def jsonify_eligible(asker)
     result = {
       asker: asker.attributes,
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_eligible(asker))
+      aids: whitelist(displayable_hash(all_eligible(asker)))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json
@@ -42,7 +38,7 @@ class SerializeResultsService
   def jsonify_ineligible(asker)
     result = {
       asker: asker.attributes,
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_ineligible(asker))
+      aids: whitelist(displayable_hash(all_ineligible(asker)))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json
@@ -51,13 +47,28 @@ class SerializeResultsService
   def jsonify_uncertain(asker)
     result = {
       asker: asker.attributes,
-      aids: ResultService.new.convert_to_displayable_hash(AidService.all_uncertain(asker))
+      aids: whitelist(displayable_hash(all_uncertain(asker)))
     }
     format_bunch_of_eligies(result[:aids])
     result.to_json
   end
 
 private
+  def whitelist(aids)
+    aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
+  end
+  def displayable_hash(aids)
+    ResultService.new.convert_to_displayable_hash(aids)
+  end
+  def all_eligible(asker)
+    AidService.all_eligible(asker)
+  end
+  def all_ineligible(asker)
+    AidService.all_ineligible(asker)
+  end
+  def all_uncertain(asker)
+    AidService.all_uncertain(asker)
+  end
   def format_bunch_of_eligies(hash_of_eligies)
     hash_of_eligies.each do |e|  
       e.delete "contract_type_icon"
