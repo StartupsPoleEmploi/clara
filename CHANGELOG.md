@@ -1,5 +1,7 @@
 # ARA Changelog
 
+## 7.6.3 (19/03/2018)
+-[#676][TECH] Test des models
 
 ## 7.6.2 (19/03/2018)
 -[#672][TECH] API : whitelister les clés
