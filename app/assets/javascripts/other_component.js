@@ -18,6 +18,8 @@ _.set(window, 'clara.other_component',
       return false;
     }
 
+    register_callbacks();
+
     function register_callbacks() {
       $d('input#val_harki').click(function(e) {
         $('input#none').prop('checked', false);
@@ -39,7 +41,6 @@ _.set(window, 'clara.other_component',
       });
     };
 
-    register_callbacks();
 
 
 

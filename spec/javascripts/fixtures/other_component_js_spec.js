@@ -45,8 +45,8 @@ describe('other_component_spec.js', function() {
   });
   describe('When click on "Je ne suis dans aucune de ces situations" ', function() {
     beforeEach(function() {
-      clara.accordeon_component(root_element);
       $('body').append(nominal_content());
+      clara.other_component(root_element);
       $('input#none').trigger('click');
     });
     afterEach(function() {
@@ -71,8 +71,8 @@ describe('other_component_spec.js', function() {
 
   describe('When click on "Enfant/petit enfant de harki"', function() {
     beforeEach(function() {
-      clara.accordeon_component(root_element);
       $('body').append(nominal_content());
+      clara.other_component(root_element);
       $('input#val_harki').trigger('click');
     });
     afterEach(function() {
@@ -87,8 +87,8 @@ describe('other_component_spec.js', function() {
   });
   describe('When click on "Ex détenu(e), prévenu(e)..."', function() {
     beforeEach(function() {
-      clara.accordeon_component(root_element);
       $('body').append(nominal_content());
+      clara.other_component(root_element);
       $('input#val_detenu').trigger('click');
     });
     afterEach(function() {
@@ -104,8 +104,8 @@ describe('other_component_spec.js', function() {
 
   describe('When click on "Bénéficiaire dune protection internationale"', function() {
     beforeEach(function() {
-      clara.accordeon_component(root_element);
       $('body').append(nominal_content());
+      clara.other_component(root_element);
       $('input#val_pi').trigger('click');
     });
     afterEach(function() {
@@ -120,8 +120,8 @@ describe('other_component_spec.js', function() {
   });
   describe('Bénéficiaire de lobligation demploi (reconnu(e) en situation de handicap)"', function() {
     beforeEach(function() {
-      clara.accordeon_component();
       $('body').append(nominal_content());
+      clara.other_component();
       $('input#val_handicap').trigger('click');
     });
     afterEach(function() {
@@ -138,12 +138,12 @@ describe('other_component_spec.js', function() {
 
   function nominal_content() {
     return '' +
-      '<div id="valid-root">' +
+    '<div id="valid-root">' +
       '<input type="checkbox" id="val_harki" >' +
       '<input type="checkbox" id="val_pi" >' +
       '<input type="checkbox" id="val_handicap" >' +
       '<input type="checkbox" id="none" >' +
       '<input type="checkbox" id="val_detenu" >' +
-      '</div>';
+    '</div>';
   }
 });
