@@ -53,9 +53,17 @@
         }],
         "responses":
         {
-          "405":
+          "200":
           {
-            "description": "Invalid input"
+            "description": "Found"
+          },
+          "404":
+          {
+            "description": "Not Found"
+          },
+          "500":
+          {
+            "description": "Internal server error"
           }
         }
       }
