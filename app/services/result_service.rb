@@ -2,7 +2,7 @@
 class ResultService  
   
   def convert_to_displayable_hash(eligibilities)
-    return [] unless eligibilities.is_a?(Array)
+    return {} unless eligibilities.respond_to?("map")
     eligibilities.map do |e| 
       result_hsh = e.attributes
       if e.contract_type.present?

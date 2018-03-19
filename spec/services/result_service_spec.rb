@@ -28,13 +28,13 @@ feature ResultService do
       end
     end
     context 'Worst case' do
-      it 'Should return an empty array if nothing is given' do
+      it 'Should return an empty hash if nothing is given' do
         result = ResultService.new.convert_to_displayable_hash(nil)
-        expect(result).to eq([])
+        expect(result).to eq({})
       end
-      it 'Should return an empty array if wrong type is given' do
+      it 'Should return an empty hash if wrong type is given' do
         result = ResultService.new.convert_to_displayable_hash(Date.new)
-        expect(result).to eq([])
+        expect(result).to eq({})
       end
     end
   end
