@@ -1,7 +1,6 @@
 # ARA Changelog
 
 
-
 ## 7.6.2 (19/03/2018)
 -[#672][TECH] API : whitelister les clés
 
