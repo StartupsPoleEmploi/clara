@@ -82,7 +82,7 @@ describe('other_component_spec.js', function() {
       expect($('input#val_harki').is(':checked')).toEqual(true);
     });
     it('Should uncheck input#none', function() {
-      expect($('input#val_none').is(':checked')).toEqual(false);
+      expect($('input#none').is(':checked')).toEqual(false);
     });
   });
   describe('When click on "Ex détenu(e), prévenu(e)..."', function() {
