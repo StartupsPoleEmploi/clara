@@ -70,15 +70,11 @@ describe Api::V1::ApiAidesController, type: :request do
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
-    it 'Returns a successful answer' do
-      expect(response_returned).to be_success
+    it 'Returns a unsuccessful answer' do
+      expect(response_returned).not_to be_success
     end
-    it 'With code 200' do
-      expect(response_returned).to have_http_status(200)
-    end
-    it 'Returns detail of an aid' do
-      expect(json_returned["aid"]).not_to eq nil
-      expect(json_returned["aid"].size).to eq 0
+    it 'With code 404' do
+      expect(response_returned).to have_http_status(404)
     end
   end
 

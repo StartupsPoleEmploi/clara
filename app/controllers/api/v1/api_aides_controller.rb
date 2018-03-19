@@ -5,8 +5,12 @@ module Api
       before_action :authenticate_user
 
       def detail
-        theaid = Aid.first
-        render json: {aid: processed_aid_attr}
+        aid_attr = whitelist_one_aid_attr(Aid.find_by(slug: slug_param))
+        if aid_attr != {} 
+          render json: {aid: aid_attr}
+        else
+          render json: {:error => "not-found"}.to_json, status: 404
+        end
       end
 
       def eligible
@@ -31,8 +35,8 @@ module Api
 
       private
 
-      def processed_aid_attr
-        FindOneAidService.new.from_slug(slug_param)
+      def whitelist_one_aid_attr(aid)
+        WhitelistOneAidService.new.from_aid(aid)
       end
 
       def processed_asker

@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 7.6.1 (19/03/2018)
+-[#671][FEATURE] API : mise à jour apidocs
+
+
 ## 7.6.0 (15/03/2018)
 -[#666][FEATURE] API : détail d'une aide
 -[#669][BUG] API : ne pas faire planter si ZIPCODE au lieu de code INSEE
