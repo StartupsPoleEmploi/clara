@@ -102,7 +102,7 @@ describe('other_component_spec.js', function() {
     });
   });
 
-  describe('When click on "Bénéficiaire dune protection internationale"', function() {
+  describe('When click on "Bénéficiaire d\'une protection internationale"', function() {
     beforeEach(function() {
       $('body').append(nominal_content());
       clara.other_component(root_element);
@@ -118,7 +118,7 @@ describe('other_component_spec.js', function() {
       expect($('input#none').is(':checked')).toEqual(false);
     });
   });
-  describe('Bénéficiaire de lobligation demploi (reconnu(e) en situation de handicap)"', function() {
+  describe('Bénéficiaire de l\'obligation d\'emploi (reconnu(e) en situation de handicap)"', function() {
     beforeEach(function() {
       $('body').append(nominal_content());
       clara.other_component();

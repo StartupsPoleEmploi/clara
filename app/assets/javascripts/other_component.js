@@ -13,13 +13,12 @@ _.set(window, 'clara.other_component',
       $(root_element + ' input#val_handicap').length &&
       $(root_element + ' input#none').length
     ) {
-      return true;
+    register_callbacks();
     } else {
       return false;
     }
 
-    register_callbacks();
-
+    
     function register_callbacks() {
       $d('input#val_harki').click(function(e) {
         $('input#none').prop('checked', false);
