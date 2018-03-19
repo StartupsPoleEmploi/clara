@@ -4,6 +4,7 @@ module Api
 
       before_action :authenticate_user
 
+      # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         aid_attr = whitelist_one_aid_attr(Aid.find_by(slug: slug_param))
         if aid_attr != {} 
@@ -13,14 +14,17 @@ module Api
         end
       end
 
+      # /api/v1/aids/eligible(.:format)
       def eligible
         render json: eligible_aids_for(processed_asker)        
       end
 
+      # /api/v1/aids/ineligible(.:format)
       def ineligible
         render json: ineligible_aids_for(processed_asker)        
       end
 
+      # /api/v1/aids/uncertain(.:format)
       def uncertain
         render json: uncertain_aids_for(processed_asker)        
       end
