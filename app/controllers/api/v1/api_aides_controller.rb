@@ -1,3 +1,5 @@
+require "uri"
+
 module Api
   module V1
     class ApiAidesController < Api::V1::ApiController
@@ -6,6 +8,7 @@ module Api
 
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
+        track_call("/api/v1/aids/detail/:aid_slug", slug_param)
         aid_attr = whitelist_one_aid_attr(Aid.find_by(slug: slug_param))
         if aid_attr != {} 
           render json: {aid: aid_attr}
@@ -16,16 +19,19 @@ module Api
 
       # /api/v1/aids/eligible(.:format)
       def eligible
+        track_call("/api/v1/aids/eligible", english_asker_params.to_s)
         render json: eligible_aids_for(processed_asker)        
       end
 
       # /api/v1/aids/ineligible(.:format)
       def ineligible
+        track_call("/api/v1/aids/ineligible", english_asker_params.to_s)
         render json: ineligible_aids_for(processed_asker)        
       end
 
       # /api/v1/aids/uncertain(.:format)
       def uncertain
+        track_call("/api/v1/aids/uncertain", english_asker_params.to_s)
         render json: uncertain_aids_for(processed_asker)        
       end
 
@@ -38,6 +44,10 @@ module Api
       end
 
       private
+
+      def track_call(endpoint, values="")
+        TrackCallService.get_instance.for_endpoint(endpoint, values)
+      end
 
       def whitelist_one_aid_attr(aid)
         WhitelistAidService.new.for_a_detailed_aid(aid)
