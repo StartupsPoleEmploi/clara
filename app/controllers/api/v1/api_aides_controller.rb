@@ -36,7 +36,7 @@ module Api
       private
 
       def whitelist_one_aid_attr(aid)
-        WhitelistOneAidService.new.from_aid(aid)
+        WhitelistAidService.new.for_a_detailed_aid(aid)
       end
 
       def processed_asker

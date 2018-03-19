@@ -185,9 +185,17 @@
         }],
         "responses":
         {
-          "405":
+          "200":
           {
-            "description": "Invalid input"
+            "description": "Found"
+          },
+          "401":
+          {
+            "description": "Unauthorized"
+          },
+          "500":
+          {
+            "description": "Internal server error"
           }
         }
       }
@@ -309,9 +317,17 @@
         }],
         "responses":
         {
-          "405":
+          "200":
           {
-            "description": "Invalid input"
+            "description": "Found"
+          },
+          "401":
+          {
+            "description": "Unauthorized"
+          },
+          "500":
+          {
+            "description": "Internal server error"
           }
         }
       }
@@ -433,9 +449,17 @@
         }],
         "responses":
         {
-          "405":
+          "200":
           {
-            "description": "Invalid input"
+            "description": "Found"
+          },
+          "401":
+          {
+            "description": "Unauthorized"
+          },
+          "500":
+          {
+            "description": "Internal server error"
           }
         }
       }
