@@ -21,11 +21,22 @@ class HttpService
   end
 
   def post(scheme, host, port, path, json_params, headers)
+    p '- - - - - - - - - - - - - - post- - - - - - - - - - - - - - - -' 
+    p scheme.inspect
+    p host.inspect
+    p port.inspect
+    p path.inspect
+    p json_params.inspect
+    p headers.inspect
+    p ''
     begin
       Timeout::timeout(2) do
         http = Net::HTTP.new(host, port)
         http.use_ssl = true if scheme == 'https'
-        http.post(path, json_params, headers)
+        res = http.post(path, json_params, headers)
+        p '- - - - - - - - - - - - - - POST res- - - - - - - - - - - - - - - -' 
+        p res.inspect
+        p ''
       end
     rescue Exception => e 
        p "Net::HTTP POST request failed with #{e.message}" unless Rails.env.test?

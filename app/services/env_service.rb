@@ -32,7 +32,7 @@ class EnvService
   end
   
   def ara_google_analytics_collect
-    ENV['ARA_GOOGLE_ANALYTICS_COLLECT'] || 'http://www.google-analytics.com/collect'
+    ENV['ARA_GOOGLE_ANALYTICS_COLLECT'] || 'https://www.google-analytics.com/collect'
   end
   
 end
