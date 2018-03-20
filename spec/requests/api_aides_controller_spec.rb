@@ -43,14 +43,23 @@ describe Api::V1::ApiAidesController, type: :request do
   describe 'Nominal aids/detail/:aid_slug' do
     response_returned = nil
     json_returned = nil
+    track_layer = nil
     before do
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
+      track_layer = spy('HttpService')
+      TrackCallService.set_instance(track_layer)
       get '/api/v1/aids/detail/aide-qpv-et-zrr', {headers: authenticated_header} 
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
+    after do
+      TrackCallService.set_instance(nil)
+    end
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/detail/:aid_slug", "foo@bar.com")
     end
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
@@ -64,11 +73,20 @@ describe Api::V1::ApiAidesController, type: :request do
   describe 'NOT_FOUND aids/detail/:aid_slug' do
     response_returned = nil
     json_returned = nil
+    track_layer = nil
     before do
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
+      track_layer = spy('HttpService')
+      TrackCallService.set_instance(track_layer)
       get '/api/v1/aids/detail/wrong_slug', {headers: authenticated_header} 
       json_returned = JSON.parse(response.body)
       response_returned = response
+    end
+    after do
+      TrackCallService.set_instance(nil)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/detail/:aid_slug", "foo@bar.com")
     end
     it 'Returns a unsuccessful answer' do
       expect(response_returned).not_to be_success
@@ -81,19 +99,27 @@ describe Api::V1::ApiAidesController, type: :request do
   describe 'aids/eligible' do
     response_returned = nil
     json_returned = nil
+    track_layer = nil
     before do
       _stub_qpv_with_INSIDE_QPV
       _stub_zrr_with_INSIDE_ZRR
       _stub_ban_with_correct_values
+      track_layer = spy('HttpService')
+      TrackCallService.set_instance(track_layer)
+
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
       get '/api/v1/aids/eligible', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
     after do
+      TrackCallService.set_instance(nil)
       _unstub_qpv
       _unstub_zrr
       _unstub_ban
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
     end
     it 'Returns a successful answer' do
       expect(response_returned).to be_success
@@ -110,16 +136,21 @@ describe Api::V1::ApiAidesController, type: :request do
   describe 'aids/ineligible' do
     response_returned = nil
     json_returned = nil
+    track_layer = nil
     before do
       _stub_qpv_with_OUTSIDE_QPV # !! outside... thus the aid is NOT eligible
       _stub_zrr_with_INSIDE_ZRR
       _stub_ban_with_correct_values
+      track_layer = spy('HttpService')
+      TrackCallService.set_instance(track_layer)
+      
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
       get '/api/v1/aids/ineligible', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
     after do
+      TrackCallService.set_instance(nil)
       _unstub_qpv
       _unstub_zrr
       _unstub_ban
@@ -130,6 +161,9 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
     end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/ineligible", "foo@bar.com")
+    end
     it 'Returns all ineligible aids' do
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'Aide Qpv ET Zrr'
@@ -139,10 +173,14 @@ describe Api::V1::ApiAidesController, type: :request do
   describe 'aids/uncertain' do
     response_returned = nil
     json_returned = nil
+    track_layer = nil
     before do
       _stub_qpv_with_UNDEFINED_QPV # !! undefined... thus the aid is uncertain
       _stub_zrr_with_INSIDE_ZRR
       _stub_ban_with_correct_values
+      track_layer = spy('HttpService')
+      TrackCallService.set_instance(track_layer)
+      
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
       get '/api/v1/aids/uncertain', { headers: authenticated_header, params: {location_stree_number: "9 BIS", location_label:"Boulevard d'Alsace", location_citycode: "59350"} } 
       json_returned = JSON.parse(response.body)
@@ -158,6 +196,9 @@ describe Api::V1::ApiAidesController, type: :request do
     end
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/uncertain", "foo@bar.com")
     end
     it 'Returns all uncertain aids' do
       expect(json_returned["aids"].size).to eq 1

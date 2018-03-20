@@ -27,4 +27,12 @@ class EnvService
     ENV['ARA_URL_BAN'] || ''
   end
   
+  def ara_google_analytics_id
+    ENV['ARA_GOOGLE_ANALYTICS_ID'] || ''
+  end
+  
+  def ara_google_analytics_collect
+    ENV['ARA_GOOGLE_ANALYTICS_COLLECT'] || 'http://www.google-analytics.com/collect'
+  end
+  
 end
