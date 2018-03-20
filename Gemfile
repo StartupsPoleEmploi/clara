@@ -58,6 +58,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'jasmine'
   gem 'magic_lamp'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :test do
