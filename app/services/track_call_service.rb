@@ -1,7 +1,4 @@
 require 'uri'
-require 'net/http'
-require 'json'
-require 'timeout'
 
 class TrackCallService
 

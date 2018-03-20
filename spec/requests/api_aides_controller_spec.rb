@@ -47,7 +47,6 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       create(:aid, :aid_qpv_and_zrr, name: "Aide Qpv ET Zrr")    
       track_layer = spy('HttpService')
-      track_layer = spy('HttpService')
       TrackCallService.set_instance(track_layer)
       get '/api/v1/aids/detail/aide-qpv-et-zrr', {headers: authenticated_header} 
       json_returned = JSON.parse(response.body)
