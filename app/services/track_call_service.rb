@@ -22,9 +22,9 @@ class TrackCallService
     p ''
     uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)
     json_headers = {"Content-Type" => "application/json", "Accept" => "application/json"}
-    params = {"v" => "1",
+    params = {"v" => 1,
       "tid" => EnvService.get_instance.ara_google_analytics_id,
-      "cid" => "555",
+      "cid" => 555,
       "t" => "event",
       "ec" => "API",
       "ea" => endpoint,
