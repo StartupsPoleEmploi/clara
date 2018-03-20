@@ -21,7 +21,7 @@ gem 'pg'
 gem 'friendly_id', '~> 5.1.0'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'annotate', '2.4.0'
+gem 'annotate'
 gem 'autoprefixer-rails'
 gem 'active_type'
 gem 'bulk_insert'
