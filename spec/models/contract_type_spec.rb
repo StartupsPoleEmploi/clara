@@ -15,7 +15,6 @@ describe ContractType, type: :model do
     it { is_expected.to have_db_column(:business_id) }
   end
 
-
   describe 'validations' do
     describe 'globally' do
       it 'is valid when all fields are different' do
