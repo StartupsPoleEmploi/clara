@@ -20,6 +20,13 @@ describe CustomRuleCheck, type: :model do
     it { is_expected.not_to allow_value('').for(:name) }
     it { is_expected.to allow_value('ma regle custom').for(:name) }    
   end
-  
+
+=begin  describe 'serialize' do
+    it 'should say hsh is a hash' do
+      create(:custom_rule_checks, hsh: {id: 1, name: "regle" })
+      expect(hsh.is_a?(Hash)).to eq(true)
+    end
+  end=end
+
 end
 
