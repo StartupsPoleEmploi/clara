@@ -294,6 +294,8 @@ GEM
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
+    rack-attack (5.1.0)
+      rack
     rack-livereload (0.3.16)
       rack
     rack-test (0.7.0)
@@ -468,6 +470,7 @@ DEPENDENCIES
   pry-remote
   pry-stack_explorer
   puma (~> 3.0)
+  rack-attack
   rack-livereload
   rack_session_access
   rails (~> 5.1)

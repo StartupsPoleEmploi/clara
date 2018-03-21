@@ -207,6 +207,14 @@ describe Api::V1::ApiAidesController, type: :request do
   end
 
   describe 'Unauthenticated' do
+    it 'With too much request, returns a 429' do
+      last_response = nil
+      9.times do
+        get "/api/v1/aids/eligible"
+        last_response = response
+      end
+      expect(last_response.status).to eq(429)
+    end
     it 'Without header, refuses to answer to aids/eligible' do
       get '/api/v1/aids/eligible'
       expect(response).not_to be_success
