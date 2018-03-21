@@ -7,3 +7,16 @@ class Variable < ApplicationRecord
   validates :variable_type, presence: true
 
 end
+
+# == Schema Information
+#
+# Table name: variables
+#
+#  id            :integer         not null, primary key
+#  name          :string
+#  variable_type :integer
+#  created_at    :datetime        not null
+#  updated_at    :datetime        not null
+#  description   :text
+#
+

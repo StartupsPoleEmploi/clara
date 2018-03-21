@@ -54,6 +54,14 @@ $ bin/rails jasmine
 
 Puis ouvrir / rafraîchir le navigateur sur localhost:8888
 
+### Annoter les models 
+
+```
+$ bundle exec annotate --exclude tests,fixtures,factories,serializers
+```
+
+Pour ajouter automatiquement en commentaire le schéma à chaque models
+
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
 Ce statut nous permet d'être soutenu gratuitement. Nous les en remercions.

@@ -18,3 +18,26 @@ class Aid < ApplicationRecord
   end
 
 end
+
+# == Schema Information
+#
+# Table name: aids
+#
+#  id                     :integer         not null, primary key
+#  name                   :string
+#  what                   :text
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  slug                   :string
+#  short_description      :string
+#  how_much               :text
+#  additionnal_conditions :text
+#  how_and_when           :text
+#  limitations            :text
+#  rule_id                :integer(8)
+#  ordre_affichage        :integer         default("0")
+#  contract_type_id       :integer(8)
+#  archived_at            :datetime
+#  last_update            :text
+#
+

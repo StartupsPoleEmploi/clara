@@ -374,6 +374,8 @@ GEM
       faraday (>= 0.7.6, < 1.0)
     sexp_processor (4.10.0)
     shellany (0.0.1)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -429,7 +431,7 @@ DEPENDENCIES
   active_type
   administrate (~> 0.8.1)
   administrate-field-ckeditor (~> 0.0.8)
-  annotate (= 2.4.0)
+  annotate
   autoprefixer-rails
   bcrypt (~> 3.1.7)
   browser
@@ -476,6 +478,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
+  shoulda-matchers (~> 3.1)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
