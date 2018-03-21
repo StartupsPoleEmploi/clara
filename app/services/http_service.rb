@@ -24,19 +24,9 @@ class HttpService
     begin
       Timeout::timeout(2) do
         res = Net::HTTP.post_form(uri, params)
-        p '- - - - - - - - - - - - - - params of post_form- - - - - - - - - - - - - - - -' 
-        p params
-        p ''
-        p '- - - - - - - - - - - - - - post_form res- - - - - - - - - - - - - - - -' 
-        p res.inspect
-        p ''
-        data = JSON.parse(res.body)
-        p '- - - - - - - - - - - - - - post_form res.body parsed- - - - - - - - - - - - - - - -' 
-        p data
-        p ''
       end
     rescue Exception => e 
-     p "Net::HTTP POST request failed with #{e.message}" unless Rails.env.test?
+     p "Net::HTTP post_form request failed with #{e.message}" unless Rails.env.test?
      return "timeout"
    end
  end
