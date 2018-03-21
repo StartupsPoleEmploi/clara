@@ -30,6 +30,11 @@ describe Aid, type: :model do
     end
   end
 
+  describe 'association'  do
+    it { is_expected.to belong_to(:rule)}
+    it { is_expected.to belong_to(:contract_type)}
+  end
+
   describe '.unarchived' do
     it 'Gives the aids that are NOT archived' do
       # given
