@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 describe Aid, type: :model do
+  
+  it "is valid with valid attributes"
+  it "is not valid without a name"
+  it "is not valid without date creation"
+  it "is not valid without slug"
+  it "is not valid without a name"
+  it "is not valid without a description"
+  it "is not valid without a price"
+  it "is not valid without additionnal_conditions"
+  it "is not valid without how and when"
+  it "is not valid without limitations"
+  it "is not valid without rule_id"
+  it "is not valid without ordre_affichage"
+  it "is not valid without contract_type"
+  it "is not valid without archived_at"
 
   describe '.unarchived' do
     it 'Gives the aids that are NOT archived' do
