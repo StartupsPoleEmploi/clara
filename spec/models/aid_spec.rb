@@ -19,6 +19,17 @@ describe Aid, type: :model do
     it { is_expected.to have_db_column(:last_update) }
   end
 
+  describe 'validation' do
+    context 'name' do
+      it { is_expected.not_to allow_value('').for(:name) }
+      it { is_expected.to allow_value('mon aide clara').for(:name) }
+      it 'should have a unique name' do
+        create(:aid, name: 'unique name')
+        should validate_uniqueness_of(:name)
+      end
+    end
+  end
+
   describe '.unarchived' do
     it 'Gives the aids that are NOT archived' do
       # given
