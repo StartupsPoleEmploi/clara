@@ -8,6 +8,7 @@ require 'capybara/rspec'
 require 'rspec/rails'
 require 'capybara/poltergeist'
 require 'support/factory_bot'
+require 'shoulda-matchers'
 
 #custom helpers
 require 'support/admin_helper'

@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 describe Aid, type: :model do
-  
-  it "is valid with valid attributes"
-  it "is not valid without a name"
-  it "is not valid without date creation"
-  it "is not valid without slug"
-  it "is not valid without a name"
-  it "is not valid without a description"
-  it "is not valid without a price"
-  it "is not valid without additionnal_conditions"
-  it "is not valid without how and when"
-  it "is not valid without limitations"
-  it "is not valid without rule_id"
-  it "is not valid without ordre_affichage"
-  it "is not valid without contract_type"
-  it "is not valid without archived_at"
+  describe 'database columns' do
+    it { is_expected.to have_db_column(:id) }
+    it { is_expected.to have_db_column(:name) }
+    it { is_expected.to have_db_column(:what) }
+    it { is_expected.to have_db_column(:created_at) }
+    it { is_expected.to have_db_column(:updated_at) }
+    it { is_expected.to have_db_column(:slug) }
+    it { is_expected.to have_db_column(:short_description) }
+    it { is_expected.to have_db_column(:how_much) }
+    it { is_expected.to have_db_column(:additionnal_conditions) }
+    it { is_expected.to have_db_column(:how_and_when) }
+    it { is_expected.to have_db_column(:rule_id) }
+    it { is_expected.to have_db_column(:ordre_affichage) }
+    it { is_expected.to have_db_column(:contract_type_id) }
+    it { is_expected.to have_db_column(:archived_at) }
+    it { is_expected.to have_db_column(:last_update) }
+  end
 
   describe '.unarchived' do
     it 'Gives the aids that are NOT archived' do
