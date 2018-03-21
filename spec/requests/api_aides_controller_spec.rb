@@ -206,33 +206,59 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
+  describe 'throttling' do
+    before do
+      ENV["THROTTLE_DURING_TEST"] = "true"
+    end
+    after do
+      ENV["THROTTLE_DURING_TEST"] = nil
+      Rails.cache.clear
+    end
+    it 'Must NOT return 429 if NOT too much call' do
+      last_response = nil
+      2.times do
+        get "/api/v1/aids/eligible"
+        last_response = response
+      end
+      expect(last_response.status).not_to eq(429)            
+    end
+    it 'Must return 429 if too much call' do
+      last_response = nil
+      5.times do
+        get "/api/v1/aids/eligible"
+        last_response = response
+      end
+      expect(last_response.status).to eq(429)      
+    end
+  end
+
   describe 'Unauthenticated' do
-    it 'Without header, refuses to answer to aids/eligible' do
+    it 'Without header, refuses to answer to aids/eligible (401)' do
       get '/api/v1/aids/eligible'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'With a bad header, refuses to answer to aids/eligible' do
+    it 'With a bad header, refuses to answer to aids/eligible (401)' do
       get '/api/v1/aids/eligible', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'Without header, refuses to answer to aids/ineligible' do
+    it 'Without header, refuses to answer to aids/ineligible (401)' do
       get '/api/v1/aids/ineligible'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'With a bad header, refuses to answer to aids/ineligible' do
+    it 'With a bad header, refuses to answer to aids/ineligible (401)' do
       get '/api/v1/aids/ineligible', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'Without header, refuses to answer to aids/uncertain' do
+    it 'Without header, refuses to answer to aids/uncertain (401)' do
       get '/api/v1/aids/uncertain'
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
     end
-    it 'With a bad header, refuses to answer to aids/uncertain' do
+    it 'With a bad header, refuses to answer to aids/uncertain (401)' do
       get '/api/v1/aids/uncertain', headers: { "Authorization": "Bearer foobar"}
       expect(response).not_to be_success
       expect(response).to have_http_status(401)
@@ -240,48 +266,48 @@ describe Api::V1::ApiAidesController, type: :request do
   end
 
   def _stub_qpv_with_INSIDE_QPV
-      qpv_layer = instance_double("QpvService")
-      allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-      allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
-      QpvService.set_instance(qpv_layer)
+    qpv_layer = instance_double("QpvService")
+    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
+    allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
+    QpvService.set_instance(qpv_layer)
   end
 
   def _stub_qpv_with_OUTSIDE_QPV
-      qpv_layer = instance_double("QpvService")
-      allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-      allow(qpv_layer).to receive(:isDetailedQPV).and_return("hors_qpv")
-      QpvService.set_instance(qpv_layer)
+    qpv_layer = instance_double("QpvService")
+    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
+    allow(qpv_layer).to receive(:isDetailedQPV).and_return("hors_qpv")
+    QpvService.set_instance(qpv_layer)
   end
 
   def _stub_qpv_with_UNDEFINED_QPV
-      qpv_layer = instance_double("QpvService")
-      allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-      allow(qpv_layer).to receive(:isDetailedQPV).and_return("erreur_injoignable")
-      QpvService.set_instance(qpv_layer)
+    qpv_layer = instance_double("QpvService")
+    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
+    allow(qpv_layer).to receive(:isDetailedQPV).and_return("erreur_injoignable")
+    QpvService.set_instance(qpv_layer)
   end
 
   def _stub_zrr_with_INSIDE_ZRR    
-      zrr_layer = instance_double("ZrrService")
-      allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
-      ZrrService.set_instance(zrr_layer)
+    zrr_layer = instance_double("ZrrService")
+    allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
+    ZrrService.set_instance(zrr_layer)
   end
 
   def _stub_ban_with_correct_values
-      ban_layer = instance_double("BanService")
-      allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
-      BanService.set_instance(ban_layer)    
+    ban_layer = instance_double("BanService")
+    allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
+    BanService.set_instance(ban_layer)    
   end
 
   def _unstub_qpv
-      QpvService.set_instance(nil)
+    QpvService.set_instance(nil)
   end
 
   def _unstub_zrr
-      ZrrService.set_instance(nil)
+    ZrrService.set_instance(nil)
   end
 
   def _unstub_ban
-      BanService.set_instance(nil)
+    BanService.set_instance(nil)
   end
 
 

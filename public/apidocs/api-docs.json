@@ -64,6 +64,10 @@
           "500":
           {
             "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
           }
         }
       }
@@ -196,6 +200,10 @@
           "500":
           {
             "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
           }
         }
       }
@@ -328,6 +336,10 @@
           "500":
           {
             "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
           }
         }
       }
@@ -460,6 +472,10 @@
           "500":
           {
             "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
           }
         }
       }
@@ -500,6 +516,10 @@
           "404":
           {
             "description": "Not found"
+          },
+          "429":
+          {
+            "description": "Too many request"
           }
         }
       }

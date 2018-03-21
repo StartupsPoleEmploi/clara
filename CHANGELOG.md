@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.6.5 (21/03/2018)
+-[#675][FEATURE] API : protéger des attaques
+
+
 ## 7.6.4 (21/03/2018)
 - [DEBUG] API : tracker qui fait quoi
 
