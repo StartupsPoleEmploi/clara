@@ -2,6 +2,20 @@ require 'rails_helper'
 
 describe ContractType, type: :model do
 
+  describe 'database columns' do
+    it { is_expected.to have_db_column(:id) }
+    it { is_expected.to have_db_column(:name) }
+    it { is_expected.to have_db_column(:description) }
+    it { is_expected.to have_db_column(:created_at) }
+    it { is_expected.to have_db_column(:updated_at) }
+    it { is_expected.to have_db_column(:ordre_affichage) }
+    it { is_expected.to have_db_column(:icon) }
+    it { is_expected.to have_db_column(:slug) }
+    it { is_expected.to have_db_column(:category) }
+    it { is_expected.to have_db_column(:business_id) }
+  end
+
+
   describe 'validations' do
     describe 'globally' do
       it 'is valid when all fields are different' do
