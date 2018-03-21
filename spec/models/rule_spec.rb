@@ -2,6 +2,52 @@ require 'rails_helper'
 
 describe Rule, type: :model do
 
+  describe 'database columns' do
+    it { is_expected.to have_db_column(:id) }
+    it { is_expected.to have_db_column(:name) }
+    it { is_expected.to have_db_column(:value_eligible) }
+    it { is_expected.to have_db_column(:operator_type) }
+    it { is_expected.to have_db_column(:composition_type) }
+    it { is_expected.to have_db_column(:variable_id) }
+    it { is_expected.to have_db_column(:created_at) }
+    it { is_expected.to have_db_column(:updated_at) }
+    it { is_expected.to have_db_column(:description) }
+    it { is_expected.to have_db_column(:value_eligible) }
+  end
+
+  describe 'association' do
+    it { is_expected.to belong_to(:variable) }
+    it { is_expected.to have_many(:aids) }
+    it { is_expected.to have_many(:contract_type) }  #Find why fail
+    it { is_expected.to have_many(:custom_rule_checks) }
+    it { is_expected.to have_many(:compound_rules) }
+  end
+
+  describe 'enum' do
+    let(:composition_type_values) do
+      { and_rule: 0, or_rule: 1 }
+    end
+    subject { described_class.new }
+    it 'has valid a composition_type' do 
+      composition_type_values.each do |type, value|
+        subject.composition_type = value
+        subject.save 
+        expect(subject.composition_type).to eql(type.to_s)
+      end 
+    end 
+  end
+
+  describe 'validation' do
+    context 'name' do
+      it { is_expected.not_to allow_value('').for(:name) }
+      it { is_expected.to allow_value('ma regle').for(:name) }
+      it 'should have a unique name' do
+        create(:rule, name: 'unique name')
+        should validate_uniqueness_of(:name)
+      end
+    end
+  end
+
   describe '.calculate' do
     it 'by default return false' do
       # given
