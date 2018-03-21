@@ -13,14 +13,8 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  # if 
-    # p "eeeeeuh"
-    # p ENV["THROTTLE_DURING_TEST"]
-    throttle('req/ip', limit: 3, period: 1.seconds) do |req|
-      p "should_throttle..."
-      p ENV["THROTTLE_DURING_TEST"]
-      req.ip if (!Rails.env.test?) || (Rails.env.test? && ENV["THROTTLE_DURING_TEST"])
-    end
-  # end
+  throttle('req/ip', limit: 3, period: 1.seconds) do |req|
+    req.ip if (!Rails.env.test?) || (Rails.env.test? && ENV["THROTTLE_DURING_TEST"])
+  end
 
 end
