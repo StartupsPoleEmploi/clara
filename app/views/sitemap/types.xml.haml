@@ -1,8 +1,7 @@
-- v = view_object(:sitemap_types, {request: request, types: @types})
 !!! XML
 %urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
-  - v.all_types.each do |type|
+  - @types.each do |type|
     %url
-      %loc=v.generated_type_url(type["slug"])
+      %loc=type_url(type["slug"])
       %changefreq weekly
       %priority 1.0
