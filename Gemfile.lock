@@ -106,7 +106,7 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    crass (1.0.2)
+    crass (1.0.3)
     database_cleaner (1.6.2)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -220,7 +220,7 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
     lodash-rails (4.17.4)
       railties (>= 3.1)
-    loofah (2.1.1)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.12)
@@ -247,7 +247,7 @@ GEM
     nenv (0.3.0)
     newrelic_rpm (4.7.1.340)
     nio4r (2.1.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -457,6 +457,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   lodash-rails
+  loofah (= 2.2.1)
   magic_lamp
   mina
   mina-multistage

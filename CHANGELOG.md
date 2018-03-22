@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.6.6 (22/03/2018)
+-[#677][FEATURE] API : dépréciation de "harki", "ex_invict", "international_protection"
+
+
 ## 7.6.5 (21/03/2018)
 -[#675][FEATURE] API : protéger des attaques
 
