@@ -1,13 +1,11 @@
-- v = view_object(:sitemap_aides, {request: request, aides: @aids})
-
 !!! XML
 %urlset{:xmlns => "http://www.sitemaps.org/schemas/sitemap/0.9"}
   %url
-    %loc=v.generated_aides_sitemap_url
+    %loc=aides_sitemap_url
     %changefreq weekly
     %priority 1.0
-  - v.all_aides.each do |aid|
+  - @aids.each do |aid|
     %url
-      %loc=v.generated_detail_url(aid["slug"])
+      %loc=detail_url(aid["slug"])
       %changefreq weekly
       %priority 1.0

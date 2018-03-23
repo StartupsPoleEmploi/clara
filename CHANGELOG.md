@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 7.6.7 (22/03/2018)
+-[#656][TECH] Supprimer les helpers SSL
+
+
 ## 7.6.6 (22/03/2018)
 -[#677][FEATURE] API : dépréciation de "harki", "ex_invict", "international_protection"
 
