@@ -30,6 +30,7 @@
 //= require ./button_next
 //= require ./print
 //= require ./welcome_index
+//= require ./stats_index
 //= require ./address_questions
 //= require ./allocation_questions
 //= require ./age_questions
