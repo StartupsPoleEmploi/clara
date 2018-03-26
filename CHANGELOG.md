@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.0.0 (26/03/2018)
+-[#678][FEATURE] Création de la page /stats
+
+
 ## 7.6.7 (22/03/2018)
 -[#656][TECH] Supprimer les helpers SSL
 
