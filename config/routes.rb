@@ -10,6 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
+
+  namespace :stats do
+    get '/index' => 'stats#index'
+  end
+
+
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
