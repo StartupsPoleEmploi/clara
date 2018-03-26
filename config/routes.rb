@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       delete 'delete_simulation', on: :member
     end
     controller 'pages' do
+      get 'stats'
       get 'rename'
       get 'archive'
       get 'loadrefdata'
