@@ -5,15 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    email = request.env["omniauth.auth"]["info"]["email"]
+    token = extract_token_from(request)
+    email = extract_email_from(request)
     if ENV['ARA_AUTH_ADMIN_USERS'] && ENV['ARA_AUTH_ADMIN_USERS'].split(',').include?(email)
       reset_session
       session[:user_email] = email
-      begin
-        session[:user_token] = request.env["omniauth.auth"]["credentials"]["token"]
-      rescue Exception => e
-        session[:user_token] = nil
-      end
+      session[:user_token] = token
       flash[:success] = "Bienvenue #{email} !"
       redirect_to admin_root_path
     else
@@ -30,6 +27,27 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to root_url, error: 'Erreur d\'authentification : #{params[:message].humanize}'
+  end
+
+  private
+  def extract_token_from(the_request)
+    res = ""
+    begin
+      res = the_request.env["omniauth.auth"]["credentials"]["token"]
+    rescue Exception => e
+      res = ""
+    end
+    res
+  end
+
+  def extract_email_from(the_request)
+    res = ""
+    begin
+      res = the_request.env["omniauth.auth"]["info"]["email"]
+    rescue Exception => e
+      res = ""
+    end
+    res
   end
 
 end
