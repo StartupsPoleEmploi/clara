@@ -5,13 +5,9 @@ module Admin
 
     def stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
-      token = session[:user_token]
       analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
-      p '- - - - - - - - - - - - - - token- - - - - - - - - - - - - - - -' 
-      p token.inspect
-      p ''
 
-      date_range = Google::Apis::AnalyticsreportingV4::DateRange.new(start_date: '7DaysAgo', end_date: 'today')
+      date_range = Google::Apis::AnalyticsreportingV4::DateRange.new(start_date: '2018-01-01', end_date: 'today')
       metric = Google::Apis::AnalyticsreportingV4::Metric.new(expression: 'ga:sessions', alias: 'sessions')
       dimension = Google::Apis::AnalyticsreportingV4::Dimension.new(name: 'ga:browser')
 
@@ -19,7 +15,6 @@ module Admin
         report_requests: [Google::Apis::AnalyticsreportingV4::ReportRequest.new(
           view_id: '151149036',
            metrics: [metric],
-           dimensions: [dimension],
            date_ranges: [date_range]
         )]
       ) # thanks to @9mm: https://github.com/google/google-api-ruby-client/issues/489
@@ -27,7 +22,7 @@ module Admin
       response = analytics.batch_get_reports(request)
       rerere = response.reports
       p '- - - - - - - - - - - - - - rerere- - - - - - - - - - - - - - - -' 
-      p rerere.inspect
+      p rerere.to_json.inspect
       p ''
     end
 
