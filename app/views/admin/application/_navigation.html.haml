@@ -2,7 +2,7 @@
   %div{style: 'margin-bottom: 1rem; padding-right: 0.6rem;'}
     <strong>#{current_user}</strong>
     %br
-    = link_to 'Se déconnecter', signout_path unless Rails.env.development?
+    = link_to 'Se déconnecter', signout_path
   - Administrate::Namespace.new(namespace).resources.each do |resource|
     - next if resource.resource == 'pages'
     = link_to(display_resource_name(resource),[namespace, resource.path], class: "navigation__link navigation__link--#{nav_link_state(resource)}")

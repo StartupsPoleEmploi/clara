@@ -19,7 +19,10 @@ module Admin
       ) # thanks to @9mm: https://github.com/google/google-api-ruby-client/issues/489
 
       response = analytics.batch_get_reports(request)
-      response.reports
+      rerere = response.reports
+      p '- - - - - - - - - - - - - - rerere- - - - - - - - - - - - - - - -' 
+      p rerere.inspect
+      p ''
     end
 
     def rename
