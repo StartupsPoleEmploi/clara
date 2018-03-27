@@ -10,6 +10,13 @@ Rails.application.routes.draw do
     end
   end
 
+
+  namespace :stats do
+    root 'stats#index'
+    get '/index' => 'stats#index'
+  end
+
+
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
@@ -23,6 +30,7 @@ Rails.application.routes.draw do
       delete 'delete_simulation', on: :member
     end
     controller 'pages' do
+      get 'stats'
       get 'rename'
       get 'archive'
       get 'loadrefdata'
@@ -30,6 +38,7 @@ Rails.application.routes.draw do
       post 'archive_all_aids'
       post 'unarchive_all_aids'
       post 'load_ref_data'
+      post 'load_stats'
     end
     resources :variables
     resources :contract_types

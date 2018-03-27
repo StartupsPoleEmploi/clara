@@ -5,18 +5,22 @@ describe 'Footer view' do
 
 
     describe 'namespace' do
-      it 'Should render with correct namespace', type: :view do
+      it 'Should not render without request data', type: :view do
         render partial: 'shared/footer'
+        expect(rendered).not_to have_css('.c-footer')
+      end      
+      it 'Should render with correct namespace if request is provided', type: :view do
+        render partial: 'shared/footer', locals: {the_request: for_root_url}
         expect(rendered).to have_css('.c-footer')
       end      
     end
     describe 'simple links' do
       it 'Should render with link to terms and conditions', type: :view do
-        render partial: 'shared/footer'
+        render partial: 'shared/footer', locals: {the_request: for_root_url}
         expect(rendered).to have_link("Conditions générales d'utilisation", href: "/conditions-generales-d-utilisation")
       end      
       it 'Should render with link to pole-emploi', type: :view do
-        render partial: 'shared/footer'
+        render partial: 'shared/footer', locals: {the_request: for_root_url}
         expect(rendered).to have_link("propulsé par POLE EMPLOI", href: "https://www.pole-emploi.fr/")
       end      
     end

@@ -11,6 +11,10 @@ class Footer < ViewObject
     @aides
   end
 
+  def should_display_footer
+    @the_request.respond_to?('path') && !@the_request.path.include?("/stats")
+  end
+
   def current_mode
     @the_request.path == root_path ? 'home' : 'not_home'
   end

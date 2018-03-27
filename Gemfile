@@ -50,6 +50,7 @@ gem 'fuubar'
 gem 'dotenv-rails'
 gem 'knock'
 gem 'bcrypt', '~> 3.1.7'
+gem 'google-api-client'
 
 group :development, :test do
   gem 'byebug', platform: :mri
