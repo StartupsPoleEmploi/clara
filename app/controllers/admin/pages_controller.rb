@@ -17,7 +17,7 @@ module Admin
 
       request = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new(
         report_requests: [Google::Apis::AnalyticsreportingV4::ReportRequest.new(
-          view_id: 'VIEW_ID_FROM_ANALYTICS_PROPERTY',
+          view_id: '151149036',
            metrics: [metric],
            dimensions: [dimension],
            date_ranges: [date_range]
