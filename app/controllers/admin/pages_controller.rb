@@ -25,6 +25,13 @@ module Admin
       p '- - - - - - - - - - - - - - rerere- - - - - - - - - - - - - - - -' 
       p rerere.to_json.inspect
       p ''
+
+      Stat.create unless Stat.first
+      s = Stat.first
+      s.ga = rerere
+      s.save
+
+
     end
 
     def rename
