@@ -1,9 +1,15 @@
+require 'google/apis/analyticsreporting_v4'
+
 module Admin
   class PagesController < Admin::ApplicationController
 
     def stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
-      analytics.authorization = current_user.token # See: https://github.com/zquestz/omniauth-google-oauth2
+      token = session[:user_token]
+      analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
+      p '- - - - - - - - - - - - - - token- - - - - - - - - - - - - - - -' 
+      p token.inspect
+      p ''
 
       date_range = Google::Apis::AnalyticsreportingV4::DateRange.new(start_date: '7DaysAgo', end_date: 'today')
       metric = Google::Apis::AnalyticsreportingV4::Metric.new(expression: 'ga:sessions', alias: 'sessions')
