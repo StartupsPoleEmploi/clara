@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     if ENV['ARA_AUTH_ADMIN_USERS'] && ENV['ARA_AUTH_ADMIN_USERS'].split(',').include?(email)
       reset_session
       session[:user_email] = email
-      session[:user_token] = request.env["omniauth.auth"]["credentials"]["token"]
+      begin
+        session[:user_token] = request.env["omniauth.auth"]["credentials"]["token"]
+      rescue Exception => e
+        session[:user_token] = nil
+      end
       flash[:success] = "Bienvenue #{email} !"
       redirect_to admin_root_path
     else
