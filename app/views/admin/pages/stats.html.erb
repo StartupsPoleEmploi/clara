@@ -1,3 +1,9 @@
 <div style="margin-top: 2rem;">
-Les stats
+Charger Les stats
+
+<%= form_with url: admin_load_stats_path, id: 'admin_load_stats_form' do |form| %>
+  <%= form.submit 'Charger les stats google analytics'%>
+<% end %>
+
+
 </div>

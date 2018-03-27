@@ -4,6 +4,18 @@ module Admin
   class PagesController < Admin::ApplicationController
 
     def stats
+    end
+
+    def rename
+    end
+
+    def archive
+    end
+
+    def loadrefdata
+    end
+
+    def load_stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
       analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
 
@@ -28,15 +40,6 @@ module Admin
       s.save
       # s.ga[0]["data"]["rows"] to access data rows
       # s.ga[0]["data"]["totals"][0]["values"][0] to access number of sessions
-    end
-
-    def rename
-    end
-
-    def archive
-    end
-
-    def loadrefdata
     end
 
     def load_ref_data
