@@ -60,10 +60,9 @@
 .c-detail-void {
   border-radius: $tiny-value;
   padding-top: $small-plus-value;
+  padding-right: $small-plus-value;
+  padding-left: $small-plus-value;
   padding-bottom: $small-plus-value;
-  padding-right: $medium-plus-value;
-  padding-left: $small-value;
-  margin-right: $o-gutter;
 }
 
 .c-detail-void__line {

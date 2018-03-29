@@ -11,7 +11,7 @@ feature 'admin' do
 
   describe 'Visit all the admin models' do
     scenario 'with an authorized user' do
-      OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'pouet@pouet.com'}})
+      OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'pouet@pouet.com'}, credentials: {token: 'tolkien'}})
       create(:variable, :age)
 
       visit admin_root_path
@@ -55,7 +55,7 @@ feature 'admin' do
       expect(current_path).to eq root_path
     end
     scenario 'with unauthorized user' do 
-      OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'wrong@pouet.com'}})
+      OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'wrong@pouet.com'}, credentials: {token: 'tolkien'}})
       visit admin_root_path
       expect(current_path).to eq root_path
     end

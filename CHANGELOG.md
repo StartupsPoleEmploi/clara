@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.0.1 (26/03/2018)
+-[#655][FEATURE] SEO - phrase + CTA sur les pages du footer
+
+
 ## 8.0.0 (26/03/2018)
 -[#678][FEATURE] Création de la page /stats
 
