@@ -1,15 +1,19 @@
 # ARA Changelog
 
 
-## 8.0.1 (26/03/2018)
--[#655][FEATURE] SEO - phrase + CTA sur les pages du footer
+## 8.1.0 (29/03/2018)
+-[#684][FEATURE] blue link by default
+
+
+## 8.0.1 (27/03/2018)
+-[#655][BUG] SEO - phrase + CTA sur les pages du footer
 
 
 ## 8.0.0 (26/03/2018)
 -[#678][FEATURE] Création de la page /stats
 
 
-## 7.6.7 (22/03/2018)
+## 7.6.7 (26/03/2018)
 -[#656][TECH] Supprimer les helpers SSL
 
 
