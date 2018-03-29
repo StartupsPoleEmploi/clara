@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
-## 8.0.1 (26/03/2018)
--[#655][FEATURE] SEO - phrase + CTA sur les pages du footer
+## 8.1.0 (29/03/2018)
+-[#684][FEATURE] blue link by default
+
+
+## 8.0.1 (27/03/2018)
+-[#655][BUG] SEO - phrase + CTA sur les pages du footer
 
 
 ## 8.0.0 (26/03/2018)
