@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.2.1 (30/03/2018)
+-[#692][BUG] recentrage CTA
+
+
 ## 8.2.0 (30/03/2018)
 -[#690][FEATURE] home - retirer les nombres
 
