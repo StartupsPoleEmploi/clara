@@ -4,7 +4,6 @@ class WelcomeController < ApplicationController
     service = ContractTypeService.new
     clean_asker_params
     hydrate_view({
-      nb_of_active_aids:  Aid.activated.count,
       type_aides:         service.hashify_category_aides,
       type_dispositifs:   service.hashify_category_dispositifs,
       slug_of_creation:   service.slug_of_creation_reprise_entreprise,

@@ -3,7 +3,6 @@ require 'spec_helper'
 
 feature 'HomeSpec' do 
 
-
   scenario 'Displays the footer through c-footer component' do
     visit root_path
     expect(page).to have_css('.c-footer')
@@ -12,11 +11,6 @@ feature 'HomeSpec' do
   scenario 'Display examples through c-newhomeexample component' do
     visit root_path
     expect(page).to have_css('.c-newhomeexample')
-  end
-
-  scenario 'Display numbers through c-newhomenumber component' do
-    visit root_path
-    expect(page).to have_css('.c-newhomenumber')
   end
 
   scenario 'Display testimony through c-newhomeuser component' do
@@ -35,7 +29,5 @@ feature 'HomeSpec' do
     click_on('home-recall')
     expect(current_path).to eq new_inscription_question_path
   end
-
-
 
 end
