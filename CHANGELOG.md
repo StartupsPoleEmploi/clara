@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.1.1 (30/03/2018)
+-[#690][BUG] admin - rendre la création de règles insensible aux accents
+
+
 ## 8.1.0 (29/03/2018)
 -[#684][FEATURE] blue link by default
 
