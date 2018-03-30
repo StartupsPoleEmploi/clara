@@ -8,10 +8,10 @@ $gl-gutter:    1rem !default; // Total left + right
 $gl-gutter-vertical:    1rem !default;
 
 $gl-mq-list: (
-  lg: "screen and (max-width: 80em)", // max 1280px
-  md: "screen and (max-width: 64em)", // max 1024px
+  lg: "screen and (max-width: 75em)", // max 1200px
+  md: "screen and (max-width: 62em)", // max 992px
   sm: "screen and (max-width: 48em)", // max 768px
-  xs: "screen and (max-width: 35.5em)" // up to 568px
+  xs: "screen and (max-width: 34em)" // up to 544px
 ) !default;
 
 
