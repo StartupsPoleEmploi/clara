@@ -426,6 +426,12 @@ describe Rule, type: :model do
           it { expect(subject).to eq "eligible" }
         end
       end
+      context 'starts_with String, case accent and non-alphanumeric, "eligible"' do
+        let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'â-ss', variable: variable }
+        context 'ASS_AER_ATA_APS_AS-FNE starts_with â-ss' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
       context 'starts_with String, "ineligible"' do
         let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'XXX', variable: variable }
         context 'ASS_AER_ATA_APS_AS-FNE starts_with XXX' do
