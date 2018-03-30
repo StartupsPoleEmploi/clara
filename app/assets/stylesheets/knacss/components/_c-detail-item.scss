@@ -15,6 +15,12 @@ h3.c-detail-item__title {
 .c-detail-list {
   margin-left: $o-gutter;
   margin-right: $medium-value;
+  a {
+    color: blue;
+  }
+  a:hover {
+    color: darkblue;
+  }
 }
 
 // "md" value of gridlex vars
