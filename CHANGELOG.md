@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.2.0 (30/03/2018)
+-[#690][FEATURE] home - retirer les nombres
+
+
 ## 8.1.1 (30/03/2018)
 -[#690][BUG] admin - rendre la création de règles insensible aux accents
 
