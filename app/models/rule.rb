@@ -136,7 +136,9 @@ class Rule < ApplicationRecord
       when 'less_than'
         typed_criterion_value < typed_user_value
       when 'starts_with'
-        typed_criterion_value.to_s.downcase.starts_with?(typed_user_value.to_s.downcase)
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_user_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a.starts_with?(b)
       else
         false
     end
