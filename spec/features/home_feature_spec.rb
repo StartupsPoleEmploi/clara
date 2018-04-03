@@ -13,11 +13,6 @@ feature 'HomeSpec' do
     expect(page).to have_css('.c-newhomeexample')
   end
 
-  scenario 'Display testimony through c-newhomeuser component' do
-    visit root_path
-    expect(page).to have_css('.c-newhomeuser')
-  end
-
   scenario 'Display recall through c-newhomerecall component' do
     visit root_path
     expect(page).to have_css('.c-newhomerecall')
