@@ -17,14 +17,15 @@ describe Variable, type: :model do
     context 'variable_type' do
       it { is_expected.not_to allow_value('').for(:variable_type) }
       it { is_expected.to allow_value('ma variable_type').for(:variable_type) }
+      it { is_expected.to allow_value(4).for(:variable_type) }
     end
   end
   describe 'enum' do
     it 'variable_type should be an integer or string' do
       create(:variable, variable_type: 'string')
       create(:variable, variable_type: 4)
-      expect(variable_type.is_a?(Integer)).to eq(true)
-      expect(variable_type.is_a?(String)).to eq(true)
+      expect(variable_type.is_a? Integer).to eq true
+      expect(variable_type.is_a? String).to eq true
     end
   end
 end
