@@ -26,7 +26,8 @@ describe CustomRuleCheck, type: :model do
       create(:custom_rule_checks, hsh: {id: 1, name: "regle" })
       expect(hsh.is_a?(Hash)).to eq(true)
     end
-  end=end
+  end
+=end
 
 end
 
