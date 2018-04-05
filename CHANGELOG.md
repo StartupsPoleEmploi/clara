@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.3.1 (04/04/2018)
+-[#699][BUG] suite de test lente.
+
+
 ## 8.3.0 (03/04/2018)
 -[#679][FEATURE] suppression des témoignages sur la home.
 

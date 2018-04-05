@@ -4,6 +4,7 @@ Rails.application.configure do
  
   config.middleware.use RackSessionAccess::Middleware
 
+  config.assets.compile = false
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -40,7 +41,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr.
-  config.active_support.deprecation = :stderr
+  config.active_support.deprecation = :log
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

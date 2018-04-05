@@ -43,7 +43,7 @@ Pour ne pas avoir besoin de rafraîchir manuellement le navigateur à chaque cha
 ### Lancement des tests unitaires back
 
 ```
-$ rspec
+$ bundle exec spring rspec
 ```
 
 ### Lancement des tests unitaires front
