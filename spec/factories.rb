@@ -16,6 +16,7 @@ FactoryBot.define do
 
     trait :harki do 
       name 'v_harki'
+      description 'oui,non'
       variable_type :string
     end
 
@@ -27,6 +28,11 @@ FactoryBot.define do
 
     trait :qpv do 
       name 'v_qpv'
+      variable_type :string
+    end
+
+    trait :location_state do 
+      name 'v_location_state'
       variable_type :string
     end
 
@@ -75,6 +81,13 @@ FactoryBot.define do
       operator_type :eq
       value_eligible 'en_qpv'
       value_ineligible 'hors_qpv'
+    end
+
+    trait :be_in_guyane do
+      name 'be_in_guyane' 
+      association :variable, :location_state
+      operator_type :starts_with
+      value_eligible 'guyane'
     end
 
     trait :be_in_zrr do

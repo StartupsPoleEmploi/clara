@@ -9,7 +9,7 @@ class RuleCheckService
       elsif rule.variable.variable_type == 'string' && rule.operator_type == "starts_with"
         state = 'ok' if rule.value_eligible != ''
       elsif rule.variable.variable_type == 'string' && (rule.operator_type == "eq" || rule.operator_type == "not_equal")
-        array_of_possibilities = rule.variable.description.split(',').map {|e| e.strip}
+        array_of_possibilities = extract_descriptions(rule)
         state = 'ok' if array_of_possibilities.include?(rule.value_eligible)
       else
         state='error'
@@ -28,6 +28,15 @@ class RuleCheckService
     end
   end
 
-
+private
+  def extract_descriptions(rule)
+    res = []
+    begin
+      res = rule.variable.description.split(',').map {|e| e.strip}
+    rescue Exception => e
+      res = []
+    end
+    res
+  end
   
 end
