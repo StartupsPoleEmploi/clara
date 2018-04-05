@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.3.2 (05/04/2018)
+-[#700][BUG] rulecheck bug
+
+
 ## 8.3.1 (04/04/2018)
 -[#699][BUG] suite de test lente.
 
