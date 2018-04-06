@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.4.0 (06/04/2018)
+-[#559][FEATURE] page de résultats imprimable
+
+
 ## 8.3.2 (05/04/2018)
 -[#700][BUG] rulecheck bug
 
