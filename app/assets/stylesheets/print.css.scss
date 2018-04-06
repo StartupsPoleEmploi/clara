@@ -1,3 +1,23 @@
 .js-printer, footer {
   display: none;
 }
+.c-expander, .c-result-aid__cta {
+  display: none;
+}
+
+.c-result-line__action {
+  display: none;
+}
+
+.c-result-aid__text {
+  display: inherit;
+  // flex-direction: inherit;
+  // margin-right: inherit;
+  justify-content:inherit;
+  text-align:left;
+}
+
+.c-result-aid {
+  display: inherit;
+  align-items: center;
+}
