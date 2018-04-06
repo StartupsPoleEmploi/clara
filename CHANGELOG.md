@@ -10,11 +10,11 @@
 
 
 ## 8.3.1 (04/04/2018)
--[#699][BUG] suite de test lente.
+-[#699][BUG] suite de test lente
 
 
 ## 8.3.0 (03/04/2018)
--[#679][FEATURE] suppression des témoignages sur la home.
+-[#679][FEATURE] suppression des témoignages sur la home
 
 
 ## 8.2.1 (30/03/2018)
