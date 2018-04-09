@@ -32,7 +32,7 @@ describe "Empty asker" do it_should_behave_like "a field of the asker situation"
 describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'address',                css_text: 'indisponible'} end
 describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'zrr',                    css_text: 'indisponible'} end
 describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'qpv',                    css_text: 'indisponible'} end
-describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'harki',                  css_text: 'indisponible'} end
+describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'spectacle',                  css_text: 'indisponible'} end
 describe "Empty asker" do it_should_behave_like "a field of the asker situation", {asker: "empty", css_suffix: 'handicap',               css_text: 'indisponible'} end
 
 describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'inscription',        css_text: 'plus d\'un an'} end
@@ -44,7 +44,7 @@ describe "Nominal asker" do it_should_behave_like "a field of the asker situatio
 describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'address',            css_text: '45 Rue du Gas 79160 Villiers-en-Plaine'} end
 describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'zrr',                css_text: 'oui'} end
 describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'qpv',                css_text: 'oui'} end
-describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'harki',              css_text: 'non'} end
+describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'spectacle',              css_text: 'non'} end
 describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'handicap',           css_text: 'non'} end
 
 
