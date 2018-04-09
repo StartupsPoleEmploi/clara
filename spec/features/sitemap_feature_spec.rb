@@ -21,7 +21,7 @@ feature 'Sitemap' do
     visit aides_sitemap_path
     expect(page).not_to have_content("http://www.example.com/aides/detail/ze_aide_1")
     expect(page).not_to have_content("http://www.example.com/aides/detail/ze_aide_2")
-    create(:aid, :aid_harki, name: 'ze_aide_1')
+    create(:aid, :aid_spectacle, name: 'ze_aide_1')
     create(:aid, :aid_agepi, name: 'ze_aide_2')
     visit aides_sitemap_path
     expect(page).to have_content("http://www.example.com/aides/detail/ze_aide_1")

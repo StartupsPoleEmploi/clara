@@ -5,7 +5,7 @@ describe Aid, type: :model do
   describe '.unarchived' do
     it 'Gives the aids that are NOT archived' do
       # given
-      sut = create(:aid, :aid_harki, name: 'aaa')
+      sut = create(:aid, :aid_spectacle, name: 'aaa')
       # when
       is_unarchived = Aid.unarchived.where(:id => sut.id).present? 
       # then
@@ -13,7 +13,7 @@ describe Aid, type: :model do
     end
     it 'DO NOT gives the aids that are archived' do
       # given
-      sut = create(:aid, :aid_harki, name: 'bbb', archived_at: Date.new)
+      sut = create(:aid, :aid_spectacle, name: 'bbb', archived_at: Date.new)
       # when
       is_unarchived = Aid.unarchived.where(:id => sut.id).present? 
       # then
@@ -23,7 +23,7 @@ describe Aid, type: :model do
   describe '.linked_to_rule' do
     it 'Gives the aids that linked to a root rule' do
       # given
-      sut = create(:aid, :aid_harki, name: 'ccc')
+      sut = create(:aid, :aid_spectacle, name: 'ccc')
       # when
       is_linked_to_a_root_rule = Aid.linked_to_rule.where(:id => sut.id).present? 
       # then
@@ -41,7 +41,7 @@ describe Aid, type: :model do
   describe '.activated' do
     it 'Should return true if the aid is both unarchived, and linked to a root rule' do
       # given
-      sut = create(:aid, :aid_harki, name: 'eee')
+      sut = create(:aid, :aid_spectacle, name: 'eee')
       expect(sut.archived_at).to eq(nil)
       expect(sut.rule).not_to eq(nil)
       # when
@@ -51,7 +51,7 @@ describe Aid, type: :model do
     end
     it 'Should return false if the aid is NOT unarchived, and linked to a root rule' do
       # given
-      sut = create(:aid, :aid_harki, name: 'fff', archived_at: Date.new)
+      sut = create(:aid, :aid_spectacle, name: 'fff', archived_at: Date.new)
       expect(sut.archived_at).not_to eq(nil)
       expect(sut.rule).not_to eq(nil)
       # when

@@ -25,7 +25,7 @@ describe JustificationService do
 
     it 'should return the root rule inside an array when it is a simple rule' do
       # given
-      create(:aid, :aid_harki)
+      create(:aid, :aid_spectacle)
       the_service = JustificationService.new(Aid.last)
       the_rule = Rule.last
 
@@ -81,7 +81,7 @@ describe JustificationService do
     end
     it 'should return "one" if the root condition is a simple rule' do
       # given
-      create(:aid, :aid_harki)
+      create(:aid, :aid_spectacle)
       the_service = JustificationService.new(Aid.last)
       # when
       result = the_service.root_condition

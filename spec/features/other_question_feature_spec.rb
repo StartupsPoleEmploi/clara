@@ -14,9 +14,7 @@ RSpec.feature 'other question' do
 
   end
 
-  ocbHarki = nil
-  ocbDetenu = nil
-  ocbPi = nil
+  ocbSpectacle = nil
   ocbHandicap = nil
   ocbNone = nil
   all_value_inputs = nil
@@ -26,10 +24,10 @@ RSpec.feature 'other question' do
   before(:each) do
     visit new_other_question_path
 
-    ocbHarki = Ocb.new('val_spectacle', method(:find))
+    ocbSpectacle = Ocb.new('val_spectacle', method(:find))
     ocbHandicap = Ocb.new('val_handicap', method(:find))
     ocbNone = Ocb.new('none', method(:find))
-    all_value_inputs = [ocbHarki, ocbDetenu, ocbPi, ocbHandicap]
+    all_value_inputs = [ocbSpectacle, ocbDetenu, ocbPi, ocbHandicap]
     all_inputs = all_value_inputs + [ocbNone]
   end
 
@@ -93,7 +91,7 @@ RSpec.feature 'other question' do
     visit new_other_question_path
     
     # then
-    expect_all_unchecked([ocbHarki, ocbHandicap, ocbNone].map(&:element))
+    expect_all_unchecked([ocbSpectacle, ocbHandicap, ocbNone].map(&:element))
     expect_all_checked([ocbDetenu, ocbPi].map(&:element))
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
