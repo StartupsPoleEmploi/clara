@@ -14,9 +14,7 @@
         %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
        
-          = render 'shared/other_form_line', {id: 'val_harki',    current_val: @other.val_harki,    current_text: 'Enfant / petit enfant de harkis'} 
-          = render 'shared/other_form_line', {id: 'val_detenu',   current_val: @other.val_detenu,   current_text: 'Ex-détenu(e), prévenu(e), condamné(e) ou bénéficiant d\'un aménagement de peine'} 
-          = render 'shared/other_form_line', {id: 'val_pi',       current_val: @other.val_handicap, current_text: 'Bénéficiaire d\'une protection internationale'} 
+          = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien(ne) du spectacle'} 
           = render 'shared/other_form_line', {id: 'val_handicap', current_val: @other.val_handicap, current_text: 'Bénéficiaire de l\'obligation d\'emploi (reconnu(e) en situation de handicap)'} 
           = render 'shared/other_form_line', {id: 'none',         current_val: @other.none,         current_text: 'Je ne suis dans aucune de ces situations'} 
 

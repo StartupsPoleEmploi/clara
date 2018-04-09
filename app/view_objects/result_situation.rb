@@ -9,8 +9,8 @@ class ResultSituation < ViewObject
     @asker[:v_handicap] || "indisponible"
   end
 
-  def harki
-    @asker[:v_harki] || "indisponible"
+  def spectacle
+    @asker[:v_spectacle] || "indisponible"
   end
 
   def detenu
