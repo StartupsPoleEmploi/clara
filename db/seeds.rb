@@ -5,6 +5,8 @@ variable_list = [
   ["v_category",                  :string, "cat_12345,autres_cat"],
   ["v_diplome",                   :string, "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5"],
   ["v_duree_d_inscription",       :string, "plus_d_un_an,moins_d_un_an,non_inscrit"],
+  ["v_harki",                     :string, "oui,non"],
+  ["v_protection_internationale", :string, "oui,non"],
   ["v_handicap",                  :string, "oui,non"],
   ["v_spectacle",                 :string, "oui,non"],
   ["v_location_city",             :string, ""],
