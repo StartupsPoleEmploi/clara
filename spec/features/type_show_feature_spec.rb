@@ -10,7 +10,7 @@ feature 'A show type page' do
       if !seen
         @contract_type = create(:contract_type, :contract_type_amob)
         create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: @contract_type)
-        create(:aid, :aid_not_harki, name: "aid_not_harki_1", contract_type: @contract_type)
+        create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: @contract_type)
         visit type_path(@contract_type.slug)
         seen = Nokogiri::HTML(page.html)
       end
@@ -24,8 +24,8 @@ feature 'A show type page' do
     it 'Should have 2 aids' do
       should_have seen, 2, ".c-result-aid"
     end
-    it "Title of first active aid must be aid_not_harki_1" do
-      should_have seen, "1st", ".c-result-aid__title", :with_text, "aid_not_harki_1"
+    it "Title of first active aid must be aid_not_spectacle_1" do
+      should_have seen, "1st", ".c-result-aid__title", :with_text, "aid_not_spectacle_1"
     end
     it "Title of second active aid must be aid_spectacle_1" do
       should_have seen, "2nd", ".c-result-aid__title", :with_text, "aid_spectacle_1"
