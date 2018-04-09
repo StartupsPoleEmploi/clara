@@ -291,9 +291,7 @@ FactoryBot.define do
 
     trait :full_user_input do 
       v_handicap 'non'
-      v_harki 'non'
-      v_detenu 'non'
-      v_protection_internationale 'oui'
+      v_spectacle 'non'
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'
@@ -313,10 +311,8 @@ FactoryBot.define do
     end
 
     trait :fully_calculated_asker do 
-      v_handicap 'non'
-      v_harki 'non'
+      v_spectacle 'non'
       v_detenu 'non'
-      v_protection_internationale 'oui'
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'

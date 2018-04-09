@@ -13,14 +13,6 @@ class ResultSituation < ViewObject
     @asker[:v_spectacle] || "indisponible"
   end
 
-  def detenu
-    @asker[:v_detenu] || "indisponible"
-  end
-  
-  def protection_internationale
-    @asker[:v_protection_internationale] || "indisponible"
-  end
-
   def diplome
     case @asker[:v_diplome]
     when 'niveau_1'
