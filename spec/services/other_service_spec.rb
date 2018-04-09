@@ -6,8 +6,8 @@ describe OtherService do
     it 'should inject params into otherForm' do
       # given
       asker = Asker.new
-      asker.v_spectacle                     = 'ze_val_spectacle'
-      asker.v_detenu                    = 'ze_val_detenu'
+      asker.v_spectacle  = 'ze_val_spectacle'
+      asker.v_handicap   = 'ze_val_handicap'
 
       # when
       other = OtherService.new(asker).download_from_asker
@@ -19,7 +19,7 @@ describe OtherService do
     it '"none" props should be nil, if one of the other props is not "oui"' do
       # given
       asker = Asker.new
-      asker.v_spectacle = 'non'
+      asker.v_spectacle = 'oui'
       asker.v_handicap  = 'non'
 
       # when

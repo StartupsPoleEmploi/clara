@@ -6,12 +6,12 @@ describe JustificationService do
     it 'should return all rules of the root rule when it is a complex rule' do
 
       # given
-      create(:aid, :aid_adult_and_harki)
+      create(:aid, :aid_adult_and_spectacle)
       the_service = JustificationService.new(Aid.last)
       all_rules = Rule.all
-      harki_rule = Rule.find{|e| e.name.include?('r_composed_be_a_harki0')}
+      spectacle_rule = Rule.find{|e| e.name.include?('r_composed_be_a_spectacle0')}
       adult_rule = Rule.find{|e| e.name.include?('r_composed_be_an_adult0')}
-      expect(harki_rule.id).not_to be nil
+      expect(spectacle_rule.id).not_to be nil
       expect(adult_rule.id).not_to be nil
 
       # when
@@ -19,7 +19,7 @@ describe JustificationService do
 
       # then
       expect(result.length).to eq(2)
-      expect(result.include?(harki_rule)).to eq(true)
+      expect(result.include?(spectacle_rule)).to eq(true)
       expect(result.include?(adult_rule)).to eq(true)
     end
 
@@ -63,7 +63,7 @@ describe JustificationService do
     end
     it 'should return "and" if the root condition is an AND rule' do
       # given
-      create(:aid, :aid_adult_and_harki)
+      create(:aid, :aid_adult_and_spectacle)
       the_service = JustificationService.new(Aid.last)
       # when
       result = the_service.root_condition
@@ -72,7 +72,7 @@ describe JustificationService do
     end
     it 'should return "or" if the root condition is a OR rule' do
       # given
-      create(:aid, :aid_adult_or_harki)
+      create(:aid, :aid_adult_or_spectacle)
       the_service = JustificationService.new(Aid.last)
       # when
       result = the_service.root_condition
