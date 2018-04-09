@@ -14,8 +14,8 @@ FactoryBot.define do
       variable_type :integer
     end
 
-    trait :harki do 
-      name 'v_harki'
+    trait :spectacle do 
+      name 'v_spectacle'
       description 'oui,non'
       variable_type :string
     end
@@ -111,16 +111,16 @@ FactoryBot.define do
       value_eligible '149'
     end
 
-    trait :be_a_harki do 
-      name 'be_a_harki' 
-      association :variable, :harki
+    trait :be_a_spectacle do 
+      name 'be_a_spectacle' 
+      association :variable, :spectacle
       operator_type :eq
       value_eligible 'oui'
     end
 
-    trait :not_be_a_harki do 
-      name 'not_be_a_harki' 
-      association :variable, :harki
+    trait :not_be_a_spectacle do 
+      name 'not_be_a_spectacle' 
+      association :variable, :spectacle
       operator_type :eq
       value_eligible 'non'
     end
@@ -132,18 +132,18 @@ FactoryBot.define do
       value_eligible 'oui'
     end
 
-    trait :be_an_adult_and_a_harkis do 
+    trait :be_an_adult_and_a_spectacles do 
       composition_type :and_rule
       before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_a_harki, name: 'composed_be_a_harki0'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult0')]
+        rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle0'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult0')]
       end
     end
 
 
-    trait :be_an_adult_or_a_harkis do 
+    trait :be_an_adult_or_a_spectacles do 
       composition_type :or_rule
       before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_a_harki, name: 'composed_be_a_harki1', description: 'harki description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult1', description: 'adult description')]
+        rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle1', description: 'spectacle description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult1', description: 'adult description')]
       end
     end
 
@@ -168,10 +168,10 @@ FactoryBot.define do
       end
     end
 
-    trait :be_an_adult_or_harkis_or_in_qpv do 
+    trait :be_an_adult_or_spectacles_or_in_qpv do 
       composition_type :or_rule
       before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_a_harki, name: 'composed_be_a_harki1', description: 'harki description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult4', description: 'adult description'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv3', description: 'qpv description')]
+        rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle1', description: 'spectacle description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult4', description: 'adult description'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv3', description: 'qpv description')]
       end
     end
   end
@@ -183,19 +183,19 @@ FactoryBot.define do
         aid.rule = create(:rule, :be_in_qpv)
       end
     end
-    trait :aid_harki do
+    trait :aid_spectacle do
       before :create do |aid|
-        aid.rule = create(:rule, :be_a_harki)
+        aid.rule = create(:rule, :be_a_spectacle)
       end
     end
-    trait :aid_not_harki do
+    trait :aid_not_spectacle do
       before :create do |aid|
-        aid.rule = create(:rule, :not_be_a_harki)
+        aid.rule = create(:rule, :not_be_a_spectacle)
       end
     end
-    trait :aid_adult_or_harki do
+    trait :aid_adult_or_spectacle do
       before :create do |aid|
-        aid.rule = create(:rule, :be_an_adult_or_a_harkis)
+        aid.rule = create(:rule, :be_an_adult_or_a_spectacles)
         aid.how_much = 'how much value'
         aid.how_and_when = 'how and when value'
         aid.limitations = 'limitations value'
@@ -209,9 +209,9 @@ FactoryBot.define do
         aid.rule = create(:rule, :be_in_qpv_and_in_zrr)
       end
     end
-    trait :aid_adult_and_harki do
+    trait :aid_adult_and_spectacle do
       before :create do |aid|
-        aid.rule = create(:rule, :be_an_adult_and_a_harkis)
+        aid.rule = create(:rule, :be_an_adult_and_a_spectacles)
       end
     end
     trait :aid_adult_and_qpv do
@@ -224,9 +224,9 @@ FactoryBot.define do
         aid.rule = create(:rule, :be_an_adult_or_in_qpv)
       end
     end
-    trait :aid_adult_or_harkis_or_qpv do
+    trait :aid_adult_or_spectacles_or_qpv do
       before :create do |aid|
-        aid.rule = create(:rule, :be_an_adult_or_harkis_or_in_qpv)
+        aid.rule = create(:rule, :be_an_adult_or_spectacles_or_in_qpv)
       end
     end
     trait :aid_agepi do 
@@ -271,7 +271,7 @@ FactoryBot.define do
   factory :asker do 
     skip_create
     v_age '25'
-    v_harki 'non'
+    v_spectacle 'non'
 
     trait :ado do 
       v_age '16'
@@ -281,8 +281,8 @@ FactoryBot.define do
       v_age '33'
     end
 
-    trait :harki do 
-      v_harki 'oui'
+    trait :spectacle do 
+      v_spectacle 'oui'
     end
 
     trait :handicaped do 
