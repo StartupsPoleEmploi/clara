@@ -3,7 +3,7 @@ require 'support/gon_extraction_helper'
 
 feature 'detail of a result page' do 
 
-  HARKI_ITEM=".c-detail-condition-item.r_composed_be_a_harki1"
+  SPECTACLE_ITEM=".c-detail-condition-item.r_composed_be_a_spectacle1"
   ADULT_ITEM=".c-detail-condition-item.r_composed_be_an_adult4"
   QPV_ITEM=".c-detail-condition-item.r_composed_be_qpv3"
 
@@ -11,7 +11,7 @@ feature 'detail of a result page' do
     
     before do
       asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_harkis_or_qpv, name: 'ze_name_for_adult_or_harki')
+      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
       disable_http_service
       a = ConvertAskerInBase64Service.new.into_base64(asker)
       b = aid.slug
@@ -28,7 +28,7 @@ feature 'detail of a result page' do
   context 'Active user, cache filled' do
     before do
       asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_harkis_or_qpv, name: 'ze_name_for_adult_or_harki')
+      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
       disable_http_service
       cache_layer = instance_double("CacheService")
       allow(cache_layer).to receive(:read).and_return(SerializeResultsService.get_instance.go(asker))
@@ -53,7 +53,7 @@ feature 'detail of a result page' do
       disable_http_service
       cache_service_returns_empty
       asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_harkis_or_qpv, name: 'ze_name_for_adult_or_harki')
+      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
 
       a = ConvertAskerInBase64Service.new.into_base64(asker)
       b = aid.slug
@@ -82,9 +82,9 @@ feature 'detail of a result page' do
   def _display_all_details_correctly
       expect(t('.c-detail-why--eligible')).to eq("Vous êtes éligible")
       expect(t("#{ADULT_ITEM} .c-detail-condition-text")).to eq("adult description")
-      expect(t("#{HARKI_ITEM} .c-detail-condition-text")).to eq("harki description")
+      expect(t("#{SPECTACLE_ITEM} .c-detail-condition-text")).to eq("spectacle description")
       expect(t("#{QPV_ITEM} .c-detail-condition-text")).to eq("qpv description")
-      expect(find("#{HARKI_ITEM} svg")['class']).to include("error")
+      expect(find("#{SPECTACLE_ITEM} svg")['class']).to include("error")
       expect(find("#{ADULT_ITEM} svg")['class']).to include("success")
       expect(find("#{QPV_ITEM} svg")['class']).to include("question")    
   end
