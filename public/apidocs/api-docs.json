@@ -231,7 +231,7 @@
           "type": "string",
           "description": "true,false",
           "required": false
-        }
+        },
         {
           "in": "query",
           "name": "diploma",
