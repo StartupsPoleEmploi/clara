@@ -27,7 +27,7 @@ RSpec.feature 'other question' do
     ocbSpectacle = Ocb.new('val_spectacle', method(:find))
     ocbHandicap = Ocb.new('val_handicap', method(:find))
     ocbNone = Ocb.new('none', method(:find))
-    all_value_inputs = [ocbSpectacle, ocbDetenu, ocbPi, ocbHandicap]
+    all_value_inputs = [ocbSpectacle, ocbHandicap]
     all_inputs = all_value_inputs + [ocbNone]
   end
 
@@ -82,8 +82,6 @@ RSpec.feature 'other question' do
 
     # given
     expect_all_unchecked(all_inputs.map(&:element))
-    page.check(ocbDetenu.id)
-    page.check(ocbPi.id)
 
     # when
     find('.js-next').click
@@ -92,7 +90,6 @@ RSpec.feature 'other question' do
     
     # then
     expect_all_unchecked([ocbSpectacle, ocbHandicap, ocbNone].map(&:element))
-    expect_all_checked([ocbDetenu, ocbPi].map(&:element))
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
     expect(asker_obj).not_to include '"v_spectacle":"oui"'
