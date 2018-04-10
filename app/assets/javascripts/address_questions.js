@@ -7,6 +7,7 @@ $(document).on('ready turbolinks:load', function() {
       var element = document.getElementById(id);
       if (element) {
         var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
+        autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
       }
     }
@@ -14,7 +15,27 @@ $(document).on('ready turbolinks:load', function() {
     function onPlaceChanged() {
       var place = this.getPlace();
 
-      // console.log(place);  // Uncomment this line to view the full object returned by Google API.
+      var postcode = _.get(_.first(_.filter(place.address_components, function(e) {return _.includes(e.types, "postal_code")})), 'long_name');
+
+      $("input.js-next").prop('disabled', true);
+
+      $.get({
+        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&postcode=' + postcode,
+        success: function(e) {
+          // console.log(e) 
+          $("input.js-next").prop('disabled', false);
+          var citycode = _.get(e, "features[0].properties.citycode")
+          $('input#citycode').val(citycode);
+        },
+        error: function(e) {
+          $("input.js-next").prop('disabled', false);
+                    
+        },
+        timeout:2003
+      });
+
+
+      console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
         var input_target = address_component.types[0];
