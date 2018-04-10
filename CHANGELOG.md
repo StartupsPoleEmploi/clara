@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 8.6.0 (10/04/2018)
+-[#701][FEATURE] autocomplete addresse via google
+
 
 ## 8.5.0 (09/04/2018)
 -[#673][FEATURE] form - modifier la question "autres"
