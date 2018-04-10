@@ -105,23 +105,9 @@
         },
         {
           "in": "query",
-          "name": "harki",
+          "name": "spectacle",
           "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "ex_invict",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "international_protection",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
+          "description": "true,false",
           "required": false
         },
         {
@@ -241,23 +227,9 @@
         },
         {
           "in": "query",
-          "name": "harki",
+          "name": "spectacle",
           "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "ex_invict",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "international_protection",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
+          "description": "true,false",
           "required": false
         },
         {
@@ -377,23 +349,9 @@
         },
         {
           "in": "query",
-          "name": "harki",
+          "name": "spectacle",
           "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "ex_invict",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "international_protection",
-          "type": "string",
-          "description": "(WARNING : deprecated) true,false",
+          "description": "true,false",
           "required": false
         },
         {

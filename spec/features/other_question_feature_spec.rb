@@ -14,9 +14,7 @@ RSpec.feature 'other question' do
 
   end
 
-  ocbHarki = nil
-  ocbDetenu = nil
-  ocbPi = nil
+  ocbSpectacle = nil
   ocbHandicap = nil
   ocbNone = nil
   all_value_inputs = nil
@@ -26,12 +24,10 @@ RSpec.feature 'other question' do
   before(:each) do
     visit new_other_question_path
 
-    ocbHarki = Ocb.new('val_harki', method(:find))
-    ocbDetenu = Ocb.new('val_detenu', method(:find))
-    ocbPi = Ocb.new('val_pi', method(:find))
+    ocbSpectacle = Ocb.new('val_spectacle', method(:find))
     ocbHandicap = Ocb.new('val_handicap', method(:find))
     ocbNone = Ocb.new('none', method(:find))
-    all_value_inputs = [ocbHarki, ocbDetenu, ocbPi, ocbHandicap]
+    all_value_inputs = [ocbSpectacle, ocbHandicap]
     all_inputs = all_value_inputs + [ocbNone]
   end
 
@@ -43,9 +39,7 @@ RSpec.feature 'other question' do
     # then
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
-    expect(asker_obj).not_to include 'v_harki: oui'
-    expect(asker_obj).not_to include 'v_detenu: oui'
-    expect(asker_obj).not_to include 'v_protection_internationale: oui'
+    expect(asker_obj).not_to include 'v_spectacle: oui'
     expect(asker_obj).not_to include 'v_handicap: oui'
   end
 
@@ -78,9 +72,7 @@ RSpec.feature 'other question' do
     # then
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
-    expect(asker_obj).to include '"v_harki":"oui"'
-    expect(asker_obj).to include '"v_detenu":"oui"'
-    expect(asker_obj).to include '"v_protection_internationale":"oui"'
+    expect(asker_obj).to include '"v_spectacle":"oui"'
     expect(asker_obj).to include '"v_handicap":"oui"'
 
     expect(current_path).not_to eq new_other_question_path
@@ -90,8 +82,6 @@ RSpec.feature 'other question' do
 
     # given
     expect_all_unchecked(all_inputs.map(&:element))
-    page.check(ocbDetenu.id)
-    page.check(ocbPi.id)
 
     # when
     find('.js-next').click
@@ -99,13 +89,10 @@ RSpec.feature 'other question' do
     visit new_other_question_path
     
     # then
-    expect_all_unchecked([ocbHarki, ocbHandicap, ocbNone].map(&:element))
-    expect_all_checked([ocbDetenu, ocbPi].map(&:element))
+    expect_all_unchecked([ocbSpectacle, ocbHandicap, ocbNone].map(&:element))
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
-    expect(asker_obj).not_to include '"v_harki":"oui"'
-    expect(asker_obj).to include '"v_detenu":"oui"'
-    expect(asker_obj).to include '"v_protection_internationale":"oui"'
+    expect(asker_obj).not_to include '"v_spectacle":"oui"'
     expect(asker_obj).not_to include '"v_handicap":"oui"'
   end
   

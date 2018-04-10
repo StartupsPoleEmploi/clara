@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.5.0 (09/04/2018)
+-[#673][FEATURE] form - modifier la question "autres"
+
+
 ## 8.4.0 (06/04/2018)
 -[#559][FEATURE] page de résultats imprimable
 

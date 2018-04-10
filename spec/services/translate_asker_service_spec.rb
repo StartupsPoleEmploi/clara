@@ -10,29 +10,17 @@ describe TranslateAskerService do
   describe ".to_french Nominal cases" do
     
     inputs = [
-      {english: {harki: true},             french: {v_harki: "oui"}},
-      {english: {harki: "true"},           french: {v_harki: "oui"}},
-      {english: {harki: false},            french: {v_harki: "non"}},
-      {english: {harki: "false"},          french: {v_harki: "non"}},
-      {english: {harki: "wrong_input"},    french: {v_harki: nil}},
+      {english: {spectacle: true},             french: {v_spectacle: "oui"}},
+      {english: {spectacle: "true"},           french: {v_spectacle: "oui"}},
+      {english: {spectacle: false},            french: {v_spectacle: "non"}},
+      {english: {spectacle: "false"},          french: {v_spectacle: "non"}},
+      {english: {spectacle: "wrong_input"},    french: {v_spectacle: nil}},
       
       {english: {disabled: true},          french: {v_handicap: "oui"}},
       {english: {disabled: "true"},        french: {v_handicap: "oui"}},
       {english: {disabled: false},         french: {v_handicap: "non"}},
       {english: {disabled: "false"},       french: {v_handicap: "non"}},
       {english: {disabled: "wrong_input"}, french: {v_handicap: nil}},
-
-      {english: {ex_invict: true},         french: {v_detenu: "oui"}},
-      {english: {ex_invict: "true"},       french: {v_detenu: "oui"}},
-      {english: {ex_invict: false},        french: {v_detenu: "non"}},
-      {english: {ex_invict: "false"},      french: {v_detenu: "non"}},
-      {english: {ex_invict: "wrong_input"},french: {v_detenu: nil}},
-
-      {english: {international_protection: true},          french: {v_protection_internationale: "oui"}},
-      {english: {international_protection: "true"},        french: {v_protection_internationale: "oui"}},
-      {english: {international_protection: false},         french: {v_protection_internationale: "non"}},
-      {english: {international_protection: "false"},       french: {v_protection_internationale: "non"}},
-      {english: {international_protection: "wrong_input"}, french: {v_protection_internationale: nil}},
 
       {english: {diploma: "level_1"},      french: {v_diplome: "niveau_1"}},
       {english: {diploma: "level_2"},      french: {v_diplome: "niveau_2"}},

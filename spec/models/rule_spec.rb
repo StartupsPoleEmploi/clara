@@ -31,7 +31,7 @@ describe Rule, type: :model do
     end
     it 'should be valid for a complex rule' do
       # given
-      complex_rule = create(:rule, :be_an_adult_or_a_harkis)
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
       # when
       complex_rule.valid?
       # then
@@ -42,7 +42,7 @@ describe Rule, type: :model do
   describe '.validate_non_ambiguous_type' do
     before(:each) do |example|
       if example.metadata[:need_init]
-        @ambiguous_rule = create(:rule, :be_an_adult_or_a_harkis)
+        @ambiguous_rule = create(:rule, :be_an_adult_or_a_spectacles)
         @ambiguous_rule.value_eligible = '42'
 
 
@@ -77,7 +77,7 @@ describe Rule, type: :model do
     end
     it 'can be a complex rule' do
       #given
-      complex_rule = create(:rule, :be_an_adult_and_a_harkis)
+      complex_rule = create(:rule, :be_an_adult_and_a_spectacles)
       #when
       complex_rule.valid?
       # then
@@ -96,7 +96,7 @@ describe Rule, type: :model do
   describe '.validate_complex_rule_mandatory_fields' do
     it 'should be valid for a correct complex rule' do
       #given
-      complex_rule = create(:rule, :be_an_adult_or_a_harkis)
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
       # when
       complex_rule.valid?
       #then
@@ -112,7 +112,7 @@ describe Rule, type: :model do
     end
     it 'should be valid for an ambiguous complex rule' do
       #given
-      ambiguous_rule = create(:rule, :be_an_adult_or_a_harkis)
+      ambiguous_rule = create(:rule, :be_an_adult_or_a_spectacles)
       ambiguous_rule.value_eligible = '42'
       # when
       ambiguous_rule.valid?
@@ -121,7 +121,7 @@ describe Rule, type: :model do
     end
     it 'should NOT be valid if slave_rules is missing' do
       #given
-      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_harkis)
+      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
       incomplete_complex_rule.slave_rules = []
       # when
       incomplete_complex_rule.valid?
@@ -131,7 +131,7 @@ describe Rule, type: :model do
     end
     it 'should NOT be valid if composition_type are missing' do
       #given
-      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_harkis)
+      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
       incomplete_complex_rule.composition_type = nil
       # when
       incomplete_complex_rule.valid?
@@ -152,7 +152,7 @@ describe Rule, type: :model do
     end
     it 'should be valid for a correct complex rule' do
       #given
-      complex_rule = create(:rule, :be_an_adult_or_a_harkis)
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
       # when
       complex_rule.valid?
       #then
@@ -217,7 +217,7 @@ describe Rule, type: :model do
       it { expect(subject).to eq 'ineligible'}
     end
     context 'should return "uncertain" when criteria is NOT present' do
-      let(:criterion_hash) { {v_harki: 'any'} }
+      let(:criterion_hash) { {v_spectacle: 'any'} }
       it { expect(subject).to eq 'uncertain'}
     end
     context 'should return "uncertain" when criteria is present but nil' do
@@ -274,7 +274,7 @@ describe Rule, type: :model do
       it { expect(subject).to eq 'ineligible'}
     end
     context 'should return "uncertain" when criteria is NOT present' do
-      let(:criterion_hash) { {v_harki: 'any'} }
+      let(:criterion_hash) { {v_spectacle: 'any'} }
       it { expect(subject).to eq 'uncertain'}
     end
     context 'should return "uncertain" when criteria is present but nil' do
@@ -441,7 +441,7 @@ describe Rule, type: :model do
     end
 
     context 'with an AND rule' do
-      let(:rule) { create :rule, :be_an_adult_and_a_harkis }
+      let(:rule) { create :rule, :be_an_adult_and_a_spectacles }
       context 'without any condition' do
         let(:asker) { create :asker, :ado}
         it { expect(subject).to eq "ineligible" }
@@ -451,18 +451,18 @@ describe Rule, type: :model do
         it { expect(subject).to eq "ineligible" }
       end
       context 'and with the other condition' do
-        let(:asker) { create :asker, :harki, :ado }
+        let(:asker) { create :asker, :spectacle, :ado }
         it { expect(subject).to eq "ineligible" }
       end
       context 'and the two conditions' do
-        let(:asker) { create :asker, :harki, v_age: '38' }
+        let(:asker) { create :asker, :spectacle, v_age: '38' }
         it { expect(subject).to eq "eligible" }
       end
     end
 
 
     context 'with an OR rule' do
-      let(:rule) { create :rule, :be_an_adult_or_a_harkis }
+      let(:rule) { create :rule, :be_an_adult_or_a_spectacles }
       context 'without any condition' do
         let(:asker) { create :asker, :ado }
         it { expect(subject).to eq "ineligible" }
@@ -476,11 +476,11 @@ describe Rule, type: :model do
         it { expect(subject).to eq "eligible" }
       end
       context 'and with the other condition only' do
-        let(:asker) { create :asker, :harki, :ado }
+        let(:asker) { create :asker, :spectacle, :ado }
         it { expect(subject).to eq "eligible" }
       end
       context 'and the two conditions' do
-        let(:asker) { create :asker, :harki, v_age: 38 }
+        let(:asker) { create :asker, :spectacle, v_age: 38 }
         it { expect(subject).to eq "eligible" }
       end
     end
@@ -550,20 +550,20 @@ describe Rule, type: :model do
     end
 
     context 'with (rule_a AND rule_b) OR rule_c' do
-      let(:rule) { build :rule, name: 'be_an_adult_and_a_harkis_OR_be_handicaped', composition_type: :or_rule }
+      let(:rule) { build :rule, name: 'be_an_adult_and_a_spectacles_OR_be_handicaped', composition_type: :or_rule }
       before do
-        rule.slave_rules << [create(:rule, :be_an_adult_and_a_harkis), create(:rule, :be_handicaped)]
+        rule.slave_rules << [create(:rule, :be_an_adult_and_a_spectacles), create(:rule, :be_handicaped)]
       end
       context 'with rule_c=true only' do
         let(:asker) { create :asker, :handicaped }
         it { expect(subject).to eq "eligible" }
       end
       context 'with rule_a=true AND rule_b=true only' do
-        let(:asker) { create :asker, :harki, v_age: '38' }
+        let(:asker) { create :asker, :spectacle, v_age: '38' }
         it { expect(subject).to eq "eligible" }
       end
       context 'with rule_b=true only' do
-        let(:asker) { create :asker, :harki, :ado, v_handicap: 'false' }
+        let(:asker) { create :asker, :spectacle, :ado, v_handicap: 'false' }
         it { expect(subject).to eq "ineligible" }
       end
     end

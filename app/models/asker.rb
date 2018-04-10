@@ -3,9 +3,7 @@ require "base64"
 class Asker < ActiveType::Object
 
   attribute :v_handicap,                  :string
-  attribute :v_harki,                     :string
-  attribute :v_detenu,                    :string
-  attribute :v_protection_internationale, :string
+  attribute :v_spectacle,                 :string
   attribute :v_diplome,                   :string
   attribute :v_category,                  :string
   attribute :v_duree_d_inscription,       :string

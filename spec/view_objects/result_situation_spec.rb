@@ -129,40 +129,16 @@ describe ResultSituation do
       expect(sut.handicap).to eq("indisponible")
     end
   end
-  describe '.harki' do
-    it 'Should respond exactly the same thing as the given harki' do
-      sut = ResultSituation.new(nil, {asker: {v_harki: 'anything'}})
-      expect(sut.harki).to eq("anything")
-      sut = ResultSituation.new(nil, {asker: {v_harki: 'any_other_thing'}})
-      expect(sut.harki).to eq("any_other_thing")
+  describe '.spectacle' do
+    it 'Should respond exactly the same thing as the given spectacle' do
+      sut = ResultSituation.new(nil, {asker: {v_spectacle: 'anything'}})
+      expect(sut.spectacle).to eq("anything")
+      sut = ResultSituation.new(nil, {asker: {v_spectacle: 'any_other_thing'}})
+      expect(sut.spectacle).to eq("any_other_thing")
     end
     it 'Should return a "indisponible" in the worst scenario' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.harki).to eq("indisponible")
-    end
-  end
-  describe '.detenu' do
-    it 'Should respond exactly the same thing as the given detenu' do
-      sut = ResultSituation.new(nil, {asker: {v_detenu: 'anything'}})
-      expect(sut.detenu).to eq("anything")
-      sut = ResultSituation.new(nil, {asker: {v_detenu: 'any_other_thing'}})
-      expect(sut.detenu).to eq("any_other_thing")
-    end
-    it 'Should return "indisponible" in the worst scenario' do
-      sut = ResultSituation.new(nil, nil)
-      expect(sut.detenu).to eq("indisponible")
-    end
-  end
-  describe '.protection_internationale' do
-    it 'Should respond exactly the same thing as the given protection_internationale' do
-      sut = ResultSituation.new(nil, {asker: {v_protection_internationale: 'anything'}})
-      expect(sut.protection_internationale).to eq("anything")
-      sut = ResultSituation.new(nil, {asker: {v_protection_internationale: 'any_other_thing'}})
-      expect(sut.protection_internationale).to eq("any_other_thing")
-    end
-    it 'Should return "indisponible" in the worst scenario' do
-      sut = ResultSituation.new(nil, nil)
-      expect(sut.protection_internationale).to eq("indisponible")
+      expect(sut.spectacle).to eq("indisponible")
     end
   end
   describe '.location_label' do

@@ -7,10 +7,8 @@ class TranslateAskerService
 
   def to_french
     asker = Asker.new
-    asker.v_harki                     = other_to_french(@english_asker[:harki])
+    asker.v_spectacle                 = other_to_french(@english_asker[:spectacle])
     asker.v_handicap                  = other_to_french(@english_asker[:disabled])
-    asker.v_detenu                    = other_to_french(@english_asker[:ex_invict])
-    asker.v_protection_internationale = other_to_french(@english_asker[:international_protection])
     asker.v_diplome                   = diploma_to_french(@english_asker[:diploma])
     asker.v_category                  = category_to_french(@english_asker[:category])
     asker.v_duree_d_inscription       = inscription_period_to_french(@english_asker[:inscription_period])
