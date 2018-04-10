@@ -7,7 +7,11 @@ $(document).on('ready turbolinks:load', function() {
       var element = document.getElementById(id);
       if (element) {
         var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-        autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf']});
+        // fr = france
+        // bl = saint-barth
+        // ml = saint-martin
+        // re = la reunion
+        autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
       }
     }
@@ -20,7 +24,7 @@ $(document).on('ready turbolinks:load', function() {
       $("input.js-next").prop('disabled', true);
 
       $.get({
-        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&postcode=' + postcode,
+        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&postcode=' + _.defaultTo(postcode, ''),
         success: function(e) {
           // console.log(e) 
           $("input.js-next").prop('disabled', false);
