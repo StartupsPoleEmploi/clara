@@ -14,11 +14,10 @@ $(document).on('ready turbolinks:load', function() {
     function onPlaceChanged() {
       var place = this.getPlace();
 
-      console.log(place);  // Uncomment this line to view the full object returned by Google API.
+      // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
         var input_target = address_component.types[0];
-        console.log(input_target)
         $('input#' + input_target).val(address_component.long_name);
       });
 
