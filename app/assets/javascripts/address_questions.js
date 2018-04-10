@@ -13,6 +13,11 @@ $(document).on('ready turbolinks:load', function() {
         // re = la reunion
         autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+        google.maps.event.addDomListener(element, 'keydown', function(event) { 
+          if (event.keyCode === 13) { 
+            event.preventDefault(); 
+        }
+        }); 
       }
     }
     
