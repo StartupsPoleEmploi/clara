@@ -29,7 +29,7 @@ $(document).on('ready turbolinks:load', function() {
       $("input.js-next").prop('disabled', true);
 
       $.get({
-        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&postcode=' + _.defaultTo(postcode, ''),
+        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&limit=1&postcode=' + _.defaultTo(postcode, ''),
         success: function(e) {
           // console.log(e) 
           $("input.js-next").prop('disabled', false);
