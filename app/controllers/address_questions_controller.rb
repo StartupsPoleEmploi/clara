@@ -10,6 +10,9 @@ class AddressQuestionsController < ApplicationController
 
   def create
     @address = AddressForm.new(allowed_params)
+    p '- - - - - - - - - - - - - - @address- - - - - - - - - - - - - - - -' 
+    p @address.inspect
+    p ''
     if @address.valid?
       if @address.label.present?
         AddressService.new.upload(@address, @asker)

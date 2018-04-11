@@ -37,6 +37,9 @@ class AidesController < ApplicationController
 
   def pull_asker_from_query_param
     @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
+    p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
+    p @asker.inspect
+    p ''
   end
 
   def pull_existing_from_cache
