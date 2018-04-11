@@ -38,14 +38,12 @@ $(document).on('ready turbolinks:load', function() {
         $.get({
           url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&limit=1&postcode=' + postcode,
           success: function(e) {
-            // console.log(e) 
             $("input.js-next").prop('disabled', false);
             var citycode = _.get(e, "features[0].properties.citycode")
             $('input#citycode').val(citycode);
           },
           error: function(e) {
             $("input.js-next").prop('disabled', false);
-                      
           },
           timeout:2003
         });        
