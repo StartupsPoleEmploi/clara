@@ -27,10 +27,11 @@ $(document).on('ready turbolinks:load', function() {
       var place = this.getPlace();
 
       $('#address_form input').val('')
-      $('input#location_label').val(place.formatted_address)
+      $('input#location_label').val($('#search').val())
 
       var postcode = _.get(_.first(_.filter(place.address_components, function(e) {return _.includes(e.types, "postal_code")})), 'long_name');
 
+      var maybe_street_number = _.toInteger($('#search').val().split(' ')[0])
 
       if (postcode) {
         $("input.js-next").prop('disabled', true);
@@ -53,10 +54,15 @@ $(document).on('ready turbolinks:load', function() {
       console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
-        console.log(address_component.long_name)
         var input_target = address_component.types[0];
         $('#address_form  input#' + input_target).val(address_component.long_name);
       });
+
+      if ($('#address_form  input#street_number').val() === '') {
+        if (maybe_street_number !== 0) {
+          $('#address_form  input#street_number').val(maybe_street_number)
+        } 
+      }
 
     }
 
