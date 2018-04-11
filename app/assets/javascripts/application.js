@@ -15,7 +15,6 @@
 //= require jquery/jquery
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
-//= require a11y-autocomplete/accessible_autocomplete
 //= require rails-ujs
 //= require turbolinks
 //= require ./turbolinks_transition

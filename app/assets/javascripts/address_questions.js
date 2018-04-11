@@ -51,7 +51,6 @@ $(document).on('ready turbolinks:load', function() {
       });
 
     }
-    
 
     initializeAutocomplete("search")
 
