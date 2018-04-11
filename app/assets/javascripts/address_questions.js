@@ -22,32 +22,40 @@ $(document).on('ready turbolinks:load', function() {
     }
     
     function onPlaceChanged() {
+
+
       var place = this.getPlace();
+
+      $('#address_form input').val('')
+      $('input#location_label').val(place.formatted_address)
 
       var postcode = _.get(_.first(_.filter(place.address_components, function(e) {return _.includes(e.types, "postal_code")})), 'long_name');
 
-      $("input.js-next").prop('disabled', true);
 
-      $.get({
-        url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&limit=1&postcode=' + _.defaultTo(postcode, ''),
-        success: function(e) {
-          // console.log(e) 
-          $("input.js-next").prop('disabled', false);
-          var citycode = _.get(e, "features[0].properties.citycode")
-          $('input#citycode').val(citycode);
-        },
-        error: function(e) {
-          $("input.js-next").prop('disabled', false);
-                    
-        },
-        timeout:2003
-      });
+      if (postcode) {
+        $("input.js-next").prop('disabled', true);
+        $.get({
+          url: window.clara.env.ARA_URL_BAN + place.formatted_address + '&limit=1&postcode=' + postcode,
+          success: function(e) {
+            // console.log(e) 
+            $("input.js-next").prop('disabled', false);
+            var citycode = _.get(e, "features[0].properties.citycode")
+            $('input#citycode').val(citycode);
+          },
+          error: function(e) {
+            $("input.js-next").prop('disabled', false);
+                      
+          },
+          timeout:2003
+        });        
+      }
 
       console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
+        console.log(address_component.long_name)
         var input_target = address_component.types[0];
-        $('input#' + input_target).val(address_component.long_name);
+        $('#address_form  input#' + input_target).val(address_component.long_name);
       });
 
     }
