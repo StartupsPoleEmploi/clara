@@ -43,7 +43,6 @@ $(document).on('ready turbolinks:load', function() {
         timeout:2003
       });
 
-
       console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
