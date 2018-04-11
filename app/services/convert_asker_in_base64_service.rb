@@ -5,9 +5,6 @@ class ConvertAskerInBase64Service
   end
 
   def into_base64(the_asker)
-    p '- - - - - - - - - - - - - - the_asker- - - - - - - - - - - - - - - -' 
-    p the_asker.inspect
-    p ''
     # qpv and zrr are excluded
     asker_str = the_asker
       .attributes
