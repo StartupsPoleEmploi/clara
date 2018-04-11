@@ -14,7 +14,6 @@ class AddressForm < ActiveType::Object
   validate :cannot_change_address_manually
 
   def cannot_change_address_manually
-
     if label.present? && !country.present? 
       errors.add(:cannot_change_address_manually, 'Vous devez sélectionner une adresse proposée, sans la modifier ensuite.')
     end 
