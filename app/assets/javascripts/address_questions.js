@@ -1,7 +1,13 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('address_questions', 'new')) {
 
-    setTimeout(removeNonFranceResults, 1000)
+    $('#search').on("change", function(e) {
+        $('#address_form input').val('')
+        $('input#location_label').val($('#search').val())
+    });
+
+    // Quite hacky, but more than enough to cover
+    setTimeout(removeNonFranceResults, 2000)
 
     function removeNonFranceResults() {
         $(".pac-container").on("DOMSubtreeModified",function(){
@@ -13,7 +19,7 @@ $(document).on('ready turbolinks:load', function() {
               str.match(/, Saint-Barthélemy$/) || 
               str.match(/, Saint-Martin$/) || 
               str.match(/, Réunion$/) ||
-              str.match(/, Guadeloupe$/) ||
+              str.match(/Guadeloupe$/) || // buggy for Guadeloupe, no comma here
               str.match(/, Polynésie française$/) ||
               str.match(/, Mayotte$/) ||
               str.match(/, Guyane française$/) ||
@@ -32,6 +38,7 @@ $(document).on('ready turbolinks:load', function() {
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     function initializeAutocomplete(id) {
       var element = document.getElementById(id);
+
       if (element) {
         var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
         // fr = france (1 rue sebastiani par ex)
@@ -60,7 +67,6 @@ $(document).on('ready turbolinks:load', function() {
     
     function onPlaceChanged() {
 
-
       var place = this.getPlace();
 
       $('#address_form input').val('')
@@ -86,7 +92,7 @@ $(document).on('ready turbolinks:load', function() {
         });        
       }
 
-      console.log(place);  // Uncomment this line to view the full object returned by Google API.
+      // console.log(place);  // Uncomment this line to view the full object returned by Google API.
 
       _.each(place.address_components, function (address_component){
         var input_target = address_component.types[0];
