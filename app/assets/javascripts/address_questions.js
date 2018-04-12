@@ -1,28 +1,31 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('address_questions', 'new')) {
 
-    $(".pac-container").on("DOMSubtreeModified",function(){
-  // var items = console.log($(".pac-container .pac-item"));
-  $.each($(".pac-container .pac-item"), function() {
-    var str = $(this).text();
-    console.log(str)
-    if (
-      str.match(/, France$/) || 
-      str.match(/, Saint-Barthélemy$/) || 
-      str.match(/, Saint-Martin$/) || 
-      str.match(/, Réunion$/) ||
-      str.match(/Guadeloupe$/) ||
-      str.match(/, Polynésie française$/) ||
-      str.match(/, Mayotte$/) ||
-      str.match(/, Guyane française$/) ||
-      str.match(/, Saint-Pierre-et-Miquelon$/)) {
-      // Keep it
-    } else {
-      // Remove it
-      $(this).remove()
+    setTimeout(removeNonFranceResults, 1000)
+
+    function removeNonFranceResults() {
+        $(".pac-container").on("DOMSubtreeModified",function(){
+          $.each($(".pac-container .pac-item"), function() {
+            var str = $(this).text();
+            // console.log(str)
+            if (
+              str.match(/, France$/) || 
+              str.match(/, Saint-Barthélemy$/) || 
+              str.match(/, Saint-Martin$/) || 
+              str.match(/, Réunion$/) ||
+              str.match(/, Guadeloupe$/) ||
+              str.match(/, Polynésie française$/) ||
+              str.match(/, Mayotte$/) ||
+              str.match(/, Guyane française$/) ||
+              str.match(/, Saint-Pierre-et-Miquelon$/)) {
+              // Keep it
+            } else {
+              // Remove it
+              $(this).remove()
+            }
+          })
+        });        
     }
-  })
-});
 
 
     /* Autocomplete
@@ -44,9 +47,12 @@ $(document).on('ready turbolinks:load', function() {
         // autocomplete.setComponentRestrictions({'country': ['gp', 'pf', 'yt', 'gf', 'pm', 'fr']});
         // autocomplete.setComponentRestrictions({'country': ['fr']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+        google.maps.event.addListenerOnce(autocomplete, 'idle', function(){
+            removeNonFranceResults()
+        });
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 
-            event.preventDefault(); 
+            event.preventDefault()
         }
         }); 
       }
