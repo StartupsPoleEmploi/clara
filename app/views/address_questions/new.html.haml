@@ -35,7 +35,7 @@
             %ul#results.autocomplete-list{role: "listbox", style: "display: none;", tabindex: "0"}
             %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
             .screen-reader-text.visually-hidden{"aria-live" => "assertive"}
-        %input#location_label.is-hidden{value: "#{@address.label}"}
+        %input#location_label.is-hidden{value: "#{@address.label}", name: "address_form[label]"}
 
           %table#address_form.is-hidden
             %tr

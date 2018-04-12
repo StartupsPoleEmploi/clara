@@ -121,6 +121,7 @@ feature 'address question' do
 
   def set_address(address)
     find('input#search').set(address)
+    find('input#location_label').set(address)
   end
 
   def fill_a_nominal_address

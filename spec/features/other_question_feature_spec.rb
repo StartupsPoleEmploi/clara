@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'other question' do 
+feature 'other question' do 
 
 
   class OtherCheckbox 

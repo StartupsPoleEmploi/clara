@@ -119,12 +119,8 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
-    em-websocket (0.5.1)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.6.0)
     erubi (1.7.0)
     erubis (2.7.0)
-    eventmachine (1.2.5)
     execjs (2.7.0)
     factory_bot (4.8.2)
       activesupport (>= 3.0.0)
@@ -171,11 +167,6 @@ GEM
       shellany (~> 0.0)
       thor (>= 0.18.1)
     guard-compat (1.2.1)
-    guard-livereload (2.5.2)
-      em-websocket (~> 0.5)
-      guard (~> 2.8)
-      guard-compat (~> 1.0)
-      multi_json (~> 1.8)
     guard-rspec (4.7.3)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -196,7 +187,6 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    http_parser.rb (0.6.0)
     httpclient (2.8.3)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
@@ -322,8 +312,6 @@ GEM
     puma (3.10.0)
     rack (2.0.3)
     rack-attack (5.1.0)
-      rack
-    rack-livereload (0.3.16)
       rack
     rack-test (0.7.0)
       rack (>= 1.0, < 3)
@@ -487,8 +475,6 @@ DEPENDENCIES
   fuubar
   gon
   google-api-client
-  guard (>= 2.2.2)
-  guard-livereload
   guard-rspec
   haml (~> 5)
   haml-rails
@@ -513,7 +499,6 @@ DEPENDENCIES
   pry-stack_explorer
   puma (~> 3.0)
   rack-attack
-  rack-livereload
   rack_session_access
   rails (~> 5.1)
   rb-fsevent

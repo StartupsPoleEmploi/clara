@@ -13,9 +13,9 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
+//= require jquery/jquery_extension
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
-//= require a11y-autocomplete/accessible_autocomplete
 //= require rails-ujs
 //= require turbolinks
 //= require ./turbolinks_transition
