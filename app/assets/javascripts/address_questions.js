@@ -6,8 +6,8 @@ $(document).on('ready turbolinks:load', function() {
     function initializeAutocomplete(id) {
       var element = document.getElementById(id);
       if (element) {
-        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
-        // fr = france
+        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'], componentRestrictions: {country: ['fr', 'bl', 'mf', 're', 'gp', 'pf', 'yt', 'gf', 'pm']}  });
+        // fr = france (1 rue sebastiani par ex)
         // bl = saint-barth (1 rue august nyman par ex)
         // mf = saint-martin (1 rue low town par ex)
         // re = la reunion (1 rue mac auliffe par ex)
@@ -16,7 +16,8 @@ $(document).on('ready turbolinks:load', function() {
         // yt = mayotte (1 Rue Mangua M'Kakassi par ex)
         // gf = guyane (1 Rue Madame Payée par ex)
         // pm = st pierre et miquelon (1 Rue Gloanec par ex)
-        autocomplete.setComponentRestrictions({'country': ['bl', 'yt', 'gf', 'pm']});
+        // autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're', 'gp', 'pf', 'yt', 'gf', 'pm']});
+        // autocomplete.setComponentRestrictions({'country': ['gp', 'pf', 'yt', 'gf', 'pm', 'fr']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 
