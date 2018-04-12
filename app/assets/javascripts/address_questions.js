@@ -24,9 +24,7 @@ $(document).on('ready turbolinks:load', function() {
               str.match(/, Mayotte$/) ||
               str.match(/, Guyane française$/) ||
               str.match(/, Saint-Pierre-et-Miquelon$/)) {
-              // Keep it
             } else {
-              // Remove it
               $(this).remove()
             }
           })
