@@ -8,10 +8,15 @@ $(document).on('ready turbolinks:load', function() {
       if (element) {
         var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
         // fr = france
-        // bl = saint-barth
-        // ml = saint-martin
-        // re = la reunion
-        autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're']});
+        // bl = saint-barth (1 rue august nyman par ex)
+        // mf = saint-martin (1 rue low town par ex)
+        // re = la reunion (1 rue mac auliffe par ex)
+        // gp = guadeloupe (1 route de caduc par ex)
+        // pf = polynésie française (1 avenue du chef Vaira'atoa par ex)
+        // yt = mayotte (1 Rue Mangua M'Kakassi par ex)
+        // gf = guyane (1 Rue Madame Payée par ex)
+        // pm = st pierre et miquelon (1 Rue Gloanec par ex)
+        autocomplete.setComponentRestrictions({'country': ['FR', 'BL', 'MF', 'RE', 'GP', 'PF', 'YT', 'GF', 'PM']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 
