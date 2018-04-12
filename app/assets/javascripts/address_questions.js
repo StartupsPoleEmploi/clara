@@ -54,9 +54,6 @@ $(document).on('ready turbolinks:load', function() {
         // autocomplete.setComponentRestrictions({'country': ['gp', 'pf', 'yt', 'gf', 'pm', 'fr']});
         // autocomplete.setComponentRestrictions({'country': ['fr']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
-        google.maps.event.addListenerOnce(autocomplete, 'idle', function(){
-            removeNonFranceResults()
-        });
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 
             event.preventDefault()
