@@ -20,7 +20,7 @@
       .c-address__content
         #a11yAutocomplete
           %div{"data-widget" => "accessible-autocomplete"}
-            %label.c-label.u-focusable{for: "search", tabindex: "0"} <div>Entrez votre adresse postale, <strong>en commençant par le numéro de voie</strong>,</div><div> puis sélectionnez-la quand elle apparaît dans la liste :</div>
+            %label.c-label.u-focusable{for: "search", tabindex: "0"} <div>Chercher une adresse sur le territoire de : <select> <option value="volvo">Volvo</option> <option value="saab">Saab</option> <option value="mercedes">Mercedes</option> <option value="audi">Audi</option> </select></div>
             %input#search{"placeholder" => "Exemple : 12 rue des car...", |
                             "aria-activedescendant" => "", |
                             "aria-autocomplete" => "both", |

@@ -13,6 +13,7 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
+//= require jquery/jquery_extension
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require rails-ujs

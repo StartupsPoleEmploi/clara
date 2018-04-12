@@ -1,12 +1,36 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('address_questions', 'new')) {
 
+    $(".pac-container").on("DOMSubtreeModified",function(){
+  // var items = console.log($(".pac-container .pac-item"));
+  $.each($(".pac-container .pac-item"), function() {
+    var str = $(this).text();
+    console.log(str)
+    if (
+      str.match(/, France$/) || 
+      str.match(/, Saint-Barthélemy$/) || 
+      str.match(/, Saint-Martin$/) || 
+      str.match(/, Réunion$/) ||
+      str.match(/Guadeloupe$/) ||
+      str.match(/, Polynésie française$/) ||
+      str.match(/, Mayotte$/) ||
+      str.match(/, Guyane française$/) ||
+      str.match(/, Saint-Pierre-et-Miquelon$/)) {
+      // Keep it
+    } else {
+      // Remove it
+      $(this).remove()
+    }
+  })
+});
+
+
     /* Autocomplete
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     function initializeAutocomplete(id) {
       var element = document.getElementById(id);
       if (element) {
-        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'], componentRestrictions: {country: ['fr', 'bl', 'mf', 're', 'gp', 'pf', 'yt', 'gf', 'pm']}  });
+        var autocomplete = new google.maps.places.Autocomplete(element, { types: ['geocode'] });
         // fr = france (1 rue sebastiani par ex)
         // bl = saint-barth (1 rue august nyman par ex)
         // mf = saint-martin (1 rue low town par ex)
@@ -18,6 +42,7 @@ $(document).on('ready turbolinks:load', function() {
         // pm = st pierre et miquelon (1 Rue Gloanec par ex)
         // autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're', 'gp', 'pf', 'yt', 'gf', 'pm']});
         // autocomplete.setComponentRestrictions({'country': ['gp', 'pf', 'yt', 'gf', 'pm', 'fr']});
+        // autocomplete.setComponentRestrictions({'country': ['fr']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 

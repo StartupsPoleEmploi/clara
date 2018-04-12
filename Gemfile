@@ -81,9 +81,6 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'guard', '>= 2.2.2', :require => false
-  gem 'guard-livereload',  :require => false
-  gem 'rack-livereload'
   gem 'rb-fsevent',        :require => false
   gem 'guard-rspec',       :require => false
 end
