@@ -48,9 +48,8 @@ $(document).on('ready turbolinks:load', function() {
         // yt = mayotte (1 Rue Mangua M'Kakassi par ex)
         // gf = guyane (1 Rue Madame Payée par ex)
         // pm = st pierre et miquelon (1 Rue Gloanec par ex)
+        // BUG : do no work above the 5 first countries
         // autocomplete.setComponentRestrictions({'country': ['fr', 'bl', 'mf', 're', 'gp', 'pf', 'yt', 'gf', 'pm']});
-        // autocomplete.setComponentRestrictions({'country': ['gp', 'pf', 'yt', 'gf', 'pm', 'fr']});
-        // autocomplete.setComponentRestrictions({'country': ['fr']});
         google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
         google.maps.event.addDomListener(element, 'keydown', function(event) { 
           if (event.keyCode === 13) { 
