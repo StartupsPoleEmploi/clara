@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.7.0 (09/04/2018)
+-[#685][FEATURE] modifier la couleur du header
+
+
 ## 8.5.0 (09/04/2018)
 -[#673][FEATURE] form - modifier la question "autres"
 
