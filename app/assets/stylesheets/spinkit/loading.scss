@@ -1,0 +1,53 @@
+// @keyframes loadingspin {
+//     0% { transform: rotate(0deg); }
+//     100% {  transform: rotate(359deg); }
+// }
+// #star {
+//     animation: loadingspin 2s linear infinite;
+// }
+
+// COLORS
+
+$color-1: #ECD078;
+$color-2: #C02942;
+$color-3: #542437;
+$color-4: #53777A;
+
+body { background: #ececec; }
+
+.loader {
+  
+  &:before,
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+    border-style: solid;
+    border-top-color: $color-1;
+    border-right-color: $color-2;
+    border-bottom-color: $color-3;
+    border-left-color: $color-4;
+    
+    content: '';
+
+    transform: translate(-50%, -50%);
+    animation: rotate 1.5s  infinite ease-in-out;
+  }
+  
+  &:before { border-width: 1rem; }
+
+  &:after {
+    width: 2rem;
+    height: 2rem;
+    border-width: 1rem;
+    animation-direction: reverse;
+  }
+}
+
+
+@keyframes rotate {
+   0% { transform: translate(-50%, -50%) rotate(0); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

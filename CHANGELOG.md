@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 8.7.0 (09/04/2018)
+## 8.8.0 (16/04/2018)
+-[#688][FEATURE] changer la roue de chargement
+
+
+## 8.7.0 (16/04/2018)
 -[#685][FEATURE] modifier la couleur du header
 
 
