@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.8.1 (16/04/2018)
+-[#712][DESIGN] changer la roue de chargement
+
+
 ## 8.8.0 (16/04/2018)
 -[#688][FEATURE] changer la roue de chargement
 
