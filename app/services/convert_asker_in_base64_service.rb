@@ -14,7 +14,7 @@ class ConvertAskerInBase64Service
       .delete_if { |key, value| key == :v_zrr ||  key == :v_qpv }
       .transform_values { |v| v.nil? ? 'nil' : v.to_s.force_encoding("utf-8") }
       .values
-      .join(';')
+      .join(',')
     Base64.urlsafe_encode64(asker_str)
   end
   
@@ -28,7 +28,7 @@ class ConvertAskerInBase64Service
       .select { |key, value| key.to_s.match(/^v_/) }
       .delete_if { |key, value| key == :v_zrr ||  key == :v_qpv }
     decoded = Base64.urlsafe_decode64(base64_str)
-    values = decoded.split(';')
+    values = decoded.split(',')
     values = values.map{ |v| v == 'nil' ? nil : v.to_s.force_encoding("utf-8") }
     init_with = hash.keys.zip(values).to_h
     Asker.new(init_with)

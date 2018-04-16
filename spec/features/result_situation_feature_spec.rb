@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Situation of asker in the result page' do 
 
-shared_examples "a field of the asker situation" do |details|
+RSpec.shared_examples "a field of the asker situation" do |details|
   before do
     qpv_and_zrr_both_ok
     disable_cache_service
