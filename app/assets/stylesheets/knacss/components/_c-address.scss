@@ -25,15 +25,3 @@
 #a11yAutocomplete [data-widget="accessible-autocomplete"] {
     margin-bottom: 0;
 }
-
-.pac-container:after {
-    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
-    background-image: none !important;
-    height: 0px;
-    padding: 0;
-    margin: 0;
-}
-
-.pac-item, .pac-item-query {
-    font-size: 1.6rem;
-}
