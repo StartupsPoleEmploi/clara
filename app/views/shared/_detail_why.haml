@@ -39,13 +39,13 @@
             (Vous ne remplissez aucune condition)
         - if v.uncertain_sentence == "single-alone"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-alone
-            Nous n'avons pas pu vérifier la condition suivante:
+            nous n'avons pas pu vérifier la condition :
         - if v.uncertain_sentence == "single-amongst"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-amongst
             Nous n'avons pas pu vérifier une des conditions :
         - if v.uncertain_sentence == "plural"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural
-            Nous n'avons pas pu vérifier les conditions suivantes :
+            Nous n'avons pas pu vérifier les #{v.number_of_uncertain_rules} premières conditions :
 
       = render partial: 'shared/detail_condition_list.haml', locals: { conditions: v.root_rules }
 
