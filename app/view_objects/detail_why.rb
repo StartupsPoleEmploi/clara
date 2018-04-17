@@ -30,13 +30,33 @@ class DetailWhy < ViewObject
   def uncertain_sentence
     result = ""
     if @ability == 'uncertain'
-      number_of_uncertain_rules = @root_rules.select{|rule| rule[:status] == 'uncertain'}.length
+      uncertain_rules_length = number_of_uncertain_rules
       number_of_rules = @root_rules.length
-      result = "single-alone"   if number_of_rules == 1 && number_of_uncertain_rules == 1
-      result = "single-amongst" if number_of_rules > 1 && number_of_uncertain_rules == 1 
-      result = "plural"         if number_of_uncertain_rules > 1 
+      result = "single-alone"   if number_of_rules == 1 && uncertain_rules_length == 1
+      result = "single-amongst" if number_of_rules > 1 && uncertain_rules_length == 1 
+      result = "plural-all"     if uncertain_rules_length > 1 && number_of_rules == uncertain_rules_length
+      result = "plural"         if uncertain_rules_length > 1 && number_of_rules != uncertain_rules_length
     end
     return result
+  end
+
+  def eligible_sentence
+    result = ""
+    if @ability == 'eligible'
+      eligible_rules_length = number_of_eligible_rules
+      number_of_rules = @root_rules.length
+      result = "single-amongst" if number_of_rules > 1 && eligible_rules_length == 1 
+      result = "plural"         if eligible_rules_length > 1 && number_of_rules != eligible_rules_length
+    end
+    return result
+  end
+
+  def number_of_uncertain_rules
+    @root_rules.select{|rule| rule[:status] == 'uncertain'}.length
+  end
+
+  def number_of_eligible_rules
+    @root_rules.select{|rule| rule[:status] == 'eligible'}.length
   end
 
   def all_conditions

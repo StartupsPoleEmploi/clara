@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
+## 8.9.0 (17/04/2018)
+-[#607][FEATURE] refaire les phrases dans le détail d'un résultat
+
+
 ## 8.8.1 (16/04/2018)
--[#712][DESIGN] changer la roue de chargement
+-[#712][DESIGN] corrections header
 
 
 ## 8.8.0 (16/04/2018)
