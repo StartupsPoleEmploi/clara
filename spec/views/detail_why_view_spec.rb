@@ -100,6 +100,16 @@ describe 'shared/_detail_why' do
     expect(rendered).to have_css('.c-detail-addendum--eligible-single-amongst')
   end
   
+  it 'Should render eligible-single-plural if eligibility is ELIGIBLE and there are many rules, and many ELIGIBLE rules (but not all)' do
+    local_args = nominal_args
+    local_args[:ability] = "eligible"
+    local_args[:root_rules][0][:status] = "eligible"
+    local_args[:root_rules][1][:status] = "eligible"
+    local_args[:root_rules][2][:status] = "uncertain"
+    render partial: 'shared/detail_why', locals: local_args
+    expect(rendered).to have_css('.c-detail-addendum--eligible-single-plural')
+  end
+  
   it 'Should render uncertain-single-alone if eligibility is UNCERTAIN and there is only one rule, an UNCERTAIN rule' do
     local_args = nominal_args
     local_args[:ability] = "uncertain"

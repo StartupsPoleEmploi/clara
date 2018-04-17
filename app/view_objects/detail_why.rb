@@ -45,9 +45,7 @@ class DetailWhy < ViewObject
     if @ability == 'eligible'
       eligible_rules_length = number_of_eligible_rules
       number_of_rules = @root_rules.length
-      result = "single-alone"   if number_of_rules == 1 && eligible_rules_length == 1
       result = "single-amongst" if number_of_rules > 1 && eligible_rules_length == 1 
-      result = "plural-all"     if eligible_rules_length > 1 && number_of_rules == eligible_rules_length
       result = "plural"         if eligible_rules_length > 1 && number_of_rules != eligible_rules_length
     end
     return result
