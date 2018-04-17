@@ -39,10 +39,13 @@
             (Vous ne remplissez aucune condition)
         - if v.uncertain_sentence == "single-alone"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-alone
-            nous n'avons pas pu vérifier la condition :
+            nous n'avons pas pu vérifier la condition suivante :
         - if v.uncertain_sentence == "single-amongst"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-amongst
-            Nous n'avons pas pu vérifier une des conditions :
+            Nous n'avons pas pu vérifier une des conditions suivantes :
+        - if v.uncertain_sentence == "plural-all"
+          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural-all
+            Nous n'avons pu vérifier aucune des conditions suivantes :
         - if v.uncertain_sentence == "plural"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural
             Nous n'avons pas pu vérifier les #{v.number_of_uncertain_rules} premières conditions :

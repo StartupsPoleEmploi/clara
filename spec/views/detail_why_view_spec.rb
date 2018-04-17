@@ -120,6 +120,16 @@ describe 'shared/_detail_why' do
     expect(rendered).to have_css('.c-detail-addendum--uncertain-plural')
   end
   
+  it 'Should render uncertain-plural-all if eligibility is UNCERTAIN and there are as many UNCERTAIN rules as total number of rules' do
+    local_args = nominal_args
+    local_args[:ability] = "uncertain"
+    local_args[:root_rules][0][:status] = "uncertain"
+    local_args[:root_rules][1][:status] = "uncertain"
+    local_args[:root_rules][2][:status] = "uncertain"
+    render partial: 'shared/detail_why', locals: local_args
+    expect(rendered).to have_css('.c-detail-addendum--uncertain-plural-all')
+  end
+  
   it 'Should render eligible rules on top if the ability is ELIGIBLE' do
     local_args = nominal_args
     local_args[:ability] = "eligible"

@@ -34,7 +34,8 @@ class DetailWhy < ViewObject
       number_of_rules = @root_rules.length
       result = "single-alone"   if number_of_rules == 1 && uncertain_rules_length == 1
       result = "single-amongst" if number_of_rules > 1 && uncertain_rules_length == 1 
-      result = "plural"         if uncertain_rules_length > 1 
+      result = "plural-all"     if uncertain_rules_length > 1 && number_of_rules == uncertain_rules_length
+      result = "plural"         if uncertain_rules_length > 1 && number_of_rules != uncertain_rules_length
     end
     return result
   end
