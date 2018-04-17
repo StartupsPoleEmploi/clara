@@ -37,9 +37,15 @@
         - if v.no_condition
           .c-detail-addendum.c-detail-addendum--none
             (Vous ne remplissez aucune condition)
+        - if v.eligible_sentence == "single-amongst"
+          .c-detail-addendum.c-detail-addendum--eligible-single-amongst
+            (Vous remplissez la première condition)
+        - if v.eligible_sentence == "plural"
+          .c-detail-addendum.c-detail-addendum--eligible-single-plural
+            (Vous remplissez les #{v.number_of_eligible_rules} premières conditions)
         - if v.uncertain_sentence == "single-alone"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-alone
-            nous n'avons pas pu vérifier la condition suivante :
+            Nous n'avons pas pu vérifier la condition suivante :
         - if v.uncertain_sentence == "single-amongst"
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-amongst
             Nous n'avons pas pu vérifier une des conditions suivantes :
