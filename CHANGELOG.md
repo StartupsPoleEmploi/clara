@@ -6,7 +6,7 @@
 
 
 ## 8.8.1 (16/04/2018)
--[#712][DESIGN] changer la roue de chargement
+-[#712][DESIGN] corrections header
 
 
 ## 8.8.0 (16/04/2018)
