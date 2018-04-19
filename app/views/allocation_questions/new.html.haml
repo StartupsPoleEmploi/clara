@@ -7,7 +7,7 @@
 
   .o-card.c-question
 
-    = form_for @allocation, url: allocation_questions_path do |f|
+    = form_with model: @allocation, url: allocation_questions_path do |f|
 
       = render 'shared/a_form_header', {e: e, title: "Quelle allocation percevez-vous actuellement ?"}
     
