@@ -2,6 +2,10 @@
 
 
 
+## 8.12.0 (19/04/2018)
+-[#716][FEATURE] params in google analytics
+
+
 ## 8.11.0 (19/04/2018)
 -[#714][FEATURE] google analytics, filter PE or not
 
