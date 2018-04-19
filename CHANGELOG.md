@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.10.0 (19/04/2018)
+-[#681][DESIGN] form montant d'allocation
+
+
 ## 8.9.0 (17/04/2018)
 -[#607][FEATURE] refaire les phrases dans le détail d'un résultat
 
