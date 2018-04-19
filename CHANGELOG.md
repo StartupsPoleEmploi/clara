@@ -1,7 +1,6 @@
 # ARA Changelog
 
 
-
 ## 8.12.1 (19/04/2018)
 -[#721][BUG] Turbolinks reset
 

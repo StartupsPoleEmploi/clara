@@ -7,7 +7,7 @@
   
   .o-card.c-question
 
-    = form_for @category, url: category_questions_path do |f|
+    = form_with model: @category, url: category_questions_path do |f|
       
       = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
       
