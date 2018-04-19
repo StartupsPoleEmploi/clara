@@ -1,7 +1,4 @@
 require 'rails_helper'
-require 'support/gon_extraction_helper'
-
-
 
 feature 'A show type page' do
   context 'Nominal' do

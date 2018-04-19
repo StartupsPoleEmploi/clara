@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/gon_extraction_helper'
 
 feature 'detail of a result page' do 
 
