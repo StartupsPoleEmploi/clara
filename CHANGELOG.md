@@ -2,6 +2,10 @@
 
 
 
+## 8.12.1 (19/04/2018)
+-[#721][BUG] Turbolinks reset
+
+
 ## 8.12.0 (19/04/2018)
 -[#716][FEATURE] params in google analytics
 
