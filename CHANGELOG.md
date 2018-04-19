@@ -2,6 +2,10 @@
 
 
 
+## 8.11.0 (19/04/2018)
+-[#714][FEATURE] google analytics, filter PE or not
+
+
 ## 8.10.0 (19/04/2018)
 -[#681][DESIGN] form montant d'allocation
 

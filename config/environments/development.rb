@@ -58,7 +58,7 @@ Rails.application.configure do
 
 
   # Add Rack::LiveReload to the bottom of the middleware stack with the default options:
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  # config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 
 
   # Use an evented file watcher to asynchronously detect changes in source code,
