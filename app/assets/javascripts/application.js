@@ -27,7 +27,6 @@
 //= require ./accordeon_component
 //= require ./aides_index
 //= require ./google_analytics_push
-//= require ./button_next
 //= require ./print
 //= require ./welcome_index
 //= require ./stats_index
