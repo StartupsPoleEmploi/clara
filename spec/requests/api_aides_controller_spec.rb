@@ -224,7 +224,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
     it 'Must return 429 if too much call' do
       last_response = nil
-      5.times do
+      15.times do
         get "/api/v1/aids/eligible"
         last_response = response
       end
