@@ -1,0 +1,13 @@
+{
+  "browser": true,
+  "unused": false,
+  "strict": false,
+  "asi": true,
+  "eqeqeq": true,
+  "globals": {
+    "_": true,
+    "$": true,
+    "ga": true,
+    "prompt": true
+  }
+}
