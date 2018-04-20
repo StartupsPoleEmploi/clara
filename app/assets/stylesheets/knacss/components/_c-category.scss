@@ -1,22 +1,14 @@
-.new_category_form {
-  ul {
-    list-style-type: none;
-    padding-left: 0.3em; // same as default "ul"
-    margin-top: 0;
-    border-left: 2px solid grey;
-  }
-  label {
-    display: flex;
-    align-items: center;
-  }
-
-}
-
 .c-category__second-span {
   padding-left: 0.3em; // same as default "ul"
 }
 .c-category__tick {
   color: grey;
+}
+.c-category__brace {
+  list-style-type: none;
+  padding-left: 0.3em; // same as default "ul"
+  margin-top: 0;
+  border-left: 2px solid grey;
 }
 label.c-category__radiolabel {
   margin: $tiny-value;

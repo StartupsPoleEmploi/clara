@@ -57,21 +57,21 @@ _.set(window, 'clara.a11y.search1', {
   newResultEntered:  function(the_input_val, pivot_map) {
     var obj = pivot_map[the_input_val];
     if (_.isPlainObject(obj)) {
-      var the_name = obj['name'];
-      var the_street = obj['street'];
-      var the_type = obj['type'];
+      var the_name = obj.name;
+      var the_street = obj.street;
+      var the_type = obj.type;
 
       var the_route = null;
       if (the_type === 'housenumber' || the_type === 'street') {
         the_route = the_street ? the_street : the_name;
       }
 
-      $('#citycode').val(obj['citycode']);
-      $('#administrative_area_level_1').val(_.last(obj['context'].split(', ')));
+      $('#citycode').val(obj.citycode);
+      $('#administrative_area_level_1').val(_.last(obj.context.split(', ')));
       $('#country').val('France');
-      $('#postal_code').val(obj['postcode']);
-      $('#street_number').val(obj['housenumber']);
-      $('#locality').val(obj['city']);
+      $('#postal_code').val(obj.postcode);
+      $('#street_number').val(obj.housenumber);
+      $('#locality').val(obj.city);
       $('#route').val(the_route);
       $('#location_label').val($(clara.a11y.search1.search_selector).val().trim());
 
@@ -88,6 +88,16 @@ _.set(window, 'clara.a11y.search1', {
 });
 
 $(document).on('ready turbolinks:load', function() {
+  // Turbolinks breaks PNotify context, needs to reinstantiate it here 
+  // See https://stackoverflow.com/a/28220612/2595513
+  PNotify.prototype.options.stack  = {
+    dir1: "down",
+    dir2: "left",
+    push: "bottom",
+    spacing1: 25,
+    spacing2: 25,
+    context: $("body")
+  };
   if ($('body').hasClass('address_questions', 'new')) {
 
     /* Init
@@ -102,8 +112,8 @@ $(document).on('ready turbolinks:load', function() {
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     if (PNotify && localStorage && _.isEmpty(localStorage.getItem("soon_finished_info"))) {
      localStorage.setItem("soon_finished_info", "true");
+     PNotify.removeAll();
      setTimeout(function(){
-       PNotify.removeAll();
        new PNotify({
         title: 'Plus que 2 questions',
         type: 'info',
