@@ -8,6 +8,9 @@
     "_": true,
     "$": true,
     "ga": true,
+    "clara": true,
+    "PNotify": true,
+    "console": true,
     "prompt": true
   }
 }
