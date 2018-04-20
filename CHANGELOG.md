@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.13.0 (20/04/2018)
+-[#713][FEATURE][Analytics] Mesurer le temps passé par les conseillers
+
+
 ## 8.12.2 (20/04/2018)
 -[#725][BUG] Popup d'encouragement
 -[#726][BUG] Apparition d'une accolade dans le texte
