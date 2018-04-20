@@ -9,7 +9,7 @@ feature 'logo' do
     visit new_age_question_path
     expect(current_path).to eq new_age_question_path
     # when
-    find('.c-logozone--white').click
+    find('.c-logozone').click
     # then
     expect(current_path).to eq root_path
 

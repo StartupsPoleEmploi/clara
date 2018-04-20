@@ -1,23 +1,12 @@
-// https://stackoverflow.com/questions/40256473/make-an-existing-svg-to-spin-loading-icon
-// @keyframes loadingspin {
-//     0% { transform: rotate(0deg); }
-//     100% {  transform: rotate(359deg); }
-// }
-// #star {
-//     animation: loadingspin 2s linear infinite;
-// }
-
-// COLORS
-
 $color-1: #ECD078;
 $color-2: #C02942;
 $color-3: #542437;
 $color-4: #53777A;
 
-body { background: #ececec; }
-
 .loader {
   
+  padding-top:5rem;
+
   &:before,
   &:after {
     position: absolute;
