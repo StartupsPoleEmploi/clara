@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.13.1 (20/04/2018)
+-[#718][DESIGN] Eloigner la barre verticale dans le logo
+
+
 ## 8.13.0 (20/04/2018)
 -[#713][FEATURE][Analytics] Mesurer le temps passé par les conseillers
 
