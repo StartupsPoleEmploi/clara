@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+## 8.12.2 (20/04/2018)
+-[#725][BUG] Popup d'encouragement
+-[#726][BUG] Apparition d'une accolade dans le texte
+
+
 ## 8.12.1 (19/04/2018)
 -[#721][BUG] Turbolinks reset
 
