@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.14.2 (24/04/2018)
+-[#723][BUG] Bouton précédent recharge tout
+
+
 ## 8.14.1 (23/04/2018)
 -[#731][DESIGN] En savoir +, padding
 
