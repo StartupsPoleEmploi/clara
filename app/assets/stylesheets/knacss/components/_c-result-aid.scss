@@ -27,20 +27,25 @@
 }
 
 .c-result-aid__cta {
-  display: flex;
-  max-width: 4rem;
-  min-width: 4rem;
-  flex-direction: column;
-  color:#3a93ff;
+  padding: 0 space(2);
+  color:white;
+  background-color: #057dbc;
+  border-radius: 35px;
+  text-align: center;
+  white-space: nowrap;
   margin-left: auto;
-  margin-right: space(4);
   a {
     text-decoration: none;
   }
-  @include respond-to("small-up") {
-    max-width: 12rem;
-    min-width: 12rem;
-    flex-direction: row;
+  @include respond-to("tiny-up") {
+    padding: 0 space(4);
+  }
+}  
+
+.c-result-aid__cta span {
+  display: block;
+  @include respond-to("tiny-up") {
+    display: inline-block;
   }
 }
 

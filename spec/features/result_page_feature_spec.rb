@@ -48,7 +48,7 @@ feature 'result page' do
       expect(n('.c-result-line.more-id .c-result-aid.aid_more_than_21')).to eq(1)
 
       a = (find_all(".c-result-line.more-id .c-result-aid")).collect(&:text).map(&:strip)
-      expect(a).to eq(["aid_more_than_18 En savoir plus >", "aid_more_than_20 En savoir plus >", "aid_more_than_19 En savoir plus >", "aid_more_than_21 En savoir plus >"])
+      expect(a).to eq(["aid_more_than_18 En savoir plus", "aid_more_than_20 En savoir plus", "aid_more_than_19 En savoir plus", "aid_more_than_21 En savoir plus"])
 
       expect(n('.c-result-line__description')).to eq(0)
 
@@ -87,7 +87,7 @@ feature 'result page' do
   #     expect(n('.c-result-line.more-id .c-result-aid.aid_more_than_21')).to eq(1)
 
   #     a = (find_all(".c-result-line.more-id .c-result-aid")).collect(&:text).map(&:strip)
-  #     expect(a).to eq(["aid_more_than_18 En savoir plus >", "aid_more_than_20 En savoir plus >", "aid_more_than_19 En savoir plus >", "aid_more_than_21 En savoir plus >"])
+  #     expect(a).to eq(["aid_more_than_18 En savoir plus", "aid_more_than_20 En savoir plus", "aid_more_than_19 En savoir plus", "aid_more_than_21 En savoir plus"])
 
   #     expect(n('.c-result-list--ineligible .c-result-line')).to eq(3)
 
