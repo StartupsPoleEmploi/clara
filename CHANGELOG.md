@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.14.1 (23/04/2018)
+-[#731][DESIGN] En savoir +, padding
+
+
 ## 8.14.0 (23/04/2018)
 -[#705][DESIGN] En savoir +, plus visible
 
