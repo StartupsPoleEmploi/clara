@@ -78,7 +78,7 @@ class QuestionManager
   end 
 
   def before_age(asker)
-    if asker && asker.v_allocation_value_min.is_a?(String) && asker.v_allocation_value_min.match(/^(\d)+$/)
+    if asker && asker[:v_allocation_value_min].is_a?(String) && asker.v_allocation_value_min.match(/^(\d)+$/)
       new_are_question_path
     else
       new_allocation_question_path
