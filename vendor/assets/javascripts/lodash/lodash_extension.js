@@ -15,7 +15,8 @@ _.mixin({
     var heure   = ('0'+now.getHours()  ).slice(-2);
     var minute  = ('0'+now.getMinutes()).slice(-2);
     var seconde = ('0'+now.getSeconds()).slice(-2);
-    return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s"
+    var ms = ('0'+now.getMilliseconds()).slice(-2);
+    return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s" + ms + "ms"
   },
 
   // from https://davidwalsh.name/query-string-javascript
