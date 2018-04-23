@@ -6,27 +6,17 @@ _.mixin({
     });
   },
 
-  dateFr: function() {
-    // les noms de jours / mois
-    var jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
-    var mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
-    // on recupere la date
-    var date = new Date();
-    // on construit le message
-    var message = jours[date.getDay()] + " "; // nom du jour
-    message += date.getDate() + " "; // numero du jour
-    message += mois[date.getMonth()] + " "; // mois
-    message += date.getFullYear();
-    return message;
-  },
-
-  hourFr : function() {
-     var date = new Date();
-     var heure = date.getHours();
-     var minutes = date.getMinutes();
-     if(minutes < 10)
-          minutes = "0" + minutes;
-     return heure + "h" + minutes;
+  fullDateFr: function() {
+    var now = new Date();
+ 
+    var annee   = now.getFullYear();
+    var mois    = ('0'+(now.getMonth()+1)).slice(-2);
+    var jour    = ('0'+now.getDate()   ).slice(-2);
+    var heure   = ('0'+now.getHours()  ).slice(-2);
+    var minute  = ('0'+now.getMinutes()).slice(-2);
+    var seconde = ('0'+now.getSeconds()).slice(-2);
+    var ms = ('0'+now.getMilliseconds()).slice(-2);
+    return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s" + ms + "ms"
   },
 
   // from https://davidwalsh.name/query-string-javascript

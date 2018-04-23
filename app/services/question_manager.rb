@@ -3,11 +3,11 @@ require 'uri'
 class QuestionManager
    include Rails.application.routes.url_helpers
 
-  def getPreviousPath(referer)
+  def getPreviousPath(referer, asker)
   
     from = URI(referer).path
     func_name = from[ from.index('/')+1 .. from.rindex('_')-1 ]
-    self.public_send('before_' + func_name)
+    self.public_send('before_' + func_name, asker)
   
   end
 
@@ -65,35 +65,39 @@ class QuestionManager
     aides_path + '?for_id=' + asker_id
   end 
 
-  def before_other
+  def before_other(asker)
     new_address_question_path
   end 
 
-  def before_address
+  def before_address(asker)
     new_grade_question_path
   end
 
-  def before_grade
+  def before_grade(asker)
     new_age_question_path
   end 
 
-  def before_age
-    new_allocation_question_path
+  def before_age(asker)
+    if asker && asker[:v_allocation_value_min].is_a?(String) && asker.v_allocation_value_min.match(/^(\d)+$/)
+      new_are_question_path
+    else
+      new_allocation_question_path
+    end
   end
 
-  def before_inscription
+  def before_inscription(asker)
     root_path
   end
 
-  def before_category
+  def before_category(asker)
     new_inscription_question_path
   end
 
-  def before_allocation
+  def before_allocation(asker)
     new_inscription_question_path
   end
 
-  def before_are
+  def before_are(asker)
     new_allocation_question_path
   end
 
