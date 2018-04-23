@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 8.13.2 (20/04/2018)
+## 8.14.0 (23/04/2018)
+-[#705][DESIGN] En savoir +, plus visible
+
+
+## 8.13.2 (23/04/2018)
 -[#719][DESIGN] Faire le sigle euro plus grand
 
 
