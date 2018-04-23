@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.13.2 (20/04/2018)
+-[#719][DESIGN] Faire le sigle euro plus grand
+
+
 ## 8.13.1 (20/04/2018)
 -[#718][DESIGN] Eloigner la barre verticale dans le logo
 
