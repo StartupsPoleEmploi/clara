@@ -105,6 +105,12 @@ feature QuestionManager do
       it { expect(subject).to eq new_are_question_path }
     end
 
+    context 'go from age back to allocation, if asker has are that is not an integer' do
+      let(:asker) { Asker.new(v_allocation_value_min: "verybadinput") }
+      let(:referer) { URL_PREFIX + new_age_question_path }
+      it { expect(subject).to eq new_allocation_question_path }
+    end
+
     context 'go from age back to allocation, if asker has NO are' do
       let(:referer) { URL_PREFIX + new_age_question_path }
       it { expect(subject).to eq new_allocation_question_path }
