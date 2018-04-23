@@ -80,8 +80,10 @@ feature QuestionManager do
 
   describe '.getPreviousPath' do 
 
-    subject { QuestionManager.new.getPreviousPath(referer) }
+    subject { QuestionManager.new.getPreviousPath(referer, asker) }
 
+    let(:asker) { Asker.new  }
+    
     context 'go from other back to address page' do
       let(:referer) { URL_PREFIX + new_other_question_path }
       it { expect(subject).to eq new_address_question_path }
@@ -95,6 +97,17 @@ feature QuestionManager do
     context 'go from grade back to age page' do
       let(:referer) { URL_PREFIX + new_grade_question_path }
       it { expect(subject).to eq new_age_question_path }
+    end
+
+    context 'go from age back to A.R.E, if asker has are' do
+      let(:asker) { Asker.new(v_allocation_value_min: "320") }
+      let(:referer) { URL_PREFIX + new_age_question_path }
+      it { expect(subject).to eq new_are_question_path }
+    end
+
+    context 'go from age back to allocation, if asker has NO are' do
+      let(:referer) { URL_PREFIX + new_age_question_path }
+      it { expect(subject).to eq new_allocation_question_path }
     end
 
     context 'go from age back to allocation' do
