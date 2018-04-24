@@ -126,9 +126,9 @@ feature QuestionManager do
       it { expect(subject).to eq new_allocation_question_path }
     end
     
-    context 'go from allocation back to inscription page' do
+    context 'go from allocation back to category page' do
       let(:referer) { URL_PREFIX + new_allocation_question_path }
-      it { expect(subject).to eq new_inscription_question_path }
+      it { expect(subject).to eq new_category_question_path }
     end
 
     context 'go from category back to inscription page' do
