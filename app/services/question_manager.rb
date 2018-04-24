@@ -94,7 +94,7 @@ class QuestionManager
   end
 
   def before_allocation(asker)
-    new_inscription_question_path
+    new_category_question_path
   end
 
   def before_are(asker)
