@@ -27,7 +27,7 @@ describe('address_questions.js', function() {
             score: 0.3351181818181818,
             name: '8 Boulevard du Port',
             city: 'Amiens',
-            type: 'housenumber'
+            type: 'municipality'
           },
           geometry: {
             type: 'Point',
@@ -46,7 +46,7 @@ describe('address_questions.js', function() {
             score: 0.3287575757575757,
             name: '8 Boulevard du Port',
             city: 'Meze',
-            type: 'housenumber'
+            type: 'municipality'
           },
           geometry: {
             type: 'Point',
@@ -170,7 +170,7 @@ describe('address_questions.js', function() {
           city: 'Meze',
           street: undefined,
           name: '8 Boulevard du Port',
-          type: 'housenumber'
+          type: 'municipality'
         },
         '80000 Amiens': {
           citycode: '80021',
@@ -180,7 +180,7 @@ describe('address_questions.js', function() {
           city: 'Amiens',
           street: undefined,
           name: '8 Boulevard du Port',
-          type: 'housenumber'
+          type: 'municipality'
         }
         
       };

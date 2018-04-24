@@ -49,11 +49,16 @@ _.set(window, 'clara.a11y.search1', {
     });
 
     // window.address_data = address_data;
+    // console.log('address_data----')
+    // console.log(address_data)
     var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
     // window.filtered_address_data = filtered_address_data;
     var mapped_zipped = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+    // console.log('mapped_zipped----')
+    // console.log(mapped_zipped)
     // window.mapped_zipped = mapped_zipped;
     _.assign(pivot_map, _.zipObject(mapped_zipped, address_data));
+    // window.pivot_map = pivot_map;
     return mapped_zipped;
   },
   contentOfInputManuallyChanged: function() {
