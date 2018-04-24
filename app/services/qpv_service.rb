@@ -63,9 +63,6 @@ class QpvService
     escaped_address = URI.escape(full_url) 
     uri = URI.parse(escaped_address)
     response = HttpService.get_instance.get(uri)
-    p '- - - - - - - - - - - - - - response- - - - - - - - - - - - - - - -' 
-    p response.inspect
-    p ''
 
     if response && response.include?('is_qpv')
       return 'en_qpv'
