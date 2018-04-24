@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+## 8.14.6 (24/04/2018)
+-[#727][BUG] JSON valide pour apidocs.json
+-[#732][BUG] QPV en erreur
+
+
 ## 8.14.5 (24/04/2018)
 -[#733][BUG] Ecran "Quelle allocation ... ?", le bouton "revenir" remonte de 2 questions.
 
