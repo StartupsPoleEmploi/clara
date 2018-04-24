@@ -15,16 +15,17 @@ _.set(window, 'clara.a11y.search1', {
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var properties = _.map(feature_collection.features, 'properties');
-    var cities = _.map(properties, 'city');
-    var postcodes = _.map(properties, 'postcode');
-    var cities_and_postcodes = [];
-    _.each(cities, function(e, i) {
-      var current_city = cities[i];
-      var current_postcode = postcodes[i];
-      cities_and_postcodes.unshift(current_postcode + " " + current_city);
-    });
+    var ids = _.map(properties, 'id');
+    // var cities = _.map(properties, 'city');
+    // var postcodes = _.map(properties, 'postcode');
+    // var cities_and_postcodes = [];
+    // _.each(cities, function(e, i) {
+    //   var current_city = cities[i];
+    //   var current_postcode = postcodes[i];
+    //   cities_and_postcodes.unshift(current_postcode + " " + current_city);
+    // });
 
-    var uniq_cities_and_postcodes = _.uniqWith(cities_and_postcodes, _.isEqual);
+    // var uniq_cities_and_postcodes = _.uniqWith(cities_and_postcodes, _.isEqual);
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -47,11 +48,13 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    _.assign(pivot_map, _.zipObject(uniq_cities_and_postcodes, address_data));
-    console.log("uniq_cities_and_postcodes-----");
-    console.log(uniq_cities_and_postcodes);
-    console.log("");
-    return uniq_cities_and_postcodes;
+    // window.address_data = address_data;
+    var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
+    // window.filtered_address_data = filtered_address_data;
+    var mapped_zipped = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+    // window.mapped_zipped = mapped_zipped;
+    _.assign(pivot_map, _.zipObject(mapped_zipped, address_data));
+    return mapped_zipped;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();
