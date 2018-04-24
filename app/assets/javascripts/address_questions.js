@@ -15,17 +15,6 @@ _.set(window, 'clara.a11y.search1', {
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var properties = _.map(feature_collection.features, 'properties');
-    var ids = _.map(properties, 'id');
-    // var cities = _.map(properties, 'city');
-    // var postcodes = _.map(properties, 'postcode');
-    // var cities_and_postcodes = [];
-    // _.each(cities, function(e, i) {
-    //   var current_city = cities[i];
-    //   var current_postcode = postcodes[i];
-    //   cities_and_postcodes.unshift(current_postcode + " " + current_city);
-    // });
-
-    // var uniq_cities_and_postcodes = _.uniqWith(cities_and_postcodes, _.isEqual);
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -48,18 +37,11 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    // window.address_data = address_data;
-    // console.log('address_data----')
-    // console.log(address_data)
     var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
-    // window.filtered_address_data = filtered_address_data;
-    var mapped_zipped = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
-    // console.log('mapped_zipped----')
-    // console.log(mapped_zipped)
-    // window.mapped_zipped = mapped_zipped;
-    _.assign(pivot_map, _.zipObject(mapped_zipped, address_data));
-    // window.pivot_map = pivot_map;
-    return mapped_zipped;
+    var mapped_address_data = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+    _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
+
+    return mapped_address_data;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();
