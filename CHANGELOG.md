@@ -3,6 +3,10 @@
 ## 8.14.4 (24/04/2018)
 -[#734][BUG] Fix Bug google analytics.
 
+## 8.14.4 (24/04/2018)
+-[#733][BUG] Ecran "Auelle allocation ... ?", le bouton "revenir" remonte de 2 questions.
+
+
 ## 8.14.3 (24/04/2018)
 -[#632][BUG] Ecran "Votre âge ?", le bouton "revenir" remonte de 2 questions.
 
