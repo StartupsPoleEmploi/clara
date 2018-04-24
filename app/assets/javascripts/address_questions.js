@@ -2,7 +2,7 @@ _.set(window, 'clara.a11y.search1', {
   search_selector: '#search',
   results_selector: '#results',
   arialive_selector: '[aria-live]',
-  autocomplete_every: 3,
+  autocomplete_every: 1,
   errorOccured: function() {
     $('input#search').val('');
     this.resetAllCalculatedFields();
@@ -15,7 +15,6 @@ _.set(window, 'clara.a11y.search1', {
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var properties = _.map(feature_collection.features, 'properties');
-    var labels = _.map(properties, 'label');
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -38,9 +37,11 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    _.assign(pivot_map, _.zipObject(labels, address_data));
+    var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
+    var mapped_address_data = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+    _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
 
-    return labels;
+    return mapped_address_data;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();

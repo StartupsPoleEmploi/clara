@@ -27,7 +27,7 @@ describe('address_questions.js', function() {
             score: 0.3351181818181818,
             name: '8 Boulevard du Port',
             city: 'Amiens',
-            type: 'housenumber'
+            type: 'municipality'
           },
           geometry: {
             type: 'Point',
@@ -46,7 +46,7 @@ describe('address_questions.js', function() {
             score: 0.3287575757575757,
             name: '8 Boulevard du Port',
             city: 'Meze',
-            type: 'housenumber'
+            type: 'municipality'
           },
           geometry: {
             type: 'Point',
@@ -64,8 +64,8 @@ describe('address_questions.js', function() {
     expect(clara.a11y.autocomplete).toBeDefined();
   });
 
-  it('Should be able to autocomplete every 3 chars', function() {
-    expect(clara.a11y.search1.autocomplete_every).toBe(3);
+  it('Should be able to autocomplete every 1 chars', function() {
+    expect(clara.a11y.search1.autocomplete_every).toBe(1);
   });
   it('Should have autocompletion mapped to the #search input', function() {
     expect(clara.a11y.search1.search_selector).toBe('#search');
@@ -157,22 +157,12 @@ describe('address_questions.js', function() {
       // when
       var output = clara.a11y.search1.buildResultsFromAjax(typical_input, pivot_map);
       // then
-      expect(output).toEqual(['8 Boulevard du Port 80000 Amiens', '8 Boulevard du Port 34140 Meze']);
+      expect(output).toEqual(['80000 Amiens', '34140 Meze']);
     });
     it('Should assign results from ajax to given pivot_map', function() {
       var pivot_map = {};
       var expected_output = {
-        '8 Boulevard du Port 80000 Amiens': {
-          citycode: '80021',
-          context: '80, Somme, Picardie',
-          postcode: '80000',
-          housenumber: '8',
-          city: 'Amiens',
-          street: undefined,
-          name: '8 Boulevard du Port',
-          type: 'housenumber'
-        },
-        '8 Boulevard du Port 34140 Meze': {
+        '34140 Meze': {
           citycode: '34157',
           context: '34, Herault, Languedoc-Roussillon',
           postcode: '34140',
@@ -180,8 +170,19 @@ describe('address_questions.js', function() {
           city: 'Meze',
           street: undefined,
           name: '8 Boulevard du Port',
-          type: 'housenumber'
+          type: 'municipality'
+        },
+        '80000 Amiens': {
+          citycode: '80021',
+          context: '80, Somme, Picardie',
+          postcode: '80000',
+          housenumber: '8',
+          city: 'Amiens',
+          street: undefined,
+          name: '8 Boulevard du Port',
+          type: 'municipality'
         }
+        
       };
 
       // when

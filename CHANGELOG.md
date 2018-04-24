@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.15.0 (24/04/2018)
+-[#682][FEATURE] Adresse avec code postal 
+
+
 ## 8.14.6 (24/04/2018)
 -[#727][BUG] JSON valide pour apidocs.json
 -[#732][BUG] QPV en erreur
