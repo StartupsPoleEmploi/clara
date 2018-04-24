@@ -15,15 +15,16 @@ _.set(window, 'clara.a11y.search1', {
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var properties = _.map(feature_collection.features, 'properties');
-    var labels = _.map(properties, 'label');
+    var cities = _.map(properties, 'city');
     var postcodes = _.map(properties, 'postcode');
-    var labels_and_postcodes = [];
-    _.each(labels, function(e, i) {
-      var current_label = labels[i];
+    var cities_and_postcodes = [];
+    _.each(cities, function(e, i) {
+      var current_city = cities[i];
       var current_postcode = postcodes[i];
-      labels_and_postcodes.unshift(current_postcode + " " + current_label);
-    })
+      cities_and_postcodes.unshift(current_postcode + " " + current_city);
+    });
 
+    var uniq_cities_and_postcodes = _.uniqWith(cities_and_postcodes, _.isEqual);
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -46,9 +47,9 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    _.assign(pivot_map, _.zipObject(labels_and_postcodes, address_data));
-    console.log(pivot_map);
-    return labels_and_postcodes;
+    _.assign(pivot_map, _.zipObject(uniq_cities_and_postcodes, address_data));
+    console.log(uniq_cities_and_postcodes);
+    return uniq_cities_and_postcodes;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();
