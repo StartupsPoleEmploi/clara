@@ -10,6 +10,11 @@
     "ga": true,
     "clara": true,
     "PNotify": true,
+    "describe": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "expect": true,
+    "it": true,
     "console": true,
     "prompt": true
   }
