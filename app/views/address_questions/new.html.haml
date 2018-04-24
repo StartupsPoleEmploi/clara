@@ -13,7 +13,10 @@
   .o-card.c-question
     = form_with model: @address, url: address_questions_path do |f|
       %h1.txtcenter
-        %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quelle est votre code postal ?
+        %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal ?
+      .c-address__explanation
+        .h3-like.w75.u-focusable{tabindex: "0"}
+          Entrez votre code postal sur 5 chiffres
       .c-address__content
         #a11yAutocomplete
           %div{"data-widget" => "accessible-autocomplete"}
@@ -33,7 +36,7 @@
             .screen-reader-text.visually-hidden{"aria-live" => "assertive"}
         %input#location_label.is-hidden{value: "#{@address.label}"}
 
-          %table#address_form
+          %table#address_form.is-hidden
             %tr
               %td.label Street address
               %td.slimField
