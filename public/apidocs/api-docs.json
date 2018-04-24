@@ -31,10 +31,10 @@
         "description": "",
         "operationId": "getAidDetail",
         "consumes": [
-          "application/json",
+          "application/json"
         ],
         "produces": [
-          "application/json",
+          "application/json"
         ],
         "parameters": [
         {
@@ -83,10 +83,10 @@
         "description": "",
         "operationId": "getEligibleAids",
         "consumes": [
-          "application/json",
+          "application/json"
         ],
         "produces": [
-          "application/json",
+          "application/json"
         ],
         "parameters": [
         {
@@ -205,10 +205,10 @@
         "description": "",
         "operationId": "getIneligibleAids",
         "consumes": [
-          "application/json",
+          "application/json"
         ],
         "produces": [
-          "application/json",
+          "application/json"
         ],
         "parameters": [
         {
@@ -327,10 +327,10 @@
         "description": "",
         "operationId": "getUncertainAids",
         "consumes": [
-          "application/json",
+          "application/json"
         ],
         "produces": [
-          "application/json",
+          "application/json"
         ],
         "parameters": [
         {
@@ -497,11 +497,11 @@
           {
             "email":
             {
-              "type": "string",
+              "type": "string"
             },
             "password":
             {
-              "type": "string",
+              "type": "string"
             }
           }
         }

@@ -24,7 +24,7 @@ class QpvService
 
   def isDetailedQPV(num_adresse, nom_voie, code_postal, nom_commune)
     return "erreur_numero_manquant" if num_adresse.blank?
-    4.times do
+    6.times do
       res = _getQPV("#{num_adresse} #{nom_voie} #{code_postal} #{nom_commune}") 
       if res === 'work_in_progress'
         sleep(2) unless Rails.env.test?
@@ -63,6 +63,9 @@ class QpvService
     escaped_address = URI.escape(full_url) 
     uri = URI.parse(escaped_address)
     response = HttpService.get_instance.get(uri)
+    p '- - - - - - - - - - - - - - response- - - - - - - - - - - - - - - -' 
+    p response.inspect
+    p ''
 
     if response && response.include?('is_qpv')
       return 'en_qpv'
