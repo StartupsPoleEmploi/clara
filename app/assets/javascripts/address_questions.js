@@ -2,7 +2,7 @@ _.set(window, 'clara.a11y.search1', {
   search_selector: '#search',
   results_selector: '#results',
   arialive_selector: '[aria-live]',
-  autocomplete_every: 3,
+  autocomplete_every: 1,
   errorOccured: function() {
     $('input#search').val('');
     this.resetAllCalculatedFields();
@@ -16,6 +16,14 @@ _.set(window, 'clara.a11y.search1', {
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var properties = _.map(feature_collection.features, 'properties');
     var labels = _.map(properties, 'label');
+    var postcodes = _.map(properties, 'postcode');
+    var labels_and_postcodes = [];
+    _.each(labels, function(e, i) {
+      var current_label = labels[i];
+      var current_postcode = postcodes[i];
+      labels_and_postcodes.unshift(current_postcode + " " + current_label);
+    })
+
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -38,9 +46,9 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    _.assign(pivot_map, _.zipObject(labels, address_data));
-
-    return labels;
+    _.assign(pivot_map, _.zipObject(labels_and_postcodes, address_data));
+    console.log(pivot_map);
+    return labels_and_postcodes;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();

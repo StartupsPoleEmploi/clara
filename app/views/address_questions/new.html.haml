@@ -13,15 +13,11 @@
   .o-card.c-question
     = form_with model: @address, url: address_questions_path do |f|
       %h1.txtcenter
-        %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quelle est votre adresse postale ?
-      .c-address__explanation
-        .h3-like.w75.u-focusable{tabindex: "0"}
-          Vous pouvez bénéficier de certaines aides si vous habitez dans un quartier prioritaire de la ville ou en zone rurale
+        %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quelle est votre code postal ?
       .c-address__content
         #a11yAutocomplete
           %div{"data-widget" => "accessible-autocomplete"}
-            %label.c-label.u-focusable{for: "search", tabindex: "0"} <div>Entrez votre adresse postale, <strong>en commençant par le numéro de voie</strong>,</div><div> puis sélectionnez-la quand elle apparaît dans la liste :</div>
-            %input#search{"placeholder" => "Exemple : 12 rue des car...", |
+            %input#search{"placeholder" => "Exemple : 44220", |
                             "aria-activedescendant" => "", |
                             "aria-autocomplete" => "both", |
                             "aria-describedby" => aria_described_by_of_input, |
