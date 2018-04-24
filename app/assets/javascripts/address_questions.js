@@ -48,7 +48,9 @@ _.set(window, 'clara.a11y.search1', {
     });
 
     _.assign(pivot_map, _.zipObject(uniq_cities_and_postcodes, address_data));
+    console.log("uniq_cities_and_postcodes-----");
     console.log(uniq_cities_and_postcodes);
+    console.log("");
     return uniq_cities_and_postcodes;
   },
   contentOfInputManuallyChanged: function() {

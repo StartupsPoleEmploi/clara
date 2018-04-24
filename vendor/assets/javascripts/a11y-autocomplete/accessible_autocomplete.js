@@ -33,6 +33,8 @@
       });
     }
     function buildListHtml(results) {
+      console.log("results---")
+      console.log(results)
       var resultsMarkup = "",
         i = 0;
       for (i = 0; i < results.length; i += 1) {
