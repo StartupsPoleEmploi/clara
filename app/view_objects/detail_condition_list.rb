@@ -19,6 +19,15 @@ class DetailConditionList < ViewObject
     return ""
   end
 
+  def description_that_maybe_with_sigville(description)
+    res = ""
+    if description.is_a?(String)
+      lower_description = description.downcase
+      res = description + " Vous pouvez vérifier si votre adresse est en QPV ici : https://sig.ville.gouv.fr/adresses/recherche"
+    end
+    res
+  end
+
   def _has_only_uncertain_rules
     @conditions.all? { |c| c[:status] == "uncertain" }
   end
