@@ -76,7 +76,7 @@ describe 'shared/_detail_condition_list' do
   it 'An UNCERTAIN condition has the corresponding description' do
     render partial: 'shared/detail_condition_list', locals: nominal_args
     page = Nokogiri::HTML(rendered)
-    expect((page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0]).text).to eq('Description of uncertain')
+    expect((page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0]).text).to include('Description of uncertain')
   end
   
   it 'An INELIGIBLE condition has the svg with ERROR mark' do
@@ -121,7 +121,7 @@ describe 'shared/_detail_condition_list' do
   
   it 'If there is an uncertain condition WITH the "qpv" string, there is a link to sigville' do
     args_without_qpv = nominal_args
-    args_without_qpv[:conditions].find{ |x| x[:status] == "uncertain"}[:description] = "a Qpv inside the sentence"
+    args_without_qpv[:conditions].find{ |x| x[:status] == "uncertain"}[:description] = "a Qpv inside the sentence."
     render partial: 'shared/detail_condition_list', locals: args_without_qpv
     page = Nokogiri::HTML(rendered)
     expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).to include('a Qpv inside the sentence.')
