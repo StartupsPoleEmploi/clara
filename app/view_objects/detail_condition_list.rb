@@ -23,7 +23,11 @@ class DetailConditionList < ViewObject
     res = ""
     if description.is_a?(String)
       lower_description = description.downcase
-      res = description + " Vous pouvez vérifier si votre adresse est en QPV ici : <a href='https://sig.ville.gouv.fr/adresses/recherche'>https://sig.ville.gouv.fr/adresses/recherche</a>"
+      if lower_description.include?("qpv")
+        res = description + " Vous pouvez vérifier si votre adresse est en QPV ici : <a href='https://sig.ville.gouv.fr/adresses/recherche'>https://sig.ville.gouv.fr/adresses/recherche</a>"
+      else
+        res = description
+      end
     end
     res
   end
