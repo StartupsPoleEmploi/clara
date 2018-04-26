@@ -82,7 +82,7 @@ feature 'detail of a result page' do
       expect(t('.c-detail-why--eligible')).to eq("Vous êtes éligible")
       expect(t("#{ADULT_ITEM} .c-detail-condition-text")).to eq("adult description")
       expect(t("#{SPECTACLE_ITEM} .c-detail-condition-text")).to eq("spectacle description")
-      expect(t("#{QPV_ITEM} .c-detail-condition-text")).to eq("qpv description")
+      expect(t("#{QPV_ITEM} .c-detail-condition-text")).to include("qpv description")
       expect(find("#{SPECTACLE_ITEM} svg")['class']).to include("error")
       expect(find("#{ADULT_ITEM} svg")['class']).to include("success")
       expect(find("#{QPV_ITEM} svg")['class']).to include("question")    

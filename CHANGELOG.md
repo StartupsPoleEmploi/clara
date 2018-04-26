@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.16.0 (26/04/2018)
+-[#683][FEATURE] Resultats - aides faisant appel au QPV/ZRR
+
+
 ## 8.15.0 (24/04/2018)
 -[#682][FEATURE] Adresse avec code postal 
 

@@ -90,7 +90,7 @@ class ResultSituation < ViewObject
     when 'hors_qpv'
       "non"
     else
-      "indisponible"
+      "indisponible. Vérifiez sur <a target='blank' href='https://sig.ville.gouv.fr/adresses/recherche'>https://sig.ville.gouv.fr/adresses/recherche</a>"
     end
   end
 

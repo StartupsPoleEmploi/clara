@@ -182,11 +182,12 @@ describe ResultSituation do
     end
     it 'Should respond "indisponible" if qpv is unknown' do
       sut = ResultSituation.new(nil, {asker: {v_qpv: 'nothing_relevant'}})
-      expect(sut.qpv).to eq("indisponible")
+      expect(sut.qpv).to include("indisponible")
     end
     it 'Should return "indisponible" in the worst scenario' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.qpv).to eq("indisponible")
+      expect(sut.qpv).to include("indisponible")
+      expect(sut.qpv).to include("https://sig.ville.gouv.fr/adresses/recherche")
     end
   end
   describe '.zrr' do

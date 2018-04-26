@@ -19,6 +19,19 @@ class DetailConditionList < ViewObject
     return ""
   end
 
+  def description_that_maybe_with_sigville(description)
+    res = ""
+    if description.is_a?(String)
+      lower_description = description.downcase
+      if lower_description.include?("quartier prioritaire") 
+        res = description + ". Vous pouvez vérifier si votre adresse est en QPV ici : <a target='blank' href='https://sig.ville.gouv.fr/adresses/recherche'>https://sig.ville.gouv.fr/adresses/recherche</a>"
+      else
+        res = description
+      end
+    end
+    res
+  end
+
   def _has_only_uncertain_rules
     @conditions.all? { |c| c[:status] == "uncertain" }
   end
