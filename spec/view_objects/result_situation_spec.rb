@@ -186,7 +186,8 @@ describe ResultSituation do
     end
     it 'Should return "indisponible" in the worst scenario' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.qpv).to eq("indisponible")
+      expect(sut.qpv).to include("indisponible")
+      expect(sut.qpv).to include("https://sig.ville.gouv.fr/adresses/recherche")
     end
   end
   describe '.zrr' do
