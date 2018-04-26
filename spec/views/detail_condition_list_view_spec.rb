@@ -116,7 +116,7 @@ describe 'shared/_detail_condition_list' do
     render partial: 'shared/detail_condition_list', locals: args_without_qpv
     page = Nokogiri::HTML(rendered)
     expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).to include('nothing special')
-    expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).not_to include('sigville')
+    expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).not_to include('https://sig.ville.gouv.fr/adresses/recherche')
   end
   
   it 'If there is an uncertain condition WITH the "qpv" string, there is a link to sigville' do
