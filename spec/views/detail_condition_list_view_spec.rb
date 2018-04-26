@@ -128,6 +128,15 @@ describe 'shared/_detail_condition_list' do
     expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).to include('https://sig.ville.gouv.fr/adresses/recherche')
   end
   
+  it 'If there is an uncertain condition WITH the "quartier prioritaire" string, there is a link to sigville' do
+    args_without_qpv = nominal_args
+    args_without_qpv[:conditions].find{ |x| x[:status] == "uncertain"}[:description] = "a quartier prioriTAIRE"
+    render partial: 'shared/detail_condition_list', locals: args_without_qpv
+    page = Nokogiri::HTML(rendered)
+    expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).to include('a quartier prioriTAIRE')
+    expect(page.css('.c-detail-condition.uncertain .c-detail-condition-text')[0].text).to include('https://sig.ville.gouv.fr/adresses/recherche')
+  end
+  
   def nominal_args
     {
       :conditions => [
