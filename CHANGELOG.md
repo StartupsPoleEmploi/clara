@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.17.0 (02/05/2018)
+-[#590][FEATURE] Resultats - Rubrique vide
+
+
 ## 8.16.0 (26/04/2018)
 -[#683][FEATURE] Resultats - aides faisant appel au QPV/ZRR
 

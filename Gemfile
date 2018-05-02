@@ -14,13 +14,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'rack-attack'
 
-gem 'lodash-rails'
 gem 'haml', '~> 5'
 gem 'haml-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'pg'
 gem 'friendly_id', '~> 5.1.0'
-gem 'loofah', '2.2.1'
+gem 'loofah', '>= 2.2.2'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'annotate', '2.4.0'
@@ -30,6 +29,7 @@ gem 'bulk_insert'
 gem 'gon'
 gem 'whenever', :require => false
 gem 'browser'
+gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
 
 ## Devops
 gem 'newrelic_rpm'
@@ -81,10 +81,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  gem 'guard', '>= 2.2.2', :require => false
-  gem 'guard-livereload',  :require => false
   gem 'rack-livereload'
   gem 'rb-fsevent',        :require => false
-  gem 'guard-rspec',       :require => false
 end
 
