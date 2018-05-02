@@ -180,13 +180,13 @@ describe ResultSituation do
       sut = ResultSituation.new(nil, {asker: {v_qpv: 'hors_qpv'}})
       expect(sut.qpv).to eq("non")
     end
-    it 'Should respond "indisponible" if qpv is unknown' do
+    it 'Should respond "vérifier" if qpv is unknown' do
       sut = ResultSituation.new(nil, {asker: {v_qpv: 'nothing_relevant'}})
-      expect(sut.qpv).to include("indisponible")
+      expect(sut.qpv).to include("vérifier")
     end
-    it 'Should return "indisponible" in the worst scenario' do
+    it 'Should return "vérifier" in the worst scenario' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.qpv).to include("indisponible")
+      expect(sut.qpv).to include("vérifier")
       expect(sut.qpv).to include("https://sig.ville.gouv.fr/adresses/recherche")
     end
   end
