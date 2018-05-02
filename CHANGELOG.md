@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.17.1 (02/05/2018)
+-[#736][FEATURE] Modify error message in address
+
+
 ## 8.17.0 (02/05/2018)
 -[#590][FEATURE] Resultats - Rubrique vide
 
