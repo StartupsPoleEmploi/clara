@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 8.17.2 (02/05/2018)
+-[#737][FEATURE] Recapitulatif remplacement de "adresse" par "ville"
+
+
 ## 8.17.1 (02/05/2018)
 -[#736][FEATURE] Modify error message in address
 
