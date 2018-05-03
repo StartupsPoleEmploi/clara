@@ -1,4 +1,8 @@
 fr:
+  administrate:
+    actions:
+      new: "Nouveau"
+      show: "Détails"
   activerecord:
     errors:
       messages:

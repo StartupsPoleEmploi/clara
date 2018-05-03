@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 9.1.0 (02/05/2018)
+-[#703][TECH] Passage à Rails 5.2.0
+
+
 ## 9.0.0 (02/05/2018)
 -[#423][TECH] Passage à Ruby 2.5.0
 
