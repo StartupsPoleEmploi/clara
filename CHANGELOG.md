@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 9.0.0 (02/05/2018)
+-[#423][TECH] Passage à Ruby 2.5.0
+
+
 ## 8.17.2 (02/05/2018)
 -[#737][FEATURE] Recapitulatif remplacement de "adresse" par "ville"
 
