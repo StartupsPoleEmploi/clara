@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2'
 gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
@@ -37,8 +37,8 @@ gem 'sentry-raven'
 
 
 # Admin
-gem 'paper_trail', '~> 7.1'
-gem 'administrate', '~> 0.8.1'
+gem 'paper_trail', '~> 9.0.0'
+gem 'administrate', '~> 0.10.0'
 gem "administrate-field-ckeditor", "~> 0.0.8"
 gem 'omniauth-google-oauth2', '~> 0.5'
 
