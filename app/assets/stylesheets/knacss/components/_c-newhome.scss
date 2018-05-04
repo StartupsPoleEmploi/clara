@@ -178,6 +178,11 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__card-svg4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
   background: linear-gradient(to bottom, #f2994a, #b85e25);
   border-radius: 50%;
 }
