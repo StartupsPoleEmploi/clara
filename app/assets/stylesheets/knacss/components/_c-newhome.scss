@@ -153,22 +153,42 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__card-svg1 {
-  background: linear-gradient(131.99deg, #3DBDB6 5.64%, #0089CE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(124deg, #00c1b6, #136eb5);
   border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg2 {
-  background: linear-gradient(308.7deg, #7A86CC 8.85%, #9FACF8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;  
+  background: linear-gradient(124deg, #9facf8, #676fc6);
   border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg3 {
-  background: linear-gradient(180deg, #F3778F 0.55%, #F26A95 44.25%, #F15A9D 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to bottom, #f3778f, #d13a87);
   border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg4 {
-  background: linear-gradient(180deg, #F2C94C 0%, #F2D04C 44.2%, #F38428 99.45%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(to bottom, #f2994a, #b85e25);
   border-radius: 50%;
 }
 
