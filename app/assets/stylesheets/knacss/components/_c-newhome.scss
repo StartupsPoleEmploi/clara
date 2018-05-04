@@ -153,6 +153,11 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__card-svg1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
   background: linear-gradient(124deg, #00c1b6, #136eb5);
   border-radius: 50%;
 }
