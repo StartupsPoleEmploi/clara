@@ -1,11 +1,15 @@
 # ARA Changelog
 
 
-## 9.1.0 (02/05/2018)
+## 9.1.1 (04/05/2018)
+-[#543][DESIGN] Changer la couleur de fond des icônes de la home
+
+
+## 9.1.0 (03/05/2018)
 -[#703][TECH] Passage à Rails 5.2.0
 
 
-## 9.0.0 (02/05/2018)
+## 9.0.0 (03/05/2018)
 -[#423][TECH] Passage à Ruby 2.5.0
 
 
