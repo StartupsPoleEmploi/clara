@@ -8,7 +8,6 @@
   flex-direction: column;
 }
 
-
 .ct-chart .ct-legend .ct-series-0:before {
   background-color: #0b2e3d;
   border-color: #0b2e3d;
@@ -26,4 +25,14 @@
 }
 .ct-chart .ct-bar {
     stroke-width: 30px
+}
+
+.ct-gabarline .ct-series-a .ct-line {
+  stroke: #047cbc;
+}
+.ct-gabarline .ct-series-a .ct-point {
+  stroke: #047cbc;
+}
+.ct-gabarline .ct-series-a .ct-area {
+  fill: #9bdeff;
 }

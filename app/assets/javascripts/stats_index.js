@@ -1,5 +1,6 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('stats', 'index')) {
+    
     new Chartist.Bar(
       '.ct-chart',
       {
@@ -24,7 +25,7 @@ $(document).on('ready turbolinks:load', function() {
         series: [[5, 9, 7, 8, 5, 3, 5, 4]]
       },
       {
-        seriesBarDistance: 30,
+        height: 300,
         low: 0,
         showArea: true
       }
