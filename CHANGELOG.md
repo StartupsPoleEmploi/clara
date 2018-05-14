@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 9.2.0 (14/05/2018)
+-[#695][FEATURE] Page stats : nombre de visites
+
+
 ## 9.1.1 (04/05/2018)
 -[#543][DESIGN] Changer la couleur de fond des icônes de la home
 
