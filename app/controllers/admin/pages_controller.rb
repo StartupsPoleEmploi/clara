@@ -38,6 +38,10 @@ module Admin
       s = Stat.first
       s.ga = response.reports
       s.save
+      p '- - - - - - - - - - - - - - s- - - - - - - - - - - - - - - -' 
+      p s.inspect
+      p ''
+
       # s.ga[0]["data"]["rows"] to access data rows
       # s.ga[0]["data"]["totals"][0]["values"][0] to access number of sessions
     end
