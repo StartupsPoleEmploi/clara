@@ -18,11 +18,13 @@ $(document).on('ready turbolinks:load', function() {
       }
     );
 
+   
+    var lines = _.map(_.get(JSON.parse($('.ct-gabarline').attr('data-loaded')), "[0].data.rows"), function(e) {return _.get(e, "metrics[0].values[0]");})
+
     new Chartist.Line(
       '.ct-gabarline',
       {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8],
-        series: [[5, 9, 7, 8, 5, 3, 5, 4]]
+        series: [lines]
       },
       {
         height: 300,
