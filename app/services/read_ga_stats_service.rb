@@ -1,4 +1,4 @@
-class GaStatsService
+class ReadGaStatsService
 
 
   def number_of_sessions
@@ -9,6 +9,10 @@ class GaStatsService
       res = 0
     end
     res
+  end
+
+  def actual_ga
+    Stat.first.ga
   end
 
 
