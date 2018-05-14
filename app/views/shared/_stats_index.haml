@@ -5,9 +5,25 @@
   .grid
     .col-4_md-12
       .o-card.c-stats-totalview
-        .c-stats-totalview__number
+        %a.c-stats-headerlink
+          Voir le détail
+        .c-stats-headernumber.c-stats-totalview__number
           =number_of_sessions
-        .c-stats-totalview__text
-          Visites
+        .c-stats-headertext.c-stats-totalview__text
+          Visiteurs total
     .col-4-_md-12
+      .o-card.c-stats-conversion
+        %a.c-stats-headerlink
+          Voir le détail
+        .c-stats-conversion__number
+          =conversion
+        .c-stats-headertext.c-stats-conversion__text
+          Taux de conversion
     .col-4-_md-12
+      .o-card.c-stats-satisfaction
+        %a.c-stats-headerlink
+          Voir le détail
+        .c-stats-satisfaction__number
+          =satisfaction
+        .c-stats-headertext.c-stats-satisfaction__text
+          Taux de satisfaction
