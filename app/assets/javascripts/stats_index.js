@@ -42,6 +42,5 @@ $(document).on('ready turbolinks:load', function() {
       }
     );
 
-    console.log('stats index loaded');
   }
 });
