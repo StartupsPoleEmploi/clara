@@ -7,3 +7,23 @@
   display: flex;
   flex-direction: column;
 }
+
+
+.ct-chart .ct-legend .ct-series-0:before {
+  background-color: #0b2e3d;
+  border-color: #0b2e3d;
+}
+.ct-chart .ct-legend .ct-series-1:before {
+  background-color: #007ef4;
+  border-color: #007ef4;
+}
+
+.ct-chart .ct-series-b .ct-bar {
+  stroke: #0b2e3d;
+}
+.ct-chart .ct-series-a .ct-bar {
+  stroke: #007ef4;
+}
+.ct-chart .ct-bar {
+    stroke-width: 30px
+}

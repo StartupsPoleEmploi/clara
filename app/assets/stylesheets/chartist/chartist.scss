@@ -1,4 +1,5 @@
 @import "settings/chartist-settings";
+@import "chartist-plugin-legend";
 
 @mixin ct-responsive-svg-container($width: 100%, $ratio: $ct-container-ratio) {
   display: block;
