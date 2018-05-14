@@ -25,10 +25,10 @@ module Admin
 
       request = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new(
         report_requests: [Google::Apis::AnalyticsreportingV4::ReportRequest.new(
-          view_id: '151149036',
-           metrics: [metric],
-           dimensions: [dimension],
-           date_ranges: [date_range]
+          view_id: EnvService.get_instance.ara_google_analytics_view_id,
+          metrics: [metric],
+          dimensions: [dimension],
+          date_ranges: [date_range]
         )]
       ) # thanks to @9mm: https://github.com/google/google-api-ruby-client/issues/489
 
@@ -38,10 +38,6 @@ module Admin
       s = Stat.first
       s.ga = response.reports
       s.save
-      p '- - - - - - - - - - - - - - s- - - - - - - - - - - - - - - -' 
-      p s.inspect
-      p ''
-
       # s.ga[0]["data"]["rows"] to access data rows
       # s.ga[0]["data"]["totals"][0]["values"][0] to access number of sessions
     end

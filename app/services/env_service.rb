@@ -27,6 +27,10 @@ class EnvService
     ENV['ARA_URL_BAN'] || ''
   end
   
+  def ara_google_analytics_view_id
+    ENV['ARA_GOOGLE_ANALYTICS_VIEW_ID'] || ''
+  end
+  
   def ara_google_analytics_id
     ENV['ARA_GOOGLE_ANALYTICS_ID'] || ''
   end

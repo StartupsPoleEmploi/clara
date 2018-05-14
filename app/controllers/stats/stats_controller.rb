@@ -12,9 +12,10 @@ module Stats
     end
     def index_res
       {
-        number_of_sessions: read_ga_stats.actual_ga,
-        conversion: 'N/A',
-        satisfaction: 'N/A'
+        visitor_kpi: read_ga_stats.visitor_kpi,
+        visitor_stats: read_ga_stats.visitor_stats,
+        conversion_kpi: 'N/A',
+        satisfaction_kpi: 'N/A',
       }
     end
 
