@@ -4,31 +4,25 @@
     
   .grid
     .col-4_md-12
-      .o-card.c-stats-totalview
-        %a.c-stats-headerlink
-          Voir le détail
+      .o-card.c-stats-card.c-stats-totalview
         .c-stats-headernumber.c-stats-totalview__number
           =visitor_kpi
         .c-stats-headertext.c-stats-totalview__text
           Visiteurs total
     .col-4-_md-12
-      .o-card.c-stats-conversion
-        %a.c-stats-headerlink
-          Voir le détail
+      .o-card.c-stats-card.c-stats-conversion
         .c-stats-conversion__number
           =conversion_kpi
         .c-stats-headertext.c-stats-conversion__text
           Taux de conversion
     .col-4-_md-12
-      .o-card.c-stats-satisfaction
-        %a.c-stats-headerlink
-          Voir le détail
+      .o-card.c-stats-card.c-stats-satisfaction
         .c-stats-satisfaction__number
           =satisfaction_kpi
         .c-stats-headertext.c-stats-satisfaction__text
           Taux de satisfaction
 
     .col-4-_md-12
-      .o-card.ct-chart
+      .o-card.ct-gape{'data-loaded'=> "#{visitor_stats_pe.to_json}"}
     .col-8-_md-12
       .o-card.ct-gabarline{'data-loaded'=> "#{visitor_stats.to_json}"}

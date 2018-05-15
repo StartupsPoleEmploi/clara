@@ -1,9 +1,12 @@
 <div style="margin-top: 2rem;">
-Charger Les stats
-
+Charger les données de session Google Analytics
 <%= form_with url: admin_load_stats_path, id: 'admin_load_stats_form' do |form| %>
-  <%= form.submit 'Charger les stats google analytics'%>
+  <%= form.submit 'Charger les sessions GA'%>
 <% end %>
-
-
+</div>
+<div style="margin-top: 2rem;">
+Charger les données de trafic PE / hors PE Google Analytics
+<%= form_with url: admin_load_stats_from_pe_path, id: 'admin_load_stats_from_pe_form' do |form| %>
+  <%= form.submit 'Charger les données de trafic PE / hors PE'%>
+<% end %>
 </div>

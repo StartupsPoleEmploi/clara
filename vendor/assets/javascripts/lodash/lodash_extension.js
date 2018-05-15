@@ -6,6 +6,15 @@ _.mixin({
     });
   },
 
+  // see https://stackoverflow.com/a/43852081/2595513
+  toBoolean: function(v) {
+    return v==="false" || v==="null" || v==="NaN" || v==="undefined" || v==="0" ? false : !!v; 
+  },
+
+  toPercentage: function(portion, total) {
+    return ((portion/total) * 100).toFixed(2) + '%'
+  },
+
   fullDateFr: function() {
     var now = new Date();
  

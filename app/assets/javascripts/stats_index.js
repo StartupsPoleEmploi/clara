@@ -1,9 +1,19 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('stats', 'index')) {
+    /**
+    * Load from PE / not from PE
+    */
+    var all_pe = _.get(JSON.parse($('.ct-gape').attr('data-loaded')), '[0].data.rows')
+    var pe_discriminator_function = function(e){ return _.toBoolean(_.get(e, 'dimensions[0]'))}
+    var inside_pe = _.filter(all_pe, pe_discriminator_function)
+    var outside_pe = _.reject(all_pe, pe_discriminator_function)
+    var advisor_nb = _.get(inside_pe, '[0].metrics[0].values[0]')
+    var asker_nb = _.get(outside_pe, '[0].metrics[0].values[0]')
+    var total_nb = _.toInteger(advisor_nb) + _.toInteger(asker_nb)
     new Chartist.Bar(
-      '.ct-chart',
+      '.ct-gape',
       {
-        series: [{ name: 'Conseillers', data: [6000] }, { name: 'Demandeurs', data: [8000] }]
+        series: [{ name: 'Conseillers ' + _.toPercentage(advisor_nb, total_nb), data: [advisor_nb] }, { name: 'Demandeurs ' + _.toPercentage(asker_nb, total_nb), data: [asker_nb] }]
       },
       {
         seriesBarDistance: 10,
@@ -17,6 +27,10 @@ $(document).on('ready turbolinks:load', function() {
       }
     );
 
+
+    /**
+    * Load sessions
+    */
     var board = _.get(JSON.parse($('.ct-gabarline').attr('data-loaded')), '[0].data.rows');
     var grouped_board = _.groupBy(board, function(e) {
       return moment(_.get(e, 'dimensions[0]')).startOf('isoWeek');
@@ -28,7 +42,6 @@ $(document).on('ready turbolinks:load', function() {
         })
       );
     });
-
     new Chartist.Line(
       '.ct-gabarline',
       {

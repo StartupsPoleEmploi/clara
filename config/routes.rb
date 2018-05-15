@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       post 'unarchive_all_aids'
       post 'load_ref_data'
       post 'load_stats'
+      post 'load_stats_from_pe'
     end
     resources :variables
     resources :contract_types
