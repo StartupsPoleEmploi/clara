@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 9.2.3 (15/05/2018)
+-[BUG] Bug critique sur le ZRR, 3
+
+
 ## 9.2.2 (15/05/2018)
 -[BUG] Bug critique sur le ZRR, 2
 
