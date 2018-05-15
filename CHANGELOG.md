@@ -1,12 +1,9 @@
 # ARA Changelog
 
 
-## 9.2.3 (15/05/2018)
--[BUG] Bug critique sur le ZRR, 3
 
-
-## 9.2.2 (15/05/2018)
--[BUG] Bug critique sur le ZRR, 2
+## 9.2.4 (15/05/2018)
+-[#745][BUG] Jauge de chargement pas visible
 
 
 ## 9.2.1 (15/05/2018)
