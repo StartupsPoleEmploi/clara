@@ -25,22 +25,25 @@ class ZrrService
   end
 
   def isZRR(citycode)
-    if (citycode && citycode.is_a?(String) && !citycode.blank?)
-      escaped_address = URI.escape(@base_url + "/#{citycode}") 
-      uri = URI.parse(escaped_address)
-      response = HttpService.get_instance.get(uri)
-      if !response.blank? && response.include?("timeout")
-        return 'service_indisponible'
-      elsif !response.blank? && response.include?("id")
-        return 'en_zrr'
-      elsif !response.blank? && !response.include?("id")
-        return 'hors_zrr'
-      else
-        return 'erreur_communication'
-      end
-    else
-      return 'erreur_technique'
-    end
+
+    return 'erreur_technique'
+    
+    # if (citycode && citycode.is_a?(String) && !citycode.blank?)
+    #   escaped_address = URI.escape(@base_url + "/#{citycode}") 
+    #   uri = URI.parse(escaped_address)
+    #   response = HttpService.get_instance.get(uri)
+    #   if !response.blank? && response.include?("timeout")
+    #     return 'service_indisponible'
+    #   elsif !response.blank? && response.include?("id")
+    #     return 'en_zrr'
+    #   elsif !response.blank? && !response.include?("id")
+    #     return 'hors_zrr'
+    #   else
+    #     return 'erreur_communication'
+    #   end
+    # else
+    #   return 'erreur_technique'
+    # end
   end
   
 end

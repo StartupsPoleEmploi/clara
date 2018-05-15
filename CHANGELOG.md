@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 9.2.1 (15/05/2018)
+-[#744][BUG] Bug critique sur le ZRR
+
 
 ## 9.2.0 (14/05/2018)
 -[#695][FEATURE] Page stats : nombre de visites
