@@ -12,7 +12,10 @@ _.mixin({
   },
 
   toPercentage: function(portion, total) {
-    return ((portion/total) * 100).toFixed(2) + '%'
+    if (_.every(arguments, _.isNumber)) {
+      return ((portion/total) * 100).toFixed(1) + '%'
+    }
+    return ''
   },
 
   fullDateFr: function() {
