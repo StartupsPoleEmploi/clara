@@ -1,6 +1,5 @@
 # ARA Changelog
 
-
 ## 9.2.1 (15/05/2018)
 -[#744][BUG] Bug critique sur le ZRR
 
