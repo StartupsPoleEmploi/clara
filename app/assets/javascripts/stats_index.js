@@ -42,8 +42,8 @@ $(document).on('ready turbolinks:load', function() {
         })
       );
     });
-    var nice_keys = _.map(_.keys(grouped_board), function(e){return _.split(e, " ")[1] + " " + _.split(e, " ")[2] + " " + _.split(e, " ")[3]})
-    
+    var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
+
     new Chartist.Line(
       '.ct-gabarline',
       {
