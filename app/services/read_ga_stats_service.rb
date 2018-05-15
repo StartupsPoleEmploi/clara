@@ -1,7 +1,6 @@
-class GaStatsService
+class ReadGaStatsService
 
-
-  def number_of_sessions
+  def visitor_kpi
     res = 0
     begin
       res = Stat.first.ga[0]["data"]["totals"][0]["values"][0].to_i
@@ -9,6 +8,14 @@ class GaStatsService
       res = 0
     end
     res
+  end
+
+  def visitor_stats
+    Stat.first.ga
+  end
+
+  def visitor_stats_pe
+    Stat.first.ga_pe
   end
 
 

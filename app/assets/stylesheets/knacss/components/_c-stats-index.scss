@@ -1,7 +1,53 @@
 .c-stats-index {
 }
 
+.c-stats-card--active {
+  border: solid 2px #047cbc;
+}
+.c-stats-headertext {
+  font-weight: bold;
+}
 .c-stats-totalview {
   display: flex;
   flex-direction: column;
+}
+
+.ct-gape .ct-legend .ct-series-0:before {
+  background-color: #0b2e3d;
+  border-color: #0b2e3d;
+}
+.ct-gape .ct-legend .ct-series-1:before {
+  background-color: #007ef4;
+  border-color: #007ef4;
+}
+
+.ct-gape .ct-series-b .ct-bar {
+  stroke: #0b2e3d;
+}
+.ct-gape .ct-series-a .ct-bar {
+  stroke: #007ef4;
+}
+.ct-gape .ct-bar {
+    stroke-width: 30px
+}
+
+.ct-gabarline .ct-series-a .ct-line {
+  stroke: #047cbc;
+}
+.ct-gabarline .ct-series-a .ct-point {
+  stroke: #047cbc;
+}
+.ct-gabarline .ct-series-a .ct-area {
+  fill: #9bdeff;
+}
+.ct-gabarline .ct-point {
+  stroke-width: 6px;
+}
+
+.ct-gabarline .ct-label.ct-label.ct-horizontal {
+  position: fixed;
+  justify-content: flex-end;
+  text-align: right;
+  transform-origin: 100% 0;
+  transform: translate(-100%) rotate(-45deg);
 }
