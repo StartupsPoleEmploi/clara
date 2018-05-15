@@ -1,7 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.secret_key_base = ENV["ARA_SECRET_KEY_BASE"]
+  config.require_master_key = false
 
   # Code is not reloaded between requests.
   config.cache_classes = true
