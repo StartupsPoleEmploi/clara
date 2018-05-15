@@ -64,9 +64,6 @@ module Admin
       Stat.create unless Stat.first
       s = Stat.first
       s.ga_pe = response.reports
-      p '- - - - - - - - - - - - - - ga_pe- - - - - - - - - - - - - - - -' 
-      p s.ga_pe.inspect
-      p ''
       s.save
     end
 
