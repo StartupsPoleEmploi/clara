@@ -2,11 +2,15 @@
 
 
 
+## 9.3.0 (17/05/2018)
+-[#749][FEATURE] Dashboard de stats système
+
+
 ## 9.2.4 (15/05/2018)
 -[#745][BUG] Jauge de chargement pas visible
 
 
-## 9.2.1 (15/05/2018)
+## 9.2.1, 9.2.2, 9.2.3 (15/05/2018)
 -[#744][BUG] Bug critique sur le ZRR
 
 
