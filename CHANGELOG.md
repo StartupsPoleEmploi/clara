@@ -3,7 +3,7 @@
 
 
 ## 9.3.0 (17/05/2018)
--[#749][FEATURE] Dashboard de stats système
+-[#749][FEATURE] Dashboard de stats système.
 
 
 ## 9.2.4 (15/05/2018)
