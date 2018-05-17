@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount PgHero::Engine, at: "pghero"
+
   namespace :api do
     namespace :v1 do
       post 'user_token'     => 'user_token#create'

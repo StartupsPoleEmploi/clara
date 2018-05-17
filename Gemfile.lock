@@ -137,6 +137,9 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    goldiloader (2.1.0)
+      activerecord (>= 4.2, < 5.3)
+      activesupport (>= 4.2, < 5.3)
     gon (6.2.0)
       actionpack (>= 3.0)
       multi_json
@@ -269,6 +272,8 @@ GEM
       activerecord (>= 4.2, < 5.3)
       request_store (~> 1.1)
     pg (0.21.0)
+    pghero (2.1.1)
+      activerecord
     phantomjs (2.1.1.0)
     poltergeist (1.18.0)
       capybara (>= 2.1, < 4)
@@ -448,6 +453,7 @@ DEPENDENCIES
   factory_bot_rails (~> 4.0)
   friendly_id (~> 5.1.0)
   fuubar
+  goldiloader
   gon
   google-api-client
   haml (~> 5)
@@ -466,6 +472,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.5)
   paper_trail (~> 9.0.0)
   pg (~> 0.18)
+  pghero
   poltergeist
   pry-rails
   pry-remote

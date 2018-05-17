@@ -6,16 +6,18 @@ class AidService
   end
 
   def self.all_eligible(asker)
-    Aid.activated.select { |aid| self.new(aid)._eligible?(asker) } || []
+    Aid.eager_loaded.select { |aid| self.new(aid)._eligible?(asker) } || []
   end
 
   def self.all_ineligible(asker)
-    Aid.activated.select { |aid| self.new(aid)._ineligible?(asker) } || []
+    Aid.eager_loaded.select { |aid| self.new(aid)._ineligible?(asker) } || []
   end
 
   def self.all_uncertain(asker)
-    Aid.activated.select { |aid| self.new(aid)._uncertain?(asker) } || []
+    Aid.eager_loaded.select { |aid| self.new(aid)._uncertain?(asker) } || []
   end
+
+
 
   def activated_and_eligible?(asker)
     return @aid && @aid.id && Aid.activated.where(:id => @aid.id).present? && _eligible?(asker)
