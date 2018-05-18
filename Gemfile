@@ -31,6 +31,10 @@ gem 'whenever', :require => false
 gem 'browser'
 gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
 
+gem 'goldiloader'
+gem 'clipboard' # debug purpose only
+gem 'actionpack-page_caching'
+
 ## Devops
 gem 'newrelic_rpm'
 gem 'sentry-raven'

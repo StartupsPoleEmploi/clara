@@ -16,6 +16,7 @@ module Mae
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.exceptions_app = self.routes
     config.middleware.use Rack::Attack
+    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
   end
 end
 

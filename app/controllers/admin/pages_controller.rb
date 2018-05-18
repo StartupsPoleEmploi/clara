@@ -87,13 +87,12 @@ module Admin
       a = params.extract!(:initial_value).permit(:initial_value).to_h
       b = params.extract!(:final_value).permit(:final_value).to_h
 
-
-      initial_value = a[:initial_value]
-
-      
+      initial_value = a[:initial_value]      
       final_value = b[:final_value]
 
       CustomRuleCheck.where(result: initial_value).update_all("result = '#{final_value}'")
     end
+
+
   end
 end

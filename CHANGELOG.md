@@ -1,10 +1,9 @@
 # ARA Changelog
 
 
-
-## 9.3.0 (17/05/2018)
--[#749][FEATURE] Dashboard de stats système
-
+## 9.3.2 (18/05/2018)
+-[#752][FEATURE] Page d'accueil mise en cache
+-[#751][BUG] Requete non optimisée
 
 ## 9.2.4 (15/05/2018)
 -[#745][BUG] Jauge de chargement pas visible

@@ -1,8 +1,10 @@
 Rails.application.configure do
 
   # See https://stackoverflow.com/a/36294165/2595513
-  config.active_record.logger = nil
-
+  # config.active_record.logger = nil
+  # See http://www.jakobbeyer.de/disable-action-view-logger-in-production-for-ruby-on-rails
+  # config.action_view.logger = nil
+  
   # See https://mattbrictson.com/lightning-fast-sass-reloading-in-rails
   # config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
   

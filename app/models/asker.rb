@@ -1,5 +1,7 @@
 require "base64"
 
+# asker = Asker.new(v_age:"34", v_diplome:"level_3", v_handicap: "true", v_duree_d_inscription: "more_than_a_year", v_category: "more_than_a_year", v_allocation_type: "RSA")
+
 class Asker < ActiveType::Object
 
   attribute :v_handicap,                  :string

@@ -26,6 +26,8 @@ GEM
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-page_caching (1.1.0)
+      actionpack (>= 4.0.0, < 6)
     actionview (5.1.0)
       activesupport (= 5.1.0)
       builder (~> 3.1)
@@ -69,7 +71,7 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (8.5.0)
       execjs
-    bcrypt (3.1.11)
+    bcrypt (3.1.12)
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -92,6 +94,7 @@ GEM
       cocaine
       orm_adapter (~> 0.5.0)
     climate_control (0.2.0)
+    clipboard (1.1.1)
     cliver (0.3.2)
     cocaine (0.6.0)
       terrapin (= 0.6.0)
@@ -137,6 +140,9 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    goldiloader (2.1.0)
+      activerecord (>= 4.2, < 5.3)
+      activesupport (>= 4.2, < 5.3)
     gon (6.2.0)
       actionpack (>= 3.0)
       multi_json
@@ -431,6 +437,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-page_caching
   active_type
   administrate (~> 0.10.0)
   administrate-field-ckeditor (~> 0.0.8)
@@ -442,12 +449,14 @@ DEPENDENCIES
   byebug
   capybara
   climate_control
+  clipboard
   coffee-rails
   database_cleaner (~> 1.6)
   dotenv-rails
   factory_bot_rails (~> 4.0)
   friendly_id (~> 5.1.0)
   fuubar
+  goldiloader
   gon
   google-api-client
   haml (~> 5)
