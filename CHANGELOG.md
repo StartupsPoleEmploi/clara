@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 9.5.0 (18/05/2018)
+-[#753][FEATURE] Installation pghero
+
 ## 9.4.0 (18/05/2018)
 -[#749][FEATURE] Page de /status de l'appli
 
