@@ -1,3 +1,4 @@
+
 - has_user = !params[:for_id].blank?
 - if has_user
   - title_data "Vos résultats"
@@ -10,9 +11,7 @@
 
 %main#main.c-results-index{role: 'main'}
   - if has_user
-    =loaded[:flat_all_eligible].to_json
-    =loaded[:flat_all_uncertain].to_json
-    =loaded[:flat_all_ineligible].to_json
+    = render 'shared/result_default', {asker: loaded[:asker], flat_all_eligible: loaded[:flat_all_eligible], flat_all_uncertain: loaded[:flat_all_uncertain], flat_all_ineligible: loaded[:flat_all_ineligible]}
   - else
     = render 'shared/result_all', {lines: FilterRawAidsService.new(@loaded['aids']).go}
       

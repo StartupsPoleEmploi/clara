@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount PgHero::Engine, at: "pghero"
+  # mount PgHero::Engine, at: "pghero"
 
   namespace :api do
     namespace :v1 do
@@ -80,6 +80,7 @@ Rails.application.routes.draw do
 
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
+  get '/expire_welcome_page', to: 'welcome#expire_welcome_page'
   
   get 'errors/not_found'
   get 'errors/internal_server_error'

@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
 
+  before_action :clean_asker_params, only: [:index]
+  caches_page :index
+
   def index
     service = ContractTypeService.new
     clean_asker_params
@@ -12,6 +15,10 @@ class WelcomeController < ApplicationController
       slug_of_alternance: service.slug_of_alternance,
       slug_of_project:    service.slug_of_projet_pro,
     })
+  end
+
+  def expire_welcome_page
+    expire_page :controller => "welcome", :action => "index"
   end
 
   def terms
