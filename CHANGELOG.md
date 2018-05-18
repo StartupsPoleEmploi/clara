@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 9.4.0 (18/05/2018)
+-[#749][FEATURE] Page de /status de l'appli
+
 ## 9.3.2 (18/05/2018)
 -[#752][FEATURE] Page d'accueil mise en cache
 -[#751][BUG] Requete non optimisée
