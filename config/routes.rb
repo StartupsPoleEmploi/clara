@@ -80,6 +80,7 @@ Rails.application.routes.draw do
 
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
+  post 'welcome/start_wizard'
   get '/expire_welcome_page', to: 'welcome#expire_welcome_page'
   
   get 'errors/not_found'

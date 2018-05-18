@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
 
-  before_action :clean_asker_params, only: [:index]
   caches_page :index
 
   def index
@@ -15,6 +14,11 @@ class WelcomeController < ApplicationController
       slug_of_alternance: service.slug_of_alternance,
       slug_of_project:    service.slug_of_projet_pro,
     })
+  end
+
+  def start_wizard
+    clean_asker_params
+    redirect_to QuestionManager.new.getNextPath    
   end
 
   def expire_welcome_page
