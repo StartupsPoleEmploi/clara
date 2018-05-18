@@ -1,9 +1,12 @@
 # ARA Changelog
 
 
+## 9.3.2 (18/05/2018)
+-[#752][FEATURE] Page d'accueil mise en cache
+
 
 ## 9.3.1 (17/05/2018)
--[#749][BUG] Requete non optimisée
+-[#751][BUG] Requete non optimisée
 
 
 ## 9.3.0 (17/05/2018)
