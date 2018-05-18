@@ -31,8 +31,8 @@ gem 'whenever', :require => false
 gem 'browser'
 gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
 
-gem 'pghero'
 gem 'goldiloader'
+gem 'clipboard' # debug purpose only
 
 ## Devops
 gem 'newrelic_rpm'

@@ -2,6 +2,10 @@
 
 
 
+## 9.3.1 (17/05/2018)
+-[#749][BUG] Requete non optimisée
+
+
 ## 9.3.0 (17/05/2018)
 -[#749][FEATURE] Dashboard de stats système.
 
