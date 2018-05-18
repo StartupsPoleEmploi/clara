@@ -9,6 +9,7 @@ module Mae
     config.public_file_server.enabled = true
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )
+    config.assets.precompile += %w(pghero/application.js pghero/application.css)
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
