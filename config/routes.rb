@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   post 'welcome/start_wizard'
   get '/expire_welcome_page', to: 'welcome#expire_welcome_page'
+  get 'status', to: 'status#index'
   
   get 'errors/not_found'
   get 'errors/internal_server_error'
