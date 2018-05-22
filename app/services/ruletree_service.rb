@@ -29,10 +29,13 @@ class RuletreeService
 
   def resolve(rule_id, criterion_hash = {}) 
     result = calculate_default_value
+    p '- - - - - - - - - - - - - - @all_rules- - - - - - - - - - - - - - - -' 
+    pp @all_rules
+    p ''
     current_rule = @all_rules.detect{|one_rule| one_rule["id"] == rule_id}
-    # p '- - - - - - - - - - - - - - current_rule- - - - - - - - - - - - - - - -' 
-    # p current_rule.inspect
-    # p ''
+    p '- - - - - - - - - - - - - - current_rule- - - - - - - - - - - - - - - -' 
+    pp current_rule.inspect
+    p ''
     return result unless current_rule.is_a?(Hash) && current_rule["slave_rules"]
     if current_rule["slave_rules"].any?
       if current_rule["composition_type"] == "and_rule"
@@ -81,6 +84,9 @@ class RuletreeService
   end
 
   def _stub_all_rules(rules)
+    p '- - - - - - - - - - - - - - rules- - - - - - - - - - - - - - - -' 
+    p rules.inspect
+    p ''
     @all_rules = rules
   end
 

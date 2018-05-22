@@ -194,7 +194,7 @@ describe RuletreeService do
 
   describe ".resolve" do
 
-    subject { RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules, :variable])]);RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
+    subject { rs = RuletreeService.get_instance;rs._all_rules.push(JSON.parse(rule.to_json(:include => [:slave_rules, :variable])));rs.resolve(rule.id, asker.attributes) }
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
