@@ -13,6 +13,7 @@ describe AidtreeService do
   inactive_and_ineligible_aid_1 = nil
   inactive_and_ineligible_aid_2 = nil
   the_asker = nil
+  cache_layer = nil
 
   before(:all) do
     the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
@@ -62,6 +63,42 @@ describe AidtreeService do
       # then
       expect(result.all? {|res| res.is_a?(Hash)}).to eq(true)
     end
+
+    it 'All result must concern only the activated aids' do
+      # given
+      # when
+      result = AidtreeService.get_instance.go(the_asker)
+      # then
+      expect(result.all? {|res| res["name"].start_with?("active")}).to eq(true)
+    end
+
+    describe 'Cache Read' do
+      before do
+        cache_layer = instance_double("CacheService")
+        allow(cache_layer).to receive(:read).and_return('[ { "id": 1, "name": "active_and_eligible_aid_1", "what": null, "created_at": "2018-05-22T12:05:49.248Z", "updated_at": "2018-05-22T12:05:49.248Z", "slug": "active_and_eligible_aid_1", "short_description": null, "how_much": null, "additionnal_conditions": null, "how_and_when": null, "limitations": null, "rule_id": 1, "ordre_affichage": 0, "contract_type_id": 1, "archived_at": null, "last_update": null, "contract_type": { "id": 1, "name": "n1", "description": "d1", "created_at": "2018-05-22T12:05:49.221Z", "updated_at": "2018-05-22T12:05:49.221Z", "ordre_affichage": 0, "icon": null, "slug": "n1", "category": "aide", "business_id": "b1" } }, { "id": 5, "name": "active_and_uncertain_aid_1", "what": null, "created_at": "2018-05-22T12:05:49.284Z", "updated_at": "2018-05-22T12:05:49.284Z", "slug": "active_and_uncertain_aid_1", "short_description": null, "how_much": null, "additionnal_conditions": null, "how_and_when": null, "limitations": null, "rule_id": 4, "ordre_affichage": 0, "contract_type_id": 1, "archived_at": null, "last_update": null, "contract_type": { "id": 1, "name": "n1", "description": "d1", "created_at": "2018-05-22T12:05:49.221Z", "updated_at": "2018-05-22T12:05:49.221Z", "ordre_affichage": 0, "icon": null, "slug": "n1", "category": "aide", "business_id": "b1" } } ]')
+        CacheService.set_instance(cache_layer)        
+      end
+      after do
+        CacheService.set_instance(nil)        
+      end
+      it 'Must have read key "all_activated_aids" from cache' do
+        # given
+
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(cache_layer).to have_received(:read).with("all_activated_aids")
+      end
+      it 'Must fetch results from cache, if any' do
+        # given
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(result.size).to eq(2)
+      end
+    end
+
+
 
     it 'A result must have the format of an aid with its contract_type, if any' do
 

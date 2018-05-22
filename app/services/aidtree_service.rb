@@ -16,16 +16,13 @@ class AidtreeService
   end
 
   def initialize
+    # a = Aid.activated.to_json(:include => :contract_type)
+    a = CacheService.get_instance.read("all_activated_aids")
+    @all_activated_hash = JSON.parse(a)
   end
 
   def go(asker)
-    # return [1,2,3,4,5,6]    
-    a = Aid.activated.to_json(:include => :contract_type)
-    JSON.parse(a)
-    # a
-    # p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
-    # p a.inspect
-    # p ''
+    @all_activated_hash
   end
 
 end
