@@ -18,7 +18,6 @@ describe RuletreeService do
   end
 
   describe 'instantiation' do
-    
     describe 'Cache Read, already something inside the database' do
       before do
         cache_layer = instance_double("CacheService")
@@ -31,7 +30,6 @@ describe RuletreeService do
       end
       it 'Must have read key "all_rules_json" from cache' do
         # given
-
         # when
         RuletreeService.get_instance
         # then
@@ -39,7 +37,6 @@ describe RuletreeService do
       end
       it 'Must NOT write anything to cache' do
         # given
-
         # when
         RuletreeService.get_instance
         # then
@@ -78,7 +75,6 @@ describe RuletreeService do
         expect(RuletreeService.get_instance._all_rules.size).to eq(4)
       end
     end
-
   end
 
   describe ".resolve" do
@@ -88,6 +84,20 @@ describe RuletreeService do
       result = RuletreeService.get_instance.resolve(r_adult.id, the_asker.attributes)
       # then
       expect(result).not_to be nil
+    end
+    it 'Should return "ineligible" for r_adult_or_spectacle' do
+      # given
+      # when
+      result = RuletreeService.get_instance.resolve(r_adult_or_spectacle.id, the_asker.attributes)
+      # then
+      expect(result).to eq "ineligible"
+    end
+    it 'Should return "eligible" for r_adult_and_spectacle' do
+      # given
+      # when
+      result = RuletreeService.get_instance.resolve(r_adult_and_spectacle.id, the_asker.attributes)
+      # then
+      expect(result).to eq "eligible"
     end
   end
 
