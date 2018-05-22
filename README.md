@@ -26,6 +26,23 @@ $ bin/rails db:setup
 ```
 
 
+### Configuration de PG
+
+Une fois Postgre installé, dans postgresql.conf, ajoutez les lignes suivantes :
+
+```
+shared_preload_libraries = 'pg_stat_statements'
+pg_stat_statements.track = all
+```
+
+Dans le fichier pg_hba.conf, ajoutez les lignes suivantes :
+
+```
+local  all  ara trust
+host  all   ara 0.0.0.0/0  trust
+host  all   ara ::/0 trust
+```
+
 ### Lancer le site en local
 ```
 $ bin/rails server
