@@ -9,15 +9,15 @@ describe RuletreeService do
   the_asker = nil
   cache_layer = nil
 
-  before do
-    the_asker = Asker.new(v_age: '42', v_spectacle: 'non')
-    r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
-    r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
-    r_adult_and_spectacle = create(:rule, name: "r_adult_and_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :and_rule)
-    r_adult_or_spectacle = create(:rule, name: "r_adult_or_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :or_rule)
-  end
 
   describe 'instantiation' do
+    before do
+      the_asker = Asker.new(v_age: '42', v_spectacle: 'non')
+      r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
+      r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
+      r_adult_and_spectacle = create(:rule, name: "r_adult_and_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :and_rule)
+      r_adult_or_spectacle = create(:rule, name: "r_adult_or_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :or_rule)
+    end
     describe 'Cache Read, already something inside the database' do
       before do
         cache_layer = instance_double("CacheService")
