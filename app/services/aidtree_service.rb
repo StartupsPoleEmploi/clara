@@ -19,7 +19,13 @@ class AidtreeService
   end
 
   def go(asker)
-    return [1,2,3,4,5,6]    
+    # return [1,2,3,4,5,6]    
+    a = Aid.activated.to_json(:include => :contract_type)
+    JSON.parse(a)
+    # a
+    # p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
+    # p a.inspect
+    # p ''
   end
 
 end

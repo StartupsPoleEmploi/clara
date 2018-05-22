@@ -52,8 +52,90 @@ describe AidtreeService do
       # when
       result = AidtreeService.get_instance.go(the_asker)
       # then
-      expect(result.count).to eq(6)
+      expect(result.size).to eq(6)
     end
+
+    it 'All result must be a simple hash' do
+      # given
+      # when
+      result = AidtreeService.get_instance.go(the_asker)
+      # then
+      expect(result.all? {|res| res.is_a?(Hash)}).to eq(true)
+    end
+
+    it 'A result must have the format of an aid with its contract_type, if any' do
+
+      # given
+      result = AidtreeService.get_instance.go(the_asker)
+
+      # when
+      sut = result.detect{|item| item["name"] == 'active_and_eligible_aid_1' }
+      # hacks so that sut remains testable
+      sut["created_at"] = "MODIFIED" 
+      sut["updated_at"] = "MODIFIED"
+      sut["contract_type"]["created_at"] = "MODIFIED"
+      sut["contract_type"]["updated_at"] = "MODIFIED"
+
+      # then
+      expect(sut).to eq(
+        {"id"=>1,
+          "name"=>"active_and_eligible_aid_1",
+          "what"=>nil,
+          "created_at"=>"MODIFIED",
+          "updated_at"=>"MODIFIED",
+          "slug"=>"active_and_eligible_aid_1",
+          "short_description"=>nil,
+          "how_much"=>nil,
+          "additionnal_conditions"=>nil,
+          "how_and_when"=>nil,
+          "limitations"=>nil,
+          "rule_id"=>1,
+          "ordre_affichage"=>0,
+          "contract_type_id"=>1,
+          "archived_at"=>nil,
+          "last_update"=>nil,
+          "contract_type"=>
+           {"id"=>1,
+            "name"=>"n1",
+            "description"=>"d1",
+            "created_at"=>"MODIFIED",
+            "updated_at"=>"MODIFIED",
+            "ordre_affichage"=>0,
+            "icon"=>nil,
+            "slug"=>"n1",
+            "category"=>"aide",
+            "business_id"=>"b1"}
+        }
+      )
+    end
+
+    # it 'A result must have the format of an aid without its contract_type, if none' do
+    #   # given
+    #   result = AidtreeService.get_instance.go(the_asker)
+    #   # when
+    #   sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
+    #   sut[]
+    #   # then
+    #   expect(sut).to eq(
+    #     {"id"=>1,
+    #       "name"=>"active_and_ineligible_aid_1",
+    #       "what"=>nil,
+    #       "created_at"=>"2018-05-22T12:13:03.694Z",
+    #       "updated_at"=>"2018-05-22T12:13:03.694Z",
+    #       "slug"=>"active_and_eligible_aid_1",
+    #       "short_description"=>nil,
+    #       "how_much"=>nil,
+    #       "additionnal_conditions"=>nil,
+    #       "how_and_when"=>nil,
+    #       "limitations"=>nil,
+    #       "rule_id"=>1,
+    #       "ordre_affichage"=>0,
+    #       "contract_type_id"=>nil,
+    #       "archived_at"=>nil,
+    #       "last_update"=>nil
+    #     }
+    #   )
+    # end
 
   end
 
