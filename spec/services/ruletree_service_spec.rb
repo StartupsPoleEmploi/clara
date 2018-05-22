@@ -171,6 +171,27 @@ describe RuletreeService do
     end
   end
 
+  describe "UNCERTAIN .evaluate" do
+    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    let(:rule) { create :rule, :be_in_qpv; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    context 'should return "uncertain" when criterion hash is empty' do
+      let(:criterion_hash) { {} }
+      it { expect(subject).to eq 'uncertain' }
+    end
+    context 'should return "uncertain" when criteria is present but with unknown value' do
+      let(:criterion_hash) { {v_qpv: 'foo'} }
+      it { expect(subject).to eq 'uncertain' }
+    end
+    context 'should return "ineligible" when criteria is present as ineligible' do
+      let(:criterion_hash) { {v_qpv: 'hors_qpv'} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "eligible" when criteria is present and satisfied' do
+      let(:criterion_hash) { {v_qpv: 'en_qpv'} }
+      it { expect(subject).to eq 'eligible' }
+    end
+  end
+
   # describe ".resolve" do
   #   it 'Should not return nil' do
   #     # given
