@@ -324,30 +324,127 @@ describe RuletreeService do
         end
       end
     end
+    context 'with an AND rule' do
+      let(:rule) { create :rule, :be_an_adult_and_a_spectacles }
+      context 'without any condition' do
+        let(:asker) { create :asker, :ado}
+        it { expect(subject).to eq "ineligible" }
+      end
+      context 'and only one condition' do
+        let(:asker) { create :asker, :adult}
+        it { expect(subject).to eq "ineligible" }
+      end
+      context 'and with the other condition' do
+        let(:asker) { create :asker, :spectacle, :ado }
+        it { expect(subject).to eq "ineligible" }
+      end
+      context 'and the two conditions' do
+        let(:asker) { create :asker, :spectacle, v_age: '38' }
+        it { expect(subject).to eq "eligible" }
+      end
+    end
+    context 'with an OR rule' do
+      let(:rule) { create :rule, :be_an_adult_or_a_spectacles }
+      context 'without any condition' do
+        let(:asker) { create :asker, :ado }
+        it { expect(subject).to eq "ineligible" }
+      end
+      context 'and only one condition' do
+        let(:asker) { create :asker }
+        it { expect(subject).to eq "eligible" }
+      end
+      context 'and only one condition' do
+        let(:asker) { create :asker }
+        it { expect(subject).to eq "eligible" }
+      end
+      context 'and with the other condition only' do
+        let(:asker) { create :asker, :spectacle, :ado }
+        it { expect(subject).to eq "eligible" }
+      end
+      context 'and the two conditions' do
+        let(:asker) { create :asker, :spectacle, v_age: 38 }
+        it { expect(subject).to eq "eligible" }
+      end
+    end
+    context 'UNCERTAIN with an AND rule' do
+      let(:rule) { create :rule, :be_an_adult_and_in_qpv }
+      context 'without any condition' do
+        let(:asker) { create :asker, :ado}
+        it { expect(subject).to eq "ineligible" }
+      end
+      context '1st is eligible, 2nd is not existing (default value applies)' do
+        let(:asker) { create :asker, :adult}
+        it { expect(subject).to eq "uncertain" }
+      end
+      context '1st is eligible, 2nd is not eligible' do
+        let(:asker) { create :asker, :adult, v_qpv: 'hors_qpv' }
+        it { expect(subject).to eq "ineligible" }
+      end
+      context '1st is eligible, 2nd is eligible' do
+        let(:asker) { create :asker, :adult, v_qpv: 'en_qpv' }
+        it { expect(subject).to eq "eligible" }
+      end
+      context '1st is ineligible, 2nd is eligible' do
+        let(:asker) { create :asker, :ado, v_qpv: 'en_qpv' }
+        it { expect(subject).to eq "ineligible" }
+      end
+      context '1st is ineligible, 2nd is explicitly uncertain' do
+        let(:asker) { create :asker, :ado, v_qpv: 'foo' }
+        it { expect(subject).to eq "ineligible" }
+      end
+      context '1st is eligible, 2nd is explicitly uncertain' do
+        let(:asker) { create :asker, :adult, v_qpv: 'foo' }
+        it { expect(subject).to eq "uncertain" }
+      end
+    end
+    context 'UNCERTAIN with an OR rule' do
+      let(:rule) { create :rule, :be_an_adult_or_in_qpv }
+      context 'without any condition' do
+        let(:asker) { create :asker, :ado}
+        it { expect(subject).to eq "uncertain" }
+      end
+      context '1st is eligible, 2nd is not existing (default value applies)' do
+        let(:asker) { create :asker, :adult}
+        it { expect(subject).to eq "eligible" }
+      end
+      context '1st is eligible, 2nd is not eligible' do
+        let(:asker) { create :asker, :adult, v_qpv: 'hors_qpv' }
+        it { expect(subject).to eq "eligible" }
+      end
+      context '1st is eligible, 2nd is eligible' do
+        let(:asker) { create :asker, :adult, v_qpv: 'en_qpv' }
+        it { expect(subject).to eq "eligible" }
+      end
+      context '1st is ineligible, 2nd is eligible' do
+        let(:asker) { create :asker, :ado, v_qpv: 'en_qpv' }
+        it { expect(subject).to eq "eligible" }
+      end
+      context '1st is ineligible, 2nd is explicitly uncertain' do
+        let(:asker) { create :asker, :ado, v_qpv: 'foo' }
+        it { expect(subject).to eq "uncertain" }
+      end
+      context '1st is eligible, 2nd is explicitly uncertain' do
+        let(:asker) { create :asker, :adult, v_qpv: 'foo' }
+        it { expect(subject).to eq "eligible" }
+      end
+    end
+    context 'with (rule_a AND rule_b) OR rule_c' do
+      let(:rule) { build :rule, name: 'be_an_adult_and_a_spectacles_OR_be_handicaped', composition_type: :or_rule }
+      before do
+        rule.slave_rules << [create(:rule, :be_an_adult_and_a_spectacles), create(:rule, :be_handicaped)]
+      end
+      context 'with rule_c=true only' do
+        let(:asker) { create :asker, :handicaped }
+        it { expect(subject).to eq "eligible" }
+      end
+      context 'with rule_a=true AND rule_b=true only' do
+        let(:asker) { create :asker, :spectacle, v_age: '38' }
+        it { expect(subject).to eq "eligible" }
+      end
+      context 'with rule_b=true only' do
+        let(:asker) { create :asker, :spectacle, :ado, v_handicap: 'false' }
+        it { expect(subject).to eq "ineligible" }
+      end
+    end
   end
-
-  # describe ".resolve" do
-  #   it 'Should not return nil' do
-  #     # given
-  #     # when
-  #     result = RuletreeService.get_instance.resolve(r_adult.id, the_asker.attributes)
-  #     # then
-  #     expect(result).not_to be nil
-  #   end
-  #   it 'Should return "eligible" for r_adult_or_spectacle' do
-  #     # given
-  #     # when
-  #     result = RuletreeService.get_instance.resolve(r_adult_or_spectacle.id, the_asker.attributes)
-  #     # then
-  #     expect(result).to eq "eligible"
-  #   end
-  #   it 'Should return "ineligible" for r_adult_and_spectacle' do
-  #     # given
-  #     # when
-  #     result = RuletreeService.get_instance.resolve(r_adult_and_spectacle.id, the_asker.attributes)
-  #     # then
-  #     expect(result).to eq "ineligible"
-  #   end
-  # end
-
 end
