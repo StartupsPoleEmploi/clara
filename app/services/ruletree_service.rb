@@ -20,7 +20,7 @@ class RuletreeService
     begin
       JSON.parse(@all_rules_json)
     rescue Exception => e
-      @all_rules_json = Rule.all.to_json(:include => :slave_rules)
+      @all_rules_json = Rule.all.to_json(:include => [:slave_rules, :variable])
       CacheService.get_instance.write("all_rules_json", @all_rules_json)
     ensure
       @all_rules = JSON.parse(@all_rules_json)
@@ -29,7 +29,10 @@ class RuletreeService
 
   def resolve(rule_id, criterion_hash = {}) 
     result = calculate_default_value
-    current_rule = @all_rules[rule_id]
+    current_rule = @all_rules.detect{|one_rule| one_rule["id"] == rule_id}
+    # p '- - - - - - - - - - - - - - current_rule- - - - - - - - - - - - - - - -' 
+    # p current_rule.inspect
+    # p ''
     return result unless current_rule.is_a?(Hash) && current_rule["slave_rules"]
     if current_rule["slave_rules"].any?
       if current_rule["composition_type"] == "and_rule"
@@ -50,40 +53,24 @@ class RuletreeService
         end
       end
     else
-      result = evaluate criterion_hash
+      result = evaluate(current_rule, criterion_hash)
     end
     result
   end
 
-  def evaluate criterion_hash
+  def evaluate(rule, criterion_hash)
     result = calculate_default_value
     c = criterion_hash.stringify_keys if criterion_hash.is_a?(Hash)
-    if c && c.has_key?(variable.name) && c[variable.name].present?
-      criterion_value = c[variable.name]
-      rule_type = variable.variable_type
+    if c && c.has_key?(rule["variable"]["name"]) && c[rule["variable"]["name"]].present?
+      criterion_value = c[rule["variable"]["name"]]
+      rule_type = rule["variable"]["variable_type"]
       return "ineligible" if !type_is_accurate(criterion_value, rule_type)
       return "ineligible" if criterion_value == "not_applicable"
-      return "eligible" if calculate_is_eligible(criterion_value, rule_type)
-      return "ineligible" if self.value_ineligible.blank?
-      return "ineligible" if calculate_is_ineligible(criterion_value, rule_type)
+      return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)
+      return "ineligible" if rule["value_ineligible"].blank?
+      return "ineligible" if calculate_is_ineligible(rule, criterion_value, rule_type)
     end
     return result
-  end
-
-  def is_simple_rule?
-    variable.present? || operator_type.present? || value_eligible.present?
-  end
-
-  def is_complex_rule?
-    slave_rules.length > 0 || composition_type.present?
-  end
-
-  def is_ambiguous_rule?
-    is_simple_rule? && is_complex_rule?
-  end
-
-  def is_empty_rule?
-    !is_simple_rule? && !is_complex_rule?
   end
 
   def _all_rules
@@ -104,19 +91,19 @@ class RuletreeService
   def calculate_default_value
     "uncertain"
   end
-  def calculate_is_eligible(criterion_value, rule_type)
-    calculate(criterion_value, self.value_eligible, rule_type)
+  def calculate_is_eligible(rule, criterion_value, rule_type)
+    calculate(rule, criterion_value, rule["value_eligible"], rule_type)
   end
-  def calculate_is_ineligible(criterion_value, rule_type)
-    calculate(criterion_value, self.value_ineligible, rule_type)
+  def calculate_is_ineligible(rule, criterion_value, rule_type)
+    calculate(rule, criterion_value, rule["value_ineligible"], rule_type)
   end
 
-  def calculate(criterion_value, rule_value,  rule_type)
+  def calculate(rule, criterion_value, rule_value,  rule_type)
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
     typed_user_value = force_type_of(rule_value, rule_type)
 
-    case self.operator_type
+    case rule["operator_type"]
       when 'eq'
         typed_criterion_value == typed_user_value
       when 'not_equal'

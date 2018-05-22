@@ -70,7 +70,10 @@ describe RuletreeService do
       it 'Must fetch results from DB' do
         # given
         # when
-        sut = RuletreeService.get_instance._all_rules_json
+        # sut = RuletreeService.get_instance._all_rules_json
+        # p '- - - - - - - - - - - - - - sut- - - - - - - - - - - - - - - -' 
+        # p sut.inspect
+        # p ''
         # then
         expect(RuletreeService.get_instance._all_rules.size).to eq(4)
       end
