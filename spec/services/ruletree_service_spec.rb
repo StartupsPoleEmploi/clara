@@ -85,19 +85,19 @@ describe RuletreeService do
       # then
       expect(result).not_to be nil
     end
-    it 'Should return "ineligible" for r_adult_or_spectacle' do
+    it 'Should return "eligible" for r_adult_or_spectacle' do
       # given
       # when
       result = RuletreeService.get_instance.resolve(r_adult_or_spectacle.id, the_asker.attributes)
       # then
-      expect(result).to eq "ineligible"
+      expect(result).to eq "eligible"
     end
-    it 'Should return "eligible" for r_adult_and_spectacle' do
+    it 'Should return "ineligible" for r_adult_and_spectacle' do
       # given
       # when
       result = RuletreeService.get_instance.resolve(r_adult_and_spectacle.id, the_asker.attributes)
       # then
-      expect(result).to eq "eligible"
+      expect(result).to eq "ineligible"
     end
   end
 
