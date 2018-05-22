@@ -80,28 +80,61 @@ describe RuletreeService do
     end
   end
 
-  describe ".resolve" do
-    it 'Should not return nil' do
-      # given
-      # when
-      result = RuletreeService.get_instance.resolve(r_adult.id, the_asker.attributes)
-      # then
-      expect(result).not_to be nil
+
+  describe ".evaluate ADULT" do
+    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    let(:rule) { create :rule, :be_an_adult; Rule.last.to_json(:include => [:slave_rules, :variable]) }
+    context 'should return "uncertain" when criterion hash is empty' do
+      let(:criterion_hash) { {} }
+      it { expect(subject).to eq 'uncertain' }
     end
-    it 'Should return "eligible" for r_adult_or_spectacle' do
-      # given
-      # when
-      result = RuletreeService.get_instance.resolve(r_adult_or_spectacle.id, the_asker.attributes)
-      # then
-      expect(result).to eq "eligible"
+    context 'should return "ineligible" when criteria is present and NOT satisfied' do
+      let(:criterion_hash) { {v_age: 12} }
+      it { expect(subject).to eq 'ineligible' }
     end
-    it 'Should return "ineligible" for r_adult_and_spectacle' do
-      # given
-      # when
-      result = RuletreeService.get_instance.resolve(r_adult_and_spectacle.id, the_asker.attributes)
-      # then
-      expect(result).to eq "ineligible"
+    context 'should return "eligible" when criteria is present and satisfied' do
+      let(:criterion_hash) { {v_age: 34} }
+      it { expect(subject).to eq 'eligible' }
+    end
+    context 'should return "ineligible" when criteria is "wrong_input"' do
+      let(:criterion_hash) { {v_age: 'wrong_input'} }
+      it { expect(subject).to eq 'ineligible'}
+    end
+    context 'should return "ineligible" when criteria is "azerty"' do
+      let(:criterion_hash) { {v_age: 'azerty'} }
+      it { expect(subject).to eq 'ineligible'}
+    end
+    context 'should return "uncertain" when criteria is NOT present' do
+      let(:criterion_hash) { {v_spectacle: 'any'} }
+      it { expect(subject).to eq 'uncertain'}
+    end
+    context 'should return "uncertain" when criteria is present but nil' do
+      let(:criterion_hash) { {v_age: nil} }
+      it { expect(subject).to eq 'uncertain'}
     end
   end
+  # describe ".resolve" do
+  #   it 'Should not return nil' do
+  #     # given
+  #     # when
+  #     result = RuletreeService.get_instance.resolve(r_adult.id, the_asker.attributes)
+  #     # then
+  #     expect(result).not_to be nil
+  #   end
+  #   it 'Should return "eligible" for r_adult_or_spectacle' do
+  #     # given
+  #     # when
+  #     result = RuletreeService.get_instance.resolve(r_adult_or_spectacle.id, the_asker.attributes)
+  #     # then
+  #     expect(result).to eq "eligible"
+  #   end
+  #   it 'Should return "ineligible" for r_adult_and_spectacle' do
+  #     # given
+  #     # when
+  #     result = RuletreeService.get_instance.resolve(r_adult_and_spectacle.id, the_asker.attributes)
+  #     # then
+  #     expect(result).to eq "ineligible"
+  #   end
+  # end
 
 end
