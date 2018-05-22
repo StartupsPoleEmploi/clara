@@ -39,7 +39,7 @@ describe AidtreeService do
 
   describe ".go" do
 
-    it 'Given 6 activated aids, should not return nil' do
+    it 'Should not return nil' do
       # given
       # when
       result = AidtreeService.get_instance.go(the_asker)
@@ -70,33 +70,34 @@ describe AidtreeService do
 
       # when
       sut = result.detect{|item| item["name"] == 'active_and_eligible_aid_1' }
-      # hacks so that sut remains testable
+      # remove existing IDs and TIMESTAMPs that could change between tests,
+      # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
 
       # then
       expect(sut).to eq(
-        {"id"=>"MODIFIED",
+        {"id"=>"EXISTING",
           "name"=>"active_and_eligible_aid_1",
           "what"=>nil,
-          "created_at"=>"MODIFIED",
-          "updated_at"=>"MODIFIED",
+          "created_at"=>"EXISTING",
+          "updated_at"=>"EXISTING",
           "slug"=>"active_and_eligible_aid_1",
           "short_description"=>nil,
           "how_much"=>nil,
           "additionnal_conditions"=>nil,
           "how_and_when"=>nil,
           "limitations"=>nil,
-          "rule_id"=>"MODIFIED",
+          "rule_id"=>"EXISTING",
           "ordre_affichage"=>0,
           "contract_type_id"=>1,
           "archived_at"=>nil,
           "last_update"=>nil,
           "contract_type"=>
-           {"id"=>"MODIFIED",
+           {"id"=>"EXISTING",
             "name"=>"n1",
             "description"=>"d1",
-            "created_at"=>"MODIFIED",
-            "updated_at"=>"MODIFIED",
+            "created_at"=>"EXISTING",
+            "updated_at"=>"EXISTING",
             "ordre_affichage"=>0,
             "icon"=>nil,
             "slug"=>"n1",
@@ -118,18 +119,18 @@ describe AidtreeService do
 
       # then
       expect(sut).to eq(
-        {"id"=>"MODIFIED",
+        {"id"=>"EXISTING",
           "name"=>"active_and_ineligible_aid_1",
           "what"=>nil,
-          "created_at"=>"MODIFIED",
-          "updated_at"=>"MODIFIED",
+          "created_at"=>"EXISTING",
+          "updated_at"=>"EXISTING",
           "slug"=>"active_and_ineligible_aid_1",
           "short_description"=>nil,
           "how_much"=>nil,
           "additionnal_conditions"=>nil,
           "how_and_when"=>nil,
           "limitations"=>nil,
-          "rule_id"=>"MODIFIED",
+          "rule_id"=>"EXISTING",
           "ordre_affichage"=>0,
           "contract_type_id"=>nil,
           "archived_at"=>nil,
@@ -139,13 +140,13 @@ describe AidtreeService do
     end
 
     def modify_hash_so_that_it_remains_testable(the_hash)
-      the_hash["id"] = "MODIFIED" if the_hash["id"]
-      the_hash["rule_id"] = "MODIFIED" if the_hash["rule_id"]
-      the_hash["created_at"] = "MODIFIED" if the_hash["created_at"]
-      the_hash["updated_at"] = "MODIFIED" if the_hash["updated_at"]
-      the_hash["contract_type"]["created_at"] = "MODIFIED" if the_hash["contract_type"]
-      the_hash["contract_type"]["updated_at"] = "MODIFIED" if the_hash["contract_type"]
-      the_hash["contract_type"]["id"] = "MODIFIED" if the_hash["contract_type"]
+      the_hash["id"] = "EXISTING" if the_hash["id"]
+      the_hash["rule_id"] = "EXISTING" if the_hash["rule_id"]
+      the_hash["created_at"] = "EXISTING" if the_hash["created_at"]
+      the_hash["updated_at"] = "EXISTING" if the_hash["updated_at"]
+      the_hash["contract_type"]["created_at"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["created_at"]
+      the_hash["contract_type"]["updated_at"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["updated_at"]
+      the_hash["contract_type"]["id"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["id"]
     end
 
     # it 'A result must have the format of an aid without its contract_type, if none' do
