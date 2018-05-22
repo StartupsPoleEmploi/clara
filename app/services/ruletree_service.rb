@@ -28,6 +28,7 @@ class RuletreeService
   end
 
   def resolve(rule_id)
+    "eligible"
   end
 
   def _all_rules

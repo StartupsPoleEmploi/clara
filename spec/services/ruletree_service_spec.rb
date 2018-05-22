@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe RuletreeService do
 
-
+  r_adult = nil
+  r_spectacle = nil
+  r_adult_and_spectacle = nil
+  r_adult_or_spectacle = nil
   the_asker = nil
   cache_layer = nil
 
@@ -11,8 +14,7 @@ describe RuletreeService do
     r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
     r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
     r_adult_and_spectacle = create(:rule, name: "r_adult_and_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :and_rule)
-    r_adult_and_spectacle = create(:rule, name: "r_adult_or_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :or_rule)
-
+    r_adult_or_spectacle = create(:rule, name: "r_adult_or_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :or_rule)
   end
 
   describe 'instantiation' do
@@ -81,10 +83,9 @@ describe RuletreeService do
 
   describe ".resolve" do
     it 'Should not return nil' do
-      pending "not a priority"
       # given
       # when
-      result = RuletreeService.get_instance.resolve
+      result = RuletreeService.get_instance.resolve(r_adult.id)
       # then
       expect(result).not_to be nil
     end
