@@ -477,7 +477,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.5)
   paper_trail (~> 9.0.0)
   pg (~> 0.18)
-  pghero
+  pghero (= 2.1.1)
   poltergeist
   pry-rails
   pry-remote
