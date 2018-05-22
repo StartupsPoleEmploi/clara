@@ -8,8 +8,8 @@ describe RuletreeService do
 
   before do
     the_asker = Asker.new(v_age: '42', v_spectacle: 'non')
-    r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
-    r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
+    # r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
+    # r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
     r_adult_and_spectacle = create(:rule, :be_an_adult_and_a_spectacles, name: "r_adult_and_spectacle_rts")
     r_adult_or_spectacle = create(:rule, :be_an_adult_or_a_spectacles, name: "r_adult_or_spectacle_rts")
 
@@ -27,13 +27,13 @@ describe RuletreeService do
       after do
         CacheService.set_instance(nil)        
       end
-      it 'Must have read key "all_rules" from cache' do
+      it 'Must have read key "all_rules_json" from cache' do
         # given
 
         # when
         RuletreeService.get_instance
         # then
-        expect(cache_layer).to have_received(:read).with("all_rules")
+        expect(cache_layer).to have_received(:read).with("all_rules_json")
       end
       it 'Must NOT write anything to cache' do
         # given
@@ -66,14 +66,14 @@ describe RuletreeService do
         # when
         RuletreeService.get_instance
         # then
-        expect(cache_layer).to have_received(:write).with("all_rules", anything)
+        expect(cache_layer).to have_received(:write).with("all_rules_json", anything)
       end
       it 'Must fetch results from DB' do
         # given
         # when
-        sut = RuletreeService.get_instance._all_rules
+        sut = RuletreeService.get_instance._all_rules_json
         # then
-        expect(sut.size).to eq(4)
+        expect(RuletreeService.get_instance._all_rules.size).to eq(6)
       end
     end
 

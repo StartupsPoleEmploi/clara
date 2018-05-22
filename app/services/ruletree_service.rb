@@ -16,14 +16,14 @@ class RuletreeService
   end
 
   def initialize
-    all_rules = CacheService.get_instance.read("all_rules")
+    @all_rules_json = CacheService.get_instance.read("all_rules_json")
     begin
-      JSON.parse(all_rules)
+      JSON.parse(@all_rules_json)
     rescue Exception => e
-      all_rules = Rule.all.to_json(:include => :slave_rules)
-      CacheService.get_instance.write("all_rules", all_rules)
+      @all_rules_json = Rule.all.to_json(:include => :slave_rules)
+      CacheService.get_instance.write("all_rules_json", @all_rules_json)
     ensure
-      @all_rules = JSON.parse(all_rules)
+      @all_rules = JSON.parse(@all_rules_json)
     end
   end
 
@@ -32,6 +32,10 @@ class RuletreeService
 
   def _all_rules
     @all_rules
+  end
+
+  def _all_rules_json
+    @all_rules_json
   end
 
 end
