@@ -61,6 +61,9 @@ class RuletreeService
   def evaluate(rule, criterion_hash)
     result = calculate_default_value
     c = criterion_hash.stringify_keys if criterion_hash.is_a?(Hash)
+    # p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    # pp rule
+    # p ''
     if c && c.has_key?(rule["variable"]["name"]) && c[rule["variable"]["name"]].present?
       criterion_value = c[rule["variable"]["name"]]
       rule_type = rule["variable"]["variable_type"]

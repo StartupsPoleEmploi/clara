@@ -83,7 +83,7 @@ describe RuletreeService do
 
   describe ".evaluate ADULT" do
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_an_adult; Rule.last.to_json(:include => [:slave_rules, :variable]) }
+    let(:rule) { create :rule, :be_an_adult; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
