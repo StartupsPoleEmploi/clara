@@ -17,19 +17,19 @@ describe AidtreeService do
   before(:all) do
     the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
 
-    r_adult = create(:rule, :be_an_adult)
-    r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv)
-    r_young = create(:rule, :not_be_an_adult)
-    c = create(:contract_type, :contract_type_1)
+    r_adult = create(:rule, :be_an_adult, name: "r_adult")
+    r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: "r_adult_and_qpv")
+    r_young = create(:rule, :not_be_an_adult, name: "r_young")
+    c_contract_type = create(:contract_type, :contract_type_1, name: "c_contract_type")
 
-    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1', rule: r_adult, contract_type: c)
-    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2', rule: r_adult, contract_type: c)
-    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1', rule: r_adult, archived_at: DateTime.new, contract_type: c)
-    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2', rule: r_adult, archived_at: DateTime.new, contract_type: c)
-    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1', rule: r_adult_and_qpv, contract_type: c)
-    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2', rule: r_adult_and_qpv, contract_type: c)
-    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c)
-    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c)
+    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1', rule: r_adult, contract_type: c_contract_type)
+    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2', rule: r_adult, contract_type: c_contract_type)
+    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1', rule: r_adult_and_qpv, contract_type: c_contract_type)
+    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2', rule: r_adult_and_qpv, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
     active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1', rule: r_young)
     active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2', rule: r_young)
     inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1', rule: r_young, archived_at: DateTime.new)
@@ -73,12 +73,15 @@ describe AidtreeService do
       # remove existing IDs and TIMESTAMPs that could change between tests,
       # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
+      # out of scope of this unit test : eligibility
+      sut["eligibility"] = nil
 
       # then
       expect(sut).to eq(
         {"id"=>"EXISTING",
           "name"=>"active_and_eligible_aid_1",
           "what"=>nil,
+          "eligibility"=>nil,
           "created_at"=>"EXISTING",
           "updated_at"=>"EXISTING",
           "slug"=>"active_and_eligible_aid_1",
@@ -94,13 +97,13 @@ describe AidtreeService do
           "last_update"=>nil,
           "contract_type"=>
            {"id"=>"EXISTING",
-            "name"=>"n1",
+            "name"=>"c_contract_type",
             "description"=>"d1",
             "created_at"=>"EXISTING",
             "updated_at"=>"EXISTING",
             "ordre_affichage"=>0,
             "icon"=>nil,
-            "slug"=>"n1",
+            "slug"=>"c_contract_type",
             "category"=>"aide",
             "business_id"=>"b1"}
         }
@@ -114,14 +117,18 @@ describe AidtreeService do
 
       # when
       sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
-      # hacks so that sut remains testable
+      # remove existing IDs and TIMESTAMPs that could change between tests,
+      # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
+      # out of scope of this unit test : eligibility
+      sut["eligibility"] = nil
 
       # then
       expect(sut).to eq(
         {"id"=>"EXISTING",
           "name"=>"active_and_ineligible_aid_1",
           "what"=>nil,
+          "eligibility"=>nil,
           "created_at"=>"EXISTING",
           "updated_at"=>"EXISTING",
           "slug"=>"active_and_ineligible_aid_1",
@@ -139,6 +146,36 @@ describe AidtreeService do
       )
     end
 
+    it 'ELIGIBLE aid must have a field "eligibility" equal to "eligible"' do
+      pending("Calculation of result through Ruletree is not yet implemented")
+      # given
+      result = AidtreeService.get_instance.go(the_asker)
+      # when
+      sut = result.detect{|item| item["name"] == 'active_and_eligible_aid_1' }
+      # then
+      expect(sut["eligibility"]).to eq "eligible"
+    end
+
+    it 'INELIGIBLE aid must have a field "eligibility" equal to "ineligible"' do
+      pending("Calculation of result through Ruletree is not yet implemented")
+      # given
+      result = AidtreeService.get_instance.go(the_asker)
+      # when
+      sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
+      # then
+      expect(sut["eligibility"]).to eq "ineligible"
+    end
+
+    it 'UNCERTAIN aid must have a field "eligibility" equal to "uncertain"' do
+      pending("Calculation of result through Ruletree is not yet implemented")
+      # given
+      result = AidtreeService.get_instance.go(the_asker)
+      # when
+      sut = result.detect{|item| item["name"] == 'active_and_uncertain_aid_1' }
+      # then
+      expect(sut["eligibility"]).to eq "uncertain"
+    end
+
     def modify_hash_so_that_it_remains_testable(the_hash)
       the_hash["id"] = "EXISTING" if the_hash["id"]
       the_hash["rule_id"] = "EXISTING" if the_hash["rule_id"]
@@ -149,33 +186,7 @@ describe AidtreeService do
       the_hash["contract_type"]["id"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["id"]
     end
 
-    # it 'A result must have the format of an aid without its contract_type, if none' do
-    #   # given
-    #   result = AidtreeService.get_instance.go(the_asker)
-    #   # when
-    #   sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
-    #   sut[]
-    #   # then
-    #   expect(sut).to eq(
-    #     {"id"=>1,
-    #       "name"=>"active_and_ineligible_aid_1",
-    #       "what"=>nil,
-    #       "created_at"=>"2018-05-22T12:13:03.694Z",
-    #       "updated_at"=>"2018-05-22T12:13:03.694Z",
-    #       "slug"=>"active_and_eligible_aid_1",
-    #       "short_description"=>nil,
-    #       "how_much"=>nil,
-    #       "additionnal_conditions"=>nil,
-    #       "how_and_when"=>nil,
-    #       "limitations"=>nil,
-    #       "rule_id"=>1,
-    #       "ordre_affichage"=>0,
-    #       "contract_type_id"=>nil,
-    #       "archived_at"=>nil,
-    #       "last_update"=>nil
-    #     }
-    #   )
-    # end
+
 
   end
 
