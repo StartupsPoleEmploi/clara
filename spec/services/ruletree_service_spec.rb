@@ -192,6 +192,88 @@ describe RuletreeService do
     end
   end
 
+  describe ".resolve" do
+
+    subject { RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules, :variable])]);RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
+    context 'with an Integer' do
+      let(:asker) { create :asker, v_age: '19'}
+      let(:variable) { create :variable, :age}
+
+      context 'more_or_equal_than an Integer, limit case, "eligible"' do
+        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
+        context '19 is more or equal than 19' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'more_or_equal_than an Integer, nominal case, "eligible"' do
+        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '12', variable: variable }
+        context '19 is more or equal than 12' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'more_or_equal_than an Integer, nominal case, "ineligible"' do
+        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '27', variable: variable }
+        context '19 is not more or equal than 27' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+      context 'less_or_equal_than an Integer, limit case, "eligible"' do
+        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '19', variable: variable }
+        context '19 is less or equal than 19' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'less_or_equal_than an Integer, nominal case, "eligible"' do
+        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '27', variable: variable }
+        context '19 is less or equal than 27' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'less_or_equal_than an Integer, nominal case, "ineligible"' do
+        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '12', variable: variable }
+        context '19 is not less or equal than 12' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+      context 'more_than an Integer, "eligible"' do
+        let(:rule) { create :rule, operator_type: :more_than, value_eligible: '18', variable: variable }
+        context '19 is more than 18' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'more_than an Integer, "ineligible"' do
+        let(:rule) { create :rule, operator_type: :more_than, value_eligible: '20', variable: variable }
+        context '19 is more than 20' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+      context 'less_than an Integer, "eligible"' do
+        let(:rule) { create :rule, operator_type: :less_than, value_eligible: '20', variable: variable }
+        context '19 is less than 20' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'less_than an Integer, "ineligible"' do
+        let(:rule) { create :rule, operator_type: :less_than, value_eligible: '17', variable: variable }
+        context '19 is less than 17' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+      context 'equal an Integer, "eligible"' do
+        let(:rule) { create :rule, operator_type: :eq, value_eligible: '19', variable: variable }
+        context '19 equal 19' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'equal an Integer, "ineligible"' do
+        let(:rule) { create :rule, operator_type: :eq, value_eligible: '20', variable: variable }
+        context '19 equal 20' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+    end
+  end
+
   # describe ".resolve" do
   #   it 'Should not return nil' do
   #     # given

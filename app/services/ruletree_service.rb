@@ -80,6 +80,10 @@ class RuletreeService
     @all_rules
   end
 
+  def _stub_all_rules(rules)
+    @all_rules = rules
+  end
+
   def _all_rules_json
     @all_rules_json
   end
