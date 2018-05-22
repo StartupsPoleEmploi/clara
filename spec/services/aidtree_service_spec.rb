@@ -75,7 +75,7 @@ describe AidtreeService do
 
       # then
       expect(sut).to eq(
-        {"id"=>1,
+        {"id"=>"MODIFIED",
           "name"=>"active_and_eligible_aid_1",
           "what"=>nil,
           "created_at"=>"MODIFIED",
@@ -86,13 +86,13 @@ describe AidtreeService do
           "additionnal_conditions"=>nil,
           "how_and_when"=>nil,
           "limitations"=>nil,
-          "rule_id"=>1,
+          "rule_id"=>"MODIFIED",
           "ordre_affichage"=>0,
           "contract_type_id"=>1,
           "archived_at"=>nil,
           "last_update"=>nil,
           "contract_type"=>
-           {"id"=>1,
+           {"id"=>"MODIFIED",
             "name"=>"n1",
             "description"=>"d1",
             "created_at"=>"MODIFIED",
@@ -118,7 +118,7 @@ describe AidtreeService do
 
       # then
       expect(sut).to eq(
-        {"id"=>9,
+        {"id"=>"MODIFIED",
           "name"=>"active_and_ineligible_aid_1",
           "what"=>nil,
           "created_at"=>"MODIFIED",
@@ -129,7 +129,7 @@ describe AidtreeService do
           "additionnal_conditions"=>nil,
           "how_and_when"=>nil,
           "limitations"=>nil,
-          "rule_id"=>5,
+          "rule_id"=>"MODIFIED",
           "ordre_affichage"=>0,
           "contract_type_id"=>nil,
           "archived_at"=>nil,
@@ -139,10 +139,13 @@ describe AidtreeService do
     end
 
     def modify_hash_so_that_it_remains_testable(the_hash)
+      the_hash["id"] = "MODIFIED" if the_hash["id"]
+      the_hash["rule_id"] = "MODIFIED" if the_hash["rule_id"]
       the_hash["created_at"] = "MODIFIED" if the_hash["created_at"]
       the_hash["updated_at"] = "MODIFIED" if the_hash["updated_at"]
       the_hash["contract_type"]["created_at"] = "MODIFIED" if the_hash["contract_type"]
       the_hash["contract_type"]["updated_at"] = "MODIFIED" if the_hash["contract_type"]
+      the_hash["contract_type"]["id"] = "MODIFIED" if the_hash["contract_type"]
     end
 
     # it 'A result must have the format of an aid without its contract_type, if none' do
