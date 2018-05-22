@@ -113,6 +113,64 @@ describe RuletreeService do
       it { expect(subject).to eq 'uncertain'}
     end
   end
+
+  describe ".evaluate CHILD" do
+    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    let(:rule) { create :rule, :be_a_child; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    context 'should return "uncertain" when criterion hash is empty' do
+      let(:criterion_hash) { {} }
+      it { expect(subject).to eq 'uncertain' }
+    end
+    context 'should return "ineligible" when criteria is present and NOT satisfied' do
+      let(:criterion_hash) { {v_age: 42} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "eligible" when criteria is present and satisfied' do
+      let(:criterion_hash) { {v_age: 14} }
+      it { expect(subject).to eq 'eligible' }
+    end
+    context 'should return "eligible" when criteria is present, a string, and satisfied' do
+      let(:criterion_hash) { {v_age: "14"} }
+      it { expect(subject).to eq 'eligible' }
+    end
+    context 'should return "ineligible" when criteria is present, a string, and outside range' do
+      let(:criterion_hash) { {v_age: "24"} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "ineligible" when criteria is present, a float within range' do
+      let(:criterion_hash) { {v_age: 14.2} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "ineligible" when criteria is present, a float outside range' do
+      let(:criterion_hash) { {v_age: 24.2} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "ineligible" when criteria is present, a string that represents a float within range' do
+      let(:criterion_hash) { {v_age: "14.2"} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "ineligible" when criteria is present, a string that represents a float outside range' do
+      let(:criterion_hash) { {v_age: "24.2"} }
+      it { expect(subject).to eq 'ineligible' }
+    end
+    context 'should return "ineligible" when criteria is "not_applicable"' do
+      let(:criterion_hash) { {v_age: 'not_applicable'} }
+      it { expect(subject).to eq 'ineligible'}
+    end
+    context 'should return "ineligible" when criteria is "wrong_input"' do
+      let(:criterion_hash) { {v_age: 'wrong_input'} }
+      it { expect(subject).to eq 'ineligible'}
+    end
+    context 'should return "uncertain" when criteria is NOT present' do
+      let(:criterion_hash) { {v_spectacle: 'any'} }
+      it { expect(subject).to eq 'uncertain'}
+    end
+    context 'should return "uncertain" when criteria is present but nil' do
+      let(:criterion_hash) { {v_age: nil} }
+      it { expect(subject).to eq 'uncertain'}
+    end
+  end
+
   # describe ".resolve" do
   #   it 'Should not return nil' do
   #     # given
