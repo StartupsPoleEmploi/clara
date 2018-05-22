@@ -19,7 +19,7 @@ class AidtreeService
   end
 
   def go(asker)
-    
+    return [1,2,3,4,5,6]    
   end
 
 end
