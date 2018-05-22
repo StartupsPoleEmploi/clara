@@ -1,15 +1,23 @@
 # ARA Changelog
 
 
+
+## 9.5.1 (18/05/2018)
+-[#754][BUG] pghero assets
+
+
 ## 9.5.0 (18/05/2018)
 -[#753][FEATURE] Installation pghero
+
 
 ## 9.4.0 (18/05/2018)
 -[#749][FEATURE] Page de /status de l'appli
 
+
 ## 9.3.2 (18/05/2018)
 -[#752][FEATURE] Page d'accueil mise en cache
 -[#751][BUG] Requete non optimisée
+
 
 ## 9.2.4 (15/05/2018)
 -[#745][BUG] Jauge de chargement pas visible
