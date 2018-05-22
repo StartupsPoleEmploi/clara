@@ -76,6 +76,7 @@ describe AidtreeService do
       before do
         cache_layer = instance_double("CacheService")
         allow(cache_layer).to receive(:read).and_return('[ { "id": 1, "name": "active_and_eligible_aid_1", "what": null, "created_at": "2018-05-22T12:05:49.248Z", "updated_at": "2018-05-22T12:05:49.248Z", "slug": "active_and_eligible_aid_1", "short_description": null, "how_much": null, "additionnal_conditions": null, "how_and_when": null, "limitations": null, "rule_id": 1, "ordre_affichage": 0, "contract_type_id": 1, "archived_at": null, "last_update": null, "contract_type": { "id": 1, "name": "n1", "description": "d1", "created_at": "2018-05-22T12:05:49.221Z", "updated_at": "2018-05-22T12:05:49.221Z", "ordre_affichage": 0, "icon": null, "slug": "n1", "category": "aide", "business_id": "b1" } }, { "id": 5, "name": "active_and_uncertain_aid_1", "what": null, "created_at": "2018-05-22T12:05:49.284Z", "updated_at": "2018-05-22T12:05:49.284Z", "slug": "active_and_uncertain_aid_1", "short_description": null, "how_much": null, "additionnal_conditions": null, "how_and_when": null, "limitations": null, "rule_id": 4, "ordre_affichage": 0, "contract_type_id": 1, "archived_at": null, "last_update": null, "contract_type": { "id": 1, "name": "n1", "description": "d1", "created_at": "2018-05-22T12:05:49.221Z", "updated_at": "2018-05-22T12:05:49.221Z", "ordre_affichage": 0, "icon": null, "slug": "n1", "category": "aide", "business_id": "b1" } } ]')
+        allow(cache_layer).to receive(:write).and_return(nil)
         CacheService.set_instance(cache_layer)        
       end
       after do
@@ -89,12 +90,54 @@ describe AidtreeService do
         # then
         expect(cache_layer).to have_received(:read).with("all_activated_aids")
       end
+      it 'Must NOT write anything to cache' do
+        # given
+
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(cache_layer).not_to have_received(:write)
+      end
       it 'Must fetch results from cache, if any' do
         # given
         # when
         result = AidtreeService.get_instance.go(the_asker)
         # then
         expect(result.size).to eq(2)
+      end
+    end
+    describe 'Cache Write' do
+      before do
+        cache_layer = instance_double("CacheService")
+        allow(cache_layer).to receive(:read).and_return(nil)
+        allow(cache_layer).to receive(:write).and_return(nil)
+        CacheService.set_instance(cache_layer)        
+      end
+      after do
+        CacheService.set_instance(nil)        
+      end
+      it 'Must have read key "all_activated_aids" from cache' do
+        # given
+
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(cache_layer).to have_received(:read).with("all_activated_aids")
+      end
+      it 'Must WRITE the list to the cache' do
+        # given
+
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(cache_layer).to have_received(:write).with("all_activated_aids", anything)
+      end
+      it 'Must fetch results from DB' do
+        # given
+        # when
+        result = AidtreeService.get_instance.go(the_asker)
+        # then
+        expect(result.size).to eq(6)
       end
     end
 

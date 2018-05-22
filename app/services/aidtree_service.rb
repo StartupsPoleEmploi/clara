@@ -16,9 +16,15 @@ class AidtreeService
   end
 
   def initialize
-    # a = Aid.activated.to_json(:include => :contract_type)
-    a = CacheService.get_instance.read("all_activated_aids")
-    @all_activated_hash = JSON.parse(a)
+    all_activated_aids = CacheService.get_instance.read("all_activated_aids")
+    begin
+      JSON.parse(all_activated_aids)
+    rescue Exception => e
+      all_activated_aids = Aid.activated.to_json(:include => :contract_type)
+      CacheService.get_instance.write("all_activated_aids", all_activated_aids)
+    ensure
+      @all_activated_hash = JSON.parse(all_activated_aids)
+    end
   end
 
   def go(asker)
