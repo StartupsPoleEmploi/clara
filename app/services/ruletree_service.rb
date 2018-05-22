@@ -86,6 +86,14 @@ class RuletreeService
     !is_simple_rule? && !is_complex_rule?
   end
 
+  def _all_rules
+    @all_rules
+  end
+
+  def _all_rules_json
+    @all_rules_json
+  end
+
   private
 
   def type_is_accurate(the_value, the_type)
@@ -141,12 +149,6 @@ class RuletreeService
     end
   end
 
-  def _all_rules
-    @all_rules
-  end
 
-  def _all_rules_json
-    @all_rules_json
-  end
 
 end

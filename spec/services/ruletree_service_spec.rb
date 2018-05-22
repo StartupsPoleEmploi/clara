@@ -85,7 +85,7 @@ describe RuletreeService do
     it 'Should not return nil' do
       # given
       # when
-      result = RuletreeService.get_instance.resolve(r_adult.id, the_asker)
+      result = RuletreeService.get_instance.resolve(r_adult.id, the_asker.attributes)
       # then
       expect(result).not_to be nil
     end
