@@ -7,9 +7,10 @@ class DetailService
 
   def hashified_eligibility_and_rules(asker)
 
-    aid_service = AidService.new(@aid)
+    # aid_service = AidService.new(@aid)
     justification_service = JustificationService.new(@aid)
-    is_eligible = aid_service.activated_and_eligible?(asker) ? "eligible" : aid_service.activated_and_ineligible?(asker) ? "ineligible" : aid_service.activated_and_uncertain?(asker) ? "uncertain" : nil
+    # is_eligible = aid_service.activated_and_eligible?(asker) ? "eligible" : aid_service.activated_and_ineligible?(asker) ? "ineligible" : aid_service.activated_and_uncertain?(asker) ? "uncertain" : nil
+    is_eligible = "ineligible"
     root_condition = justification_service.root_condition
     root_rules = justification_service.root_rules.map{|e| e.attributes.slice('name', 'description').symbolize_keys}
     status_array = justification_service.root_rules.map{|r| {status: r.resolve(asker.attributes)}}

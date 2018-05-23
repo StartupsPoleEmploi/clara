@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'securerandom'
 
 describe AidtreeService do
 
@@ -26,18 +25,18 @@ describe AidtreeService do
     r_young = create(:rule, :not_be_an_adult, name: "r_young")
     c_contract_type = create(:contract_type, :contract_type_1, name: "c_contract_type")
 
-    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1'+ SecureRandom.hex, rule: r_adult, contract_type: c_contract_type)
-    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2' + SecureRandom.hex, rule: r_adult, contract_type: c_contract_type)
-    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1' + SecureRandom.hex, rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2' + SecureRandom.hex, rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1' + SecureRandom.hex, rule: r_adult_and_qpv, contract_type: c_contract_type)
-    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2' + SecureRandom.hex, rule: r_adult_and_qpv, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1' + SecureRandom.hex, rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2' + SecureRandom.hex, rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1' + SecureRandom.hex, rule: r_young)
-    active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2' + SecureRandom.hex, rule: r_young)
-    inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1' + SecureRandom.hex, rule: r_young, archived_at: DateTime.new)
-    inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2' + SecureRandom.hex, rule: r_young, archived_at: DateTime.new)
+    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1', rule: r_adult, contract_type: c_contract_type)
+    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2' , rule: r_adult, contract_type: c_contract_type)
+    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1' , rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2' , rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1' , rule: r_adult_and_qpv, contract_type: c_contract_type)
+    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2' , rule: r_adult_and_qpv, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1' , rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2' , rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
+    active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1' , rule: r_young)
+    active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2' , rule: r_young)
+    inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1' , rule: r_young, archived_at: DateTime.new)
+    inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2' , rule: r_young, archived_at: DateTime.new)
 
   end
 
@@ -158,8 +157,6 @@ describe AidtreeService do
       modify_hash_so_that_it_remains_testable(sut)
       # out of scope of this unit test : eligibility
       sut["eligibility"] = nil
-      sut["name"] = "active_and_eligible_aid_1"
-      sut["slug"] = "active_and_eligible_aid_1"
 
       # then
       expect(sut).to eq(
@@ -177,7 +174,7 @@ describe AidtreeService do
           "limitations"=>nil,
           "rule_id"=>"EXISTING",
           "ordre_affichage"=>0,
-          "contract_type_id"=>1,
+          "contract_type_id"=>"EXISTING",
           "archived_at"=>nil,
           "last_update"=>nil,
           "contract_type"=>
@@ -207,8 +204,6 @@ describe AidtreeService do
       modify_hash_so_that_it_remains_testable(sut)
       # out of scope of this unit test : eligibility
       sut["eligibility"] = nil
-      sut["name"] = "active_and_ineligible_aid_1"
-      sut["slug"] = "active_and_ineligible_aid_1"
 
       # then
       expect(sut).to eq(
@@ -268,6 +263,7 @@ describe AidtreeService do
       the_hash["rule_id"] = "EXISTING" if the_hash["rule_id"]
       the_hash["created_at"] = "EXISTING" if the_hash["created_at"]
       the_hash["updated_at"] = "EXISTING" if the_hash["updated_at"]
+      the_hash["contract_type_id"] = "EXISTING" if the_hash["contract_type_id"]
       the_hash["contract_type"]["created_at"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["created_at"]
       the_hash["contract_type"]["updated_at"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["updated_at"]
       the_hash["contract_type"]["id"] = "EXISTING" if the_hash["contract_type"] && the_hash["contract_type"]["id"]
