@@ -52,7 +52,7 @@ feature 'detail of a result page' do
   context 'Active user, cache empty' do
     before do
       disable_http_service
-      cache_service_returns_empty
+      disable_cache_service
       asker = create(:asker, :fully_calculated_asker)
       aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
 
