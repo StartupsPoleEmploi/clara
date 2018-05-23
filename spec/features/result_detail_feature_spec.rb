@@ -43,7 +43,6 @@ feature 'detail of a result page' do
       enable_cache_service
     end
     scenario 'Display all details correctly' do
-      save_and_open_page
       _display_resume_of_situation(true)
       _display_all_details_correctly
     end
