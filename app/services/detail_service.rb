@@ -13,7 +13,7 @@ class DetailService
     is_eligible = "ineligible"
     root_condition = justification_service.root_condition
     root_rules = justification_service.root_rules.map{|e| e.attributes.slice('name', 'description').symbolize_keys}
-    status_array = justification_service.root_rules.map{|r| {status: r.resolve(asker.attributes)}}
+    status_array = justification_service.root_rules.map{|r| {status: RuletreeService.get_instance.resolve(r.id, asker.attributes)}}
     root_rules = root_rules.map.with_index do |root_rule, index|
       status = status_array[index]
       root_rule = status.merge(root_rule)
