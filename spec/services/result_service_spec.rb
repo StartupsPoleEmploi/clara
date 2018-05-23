@@ -8,7 +8,7 @@ feature ResultService do
 
         create(:rule, :be_an_adult, name: 'the_rule_name')
         the_rule = Rule.last
-        the_contract_type = create(:contract_type, :contract_type_1, name: 'contract_name', description: 'contract description', ordre_affichage: 42, icon:'nice_icon')
+        the_contract_type = create(:contract_type, :contract_type_1, name: 'contract_name', description: 'contract description', ordre_affichage: 42, icon:'nice_icon', business_id: "any")
         create(:aid, name: 'aid_name', ordre_affichage: 4, rule: the_rule, contract_type: the_contract_type)
         aid = Aid.last
 
