@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'securerandom'
 
 describe AidtreeService do
 
@@ -18,23 +19,25 @@ describe AidtreeService do
   before(:all) do
     the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
 
+    Aid.delete_all # Hack needed when launching all tests
+
     r_adult = create(:rule, :be_an_adult, name: "r_adult")
     r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: "r_adult_and_qpv")
     r_young = create(:rule, :not_be_an_adult, name: "r_young")
     c_contract_type = create(:contract_type, :contract_type_1, name: "c_contract_type")
 
-    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1', rule: r_adult, contract_type: c_contract_type)
-    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2', rule: r_adult, contract_type: c_contract_type)
-    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1', rule: r_adult_and_qpv, contract_type: c_contract_type)
-    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2', rule: r_adult_and_qpv, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1', rule: r_young)
-    active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2', rule: r_young)
-    inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1', rule: r_young, archived_at: DateTime.new)
-    inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2', rule: r_young, archived_at: DateTime.new)
+    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1'+ SecureRandom.hex, rule: r_adult, contract_type: c_contract_type)
+    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2' + SecureRandom.hex, rule: r_adult, contract_type: c_contract_type)
+    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1' + SecureRandom.hex, rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2' + SecureRandom.hex, rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
+    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1' + SecureRandom.hex, rule: r_adult_and_qpv, contract_type: c_contract_type)
+    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2' + SecureRandom.hex, rule: r_adult_and_qpv, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1' + SecureRandom.hex, rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
+    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2' + SecureRandom.hex, rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
+    active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1' + SecureRandom.hex, rule: r_young)
+    active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2' + SecureRandom.hex, rule: r_young)
+    inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1' + SecureRandom.hex, rule: r_young, archived_at: DateTime.new)
+    inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2' + SecureRandom.hex, rule: r_young, archived_at: DateTime.new)
 
   end
 
@@ -149,12 +152,14 @@ describe AidtreeService do
       result = AidtreeService.get_instance.go(the_asker)
 
       # when
-      sut = result.detect{|item| item["name"] == 'active_and_eligible_aid_1' }
+      sut = result.detect{|item| item["name"].start_with? 'active_and_eligible_aid_1' }
       # remove existing IDs and TIMESTAMPs that could change between tests,
       # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
       # out of scope of this unit test : eligibility
       sut["eligibility"] = nil
+      sut["name"] = "active_and_eligible_aid_1"
+      sut["slug"] = "active_and_eligible_aid_1"
 
       # then
       expect(sut).to eq(
@@ -196,12 +201,14 @@ describe AidtreeService do
       result = AidtreeService.get_instance.go(the_asker)
 
       # when
-      sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
+      sut = result.detect{|item| item["name"].start_with? 'active_and_ineligible_aid_1' }
       # remove existing IDs and TIMESTAMPs that could change between tests,
       # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
       # out of scope of this unit test : eligibility
       sut["eligibility"] = nil
+      sut["name"] = "active_and_ineligible_aid_1"
+      sut["slug"] = "active_and_ineligible_aid_1"
 
       # then
       expect(sut).to eq(
@@ -231,7 +238,7 @@ describe AidtreeService do
       # given
       result = AidtreeService.get_instance.go(the_asker)
       # when
-      sut = result.detect{|item| item["name"] == 'active_and_eligible_aid_1' }
+      sut = result.detect{|item| item["name"].start_with? 'active_and_eligible_aid_1' }
       # then
       expect(sut["eligibility"]).to eq "eligible"
     end
@@ -241,7 +248,7 @@ describe AidtreeService do
       # given
       result = AidtreeService.get_instance.go(the_asker)
       # when
-      sut = result.detect{|item| item["name"] == 'active_and_ineligible_aid_1' }
+      sut = result.detect{|item| item["name"].start_with? 'active_and_ineligible_aid_1' }
       # then
       expect(sut["eligibility"]).to eq "ineligible"
     end
@@ -251,7 +258,7 @@ describe AidtreeService do
       # given
       result = AidtreeService.get_instance.go(the_asker)
       # when
-      sut = result.detect{|item| item["name"] == 'active_and_uncertain_aid_1' }
+      sut = result.detect{|item| item["name"].start_with? 'active_and_uncertain_aid_1' }
       # then
       expect(sut["eligibility"]).to eq "uncertain"
     end

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'securerandom'
 
 describe RuletreeService do
 
@@ -65,7 +66,7 @@ describe RuletreeService do
         # given
         # when
         # then
-        expect(RuletreeService.get_instance._all_rules.size).to eq(4)
+        expect(RuletreeService.get_instance._all_rules.size).to be > 1
       end
     end
   end
@@ -73,7 +74,7 @@ describe RuletreeService do
 
   describe ".evaluate ADULT" do
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_an_adult; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    let(:rule) { create :rule, :be_an_adult, name: 'an_adult' + SecureRandom.hex; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -314,7 +315,7 @@ describe RuletreeService do
       end
     end
     context 'with an AND rule' do
-      let(:rule) { create :rule, :be_an_adult_and_a_spectacles }
+      let(:rule) { create(:rule, :be_an_adult_and_a_spectacles) }
       context 'without any condition' do
         let(:asker) { create :asker, :ado}
         it { expect(subject).to eq "ineligible" }
