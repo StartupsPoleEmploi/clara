@@ -2,14 +2,8 @@ require 'rails_helper'
 
 describe RuletreeService do
 
-  r_adult = nil
-  r_spectacle = nil
-  r_adult_and_spectacle = nil
-  r_adult_or_spectacle = nil
-  the_asker = nil
   cache_layer = nil
-
-
+  
   describe 'instantiation' do
     before do
       the_asker = Asker.new(v_age: '42', v_spectacle: 'non')
