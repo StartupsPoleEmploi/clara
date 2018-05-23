@@ -88,6 +88,7 @@ class RuletreeService
     # p rules.inspect
     # p ''
     @all_rules = rules
+    self
   end
 
   def _all_rules_json
