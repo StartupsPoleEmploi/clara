@@ -15,6 +15,12 @@ module Admin
     def loadrefdata
     end
 
+    def cache
+    end
+
+    def expire_cache
+    end
+
     def load_stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
       analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
