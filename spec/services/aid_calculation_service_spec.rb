@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe AidCalculationService do
 
+  aidtree_layer = nil
   the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
   possible_aidtree = [
     {"id"=>"EXISTING",
@@ -47,6 +48,11 @@ describe AidCalculationService do
       sut = AidCalculationService.get_instance(the_asker)
       #then
       expect(sut._all_aids).to eq(possible_aidtree)
+    end
+    it 'Calcul must occur against the given asker' do
+      sut = AidCalculationService.get_instance(the_asker)
+      #then
+      expect(aidtree_layer).to have_received(:go).with(the_asker)
     end
   end
 
