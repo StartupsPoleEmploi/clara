@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe AidCalculationService do
 
-
+  the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
   possible_aidtree = [
     {"id"=>"EXISTING",
     "name"=>"active_and_eligible_aid_1",
@@ -44,8 +44,8 @@ describe AidCalculationService do
       AidtreeService.set_instance(nil)
     end
     it 'Calcul must occur on instantiation' do
-      sut = AidCalculationService.get_instance(nil)
-      
+      sut = AidCalculationService.get_instance(the_asker)
+
     end
   end
 
