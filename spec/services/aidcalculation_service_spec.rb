@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'database_cleaner'
 
-describe AidtreeService do
+describe AidCalculationService do
 
   inactive_and_eligible_aid_1   = nil
   inactive_and_eligible_aid_2   = nil
@@ -78,6 +78,17 @@ describe AidtreeService do
       realistic_ordered_sut  = modify_array(ordered_sut)
       expect(realistic_ordered_sut).to eq realistic_all_uncertain
     end
+    it '.all_ineligible' do
+      # given
+      service = AidCalculationService.get_instance(the_asker)
+      # when
+      sut = service.all_ineligible
+      # then
+      ordered_sut = sut.sort_by { |h| h["name"] }
+      realistic_all_ineligible = modify_array(realistic_all_ineligible_result)
+      realistic_ordered_sut  = modify_array(ordered_sut)
+      expect(realistic_ordered_sut).to eq realistic_all_ineligible
+    end
   end
 
   def modify_array(the_array) # modify all hashes so that test remains consistent
@@ -97,8 +108,7 @@ describe AidtreeService do
 
 
   def realistic_all_eligible_result
-     [
-      {"id"=>1,
+     [{"id"=>1,
        "name"=>"active_and_eligible_aid_1",
        "what"=>nil,
        "created_at"=>"2018-05-24T12:44:22.696Z",
@@ -162,13 +172,11 @@ describe AidtreeService do
        "contract_type_order"=>0,
        "contract_type_business_id"=>"b1",
        "contract_type_icon"=>nil,
-       "contract_type_description"=>"d1"}
-     ]
+       "contract_type_description"=>"d1"}]
   end
 
   def realistic_all_uncertain_result
-    [
-      {"id"=>5,
+    [{"id"=>5,
        "name"=>"active_and_uncertain_aid_1",
        "what"=>nil,
        "created_at"=>"2018-05-24T12:54:09.107Z",
@@ -232,12 +240,47 @@ describe AidtreeService do
        "contract_type_order"=>0,
        "contract_type_business_id"=>"b1",
        "contract_type_icon"=>nil,
-       "contract_type_description"=>"d1"}
-     ]
+       "contract_type_description"=>"d1"}]
   end
 
   def realistic_all_ineligible_result
-    
+      [{"id"=>9,
+       "name"=>"active_and_ineligible_aid_1",
+       "what"=>nil,
+       "created_at"=>"2018-05-24T12:57:09.990Z",
+       "updated_at"=>"2018-05-24T12:57:09.990Z",
+       "slug"=>"active_and_ineligible_aid_1",
+       "short_description"=>nil,
+       "how_much"=>nil,
+       "additionnal_conditions"=>nil,
+       "how_and_when"=>nil,
+       "limitations"=>nil,
+       "rule_id"=>5,
+       "ordre_affichage"=>0,
+       "contract_type_id"=>nil,
+       "archived_at"=>nil,
+       "last_update"=>nil,
+       "eligibility"=>"ineligible",
+       "contract_type_order"=>99999},
+      
+      {"id"=>10,
+       "name"=>"active_and_ineligible_aid_2",
+       "what"=>nil,
+       "created_at"=>"2018-05-24T12:57:09.997Z",
+       "updated_at"=>"2018-05-24T12:57:09.997Z",
+       "slug"=>"active_and_ineligible_aid_2",
+       "short_description"=>nil,
+       "how_much"=>nil,
+       "additionnal_conditions"=>nil,
+       "how_and_when"=>nil,
+       "limitations"=>nil,
+       "rule_id"=>5,
+       "ordre_affichage"=>0,
+       "contract_type_id"=>nil,
+       "archived_at"=>nil,
+       "last_update"=>nil,
+       "eligibility"=>"ineligible",
+       "contract_type_order"=>99999}]
   end
 
 end
