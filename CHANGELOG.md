@@ -2,6 +2,10 @@
 
 
 
+## 9.7.0 (25/05/2018)
+-[#757][FEATURE] admin of cache
+
+
 ## 9.6.0 (24/05/2018)
 -[#755][FEATURE] cache-only access
 
