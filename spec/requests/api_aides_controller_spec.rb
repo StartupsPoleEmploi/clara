@@ -128,9 +128,9 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(response_returned).to have_http_status(200)
     end
     it 'Returns all eligible aids' do
-      p '- - - - - - - - - - - - - - json_returned- - - - - - - - - - - - - - - -' 
-      p json_returned.inspect
-      p ''
+      # p '- - - - - - - - - - - - - - json_returned- - - - - - - - - - - - - - - -' 
+      # p json_returned.inspect
+      # p ''
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'Aide Qpv ET Zrr'
     end
