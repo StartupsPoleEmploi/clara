@@ -67,6 +67,17 @@ describe AidtreeService do
       realistic_ordered_sut  = modify_array(ordered_sut)
       expect(realistic_ordered_sut).to eq realistic_all_eligible
     end
+    it '.all_uncertain' do
+      # given
+      service = AidCalculationService.get_instance(the_asker)
+      # when
+      sut = service.all_uncertain
+      # then
+      ordered_sut = sut.sort_by { |h| h["name"] }
+      realistic_all_uncertain = modify_array(realistic_all_uncertain_result)
+      realistic_ordered_sut  = modify_array(ordered_sut)
+      expect(realistic_ordered_sut).to eq realistic_all_uncertain
+    end
   end
 
   def modify_array(the_array) # modify all hashes so that test remains consistent
@@ -153,6 +164,80 @@ describe AidtreeService do
        "contract_type_icon"=>nil,
        "contract_type_description"=>"d1"}
      ]
+  end
+
+  def realistic_all_uncertain_result
+    [
+      {"id"=>5,
+       "name"=>"active_and_uncertain_aid_1",
+       "what"=>nil,
+       "created_at"=>"2018-05-24T12:54:09.107Z",
+       "updated_at"=>"2018-05-24T12:54:09.107Z",
+       "slug"=>"active_and_uncertain_aid_1",
+       "short_description"=>nil,
+       "how_much"=>nil,
+       "additionnal_conditions"=>nil,
+       "how_and_when"=>nil,
+       "limitations"=>nil,
+       "rule_id"=>4,
+       "ordre_affichage"=>0,
+       "contract_type_id"=>1,
+       "archived_at"=>nil,
+       "last_update"=>nil,
+       "contract_type"=>
+        {"id"=>1,
+         "name"=>"c_contract_type",
+         "description"=>"d1",
+         "created_at"=>"2018-05-24T12:54:09.045Z",
+         "updated_at"=>"2018-05-24T12:54:09.045Z",
+         "ordre_affichage"=>0,
+         "icon"=>nil,
+         "slug"=>"c_contract_type",
+         "category"=>"aide",
+         "business_id"=>"b1"},
+       "eligibility"=>"uncertain",
+       "contract_type_order"=>0,
+       "contract_type_business_id"=>"b1",
+       "contract_type_icon"=>nil,
+       "contract_type_description"=>"d1"},
+      
+      {"id"=>6,
+       "name"=>"active_and_uncertain_aid_2",
+       "what"=>nil,
+       "created_at"=>"2018-05-24T12:54:09.115Z",
+       "updated_at"=>"2018-05-24T12:54:09.115Z",
+       "slug"=>"active_and_uncertain_aid_2",
+       "short_description"=>nil,
+       "how_much"=>nil,
+       "additionnal_conditions"=>nil,
+       "how_and_when"=>nil,
+       "limitations"=>nil,
+       "rule_id"=>4,
+       "ordre_affichage"=>0,
+       "contract_type_id"=>1,
+       "archived_at"=>nil,
+       "last_update"=>nil,
+       "contract_type"=>
+        {"id"=>1,
+         "name"=>"c_contract_type",
+         "description"=>"d1",
+         "created_at"=>"2018-05-24T12:54:09.045Z",
+         "updated_at"=>"2018-05-24T12:54:09.045Z",
+         "ordre_affichage"=>0,
+         "icon"=>nil,
+         "slug"=>"c_contract_type",
+         "category"=>"aide",
+         "business_id"=>"b1"},
+       "eligibility"=>"uncertain",
+       "contract_type_order"=>0,
+       "contract_type_business_id"=>"b1",
+       "contract_type_icon"=>nil,
+       "contract_type_description"=>"d1"}
+     ]
+  end
+
+  def realistic_all_ineligible_result
+    
   end
 
 end
