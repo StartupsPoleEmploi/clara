@@ -44,7 +44,11 @@ describe AidCalculationService do
   end
   describe "Instantiation" do
     it "Calcul must occur on instantiation" do
-      expect(AidCalculationService.get_instance._all_aids).to eq("blabla")
+      #given
+      #when
+      sut = AidCalculationService.get_instance(the_asker)
+      #then
+      expect(sut._all_aids).to eq("blabla")
     end
   end
 
