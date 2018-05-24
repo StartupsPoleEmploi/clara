@@ -16,4 +16,8 @@ class AidCalculationService
     @@the_double.nil? ? AidCalculationService.new : @@the_double
   end
 
+  def _all_aids
+    
+  end
+
 end

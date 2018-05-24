@@ -49,6 +49,11 @@ def enable_http_service
   HttpService.set_instance(nil)
 end
 
+def cache_service_returns_empty
+  cache_layer = instance_double("CacheService")
+  allow(cache_layer).to receive(:read).and_return(nil)
+  CacheService.set_instance(cache_layer)
+end
 def disable_cache_service
   cache_layer = instance_double("CacheService")
   allow(cache_layer).to receive(:read).and_return(nil)
@@ -75,11 +80,7 @@ def enable_qpv_zrr_service
   ZrrService.set_instance(nil)
 end
 
-def cache_service_returns_empty
-  cache_layer = instance_double("CacheService")
-  allow(cache_layer).to receive(:read).and_return(nil)
-  CacheService.set_instance(cache_layer)
-end
+
 
 def enable_http_service
   HttpService.set_instance(nil)

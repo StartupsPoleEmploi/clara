@@ -23,8 +23,6 @@ describe AidCalculationService do
     Aid.delete_all # Hack needed when launching all tests
     Rule.delete_all # Hack needed when launching all tests
 
-    disable_cache_service
-
     r_adult = create(:rule, :be_an_adult, name: "r_adult")
     r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: "r_adult_and_qpv")
     r_young = create(:rule, :not_be_an_adult, name: "r_young")
@@ -44,11 +42,10 @@ describe AidCalculationService do
     inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2', rule: r_young, archived_at: DateTime.new)
 
   end
-  after(:all) do
-    enable_cache_service
-  end
-  describe "Calcul must occur on instantiation" do
-    expect(AidCalculationService.get_instance._all_aids).to eq("blabla")
+  describe "Instantiation" do
+    it "Calcul must occur on instantiation" do
+      expect(AidCalculationService.get_instance._all_aids).to eq("blabla")
+    end
   end
 
 end
