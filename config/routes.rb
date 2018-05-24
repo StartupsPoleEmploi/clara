@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'loadrefdata'
       get 'cache'
       post 'expire_welcome_page'
+      post 'expire_json_objects'
       post 'rename_eligible_value'
       post 'archive_all_aids'
       post 'unarchive_all_aids'

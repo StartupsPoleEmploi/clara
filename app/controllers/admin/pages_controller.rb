@@ -22,6 +22,15 @@ module Admin
       expire_page controller: "/welcome", action: "index"
     end
 
+    def expire_json_objects
+      all_rules_json_deleted = CacheService.get_instance.delete("all_rules_json")
+      all_activated_aids = CacheService.get_instance.delete("all_activated_aids")
+      return {
+        all_rules_json_deleted: all_rules_json_deleted,
+        all_activated_aids: all_activated_aids
+      }
+    end
+
     def load_stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
       analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2

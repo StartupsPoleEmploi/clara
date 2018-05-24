@@ -31,4 +31,8 @@ class CacheService
      Rails.cache.read(id) unless Rails.env.test?
   end
 
+  def delete(name)
+     Rails.cache.delete(name) unless Rails.env.test?
+  end
+
 end

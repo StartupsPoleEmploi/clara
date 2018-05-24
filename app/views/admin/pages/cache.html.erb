@@ -1,9 +1,11 @@
 Vous pouvez rafraîchir la page d'accueil ici
-
 <%= form_with url: admin_expire_welcome_page_path, id: 'admin_expire_cache_form' do |form| %>
   <%= form.submit 'Supprimer le cache de la page d\'accueil'%>
 <% end %>
+<p>&nbsp;</p>
 
-<p>
-  &nbsp;
-</p>
+Vous pouvez rafraîchir les rules, contract_types et aids ici
+<%= form_with url: admin_expire_json_objects_path , id: 'admin_expire_json_objects_form' do |form| %>
+  <%= form.submit 'Supprimer le cache des rules, aids et contract_types' %>
+<% end %>
+<p>&nbsp;</p>
