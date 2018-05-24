@@ -35,17 +35,18 @@ describe AidCalculationService do
   ]
 
   describe "Instantiation" do
-    before(:each) do
+    before do
       aidtree_layer = instance_double("AidtreeService")
       allow(aidtree_layer).to receive(:go).and_return(possible_aidtree)
       AidtreeService.set_instance(aidtree_layer)
     end
-    after(:each) do
+    after do
       AidtreeService.set_instance(nil)
     end
     it 'Calcul must occur on instantiation' do
       sut = AidCalculationService.get_instance(the_asker)
-
+      #then
+      expect(sut._all_aids).to eq(possible_aidtree)
     end
   end
 

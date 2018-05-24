@@ -24,10 +24,6 @@ class AidCalculationService
       aid_as_hash["eligibility"] = eligibility
       aid_as_hash
     end
-    # p '- - - - - - - - - - - - - - calculated_aids_as_hash- - - - - - - - - - - - - - - -' 
-    # pp @calculated_aids_as_hash
-    # p ''
-
   end
 
   def all_eligible
