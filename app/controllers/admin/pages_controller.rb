@@ -18,7 +18,8 @@ module Admin
     def cache
     end
 
-    def expire_cache
+    def expire_welcome_page
+      expire_page controller: "/welcome", action: "index"
     end
 
     def load_stats
