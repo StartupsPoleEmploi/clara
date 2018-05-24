@@ -157,15 +157,12 @@ describe AidtreeService do
       # remove existing IDs and TIMESTAMPs that could change between tests,
       # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
-      # out of scope of this unit test : eligibility
-      sut["eligibility"] = nil
 
       # then
       expect(sut).to eq(
         {"id"=>"EXISTING",
           "name"=>"active_and_eligible_aid_1",
           "what"=>nil,
-          "eligibility"=>nil,
           "created_at"=>"EXISTING",
           "updated_at"=>"EXISTING",
           "slug"=>"active_and_eligible_aid_1",
@@ -204,15 +201,12 @@ describe AidtreeService do
       # remove existing IDs and TIMESTAMPs that could change between tests,
       # so that sut remains testable
       modify_hash_so_that_it_remains_testable(sut)
-      # out of scope of this unit test : eligibility
-      sut["eligibility"] = nil
 
       # then
       expect(sut).to eq(
         {"id"=>"EXISTING",
           "name"=>"active_and_ineligible_aid_1",
           "what"=>nil,
-          "eligibility"=>nil,
           "created_at"=>"EXISTING",
           "updated_at"=>"EXISTING",
           "slug"=>"active_and_ineligible_aid_1",
