@@ -24,10 +24,10 @@ module Admin
 
     def expire_json_objects
       all_rules_json_deleted = CacheService.get_instance.delete("all_rules_json")
-      all_activated_aids = CacheService.get_instance.delete("all_activated_aids")
-      return {
+      all_activated_aids_deleted = CacheService.get_instance.delete("all_activated_aids")
+      render json: {
         all_rules_json_deleted: all_rules_json_deleted,
-        all_activated_aids: all_activated_aids
+        all_activated_aids_deleted: all_activated_aids_deleted
       }
     end
 
