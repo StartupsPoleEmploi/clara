@@ -20,10 +20,10 @@ class ResultService
   def convert_to_displayable(aid_as_hash)
     copy_of_aid_as_hash = aid_as_hash.deep_dup
     if copy_of_aid_as_hash["contract_type"].is_a?(Hash)
-      copy_of_aid_as_hash['contract_type_order'] = e.contract_type.ordre_affichage
-      copy_of_aid_as_hash['contract_type_business_id'] = e.contract_type.business_id
-      copy_of_aid_as_hash['contract_type_icon'] = e.contract_type.icon
-      copy_of_aid_as_hash['contract_type_description'] = e.contract_type.description
+      copy_of_aid_as_hash['contract_type_order'] = aid_as_hash["contract_type"]["ordre_affichage"]
+      copy_of_aid_as_hash['contract_type_business_id'] = aid_as_hash["contract_type"]["business_id"]
+      copy_of_aid_as_hash['contract_type_icon'] = aid_as_hash["contract_type"]["icon"]
+      copy_of_aid_as_hash['contract_type_description'] = aid_as_hash["contract_type"]["description"]
     else      
       copy_of_aid_as_hash['contract_type_order'] = 99999
     end
