@@ -17,12 +17,7 @@ class AidCalculationService
   end
 
   def initialize(asker)
-    p '- - - - - - - - - - - - - - initialize- - - - - - - - - - - - - - - -' 
-    p ''
     aids_as_hash = AidtreeService.get_instance.go(asker)
-    p '- - - - - - - - - - - - - - aids_as_hash- - - - - - - - - - - - - - - -' 
-    pp aids_as_hash
-    p ''
 
     @calculated_aids_as_hash =  aids_as_hash.map do |aid_as_hash|  
       eligibility = RuletreeService.get_instance.resolve(aid_as_hash["rule_id"], asker.attributes)
@@ -33,10 +28,27 @@ class AidCalculationService
     pp @calculated_aids_as_hash
     p ''
 
-    # aids_as_hash.each do |aid_as_hash|  
-    #   eligibility = RuletreeService.get_instance.resolve(aid_as_hash["rule_id"], asker.attributes)
-    #   aid_as_hash["eligibility"] = eligibility
-    # end
+  end
+
+  def all_eligible
+    result_service = ResultService.new
+    @calculated_aids_as_hash
+      .select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "eligible" }
+      .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
+  end
+
+  def all_ineligible
+    result_service = ResultService.new
+    @calculated_aids_as_hash
+      .select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "ineligible" }
+      .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
+  end
+
+  def all_uncertain
+    result_service = ResultService.new
+    @calculated_aids_as_hash
+      .select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "uncertain" }
+      .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
   end
 
   def _all_aids
