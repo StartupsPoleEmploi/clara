@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   caches_page :index
+  skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
 
   def index
     service = ContractTypeService.new

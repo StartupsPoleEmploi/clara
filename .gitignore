@@ -28,7 +28,11 @@ ara
 # Ignore node modules
 /node_modules/*
 
+# Ignore env var
 .env
+
+# Ignore page cache
+/public/index.html
 
 coverage
 

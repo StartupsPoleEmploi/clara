@@ -2,6 +2,10 @@
 
 
 
+## 9.6.0 (24/05/2018)
+-[#755][FEATURE] cache-only access
+
+
 ## 9.5.1 (18/05/2018)
 -[#754][BUG] pghero assets
 

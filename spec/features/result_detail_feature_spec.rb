@@ -30,7 +30,8 @@ feature 'detail of a result page' do
       aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
       disable_http_service
       cache_layer = instance_double("CacheService")
-      allow(cache_layer).to receive(:read).and_return(SerializeResultsService.get_instance.go(asker))
+      allow(cache_layer).to receive(:read) {|arg1| (arg1 == "all_activated_aids" ||  arg1 == "all_rules_json") ? "" : SerializeResultsService.get_instance.go(asker)} 
+      allow(cache_layer).to receive(:write).and_return(nil)
       CacheService.set_instance(cache_layer)
 
       a = ConvertAskerInBase64Service.new.into_base64(asker)
@@ -50,7 +51,7 @@ feature 'detail of a result page' do
   context 'Active user, cache empty' do
     before do
       disable_http_service
-      cache_service_returns_empty
+      disable_cache_service
       asker = create(:asker, :fully_calculated_asker)
       aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
 
