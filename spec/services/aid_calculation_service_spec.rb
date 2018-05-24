@@ -19,9 +19,8 @@ describe AidCalculationService do
   before(:all) do
     the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
 
-    ContractType.delete_all # Hack needed when launching all tests
-    Aid.delete_all # Hack needed when launching all tests
-    Rule.delete_all # Hack needed when launching all tests
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
 
     r_adult = create(:rule, :be_an_adult, name: "r_adult")
     r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: "r_adult_and_qpv")
