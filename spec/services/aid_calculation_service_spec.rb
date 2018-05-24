@@ -3,51 +3,52 @@ require 'rails_helper'
 describe AidCalculationService do
 
 
-  inactive_and_eligible_aid_1   = nil
-  inactive_and_eligible_aid_2   = nil
-  active_and_uncertain_aid_1    = nil
-  active_and_uncertain_aid_2    = nil
-  inactive_and_uncertain_aid_1  = nil
-  inactive_and_uncertain_aid_2  = nil
-  active_and_ineligible_aid_1   = nil
-  active_and_ineligible_aid_2   = nil
-  inactive_and_ineligible_aid_1 = nil
-  inactive_and_ineligible_aid_2 = nil
-  the_asker = nil
-  cache_layer = nil
+  # possible_aidtree = [
+  #   {"id"=>"EXISTING",
+  #   "name"=>"active_and_eligible_aid_1",
+  #   "what"=>"the_what",
+  #   "created_at"=>"EXISTING",
+  #   "updated_at"=>"EXISTING",
+  #   "slug"=>"active_and_eligible_aid_1",
+  #   "short_description"=>"the_short_description",
+  #   "how_much"=>"the_how_much",
+  #   "additionnal_conditions"=>"the_additionnal_conditions",
+  #   "how_and_when"=>"the_how_and_when",
+  #   "limitations"=>"the_limitations",
+  #   "rule_id"=>"EXISTING",
+  #   "ordre_affichage"=>0,
+  #   "contract_type_id"=>"EXISTING",
+  #   "archived_at"=>nil,
+  #   "last_update"=>nil,
+  #   "contract_type"=>
+  #    {"id"=>"EXISTING",
+  #     "name"=>"c_contract_type",
+  #     "description"=>"d1",
+  #     "created_at"=>"EXISTING",
+  #     "updated_at"=>"EXISTING",
+  #     "ordre_affichage"=>0,
+  #     "icon"=>nil,
+  #     "slug"=>"c_contract_type",
+  #     "category"=>"aide",
+  #     "business_id"=>"b1"}
+  #   }
+  # ]
 
-  before(:all) do
-    the_asker = Asker.new(v_age: '42', v_qpv: 'indisponible')
-
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
-
-    r_adult = create(:rule, :be_an_adult, name: "r_adult")
-    r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: "r_adult_and_qpv")
-    r_young = create(:rule, :not_be_an_adult, name: "r_young")
-    c_contract_type = create(:contract_type, :contract_type_1, name: "c_contract_type")
-
-    active_and_eligible_aid_1     = create(:aid, name: 'active_and_eligible_aid_1', rule: r_adult, contract_type: c_contract_type)
-    active_and_eligible_aid_2     = create(:aid, name: 'active_and_eligible_aid_2', rule: r_adult, contract_type: c_contract_type)
-    inactive_and_eligible_aid_1   = create(:aid, name: 'inactive_and_eligible_aid_1', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_eligible_aid_2   = create(:aid, name: 'inactive_and_eligible_aid_2', rule: r_adult, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_uncertain_aid_1    = create(:aid, name: 'active_and_uncertain_aid_1', rule: r_adult_and_qpv, contract_type: c_contract_type)
-    active_and_uncertain_aid_2    = create(:aid, name: 'active_and_uncertain_aid_2', rule: r_adult_and_qpv, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_1  = create(:aid, name: 'inactive_and_uncertain_aid_1', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    inactive_and_uncertain_aid_2  = create(:aid, name: 'inactive_and_uncertain_aid_2', rule: r_adult_and_qpv, archived_at: DateTime.new, contract_type: c_contract_type)
-    active_and_ineligible_aid_1   = create(:aid, name: 'active_and_ineligible_aid_1', rule: r_young)
-    active_and_ineligible_aid_2   = create(:aid, name: 'active_and_ineligible_aid_2', rule: r_young)
-    inactive_and_ineligible_aid_1 = create(:aid, name: 'inactive_and_ineligible_aid_1', rule: r_young, archived_at: DateTime.new)
-    inactive_and_ineligible_aid_2 = create(:aid, name: 'inactive_and_ineligible_aid_2', rule: r_young, archived_at: DateTime.new)
-
-  end
   describe "Instantiation" do
+    before(:all) do
+      aidtree_layer = instance_double("AidtreeService")
+      allow(aidtree_layer).to receive(:go).and_return(possible_aidtree)
+      AidtreeService.set_instance(aidtree_layer)
+    end
+    after(:all) do
+      AidtreeService.set_instance(nil)
+    end
     it "Calcul must occur on instantiation" do
       #given
       #when
-      sut = AidCalculationService.get_instance(the_asker)
+      sut = AidCalculationService.get_instance(nil)
       #then
-      expect(sut._all_aids).to eq("blabla")
+      expect(sut._all_aids).to eq(possible_aidtree)
     end
   end
 

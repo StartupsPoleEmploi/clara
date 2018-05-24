@@ -7,9 +7,9 @@ class DetailController < ApplicationController
     if has_active_user
       existing = CacheService.get_instance.read(params[:for_id])
       if (existing) # already in the cache, we dont have to calculate anything
-        p '- - - - - - - - - - - - - - existing- - - - - - - - - - - - - - - -' 
-        p existing.inspect
-        p ''
+        # p '- - - - - - - - - - - - - - existing- - - - - - - - - - - - - - - -' 
+        # p existing.inspect
+        # p ''
         @asker = Asker.new(existing[:asker])
       else
         @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
