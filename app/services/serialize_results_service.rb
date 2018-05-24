@@ -58,20 +58,5 @@ private
   def whitelist(aids)
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
-  # def displayable_hash(aids)
-  #   ResultService.new.convert_to_displayable_hash(aids)
-  # end
-  # def all_eligible(asker)
-  #   # AidService.all_eligible(asker)
-  #   {}
-  # end
-  # def all_ineligible(asker)
-  #   # AidService.all_ineligible(asker)
-  #   {}
-  # end
-  # def all_uncertain(asker)
-  #   # AidService.all_uncertain(asker)
-  #   {}
-  # end
 
 end
