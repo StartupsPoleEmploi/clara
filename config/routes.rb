@@ -37,7 +37,7 @@ Rails.application.routes.draw do
       get 'archive'
       get 'loadrefdata'
       get 'cache'
-      post 'expire_cache'
+      post 'expire_welcome_page'
       post 'rename_eligible_value'
       post 'archive_all_aids'
       post 'unarchive_all_aids'
