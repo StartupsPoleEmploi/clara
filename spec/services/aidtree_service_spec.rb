@@ -224,36 +224,6 @@ describe AidtreeService do
       )
     end
 
-    it 'ELIGIBLE aid must have a field "eligibility" equal to "eligible"' do
-      pending("Calculation of result through Ruletree is not yet implemented")
-      # given
-      result = AidtreeService.get_instance.go(the_asker)
-      # when
-      sut = result.detect{|item| item["name"].start_with? 'active_and_eligible_aid_1' }
-      # then
-      expect(sut["eligibility"]).to eq "eligible"
-    end
-
-    it 'INELIGIBLE aid must have a field "eligibility" equal to "ineligible"' do
-      pending("Calculation of result through Ruletree is not yet implemented")
-      # given
-      result = AidtreeService.get_instance.go(the_asker)
-      # when
-      sut = result.detect{|item| item["name"].start_with? 'active_and_ineligible_aid_1' }
-      # then
-      expect(sut["eligibility"]).to eq "ineligible"
-    end
-
-    it 'UNCERTAIN aid must have a field "eligibility" equal to "uncertain"' do
-      pending("Calculation of result through Ruletree is not yet implemented")
-      # given
-      result = AidtreeService.get_instance.go(the_asker)
-      # when
-      sut = result.detect{|item| item["name"].start_with? 'active_and_uncertain_aid_1' }
-      # then
-      expect(sut["eligibility"]).to eq "uncertain"
-    end
-
     def modify_hash_so_that_it_remains_testable(the_hash)
       the_hash["id"] = "EXISTING" if the_hash["id"]
       the_hash["rule_id"] = "EXISTING" if the_hash["rule_id"]
