@@ -17,6 +17,7 @@ class AidCalculationService
   end
 
   def initialize(asker)
+    return unless asker
     aids_as_hash = AidtreeService.get_instance.go(asker)
 
     @calculated_aids_as_hash =  aids_as_hash.map do |aid_as_hash|  

@@ -37,16 +37,15 @@ describe AidCalculationService do
   describe "Instantiation" do
     before(:each) do
       aidtree_layer = instance_double("AidtreeService")
-      allow(aidtree_layer).to receive(:go).and_return("unexisting_get_value")
+      allow(aidtree_layer).to receive(:go).and_return(possible_aidtree)
       AidtreeService.set_instance(aidtree_layer)
     end
     after(:each) do
       AidtreeService.set_instance(nil)
     end
     it 'Calcul must occur on instantiation' do
-      sut = AidtreeService.get_instance
-      output = sut.go('http://any_url.com')
-      expect(output).to eq('unexisting_get_value')
+      sut = AidCalculationService.get_instance(nil)
+      
     end
   end
 
