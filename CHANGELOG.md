@@ -2,6 +2,10 @@
 
 
 
+## 9.7.1 (25/05/2018)
+-[#760][BUG] admin of cache
+
+
 ## 9.7.0 (25/05/2018)
 -[#757][FEATURE] admin of cache
 
