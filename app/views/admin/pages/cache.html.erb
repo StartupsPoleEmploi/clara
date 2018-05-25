@@ -1,0 +1,36 @@
+Vous pouvez rafraîchir la page d'accueil ici
+<%= form_with url: admin_expire_welcome_page_path, id: 'admin_expire_cache_form' do |form| %>
+  <%= form.submit 'Supprimer le cache de la page d\'accueil'%>
+<% end %>
+<p>&nbsp;</p>
+<script> 
+  function defer(method) { if (window.jQuery) { admin_expire_welcome_page_callback(); } else { setTimeout(function() { defer(method) }, 50); } }
+  function admin_expire_welcome_page_callback() {
+    $("#admin_expire_cache_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("expire_welcome_page success, detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer();
+</script>
+
+
+Vous pouvez rafraîchir les rules, contract_types et aids ici
+<%= form_with url: admin_expire_json_objects_path , id: 'admin_expire_json_objects_form' do |form| %>
+  <%= form.submit 'Supprimer le cache des rules, aids et contract_types' %>
+<% end %>
+<p>&nbsp;</p>
+<script> 
+  function defer2(method) { if (window.jQuery) { admin_expire_json_objects_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_expire_json_objects_callback() {
+    $("#admin_expire_json_objects_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("admin_expire_json_objects success, detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer2();
+</script>

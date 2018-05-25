@@ -15,6 +15,22 @@ module Admin
     def loadrefdata
     end
 
+    def cache
+    end
+
+    def expire_welcome_page
+      expire_page controller: "/welcome", action: "index"
+    end
+
+    def expire_json_objects
+      all_rules_json_deleted = CacheService.get_instance.delete("all_rules_json")
+      all_activated_aids_deleted = CacheService.get_instance.delete("all_activated_aids")
+      render json: {
+        all_rules_json_deleted: all_rules_json_deleted,
+        all_activated_aids_deleted: all_activated_aids_deleted
+      }
+    end
+
     def load_stats
       analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
       analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2

@@ -22,10 +22,6 @@ class WelcomeController < ApplicationController
     redirect_to QuestionManager.new.getNextPath    
   end
 
-  def expire_welcome_page
-    expire_page :controller => "welcome", :action => "index"
-  end
-
   def terms
   end
 

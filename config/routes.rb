@@ -36,6 +36,9 @@ Rails.application.routes.draw do
       get 'rename'
       get 'archive'
       get 'loadrefdata'
+      get 'cache'
+      post 'expire_welcome_page'
+      post 'expire_json_objects'
       post 'rename_eligible_value'
       post 'archive_all_aids'
       post 'unarchive_all_aids'
@@ -81,7 +84,6 @@ Rails.application.routes.draw do
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
-  get '/expire_welcome_page', to: 'welcome#expire_welcome_page'
   get 'status', to: 'status#index'
   
   get 'errors/not_found'
