@@ -28,7 +28,6 @@ gem 'active_type'
 gem 'bulk_insert'
 gem 'gon'
 gem 'whenever', :require => false
-gem 'browser'
 gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
 
 gem 'goldiloader'
