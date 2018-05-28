@@ -22,9 +22,11 @@ class ReadStatsService
     Stat.first.hj_ad
   end
 
-  def advisor_kpi(stub)
+  def advisor_kpi(json_data)
     # JSON.parse(Stat.first.hj_ad)
-    json_data = stub
+    # json_data = stub
+    # [{"Number"=>"1", "User"=>"551c6f46", "Date Submitted"=>"2018-04-23 12:59:47", "Country"=>"France", "Device"=>"desktop", "Browser"=>"Chrome 65.0.3325", "OS"=>"Windows 7", "Chers coll\u00E8gues conseiller(\u00E8)s P\u00F4le emploi, aidez-nous \u00E0 am\u00E9liorer Clara ! Combien de temps pensez-vous gagner ou avoir gagn\u00E9 en utilisant ce service aujourd'hui ?"=> "+ de 15 minutes", "A quelle fr\u00E9quence utilisez-vous Clara ?"=>"1 \u00E0 2 fois par jour"}]
+
     time_only = json_data.map.with_index do |e, i|  
       res = {}
       res["id"] = e["Number"]
@@ -32,81 +34,51 @@ class ReadStatsService
       res["time"] = time_val
       res
     end
-    p '- - - - - - - - - - - - - - time_only- - - - - - - - - - - - - - - -' 
-    p time_only.inspect
-    p ''
+    # [{"id"=>"1", "time"=>"+ de 15 minutes"},{"id"=>"2", "time"=>"6 \u00E0 10 minutes"},{"id"=>"8", "time"=>"1 \u00E0 5 minutes"},{"id"=>"10", "time"=>"11 \u00E0 15 minutes"},{"id"=>"13", "time"=>"0 minutes"},{"id"=>"15", "time"=>"11 \u00E0 15 minutes"},{"id"=>"22", "time"=>"+ de 15 minutes"}]
+
+    grouped_time = time_only.group_by{ |e| e["time"] }.transform_values { |x| x.size }
+    # {"+ de 15 minutes"=>2,"6 \u00E0 10 minutes"=>1,"1 \u00E0 5 minutes"=>1,"11 \u00E0 15 minutes"=>2,"0 minutes"=>1}
+
+    ordered_label = grouped_time.keys.sort_by{ |e| e.split(" ")[0]}.rotate
+    # ["0 minutes","1 \u00E0 5 minutes","11 \u00E0 15 minutes","6 \u00E0 10 minutes","+ de 15 minutes"]
+
+    ordered_serie = ordered_label.map { |e| grouped_time[e]}
+    # [1, 1, 2, 1, 2]
+
+    time_won_serie = [0, 3*60, 8*60, 13*60, 20*60]
+
+    weighted_serie = ordered_serie.map.with_index { |e, i| e * time_won_serie[i]}
+
+    seconds_won_per_advisor = weighted_serie.sum / ordered_serie.sum
+
+    time_won_per_advisor = Time.at(seconds_won_per_advisor).utc.strftime("%H:%M:%S")
+
+    minutes_won = time_won_per_advisor.split(":")[1]
+    seconds_won = time_won_per_advisor.split(":")[2]
+
+    result = {
+      ordered_label: ordered_label,
+      ordered_serie: ordered_serie,
+      minutes_won: minutes_won,
+      seconds_won: seconds_won,
+    }
+    # p '- - - - - - - - - - - - - - if you need to debug - - - - - - - - - - - - - - - -' 
+    # pp json_data
+    # pp time_only
+    # pp grouped_time
+    # pp ordered_label
+    # pp ordered_serie
+    # pp time_won_serie
+    # pp weighted_serie
+    # pp seconds_won_per_advisor
+    # pp time_won_per_advisor
+    # pp result
+    # p ''
+
+    return result
+
   end
 
 
 end
 
-ReadStatsService.new.advisor_kpi([{"Number"=>"1",
-    "User"=>"551c6f46",
-    "Date Submitted"=>"2018-04-23 12:59:47",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "+ de 15 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>"1 à 2 fois par jour"},
-   {"Number"=>"2",
-    "User"=>"724d7859",
-    "Date Submitted"=>"2018-04-23 13:07:04",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "6 à 10 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>"1 à 2 fois par jour"},
-  {"Number"=>"8",
-    "User"=>"9a3135ea",
-    "Date Submitted"=>"2018-04-23 15:25:17",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "1 à 5 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>""},
-  {"Number"=>"10",
-    "User"=>"724d7859",
-    "Date Submitted"=>"2018-04-24 08:26:43",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "11 à 15 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>""},   
-  {"Number"=>"13",
-    "User"=>"1a5fe8ca",
-    "Date Submitted"=>"2018-04-24 10:20:38",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "0 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>""},
-  {"Number"=>"15",
-    "User"=>"551c6f46",
-    "Date Submitted"=>"2018-04-24 11:16:57",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 65.0.3325",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "11 à 15 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>""},
-  {"Number"=>"22",
-    "User"=>"00000000",
-    "Date Submitted"=>"2018-04-25 08:53:54",
-    "Country"=>"France",
-    "Device"=>"desktop",
-    "Browser"=>"Chrome 66.0.3359",
-    "OS"=>"Windows 7",
-    "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-     "+ de 15 minutes",
-    "A quelle fréquence utilisez-vous Clara ?"=>"3 ou 4 fois par jour"}])
