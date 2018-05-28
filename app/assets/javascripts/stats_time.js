@@ -6,7 +6,7 @@ $(document).on('ready turbolinks:load', function() {
     /**
     * Load saved time
     */
-    var json_data =_.get(JSON.parse($('.ct-gabarline').attr('data-loaded')), 'json_data');
+    var json_data =_.get(JSON.parse($('.ct-savedtime').attr('data-loaded')), 'json_data');
     // [{Number: "1", User: "551c6f46", Date Submitted: "2018-04-23 12:59:47", Country: "France", Source URL: "https://clara.pole-emploi.fr/aides?for_id=MjcsQVJF…sw45sZS1kZS1GcmFuY2UsNzAsOTMxMDAsbmlsLG91aSxuaWw=", …}]
 
     var time_only = _.map(json_data, 
@@ -31,7 +31,7 @@ $(document).on('ready turbolinks:load', function() {
     var ordered_serie = _.map(ordered_label, function(e){return mapped_grouped_time[e];})
     // [4, 5, 6, 4, 6]
 
-    new Chartist.Bar('.ct-gabarline', {
+    new Chartist.Bar('.ct-savedtime', {
       labels: ordered_label,
       series: [ordered_serie]
     }, {
