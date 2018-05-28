@@ -83,6 +83,12 @@ module Admin
       s.save
     end
 
+    def load_advisors_stats
+      csv_data = params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
+      
+
+    end
+
     def load_ref_data
       Rails.application.load_seed
     end

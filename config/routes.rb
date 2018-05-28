@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       post 'load_ref_data'
       post 'load_stats'
       post 'load_stats_from_pe'
+      post 'load_advisors_stats'
     end
     resources :variables
     resources :contract_types
