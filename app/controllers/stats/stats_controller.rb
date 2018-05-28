@@ -15,7 +15,7 @@ module Stats
         visitor_kpi: read_stats.visitor_kpi,
         visitor_stats: read_stats.visitor_stats,
         visitor_stats_pe: read_stats.visitor_stats_pe,
-        savedtime_kpi: 'N/A'
+        savedtime_all: read_stats.advisor_all
       }
     end
 
@@ -30,8 +30,7 @@ module Stats
     def time_res
       {
         visitor_kpi: read_stats.visitor_kpi,
-        savedtime_kpi: 'N/A',
-        savedtime_stats: read_stats.advisor_savedtime_stats,
+        savedtime_all: read_stats.advisor_all
       }
     end
 
