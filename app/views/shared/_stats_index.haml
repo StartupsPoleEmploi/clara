@@ -4,23 +4,20 @@
     
   .grid
     .col-4_md-12
-      .o-card.c-stats-card.c-stats-card--active.c-stats-totalview
+      .o-card.c-stats-card.c-stats-totalview.c-stats-card--active
         .c-stats-headernumber.c-stats-totalview__number
           =visitor_kpi
         .c-stats-headertext.c-stats-totalview__text
           Visiteurs total
     .col-4-_md-12
-      .o-card.c-stats-card.c-stats-conversion
-        .c-stats-conversion__number
-          =conversion_kpi
-        .c-stats-headertext.c-stats-conversion__text
-          Taux de conversion
+      %a{href: stats_time_path, class: "c-stats-card-link"}
+        .o-card.c-stats-card.c-stats-savedtime
+          .c-stats-savedtime__number
+            ="#{savedtime_all[:minutes_won]} min #{savedtime_all[:seconds_won]} s"
+          .c-stats-headertext.c-stats-savedtime__text
+            Temps gagné par conseiller
     .col-4-_md-12
-      .o-card.c-stats-card.c-stats-satisfaction
-        .c-stats-satisfaction__number
-          =satisfaction_kpi
-        .c-stats-headertext.c-stats-satisfaction__text
-          Taux de satisfaction
+
 
     .col-4-_md-12
       .o-card.ct-gape{'data-loaded'=> "#{visitor_stats_pe.to_json}"}

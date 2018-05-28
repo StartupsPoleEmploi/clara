@@ -1,4 +1,5 @@
 require 'google/apis/analyticsreporting_v4'
+require 'csv'    
 
 module Admin
   class PagesController < Admin::ApplicationController
@@ -80,6 +81,21 @@ module Admin
       Stat.create unless Stat.first
       s = Stat.first
       s.ga_pe = response.reports
+      s.save
+    end
+
+    def load_advisors_stats
+      csv_data = params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
+      csv = CSV.parse(csv_data, {headers: true})
+      csv.delete("Source URL")
+      csv_hash = csv.map(&:to_h)
+      root_hash = {}
+      root_hash["json_data"] = csv_hash
+      json_data = root_hash.to_json
+
+      Stat.create unless Stat.first
+      s = Stat.first
+      s.hj_ad = json_data
       s.save
     end
 

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  mount PgHero::Engine, at: "pghero"
 
   namespace :api do
     namespace :v1 do
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   namespace :stats do
     root 'stats#index'
     get '/index' => 'stats#index'
+    get '/time' => 'stats#time'
   end
 
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
+    mount PgHero::Engine, at: "pghero"
     resources :users
     resources :aids
     resources :rules do 
@@ -45,7 +46,9 @@ Rails.application.routes.draw do
       post 'load_ref_data'
       post 'load_stats'
       post 'load_stats_from_pe'
+      post 'load_advisors_stats'
     end
+    get 'status', to: 'status#index'
     resources :variables
     resources :contract_types
     resources :rule_checks
@@ -84,7 +87,6 @@ Rails.application.routes.draw do
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
-  get 'status', to: 'status#index'
   
   get 'errors/not_found'
   get 'errors/internal_server_error'

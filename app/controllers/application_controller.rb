@@ -42,8 +42,8 @@ class ApplicationController < ActionController::Base
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 
-  def read_ga_stats
-    ReadGaStatsService.new
+  def read_stats
+    ReadStatsService.new
   end
 
 end

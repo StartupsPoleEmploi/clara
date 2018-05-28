@@ -1,6 +1,10 @@
 .c-stats-index {
 }
 
+a.c-stats-card-link {
+  text-decoration: none;
+}
+
 .c-stats-card--active {
   border: solid 2px #047cbc;
 }
@@ -50,4 +54,19 @@
   text-align: right;
   transform-origin: 100% 0;
   transform: translate(-100%) rotate(-45deg);
+}
+
+.ct-savedtime .ct-series-a .ct-bar {
+  stroke: #047cbc;
+  stroke-width: 40px;
+}
+
+.ct-savedtime .ct-chart-bar .ct-label.ct-horizontal.ct-start {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ct-savedtime .ct-label.ct-vertical.ct-end {
+  font-size: 12px;
+  font-weight: bold;  
 }

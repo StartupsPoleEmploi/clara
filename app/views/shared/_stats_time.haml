@@ -1,0 +1,26 @@
+
+%main.mw1140p.center.c-stats-index{role: "main"}
+  %h2 Vue d'ensemble
+    
+  .grid
+    .col-4_md-12
+      %a{href: stats_index_path, class: "c-stats-card-link"}
+        .o-card.c-stats-card.c-stats-totalview
+          .c-stats-headernumber.c-stats-totalview__number
+            =visitor_kpi
+          .c-stats-headertext.c-stats-totalview__text
+            Visiteurs total
+    .col-4-_md-12
+      .o-card.c-stats-card.c-stats-savedtime.c-stats-card--active
+        .c-stats-savedtime__number
+          ="#{savedtime_all[:minutes_won]} min #{savedtime_all[:seconds_won]} s"
+        .c-stats-headertext.c-stats-savedtime__text
+          Temps gagné par conseiller
+    .col-4-_md-12
+
+
+    .col-4-_md-12
+      .o-card.ct-gape{'data-loaded'=> "#{}"}
+        Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?
+    .col-8-_md-12
+      .o-card.ct-savedtime{'data-loaded'=> "#{savedtime_all.to_json}"}

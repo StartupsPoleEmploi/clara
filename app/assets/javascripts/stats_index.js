@@ -1,5 +1,5 @@
 $(document).on('ready turbolinks:load', function() {
-  if ($('body').hasClass('stats', 'index')) {
+  if ($('body').hasClass('stats') && $('body').hasClass('index')) {
     /**
     * Load from PE / not from PE
     */
