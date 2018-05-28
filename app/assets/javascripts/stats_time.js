@@ -1,7 +1,8 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('body').hasClass('stats') && $('body').hasClass('time')) {
 
-    console.log('load stats time')
+    // see https://stackoverflow.com/a/37770048/2595513
+    function fmtMSS(s){return(s-(s%=60))/60+(9<s?':':':0')+s}
 
     /**
     * Load saved time
@@ -30,6 +31,23 @@ $(document).on('ready turbolinks:load', function() {
 
     var ordered_serie = _.map(ordered_label, function(e){return mapped_grouped_time[e];})
     // [4, 5, 6, 4, 6]
+
+    var time_won = [0,5,10,15,20];
+
+    var minutes_won = _.map(ordered_serie, function(val, index){return time_won[index] * val})
+    // [0, 420, 670, 435, 1460]
+
+    var minute_won_per_advisor = _.sum(minutes_won) / _.sum(ordered_serie)
+    // 10.05050505050505
+
+    var seconds_won_per_advisor = minute_won_per_advisor * 60
+
+    var text_for_minutes = fmtMSS(seconds_won_per_advisor).split(":")[0]
+    var text_for_seconds = Math.floor(_.toNumber(fmtMSS(seconds_won_per_advisor).split(":")[1]))
+    
+
+
+    $('.c-stats-savedtime__number').text(text_for_minutes + ' minutes ' + text_for_seconds + ' secondes ')
 
     new Chartist.Bar('.ct-savedtime', {
       labels: ordered_label,
