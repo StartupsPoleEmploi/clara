@@ -23,7 +23,7 @@ class ReadStatsService
     # [{"Number"=>"1", "User"=>"551c6f46", "Date Submitted"=>"2018-04-23 12:59:47", "Country"=>"France", "Device"=>"desktop", "Browser"=>"Chrome 65.0.3325", "OS"=>"Windows 7", "Chers coll\u00E8gues conseiller(\u00E8)s P\u00F4le emploi, aidez-nous \u00E0 am\u00E9liorer Clara ! Combien de temps pensez-vous gagner ou avoir gagn\u00E9 en utilisant ce service aujourd'hui ?"=> "+ de 15 minutes", "A quelle fr\u00E9quence utilisez-vous Clara ?"=>"1 \u00E0 2 fois par jour"}]
   end
 
-  def advisor_kpi(json_data=advisor_savedtime_stats)
+  def advisor_all(json_data=advisor_savedtime_stats)
     time_only = json_data.map.with_index do |e, i|  
       res = {}
       res["id"] = e["Number"]

@@ -3,9 +3,9 @@ require 'rails_helper'
 describe ReadStatsService do
   
 
-  describe "advisor_kpi" do
+  describe ".advisor_all" do
     it 'Must return correct values' do
-      sut = ReadStatsService.new.advisor_kpi(nominal_hj_ad_values)
+      sut = ReadStatsService.new.advisor_all(nominal_hj_ad_values)
       expect(sut).to eq({:ordered_label=>
         ["0 minutes",
          "1 à 5 minutes",
