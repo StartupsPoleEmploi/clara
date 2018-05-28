@@ -8,7 +8,7 @@ $(document).on('ready turbolinks:load', function() {
     * Load saved time
     */
     var json_data =_.get(JSON.parse($('.ct-savedtime').attr('data-loaded')), 'json_data');
-    // [{Number: "1", User: "551c6f46", Date Submitted: "2018-04-23 12:59:47", Country: "France", Source URL: "https://clara.pole-emploi.fr/aides?for_id=MjcsQVJF…sw45sZS1kZS1GcmFuY2UsNzAsOTMxMDAsbmlsLG91aSxuaWw=", …}]
+    // [{Number: "1", User: "551c6f46", Date Submitted: "2018-04-23 12:59:47", Country: "France", …}]
 
     var time_only = _.map(json_data, 
       function(e){
