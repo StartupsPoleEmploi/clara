@@ -91,10 +91,11 @@ module Admin
       root_hash = {}
       root_hash["json_data"] = csv_hash
       json_data = root_hash.to_json
-      p '- - - - - - - - - - - - - - json_data- - - - - - - - - - - - - - - -' 
-      p json_data.inspect
-      p ''
 
+      Stat.create unless Stat.first
+      s = Stat.first
+      s.hj_ad = json_data
+      s.save
     end
 
     def load_ref_data
