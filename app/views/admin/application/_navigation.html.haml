@@ -4,5 +4,5 @@
     %br
     = link_to 'Se déconnecter', signout_path
   - Administrate::Namespace.new(namespace).resources.each do |resource|
-    - next if resource.resource == 'pages'
+    - next if resource.resource == 'pages' || resource.resource == 'status'
     = link_to(display_resource_name(resource),[namespace, resource.path], class: "navigation__link navigation__link--#{nav_link_state(resource)}")

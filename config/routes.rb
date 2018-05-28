@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       post 'load_stats_from_pe'
       post 'load_advisors_stats'
     end
+    get 'status', to: 'status#index'
     resources :variables
     resources :contract_types
     resources :rule_checks
@@ -85,7 +86,6 @@ Rails.application.routes.draw do
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
-  get 'status', to: 'status#index'
   
   get 'errors/not_found'
   get 'errors/internal_server_error'
