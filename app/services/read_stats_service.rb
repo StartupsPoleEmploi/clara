@@ -61,18 +61,6 @@ class ReadStatsService
       minutes_won: minutes_won,
       seconds_won: seconds_won,
     }
-    # p '- - - - - - - - - - - - - - if you need to debug - - - - - - - - - - - - - - - -' 
-    # pp json_data
-    # pp time_only
-    # pp grouped_time
-    # pp ordered_label
-    # pp ordered_serie
-    # pp time_won_serie
-    # pp weighted_serie
-    # pp seconds_won_per_advisor
-    # pp time_won_per_advisor
-    # pp result
-    # p ''
 
     return result
 
