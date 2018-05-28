@@ -15,7 +15,7 @@ Charger les données de trafic PE / hors PE Google Analytics
 <div style="margin-top: 2rem;">
 Copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
 <%= form_with url: admin_load_advisors_stats_path, id: 'admin_load_advisors_stats_form' do |form| %>
-  <%= form.text_field :csv_data %>
+  <%= form.text_area :csv_data, cols: 40, rows: 5 %>
   <%= form.submit 'Charger les données des conseillers'%>
 <% end %>
 </div>
