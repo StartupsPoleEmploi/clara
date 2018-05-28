@@ -4,11 +4,12 @@
     
   .grid
     .col-4_md-12
-      .o-card.c-stats-card.c-stats-totalview
-        .c-stats-headernumber.c-stats-totalview__number
-          =visitor_kpi
-        .c-stats-headertext.c-stats-totalview__text
-          Visiteurs total
+      %a{href: stats_index_path, class: "c-stats-card-link"}
+        .o-card.c-stats-card.c-stats-totalview
+          .c-stats-headernumber.c-stats-totalview__number
+            =visitor_kpi
+          .c-stats-headertext.c-stats-totalview__text
+            Visiteurs total
     .col-4-_md-12
       .o-card.c-stats-card.c-stats-savedtime.c-stats-card--active
         .c-stats-savedtime__number
