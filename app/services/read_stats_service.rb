@@ -36,11 +36,13 @@ class ReadStatsService
     grouped_time = time_only.group_by{ |e| e["time"] }.transform_values { |x| x.size }
     # {"+ de 15 minutes"=>2,"6 \u00E0 10 minutes"=>1,"1 \u00E0 5 minutes"=>1,"11 \u00E0 15 minutes"=>2,"0 minutes"=>1}
 
-    ordered_label = grouped_time.keys.sort_by{ |e| e.split(" ")[0]}.rotate
+    # ordered_label = grouped_time.keys.sort_by{ |e| e.split(" ")[0]}.rotate
+    ordered_label = ["0 minutes", "1 à 5 minutes", "11 à 15 minutes", "6 à 10 minutes", "+ de 15 minutes"]
     # ["0 minutes","1 \u00E0 5 minutes","11 \u00E0 15 minutes","6 \u00E0 10 minutes","+ de 15 minutes"]
 
-    ordered_serie = ordered_label.map { |e| grouped_time[e]}
-    # [1, 1, 2, 1, 2]
+    raise "Error, keys do not match" unless grouped_time.keys.all? { |e| ordered_label.include?(e) } 
+
+    ordered_serie = ordered_label.map { |e| grouped_time[e]}.map { |e| e.to_i  }
 
     time_won_serie = [0, 3*60, 8*60, 13*60, 20*60]
 
