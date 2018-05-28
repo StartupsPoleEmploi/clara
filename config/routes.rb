@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :stats do
     root 'stats#index'
     get '/index' => 'stats#index'
+    get '/time' => 'stats#time'
   end
 
 

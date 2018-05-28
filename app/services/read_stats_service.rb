@@ -1,4 +1,4 @@
-class ReadGaStatsService
+class ReadStatsService
 
   def visitor_kpi
     res = 0
@@ -16,6 +16,10 @@ class ReadGaStatsService
 
   def visitor_stats_pe
     Stat.first.ga_pe
+  end
+
+  def advisor_savedtime_stats
+    Stat.first.hj_ad
   end
 
 
