@@ -15,7 +15,7 @@ module Stats
         visitor_kpi: read_ga_stats.visitor_kpi,
         visitor_stats: read_ga_stats.visitor_stats,
         visitor_stats_pe: read_ga_stats.visitor_stats_pe,
-        conversion_kpi: 'N/A',
+        savedtime_kpi: 'N/A',
         satisfaction_kpi: 'N/A',
       }
     end
