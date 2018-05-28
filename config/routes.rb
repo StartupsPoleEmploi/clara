@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  mount PgHero::Engine, at: "pghero"
 
   namespace :api do
     namespace :v1 do
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
+    mount PgHero::Engine, at: "pghero"
     resources :users
     resources :aids
     resources :rules do 
