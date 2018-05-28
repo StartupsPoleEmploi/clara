@@ -2,6 +2,10 @@
 
 
 
+## 9.8.0 (28/05/2018)
+-[#735][FEATURE] stats - temps gagné par les conseillers
+
+
 ## 9.7.1 (25/05/2018)
 -[#760][BUG] ZRR bug
 
