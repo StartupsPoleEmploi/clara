@@ -33,6 +33,7 @@
 //= require ./print
 //= require ./welcome_index
 //= require ./stats_index
+//= require ./stats_time
 //= require ./address_questions
 //= require ./allocation_questions
 //= require ./age_questions
