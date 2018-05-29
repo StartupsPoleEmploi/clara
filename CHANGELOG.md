@@ -2,6 +2,10 @@
 
 
 
+## 9.8.2 (29/05/2018)
+-[#772][BUG] stats - ga
+
+
 ## 9.8.1 (29/05/2018)
 -[#768][BUG] stats - bug time won for advisors
 

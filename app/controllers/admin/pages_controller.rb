@@ -33,70 +33,41 @@ module Admin
     end
 
     def load_stats
-      analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
-      analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
-
-      date_range = Google::Apis::AnalyticsreportingV4::DateRange.new(start_date: '2018-01-01', end_date: 'today')
-      metric = Google::Apis::AnalyticsreportingV4::Metric.new(expression: 'ga:sessions', alias: 'sessions')
-      dimension = Google::Apis::AnalyticsreportingV4::Dimension.new(name: 'ga:date')
-
-      request = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new(
-        report_requests: [Google::Apis::AnalyticsreportingV4::ReportRequest.new(
-          view_id: EnvService.get_instance.ara_google_analytics_view_id,
-          metrics: [metric],
-          dimensions: [dimension],
-          date_ranges: [date_range]
-        )]
-      ) # thanks to @9mm: https://github.com/google/google-api-ruby-client/issues/489
-
-      response = analytics.batch_get_reports(request)
-
-      Stat.create unless Stat.first
-      s = Stat.first
-      s.ga = response.reports
-      s.save
-      # s.ga[0]["data"]["rows"] to access data rows
-      # s.ga[0]["data"]["totals"][0]["values"][0] to access number of sessions
+      csv = CSV.parse(_get_csv_data, {headers: true})
+      json_data = _csv_to_json(csv)
+      _save_stat_of("ga", json_data)
     end
 
     def load_stats_from_pe
-      analytics = Google::Apis::AnalyticsreportingV4::AnalyticsReportingService.new
-      analytics.authorization = session[:user_token] # See: https://github.com/zquestz/omniauth-google-oauth2
-
-      date_range = Google::Apis::AnalyticsreportingV4::DateRange.new(start_date: '2018-01-01', end_date: 'today')
-      metric = Google::Apis::AnalyticsreportingV4::Metric.new(expression: 'ga:sessions', alias: 'sessions')
-      dimension = Google::Apis::AnalyticsreportingV4::Dimension.new(name: 'ga:dimension1')
-
-      request = Google::Apis::AnalyticsreportingV4::GetReportsRequest.new(
-        report_requests: [Google::Apis::AnalyticsreportingV4::ReportRequest.new(
-          view_id: EnvService.get_instance.ara_google_analytics_view_id,
-          metrics: [metric],
-          dimensions: [dimension],
-          date_ranges: [date_range]
-        )]
-      ) # thanks to @9mm: https://github.com/google/google-api-ruby-client/issues/489
-
-      response = analytics.batch_get_reports(request)
-
-      Stat.create unless Stat.first
-      s = Stat.first
-      s.ga_pe = response.reports
-      s.save
+      csv = CSV.parse(_get_csv_data, {headers: true})
+      csv.delete("Période")
+      json_data = _csv_to_json(csv)
+      _save_stat_of("ga_pe", json_data)      
     end
 
     def load_advisors_stats
-      csv_data = params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
-      csv = CSV.parse(csv_data, {headers: true})
+      csv = CSV.parse(_get_csv_data, {headers: true})
       csv.delete("Source URL")
+      json_data = _csv_to_json(csv)
+      _save_stat_of("hj_ad", json_data)   
+    end
+
+    def _get_csv_data
+      params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
+    end
+
+    def _save_stat_of(prop, value)
+      Stat.create unless Stat.first
+      s = Stat.first
+      s[prop] = value
+      s.save
+    end
+
+    def _csv_to_json(csv)
       csv_hash = csv.map(&:to_h)
       root_hash = {}
       root_hash["json_data"] = csv_hash
-      json_data = root_hash.to_json
-
-      Stat.create unless Stat.first
-      s = Stat.first
-      s.hj_ad = json_data
-      s.save
+      root_hash
     end
 
     def load_ref_data
@@ -115,13 +86,10 @@ module Admin
     end
 
     def rename_eligible_value
-      
       a = params.extract!(:initial_value).permit(:initial_value).to_h
       b = params.extract!(:final_value).permit(:final_value).to_h
-
       initial_value = a[:initial_value]      
       final_value = b[:final_value]
-
       CustomRuleCheck.where(result: initial_value).update_all("result = '#{final_value}'")
     end
 
