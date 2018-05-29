@@ -3,7 +3,7 @@ class ReadStatsService
   def visitor_kpi
     res = 0
     begin
-      res = Stat.first.ga[0]["data"]["totals"][0]["values"][0].to_i
+      res = Stat.first.ga["json_data"].map { |e| e["Sessions"].gsub(/[[:space:]]/, '').to_i }.sum
     rescue Exception => e
       res = 0
     end

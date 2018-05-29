@@ -46,7 +46,7 @@ $(document).on('ready turbolinks:load', function() {
     });
 
     var week_board = _.map(grouped_board, function(v, k) {
-      return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"])}))
+      return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"].replace(/\s/g,''))}))
     });
 
     var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
