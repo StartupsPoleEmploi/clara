@@ -2,8 +2,12 @@
 
 
 
+## 9.8.1 (29/05/2018)
+-[#768][BUG] stats - bug time won for advisors
+
+
 ## 9.8.0 (28/05/2018)
--[#735][FEATURE] stats - temps gagné par les conseillers
+-[#735][FEATURE] stats - time won for advisors
 
 
 ## 9.7.1 (25/05/2018)
