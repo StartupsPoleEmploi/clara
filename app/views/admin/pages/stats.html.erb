@@ -4,6 +4,18 @@ Charger les données de session Google Analytics
   <%= form.submit 'Charger les sessions GA'%>
 <% end %>
 </div>
+<script> 
+  function defer1(method) { if (window.jQuery) { admin_load_stats_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
+  function admin_load_stats_page() {
+    $("#admin_load_stats_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("load stats is a success ! detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer1();
+</script>
 
 <div style="margin-top: 2rem;">
 Charger les données de trafic PE / hors PE Google Analytics
@@ -11,6 +23,19 @@ Charger les données de trafic PE / hors PE Google Analytics
   <%= form.submit 'Charger les données de trafic PE / hors PE'%>
 <% end %>
 </div>
+<script> 
+  function defer2(method) { if (window.jQuery) { admin_load_stats_from_pe_page(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_load_stats_from_pe_page() {
+    $("#admin_load_stats_from_pe_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("load stats from PE is a success ! detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer2();
+</script>
+
 
 <div style="margin-top: 2rem;">
 Copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
@@ -19,3 +44,15 @@ Copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charg
   <%= form.submit 'Charger les données des conseillers'%>
 <% end %>
 </div>
+<script> 
+  function defer3(method) { if (window.jQuery) { admin_load_advisors_stats_page(); } else { setTimeout(function() { defer3(method) }, 50); } }
+  function admin_load_advisors_stats_page() {
+    $("#admin_load_advisors_stats_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("load data from advisors is a success ! detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer3();
+</script>
