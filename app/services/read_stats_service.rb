@@ -37,7 +37,7 @@ class ReadStatsService
     # {"+ de 15 minutes"=>2,"6 \u00E0 10 minutes"=>1,"1 \u00E0 5 minutes"=>1,"11 \u00E0 15 minutes"=>2,"0 minutes"=>1}
 
     # ordered_label = grouped_time.keys.sort_by{ |e| e.split(" ")[0]}.rotate
-    ordered_label = ["0 minutes", "1 à 5 minutes", "11 à 15 minutes", "6 à 10 minutes", "+ de 15 minutes"]
+    ordered_label = ["0 minutes", "1 à 5 minutes", "6 à 10 minutes", "11 à 15 minutes", "+ de 15 minutes"]
     # ["0 minutes","1 \u00E0 5 minutes","11 \u00E0 15 minutes","6 \u00E0 10 minutes","+ de 15 minutes"]
 
     raise "Error, keys do not match" unless grouped_time.keys.all? { |e| ordered_label.include?(e) } 

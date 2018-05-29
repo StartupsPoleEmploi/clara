@@ -9,12 +9,12 @@ describe ReadStatsService do
       expect(sut).to eq({:ordered_label=>
         ["0 minutes",
          "1 à 5 minutes",
-         "11 à 15 minutes",
          "6 à 10 minutes",
+         "11 à 15 minutes",
          "+ de 15 minutes"],
-       :ordered_serie=>[1, 1, 2, 1, 2],
-       :minutes_won=>"10",
-       :seconds_won=>"17"})
+       :ordered_serie=>[1, 1, 1, 2, 2],
+       :minutes_won=>"11",
+       :seconds_won=>"00"})
     end
   end
 
