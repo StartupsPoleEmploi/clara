@@ -1,6 +1,7 @@
 <div style="margin-top: 2rem;">
-Charger les données de session Google Analytics
+copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
 <%= form_with url: admin_load_stats_path, id: 'admin_load_stats_form' do |form| %>
+  <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "Index des jours,Sessions\n01/01/2018,12\n02/01/2018,249\n03/01/2018,578" %>
   <%= form.submit 'Charger les sessions GA'%>
 <% end %>
 </div>
