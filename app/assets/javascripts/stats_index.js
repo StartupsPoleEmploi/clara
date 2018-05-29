@@ -49,29 +49,21 @@ $(document).on('ready turbolinks:load', function() {
       return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"])}))
     });
 
-    var nice_keys = 
+    var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
 
-    // var week_board = _.map(grouped_board, function(v, k) {
-    //   return _.sum(
-    //     _.map(v, function(m) {
-    //       return _.trim()oInteger(_.get(m, 'metrics[0].values[0]'));
-    //     })
-    //   );
-    // });
-    // var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
 
-    // new Chartist.Line(
-    //   '.ct-gabarline',
-    //   {
-    //     labels: nice_keys,
-    //     series: [week_board]
-    //   },
-    //   {
-    //     height: 300,
-    //     low: 0,
-    //     showArea: true
-    //   }
-    // );
+    new Chartist.Line(
+      '.ct-gabarline',
+      {
+        labels: nice_keys,
+        series: [week_board]
+      },
+      {
+        height: 300,
+        low: 0,
+        showArea: true
+      }
+    );
 
   }
 });
