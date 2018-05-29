@@ -43,9 +43,6 @@ class ReadStatsService
     raise "Error, keys do not match" unless grouped_time.keys.all? { |e| ordered_label.include?(e) } 
 
     ordered_serie = ordered_label.map { |e| grouped_time[e]}.map { |e| e.to_i  }
-    p '- - - - - - - - - - - - - - ordered_serie- - - - - - - - - - - - - - - -' 
-    p ordered_serie.inspect
-    p ''
 
     time_won_serie = [0, 3*60, 8*60, 13*60, 20*60]
 
