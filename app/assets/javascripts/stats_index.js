@@ -6,13 +6,13 @@ $(document).on('ready turbolinks:load', function() {
     var json_data = JSON.parse($('.ct-gape').attr('data-loaded'))["json_data"]
     var total_nb = _.chain(json_data)
                       .filter(function (e) {return e["Segment"] === "Tous les utilisateurs"}) 
-                      .map(function (e) {return _.toNumber(e["Sessions"])})
+                      .map(function (e) {return _.toNumber(e["Sessions"].replace(/\s/g,''))})
                       .sum()
                       .value()
     
     var advisor_nb = _.chain(json_data)
                         .filter(function (e) {return e["Segment"] === "Conseillers PE"}) 
-                        .map(function (e) {return _.toNumber(e["Sessions"])})
+                        .map(function (e) {return _.toNumber(e["Sessions"].replace(/\s/g,''))})
                         .sum()
                         .value()
     

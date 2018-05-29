@@ -21,7 +21,7 @@ copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charg
 <div style="margin-top: 2rem;">
 copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
 <%= form_with url: admin_load_stats_from_pe_path, id: 'admin_load_stats_from_pe_form' do |form| %>
-  <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "Index des jours,Segment,Sessions\n01/01/2018,Tous les utilisateurs,12\n01/01/2018,Conseillers PE,0\n02/01/2018,Tous les utilisateurs,249\n02/01/2018,Conseillers PE,149" %>
+  <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "Index des jours,Période,Segment,Sessions\n01/01/2018,1 janv. 2018 - 29 mai 2018,Tous les utilisateurs,12\n01/01/2018,1 janv. 2018 - 29 mai 2018,Conseillers PE,0" %>
   <%= form.submit 'Charger les données de trafic PE / hors PE'%>
 <% end %>
 </div>
