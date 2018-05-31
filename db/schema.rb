@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301132062) do
+ActiveRecord::Schema.define(version: 20180531144707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 20180301132062) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
+  end
+
+  create_table "filters", force: :cascade do |t|
+    t.text "name"
+    t.bigint "aid_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aid_id"], name: "index_filters_on_aid_id"
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
@@ -139,5 +147,6 @@ ActiveRecord::Schema.define(version: 20180301132062) do
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_rule_checks", "rules"
+  add_foreign_key "filters", "aids"
   add_foreign_key "rules", "variables"
 end

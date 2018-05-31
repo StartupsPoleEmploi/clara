@@ -2,6 +2,8 @@ class Aid < ApplicationRecord
   extend FriendlyId  
 
   has_paper_trail ignore: [:updated_at]
+
+  has_many :filters
   
   friendly_id :name, use: :slugged
   belongs_to :rule, optional: true
