@@ -3,7 +3,7 @@
 
 
 ## 9.9.0 (31/05/2018)
--[#770][FEATURE] filter by need
+-[#770][FEATURE] filter by need, admin
 
 
 ## 9.8.2 (29/05/2018)
