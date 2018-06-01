@@ -67,7 +67,7 @@ class AidCalculationService
   end
 
   def _wanted_keys
-    %w[id name slug slug short_description ordre_affichage contract_type_id eligibility]
+    %w[id name slug slug short_description ordre_affichage contract_type_id eligibility filters]
   end
 
   def _all_aids
