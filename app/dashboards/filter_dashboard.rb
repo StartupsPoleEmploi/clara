@@ -10,6 +10,7 @@ class FilterDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    aid: Field::BelongsTo,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -21,6 +22,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
+    :aid,
     :name,
   ].freeze
 
@@ -28,6 +30,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :aid,
     :name,
   ].freeze
 
@@ -36,6 +39,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :aid,
   ].freeze
 
   # Overwrite this method to customize how aids are displayed

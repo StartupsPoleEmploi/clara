@@ -3,7 +3,7 @@ class Aid < ApplicationRecord
 
   has_paper_trail ignore: [:updated_at]
 
-  has_many :filters
+  has_and_belongs_to_many :filters
   
   friendly_id :name, use: :slugged
   belongs_to :rule, optional: true
