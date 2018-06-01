@@ -14,7 +14,6 @@ class AidesController < ApplicationController
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
         hydrate_view(cacheable)
-        # render locals: cacheable
       end
     else
       hydrate_view(hash_of_all_active_aids)
