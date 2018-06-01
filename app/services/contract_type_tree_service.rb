@@ -18,8 +18,6 @@ class ContractTypeTreeService
   end
 
   def initialize
-    # @all_contract_types = ContractType.all
-
     all_contract_types_str = CacheService.get_instance.read("all_contract_types")
     begin
       JSON.parse(all_contract_types_str)
