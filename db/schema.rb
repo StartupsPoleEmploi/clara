@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301132062) do
+ActiveRecord::Schema.define(version: 20180601083533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20180301132062) do
     t.index ["contract_type_id"], name: "index_aids_on_contract_type_id"
     t.index ["rule_id"], name: "index_aids_on_rule_id"
     t.index ["slug"], name: "index_aids_on_slug", unique: true
+  end
+
+  create_table "aids_filters", id: false, force: :cascade do |t|
+    t.bigint "filter_id", null: false
+    t.bigint "aid_id", null: false
   end
 
   create_table "compound_rules", id: :serial, force: :cascade do |t|
@@ -68,6 +73,12 @@ ActiveRecord::Schema.define(version: 20180301132062) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
+  end
+
+  create_table "filters", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
