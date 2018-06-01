@@ -51,15 +51,19 @@ class AidCalculationService
   end
 
   def every_eligible
-    _all_aids.select { |a| a["eligibility"] == "eligible" }.map { |e| e.select { |key, _| _wanted_keys.include? key }  }
+    _every_aids_that_are("eligible")
   end
 
   def every_uncertain
-    _all_aids.select { |a| a["eligibility"] == "uncertain" }    
+    _every_aids_that_are("uncertain")
   end
 
   def every_ineligible
-    _all_aids.select { |a| a["eligibility"] == "ineligible" }    
+    _every_aids_that_are("ineligible")
+  end
+
+  def _every_aids_that_are(status)
+    _all_aids.select { |a| a["eligibility"] == status }.map { |e| e.select { |key, _| _wanted_keys.include? key }  }
   end
 
   def _wanted_keys

@@ -15,7 +15,7 @@ class AidesController < ApplicationController
         write_to_cache(cacheable)
         # hashified = hashify_results(cacheable)
         # hydrate_view(hashified)
-        render locals: {truc: cacheable}
+        render locals: cacheable
     #   end
     # else
       # hydrate_view(hash_of_all_active_aids)

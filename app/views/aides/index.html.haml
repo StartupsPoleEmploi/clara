@@ -11,7 +11,7 @@
 
 %main#main.c-results-index{role: 'main'}
   - if has_user
-    = local_assigns
+    = render 'shared/result_default', local_assigns
   - else
     = render 'shared/result_all', {lines: FilterRawAidsService.new(@loaded['aids']).go}
       
