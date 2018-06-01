@@ -87,7 +87,7 @@
 @import "tools/tools.font-size";
 @import "tools/tools.clearfix";
 @import "tools/tools.hidden";
-@import "node_modules/sass-mq/mq";
+@import "../sass-mq/mq";
 
 
 
@@ -136,7 +136,7 @@
 // COMPONENTS
 //
 // Build and include your project’s UI components here.
-@import "components/example.components.buttons";
+@import "components/clara.components.buttons";
 
 
 
