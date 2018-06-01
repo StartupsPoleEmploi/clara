@@ -26,6 +26,7 @@ class AidCalculationService
     end
   end
 
+  # deprecated
   def all_eligible
     result_service = ResultService.new
     @calculated_aids_as_hash
@@ -33,6 +34,7 @@ class AidCalculationService
       .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
   end
 
+  # deprecated
   def all_ineligible
     result_service = ResultService.new
     @calculated_aids_as_hash
@@ -40,11 +42,24 @@ class AidCalculationService
       .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
   end
 
+  # deprecated
   def all_uncertain
     result_service = ResultService.new
     @calculated_aids_as_hash
       .select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "uncertain" }
       .map { |calculated_aid_as_hash| result_service.convert_to_displayable(calculated_aid_as_hash) }
+  end
+
+  def every_eligible
+    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "eligible" }    
+  end
+
+  def every_uncertain
+    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "uncertain" }    
+  end
+
+  def every_ineligible
+    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "ineligible" }    
   end
 
   def _all_aids
