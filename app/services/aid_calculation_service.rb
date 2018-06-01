@@ -51,19 +51,24 @@ class AidCalculationService
   end
 
   def every_eligible
-    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "eligible" }    
+    _all_aids.select { |a| a["eligibility"] == "eligible" }.first.select { |key, _| _wanted_keys.include? key }
   end
 
   def every_uncertain
-    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "uncertain" }    
+    _all_aids.select { |a| a["eligibility"] == "uncertain" }    
   end
 
   def every_ineligible
-    _all_aids.select { |calculated_aid_as_hash| calculated_aid_as_hash["eligibility"] == "ineligible" }    
+    _all_aids.select { |a| a["eligibility"] == "ineligible" }    
+  end
+
+  def _wanted_keys
+    %w[id name slug slug short_description ordre_affichage contract_type_id eligibility]
   end
 
   def _all_aids
     @calculated_aids_as_hash
   end
+
 
 end

@@ -20,7 +20,7 @@ class AidtreeService
     begin
       JSON.parse(all_activated_aids)
     rescue Exception => e
-      all_activated_aids = Aid.activated.to_json(:include => :contract_type)
+      all_activated_aids = Aid.activated.to_json
       CacheService.get_instance.write("all_activated_aids", all_activated_aids)
     ensure
       @all_activated_hash = JSON.parse(all_activated_aids)
