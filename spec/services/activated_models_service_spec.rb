@@ -28,9 +28,6 @@ describe ActivatedModelsService do
       #given
       #when
       sut = ActivatedModelsService.get_instance.read
-      p '- - - - - - - - - - - - - - sut- - - - - - - - - - - - - - - -' 
-      pp sut
-      p ''
       #then
       expect(sut).to eq(realistic_results)
     end
