@@ -2,6 +2,10 @@ require 'securerandom'
 
 FactoryBot.define do
 
+  factory :filter do
+    
+  end
+
   factory :user do
     trait :fake do
       email "foo@bar.com"
