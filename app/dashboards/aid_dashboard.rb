@@ -14,6 +14,7 @@ class AidDashboard < Administrate::BaseDashboard
     slug: Field::String,
     rule: Field::BelongsTo,
     contract_type: Field::BelongsTo,
+    filters: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     short_description: Field::String,
@@ -45,6 +46,8 @@ class AidDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :name,
+    :filters,
     :ordre_affichage,
     :last_update,
     :slug,
@@ -65,6 +68,7 @@ class AidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :filters,
     :slug,
     :last_update,
     :archived_at,

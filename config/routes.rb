@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :admin do
     mount PgHero::Engine, at: "pghero"
     resources :users
+    resources :filters
     resources :aids
     resources :rules do 
       get 'resolve', on: :member
