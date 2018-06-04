@@ -23,7 +23,7 @@ class ActivatedModelsService
       all_activated_aids_json = Aid.activated.to_json(:include => [:filters])
       all_filters_json = Filter.all.to_json
       all_contracts_json = ContractType.all.to_json
-      all_rules_json = Rule.all.to_json
+      all_rules_json = Rule.all.to_json(:include => [:slave_rules, :variable])
       activated_models = {}
       activated_models["all_activated_aids"] = _clean_all_activated_aids(JSON.parse(all_activated_aids_json))
       activated_models["all_filters"] = _clean_all_filters(JSON.parse(all_filters_json))

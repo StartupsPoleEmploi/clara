@@ -18,7 +18,7 @@ class AidCalculationService
   def initialize(asker)
     aids_as_hash = ActivatedModelsService.get_instance.aids
 
-    @calculated_aids_as_hash =  aids_as_hash.map do |aid_as_hash|  
+    @calculated_aids_as_hash =  aids_as_hash.map do |aid_as_hash|
       eligibility = RuletreeService.get_instance.resolve(aid_as_hash["rule_id"], asker.attributes)
       aid_as_hash["eligibility"] = eligibility
       aid_as_hash

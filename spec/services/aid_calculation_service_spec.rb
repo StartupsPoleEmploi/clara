@@ -55,9 +55,6 @@ describe AidCalculationService do
       service = AidCalculationService.get_instance(the_asker)
       # when
       sut = service.every_eligible
-      p '- - - - - - - - - - - - - - sut- - - - - - - - - - - - - - - -' 
-      p sut.inspect
-      p ''
       # then
       expect(sut.detect { |e| e["name"] == "active_and_eligible_aid_1"  }).not_to eq nil
       expect(sut.detect { |e| e["name"] == "active_and_eligible_aid_2"  }).not_to eq nil
