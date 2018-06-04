@@ -16,9 +16,9 @@ class ActivatedModelsService
   end
 
   def initialize
-    activated_models = CacheService.get_instance.read("activated_models")
+    activated_models_json = CacheService.get_instance.read("activated_models_json")
     begin
-      JSON.parse(activated_models)
+      JSON.parse(activated_models_json)
     rescue Exception => e
       all_activated_aids_json = Aid.activated.to_json(:include => :filters)
       all_filters_json = Filter.all.to_json
@@ -30,9 +30,9 @@ class ActivatedModelsService
       activated_models["all_contracts"] = _clean_all_contracts(JSON.parse(all_contracts_json))
       activated_models["all_rules"] = _clean_all_rules(JSON.parse(all_rules_json))
       activated_models_json = activated_models.to_json
-      CacheService.get_instance.write("activated_models", activated_models.to_json)
+      CacheService.get_instance.write("activated_models_json", activated_models_json)
     ensure
-      @all_activated_models = JSON.parse(activated_models.to_json)
+      @all_activated_models = JSON.parse(activated_models_json)
     end
   end
 
