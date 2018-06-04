@@ -20,7 +20,7 @@ class ActivatedModelsService
     begin
       JSON.parse(activated_models_json)
     rescue Exception => e
-      all_activated_aids_json = Aid.activated.to_json(:include => :filters)
+      all_activated_aids_json = Aid.activated.to_json(:include => [:filters])
       all_filters_json = Filter.all.to_json
       all_contracts_json = ContractType.all.to_json
       all_rules_json = Rule.all.to_json

@@ -1,4 +1,3 @@
-
 class AidCalculationService
 
   class << self
