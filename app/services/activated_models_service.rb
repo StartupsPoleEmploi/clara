@@ -23,12 +23,14 @@ class ActivatedModelsService
       all_activated_aids_json = Aid.activated.to_json(:include => [:filters])
       all_filters_json = Filter.all.to_json
       all_contracts_json = ContractType.all.to_json
-      all_rules_json = Rule.all.to_json(:include => [:slave_rules, :variable])
+      all_variables_json = Variable.all.to_json
+      all_rules_json = Rule.all.to_json(:include => [:slave_rules])
       activated_models = {}
       activated_models["all_activated_aids"] = _clean_all_activated_aids(JSON.parse(all_activated_aids_json))
       activated_models["all_filters"] = _clean_all_filters(JSON.parse(all_filters_json))
       activated_models["all_contracts"] = _clean_all_contracts(JSON.parse(all_contracts_json))
       activated_models["all_rules"] = _clean_all_rules(JSON.parse(all_rules_json))
+      activated_models["all_variables"] = _clean_all_variables(JSON.parse(all_variables_json))
       activated_models_json = activated_models.to_json
       CacheService.get_instance.write("activated_models_json", activated_models_json)
     ensure
@@ -53,6 +55,10 @@ class ActivatedModelsService
   end
 
   def contract_types
+    @all_activated_models["all_contracts"]
+  end
+
+  def variables
     @all_activated_models["all_contracts"]
   end
 
@@ -90,8 +96,19 @@ class ActivatedModelsService
     rules.each do |rule|  
       rule.delete("created_at")
       rule.delete("updated_at")
+      rule["slave_rules"].map! do |slave_rule|
+        slave_rule.select {|k,v| k == "id" }
+      end
     end
     rules
+  end
+
+  def _clean_all_variables(variables)
+    variables.each do |variable|  
+      variable.delete("created_at")
+      variable.delete("updated_at")
+    end
+    variables
   end
 
 end

@@ -59,11 +59,25 @@ describe AidCalculationService do
       expect(sut.detect { |e| e["name"] == "active_and_eligible_aid_1"  }).not_to eq nil
       expect(sut.detect { |e| e["name"] == "active_and_eligible_aid_2"  }).not_to eq nil
     end
-    it '.every_uncertain'
-    it '.every_ineligible'
-    it '.all_eligible'
-    it '.all_uncertain'
-    it '.all_ineligible'
+    it '.every_ineligible' do
+      # given
+      service = AidCalculationService.get_instance(the_asker)
+      # when
+      sut = service.every_ineligible
+      # then
+      expect(sut.detect { |e| e["name"] == "active_and_ineligible_aid_1"  }).not_to eq nil
+      expect(sut.detect { |e| e["name"] == "active_and_ineligible_aid_2"  }).not_to eq nil
+    end
+    it '.every_uncertain' do
+      # given
+      service = AidCalculationService.get_instance(the_asker)
+      # when
+      sut = service.every_uncertain
+      # then
+      expect(sut.detect { |e| e["name"] == "active_and_uncertain_aid_1"  }).not_to eq nil
+      expect(sut.detect { |e| e["name"] == "active_and_uncertain_aid_2"  }).not_to eq nil
+    end
+
   end
 
   def not_blank(x)

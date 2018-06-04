@@ -156,7 +156,7 @@ FactoryBot.define do
     trait :be_an_adult_and_in_qpv do 
       composition_type :and_rule
       before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult2' + SecureRandom.hex), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv1' + SecureRandom.hex)]
+        rule.slave_rules << [FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult2'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv1')]
       end
     end
 
