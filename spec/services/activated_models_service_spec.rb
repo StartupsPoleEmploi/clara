@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe ActivatedModelsService do
 
-  describe 'Cache is off, various data in database' do
+  describe 'Cache is off' do
     before do
       the_asker = Asker.new(v_age: '42')
 
