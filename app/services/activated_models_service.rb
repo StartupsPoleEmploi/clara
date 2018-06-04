@@ -25,7 +25,7 @@ class ActivatedModelsService
       all_contracts = ContractType.all.to_json
       all_rules = Rule.all.to_json
       activated_models = {}
-      activated_models["all_activated_aids"] = JSON.parse(all_activated_aids)
+      activated_models["all_activated_aids"] = _clean_all_activated_aids(JSON.parse(all_activated_aids))
       activated_models["all_filters"] = JSON.parse(all_filters)
       activated_models["all_contracts"] = JSON.parse(all_contracts)
       activated_models["all_rules"] = JSON.parse(all_rules)
@@ -41,6 +41,19 @@ class ActivatedModelsService
 
   def read
     @all_activated_models
+  end
+
+  def _clean_all_activated_aids(aids)
+    aids.each do |aid|  
+      aid.delete("created_at")
+      aid.delete("updated_at")
+      aid["filters"].each do |filter| 
+        filter.delete("created_at")
+        filter.delete("updated_at")
+        filter.delete("name")
+      end      
+    end
+    aids
   end
 
 end
