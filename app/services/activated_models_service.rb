@@ -40,6 +40,22 @@ class ActivatedModelsService
     @all_activated_models
   end
 
+  def rules
+    @all_activated_models["all_rules"]
+  end
+
+  def aids
+    @all_activated_models["all_activated_aids"]
+  end
+
+  def filters
+    @all_activated_models["all_filters"]
+  end
+
+  def contract_types
+    @all_activated_models["all_contracts"]
+  end
+
   def _clean_all_activated_aids(aids)
     aids.each do |aid|  
       aid.delete("created_at")
