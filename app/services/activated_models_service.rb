@@ -28,7 +28,7 @@ class ActivatedModelsService
       activated_models["all_activated_aids"] = _clean_all_activated_aids(JSON.parse(all_activated_aids))
       activated_models["all_filters"] = _clean_all_filters(JSON.parse(all_filters))
       activated_models["all_contracts"] = _clean_all_contracts(JSON.parse(all_contracts))
-      activated_models["all_rules"] = JSON.parse(all_rules)
+      activated_models["all_rules"] = _clean_all_rules(JSON.parse(all_rules))
       p '- - - - - - - - - - - - - - activated_models- - - - - - - - - - - - - - - -' 
       pp activated_models
       p ''
@@ -47,6 +47,7 @@ class ActivatedModelsService
     aids.each do |aid|  
       aid.delete("created_at")
       aid.delete("updated_at")
+      aid.delete("archived_at")
       aid["filters"].each do |filter| 
         filter.delete("created_at")
         filter.delete("updated_at")
@@ -70,6 +71,14 @@ class ActivatedModelsService
       filter.delete("updated_at")
     end
     filters
+  end
+
+  def _clean_all_rules(rules)
+    rules.each do |rule|  
+      rule.delete("created_at")
+      rule.delete("updated_at")
+    end
+    rules
   end
 
 end
