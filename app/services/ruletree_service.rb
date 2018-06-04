@@ -16,15 +16,7 @@ class RuletreeService
   end
 
   def initialize
-    all_rules_json = CacheService.get_instance.read("all_rules_json")
-    begin
-      JSON.parse(all_rules_json)
-    rescue Exception => e
-      all_rules_json = Rule.all.to_json(:include => [:slave_rules, :variable])
-      CacheService.get_instance.write("all_rules_json", all_rules_json)
-    ensure
-      @all_rules = JSON.parse(all_rules_json)
-    end
+    @all_rules = ActivatedModelsService.get_instance.rules
   end
 
   def resolve(rule_id, criterion_hash = {}) 
