@@ -29,9 +29,6 @@ class ActivatedModelsService
       activated_models["all_filters"] = _clean_all_filters(JSON.parse(all_filters))
       activated_models["all_contracts"] = _clean_all_contracts(JSON.parse(all_contracts))
       activated_models["all_rules"] = _clean_all_rules(JSON.parse(all_rules))
-      p '- - - - - - - - - - - - - - activated_models- - - - - - - - - - - - - - - -' 
-      pp activated_models
-      p ''
       activated_models_json = activated_models.to_json
       CacheService.get_instance.write("activated_models", activated_models.to_json)
     ensure
