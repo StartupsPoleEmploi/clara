@@ -22,7 +22,8 @@ class SerializeResultsService
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
      flat_all_ineligible: calculator.every_ineligible,
-     flat_all_contract: ContractTypeTreeService.get_instance.all_contract_types,
+     flat_all_contract: ActivatedModelsService.get_instance.contract_types,
+     flat_all_filter: ActivatedModelsService.get_instance.filters,
      asker: asker.attributes
     }
     res
