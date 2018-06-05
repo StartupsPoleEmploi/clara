@@ -6,9 +6,9 @@ describe ActivatedModelsService do
     before do
       the_asker = Asker.new(v_age: '42', v_qpv: 'en_qpv')
 
-      f_filter_1 = create(:filter, name: "used_filter_1")
-      f_filter_2 = create(:filter, name: "used_filter_2")
-      f_filter_3 = create(:filter, name: "unused_filter_3")
+      f_filter_1 = create(:filter, name: "used_filter_1", description: "a1")
+      f_filter_2 = create(:filter, name: "used_filter_2", description: "a2")
+      f_filter_3 = create(:filter, name: "unused_filter_3", description: "a3")
       r_adult_and_qpv = create(:rule, :be_an_adult_and_in_qpv, name: 'r_adult_and_qpv_used')
       r_adult = create(:rule, :be_an_adult, name: "r_adult_unused")
       c_contract_type_1 = create(:contract_type, :contract_type_1, name: "c_contract_type_used")
@@ -87,9 +87,9 @@ describe ActivatedModelsService do
     "last_update"=>nil,
     "filters"=>[{"id"=>1}, {"id"=>2}]}],
 "all_filters"=>
-  [{"id"=>1, "name"=>"used_filter_1"},
-   {"id"=>2, "name"=>"used_filter_2"},
-   {"id"=>3, "name"=>"unused_filter_3"}],
+  [{"id"=>1, "name"=>"used_filter_1", "description"=>"a1"},
+   {"id"=>2, "name"=>"used_filter_2", "description"=>"a2"},
+   {"id"=>3, "name"=>"unused_filter_3", "description"=>"a3"}],
 "all_contracts"=>
   [{"id"=>1,
     "name"=>"c_contract_type_used",
