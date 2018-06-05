@@ -40,8 +40,11 @@ describe RuletreeService do
   end
 
   describe ".evaluate CHILD" do
+    before do
+      create :rule, :be_a_child
+    end
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_a_child; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -97,8 +100,11 @@ describe RuletreeService do
   end
 
   describe "UNCERTAIN .evaluate" do
+    before do
+      create :rule, :be_in_qpv
+    end
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_in_qpv; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -119,13 +125,12 @@ describe RuletreeService do
 
   describe ".resolve" do
     before do
-      RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules, :variable])])
+      RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules])])
     end
     subject { RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
-
       context 'more_or_equal_than an Integer, limit case, "eligible"' do
         let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is more or equal than 19' do
