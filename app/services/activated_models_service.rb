@@ -67,11 +67,9 @@ class ActivatedModelsService
       aid.delete("created_at")
       aid.delete("updated_at")
       aid.delete("archived_at")
-      aid["filters"].each do |filter| 
-        filter.delete("created_at")
-        filter.delete("updated_at")
-        filter.delete("name")
-      end      
+      aid["filters"].map! do |slave_rule|
+        slave_rule.select {|k,v| k == "id" }
+      end    
     end
     aids
   end
