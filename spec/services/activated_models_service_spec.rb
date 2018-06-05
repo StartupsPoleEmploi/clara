@@ -28,8 +28,9 @@ describe ActivatedModelsService do
       #given
       #when
       sut = ActivatedModelsService.get_instance.read
+      modified_sut = change_ids_in_hash(sut)
       #then
-      expect(change_ids_in_hash(sut)).to eq(change_ids_in_hash(realistic_results))
+      expect(modified_sut).to eq(change_ids_in_hash(realistic_results))
     end
   end
 
@@ -57,13 +58,11 @@ describe ActivatedModelsService do
 
   def change_ids_in_hash(h)
     if h.is_a?(Hash)
-      h["id"] = "EXISTING" if h["id"]
-      if h["id"]
-        h["id"] = h["name"] ? "ID_OF_" + h["name"] : "EXISTING"
-      end
       h.each do |key, val| 
         if val.is_a?(Array)
           change_ids_in_hash(val)
+        elsif key == "id" || key.end_with?("_id")
+          h[key] = "ANY"
         end
       end
     elsif h.is_a?(Array) && h.all? { |e| e.is_a?(Hash) }
