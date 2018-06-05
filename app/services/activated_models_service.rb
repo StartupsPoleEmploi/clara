@@ -59,7 +59,7 @@ class ActivatedModelsService
   end
 
   def variables
-    @all_activated_models["all_contracts"]
+    @all_activated_models["all_variables"]
   end
 
   def _clean_all_activated_aids(aids)
