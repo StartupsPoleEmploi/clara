@@ -6,11 +6,11 @@ describe ResultDefault do
     
     it 'Sort aids along "ordre_affichage" property' do
       sut = ResultDefault.new(nil, sample)
-      res = sut.sort_and_order_eligies
+      res = sut.sort_and_order("flat_all_eligible")
       p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
       pp res
       p ''
-      expect(sut.sort_and_order_eligies).to eq(
+      expect(res).to eq(
         {2=>
           [{"id"=>6,
             "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
