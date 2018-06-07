@@ -19,16 +19,15 @@
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3 Vous pouvez bénéficier de
       - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
-        .flag.c-resultcard
-          .flag__img
-            =v.icon_for(aids_per_contract)
-          .flag__body.c-resultcontract
+        .o-flag.c-resultcard
+          .o-flag__img
+            eee
+          .o-flag__body.c-resultcontract
             %h4.c-resultcontract_title
               =v.title_for(aids_per_contract)
             %p.c-resultcontract_descr
               =v.descr_for(aids_per_contract)
-
         
-          .c-resultaid
-            - aids_per_contract.each do |aid|
-              %h5=aid["name"]
+        .c-resultaid
+          - aids_per_contract.each do |aid|
+            %h5=aid["name"]
