@@ -60,6 +60,15 @@ describe ResultDefault do
       res = sut.sort_and_order("flat_all_uncertain")
       expect(res).to eq([
         
+          [{"id"=>3,
+            "name"=>"Aide aux habitants en QPV adultes",
+            "slug"=>"aide-aux-habitants-en-qpv-adultes",
+            "short_description"=>"",
+            "ordre_affichage"=>3,
+            "contract_type_id"=>2,
+            "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
+            "eligibility"=>"uncertain"}],
+            
           [{"id"=>2,
             "name"=>"Aide aux habitants en zone QPV",
             "slug"=>"aide-aux-habitants-en-zone-qpv",
@@ -69,14 +78,6 @@ describe ResultDefault do
             "filters"=>[{"id"=>2}],
             "eligibility"=>"uncertain"}],
         
-          [{"id"=>3,
-            "name"=>"Aide aux habitants en QPV adultes",
-            "slug"=>"aide-aux-habitants-en-qpv-adultes",
-            "short_description"=>"",
-            "ordre_affichage"=>3,
-            "contract_type_id"=>2,
-            "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
-            "eligibility"=>"uncertain"}]
         ])     
     end
 
