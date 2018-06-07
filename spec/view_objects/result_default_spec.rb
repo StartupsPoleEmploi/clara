@@ -4,7 +4,7 @@ describe ResultDefault do
 
   describe '.sort_and_order_eligies' do
     
-    it 'Nominal scenario' do
+    it 'Sort aids along "ordre_affichage" property' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order_eligies
       p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
@@ -12,7 +12,15 @@ describe ResultDefault do
       p ''
       expect(sut.sort_and_order_eligies).to eq(
         {2=>
-          [{"id"=>4,
+          [{"id"=>6,
+            "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
+            "slug"=>"aides-aux-beneficiaires-du-rsa-ou-adultes",
+            "short_description"=>"",
+            "ordre_affichage"=>4,
+            "contract_type_id"=>2,
+            "filters"=>[{"id"=>1}, {"id"=>3}],
+            "eligibility"=>"eligible"},
+            {"id"=>4,
             "name"=>"Aides aux habitants en QPV ou adultes",
             "slug"=>"aides-aux-habitants-en-qpv-ou-adultes",
             "short_description"=>"",
@@ -20,14 +28,7 @@ describe ResultDefault do
             "contract_type_id"=>2,
             "filters"=>[{"id"=>1}, {"id"=>2}],
             "eligibility"=>"eligible"},
-           {"id"=>6,
-            "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
-            "slug"=>"aides-aux-beneficiaires-du-rsa-ou-adultes",
-            "short_description"=>"",
-            "ordre_affichage"=>4,
-            "contract_type_id"=>2,
-            "filters"=>[{"id"=>1}, {"id"=>3}],
-            "eligibility"=>"eligible"}]
+           ]
         }
         )
     end
