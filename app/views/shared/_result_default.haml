@@ -17,15 +17,14 @@
           
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
-      %h3 
-        Vous pouvez bénéficier de
-        - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
-          .c-resultcard
-            .c-resultcontract
-              %h4.c-resultcontract_title
-                =v.title_for(aids_per_contract)
-              %p.c-resultcontract_descr
-                blabla
-            .c-resultaid
-              - aids_per_contract.each do |aid|
-                %p=aid["name"]
+      %h3 Vous pouvez bénéficier de
+      - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
+        .c-resultcard
+          .c-resultcontract
+            %h4.c-resultcontract_title
+              =v.title_for(aids_per_contract)
+            %p.c-resultcontract_descr
+              blabla
+          .c-resultaid
+            - aids_per_contract.each do |aid|
+              %p=aid["name"]
