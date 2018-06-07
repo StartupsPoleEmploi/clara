@@ -23,8 +23,7 @@
 //= require turbolinks
 //= require ./turbolinks_transition
 //= require pnotify/pnotify
-//= require vuejs/vue
-//= require redux/redux
+//= require knockout/knockout
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
 //= require ./accordeon_component

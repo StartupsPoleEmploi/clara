@@ -1,2 +1,23 @@
 .c-result-default.o-wrapper
-    =JSON.pretty_generate(flat_all_contract)
+  .o-layout
+    %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
+      %button
+        %h2.c-mask-filter
+          Masquer les filtres <span class="c-chevron bottom"></span>
+      %h3
+        Chercher les aides pour
+      %ul
+      - flat_all_filter.each_with_index do |filter, i|
+        %li
+          %input.c-radioinput{:name => "checkbox_#{i}", :type => "checkbox"}/
+          %label.c-radiolabel{for: "checkbox_#{i}"}
+            =filter["description"]
+          
+
+    %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
+      lorem22222 loream loream  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
