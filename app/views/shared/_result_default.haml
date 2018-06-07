@@ -19,9 +19,18 @@
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3 
         Vous pouvez bénéficier de
-        - v.sort_and_order("flat_all_eligible").each_with_index do |eligible_contract_type, i|
+        - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
           %h4
-            =flat_all_contract.detect{|e| e["id"] == eligible_contract_type[0]["contract_type_id"]}["name"]
-            - eligible_contract_type.each_with_index do |eligible_aid, i|
+            =flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
+            - aids_per_contract.each do |eligible_aid|
+              %h5
+              =eligible_aid["name"]
+
+      %h3 
+        Vous pourriez peut-être bénéficier de
+        - v.sort_and_order("flat_all_uncertain").each do |aids_per_contract|
+          %h4
+            =flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
+            - aids_per_contract.each do |eligible_aid|
               %h5
               =eligible_aid["name"]
