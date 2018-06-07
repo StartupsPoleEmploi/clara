@@ -43,12 +43,23 @@ h2.c-mask-filter {
 }
 
 .c-resultcontract_descr {
-  //FIXME
-  font-size: 16px; 
+  font-size: 16px; // HACK
 }
 .c-resultcontract_title {
   margin-bottom: 0;
 }
 .c-resultcontract .o-flag__img {
   width: 100px;
+}
+
+.c-btn--result {
+  font-size: 16px; // HACK
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+  color:#057dbc;
+  border-color:#057dbc;
+}
+
+.c-resultcaret {
+  font-size: 21px;
+  font-weight: bold;
 }

@@ -31,8 +31,8 @@
                   %p.c-resultcontract_descr
                     =v.descr_for(aids_per_contract)
             %div{class:"o-layout__item u-1/6"}   
-              %button.c-btn Ouvrir <span>&or;</span>
-          filter1 filter2
+              %button.c-btn.c-btn--result Ouvrir <span class="c-resultcaret">&or;</span>
         .c-resultaid
           - aids_per_contract.each do |aid|
             %h5=aid["name"]
+            filter1 filter2
