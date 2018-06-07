@@ -151,6 +151,7 @@ $inuit-wrapper-width: 1480px;
 // bloat your CSS, depending of the amount of breakpoints you defined.
 // Only set this to `true` if you are absolutely sure about what you are doing.
 $inuit-offsets: true;
+$inuit-fractions: 1 2 3 4 5 6;
 @import "utilities/utilities.widths";
 @import "utilities/utilities.headings";
 @import "utilities/utilities.spacings";
