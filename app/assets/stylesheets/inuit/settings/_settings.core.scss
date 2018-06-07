@@ -18,6 +18,8 @@ $inuit-global-baseline:     6px !default;
 // How many grid lines should our spacing unit variants span?
 // Each value should be an unitless integer.
 
+$inuit-global-spacing-unit-factor-nano:  0.25 !default;   // 3px
+$inuit-global-spacing-unit-factor-micro:  0.5 !default;   // 3px
 $inuit-global-spacing-unit-factor-tiny:   1 !default;   // 6px
 $inuit-global-spacing-unit-factor-small:  2 !default;   // 12px
 $inuit-global-spacing-unit-factor:        4 !default;   // 24px
@@ -31,6 +33,8 @@ $inuit-global-spacing-unit-factor-huge:   16 !default;  // 96px
 // (it can break your vertical rhythm), but if you need to, you can.
 
 $inuit-global-spacing-unit:       $inuit-global-baseline * $inuit-global-spacing-unit-factor !default;
+$inuit-global-spacing-unit-nano:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-nano !default;
+$inuit-global-spacing-unit-micro:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-micro !default;
 $inuit-global-spacing-unit-tiny:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-tiny !default;
 $inuit-global-spacing-unit-small: $inuit-global-baseline * $inuit-global-spacing-unit-factor-small !default;
 $inuit-global-spacing-unit-large: $inuit-global-baseline * $inuit-global-spacing-unit-factor-large !default;

@@ -40,6 +40,12 @@ h2.c-mask-filter {
 
 .c-resultcard {
   background-color:white;
+  border: solid 1px #dcdcdc;
+  border-radius: 4px;
+}
+
+.c-resultcard--green {
+  border-left: 3px solid green;
 }
 
 .c-resultcontract_descr {
@@ -54,12 +60,11 @@ h2.c-mask-filter {
 
 .c-btn--result {
   font-size: 16px; // HACK
-  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit-tiny;
   color:#057dbc;
   border-color:#057dbc;
 }
 
 .c-resultcaret {
-  font-size: 21px;
   font-weight: bold;
 }
