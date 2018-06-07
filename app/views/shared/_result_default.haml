@@ -20,26 +20,10 @@
       %h3 
         Vous pouvez bénéficier de
         - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
+          - str_title = flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
+          - str_nb = aids_per_contract.size
           %h4
-            =flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
-            - aids_per_contract.each do |aid|
-              %h5
-              =aid["name"]
-
-      %h3 
-        Vous pourriez peut-être bénéficier de
-        - v.sort_and_order("flat_all_uncertain").each do |aids_per_contract|
-          %h4
-            =flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
-            - aids_per_contract.each do |aid|
-              %h5
-              =aid["name"]
-
-      %h3 
-        Vous ne pouvez pas bénéficier de
-        - v.sort_and_order("flat_all_ineligible").each do |aids_per_contract|
-          %h4
-            =flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
-            - aids_per_contract.each do |aid|
-              %h5
+            ="#{str_nb} #{str_title}"
+          - aids_per_contract.each do |aid|
+            %p
               =aid["name"]
