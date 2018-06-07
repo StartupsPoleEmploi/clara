@@ -17,7 +17,11 @@ class SerializeResultsService
   end
 
   def go(asker)
+
     calculator = AidCalculationService.get_instance(asker)
+     p '- - - - - - - - - - - - - - every_uncertain- - - - - - - - - - - - - - - -' 
+     pp calculator.every_uncertain
+     p ''
     res =  {
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
