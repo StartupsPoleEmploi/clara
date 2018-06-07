@@ -18,7 +18,13 @@ describe ResultDefault do
 
     it 'Can sort "flat_all_ineligible"' do
       sut = ResultDefault.new(nil, sample)
-      res = sut.sort_and_order("flat_all_eligible")
+      res = sut.sort_and_order("flat_all_ineligible")
+      expect(res).not_to eq({})
+    end
+
+    it 'Can sort "flat_all_uncertain"' do
+      sut = ResultDefault.new(nil, sample)
+      res = sut.sort_and_order("flat_all_uncertain")
       expect(res).not_to eq({})
     end
 
@@ -46,9 +52,36 @@ describe ResultDefault do
             "eligibility"=>"eligible"},
            ]
         }
-        )
+      )
     end
 
+    it 'Sort contract_type key along to the "ordre_affichage" property of contract_type' do
+      sut = ResultDefault.new(nil, sample)
+      res = sut.sort_and_order("flat_all_uncertain")
+      p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+      pp res
+      p ''
+      expect(res).to eq(
+        {1=>
+          [{"id"=>2,
+            "name"=>"Aide aux habitants en zone QPV",
+            "slug"=>"aide-aux-habitants-en-zone-qpv",
+            "short_description"=>"",
+            "ordre_affichage"=>1,
+            "contract_type_id"=>1,
+            "filters"=>[{"id"=>2}],
+            "eligibility"=>"uncertain"}],
+         2=>
+          [{"id"=>3,
+            "name"=>"Aide aux habitants en QPV adultes",
+            "slug"=>"aide-aux-habitants-en-qpv-adultes",
+            "short_description"=>"",
+            "ordre_affichage"=>3,
+            "contract_type_id"=>2,
+            "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
+            "eligibility"=>"uncertain"}]}
+      )     
+    end
 
   end
 
