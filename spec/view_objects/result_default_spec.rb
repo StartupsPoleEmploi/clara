@@ -4,6 +4,12 @@ describe ResultDefault do
 
   describe '.sort_and_order_eligies' do
     
+    it 'Cannot sort unexisting prop' do
+      sut = ResultDefault.new(nil, sample)
+      res = sut.sort_and_order("unexisting_prop")
+      expect(res).to eq({})
+    end
+
     it 'Sort aids along "ordre_affichage" property' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_eligible")

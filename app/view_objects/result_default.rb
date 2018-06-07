@@ -6,7 +6,8 @@ class ResultDefault < ViewObject
 
   def sort_and_order(prop)
     # .sort_by{|e| e['ordre_affichage']}
-    grouped = @all_data[prop].group_by{|e| e['contract_type_id']}.transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
+    h = @all_data[prop] || {}
+    grouped = h.group_by{|e| e['contract_type_id']}.transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
     grouped
   end
 
