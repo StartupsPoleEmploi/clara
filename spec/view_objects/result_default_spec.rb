@@ -58,11 +58,8 @@ describe ResultDefault do
     it 'Sort contract_type key along to the "ordre_affichage" property of contract_type' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_uncertain")
-      p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-      pp res
-      p ''
-      expect(res).to eq(
-        {1=>
+      expect(res).to eq({
+        1=>
           [{"id"=>2,
             "name"=>"Aide aux habitants en zone QPV",
             "slug"=>"aide-aux-habitants-en-zone-qpv",
@@ -71,7 +68,7 @@ describe ResultDefault do
             "contract_type_id"=>1,
             "filters"=>[{"id"=>2}],
             "eligibility"=>"uncertain"}],
-         2=>
+        2=>
           [{"id"=>3,
             "name"=>"Aide aux habitants en QPV adultes",
             "slug"=>"aide-aux-habitants-en-qpv-adultes",
@@ -79,8 +76,8 @@ describe ResultDefault do
             "ordre_affichage"=>3,
             "contract_type_id"=>2,
             "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
-            "eligibility"=>"uncertain"}]}
-      )     
+            "eligibility"=>"uncertain"}]
+        })     
     end
 
   end
