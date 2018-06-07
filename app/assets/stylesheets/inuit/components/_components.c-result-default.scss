@@ -44,8 +44,16 @@ h2.c-mask-filter {
   border-radius: 4px;
 }
 
+.c-resultcard--notfirst {
+  margin-top: $inuit-global-spacing-unit-small;
+}
+
 .c-resultcard--green {
-  border-left: 3px solid green;
+  border-left: 5px solid #028138;
+}
+
+.c-resultcard--green svg {
+  fill: #028138;
 }
 
 .c-resultcontract_descr {
@@ -60,11 +68,27 @@ h2.c-mask-filter {
 
 .c-btn--result {
   font-size: 16px; // HACK
-  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit-tiny;
+  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit-small;
   color:#057dbc;
   border-color:#057dbc;
 }
 
 .c-resultcaret {
   font-weight: bold;
+}
+
+.c-resultaid {
+  border-top: solid 1px #dcdcdc;
+}
+
+.c-resultaid h5 {
+  margin-bottom: 0;
+}
+.c-btn--aid {
+  border: none;
+  font-size: 14px; // HACK
+  font-weight: 500;
+  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit;
+  border-radius: 35px;
+  background-color: #057dbc;
 }
