@@ -5,32 +5,32 @@ describe ResultDefault do
   describe '.sort_and_order_eligies' do
     
     it 'Cannot sort unexisting prop' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("unexisting_prop")
       expect(res).to eq([])
     end
 
     it 'Can sort "flat_all_eligible"' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("flat_all_eligible")
       expect(res).not_to eq([])
     end
 
     it 'Can sort "flat_all_ineligible"' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("flat_all_ineligible")
       expect(res).not_to eq([])
     end
 
     it 'Can sort "flat_all_uncertain"' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("flat_all_uncertain")
       expect(res).not_to eq([])
     end
 
 
     it 'Sort aids along "ordre_affichage" property' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("flat_all_eligible")
       expect(res).to eq(
         [
@@ -56,7 +56,7 @@ describe ResultDefault do
     end
 
     it 'Sort contract_type key along to the "ordre_affichage" property of contract_type' do
-      sut = ResultDefault.new(nil, sample)
+      sut = ResultDefault.new(nil, nominal_data)
       res = sut.sort_and_order("flat_all_uncertain")
       expect(res).to eq([
         
@@ -68,7 +68,7 @@ describe ResultDefault do
             "contract_type_id"=>2,
             "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
             "eligibility"=>"uncertain"}],
-            
+
           [{"id"=>2,
             "name"=>"Aide aux habitants en zone QPV",
             "slug"=>"aide-aux-habitants-en-zone-qpv",
@@ -83,7 +83,7 @@ describe ResultDefault do
 
   end
 
-  def sample
+  def nominal_data
     {:flat_all_eligible=>
   [{"id"=>4,
     "name"=>"Aides aux habitants en QPV ou adultes",
