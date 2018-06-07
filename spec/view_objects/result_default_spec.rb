@@ -10,12 +10,22 @@ describe ResultDefault do
       expect(res).to eq({})
     end
 
+    it 'Can sort "flat_all_eligible"' do
+      sut = ResultDefault.new(nil, sample)
+      res = sut.sort_and_order("flat_all_eligible")
+      expect(res).not_to eq({})
+    end
+
+    it 'Can sort "flat_all_ineligible"' do
+      sut = ResultDefault.new(nil, sample)
+      res = sut.sort_and_order("flat_all_eligible")
+      expect(res).not_to eq({})
+    end
+
+
     it 'Sort aids along "ordre_affichage" property' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_eligible")
-      p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-      pp res
-      p ''
       expect(res).to eq(
         {2=>
           [{"id"=>6,
