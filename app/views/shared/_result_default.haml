@@ -19,7 +19,7 @@
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3 Vous pouvez bénéficier de
       - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
-        .c-resultcard.o-layout.o-layout--middle.o-layout--flush.c-resultcard--green
+        .c-resultcard.c-resultcard--green.o-layout.o-layout--middle.o-layout--flush
           %div{class:"o-layout__item u-5/6"}   
             .o-flag.o-flag--flush.c-resultcontract
               .o-flag__img{class:"u-hide-until@tablet"}
@@ -30,7 +30,7 @@
                 %p.c-resultcontract_descr
                   =v.descr_for(aids_per_contract)
           %div{class:"o-layout__item u-1/6"}   
-            blabla
+            %button.c-btn Ouvrir <span>&or;</span>
         
         .c-resultaid
           - aids_per_contract.each do |aid|
