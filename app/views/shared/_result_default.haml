@@ -20,10 +20,6 @@
       %h3 
         Vous pouvez bénéficier de
         - v.sort_and_order("flat_all_eligible").each do |aids_per_contract|
-          - str_title = flat_all_contract.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
-          - str_nb = aids_per_contract.size
-          %h4
-            ="#{str_nb} #{str_title}"
+          %h4=v.title_for(aids_per_contract)
           - aids_per_contract.each do |aid|
-            %p
-              =aid["name"]
+            %p=aid["name"]

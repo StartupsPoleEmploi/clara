@@ -15,5 +15,12 @@ class ResultDefault < ViewObject
       .sort_by{ |e| contract_types.detect{|c| c["id"] == e.sample['contract_type_id']}["ordre_affichage"]}
   end
 
+  def title_for(aids_per_contract)
+    contract_types = @all_data["flat_all_contract"]
+    str_title = contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
+    str_nb = aids_per_contract.size
+    "#{str_nb} #{str_title}"
+  end
+
 end
 
