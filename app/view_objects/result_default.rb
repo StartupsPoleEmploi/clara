@@ -5,12 +5,14 @@ class ResultDefault < ViewObject
   end
 
   def sort_and_order(prop)
-    # .sort_by{|e| e['ordre_affichage']}
     contract_types = @all_data["flat_all_contract"]
     h = @all_data[prop] || {}
-    grouped = h.group_by{|e| e['contract_type_id']}.transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
-    v = grouped.values
-    v.sort_by{ |e| contract_types.detect{|c| c["id"] == e[0]['contract_type_id']}["ordre_affichage"]}
+
+    h
+      .group_by{|e| e['contract_type_id']}
+      .transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
+      .values
+      .sort_by{ |e| contract_types.detect{|c| c["id"] == e.sample['contract_type_id']}["ordre_affichage"]}
   end
 
 end
