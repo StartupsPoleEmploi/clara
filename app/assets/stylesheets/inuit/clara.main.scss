@@ -78,6 +78,10 @@
 @import "settings/clara.settings.config";
 @import "settings/settings.core";
 @import "settings/clara.settings.global";
+$inuit-global-spacing-unit-factor-nano:  0.25;   // 1.5px
+$inuit-global-spacing-unit-factor-micro:  0.5;   // 3px
+$inuit-global-spacing-unit-nano:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-nano;
+$inuit-global-spacing-unit-micro:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-micro;
 
 
 
@@ -152,6 +156,7 @@ $inuit-wrapper-width: 1480px;
 // Only set this to `true` if you are absolutely sure about what you are doing.
 $inuit-offsets: true;
 $inuit-fractions: 1 2 3 4 5 6;
+@import "utilities/utilities.align";
 @import "utilities/utilities.widths";
 @import "utilities/utilities.headings";
 @import "utilities/utilities.spacings";

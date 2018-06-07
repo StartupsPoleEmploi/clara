@@ -44,6 +44,10 @@ h2.c-mask-filter {
   border-radius: 4px;
 }
 
+.c-resultcard__inner {
+  padding: $inuit-global-spacing-unit-small;
+}
+
 .c-resultcard--notfirst {
   margin-top: $inuit-global-spacing-unit-small;
 }
@@ -79,11 +83,17 @@ h2.c-mask-filter {
 
 .c-resultaid {
   border-top: solid 1px #dcdcdc;
+  padding: $inuit-global-spacing-unit;
 }
 
 .c-resultaid h5 {
   margin-bottom: 0;
 }
+
+.c-resultaid p {
+  font-size: 16px; // HACK
+}
+
 .c-btn--aid {
   border: none;
   font-size: 14px; // HACK
