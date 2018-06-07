@@ -7,25 +7,25 @@ describe ResultDefault do
     it 'Cannot sort unexisting prop' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("unexisting_prop")
-      expect(res).to eq({})
+      expect(res).to eq([])
     end
 
     it 'Can sort "flat_all_eligible"' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_eligible")
-      expect(res).not_to eq({})
+      expect(res).not_to eq([])
     end
 
     it 'Can sort "flat_all_ineligible"' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_ineligible")
-      expect(res).not_to eq({})
+      expect(res).not_to eq([])
     end
 
     it 'Can sort "flat_all_uncertain"' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_uncertain")
-      expect(res).not_to eq({})
+      expect(res).not_to eq([])
     end
 
 
@@ -33,7 +33,7 @@ describe ResultDefault do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_eligible")
       expect(res).to eq(
-        {2=>
+        [
           [{"id"=>6,
             "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
             "slug"=>"aides-aux-beneficiaires-du-rsa-ou-adultes",
@@ -51,15 +51,15 @@ describe ResultDefault do
             "filters"=>[{"id"=>1}, {"id"=>2}],
             "eligibility"=>"eligible"},
            ]
-        }
+        ]
       )
     end
 
     it 'Sort contract_type key along to the "ordre_affichage" property of contract_type' do
       sut = ResultDefault.new(nil, sample)
       res = sut.sort_and_order("flat_all_uncertain")
-      expect(res).to eq({
-        1=>
+      expect(res).to eq([
+        
           [{"id"=>2,
             "name"=>"Aide aux habitants en zone QPV",
             "slug"=>"aide-aux-habitants-en-zone-qpv",
@@ -68,7 +68,7 @@ describe ResultDefault do
             "contract_type_id"=>1,
             "filters"=>[{"id"=>2}],
             "eligibility"=>"uncertain"}],
-        2=>
+        
           [{"id"=>3,
             "name"=>"Aide aux habitants en QPV adultes",
             "slug"=>"aide-aux-habitants-en-qpv-adultes",
@@ -77,7 +77,7 @@ describe ResultDefault do
             "contract_type_id"=>2,
             "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
             "eligibility"=>"uncertain"}]
-        })     
+        ])     
     end
 
   end
