@@ -16,19 +16,24 @@
 }
 
 .c-resultfilterings {
+  padding:0;
   legend {
     font-size: 18px;
     font-weight: bold;
   }
 }
 .c-resultfiltering {
-  margin-top: $inuit-global-spacing-unit;
   label {
     font-size: 16px; // HACK
   }
 }
+.c-resultfiltering--even {
+  background-color:#f3f8fc;
+}
 
+.c-resultfiltering__checkbox {
 
+}
 
 .c-resultcard {
   background-color:white;
