@@ -21,7 +21,7 @@
       - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
         .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}"}
           .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
-            %div{class:"o-layout__item u-5/6"}   
+            %div{class:"o-layout__item u-3/4"}   
               .o-flag.o-flag--flush.c-resultcontract
                 .o-flag__img{class:"u-hide-until@tablet"}
                   =v.icon_for(aids_per_contract)
@@ -30,17 +30,17 @@
                     =v.title_for(aids_per_contract)
                   %p.c-resultcontract_descr
                     =v.descr_for(aids_per_contract)
-            %div{class:"o-layout__item u-1/6 u-text--right "}   
+            %div{class:"o-layout__item u-1/4 u-text--right "}   
               %button.c-btn.c-btn--small.c-btn--result Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
           .c-resultaids
             - aids_per_contract.each do |aid|
               .c-resultaid
                 .o-layout.o-layout--middle.o-layout--flush
-                  %div{class:"o-layout__item u-5/6"}   
+                  %div{class:"o-layout__item u-3/4"}   
                     %h5=aid["name"]
                     %p=aid["short_description"]
                     %ul.o-list-inline
                     - v.filters_of(aid).each do |one_filter|
-                      %li.o-list-inline__item.c-resultfilter=one_filter["description"]
-                  %div{class:"o-layout__item u-1/6 u-text--right"}
-                    %button.c-btn.c-btn--primary.c-btn--small.c-btn--aid  En savoir plus
+                      %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny=one_filter["description"]
+                  %div{class:"o-layout__item u-1/4 u-text--right"}
+                    %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal-large@desktop"}  En savoir plus

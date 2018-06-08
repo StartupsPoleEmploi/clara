@@ -83,7 +83,7 @@ h2.c-mask-filter {
 
 .c-resultaid {
   border-top: solid 1px #dcdcdc;
-  padding: $inuit-global-spacing-unit;
+  padding: $inuit-global-spacing-unit-small;
 }
 
 .c-resultaid h5 {
@@ -98,7 +98,8 @@ h2.c-mask-filter {
   border: none;
   font-size: 14px; // HACK
   font-weight: 500;
-  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit;
+  padding: $inuit-global-spacing-unit-nano;
+  // padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit;
   border-radius: 35px;
   background-color: #057dbc;
 }
