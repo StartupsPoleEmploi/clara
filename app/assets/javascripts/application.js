@@ -24,9 +24,11 @@
 //= require ./turbolinks_transition
 //= require pnotify/pnotify
 //= require knockout/knockout
+//= require knockout/knockout-pre-rendered
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
 //= require ./accordeon_component
+//= require ./result_default
 //= require ./aides_index
 //= require ./google_analytics_push
 //= require ./print
