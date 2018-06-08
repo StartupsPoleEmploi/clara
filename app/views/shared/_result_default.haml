@@ -20,6 +20,9 @@
 
     %div{"class"=>"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
+      .u-text--right.u-margin-bottom-small 
+        %button.c-btn.c-btn--small.c-btn--result
+          Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
       - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
         .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}"}
           .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
