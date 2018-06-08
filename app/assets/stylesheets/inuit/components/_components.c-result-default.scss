@@ -130,7 +130,19 @@ input[type=checkbox] {
   transform: scale(2);
 }
 
-.c-resultfilter {
+/** checkbox **/
+input[type=radio] {
+  transform: scale(2);
+}
+
+.c-resultfilterings {
+
+  legend {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.c-resultfiltering {
   margin-top: $inuit-global-spacing-unit;
   label {
     font-size: 16px; // HACK
