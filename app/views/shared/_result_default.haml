@@ -43,4 +43,8 @@
                     - v.filters_of(aid).each do |one_filter|
                       %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny=one_filter["description"]
                   %div{class:"o-layout__item u-1/4 u-text--right"}
-                    %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal-large@desktop"}  En savoir plus
+                    %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
+      .c-result-warning
+        %p.c-result-warning__line Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
+        %p.c-result-warning__line Clara n'intègre pas encore les spécificités des aides et mesures applicables dans les régions et collectivités d'Outre Mer.
+                  

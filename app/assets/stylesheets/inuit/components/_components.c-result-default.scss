@@ -61,6 +61,7 @@ h2.c-mask-filter {
 }
 
 .c-resultcontract_descr {
+  margin-top: $inuit-global-spacing-unit-nano;
   font-size: 16px; // HACK
 }
 .c-resultcontract_title {
@@ -110,4 +111,16 @@ h2.c-mask-filter {
   background-color:#efefef;
   border-radius: 30px;
   padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+}
+
+
+.c-result-warning {
+  font-size: 16px; // HACK
+  font-weight: 300;
+  border-radius: 4px;
+  margin-top: $inuit-global-spacing-unit;
+  background-color:#FCF8E3;
+  border: solid 1px #faf2cc;
+  padding: $inuit-global-spacing-unit;
+  color: #333333;
 }
