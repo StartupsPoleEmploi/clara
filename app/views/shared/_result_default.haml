@@ -3,15 +3,16 @@
 .c-result-default.o-wrapper
   .o-layout
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
-      %button.c-mask-filter.u-padding-vertical
-        Masquer les filtres <span>&nbsp;&or;</span>        
-          
-      %fieldset.c-resultfilterings
-        %legend Chercher les aides pour
-        - flat_all_filter.each_with_index do |a_filter, i|
-          %div.c-resultfiltering
-            %input#check_1{:id => "check_#{i}", :name => "newsletter", :type => "checkbox"}/
-            %label.u-padding-left-small{:for => "check_#{i}"}=a_filter["description"]
+      %div.c-filterings-area
+        %button.c-mask-filter.u-padding-vertical-small
+          Masquer les filtres <span>&nbsp;&or;</span>        
+            
+        %fieldset.c-resultfilterings
+          %legend.u-padding-top-small Chercher les aides pour
+          - flat_all_filter.each_with_index do |a_filter, i|
+            %div.c-resultfiltering
+              %input#check_1{:id => "check_#{i}", :name => "newsletter", :type => "checkbox"}/
+              %label.u-padding-left-small{:for => "check_#{i}"}=a_filter["description"]
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"

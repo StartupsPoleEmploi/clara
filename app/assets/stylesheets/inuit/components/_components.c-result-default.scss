@@ -8,40 +8,27 @@
   font-weight: 500;
   color: #ffffff;
   width: 100%;
+  border: none;
 }
 
-.c-chevron {
-  text-align: bottom;
+.c-filterings-area {
+  background-color: #ffffff;
 }
 
-.c-chevron::before {
-  border-style: solid;
-  border-width: 0.25em 0.25em 0 0;
-  content: '';
-  display: inline-block;
-  height: 0.45em;
-  left: 0.15em;
-  position: relative;
-  top: 0.15em;
-  transform: rotate(-45deg);
-  vertical-align: middle;
-  width: 0.45em;
+.c-resultfilterings {
+  legend {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.c-resultfiltering {
+  margin-top: $inuit-global-spacing-unit;
+  label {
+    font-size: 16px; // HACK
+  }
 }
 
-.c-chevron.right:before {
-  left: 0;
-  transform: rotate(45deg);
-}
 
-.c-chevron.bottom:before {
-  top: 0;
-  transform: rotate(135deg);
-}
-
-.c-chevron.left:before {
-  left: 0.25em;
-  transform: rotate(-135deg);
-}
 
 .c-resultcard {
   background-color:white;
@@ -138,20 +125,6 @@ input[type=checkbox] {
 /** checkbox **/
 input[type=radio] {
   transform: scale(2);
-}
-
-.c-resultfilterings {
-
-  legend {
-    font-size: 18px;
-    font-weight: bold;
-  }
-}
-.c-resultfiltering {
-  margin-top: $inuit-global-spacing-unit;
-  label {
-    font-size: 16px; // HACK
-  }
 }
 
 
