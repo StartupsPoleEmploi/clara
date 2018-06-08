@@ -26,7 +26,7 @@ $(document).on('ready turbolinks:load', function() {
       // see https://stackoverflow.com/a/16570627/2595513
       var slugs = $('.c-resultcontract_slug').map(function(){return $.trim($(this).text());}).get();
 
-      var aid_per_contract_array = _.map(names, function(e) {
+      var aid_per_contract_array = _.map(slugs, function(e) {
         return new AidPerContractViewModel(e, false);
       });
       
