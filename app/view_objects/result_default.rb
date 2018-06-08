@@ -28,6 +28,10 @@ class ResultDefault < ViewObject
     @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["description"]
   end
 
+  def slug_for(aids_per_contract)
+    @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["slug"]
+  end
+
   def icon_for(aids_per_contract)
     icon = @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["icon"]
     icon.blank? ? default_svg.html_safe : icon.html_safe

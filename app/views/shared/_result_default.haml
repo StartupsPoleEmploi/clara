@@ -24,6 +24,7 @@
         .u-text--right.u-margin-bottom-small
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: toggleOpen"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+        #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
         - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
           .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}"}
             .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
@@ -32,6 +33,8 @@
                   .o-flag__img{class:"u-hide-until@tablet"}
                     =v.icon_for(aids_per_contract)
                   .o-flag__body
+                    .u-hidden.c-resultcontract_slug
+                      =v.slug_for(aids_per_contract)
                     %h4.c-resultcontract_title
                       =v.title_for(aids_per_contract)
                     %p.c-resultcontract_descr

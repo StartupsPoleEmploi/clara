@@ -1,8 +1,6 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('.c-result-default')) {
 
-
-
     function FilterViewModel(id, name, description, isActive) {
       var self = this;
       self.id = id;
@@ -18,17 +16,23 @@ $(document).on('ready turbolinks:load', function() {
       self.isOpened = ko.observable(isOpened);
     }
 
+
     function AidsPerContractViewModel(name, isOpened) {
       var self = this;
       self.isOpened = ko.observable(isOpened);
       self.name = name;
       self.toggleOpen = function() {self.isOpened(!self.isOpened())}
-      var aid_per_contract_array = _.map([], function(e) {
-        return new AidPerContractViewModel(e.name, false)
+
+      // see https://stackoverflow.com/a/16570627/2595513
+      var slugs = $('.c-resultcontract_slug').map(function(){return $.trim($(this).text());}).get();
+
+      var aid_per_contract_array = _.map(names, function(e) {
+        return new AidPerContractViewModel(e, false);
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
     }
+
 
     function AppViewModel() {
       var self = this;
@@ -40,7 +44,9 @@ $(document).on('ready turbolinks:load', function() {
       self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', false))
     }
     
+
     var appViewModel = new AppViewModel();
+
 
     ko.applyBindings(appViewModel);
 
