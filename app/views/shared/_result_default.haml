@@ -12,11 +12,11 @@
             
         %fieldset.c-resultfilterings
           %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
-          %div{"data-bind" => "foreachInit: {data: o_filters, name: 'emptyTemplate' }"}
+          #o_filters{"data-bind" => "foreachInit: {data: o_filters, name: 'emptyTemplate' }"}
             - flat_all_filter.each_with_index do |a_filter, i|
               %div.c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
-                %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox"}/
-                %label.u-margin-left-small{"for" => "check_#{i}", "data-bind"=>"click: foo"}=a_filter["description"]
+                %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
+                %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
     %div{"class"=>"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"

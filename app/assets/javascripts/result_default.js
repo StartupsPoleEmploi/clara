@@ -5,7 +5,6 @@ $(document).on('ready turbolinks:load', function() {
 
     function FilterViewModel(id, name, description, isActive) {
       var self = this;
-      self.foo = function(){console.log("c ouf!" + self.name)}
       self.id = id;
       self.name = name;
       self.description = description;
