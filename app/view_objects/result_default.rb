@@ -3,6 +3,11 @@ class ResultDefault < ViewObject
   def after_init(args)
     @all_data = hash_for(args).with_indifferent_access
     @contract_types = @all_data["flat_all_contract"]
+    @filters = @all_data["flat_all_filter"]
+  end
+
+  def eligible_size
+    @all_data["flat_all_eligible"].size
   end
 
   def sort_and_order(prop)
@@ -26,6 +31,10 @@ class ResultDefault < ViewObject
   def icon_for(aids_per_contract)
     icon = @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["icon"]
     icon.blank? ? default_svg.html_safe : icon.html_safe
+  end
+
+  def filters_of(aid)
+    aid["filters"].map{|f| @filters.detect{|e| e["id"] == f["id"] }}
   end
 
   def default_svg

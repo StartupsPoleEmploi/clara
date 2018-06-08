@@ -102,3 +102,11 @@ h2.c-mask-filter {
   border-radius: 35px;
   background-color: #057dbc;
 }
+
+.c-resultfilter {
+  font-size: 13px; // HACK
+  color: #484848;
+  background-color:#efefef;
+  border-radius: 30px;
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+}

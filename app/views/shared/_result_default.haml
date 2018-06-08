@@ -17,7 +17,7 @@
           
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
-      %h3 Vous pouvez bénéficier de
+      %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
       - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
         .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}"}
           .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
@@ -39,6 +39,8 @@
                   %div{class:"o-layout__item u-5/6"}   
                     %h5=aid["name"]
                     %p=aid["short_description"]
-                    filter1 filter2
+                    %ul.o-list-inline
+                    - v.filters_of(aid).each do |one_filter|
+                      %li.o-list-inline__item.c-resultfilter=one_filter["description"]
                   %div{class:"o-layout__item u-1/6 u-text--right"}
                     %button.c-btn.c-btn--primary.c-btn--small.c-btn--aid  En savoir plus
