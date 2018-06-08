@@ -124,3 +124,17 @@ h2.c-mask-filter {
   padding: $inuit-global-spacing-unit;
   color: #333333;
 }
+
+/** checkbox **/
+input[type=checkbox] {
+  transform: scale(2);
+}
+
+.c-resultfilter {
+  margin-top: $inuit-global-spacing-unit;
+  label {
+    font-size: 16px; // HACK
+  }
+}
+
+

@@ -8,13 +8,13 @@
           Masquer les filtres <span class="c-chevron bottom"></span>
       %h4
         Chercher les aides pour
-      %ul
-      - flat_all_filter.each_with_index do |filter, i|
-        %li
-          %input.c-radioinput{:name => "checkbox_#{i}", :type => "checkbox"}/
-          %label.c-radiolabel{for: "checkbox_#{i}"}
-            =filter["description"]
           
+      %fieldset.c-resultfilters
+        %legend I want to receive
+        - flat_all_filter.each_with_index do |a_filter, i|
+          %div.c-resultfilter
+            %input#check_1{:id => "check_#{i}", :name => "newsletter", :type => "checkbox"}/
+            %label{:for => "check_#{i}"}=a_filter["description"]
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
