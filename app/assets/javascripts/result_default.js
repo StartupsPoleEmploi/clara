@@ -26,9 +26,18 @@ $(document).on('ready turbolinks:load', function() {
 
     function AidsPerContractViewModel(name, isOpened) {
       var self = this;
-      self.isOpened = ko.observable(isOpened);
+      // self.isOpened = ko.observable(isOpened);
       self.name = name;
-      self.toggleOpen = function() {self.isOpened(!self.isOpened())}
+      self.sesameOpen = function() {
+        _.each(self.o_aids_per_contract(), function(aid){
+          aid.isOpened(true);
+        })
+      }
+      self.sesameClose = function() {
+        _.each(self.o_aids_per_contract(), function(aid){
+          aid.isOpened(false);
+        })
+      }
 
       // see https://stackoverflow.com/a/16570627/2595513
       var slugs = $('.c-resultcontract_slug').map(function(){return $.trim($(this).text());}).get();
@@ -52,13 +61,13 @@ $(document).on('ready turbolinks:load', function() {
       });
 
       self.openClass = ko.computed(function() {
-        return self.isOpened() ? "" : "u-hidden-visually";
+        return _.every(self.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        }) ? "" : "u-hidden-visually";
       });
       self.clozClass = ko.computed(function() {
-        return self.isOpened() ? "u-hidden-visually" : "";
+        return !self.openClass() ? "u-hidden-visually" : "";
       });
-
-      self.say_blabla = function() {console.log("blabla")}
       
     }
 

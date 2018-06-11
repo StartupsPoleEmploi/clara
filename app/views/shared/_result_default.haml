@@ -22,9 +22,9 @@
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
         .u-text--right.u-margin-bottom-small
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: toggleOpen, css: clozClass"}
+          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: clozClass"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: toggleOpen, css: openClass"}
+          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: openClass"}
             Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
         #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
