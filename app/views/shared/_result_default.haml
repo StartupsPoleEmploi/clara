@@ -25,11 +25,15 @@
       #o_filterstag{"class" => "u-visually-hidden"}
         .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_filterstag, name: 'filtertagTemplate' }"}
       #o_eligibles{"data-bind" => "with: o_eligibles"}
-        .u-text--right
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
-            Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: unfoldClass"}
-            Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+        .u-lrbox
+          .u-lrbox__alignleft
+            %h3="Vous pouvez bénéficier de"
+          .u-lrbox__alignright
+            %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
+              Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+            %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: unfoldClass"}
+              Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+          %div{:style => "clear: both;"}
         #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
 
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
