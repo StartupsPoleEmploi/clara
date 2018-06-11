@@ -9,18 +9,18 @@ $(document).on('ready turbolinks:load', function() {
       self.isActive = ko.observable(isActive);
     }
   
-    function AidViewModel(name, o_filters) {
+    function AidViewModel(name, o_all_filters) {
       var self = this;
       self.name = name;
-      self.o_filters = o_filters;
+      self.o_all_filters = o_all_filters;
       self.filtersClass = ko.computed(function() {
-        return _.some(self.o_filters(), function(filter){
+        return _.some(self.o_all_filters(), function(filter){
           return filter.isActive();
         }) ? "" : "u-hidden-visually";
       });
     }
   
-    function AidPerContractViewModel(name, isOpened, o_filters) {
+    function AidPerContractViewModel(name, isOpened, o_all_filters) {
       var self = this;
       self.name = name;
       self.isOpened = ko.observable(isOpened);
@@ -35,14 +35,14 @@ $(document).on('ready turbolinks:load', function() {
       var aids_name = $('.c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
-        return new AidViewModel(aid_name, o_filters);
+        return new AidViewModel(aid_name, o_all_filters);
       });
 
       self.o_aids = ko.observableArray(aids_array);
     }
 
 
-    function AidsPerContractViewModel(name, o_filters) {
+    function AidsPerContractViewModel(name, o_all_filters) {
       var self = this;
       self.name = name;
       self.sesameOpen = function() {
@@ -59,7 +59,7 @@ $(document).on('ready turbolinks:load', function() {
       var slugs = $( ".c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
-        return new AidPerContractViewModel(slug, false, o_filters);
+        return new AidPerContractViewModel(slug, false, o_all_filters);
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
@@ -84,8 +84,8 @@ $(document).on('ready turbolinks:load', function() {
       var filter_array = _.map(gon.loaded.flat_all_filter, function(e) {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
-      self.o_filters = ko.observableArray(filter_array);
-      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_filters))
+      self.o_all_filters = ko.observableArray(filter_array);
+      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters))
     }
     
 
