@@ -33,10 +33,14 @@ $(document).on('ready turbolinks:load', function() {
                 .value()
       });
 
-      self.ownClass = ko.computed(function() {
+      self.isVisible = ko.computed(function() {
         return _.some(self.o_active_filters_name(), function(e){
           return _.includes(self.own_filters, e);
-        }) ? "" : "u-hidden-visually";
+        });
+      });
+
+      self.visibleClass = ko.computed(function() {
+        return self.isVisible() ? "" : "u-hidden-visually";
       });
 
     }

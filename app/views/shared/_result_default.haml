@@ -46,7 +46,7 @@
                   %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
               .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
                 - aids_per_contract.each do |aid|
-                  .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: ownClass"}
+                  .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
                     .o-layout.o-layout--middle.o-layout--flush
                       %div{class:"o-layout__item u-3/4"}   
                         %h5=aid["name"]
