@@ -54,12 +54,6 @@ $(document).on('ready turbolinks:load', function() {
         }).length;
       });
 
-      self.o_collapse_all = ko.computed(function() {
-        return _.filter(self.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
-        }).length == self.o_aids_per_contract().length;
-      });
-
       self.openClass = ko.computed(function() {
         return _.some(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
