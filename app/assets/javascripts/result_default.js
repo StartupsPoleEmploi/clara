@@ -9,6 +9,7 @@ $(document).on('ready turbolinks:load', function() {
       self.name = name;
       self.description = description;
       self.isActive = ko.observable(isActive);
+      self.tagClosed = function(){self.isActive(false)};
     }
   
 
