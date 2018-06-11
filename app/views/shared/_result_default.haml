@@ -18,7 +18,7 @@
                 %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
-    %div{"class"=>"o-layout__item u-1/1 u-3/4@tablet"}
+    %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
         .u-text--right.u-margin-bottom-small
@@ -39,8 +39,9 @@
                         =v.title_for(aids_per_contract)
                       %p.c-resultcontract_descr
                         =v.descr_for(aids_per_contract)
-                %div{class:"o-layout__item u-1/4 u-text--right "}   
-                  %button.c-btn.c-btn--small.c-btn--result Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
+                  %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                  %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
               .c-resultaids
                 - aids_per_contract.each do |aid|
                   .c-resultaid

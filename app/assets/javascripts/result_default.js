@@ -14,6 +14,13 @@ $(document).on('ready turbolinks:load', function() {
       var self = this;
       self.name = name;
       self.isOpened = ko.observable(isOpened);
+      self.openedClass = ko.computed(function() {
+        return self.isOpened() ? "" : "u-hidden";
+      });
+      self.closedClass = ko.computed(function() {
+        return self.isOpened() ? "u-hidden" : "";
+      });
+      self.clickedOpenClose = function() {self.isOpened(!self.isOpened())}
     }
 
 
