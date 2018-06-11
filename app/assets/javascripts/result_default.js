@@ -29,7 +29,7 @@ $(document).on('ready turbolinks:load', function() {
       self.o_active_filters_name = ko.computed(function() {
         return _.chain(self.o_all_filters())
                 .filter(function(e) {return e.isActive()})
-                .map(function(e){ return e.name})
+                .map(function(e){return e.name})
                 .value()
       });
 

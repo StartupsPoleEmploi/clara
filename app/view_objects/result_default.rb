@@ -20,8 +20,7 @@ class ResultDefault < ViewObject
 
   def title_for(aids_per_contract)
     str_title = @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
-    str_nb = aids_per_contract.size
-    "#{str_nb} #{str_title}"
+    "#{str_title}"
   end
 
   def descr_for(aids_per_contract)

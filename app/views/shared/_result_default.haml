@@ -20,7 +20,7 @@
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       #o_eligibles{"data-bind" => "with: o_eligibles"}
-        %h3="Vous pouvez bénéficier de #{v.eligible_size} aides et mesures"
+        %h3="Vous pouvez bénéficier de #{'<span class="c-resultcardsize">v.eligible_size</span>'.html_safe} aides et mesures"
         .u-text--right.u-margin-bottom-small
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
@@ -35,10 +35,11 @@
                     .o-flag__img{class:"u-hide-until@tablet"}
                       =v.icon_for(aids_per_contract)
                     .o-flag__body
-                      .u-hidden.c-resultcontract_slug
-                        =v.slug_for(aids_per_contract)
-                      %h4.c-resultcontract_title
-                        =v.title_for(aids_per_contract)
+                      %h4.c-resultcontract-title
+                        %span.c-resultcontract-title__number
+                          12
+                        %span.c-resultcontract-title__text
+                          =v.title_for(aids_per_contract)
                       %p.c-resultcontract_descr
                         =v.descr_for(aids_per_contract)
                 %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
