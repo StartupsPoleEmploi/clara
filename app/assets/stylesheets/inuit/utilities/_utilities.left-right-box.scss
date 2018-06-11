@@ -1,0 +1,19 @@
+/* ==========================================================================
+   #LEFT RIGHT BOX
+   ========================================================================== */
+
+/**
+ * A pattern borrowed from https://css-tricks.com/examples/leftandright/:
+ */
+
+.u-lrbox {
+
+}
+
+.u-lrbox__alignleft {
+    float: left;
+}
+
+.u-lrbox__alignright {
+    float: right;
+}
