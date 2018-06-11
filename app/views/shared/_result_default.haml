@@ -3,6 +3,9 @@
 %script#emptyTemplate.u-hidden{:type => "text/ko-template"}
   <div></div>
 
+%script#filtertagTemplate.u-hidden{:type => "text/ko-template"}
+  <div class="c-filterstag__item"><div class="c-filtertag" data-bind="text: name"></div></div>
+
 .c-result-default.o-wrapper
   .o-layout
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
@@ -22,11 +25,7 @@
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de"
       .u-lrbox
-        .u-lrbox__alignleft.c-filterstag
-          - flat_all_filter.each_with_index do |a_filter, i|
-            .c-filterstag__item
-              .c-filtertag
-                =a_filter["description"]
+        .u-lrbox__alignleft.c-filterstag{"data-bind" => "foreachInit: {data: o_active_filters, name: 'filtertagTemplate' }"}
         .u-lrbox__alignright{"data-bind" => "with:o_eligibles"}
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
@@ -35,7 +34,7 @@
         %div{:style => "clear: both;"}
 
       .c-bindeligies{"data-bind" => "with:o_eligibles"}
-        #o_aids_per_contract{"data-bind" => "foreachInit: {with:o_eligibles, data: o_aids_per_contract, name: 'emptyTemplate' }"}
+        #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
             .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
               .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
@@ -66,7 +65,7 @@
                             %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                       %div{class:"o-layout__item u-1/4 u-text--right"}
                         %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
-      }
+      
       .c-result-warning
         %p.c-result-warning__line Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
         %p.c-result-warning__line Clara n'intègre pas encore les spécificités des aides et mesures applicables dans les régions et collectivités d'Outre Mer.

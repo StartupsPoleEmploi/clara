@@ -1,5 +1,5 @@
 $(document).on('ready turbolinks:load', function() {
-  if ($('.c-result-default')) {
+  if ($('.c-result-default').length) {
 
 
 
@@ -130,6 +130,12 @@ $(document).on('ready turbolinks:load', function() {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
       self.o_all_filters = ko.observableArray(filter_array);
+      self.o_active_filters = ko.computed(function() {
+        return _.filter(self.o_all_filters(), function(e) {
+          return e.isActive();
+        })
+      });
+
       self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters))
     }
     
