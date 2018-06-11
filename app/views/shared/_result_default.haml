@@ -18,6 +18,7 @@
                 %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
+
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       %h3="Vous pouvez bénéficier de"
       .u-text--right.u-margin-bottom-small{"data-bind" => "with:o_eligibles"}
