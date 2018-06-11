@@ -44,16 +44,16 @@
                 %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
                   %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-              .c-resultaids{"data-bind" => "css: openedClass"}
+              .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
                 - aids_per_contract.each do |aid|
                   .c-resultaid{"data-aslug" => aid["slug"]}
                     .o-layout.o-layout--middle.o-layout--flush
                       %div{class:"o-layout__item u-3/4"}   
                         %h5=aid["name"]
                         %p=aid["short_description"]
-                        %ul.o-list-inline
-                        - v.filters_of(aid).each do |one_filter|
-                          %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny=one_filter["description"]
+                        %ul.o-list-inline{"data-bind" => "css: filtersClass"}
+                          - v.filters_of(aid).each do |one_filter|
+                            %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny=one_filter["description"]
                       %div{class:"o-layout__item u-1/4 u-text--right"}
                         %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
       .c-result-warning
