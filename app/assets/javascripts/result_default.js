@@ -66,6 +66,10 @@ $(document).on('ready turbolinks:load', function() {
       });
 
       self.o_aids = ko.observableArray(aids_array);
+
+      self.numberOfAidsPerContract = ko.computed(function() {
+        return _.size(self.o_aids());
+      });
     }
 
 
