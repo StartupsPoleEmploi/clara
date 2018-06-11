@@ -3,78 +3,12 @@ require 'securerandom'
 
 describe RuletreeService do
 
-  cache_layer = nil
-
-  describe 'instantiation' do
-    before do
-      the_asker = Asker.new(v_age: '42', v_spectacle: 'non')
-      r_adult = create(:rule, :be_an_adult, name: "r_adult_rts")
-      r_spectacle = create(:rule, :be_a_spectacle, name: "r_spectacle_rts")
-      r_adult_and_spectacle = create(:rule, name: "r_adult_and_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :and_rule)
-      r_adult_or_spectacle = create(:rule, name: "r_adult_or_spectacle_rts", slave_rules: [r_adult, r_spectacle], composition_type: :or_rule)
-    end
-    describe 'Cache Read, already something inside the database' do
-      before do
-        cache_layer = instance_double("CacheService")
-        allow(cache_layer).to receive(:read).and_return('[{}]')
-        allow(cache_layer).to receive(:write).and_return(nil)
-        CacheService.set_instance(cache_layer)        
-      end
-      after do
-        CacheService.set_instance(nil)        
-      end
-      it 'Must have read key "all_rules_json" from cache' do
-        # given
-        # when
-        RuletreeService.get_instance
-        # then
-        expect(cache_layer).to have_received(:read).with("all_rules_json")
-      end
-      it 'Must NOT write anything to cache' do
-        # given
-        # when
-        RuletreeService.get_instance
-        # then
-        expect(cache_layer).not_to have_received(:write)
-      end
-      it 'Must fetch results from cache, if any' do
-        # given
-        # when
-        sut = RuletreeService.get_instance._all_rules
-        # then
-        expect(sut.size).to eq(1)
-      end
-    end
-    describe 'Cache Write, nothing inside the database' do
-      before do
-        cache_layer = instance_double("CacheService")
-        allow(cache_layer).to receive(:read).and_return(nil)
-        allow(cache_layer).to receive(:write).and_return(nil)
-        CacheService.set_instance(cache_layer)        
-      end
-      after do
-        CacheService.set_instance(nil)        
-      end
-      it 'Must WRITE the list to the cache' do
-        # given
-        # when
-        RuletreeService.get_instance
-        # then
-        expect(cache_layer).to have_received(:write).with("all_rules_json", anything)
-      end
-      it 'Must fetch results from DB' do
-        # given
-        # when
-        # then
-        expect(RuletreeService.get_instance._all_rules.size).to be > 1
-      end
-    end
-  end
-
-
   describe ".evaluate ADULT" do
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_an_adult, name: 'an_adult' + SecureRandom.hex; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    before do
+      create :rule, :be_an_adult, name: 'an_adult'
+    end
+    let(:rule) {JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -106,8 +40,11 @@ describe RuletreeService do
   end
 
   describe ".evaluate CHILD" do
+    before do
+      create :rule, :be_a_child
+    end
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_a_child; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -163,8 +100,11 @@ describe RuletreeService do
   end
 
   describe "UNCERTAIN .evaluate" do
+    before do
+      create :rule, :be_in_qpv
+    end
     subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
-    let(:rule) { create :rule, :be_in_qpv; JSON.parse(Rule.last.to_json(:include => [:slave_rules, :variable])) }
+    let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
       it { expect(subject).to eq 'uncertain' }
@@ -184,11 +124,13 @@ describe RuletreeService do
   end
 
   describe ".resolve" do
-    subject { RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules, :variable])]);RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
+    before do
+      RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules])])
+    end
+    subject { RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
-
       context 'more_or_equal_than an Integer, limit case, "eligible"' do
         let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is more or equal than 19' do

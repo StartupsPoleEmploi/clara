@@ -17,11 +17,14 @@ class SerializeResultsService
   end
 
   def go(asker)
+
     calculator = AidCalculationService.get_instance(asker)
-    res = {
-     flat_all_eligible: calculator.all_eligible,
-     flat_all_uncertain: calculator.all_uncertain,
-     flat_all_ineligible: calculator.all_ineligible,
+    res =  {
+     flat_all_eligible: calculator.every_eligible,
+     flat_all_uncertain: calculator.every_uncertain,
+     flat_all_ineligible: calculator.every_ineligible,
+     flat_all_contract: ActivatedModelsService.get_instance.contract_types,
+     flat_all_filter: ActivatedModelsService.get_instance.filters,
      asker: asker.attributes
     }
     res

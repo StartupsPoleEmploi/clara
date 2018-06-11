@@ -1,0 +1,155 @@
+.c-result-default {
+}
+
+.c-mask-filter {
+  border-radius: 3px;
+  background-color: #057dbc;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  width: 100%;
+  border: none;
+}
+
+.c-filterings-area {
+  background-color: #ffffff;
+}
+
+.c-resultfilterings {
+  padding:0;
+  legend {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+.c-resultfiltering {
+  label {
+    font-size: 16px; // HACK
+  }
+}
+.c-resultfiltering--even {
+  background-color:#f3f8fc;
+}
+
+.c-resultfiltering__checkbox {
+
+}
+
+.c-resultcard {
+  background-color:white;
+  border: solid 1px #dcdcdc;
+  border-radius: 4px;
+}
+
+.c-resultcard__inner {
+  padding: $inuit-global-spacing-unit-small;
+}
+
+.c-resultcard--notfirst {
+  margin-top: $inuit-global-spacing-unit-small;
+}
+
+.c-resultcard--green {
+  border-left: 5px solid #028138;
+}
+
+.c-resultcard--green svg {
+  fill: #028138;
+}
+
+.c-resultcontract_descr {
+  margin-top: $inuit-global-spacing-unit-nano;
+  font-size: 16px; // HACK
+}
+.c-resultcontract-title {
+  margin-bottom: 0;
+}
+.c-resultcontract .o-flag__img {
+  width: 100px;
+}
+
+.c-btn--result {
+  font-size: 16px; // HACK
+  padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit-small;
+  color:#057dbc;
+  border-color:#057dbc;
+}
+
+.c-resultcaret {
+  font-weight: bold;
+}
+
+.c-resultaid {
+  border-top: solid 1px #dcdcdc;
+  padding: $inuit-global-spacing-unit-small;
+}
+
+.c-resultaid h5 {
+  margin-bottom: 0;
+}
+
+.c-resultaid p {
+  font-size: 16px; // HACK
+}
+
+.c-btn--aid {
+  border: none;
+  font-size: 14px; // HACK
+  font-weight: 500;
+  padding: $inuit-global-spacing-unit-nano;
+  // padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit;
+  border-radius: 35px;
+  background-color: #057dbc;
+}
+
+.c-resultfilter {
+  font-size: 13px; // HACK
+  color: #484848;
+  background-color:#efefef;
+  border-radius: 30px;
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
+}
+
+
+.c-result-warning {
+  font-size: 16px; // HACK
+  font-weight: 300;
+  border-radius: 4px;
+  margin-top: $inuit-global-spacing-unit;
+  background-color:#FCF8E3;
+  border: solid 1px #faf2cc;
+  padding: $inuit-global-spacing-unit;
+  color: #333333;
+}
+
+/** checkbox **/
+input[type=checkbox] {
+  transform: scale(2);
+}
+
+/** checkbox **/
+input[type=radio] {
+  transform: scale(2);
+}
+
+
+.c-filterstag__item {
+  display: inline-block;
+}
+
+.c-filtertag {
+  margin-bottom: $inuit-global-spacing-unit-tiny;
+  display: inline;
+  font-size: 15px;
+  color: #333333;
+  width: 195px;
+  max-width: 195px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  background-color: #ebebeb;
+  border-radius: 30px;
+  padding: 8px 14px;
+}
+ 

@@ -10,6 +10,7 @@ class FilterDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    description: Field::String,
     aids: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -32,6 +33,7 @@ class FilterDashboard < Administrate::BaseDashboard
     :id,
     :aids,
     :name,
+    :description,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -40,6 +42,7 @@ class FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :aids,
+    :description,
   ].freeze
 
   # Overwrite this method to customize how aidss are displayed

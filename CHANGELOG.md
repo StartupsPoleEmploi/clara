@@ -2,6 +2,10 @@
 
 
 
+## 9.10.0 (01/06/2018)
+-[#777][FEATURE] filters in results, when opening
+
+
 ## 9.9.0 (31/05/2018)
 -[#770][FEATURE] filter by need, admin
 

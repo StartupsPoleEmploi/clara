@@ -23,4 +23,38 @@ class FilterRawAidsService
     all_lines
   end
 
+  def group_and_order
+    all_lines = []
+    if @raw_aids.is_a?(Array) && @raw_aids.size > 0 && @raw_aids.all?{|e| e.is_a?(Hash)}
+      grouped = @raw_aids.group_by{|e| e['contract_type_id']}
+      return grouped
+    end
+    all_lines
+  end
+
 end
+
+# uncertains = [
+#   {"id"=>2,
+#     "name"=>"Aide aux habitants en zone QPV",
+#     "slug"=>"aide-aux-habitants-en-zone-qpv",
+#     "short_description"=>"",
+#     "ordre_affichage"=>1,
+#     "contract_type_id"=>1,
+#     "filters"=>[{"id"=>2}],
+#     "eligibility"=>"uncertain"},
+#  {"id"=>3,
+#     "name"=>"Aide aux habitants en QPV adultes",
+#     "slug"=>"aide-aux-habitants-en-qpv-adultes",
+#     "short_description"=>"",
+#     "ordre_affichage"=>3,
+#     "contract_type_id"=>2,
+#     "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
+#     "eligibility"=>"uncertain"}
+# ]
+
+# res = FilterRawAidsService.new(uncertains).group_and_order
+# p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+# pp res
+# p ''
+
