@@ -21,11 +21,27 @@
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         %h3="Vous pouvez bénéficier de"
-        .u-text--right.u-margin-bottom-small
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
-            Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-          %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: unfoldClass"}
-            Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+        .u-lrbox
+          .u-lrbox__alignleft.c-filterstag
+            .c-filterstag__item
+              .c-filtertag
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco.&nbsp;&#x2716;
+            .c-filterstag__item
+              .c-filtertag
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco.&nbsp;&#x2716;
+            .c-filterstag__item
+              .c-filtertag
+                blabla222
+          .u-lrbox__alignright
+            %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
+              Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+            %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: unfoldClass"}
+              Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+          %div{:style => "clear: both;"}
         #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
             .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
