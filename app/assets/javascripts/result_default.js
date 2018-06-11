@@ -33,8 +33,8 @@ $(document).on('ready turbolinks:load', function() {
       // see https://stackoverflow.com/a/16570627/2595513
       var slugs = $('.c-resultcontract_slug').map(function(){return $.trim($(this).text());}).get();
 
-      var aid_per_contract_array = _.map(slugs, function(e) {
-        return new AidPerContractViewModel(e, false);
+      var aid_per_contract_array = _.map(slugs, function(slug) {
+        return new AidPerContractViewModel(slug, false);
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
@@ -43,6 +43,12 @@ $(document).on('ready turbolinks:load', function() {
         return _.filter(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }).length;
+      });
+
+      self.o_collapse_all = ko.computed(function() {
+        return _.filter(self.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        }).length == self.o_aids_per_contract().length;
       });
 
       self.say_blabla = function() {console.log("blabla")}
