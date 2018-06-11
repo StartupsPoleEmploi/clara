@@ -15,10 +15,10 @@ $(document).on('ready turbolinks:load', function() {
       self.name = name;
       self.isOpened = ko.observable(isOpened);
       self.openedClass = ko.computed(function() {
-        return self.isOpened() ? "" : "u-hidden";
+        return self.isOpened() ? "" : "u-hidden-visually";
       });
       self.closedClass = ko.computed(function() {
-        return self.isOpened() ? "u-hidden" : "";
+        return self.isOpened() ? "u-hidden-visually" : "";
       });
       self.clickedOpenClose = function() {self.isOpened(!self.isOpened())}
     }
@@ -38,6 +38,15 @@ $(document).on('ready turbolinks:load', function() {
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
+
+      self.o_nb_of_opened_child = ko.computed(function() {
+        return _.filter(self.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        }).length;
+      });
+
+      self.say_blabla = function() {console.log("blabla")}
+      
     }
 
 
