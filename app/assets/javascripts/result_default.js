@@ -24,13 +24,18 @@ $(document).on('ready turbolinks:load', function() {
         }) ? "" : "u-hidden-visually";
       });
 
-      // self.o_own_filters =$('.c-resultaid[data-aslug="' + self.name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get()
       self.own_filters = own_filters;
-      // self.ownClass="";
+
+      self.o_active_filters_name = ko.computed(function() {
+        return _.chain(self.o_all_filters())
+                .filter(function(e) {return e.isActive()})
+                .map(function(e){ return e.name})
+                .value()
+      });
 
       self.ownClass = ko.computed(function() {
-        return !!_.find(self.own_filters, function(filter_name){
-          return filter_name === "adulte";
+        return _.some(self.o_active_filters_name(), function(e){
+          return _.includes(self.own_filters, e);
         }) ? "" : "u-hidden-visually";
       });
 
