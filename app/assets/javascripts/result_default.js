@@ -61,12 +61,14 @@ $(document).on('ready turbolinks:load', function() {
       });
 
       self.openClass = ko.computed(function() {
-        return _.every(self.o_aids_per_contract(), function(aid){
+        return _.some(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
       });
       self.clozClass = ko.computed(function() {
-        return !self.openClass() ? "u-hidden-visually" : "";
+        return !_.every(self.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        }) ? "" : "u-hidden-visually";
       });
       
     }
