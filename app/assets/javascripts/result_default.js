@@ -51,6 +51,13 @@ $(document).on('ready turbolinks:load', function() {
         }).length == self.o_aids_per_contract().length;
       });
 
+      self.openClass = ko.computed(function() {
+        return self.isOpened() ? "" : "u-hidden-visually";
+      });
+      self.clozClass = ko.computed(function() {
+        return self.isOpened() ? "u-hidden-visually" : "";
+      });
+
       self.say_blabla = function() {console.log("blabla")}
       
     }
