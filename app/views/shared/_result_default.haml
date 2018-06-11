@@ -23,19 +23,10 @@
       %h3="Vous pouvez bénéficier de"
       .u-lrbox
         .u-lrbox__alignleft.c-filterstag
-          .c-filterstag__item
-            .c-filtertag
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco.&nbsp;&#x2716;
-          .c-filterstag__item
-            .c-filtertag
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco.&nbsp;&#x2716;
-          .c-filterstag__item
-            .c-filtertag
-              blabla222
+          - flat_all_filter.each_with_index do |a_filter, i|
+            .c-filterstag__item
+              .c-filtertag
+                =a_filter["description"]
         .u-lrbox__alignright{"data-bind" => "with:o_eligibles"}
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
@@ -44,7 +35,7 @@
         %div{:style => "clear: both;"}
 
       .c-bindeligies{"data-bind" => "with:o_eligibles"}
-        #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+        #o_aids_per_contract{"data-bind" => "foreachInit: {with:o_eligibles, data: o_aids_per_contract, name: 'emptyTemplate' }"}
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
             .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
               .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush

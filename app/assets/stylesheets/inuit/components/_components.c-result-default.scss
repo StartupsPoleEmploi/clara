@@ -133,3 +133,23 @@ input[type=radio] {
 }
 
 
+.c-filterstag__item {
+  display: inline-block;
+}
+
+.c-filtertag {
+  margin-bottom: $inuit-global-spacing-unit-tiny;
+  display: inline;
+  font-size: 15px;
+  color: #333333;
+  width: 195px;
+  max-width: 195px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  background-color: #ebebeb;
+  border-radius: 30px;
+  padding: 8px 14px;
+}
+ 
