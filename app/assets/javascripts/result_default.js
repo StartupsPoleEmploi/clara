@@ -39,8 +39,7 @@ $(document).on('ready turbolinks:load', function() {
         })
       }
 
-      // see https://stackoverflow.com/a/16570627/2595513
-      var slugs = $('.c-resultcontract_slug').map(function(){return $.trim($(this).text());}).get();
+      var slugs = $( ".c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
         return new AidPerContractViewModel(slug, false);
@@ -48,18 +47,12 @@ $(document).on('ready turbolinks:load', function() {
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
 
-      self.o_nb_of_opened_child = ko.computed(function() {
-        return _.filter(self.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
-        }).length;
-      });
-
-      self.openClass = ko.computed(function() {
+      self.unfoldClass = ko.computed(function() {
         return _.some(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
       });
-      self.clozClass = ko.computed(function() {
+      self.foldClass = ko.computed(function() {
         return !_.every(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
