@@ -23,19 +23,10 @@
         %h3="Vous pouvez bénéficier de"
         .u-lrbox
           .u-lrbox__alignleft.c-filterstag
-            .c-filterstag__item
-              .c-filtertag
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco.&nbsp;&#x2716;
-            .c-filterstag__item
-              .c-filtertag
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco.&nbsp;&#x2716;
-            .c-filterstag__item
-              .c-filtertag
-                blabla222
+            - flat_all_filter.each_with_index do |a_filter, i|
+              .c-filterstag__item
+                .c-filtertag
+                  =a_filter["description"]
           .u-lrbox__alignright
             %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
               Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
