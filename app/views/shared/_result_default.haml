@@ -42,7 +42,7 @@
                 %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
                   %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-              .c-resultaids
+              .c-resultaids{"data-bind" => "css: openedClass"}
                 - aids_per_contract.each do |aid|
                   .c-resultaid
                     .o-layout.o-layout--middle.o-layout--flush
