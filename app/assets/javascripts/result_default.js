@@ -1,6 +1,8 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('.c-result-default')) {
 
+
+
     function FilterViewModel(id, name, description, isActive) {
       var self = this;
       self.id = id;
@@ -9,17 +11,33 @@ $(document).on('ready turbolinks:load', function() {
       self.isActive = ko.observable(isActive);
     }
   
-    function AidViewModel(name, o_all_filters) {
+
+
+    function AidViewModel(name, o_all_filters, own_filters) {
       var self = this;
       self.name = name;
+
       self.o_all_filters = o_all_filters;
       self.filtersClass = ko.computed(function() {
         return _.some(self.o_all_filters(), function(filter){
           return filter.isActive();
         }) ? "" : "u-hidden-visually";
       });
+
+      // self.o_own_filters =$('.c-resultaid[data-aslug="' + self.name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get()
+      self.own_filters = own_filters;
+      // self.ownClass="";
+
+      self.ownClass = ko.computed(function() {
+        return !!_.find(self.own_filters, function(filter_name){
+          return filter_name === "adulte";
+        }) ? "" : "u-hidden-visually";
+      });
+
     }
   
+
+
     function AidPerContractViewModel(name, isOpened, o_all_filters) {
       var self = this;
       self.name = name;
@@ -35,11 +53,13 @@ $(document).on('ready turbolinks:load', function() {
       var aids_name = $('.c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
-        return new AidViewModel(aid_name, o_all_filters);
+        return new AidViewModel(aid_name, o_all_filters, $('.c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
       });
 
       self.o_aids = ko.observableArray(aids_array);
     }
+
+
 
 
     function AidsPerContractViewModel(name, o_all_filters) {
@@ -78,6 +98,8 @@ $(document).on('ready turbolinks:load', function() {
     }
 
 
+
+
     function AppViewModel() {
       var self = this;
     
@@ -89,7 +111,11 @@ $(document).on('ready turbolinks:load', function() {
     }
     
 
+
+
     var appViewModel = new AppViewModel();
+
+
 
 
     ko.applyBindings(appViewModel);
