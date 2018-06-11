@@ -20,15 +20,19 @@
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
       #o_filterstag{"data-bind" => "with: o_filterstag"}
-          
+        .c-filterstag.u-text--left
+          - flat_all_filter.each_with_index do |a_filter, i|
+            .c-filterstag__item
+              .c-filtertag
+                =a_filter["description"]         
       #o_eligibles{"data-bind" => "with: o_eligibles"}
-        %h3="Vous pouvez bénéficier de"
-        .u-text--right.u-margin-bottom-small
+        .u-text--right
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
             Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameClose, css: unfoldClass"}
             Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
         #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
             .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
               .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
