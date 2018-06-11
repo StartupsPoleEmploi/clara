@@ -3,6 +3,9 @@
 %script#emptyTemplate.u-hidden{:type => "text/ko-template"}
   <div></div>
 
+%script#filtertagTemplate.u-hidden{:type => "text/ko-template"}
+  <div class="c-filterstag__item"><div class="c-filtertag" data-bind="text: name"></div></div>
+
 .c-result-default.o-wrapper
   .o-layout
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
@@ -19,12 +22,8 @@
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
-      #o_filterstag{"data-bind" => "with: o_filterstag"}
-        .c-filterstag.u-text--left
-          - flat_all_filter.each_with_index do |a_filter, i|
-            .c-filterstag__item
-              .c-filtertag
-                =a_filter["description"]         
+      #o_filterstag{"class" => "u-visually-hidden"}
+        .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_filterstag, name: 'filtertagTemplate' }"}
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .u-text--right
           %button.c-btn.c-btn--small.c-btn--result{"data-bind" => "click: sesameOpen, css: foldClass"}
