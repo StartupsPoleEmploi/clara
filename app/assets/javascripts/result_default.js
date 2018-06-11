@@ -13,7 +13,7 @@ $(document).on('ready turbolinks:load', function() {
   
 
 
-    function AidViewModel(name, o_all_filters, own_filters) {
+    function AidViewModel(name, o_all_filters, own_filters_name) {
       var self = this;
       self.name = name;
 
@@ -24,7 +24,7 @@ $(document).on('ready turbolinks:load', function() {
         }) ? "" : "u-hidden-visually";
       });
 
-      self.own_filters = own_filters;
+      self.own_filters_name = own_filters_name;
 
       self.o_active_filters_name = ko.computed(function() {
         return _.chain(self.o_all_filters())
@@ -34,9 +34,13 @@ $(document).on('ready turbolinks:load', function() {
       });
 
       self.isVisible = ko.computed(function() {
-        return _.some(self.o_active_filters_name(), function(e){
-          return _.includes(self.own_filters, e);
+        var condition1 = _.some(self.o_active_filters_name(), function(e){
+          return _.includes(self.own_filters_name, e);
         });
+        var condition2 = _.none(self.o_all_filters(), function(e) {
+          return e.isActive();
+        })
+        return condition1 || condition2;
       });
 
       self.visibleClass = ko.computed(function() {
@@ -71,6 +75,10 @@ $(document).on('ready turbolinks:load', function() {
         return _.count(self.o_aids(), function(a){
           return a.isVisible();
         });
+      });
+
+      self.displayClass = ko.computed(function() {
+        return (self.numberOfAidsPerContract() !== 0) ? "" : "u-hidden-visually";
       });
     }
 

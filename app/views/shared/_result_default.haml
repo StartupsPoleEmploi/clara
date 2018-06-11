@@ -28,7 +28,7 @@
             Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
         #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
           - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
-            .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract)}
+            .c-resultcard.c-resultcard--green{class:"#{'c-resultcard--notfirst' if i != 0}", "data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
               .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush
                 %div{class:"o-layout__item u-3/4"}   
                   .o-flag.o-flag--flush.c-resultcontract
