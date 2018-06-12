@@ -1,6 +1,5 @@
 $(document).on('ready turbolinks:load', function() {
-  if ($('.c-result-default')) {
-
+  if ($('.c-result-default').length) {
 
 
     function FilterViewModel(id, name, description, isActive) {
@@ -11,7 +10,7 @@ $(document).on('ready turbolinks:load', function() {
       self.isActive = ko.observable(isActive);
       self.tagClosed = function(){self.isActive(false)};
     }
-  
+
 
 
     function AidViewModel(name, o_all_filters, own_filters_name) {
@@ -29,9 +28,9 @@ $(document).on('ready turbolinks:load', function() {
 
       self.o_active_filters_name = ko.computed(function() {
         return _.chain(self.o_all_filters())
-                .filter(function(e) {return e.isActive()})
-                .map(function(e){return e.name})
-                .value()
+        .filter(function(e) {return e.isActive()})
+        .map(function(e){return e.name})
+        .value()
       });
 
       self.isVisible = ko.computed(function() {
@@ -49,7 +48,7 @@ $(document).on('ready turbolinks:load', function() {
       });
 
     }
-  
+
 
 
     function AidPerContractViewModel(eligy_name, name, isOpened, o_all_filters) {
@@ -87,17 +86,17 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function AidsPerContractViewModel(eligy_name, o_all_filters) {
-      
+
       var self = this;
-      
+
       self.name = eligy_name;
-      
+
       self.sesameOpen = function() {
         _.each(self.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
         })
       }
-      
+
       self.sesameClose = function() {
         _.each(self.o_aids_per_contract(), function(aid){
           aid.isOpened(false);
@@ -110,14 +109,14 @@ $(document).on('ready turbolinks:load', function() {
       var aid_per_contract_array = _.map(slugs, function(slug) {
         return new AidPerContractViewModel(eligy_name, slug, false, o_all_filters);
       });
-      
+
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
 
       self.o_nb_of_selected_aids = ko.computed(function() {
         return _.chain(self.o_aids_per_contract())
-                .map(function(e) {return e.numberOfAidsPerContract();})
-                .sum()
-                .value()
+        .map(function(e) {return e.numberOfAidsPerContract();})
+        .sum()
+        .value()
       });
 
       self.unfoldClass = ko.computed(function() {
@@ -133,7 +132,7 @@ $(document).on('ready turbolinks:load', function() {
       self.cssZoneDisplay = ko.computed(function() {
         return self.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
       });
-      
+
     }
 
 
@@ -146,7 +145,7 @@ $(document).on('ready turbolinks:load', function() {
           return f.isActive();
         });
       });
-      
+
       self.o_cssMargin = ko.computed(function() {
         return _.isEmpty(self.o_active_filters()) ? "" : "u-margin-bottom-small";
       }); 
@@ -157,7 +156,7 @@ $(document).on('ready turbolinks:load', function() {
 
     function AppViewModel() {
       var self = this;
-    
+
       var filter_array = _.map(gon.loaded.flat_all_filter, function(e) {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
@@ -167,7 +166,7 @@ $(document).on('ready turbolinks:load', function() {
       self.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', self.o_all_filters));
       self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
     }
-    
+
 
 
 
@@ -180,6 +179,6 @@ $(document).on('ready turbolinks:load', function() {
 
 
   }
-
+  
 
 });

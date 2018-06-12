@@ -6,7 +6,7 @@ class AidesController < ApplicationController
     if have_active_asker?
       pull_existing_from_cache
       if (@existing)
-        hydrate_view(hashify_results(@existing))
+        hydrate_view(@existing)
         instantiate_asker(@existing)
       else
         pull_asker_from_query_param
