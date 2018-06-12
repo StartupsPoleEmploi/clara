@@ -173,7 +173,10 @@ $(document).on('ready turbolinks:load', function() {
       
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
-        return that.o_filterstag().o_active_filters().length + that.o_uncertains().o_nb_of_unfold();
+        return that.o_filterstag().o_active_filters().length + 
+                that.o_ineligibles().o_nb_of_unfold() +
+                that.o_uncertains().o_nb_of_unfold() +
+                that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
         console.log('changed')
         console.log(newValue)
