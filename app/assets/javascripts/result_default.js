@@ -3,48 +3,48 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function FilterViewModel(id, name, description, isActive) {
-      var self = this;
-      self.id = id;
-      self.name = name;
-      self.description = description;
-      self.isActive = ko.observable(isActive);
-      self.tagClosed = function(){self.isActive(false)};
+      var that = this;
+      that.id = id;
+      that.name = name;
+      that.description = description;
+      that.isActive = ko.observable(isActive);
+      that.tagClosed = function(){that.isActive(false)};
     }
 
 
 
     function AidViewModel(name, o_all_filters, own_filters_name) {
-      var self = this;
-      self.name = name;
+      var that = this;
+      that.name = name;
 
-      self.o_all_filters = o_all_filters;
-      self.filtersClass = ko.computed(function() {
-        return _.some(self.o_all_filters(), function(filter){
+      that.o_all_filters = o_all_filters;
+      that.filtersClass = ko.computed(function() {
+        return _.some(that.o_all_filters(), function(filter){
           return filter.isActive();
         }) ? "" : "u-hidden-visually";
       });
 
-      self.own_filters_name = own_filters_name;
+      that.own_filters_name = own_filters_name;
 
-      self.o_active_filters_name = ko.computed(function() {
-        return _.chain(self.o_all_filters())
+      that.o_active_filters_name = ko.computed(function() {
+        return _.chain(that.o_all_filters())
         .filter(function(e) {return e.isActive()})
         .map(function(e){return e.name})
         .value()
       });
 
-      self.isVisible = ko.computed(function() {
-        var condition1 = _.some(self.o_active_filters_name(), function(e){
-          return _.includes(self.own_filters_name, e);
+      that.isVisible = ko.computed(function() {
+        var condition1 = _.some(that.o_active_filters_name(), function(e){
+          return _.includes(that.own_filters_name, e);
         });
-        var condition2 = _.none(self.o_all_filters(), function(e) {
+        var condition2 = _.none(that.o_all_filters(), function(e) {
           return e.isActive();
         })
         return condition1 || condition2;
       });
 
-      self.visibleClass = ko.computed(function() {
-        return self.isVisible() ? "" : "u-hidden-visually";
+      that.visibleClass = ko.computed(function() {
+        return that.isVisible() ? "" : "u-hidden-visually";
       });
 
     }
@@ -52,33 +52,33 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function AidPerContractViewModel(eligy_name, name, isOpened, o_all_filters) {
-      var self = this;
-      self.name = name;
-      self.isOpened = ko.observable(isOpened);
-      self.openedClass = ko.computed(function() {
-        return self.isOpened() ? "" : "u-hidden-visually";
+      var that = this;
+      that.name = name;
+      that.isOpened = ko.observable(isOpened);
+      that.openedClass = ko.computed(function() {
+        return that.isOpened() ? "" : "u-hidden-visually";
       });
-      self.closedClass = ko.computed(function() {
-        return self.isOpened() ? "u-hidden-visually" : "";
+      that.closedClass = ko.computed(function() {
+        return that.isOpened() ? "u-hidden-visually" : "";
       });
-      self.clickedOpenClose = function() {self.isOpened(!self.isOpened())}
+      that.clickedOpenClose = function() {that.isOpened(!that.isOpened())}
 
-      var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
+      var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + that.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
         return new AidViewModel(aid_name, o_all_filters, $('#o_' + eligy_name + ' .c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
       });
 
-      self.o_aids = ko.observableArray(aids_array);
+      that.o_aids = ko.observableArray(aids_array);
 
-      self.numberOfAidsPerContract = ko.computed(function() {
-        return _.count(self.o_aids(), function(a){
+      that.numberOfAidsPerContract = ko.computed(function() {
+        return _.count(that.o_aids(), function(a){
           return a.isVisible();
         });
       });
 
-      self.displayClass = ko.computed(function() {
-        return (self.numberOfAidsPerContract() !== 0) ? "" : "u-hidden-visually";
+      that.displayClass = ko.computed(function() {
+        return (that.numberOfAidsPerContract() !== 0) ? "" : "u-hidden-visually";
       });
     }
 
@@ -87,18 +87,18 @@ $(document).on('ready turbolinks:load', function() {
 
     function AidsPerContractViewModel(eligy_name, o_all_filters) {
 
-      var self = this;
+      var that = this;
 
-      self.name = eligy_name;
+      that.name = eligy_name;
 
-      self.sesameOpen = function() {
-        _.each(self.o_aids_per_contract(), function(aid){
+      that.sesameOpen = function() {
+        _.each(that.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
         })
       }
 
-      self.sesameClose = function() {
-        _.each(self.o_aids_per_contract(), function(aid){
+      that.sesameClose = function() {
+        _.each(that.o_aids_per_contract(), function(aid){
           aid.isOpened(false);
         })
       }
@@ -110,44 +110,50 @@ $(document).on('ready turbolinks:load', function() {
         return new AidPerContractViewModel(eligy_name, slug, false, o_all_filters);
       });
 
-      self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
+      that.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
 
-      self.o_nb_of_selected_aids = ko.computed(function() {
-        return _.chain(self.o_aids_per_contract())
+      that.o_nb_of_selected_aids = ko.computed(function() {
+        return _.chain(that.o_aids_per_contract())
         .map(function(e) {return e.numberOfAidsPerContract();})
         .sum()
         .value()
       });
 
-      self.unfoldClass = ko.computed(function() {
-        return _.some(self.o_aids_per_contract(), function(aid){
+      that.o_nb_of_unfold = ko.computed(function() {
+        return _.count(that.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        });
+      });
+
+      that.unfoldClass = ko.computed(function() {
+        return _.some(that.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
       });
-      self.foldClass = ko.computed(function() {
-        return !_.every(self.o_aids_per_contract(), function(aid){
+      that.foldClass = ko.computed(function() {
+        return !_.every(that.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
       });
-      self.cssZoneDisplay = ko.computed(function() {
-        return self.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
+      that.cssZoneDisplay = ko.computed(function() {
+        return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
       });
 
     }
 
 
     function FilterstagViewModel(o_all_filters) {
+      var that = this;
+      that.o_all_filters = o_all_filters;
 
-      self.o_all_filters = o_all_filters;
-
-      self.o_active_filters = ko.computed(function() {
-        return _.filter(self.o_all_filters(), function(f){
+      that.o_active_filters = ko.computed(function() {
+        return _.filter(that.o_all_filters(), function(f){
           return f.isActive();
         });
       });
 
-      self.o_cssMargin = ko.computed(function() {
-        return _.isEmpty(self.o_active_filters()) ? "" : "u-margin-bottom-small";
+      that.o_cssMargin = ko.computed(function() {
+        return _.isEmpty(that.o_active_filters()) ? "" : "u-margin-bottom-small";
       }); 
 
     }
@@ -155,24 +161,28 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function AppViewModel() {
-      var self = this;
+      var that = this;
 
       var filter_array = _.map(gon.loaded.flat_all_filter, function(e) {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
-      self.o_all_filters = ko.observableArray(filter_array);
-      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', self.o_all_filters));
-      self.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', self.o_all_filters));
-      self.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', self.o_all_filters));
-      self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
+      that.o_all_filters = ko.observableArray(filter_array);
+      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
+      that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
+      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
+      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
+      // Useful to track ANY change in the whole viewModel
+      that.o_nb_magic = ko.computed(function() {
+        return 
+          that.o_filterstag().o_active_filters().length + " " +
+          that.o_eligibles().o_nb_of_unfold().length;
+      }).subscribe(function (newValue) {
+        console.log('changed')
+        console.log(newValue)
+      }); 
     }
 
-
-
-
     window.appViewModel = new AppViewModel();
-
-
 
 
     ko.applyBindings(window.appViewModel);
@@ -183,10 +193,10 @@ $(document).on('ready turbolinks:load', function() {
 });
 
 
-$(window).unload(function(){
-  myfun();
-});
+// $(window).unload(function(){
+//   myfun();
+// });
 
-function myfun(){
-  localStorage.set("aaa", "4242")
-}
+// function myfun(){
+//   localStorage.set("aaa", "4242")
+// }
