@@ -39,11 +39,14 @@
   background-color:white;
   border: solid 1px #dcdcdc;
   border-radius: 4px;
-  margin-top: $inuit-global-spacing-unit-small;
 }
 
 .c-resultcard__inner {
   padding: $inuit-global-spacing-unit-small;
+}
+
+.c-resultcard--notfirst {
+  margin-top: $inuit-global-spacing-unit-small;
 }
 
 .c-resultcard--green {
@@ -129,23 +132,31 @@ input[type=radio] {
   transform: scale(2);
 }
 
+
 .c-filterstag__item {
   display: inline-block;
+  font-size: 15px;
+  color: #333333;
+  background-color: #ebebeb;
+  border-radius: 30px;
+  padding: 8px 14px;
+  margin-left: $inuit-global-spacing-unit-tiny;
 }
 
 .c-filtertag {
   margin-bottom: $inuit-global-spacing-unit-tiny;
   display: inline;
-  font-size: 15px;
-  color: #333333;
+}
+
+.c-filtertag__text {
   width: 195px;
   max-width: 195px;
   white-space: nowrap;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
-  background-color: #ebebeb;
-  border-radius: 30px;
-  padding: 8px 14px;
 }
 
+.c-filtertag__close {
+  cursor: pointer;
+}

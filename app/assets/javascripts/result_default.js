@@ -9,6 +9,7 @@ $(document).on('ready turbolinks:load', function() {
       self.name = name;
       self.description = description;
       self.isActive = ko.observable(isActive);
+      self.tagClosed = function(){self.isActive(false)};
     }
   
 
@@ -121,6 +122,10 @@ $(document).on('ready turbolinks:load', function() {
     }
 
 
+    function FilterstagViewModel(o_all_filters) {
+      
+    }
+
 
 
     function AppViewModel() {
@@ -131,6 +136,11 @@ $(document).on('ready turbolinks:load', function() {
       });
       self.o_all_filters = ko.observableArray(filter_array);
       self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters))
+      self.o_filterstag = ko.computed(function() {
+        return _.filter(self.o_all_filters(), function(f){
+          return f.isActive();
+        });
+      });
     }
     
 
