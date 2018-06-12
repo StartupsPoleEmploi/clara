@@ -67,7 +67,7 @@ $(document).on('ready turbolinks:load', function() {
       var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
-        return new AidViewModel(aid_name, o_all_filters, $('.c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
+        return new AidViewModel(aid_name, o_all_filters, $('#o_' + eligy_name + ' .c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
       });
 
       self.o_aids = ko.observableArray(aids_array);
