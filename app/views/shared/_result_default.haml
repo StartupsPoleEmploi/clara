@@ -32,8 +32,10 @@
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
-      #o_filterstag{"class" => "u-visually-hidden"}
-        .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_filterstag, name: 'filtertagTemplate' }"}
+      #o_filterstag{"class" => "u-visually-hidden", "data-bind" => "with: o_filterstag"}
+        .c-filterstag-container{"data-bind" => "css: o_cssMargin"}
+          .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_active_filters, name: 'filtertagTemplate' }"}
+        
       
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .u-lrbox

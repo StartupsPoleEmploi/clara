@@ -123,7 +123,19 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function FilterstagViewModel(o_all_filters) {
+
+      self.o_all_filters = o_all_filters;
+
+      self.o_active_filters = ko.computed(function() {
+        return _.filter(self.o_all_filters(), function(f){
+          return f.isActive();
+        });
+      });
       
+      self.o_cssMargin = ko.computed(function() {
+        return _.isEmpty(self.o_active_filters()) ? "" : "u-margin-bottom-small";
+      }); 
+
     }
 
 
@@ -135,12 +147,8 @@ $(document).on('ready turbolinks:load', function() {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
       self.o_all_filters = ko.observableArray(filter_array);
-      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters))
-      self.o_filterstag = ko.computed(function() {
-        return _.filter(self.o_all_filters(), function(f){
-          return f.isActive();
-        });
-      });
+      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters));
+      self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
     }
     
 
