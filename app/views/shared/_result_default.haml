@@ -6,7 +6,13 @@
 %script#filtertagTemplate.u-hidden{:type => "text/ko-template"}
   :plain
     <div class="c-filterstag__item">
-      <div class="c-filtertag" data-bind="text: name, click: tagClosed">
+      <div class="c-filtertag">
+        <div class="u-lrbox">
+          <div class="u-lrbox__alignleft c-filtertag__text" data-bind="text: name"></div>
+          <div class="u-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
+            &nbsp;&#x2716;
+          </div>
+        </div>
       </div>
     </div>
 
