@@ -119,6 +119,11 @@ $(document).on('ready turbolinks:load', function() {
         .value()
       });
 
+      that.o_nb_of_unfold = ko.computed(function() {
+        return _.count(that.o_aids_per_contract(), function(aid){
+          return aid.isOpened();
+        });
+      });
       that.unfoldClass = ko.computed(function() {
         return _.some(that.o_aids_per_contract(), function(aid){
           return aid.isOpened();
