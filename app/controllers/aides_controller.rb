@@ -13,8 +13,7 @@ class AidesController < ApplicationController
         augment_asker_with_qpv_zrr
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
-        hashified = hashify_results(cacheable)
-        hydrate_view(hashified)
+        hydrate_view(cacheable)
       end
     else
       hydrate_view(hash_of_all_active_aids)

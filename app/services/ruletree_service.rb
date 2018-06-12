@@ -16,15 +16,8 @@ class RuletreeService
   end
 
   def initialize
-    all_rules_json = CacheService.get_instance.read("all_rules_json")
-    begin
-      JSON.parse(all_rules_json)
-    rescue Exception => e
-      all_rules_json = Rule.all.to_json(:include => [:slave_rules, :variable])
-      CacheService.get_instance.write("all_rules_json", all_rules_json)
-    ensure
-      @all_rules = JSON.parse(all_rules_json)
-    end
+    @all_rules = ActivatedModelsService.get_instance.rules
+    @all_variables = ActivatedModelsService.get_instance.variables
   end
 
   def resolve(rule_id, criterion_hash = {}) 
@@ -58,9 +51,10 @@ class RuletreeService
   def evaluate(rule, criterion_hash)
     result = calculate_default_value
     c = criterion_hash.stringify_keys if criterion_hash.is_a?(Hash)
-    if c && c.has_key?(rule["variable"]["name"]) && c[rule["variable"]["name"]].present?
-      criterion_value = c[rule["variable"]["name"]]
-      rule_type = rule["variable"]["variable_type"]
+    variable = @all_variables.detect { |e| e["id"] == rule["variable_id"] }
+    if c && variable && c.has_key?(variable["name"]) && c[variable["name"]].present?
+      criterion_value = c[variable["name"]]
+      rule_type = variable["variable_type"]
       return "ineligible" if !type_is_accurate(criterion_value, rule_type)
       return "ineligible" if criterion_value == "not_applicable"
       return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)

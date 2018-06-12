@@ -76,6 +76,10 @@ _.mixin({
     return !_.some.apply(_, arguments);
   },
 
+  count: function() {
+    return _.defaultTo(_.countBy.apply(_, arguments)[true], 0);
+  },
+
   injectToPropArray: function (source, destination) {
 
     _.each(destination, function(e) {

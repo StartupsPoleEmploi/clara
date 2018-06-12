@@ -1,0 +1,27 @@
+/* ==========================================================================
+   #RESPONSIVE HIDE
+   ========================================================================== */
+
+/**
+ * Example usage:
+ * <div class="u-hide-from@tablet">
+ * <div class="u-hide-until@tablet">
+ */
+
+$breakpoint-separator: \@;
+
+@each $bp-name, $bp-value in $mq-breakpoints {
+
+    .u-hide-from#{$breakpoint-separator}#{$bp-name}{
+        @include mq($from: $bp-name) {
+            display: none !important;
+        }
+    }
+
+    .u-hide-until#{$breakpoint-separator}#{$bp-name}{
+        @include mq($until: $bp-name) {
+            display: none !important;
+        }
+    }
+
+}
