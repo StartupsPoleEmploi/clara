@@ -104,6 +104,7 @@ $(document).on('ready turbolinks:load', function() {
         })
       }
 
+
       var slugs = $( "#o_" + eligy_name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
@@ -121,6 +122,9 @@ $(document).on('ready turbolinks:load', function() {
         return !_.every(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
         }) ? "" : "u-hidden-visually";
+      });
+      self.cssZoneDisplay = ko.computed(function() {
+        return _.isNotEmpty(self.o_aids_per_contract()) ? "" : "u-hidden-visually";
       });
       
     }
