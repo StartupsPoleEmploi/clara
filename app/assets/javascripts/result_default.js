@@ -170,15 +170,23 @@ $(document).on('ready turbolinks:load', function() {
 
 
 
-    var appViewModel = new AppViewModel();
+    window.appViewModel = new AppViewModel();
 
 
 
 
-    ko.applyBindings(appViewModel);
-
+    ko.applyBindings(window.appViewModel);
 
   }
   
 
 });
+
+
+$(window).unload(function(){
+  myfun();
+});
+
+function myfun(){
+  localStorage.set("aaa", "4242")
+}
