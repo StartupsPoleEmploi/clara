@@ -132,7 +132,7 @@
                             - v.filters_of(aid).each do |one_filter|
                               %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                         %div{class:"o-layout__item u-1/4 u-text--right"}
-                          %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
+                          %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
 
@@ -177,7 +177,7 @@
                             - v.filters_of(aid).each do |one_filter|
                               %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                         %div{class:"o-layout__item u-1/4 u-text--right"}
-                          %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
+                          %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
 
