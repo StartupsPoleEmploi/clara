@@ -164,7 +164,16 @@ $inuit-fractions: 1 2 3 4 5 6;
 
 $inuit-responsive-spacing-directions: $inuit-spacing-directions !default;
 $inuit-responsive-spacing-properties: $inuit-spacing-properties !default;
-$inuit-responsive-spacing-sizes: $inuit-spacing-sizes !default;
+$inuit-responsive-spacing-sizes: (
+  null: $inuit-global-spacing-unit,
+  "-nano": $inuit-global-spacing-unit-nano,
+  "-micro": $inuit-global-spacing-unit-micro,
+  "-tiny": $inuit-global-spacing-unit-tiny,
+  "-small": $inuit-global-spacing-unit-small,
+  "-large": $inuit-global-spacing-unit-large,
+  "-huge": $inuit-global-spacing-unit-huge,
+  "-none": 0
+);
 @import "utilities/utilities.responsive-spacings";
 @import "utilities/utilities.print";
 @import "utilities/utilities.hide";
