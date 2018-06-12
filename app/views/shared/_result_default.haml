@@ -4,7 +4,11 @@
   <div></div>
 
 %script#filtertagTemplate.u-hidden{:type => "text/ko-template"}
-  <div class="c-filterstag__item"><div class="c-filtertag" data-bind="text: name, click: tagClosed"></div></div>
+  :plain
+    <div class="c-filterstag__item">
+      <div class="c-filtertag" data-bind="text: name, click: tagClosed">
+      </div>
+    </div>
 
 .c-result-default.o-wrapper
   .o-layout
