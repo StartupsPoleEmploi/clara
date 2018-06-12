@@ -119,12 +119,6 @@ $(document).on('ready turbolinks:load', function() {
         .value()
       });
 
-      that.o_nb_of_unfold = ko.computed(function() {
-        return _.count(that.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
-        });
-      });
-
       that.unfoldClass = ko.computed(function() {
         return _.some(that.o_aids_per_contract(), function(aid){
           return aid.isOpened();
@@ -172,17 +166,20 @@ $(document).on('ready turbolinks:load', function() {
       that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
       that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
       // Useful to track ANY change in the whole viewModel
-      that.o_nb_magic = ko.computed(function() {
-        return 
-          that.o_filterstag().o_active_filters().length + " " +
-          that.o_eligibles().o_nb_of_unfold().length;
+      ko.computed(function() {
+        return that.o_filterstag().o_active_filters().length;
       }).subscribe(function (newValue) {
         console.log('changed')
         console.log(newValue)
       }); 
     }
 
+
+
+
     window.appViewModel = new AppViewModel();
+
+
 
 
     ko.applyBindings(window.appViewModel);
