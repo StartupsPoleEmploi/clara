@@ -86,9 +86,9 @@ $(document).on('ready turbolinks:load', function() {
 
 
 
-    function AidsPerContractViewModel(name, o_all_filters) {
+    function AidsPerContractViewModel(eligy_name, o_all_filters) {
       var self = this;
-      self.name = name;
+      self.name = eligy_name;
       self.sesameOpen = function() {
         _.each(self.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
@@ -100,10 +100,10 @@ $(document).on('ready turbolinks:load', function() {
         })
       }
 
-      var slugs = $( "#o_" + name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
+      var slugs = $( "#o_" + eligy_name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
-        return new AidPerContractViewModel(name, slug, false, o_all_filters);
+        return new AidPerContractViewModel(eligy_name, slug, false, o_all_filters);
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
@@ -149,6 +149,7 @@ $(document).on('ready turbolinks:load', function() {
       self.o_all_filters = ko.observableArray(filter_array);
       self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', self.o_all_filters));
       self.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', self.o_all_filters));
+      self.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', self.o_all_filters));
       self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
     }
     
