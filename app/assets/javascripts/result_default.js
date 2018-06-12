@@ -122,6 +122,10 @@ $(document).on('ready turbolinks:load', function() {
     }
 
 
+    function FilterstagViewModel(o_all_filters) {
+      
+    }
+
 
 
     function AppViewModel() {
