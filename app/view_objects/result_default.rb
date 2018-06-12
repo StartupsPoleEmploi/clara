@@ -6,10 +6,6 @@ class ResultDefault < ViewObject
     @filters = @all_data["flat_all_filter"]
   end
 
-  def eligible_size
-    @all_data["flat_all_eligible"].size
-  end
-
   def sort_and_order(prop)
     (@all_data[prop] || {})
       .group_by{|e| e['contract_type_id']}

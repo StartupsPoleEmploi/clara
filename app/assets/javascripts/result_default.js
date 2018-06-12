@@ -113,6 +113,13 @@ $(document).on('ready turbolinks:load', function() {
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
 
+      self.o_nb_of_selected_aids = ko.computed(function() {
+        return _.chain(self.o_aids_per_contract())
+                .map(function(e) {return e.numberOfAidsPerContract();})
+                .sum()
+                .value()
+      });
+
       self.unfoldClass = ko.computed(function() {
         return _.some(self.o_aids_per_contract(), function(aid){
           return aid.isOpened();
@@ -124,7 +131,7 @@ $(document).on('ready turbolinks:load', function() {
         }) ? "" : "u-hidden-visually";
       });
       self.cssZoneDisplay = ko.computed(function() {
-        return _.isNotEmpty(self.o_aids_per_contract()) ? "" : "u-hidden-visually";
+        return self.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
       });
       
     }
