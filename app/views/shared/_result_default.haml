@@ -12,6 +12,7 @@
           <div class="u-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
             &nbsp;&#x2716;
           </div>
+          <div style="clear: both;">
         </div>
       </div>
     </div>
@@ -42,6 +43,8 @@
     
 
       
+
+
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .u-lrbox
           .u-lrbox__alignleft
@@ -87,7 +90,8 @@
 
 
 
-      
+
+
       .c-result-warning
         %p.c-result-warning__line Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
         %p.c-result-warning__line Clara n'intègre pas encore les spécificités des aides et mesures applicables dans les régions et collectivités d'Outre Mer.

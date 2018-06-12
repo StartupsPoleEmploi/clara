@@ -52,7 +52,7 @@ $(document).on('ready turbolinks:load', function() {
   
 
 
-    function AidPerContractViewModel(name, isOpened, o_all_filters) {
+    function AidPerContractViewModel(eligy_name, name, isOpened, o_all_filters) {
       var self = this;
       self.name = name;
       self.isOpened = ko.observable(isOpened);
@@ -64,7 +64,7 @@ $(document).on('ready turbolinks:load', function() {
       });
       self.clickedOpenClose = function() {self.isOpened(!self.isOpened())}
 
-      var aids_name = $('.c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
+      var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + self.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
         return new AidViewModel(aid_name, o_all_filters, $('.c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
@@ -100,10 +100,10 @@ $(document).on('ready turbolinks:load', function() {
         })
       }
 
-      var slugs = $( ".c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
+      var slugs = $( "#o_" + name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
-        return new AidPerContractViewModel(slug, false, o_all_filters);
+        return new AidPerContractViewModel(name, slug, false, o_all_filters);
       });
       
       self.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
@@ -147,7 +147,7 @@ $(document).on('ready turbolinks:load', function() {
         return new FilterViewModel(e.id, e.name, e.description, false)
       });
       self.o_all_filters = ko.observableArray(filter_array);
-      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligible', self.o_all_filters));
+      self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', self.o_all_filters));
       self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
     }
     
