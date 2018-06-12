@@ -19,6 +19,8 @@
 .c-result-default.o-wrapper
   .o-layout
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
+
+
       %div.c-filterings-area
         %button.c-mask-filter.u-padding-vertical-small
           Masquer les filtres <span>&nbsp;&or;</span>        
@@ -32,10 +34,13 @@
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
+
+
       #o_filterstag{"class" => "u-visually-hidden", "data-bind" => "with: o_filterstag"}
         .c-filterstag-container{"data-bind" => "css: o_cssMargin"}
           .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_active_filters, name: 'filtertagTemplate' }"}
-        
+    
+
       
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .u-lrbox
@@ -78,6 +83,10 @@
                             %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                       %div{class:"o-layout__item u-1/4 u-text--right"}
                         %button.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop"}  En savoir plus
+      
+
+
+
       
       .c-result-warning
         %p.c-result-warning__line Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
