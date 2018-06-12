@@ -148,6 +148,7 @@ $(document).on('ready turbolinks:load', function() {
       });
       self.o_all_filters = ko.observableArray(filter_array);
       self.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', self.o_all_filters));
+      self.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', self.o_all_filters));
       self.o_filterstag = ko.observable(new FilterstagViewModel(self.o_all_filters));
     }
     

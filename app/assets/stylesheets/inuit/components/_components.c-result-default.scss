@@ -49,14 +49,6 @@
   margin-top: $inuit-global-spacing-unit-small;
 }
 
-.c-resultcard--green {
-  border-left: 5px solid #028138;
-}
-
-.c-resultcard--green svg {
-  fill: #028138;
-}
-
 .c-resultcontract_descr {
   margin-top: $inuit-global-spacing-unit-nano;
   font-size: 16px; // HACK
@@ -160,3 +152,22 @@ input[type=radio] {
 .c-filtertag__close {
   cursor: pointer;
 }
+
+#o_eligibles {
+  .c-resultcard {
+    border-left: 5px solid #028138;
+    svg {
+      fill: #028138;
+    }
+  }
+}
+
+#o_ineligibles {
+  .c-resultcard {
+    border-left: 5px solid #d80027;
+    svg {
+      fill: #d80027;
+    }
+  }
+}
+
