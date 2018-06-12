@@ -87,13 +87,17 @@ $(document).on('ready turbolinks:load', function() {
 
 
     function AidsPerContractViewModel(eligy_name, o_all_filters) {
+      
       var self = this;
+      
       self.name = eligy_name;
+      
       self.sesameOpen = function() {
         _.each(self.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
         })
       }
+      
       self.sesameClose = function() {
         _.each(self.o_aids_per_contract(), function(aid){
           aid.isOpened(false);

@@ -35,6 +35,10 @@
 
 }
 
+.c-result-youcan {
+  margin-bottom: 0;
+}
+
 .c-resultcard {
   background-color:white;
   border: solid 1px #dcdcdc;
@@ -45,7 +49,7 @@
   padding: $inuit-global-spacing-unit-small;
 }
 
-.c-resultcard--notfirst {
+.c-resultcard {
   margin-top: $inuit-global-spacing-unit-small;
 }
 

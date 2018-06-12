@@ -48,7 +48,7 @@
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .u-lrbox
           .u-lrbox__alignleft
-            %h3="Vous pouvez bénéficier de"
+            %h3.c-result-youcan="Vous pouvez bénéficier de"
           .u-lrbox__alignright
             %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
               Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
@@ -94,7 +94,7 @@
       #o_uncertains.u-margin-top{"data-bind" => "with: o_uncertains"}
         .u-lrbox
           .u-lrbox__alignleft
-            %h3="Vous pouvez peut-être bénéficier de"
+            %h3.c-result-youcan="Vous pouvez peut-être bénéficier de"
           .u-lrbox__alignright
             %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
               Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
@@ -139,7 +139,7 @@
       #o_ineligibles.u-margin-top{"data-bind" => "with: o_ineligibles"}
         .u-lrbox
           .u-lrbox__alignleft
-            %h3="Vous ne pouvez pas bénéficier de"
+            %h3.c-result-youcan="Vous ne pouvez pas bénéficier de"
           .u-lrbox__alignright
             %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
               Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
