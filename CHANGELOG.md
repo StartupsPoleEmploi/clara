@@ -2,6 +2,10 @@
 
 
 
+## 10.0.0 (14/06/2018)
+-[#792][FEATURE] Filtre : supprimer le cache.
+
+
 ## 9.10.0 (14/06/2018)
 -[#777][FEATURE] filters in results, when opening
 
