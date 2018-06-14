@@ -1,16 +1,18 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('.c-result-default').length) {
 
-    function initialize_state() {
+    console.log("hey hey " + new Date());
+
+    function initialize_state(appViewModel) {
       var existing = get_existing();
       if (existing) {
-        initialize_filters_state(existing.o_all_filters);
+        initialize_filters_state(appViewModel, existing.o_all_filters);
       }      
     }
 
-    function initialize_filters_state(existing_filters) {
-        console.log("existing")
-        console.log(appViewModel.o_all_filters())
+    function initialize_filters_state(appViewModel, existing_filters) {
+      console.log("existing")
+      console.log(appViewModel.o_all_filters())
       _.each(existing_filters, function(existing_filter){
         var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
         one_filter.isActive(existing_filter.isActive)
@@ -211,9 +213,9 @@ $(document).on('ready turbolinks:load', function() {
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
         return that.o_filterstag().o_active_filters().length + 
-                that.o_ineligibles().o_nb_of_unfold() +
-                that.o_uncertains().o_nb_of_unfold() +
-                that.o_eligibles().o_nb_of_unfold();
+        that.o_ineligibles().o_nb_of_unfold() +
+        that.o_uncertains().o_nb_of_unfold() +
+        that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
         console.log('changed');
         console.log(ko.toJS(that));
@@ -224,14 +226,14 @@ $(document).on('ready turbolinks:load', function() {
 
 
 
-    window.appViewModel = new AppViewModel();
+    var appViewModel = new AppViewModel();
+
+    window.app = appViewModel;
 
 
+    ko.applyBindings(appViewModel);
 
-
-    ko.applyBindings(window.appViewModel);
-
-    initialize_state();
+    initialize_state(appViewModel);
 
   }
   
