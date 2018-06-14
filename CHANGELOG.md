@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 10.0.1 (14/06/2018)
+-[#793][BUG] Filtre : description dans les petits tags.
+
 
 ## 10.0.0 (14/06/2018)
 -[#792][FEATURE] Filtre : supprimer le cache.
