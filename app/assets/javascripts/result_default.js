@@ -12,8 +12,6 @@ $( document ).ready(function() {
     }
 
     function initialize_filters_state(existing_filters) {
-      console.log("existing")
-      console.log(appViewModel.o_all_filters())
       _.each(existing_filters, function(existing_filter){
         var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
         one_filter.isActive(existing_filter.isActive)
