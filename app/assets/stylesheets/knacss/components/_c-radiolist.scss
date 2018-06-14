@@ -3,8 +3,9 @@
 }
 .c-radiolist__element {
   padding-right: $tiny-value;
-  padding-left: $tiny-value;
+  padding-left: $inuit-global-spacing-unit-small;
   text-align: left;
+  line-height: 1;
   > * {
     display: inline-block;
   }

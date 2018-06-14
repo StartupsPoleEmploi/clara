@@ -178,3 +178,5 @@ $inuit-responsive-spacing-sizes: (
 @import "utilities/utilities.print";
 @import "utilities/utilities.hide";
 @import "utilities/utilities.left-right-box";
+$inuit-displays: true;
+@import "utilities/utilities.responsive-display";

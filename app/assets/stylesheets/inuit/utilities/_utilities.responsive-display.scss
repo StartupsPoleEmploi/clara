@@ -1,0 +1,82 @@
+/* ==========================================================================
+   #DISPLAYS
+   ========================================================================== */
+
+/**
+ * Responsive display helpers. See https://github.com/inuitcss/inuitcss/issues/190
+ */
+
+
+// Optionally, inuitcss can generate display helper classes. E.g.:
+//
+//   .u-display-block
+//   .u-display-inline-block
+//   .u-display-none
+
+$inuit-displays: false !default;
+$inuit-display-values: (
+        none,
+        inline,
+        inline-block,
+        block,
+        flex
+) !default;
+
+
+// Optionally, inuitcss can generate display helper aliases. E.g.:
+//
+//   .u-show
+//   .u-hide@tablet
+//   .u-hide
+//   .u-show@tablet
+
+$inuit-display-aliases: false !default;
+$inuit-display-alias-definitions: (
+        none: hide,
+        block: show
+) !default;
+
+
+// A mixin to spit out our display classes.
+//
+//   .u-display-none@tablet
+
+@mixin inuit-displays($display-values, $breakpoint: null) {
+
+  // Loop through the display values.
+  @each $display-value in $display-values {
+
+    // Make a rule in the format `.u-display-block[@<breakpoint>]`.
+    $rule: '.u-display-#{$display-value}#{$breakpoint}';
+
+    // Add alias to rule if exists.
+    $alias: map-get($inuit-display-alias-definitions, $display-value);
+    @if $inuit-display-aliases == true and $alias != null {
+      $rule: $rule + ", .u-#{$alias}#{$breakpoint}";
+    }
+
+    // Build it.
+    #{$rule} {
+      display: $display-value !important;
+    }
+  }
+
+}
+
+
+// Check if enabled.
+@if $inuit-displays == true {
+
+  // Global helpers.
+  @include inuit-displays($inuit-display-values);
+
+  // Responsive helpers.
+  @if (variable-exists(mq-breakpoints)) {
+    @each $inuit-bp-name, $inuit-bp-value in $mq-breakpoints {
+      @include mq($from: $inuit-bp-name) {
+        @include inuit-displays($inuit-display-values, \@#{$inuit-bp-name});
+      }
+    }
+  }
+
+}
