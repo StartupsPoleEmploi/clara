@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+$(document).on('ready', function() {
   if ($('body').hasClass('age_questions', 'new')) {
     //https://stackoverflow.com/a/24271309/2595513
     $('input#age').on('keydown keyup', function(e) {

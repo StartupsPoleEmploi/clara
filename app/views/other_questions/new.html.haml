@@ -6,7 +6,7 @@
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
 
-    = form_with model: @other, url: other_questions_path do |f|
+    = form_with model: @other, url: other_questions_path, local: true do |f|
   
       = render 'shared/a_form_header', {e: e, title: "Êtes-vous dans l'une des situations suivantes ?", subtitle: "Cochez la ou les situations correspondantes"}
       

@@ -11,7 +11,7 @@
 
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
-    = form_with model: @address, url: address_questions_path do |f|
+    = form_with model: @address, url: address_questions_path, local: true do |f|
       %h1.txtcenter
         %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
       .c-address__explanation

@@ -1,4 +1,5 @@
-$(document).on('ready turbolinks:load', function() {
+console.log("foo");
+$( document ).ready(function() {
   if ($('.c-result-default').length) {
 
     console.log("hey hey " + new Date());
