@@ -3,8 +3,12 @@
 }
 .c-radiolist__element {
   padding-right: $tiny-value;
-  padding-left: $tiny-value;
-  display: flex;
+  padding-left: $inuit-global-spacing-unit-small;
+  text-align: left;
+  line-height: 1;
+  > * {
+    display: inline-block;
+  }
 }
 
 .c-radiolist__element + .c-radiolist__element {

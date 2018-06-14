@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #LEFT RIGHT BOX
+   ========================================================================== */
+
+/**
+ * A pattern borrowed from 
+ *  https://css-tricks.com/examples/leftandright/:
+ *  https://css-tricks.com/left-and-right
+ *
+ *         <div class="u-lrbox">
+ *            <div class="u-lrbox__alignleft"></div>
+ *            <div class="u-lrbox__alignright"></div>
+ *            <div style="clear: both;">
+ *         </div>
+ *         
+ */
+
+.u-lrbox {
+
+}
+
+.u-lrbox__alignleft {
+    float: left;
+}
+
+.u-lrbox__alignright {
+    float: right;
+}

@@ -1,7 +1,8 @@
-$(document).on('ready turbolinks:load', function() {
+$( document ).ready(function() {
 
   $('.c-radiolist__element').keypress(function(e){
-    if((e.keyCode ? e.keyCode : e.which) == 13){
+    var theCode = (e.keyCode ? e.keyCode : e.which);
+    if(theCode === 13 || theCode === 32){
       $($(this).find('input')).trigger('click');
     }
   });

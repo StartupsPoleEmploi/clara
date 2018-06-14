@@ -1,5 +1,5 @@
 - @loaded ||= {}
-- v = view_object(:type_show, {contract_type: @loaded[:contract_type], aids: @loaded[:aids]})
+- v = view_object(:type_show, {contract_type: local_assigns[:contract_type], aids: local_assigns[:aids]})
 - title_data v.title_of_tab
 
 = render 'shared/breadcrumb', {where: 'detail'}

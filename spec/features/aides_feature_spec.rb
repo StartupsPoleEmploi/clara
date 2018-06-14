@@ -37,78 +37,79 @@ feature 'Aides page' do
     end
   end
   
-  context 'An active asker DOESNT Exist already in the cache' do
-    seen = nil
-    before do
-      if !seen
-        asker = create_realistic_asker
-        create_eligible_aid_for(asker)
-        create_ineligible_aid_for(asker)
-        disable_http_service
-        visit_aides_for_asker(asker)
-        seen = Nokogiri::HTML(page.html)
-      end
-    end
-    scenario 'Should display 1 eligible and 1 ineligible aid' do
-      should_have seen, 2, ".c-result-aid"
-      should_have seen, 1, ".c-result-list--eligible .c-result-aid"
-      should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
-    end
-    scenario 'Should have in the title "Vos résultats"' do
-      should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
-    end
-    scenario 'Should NOT have .c-result-all displayed' do
-      should_have seen, 0, ".c-result-all"
-    end
-    scenario 'Should have a breadcrumb displayed' do
-      should_have seen, 1, ".c-breadcrumb"
-    end
-    scenario 'Should have .c-result-default displayed' do
-      should_have seen, 1, ".c-result-default"
-    end
-    scenario 'Should NOT have .c-detail-void' do
-      should_have seen, 0, ".c-detail-void"
-    end
-    after do
-      enable_http_service
-    end
-  end
+  # context 'An active asker DOESNT Exist already in the cache' do
+  #   seen = nil
+  #   before do
+  #     if !seen
+  #       asker = create_realistic_asker
+  #       create_eligible_aid_for(asker)
+  #       create_ineligible_aid_for(asker)
+  #       disable_http_service
+  #       visit_aides_for_asker(asker)
+  #       seen = Nokogiri::HTML(page.html)
+  #     end
+  #   end
+  #   scenario 'Should display 1 eligible and 1 ineligible aid' do
+  #     save_and_open_page
+  #     should_have seen, 2, ".c-result-aid"
+  #     should_have seen, 1, ".c-result-list--eligible .c-result-aid"
+  #     should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
+  #   end
+  #   scenario 'Should have in the title "Vos résultats"' do
+  #     should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
+  #   end
+  #   scenario 'Should NOT have .c-result-all displayed' do
+  #     should_have seen, 0, ".c-result-all"
+  #   end
+  #   scenario 'Should have a breadcrumb displayed' do
+  #     should_have seen, 1, ".c-breadcrumb"
+  #   end
+  #   scenario 'Should have .c-result-default displayed' do
+  #     should_have seen, 1, ".c-result-default"
+  #   end
+  #   scenario 'Should NOT have .c-detail-void' do
+  #     should_have seen, 0, ".c-detail-void"
+  #   end
+  #   after do
+  #     enable_http_service
+  #   end
+  # end
 
-  context 'An active asker ALREADY Exist already in the cache' do
-    seen = nil
-    before do
-      if !seen
-        disable_http_service
-        stub_cache_with_1_eligible_2_ineligible
-        visit_aides_for_id('any')
-        seen = Nokogiri::HTML(page.html)
-      end
-    end
-    scenario 'Should display 1 eligible and 2 ineligible aid' do
-      should_have seen, 3, ".c-result-aid"
-      should_have seen, 1, ".c-result-list--eligible .c-result-aid"
-      should_have seen, 2, ".c-result-list--ineligible .c-result-aid"
-    end
-    scenario 'Should have in the title "Vos résultats"' do
-      should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
-    end
-    scenario 'Should NOT have .c-result-all displayed' do
-      should_have seen, 0, ".c-result-all"
-    end
-    scenario 'Should have a breadcrumb displayed' do
-      should_have seen, 1, ".c-breadcrumb"
-    end
-    scenario 'Should have .c-result-default displayed' do
-      should_have seen, 1, ".c-result-default"
-    end
-    scenario 'Should NOT have .c-detail-void' do
-      should_have seen, 0, ".c-detail-void"
-    end
-    after do
-      enable_http_service
-      enable_cache_service
-    end
-  end
+  # context 'An active asker ALREADY Exist already in the cache' do
+  #   seen = nil
+  #   before do
+  #     if !seen
+  #       disable_http_service
+  #       stub_cache_with_1_eligible_2_ineligible
+  #       visit_aides_for_id('any')
+  #       seen = Nokogiri::HTML(page.html)
+  #     end
+  #   end
+  #   scenario 'Should display 1 eligible and 2 ineligible aid' do
+  #     should_have seen, 3, ".c-result-aid"
+  #     should_have seen, 1, ".c-result-list--eligible .c-result-aid"
+  #     should_have seen, 2, ".c-result-list--ineligible .c-result-aid"
+  #   end
+  #   scenario 'Should have in the title "Vos résultats"' do
+  #     should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
+  #   end
+  #   scenario 'Should NOT have .c-result-all displayed' do
+  #     should_have seen, 0, ".c-result-all"
+  #   end
+  #   scenario 'Should have a breadcrumb displayed' do
+  #     should_have seen, 1, ".c-breadcrumb"
+  #   end
+  #   scenario 'Should have .c-result-default displayed' do
+  #     should_have seen, 1, ".c-result-default"
+  #   end
+  #   scenario 'Should NOT have .c-detail-void' do
+  #     should_have seen, 0, ".c-detail-void"
+  #   end
+  #   after do
+  #     enable_http_service
+  #     enable_cache_service
+  #   end
+  # end
 
   def stub_cache_with_1_eligible_2_ineligible
       cache_layer = instance_double("CacheService")

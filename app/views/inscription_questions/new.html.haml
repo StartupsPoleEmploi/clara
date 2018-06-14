@@ -7,7 +7,7 @@
 
   .o-card.c-question
 
-    = form_with model: @inscription, url: inscription_questions_path do |f|
+    = form_with model: @inscription, url: inscription_questions_path, local: true do |f|
 
       = render 'shared/a_form_header', {e: e, title: "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"}
 

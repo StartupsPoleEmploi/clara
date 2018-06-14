@@ -9,7 +9,6 @@ class GradeQuestionsController < ApplicationController
   end
 
   def create
-    params.inspect
     @grade = GradeForm.new(allowed_params)
 
     if @grade.valid?

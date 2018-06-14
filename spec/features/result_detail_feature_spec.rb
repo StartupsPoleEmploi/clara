@@ -24,29 +24,29 @@ feature 'detail of a result page' do
     end
   end
 
-  context 'Active user, cache filled' do
-    before do
-      asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
-      disable_http_service
-      cache_layer = instance_double("CacheService")
-      allow(cache_layer).to receive(:read) {|arg1| (arg1 == "all_activated_aids" ||  arg1 == "all_rules_json") ? "" : SerializeResultsService.get_instance.go(asker)} 
-      allow(cache_layer).to receive(:write).and_return(nil)
-      CacheService.set_instance(cache_layer)
+  # context 'Active user, cache filled' do
+  #   before do
+  #     asker = create(:asker, :fully_calculated_asker)
+  #     aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
+  #     disable_http_service
+  #     cache_layer = instance_double("CacheService")
+  #     allow(cache_layer).to receive(:read) {|arg1| (arg1 == "all_activated_aids" ||  arg1 == "all_rules_json") ? "" : SerializeResultsService.get_instance.go(asker)} 
+  #     allow(cache_layer).to receive(:write).and_return(nil)
+  #     CacheService.set_instance(cache_layer)
 
-      a = ConvertAskerInBase64Service.new.into_base64(asker)
-      b = aid.slug
-      visit detail_path(b) + '?for_id=' + a
-    end
-    after do
-      enable_http_service
-      enable_cache_service
-    end
-    scenario 'Display all details correctly' do
-      _display_resume_of_situation(true)
-      _display_all_details_correctly
-    end
-  end
+  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     b = aid.slug
+  #     visit detail_path(b) + '?for_id=' + a
+  #   end
+  #   after do
+  #     enable_http_service
+  #     enable_cache_service
+  #   end
+  #   scenario 'Display all details correctly' do
+  #     _display_resume_of_situation(true)
+  #     _display_all_details_correctly
+  #   end
+  # end
 
   context 'Active user, cache empty' do
     before do

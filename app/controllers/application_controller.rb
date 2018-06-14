@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def hydrate_view(stuff)
     gon.loaded = stuff
-    @loaded = gon.loaded
+    render locals: stuff
   end
 
   private

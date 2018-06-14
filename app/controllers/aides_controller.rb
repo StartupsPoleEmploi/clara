@@ -6,15 +6,14 @@ class AidesController < ApplicationController
     if have_active_asker?
       pull_existing_from_cache
       if (@existing)
-        hydrate_view(hashify_results(@existing))
+        hydrate_view(@existing)
         instantiate_asker(@existing)
       else
         pull_asker_from_query_param
         augment_asker_with_qpv_zrr
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
-        hashified = hashify_results(cacheable)
-        hydrate_view(hashified)
+        hydrate_view(cacheable)
       end
     else
       hydrate_view(hash_of_all_active_aids)
