@@ -1,6 +1,21 @@
 $(document).on('ready turbolinks:load', function() {
   if ($('.c-result-default').length) {
 
+    function initialize_state() {
+      var existing = get_existing();
+      if (existing) {
+        initialize_filters_state(existing.o_all_filters);
+      }      
+    }
+
+    function initialize_filters_state(existing_filters) {
+        console.log("existing")
+        console.log(appViewModel.o_all_filters())
+      _.each(existing_filters, function(existing_filter){
+        var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
+        one_filter.isActive(existing_filter.isActive)
+      });
+    }
 
     function get_existing() {
       return store.get($.urlParam('for_id'));
@@ -8,6 +23,10 @@ $(document).on('ready turbolinks:load', function() {
 
     function set_existing(value) {
       return store.set($.urlParam('for_id'), value);
+    }
+
+    function get_json_filters() {
+      return gon.loaded.flat_all_filter;
     }
 
     function defaultActivityForFilter(named) {
@@ -20,12 +39,12 @@ $(document).on('ready turbolinks:load', function() {
       return result;
     }
 
-    function FilterViewModel(id, name, description, isActive) {
+    function FilterViewModel(id, name, description) {
       var that = this;
       that.id = id;
       that.name = name;
       that.description = description;
-      that.isActive = ko.observable(isActive);
+      that.isActive = ko.observable(false);
       that.tagClosed = function(){that.isActive(false)};
     }
 
@@ -180,8 +199,8 @@ $(document).on('ready turbolinks:load', function() {
     function AppViewModel() {
       var that = this;
 
-      var filter_array = _.map(gon.loaded.flat_all_filter, function(e) {
-        return new FilterViewModel(e.id, e.name, e.description, false)
+      var filter_array = _.map(get_json_filters(), function(e) {
+        return new FilterViewModel(e.id, e.name, e.description)
       });
       that.o_all_filters = ko.observableArray(filter_array);
       that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
@@ -211,6 +230,8 @@ $(document).on('ready turbolinks:load', function() {
 
 
     ko.applyBindings(window.appViewModel);
+
+    initialize_state();
 
   }
   
