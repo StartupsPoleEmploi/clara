@@ -3,14 +3,14 @@ $(document).on('ready turbolinks:load', function() {
 
     console.log("hey hey " + new Date());
 
-    function initialize_state(appViewModel) {
+    function initialize_state() {
       var existing = get_existing();
       if (existing) {
-        initialize_filters_state(appViewModel, existing.o_all_filters);
+        initialize_filters_state(existing.o_all_filters);
       }      
     }
 
-    function initialize_filters_state(appViewModel, existing_filters) {
+    function initialize_filters_state(existing_filters) {
       console.log("existing")
       console.log(appViewModel.o_all_filters())
       _.each(existing_filters, function(existing_filter){
@@ -226,14 +226,14 @@ $(document).on('ready turbolinks:load', function() {
 
 
 
-    var appViewModel = new AppViewModel();
-
-    window.app = appViewModel;
+    window.appViewModel = new AppViewModel();
 
 
-    ko.applyBindings(appViewModel);
 
-    initialize_state(appViewModel);
+
+    ko.applyBindings(window.appViewModel);
+
+    initialize_state();
 
   }
   
