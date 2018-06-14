@@ -24,9 +24,12 @@
 
       %div.c-filterings-area
         %button.c-mask-filter.u-padding-vertical-small{class:"u-hide-from@tablet"}
-          Masquer les filtres <span>&nbsp;&or;</span>        
+          %span.c-mask-filter__text
+            Ouvrir les filtres       
+          %span.c-mask-filter__caret
+            &nbsp;&or;
             
-        %fieldset.c-resultfilterings
+        %fieldset.c-resultfilterings{class:"u-hide-until@tablet"}
           %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
           #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
             - flat_all_filter.each_with_index do |a_filter, i|

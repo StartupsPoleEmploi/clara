@@ -241,8 +241,19 @@ $( document ).ready(function() {
 
   }
   
+  $('.c-mask-filter').click(function() {
+    console.log('clicked');
+    if ($('.c-resultfilterings').hasClass('u-hide-until@tablet')) {
+      $('.c-mask-filter__text').text("Masquer les filtres")
+      $('.c-resultfilterings').removeClass('u-hide-until@tablet')
+    } else {
+      $('.c-mask-filter__text').text("Ouvrir les filtres")
+      $('.c-resultfilterings').addClass('u-hide-until@tablet')
+    }
+  });
 
 });
+
 
 
 // $(window).unload(function(){
