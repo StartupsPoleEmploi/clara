@@ -6,6 +6,8 @@ $( document ).ready(function() {
     function initialize_state() {
       var existing = get_existing();
       if (existing) {
+        initialize_aids_per_contract_state("o_eligibles", existing);
+        initialize_aids_per_contract_state("o_uncertains", existing);
         initialize_aids_per_contract_state("o_ineligibles", existing);
         initialize_filters_state(existing.o_all_filters);
       }      
@@ -21,8 +23,6 @@ $( document ).ready(function() {
     function initialize_aids_per_contract_state(eligy, existing) {
       _.each(existing[eligy].o_aids_per_contract, function(existing_apc){
         var one_apc = _.find(appViewModel[eligy]().o_aids_per_contract(), function(e){return e.name === existing_apc.name;});
-        console.log("existing_apc.isOpened");
-        console.log(existing_apc.isOpened);
         one_apc.isOpened(existing_apc.isOpened);
       });
     }
