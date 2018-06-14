@@ -7,6 +7,7 @@ $( document ).ready(function() {
       var existing = get_existing();
       if (existing) {
         initialize_filters_state(existing.o_all_filters);
+        initialize_aids_per_contract_state("o_ineligibles", existing);
       }      
     }
 
@@ -14,6 +15,13 @@ $( document ).ready(function() {
       _.each(existing_filters, function(existing_filter){
         var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
         one_filter.isActive(existing_filter.isActive)
+      });
+    }
+
+    function initialize_aids_per_contract_state(eligy, existing) {
+      _.each(existing[eligy].o_aids_per_contract, function(existing_apc){
+        var one_apc = _.find(appViewModel[eligy]().o_aids_per_contract(), function(e){return e.name === existing_apc.name;});
+        console.log(one_apc)
       });
     }
 
@@ -215,8 +223,8 @@ $( document ).ready(function() {
         that.o_uncertains().o_nb_of_unfold() +
         that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
-        console.log('changed');
-        console.log(ko.toJS(that));
+        // console.log('changed');
+        // console.log(ko.toJS(that));
         set_existing(ko.toJS(that));
       }); 
     }
