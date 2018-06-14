@@ -1,8 +1,6 @@
 $( document ).ready(function() {
   if ($('.c-result-default').length) {
 
-    console.log("hey hey " + new Date());
-
     function initialize_state() {
       var existing = get_existing();
       if (existing) {
@@ -225,8 +223,6 @@ $( document ).ready(function() {
         that.o_uncertains().o_nb_of_unfold() +
         that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
-        console.log('changed');
-        console.log(ko.toJS(that));
         set_existing(ko.toJS(that));
       }); 
     }
