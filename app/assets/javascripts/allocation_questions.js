@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$( document ).ready(function() {
   if ($( 'body' ).hasClass('allocation_questions', 'new' )) {
 
     $('.js-pnotify--ARE_ASP').click(function() {

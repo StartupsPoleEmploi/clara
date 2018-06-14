@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$( document ).ready(function() {
   if ($( 'body' ).hasClass('other_questions', 'new' )) {
 
     $( 'input#none' ).click(function() {

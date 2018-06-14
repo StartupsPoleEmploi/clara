@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$( document ).ready(function() {
 
   $('.c-radiolist__element').keypress(function(e){
     var theCode = (e.keyCode ? e.keyCode : e.which);

@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$( document ).ready(function() {
   if ($('body').hasClass('welcome', 'index')) {
     if (localStorage) {
       localStorage.clear();

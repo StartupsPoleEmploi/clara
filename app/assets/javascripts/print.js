@@ -1,4 +1,4 @@
-$(document).on('ready', function() {
+$( document ).ready(function() {
 
   $('.c-breadcrumb-print').click(function(e) {
     if (typeof ga === "function") {

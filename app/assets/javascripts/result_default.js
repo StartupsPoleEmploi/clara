@@ -1,4 +1,3 @@
-console.log("foo");
 $( document ).ready(function() {
   if ($('.c-result-default').length) {
 
