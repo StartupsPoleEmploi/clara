@@ -15,7 +15,7 @@
         %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio1'}
+          .c-radiolist__element.o-centerbox-v.u-focusable{tabindex: '0', id: 'radio1'}
             = radio_button_tag 'category_form[value]', |
                 'autres_cat', |
                 false, | 
@@ -25,15 +25,16 @@
                 class: 'c-radioinput', |
                 onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
                 onfocusin: '$("#radio1").toggleClass( "is-activated" )'
-            %label.c-radiolabel.c-category__radiolabel{for: 'autres_cat'}
-              .c-category__tick
-                \-
-              %ul.c-category__brace
-                %li En activité à temps complet (hors contrat aidé)
-                %li En création d'entreprise
-                %li En arrêt maladie
-                %li En congé maternité ou congé parental
-                %li En formation autre que formation professionnelle
+            %label.c-radiolabel.c-category__radiolabel.c-category-element__label{for: 'autres_cat'}
+              .o-centerbox-v
+                .c-category__tick
+                  \-
+                %ul.c-category__brace
+                  %li En activité à temps complet (hors contrat aidé)
+                  %li En création d'entreprise
+                  %li En arrêt maladie
+                  %li En congé maternité ou congé parental
+                  %li En formation autre que formation professionnelle
 
               
           .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio2'}
