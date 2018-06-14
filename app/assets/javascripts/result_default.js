@@ -2,6 +2,24 @@ $(document).on('ready turbolinks:load', function() {
   if ($('.c-result-default').length) {
 
 
+    function get_existing() {
+      return store.get($.urlParam('for_id'));
+    }
+
+    function set_existing(value) {
+      return store.set($.urlParam('for_id'), value);
+    }
+
+    function defaultActivityForFilter(named) {
+      var result = false;
+      var existing = get_existing();
+      if (existing) {
+        var concerned_filter = _.find(_.get(existing, 'o_all_filters'), function(e){return e.name === named;});
+        result = concerned_filter.isActive;
+      }
+      return result;
+    }
+
     function FilterViewModel(id, name, description, isActive) {
       var that = this;
       that.id = id;
@@ -178,8 +196,9 @@ $(document).on('ready turbolinks:load', function() {
                 that.o_uncertains().o_nb_of_unfold() +
                 that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
-        console.log('changed')
-        console.log(newValue)
+        console.log('changed');
+        console.log(ko.toJS(that));
+        set_existing(ko.toJS(that));
       }); 
     }
 

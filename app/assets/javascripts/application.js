@@ -13,6 +13,7 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
+//= require jquery/jquery-extension
 //= require moment/moment
 //= require storejs/store.legacy
 //= require chartist/chartist
