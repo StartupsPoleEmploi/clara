@@ -13,5 +13,5 @@
   - if has_user
     = render 'shared/result_default', local_assigns
   - else
-    = render 'shared/result_all', {lines: FilterRawAidsService.new(@loaded['aids']).go}
+    = render 'shared/result_all', {lines: FilterRawAidsService.new(local_assigns["aids"]).go}
       
