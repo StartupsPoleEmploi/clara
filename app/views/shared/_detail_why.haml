@@ -1,5 +1,24 @@
 - v = view_object(:detail_why, local_assigns)
 
+:javascript
+  $( document ).ready(function() {
+    if ($('.c-detail-why').length) {
+      if ($('.c-detail-why--eligible').length) {
+        console.log('eligible')
+        ga('send', 'event', 'detail', 'eligible', 'yes');
+      }
+      if ($('.c-detail-why--ineligible').length) {
+        console.log('ineligible')
+        ga('send', 'event', 'detail', 'ineligible', 'yes');
+      }
+      if ($('.c-detail-why--uncertain').length) {
+        console.log('uncertain')
+        ga('send', 'event', 'detail', 'uncertain', 'yes');
+      }
+    }
+  });
+
+
 - if v.root_condition.present?
   .c-detail-why
     .c-detail-why__intro
