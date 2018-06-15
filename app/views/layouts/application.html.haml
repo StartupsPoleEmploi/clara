@@ -46,12 +46,13 @@
         });  
       
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env}}
-    %div.c-body__container
-      = render 'shared/header'
-      = yield
-    %footer
-      - if content_for?(:footer)
-        = yield :footer
-      - else
-        = render partial: 'shared/footer', locals: {the_request: request}
+    .c-body__wrapper
+      .c-body__content
+        = render 'shared/header'
+        = yield
+      %footer.c-body__footer
+        - if content_for?(:footer)
+          = yield :footer
+        - else
+          = render partial: 'shared/footer', locals: {the_request: request}
 

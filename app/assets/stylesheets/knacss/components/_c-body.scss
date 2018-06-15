@@ -1,8 +1,25 @@
+// STICKY FOOTER
+// See http://outofdeadlock.io/sticky-footers-without-flexbox
 .c-body {
+  height: 100%;
+  margin: 0;
+}
+.c-body__wrapper {
+  border-collapse: collapse;
+  display: table;
+  height: 100%;
+  width: 100%;
+  .c-body__content {
+    display: table-row;
+    height: 100%;
+  }
+  .c-body__footer {
+    display: table-row;
+    margin-top: $inuit-global-spacing-unit-small;
+    border-top: $inuit-global-spacing-unit-small solid transparent;;
+  }
 }
 
-.c-body__container {
-}
 
 .c-body.errors {
   background-color:#e2eaf5;
