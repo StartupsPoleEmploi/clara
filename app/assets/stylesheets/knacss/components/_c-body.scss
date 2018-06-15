@@ -1,12 +1,23 @@
-.c-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+// STICKY FOOTER
+// See http://outofdeadlock.io/sticky-footers-without-flexbox
+.c-html, .c-body {
+  height: 100%;
+  margin: 0;
+}
+.c-body__wrapper {
+  border-collapse: collapse;
+  display: table;
+  height: 100%;
+  width: 100%;
+  .c-body__content {
+    display: table-row;
+    height: 100%;
+  }
+  .c-body__footer {
+    display: table-row;
+  }
 }
 
-.c-body__container {
-  flex: 1;
-}
 
 .c-body.errors {
   background-color:#e2eaf5;
