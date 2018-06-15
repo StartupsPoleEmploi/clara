@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 10.0.2 (15/06/2018)
+-[#794][BUG] Form : montant de l'aide
+
+
 ## 10.0.1 (14/06/2018)
 -[#793][BUG] Filtre : description dans les petits tags.
 
