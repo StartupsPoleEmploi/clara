@@ -84,6 +84,13 @@ _.mixin({
     return _.defaultTo(_.countBy.apply(_, arguments)[true], 0);
   },
 
+
+  isNumeric(x) {
+    // see https://stackoverflow.com/a/26962405/2595513
+    // see https://github.com/lodash/lodash/issues/1148#issuecomment-347293517
+    return ((typeof x === 'number' || typeof x === 'string') && (Number(x) === Number(x)));
+  },
+
   injectToPropArray: function (source, destination) {
 
     _.each(destination, function(e) {
