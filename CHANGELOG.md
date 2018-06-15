@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 10.1.0 (15/06/2018)
+-[#799][FEATURE] Savoir combien de personnes voient les aides éligibles/non éligibles
+
+
 ## 10.0.2 (15/06/2018)
 -[#794][BUG] Form : montant de l'aide
 
