@@ -205,16 +205,19 @@ $( document ).ready(function() {
     function FilterAreaViewModel(o_all_filters) {
       var that = this;
       that.o_all_filters = o_all_filters;
-      that.o_click = function() {
-        console.log("clicked!!!");
-        that.o_opened(!that.o_opened());
+      that.o_toggle = function() {
+        console.log('toggle');
+        that.o_toggle_state(!that.o_toggle_state());
       }
-      that.o_opened = ko.observable(false);
-      that.o_cssOpened = ko.computed(function() {
-        return that.o_opened() ? "" : "u-hidden-visually";
+      that.o_toggle_state = ko.observable(false);
+      that.o_toggle_text = ko.computed(function() {
+        return that.o_toggle_state() ? "Ouvrir les filtres" : "Masquer les filtres";
+      }); 
+      that.o_toggle_css = ko.computed(function() {
+        return that.o_toggle_state() ? "" : "u-hidden-visually";
       }); 
     }
-
+ 
 
     function AppViewModel() {
       var that = this;
@@ -223,12 +226,12 @@ $( document ).ready(function() {
         return new FilterViewModel(e.id, e.name, e.description)
       });
       that.o_all_filters = ko.observableArray(filter_array);
-      that.o_eligibles   = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
+      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
       that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
-      that.o_uncertains  = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
-      that.o_filterstag  = ko.observable(new FilterstagViewModel(that.o_all_filters));
-      that.o_filterarea  = ko.observable(new FilterAreaViewModel(that.o_all_filters));
-
+      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
+      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
+      that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
+      
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
         return that.o_filterstag().o_active_filters().length + 
@@ -254,14 +257,8 @@ $( document ).ready(function() {
 
   }
   
-  $('.c-mask-filter').click(function() {
-    if ($('.c-resultfilterings').hasClass('u-hide-until@tablet')) {
-      $('.c-mask-filter__text').text("Masquer les filtres")
-      $('.c-resultfilterings').removeClass('u-hide-until@tablet')
-    } else {
-      $('.c-mask-filter__text').text("Ouvrir les filtres")
-      $('.c-resultfilterings').addClass('u-hide-until@tablet')
-    }
-  });
+
 
 });
+
+

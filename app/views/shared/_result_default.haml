@@ -23,19 +23,20 @@
 
 
       %div.c-filterings-area{"data-bind" => "with: o_filterarea"}
-        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_click"}
-          %span.c-mask-filter__text{"data-bind" => "text: o_text"}
+        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle"}
+          %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
             Ouvrir les filtres       
-          %span.c-mask-filter__caret{"data-bind" => "text: o_text"}
+          %span.c-mask-filter__caret
             &nbsp;&or;
             
-        %fieldset.c-resultfilterings{"data-bind" => "css: o_cssOpened"}
+        %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
           %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
           #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
             - flat_all_filter.each_with_index do |a_filter, i|
               %div.c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
                 %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
+
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
 
@@ -70,6 +71,7 @@
                       .o-flag__body
                         %h4.c-resultcontract-title
                           %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                            / # =aids_per_contract.size
                             12
                           %span.c-resultcontract-title__text
                             =v.title_for(aids_per_contract)
