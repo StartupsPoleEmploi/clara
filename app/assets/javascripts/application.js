@@ -24,7 +24,6 @@
 //= require rails-ujs
 //= require pnotify/pnotify
 //= require knockout/knockout
-//= require knockout/knockout-extension
 //= require knockout/knockout-pre-rendered
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
