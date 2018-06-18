@@ -149,13 +149,13 @@
 
 
       #o_ineligibles{"data-bind" => "with: o_ineligibles"}
-        .o_ineligibles__content
+        .o_ineligibles__content{"data-bind" => "css: cssZoneDisplay"}
           .o-list-inline.u-margin-top-large
             .o-list-inline__item
               %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
             .o-list-inline__item
               %button{"data-bind" => "click: o_hideClick"} Voir
-          .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
+          .c-resulteligy
             .o-lrbox
               .o-lrbox__alignleft
               .o-lrbox__alignright
