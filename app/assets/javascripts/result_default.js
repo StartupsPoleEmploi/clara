@@ -148,7 +148,7 @@ $( document ).ready(function() {
       that.o_hide = ko.observable(false);
 
       that.o_hideClick = function() {
-        console.log('hide');
+        that.o_hide(!that.o_hide());
       }
 
 
