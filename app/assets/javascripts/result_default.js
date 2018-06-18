@@ -13,11 +13,9 @@ $( document ).ready(function() {
     }
 
     function initialize_filterarea_state() {
-      console.log($(window).width())
       if ($(window).width() < 740) {
          window.appViewModel.o_filterarea().o_toggle_state(false);
       } else {
-
          window.appViewModel.o_filterarea().o_toggle_state(true);
        }
     }
@@ -217,7 +215,6 @@ $( document ).ready(function() {
       var that = this;
       that.o_all_filters = o_all_filters;
       that.o_toggle = function() {
-        console.log('toggle');
         that.o_toggle_state(!that.o_toggle_state());
       }
       that.o_toggle_state = ko.observable(false);
