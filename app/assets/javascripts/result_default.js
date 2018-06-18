@@ -8,8 +8,15 @@ $( document ).ready(function() {
         initialize_aids_per_contract_state("o_uncertains", existing);
         initialize_aids_per_contract_state("o_ineligibles", existing);
         initialize_filters_state(existing.o_all_filters);
+        initialize_ineligible_visibility(existing.o_ineligibles);
       }      
       initialize_filterarea_state();
+    }
+
+    function initialize_ineligible_visibility(existing_ineligies) {
+      console.log(existing_ineligies);
+      console.log(existing_ineligies.o_hide);
+      appViewModel.o_ineligibles().o_hide(existing_ineligies.o_hide);
     }
 
     function initialize_filterarea_state() {
@@ -258,6 +265,7 @@ $( document ).ready(function() {
       ko.computed(function() {
         return that.o_filterstag().o_active_filters().length + 
         that.o_ineligibles().o_nb_of_unfold() +
+        that.o_ineligibles().o_hide() +
         that.o_uncertains().o_nb_of_unfold() +
         that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
