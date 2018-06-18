@@ -202,6 +202,17 @@ $( document ).ready(function() {
 
     }
 
+    function FilterAreaViewModel() {
+      var that = this;
+      that.o_click = function() {
+        console.log("clicked!!!");
+        that.o_opened(!that.o_opened());
+      }
+      that.o_opened = ko.observable(false);
+      that.o_cssOpened = ko.computed(function() {
+        return that.o_opened() ? "" : "u-hidden-visually";
+      }); 
+    }
 
 
     function AppViewModel() {
@@ -211,11 +222,12 @@ $( document ).ready(function() {
         return new FilterViewModel(e.id, e.name, e.description)
       });
       that.o_all_filters = ko.observableArray(filter_array);
-      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
+      that.o_eligibles   = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
       that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
-      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
-      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
-      
+      that.o_uncertains  = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
+      that.o_filterstag  = ko.observable(new FilterstagViewModel(that.o_all_filters));
+      that.o_filterarea  = ko.observable(new FilterAreaViewModel());
+
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
         return that.o_filterstag().o_active_filters().length + 
@@ -242,7 +254,6 @@ $( document ).ready(function() {
   }
   
   $('.c-mask-filter').click(function() {
-    console.log('clicked');
     if ($('.c-resultfilterings').hasClass('u-hide-until@tablet')) {
       $('.c-mask-filter__text').text("Masquer les filtres")
       $('.c-resultfilterings').removeClass('u-hide-until@tablet')
@@ -253,13 +264,3 @@ $( document ).ready(function() {
   });
 
 });
-
-
-
-// $(window).unload(function(){
-//   myfun();
-// });
-
-// function myfun(){
-//   localStorage.set("aaa", "4242")
-// }

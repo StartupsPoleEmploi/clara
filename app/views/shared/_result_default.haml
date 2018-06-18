@@ -22,14 +22,14 @@
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
 
 
-      %div.c-filterings-area
-        %button.c-mask-filter.u-padding-vertical-small{class:"u-hide-from@tablet"}
-          %span.c-mask-filter__text
+      %div.c-filterings-area{"data-bind" => "with: o_filterarea"}
+        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_click"}
+          %span.c-mask-filter__text{"data-bind" => "text: o_text"}
             Ouvrir les filtres       
-          %span.c-mask-filter__caret
+          %span.c-mask-filter__caret{"data-bind" => "text: o_text"}
             &nbsp;&or;
             
-        %fieldset.c-resultfilterings{class:"u-hide-until@tablet"}
+        %fieldset.c-resultfilterings{"data-bind" => "css: o_cssOpened"}
           %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
           #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
             - flat_all_filter.each_with_index do |a_filter, i|
