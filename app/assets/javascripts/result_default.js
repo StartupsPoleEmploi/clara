@@ -9,6 +9,17 @@ $( document ).ready(function() {
         initialize_aids_per_contract_state("o_ineligibles", existing);
         initialize_filters_state(existing.o_all_filters);
       }      
+      initialize_filterarea_state();
+    }
+
+    function initialize_filterarea_state() {
+      console.log($(window).width())
+      if ($(window).width() < 740) {
+         window.appViewModel.o_filterarea().o_toggle_state(false);
+      } else {
+
+         window.appViewModel.o_filterarea().o_toggle_state(true);
+       }
     }
 
     function initialize_filters_state(existing_filters) {
@@ -211,7 +222,7 @@ $( document ).ready(function() {
       }
       that.o_toggle_state = ko.observable(false);
       that.o_toggle_text = ko.computed(function() {
-        return that.o_toggle_state() ? "Ouvrir les filtres" : "Masquer les filtres";
+        return that.o_toggle_state() ? "Masquer les filtres" : "Ouvrir les filtres";
       }); 
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
