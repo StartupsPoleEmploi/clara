@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 10.1.2 (18/06/2018)
+-[#800][BUG] Uglifier
+
+
 ## 10.1.1 (15/06/2018)
 -[#789][BUG] Admin : ne pas proposer la suppression dans les associations
 
