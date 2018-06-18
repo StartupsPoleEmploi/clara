@@ -140,13 +140,13 @@
                           %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
-      .o-list-inline.u-margin-top-large
-        .o-list-inline__item
-          %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
-        .o-list-inline__item
-          %button Voir
       #o_ineligibles_zone
         #o_ineligibles{"data-bind" => "with: o_ineligibles"}
+          .o-list-inline.u-margin-top-large
+            .o-list-inline__item
+              %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
+            .o-list-inline__item
+              %button Voir
           .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
             .o-lrbox
               .o-lrbox__alignleft
