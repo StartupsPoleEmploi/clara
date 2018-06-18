@@ -7,9 +7,9 @@
   :plain
     <div class="c-filterstag__item">
       <div class="c-filtertag">
-        <div class="u-lrbox">
-          <div class="u-lrbox__alignleft c-filtertag__text" data-bind="text: description"></div>
-          <div class="u-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
+        <div class="o-lrbox">
+          <div class="o-lrbox__alignleft c-filtertag__text" data-bind="text: description"></div>
+          <div class="o-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
             &nbsp;&#x2716;
           </div>
           <div style="clear: both;">
@@ -51,10 +51,10 @@
 
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
+          .o-lrbox
+            .o-lrbox__alignleft
               %h3.c-result-youcan="Vous pouvez bénéficier de"
-            .u-lrbox__alignright
+            .o-lrbox__alignright
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
                 Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -98,10 +98,10 @@
 
       #o_uncertains.u-margin-top-large{"data-bind" => "with: o_uncertains"}
         .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
+          .o-lrbox
+            .o-lrbox__alignleft
               %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
-            .u-lrbox__alignright
+            .o-lrbox__alignright
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
                 Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -140,14 +140,17 @@
                           %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
-      %h3.u-margin-top-large.u-margin-bottom-none
-        ="Vous ne pouvez pas bénéficier de"
+      .o-list-inline.u-margin-top-large
+        .o-list-inline__item
+          %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
+        .o-list-inline__item
+          %button Voir
       #o_ineligibles_zone
         #o_ineligibles{"data-bind" => "with: o_ineligibles"}
           .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-            .u-lrbox
-              .u-lrbox__alignleft
-              .u-lrbox__alignright
+            .o-lrbox
+              .o-lrbox__alignleft
+              .o-lrbox__alignright
                 %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
                   Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                 %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
