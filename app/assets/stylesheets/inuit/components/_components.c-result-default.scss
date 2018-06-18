@@ -181,3 +181,11 @@ input[type=radio] {
   }
 }
 
+.c-expander-button {
+  cursor: pointer;
+  font-size: 20px; //HACK
+  border: 2px solid #5ba8d3;
+  border-radius: 30px;
+  background-color: white;
+  color: #5ba8d3;
+}
