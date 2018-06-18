@@ -202,8 +202,9 @@ $( document ).ready(function() {
 
     }
 
-    function FilterAreaViewModel() {
+    function FilterAreaViewModel(o_all_filters) {
       var that = this;
+      that.o_all_filters = o_all_filters;
       that.o_click = function() {
         console.log("clicked!!!");
         that.o_opened(!that.o_opened());
@@ -226,7 +227,7 @@ $( document ).ready(function() {
       that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
       that.o_uncertains  = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
       that.o_filterstag  = ko.observable(new FilterstagViewModel(that.o_all_filters));
-      that.o_filterarea  = ko.observable(new FilterAreaViewModel());
+      that.o_filterarea  = ko.observable(new FilterAreaViewModel(that.o_all_filters));
 
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {

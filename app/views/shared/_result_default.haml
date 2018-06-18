@@ -37,9 +37,6 @@
                 %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
-      %div.c-resultsituation-area
-        / = render 'shared/result_situation', locals: {asker: asker}
-
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
 
 
