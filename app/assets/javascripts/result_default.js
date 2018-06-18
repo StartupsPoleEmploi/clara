@@ -202,6 +202,10 @@ $( document ).ready(function() {
       that.cssZoneDisplay = ko.computed(function() {
         return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
       });
+      // that.cssZoneDisplayAndHidden = ko.computed(function() {
+      //   var enough_aids
+      //   return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
+      // });
 
     }
 
