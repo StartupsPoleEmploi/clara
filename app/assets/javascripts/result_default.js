@@ -145,7 +145,7 @@ $( document ).ready(function() {
 
       that.name = eligy_name;
 
-      that.o_hide = ko.observable(false);
+      that.o_hide = ko.observable(true);
 
       that.o_hideClick = function() {
         that.o_hide(!that.o_hide());
@@ -153,6 +153,10 @@ $( document ).ready(function() {
 
       that.o_hideCss = ko.computed(function() {
         return that.o_hide() ? "u-hidden-visually" : "";
+      });
+
+      that.o_hideText = ko.computed(function() {
+        return that.o_hide() ? "Voir" : "Cacher";
       });
 
       that.sesameOpen = function() {
