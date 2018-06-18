@@ -140,49 +140,50 @@
                           %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
-
-      #o_ineligibles.u-margin-top-large{"data-bind" => "with: o_ineligibles"}
-        .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
-              %h3.c-result-youcan="Vous ne pouvez pas bénéficier de"
-            .u-lrbox__alignright
-              %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
-                Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-              %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
-                Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-            %div{:style => "clear: both;"}
-          #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
-            - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
-              .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
-                .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
-                  %div{class:"o-layout__item u-3/4"}   
-                    .o-flag.o-flag--flush.c-resultcontract
-                      .o-flag__img{class:"u-hide-until@tablet"}
-                        =v.icon_for(aids_per_contract)
-                      .o-flag__body
-                        %h4.c-resultcontract-title
-                          %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
-                            12
-                          %span.c-resultcontract-title__text
-                            =v.title_for(aids_per_contract)
-                        %p.c-resultcontract_descr
-                          =v.descr_for(aids_per_contract)
-                  %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                    %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                    %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-                .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
-                  - aids_per_contract.each do |aid|
-                    .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
-                      .o-layout.o-layout--middle.o-layout--flush
-                        %div{class:"o-layout__item u-3/4"}   
-                          %h5=aid["name"]
-                          %p=aid["short_description"]
-                          %ul.o-list-inline{"data-bind" => "css: filtersClass"}
-                            - v.filters_of(aid).each do |one_filter|
-                              %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
-                        %div{class:"o-layout__item u-1/4 u-text--right"}
-                          %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
+      %h3.u-margin-top-large.u-margin-bottom-none
+        ="Vous ne pouvez pas bénéficier de"
+      #o_ineligibles_zone
+        #o_ineligibles{"data-bind" => "with: o_ineligibles"}
+          .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
+            .u-lrbox
+              .u-lrbox__alignleft
+              .u-lrbox__alignright
+                %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
+                  Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
+                  Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+              %div{:style => "clear: both;"}
+            #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+              - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
+                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
+                  .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
+                    %div{class:"o-layout__item u-3/4"}   
+                      .o-flag.o-flag--flush.c-resultcontract
+                        .o-flag__img{class:"u-hide-until@tablet"}
+                          =v.icon_for(aids_per_contract)
+                        .o-flag__body
+                          %h4.c-resultcontract-title
+                            %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                              12
+                            %span.c-resultcontract-title__text
+                              =v.title_for(aids_per_contract)
+                          %p.c-resultcontract_descr
+                            =v.descr_for(aids_per_contract)
+                    %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
+                      %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+                  .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
+                    - aids_per_contract.each do |aid|
+                      .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
+                        .o-layout.o-layout--middle.o-layout--flush
+                          %div{class:"o-layout__item u-3/4"}   
+                            %h5=aid["name"]
+                            %p=aid["short_description"]
+                            %ul.o-list-inline{"data-bind" => "css: filtersClass"}
+                              - v.filters_of(aid).each do |one_filter|
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                          %div{class:"o-layout__item u-1/4 u-text--right"}
+                            %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
       
 
 
