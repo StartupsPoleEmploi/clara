@@ -145,6 +145,11 @@ $( document ).ready(function() {
 
       that.name = eligy_name;
 
+      that.o_hide = function() {
+        console.log('hide');
+      }
+
+
       that.sesameOpen = function() {
         _.each(that.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
