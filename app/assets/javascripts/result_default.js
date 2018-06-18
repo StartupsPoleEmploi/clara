@@ -155,7 +155,6 @@ $( document ).ready(function() {
         return that.o_hide() ? "u-hidden-visually" : "";
       });
 
-
       that.sesameOpen = function() {
         _.each(that.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
@@ -202,10 +201,6 @@ $( document ).ready(function() {
       that.cssZoneDisplay = ko.computed(function() {
         return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
       });
-      // that.cssZoneDisplayAndHidden = ko.computed(function() {
-      //   var enough_aids
-      //   return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
-      // });
 
     }
 
