@@ -145,7 +145,9 @@ $( document ).ready(function() {
 
       that.name = eligy_name;
 
-      that.o_hide = function() {
+      that.o_hide = ko.observable(false);
+
+      that.o_hideClick = function() {
         console.log('hide');
       }
 
