@@ -151,6 +151,10 @@ $( document ).ready(function() {
         that.o_hide(!that.o_hide());
       }
 
+      that.o_hideCss = ko.computed(function() {
+        return that.o_hide() ? "u-hidden-visually" : "";
+      });
+
 
       that.sesameOpen = function() {
         _.each(that.o_aids_per_contract(), function(aid){
