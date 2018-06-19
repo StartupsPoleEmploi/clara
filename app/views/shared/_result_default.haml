@@ -22,8 +22,8 @@
     %div{class:"o-layout__item u-1/1 u-1/3@tablet"}
 
 
-      %div.c-filterings-area{"data-bind" => "with: o_filterarea"}
-        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle"}
+      %div.c-filterings-area.u-margin-bottom-small{"data-bind" => "with: o_filterarea"}
+        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle, css: o_state_css"}
           %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
             Ouvrir les filtres       
           %span.c-mask-filter__caret

@@ -243,6 +243,9 @@ $( document ).ready(function() {
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
       }); 
+      that.o_state_css = ko.computed(function() {
+        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
+      }); 
     }
  
     function SituationAreaViewModel() {
@@ -255,7 +258,7 @@ $( document ).ready(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
       }); 
       that.o_state_css = ko.computed(function() {
-        return that.o_toggle_state() ? "is-shown" : "is-hidden";
+        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
       }); 
     }
  

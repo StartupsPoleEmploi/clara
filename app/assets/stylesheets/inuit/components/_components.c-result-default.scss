@@ -10,7 +10,7 @@
   width: 100%;
   border: none;
   cursor: pointer;
-  &.is-hidden {
+  &.is-not-deployed {
     background-color: white;
     color: #333333cc;
     border: 1px solid #dcdcdc;
@@ -19,7 +19,6 @@
 
 .c-filterings-area {
   background-color: #ffffff;
-  margin-bottom:  $inuit-global-spacing-unit;
 }
 
 .c-resultfilterings {
