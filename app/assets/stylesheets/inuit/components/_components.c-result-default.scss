@@ -12,7 +12,8 @@
   cursor: pointer;
   &.is-hidden {
     background-color: white;
-    color: black;
+    color: #333333cc;
+    border: 1px solid #dcdcdc;
   }
 }
 
