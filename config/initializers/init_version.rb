@@ -1,5 +1,5 @@
 major = ENV["MAJOR_VERSION"] || 10
-minor = ENV["MINOR_VERSION"] || 2
+minor = ENV["MINOR_VERSION"] || 3
 build = ENV["BUILD_VERSION"] || 0
 
 ARA_VERSION = "#{[major.to_s, minor.to_s, build.to_s].join('.')}"

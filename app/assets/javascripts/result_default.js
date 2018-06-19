@@ -35,7 +35,7 @@ $( document ).ready(function() {
     function initialize_aids_per_contract_state(eligy, existing) {
       _.each(existing[eligy].o_aids_per_contract, function(existing_apc){
         var one_apc = _.find(appViewModel[eligy]().o_aids_per_contract(), function(e){return e.name === existing_apc.name;});
-        one_apc.isOpened(existing_apc.isOpened);
+        if (one_apc) one_apc.isOpened(existing_apc.isOpened);
       });
     }
 
@@ -230,18 +230,43 @@ $( document ).ready(function() {
 
     }
 
-    function FilterAreaViewModel(o_all_filters) {
+    function FilterAreaViewModel(o_all_filters, o_situationarea) {
       var that = this;
       that.o_all_filters = o_all_filters;
+      that.o_situationarea = o_situationarea;
       that.o_toggle = function() {
         that.o_toggle_state(!that.o_toggle_state());
       }
       that.o_toggle_state = ko.observable(false);
       that.o_toggle_text = ko.computed(function() {
-        return that.o_toggle_state() ? "Masquer les filtres" : "Ouvrir les filtres";
+        return that.o_toggle_state() ? "Masquer les filtres" : "Filtrer par besoin";
       }); 
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
+      }); 
+      that.o_state_css = ko.computed(function() {
+        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
+      }); 
+      ko.computed(function() {
+        return that.o_situationarea().o_toggle_state();
+      }).subscribe(function (newValue) {
+        if (newValue === true) {
+          that.o_toggle_state(false);
+        }
+      });
+    }
+ 
+    function SituationAreaViewModel() {
+      var that = this;
+      that.o_toggle = function() {
+        that.o_toggle_state(!that.o_toggle_state());
+      }
+      that.o_toggle_state = ko.observable(false);
+      that.o_toggle_css = ko.computed(function() {
+        return that.o_toggle_state() ? "" : "u-hidden-visually";
+      }); 
+      that.o_state_css = ko.computed(function() {
+        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
       }); 
     }
  
@@ -264,12 +289,13 @@ $( document ).ready(function() {
           return f.isActive();
         });
       });
-      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
-      that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
-      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
-      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_active_filters));
-      that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
-      that.o_nothing = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
+      that.o_eligibles     = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
+      that.o_ineligibles   = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
+      that.o_uncertains    = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
+      that.o_filterstag    = ko.observable(new FilterstagViewModel(that.o_active_filters));
+      that.o_situationarea = ko.observable(new SituationAreaViewModel());
+      that.o_filterarea    = ko.observable(new FilterAreaViewModel(that.o_all_filters, that.o_situationarea));
+      that.o_nothing       = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
       
 
 
