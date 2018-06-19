@@ -245,7 +245,7 @@ $( document ).ready(function() {
       }); 
     }
  
-    function SituationAreaViewModel(o_all_filters) {
+    function SituationAreaViewModel() {
       var that = this;
       that.o_toggle = function() {
         that.o_toggle_state(!that.o_toggle_state());
