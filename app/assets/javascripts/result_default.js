@@ -112,9 +112,6 @@ $( document ).ready(function() {
       ko.computed(function() {
         return o_active_filters().length;
       }).subscribe(function (newValue) {
-        // console.log(name);
-        // console.log(newValue);
-        // console.log("");
         if (newValue > 0) {
           that.isOpened(true);
         } else {
