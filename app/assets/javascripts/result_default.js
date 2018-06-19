@@ -222,7 +222,7 @@ $( document ).ready(function() {
 
     function FilterstagViewModel(o_active_filters) {
       var that = this;
-      that.o_active_filters = o_active_filters();
+      that.o_active_filters = o_active_filters;
 
       that.o_cssMargin = ko.computed(function() {
         return _.isEmpty(o_active_filters()) ? "" : "u-margin-bottom-small";
