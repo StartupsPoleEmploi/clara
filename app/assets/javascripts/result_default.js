@@ -275,13 +275,13 @@ $( document ).ready(function() {
           return f.isActive();
         });
       });
-      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
-      that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
-      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
-      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_active_filters));
-      that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
+      that.o_eligibles     = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
+      that.o_ineligibles   = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
+      that.o_uncertains    = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
+      that.o_filterstag    = ko.observable(new FilterstagViewModel(that.o_active_filters));
+      that.o_filterarea    = ko.observable(new FilterAreaViewModel(that.o_all_filters));
       that.o_situationarea = ko.observable(new SituationAreaViewModel());
-      that.o_nothing = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
+      that.o_nothing       = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
       
 
 
