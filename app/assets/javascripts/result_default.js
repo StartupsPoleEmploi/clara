@@ -245,6 +245,12 @@ $( document ).ready(function() {
       }); 
     }
  
+    function NothingViewModel(nb_of_eligible, nb_of_uncertain) {
+      var that = this;
+      that.o_cssDisplay = ko.computed(function() {
+        return nb_of_eligible() === 0 && nb_of_uncertain() === 0 ? "" : "u-hidden-visually";
+      });
+    }
 
     function AppViewModel() {
       var that = this;
@@ -263,6 +269,7 @@ $( document ).ready(function() {
       that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
       that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_active_filters));
       that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
+      that.o_nothing = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
       
 
 
