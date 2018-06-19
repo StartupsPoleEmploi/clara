@@ -35,7 +35,7 @@ $( document ).ready(function() {
     function initialize_aids_per_contract_state(eligy, existing) {
       _.each(existing[eligy].o_aids_per_contract, function(existing_apc){
         var one_apc = _.find(appViewModel[eligy]().o_aids_per_contract(), function(e){return e.name === existing_apc.name;});
-        one_apc.isOpened(existing_apc.isOpened);
+        if (one_apc) one_apc.isOpened(existing_apc.isOpened);
       });
     }
 
@@ -238,7 +238,7 @@ $( document ).ready(function() {
       }
       that.o_toggle_state = ko.observable(false);
       that.o_toggle_text = ko.computed(function() {
-        return that.o_toggle_state() ? "Masquer les filtres" : "Ouvrir les filtres";
+        return that.o_toggle_state() ? "Masquer les filtres" : "Filtrer par besoin";
       }); 
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
