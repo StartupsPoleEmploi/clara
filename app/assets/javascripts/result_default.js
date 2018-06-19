@@ -76,9 +76,8 @@ $( document ).ready(function() {
       var that = this;
       that.name = name;
 
-      that.o_all_filters = o_all_filters;
       that.filtersClass = ko.computed(function() {
-        return _.some(that.o_all_filters(), function(filter){
+        return _.some(o_all_filters(), function(filter){
           return filter.isActive();
         }) ? "" : "u-hidden-visually";
       });
@@ -86,7 +85,7 @@ $( document ).ready(function() {
       that.own_filters_name = own_filters_name;
 
       that.o_active_filters_name = ko.computed(function() {
-        return _.chain(that.o_all_filters())
+        return _.chain(o_all_filters())
         .filter(function(e) {return e.isActive()})
         .map(function(e){return e.name})
         .value()
@@ -96,7 +95,7 @@ $( document ).ready(function() {
         var condition1 = _.some(that.o_active_filters_name(), function(e){
           return _.includes(that.own_filters_name, e);
         });
-        var condition2 = _.none(that.o_all_filters(), function(e) {
+        var condition2 = _.none(o_all_filters(), function(e) {
           return e.isActive();
         })
         return condition1 || condition2;
