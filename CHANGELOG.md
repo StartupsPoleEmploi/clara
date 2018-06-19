@@ -1,8 +1,8 @@
 # ARA Changelog
 
 
-## 10.1.5 (19/06/2018)
--[#797][FEATURETTE] Pas d'aide car trop de filtres
+## 10.2.0 (19/06/2018)
+-[#797][FEATURE] Pas d'aide car trop de filtres
 
 
 ## 10.1.4 (19/06/2018)
