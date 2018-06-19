@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 10.1.3 (18/06/2018)
+## 10.1.3 (19/06/2018)
 -[#798][FEATURETTE] Cacher la section "ineligible" dans les resultats.
 
 
