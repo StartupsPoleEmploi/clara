@@ -72,32 +72,26 @@ $( document ).ready(function() {
 
 
 
-    function AidViewModel(name, o_all_filters, own_filters_name) {
+    function AidViewModel(name, o_active_filters, own_filters_name) {
       var that = this;
       that.name = name;
 
       that.filtersClass = ko.computed(function() {
-        return _.some(o_all_filters(), function(filter){
-          return filter.isActive();
-        }) ? "" : "u-hidden-visually";
+        return _.some(o_active_filters()) ? "" : "u-hidden-visually";
       });
 
       that.own_filters_name = own_filters_name;
 
       that.o_active_filters_name = ko.computed(function() {
-        return _.chain(o_all_filters())
-        .filter(function(e) {return e.isActive()})
-        .map(function(e){return e.name})
-        .value()
+        return _.map(o_active_filters(), function(e){return e.name});
       });
 
       that.isVisible = ko.computed(function() {
         var condition1 = _.some(that.o_active_filters_name(), function(e){
           return _.includes(that.own_filters_name, e);
         });
-        var condition2 = _.none(o_all_filters(), function(e) {
-          return e.isActive();
-        })
+        var condition2 = _.none(o_active_filters())
+
         return condition1 || condition2;
       });
 
@@ -109,7 +103,7 @@ $( document ).ready(function() {
 
 
 
-    function AidPerContractViewModel(eligy_name, name, isOpened, o_all_filters) {
+    function AidPerContractViewModel(eligy_name, name, isOpened, o_active_filters) {
       var that = this;
       that.name = name;
       that.isOpened = ko.observable(isOpened);
@@ -124,7 +118,7 @@ $( document ).ready(function() {
       var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + that.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
 
       var aids_array = _.map(aids_name, function(aid_name) {
-        return new AidViewModel(aid_name, o_all_filters, $('#o_' + eligy_name + ' .c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
+        return new AidViewModel(aid_name, o_active_filters, $('#o_' + eligy_name + ' .c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
       });
 
       that.o_aids = ko.observableArray(aids_array);
@@ -143,7 +137,7 @@ $( document ).ready(function() {
 
 
 
-    function AidsPerContractViewModel(eligy_name, o_all_filters) {
+    function AidsPerContractViewModel(eligy_name, o_active_filters) {
 
       var that = this;
 
@@ -179,7 +173,7 @@ $( document ).ready(function() {
       var slugs = $( "#o_" + eligy_name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
 
       var aid_per_contract_array = _.map(slugs, function(slug) {
-        return new AidPerContractViewModel(eligy_name, slug, false, o_all_filters);
+        return new AidPerContractViewModel(eligy_name, slug, false, o_active_filters);
       });
 
       that.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
@@ -213,18 +207,12 @@ $( document ).ready(function() {
     }
 
 
-    function FilterstagViewModel(o_all_filters) {
+    function FilterstagViewModel(o_active_filters) {
       var that = this;
-      that.o_all_filters = o_all_filters;
-
-      that.o_active_filters = ko.computed(function() {
-        return _.filter(that.o_all_filters(), function(f){
-          return f.isActive();
-        });
-      });
+      that.o_active_filters = o_active_filters();
 
       that.o_cssMargin = ko.computed(function() {
-        return _.isEmpty(that.o_active_filters()) ? "" : "u-margin-bottom-small";
+        return _.isEmpty(o_active_filters()) ? "" : "u-margin-bottom-small";
       }); 
 
     }
@@ -252,15 +240,22 @@ $( document ).ready(function() {
         return new FilterViewModel(e.id, e.name, e.description)
       });
       that.o_all_filters = ko.observableArray(filter_array);
-      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_all_filters));
-      that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
-      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
-      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
+      that.o_active_filters = ko.computed(function() {
+        return _.filter(that.o_all_filters(), function(f){
+          return f.isActive();
+        });
+      });
+      that.o_eligibles = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
+      that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
+      that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
+      that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_active_filters));
       that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
       
+
+
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
-        return that.o_filterstag().o_active_filters().length + 
+        return that.o_active_filters().length + 
         that.o_ineligibles().o_nb_of_unfold() +
         that.o_ineligibles().o_hide() +
         that.o_uncertains().o_nb_of_unfold() +
