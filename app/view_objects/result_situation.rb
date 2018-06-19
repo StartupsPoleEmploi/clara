@@ -2,7 +2,10 @@ class ResultSituation < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    @asker = hash_for(locals[:locals][:asker])
+    p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
+    pp locals
+    p ''
+    @asker = hash_for(locals[:asker])
   end
 
   def handicap
