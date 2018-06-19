@@ -1,11 +1,11 @@
 - v = view_object(:result_situation, local_assigns)
 
-#c-result-situation.c-result-situation
-  .c-situation
-    %h4.c-situation-title.c-mask-filter
+#c-result-situation.c-result-situation{"data-bind" => "with: o_situationarea"}
+  .c-situation{"data-bind" => "click: o_toggle"}
+    %h4.c-situation-title.c-mask-filter{"data-bind" => "css: o_state_css"}
       Récapitulatif de situation ∨
 
-    .c-situation-paragraph
+    .c-situation-paragraph{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
         %span.c-situation__header-title Votre situation actuelle
         %span.c-situation__header-link
@@ -30,7 +30,7 @@
             %span.c-situation__data-val.c-situation--allocation-montant 
               =v.allocation_value_min
 
-    .c-situation-paragraph
+    .c-situation-paragraph{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
         %span.c-situation__header-title Vos données personnelles
         %span.c-situation__header-link 
@@ -57,7 +57,7 @@
           %span.c-situation__data-val.c-situation--qpv
             =raw(v.qpv)
 
-    .c-situation-paragraph.c-situation-paragraph--last
+    .c-situation-paragraph.c-situation-paragraph--last{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
         %span.c-situation__header-title Autres situations
         %span.c-situation__header-link
@@ -72,6 +72,6 @@
           %span.c-situation__data-val.c-situation--handicap
             =v.handicap
 
-    .c-situation-reset
+    .c-situation-reset{"data-bind" => "css: o_toggle_css"}
       = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button u-margin-bottom-small'
 

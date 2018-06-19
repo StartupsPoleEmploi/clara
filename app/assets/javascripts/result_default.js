@@ -254,6 +254,9 @@ $( document ).ready(function() {
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
       }); 
+      that.o_state_css = ko.computed(function() {
+        return that.o_toggle_state() ? "is-shown" : "is-hidden";
+      }); 
     }
  
     function NothingViewModel(nb_of_eligible, nb_of_uncertain) {
