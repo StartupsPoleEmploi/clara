@@ -2,8 +2,8 @@
 
 
 
-## 10.2.1 (19/06/2018)
--[#803][FEATURETTE] Changer disclaimer
+## 10.3.0 (19/06/2018)
+-[#802][FEATURE] Situation recap
 
 
 ## 10.2.0 (19/06/2018)
