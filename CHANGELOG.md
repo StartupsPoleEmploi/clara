@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 10.1.4 (19/06/2018)
+-[#796][FEATURETTE] Filtres - faire apparaître la/les rubriques dépliée/s à la sélection d'un filtre
+
+
 ## 10.1.3 (19/06/2018)
 -[#798][FEATURETTE] Cacher la section "ineligible" dans les resultats.
 
