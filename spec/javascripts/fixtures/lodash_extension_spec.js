@@ -2,9 +2,8 @@
 //= require lodash/lodash_extension
 describe("Lodash extension", function() {
 
-  it("Needs lodash with version 4.17.4", function() {
+  it("Needs lodash", function() {
     expect(_).toBeDefined();
-    expect(_.VERSION).toEqual('4.17.4');
   });
 
   describe("_.nextElementLooped", function() {
