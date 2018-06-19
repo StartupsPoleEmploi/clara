@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 10.1.5 (19/06/2018)
+-[#797][FEATURETTE] Pas d'aide car trop de filtres
+
+
 ## 10.1.4 (19/06/2018)
 -[#796][FEATURETTE] Filtres - faire apparaître la/les rubriques dépliée/s à la sélection d'un filtre
 
