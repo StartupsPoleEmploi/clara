@@ -14,8 +14,6 @@ $( document ).ready(function() {
     }
 
     function initialize_ineligible_visibility(existing_ineligies) {
-      console.log(existing_ineligies);
-      console.log(existing_ineligies.o_hide);
       appViewModel.o_ineligibles().o_hide(existing_ineligies.o_hide);
     }
 
