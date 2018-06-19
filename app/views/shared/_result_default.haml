@@ -7,9 +7,9 @@
   :plain
     <div class="c-filterstag__item">
       <div class="c-filtertag">
-        <div class="u-lrbox">
-          <div class="u-lrbox__alignleft c-filtertag__text" data-bind="text: description"></div>
-          <div class="u-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
+        <div class="o-lrbox">
+          <div class="o-lrbox__alignleft c-filtertag__text" data-bind="text: description"></div>
+          <div class="o-lrbox__alignright c-filtertag__close" data-bind="click: tagClosed">
             &nbsp;&#x2716;
           </div>
           <div style="clear: both;">
@@ -22,14 +22,14 @@
     %div{class:"o-layout__item u-1/1 u-1/4@tablet"}
 
 
-      %div.c-filterings-area
-        %button.c-mask-filter.u-padding-vertical-small{class:"u-hide-from@tablet"}
-          %span.c-mask-filter__text
+      %div.c-filterings-area{"data-bind" => "with: o_filterarea"}
+        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle"}
+          %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
             Ouvrir les filtres       
           %span.c-mask-filter__caret
             &nbsp;&or;
             
-        %fieldset.c-resultfilterings{class:"u-hide-until@tablet"}
+        %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
           %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
           #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
             - flat_all_filter.each_with_index do |a_filter, i|
@@ -37,10 +37,10 @@
                 %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
                 %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
-      %div.c-resultsituation-area
-        / = render 'shared/result_situation', locals: {asker: asker}
+
 
     %div{class:"o-layout__item u-1/1 u-3/4@tablet"}
+
 
 
       #o_filterstag{"class" => "u-visually-hidden", "data-bind" => "with: o_filterstag"}
@@ -48,15 +48,16 @@
           .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_active_filters, name: 'filtertagTemplate' }"}
     
 
+
       
 
 
       #o_eligibles{"data-bind" => "with: o_eligibles"}
         .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
+          .o-lrbox
+            .o-lrbox__alignleft
               %h3.c-result-youcan="Vous pouvez bénéficier de"
-            .u-lrbox__alignright
+            .o-lrbox__alignright
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
                 Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -73,6 +74,7 @@
                       .o-flag__body
                         %h4.c-resultcontract-title
                           %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                            / # =aids_per_contract.size
                             12
                           %span.c-resultcontract-title__text
                             =v.title_for(aids_per_contract)
@@ -97,12 +99,14 @@
 
 
 
+
+
       #o_uncertains.u-margin-top-large{"data-bind" => "with: o_uncertains"}
         .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
+          .o-lrbox
+            .o-lrbox__alignleft
               %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
-            .u-lrbox__alignright
+            .o-lrbox__alignright
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
                 Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
               %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -119,52 +123,7 @@
                       .o-flag__body
                         %h4.c-resultcontract-title
                           %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
-                            12
-                          %span.c-resultcontract-title__text
-                            =v.title_for(aids_per_contract)
-                        %p.c-resultcontract_descr
-                          =v.descr_for(aids_per_contract)
-                  %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                    %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                    %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-                .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
-                  - aids_per_contract.each do |aid|
-                    .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
-                      .o-layout.o-layout--middle.o-layout--flush
-                        %div{class:"o-layout__item u-3/4"}   
-                          %h5=aid["name"]
-                          %p=aid["short_description"]
-                          %ul.o-list-inline{"data-bind" => "css: filtersClass"}
-                            - v.filters_of(aid).each do |one_filter|
-                              %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
-                        %div{class:"o-layout__item u-1/4 u-text--right"}
-                          %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
-      
-
-
-      #o_ineligibles.u-margin-top-large{"data-bind" => "with: o_ineligibles"}
-        .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-          .u-lrbox
-            .u-lrbox__alignleft
-              %h3.c-result-youcan="Vous ne pouvez pas bénéficier de"
-            .u-lrbox__alignright
-              %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
-                Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-              %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
-                Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-            %div{:style => "clear: both;"}
-          #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
-            - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
-              .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
-                .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
-                  %div{class:"o-layout__item u-3/4"}   
-                    .o-flag.o-flag--flush.c-resultcontract
-                      .o-flag__img{class:"u-hide-until@tablet"}
-                        =v.icon_for(aids_per_contract)
-                      .o-flag__body
-                        %h4.c-resultcontract-title
-                          %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
-                            12
+                            aids_per_contract.size
                           %span.c-resultcontract-title__text
                             =v.title_for(aids_per_contract)
                         %p.c-resultcontract_descr
@@ -189,7 +148,59 @@
 
 
 
-      .c-result-warning
+      #o_ineligibles{"data-bind" => "with: o_ineligibles"}
+        .o_ineligibles__content{"data-bind" => "css: cssZoneDisplay"}
+          .o-list-inline.u-margin-top-large
+            .o-list-inline__item
+              %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
+            .o-list-inline__item
+              %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal{"data-bind" => "click: o_hideClick, text: o_hideText"} Voir
+          .c-resulteligy{"data-bind" => "css: o_hideCss"}
+            .o-lrbox
+              .o-lrbox__alignleft
+              .o-lrbox__alignright
+                %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameOpen, css: foldClass"}
+                  Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: sesameClose, css: unfoldClass"}
+                  Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+              %div{:style => "clear: both;"}
+            #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+              - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
+                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
+                  .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
+                    %div{class:"o-layout__item u-3/4"}   
+                      .o-flag.o-flag--flush.c-resultcontract
+                        .o-flag__img{class:"u-hide-until@tablet"}
+                          =v.icon_for(aids_per_contract)
+                        .o-flag__body
+                          %h4.c-resultcontract-title
+                            %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                              12
+                            %span.c-resultcontract-title__text
+                              =v.title_for(aids_per_contract)
+                          %p.c-resultcontract_descr
+                            =v.descr_for(aids_per_contract)
+                    %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
+                      %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: closedClass"} Ouvrir <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result u-padding-horizontal-small@tablet u-padding-vertical-nano@tablet","data-bind" => "click: clickedOpenClose, css: openedClass"} Replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+                  .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
+                    - aids_per_contract.each do |aid|
+                      .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
+                        .o-layout.o-layout--middle.o-layout--flush
+                          %div{class:"o-layout__item u-3/4"}   
+                            %h5=aid["name"]
+                            %p=aid["short_description"]
+                            %ul.o-list-inline{"data-bind" => "css: filtersClass"}
+                              - v.filters_of(aid).each do |one_filter|
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                          %div{class:"o-layout__item u-1/4 u-text--right"}
+                            %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
+        
+
+
+
+
+      .c-result-warning.u-margin-vertical
         %p.c-result-warning__line Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
         %p.c-result-warning__line Clara n'intègre pas encore les spécificités des aides et mesures applicables dans les régions et collectivités d'Outre Mer.
                   

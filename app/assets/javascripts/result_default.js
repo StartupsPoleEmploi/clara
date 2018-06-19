@@ -8,7 +8,21 @@ $( document ).ready(function() {
         initialize_aids_per_contract_state("o_uncertains", existing);
         initialize_aids_per_contract_state("o_ineligibles", existing);
         initialize_filters_state(existing.o_all_filters);
+        initialize_ineligible_visibility(existing.o_ineligibles);
       }      
+      initialize_filterarea_state();
+    }
+
+    function initialize_ineligible_visibility(existing_ineligies) {
+      appViewModel.o_ineligibles().o_hide(existing_ineligies.o_hide);
+    }
+
+    function initialize_filterarea_state() {
+      if ($(window).width() < 740) {
+         window.appViewModel.o_filterarea().o_toggle_state(false);
+      } else {
+         window.appViewModel.o_filterarea().o_toggle_state(true);
+       }
     }
 
     function initialize_filters_state(existing_filters) {
@@ -136,6 +150,20 @@ $( document ).ready(function() {
 
       that.name = eligy_name;
 
+      that.o_hide = ko.observable(true);
+
+      that.o_hideClick = function() {
+        that.o_hide(!that.o_hide());
+      }
+
+      that.o_hideCss = ko.computed(function() {
+        return that.o_hide() ? "u-hidden-visually" : "";
+      });
+
+      that.o_hideText = ko.computed(function() {
+        return that.o_hide() ? "Voir" : "Cacher";
+      });
+
       that.sesameOpen = function() {
         _.each(that.o_aids_per_contract(), function(aid){
           aid.isOpened(true);
@@ -202,7 +230,21 @@ $( document ).ready(function() {
 
     }
 
-
+    function FilterAreaViewModel(o_all_filters) {
+      var that = this;
+      that.o_all_filters = o_all_filters;
+      that.o_toggle = function() {
+        that.o_toggle_state(!that.o_toggle_state());
+      }
+      that.o_toggle_state = ko.observable(false);
+      that.o_toggle_text = ko.computed(function() {
+        return that.o_toggle_state() ? "Masquer les filtres" : "Ouvrir les filtres";
+      }); 
+      that.o_toggle_css = ko.computed(function() {
+        return that.o_toggle_state() ? "" : "u-hidden-visually";
+      }); 
+    }
+ 
 
     function AppViewModel() {
       var that = this;
@@ -215,11 +257,13 @@ $( document ).ready(function() {
       that.o_ineligibles = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_all_filters));
       that.o_uncertains = ko.observable(new AidsPerContractViewModel('uncertains', that.o_all_filters));
       that.o_filterstag = ko.observable(new FilterstagViewModel(that.o_all_filters));
+      that.o_filterarea = ko.observable(new FilterAreaViewModel(that.o_all_filters));
       
       // Utility to track ANY change in the whole viewModel
       ko.computed(function() {
         return that.o_filterstag().o_active_filters().length + 
         that.o_ineligibles().o_nb_of_unfold() +
+        that.o_ineligibles().o_hide() +
         that.o_uncertains().o_nb_of_unfold() +
         that.o_eligibles().o_nb_of_unfold();
       }).subscribe(function (newValue) {
@@ -241,25 +285,8 @@ $( document ).ready(function() {
 
   }
   
-  $('.c-mask-filter').click(function() {
-    console.log('clicked');
-    if ($('.c-resultfilterings').hasClass('u-hide-until@tablet')) {
-      $('.c-mask-filter__text').text("Masquer les filtres")
-      $('.c-resultfilterings').removeClass('u-hide-until@tablet')
-    } else {
-      $('.c-mask-filter__text').text("Ouvrir les filtres")
-      $('.c-resultfilterings').addClass('u-hide-until@tablet')
-    }
-  });
+
 
 });
 
 
-
-// $(window).unload(function(){
-//   myfun();
-// });
-
-// function myfun(){
-//   localStorage.set("aaa", "4242")
-// }

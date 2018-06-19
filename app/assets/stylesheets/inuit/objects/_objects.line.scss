@@ -1,0 +1,35 @@
+/* ==========================================================================
+   # SIMPLE LINE
+   ========================================================================== */
+
+/**
+ * Emulate flexbox row.
+ * A pattern borrowed from 
+ *  https://github.com/csswizardry/inuit.css/blob/master/objects/_flexbox.scss
+ *
+ *      <div class="o-line">
+ *        <div class="o-line__item"></div>
+ *        <div class="o-line__item"></div>
+ *       </div>
+ *         
+ */
+
+
+.o-line{
+    display:table;
+    width:100%;
+}
+
+/**
+ * Nasty hack to circumvent Modernizr conflicts.
+ */
+html.o-line{
+    display:block;
+    width:auto;
+}
+
+.o-line__item{
+    display:table-cell;
+    vertical-align:middle;
+}
+

@@ -128,7 +128,9 @@ $inuit-wrapper-width: 1480px;
 @import "objects/objects.flag";
 @import "objects/objects.list-bare";
 @import "objects/objects.list-inline";
+@import "objects/objects.line";
 @import "objects/objects.box";
+@import "objects/objects.left-right-box";
 @import "objects/objects.centerbox";
 @import "objects/objects.block";
 @import "objects/objects.ratio";
@@ -178,6 +180,5 @@ $inuit-responsive-spacing-sizes: (
 @import "utilities/utilities.responsive-spacings";
 @import "utilities/utilities.print";
 @import "utilities/utilities.hide";
-@import "utilities/utilities.left-right-box";
 // $inuit-displays: true;
 // @import "utilities/utilities.responsive-display";
