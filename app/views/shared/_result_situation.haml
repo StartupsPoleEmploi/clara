@@ -1,78 +1,77 @@
 - v = view_object(:result_situation, local_assigns)
 
-#c-result-situation
-  .c-result-situation
-    .c-situation
-      %h4.c-situation-title 
-        Récapitulatif de votre situation
+#c-result-situation.c-result-situation
+  .c-situation
+    %h4.c-situation-title.c-mask-filter
+      Récapitulatif de votre situation
 
-      .c-situation-paragraph
-        .c-situation__header
-          %span.c-situation__header-title Votre situation actuelle
-          %span.c-situation__header-link
-            %a{href: new_inscription_question_path} Modifier
-        .c-situation__data-list
+    .c-situation-paragraph
+      .c-situation__header
+        %span.c-situation__header-title Votre situation actuelle
+        %span.c-situation__header-link
+          %a{href: new_inscription_question_path} Modifier
+      .c-situation__data-list
+        .c-situation__data-line
+          %span.c-situation__data-prop Durée d'inscription :
+          %span.c-situation__data-val.c-situation--inscription 
+            =v.duree_d_inscription
+        - if v.category != 'indisponible'
           .c-situation__data-line
-            %span.c-situation__data-prop Durée d'inscription :
-            %span.c-situation__data-val.c-situation--inscription 
-              =v.duree_d_inscription
-          - if v.category != 'indisponible'
-            .c-situation__data-line
-              %span.c-situation__data-prop Catégorie demandeur d'emploi :
-              %span.c-situation__data-val.c-situation--category 
-                =v.category
+            %span.c-situation__data-prop Catégorie demandeur d'emploi :
+            %span.c-situation__data-val.c-situation--category 
+              =v.category
+        .c-situation__data-line
+          %span.c-situation__data-prop Type d'allocation :
+          %span.c-situation__data-val.c-situation--allocation-type 
+            =v.allocation_type
+        - if v.allocation_value_min != 'indisponible' && v.allocation_value_min != 'not_applicable'
           .c-situation__data-line
-            %span.c-situation__data-prop Type d'allocation :
-            %span.c-situation__data-val.c-situation--allocation-type 
-              =v.allocation_type
-          - if v.allocation_value_min != 'indisponible' && v.allocation_value_min != 'not_applicable'
-            .c-situation__data-line
-              %span.c-situation__data-prop Montant d'allocation :
-              %span.c-situation__data-val.c-situation--allocation-montant 
-                =v.allocation_value_min
+            %span.c-situation__data-prop Montant d'allocation :
+            %span.c-situation__data-val.c-situation--allocation-montant 
+              =v.allocation_value_min
 
-      .c-situation-paragraph
-        .c-situation__header
-          %span.c-situation__header-title Vos données personnelles
-          %span.c-situation__header-link 
-            %a{href: new_age_question_path} Modifier
-        .c-situation__data-list
-          .c-situation__data-line
-            %span.c-situation__data-prop Âge :
-            %span.c-situation__data-val.c-situation--age
-              =v.age
-          .c-situation__data-line
-            %span.c-situation__data-prop Diplôme :
-            %span.c-situation__data-val.c-situation--grade
-              =v.diplome
-          .c-situation__data-line
-            %span.c-situation__data-prop Ville :
-            %span.c-situation__data-val.c-situation--address
-              =v.location_label
-          .c-situation__data-line
-            %span.c-situation__data-prop Zone de revitalisation rurale :
-            %span.c-situation__data-val.c-situation--zrr
-              =v.zrr
-          .c-situation__data-line
-            %span.c-situation__data-prop Quartier prioritaire de la ville :
-            %span.c-situation__data-val.c-situation--qpv
-              =raw(v.qpv)
+    .c-situation-paragraph
+      .c-situation__header
+        %span.c-situation__header-title Vos données personnelles
+        %span.c-situation__header-link 
+          %a{href: new_age_question_path} Modifier
+      .c-situation__data-list
+        .c-situation__data-line
+          %span.c-situation__data-prop Âge :
+          %span.c-situation__data-val.c-situation--age
+            =v.age
+        .c-situation__data-line
+          %span.c-situation__data-prop Diplôme :
+          %span.c-situation__data-val.c-situation--grade
+            =v.diplome
+        .c-situation__data-line
+          %span.c-situation__data-prop Ville :
+          %span.c-situation__data-val.c-situation--address
+            =v.location_label
+        .c-situation__data-line
+          %span.c-situation__data-prop Zone de revitalisation rurale :
+          %span.c-situation__data-val.c-situation--zrr
+            =v.zrr
+        .c-situation__data-line
+          %span.c-situation__data-prop Quartier prioritaire de la ville :
+          %span.c-situation__data-val.c-situation--qpv
+            =raw(v.qpv)
 
-      .c-situation-paragraph.c-situation-paragraph--last
-        .c-situation__header
-          %span.c-situation__header-title Autres situations
-          %span.c-situation__header-link
-            %a{href: new_other_question_path} Modifier
-        .c-situation__data-list
-          .c-situation__data-line
-            %span.c-situation__data-prop Artiste ou technicien(ne) du spectacle :
-            %span.c-situation__data-val.c-situation--spectacle
-              =v.spectacle
-          .c-situation__data-line
-            %span.c-situation__data-prop Travailleur(euse) handicapé(e) :
-            %span.c-situation__data-val.c-situation--handicap
-              =v.handicap
+    .c-situation-paragraph.c-situation-paragraph--last
+      .c-situation__header
+        %span.c-situation__header-title Autres situations
+        %span.c-situation__header-link
+          %a{href: new_other_question_path} Modifier
+      .c-situation__data-list
+        .c-situation__data-line
+          %span.c-situation__data-prop Artiste ou technicien(ne) du spectacle :
+          %span.c-situation__data-val.c-situation--spectacle
+            =v.spectacle
+        .c-situation__data-line
+          %span.c-situation__data-prop Travailleur(euse) handicapé(e) :
+          %span.c-situation__data-val.c-situation--handicap
+            =v.handicap
 
-      .c-situation-reset
-        = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button'
-  
+    .c-situation-reset
+      = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button'
+
