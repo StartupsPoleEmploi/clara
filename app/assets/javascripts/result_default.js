@@ -230,9 +230,10 @@ $( document ).ready(function() {
 
     }
 
-    function FilterAreaViewModel(o_all_filters) {
+    function FilterAreaViewModel(o_all_filters, o_situationarea) {
       var that = this;
       that.o_all_filters = o_all_filters;
+      that.o_situationarea = o_situationarea;
       that.o_toggle = function() {
         that.o_toggle_state(!that.o_toggle_state());
       }
@@ -246,6 +247,13 @@ $( document ).ready(function() {
       that.o_state_css = ko.computed(function() {
         return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
       }); 
+      ko.computed(function() {
+        return that.o_situationarea().o_toggle_state();
+      }).subscribe(function (newValue) {
+        if (newValue === true) {
+          that.o_toggle_state(false);
+        }
+      });
     }
  
     function SituationAreaViewModel() {
@@ -285,8 +293,8 @@ $( document ).ready(function() {
       that.o_ineligibles   = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
       that.o_uncertains    = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
       that.o_filterstag    = ko.observable(new FilterstagViewModel(that.o_active_filters));
-      that.o_filterarea    = ko.observable(new FilterAreaViewModel(that.o_all_filters));
       that.o_situationarea = ko.observable(new SituationAreaViewModel());
+      that.o_filterarea    = ko.observable(new FilterAreaViewModel(that.o_all_filters, that.o_situationarea));
       that.o_nothing       = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
       
 
