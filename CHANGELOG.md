@@ -2,6 +2,10 @@
 
 
 
+## 10.3.1 (19/06/2018)
+-[#807][BUG] Bug quand on clique sur le recap
+
+
 ## 10.3.0 (19/06/2018)
 -[#802][FEATURE] Situation recap
 
