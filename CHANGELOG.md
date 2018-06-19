@@ -2,6 +2,10 @@
 
 
 
+## 10.3.2 (21/06/2018)
+-[#806][DESIGN] Refaire le responsive sur les questions
+
+
 ## 10.3.1 (19/06/2018)
 -[#807][BUG] Bug quand on clique sur le recap
 
