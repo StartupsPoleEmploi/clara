@@ -2,6 +2,10 @@
 
 
 
+## 10.3.4 (21/06/2018)
+-[#814b][FEATURETTE] Capacité à cacher temporairement les filtres, amélioration
+
+
 ## 10.3.3 (21/06/2018)
 -[#814][FEATURETTE] Capacité à cacher temporairement les filtres
 
