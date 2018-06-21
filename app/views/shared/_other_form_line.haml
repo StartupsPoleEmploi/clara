@@ -2,7 +2,7 @@
 - current_val ||= ""
 - current_text ||= ""
 
-%div.d-flex.tooltip-responsive-swap--bottom
+.tooltip-responsive-swap--bottom
   .c-radiolist__element.u-focusable{tabindex: "0", id: "radio_#{id}"}
     = check_box_tag "other_form[#{id}]", |
                     "#{id}", |
@@ -12,6 +12,6 @@
                     class: "c-radioinput", |
                     onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
                     onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
-    %label.c-radiolabel{for: "#{id}"}
+    %label.c-radiolabel{for: "#{id}", class: 'u-5/6@tablet u-1/2'}
       =current_text
     
