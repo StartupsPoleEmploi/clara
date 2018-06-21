@@ -2,6 +2,8 @@
   
 }
 .c-radiolist__element {
+  display: flex; // KEEP
+  align-items: center; // KEEP
   padding-right: $inuit-global-spacing-unit-small;
   padding-left: $inuit-global-spacing-unit-small;
   margin-top: $inuit-global-spacing-unit-tiny;
