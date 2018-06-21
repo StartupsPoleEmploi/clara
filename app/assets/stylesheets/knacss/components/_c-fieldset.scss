@@ -8,3 +8,10 @@
     padding: space(4);
   }
 }
+
+.c-fieldset--allocation {
+  padding-left: 0%;
+  @include respond-to("tiny-up") {
+    padding-left: 25%;
+  }  
+}

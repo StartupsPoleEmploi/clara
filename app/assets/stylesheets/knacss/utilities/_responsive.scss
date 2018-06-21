@@ -203,17 +203,17 @@
 @media (max-width: $tiny) {
 
   /* quick small resolution reset */
-  .#{$kna-namespace}mod,
-  .#{$kna-namespace}col,
-  fieldset {
-    display: block !important;
-    float: none !important;
-    clear: none !important;
-    width: auto !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    border: 0;
-  }
+  // .#{$kna-namespace}mod,
+  // .#{$kna-namespace}col,
+  // fieldset {
+  //   display: block !important;
+  //   float: none !important;
+  //   clear: none !important;
+  //   width: auto !important;
+  //   margin-left: 0 !important;
+  //   margin-right: 0 !important;
+  //   border: 0;
+  // }
 
   .#{$kna-namespace}flex-container {
     flex-direction: column;

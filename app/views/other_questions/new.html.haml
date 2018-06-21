@@ -10,8 +10,8 @@
   
       = render 'shared/a_form_header', {e: e, title: "Êtes-vous dans l'une des situations suivantes ?", subtitle: "Cochez la ou les situations correspondantes"}
       
-      .flex-container.flex-container-v.align-items-center.justify-content-center.mtm
-        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+      .o-centerbox-h.mtm
+        %fieldset.c-fieldset.o-centerbox-h__item{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
        
           = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien(ne) du spectacle'} 

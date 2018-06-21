@@ -8,11 +8,11 @@
       %h1.mbs.txtcenter.u-focusable{tabindex: '0'}
         Quel est le diplôme le plus élevé que vous ayez obtenu ?
 
-      .c-grade__form
-        %fieldset.c-fieldset{ :class => has_error ? 'is-error' : '' }
+      .o-centerbox-h
+        %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
           
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio1'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio1'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_1',
                 @grade.value == 'niveau_1', 
@@ -24,7 +24,7 @@
             %label.c-radiolabel{for: 'niveau_1'}
               Bac +4 et + (Master) / diplômes d’ingénieur
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio2'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio2'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_2',
                 @grade.value == 'niveau_2', 
@@ -36,7 +36,7 @@
             %label.c-radiolabel{for: 'niveau_2'}
               Bac +3 (Licence)
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio3'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio3'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_3',
                 @grade.value == 'niveau_3', 
@@ -48,7 +48,7 @@
             %label.c-radiolabel{for: 'niveau_3'}
               Bac +1 à bac +2 (BTS / DUT)
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio4'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio4'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_4',
                 @grade.value == 'niveau_4', 
@@ -60,7 +60,7 @@
             %label.c-radiolabel{for: 'niveau_4'}
               Bac
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio5'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio5'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_5',
                 @grade.value == 'niveau_5', 
@@ -72,7 +72,7 @@
             %label.c-radiolabel{for: 'niveau_5'}
               CAP / BEP
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio6'}
+          .c-radiolist__element.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio6'}
             = radio_button_tag 'grade_form[value]',
                 'niveau_infra_5',
                 @grade.value == 'niveau_infra_5', 

@@ -1,11 +1,11 @@
 .c-radiolabel {
-  // width:80%;
-  // max-width:80%;
   text-align: left;
   font-size: $h5-size;
   margin-top: 0;
   vertical-align: baseline;
   padding: $inuit-global-spacing-unit-tiny;
+  padding-left: $inuit-global-spacing-unit-small;
+  width: 83%;
   @include respond-to("tiny-up") {
     font-size: $h3-size;
   }  

@@ -93,6 +93,13 @@
   }
 }
 
+.c-newhomehero__cta {
+  text-align: center;
+  @include respond-to("large-up") {
+    text-align: left;
+  }  
+}
+
 .c-newhomehero__content-description > div {
   display: inline;
   @include respond-to("tiny-up") {
