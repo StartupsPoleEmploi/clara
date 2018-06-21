@@ -19,23 +19,24 @@
 
 .c-result-default.o-wrapper
   .o-layout
-    %div{class:"o-layout__item u-1/1 u-1/3@tablet"}
+    .o-layout__item{class:"u-1/1 u-1/3@tablet"}
 
 
-      %div.c-filterings-area.u-margin-bottom-small{"data-bind" => "with: o_filterarea"}
-        %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle, css: o_state_css"}
-          %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
-            Ouvrir les filtres       
-          %span.c-mask-filter__caret
-            &nbsp;&or;
+      .c-filterings-area.u-margin-bottom-small{"data-bind" => "with: o_filterarea"}
+        .c-filterings-area__content{"data-bind" => "css: o_filterareashow"}
+          %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle, css: o_state_css"}
+            %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
+              Ouvrir les filtres       
+            %span.c-mask-filter__caret
+              &nbsp;&or;
             
-        %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
-          %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
-          #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
-            - flat_all_filter.each_with_index do |a_filter, i|
-              %div.c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
-                %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
-                %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
+          %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
+            %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
+            #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
+              - flat_all_filter.each_with_index do |a_filter, i|
+                %div.c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
+                  %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
+                  %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
       = render 'shared/result_situation', asker
 
