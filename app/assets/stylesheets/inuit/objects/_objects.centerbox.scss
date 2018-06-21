@@ -11,8 +11,9 @@
 }
 
 .o-centerbox-h {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
+.o-centerbox-h__item {
+  display: inline-block;
+}
