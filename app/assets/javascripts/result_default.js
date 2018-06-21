@@ -234,6 +234,9 @@ $( document ).ready(function() {
       var that = this;
       that.o_all_filters = o_all_filters;
       that.o_situationarea = o_situationarea;
+      that.o_filterareashow = ko.computed(function() {
+        return _.some(that.o_all_filters(), function(e){return e.name === "special"}) ? "u-hidden-visually" : "";
+      }); 
       that.o_toggle = function() {
         that.o_toggle_state(!that.o_toggle_state());
       }
