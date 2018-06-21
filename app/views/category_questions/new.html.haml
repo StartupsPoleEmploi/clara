@@ -11,8 +11,8 @@
       
       = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
       
-      .c-question__form
-        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+      .o-centerbox-h.u-margin-vertical
+        %fieldset.o-centerbox-h__item.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
           .c-radiolist__element.o-centerbox-v.u-focusable{tabindex: '0', id: 'radio1'}

@@ -3,9 +3,17 @@
    ========================================================================== */
 
 /**
- * Center children inside a box
+ * Center children inside a box, and child dimensions are not known.
  */
 .o-centerbox-v {
   display: flex;
   align-items: center;
+}
+
+.o-centerbox-h {
+  text-align: center;
+}
+
+.o-centerbox-h__item {
+  display: inline-block;
 }
