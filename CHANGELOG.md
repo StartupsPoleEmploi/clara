@@ -2,6 +2,10 @@
 
 
 
+## 10.3.3 (21/06/2018)
+-[#814][FEATURETTE] Capacité à cacher temporairement les filtres
+
+
 ## 10.3.2 (21/06/2018)
 -[#806][DESIGN] Refaire le responsive sur les questions
 
