@@ -2,6 +2,10 @@
 
 
 
+## 10.3.7 (22/06/2018)
+-[#816][BUG] Compatibilité matériel ancien
+
+
 ## 10.3.6 (22/06/2018)
 -[#815b][BUG] Clavier numérique question adresse, après 5 chiffres
 
