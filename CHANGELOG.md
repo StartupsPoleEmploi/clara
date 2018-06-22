@@ -2,6 +2,10 @@
 
 
 
+## 10.3.6 (22/06/2018)
+-[#815b][BUG] Clavier numérique question adresse, après 5 chiffres
+
+
 ## 10.3.5 (22/06/2018)
 -[#815][BUG] Clavier numérique question adresse
 
