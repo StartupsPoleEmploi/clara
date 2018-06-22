@@ -1,11 +1,6 @@
 .c-navbuttons {
   margin-top: 0;  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   @include respond-to("medium-up") {
-    flex-direction: row-reverse;
   }
 }
 

@@ -1,4 +1,5 @@
-%p.c-navbuttons
-  = f.submit 'Continuer', "class" => "c-navbutton c-navbutton--continue js-next"
-  %span.c-navbuttons__separator
-  = link_to 'Revenir', '/go_back', method: :post, class: 'c-navbutton c-navbutton--back js-previous', onclick: 'return false;';
+.o-layout.o-layout--center.o-layout--reverse
+  .o-layout__item.u-text--center{"class" => "u-1/1 u-1/2@tablet"}
+    = f.submit 'Continuer', "class" => "js-next"
+  .o-layout__item.u-text--center{"class" => "u-1/1 u-1/2@tablet"}
+    = link_to 'Revenir', '/go_back', method: :post, class: 'js-previous', onclick: 'return false;';
