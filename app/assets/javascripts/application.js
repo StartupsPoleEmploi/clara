@@ -35,6 +35,7 @@
 //= require ./stats_index
 //= require ./stats_time
 //= require ./address_questions
+//= require ./inscription_questions
 //= require ./allocation_questions
 //= require ./age_questions
 //= require ./other_questions
