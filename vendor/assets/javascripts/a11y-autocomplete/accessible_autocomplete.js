@@ -73,6 +73,9 @@
       $input.attr("aria-expanded", "false");
     }
     function autocomplete() {
+
+      $('#search').attr('type', 'text');
+      
       // if input value didn't change, return
       if ($input.val() === inputVal) {
         return;
