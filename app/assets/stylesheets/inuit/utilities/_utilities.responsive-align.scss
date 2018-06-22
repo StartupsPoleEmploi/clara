@@ -1,0 +1,59 @@
+/* ==========================================================================
+   #RESPONSIVE HIDE
+   ========================================================================== */
+
+/**
+ * Example usage:
+ * <div class="u-textalign-left-from@tablet">
+ * <div class="u-textalign-left-until@tablet">
+ */
+
+$breakpoint-separator: \@;
+
+@each $bp-name, $bp-value in $mq-breakpoints {
+
+    .u-textalign-left-from#{$breakpoint-separator}#{$bp-name}{
+        @include mq($from: $bp-name) {
+            text-align: left !important;
+        }
+    }
+
+    .u-textalign-left-until#{$breakpoint-separator}#{$bp-name}{
+        @include mq($until: $bp-name) {
+            text-align: left !important;
+        }
+    }
+
+}
+
+@each $bp-name, $bp-value in $mq-breakpoints {
+
+    .u-textalign-right-from#{$breakpoint-separator}#{$bp-name}{
+        @include mq($from: $bp-name) {
+            text-align: right !important;
+        }
+    }
+
+    .u-textalign-right-until#{$breakpoint-separator}#{$bp-name}{
+        @include mq($until: $bp-name) {
+            text-align: right !important;
+        }
+    }
+
+}
+
+@each $bp-name, $bp-value in $mq-breakpoints {
+
+    .u-textalign-center-from#{$breakpoint-separator}#{$bp-name}{
+        @include mq($from: $bp-name) {
+            text-align: center !important;
+        }
+    }
+
+    .u-textalign-center-until#{$breakpoint-separator}#{$bp-name}{
+        @include mq($until: $bp-name) {
+            text-align: center !important;
+        }
+    }
+
+}

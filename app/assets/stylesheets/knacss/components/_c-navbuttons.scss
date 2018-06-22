@@ -1,24 +1,6 @@
-.c-navbuttons {
-  margin-top: 0;  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @include respond-to("medium-up") {
-    flex-direction: row-reverse;
-  }
-}
-
-.c-navbuttons__separator {
-  margin-top: $small-value;  
-  @include respond-to("medium-up") {
-    margin-top: 0;  
-    margin-left: $small-value;  
-  }
-}
-
 .c-navbutton {
   @extend .bigger, .c-button, .w200p;
+  font-size: 24px; //HACK
 }
 
 .c-navbutton--back {
