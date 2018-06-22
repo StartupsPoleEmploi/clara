@@ -1,19 +1,6 @@
-.c-navbuttons {
-  margin-top: 0;  
-  @include respond-to("medium-up") {
-  }
-}
-
-.c-navbuttons__separator {
-  margin-top: $small-value;  
-  @include respond-to("medium-up") {
-    margin-top: 0;  
-    margin-left: $small-value;  
-  }
-}
-
 .c-navbutton {
   @extend .bigger, .c-button, .w200p;
+  font-size: 24px; //HACK
 }
 
 .c-navbutton--back {
