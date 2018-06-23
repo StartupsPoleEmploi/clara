@@ -11,3 +11,9 @@
   }  
 }
 
+.c-inscriptionform__line {
+  @extend .u-padding-horizontal-small, .u-padding-top-tiny;
+  display: flex;
+  align-items: center;
+
+}

@@ -5,7 +5,6 @@
   vertical-align: baseline;
   padding: $inuit-global-spacing-unit-tiny;
   padding-left: $inuit-global-spacing-unit-small;
-  width: 83%;
   @include respond-to("tiny-up") {
     font-size: $h3-size;
   }  

@@ -2,15 +2,14 @@
 - value ||= ""
 - text ||= ""
 
-.u-text--center
-  .u-display-inline-block.u-focusable.u-padding-horizontal-small.u-padding-vertical-tiny{tabindex: '0', id: "radio_#{id}"}
-    = radio_button_tag "inscription_form[value]", |
-        "#{id}", |
-        "#{value}" == "#{id}", | 
-        id: "#{id}", |
-        tabindex: -1, |
-        class: 'c-radioinput', | 
-        onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
-        onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
-    %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
-      =text
+.c-inscriptionform__line.u-focusable.js-enterspace{tabindex: '0', id: "radio_#{id}"}
+  = radio_button_tag "inscription_form[value]", |
+      "#{id}", |
+      "#{value}" == "#{id}", | 
+      id: "#{id}", |
+      tabindex: -1, |
+      class: 'c-radioinput', | 
+      onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
+      onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+  %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
+    =text

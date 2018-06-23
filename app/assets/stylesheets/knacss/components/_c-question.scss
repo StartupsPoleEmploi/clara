@@ -9,9 +9,13 @@
 }
 
 .c-question__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
 }
-
-
 
 .c-question__mark {
   padding-left: 1rem;
