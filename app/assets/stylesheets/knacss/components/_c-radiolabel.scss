@@ -17,3 +17,11 @@
 .c-radioinput {
   
 }
+
+.c-radioline {
+  @extend .u-padding-horizontal-small;
+  display: flex;
+  align-items: center;
+  font-size: 20px; // HACK
+  cursor: pointer;
+}

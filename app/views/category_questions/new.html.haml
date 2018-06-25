@@ -15,7 +15,7 @@
         %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-          .c-inscriptionform__line.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
+          .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
             = radio_button_tag 'category_form[value]', |
                 'autres_cat', |
                 false, | 
@@ -37,7 +37,7 @@
                   %li En formation autre que formation professionnelle
 
               
-          .c-inscriptionform__line.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
+          .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
             = radio_button_tag 'category_form[value]', |
                 'cat_12345', |
                 false, | 
