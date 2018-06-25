@@ -7,7 +7,6 @@
   margin-top: 0;
   font-size: $inuit-font-size-h3;
   &.is-error {
-    @extend .h4-like;
     padding: 0.2rem;
     color: white;
     background-color: red;
