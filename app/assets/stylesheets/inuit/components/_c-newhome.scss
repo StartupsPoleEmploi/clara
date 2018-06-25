@@ -49,10 +49,10 @@
   padding: space(9) 0 space(9) 0; 
   text-align: center;
   display: flex;
-  @include respond-to("large-up") {
+  @include mq($from: desktop) {
     padding: 0 0 space(9) 0; 
   }
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     text-align: left;
     margin-left: 8%;
     margin-right: 8%;
@@ -65,7 +65,7 @@
 .c-newhomehero__content-image {
   flex: 3 1 0;
   display: none;
-  @include respond-to("large-up") {
+  @include mq($from: desktop) {
     display: flex;
   }
 }
@@ -76,10 +76,10 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 space(4) 0 space(4);
-  @include respond-to("large-up") {
+  @include mq($from: desktop) {
     width: inherit;
   }
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     margin: 0;
   }
   a {
@@ -87,7 +87,7 @@
   }
   div {
     text-align: center;
-    @include respond-to("large-up") {
+    @include mq($from: desktop) {
       text-align: inherit;
     }
   }
@@ -95,14 +95,14 @@
 
 .c-newhomehero__cta {
   text-align: center;
-  @include respond-to("large-up") {
+  @include mq($from: desktop) {
     text-align: left;
   }  
 }
 
 .c-newhomehero__content-description > div {
   display: inline;
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     display: block;
   }
 }
@@ -282,7 +282,7 @@ h2.c-newhomenumber__title {
   padding: space(6) 0 space(4) 0;
   color: #159BC6;
   width: space(11) * 1.8;
-  @include respond-to("large-up") {
+  @include mq($from: desktop) {
     width: space(11) * 2;
   }
 }
@@ -309,7 +309,7 @@ h2.c-newhomenumber__title {
   margin-right: space(2);
   color: white;
   font-size: space(5);
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     font-size: space(6);
   }
   @include mq($from: tablet) {

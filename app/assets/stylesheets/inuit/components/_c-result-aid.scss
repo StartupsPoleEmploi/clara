@@ -37,14 +37,14 @@
   a {
     text-decoration: none;
   }
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     padding: 0 space(4);
   }
 }  
 
 .c-result-aid__cta span {
   display: block;
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     display: inline-block;
   }
 }

@@ -5,7 +5,7 @@
   vertical-align: baseline;
   padding: $inuit-global-spacing-unit-tiny;
   padding-left: $inuit-global-spacing-unit-small;
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     font-size: $inuit-font-size-h3;
   }  
 }

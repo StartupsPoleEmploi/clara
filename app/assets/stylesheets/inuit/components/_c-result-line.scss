@@ -65,7 +65,7 @@
       margin-left: 5px;
     }
   }
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     margin-left: space(3);
     svg {
       width: 60px;
@@ -90,7 +90,7 @@
   flex-direction: row;
   align-items: center;
   margin-left: space(0);
-  @include respond-to("tiny-up") {
+  @include mq($from: mobile) {
     margin-left: space(3);
   }
 }
