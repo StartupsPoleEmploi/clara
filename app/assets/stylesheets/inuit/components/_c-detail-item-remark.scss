@@ -1,6 +1,6 @@
 .c-detail-item-remark {
   background-color: white;
-  border-radius: $tiny-value;
+  border-radius: space(1);
   padding: $small-plus-value;
   margin-top: $small-plus-value;
   background-color: #f0f7fc;
@@ -9,7 +9,7 @@
 }
 
 .c-detail-item-remark__content {
-  padding-left: $small-value;
+  padding-left: space(3);
 }
 
 .c-detail-item-remark__svg {

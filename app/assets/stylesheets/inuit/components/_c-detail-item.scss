@@ -1,6 +1,6 @@
 .c-detail-item {
   background-color: white;
-  border-radius: $tiny-value;
+  border-radius: space(1);
   padding: $small-plus-value;
 }
 
@@ -9,7 +9,7 @@
 }
 
 h3.c-detail-item__title {
-  margin-bottom: $small-value;
+  margin-bottom: space(3);
 }
 
 .c-detail-list {
@@ -26,7 +26,7 @@ h3.c-detail-item__title {
 // "md" value of gridlex vars
 @media screen and (max-width: 64em)  {
   .c-detail-list {
-    margin-left: $small-value;
-    margin-right: $small-value;
+    margin-left: space(3);
+    margin-right: space(3);
   } 
 }

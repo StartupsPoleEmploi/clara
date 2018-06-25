@@ -1,5 +1,5 @@
 #c-detail-app {
-  margin-top: $tiny-value;
+  margin-top: space(1);
 }
 
 .c-detail-title {
@@ -28,7 +28,7 @@
   padding-right: $medium-plus-value;
   padding-left: $medium-plus-value;
   margin-right: $o-gutter;
-  margin-top: $small-value;
+  margin-top: space(3);
 }
 
 .c-detail-title-inside {
@@ -58,7 +58,7 @@
 }
 
 .c-detail-void {
-  border-radius: $tiny-value;
+  border-radius: space(1);
   padding-top: $small-plus-value;
   padding-right: $small-plus-value;
   padding-left: $small-plus-value;
@@ -68,7 +68,7 @@
 .c-detail-void__line {
   text-align: center;
   a {
-    margin-top: $small-value;
+    margin-top: space(3);
   }
   @include mq($from: tablet) {
     text-align: left;
@@ -88,7 +88,7 @@ a.c-detail-cta {
 }
 
 .c-detail-goback {
-  margin-left: $small-value;
+  margin-left: space(3);
   display: none;
   cursor: pointer;
   @include mq($from: tablet) {

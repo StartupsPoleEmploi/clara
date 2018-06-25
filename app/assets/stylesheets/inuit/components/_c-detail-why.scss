@@ -11,13 +11,13 @@
 
 .c-detail-why__explanation {
   background-color: white;
-  border-radius: $tiny-value;
+  border-radius: space(1);
   padding-top: $small-plus-value;
   padding-bottom: $small-plus-value;
   padding-right: $medium-plus-value;
   padding-left: $medium-plus-value;
   margin-right: $o-gutter;
-  margin-top: $small-value;
+  margin-top: space(3);
 }
 
 // based on gridlex vars
@@ -27,20 +27,20 @@
     margin-right: 0;
   }  
   .c-detail-why-container {
-    margin-left: $small-value;
-    margin-right: $small-value;
+    margin-left: space(3);
+    margin-right: space(3);
   }
   .c-detail-warning {
-    margin-left: $small-value;
-    margin-right: $small-value;
+    margin-left: space(3);
+    margin-right: space(3);
   }
 }
 
 
 .c-detail-why__intro {
-  margin-top: $small-value;
+  margin-top: space(3);
 }
 
 .c-detail-haveto {
-  margin-top: $tiny-value;
+  margin-top: space(1);
 }

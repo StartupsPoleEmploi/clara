@@ -3,7 +3,7 @@
 }
 
 .c-type-show-grid {
-  padding: 0 $small-value 0 $small-value;
+  padding: 0 space(3) 0 space(3);
   @include mq($from: tablet) {
     padding: 0 $o-gutter 0 $o-gutter;
   } 

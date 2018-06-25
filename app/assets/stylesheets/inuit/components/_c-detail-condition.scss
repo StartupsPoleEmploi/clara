@@ -3,13 +3,13 @@
 .c-detail-condition__raw {
   display: flex;
   align-items: center;
-  margin-top: $small-value;
+  margin-top: space(3);
 }
 
 .c-detail-condition-svg {
   display: flex;
   align-items: center;
-  margin-right: $tiny-value;
+  margin-right: space(1);
   svg {
     min-width: 35px;
     max-width: 35px;
@@ -23,5 +23,5 @@
 }
 
 .c-detail-condition-text {
-  margin-left: $tiny-plus-value;
+  margin-left: space(2);
 }
