@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require es5-shim/es5-shim
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
@@ -35,6 +36,7 @@
 //= require ./stats_index
 //= require ./stats_time
 //= require ./address_questions
+//= require ./inscription_questions
 //= require ./allocation_questions
 //= require ./age_questions
 //= require ./other_questions

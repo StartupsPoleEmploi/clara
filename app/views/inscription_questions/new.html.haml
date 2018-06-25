@@ -11,8 +11,8 @@
 
       = render 'shared/a_form_header', {e: e, title: "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"}
 
-      .o-centerbox-h
-        %fieldset.o-centerbox-h__item.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+      .c-question__form
+        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez votre date d'inscription &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
           
           = render 'shared/inscription_form_line', {id: 'non_inscrit', value: @inscription.value, text: 'Je ne suis pas inscrit(e)'} 

@@ -5,7 +5,6 @@
   vertical-align: baseline;
   padding: $inuit-global-spacing-unit-tiny;
   padding-left: $inuit-global-spacing-unit-small;
-  width: 83%;
   @include respond-to("tiny-up") {
     font-size: $h3-size;
   }  
@@ -17,4 +16,12 @@
 
 .c-radioinput {
   
+}
+
+.c-radioline {
+  @extend .u-padding-horizontal-small;
+  display: flex;
+  align-items: center;
+  font-size: 20px; // HACK
+  cursor: pointer;
 }

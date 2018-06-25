@@ -2,6 +2,10 @@
 
 
 
+## 10.3.8 (25/06/2018)
+-[#817][FEATURETTE] Amélioration des alignements
+
+
 ## 10.3.7 (22/06/2018)
 -[#816][BUG] Compatibilité matériel ancien
 
