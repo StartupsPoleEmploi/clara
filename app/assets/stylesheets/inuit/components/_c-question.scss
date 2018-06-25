@@ -1,7 +1,7 @@
 .c-question {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-left: 4rem;
     margin-right: 4rem;
   }  
@@ -19,7 +19,7 @@
 
 .c-question__mark {
   padding-left: 1rem;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     padding-left: 15rem;
   }  
 }

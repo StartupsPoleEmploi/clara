@@ -5,7 +5,7 @@
   align-items: center;
   margin-left: 0;
   margin-right: 0;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-right: auto;
     margin-left: 8%;
   }

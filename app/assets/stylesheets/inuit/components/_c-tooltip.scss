@@ -26,7 +26,7 @@
   background: rgba( 0, 0, 0, .9 );
   color: #eee;
   font-size: space(4);
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     width: 40rem;
   }
 }

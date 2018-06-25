@@ -19,7 +19,7 @@
   margin-right: 8%;
   margin-left: 0;
   margin-right: 0;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-left: auto;
     margin-right: 8%;
   }
@@ -31,7 +31,7 @@
 
 .c-newhomehero__navbar-elt {
   margin-left: space(3);
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-left: space(5);
   }
 }
@@ -147,14 +147,14 @@ h2.c-newhomeexample__title {
   justify-content: space-between;
   margin: space(7) 8% 0 8%;
   flex-direction: column;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     flex-direction: row;
   }
 }
 
 .c-newhomeexample__card + .c-newhomeexample__card {
   margin-top: space(7);
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-top: 0;
   }
 }
@@ -219,7 +219,7 @@ h2.c-newhomeexample__title {
 }
 .c-newhomeexample__card-txt.more {
   display: none;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     display: block;
   }
 }
@@ -259,7 +259,7 @@ h2.c-newhomenumber__title {
   padding-bottom: space(9);
   flex-direction: column;
   align-items: center;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     flex-direction: row;
   }
 }
@@ -267,7 +267,7 @@ h2.c-newhomenumber__title {
 .c-newhomenumber__card + .c-newhomenumber__card {
   margin-left: space(0);
   margin-top: space(7);
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-top: space(0);
     margin-left: space(7);
   }
@@ -312,7 +312,7 @@ h2.c-newhomenumber__title {
   @include respond-to("tiny-up") {
     font-size: space(6);
   }
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     font-size: space(7);
     margin-left: space(0);
     margin-right: space(0);
@@ -331,7 +331,7 @@ h2.c-newhomenumber__title {
     color: #057DBC;
     text-decoration: none;
     display: inline-block;    
-    @include respond-to("medium-up") {
+    @include mq($from: tablet) {
       font-size: 1.8rem;
     }
   }
@@ -356,7 +356,7 @@ h2.c-newhomeuser__title {
   margin-left: 12%;
   margin-top: space(7);
   flex-direction: column;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     flex-direction: row;
   }
 }
@@ -370,7 +370,7 @@ h2.c-newhomeuser__title {
 .c-newhomeuser__card + .c-newhomeuser__card {
   margin-left: space(0);
   margin-top: space(7);
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-top: space(0);
     margin-left: space(7);
   }

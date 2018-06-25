@@ -43,7 +43,7 @@
   padding-left: 0;
   justify-content: center;
   text-align: center;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     justify-content: inherit;
     text-align: inherit;
     padding-left: 6rem;
@@ -70,7 +70,7 @@
   a {
     margin-top: $small-value;
   }
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     text-align: left;
   } 
 }
@@ -91,7 +91,7 @@ a.c-detail-cta {
   margin-left: $small-value;
   display: none;
   cursor: pointer;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     display: block;
     margin-left: $o-gutter;
   } 

@@ -40,14 +40,20 @@
 
 .c-breadcrumb > :first-child {
   margin-left: $o-small-gutter;
-  @include respond-to("medium-up") {
-    margin-left: $o-gutter;
-  }  
+  @include mq($from: tablet) {
+    margin-left: $o-gutter
+  }
+  // @include mq($from: tablet) {
+  //   margin-left: $o-gutter;
+  // }  
+  @include mq($until: tablet) {
+      color: blue;
+  }
 }
 
 .c-breadcrumb > :last-child {
   margin-right: $o-small-gutter;
-  @include respond-to("medium-up") {
+  @include mq($from: tablet) {
     margin-right: $o-gutter;
   }  
 }
