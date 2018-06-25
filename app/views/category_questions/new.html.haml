@@ -11,11 +11,11 @@
       
       = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
       
-      .o-centerbox-h
-        %fieldset.o-centerbox-h__item.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+      .c-question__form
+        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
           %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-          .c-radiolist__element.o-centerbox-v.u-focusable{tabindex: '0', id: 'radio1'}
+          .c-inscriptionform__line.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
             = radio_button_tag 'category_form[value]', |
                 'autres_cat', |
                 false, | 
@@ -37,7 +37,7 @@
                   %li En formation autre que formation professionnelle
 
               
-          .c-radiolist__element.u-focusable{tabindex: '0', id: 'radio2'}
+          .c-inscriptionform__line.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
             = radio_button_tag 'category_form[value]', |
                 'cat_12345', |
                 false, | 
