@@ -2,6 +2,10 @@
 
 
 
+## 10.3.9 (25/06/2018)
+-[#819][BUG] Navigation clavier question diplôme
+
+
 ## 10.3.8 (25/06/2018)
 -[#817][FEATURETTE] Amélioration des alignements
 
