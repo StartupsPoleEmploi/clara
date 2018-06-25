@@ -6,5 +6,6 @@ $( document ).ready(function() {
       $($(this).find('input')).trigger('click');
     }
   });
+
     
 });
