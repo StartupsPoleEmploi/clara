@@ -21,10 +21,10 @@
 
 .c-detail-warning {
   color: $grey-text;
-  font-size: $small-plus-value;
+  font-size: space(4);
   background-color:#FCF8E3;
-  padding-top: $small-plus-value;
-  padding-bottom: $small-plus-value;
+  padding-top: space(4);
+  padding-bottom: space(4);
   padding-right: $medium-plus-value;
   padding-left: $medium-plus-value;
   margin-right: $o-gutter;
@@ -59,10 +59,10 @@
 
 .c-detail-void {
   border-radius: space(1);
-  padding-top: $small-plus-value;
-  padding-right: $small-plus-value;
-  padding-left: $small-plus-value;
-  padding-bottom: $small-plus-value;
+  padding-top: space(4);
+  padding-right: space(4);
+  padding-left: space(4);
+  padding-bottom: space(4);
 }
 
 .c-detail-void__line {

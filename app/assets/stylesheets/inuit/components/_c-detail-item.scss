@@ -1,11 +1,11 @@
 .c-detail-item {
   background-color: white;
   border-radius: space(1);
-  padding: $small-plus-value;
+  padding: space(4);
 }
 
 .c-detail-item + .c-detail-item {
-  margin-top: $small-plus-value;
+  margin-top: space(4);
 }
 
 h3.c-detail-item__title {
