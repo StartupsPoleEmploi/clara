@@ -12,8 +12,8 @@
 }
 
 .c-inscriptionform__line {
-  @extend .u-padding-horizontal-small, .u-padding-top-tiny;
+  @extend .u-padding-horizontal-small;
   display: flex;
   align-items: center;
-
+  font-size: 20px; // HACK
 }
