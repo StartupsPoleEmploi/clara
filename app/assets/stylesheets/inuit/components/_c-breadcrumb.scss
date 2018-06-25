@@ -43,7 +43,7 @@
   @include mq($from: tablet) {
     margin-left: $o-gutter
   }
-  // @include mq($from: tablet) {
+  // @include respond-to("medium-up") {
   //   margin-left: $o-gutter;
   // }  
   @include mq($until: tablet) {
