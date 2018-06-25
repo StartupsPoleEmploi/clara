@@ -2,6 +2,10 @@
 
 
 
+## 10.3.10 (25/06/2018)
+-[#820][BUG] GA ne marche plus...
+
+
 ## 10.3.9 (25/06/2018)
 -[#819][BUG] Navigation clavier question diplôme
 
