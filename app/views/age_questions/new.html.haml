@@ -1,16 +1,16 @@
 - title_data 'Votre âge'
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'w100p', 'is-error']
+  - classes_of_input = ['c-field', 'c-age-input', 'is-error']
   - aria_described_by_of_input = ['age', 'c-age-error__label']
 - else
-  - classes_of_input = ['c-field', 'w100p']
+  - classes_of_input = ['c-field', 'c-age-input']
   - aria_described_by_of_input = ['age']
 
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
     = form_with model: @age, url: age_questions_path, local: true do |f|
-      %h1.c-age__title
+      %h1.c-question-title
         %span.u-focusable{tabindex: "0"} Quel est votre âge ?
       .c-age__form
         = f.number_field :number_of_years, 

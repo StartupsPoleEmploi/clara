@@ -1,10 +1,10 @@
 - title_data 'Votre adresse'
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'h5-like', 'txtcenter', 'is-error'].join(" ")
+  - classes_of_input = ['c-field', 'c-age-input', 'is-error'].join(" ")
   - aria_described_by_of_input = ['initInstr', 'address-error'].join(" ")
 - else
-  - classes_of_input = ['c-field', 'numberonly', 'h5-like', 'txtcenter'].join(" ")
+  - classes_of_input = ['c-field', 'c-age-input', 'numberonly'].join(" ")
   - aria_described_by_of_input = ['address'].join(" ")
 
 %main#main.mw1140p.center{role: "main"}
@@ -13,7 +13,7 @@
       %h1.txtcenter
         %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
       .c-address__explanation
-        .h3-like.w75.u-focusable{tabindex: "0"}
+        .u-focusable{tabindex: "0"}
           Entrez votre code postal à 5 chiffres
       .c-address__content
         #a11yAutocomplete
@@ -32,9 +32,9 @@
             %ul#results.autocomplete-list{role: "listbox", style: "display: none;", tabindex: "0"}
             %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
             .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
-        %input#location_label.is-hidden{value: "#{@address.label}"}
+        %input#location_label.u-hidden{value: "#{@address.label}"}
 
-          %table#address_form.is-hidden
+          %table#address_form.u-hidden
             %tr
               %td.label Street address
               %td.slimField

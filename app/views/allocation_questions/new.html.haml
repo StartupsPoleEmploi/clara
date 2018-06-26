@@ -11,7 +11,7 @@
     
       .c-question__form
         %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
-          %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
+          %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
           
           = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'Une prestation d’assurance chômage : ARE / ASP'} 
           = render 'shared/allocation_form_line', {id: 'ASS_AER_ATA_APS_AS-FNE',       value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / ATA / APS / AS-FNE'} 

@@ -4,7 +4,7 @@
 %main#main.mw1140p.center{role: 'main'}
   .o-card.c-question
     = form_with model: @grade, url: grade_questions_path, local: true do |f|
-      %h1.u-focusable{tabindex: '0'}
+      %h1.c-question-title.u-focusable{tabindex: '0'}
         Quel est le diplôme le plus élevé que vous ayez obtenu ?
 
       .c-question__form

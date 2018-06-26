@@ -31,8 +31,11 @@
 
 .c-question-title {
   margin-top: space(8);
-  // font-size: $inuit-font-size-h3;
-  // @include mq($from: tablet) {
-  //   font-size: $inuit-font-size-h1;
-  // } 
+  text-align: center;
+}
+
+.c-question-subtitle {
+  @extend .u-margin-vertical-small;
+  text-align: center;
+  font-size: $inuit-font-size-h4;
 }
