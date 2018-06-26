@@ -10,7 +10,7 @@
 
       .c-question__form
         %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
-          %legend.visually-hidden Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
+          %legend.u-hidden-visually Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
           
           .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio1'}
             = radio_button_tag 'grade_form[value]',

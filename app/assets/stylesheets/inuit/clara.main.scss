@@ -117,7 +117,7 @@
 //
 // Uncomment and add to this section as necessary.
 
-$inuit-wrapper-width: 1480px;
+// $inuit-wrapper-width: 1200px;
 @import "objects/objects.wrapper";
 @import "objects/objects.layout";
 @import "objects/objects.media";
@@ -178,4 +178,5 @@ $inuit-responsive-spacing-sizes: (
 @import "utilities/utilities.print";
 @import "utilities/utilities.hide";
 $inuit-displays: true;
+$inuit-display-aliases: true;
 @import "utilities/utilities.responsive-display";
