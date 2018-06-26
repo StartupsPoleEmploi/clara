@@ -26,19 +26,3 @@
     min-width: space(8);
     margin: space(3) 0 space(3) 0;
   }
-
-  .c-qh > :first-child {
-    margin-left: $o-small-gutter;
-    @include mq($from: tablet) {
-      margin-left: $o-gutter;
-    }  
-  }
-
-  .c-qh > :last-child {
-    margin-left: auto;
-    margin-right: $o-small-gutter;
-    @include mq($from: tablet) {
-      margin-right: $o-gutter;
-    } 
-  }
-
