@@ -8,6 +8,11 @@
   background-color: #E2EAF5;
 }
 
+.c-newhomehero__title {
+  @include inuit-font-size(26px);
+  font-weight: 500;
+}
+
 .c-newhomehero__header {
   display: flex;
   justify-content: space-around;
@@ -112,12 +117,11 @@ input.c-main-cta {
   white-space: nowrap;
   border-radius: space(8);
   background-color: #358ED7;
-  padding: space(4) space(9) space(4) space(9);
+  padding: space(6) space(12) space(6) space(12);
   cursor: pointer;
   color: white;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.8rem;
   font-weight: bold;
 }
 
