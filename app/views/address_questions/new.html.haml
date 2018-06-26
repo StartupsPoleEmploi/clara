@@ -7,8 +7,6 @@
   - classes_of_input = ['c-field', 'numberonly', 'h5-like', 'txtcenter'].join(" ")
   - aria_described_by_of_input = ['address'].join(" ")
 
-= render 'shared/breadcrumb', {where: 'question'}
-
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
     = form_with model: @address, url: address_questions_path, local: true do |f|

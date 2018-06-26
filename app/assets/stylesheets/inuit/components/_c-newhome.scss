@@ -9,8 +9,8 @@
 }
 
 .c-newhomehero__title {
-  @include inuit-font-size(26px);
-  font-weight: 500;
+  // @include inuit-font-size(26px);
+  // font-weight: 500;
 }
 
 .c-newhomehero__header {
@@ -105,12 +105,15 @@ input.c-main-cta {
   white-space: nowrap;
   border-radius: space(8);
   background-color: #358ED7;
-  padding: space(6) space(12) space(6) space(12);
+  padding: space(6) space(8) space(6) space(8);
   cursor: pointer;
   color: white;
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
+  @include mq($from: tablet) {
+    padding: space(6) space(12) space(6) space(12);
+  }
 }
 
 /* Examples section

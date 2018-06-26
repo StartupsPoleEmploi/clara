@@ -9,8 +9,6 @@
   - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr']
 
-= render 'shared/breadcrumb', {where: 'question'}
-
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
     = form_with model: @are, local: true, url: are_questions_path do |f|

@@ -7,8 +7,6 @@
   
 - loaded = @loaded || {}
 
-= render 'shared/breadcrumb', {where: 'finals'}
-
 %main#main.c-results-index.o-wrapper{role: 'main'}
   - if has_user
     = render 'shared/result_default', local_assigns

@@ -7,8 +7,6 @@
   - classes_of_input = ['c-field', 'w100p']
   - aria_described_by_of_input = ['age']
 
-= render 'shared/breadcrumb', {where: 'question'}
-
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
     = form_with model: @age, url: age_questions_path, local: true do |f|

@@ -1,5 +1,5 @@
 .o-layout.o-layout--small.o-layout--reverse
-  .o-layout__item.u-text--center{"class" => "u-1/1 u-1/2@tablet u-textalign-left-from@tablet u-text--center"}
-    = f.submit 'Continuer', "class" => "c-navbutton c-navbutton--continue u-margin-top-tiny js-next"
+  .o-layout__item{"class" => "u-1/1 u-1/2@tablet u-textalign-left-from@tablet u-text--center"}
+    = f.submit 'Continuer', "class" => "c-navbutton c-navbutton--continue js-next"
   .o-layout__item{"class" => "u-1/1 u-1/2@tablet u-textalign-right-from@tablet u-text--center"}
-    = link_to 'Revenir', '/go_back', method: :post, class: 'c-navbutton u-display-inline-block u-margin-top-tiny js-previous', onclick: 'return false;';
+    = link_to 'Revenir', '/go_back', method: :post, class: 'c-navbutton c-navbutton--previous js-previous', onclick: 'return false;';
