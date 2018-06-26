@@ -147,13 +147,18 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__cards {
-  display: flex;
-  justify-content: space-between;
-  margin: space(7) 8% 0 8%;
-  flex-direction: column;
-  @include mq($from: tablet) {
-    flex-direction: row;
-  }
+  // display: flex;
+  // justify-content: space-between;
+  // margin: space(7) 8% 0 8%;
+  // flex-direction: column;
+  // @include mq($from: tablet) {
+  //   flex-direction: row;
+  // }
+}
+
+.c-newhomeexample__card {
+  text-align: center;
+  text-decoration: none;
 }
 
 .c-newhomeexample__card + .c-newhomeexample__card {
@@ -163,54 +168,35 @@ h2.c-newhomeexample__title {
   }
 }
 
-.c-newhomeexample__card-svg1 {
+.c-newhomeexample__card-svg {  
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+}
+
+.c-newhomeexample__card-svg1 {
   background: linear-gradient(124deg, #00c1b6, #136eb5);
-  border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;  
   background: linear-gradient(124deg, #9facf8, #676fc6);
-  border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
   background: linear-gradient(to bottom, #f3778f, #d13a87);
-  border-radius: 50%;
 }
 
 .c-newhomeexample__card-svg4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
   background: linear-gradient(to bottom, #f2994a, #b85e25);
-  border-radius: 50%;
-}
-
-.c-newhomeexample__card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
 }
 
 .c-newhomeexample__card-title {
+  color: #333333;
   margin-top: space(2);
 }
 .c-newhomeexample__card-txt--1 {
