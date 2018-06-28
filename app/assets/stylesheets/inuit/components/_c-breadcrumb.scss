@@ -1,5 +1,8 @@
 .c-breadcrumb {
-  margin-top: space(5);
+  display: flex;
+  align-items: center;
+  margin-top: space(3);
+  margin-bottom: space(3);
 }
 
 .c-breadcrumb-home-text {
@@ -32,15 +35,7 @@
 
 .c-breadcrumb-current {
   margin-right: auto;
-  color: $brand-primary;
 }
-
-.c-breadcrumb > :first-child {
-  @include mq($until: tablet) {
-      color: blue;
-  }
-}
-
 
 .c-breadcrumb-print {
   margin-left: auto;
