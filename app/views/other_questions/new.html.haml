@@ -2,6 +2,7 @@
 - title_data 'Situation particulière'
 
 %main#main.mw1140p.center{role: "main"}
+  = render 'shared/breadcrumb'
   .o-card.c-question
 
     = form_with model: @other, url: other_questions_path, local: true do |f|

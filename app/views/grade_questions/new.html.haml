@@ -2,6 +2,9 @@
 - has_error = !(flash[:error].blank?)
 
 %main#main.mw1140p.center{role: 'main'}
+
+  = render 'shared/breadcrumb'
+
   .o-card.c-question
     = form_with model: @grade, url: grade_questions_path, local: true do |f|
       %h1.c-question-title.u-focusable{tabindex: '0'}
