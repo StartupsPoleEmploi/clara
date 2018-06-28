@@ -1,9 +1,9 @@
 .c-breadcrumb {
-  margin-top: space(3);
-  margin-bottom: space(3);
+  @extend .u-margin-vertical-small;
 }
 
 .c-breadcrumb-home-text {
+  color: #333;
   margin-left: space(1);
 }
 .c-breadcrumb-string {
@@ -16,17 +16,13 @@
   padding: space(1);
 }
 
-.c-breadcrumb-print {
-  // display: flex;
-  // align-items:center;
-}
 
 .c-breadcrumb-printer__item {
   display: inline-flex;
   align-items:center;
   border: 1px solid #3f3f3f;
   color:#3f3f3f;
-  padding: 0.5rem;
+  padding: space(2);
   border-radius: 5px;
   cursor: pointer;
 

@@ -6,7 +6,6 @@
   border-radius: 3px;
   background-color: #057dbc;
   font-size: 18px;
-  font-weight: 500;
   color: #ffffff;
   width: 100%;
   border: none;
@@ -16,6 +15,10 @@
     color: #333333cc;
     border: 1px solid #dcdcdc;
   }
+}
+
+.c-mask-filter__text {
+  font-weight: 700;
 }
 
 .c-filterings-area {
