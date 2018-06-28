@@ -129,8 +129,6 @@ input.c-main-cta {
 
 h2.c-newhomeexample__title {
   text-align: center;
-  padding-top: space(7);
-  margin-bottom: space(2);
 }
 
 .c-newhomeexample__subtitle {
@@ -138,7 +136,6 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__cards {
-  @extend .u-margin-vertical-large;
 }
 
 .c-newhomeexample__card {
@@ -270,8 +267,6 @@ h2.c-newhomenumber__title {
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomerecall {
   background-color: #057DBC;
-  padding-bottom: space(7);
-  padding-top: space(7);
 }
 
 h2.c-newhomerecall__content {
