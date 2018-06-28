@@ -17,16 +17,22 @@
 }
 
 .c-breadcrumb-print {
-  display: flex;
+  // display: flex;
+  // align-items:center;
+}
+
+.c-breadcrumb-printer__item {
+  display: inline-flex;
   align-items:center;
   border: 1px solid #3f3f3f;
   color:#3f3f3f;
   padding: 0.5rem;
   border-radius: 5px;
   cursor: pointer;
+
 }
 
-.c-breadcrumb-print__svg-container {
+.c-breadcrumb-printer__svg {
   display:flex;
   align-items:center;
 }
