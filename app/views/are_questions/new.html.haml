@@ -9,8 +9,9 @@
   - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr']
 
+= render 'shared/breadcrumb', {where: 'question'}
+
 %main#main.mw1140p.center{role: "main"}
-  = render 'shared/breadcrumb'
   .o-card.c-question
     = form_with model: @are, local: true, url: are_questions_path do |f|
 
@@ -18,24 +19,19 @@
         Quel est le montant de cette allocation ?
 
       .c-are__form{:class => classes_of_are_form}
-        .o-layout.o-layout--center.o-layout--flush
-          .o-layout__item.c-are-input{:class => "u-1/4"}
-            .u-text--right
-              %label.c-label.u-focusable{tabindex: "0", id: "minimum-descr"} 
-                Montant par mois
-          .o-layout__item.c-are-input{:class => "u-1/4"}
-        .o-layout.o-layout--center.o-layout--flush
-          .o-layout__item.c-are-input{:class => "u-1/4"}
-            .u-text--center          
-              = f.number_field :minimum_income, 
-                class: classes_of_input,    
-                id: 'inputmin',            
-                value: @are.minimum_income,            
-                autofocus: true,           
-                autocomplete: 'off',       
-                tabindex: '0',
-                'aria-describedby' => aria_described_by_of_input             
-              %span.c-are-euro €
+        %label.c-label.u-focusable.u-text--left{tabindex: "0", id: "minimum-descr"} 
+          Montant par mois
+          .c-are-input
+            = f.number_field :minimum_income, 
+              class: classes_of_input,    
+              id: 'inputmin',            
+              value: @are.minimum_income,            
+              autofocus: true,           
+              autocomplete: 'off',       
+              tabindex: '0',
+              'aria-describedby' => aria_described_by_of_input             
+            %div.mls.c-are-euro
+              €
 
             - if has_error
               %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
