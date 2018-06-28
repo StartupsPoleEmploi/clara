@@ -1,11 +1,11 @@
 - title_data "Votre montant d'allocation"
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'w200p', 'is-error']
+  - classes_of_input = ['c-field', 'is-error']
   - classes_of_are_form = ['c-are__form', 'is-error']
   - aria_described_by_of_input = ['minimum-descr', 'minimum-descr-error']
 - else
-  - classes_of_input = ['c-field', 'w200p']
+  - classes_of_input = ['c-field']
   - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr']
 
@@ -18,21 +18,24 @@
         Quel est le montant de cette allocation ?
 
       .c-are__form{:class => classes_of_are_form}
-        %label.c-label.u-focusable{tabindex: "0", id: "minimum-descr"} 
-          Montant par mois
-          .o-layout.o-layout--center.o-layout--flush
-            .o-layout__item.c-are-input{:class => "u-1/4"}
-              .u-text--right          
-                = f.number_field :minimum_income, 
-                  class: classes_of_input,    
-                  id: 'inputmin',            
-                  value: @are.minimum_income,            
-                  autofocus: true,           
-                  autocomplete: 'off',       
-                  tabindex: '0',
-                  'aria-describedby' => aria_described_by_of_input             
-            .o-layout__item.c-are-euro{:class => "u-1/4"}
-              €
+        .o-layout.o-layout--center.o-layout--flush
+          .o-layout__item.c-are-input{:class => "u-1/4"}
+            .u-text--right
+              %label.c-label.u-focusable{tabindex: "0", id: "minimum-descr"} 
+                Montant par mois
+          .o-layout__item.c-are-input{:class => "u-1/4"}
+        .o-layout.o-layout--center.o-layout--flush
+          .o-layout__item.c-are-input{:class => "u-1/4"}
+            .u-text--center          
+              = f.number_field :minimum_income, 
+                class: classes_of_input,    
+                id: 'inputmin',            
+                value: @are.minimum_income,            
+                autofocus: true,           
+                autocomplete: 'off',       
+                tabindex: '0',
+                'aria-describedby' => aria_described_by_of_input             
+              %span.c-are-euro €
 
             - if has_error
               %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}

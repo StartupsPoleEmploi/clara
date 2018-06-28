@@ -9,11 +9,11 @@
 .c-are-input {
   input {
     @extend .u-padding-vertical-small;
-    width: space(12) !important;
+    width: 1.5*space(12) !important;
   }
 }
 
 
 .c-are-euro {
-  font-size: space(7);
+  font-size: space(8);
 }
