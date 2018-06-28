@@ -9,7 +9,7 @@
     .u-useful-width.u-margin-constraint
       .o-layout
       
-        .o-layout__item{:class=>"u-1/3"}
+        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.first
             .c-footer-cgu
               = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
@@ -18,7 +18,7 @@
               .mts
               = render 'shared/footer_motherhome'
 
-        .o-layout__item{:class=>"u-1/3"}
+        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.second{"class" => v.content_css}
             - if v.current_mode == 'home'
               - if v.display_title_aides
@@ -28,7 +28,7 @@
                 = link_to "#{type_aide['name']}", type_path(type_aide['slug']), {"class" => ["c-footer-internal-link", "c-footer__link-to-aides"]}
             = v.link_to_all_aides
             
-        .o-layout__item{:class=>"u-1/3"}
+        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.third
             - if v.current_mode == 'home'
               - if v.display_title_dispositifs
