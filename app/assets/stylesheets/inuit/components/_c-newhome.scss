@@ -284,14 +284,6 @@ h2.c-newhomenumber__title {
   margin-right: space(2);
   color: white;
   font-size: space(5);
-  @include mq($from: mobile) {
-    font-size: space(6);
-  }
-  @include mq($from: tablet) {
-    font-size: space(7);
-    margin-left: space(0);
-    margin-right: space(0);
-  }
 }
 
 .c-newhomerecall__content--cta {
@@ -306,9 +298,6 @@ h2.c-newhomenumber__title {
     color: #057DBC;
     text-decoration: none;
     display: inline-block;    
-    @include mq($from: tablet) {
-      font-size: 1.8rem;
-    }
   }
 }
 
