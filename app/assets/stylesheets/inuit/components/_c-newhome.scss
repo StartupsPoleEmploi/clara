@@ -275,9 +275,12 @@ h2.c-newhomenumber__title {
 }
 
 h2.c-newhomerecall__content {
-  text-align: center;
   @include inuit-font-size(40px, 1.5);
   font-weight: 400;
+}
+
+.c-newhomerecall__content {
+  text-align: center;
 }
 
 .c-newhomerecall__content--line {
