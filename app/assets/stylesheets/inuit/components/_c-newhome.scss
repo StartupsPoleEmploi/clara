@@ -274,20 +274,19 @@ h2.c-newhomenumber__title {
   padding-top: space(7);
 }
 
-.c-newhomerecall__content {
+h2.c-newhomerecall__content {
   text-align: center;
-
+  @include inuit-font-size(40px, 1.5);
+  font-weight: 400;
 }
 
 .c-newhomerecall__content--line {
-  margin-left: space(2);
-  margin-right: space(2);
   color: white;
-  font-size: space(5);
 }
 
 .c-newhomerecall__content--cta {
   a {
+    @include inuit-font-size(18px);
     border: 0;
     border-radius: space(8);
     background-color: white;
