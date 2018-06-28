@@ -3,6 +3,7 @@
 
 %main#main.mw1140p.center{role: "main"}
 
+  = render 'shared/breadcrumb'
   .o-card.c-question
 
     = form_with model: @allocation, url: allocation_questions_path, local: true do |f|

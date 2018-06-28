@@ -8,6 +8,7 @@
   - aria_described_by_of_input = ['age']
 
 %main#main.mw1140p.center{role: "main"}
+  = render 'shared/breadcrumb'
   .o-card.c-question
     = form_with model: @age, url: age_questions_path, local: true do |f|
       %h1.c-question-title
