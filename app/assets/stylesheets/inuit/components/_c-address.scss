@@ -1,3 +1,8 @@
+.c-address-input {
+  @extend .u-padding-vertical-small;
+  width: 2*space(12) !important; // HACK
+} 
+
 .c-address__explanation {
   display: flex;
   text-align: center;

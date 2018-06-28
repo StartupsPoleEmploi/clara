@@ -1,20 +1,18 @@
 - title_data 'Votre adresse'
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'c-age-input', 'is-error'].join(" ")
+  - classes_of_input = ['c-field', 'c-address-input', 'is-error'].join(" ")
   - aria_described_by_of_input = ['initInstr', 'address-error'].join(" ")
 - else
-  - classes_of_input = ['c-field', 'c-age-input', 'numberonly'].join(" ")
+  - classes_of_input = ['c-field', 'c-address-input', 'numberonly'].join(" ")
   - aria_described_by_of_input = ['address'].join(" ")
 
 %main#main.mw1140p.center{role: "main"}
   .o-card.c-question
     = form_with model: @address, url: address_questions_path, local: true do |f|
-      %h1.txtcenter
-        %span#address-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
-      .c-address__explanation
-        .u-focusable{tabindex: "0"}
-          Entrez votre code postal à 5 chiffres
+      %h1.c-question-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
+      .c-question-subtitle.u-focusable{tabindex: "0"}
+        Entrez votre code postal à 5 chiffres
       .c-address__content
         #a11yAutocomplete
           %div{"data-widget" => "accessible-autocomplete"}
