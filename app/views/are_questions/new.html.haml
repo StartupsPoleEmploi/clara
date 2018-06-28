@@ -10,16 +10,17 @@
   - aria_described_by_of_input = ['minimum-descr']
 
 %main#main.mw1140p.center{role: "main"}
+  = render 'shared/breadcrumb'
   .o-card.c-question
     = form_with model: @are, local: true, url: are_questions_path do |f|
 
-      %h1.u-focusable{tabindex: "0"}
+      %h1.c-question-title.u-focusable{tabindex: "0"}
         Quel est le montant de cette allocation ?
 
       .c-are__form{:class => classes_of_are_form}
         %label.c-label.u-focusable.txtleft{tabindex: "0", id: "minimum-descr"} 
           Montant par mois
-          %div
+          .c-are-input
             = f.number_field :minimum_income, 
               class: classes_of_input,    
               id: 'inputmin',            

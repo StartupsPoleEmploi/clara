@@ -1,15 +1,18 @@
 .c-are__form {
-  @extend .h1-like;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: space(6);
   text-align: center;
   &.is-error {
     padding-bottom: space(0);
   }  
 }
+
+.c-are-input {
+  input {
+    @extend .u-padding-vertical-small;
+    width: space(12) !important;
+  }
+}
+
 
 .c-are-euro {
   font-size: space(7);
