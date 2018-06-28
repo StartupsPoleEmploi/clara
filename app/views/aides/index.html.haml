@@ -8,6 +8,8 @@
 - loaded = @loaded || {}
 
 %main#main.c-results-index{role: 'main'}
+  = render 'shared/breadcrumb'
+
   - if has_user
     = render 'shared/result_default', local_assigns
   - else
