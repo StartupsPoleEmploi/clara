@@ -5,7 +5,7 @@
 .c-mask-filter {
   border-radius: 3px;
   background-color: #057dbc;
-  font-size: 18px;
+  @include inuit-font-size(18px, 1);
   color: #ffffff;
   width: 100%;
   border: none;
@@ -18,7 +18,8 @@
 }
 
 .c-mask-filter__text {
-  font-weight: 700;
+  font-weight: 600;
+  font-family:$font-stack-common;
 }
 
 .c-filterings-area {
