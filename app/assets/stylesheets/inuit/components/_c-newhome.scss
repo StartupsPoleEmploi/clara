@@ -138,13 +138,7 @@ h2.c-newhomeexample__title {
 }
 
 .c-newhomeexample__cards {
-  // display: flex;
-  // justify-content: space-between;
-  // margin: space(7) 8% 0 8%;
-  // flex-direction: column;
-  // @include mq($from: tablet) {
-  //   flex-direction: row;
-  // }
+  @extend .u-margin-vertical-large;
 }
 
 .c-newhomeexample__card {
