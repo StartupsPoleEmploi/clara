@@ -13,15 +13,15 @@
       %strong < Retour
     
     #c-detail-app
-      .grid-reverse
-        .col-8_md-12
+      .o-layout
+        .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
           .c-detail-list
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Description',          html_content: aid[:what] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Conditions à remplir', html_content: aid[:additionnal_conditions] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Contenu de l\'aide',   html_content: aid[:how_much] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Demande',              html_content: aid[:how_and_when] }
             = render partial: 'shared/detail_item_remark.haml', locals: { content: aid[:limitations] }
-        .col-4-first_md-12
+        .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
           - if has_active_user
             .c-detail-why-container
               = render partial: 'shared/detail_why.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
