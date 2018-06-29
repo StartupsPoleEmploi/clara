@@ -2,9 +2,9 @@
 
 .c-result-all.u-useful-width.u-margin-constraint
   .o-layout
-    .o-layout__item{:class => "u-1/1 u-3/4@tablet"}
+    .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
       - lines.each do |line|
         = render 'shared/result_line', {line: line}
     
-    .o-layout__item{:class => "u-1/1 u-1/4@tablet"}
+    .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       = render 'shared/detail_void'

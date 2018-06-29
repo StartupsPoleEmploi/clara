@@ -63,20 +63,25 @@
 }
 
 .c-detail-void__line {
+  margin-bottom: space(2);
   text-align: center;
   a {
     margin-top: space(3);
   }
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
     text-align: left;
   } 
+}
+
+.c-detail-void__line--light {
+  font-weight: 400;
 }
 
 a.c-detail-cta {
   border: 0;
   border-radius: space(8);
   background-color: #047cbc;
-  padding: space(3) space(8) space(3) space(8);
+  padding: space(4) space(9) space(4) space(9);
   cursor: pointer;
   color: white;
   text-decoration: none;
