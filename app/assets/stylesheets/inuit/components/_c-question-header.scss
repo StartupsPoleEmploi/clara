@@ -1,27 +1,45 @@
 
-  .c-qh {
-    background-color: #EFF3F9;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
-    a {
-     color: $color-white;
-    }
-    height: 80px; 
-    .svg-logo-pe {
-      margin-left: space(3);
-    }
-    .svg-logo-clara-black {
-      padding-right: space(3);
-    }
+.c-qh {
+  background-color: #EFF3F9;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5);
+  a {
+   color: $color-white;
   }
-
-  .c-qh > * {
-    display: flex;
-    align-items: center;
+  height: 80px; 
+  .svg-logo-pe {
+    margin-left: space(3);
   }
-
-
-  .c-qh__logo {
-    line-height: 0;
-    min-width: space(8);
-    margin: 0 0 space(3) 0;
+  .svg-logo-clara-black {
+    padding-right: space(3);
   }
+}
+
+.c-qh > * {
+  display: flex;
+  align-items: center;
+}
+
+
+.c-qh__logo {
+  line-height: 0;
+  min-width: space(8);
+  margin: 0 0 space(3) 0;
+}
+
+.svg-logo-pe {
+  width: 50px;
+  height: 50px;
+  @include mq($from: tablet) {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.svg-logo-clara-black {
+  width: 150px;
+  height: 37px;
+  @include mq($from: tablet) {
+    width: 217px;
+    height: 56px;
+  }
+}

@@ -66,7 +66,7 @@
 -[#800][BUG] Uglifier
 
 
-## 10.1.1 (15/06/2018)
+## 10.1.1 (16/06/2018)
 -[#789][BUG] Admin : ne pas proposer la suppression dans les associations
 
 
