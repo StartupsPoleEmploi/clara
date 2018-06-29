@@ -5,12 +5,15 @@
   a {
    color: $color-white;
   }
-  height: 80px; 
   .svg-logo-pe {
     margin-left: space(3);
   }
   .svg-logo-clara-black {
     padding-right: space(3);
+  }
+  height: 56px;
+  @include mq($from: tablet) {
+    height: 80px;
   }
 }
 
@@ -29,7 +32,7 @@
 .svg-logo-pe {
   width: 50px;
   height: 50px;
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     width: 70px;
     height: 70px;
   }
@@ -38,7 +41,7 @@
 .svg-logo-clara-black {
   width: 150px;
   height: 37px;
-  @include mq($from: mobile) {
+  @include mq($from: tablet) {
     width: 217px;
     height: 56px;
   }
