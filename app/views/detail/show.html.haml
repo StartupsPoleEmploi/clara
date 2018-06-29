@@ -26,7 +26,7 @@
             .c-detail-why-container
               = render partial: 'shared/detail_why.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
             .c-detail-warning
-              %p Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
+              %p.u-margin-bottom-none Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
           - else
             = render partial: 'shared/detail_void.haml'
 

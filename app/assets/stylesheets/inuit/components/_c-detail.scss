@@ -19,13 +19,9 @@
 
 .c-detail-warning {
   color: $grey-text;
-  font-size: space(4);
+  @include inuit-font-size(15px);
   background-color:#FCF8E3;
-  padding-top: space(4);
-  padding-bottom: space(4);
-  padding-right: space(6);
-  padding-left: space(6);
-  margin-top: space(3);
+  padding: space(5);
 }
 
 .c-detail-title-inside {

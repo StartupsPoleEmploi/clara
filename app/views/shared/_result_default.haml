@@ -140,7 +140,7 @@
                         .o-layout.o-layout--middle.o-layout--flush
                           %div{class:"o-layout__item u-3/4"}   
                             %h5=aid["name"]
-                            %p=aid["short_description"]
+                            %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline{"data-bind" => "css: filtersClass"}
                               - v.filters_of(aid).each do |one_filter|
                                 %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
@@ -192,7 +192,7 @@
                           .o-layout.o-layout--middle.o-layout--flush
                             %div{class:"o-layout__item u-3/4"}   
                               %h5=aid["name"]
-                              %p=aid["short_description"]
+                              %p.u-margin-bottom-none=aid["short_description"]
                               %ul.o-list-inline{"data-bind" => "css: filtersClass"}
                                 - v.filters_of(aid).each do |one_filter|
                                   %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
