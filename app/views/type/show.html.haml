@@ -10,10 +10,11 @@
     .c-detail-title-inside.u-useful-width.u-margin-constraint
       =v.title
 
-  .grid.c-type-show-grid
-    .col-8_md-12
-      - if v.has_line
-        = render 'shared/result_line', {line: v.line, contract_type: v.contract_type}
-    .col-4_md-12
-      = render 'shared/detail_void'
+  .u-useful-width.u-margin-constraint
+    .o-layout.c-type-show-grid
+      .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+        - if v.has_line
+          = render 'shared/result_line', {line: v.line, contract_type: v.contract_type}
+      .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
+        = render 'shared/detail_void'
 
