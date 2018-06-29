@@ -5,20 +5,21 @@
 
   = render 'shared/breadcrumb'
 
-  .o-card.c-question
+  .u-useful-width.u-margin-constraint
+    .o-card
 
-    = form_with model: @inscription, url: inscription_questions_path, local: true do |f|
+      = form_with model: @inscription, url: inscription_questions_path, local: true do |f|
 
-      = render 'shared/a_form_header', {e: e, title: "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"}
+        = render 'shared/a_form_header', {e: e, title: "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"}
 
-      .c-question__form
-        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
-          %legend.u-hidden-visually Cochez votre date d'inscription &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
+        .c-question__form
+          %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+            %legend.u-hidden-visually Cochez votre date d'inscription &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
+            
+            = render 'shared/inscription_form_line', {id: 'non_inscrit', value: @inscription.value, text: 'Je ne suis pas inscrit(e)'} 
+            = render 'shared/inscription_form_line', {id: 'moins_d_un_an', value: @inscription.value, text: 'Moins d\'un an'} 
+            = render 'shared/inscription_form_line', {id: 'plus_d_un_an', value: @inscription.value, text: 'Plus d\'un an'} 
           
-          = render 'shared/inscription_form_line', {id: 'non_inscrit', value: @inscription.value, text: 'Je ne suis pas inscrit(e)'} 
-          = render 'shared/inscription_form_line', {id: 'moins_d_un_an', value: @inscription.value, text: 'Moins d\'un an'} 
-          = render 'shared/inscription_form_line', {id: 'plus_d_un_an', value: @inscription.value, text: 'Plus d\'un an'} 
-        
-        = render 'shared/error_in_form', e: e
+          = render 'shared/error_in_form', e: e
 
-      = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f
