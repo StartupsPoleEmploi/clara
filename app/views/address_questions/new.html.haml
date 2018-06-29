@@ -8,62 +8,65 @@
   - aria_described_by_of_input = ['address'].join(" ")
 
 %main#main.mw1140p.center{role: "main"}
+  
   = render 'shared/breadcrumb'
-  .o-card.c-question
-    = form_with model: @address, url: address_questions_path, local: true do |f|
-      %h1.c-question-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
-      .c-question-subtitle.u-focusable{tabindex: "0"}
-        Entrez votre code postal à 5 chiffres
-      .c-address__content
-        #a11yAutocomplete
-          %div{"data-widget" => "accessible-autocomplete"}
-            %input#search{"placeholder" => "Exemple : 44220", |
-                            "aria-activedescendant" => "", |
-                            "aria-autocomplete" => "both", |
-                            "aria-describedby" => aria_described_by_of_input, |
-                            "aria-expanded" => "false", |
-                            "aria-owns" => "results", |
-                            autocomplete: "off", |
-                            class: classes_of_input, |
-                            name: "address_form[label]", |
-                            type: "number", |
-                            value: "#{@address.label}"}
-            %ul#results.autocomplete-list{role: "listbox", style: "display: none;", tabindex: "0"}
-            %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
-            .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
-        %input#location_label.u-hidden{value: "#{@address.label}"}
 
-          %table#address_form.u-hidden
-            %tr
-              %td.label Street address
-              %td.slimField
-                %input#street_number.field{name: "address_form[street_number]", value:"#{@address.street_number}"}/
-              %td.wideField{:colspan => "2"}
-                %input#route.field{name: "address_form[route]", value:"#{@address.route}"}/
-            %tr
-              %td.label City
-              %td.wideField{:colspan => "3"}
-                %input#locality.field{name: "address_form[city]", value:"#{@address.city}"}/
-            %tr
-              %td.label State
-              %td.slimField
-                %input#administrative_area_level_1.field{name: "address_form[state]", value:"#{@address.state}"}/
-              %td.label Zip code
-              %td.wideField
-                %input#postal_code.field{name: "address_form[zipcode]", value:"#{@address.zipcode}"}/
-            %tr
-              %td.label Country
-              %td.slimField
-                %input#country.field{name: "address_form[country]", value:"#{@address.country}"}/
-              %td.label Citycode
-              %td.wideField
-                %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
+  .u-useful-width.u-margin-constraint
+    .o-card
+      = form_with model: @address, url: address_questions_path, local: true do |f|
+        %h1.c-question-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
+        .c-question-subtitle.u-focusable{tabindex: "0"}
+          Entrez votre code postal à 5 chiffres
+        .c-address__content
+          #a11yAutocomplete
+            %div{"data-widget" => "accessible-autocomplete"}
+              %input#search{"placeholder" => "Exemple : 44220", |
+                              "aria-activedescendant" => "", |
+                              "aria-autocomplete" => "both", |
+                              "aria-describedby" => aria_described_by_of_input, |
+                              "aria-expanded" => "false", |
+                              "aria-owns" => "results", |
+                              autocomplete: "off", |
+                              class: classes_of_input, |
+                              name: "address_form[label]", |
+                              type: "number", |
+                              value: "#{@address.label}"}
+              %ul#results.autocomplete-list{role: "listbox", style: "display: none;", tabindex: "0"}
+              %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
+              .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
+          %input#location_label.u-hidden{value: "#{@address.label}"}
 
-        %div
-          - if has_error
-            %label#address-error.c-label.is-error= flash[:error][0]
-          - else
-            %label.c-label.flex-container.h4-like.visibility-hidden
+            %table#address_form.u-hidden
+              %tr
+                %td.label Street address
+                %td.slimField
+                  %input#street_number.field{name: "address_form[street_number]", value:"#{@address.street_number}"}/
+                %td.wideField{:colspan => "2"}
+                  %input#route.field{name: "address_form[route]", value:"#{@address.route}"}/
+              %tr
+                %td.label City
+                %td.wideField{:colspan => "3"}
+                  %input#locality.field{name: "address_form[city]", value:"#{@address.city}"}/
+              %tr
+                %td.label State
+                %td.slimField
+                  %input#administrative_area_level_1.field{name: "address_form[state]", value:"#{@address.state}"}/
+                %td.label Zip code
+                %td.wideField
+                  %input#postal_code.field{name: "address_form[zipcode]", value:"#{@address.zipcode}"}/
+              %tr
+                %td.label Country
+                %td.slimField
+                  %input#country.field{name: "address_form[country]", value:"#{@address.country}"}/
+                %td.label Citycode
+                %td.wideField
+                  %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
 
-      = javascript_tag "window._urlqpv = '#{ENV["ARA_URL_QPVZRR"]}'"
-      = render 'nav/next_previous', f: f
+          %div
+            - if has_error
+              %label#address-error.c-label.is-error= flash[:error][0]
+            - else
+              %label.c-label.flex-container.h4-like.visibility-hidden
+
+        = javascript_tag "window._urlqpv = '#{ENV["ARA_URL_QPVZRR"]}'"
+        = render 'nav/next_previous', f: f

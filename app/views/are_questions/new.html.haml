@@ -14,31 +14,32 @@
 
   = render 'shared/breadcrumb'
 
-  .o-card.c-question
-    = form_with model: @are, local: true, url: are_questions_path do |f|
+  .u-useful-width.u-margin-constraint
+    .o-card.c-question
+      = form_with model: @are, local: true, url: are_questions_path do |f|
 
-      %h1.c-question-title.u-focusable{tabindex: "0"}
-        Quel est le montant de cette allocation ?
+        %h1.c-question-title.u-focusable{tabindex: "0"}
+          Quel est le montant de cette allocation ?
 
-      .c-are__form{:class => classes_of_are_form}
-        %label.c-label.u-focusable.u-text--left{tabindex: "0", id: "minimum-descr"} 
-          Montant par mois
-          .c-are-input
-            = f.number_field :minimum_income, 
-              class: classes_of_input,    
-              id: 'inputmin',            
-              value: @are.minimum_income,            
-              autofocus: true,           
-              autocomplete: 'off',       
-              tabindex: '0',
-              'aria-describedby' => aria_described_by_of_input             
-            %div.mls.c-are-euro
-              €
+        .c-are__form{:class => classes_of_are_form}
+          %label.c-label.u-focusable.u-text--left{tabindex: "0", id: "minimum-descr"} 
+            Montant par mois
+            .c-are-input
+              = f.number_field :minimum_income, 
+                class: classes_of_input,    
+                id: 'inputmin',            
+                value: @are.minimum_income,            
+                autofocus: true,           
+                autocomplete: 'off',       
+                tabindex: '0',
+                'aria-describedby' => aria_described_by_of_input             
+              %div.mls.c-are-euro
+                €
 
-            - if has_error
-              %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
-            - else
-              %label.c-label.flex-container.h4-like.visibility-hidden
+              - if has_error
+                %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
+              - else
+                %label.c-label.flex-container.h4-like.visibility-hidden
 
-          
-      = render 'nav/next_previous', f: f
+            
+        = render 'nav/next_previous', f: f
