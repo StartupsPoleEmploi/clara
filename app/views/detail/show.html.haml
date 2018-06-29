@@ -4,12 +4,12 @@
 
 %main#main.c-detail-show{role: "main"}
 
-  %h2.c-detail-title
+  %h2.c-detail-title.u-margin-bottom-none
     .c-detail-title-inside.u-useful-width.u-margin-constraint
       = aid[:name]
   
-  .u-useful-width.u-margin-constraint
-    .c-detail-goback{"onclick" =>"window.history.back();"}
+  .u-useful-width.u-margin-constraint.u-margin-vertical-small
+    .c-detail-goback.u-margin-bottom-small{"onclick" =>"window.history.back();"}
       %strong < Retour
     
     #c-detail-app
