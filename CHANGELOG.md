@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 11.0.0 (29/06/2018)
+-[#822][TECH] KNACSS remplacé par InuitCSS
+
 
 ## 10.3.11 (25/06/2018)
 -[#820b][BUG] GA correction
