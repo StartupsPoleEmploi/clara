@@ -1,9 +1,10 @@
 - lines ||= []
 
-.c-result-all
-  .grid
-    .col-8_md-12
+.c-result-all.u-useful-width.u-margin-constraint
+  .o-layout
+    .o-layout__item{:class => "u-1/1 u-3/4@tablet"}
       - lines.each do |line|
         = render 'shared/result_line', {line: line}
-    .col-4_md-12
+    
+    .o-layout__item{:class => "u-1/1 u-1/4@tablet"}
       = render 'shared/detail_void'
