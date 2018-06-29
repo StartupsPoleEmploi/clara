@@ -1,0 +1,79 @@
+.c-situation {
+  background-color:white;
+}
+
+h4.c-situation-title {
+  text-align: center;
+  color: white;
+  background-color:#057dbc;
+  margin-bottom: space(4);
+}
+
+.c-situation__data-line:first-child {
+  margin-top: space(1);
+}
+
+.c-situation__data-prop {
+  color: $grey-text;
+}
+
+.c-situation__data-val {
+  font-weight: bold;
+}
+
+.c-situation__header {
+  display: flex;
+  color: $grey-text;
+}
+
+.c-situation__header-border {
+  border-bottom: 1px solid #C4C4C4;
+}
+
+.c-situation__header-link {
+  margin-left: auto;
+  margin-right: space(2);
+}
+
+.c-situation__header-title {
+  font-weight: bold;
+}
+
+.c-situation-paragraph {
+  border-bottom: 1px solid #C4C4C4;
+  padding: 0 space(3) space(5) space(5);
+  font-size: 16px;//HACK
+}
+
+.c-situation-paragraph--last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.c-situation-paragraph + .c-situation-paragraph {
+  margin-top: space(4);
+}
+
+.c-situation-paragraph:last-child {
+  margin-bottom: space(4);
+}
+
+.c-situation-reset {
+  display: flex;
+  justify-content: center;
+  margin-top: space(5);
+  margin-bottom: space(3);
+}
+
+a.c-situation-reset__button {
+  border: 0;
+  border-radius: space(8);
+  background-color: #057dbc;
+  padding: space(3) space(8);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; // HACK
+  font-weight: bold;
+}

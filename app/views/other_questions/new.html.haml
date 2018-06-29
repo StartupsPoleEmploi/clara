@@ -1,23 +1,24 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 - title_data 'Situation particulière'
 
-= render 'shared/breadcrumb', {where: 'question'}
-
 %main#main.mw1140p.center{role: "main"}
-  .o-card.c-question
-
-    = form_with model: @other, url: other_questions_path, local: true do |f|
+  = render 'shared/breadcrumb'
   
-      = render 'shared/a_form_header', {e: e, title: "Êtes-vous dans l'une des situations suivantes ?", subtitle: "Cochez la ou les situations correspondantes"}
-      
-      .o-centerbox-h.mtm
-        %fieldset.c-fieldset.o-centerbox-h__item{ :class => e.has_error ? 'is-error' : '' }
-          %legend.visually-hidden Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
-       
-          = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien(ne) du spectacle'} 
-          = render 'shared/other_form_line', {id: 'val_handicap', current_val: @other.val_handicap, current_text: 'Bénéficiaire de l\'obligation d\'emploi (reconnu(e) en situation de handicap)'} 
-          = render 'shared/other_form_line', {id: 'none',         current_val: @other.none,         current_text: 'Je ne suis dans aucune de ces situations'} 
+  .u-useful-width.u-margin-constraint  
+    .o-card
 
-        = render 'shared/error_in_form', e: e
-              
-      = render 'nav/next_previous', f: f
+      = form_with model: @other, url: other_questions_path, local: true do |f|
+    
+        = render 'shared/a_form_header', {e: e, title: "Êtes-vous dans l'une des situations suivantes ?", subtitle: "Cochez la ou les situations correspondantes"}
+        
+        .o-centerbox-h
+          %fieldset.c-fieldset.o-centerbox-h__item{ :class => e.has_error ? 'is-error' : '' }
+            %legend.u-hidden-visually Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
+         
+            = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien(ne) du spectacle'} 
+            = render 'shared/other_form_line', {id: 'val_handicap', current_val: @other.val_handicap, current_text: 'Bénéficiaire de l\'obligation d\'emploi (reconnu(e) en situation de handicap)'} 
+            = render 'shared/other_form_line', {id: 'none',         current_val: @other.none,         current_text: 'Je ne suis dans aucune de ces situations'} 
+
+          = render 'shared/error_in_form', e: e
+                
+        = render 'nav/next_previous', f: f

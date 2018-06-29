@@ -1,93 +1,96 @@
 - title_data 'Votre diplôme le plus élevé'
 - has_error = !(flash[:error].blank?)
-= render 'shared/breadcrumb', {where: 'question'}
 
 %main#main.mw1140p.center{role: 'main'}
-  .o-card.c-question
-    = form_with model: @grade, url: grade_questions_path, local: true do |f|
-      %h1.mbs.txtcenter.u-focusable{tabindex: '0'}
-        Quel est le diplôme le plus élevé que vous ayez obtenu ?
 
-      .c-question__form
-        %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
-          %legend.visually-hidden Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
+  = render 'shared/breadcrumb'
+  
+  .u-useful-width.u-margin-constraint
+    .o-card
+      = form_with model: @grade, url: grade_questions_path, local: true do |f|
+        %h1.c-question-title.u-focusable{tabindex: '0'}
+          Quel est le diplôme le plus élevé que vous ayez obtenu ?
+
+        .c-question__form
+          %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
+            %legend.u-hidden-visually Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
+            
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio1'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_1',
+                  @grade.value == 'niveau_1', 
+                  id: 'niveau_1',
+                  tabindex: -1,
+                  class: 'c-radioinput', 
+                  onfocusout: '$("#radio1").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio1").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_1'}
+                Bac +4 et + (Master) / diplômes d’ingénieur
+                
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio2'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_2',
+                  @grade.value == 'niveau_2', 
+                  id: 'niveau_2',
+                  tabindex: -1,
+                  class: 'c-radioinput',
+                  onfocusout: '$("#radio2").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio2").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_2'}
+                Bac +3 (Licence)
+                
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio3'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_3',
+                  @grade.value == 'niveau_3', 
+                  id: 'niveau_3',
+                  tabindex: -1,
+                  class: 'c-radioinput',
+                  onfocusout: '$("#radio3").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio3").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_3'}
+                Bac +1 à bac +2 (BTS / DUT)
+                
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio4'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_4',
+                  @grade.value == 'niveau_4', 
+                  id: 'niveau_4',
+                  tabindex: -1,
+                  class: 'c-radioinput',
+                  onfocusout: '$("#radio4").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio4").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_4'}
+                Bac
+                
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio5'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_5',
+                  @grade.value == 'niveau_5', 
+                  id: 'niveau_5',
+                  tabindex: -1,
+                  class: 'c-radioinput',
+                  onfocusout: '$("#radio5").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio5").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_5'}
+                CAP / BEP
+                
+            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio6'}
+              = radio_button_tag 'grade_form[value]',
+                  'niveau_infra_5',
+                  @grade.value == 'niveau_infra_5', 
+                  id: 'niveau_infra_5',
+                  tabindex: -1,
+                  class: 'c-radioinput',
+                  onfocusout: '$("#radio6").toggleClass( "is-activated" )',
+                  onfocusin: '$("#radio6").toggleClass( "is-activated" )'
+              %label.c-radiolabel{for: 'niveau_infra_5'}
+                Je n'ai aucun de ces diplômes
           
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio1'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_1',
-                @grade.value == 'niveau_1', 
-                id: 'niveau_1',
-                tabindex: -1,
-                class: 'c-radioinput', 
-                onfocusout: '$("#radio1").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio1").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_1'}
-              Bac +4 et + (Master) / diplômes d’ingénieur
-              
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio2'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_2',
-                @grade.value == 'niveau_2', 
-                id: 'niveau_2',
-                tabindex: -1,
-                class: 'c-radioinput',
-                onfocusout: '$("#radio2").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio2").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_2'}
-              Bac +3 (Licence)
-              
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio3'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_3',
-                @grade.value == 'niveau_3', 
-                id: 'niveau_3',
-                tabindex: -1,
-                class: 'c-radioinput',
-                onfocusout: '$("#radio3").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio3").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_3'}
-              Bac +1 à bac +2 (BTS / DUT)
-              
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio4'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_4',
-                @grade.value == 'niveau_4', 
-                id: 'niveau_4',
-                tabindex: -1,
-                class: 'c-radioinput',
-                onfocusout: '$("#radio4").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio4").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_4'}
-              Bac
-              
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio5'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_5',
-                @grade.value == 'niveau_5', 
-                id: 'niveau_5',
-                tabindex: -1,
-                class: 'c-radioinput',
-                onfocusout: '$("#radio5").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio5").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_5'}
-              CAP / BEP
-              
-          .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio6'}
-            = radio_button_tag 'grade_form[value]',
-                'niveau_infra_5',
-                @grade.value == 'niveau_infra_5', 
-                id: 'niveau_infra_5',
-                tabindex: -1,
-                class: 'c-radioinput',
-                onfocusout: '$("#radio6").toggleClass( "is-activated" )',
-                onfocusin: '$("#radio6").toggleClass( "is-activated" )'
-            %label.c-radiolabel{for: 'niveau_infra_5'}
-              Je n'ai aucun de ces diplômes
-        
-        %div
-          - if has_error
-            %label.c-label.is-error &#x2716; #{flash[:error][0]}
-          - else
-            %label.c-label.flex-container.h4-like.visibility-hidden &nbsp;
+          %div
+            - if has_error
+              %label.c-label.is-error &#x2716; #{flash[:error][0]}
+            - else
+              %label.c-label.flex-container.h4-like.visibility-hidden &nbsp;
 
-      = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f

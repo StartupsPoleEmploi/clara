@@ -1,0 +1,38 @@
+.c-address-input {
+  @extend .u-padding-vertical-small;
+  width: 2*space(12) !important; // HACK
+} 
+
+.c-address__explanation {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.c-address__content {
+  display: flex;
+  flex-direction: column;
+  margin-top: space(4);
+  margin-bottom: space(4);
+  text-align: center;
+  justify-content: center;
+  align-items: center; 
+}
+
+.c-address__form {
+  display: flex;
+  text-align: center;
+  margin-top: space(7);
+  justify-content: center;
+  align-items: center; 
+}
+
+#a11yAutocomplete [data-widget="accessible-autocomplete"] {
+    margin-bottom: 0;
+}
+
+#search {
+  width: 30rem;
+  font-size: 18px; //HACK
+}

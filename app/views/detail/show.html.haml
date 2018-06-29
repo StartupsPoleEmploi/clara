@@ -1,37 +1,39 @@
 - title_data "#{@aid.name}"
 - aid = @loaded[:aid]
 - has_active_user = !!params[:for_id]
-= render 'shared/breadcrumb', {where: 'detail'}
 
 %main#main.c-detail-show{role: "main"}
 
-  %h2.c-detail-title
-    .c-detail-title-inside
+  = render 'shared/breadcrumb'
+
+  %h2.c-detail-title.u-margin-bottom-none
+    .c-detail-title-inside.u-useful-width.u-margin-constraint
       = aid[:name]
   
-  .c-detail-goback{"onclick" =>"window.history.back();"}
-    %strong < Retour
-  
-  #c-detail-app
-    .grid-reverse
-      .col-8_md-12
-        .c-detail-list
-          = render partial: 'shared/detail-item.haml',        locals: { description: 'Description',          html_content: aid[:what] }
-          = render partial: 'shared/detail-item.haml',        locals: { description: 'Conditions à remplir', html_content: aid[:additionnal_conditions] }
-          = render partial: 'shared/detail-item.haml',        locals: { description: 'Contenu de l\'aide',   html_content: aid[:how_much] }
-          = render partial: 'shared/detail-item.haml',        locals: { description: 'Demande',              html_content: aid[:how_and_when] }
-          = render partial: 'shared/detail_item_remark.haml', locals: { content: aid[:limitations] }
-      .col-4-first_md-12
-        - if has_active_user
-          .c-detail-why-container
-            = render partial: 'shared/detail_why.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
-          .c-detail-warning
-            %p Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
-        - else
-          = render partial: 'shared/detail_void.haml'
+  .u-useful-width.u-margin-constraint.u-margin-vertical-small
+    .c-detail-goback.u-margin-bottom-small{"onclick" =>"window.history.back();"}
+      %strong < Retour
+    
+    #c-detail-app
+      .o-layout
+        .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+          .c-detail-list
+            = render partial: 'shared/detail-item.haml',        locals: { description: 'Description',          html_content: aid[:what] }
+            = render partial: 'shared/detail-item.haml',        locals: { description: 'Conditions à remplir', html_content: aid[:additionnal_conditions] }
+            = render partial: 'shared/detail-item.haml',        locals: { description: 'Contenu de l\'aide',   html_content: aid[:how_much] }
+            = render partial: 'shared/detail-item.haml',        locals: { description: 'Demande',              html_content: aid[:how_and_when] }
+            = render partial: 'shared/detail_item_remark.haml', locals: { content: aid[:limitations] }
+        .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
+          - if has_active_user
+            .c-detail-why-container
+              = render partial: 'shared/detail_why.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
+            .c-detail-warning
+              %p.u-margin-bottom-none Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
+          - else
+            = render partial: 'shared/detail_void.haml'
 
 
-  - if has_active_user
-    .c-detail-back
-      = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
+    - if has_active_user
+      .c-detail-back
+        = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
 

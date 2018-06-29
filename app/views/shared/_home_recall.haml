@@ -1,8 +1,11 @@
-.c-newhomerecall
-  .c-newhomerecall__content
-    .c-newhomerecall__content.c-newhomerecall__content--line
-      Découvrez les aides et mesures
-    .c-newhomerecall__content.c-newhomerecall__content--line
-      qui vont accélérer votre retour à l'emploi
-    .c-newhomerecall__content.c-newhomerecall__content--cta
-      = link_to 'Je découvre', QuestionManager.new.getNextPath, id: 'home-recall'
+.c-newhomerecall.u-padding-vertical-large
+  .o-layout
+    .o-layout__item{:class => "u-1/1"}
+      %h2.c-newhomerecall__content
+        .c-newhomerecall__content.c-newhomerecall__content--line
+          Découvrez les aides et mesures
+        .c-newhomerecall__content.c-newhomerecall__content--line
+          qui vont accélérer votre retour à l'emploi
+    .o-layout__item{:class => "u-1/1"}
+      .c-newhomerecall__content.c-newhomerecall__content--cta
+        = link_to 'Je découvre', QuestionManager.new.getNextPath, id: 'home-recall'

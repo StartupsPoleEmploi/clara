@@ -1,0 +1,6 @@
+.c-aid-description {
+  // need to override user-generated-style, so BEM not possible here
+  h2 {
+    margin-top: space(4);
+  }
+}

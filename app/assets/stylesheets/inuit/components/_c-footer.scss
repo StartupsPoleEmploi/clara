@@ -1,0 +1,47 @@
+.c-footer {
+  background-color: #152E3A;  
+  color: white;
+  margin-top: $inuit-global-spacing-unit-small;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.c-body.welcome.index {
+  .c-footer {
+    margin-top: 0;
+  }
+}
+
+a.c-link-to-all-aides__not_home {
+  color: white;
+  font-weight: bold;
+}
+
+.c-footer__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-footer__contenttitle {
+  font-weight: bold;
+}
+
+a.c-footer-internal-link, a.c-link-to-all-aides__home {
+  color: #a2979b;
+}
+
+.c-footer-cgu {
+  display: flex;
+  flex-direction: column;
+  a {
+    font-weight: bold;
+  }
+}
+
+.c-footer-motherhome {
+  display: flex;
+  flex-direction: column;
+}
+

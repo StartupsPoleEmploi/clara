@@ -1,7 +1,10 @@
 - unless request.path == root_path || request.path == stats_root_path
   .c-qh
-    .c-qh__logo
-      %a.c-logozone{href: root_path}
-        = render 'shared/logo_black'
-        = render 'shared/logo_pe'
-    .c-qh__cta
+    .u-useful-width.u-margin-constraint
+      .o-layout
+        .o-layout__item{:class => "u1/1"}
+          .c-qh__logo
+            %a.c-logozone{href: root_path}
+              = render 'shared/logo_black'
+              = render 'shared/logo_pe'
+          .c-qh__cta

@@ -1,0 +1,42 @@
+.c-question {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  @include mq($from: tablet) {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }  
+  margin-top: 2vh;
+}
+
+.c-question__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: space(1) space(1) 0 space(1);
+  text-align: center;
+}
+
+.c-question__mark {
+  padding-left: 1rem;
+  @include mq($from: tablet) {
+    padding-left: 15rem;
+  }  
+}
+
+.c-question__fieldset {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1.c-question-title {
+  margin-bottom: space(6);
+  text-align: center;
+  font-size: $inuit-font-size-h2;
+}
+
+.c-question-subtitle {
+  @extend .u-margin-vertical-small;
+  text-align: center;
+  font-size: $inuit-font-size-h4;
+}

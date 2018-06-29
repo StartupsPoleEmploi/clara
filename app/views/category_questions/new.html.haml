@@ -1,55 +1,56 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 
 - title_data "Votre catégorie de demandeur d'emploi"
-= render 'shared/breadcrumb', {where: 'question'}
 
 %main#main.mw1140p.center{role: "main"}
-  
-  .o-card.c-question
+  = render 'shared/breadcrumb'  
 
-    = form_with model: @category, url: category_questions_path, local: true do |f|
-      
-      = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
-      
-      .c-question__form
-        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
-          %legend.visually-hidden Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
+  .u-useful-width.u-margin-constraint
+    .o-card
 
-          .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
-            = radio_button_tag 'category_form[value]', |
-                'autres_cat', |
-                false, | 
-                id: 'autres_cat', |
-                tabindex: -1, |
-                checked: @category.value=='autres_cat', |
-                class: 'c-radioinput', |
-                onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
-                onfocusin: '$("#radio1").toggleClass( "is-activated" )'
-            %label.c-radiolabel.c-category__radiolabel.c-category-element__label{for: 'autres_cat'}
-              .o-centerbox-v
-                .c-category__tick
-                  \-
-                %ul.c-category__brace
-                  %li En activité à temps complet (hors contrat aidé)
-                  %li En création d'entreprise
-                  %li En arrêt maladie
-                  %li En congé maternité ou congé parental
-                  %li En formation autre que formation professionnelle
+      = form_with model: @category, url: category_questions_path, local: true do |f|
+        
+        = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
+        
+        .c-question__form
+          %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+            %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-              
-          .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
-            = radio_button_tag 'category_form[value]', |
-                'cat_12345', |
-                false, | 
-                id: 'cat_12345', |
-                tabindex: -1, |
-                checked: @category.value=='cat_12345', |
-                class: 'c-radioinput', |
-                onfocusout: '$("#radio2").toggleClass( "is-activated" )', |
-                onfocusin: '$("#radio2").toggleClass( "is-activated" )'
-            %label.c-radiolabel.c-category__radiolabel{for: 'cat_12345', class: 'u-5/6@tablet u-1/2'}
-              %span.c-category__second-span Je ne suis dans aucune de ces situations
+            .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
+              = radio_button_tag 'category_form[value]', |
+                  'autres_cat', |
+                  false, | 
+                  id: 'autres_cat', |
+                  tabindex: -1, |
+                  checked: @category.value=='autres_cat', |
+                  class: 'c-radioinput', |
+                  onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
+                  onfocusin: '$("#radio1").toggleClass( "is-activated" )'
+              %label.c-radiolabel.c-category__radiolabel.c-category-element__label{for: 'autres_cat'}
+                .o-centerbox-v
+                  .c-category__tick
+                    \-
+                  %ul.c-category__brace
+                    %li En activité à temps complet (hors contrat aidé)
+                    %li En création d'entreprise
+                    %li En arrêt maladie
+                    %li En congé maternité ou congé parental
+                    %li En formation autre que formation professionnelle
 
-        = render 'shared/error_in_form', e: e
+                
+            .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
+              = radio_button_tag 'category_form[value]', |
+                  'cat_12345', |
+                  false, | 
+                  id: 'cat_12345', |
+                  tabindex: -1, |
+                  checked: @category.value=='cat_12345', |
+                  class: 'c-radioinput', |
+                  onfocusout: '$("#radio2").toggleClass( "is-activated" )', |
+                  onfocusin: '$("#radio2").toggleClass( "is-activated" )'
+              %label.c-radiolabel.c-category__radiolabel{for: 'cat_12345', class: 'u-5/6@tablet u-1/2'}
+                %span.c-category__second-span Je ne suis dans aucune de ces situations
 
-      = render 'nav/next_previous', f: f
+          = render 'shared/error_in_form', e: e
+
+        = render 'nav/next_previous', f: f

@@ -1,0 +1,15 @@
+.c-navbutton {
+  @extend .c-button;
+  font-size: 24px; //HACK
+  margin-top: space(2);
+  width: 2*space(11);
+}
+
+.c-navbutton--previous {
+  display: inline-block;
+
+}
+
+.c-navbutton--continue {
+  @extend .c-button--brand-secondary;
+}

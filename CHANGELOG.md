@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 11.0.0 (29/06/2018)
+-[#822][TECH] KNACSS remplacé par InuitCSS
+
 
 ## 10.3.11 (25/06/2018)
 -[#820b][BUG] GA correction
@@ -66,7 +69,7 @@
 -[#800][BUG] Uglifier
 
 
-## 10.1.1 (15/06/2018)
+## 10.1.1 (16/06/2018)
 -[#789][BUG] Admin : ne pas proposer la suppression dans les associations
 
 
@@ -130,7 +133,7 @@
 -[#749][FEATURE] Page de /status de l'appli
 
 
-## 9.3.2 (18/05/2018)
+## 9.3.2 (17/05/2018)
 -[#752][FEATURE] Page d'accueil mise en cache
 -[#751][BUG] Requete non optimisée
 

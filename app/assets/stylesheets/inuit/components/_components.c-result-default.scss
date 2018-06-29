@@ -1,11 +1,11 @@
 .c-result-default {
+  margin-top: space(6);
 }
 
 .c-mask-filter {
   border-radius: 3px;
   background-color: #057dbc;
-  font-size: 18px;
-  font-weight: 500;
+  @include inuit-font-size(18px, 1);
   color: #ffffff;
   width: 100%;
   border: none;
@@ -15,6 +15,11 @@
     color: #333333cc;
     border: 1px solid #dcdcdc;
   }
+}
+
+.c-mask-filter__text {
+  font-weight: 600;
+  font-family:$font-stack-common;
 }
 
 .c-filterings-area {
@@ -63,7 +68,7 @@
   margin-bottom: 0;
 }
 .c-resultcontract .o-flag__img {
-  width: 100px;
+  width: 80px;
 }
 
 .c-btn--result {

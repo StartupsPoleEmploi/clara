@@ -1,0 +1,42 @@
+.c-breadcrumb {
+  @extend .u-margin-vertical-small;
+}
+
+.c-breadcrumb-home-text {
+  color: #333;
+  margin-left: space(1);
+}
+.c-breadcrumb-string {
+  display: flex;
+  align-items: center;
+}
+
+.c-breadcrumb-link-home {
+  display: flex;
+  padding: space(1);
+}
+
+
+.c-breadcrumb-printer__item {
+  display: inline-flex;
+  align-items:center;
+  border: 1px solid #3f3f3f;
+  color:#3f3f3f;
+  padding: space(2);
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.c-breadcrumb-printer__svg {
+  display:flex;
+  align-items:center;
+}
+
+.c-breadcrumb-current {
+  margin-right: auto;
+}
+
+.c-breadcrumb-print {
+  margin-left: auto;
+}

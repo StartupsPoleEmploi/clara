@@ -1,8 +1,9 @@
-.c-detail-void
-  .h3-like.c-detail-void__line <strong>Vérifiez votre éligibilité</strong>
-  .h3-like.c-detail-void__line <strong>aux aides et mesures</strong> 
-  .h3-like.c-detail-void__line <strong>qui accélèrent</strong>
-  .h3-like.c-detail-void__line votre retour à l'emploi
+.c-detail-void{:class => "u-margin-top-small u-margin-top-none@desktop"}
+  %h3
+    .c-detail-void__line Vérifiez votre éligibilité
+    .c-detail-void__line aux aides et mesures
+    .c-detail-void__line qui accélèrent
+    .c-detail-void__line.c-detail-void__line--light votre retour à l'emploi
 
   .c-detail-void__line
     = link_to 'Je commence', QuestionManager.new.getNextPath, class: 'c-detail-cta'

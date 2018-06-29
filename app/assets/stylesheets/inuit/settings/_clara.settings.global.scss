@@ -11,3 +11,68 @@
 
 $global-radius: 3px !default;
 $global-transition: all 300ms ease-in-out !default;
+
+// BELOW IS ADDED
+// colors used in project
+$color-base      : #000;
+$color-link      : #333;
+$background-base : #fafafa;
+$color-link-hover: #000;
+$brand-primary:    #3dbdb6;
+$brand-secondary:  #21293D;
+
+//custom
+$color-white: #fff;
+$grey-border:  #BDBDBD;
+$grey-text:  #4F4F4F;
+$green-1:  #27AE60;
+$orange-1:  #F2994A;
+
+$font-stack-common    : 'Roboto', sans-serif;
+
+// fonts
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: #333;
+}
+
+// custom utilities
+.u-bold {
+  font-weight: bold;
+}
+
+.u-focusable:focus, .u-focusable.is-activated {
+  border-color: #2196f3;
+  box-shadow: inset 0 0 0 2px #4dabf5;
+}
+
+.u-brand-color {
+  color: $brand-primary;
+}
+
+.u-white-color {
+  color: $color-white;
+}
+
+.u-cursor-pointer {
+  cursor: pointer;
+}
+
+.u-underline {
+  text-decoration: underline;
+}
+
+// See https://blog.xebia.fr/2017/06/30/css-container-la-classe-a-abattre/
+.u-margin-constraint {
+  @extend .u-padding-horizontal;
+}
+
+.u-useful-width {
+  max-width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+

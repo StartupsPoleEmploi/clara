@@ -78,10 +78,6 @@
 @import "settings/clara.settings.config";
 @import "settings/settings.core";
 @import "settings/clara.settings.global";
-$inuit-global-spacing-unit-factor-nano:  0.25;   // 1.5px
-$inuit-global-spacing-unit-factor-micro:  0.5;   // 3px
-$inuit-global-spacing-unit-nano:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-nano;
-$inuit-global-spacing-unit-micro:  $inuit-global-baseline * $inuit-global-spacing-unit-factor-micro;
 
 
 
@@ -121,7 +117,6 @@ $inuit-global-spacing-unit-micro:  $inuit-global-baseline * $inuit-global-spacin
 //
 // Uncomment and add to this section as necessary.
 
-$inuit-wrapper-width: 1480px;
 @import "objects/objects.wrapper";
 @import "objects/objects.layout";
 @import "objects/objects.media";
@@ -182,4 +177,5 @@ $inuit-responsive-spacing-sizes: (
 @import "utilities/utilities.print";
 @import "utilities/utilities.hide";
 $inuit-displays: true;
+$inuit-display-aliases: true;
 @import "utilities/utilities.responsive-display";

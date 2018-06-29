@@ -1,0 +1,95 @@
+#c-detail-app {
+  margin-top: space(1);
+}
+
+.c-detail-title {
+  color: white;
+  height: 84px;
+  background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
+  &.c-detail-title--amob {
+    background: linear-gradient(270.07deg, #929eee -15.61%, #5e65b0 100.96%);
+  }
+  &.c-detail-title--alternance {
+    background: linear-gradient(270.07deg, #e55f8a -15.61%, #bb377a 100.96%);
+  }
+  &.c-detail-title--projet-pro {
+    background: linear-gradient(270.07deg, #e0a778 -15.61%, #b75d26 100.96%);
+  }
+}
+
+.c-detail-warning {
+  color: $grey-text;
+  @include inuit-font-size(15px);
+  background-color:#FCF8E3;
+  padding: space(5);
+}
+
+.c-detail-title-inside {
+  background-image: url('https://res.cloudinary.com/bdavidxyz-com/image/upload/o_20/v1511186245/backgroundrepeat_purbr9.png');
+  background-size: 240px 240px;
+  background-repeat: repeat-x;  
+  height: 100%;
+  width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  justify-content: center;
+  text-align: center;
+  @include mq($from: tablet) {
+    justify-content: inherit;
+    text-align: inherit;
+    padding-left: 6rem;
+  } 
+}
+
+.c-detail-back {
+  margin-bottom: space(7);
+  margin-top: space(5);
+  display: flex;
+  justify-content: center;
+}
+
+.c-detail-void {
+  border-radius: space(1);
+  padding-top: space(4);
+  padding-right: space(4);
+  padding-left: space(4);
+  padding-bottom: space(4);
+}
+
+.c-detail-void__line {
+  margin-bottom: space(2);
+  text-align: center;
+  a {
+    margin-top: space(3);
+  }
+  @include mq($from: desktop) {
+    text-align: left;
+  } 
+}
+
+.c-detail-void__line--light {
+  font-weight: 400;
+}
+
+a.c-detail-cta {
+  border: 0;
+  border-radius: space(8);
+  background-color: #047cbc;
+  padding: space(4) space(9) space(4) space(9);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.c-detail-goback {
+  margin-left: space(3);
+  display: none;
+  cursor: pointer;
+  @include mq($from: tablet) {
+    display: block;
+  } 
+}

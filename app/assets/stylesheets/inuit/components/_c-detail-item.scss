@@ -1,0 +1,31 @@
+.c-detail-item {
+  background-color: white;
+  border-radius: space(1);
+  padding: space(4);
+}
+
+.c-detail-item + .c-detail-item {
+  margin-top: space(4);
+}
+
+h3.c-detail-item__title {
+  margin-bottom: space(3);
+}
+
+.c-detail-list {
+  margin-right: space(5);
+  a {
+    color: blue;
+  }
+  a:hover {
+    color: darkblue;
+  }
+}
+
+// "md" value of gridlex vars
+@media screen and (max-width: 64em)  {
+  .c-detail-list {
+    margin-left: space(3);
+    margin-right: space(3);
+  } 
+}
