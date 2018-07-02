@@ -74,6 +74,12 @@ $( document ).ready(function() {
       that.name = name;
       that.description = description;
       that.isActive = ko.observable(false);
+      that.sendGaEvent = ko.computed(function(){return that.isActive();}).subscribe(function (newValue) {
+        console.log(newValue);
+        if (newValue === true) {
+          track_filter(that.name);
+        }
+      });
       that.tagClosed = function(){that.isActive(false)};
     }
 
