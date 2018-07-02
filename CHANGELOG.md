@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.0.2 (01/07/2018)
+-[#827][TECH] Passage à Rails 5.2
+
+
 ## 11.0.1 (01/07/2018)
 -[#826][TECH] Cache index page again
 
