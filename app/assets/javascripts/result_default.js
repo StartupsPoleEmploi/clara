@@ -1,6 +1,13 @@
 $( document ).ready(function() {
   if ($('.c-result-default').length) {
 
+    // track filters
+    function track_filter(filter_name) {
+      if (typeof ga === "function") {
+        ga('send', 'event', 'results', 'filter', filter_name);
+      }      
+    }
+
     function initialize_state() {
       var existing = get_existing();
       if (existing) {
@@ -67,6 +74,11 @@ $( document ).ready(function() {
       that.name = name;
       that.description = description;
       that.isActive = ko.observable(false);
+      that.sendGaEvent = ko.computed(function(){return that.isActive();}).subscribe(function (newValue) {
+        if (newValue === true) {
+          track_filter(that.name);
+        }
+      });
       that.tagClosed = function(){that.isActive(false)};
     }
 

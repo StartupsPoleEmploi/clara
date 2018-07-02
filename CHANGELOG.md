@@ -1,11 +1,15 @@
 # ARA Changelog
 
 
-## 11.0.2 (01/07/2018)
+## 11.1.0 (02/07/2018)
+-[#821][FEATURE] Tracking des filtres utilisés
+
+
+## 11.0.2 (02/07/2018)
 -[#827][TECH] Passage à Rails 5.2
 
 
-## 11.0.1 (01/07/2018)
+## 11.0.1 (02/07/2018)
 -[#826][TECH] Cache index page again
 
 
