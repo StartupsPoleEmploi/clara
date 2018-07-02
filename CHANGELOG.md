@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.0.1 (01/07/2018)
+-[#826][TECH] Cache index page again
+
+
 ## 11.0.0 (29/06/2018)
 -[#822][TECH] KNACSS remplacé par InuitCSS
 
