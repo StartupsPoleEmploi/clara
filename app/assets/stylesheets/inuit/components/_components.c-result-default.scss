@@ -27,7 +27,11 @@
 }
 
 .c-resultfilterings {
+  cursor: pointer;
   padding:0;
+  label, input {
+    cursor: pointer;
+  }
   legend {
     font-size: 18px;
     font-weight: bold;
