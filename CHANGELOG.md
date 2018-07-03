@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.0 (03/07/2018)
+-[#805][FEATURE] Ne laisser apparaître que le/les filtres saisi/s au niveau des tags
+
+
 ## 11.1.0 (02/07/2018)
 -[#821][FEATURE] Tracking des filtres utilisés
 
