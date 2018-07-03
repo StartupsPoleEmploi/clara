@@ -109,10 +109,6 @@ $( document ).ready(function() {
       });
 
       var smalltags_names = $('.c-resultaid[data-aslug="' + that.name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
-      // console.log('smalltags_names')
-      // console.log(that.name)
-      // console.log($('.c-resultaid[data-aslug="' + that.name + '"]'))
-      // console.log(smalltags_names)
       that.o_filtersmalltags = ko.observableArray(_.map(smalltags_names, function(n){return new FilterSmallTagViewModel(n, that.o_active_filters_name)}))
 
       that.isVisible = ko.computed(function() {
