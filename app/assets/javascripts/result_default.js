@@ -88,9 +88,23 @@ $( document ).ready(function() {
       var that = this;
       that.name = name;
 
-      that.filtersClass = ko.computed(function() {
-        return _.some(o_active_filters()) ? "" : "u-hidden-visually";
-      });
+      that.filtersClass = ko.computed({
+        read: function () {
+        },
+        write: function (value) {
+            console.log(value);
+            return _.some(o_active_filters()) ? "" : "u-hidden-visually";
+        },
+        owner: that
+      })
+
+      // that.filtersClass = ko.computed(function() {
+      //   return _.some(o_active_filters()) ? "" : "u-hidden-visually";
+      // });
+      // that.filtersClass = function(val) {
+      //   console.log(val);
+      //   return _.some(o_active_filters()) ? "" : "u-hidden-visually";
+      // }
 
       that.own_filters_name = own_filters_name;
 
