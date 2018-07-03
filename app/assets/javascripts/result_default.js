@@ -83,28 +83,27 @@ $( document ).ready(function() {
     }
 
 
+    function FilterSmallTagViewModel(name, o_active_filters) {
+      var that = this;
+      that.name = name;
+      that.filtersmalltagClass = ko.computed(function() {
+        return _.includes(o_active_filters(), that.name) ? "" : "u-hidden-visually";
+      });
+    }
+
+
 
     function AidViewModel(name, o_active_filters, own_filters_name) {
       var that = this;
       that.name = name;
 
-      that.filtersClass = ko.computed({
-        read: function () {
-        },
-        write: function (value) {
-            console.log(value);
-            return _.some(o_active_filters()) ? "" : "u-hidden-visually";
-        },
-        owner: that
-      })
+      that.filtersClass = ko.computed(function() {
+        return _.some(o_active_filters()) ? "" : "u-hidden-visually";
+      });
 
-      // that.filtersClass = ko.computed(function() {
-      //   return _.some(o_active_filters()) ? "" : "u-hidden-visually";
-      // });
-      // that.filtersClass = function(val) {
-      //   console.log(val);
-      //   return _.some(o_active_filters()) ? "" : "u-hidden-visually";
-      // }
+      var smalltags_names = $('.c-resultaid[data-aslug="' + that.name + '"]').map(function(){return $(this).data()["name"]}).get();
+
+      that.o_filtersmalltags = ko.observableArray(_.map(smalltags_names, function(n){return new FilterSmallTagViewModel(n, o_active_filters)}))
 
       that.own_filters_name = own_filters_name;
 

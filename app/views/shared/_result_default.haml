@@ -143,7 +143,7 @@
                             %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline{}
                               - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersClass('#{one_filter["name"]}')", "data-name" => one_filter["name"]}=one_filter["description"]
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersClass", "data-name" => one_filter["name"]}=one_filter["description"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
                             %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
         
