@@ -83,6 +83,15 @@ $( document ).ready(function() {
     }
 
 
+    function FilterSmallTagViewModel(name, o_active_filters_name) {
+      var that = this;
+      that.name = name;
+      that.filtersmalltagClass = ko.computed(function() {
+        return _.includes(o_active_filters_name(), that.name) ? "" : "u-hidden-visually";
+      });
+    }
+
+
 
     function AidViewModel(name, o_active_filters, own_filters_name) {
       var that = this;
@@ -92,11 +101,15 @@ $( document ).ready(function() {
         return _.some(o_active_filters()) ? "" : "u-hidden-visually";
       });
 
+
       that.own_filters_name = own_filters_name;
 
       that.o_active_filters_name = ko.computed(function() {
         return _.map(o_active_filters(), function(e){return e.name});
       });
+
+      var smalltags_names = $('.c-resultaid[data-aslug="' + that.name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
+      that.o_filtersmalltags = ko.observableArray(_.map(smalltags_names, function(n){return new FilterSmallTagViewModel(n, that.o_active_filters_name)}))
 
       that.isVisible = ko.computed(function() {
         var condition1 = _.some(that.o_active_filters_name(), function(e){
