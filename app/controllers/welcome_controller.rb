@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
-  caches_page :index
-  skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
+  # caches_page :index
+  # skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
 
   def index
     service = ContractTypeService.new
@@ -19,7 +19,9 @@ class WelcomeController < ApplicationController
 
   def start_wizard
     clean_asker_params
-    redirect_to QuestionManager.new.getNextPath    
+    render json: {
+      want_to_go: QuestionManager.new.getNextPath 
+    }
   end
 
   def terms
