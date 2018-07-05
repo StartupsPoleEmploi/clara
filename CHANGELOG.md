@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.3 (05/07/2018)
+-[#811][BUG] Boutons ouvrir/déplier sous Firefox 
+
+
 ## 11.2.2 (05/07/2018)
 -[#756][BUG] Detection vieux navigateur
 
