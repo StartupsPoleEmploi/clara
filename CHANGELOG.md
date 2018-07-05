@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.2 (05/07/2018)
+-[#756][BUG] Detection vieux navigateur
+
+
 ## 11.2.1 (05/07/2018)
 -[#808][DESIGN] Retirer les animations qui n'apportent rien
 
