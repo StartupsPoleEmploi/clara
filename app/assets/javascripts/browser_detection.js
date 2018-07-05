@@ -11,6 +11,7 @@ $( document ).ready(function() {
     "</div>" +
   "</div>";
 
+  // See https://github.com/ergcode/ergonomic.detect_flex#manual
   if (window._DD !== 1) {
     $('body').prepend(template_to_add);
   }
