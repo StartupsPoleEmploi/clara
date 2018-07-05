@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.1 (05/07/2018)
+-[#808][DESIGN] Retirer les animations qui n'apportent rien
+
+
 ## 11.2.0 (03/07/2018)
 -[#805][FEATURE] Ne laisser apparaître que le/les filtres saisi/s au niveau des tags
 
