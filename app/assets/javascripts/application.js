@@ -15,6 +15,8 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require detect_flex/detect_flex-2009
+//= require ./browser_detection
 //= require moment/moment
 //= require storejs/store.legacy
 //= require chartist/chartist
