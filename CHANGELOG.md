@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
-## 11.2.4 (05/07/2018)
--[#756][BUG] Ecran d'attente 
+## 11.2.5 (06/07/2018)
+-[#756b][BUG] Restoration browser depreciation
+
+
+## 11.2.4 (06/07/2018)
+-[#795][BUG] Ecran d'attente 
 
 
 ## 11.2.3 (05/07/2018)
