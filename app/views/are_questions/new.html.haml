@@ -36,10 +36,10 @@
               %div.mls.c-are-euro
                 €
 
-              - if has_error
-                %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
-              - else
-                %label.c-label.flex-container.h4-like.visibility-hidden
+            - if has_error
+              %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
+            - else
+              %label.c-label.flex-container.h4-like.visibility-hidden
 
             
         = render 'nav/next_previous', f: f
