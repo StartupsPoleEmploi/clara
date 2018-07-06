@@ -79,7 +79,6 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    browser (2.5.3)
     builder (3.2.3)
     bulk_insert (1.7.0)
       activerecord (>= 3.2.0)
@@ -454,7 +453,6 @@ DEPENDENCIES
   annotate (= 2.4.0)
   autoprefixer-rails
   bcrypt (~> 3.1.7)
-  browser
   bulk_insert
   byebug
   capybara
