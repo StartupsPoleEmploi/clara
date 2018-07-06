@@ -1,0 +1,38 @@
+.c-loader {
+  
+  padding-top:5rem;
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    border-radius: 50%;
+    border-style: solid;
+    border-top-color: #fcf8e3;
+    border-right-color: #d20218;
+    border-bottom-color: #152e3b;
+    border-left-color: #047cbc;
+    
+    content: '';
+
+    transform: translate(-50%, -50%);
+    animation: rotate 1.5s  infinite ease-in-out;
+  }
+  
+  &:before { border-width: 1rem; }
+
+  &:after {
+    width: 2rem;
+    height: 2rem;
+    border-width: 1rem;
+    animation-direction: reverse;
+  }
+}
+
+
+@keyframes rotate {
+   0% { transform: translate(-50%, -50%) rotate(0); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
