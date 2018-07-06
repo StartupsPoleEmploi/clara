@@ -19,9 +19,8 @@ class WelcomeController < ApplicationController
 
   def start_wizard
     clean_asker_params
-    render json: {
-      want_to_go: QuestionManager.new.getNextPath 
-    }
+    redirect_to QuestionManager.new.getNextPath
+    # handle_redirection_of 
   end
 
   def terms

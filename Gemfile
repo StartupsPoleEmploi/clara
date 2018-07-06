@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'rack-attack'
 gem 'turbolinks', '~> 5'
+gem 'browser'
 
 gem 'haml', '~> 5'
 gem 'haml-rails'

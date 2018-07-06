@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function () {
   if ($( 'body' ).hasClass('allocation_questions', 'new' )) {
 
     $('.js-pnotify--ARE_ASP').click(function() {

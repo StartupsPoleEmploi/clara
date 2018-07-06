@@ -28,6 +28,14 @@ class ApplicationController < ActionController::Base
     render locals: stuff
   end
 
+  def handle_redirection_of(relative_url)
+    if browser.known? && browser.modern?
+      render json: {want_to_go: relative_url}
+    else
+      redirect_to relative_url
+    end
+  end
+  
   private
 
   def set_cache_headers
