@@ -9,14 +9,18 @@ class CategoryQuestionsController < ApplicationController
   end
 
   def create
-    @category = CategoryForm.new(allowed_params)
-    @asker.v_category = @category.value
-    save_asker
-    if @category.valid?
-      redirect_to QuestionManager.new.getNextPath(request.referer, @category)
+    if params[:commit] == 'Revenir' 
+      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
-      flash[:error] = @category.errors.messages.values.flatten
-      redirect_to new_category_question_path
+      @category = CategoryForm.new(allowed_params)
+      @asker.v_category = @category.value
+      save_asker
+      if @category.valid?
+        redirect_to QuestionManager.new.getNextPath(request.referer, @category)
+      else
+        flash[:error] = @category.errors.messages.values.flatten
+        redirect_to new_category_question_path
+      end
     end
 
   end

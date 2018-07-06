@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
     // track filters
@@ -35,7 +35,7 @@ $( document ).ready(function() {
     function initialize_filters_state(existing_filters) {
       _.each(existing_filters, function(existing_filter){
         var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
-        one_filter.isActive(existing_filter.isActive)
+        if (one_filter) one_filter.isActive(existing_filter.isActive)
       });
     }
 

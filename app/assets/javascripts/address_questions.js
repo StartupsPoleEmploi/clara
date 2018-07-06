@@ -88,7 +88,7 @@ _.set(window, 'clara.a11y.search1', {
   }
 });
 
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function () {
   // Turbolinks breaks PNotify context, needs to reinstantiate it here 
   // See https://stackoverflow.com/a/28220612/2595513
   PNotify.prototype.options.stack  = {

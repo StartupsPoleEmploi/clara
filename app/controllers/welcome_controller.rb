@@ -19,7 +19,7 @@ class WelcomeController < ApplicationController
 
   def start_wizard
     clean_asker_params
-    redirect_to QuestionManager.new.getNextPath    
+    redirect_to QuestionManager.new.getNextPath
   end
 
   def terms

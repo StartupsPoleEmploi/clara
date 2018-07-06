@@ -10,13 +10,17 @@ class OtherQuestionsController < ApplicationController
   end
 
   def create
-    @other = download_from_params
-    if @other.valid?
-      upload_to_asker(@other)
-      redirect_to_next_question(request)
+    if params[:commit] == 'Revenir' 
+      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
-      populate_errors(flash)
-      redirect_to_same_page
+      @other = download_from_params
+      if @other.valid?
+        upload_to_asker(@other)
+        redirect_to_next_question(request)
+      else
+        populate_errors(flash)
+        redirect_to_same_page
+      end
     end
   end
  

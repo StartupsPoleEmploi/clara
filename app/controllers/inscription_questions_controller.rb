@@ -10,14 +10,19 @@ class InscriptionQuestionsController < ApplicationController
   end
 
   def create
-    inscription = download_from_params
-    upload_to_asker(inscription)
-    if inscription.valid?
-      redirect_to_next_question(request, inscription)
+    if params[:commit] == 'Revenir' 
+      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
-      populate_errors(flash, inscription)
-      redirect_to_same_page
+      inscription = download_from_params
+      upload_to_asker(inscription)
+      if inscription.valid?
+        redirect_to_next_question(request, inscription)
+      else
+        populate_errors(flash, inscription)
+        redirect_to_same_page
+      end      
     end
+
   end
  
   private

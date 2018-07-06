@@ -1,6 +1,3 @@
-// Relies on detect_flex lib, that is already loaded
-$( document ).ready(function() {
-
   var template_to_add = 
   "<div class='.c-browser-deprecated u-padding' style='background-color: orange;'>" +
     "<div class='.c-browser-deprecated__line'>" +
@@ -15,5 +12,4 @@ $( document ).ready(function() {
   if (window._DD !== 1) {
     $('body').prepend(template_to_add);
   }
-});
 

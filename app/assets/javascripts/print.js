@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function () {
 
   $('.c-breadcrumb-print').click(function(e) {
     if (typeof ga === "function") {
