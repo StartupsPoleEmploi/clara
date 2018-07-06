@@ -83,8 +83,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'go_back' => 'go_back#go', :via => [:post], :as => 'go_back'
-
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
