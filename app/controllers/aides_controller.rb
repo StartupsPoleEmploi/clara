@@ -3,7 +3,6 @@ class AidesController < ApplicationController
   after_action :save_asker
 
   def index
-    sleep 2
     if have_active_asker?
       pull_existing_from_cache
       if (@existing)
