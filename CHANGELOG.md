@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.3.2 (09/07/2018)
+-[#813][DESIGN] Revue de design mobile
+
+
 ## 11.3.1 (09/07/2018)
 -[#812][DESIGN] Revue de design écran résultats
 
