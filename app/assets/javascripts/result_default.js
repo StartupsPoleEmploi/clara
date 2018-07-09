@@ -21,10 +21,39 @@ $(document).on('turbolinks:load', function () {
     window.collect_filters = function(eligy, contract_name, aid_name){
       return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
     }
+
+    window.initial_eligibles_aids_per_contract = _.map(
+      collect_aids_per_contract('o_eligibles'), 
+      function(contract_name){
+        return {
+          name: contract_name, 
+          is_collapsed: false,
+          aids: _.map(
+            collect_aids('o_eligibles', contract_name), 
+            function(aid_name) {
+              return {
+                name: aid_name,
+                is_collapsed: false,
+                filters: _.map(
+                  collect_filters('o_eligibles', contract_name, aid_name),
+                  function(filter_name) {
+                    return {
+                      name: filter_name,
+                      is_collapsed: false,
+                    }
+                  }
+                )
+              }
+            }
+          )
+
+        }
+      }
+    );
     window.initial_state = {
       eligibles_zone: {
         is_collapsed: false,
-        aids_per_contract: _.map($('#o_eligibles .c-resultcard').map(function(){return $(this).data()["cslug"]}).get(), function(e){return {name:e, is_collapsed:false, aids: []}})
+        aids_per_contract: initial_eligibles_aids_per_contract
       },
       ineligibles_zone: {
         is_collapsed: false,
