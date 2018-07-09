@@ -1,7 +1,7 @@
 - v = view_object(:result_situation, local_assigns)
 
 #c-result-situation.c-result-situation{"data-bind" => "with: o_situationarea"}
-  .c-situation
+  .c-situation{"class" => "u-hide-until@tablet"}
     %h4.c-situation-title.u-padding-vertical-small.c-mask-filter{"data-bind" => "click: o_toggle, css: o_state_css"}
       Récapitulatif de situation ∨
 
