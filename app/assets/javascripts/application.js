@@ -18,6 +18,7 @@
 //= require detect_flex/detect_flex-2009
 //= require ./browser_detection
 //= require moment/moment
+//= require redux/redux
 //= require storejs/store.legacy
 //= require chartist/chartist
 //= require chartist/chartist-plugin-legend

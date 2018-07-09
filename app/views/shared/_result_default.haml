@@ -35,8 +35,8 @@
               %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
               #o_all_filters
                 - flat_all_filter.each_with_index do |a_filter, i|
-                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
-                    %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox"}/
+                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}", "data-name" => "#{a_filter['name']}"}
+                    %input{:id => "check_#{i}", :type => "checkbox"}/
                     %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
         = render 'shared/result_situation', asker
