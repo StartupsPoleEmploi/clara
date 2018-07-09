@@ -72,6 +72,6 @@ a.c-situation-reset__button {
   color: white;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px; // HACK
-  font-weight: bold;
+  @include inuit-font-size(16px);
+  font-weight: 400;
 }
