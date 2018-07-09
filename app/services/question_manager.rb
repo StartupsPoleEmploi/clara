@@ -94,7 +94,10 @@ class QuestionManager
   end
 
   def before_allocation(asker)
-    new_category_question_path
+    p '- - - - - - - - - - - - - - v_category- - - - - - - - - - - - - - - -' 
+    pp asker.v_category
+    p ''
+    asker.v_category === "not_applicable" ? new_inscription_question_path : new_category_question_path
   end
 
   def before_are(asker)
