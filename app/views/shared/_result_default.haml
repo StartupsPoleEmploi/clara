@@ -62,7 +62,10 @@
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
               .o-layout__item{"class" => "u-1/6 u-text--right u-hide-until@tablet"}
                 %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                  Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                  %span.c-alldeplier
+                    Tout déplier 
+                  %span.c-resultcaret
+                    <strong>&nbsp;&or;</strong>
                 %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
                   Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
