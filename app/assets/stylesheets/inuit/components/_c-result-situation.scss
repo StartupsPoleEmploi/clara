@@ -1,4 +1,6 @@
 .c-situation {
+  border: solid 1px #dcdcdc;
+  border-radius: 3px;
   background-color:white;
 }
 
@@ -7,7 +9,7 @@ h4.c-situation-title {
   text-align: center;
   color: white;
   background-color:#057dbc;
-  margin-bottom: space(4);
+  margin-bottom: space(0);
 }
 
 .c-situation__data-line:first-child {
@@ -40,8 +42,8 @@ h4.c-situation-title {
 
 .c-situation-paragraph {
   border-bottom: 1px solid #C4C4C4;
-  padding: 0 space(3) space(5) space(5);
-  font-size: 16px;//HACK
+  padding: space(6) space(5);
+  @include inuit-font-size(16px);
 }
 
 .c-situation-paragraph--last {
@@ -50,7 +52,7 @@ h4.c-situation-title {
 }
 
 .c-situation-paragraph + .c-situation-paragraph {
-  margin-top: space(4);
+  margin-top: space(0);
 }
 
 .c-situation-paragraph:last-child {
@@ -73,5 +75,5 @@ a.c-situation-reset__button {
   text-decoration: none;
   display: inline-block;
   @include inuit-font-size(16px);
-  font-weight: 400;
+  font-weight: 500;
 }

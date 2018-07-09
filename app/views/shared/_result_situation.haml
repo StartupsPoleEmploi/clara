@@ -8,7 +8,7 @@
 
     .c-situation-paragraph{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
-        .o-layout
+        .o-layout.o-layout--flush
           .o-layout__item{"class" => "u-1/2 u-text--left"}
             %span.c-situation__header-title Données personnelles
           .o-layout__item{"class" => "u-1/2 u-text--right"}
@@ -41,7 +41,7 @@
 
     .c-situation-paragraph{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
-        .o-layout
+        .o-layout.o-layout--flush
           .o-layout__item{"class" => "u-1/2 u-text--left"}
             %span.c-situation__header-title Situation actuelle
           .o-layout__item{"class" => "u-1/2 u-text--right"}
@@ -71,7 +71,7 @@
 
     .c-situation-paragraph.c-situation-paragraph--last{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
-        .o-layout
+        .o-layout.o-layout--flush
           .o-layout__item{"class" => "u-1/2 u-text--left"}
             %span.c-situation__header-title Autres situations
           .o-layout__item{"class" => "u-1/2 u-text--right"}
@@ -88,6 +88,6 @@
           %span.c-situation__data-val.c-situation--handicap
             =v.handicap
 
-    .c-situation-reset{"data-bind" => "css: o_toggle_css"}
-      = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button u-margin-bottom-small'
+    .c-situation-reset.u-margin-vertical{"data-bind" => "css: o_toggle_css"}
+      = link_to 'Je recalcule mes aides', root_path, class: 'c-situation-reset__button'
 
