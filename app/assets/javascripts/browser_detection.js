@@ -11,7 +11,8 @@ $(document).on('ready turbolinks:load', function () {
 
   
 
-  $('.c-magic-number').text($(".c-magic-number").text() + " " + window._DD);
+  // DEBUG ONLY
+  // $('.c-magic-number').text($(".c-magic-number").text() + " " + window._DD);
 
   // See https://github.com/ergcode/ergonomic.detect_flex#manual
   if (window._DD !== 1) {
