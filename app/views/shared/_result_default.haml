@@ -62,10 +62,11 @@
               %div
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                  Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
-                  Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+                %div{"class" => "u-hide-until@tablet"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
+                    Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
+                    Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
               - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
                 .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
@@ -109,10 +110,11 @@
               %div
                 %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                  Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny","data-bind" => "click: sesameClose, css: unfoldClass"}
-                  Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+                %div{"class" => "u-hide-until@tablet"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
+                    Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
+                  %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny","data-bind" => "click: sesameClose, css: unfoldClass"}
+                    Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
                 .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
@@ -157,9 +159,10 @@
               .o-list-inline__item
                 %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal{"data-bind" => "click: o_hideClick, text: o_hideText"} Voir
             .c-resulteligy.u-margin-top-small{"data-bind" => "css: o_hideCss"}
-              .o-layout.o-layout--flush
-                .o-layout__item{"class" => "u-1/2 u-text--left"}
-                .o-layout__item{"class" => "u-1/2 u-text--right u-hide-until@tablet"}
+              .u-display-flex
+                %div
+              .u-display-flex
+                .u-margin-left-auto{"class" => "u-hide-until@tablet"}
                   %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
