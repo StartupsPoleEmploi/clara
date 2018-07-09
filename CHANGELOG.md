@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.3.0 (09/07/2018)
+-[#778][DESIGN] Recap situation
+
+
 ## 11.2.8 (09/07/2018)
 -[#830][BUG] Navigation dans les questions
 

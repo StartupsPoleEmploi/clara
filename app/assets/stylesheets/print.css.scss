@@ -31,8 +31,7 @@
 }
 
 .c-situation-paragraph {
-  padding: 0.7rem;
-  padding-bottom: 1.5rem;
+  padding: space(5) space(3) space(5) space(3);
 }
 
 h4.c-situation-title {
@@ -41,10 +40,6 @@ h4.c-situation-title {
 
 .c-situation-reset {
   display: none;
-}
-
-.c-situation-paragraph + .c-situation-paragraph {
-  margin-top: 0;
 }
 
 .c-result-list--uncertain {
