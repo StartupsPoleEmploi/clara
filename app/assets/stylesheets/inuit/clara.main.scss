@@ -125,7 +125,6 @@
 @import "objects/objects.list-inline";
 @import "objects/objects.line";
 @import "objects/objects.box";
-@import "objects/objects.left-right-box";
 @import "objects/objects.centerbox";
 @import "objects/objects.block";
 @import "objects/objects.ratio";
@@ -169,6 +168,7 @@ $inuit-responsive-spacing-sizes: (
   "-micro": $inuit-global-spacing-unit-micro,
   "-tiny": $inuit-global-spacing-unit-tiny,
   "-small": $inuit-global-spacing-unit-small,
+  "-small-plus": $inuit-global-spacing-unit-small-plus,
   "-large": $inuit-global-spacing-unit-large,
   "-huge": $inuit-global-spacing-unit-huge,
   "-none": 0

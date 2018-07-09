@@ -27,6 +27,9 @@ $(document).on('ready turbolinks:load', function () {
     function initialize_filterarea_state() {
       if ($(window).width() < 740) {
          window.appViewModel.o_filterarea().o_toggle_state(false);
+         // HACK
+         $('.c-mask-filter__content').css('background-color', '#057dbc');
+         $('.c-mask-filter__content').css('color', 'white');
       } else {
          window.appViewModel.o_filterarea().o_toggle_state(true);
        }

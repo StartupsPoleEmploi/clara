@@ -155,11 +155,9 @@ input[type=radio] {
 }
 
 .c-filtertag__text {
-  width: 195px;
-  max-width: 195px;
   white-space: nowrap;
-  overflow: hidden;
-  display: block;
+  overflow:hidden;
+  max-width: 195px;
   text-overflow: ellipsis;
 }
 
