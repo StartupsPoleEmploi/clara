@@ -24,11 +24,12 @@
 
         .c-filterings-area.u-margin-bottom-small{"data-bind" => "with: o_filterarea"}
           .c-filterings-area__content{"data-bind" => "css: o_filterareashow"}
-            %button.c-mask-filter.u-padding-vertical-small{"data-bind" => "click: o_toggle, css: o_state_css"}
-              %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
-                Ouvrir les filtres       
-              %span.c-mask-filter__caret
-                &nbsp;&or;
+            %button.c-mask-filter.u-padding-none{"data-bind" => "click: o_toggle, css: o_state_css"}
+              .c-mask-filter__content.u-padding-vertical-small
+                %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
+                  Ouvrir les filtres       
+                %span.c-mask-filter__caret
+                  &nbsp;&or;
               
             %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
               %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
