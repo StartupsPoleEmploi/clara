@@ -58,10 +58,10 @@
 
         #o_eligibles{"data-bind" => "with: o_eligibles"}
           .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-            .o-layout.o-layout--flush
-              .o-layout__item{"class" => "u-1/2 u-text--left"}
+            .u-display-flex
+              %div
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
-              .o-layout__item{"class" => "u-1/2 u-text--right u-hide-until@tablet"}
+              .u-display-flex.u-margin-left-auto
                 %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
                   Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                 %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -105,13 +105,13 @@
 
         #o_uncertains.u-margin-top-large{"data-bind" => "with: o_uncertains"}
           .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
-            .o-layout.o-layout--flush
-              .o-layout__item{"class" => "u-1/2 u-text--left"}
+            .u-display-flex
+              %div
                 %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
-              .o-layout__item{"class" => "u-1/2 u-text--right u-hide-until@tablet"}
+              .u-display-flex.u-margin-left-auto
                 %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
                   Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
+                %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny","data-bind" => "click: sesameClose, css: unfoldClass"}
                   Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
