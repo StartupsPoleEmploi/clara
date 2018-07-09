@@ -66,9 +66,9 @@
     .c-situation-paragraph.c-situation-paragraph--last{"data-bind" => "css: o_toggle_css"}
       .c-situation__header
         %span.c-situation__header-title Autres situations
-        %span.c-situation__header-link
+        %a{href: new_other_question_path, class:".c-situation__header-link"}
           <svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8" stroke-linecap="round" stroke-linejoin="round"> <g id="filtrerecapopen" transform="translate(-208.000000, -129.000000)" stroke="#333333"> <g id="Colonne-gauche"> <g id="Group-4" transform="translate(0.000000, 55.000000)"> <g id="Group-Copy-2" transform="translate(209.000000, 71.000000)"> <g id="pencil" transform="translate(0.000000, 3.000000)"> <path d="M9,2 L12,5" id="Shape"></path> <path d="M1,10 L4,13" id="Shape"></path> <polygon id="Shape" points="11 0 14 3 4 13 0 14 1 10"></polygon> </g> </g> </g> </g> </g> </g> </svg>
-          %a{href: new_other_question_path} Modifier
+          %span Modifier
       .c-situation__data-list
         .c-situation__data-line
           %span.c-situation__data-prop Artiste ou technicien(ne) du spectacle :
