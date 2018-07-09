@@ -2,7 +2,6 @@ $(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
 
-
     /**
     *
     *
@@ -14,17 +13,24 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     window.initial_state = {
-      eligibles: {
+      eligibles_zone: {
         is_collapsed: false,
         aids_per_contract: _.map($('#o_eligibles .c-resultcard').map(function(){return $(this).data()["cslug"]}).get(), function(e){return {name:e, is_collapsed:false}})
       },
-      ineligibles: {
+      ineligibles_zone: {
         is_collapsed: false,
         aids_per_contract: _.map($('#o_ineligibles .c-resultcard').map(function(){return $(this).data()["cslug"]}).get(), function(e){return {name:e, is_collapsed:false}})
       },
-      uncertains: {
+      uncertains_zone: {
         is_collapsed: false,
         aids_per_contract: _.map($('#o_uncertains .c-resultcard').map(function(){return $(this).data()["cslug"]}).get(), function(e){return {name:e, is_collapsed:false}})
+      },
+      filters_zone: {
+        is_collapsed: false,
+        filters: _.map($('#o_all_filters .c-resultfiltering').map(function(){return $(this).data()["name"]}).get(), function(e){return {name: e, is_checked: false}})
+      }
+      recap_zone: {
+        is_collapsed: false
       }
     };
 
