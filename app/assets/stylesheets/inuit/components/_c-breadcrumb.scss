@@ -31,7 +31,9 @@
   padding: space(2);
   border-radius: 5px;
   cursor: pointer;
-
+  @include mq($until: tablet) {
+    display: none;
+  }
 }
 
 .c-breadcrumb-printer__svg {
