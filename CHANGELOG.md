@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.8 (09/07/2018)
+-[#830][BUG] Navigation dans les questions
+
+
 ## 11.2.7 (09/07/2018)
 -[#819b][BUG] Restoration nav clavier
 
