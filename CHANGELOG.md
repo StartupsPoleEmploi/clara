@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.3.1 (09/07/2018)
+-[#812][DESIGN] Revue de design écran résultats
+
+
 ## 11.3.0 (09/07/2018)
 -[#778][DESIGN] Recap situation
 

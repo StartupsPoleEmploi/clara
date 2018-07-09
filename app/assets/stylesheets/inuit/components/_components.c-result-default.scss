@@ -27,6 +27,9 @@
 fieldset.c-resultfilterings {
   padding:0;
   margin:0;
+  label {
+    @include inuit-font-size(16px, 1);
+  }
   label, input {
     cursor: pointer;
   }
@@ -36,9 +39,8 @@ fieldset.c-resultfilterings {
   }
 }
 .c-resultfiltering {
-  label {
-    font-size: 16px; // HACK
-  }
+  display: flex;
+  align-items: center;
 }
 .c-resultfiltering--even {
   background-color:#f3f8fc;
@@ -128,12 +130,12 @@ fieldset.c-resultfilterings {
 
 /** checkbox **/
 input[type=checkbox] {
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 /** checkbox **/
 input[type=radio] {
-  transform: scale(2);
+  transform: scale(1.5);
 }
 
 
