@@ -265,7 +265,7 @@ $(document).on('ready turbolinks:load', function () {
       }
       that.o_toggle_state = ko.observable(false);
       that.o_toggle_text = ko.computed(function() {
-        return that.o_toggle_state() ? "Masquer les filtres" : "Filtrer par besoin";
+        return that.o_toggle_state() ? "Masquer les filtres" : "Filtrer par besoins";
       }); 
       that.o_toggle_css = ko.computed(function() {
         return that.o_toggle_state() ? "" : "u-hidden-visually";
