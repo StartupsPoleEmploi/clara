@@ -2,6 +2,12 @@
   @extend .u-margin-vertical-small;
 }
 
+.c-results-index .c-breadcrumb {
+  @include mq($until: tablet) {
+    display: none;
+  }
+}
+
 .c-breadcrumb-home-text {
   color: #333;
   margin-left: space(1);
