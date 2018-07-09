@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.6 (09/07/2018)
+-[#756c][BUG] Restoration browser depreciation
+
+
 ## 11.2.5 (06/07/2018)
 -[#756b][BUG] Restoration browser depreciation
 
