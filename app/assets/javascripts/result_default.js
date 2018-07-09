@@ -12,8 +12,8 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
-    window.collect_aids_per_contract = function(){
-      return $('#o_eligibles .c-resultcard').map(function(){return $(this).data()["cslug"]}).get();
+    window.collect_aids_per_contract = function(eligy){
+      return $('#' + eligy + ' .c-resultcard').map(function(){return $(this).data()["cslug"]}).get();
     }
     window.collect_filters = function(eligy, contract_name, aid_name){
       return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
