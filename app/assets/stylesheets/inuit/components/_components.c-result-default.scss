@@ -7,8 +7,8 @@
   @include inuit-font-size(18px, 1);
   color: #ffffff;
   width: 100%;
-  border: none;
   cursor: pointer;
+  border: none;
   &.is-not-deployed {
     background-color: white;
     color: #333333cc;
@@ -18,15 +18,15 @@
 .c-mask-filter__text {
   font-weight: 500;
   font-family:$font-stack-common;
-
 }
 
 .c-filterings-area {
   background-color: #ffffff;
 }
 
-.c-resultfilterings {
+fieldset.c-resultfilterings {
   padding:0;
+  margin:0;
   label, input {
     cursor: pointer;
   }
