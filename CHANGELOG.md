@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.2.7 (09/07/2018)
+-[#819b][BUG] Restoration nav clavier
+
+
 ## 11.2.6 (09/07/2018)
 -[#756c][BUG] Restoration browser depreciation
 
