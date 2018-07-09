@@ -67,7 +67,7 @@ a {
 
 // See https://blog.xebia.fr/2017/06/30/css-container-la-classe-a-abattre/
 .u-margin-constraint {
-  @extend .u-padding-horizontal;
+  @extend .u-padding-horizontal-small-plus;
 }
 
 .u-useful-width {
