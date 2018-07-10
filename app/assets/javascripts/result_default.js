@@ -94,11 +94,17 @@ $(document).on('turbolinks:load', function () {
       // Works better than _.assign or Object.assign
       var newState = JSON.parse(JSON.stringify(state));
 
-      if (action.type === 'TOGGLE_FILTERS_ZONE') {
+      if (action.type === 'INIT') {
+        return initial_state;
+      }
+      else if (action.type === 'TOGGLE_FILTER') {
+        console.log(action.name);
+        console.log(action.value);
+      }
+      else if (action.type === 'TOGGLE_FILTERS_ZONE') {
         _.set(newState, 'filters_zone.is_collapsed', !_.get(newState, 'filters_zone.is_collapsed'));
       }
-
-      if (action.type === 'TOGGLE_RECAP_ZONE') {
+      else if (action.type === 'TOGGLE_RECAP_ZONE') {
         _.set(newState, 'recap_zone.is_collapsed', !_.get(newState, 'recap_zone.is_collapsed'));
       }
 
@@ -130,8 +136,19 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
-    $('.js-filters-zone').on('click', function(){main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'})})
-    $('.js-recap-zone').on('click', function(){main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'})})
+    $('.js-filters-zone').on('click', function(){ 
+      main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'});
+    });
+    $('.js-recap-zone').on('click', function(){ 
+      main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'});
+    });
+      // $('.c-resultfiltering[data-name="adulte"] input[type="checkbox"]').click(function(){console.log($(this).prop("checked"));})
+    _.each(collect_filters_name(), function(filter_name){ 
+      $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
+        var that = this; 
+        main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: $(that).prop("checked")}) 
+      }) 
+    })
 
     main_store.dispatch({ type: 'INIT' });
 
@@ -150,8 +167,6 @@ $(document).on('turbolinks:load', function () {
 
       main_store.getState().filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
       main_store.getState().recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
-
-      // $('.c-resultfiltering[data-name="adulte"] input[type="checkbox"]').click(function(){console.log($(this).prop("checked"));})
       
 
     })
