@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     var collect_eligies = function(){
-      return ['o_eligibles', 'o_uncertains', 'o_ineligibles'];
+      return ['eligibles', 'uncertains', 'ineligibles'];
     }
     var collect_aids_per_contract = function(eligy){
       return $('#' + eligy + ' .c-resultcard').map(function(){return $(this).data()["cslug"]}).get();
@@ -60,14 +60,14 @@ $(document).on('turbolinks:load', function () {
 
     window.initial_state = {
       eligibles_zone: {
-        eligibles: initial_eligy('o_eligibles')
+        eligibles: initial_eligy('eligibles')
       },
       uncertains_zone: {
-        uncertains: initial_eligy('o_uncertains')
+        uncertains: initial_eligy('uncertains')
       },
       ineligibles_zone: {
         is_collapsed: true,
-        ineligibles: initial_eligy('o_ineligibles')
+        ineligibles: initial_eligy('ineligibles')
       },
       filters_zone: {
         is_collapsed: false,
@@ -91,8 +91,6 @@ $(document).on('turbolinks:load', function () {
     **/
     function main_reducer(state, action) {
       
-      console.log(action.type);
-
       var has_contract_name = function(e) {return e.name === action.contract_name};
 
       if (state === undefined) {
@@ -117,11 +115,11 @@ $(document).on('turbolinks:load', function () {
         newState.recap_zone.is_collapsed = !newState.recap_zone.is_collapsed;
       }
       else if (action.type === 'OPEN_CONTRACT') {
-        var ely = action.eligy_name.split('_')[1]; // either eligibles, ineligibles, or uncertains
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
         _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = false;
       }
       else if (action.type === 'CLOSE_CONTRACT') {
-        var ely = action.eligy_name.split('_')[1]; // either eligibles, ineligibles, or uncertains
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
         _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = true;
       }
 
@@ -204,11 +202,21 @@ $(document).on('turbolinks:load', function () {
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
       });
 
-      _.each(collect_eligies(), function(eligie){
-        var ely = eligie.split('_')[1];
+      // Collapse contract or not
+      _.each(collect_eligies(), function(ely){
         _.each(state[ely + "_zone"][ely], function(contract){
-          var $el = $('#o_' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
+          var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
           contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+        });
+      });
+
+      // Show aid or not
+      _.each(collect_eligies(), function(ely){
+        _.each(state[ely + "_zone"][ely], function(contract){
+          _.each(contract.aids, function(aid){
+            var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
+            aid.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+          });
         });
       });
 
