@@ -90,6 +90,9 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     function main_reducer(state, action) {
+      
+      var has_contract_name = function(e) {return e.name === action.contract_name};
+
       if (state === undefined) {
         return initial_state;
       }
@@ -108,18 +111,26 @@ $(document).on('turbolinks:load', function () {
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
-        newState.filters_zone.is_collapsed(!newState.filters_zone.is_collapsed);
+        newState.filters_zone.is_collapsed = !newState.filters_zone.is_collapsed;
       }
       else if (action.type === 'TOGGLE_RECAP_ZONE') {
-        newState.recap_zone.is_collapsed(!newState.recap_zone.is_collapsed);
+        newState.recap_zone.is_collapsed = !newState.recap_zone.is_collapsed;
       }
       else if (action.type === 'OPEN_CONTRACT') {
-        
+        var ely = action.eligy_name.split('_')[1]; // either eligibles, ineligibles, or uncertains
+        _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = false;
+      }
+      else if (action.type === 'CLOSE_CONTRACT') {
+        var ely = action.eligy_name.split('_')[1]; // either eligibles, ineligibles, or uncertains
+        _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = true;
       }
 
 
       return newState;
     }
+
+
+    
 
 
     /**
@@ -162,8 +173,12 @@ $(document).on('turbolinks:load', function () {
     _.each(collect_eligy(), function(eligy_name) {
       _.each(collect_aids_per_contract(eligy_name), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
-          console.log(eligy_name + " " + contract_name);
+          console.log("open " + eligy_name + " " + contract_name);
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
+        });
+        $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-close').click(function(){
+          console.log("close " + eligy_name + " " + contract_name);
+          main_store.dispatch({type: 'CLOSE_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
       });
     });
@@ -191,6 +206,11 @@ $(document).on('turbolinks:load', function () {
       _.each(state.filters_zone.filters, function(filter){
         var $el = $('.c-filterstag__item[data-name="' + filter.name +'"]');
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
+      });
+
+      _.each(state.uncertains_zone.uncertains, function(contract){
+        var $el = $('#o_uncertains .c-resultcard[data-cslug="'+contract.name+'"] .c-resultaids');
+        contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
       });
 
     });
