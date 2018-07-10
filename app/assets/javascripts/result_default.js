@@ -95,6 +95,10 @@ $(document).on('turbolinks:load', function () {
         _.set(newState, 'filters_zone.is_collapsed', !_.get(newState, 'filters_zone.is_collapsed'));
       }
 
+      if (action.type === 'TOGGLE_RECAP_ZONE') {
+        _.set(newState, 'recap_zone.is_collapsed', !_.get(newState, 'recap_zone.is_collapsed'));
+      }
+
 
       return newState;
     }
@@ -124,6 +128,7 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     $('.js-filters-zone').on('click', function(){main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'})})
+    $('.js-recap-zone').on('click', function(){main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'})})
 
     main_store.dispatch({ type: 'INIT' });
 
@@ -141,6 +146,7 @@ $(document).on('turbolinks:load', function () {
     main_store.subscribe(function() {
 
       main_store.getState().filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
+      main_store.getState().recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
       
 
