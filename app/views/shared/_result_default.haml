@@ -42,7 +42,7 @@
 
 
 
-                      
+
         #o_eligibles
           .c-resulteligy
             .u-display-flex
@@ -73,7 +73,7 @@
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
                       %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
                       %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                  .c-resultaids
+                  .c-resultaids.u-hidden-visually
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"]}
                         .o-layout.o-layout--middle.o-layout--flush
@@ -100,7 +100,7 @@
                 %div{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result"}
                     Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
@@ -121,7 +121,7 @@
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
                       %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
                       %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                  .c-resultaids
+                  .c-resultaids.u-hidden-visually
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
                         .o-layout.o-layout--middle.o-layout--flush
@@ -174,7 +174,7 @@
                       %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
                         %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
                         %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                    .c-resultaids
+                    .c-resultaids.u-hidden-visually
                       - aids_per_contract.each do |aid|
                         .c-resultaid{"data-aslug" => aid["slug"]}
                           .o-layout.o-layout--middle.o-layout--flush
