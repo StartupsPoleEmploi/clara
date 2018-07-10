@@ -71,8 +71,8 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                   .c-resultaids.u-hidden-visually
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"]}
@@ -119,8 +119,8 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                   .c-resultaids.u-hidden-visually
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
@@ -172,8 +172,8 @@
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)
                       %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                        %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                        %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                     .c-resultaids.u-hidden-visually
                       - aids_per_contract.each do |aid|
                         .c-resultaid{"data-aslug" => aid["slug"]}

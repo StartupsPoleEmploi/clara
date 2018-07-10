@@ -12,6 +12,9 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
+    var collect_eligy = function(){
+      return ['o_eligibles', 'o_uncertains', 'o_ineligibles'];
+    }
     var collect_aids_per_contract = function(eligy){
       return $('#' + eligy + ' .c-resultcard').map(function(){return $(this).data()["cslug"]}).get();
     }
@@ -153,6 +156,14 @@ $(document).on('turbolinks:load', function () {
       });
     });
 
+    _.each(collect_eligy(), function(eligy_name) {
+      _.each(collect_aids_per_contract(eligy_name), function(contract_name){
+        $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
+          console.log(eligy_name + " " + contract_name);
+        });
+      });
+    });
+
     main_store.dispatch({ type: 'INIT' });
 
 
@@ -168,16 +179,14 @@ $(document).on('turbolinks:load', function () {
     **/
     main_store.subscribe(function() {
       var state = main_store.getState();
+
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
+
       state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
+
       _.each(state.filters_zone.filters, function(filter){
         var $el = $('.c-filterstag__item[data-name="' + filter.name +'"]');
-        var $container = $('.c-filterstag-container');
-        if (filter.is_checked) {
-          $el.removeClass('u-hidden');
-        } else {
-          $el.addClass('u-hidden');
-        }
+        filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
       });
 
     });
