@@ -80,7 +80,7 @@
                           %div{class:"o-layout__item u-3/4"}   
                             %h5=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.u-margin-bottom-none
+                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
                                 %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
@@ -128,7 +128,7 @@
                           %div{class:"o-layout__item u-3/4"}   
                             %h5=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.u-margin-bottom-none{"data-bind" => "foreachInit: {data: o_filtersmalltags, name: 'emptyTemplate' }"}
+                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none{"data-bind" => "foreachInit: {data: o_filtersmalltags, name: 'emptyTemplate' }"}
                               - v.filters_of(aid).each do |one_filter|
                                 %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersmalltagClass", "data-name" => one_filter["name"]}=one_filter["description"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
@@ -181,7 +181,7 @@
                             %div{class:"o-layout__item u-3/4"}   
                               %h5=aid["name"]
                               %p.u-margin-bottom-none=aid["short_description"]
-                              %ul.o-list-inline.u-margin-bottom-none
+                              %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                                 - v.filters_of(aid).each do |one_filter|
                                   %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
 
