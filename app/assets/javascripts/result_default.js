@@ -96,13 +96,13 @@ $(document).on('turbolinks:load', function () {
       })
     };
 
-    // var iterate_contract_types = function(callable_function) {
-    //   _.each(collect_eligies(), function(ely){
-    //     _.each(state[ely + "_zone"][ely], function(contract){
-    //         callable_function(ely, contract);
-    //     })
-    //   })
-    // };
+    var iterate_contract_types = function(callable_function) {
+      _.each(collect_eligies(), function(ely){
+        _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
+            callable_function(ely, contract);
+        })
+      })
+    };
 
     /**
     *
@@ -228,11 +228,9 @@ $(document).on('turbolinks:load', function () {
       });
 
       // Collapse contract or not
-      _.each(collect_eligies(), function(ely){
-        _.each(state[ely + "_zone"][ely], function(contract){
-          var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
-          contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
-        });
+      iterate_contract_types(function(ely, contract){
+        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
+        contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
       });
 
       // Show aid or not
@@ -243,7 +241,14 @@ $(document).on('turbolinks:load', function () {
         var aid_filters_name = _.map(aid.filters, function(f){return f.name});
         var has_filter = _.isNotEmpty(active_filters_name);
         var has_intersection = _.isNotEmpty(_.intersection(active_filters_name, aid_filters_name));
-        has_filter && has_intersection ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');        
+        console.log(has_intersection)
+        if (!has_filter) {
+          $el.removeClass('u-hidden-visually')
+        } else if (has_intersection) {
+          $el.removeClass('u-hidden-visually')
+        } else {
+          $el.addClass('u-hidden-visually')
+        }
       })
 
     });
