@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
-    var collect_eligy = function(){
+    var collect_eligies = function(){
       return ['o_eligibles', 'o_uncertains', 'o_ineligibles'];
     }
     var collect_aids_per_contract = function(eligy){
@@ -168,14 +168,14 @@ $(document).on('turbolinks:load', function () {
       });
     });
 
-    _.each(collect_eligy(), function(eligy_name) {
+    _.each(collect_eligies(), function(eligy_name) {
       _.each(collect_aids_per_contract(eligy_name), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
-          console.log("open " + eligy_name + " " + contract_name);
+          // console.log("open " + eligy_name + " " + contract_name);
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-close').click(function(){
-          console.log("close " + eligy_name + " " + contract_name);
+          // console.log("close " + eligy_name + " " + contract_name);
           main_store.dispatch({type: 'CLOSE_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
       });
@@ -206,9 +206,12 @@ $(document).on('turbolinks:load', function () {
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
       });
 
-      _.each(state.uncertains_zone.uncertains, function(contract){
-        var $el = $('#o_uncertains .c-resultcard[data-cslug="'+contract.name+'"] .c-resultaids');
-        contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+      _.each(collect_eligies(), function(eligie){
+        var ely = eligie.split('_')[1];
+        _.each(state[ely + "_zone"][ely], function(contract){
+          var $el = $('#o_' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
+          contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+        });
       });
 
     });
