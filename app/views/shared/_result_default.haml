@@ -58,7 +58,7 @@
               %div
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %div{"class" => "u-hide-until@tablet"}
+                %div{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button{"class" => "c-btn c-btn--small c-btn--result"}
@@ -69,7 +69,7 @@
                   .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                     %div{class:"o-layout__item u-3/4"}   
                       .o-flag.o-flag--flush.c-resultcontract
-                        .o-flag__img{class:"u-hide-until@tablet"}
+                        .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
                           %h4.c-resultcontract-title
@@ -80,8 +80,8 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                   .c-resultaids
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"]}
@@ -106,7 +106,7 @@
               %div
                 %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %div{"class" => "u-hide-until@tablet"}
+                %div{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny"}
@@ -117,7 +117,7 @@
                   .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                     %div{class:"o-layout__item u-3/4"}   
                       .o-flag.o-flag--flush.c-resultcontract
-                        .o-flag__img{class:"u-hide-until@tablet"}
+                        .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
                           %h4.c-resultcontract-title
@@ -128,8 +128,8 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                   .c-resultaids
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
@@ -158,7 +158,7 @@
               .u-display-flex
                 %div
               .u-display-flex
-                .u-margin-left-auto{"class" => "u-hide-until@tablet"}
+                .u-margin-left-auto{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
                   %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
@@ -170,7 +170,7 @@
                     .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                       %div{class:"o-layout__item u-3/4"}   
                         .o-flag.o-flag--flush.c-resultcontract
-                          .o-flag__img{class:"u-hide-until@tablet"}
+                          .o-flag__img{class:"u-hide-until@wide"}
                             =v.icon_for(aids_per_contract)
                           .o-flag__body
                             %h4.c-resultcontract-title
@@ -181,8 +181,8 @@
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)
                       %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
+                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
+                        %button{"class" => "c-btn c-btn--small c-btn--result"} <span class="c-resultcaretclose u-hide-until@wide">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
                     .c-resultaids
                       - aids_per_contract.each do |aid|
                         .c-resultaid{"data-aslug" => aid["slug"]}
