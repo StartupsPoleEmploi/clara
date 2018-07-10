@@ -1,21 +1,5 @@
 - v = view_object(:result_default, local_assigns)
 
-%script#emptyTemplate.u-hidden{:type => "text/template"}
-  <div></div>
-
-%script#filtertagTemplate.u-hidden{:type => "text/template"}
-  :plain
-    <div class="c-filterstag__item">
-      <div class="c-filtertag">
-        <div class="o-layout o-layout--flush">
-          <div class="o-layout__item u-5/6 u-text--left c-filtertag__text"></div>
-          <div class="o-layout__item u-1/6 u-text--right c-filtertag__close">
-            &nbsp;&#x2716;
-          </div>
-        </div>
-      </div>
-    </div>
-
 .c-result-default
   .u-useful-width.u-margin-constraint
     .o-layout
@@ -46,16 +30,19 @@
 
 
         #o_filterstag
-          .c-filterstag-container
-            .c-filterstag.u-text--left
+          .c-filterstag-container.u-text--left
             - flat_all_filter.each_with_index do |a_filter, i|
-              .c-filterstag__item.u-hidden
+              .c-filterstag__item.u-hidden{"data-name" => "#{a_filter["name"]}"}
                 .c-filtertag
                   .o-layout.o-layout--flush
                     %div{"class" => "o-layout__item u-5/6 u-text--left c-filtertag__text"}
                       =a_filter["description"]
                     %div{"class" => "o-layout__item u-1/6 u-text--right c-filtertag__close"}
                       &nbsp;&#x2716;
+
+
+
+                      
         #o_eligibles
           .c-resulteligy
             .u-display-flex

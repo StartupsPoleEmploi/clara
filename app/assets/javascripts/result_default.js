@@ -68,7 +68,7 @@ $(document).on('turbolinks:load', function () {
       },
       filters_zone: {
         is_collapsed: false,
-        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false}})
+        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
       },
       recap_zone: {
         is_collapsed: false
@@ -98,10 +98,11 @@ $(document).on('turbolinks:load', function () {
         return initial_state;
       }
       else if (action.type === 'TOGGLE_FILTER') {
-        console.log(action.name);
-        console.log(action.value);
-        var filter_changed = _.find(_.get(newState, 'filters_zone.filters'), function(filter){return filter.name === action.name});
+        // console.log(action.name);
+        // console.log(action.value);
+        var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
+        if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
         _.set(newState, 'filters_zone.is_collapsed', !_.get(newState, 'filters_zone.is_collapsed'));
@@ -149,8 +150,8 @@ $(document).on('turbolinks:load', function () {
       $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
         var that = this; 
         main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: $(that).prop("checked")}) 
-      }) 
-    })
+      });
+    });
 
     main_store.dispatch({ type: 'INIT' });
 
@@ -166,13 +167,20 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     main_store.subscribe(function() {
-
-      main_store.getState().filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
-      main_store.getState().recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
-      
+      var state = main_store.getState();
+      state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
+      state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
+      _.each(state.filters_zone.filters, function(filter){
+        var $el = $('.c-filterstag__item[data-name="' + filter.name +'"]');
+        var $container = $('.c-filterstag-container');
+        if (filter.is_checked) {
+          $el.removeClass('u-hidden');
+        } else {
+          $el.addClass('u-hidden');
+        }
+      });
 
     })
-    
 
 
   }
