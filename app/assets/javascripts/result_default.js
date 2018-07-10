@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function () {
         function(contract_name){
           return {
             name: contract_name, 
-            is_collapsed: false,
+            is_collapsed: true,
             aids: _.map(
               collect_aids(eligy, contract_name), 
               function(aid_name) {
@@ -91,6 +91,8 @@ $(document).on('turbolinks:load', function () {
     **/
     function main_reducer(state, action) {
       
+      console.log(action.type);
+
       var has_contract_name = function(e) {return e.name === action.contract_name};
 
       if (state === undefined) {
@@ -100,7 +102,7 @@ $(document).on('turbolinks:load', function () {
       // Works better than _.assign or Object.assign
       var newState = JSON.parse(JSON.stringify(state));
 
-      if (action.type === 'INIT') {
+      if (action.type === 'INIT' || action.type === '@@redux/INIT') {
         return initial_state;
       }
       else if (action.type === 'TOGGLE_FILTER') {
@@ -179,7 +181,7 @@ $(document).on('turbolinks:load', function () {
       });
     });
 
-    main_store.dispatch({ type: 'INIT' });
+    // main_store.dispatch({ type: 'INIT' });
 
 
     /**
@@ -193,6 +195,7 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     main_store.subscribe(function() {
+      console.log('main_store.subscribe triggered');
       var state = main_store.getState();
 
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
@@ -214,7 +217,8 @@ $(document).on('turbolinks:load', function () {
 
     });
 
-
+    // fire initial state
+    main_store.dispatch({type: 'INIT'})
   }
 });
 
