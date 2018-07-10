@@ -171,11 +171,9 @@ $(document).on('turbolinks:load', function () {
     _.each(collect_eligies(), function(eligy_name) {
       _.each(collect_aids_per_contract(eligy_name), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
-          // console.log("open " + eligy_name + " " + contract_name);
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-close').click(function(){
-          // console.log("close " + eligy_name + " " + contract_name);
           main_store.dispatch({type: 'CLOSE_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
       });
