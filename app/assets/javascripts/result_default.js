@@ -26,13 +26,13 @@ $(document).on('turbolinks:load', function () {
       return $card(eligy).map(function(){return $(this).data()["cslug"]}).get();
     }
     var collect_aids = function(eligy, contract_name){
-      return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid').map(function(){return $(this).data()["aslug"]}).get();
+      return $aids_per_card(eligy, contract_name).map(function(){return $(this).data()["aslug"]}).get();
     }
-    var collect_filters = function(eligy, contract_name, aid_name){
-      return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
+    var collect_small_filters = function(eligy, contract_name, aid_name){
+      return $filters_per_aid(eligy, contract_name, aid_name).map(function(){return $(this).data()["name"]}).get();
     }
     var collect_filters_name = function() {
-      return $('#o_all_filters .c-resultfiltering').map(function(){return $(this).data()["name"]}).get();
+      return $actual_filters().map(function(){return $(this).data()["name"]}).get();
     }
 
     var initial_eligy = function(eligy) {
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function () {
                   name: aid_name,
                   is_collapsed: false,
                   filters: _.map(
-                    collect_filters(eligy, contract_name, aid_name),
+                    collect_small_filters(eligy, contract_name, aid_name),
                     function(filter_name) {
                       return {
                         name: filter_name,
@@ -222,7 +222,12 @@ $(document).on('turbolinks:load', function () {
         _.each(state[ely + "_zone"][ely], function(contract){
           _.each(contract.aids, function(aid){
             var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
-            aid.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+            var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
+            var active_filters_name = _.map(active_filters, function(f){return f.name});
+            var aid_filters_name = _.map(aid.filters, function(f){return f.name});
+            var has_filter = _.isNotEmpty(active_filters_name);
+            var has_intersection = _.isNotEmpty(_.intersection(active_filters_name, aid_filters_name));
+            has_filter && has_intersection ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
           });
         });
       });
