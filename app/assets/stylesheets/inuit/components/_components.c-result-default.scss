@@ -164,7 +164,7 @@ input[type=radio] {
   cursor: pointer;
 }
 
-#o_eligibles {
+#eligibles {
   .c-resultcard {
     border-left: 5px solid #028138;
     svg {
@@ -173,7 +173,7 @@ input[type=radio] {
   }
 }
 
-#o_uncertains {
+#uncertains {
   .c-resultcard {
     border-left: 5px solid #ff7800;
     svg {
@@ -182,7 +182,7 @@ input[type=radio] {
   }
 }
 
-#o_ineligibles {
+#ineligibles {
   .c-resultcard {
     border-left: 5px solid #d80027;
     svg {
