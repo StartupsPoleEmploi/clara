@@ -108,10 +108,13 @@ $(document).on('turbolinks:load', function () {
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
-        _.set(newState, 'filters_zone.is_collapsed', !_.get(newState, 'filters_zone.is_collapsed'));
+        newState.filters_zone.is_collapsed(!newState.filters_zone.is_collapsed);
       }
       else if (action.type === 'TOGGLE_RECAP_ZONE') {
-        _.set(newState, 'recap_zone.is_collapsed', !_.get(newState, 'recap_zone.is_collapsed'));
+        newState.recap_zone.is_collapsed(!newState.recap_zone.is_collapsed);
+      }
+      else if (action.type === 'OPEN_CONTRACT') {
+        
       }
 
 
@@ -160,6 +163,7 @@ $(document).on('turbolinks:load', function () {
       _.each(collect_aids_per_contract(eligy_name), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
           console.log(eligy_name + " " + contract_name);
+          main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
       });
     });
