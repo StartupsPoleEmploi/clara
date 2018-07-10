@@ -21,6 +21,9 @@ $(document).on('turbolinks:load', function () {
     var collect_filters = function(eligy, contract_name, aid_name){
       return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
     }
+    var collect_filters_name = function() {
+      return $('#o_all_filters .c-resultfiltering').map(function(){return $(this).data()["name"]}).get();
+    }
 
     var initial_eligy = function(eligy) {
       return _.map(
@@ -65,7 +68,7 @@ $(document).on('turbolinks:load', function () {
       },
       filters_zone: {
         is_collapsed: false,
-        filters: _.map($('#o_all_filters .c-resultfiltering').map(function(){return $(this).data()["name"]}).get(), function(e){return {name: e, is_checked: false}})
+        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false}})
       },
       recap_zone: {
         is_collapsed: false
@@ -148,6 +151,7 @@ $(document).on('turbolinks:load', function () {
       main_store.getState().filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
       main_store.getState().recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
+      // $('.c-resultfiltering[data-name="adulte"] input[type="checkbox"]').click(function(){console.log($(this).prop("checked"));})
       
 
     })
