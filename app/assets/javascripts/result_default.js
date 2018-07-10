@@ -145,7 +145,7 @@ $(document).on('turbolinks:load', function () {
     $('.js-recap-zone').on('click', function(){ 
       main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'});
     });
-      // $('.c-resultfiltering[data-name="adulte"] input[type="checkbox"]').click(function(){console.log($(this).prop("checked"));})
+
     _.each(collect_filters_name(), function(filter_name){ 
       $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
         var that = this; 
@@ -180,7 +180,7 @@ $(document).on('turbolinks:load', function () {
         }
       });
 
-    })
+    });
 
 
   }
