@@ -100,6 +100,8 @@ $(document).on('turbolinks:load', function () {
       else if (action.type === 'TOGGLE_FILTER') {
         console.log(action.name);
         console.log(action.value);
+        var filter_changed = _.find(_.get(newState, 'filters_zone.filters'), function(filter){return filter.name === action.name});
+        filter_changed.is_checked = action.value;
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
         _.set(newState, 'filters_zone.is_collapsed', !_.get(newState, 'filters_zone.is_collapsed'));
