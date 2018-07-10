@@ -112,6 +112,7 @@ $(document).on('turbolinks:load', function () {
     **/
     window.main_store = Redux.createStore(main_reducer, initial_state);
 
+
     /**
     *
     *
@@ -125,6 +126,25 @@ $(document).on('turbolinks:load', function () {
     $('.js-filters-zone').on('click', function(){main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'})})
 
     main_store.dispatch({ type: 'INIT' });
+
+
+    /**
+    *
+    *
+    *
+    *         SUBSCRIBERS
+    *
+    *
+    *
+    *
+    **/
+    main_store.subscribe(function() {
+
+      main_store.getState().filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
+
+      
+
+    })
     
 
 
