@@ -104,8 +104,6 @@ $(document).on('turbolinks:load', function () {
         return initial_state;
       }
       else if (action.type === 'TOGGLE_FILTER') {
-        // console.log(action.name);
-        // console.log(action.value);
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
