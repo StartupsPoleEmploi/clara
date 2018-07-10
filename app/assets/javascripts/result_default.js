@@ -181,9 +181,6 @@ $(document).on('turbolinks:load', function () {
       });
     });
 
-    // main_store.dispatch({ type: 'INIT' });
-
-
     /**
     *
     *
@@ -195,7 +192,7 @@ $(document).on('turbolinks:load', function () {
     *
     **/
     main_store.subscribe(function() {
-      console.log('main_store.subscribe triggered');
+
       var state = main_store.getState();
 
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
