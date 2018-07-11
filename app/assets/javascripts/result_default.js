@@ -130,8 +130,7 @@ $(document).on('turbolinks:load', function () {
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
           if (no_filter) {
             aid.is_collapsed = false;
-          }
-          else if (has_intersection && filter_changed.is_checked) {
+          } else if (has_intersection && filter_changed.is_checked) {
             aid.is_collapsed = false;
           } else {
             aid.is_collapsed = true;
@@ -223,10 +222,13 @@ $(document).on('turbolinks:load', function () {
 
       var state = main_store.getState();
 
+      // Collapse filters_zone or not
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
+      // Collapse recap_zone or not
       state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
+      // Show bigtags or not
       _.each(state.filters_zone.filters, function(filter){
         var $el = $('.c-filterstag__item[data-name="' + filter.name +'"]');
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
