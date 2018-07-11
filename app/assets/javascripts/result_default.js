@@ -131,14 +131,11 @@ $(document).on('turbolinks:load', function () {
           var aid_filters_name = _.map(aid.filters, fname);
           var has_intersection = _.includes(aid_filters_name, filter_changed.name);
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
-          // console.log(aid_filters_name)
           if (no_filter) {
             aid.is_collapsed = false;
           }
           else if (has_intersection && filter_changed.is_checked) {
-            // console.log("boom! " + ely + " " + contract + " " + aid + "  -- " + filter_changed.is_checked)
             aid.is_collapsed = false;
-            // console.log(aid.is_collapsed);
           } else {
             aid.is_collapsed = true;
           }
@@ -248,18 +245,6 @@ $(document).on('turbolinks:load', function () {
       iterate_through_aids(function(ely, contract, aid){
         var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
         aid.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
-        // var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
-        // var active_filters_name = _.map(active_filters, function(f){return f.name});
-        // var aid_filters_name = _.map(aid.filters, function(f){return f.name});
-        // var has_filter = _.isNotEmpty(active_filters_name);
-        // var has_intersection = _.isNotEmpty(_.intersection(active_filters_name, aid_filters_name));
-        // if (!has_filter) {
-        //   $el.removeClass('u-hidden-visually')
-        // } else if (has_intersection) {
-        //   $el.removeClass('u-hidden-visually')
-        // } else {
-        //   $el.addClass('u-hidden-visually')
-        // }
       });
 
       // Show smalltags or not
