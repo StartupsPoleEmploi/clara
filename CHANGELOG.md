@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.3.3 (11/07/2018)
+-[#833][TECH] Sortir Newrelic de dev et staging
+
+
 ## 11.3.2 (09/07/2018)
 -[#813][DESIGN] Revue de design mobile
 
