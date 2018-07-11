@@ -256,9 +256,6 @@ $(document).on('turbolinks:load', function () {
 
       var state = main_store.getState();
 
-      // Collapse the whole ely or not
-
-
       // Collapse ineligibles or not
       state.ineligibles_zone.is_collapsed ? $('.js-ineligibles-zone').addClass('u-hidden-visually') : $('.js-ineligibles-zone').removeClass('u-hidden-visually');
 
