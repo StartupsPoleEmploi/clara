@@ -299,9 +299,14 @@ $(document).on('turbolinks:load', function () {
       });
 
 
-      // _.each(eligies, function(ely){
-
-      // });
+      _.each(eligies, function(ely){
+        // fold all
+        var $el = $('#' + ely);
+        var $fold = $el.find('.js-fold');
+        var contracts = state[ely + "_zone"][ely];
+        var no_contracts_are_collapsed = _.none(contracts, function(e){return e.is_collapsed;});
+        no_contracts_are_collapsed ? $fold.addClass('u-hidden-visually') : $fold.removeClass('u-hidden-visually');
+      });
 
     });
 
