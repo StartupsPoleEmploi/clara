@@ -319,7 +319,6 @@ $(document).on('turbolinks:load', function () {
         var number_of_aid_per_eligy = _.sumBy(contracts, function(contract){
           return _.count(contract.aids, function(aid){return !aid.is_collapsed;})
         })
-        console.log(number_of_aid_per_eligy);
         number_of_aid_per_eligy === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
 
         // fold all contracts
