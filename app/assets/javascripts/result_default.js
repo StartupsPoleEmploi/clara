@@ -267,13 +267,15 @@ $(document).on('turbolinks:load', function () {
       // Collapse filters_zone
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
-      // Collapse filters_zone : CSS
+      // Collapse filters_zone : CSS. 
+      // DEPRECATED. Do not display well on mobile phone.
       // state.filters_zone.is_collapsed ? $('.js-filters-zone').addClass('is-not-deployed') : $('.js-filters-zone').removeClass('is-not-deployed');
 
       // Collapse recap_zone 
       state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
-      // Collapse recap_zone : CSS
+      // Collapse recap_zone : CSS. 
+      // DEPRECATED. Do not display well on mobile phone.
       // state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-not-deployed') : $('.js-recap-zone').removeClass('is-not-deployed');
 
       // Show bigtags or not
