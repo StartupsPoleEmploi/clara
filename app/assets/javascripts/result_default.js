@@ -135,11 +135,6 @@ $(document).on('turbolinks:load', function () {
           var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), fname);
           var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
-          console.log('----' + ely + ' ' + contract.name + ' ' + aid.name)
-          console.log(existing_filters_name)
-          console.log(aid_filters_name)
-          console.log(has_intersection)
-          console.log(' ')
           if (no_filter) {
             aid.is_collapsed = false;
           } else if (has_intersection) {
