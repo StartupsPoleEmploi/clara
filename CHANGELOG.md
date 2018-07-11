@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 11.3.3 (09/07/2018)
+## 11.3.3 (11/07/2018)
 -[#833][TECH] Sortir Newrelic de dev et staging
 
 
