@@ -121,6 +121,9 @@ $(document).on('turbolinks:load', function () {
       if (action.type === 'INIT') {
         return initial_state;
       }
+      else if (action.type === 'TOGGLE_INELIGIES_ZONE') {
+        newState.ineligibles_zone.is_collapsed = !newState.ineligibles_zone.is_collapsed;
+      }
       else if (action.type === 'TOGGLE_FILTER') {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
@@ -166,9 +169,7 @@ $(document).on('turbolinks:load', function () {
           contract.is_collapsed = true;
         });
       }
-      else if (action.type === 'TOGGLE_INELIGIES_ZONE') {
-        newState.ineligibles.is_collapsed = !newState.ineligibles.is_collapsed;
-      }
+      
 
 
       return newState;
@@ -201,14 +202,14 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
+    $('.js-toggle-ineligies').on('click', function(){
+      main_store.dispatch({type: 'TOGGLE_INELIGIES_ZONE'});
+    });
     $('.js-filters-zone').on('click', function(){ 
       main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'});
     });
     $('.js-recap-zone').on('click', function(){ 
       main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'});
-    });
-    $('.js-toggle-ineligies').on('click', function(){
-      main_store.dispatch({type: 'TOGGLE_INELIGIES_ZONE'});
     });
 
 
@@ -254,6 +255,12 @@ $(document).on('turbolinks:load', function () {
     main_store.subscribe(function() {
 
       var state = main_store.getState();
+
+      // Collapse ineligibles or not
+      state.ineligibles_zone.is_collapsed ? $('.js-ineligibles-zone').addClass('u-hidden-visually') : $('.js-ineligibles-zone').removeClass('u-hidden-visually');
+
+      // Collapse ineligibles : text
+      state.ineligibles_zone.is_collapsed ? $('.js-toggle-ineligies').text('Voir') : $('.js-toggle-ineligies').text('Cacher');
 
       // Collapse filters_zone or not
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
