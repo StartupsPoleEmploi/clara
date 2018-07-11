@@ -234,8 +234,12 @@ $(document).on('turbolinks:load', function () {
 
       iterate_contract_types(function(ely, contract){
         // Collapse contract or not
-        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
-        contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"]');
+        var $aids = $el.find('.c-resultaids');
+        contract.is_collapsed ? $aids.addClass('u-hidden-visually') : $aids.removeClass('u-hidden-visually');
+
+        // Display number of shown aids
+        $el.find('.c-resultcontract-title__number').text("blabla")
       });
 
       iterate_through_aids(function(ely, contract, aid){
