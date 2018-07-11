@@ -56,6 +56,7 @@ $(document).on('turbolinks:load', function () {
     }
 
     window.initial_state = {
+      width: $( window ).width(),
       eligibles_zone: {
         eligibles: initial_eligy('eligibles')
       },
@@ -120,6 +121,9 @@ $(document).on('turbolinks:load', function () {
 
       if (action.type === 'INIT') {
         return initial_state;
+      }
+      else if (action.type === 'RESIZE_WINDOW') {
+        newState.width = action.width;
       }
       else if (action.type === 'TOGGLE_INELIGIES_ZONE') {
         newState.ineligibles_zone.is_collapsed = !newState.ineligibles_zone.is_collapsed;
@@ -203,6 +207,10 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
+    $( window ).resize(function() {
+        main_store.dispatch({type: 'RESIZE_WINDOW', width: $( window ).width()});
+    });
+
     $('.js-toggle-ineligies').on('click', function(){
       main_store.dispatch({type: 'TOGGLE_INELIGIES_ZONE'});
     });
@@ -243,6 +251,7 @@ $(document).on('turbolinks:load', function () {
 
 
 
+
     /**
     *
     *
@@ -270,14 +279,14 @@ $(document).on('turbolinks:load', function () {
 
       // Collapse filters_zone : CSS. 
       // DEPRECATED. Do not display well on mobile phone.
-      // state.filters_zone.is_collapsed ? $('.js-filters-zone').addClass('is-not-deployed') : $('.js-filters-zone').removeClass('is-not-deployed');
+      var is_discrete = (state.filters_zone.is_collapsed && state.width > 739); 
+      is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
       // Collapse recap_zone 
       state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
       // Collapse recap_zone : CSS. 
-      // DEPRECATED. Do not display well on mobile phone.
-      // state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-not-deployed') : $('.js-recap-zone').removeClass('is-not-deployed');
+      state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-discrete') : $('.js-recap-zone').removeClass('is-discrete');
 
       // Show bigtags or not
       _.each(state.filters_zone.filters, function(filter){
