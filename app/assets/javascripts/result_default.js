@@ -25,12 +25,6 @@ $(document).on('turbolinks:load', function () {
     var collect_aids_per_contract = function(eligy){
       return $card(eligy).map(function(){return $(this).data()["cslug"]}).get();
     }
-    var collect_aids = function(eligy, contract_name){
-      return $aids_per_card(eligy, contract_name).map(function(){return $(this).data()["aslug"]}).get();
-    }
-    var collect_small_filters = function(eligy, contract_name, aid_name){
-      return $filters_per_aid(eligy, contract_name, aid_name).map(function(){return $(this).data()["name"]}).get();
-    }
     var collect_filters_name = function() {
       return $actual_filters().map(function(){return $(this).data()["name"]}).get();
     }
