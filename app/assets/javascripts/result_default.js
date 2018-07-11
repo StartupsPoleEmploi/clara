@@ -242,7 +242,6 @@ $(document).on('turbolinks:load', function () {
 
         // Display number of shown aids
         var $number = $el.find('.c-resultcontract-title__number');
-        console.log(contract)
         var new_number = _.count(contract.aids, function(aid){return !aid.is_collapsed;})
         $number.text(new_number);
 
