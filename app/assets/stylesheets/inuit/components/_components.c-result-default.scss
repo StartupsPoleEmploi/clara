@@ -140,7 +140,9 @@ input[type=radio] {
 
 .c-filterstag__item {
   display: inline-block;
+  vertical-align: top;
   font-size: 15px;
+  margin-bottom: space(2);
   color: #333333;
   background-color: #ebebeb;
   border-radius: 30px;
