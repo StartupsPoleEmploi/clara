@@ -166,6 +166,9 @@ $(document).on('turbolinks:load', function () {
           contract.is_collapsed = true;
         });
       }
+      else if (action.type === 'TOGGLE_INELIGIES_ZONE') {
+        newState.ineligibles.is_collapsed = !newState.ineligibles.is_collapsed;
+      }
 
 
       return newState;
@@ -204,6 +207,10 @@ $(document).on('turbolinks:load', function () {
     $('.js-recap-zone').on('click', function(){ 
       main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'});
     });
+    $('.js-toggle-ineligies').on('click', function(){
+      main_store.dispatch({type: 'TOGGLE_INELIGIES_ZONE'});
+    });
+
 
     _.each(collect_filters_name(), function(filter_name){ 
       $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
