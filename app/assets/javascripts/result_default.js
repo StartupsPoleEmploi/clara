@@ -256,6 +256,9 @@ $(document).on('turbolinks:load', function () {
 
       var state = main_store.getState();
 
+      // Collapse the whole ely or not
+
+
       // Collapse ineligibles or not
       state.ineligibles_zone.is_collapsed ? $('.js-ineligibles-zone').addClass('u-hidden-visually') : $('.js-ineligibles-zone').removeClass('u-hidden-visually');
 
@@ -314,11 +317,31 @@ $(document).on('turbolinks:load', function () {
       _.each(eligies, function(ely){
         var $el = $('#' + ely);
         var contracts = state[ely + "_zone"][ely];
-        // fold all
+
+        // Hide the whole ely or not
+        var s = _.sumBy(contracts, function(contract){
+          return _.count(contract.aids, function(aid){return !aid.is_collapsed;})
+        })
+        // var aids = _.map(contracts, function(c){return c.aids});
+        // _.sumBy(aids, function(aid){return aid.is_collapsed})
+        console.log(s);
+        // var n = _.count(function(a){  });
+        // var n = _.chain(contracts)
+        //          .map(function(c){return c.aids})
+        //          .count(function(a){return a.is_collapsed})
+        //          // .sum()
+        //          .value()
+
+        // _.map(contracts, function(c){return c.aids})
+        // _.count(aids, function(aid){return aid.is_collapsed;});
+        // console.log(n);
+        // number_of_shown_aids === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+
+        // fold all contracts
         var $fold = $el.find('.js-fold');
         var no_contracts_are_collapsed = _.none(contracts, function(e){return e.is_collapsed;});
         no_contracts_are_collapsed ? $fold.addClass('u-hidden-visually') : $fold.removeClass('u-hidden-visually');
-        // unfold all
+        // unfold all contracts
         var $unfold = $el.find('.js-unfold');
         var some_contracts_are_uncollapsed = _.some(contracts, function(e){return !e.is_collapsed;});
         some_contracts_are_uncollapsed ? $unfold.removeClass('u-hidden-visually') : $unfold.addClass('u-hidden-visually');
