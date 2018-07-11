@@ -21,9 +21,6 @@ $(document).on('turbolinks:load', function () {
 
     var eligies = ['eligibles', 'uncertains', 'ineligibles'];
     
-    var collect_aids_per_contract = function(eligy){
-      return $card(eligy).map(function(){return $(this).data()["cslug"]}).get();
-    }
     var collect_filters_name = function() {
       return $actual_filters().map(function(){return $(this).data()["name"]}).get();
     }
@@ -235,24 +232,23 @@ $(document).on('turbolinks:load', function () {
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
       });
 
-      // Collapse contract or not
       iterate_contract_types(function(ely, contract){
+        // Collapse contract or not
         var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaids');
         contract.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
       });
 
-      // Show aid or not
       iterate_through_aids(function(ely, contract, aid){
-        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
-        aid.is_collapsed ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+        // Show aid or not
+        var $aid = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
+        aid.is_collapsed ? $aid.addClass('u-hidden-visually') : $aid.removeClass('u-hidden-visually');
+
+        // Show smalltags or not
+        var $smalltag = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"] .c-resultfilters');
+        var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
+        _.isEmpty(active_filters) ? $smalltag.addClass('u-hidden-visually') : $smalltag.removeClass('u-hidden-visually')
       });
 
-      // Show smalltags or not
-      iterate_through_aids(function(ely, contract, aid){
-        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"] .c-resultfilters');
-        var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
-        _.isEmpty(active_filters) ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually')
-      });
 
     });
 
