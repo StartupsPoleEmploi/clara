@@ -279,7 +279,6 @@ $(document).on('turbolinks:load', function () {
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
       // Collapse filters_zone : CSS. 
-      // DEPRECATED. Do not display well on mobile phone.
       var is_discrete = (state.filters_zone.is_collapsed && state.width > 739); 
       is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
