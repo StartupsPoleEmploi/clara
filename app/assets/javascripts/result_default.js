@@ -247,6 +247,14 @@ $(document).on('turbolinks:load', function () {
 
         // Remove contracts without aid
         new_number === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually')
+
+        // Show open or not
+        var $open = $el.find('.js-open');
+        contract.is_collapsed ? $open.removeClass('u-hidden-visually') : $open.addClass('u-hidden-visually');
+
+        // Show close or not
+        var $close = $el.find('.js-close');
+        contract.is_collapsed ? $close.addClass('u-hidden-visually') : $close.removeClass('u-hidden-visually');
       });
 
       iterate_through_aids(function(ely, contract, aid){
@@ -258,8 +266,14 @@ $(document).on('turbolinks:load', function () {
         var $smalltag = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"] .c-resultfilters');
         var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
         _.isEmpty(active_filters) ? $smalltag.addClass('u-hidden-visually') : $smalltag.removeClass('u-hidden-visually')
+
+
       });
 
+
+      // _.each(eligies, function(ely){
+
+      // });
 
     });
 
