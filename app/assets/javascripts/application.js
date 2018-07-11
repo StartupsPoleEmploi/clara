@@ -29,8 +29,6 @@
 //= require turbolinks
 //= require turbolinks_page_change
 //= require pnotify/pnotify
-//= require knockout/knockout
-//= require knockout/knockout-pre-rendered
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
 //= require ./result_default

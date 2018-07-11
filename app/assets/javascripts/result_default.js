@@ -153,6 +153,10 @@ $(document).on('turbolinks:load', function () {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
         _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = true;
       }
+      else if (action.type === 'FOLD_ELIGY') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        newState[ely + "_zone"][ely]
+      }
 
 
       return newState;
