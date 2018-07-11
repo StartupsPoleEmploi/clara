@@ -266,6 +266,7 @@ $(document).on('turbolinks:load', function () {
 
       var state = main_store.getState();
 
+      // filters_zone : text
       state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__text').text('Ouvrir les filtres') : $('.js-filters-zone .c-mask-filter__text').text('Masquer les filtres');
 
       // Collapse ineligibles
