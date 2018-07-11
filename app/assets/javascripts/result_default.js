@@ -108,6 +108,8 @@ $(document).on('turbolinks:load', function () {
     **/
     var main_reducer = function(state, action) {
       
+      console.log('*********************************************')
+
       var has_contract_name = function(e) {return e.name === action.contract_name};
       var fname = function(e) {return e.name};
 
@@ -130,11 +132,17 @@ $(document).on('turbolinks:load', function () {
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
         iterate_through_aids(function(ely, contract, aid){
           var aid_filters_name = _.map(aid.filters, fname);
-          var has_intersection = _.includes(aid_filters_name, filter_changed.name);
+          var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), fname);
+          var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
+          console.log('----' + ely + ' ' + contract.name + ' ' + aid.name)
+          console.log(existing_filters_name)
+          console.log(aid_filters_name)
+          console.log(has_intersection)
+          console.log(' ')
           if (no_filter) {
             aid.is_collapsed = false;
-          } else if (has_intersection && filter_changed.is_checked) {
+          } else if (has_intersection) {
             aid.is_collapsed = false;
           } else {
             aid.is_collapsed = true;
