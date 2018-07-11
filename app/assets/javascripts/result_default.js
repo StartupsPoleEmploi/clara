@@ -37,19 +37,19 @@ $(document).on('turbolinks:load', function () {
 
     var initial_eligy = function(eligy) {
       return _.map(
-        collect_aids_per_contract(eligy), 
+        $card(eligy).datamap("cslug"), 
         function(contract_name){
           return {
             name: contract_name, 
             is_collapsed: true,
             aids: _.map(
-              collect_aids(eligy, contract_name), 
+              $aids_per_card(eligy, contract_name).datamap("aslug"), 
               function(aid_name) {
                 return {
                   name: aid_name,
                   is_collapsed: false,
                   filters: _.map(
-                    collect_small_filters(eligy, contract_name, aid_name),
+                    $filters_per_aid(eligy, contract_name, aid_name).datamap("name"),
                     function(filter_name) {
                       return {
                         name: filter_name,
@@ -132,7 +132,7 @@ $(document).on('turbolinks:load', function () {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
-        
+
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
         newState.filters_zone.is_collapsed = !newState.filters_zone.is_collapsed;
@@ -195,7 +195,7 @@ $(document).on('turbolinks:load', function () {
     });
 
     _.each(collect_eligies(), function(eligy_name) {
-      _.each(collect_aids_per_contract(eligy_name), function(contract_name){
+      _.each($card(eligy_name).datamap("cslug"), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
@@ -236,19 +236,19 @@ $(document).on('turbolinks:load', function () {
 
       // Show aid or not
       iterate_through_aids(function(ely, contract, aid){
-        // var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
-        // var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
-        // var active_filters_name = _.map(active_filters, function(f){return f.name});
-        // var aid_filters_name = _.map(aid.filters, function(f){return f.name});
-        // var has_filter = _.isNotEmpty(active_filters_name);
-        // var has_intersection = _.isNotEmpty(_.intersection(active_filters_name, aid_filters_name));
-        // if (!has_filter) {
-        //   $el.removeClass('u-hidden-visually')
-        // } else if (has_intersection) {
-        //   $el.removeClass('u-hidden-visually')
-        // } else {
-        //   $el.addClass('u-hidden-visually')
-        // }
+        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
+        var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
+        var active_filters_name = _.map(active_filters, function(f){return f.name});
+        var aid_filters_name = _.map(aid.filters, function(f){return f.name});
+        var has_filter = _.isNotEmpty(active_filters_name);
+        var has_intersection = _.isNotEmpty(_.intersection(active_filters_name, aid_filters_name));
+        if (!has_filter) {
+          $el.removeClass('u-hidden-visually')
+        } else if (has_intersection) {
+          $el.removeClass('u-hidden-visually')
+        } else {
+          $el.addClass('u-hidden-visually')
+        }
       });
 
       // Show smalltags or not
