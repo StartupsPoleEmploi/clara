@@ -107,6 +107,8 @@ $(document).on('turbolinks:load', function () {
     **/
     var main_reducer = function(state, action) {
       
+      console.log(action)
+
       var has_contract_name = function(e) {return e.name === action.contract_name};
       var fname = function(e) {return e.name};
 
@@ -117,7 +119,7 @@ $(document).on('turbolinks:load', function () {
       // Works better than _.assign or Object.assign
       var newState = JSON.parse(JSON.stringify(state));
 
-      if (action.type === 'INIT' || action.type === '@@redux/INIT') {
+      if (action.type === 'INIT') {
         return initial_state;
       }
       else if (action.type === 'TOGGLE_FILTER') {
@@ -207,6 +209,17 @@ $(document).on('turbolinks:load', function () {
         });
       });
     });
+
+    _.each(eligies, function(eligy_name) {
+      $('#' + eligy_name + ' .js-fold').click(function(){
+        main_store.dispatch({type: 'FOLD_ELIGY', eligy_name: eligy_name});
+      });
+      $('#' + eligy_name + ' .js-unfold').click(function(){
+        main_store.dispatch({type: 'UNFOLD_ELIGY', eligy_name: eligy_name});
+      });
+    });
+
+
 
     /**
     *

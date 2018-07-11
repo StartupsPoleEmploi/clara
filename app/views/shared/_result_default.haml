@@ -50,9 +50,9 @@
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
               .u-display-flex.u-margin-left-auto
                 %div{"class" => "u-hide-until@wide"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
                     Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract
               - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
@@ -98,9 +98,9 @@
                 %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
               .u-display-flex.u-margin-left-auto
                 %div{"class" => "u-hide-until@wide"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
                     Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
             #o_aids_per_contract
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
@@ -150,9 +150,9 @@
                 %div
               .u-display-flex
                 .u-margin-left-auto{"class" => "u-hide-until@wide"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
                     Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
                     Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
                 %div{:style => "clear: both;"}
               #o_aids_per_contract
