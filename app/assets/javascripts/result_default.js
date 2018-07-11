@@ -239,7 +239,13 @@ $(document).on('turbolinks:load', function () {
         contract.is_collapsed ? $aids.addClass('u-hidden-visually') : $aids.removeClass('u-hidden-visually');
 
         // Display number of shown aids
-        $el.find('.c-resultcontract-title__number').text("blabla")
+        var $number = $el.find('.c-resultcontract-title__number');
+        console.log(contract)
+        var new_number = _.count(contract.aids, function(aid){return !aid.is_collapsed;})
+        $number.text(new_number);
+
+        // Remove contracts without aid
+        new_number === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually')
       });
 
       iterate_through_aids(function(ely, contract, aid){
