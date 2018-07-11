@@ -341,6 +341,12 @@ $(document).on('turbolinks:load', function () {
         some_contracts_are_uncollapsed ? $unfold.removeClass('u-hidden-visually') : $unfold.addClass('u-hidden-visually');
       });
 
+      // Nothing interesting was found for the user
+      var nb_of_eligibles = _.sumBy(state.eligibles_zone.eligibles, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
+      var nb_of_uncertains = _.sumBy(state.uncertains_zone.uncertains, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
+      nb_of_eligibles + nb_of_uncertains === 0  ? $('#nothing').removeClass('u-hidden') : $('#nothing').addClass('u-hidden');
+
+      
     });
 
     // fire initial state
