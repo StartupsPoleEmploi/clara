@@ -71,7 +71,7 @@ $(document).on('turbolinks:load', function () {
         filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
       },
       recap_zone: {
-        is_collapsed: false
+        is_collapsed: true
       }
     };
 
@@ -268,13 +268,13 @@ $(document).on('turbolinks:load', function () {
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
       // Collapse filters_zone : CSS
-      state.filters_zone.is_collapsed ? $('.js-filters-zone').addClass('is-not-deployed') : $('.js-filters-zone').removeClass('is-not-deployed');
+      // state.filters_zone.is_collapsed ? $('.js-filters-zone').addClass('is-not-deployed') : $('.js-filters-zone').removeClass('is-not-deployed');
 
       // Collapse recap_zone 
       state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
 
       // Collapse recap_zone : CSS
-      state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-not-deployed') : $('.js-recap-zone').removeClass('is-not-deployed');
+      // state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-not-deployed') : $('.js-recap-zone').removeClass('is-not-deployed');
 
       // Show bigtags or not
       _.each(state.filters_zone.filters, function(filter){
