@@ -108,8 +108,6 @@ $(document).on('turbolinks:load', function () {
     **/
     var main_reducer = function(state, action) {
       
-      console.log(action)
-
       var has_contract_name = function(e) {return e.name === action.contract_name};
       var fname = function(e) {return e.name};
 
