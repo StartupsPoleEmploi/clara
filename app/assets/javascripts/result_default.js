@@ -300,12 +300,16 @@ $(document).on('turbolinks:load', function () {
 
 
       _.each(eligies, function(ely){
-        // fold all
         var $el = $('#' + ely);
-        var $fold = $el.find('.js-fold');
         var contracts = state[ely + "_zone"][ely];
+        // fold all
+        var $fold = $el.find('.js-fold');
         var no_contracts_are_collapsed = _.none(contracts, function(e){return e.is_collapsed;});
         no_contracts_are_collapsed ? $fold.addClass('u-hidden-visually') : $fold.removeClass('u-hidden-visually');
+        // unfold all
+        var $unfold = $el.find('.js-unfold');
+        var some_contracts_are_uncollapsed = _.some(contracts, function(e){return !e.is_collapsed;});
+        some_contracts_are_uncollapsed ? $unfold.removeClass('u-hidden-visually') : $unfold.addClass('u-hidden-visually');
       });
 
     });
