@@ -161,6 +161,13 @@ $(document).on('turbolinks:load', function () {
           contract.is_collapsed = false;
         })
       }
+      else if (action.type === 'UNFOLD_ELIGY') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        contracts = newState[ely + "_zone"][ely]
+        _.each(contracts, function(contract){
+          contract.is_collapsed = true;
+        });
+      }
 
 
       return newState;
