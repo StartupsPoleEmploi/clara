@@ -87,7 +87,8 @@ $(document).on('turbolinks:load', function () {
       })
     };
 
-    var iterate_contract_types = function(callable_function) {
+    var iterate_contract_types = function(callable_function, state) {
+      if (!state) state = main_store.getState()
       _.each(eligies, function(ely){
         _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
             callable_function(ely, contract);
@@ -155,7 +156,10 @@ $(document).on('turbolinks:load', function () {
       }
       else if (action.type === 'FOLD_ELIGY') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-        newState[ely + "_zone"][ely]
+        contracts = newState[ely + "_zone"][ely]
+        _.each(contracts, function(contract){
+          contract.is_collapsed = false;
+        })
       }
 
 
