@@ -319,23 +319,11 @@ $(document).on('turbolinks:load', function () {
         var contracts = state[ely + "_zone"][ely];
 
         // Hide the whole ely or not
-        var s = _.sumBy(contracts, function(contract){
+        var number_of_aid_per_eligy = _.sumBy(contracts, function(contract){
           return _.count(contract.aids, function(aid){return !aid.is_collapsed;})
         })
-        // var aids = _.map(contracts, function(c){return c.aids});
-        // _.sumBy(aids, function(aid){return aid.is_collapsed})
-        console.log(s);
-        // var n = _.count(function(a){  });
-        // var n = _.chain(contracts)
-        //          .map(function(c){return c.aids})
-        //          .count(function(a){return a.is_collapsed})
-        //          // .sum()
-        //          .value()
-
-        // _.map(contracts, function(c){return c.aids})
-        // _.count(aids, function(aid){return aid.is_collapsed;});
-        // console.log(n);
-        // number_of_shown_aids === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+        console.log(number_of_aid_per_eligy);
+        number_of_aid_per_eligy === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
 
         // fold all contracts
         var $fold = $el.find('.js-fold');
