@@ -149,9 +149,15 @@ $(document).on('turbolinks:load', function () {
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
         newState.filters_zone.is_collapsed = !newState.filters_zone.is_collapsed;
+        if (newState.filters_zone.is_collapsed === false) {
+          newState.recap_zone.is_collapsed = true;
+        }
       }
       else if (action.type === 'TOGGLE_RECAP_ZONE') {
         newState.recap_zone.is_collapsed = !newState.recap_zone.is_collapsed;
+        if (newState.recap_zone.is_collapsed === false) {
+          newState.filters_zone.is_collapsed = true;
+        }
       }
       else if (action.type === 'OPEN_CONTRACT') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains

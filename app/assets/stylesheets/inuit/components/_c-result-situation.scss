@@ -53,10 +53,16 @@ h4.c-situation-title {
   @include inuit-font-size(16px);
 }
 
+.c-situation-paragraph--first {
+  margin-top: 0;
+  padding-top: space(6);
+}
+
 .c-situation-paragraph--last {
   border-bottom: none;
   padding-bottom: 0;
 }
+
 
 .c-situation-paragraph + .c-situation-paragraph {
   margin-top: space(0);
