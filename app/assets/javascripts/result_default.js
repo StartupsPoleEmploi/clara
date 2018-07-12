@@ -1,361 +1,401 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
-    // track filters
-    function track_filter(filter_name) {
-      if (typeof ga === "function") {
-        ga('send', 'event', 'results', 'filter', filter_name);
-      }      
+    var MOBILE_MAX_WIDTH = 739;
+    var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
+    var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
+
+    function state_key() {
+      return 'state_of_' + $.urlParam('for_id');
     }
 
-    function initialize_state() {
-      var existing = get_existing();
-      if (existing) {
-        initialize_aids_per_contract_state("o_eligibles", existing);
-        initialize_aids_per_contract_state("o_uncertains", existing);
-        initialize_aids_per_contract_state("o_ineligibles", existing);
-        initialize_filters_state(existing.o_all_filters);
-        initialize_ineligible_visibility(existing.o_ineligibles);
-      }      
-      initialize_filterarea_state();
+    /**
+    *
+    *
+    *
+    *         INITIAL STATE 
+    *
+    *
+    *
+    *
+    **/
+    var $card = function(eligy) {return $('#' + eligy + ' .c-resultcard')};
+    var $aids_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid')};
+    var $aids_container_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaids')};
+    var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
+    var $actual_filters = function() {return $('#o_all_filters .c-resultfiltering')};
+
+    var eligies = ['eligibles', 'uncertains', 'ineligibles'];
+    
+    var collect_filters_name = function() {
+      return $actual_filters().map(function(){return $(this).data()["name"]}).get();
     }
 
-    function initialize_ineligible_visibility(existing_ineligies) {
-      appViewModel.o_ineligibles().o_hide(existing_ineligies.o_hide);
-    }
-
-    function initialize_filterarea_state() {
-      if ($(window).width() < 740) {
-         window.appViewModel.o_filterarea().o_toggle_state(false);
-         // HACK
-         $('.c-mask-filter__content').css('background-color', '#057dbc');
-         $('.c-mask-filter__content').css('color', 'white');
-      } else {
-         window.appViewModel.o_filterarea().o_toggle_state(true);
-       }
-    }
-
-    function initialize_filters_state(existing_filters) {
-      _.each(existing_filters, function(existing_filter){
-        var one_filter = _.find(appViewModel.o_all_filters(), function(e){return e.name === existing_filter.name;});
-        if (one_filter) one_filter.isActive(existing_filter.isActive)
-      });
-    }
-
-    function initialize_aids_per_contract_state(eligy, existing) {
-      _.each(existing[eligy].o_aids_per_contract, function(existing_apc){
-        var one_apc = _.find(appViewModel[eligy]().o_aids_per_contract(), function(e){return e.name === existing_apc.name;});
-        if (one_apc) one_apc.isOpened(existing_apc.isOpened);
-      });
-    }
-
-    function get_existing() {
-      return store.get($.urlParam('for_id'));
-    }
-
-    function set_existing(value) {
-      return store.set($.urlParam('for_id'), value);
-    }
-
-    function get_json_filters() {
-      return gon.loaded.flat_all_filter;
-    }
-
-    function defaultActivityForFilter(named) {
-      var result = false;
-      var existing = get_existing();
-      if (existing) {
-        var concerned_filter = _.find(_.get(existing, 'o_all_filters'), function(e){return e.name === named;});
-        result = concerned_filter.isActive;
-      }
-      return result;
-    }
-
-    function FilterViewModel(id, name, description) {
-      var that = this;
-      that.id = id;
-      that.name = name;
-      that.description = description;
-      that.isActive = ko.observable(false);
-      that.sendGaEvent = ko.computed(function(){return that.isActive();}).subscribe(function (newValue) {
-        if (newValue === true) {
-          track_filter(that.name);
+    var initial_eligy = function(eligy) {
+      return _.map(
+        $card(eligy).datamap("cslug"), 
+        function(contract_name){
+          return {
+            name: contract_name, 
+            is_collapsed: true,
+            aids: _.map(
+              $aids_per_card(eligy, contract_name).datamap("aslug"), 
+              function(aid_name) {
+                return {
+                  name: aid_name,
+                  is_collapsed: false,
+                  filters: _.map(
+                    $filters_per_aid(eligy, contract_name, aid_name).datamap("name"),
+                    function(filter_name) {
+                      return {
+                        name: filter_name,
+                        is_collapsed: false,
+                      }
+                    }
+                  )
+                }
+              }
+            )
+          }
         }
-      });
-      that.tagClosed = function(){that.isActive(false)};
+      );
     }
 
+    var initial_state = {
+      width: $( window ).width(),
+      eligibles_zone: {
+        eligibles: initial_eligy('eligibles')
+      },
+      uncertains_zone: {
+        uncertains: initial_eligy('uncertains')
+      },
+      ineligibles_zone: {
+        is_collapsed: true,
+        ineligibles: initial_eligy('ineligibles')
+      },
+      filters_zone: {
+        is_collapsed: true,
+        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
+      },
+      recap_zone: {
+        is_collapsed: true
+      }
+    };
 
-    function FilterSmallTagViewModel(name, o_active_filters_name) {
-      var that = this;
-      that.name = name;
-      that.filtersmalltagClass = ko.computed(function() {
-        return _.includes(o_active_filters_name(), that.name) ? "" : "u-hidden-visually";
-      });
+    var default_state = function() {
+      var previous_state = store.get(state_key());
+      var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
+      return has_state ? previous_state : initial_state;
     }
 
+    var iterate_through_aids = function(callable_function, state) {
+      if (!state) state = main_store.getState()
+      _.each(eligies, function(ely){
+        _.each(state[ely + "_zone"][ely], function(contract){
+          _.each(contract.aids, function(aid){
+            callable_function(ely, contract, aid);
+          })
+        })
+      })
+    };
 
+    var iterate_contract_types = function(callable_function, state) {
+      if (!state) state = main_store.getState()
+      _.each(eligies, function(ely){
+        _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
+            callable_function(ely, contract);
+        })
+      })
+    };
 
-    function AidViewModel(name, o_active_filters, own_filters_name) {
-      var that = this;
-      that.name = name;
-
-      that.filtersClass = ko.computed(function() {
-        return _.some(o_active_filters()) ? "" : "u-hidden-visually";
-      });
-
-
-      that.own_filters_name = own_filters_name;
-
-      that.o_active_filters_name = ko.computed(function() {
-        return _.map(o_active_filters(), function(e){return e.name});
-      });
-
-      var smalltags_names = $('.c-resultaid[data-aslug="' + that.name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get();
-      that.o_filtersmalltags = ko.observableArray(_.map(smalltags_names, function(n){return new FilterSmallTagViewModel(n, that.o_active_filters_name)}))
-
-      that.isVisible = ko.computed(function() {
-        var condition1 = _.some(that.o_active_filters_name(), function(e){
-          return _.includes(that.own_filters_name, e);
-        });
-        var condition2 = _.none(o_active_filters())
-
-        return condition1 || condition2;
-      });
-
-      that.visibleClass = ko.computed(function() {
-        return that.isVisible() ? "" : "u-hidden-visually";
-      });
-
-    }
-
-
-
-    function AidPerContractViewModel(eligy_name, name, isOpened, o_active_filters) {
-      var that = this;
-      that.name = name;
-      that.isOpened = ko.observable(isOpened);
+    /**
+    *
+    *
+    *
+    *         MAIN REDUCER 
+    *
+    *
+    *
+    *
+    **/
+    var main_reducer = function(state, action) {
       
-      // track ANY change in the number of filters opened
-      ko.computed(function() {
-        return o_active_filters().length;
-      }).subscribe(function (newValue) {
-        if (newValue > 0) {
-          that.isOpened(true);
-        } else {
-          that.isOpened(false);
-        }
-      });
-
-
-      that.openedClass = ko.computed(function() {
-        return that.isOpened() ? "" : "u-hidden-visually";
-      });
-      that.closedClass = ko.computed(function() {
-        return that.isOpened() ? "u-hidden-visually" : "";
-      });
-      that.clickedOpenClose = function() {that.isOpened(!that.isOpened())}
-
-      var aids_name = $('#o_' + eligy_name + ' .c-resultcard[data-cslug="' + that.name + '"] .c-resultaid').map(function(){return $(this).data()["aslug"]}).get()
-
-      var aids_array = _.map(aids_name, function(aid_name) {
-        return new AidViewModel(aid_name, o_active_filters, $('#o_' + eligy_name + ' .c-resultaid[data-aslug="' + aid_name + '"] .c-resultfilter').map(function(){return $(this).data()["name"]}).get());
-      });
-
-      that.o_aids = ko.observableArray(aids_array);
-
-      that.numberOfAidsPerContract = ko.computed(function() {
-        return _.count(that.o_aids(), function(a){
-          return a.isVisible();
-        });
-      });
-
-      that.displayClass = ko.computed(function() {
-        return (that.numberOfAidsPerContract() !== 0) ? "" : "u-hidden-visually";
-      });
-    }
-
-
-
-
-    function AidsPerContractViewModel(eligy_name, o_active_filters) {
-
-      var that = this;
-
-      that.name = eligy_name;
-
-      that.o_hide = ko.observable(true);
-
-      that.o_hideClick = function() {
-        that.o_hide(!that.o_hide());
+      if (state === undefined) {
+        return default_state();
       }
 
-      that.o_hideCss = ko.computed(function() {
-        return that.o_hide() ? "u-hidden-visually" : "";
-      });
-
-      that.o_hideText = ko.computed(function() {
-        return that.o_hide() ? "Voir" : "Cacher";
-      });
-
-      that.sesameOpen = function() {
-        _.each(that.o_aids_per_contract(), function(aid){
-          aid.isOpened(true);
+      // Works better than _.assign or Object.assign
+      var newState = JSON.parse(JSON.stringify(state));
+      
+      if (action.type === 'INIT') {
+        if (newState.width > MOBILE_MAX_WIDTH) {
+          newState.filters_zone.is_collapsed = false;
+        }
+      }
+      else if (action.type === 'CLOSE_FILTER') {
+        var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
+        filter_changed.is_checked = false;
+      }
+      else if (action.type === 'RESIZE_WINDOW') {
+        newState.width = action.width;
+      }
+      else if (action.type === 'TOGGLE_INELIGIES_ZONE') {
+        newState.ineligibles_zone.is_collapsed = !newState.ineligibles_zone.is_collapsed;
+      }
+      else if (action.type === 'TOGGLE_FILTER') {
+        var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
+        filter_changed.is_checked = action.value;
+        if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
+        iterate_through_aids(function(ely, contract, aid){
+          var aid_filters_name = _.map(aid.filters, function(e) {return e.name});
+          var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), function(e) {return e.name});
+          var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
+          var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
+          if (no_filter) {
+            aid.is_collapsed = false;
+          } else if (has_intersection) {
+            aid.is_collapsed = false;
+          } else {
+            aid.is_collapsed = true;
+          }
+        }, newState);
+      }
+      else if (action.type === 'TOGGLE_FILTERS_ZONE') {
+        newState.filters_zone.is_collapsed = !newState.filters_zone.is_collapsed;
+        if (newState.filters_zone.is_collapsed === false) {
+          newState.recap_zone.is_collapsed = true;
+        }
+      }
+      else if (action.type === 'TOGGLE_RECAP_ZONE') {
+        newState.recap_zone.is_collapsed = !newState.recap_zone.is_collapsed;
+        if (newState.recap_zone.is_collapsed === false) {
+          newState.filters_zone.is_collapsed = true;
+        }
+      }
+      else if (action.type === 'OPEN_CONTRACT') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = false;
+      }
+      else if (action.type === 'CLOSE_CONTRACT') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = true;
+      }
+      else if (action.type === 'FOLD_ELIGY') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        contracts = newState[ely + "_zone"][ely]
+        _.each(contracts, function(contract){
+          contract.is_collapsed = false;
         })
       }
-
-      that.sesameClose = function() {
-        _.each(that.o_aids_per_contract(), function(aid){
-          aid.isOpened(false);
-        })
-      }
-
-
-      var slugs = $( "#o_" + eligy_name + " .c-resultcard[data-cslug]" ).map(function(){return $(this).data()["cslug"]}).get()
-
-      var aid_per_contract_array = _.map(slugs, function(slug) {
-        return new AidPerContractViewModel(eligy_name, slug, false, o_active_filters);
-      });
-
-      that.o_aids_per_contract = ko.observableArray(aid_per_contract_array);
-
-      that.o_nb_of_selected_aids = ko.computed(function() {
-        return _.chain(that.o_aids_per_contract())
-        .map(function(e) {return e.numberOfAidsPerContract();})
-        .sum()
-        .value()
-      });
-
-      that.o_nb_of_unfold = ko.computed(function() {
-        return _.count(that.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
+      else if (action.type === 'UNFOLD_ELIGY') {
+        var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
+        contracts = newState[ely + "_zone"][ely]
+        _.each(contracts, function(contract){
+          contract.is_collapsed = true;
         });
-      });
-      that.unfoldClass = ko.computed(function() {
-        return _.some(that.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
-        }) ? "" : "u-hidden-visually";
-      });
-      that.foldClass = ko.computed(function() {
-        return !_.every(that.o_aids_per_contract(), function(aid){
-          return aid.isOpened();
-        }) ? "" : "u-hidden-visually";
-      });
-      that.cssZoneDisplay = ko.computed(function() {
-        return that.o_nb_of_selected_aids() > 0 ? "" : "u-hidden-visually";
-      });
-
-    }
-
-
-    function FilterstagViewModel(o_active_filters) {
-      var that = this;
-      that.o_active_filters = o_active_filters;
-
-      that.o_cssMargin = ko.computed(function() {
-        return _.isEmpty(o_active_filters()) ? "" : "u-margin-bottom-small";
-      }); 
-
-    }
-
-    function FilterAreaViewModel(o_all_filters, o_situationarea) {
-      var that = this;
-      that.o_all_filters = o_all_filters;
-      that.o_situationarea = o_situationarea;
-      that.o_filterareashow = ko.observable(_.some(that.o_all_filters(), function(e){return e.name === "specially-hidden"}) ? "u-hidden-visually" : "");
-      that.o_toggle = function() {
-        that.o_toggle_state(!that.o_toggle_state());
       }
-      that.o_toggle_state = ko.observable(false);
-      that.o_toggle_text = ko.computed(function() {
-        return that.o_toggle_state() ? "Masquer les filtres" : "Filtrer par besoins";
-      }); 
-      that.o_toggle_css = ko.computed(function() {
-        return that.o_toggle_state() ? "" : "u-hidden-visually";
-      }); 
-      that.o_state_css = ko.computed(function() {
-        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
-      }); 
-      ko.computed(function() {
-        return that.o_situationarea().o_toggle_state();
-      }).subscribe(function (newValue) {
-        if (newValue === true) {
-          that.o_toggle_state(false);
-        }
-      });
-    }
- 
-    function SituationAreaViewModel() {
-      var that = this;
-      that.o_toggle = function() {
-        that.o_toggle_state(!that.o_toggle_state());
-      }
-      that.o_toggle_state = ko.observable(false);
-      that.o_toggle_css = ko.computed(function() {
-        return that.o_toggle_state() ? "" : "u-hidden-visually";
-      }); 
-      that.o_state_css = ko.computed(function() {
-        return that.o_toggle_state() ? "is-deployed" : "is-not-deployed";
-      }); 
-    }
- 
-    function NothingViewModel(nb_of_eligible, nb_of_uncertain) {
-      var that = this;
-      that.o_cssDisplay = ko.computed(function() {
-        return nb_of_eligible() === 0 && nb_of_uncertain() === 0 ? "" : "u-hidden-visually";
-      });
-    }
-
-    function AppViewModel() {
-      var that = this;
-
-      var filter_array = _.map(get_json_filters(), function(e) {
-        return new FilterViewModel(e.id, e.name, e.description)
-      });
-      that.o_all_filters = ko.observableArray(filter_array);
-      that.o_active_filters = ko.computed(function() {
-        return _.filter(that.o_all_filters(), function(f){
-          return f.isActive();
-        });
-      });
-      that.o_eligibles     = ko.observable(new AidsPerContractViewModel('eligibles', that.o_active_filters));
-      that.o_ineligibles   = ko.observable(new AidsPerContractViewModel('ineligibles', that.o_active_filters));
-      that.o_uncertains    = ko.observable(new AidsPerContractViewModel('uncertains', that.o_active_filters));
-      that.o_filterstag    = ko.observable(new FilterstagViewModel(that.o_active_filters));
-      that.o_situationarea = ko.observable(new SituationAreaViewModel());
-      that.o_filterarea    = ko.observable(new FilterAreaViewModel(that.o_all_filters, that.o_situationarea));
-      that.o_nothing       = ko.observable(new NothingViewModel(that.o_eligibles().o_nb_of_selected_aids, that.o_uncertains().o_nb_of_selected_aids));
       
+      store.set(state_key(), newState);
 
-
-      // Utility to track ANY change in the whole viewModel
-      ko.computed(function() {
-        return that.o_active_filters().length + 
-        that.o_ineligibles().o_nb_of_unfold() +
-        that.o_ineligibles().o_hide() +
-        that.o_uncertains().o_nb_of_unfold() +
-        that.o_eligibles().o_nb_of_unfold();
-      }).subscribe(function (newValue) {
-        set_existing(ko.toJS(that));
-      }); 
+      return newState;
     }
 
 
+    
 
 
-    window.appViewModel = new AppViewModel();
+    /**
+    *
+    *
+    *
+    *         MAIN STORE 
+    *
+    *
+    *
+    *
+    **/
+    window.main_store = Redux.createStore(main_reducer, default_state());
+
+
+    /**
+    *
+    *
+    *
+    *         DISPATCHERS 
+    *
+    *
+    *
+    *
+    **/
+    $('.c-filtertag__close').click(function(){
+      var filter_name = $(this).closest('.c-filterstag__item').attr('data-name');
+      main_store.dispatch({type: 'CLOSE_FILTER', name: filter_name});
+    });
+
+    $( window ).resize(function() {
+        main_store.dispatch({type: 'RESIZE_WINDOW', width: $( window ).width()});
+    });
+
+    $('.js-toggle-ineligies').on('click', function(){
+      main_store.dispatch({type: 'TOGGLE_INELIGIES_ZONE'});
+    });
+    $('.js-filters-zone').on('click', function(){ 
+      main_store.dispatch({type: 'TOGGLE_FILTERS_ZONE'});
+    });
+    $('.js-recap-zone').on('click', function(){ 
+      main_store.dispatch({type: 'TOGGLE_RECAP_ZONE'});
+    });
+
+
+    _.each(collect_filters_name(), function(filter_name){ 
+      $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
+        var that = this; 
+        main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: $(that).prop("checked")}) 
+      });
+    });
+
+    _.each(eligies, function(eligy_name) {
+      _.each($card(eligy_name).datamap("cslug"), function(contract_name){
+        $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
+          main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
+        });
+        $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-close').click(function(){
+          main_store.dispatch({type: 'CLOSE_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
+        });
+      });
+    });
+
+    _.each(eligies, function(eligy_name) {
+      $('#' + eligy_name + ' .js-fold').click(function(){
+        main_store.dispatch({type: 'FOLD_ELIGY', eligy_name: eligy_name});
+      });
+      $('#' + eligy_name + ' .js-unfold').click(function(){
+        main_store.dispatch({type: 'UNFOLD_ELIGY', eligy_name: eligy_name});
+      });
+    });
 
 
 
 
-    ko.applyBindings(window.appViewModel);
+    /**
+    *
+    *
+    *
+    *         SUBSCRIBERS
+    *
+    *
+    *
+    *
+    **/
+    main_store.subscribe(function() {
 
-    initialize_state();
+      var state = main_store.getState();
 
+      // filters_zone : caret
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close);
+
+      // recap_zone  : caret
+      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_close);
+
+      // filters_zone : repaint
+      _.each(state.filters_zone.filters, function(f){
+         $('.c-resultfiltering[data-name="' + f.name + '"] input[type="checkbox"]').prop('checked', f.is_checked);
+      });
+
+      // filters_zone : text
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__text').text('Ouvrir les filtres') : $('.js-filters-zone .c-mask-filter__text').text('Masquer les filtres');
+
+      // Collapse ineligibles
+      state.ineligibles_zone.is_collapsed ? $('.js-ineligibles-zone').addClass('u-hidden-visually') : $('.js-ineligibles-zone').removeClass('u-hidden-visually');
+
+      // Collapse ineligibles : text
+      state.ineligibles_zone.is_collapsed ? $('.js-toggle-ineligies').text('Voir') : $('.js-toggle-ineligies').text('Cacher');
+
+      // Collapse filters_zone
+      state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
+
+      // Collapse filters_zone : CSS. 
+      var is_discrete = (state.filters_zone.is_collapsed && state.width > MOBILE_MAX_WIDTH); 
+      is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
+
+      // Collapse recap_zone 
+      state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
+
+      // Collapse recap_zone : CSS. 
+      state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-discrete') : $('.js-recap-zone').removeClass('is-discrete');
+
+      // Show bigtags or not
+      _.each(state.filters_zone.filters, function(filter){
+        var $el = $('.c-filterstag__item[data-name="' + filter.name +'"]');
+        filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
+      });
+
+      iterate_contract_types(function(ely, contract){
+        // Collapse contract or not
+        var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"]');
+        var $aids = $el.find('.c-resultaids');
+        contract.is_collapsed ? $aids.addClass('u-hidden-visually') : $aids.removeClass('u-hidden-visually');
+
+        // Display number of shown aids
+        var $number = $el.find('.c-resultcontract-title__number');
+        var new_number = _.count(contract.aids, function(aid){return !aid.is_collapsed;})
+        $number.text(new_number);
+
+        // Remove contracts without aid
+        new_number === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually')
+
+        // Show open or not
+        var $open = $el.find('.js-open');
+        contract.is_collapsed ? $open.removeClass('u-hidden-visually') : $open.addClass('u-hidden-visually');
+
+        // Show close or not
+        var $close = $el.find('.js-close');
+        contract.is_collapsed ? $close.addClass('u-hidden-visually') : $close.removeClass('u-hidden-visually');
+      });
+
+      iterate_through_aids(function(ely, contract, aid){
+        // Show aid or not
+        var $aid = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
+        aid.is_collapsed ? $aid.addClass('u-hidden-visually') : $aid.removeClass('u-hidden-visually');
+
+        // Show smalltags or not
+        var $smalltag = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"] .c-resultfilters');
+        var active_filters = _.filter(main_store.getState().filters_zone.filters, function(e){return e.is_checked === true})
+        _.isEmpty(active_filters) ? $smalltag.addClass('u-hidden-visually') : $smalltag.removeClass('u-hidden-visually')
+
+
+      });
+
+
+      _.each(eligies, function(ely){
+        var $el = $('#' + ely);
+        var contracts = state[ely + "_zone"][ely];
+
+        // Hide the whole ely or not
+        var number_of_aid_per_eligy = _.sumBy(contracts, function(contract){
+          return _.count(contract.aids, function(aid){return !aid.is_collapsed;})
+        })
+        number_of_aid_per_eligy === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually');
+
+        // fold all contracts
+        var $fold = $el.find('.js-fold');
+        var no_contracts_are_collapsed = _.none(contracts, function(e){return e.is_collapsed;});
+        no_contracts_are_collapsed ? $fold.addClass('u-hidden-visually') : $fold.removeClass('u-hidden-visually');
+        // unfold all contracts
+        var $unfold = $el.find('.js-unfold');
+        var some_contracts_are_uncollapsed = _.some(contracts, function(e){return !e.is_collapsed;});
+        some_contracts_are_uncollapsed ? $unfold.removeClass('u-hidden-visually') : $unfold.addClass('u-hidden-visually');
+      });
+
+      // Nothing interesting was found for the user
+      var nb_of_eligibles = _.sumBy(state.eligibles_zone.eligibles, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
+      var nb_of_uncertains = _.sumBy(state.uncertains_zone.uncertains, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
+      nb_of_eligibles + nb_of_uncertains === 0  ? $('#nothing').removeClass('u-hidden') : $('#nothing').addClass('u-hidden');
+
+      
+    });
+
+    // fire initial state
+    main_store.dispatch({type: 'INIT'})
   }
-  
-
-
 });
-
-

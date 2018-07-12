@@ -1,42 +1,26 @@
 - v = view_object(:result_default, local_assigns)
 
-%script#emptyTemplate.u-hidden{:type => "text/ko-template"}
-  <div></div>
-
-%script#filtertagTemplate.u-hidden{:type => "text/ko-template"}
-  :plain
-    <div class="c-filterstag__item">
-      <div class="c-filtertag">
-        <div class="o-layout o-layout--flush">
-          <div class="o-layout__item u-5/6 u-text--left c-filtertag__text" data-bind="text: description"></div>
-          <div class="o-layout__item u-1/6 u-text--right c-filtertag__close" data-bind="click: tagClosed">
-            &nbsp;&#x2716;
-          </div>
-        </div>
-      </div>
-    </div>
-
 .c-result-default
   .u-useful-width.u-margin-constraint
     .o-layout
       .o-layout__item{class:"u-1/1 u-1/3@tablet"}
 
 
-        .c-filterings-area.u-margin-bottom-small{"data-bind" => "with: o_filterarea"}
-          .c-filterings-area__content{"data-bind" => "css: o_filterareashow"}
-            %button.c-mask-filter.u-padding-none{"data-bind" => "click: o_toggle, css: o_state_css"}
-              .c-mask-filter__content.u-padding-vertical-small
-                %span.c-mask-filter__text{"data-bind" => "text: o_toggle_text"}
+        .c-filterings-area.u-margin-bottom-small
+          .c-filterings-area__content
+            %button.c-mask-filter.u-padding-none.js-filters-zone
+              .c-mask-filter__content.u-padding-small.u-display-flex
+                %span.c-mask-filter__text
                   Ouvrir les filtres       
-                %span.c-mask-filter__caret
+                %span.c-mask-filter__caret.u-margin-left-auto
                   &nbsp;&or;
               
-            %fieldset.c-resultfilterings{"data-bind" => "css: o_toggle_css"}
+            %fieldset.c-resultfilterings
               %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
-              #o_all_filters{"data-bind" => "foreachInit: {data: o_all_filters, name: 'emptyTemplate' }"}
+              #o_all_filters
                 - flat_all_filter.each_with_index do |a_filter, i|
-                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}"}
-                    %input{:id => "check_#{i}", :name => "newsletter", :type => "checkbox", "data-bind" => "checked: isActive"}/
+                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}", "data-name" => "#{a_filter['name']}"}
+                    %input{:id => "check_#{i}", :type => "checkbox"}/
                     %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
 
         = render 'shared/result_situation', asker
@@ -45,57 +29,63 @@
 
 
 
-        #o_filterstag{"data-bind" => "with: o_filterstag"}
-          .c-filterstag-container{"data-bind" => "css: o_cssMargin"}
-            .c-filterstag.u-text--left{"data-bind" => "foreachInit: {data: o_active_filters, name: 'filtertagTemplate' }"}
-      
+        #o_filterstag
+          .c-filterstag-container.u-text--left
+            - flat_all_filter.each_with_index do |a_filter, i|
+              .c-filterstag__item.u-hidden{"data-name" => "#{a_filter["name"]}"}
+                .c-filtertag
+                  .o-layout.o-layout--flush
+                    %div{"class" => "o-layout__item u-5/6 u-text--left c-filtertag__text"}
+                      =a_filter["description"]
+                    %div{"class" => "o-layout__item u-1/6 u-text--right c-filtertag__close"}
+                      &nbsp;&#x2716;
 
+        #nothing.u-hidden
+          %h2.u-margin-vertical-small
+            Aucune aide trouvée
+          %p.c-nothing__line.u-margin-top-none
+            Activez moins de filtres dans votre recherche
 
-        #o_nothing{"data-bind" => "with: o_nothing"}
-          .o-nothing__content{"data-bind" => "css: o_cssDisplay"}
-            %h2.u-margin-bottom-tiny Aucune aide trouvée
-            %p.c-nothing__line.u-margin-top-none Activez moins de filtres dans votre recherche
-
-        #o_eligibles{"data-bind" => "with: o_eligibles"}
-          .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
+        #eligibles.u-margin-bottom
+          .c-resulteligy
             .u-display-flex
               %div
                 %h3.c-result-youcan="Vous pouvez bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %div{"class" => "u-hide-until@tablet"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                    Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
-                    Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-            #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+                %div{"class" => "u-hide-until@wide"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
+                    Tout déplier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
+                    Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
+            #o_aids_per_contract
               - v.sort_and_order("flat_all_eligible").each_with_index do |aids_per_contract, i|
-                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
+                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
                   .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                     %div{class:"o-layout__item u-3/4"}   
                       .o-flag.o-flag--flush.c-resultcontract
-                        .o-flag__img{class:"u-hide-until@tablet"}
+                        .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
                           %h4.c-resultcontract-title
-                            %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                            %span.c-resultcontract-title__number
                               =aids_per_contract.size
                             %span.c-resultcontract-title__text
                               =v.title_for(aids_per_contract)
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                  .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
+                  .c-resultaids
                     - aids_per_contract.each do |aid|
-                      .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
+                      .c-resultaid{"data-aslug" => aid["slug"]}
                         .o-layout.o-layout--middle.o-layout--flush
                           %div{class:"o-layout__item u-3/4"}   
                             %h5=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.u-margin-bottom-none{"data-bind" => "foreachInit: {data: o_filtersmalltags, name: 'emptyTemplate' }"}
+                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersmalltagClass", "data-name" => one_filter["name"]}=one_filter["description"]
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
                             %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
         
@@ -104,46 +94,46 @@
 
 
 
-        #o_uncertains.u-margin-top-large{"data-bind" => "with: o_uncertains"}
-          .c-resulteligy{"data-bind" => "css: cssZoneDisplay"}
+        #uncertains.u-margin-bottom
+          .c-resulteligy
             .u-display-flex
               %div
                 %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
               .u-display-flex.u-margin-left-auto
-                %div{"class" => "u-hide-until@tablet"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                    Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result u-margin-left-tiny","data-bind" => "click: sesameClose, css: unfoldClass"}
-                    Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
-            #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+                %div{"class" => "u-hide-until@wide"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
+                    Tout déplier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
+                    Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
+            #o_aids_per_contract
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
-                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
+                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
                   .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                     %div{class:"o-layout__item u-3/4"}   
                       .o-flag.o-flag--flush.c-resultcontract
-                        .o-flag__img{class:"u-hide-until@tablet"}
+                        .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
                           %h4.c-resultcontract-title
-                            %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                            %span.c-resultcontract-title__number
                               =aids_per_contract.size
                             %span.c-resultcontract-title__text
                               =v.title_for(aids_per_contract)
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                      %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                  .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                      %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
+                  .c-resultaids
                     - aids_per_contract.each do |aid|
-                      .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
+                      .c-resultaid{"data-aslug" => aid["slug"]}
                         .o-layout.o-layout--middle.o-layout--flush
                           %div{class:"o-layout__item u-3/4"}   
                             %h5=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.u-margin-bottom-none{"data-bind" => "foreachInit: {data: o_filtersmalltags, name: 'emptyTemplate' }"}
+                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersmalltagClass", "data-name" => one_filter["name"]}=one_filter["description"]
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
                             %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
         
@@ -151,52 +141,52 @@
 
 
 
-        #o_ineligibles{"data-bind" => "with: o_ineligibles"}
-          .o_ineligibles__content{"data-bind" => "css: cssZoneDisplay"}
-            .o-list-inline.u-margin-top-large
+        #ineligibles
+          .o_ineligibles__content
+            .o-list-inline
               .o-list-inline__item
                 %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
               .o-list-inline__item
-                %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal{"data-bind" => "click: o_hideClick, text: o_hideText"} Voir
-            .c-resulteligy.u-margin-top-small{"data-bind" => "css: o_hideCss"}
+                %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal.js-toggle-ineligies Voir
+            .c-resulteligy.u-margin-top-small.js-ineligibles-zone
               .u-display-flex
                 %div
               .u-display-flex
-                .u-margin-left-auto{"class" => "u-hide-until@tablet"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameOpen, css: foldClass"}
-                    Tout déplier <span class="c-resultcaret"><strong>&nbsp;&or;</strong></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: sesameClose, css: unfoldClass"}
-                    Tout replier <span class="c-resultcaret"><strong>&nbsp;&and;</strong></span>
+                .u-margin-left-auto{"class" => "u-hide-until@wide"}
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
+                    Tout déplier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
+                    Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
                 %div{:style => "clear: both;"}
-              #o_aids_per_contract{"data-bind" => "foreachInit: {data: o_aids_per_contract, name: 'emptyTemplate' }"}
+              #o_aids_per_contract
                 - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
-                  .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract), "data-bind" => "css: displayClass"}
+                  .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
                     .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                       %div{class:"o-layout__item u-3/4"}   
                         .o-flag.o-flag--flush.c-resultcontract
-                          .o-flag__img{class:"u-hide-until@tablet"}
+                          .o-flag__img{class:"u-hide-until@wide"}
                             =v.icon_for(aids_per_contract)
                           .o-flag__body
                             %h4.c-resultcontract-title
-                              %span.c-resultcontract-title__number{"data-bind" => "text: numberOfAidsPerContract"}
+                              %span.c-resultcontract-title__number
                                 =aids_per_contract.size
                               %span.c-resultcontract-title__text
                                 =v.title_for(aids_per_contract)
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)
                       %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                        %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: closedClass"} <span class="c-resultcaretopen u-hide-until@tablet">Ouvrir</span><span class="c-resultcaret"><strong>&nbsp;&or;&nbsp;</strong></span>
-                        %button{"class" => "c-btn c-btn--small c-btn--result","data-bind" => "click: clickedOpenClose, css: openedClass"} <span class="c-resultcaretclose u-hide-until@tablet">Replier</span><span class="c-resultcaret"><strong>&nbsp;&and;&nbsp;</strong></span>
-                    .c-resultaids{"data-bind" => "css: openedClass, foreachInit: {data: o_aids, name: 'emptyTemplate' }"}
+                        %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
+                        %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
+                    .c-resultaids
                       - aids_per_contract.each do |aid|
-                        .c-resultaid{"data-aslug" => aid["slug"], "data-bind" => "css: visibleClass"}
+                        .c-resultaid{"data-aslug" => aid["slug"]}
                           .o-layout.o-layout--middle.o-layout--flush
                             %div{class:"o-layout__item u-3/4"}   
                               %h5=aid["name"]
                               %p.u-margin-bottom-none=aid["short_description"]
-                              %ul.o-list-inline.u-margin-bottom-none{"data-bind" => "foreachInit: {data: o_filtersmalltags, name: 'emptyTemplate' }"}
+                              %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                                 - v.filters_of(aid).each do |one_filter|
-                                  %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-bind" => "css: filtersmalltagClass", "data-name" => one_filter["name"]}=one_filter["description"]
+                                  %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
 
                             %div{class:"o-layout__item u-1/4 u-text--right"}
                               %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus

@@ -18,6 +18,7 @@
 //= require detect_flex/detect_flex-2009
 //= require ./browser_detection
 //= require moment/moment
+//= require redux/redux
 //= require storejs/store.legacy
 //= require chartist/chartist
 //= require chartist/chartist-plugin-legend
@@ -28,8 +29,6 @@
 //= require turbolinks
 //= require turbolinks_page_change
 //= require pnotify/pnotify
-//= require knockout/knockout
-//= require knockout/knockout-pre-rendered
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
 //= require ./result_default

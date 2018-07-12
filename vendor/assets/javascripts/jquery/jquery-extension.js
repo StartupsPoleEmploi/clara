@@ -8,3 +8,8 @@ $.urlParam = function(name){
     }
 }
 
+jQuery.fn.extend({
+  datamap: function(dataext) {
+    return this.map(function(){return $(this).data()[dataext]}).get();
+  }
+});
