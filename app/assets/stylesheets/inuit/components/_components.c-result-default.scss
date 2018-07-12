@@ -88,6 +88,9 @@ fieldset.c-resultfilterings {
   font-size: 16px; // HACK
   color:#057dbc;
   border-color:#057dbc;
+  svg path {
+    fill: #057dbc;
+  }
 }
 
 .c-resultcaret {
@@ -112,7 +115,6 @@ fieldset.c-resultfilterings {
   font-size: 14px; // HACK
   font-weight: 500;
   padding: $inuit-global-spacing-unit-nano;
-  // padding: $inuit-global-spacing-unit-nano $inuit-global-spacing-unit;
   border-radius: 35px;
   background-color: #057dbc;
 }

@@ -289,10 +289,10 @@ $(document).on('turbolinks:load', function () {
       var state = main_store.getState();
 
       // filters_zone : caret
-      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close)
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close);
 
       // recap_zone  : caret
-      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_close)
+      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_close);
 
       // filters_zone : repaint
       _.each(state.filters_zone.filters, function(f){
