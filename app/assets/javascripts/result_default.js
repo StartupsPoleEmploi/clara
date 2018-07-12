@@ -58,7 +58,7 @@ var previous_state = store.get()
       );
     }
 
-    window.initial_state = {
+    var initial_state = {
       width: $( window ).width(),
       eligibles_zone: {
         eligibles: initial_eligy('eligibles')
@@ -79,6 +79,11 @@ var previous_state = store.get()
       }
     };
 
+    var default_state = function() {
+      var previous_state = store.get(state_key());
+      var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
+      return has_state ? previous_state : initial_state;
+    }
 
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
@@ -113,17 +118,14 @@ var previous_state = store.get()
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        console.log('boom undefined state')
         return initial_state;
       }
 
       // Works better than _.assign or Object.assign
       var newState = JSON.parse(JSON.stringify(state));
-
+      
       if (action.type === 'INIT') {
-        var previous_state = store.get(state_key());
-        console.log('INIT ' + !!previous_state)
-        return previous_state;
+        return newState;
       }
       else if (action.type === 'CLOSE_FILTER') {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
@@ -207,7 +209,7 @@ var previous_state = store.get()
     *
     *
     **/
-    window.main_store = Redux.createStore(main_reducer, initial_state);
+    window.main_store = Redux.createStore(main_reducer, default_state());
 
 
     /**
