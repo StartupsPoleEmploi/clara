@@ -40,7 +40,10 @@ fieldset.c-resultfilterings {
 }
 .c-resultfiltering {
   display: flex;
-  align-items: center;
+  align-items: start;
+  label {
+    margin-top: -2px; //HACK to 
+  }
 }
 .c-resultfiltering--even {
   background-color:#f3f8fc;
