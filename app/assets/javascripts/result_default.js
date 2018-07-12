@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
+    var MOBILE_MAX_WIDTH = 739;
     var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
     var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
 
@@ -73,7 +74,7 @@ $(document).on('turbolinks:load', function () {
         ineligibles: initial_eligy('ineligibles')
       },
       filters_zone: {
-        is_collapsed: false,
+        is_collapsed: true,
         filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
       },
       recap_zone: {
@@ -127,7 +128,9 @@ $(document).on('turbolinks:load', function () {
       var newState = JSON.parse(JSON.stringify(state));
       
       if (action.type === 'INIT') {
-        return newState;
+        if (newState.width > MOBILE_MAX_WIDTH) {
+          newState.filters_zone.is_collapsed = false;
+        }
       }
       else if (action.type === 'CLOSE_FILTER') {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
@@ -312,7 +315,7 @@ $(document).on('turbolinks:load', function () {
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
       // Collapse filters_zone : CSS. 
-      var is_discrete = (state.filters_zone.is_collapsed && state.width > 739); 
+      var is_discrete = (state.filters_zone.is_collapsed && state.width > MOBILE_MAX_WIDTH); 
       is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
       // Collapse recap_zone 
