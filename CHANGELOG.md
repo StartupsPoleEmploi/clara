@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.4.1 (13/07/2018)
+-[#823][BUG] Pluriel et singulier sur les types d'aides.
+
+
 ## 11.4.0 (12/07/2018)
 -[#832][TECH] Knockout to Redux
 
