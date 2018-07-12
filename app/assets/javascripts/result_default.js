@@ -122,6 +122,9 @@ $(document).on('turbolinks:load', function () {
       if (action.type === 'INIT') {
         return initial_state;
       }
+      else if (action.type === 'CLOSE_FILTER') {
+        console.log('close filter named ' + action.name);
+      }
       else if (action.type === 'RESIZE_WINDOW') {
         newState.width = action.width;
       }
@@ -207,6 +210,12 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
+    
+    $('.c-filtertag__close').click(function(){
+      var filter_name = $(this).closest('.c-filterstag__item').attr('data-name');
+      main_store.dispatch({type: 'CLOSE_FILTER', name: filter_name});
+    });
+
     $( window ).resize(function() {
         main_store.dispatch({type: 'RESIZE_WINDOW', width: $( window ).width()});
     });
@@ -363,5 +372,3 @@ $(document).on('turbolinks:load', function () {
     main_store.dispatch({type: 'INIT'})
   }
 });
-
-
