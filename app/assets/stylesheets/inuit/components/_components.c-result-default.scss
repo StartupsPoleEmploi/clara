@@ -9,9 +9,15 @@
   width: 100%;
   cursor: pointer;
   border: none;
+  svg path {
+    fill: #ffffff;
+  }
   &.is-discrete {
     background-color: white;
     color: #333333cc;
+    svg path {
+      fill: #333333cc;
+    }
   }
 }
 

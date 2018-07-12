@@ -1,7 +1,8 @@
 $(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
-var previous_state = store.get()
+    var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
+    var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
 
     function state_key() {
       return 'state_of_' + $.urlParam('for_id');
@@ -288,7 +289,7 @@ var previous_state = store.get()
       var state = main_store.getState();
 
       // filters_zone : caret
-      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').text(" ∨") : $('.js-filters-zone .c-mask-filter__caret').text(" ∧")
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close)
 
       // recap_zone  : caret
       state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').text(" ∨") : $('.js-recap-zone .c-mask-filter__caret').text(" ∧")
