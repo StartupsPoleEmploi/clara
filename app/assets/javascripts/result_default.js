@@ -1,6 +1,10 @@
 $(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
+var previous_state = store.get()
+    function state_key() {
+      return 'state_of_' + $.urlParam('for_id');
+    }
 
     /**
     *
@@ -12,7 +16,6 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
-
     var $card = function(eligy) {return $('#' + eligy + ' .c-resultcard')};
     var $aids_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid')};
     var $aids_container_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaids')};
@@ -110,6 +113,7 @@ $(document).on('turbolinks:load', function () {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
+        console.log('boom undefined state')
         return initial_state;
       }
 
@@ -117,7 +121,9 @@ $(document).on('turbolinks:load', function () {
       var newState = JSON.parse(JSON.stringify(state));
 
       if (action.type === 'INIT') {
-        return initial_state;
+        var previous_state = store.get(state_key());
+        console.log('INIT ' + !!previous_state)
+        return previous_state;
       }
       else if (action.type === 'CLOSE_FILTER') {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
@@ -182,7 +188,7 @@ $(document).on('turbolinks:load', function () {
         });
       }
       
-
+      store.set(state_key(), newState);
 
       return newState;
     }
