@@ -11,7 +11,7 @@
   = render 'shared/breadcrumb'
   .u-useful-width.u-margin-constraint
     .o-card
-      = form_with model: @age, url: age_questions_path, local: false do |f|
+      = form_with model: @age, url: age_questions_path, local: true do |f|
         %h1.c-question-title
           %span.u-focusable{tabindex: "0"} Quel est votre âge ?
         .c-age__form

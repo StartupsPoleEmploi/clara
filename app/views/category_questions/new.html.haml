@@ -8,7 +8,7 @@
   .u-useful-width.u-margin-constraint
     .o-card
 
-      = form_with model: @category, url: category_questions_path, local: false do |f|
+      = form_with model: @category, url: category_questions_path, local: true do |f|
         
         = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
         
