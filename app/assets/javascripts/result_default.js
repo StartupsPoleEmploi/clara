@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', function () {
   if ($('.c-result-default').length) {
 
 var previous_state = store.get()
+
     function state_key() {
       return 'state_of_' + $.urlParam('for_id');
     }
@@ -118,7 +119,7 @@ var previous_state = store.get()
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return initial_state;
+        return default_state();
       }
 
       // Works better than _.assign or Object.assign
