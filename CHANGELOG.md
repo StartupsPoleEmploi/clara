@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.4.0 (12/07/2018)
+-[#832][TECH] Knockout to Redux
+
+
 ## 11.3.3 (11/07/2018)
 -[#833][TECH] Sortir Newrelic de dev et staging
 
