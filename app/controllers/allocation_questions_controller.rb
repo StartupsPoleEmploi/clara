@@ -8,7 +8,7 @@ class AllocationQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       @allocation = new_from_params
       if @allocation.valid?
@@ -25,7 +25,7 @@ class AllocationQuestionsController < ApplicationController
 private
 
   def redirect_to_same_page
-    redirect_to new_allocation_question_path
+    my_redirect_to new_allocation_question_path
   end
 
   def populate_errors(flash)
@@ -33,7 +33,7 @@ private
   end
 
   def redirect_to_next_question(request)
-    redirect_to QuestionManager.new.getNextPath(request.referer, @allocation)
+    my_redirect_to QuestionManager.new.getNextPath(request.referer, @allocation)
   end
 
   def populate_asker

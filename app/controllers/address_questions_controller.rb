@@ -10,7 +10,7 @@ class AddressQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       @address = AddressForm.new(allowed_params)
       if @address.valid?
@@ -22,11 +22,11 @@ class AddressQuestionsController < ApplicationController
         end
         @asker.v_zrr = nil
         @asker.v_qpv = nil
-        redirect_to QuestionManager.new.getNextPath(request.referer, @age)
+        my_redirect_to QuestionManager.new.getNextPath(request.referer, @age)
       else
         AddressService.new.reset(@asker)
         flash[:error] = @address.errors.messages.values.flatten
-        redirect_to new_address_question_path
+        my_redirect_to new_address_question_path
       end
     end
 

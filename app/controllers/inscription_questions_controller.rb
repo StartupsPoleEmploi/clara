@@ -11,7 +11,7 @@ class InscriptionQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       inscription = download_from_params
       upload_to_asker(inscription)
@@ -28,7 +28,7 @@ class InscriptionQuestionsController < ApplicationController
   private
 
   def redirect_to_same_page
-    redirect_to new_inscription_question_path
+    my_redirect_to new_inscription_question_path
   end
 
   def populate_errors(flash, inscription)
@@ -36,7 +36,7 @@ class InscriptionQuestionsController < ApplicationController
   end
 
   def redirect_to_next_question(request, inscription)
-    redirect_to QuestionManager.new.getNextPath(request.referer, inscription)
+    my_redirect_to QuestionManager.new.getNextPath(request.referer, inscription)
   end
 
   def instantiate_service

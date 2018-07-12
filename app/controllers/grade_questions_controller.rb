@@ -10,16 +10,16 @@ class GradeQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       @grade = GradeForm.new(allowed_params)
       if @grade.valid?
         @asker.v_diplome = @grade.value if @grade.value.present?
         save_asker
-        redirect_to QuestionManager.new.getNextPath(request.referer, @grade)
+        my_redirect_to QuestionManager.new.getNextPath(request.referer, @grade)
       else
         flash[:error] = @grade.errors.messages.values.flatten
-        redirect_to new_grade_question_path
+        my_redirect_to new_grade_question_path
       end
     end
   end
