@@ -48,7 +48,8 @@ h4.c-situation-title {
 
 .c-situation-paragraph {
   border-bottom: 1px solid #C4C4C4;
-  padding: space(6) space(5);
+  margin: space(6) space(5);
+  padding-bottom: space(6);
   @include inuit-font-size(16px);
 }
 

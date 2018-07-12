@@ -275,6 +275,9 @@ $(document).on('turbolinks:load', function () {
       // filters_zone : caret
       state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').text(" ∨") : $('.js-filters-zone .c-mask-filter__caret').text(" ∧")
 
+      // recap_zone  : caret
+      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').text(" ∨") : $('.js-recap-zone .c-mask-filter__caret').text(" ∧")
+
       // filters_zone : repaint
       _.each(state.filters_zone.filters, function(f){
          $('.c-resultfiltering[data-name="' + f.name + '"] input[type="checkbox"]').prop('checked', f.is_checked);
