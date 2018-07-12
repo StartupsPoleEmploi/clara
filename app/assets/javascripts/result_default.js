@@ -109,9 +109,6 @@ $(document).on('turbolinks:load', function () {
     **/
     var main_reducer = function(state, action) {
       
-      var has_contract_name = function(e) {return e.name === action.contract_name};
-      var fname = function(e) {return e.name};
-
       if (state === undefined) {
         return initial_state;
       }
@@ -123,7 +120,8 @@ $(document).on('turbolinks:load', function () {
         return initial_state;
       }
       else if (action.type === 'CLOSE_FILTER') {
-        console.log('close filter named ' + action.name);
+        var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
+        filter_changed.is_checked = false;
       }
       else if (action.type === 'RESIZE_WINDOW') {
         newState.width = action.width;
@@ -136,8 +134,8 @@ $(document).on('turbolinks:load', function () {
         filter_changed.is_checked = action.value;
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
         iterate_through_aids(function(ely, contract, aid){
-          var aid_filters_name = _.map(aid.filters, fname);
-          var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), fname);
+          var aid_filters_name = _.map(aid.filters, function(e) {return e.name});
+          var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), function(e) {return e.name});
           var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
           if (no_filter) {
@@ -157,11 +155,11 @@ $(document).on('turbolinks:load', function () {
       }
       else if (action.type === 'OPEN_CONTRACT') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-        _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = false;
+        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = false;
       }
       else if (action.type === 'CLOSE_CONTRACT') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-        _.find(newState[ely + "_zone"][ely], has_contract_name).is_collapsed = true;
+        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = true;
       }
       else if (action.type === 'FOLD_ELIGY') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
@@ -274,6 +272,11 @@ $(document).on('turbolinks:load', function () {
     main_store.subscribe(function() {
 
       var state = main_store.getState();
+
+      // filters_zone : repaint
+      _.each(state.filters_zone.filters, function(f){
+         $('.c-resultfiltering[data-name="' + f.name + '"] input[type="checkbox"]').prop('checked', f.is_checked);
+      });
 
       // filters_zone : text
       state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__text').text('Ouvrir les filtres') : $('.js-filters-zone .c-mask-filter__text').text('Masquer les filtres');
