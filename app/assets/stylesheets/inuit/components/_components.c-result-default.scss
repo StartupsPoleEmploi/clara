@@ -43,13 +43,13 @@ fieldset.c-resultfilterings {
     font-size: 18px;
     font-weight: bold;
   }
+  input[type="checkbox"] {
+    transform: scale(1); 
+  }
 }
 .c-resultfiltering {
   display: flex;
   align-items: start;
-  label {
-    margin-top: -2px; //HACK to 
-  }
 }
 .c-resultfiltering--even {
   background-color:#f3f8fc;
