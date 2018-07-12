@@ -1,51 +1,58 @@
-.js-printer, footer {
+footer, 
+.js-open, 
+.js-close, 
+.js-toggle-ineligies, 
+.c-body__wrapper .c-body__footer,
+.c-filterings-area, 
+.js-recap-zone, 
+.c-btn--aid {
   display: none;
 }
-.c-expander, .c-result-aid__cta {
-  display: none;
-}
+// .c-expander, .c-result-aid__cta {
+//   display: none;
+// }
 
-.c-result-line__action {
-  display: none;
-}
+// .c-result-line__action {
+//   display: none;
+// }
 
-.c-result-aid__text {
-  display: inherit;
-  justify-content:inherit;
-  text-align:left;
-}
+// .c-result-aid__text {
+//   display: inherit;
+//   justify-content:inherit;
+//   text-align:left;
+// }
 
-.c-result-aid {
-  display: inherit;
-  align-items: center;
-  padding: 0.7rem;
-  border: 0;
-}
+// .c-result-aid {
+//   display: inherit;
+//   align-items: center;
+//   padding: 0.7rem;
+//   border: 0;
+// }
 
-.c-situation__header-link {
-  display: none;
-}
+// .c-situation__header-link {
+//   display: none;
+// }
 
-.c-result-line__content {
-  border-bottom: 1px solid #BDBDBD;
-}
+// .c-result-line__content {
+//   border-bottom: 1px solid #BDBDBD;
+// }
 
-.c-situation-paragraph {
-  margin: space(5) space(3);
-}
+// .c-situation-paragraph {
+//   margin: space(5) space(3);
+// }
 
-h4.c-situation-title {
-  color: #005ca2;
-}
+// h4.c-situation-title {
+//   color: #005ca2;
+// }
 
-.c-situation-reset {
-  display: none;
-}
+// .c-situation-reset {
+//   display: none;
+// }
 
-.c-result-list--uncertain {
-  display: none;
-}
+// .c-result-list--uncertain {
+//   display: none;
+// }
 
-.c-result-list--ineligible {
-  display: none;
-}
+// .c-result-list--ineligible {
+//   display: none;
+// }
