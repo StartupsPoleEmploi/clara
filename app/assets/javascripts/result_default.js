@@ -208,7 +208,6 @@ $(document).on('turbolinks:load', function () {
     *
     *
     **/
-    
     $('.c-filtertag__close').click(function(){
       var filter_name = $(this).closest('.c-filterstag__item').attr('data-name');
       main_store.dispatch({type: 'CLOSE_FILTER', name: filter_name});
@@ -272,6 +271,9 @@ $(document).on('turbolinks:load', function () {
     main_store.subscribe(function() {
 
       var state = main_store.getState();
+
+      // filters_zone : caret
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').text(" ∨") : $('.js-filters-zone .c-mask-filter__caret').text(" ∧")
 
       // filters_zone : repaint
       _.each(state.filters_zone.filters, function(f){
