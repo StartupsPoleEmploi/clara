@@ -69,7 +69,7 @@
                           %h4.c-resultcontract-title
                             %span.c-resultcontract-title__number
                               =aids_per_contract.size
-                            %span.c-resultcontract-title__text
+                            %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
                               =v.title_for(aids_per_contract)
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
@@ -117,7 +117,7 @@
                           %h4.c-resultcontract-title
                             %span.c-resultcontract-title__number
                               =aids_per_contract.size
-                            %span.c-resultcontract-title__text
+                            %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
                               =v.title_for(aids_per_contract)
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
@@ -170,7 +170,7 @@
                             %h4.c-resultcontract-title
                               %span.c-resultcontract-title__number
                                 =aids_per_contract.size
-                              %span.c-resultcontract-title__text
+                              %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
                                 =v.title_for(aids_per_contract)
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)

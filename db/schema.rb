@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180601083534) do
+ActiveRecord::Schema.define(version: 2018_06_01_083535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180601083534) do
     t.string "slug"
     t.string "category"
     t.string "business_id"
+    t.string "plural"
     t.index ["business_id"], name: "index_contract_types_on_business_id", unique: true
     t.index ["slug"], name: "index_contract_types_on_slug", unique: true
   end

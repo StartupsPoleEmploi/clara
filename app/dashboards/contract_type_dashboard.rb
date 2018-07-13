@@ -10,6 +10,7 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    plural: Field::String,
     slug: Field::String,
     category: Field::String,
     business_id: Field::String,
@@ -41,6 +42,7 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
+    :plural,
     :slug,
     :category,
     :business_id,
@@ -55,6 +57,7 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :plural,
     :slug,
     :category,
     :business_id,
