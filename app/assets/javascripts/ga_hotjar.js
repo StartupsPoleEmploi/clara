@@ -1,13 +1,7 @@
-
-// avoid to pollute global scope
-(function(){
+$(document).on('ready', function () {
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');                
 
-// helper that wait for jquery and lodash to be loaded
-function defer(method) { if (window.jQuery && _) { method(); } else { setTimeout(function() { defer(method) }, 50); } }
-
-defer(function() {
   if (window.is_google_analytics_session_already_defined) {
     // Do nothing
   } else {
@@ -31,7 +25,5 @@ defer(function() {
       console.log("Version : " + clara.version);
     });
   }
+
 });
-
-
-})();

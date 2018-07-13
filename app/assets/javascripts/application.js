@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require ga_hotjar
 //= require es5-shim/es5-shim
 //= require lodash/lodash
 //= require lodash/lodash_extension
@@ -34,6 +33,7 @@
 //= require_tree ./forms
 //= require ./result_default
 //= require ./aides_index
+//= require ./ga_hotjar
 //= require ./google_analytics_push
 //= require ./print
 //= require ./welcome_index
