@@ -341,6 +341,13 @@ $(document).on('turbolinks:load', function () {
         var new_number = _.count(contract.aids, function(aid){return !aid.is_collapsed;})
         $number.text(new_number);
 
+        // Display single or plural for contract
+        var csingle = $el.find('.c-resultcontract-title__text').attr('data-csingle')
+        var cplural = $el.find('.c-resultcontract-title__text').attr('data-cplural')
+        var new_text = csingle;
+        if (new_number > 1 && _.isNotEmpty(cplural)) new_text = cplural;
+        $el.find('.c-resultcontract-title__text').text(new_text)
+
         // Remove contracts without aid
         new_number === 0 ? $el.addClass('u-hidden-visually') : $el.removeClass('u-hidden-visually')
 

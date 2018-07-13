@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_email] = email
       session[:user_token] = token
       flash[:success] = "Bienvenue #{email} !"
-      redirect_to admin_root_path
+      my_redirect_to admin_root_path
     else
       flash[:error] = 'Erreur d\'authentification'
       redirect_to root_path

@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   # See https://sentry.io/pole-emploi/ara/getting-started/ruby-rails/
   before_action :set_raven_context
   
+  def my_redirect_to(url)
+    # See https://github.com/turbolinks/turbolinks-rails/pull/41
+    redirect_to url, {turbolinks: :advance}
+  end
+
   def save_asker
     session[:asker] = @asker.attributes.to_json.to_s if @asker
   end

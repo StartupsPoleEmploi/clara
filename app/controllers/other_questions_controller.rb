@@ -11,7 +11,7 @@ class OtherQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       @other = download_from_params
       if @other.valid?
@@ -27,12 +27,12 @@ class OtherQuestionsController < ApplicationController
   private
 
   def redirect_to_same_page
-    redirect_to new_other_question_path
+    my_redirect_to new_other_question_path
   end
 
   def redirect_to_next_question(request)
     base64_str = ConvertAskerInBase64Service.new.into_base64(@asker)
-    redirect_to QuestionManager.new.getNextPath(request.referer, base64_str)
+    my_redirect_to QuestionManager.new.getNextPath(request.referer, base64_str)
   end
 
   def populate_errors(flash)

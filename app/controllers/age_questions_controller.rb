@@ -9,7 +9,7 @@ class AgeQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
     else
       @age = new_from_params
       if @age.valid?
@@ -30,11 +30,11 @@ class AgeQuestionsController < ApplicationController
   end
 
   def redirect_to_next_question(request)
-    redirect_to QuestionManager.new.getNextPath(request.referer, @age)
+    my_redirect_to QuestionManager.new.getNextPath(request.referer, @age)
   end
 
   def redirect_to_same_page
-    redirect_to new_age_question_path
+    my_redirect_to new_age_question_path
   end
 
   def new_from_params
