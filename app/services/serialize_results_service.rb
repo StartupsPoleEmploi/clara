@@ -33,7 +33,7 @@ class SerializeResultsService
   def jsonify_eligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
+      asker: asker.attributes.delete_if { |k, v| v.nil? },
       aids: whitelist(calculator.all_eligible)
     }
     result.to_json
@@ -42,7 +42,7 @@ class SerializeResultsService
   def jsonify_ineligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
+      asker: asker.attributes.delete_if { |k, v| v.nil? },
       aids: whitelist(calculator.all_ineligible)
     }
     result.to_json
@@ -51,7 +51,7 @@ class SerializeResultsService
   def jsonify_uncertain(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
+      asker: asker.attributes.delete_if { |k, v| v.nil? },
       aids: whitelist(calculator.all_uncertain)
     }
     result.to_json

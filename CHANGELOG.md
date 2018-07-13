@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.5.0 (13/07/2018)
+-[#835][FEATURE] API : si valeur nulle dans la réponse, ne pas l'afficher.
+
+
 ## 11.4.3 (13/07/2018)
 -[#838b][BUG] Retablir tracking
 
