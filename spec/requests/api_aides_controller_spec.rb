@@ -131,6 +131,11 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'Aide Qpv ET Zrr'
     end
+    it 'Returns asker, only non-empty fields' do
+      asker = json_returned["asker"]
+      expect(asker["v_qpv"]).not_to eq nil
+      expect(asker["v_age"]).to eq nil
+    end
   end
 
   describe 'aids/ineligible' do
@@ -168,6 +173,11 @@ describe Api::V1::ApiAidesController, type: :request do
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'Aide Qpv ET Zrr'
     end
+    it 'Returns asker, only non-empty fields' do
+      asker = json_returned["asker"]
+      expect(asker["v_qpv"]).not_to eq nil
+      expect(asker["v_age"]).to eq nil
+    end
   end
 
   describe 'aids/uncertain' do
@@ -203,6 +213,11 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns all uncertain aids' do
       expect(json_returned["aids"].size).to eq 1
       expect(json_returned["aids"][0]["name"]).to eq 'Aide Qpv ET Zrr'
+    end
+    it 'Returns asker, only non-empty fields' do
+      asker = json_returned["asker"]
+      expect(asker["v_qpv"]).not_to eq nil
+      expect(asker["v_age"]).to eq nil
     end
   end
 
