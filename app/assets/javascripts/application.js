@@ -17,7 +17,6 @@
 //= require jquery/jquery-extension
 //= require detect_flex/detect_flex-2009
 //= require ./browser_detection
-//= require ga_hotjar
 //= require moment/moment
 //= require redux/redux
 //= require storejs/store.legacy
@@ -34,6 +33,7 @@
 //= require_tree ./forms
 //= require ./result_default
 //= require ./aides_index
+//= require ./ga_hotjar
 //= require ./google_analytics_push
 //= require ./print
 //= require ./welcome_index
