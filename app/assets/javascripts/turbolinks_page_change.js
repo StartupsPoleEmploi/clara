@@ -13,13 +13,6 @@ $(document).on('turbolinks:request-end', function() {
   $('.c-turbolinks-transition').addClass('u-hidden');
 });
 
-// $(document).on('ajax:success', function(e){ 
-// Turbolinks.clearCache();
-//   console.log('ajax success');
-//   console.log(e);
-//   console.log('');
-//  })
-
 // DEBUG MODE
 
 // $(document).on('turbolinks:request-start', function() {console.log('turbolinks:request-start')})
