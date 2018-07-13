@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
   
   def my_redirect_to(url)
-    redirect_to url, {turbolinks:'advance'}
+    # See https://github.com/turbolinks/turbolinks-rails/pull/41
+    redirect_to url, {turbolinks: :advance}
   end
 
   def save_asker
