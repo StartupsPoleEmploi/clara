@@ -15,18 +15,18 @@ class SessionsController < ApplicationController
       my_redirect_to admin_root_path
     else
       flash[:error] = 'Erreur d\'authentification'
-      my_redirect_to root_path
+      redirect_to root_path
     end
   end
 
   def destroy
     reset_session
     flash[:notice] = 'Au revoir !'
-    my_redirect_to root_url
+    redirect_to root_url
   end
 
   def failure
-    my_redirect_to root_url, error: 'Erreur d\'authentification : #{params[:message].humanize}'
+    redirect_to root_url, error: 'Erreur d\'authentification : #{params[:message].humanize}'
   end
 
   private

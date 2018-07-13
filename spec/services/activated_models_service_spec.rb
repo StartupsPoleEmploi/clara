@@ -93,6 +93,7 @@ describe ActivatedModelsService do
 "all_contracts"=>
   [{"id"=>1,
     "name"=>"c_contract_type_used",
+    "plural"=>nil,
     "description"=>"d1",
     "ordre_affichage"=>0,
     "icon"=>nil,
@@ -101,6 +102,7 @@ describe ActivatedModelsService do
     "business_id"=>"b1"},
    {"id"=>2,
     "name"=>"c_contract_type_unused",
+    "plural"=>nil,
     "description"=>"d2",
     "ordre_affichage"=>0,
     "icon"=>nil,
