@@ -7,7 +7,7 @@
 
     = render 'shared/tab_title', {title_data: (yield :title_data) }
 
-    = javascript_tag "window.clara = window.clara || {}; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json}"
+    = javascript_tag "window.clara = window.clara || {}; clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID']}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json}"
     = include_gon 
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'

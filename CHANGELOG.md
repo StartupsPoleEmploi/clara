@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.4.3 (13/07/2018)
+-[#838b][BUG] Retablir tracking
+
+
 ## 11.4.2 (13/07/2018)
 -[#838][BUG] Retablir tracking
 
