@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require ga_hotjar
 //= require es5-shim/es5-shim
 //= require lodash/lodash
 //= require lodash/lodash_extension
@@ -18,6 +17,7 @@
 //= require jquery/jquery-extension
 //= require detect_flex/detect_flex-2009
 //= require ./browser_detection
+//= require ga_hotjar
 //= require moment/moment
 //= require redux/redux
 //= require storejs/store.legacy

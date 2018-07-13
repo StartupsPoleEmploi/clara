@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.4.2 (13/07/2018)
+-[#838][BUG] Retablir tracking
+
+
 ## 11.4.1 (13/07/2018)
 -[#823][BUG] Pluriel et singulier sur les types d'aides.
 
