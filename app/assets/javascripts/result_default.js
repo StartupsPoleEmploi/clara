@@ -147,6 +147,8 @@ $(document).on('turbolinks:load', function () {
           var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), function(e) {return e.name});
           var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
           var no_filter = _.isEmpty(_.filter(newState.filters_zone.filters, function(e){return e.is_checked === true}))
+
+          // aid state
           if (no_filter) {
             aid.is_collapsed = false;
           } else if (has_intersection) {
@@ -154,6 +156,10 @@ $(document).on('turbolinks:load', function () {
           } else {
             aid.is_collapsed = true;
           }
+          
+          // contract state
+          if (!no_filter) contract.is_collapsed = false;
+          
         }, newState);
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
