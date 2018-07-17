@@ -132,10 +132,6 @@ $(document).on('turbolinks:load', function () {
           newState.filters_zone.is_collapsed = false;
         }
       }
-      else if (action.type === 'CLOSE_FILTER') {
-        var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
-        filter_changed.is_checked = false;
-      }
       else if (action.type === 'RESIZE_WINDOW') {
         newState.width = action.width;
       }
@@ -229,7 +225,7 @@ $(document).on('turbolinks:load', function () {
     **/
     $('.c-filtertag__close').click(function(){
       var filter_name = $(this).closest('.c-filterstag__item').attr('data-name');
-      main_store.dispatch({type: 'CLOSE_FILTER', name: filter_name});
+      main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: false});
     });
 
     $( window ).resize(function() {
@@ -388,6 +384,7 @@ $(document).on('turbolinks:load', function () {
         var $fold = $el.find('.js-fold');
         var no_contracts_are_collapsed = _.none(contracts, function(e){return e.is_collapsed;});
         no_contracts_are_collapsed ? $fold.addClass('u-hidden-visually') : $fold.removeClass('u-hidden-visually');
+
         // unfold all contracts
         var $unfold = $el.find('.js-unfold');
         var some_contracts_are_uncollapsed = _.some(contracts, function(e){return !e.is_collapsed;});
