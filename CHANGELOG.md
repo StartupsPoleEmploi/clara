@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.5.1 (17/07/2018)
+-[#839][BUG] Non rechargement du contenu à la dé-sélection d'un filtre
+
+
 ## 11.5.0 (13/07/2018)
 -[#835][FEATURE] API : si valeur nulle dans la réponse, ne pas l'afficher.
 
