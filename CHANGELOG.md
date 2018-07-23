@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.5.5 (23/07/2018)
+-[#842b][BUG] Retablir tracking filtre 2
+
+
 ## 11.5.4 (23/07/2018)
 -[#842][BUG] Retablir tracking filtre
 

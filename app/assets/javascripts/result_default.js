@@ -145,6 +145,10 @@ $(document).on('turbolinks:load', function () {
         newState.ineligibles_zone.is_collapsed = !newState.ineligibles_zone.is_collapsed;
       }
       else if (action.type === 'TOGGLE_FILTER') {
+
+        // track filter with GA
+        if (action["value"] === true) track_filter(action["name"])
+
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
@@ -164,10 +168,7 @@ $(document).on('turbolinks:load', function () {
           }
           
           // contract state
-          if (!no_filter) contract.is_collapsed = false;
-          
-          // track filter with GA
-          if (action["value"] === true) track_filter(action["name"])
+          if (!no_filter) contract.is_collapsed = false;          
             
         }, newState);
       }
