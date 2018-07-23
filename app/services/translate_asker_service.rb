@@ -24,6 +24,8 @@ class TranslateAskerService
   def integer_to_french(the_int)
     if the_int != nil && (the_int.is_a?(Integer) || !!the_int.match(/^(\d)+$/))
       return the_int.to_s
+    elsif the_int != nil
+      
     end
   end
 

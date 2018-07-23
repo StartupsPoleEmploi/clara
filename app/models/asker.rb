@@ -4,6 +4,9 @@ require "base64"
 
 class Asker < ActiveType::Object
 
+  # validate :adulthood
+  # validates :v_age, numericality: { only_integer: true, greater_than_or_equal_to: 16, less_than_or_equal_to: 70 }
+
   attribute :v_handicap,                  :string
   attribute :v_spectacle,                 :string
   attribute :v_diplome,                   :string
@@ -27,5 +30,9 @@ class Asker < ActiveType::Object
   def ==(o)
     self.attributes.symbolize_keys == o.attributes.symbolize_keys 
   end
+
+  # def adulthood
+  #   errors.add(:v_age, :too_young, years_limit: 18) if v_age.to_i < 18
+  # end
 
 end
