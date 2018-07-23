@@ -32,13 +32,23 @@ module Api
       # /api/v1/aids/ineligible(.:format)
       def ineligible
         track_call("/api/v1/aids/ineligible", current_user.email)
-        render json: ineligible_aids_for(processed_asker)        
+        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        if api_asker.valid?
+           render json: ineligible_aids_for(processed_asker(api_asker)) 
+        else
+           render json: processed_errors(api_asker.errors).to_json, status: 400
+        end       
       end
 
       # /api/v1/aids/uncertain(.:format)
       def uncertain
         track_call("/api/v1/aids/uncertain", current_user.email)
-        render json: uncertain_aids_for(processed_asker)        
+        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        if api_asker.valid?
+           render json: uncertain_aids_for(processed_asker(api_asker)) 
+        else
+           render json: processed_errors(api_asker.errors).to_json, status: 400
+        end       
       end
 
       def slug_param
