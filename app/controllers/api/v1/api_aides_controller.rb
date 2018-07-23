@@ -60,9 +60,6 @@ module Api
       end
 
       def processed_errors(errors)
-        p '- - - - - - - - - - - - - - errors- - - - - - - - - - - - - - - -' 
-        pp errors
-        p ''
         h = JSON.parse(errors.to_json) # elegant way to get the full grape without over-engineering
         h.transform_keys{ |key| ApiAskerKeysService.new.asker_hash[key] }
       end
