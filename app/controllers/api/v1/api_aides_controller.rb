@@ -24,9 +24,10 @@ module Api
         if api_asker.valid?
            render json: eligible_aids_for(processed_asker(api_asker)) 
         else
-           render json: api_asker.errors.to_json, status: 400
+           render json: processed_errors(JSON.parse(api_asker.errors.to_json)).to_json, status: 400
         end
       end
+
 
       # /api/v1/aids/ineligible(.:format)
       def ineligible
@@ -56,6 +57,13 @@ module Api
 
       def whitelist_one_aid_attr(aid)
         WhitelistAidService.new.for_a_detailed_aid(aid)
+      end
+
+      def processed_errors(errors)
+        p '- - - - - - - - - - - - - - errors- - - - - - - - - - - - - - - -' 
+        pp errors
+        p ''
+        errors.transform_keys{ |key| ApiAskerKeysService.new.asker_hash[key] }
       end
 
       def processed_asker(api_asker)

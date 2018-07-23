@@ -4,15 +4,15 @@ class TranslateAskerService
 
   def to_french(api_asker)
     asker = Asker.new
-    asker.v_spectacle                 = boolean_to_french(api_asker.v_spectacle)
-    asker.v_handicap                  = boolean_to_french(api_asker.v_handicap)
-    asker.v_diplome                   = diploma_to_french(api_asker.v_diplome)
-    asker.v_category                  = category_to_french(api_asker.v_category)
-    asker.v_duree_d_inscription       = inscription_period_to_french(api_asker.v_duree_d_inscription)
-    asker.v_allocation_type           = allocation_type_to_french(api_asker.v_allocation_type)
-    asker.v_allocation_value_min      = integer_to_french(api_asker.v_allocation_value_min)
-    asker.v_age                       = integer_to_french(api_asker.v_age)
-    asker.v_location_citycode         = integer_to_french(api_asker.v_location_citycode)
+    asker.v_spectacle            = boolean_to_french(api_asker.v_spectacle)
+    asker.v_handicap             = boolean_to_french(api_asker.v_handicap)
+    asker.v_diplome              = diploma_to_french(api_asker.v_diplome)
+    asker.v_category             = category_to_french(api_asker.v_category)
+    asker.v_duree_d_inscription  = inscription_period_to_french(api_asker.v_duree_d_inscription)
+    asker.v_allocation_type      = allocation_type_to_french(api_asker.v_allocation_type)
+    asker.v_allocation_value_min = integer_to_french(api_asker.v_allocation_value_min)
+    asker.v_age                  = integer_to_french(api_asker.v_age)
+    asker.v_location_citycode    = integer_to_french(api_asker.v_location_citycode)
     asker
   end
   
