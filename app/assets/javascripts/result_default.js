@@ -9,6 +9,12 @@ $(document).on('turbolinks:load', function () {
       return 'state_of_' + $.urlParam('for_id');
     }
 
+    function track_filter(filter_name) {
+      if (typeof ga === "function") {
+        ga('send', 'event', 'results', 'filter', filter_name);
+      }      
+    }
+
     /**
     *
     *
@@ -160,6 +166,9 @@ $(document).on('turbolinks:load', function () {
           // contract state
           if (!no_filter) contract.is_collapsed = false;
           
+          // track filter with GA
+          if (action["value"] === true) track_filter(action["name"])
+            
         }, newState);
       }
       else if (action.type === 'TOGGLE_FILTERS_ZONE') {
