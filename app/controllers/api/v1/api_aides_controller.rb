@@ -24,7 +24,7 @@ module Api
         if api_asker.valid?
            render json: eligible_aids_for(processed_asker(api_asker)) 
         else
-           render json: processed_errors(JSON.parse(api_asker.errors.to_json)).to_json, status: 400
+           render json: processed_errors(api_asker.errors).to_json, status: 400
         end
       end
 
@@ -63,7 +63,8 @@ module Api
         p '- - - - - - - - - - - - - - errors- - - - - - - - - - - - - - - -' 
         pp errors
         p ''
-        errors.transform_keys{ |key| ApiAskerKeysService.new.asker_hash[key] }
+        h = JSON.parse(errors.to_json) # elegant way to get the full grape without over-engineering
+        h.transform_keys{ |key| ApiAskerKeysService.new.asker_hash[key] }
       end
 
       def processed_asker(api_asker)
