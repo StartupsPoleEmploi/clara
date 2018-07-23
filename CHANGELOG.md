@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.6.0 (23/07/2018)
+-[#834][FEATURE] API : erreurs fonctionnelles.
+
+
 ## 11.5.5 (23/07/2018)
 -[#842b][BUG] Retablir tracking filtre 2
 

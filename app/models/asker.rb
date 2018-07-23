@@ -4,6 +4,7 @@ require "base64"
 
 class Asker < ActiveType::Object
 
+
   attribute :v_handicap,                  :string
   attribute :v_spectacle,                 :string
   attribute :v_diplome,                   :string
@@ -27,5 +28,6 @@ class Asker < ActiveType::Object
   def ==(o)
     self.attributes.symbolize_keys == o.attributes.symbolize_keys 
   end
+
 
 end

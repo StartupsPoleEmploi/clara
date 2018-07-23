@@ -34,7 +34,7 @@ class SerializeResultsService
     calculator = AidCalculationService.get_instance(asker)
     result = {
       asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.all_eligible)
+      aids: whitelist(calculator.every_eligible)
     }
     result.to_json
   end
@@ -43,7 +43,7 @@ class SerializeResultsService
     calculator = AidCalculationService.get_instance(asker)
     result = {
       asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.all_ineligible)
+      aids: whitelist(calculator.every_ineligible)
     }
     result.to_json
   end
@@ -52,7 +52,7 @@ class SerializeResultsService
     calculator = AidCalculationService.get_instance(asker)
     result = {
       asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.all_uncertain)
+      aids: whitelist(calculator.every_uncertain)
     }
     result.to_json
   end
