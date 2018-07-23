@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.5.4 (23/07/2018)
+-[#842][BUG] Retablir tracking filtre
+
+
 ## 11.5.3 (23/07/2018)
 -[#844][BUG] Hotjar conseillers ne s'affiche plus
 
