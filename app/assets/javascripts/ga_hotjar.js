@@ -11,8 +11,6 @@ $(document).on('ready', function () {
     $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
       var current_ip = _.get(data, 'ip');
       var pe_ips = _.split(window.clara.env.ARA_URL_PE, ",");
-      console.log(pe_ips)
-      console.log(current_ip)
       if (_.includes(pe_ips, current_ip)) {
         console.log("Bienvenue chez Pôle Emploi");
         //load hotjar
