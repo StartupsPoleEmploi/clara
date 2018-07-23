@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.5.3 (23/07/2018)
+-[#844][BUG] Hotjar conseillers ne s'affiche plus
+
+
 ## 11.5.2 (17/07/2018)
 -[#840][BUG] Faire apparaitre la rubrique dépliée à la sélection d'un filtre
 
