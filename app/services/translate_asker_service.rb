@@ -3,6 +3,7 @@ class TranslateAskerService
   
 
   def to_french(api_asker)
+    asker = Asker.new
     asker.v_spectacle                 = boolean_to_french(api_asker.v_spectacle)
     asker.v_handicap                  = boolean_to_french(api_asker.v_handicap)
     asker.v_diplome                   = diploma_to_french(api_asker.v_diplome)
