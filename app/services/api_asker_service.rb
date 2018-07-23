@@ -6,7 +6,7 @@ class ApiAskerService
   end
 
   def to_asker
-    asker = Asker.new
+    asker = ApiAsker.new
     asker.v_spectacle                 = @english_asker[:spectacle]
     asker.v_handicap                  = @english_asker[:disabled]
     asker.v_diplome                   = @english_asker[:diploma]

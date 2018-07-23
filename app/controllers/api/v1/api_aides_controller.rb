@@ -20,7 +20,12 @@ module Api
       # /api/v1/aids/eligible(.:format)
       def eligible
         track_call("/api/v1/aids/eligible", current_user.email)
-        render json: eligible_aids_for(processed_asker)        
+        actual_asker = ApiAskerService.new(english_asker_params).to_asker
+        if actual_asker.valid?
+           render json: eligible_aids_for(processed_asker) 
+        else
+           render json: actual_asker.errors.to_json, status: 400
+        end
       end
 
       # /api/v1/aids/ineligible(.:format)
