@@ -1,5 +1,7 @@
 # ARA Changelog
 
+## 11.7.0 (24/07/2018)
+-[#837][FEATURE] API : add endpoint
 
 ## 11.7.0 (23/07/2018)
 -[#771][FEATURE] API : filtres
