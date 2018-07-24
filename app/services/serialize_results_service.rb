@@ -33,7 +33,6 @@ class SerializeResultsService
   def api_eligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
       aids: whitelist(calculator.every_eligible)
     }
     result
@@ -42,7 +41,6 @@ class SerializeResultsService
   def api_ineligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
       aids: whitelist(calculator.every_ineligible)
     }
     result
@@ -51,7 +49,6 @@ class SerializeResultsService
   def api_uncertain(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes,
       aids: whitelist(calculator.every_uncertain)
     }
     result
