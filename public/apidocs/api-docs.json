@@ -20,12 +20,53 @@
   "basePath": "/api/v1",
   "paths":
   {
+    "/filters":
+    {
+      "get":
+      {
+        "tags": [
+          "filters"
+        ],
+        "summary": "Get all filters",
+        "description": "",
+        "operationId": "getAllFilters",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+        {
+          "in": "header",
+          "name": "Authorization",
+          "type": "string",
+          "description": "Bearer [your JWT token here]",
+          "required": true
+        }],
+        "responses":
+        {
+          "200":
+          {
+            "description": "Found"
+          },
+          "500":
+          {
+            "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
+          }
+        }
+      }
+    },
     "/aids/detail/{aidSlug}":
     {
       "get":
       {
         "tags": [
-          "aid"
+          "aids"
         ],
         "summary": "Get Detail of an Aid",
         "description": "",
@@ -77,7 +118,7 @@
       "get":
       {
         "tags": [
-          "aid"
+          "aids"
         ],
         "summary": "List all eligible aids",
         "description": "",
@@ -189,7 +230,7 @@
       "get":
       {
         "tags": [
-          "aid"
+          "aids"
         ],
         "summary": "List all ineligible aids",
         "description": "",
@@ -301,7 +342,7 @@
       "get":
       {
         "tags": [
-          "aid"
+          "aids"
         ],
         "summary": "List all uncertain aids",
         "description": "",
