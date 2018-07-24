@@ -19,15 +19,22 @@ class TranslateAskerService
   
   def from_french(api_asker)
     res = {}
-    res[:spectacle]           = boolean_from_french(api_asker.v_spectacle)
-    res[:disabled]            = boolean_from_french(api_asker.v_handicap)
-    res[:zrr]                 = api_asker.v_zrr
+    res[:spectacle]                = boolean_from_french(api_asker.v_spectacle)
+    res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
+    res[:zrr]                      = api_asker.v_zrr
+    res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
+    res[:age]                      = integer_from_french(api_asker.v_age)
+    res[:location_citycode]        = integer_from_french(api_asker.v_location_citycode)
     res
   end
   
   def integer_to_french(the_int)
     return unless the_int != nil
     return the_int.to_s
+  end
+
+  def integer_from_french(the_int)
+    integer_to_french(the_int)
   end
 
   def diploma_to_french(diploma)
