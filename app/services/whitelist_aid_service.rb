@@ -5,6 +5,12 @@ class WhitelistAidService
     wanted_keys = %w[name what slug short_description how_much additionnal_conditions how_and_when limitations archived_at]
     return aid.attributes.select { |key, _| wanted_keys.include? key }
   end
+
+  def for_a_filter(filter_hash)
+    return {} unless filter_hash.is_a?(Hash)
+    wanted_keys = %w[name description]
+    return filter_hash.select { |key, _| wanted_keys.include? key }
+  end
   
   def for_aid_in_list(aid_hash)
     return {} unless aid_hash.is_a?(Hash)

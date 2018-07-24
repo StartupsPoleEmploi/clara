@@ -6,6 +6,13 @@ module Api
 
       before_action :authenticate_user
 
+      # /api/v1/filters(.:format)
+      def filters
+        track_call("/api/v1/aids/filters", current_user.email)
+        whitelisted_filters = whitelist_filters(ActivatedModelsService.get_instance.filters)
+        render json: {filters: whitelisted_filters}.to_json
+      end
+
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
@@ -67,6 +74,11 @@ module Api
 
       def whitelist_one_aid_attr(aid)
         WhitelistAidService.new.for_a_detailed_aid(aid)
+      end
+
+      def whitelist_filters(filters)
+        return [] unless filters.is_a?(Array) && !filters.empty?
+        filters.map { |filter| WhitelistAidService.new.for_a_filter(filter) }
       end
 
       def processed_errors(errors)
