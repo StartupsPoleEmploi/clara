@@ -20,6 +20,9 @@ class RehydrateAddressService
     return asker unless asker.is_a?(Asker) && asker.v_location_citycode != nil
 
     asker.v_zrr = ZrrService.get_instance.isZRR(asker.v_location_citycode) 
+    p '- - - - - - - - - - - - - - asker- - - - - - - - - - - - - - - -' 
+    pp asker
+    p ''
 
     # zipcode_and_cityname = BanService.get_instance.get_zipcode_and_cityname(asker.v_location_citycode)
 

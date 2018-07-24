@@ -29,9 +29,10 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         if api_asker.valid?
-          render {
-            asker: not_nullify(reverse_translation_of(api_asker))
-            aids: not_nullify(eligible_aids_for(processed_asker(api_asker)))
+          asker = processed_asker(api_asker)
+          render json: {
+            asker: not_nullify(reverse_translation_of(asker)),
+            aids: not_nullify(eligible_aids_for(asker))
           }.to_json
         else
            render json: processed_errors(api_asker.errors).to_json, status: 400
