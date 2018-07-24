@@ -13,7 +13,16 @@ class TranslateAskerService
     asker.v_allocation_value_min = integer_to_french(api_asker.v_allocation_value_min)
     asker.v_age                  = integer_to_french(api_asker.v_age)
     asker.v_location_citycode    = integer_to_french(api_asker.v_location_citycode)
+    asker.v_zrr                  = api_asker.v_zrr
     asker
+  end
+  
+  def from_french(api_asker)
+    res = {}
+    res[:spectacle]           = boolean_from_french(api_asker.v_spectacle)
+    res[:disabled]            = boolean_from_french(api_asker.v_handicap)
+    res[:zrr]                 = api_asker.v_zrr
+    res
   end
   
   def integer_to_french(the_int)
@@ -28,8 +37,18 @@ class TranslateAskerService
 
   def boolean_to_french(other)
     return unless other != nil
-    {true: "oui", false: "non"}[other.to_s.to_sym]
+    boolean_hash[other.to_s.to_sym]
   end
+
+  def boolean_from_french(other)
+    return unless other != nil
+    boolean_hash.invert[other.to_s].to_s
+  end
+
+  def boolean_hash
+    {true: "oui", false: "non"}
+  end
+
 
   def category_to_french(category)
     return unless category != nil

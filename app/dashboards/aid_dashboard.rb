@@ -8,6 +8,7 @@ class AidDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    name: Field::String,
     ordre_affichage: Field::Number,
     last_update: Field::String,
     archived_at: Field::DateTime,
@@ -16,7 +17,6 @@ class AidDashboard < Administrate::BaseDashboard
     contract_type: Field::BelongsTo,
     filters: Field::HasMany,
     id: Field::Number,
-    name: Field::String,
     short_description: Field::String,
     what: Field::Ckeditor,
     how_much: Field::Ckeditor, 
@@ -34,19 +34,19 @@ class AidDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :name,
     :id,
     :ordre_affichage,
     :last_update,
     :contract_type,
-    :name,
     :short_description,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
+    :id,
     :filters,
     :ordre_affichage,
     :last_update,

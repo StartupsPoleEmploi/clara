@@ -73,7 +73,7 @@ module Api
       private
 
       def reverse_translation_of(api_asker)
-        api_asker
+        TranslateAskerService.new.from_french(api_asker) 
       end
 
       def not_nullify(hash_or_array)
