@@ -85,8 +85,7 @@ module Api
       # /api/v1/aids/ping(.:format)
       def ping
         track_call("/api/v1/ping", current_user.email)
-        api_asker = ApiAskerService.new(english_asker_params).to_asker
-        render json: ping_for(processed_asker(api_asker))
+        render json: {status: "ok"}.to_json, status: 200
       end
 
       def slug_param
