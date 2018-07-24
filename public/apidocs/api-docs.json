@@ -199,13 +199,6 @@
           "type": "string",
           "description": "Address : INSEE code of city",
           "required": false
-        },
-        {
-          "in": "query",
-          "name": "debug",
-          "type": "string",
-          "description": "unused",
-          "required": false
         }
       ],
         "responses":
