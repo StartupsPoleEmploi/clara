@@ -249,6 +249,12 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
+  describe 'ping' do 
+    it 'With code 200' do 
+      expect(response_returned).to have_http_status(200)
+    end
+  end
+
   def _stub_qpv_with_INSIDE_QPV
     qpv_layer = instance_double("QpvService")
     allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
