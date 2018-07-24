@@ -24,6 +24,7 @@ class TranslateAskerService
     res = {}
     res[:spectacle]                = boolean_from_french(api_asker.v_spectacle)
     res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
+    res[:diploma]                  = diploma_from_french(api_asker.v_diplome)
     res[:category]                 = category_from_french(api_asker.v_category)
     res[:zrr]                      = api_asker.v_zrr
     res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
@@ -43,7 +44,16 @@ class TranslateAskerService
 
   def diploma_to_french(diploma)
     return unless diploma != nil
-    {level_1: "niveau_1", level_2: "niveau_2", level_3: "niveau_3", level_4: "niveau_4", level_5: "niveau_5", level_below_5: "niveau_infra_5"}[diploma.to_s.to_sym]
+    diploma_hash[diploma.to_s.to_sym]
+  end
+
+  def diploma_from_french(diploma)
+    return unless diploma != nil
+    diploma_hash.invert[diploma.to_s].to_s
+  end
+
+  def diploma_hash
+    {level_1: "niveau_1", level_2: "niveau_2", level_3: "niveau_3", level_4: "niveau_4", level_5: "niveau_5", level_below_5: "niveau_infra_5"}
   end
 
   def boolean_to_french(other)
