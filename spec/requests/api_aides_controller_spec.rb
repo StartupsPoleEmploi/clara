@@ -250,8 +250,11 @@ describe Api::V1::ApiAidesController, type: :request do
   end
 
   describe 'ping' do 
+    before do
+      get '/api/v1/ping', { headers: authenticated_header }
+    end
     it 'With code 200' do 
-      expect(response_returned).to have_http_status(200)
+        expect(response_returned).to have_http_status(200)
     end
   end
 
