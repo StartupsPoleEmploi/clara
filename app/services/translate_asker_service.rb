@@ -23,7 +23,9 @@ class TranslateAskerService
     res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
     res[:diploma]                  = diploma_from_french(api_asker.v_diplome)
     res[:category]                 = category_from_french(api_asker.v_category)
+    res[:inscription_period]       = inscription_period_from_french(api_asker.v_duree_d_inscription)
     res[:zrr]                      = api_asker.v_zrr
+    res[:allocation_type]          = allocation_type_from_french(api_asker.v_allocation_type)
     res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
     res[:age]                      = integer_from_french(api_asker.v_age)
     res[:location_citycode]        = integer_from_french(api_asker.v_location_citycode)
@@ -34,7 +36,6 @@ class TranslateAskerService
     return unless the_int != nil
     return the_int.to_s
   end
-
   def integer_from_french(the_int)
     integer_to_french(the_int)
   end
@@ -43,12 +44,10 @@ class TranslateAskerService
     return unless diploma != nil
     diploma_hash[diploma.to_s.to_sym]
   end
-
   def diploma_from_french(diploma)
     return unless diploma != nil
     diploma_hash.invert[diploma.to_s].to_s
   end
-
   def diploma_hash
     {level_1: "niveau_1", level_2: "niveau_2", level_3: "niveau_3", level_4: "niveau_4", level_5: "niveau_5", level_below_5: "niveau_infra_5"}
   end
@@ -57,12 +56,10 @@ class TranslateAskerService
     return unless other != nil
     boolean_hash[other.to_s.to_sym]
   end
-
   def boolean_from_french(other)
     return unless other != nil
     boolean_hash.invert[other.to_s].to_s
   end
-
   def boolean_hash
     {true: "oui", false: "non"}
   end
@@ -72,23 +69,36 @@ class TranslateAskerService
     return unless category != nil
     category_hash[category.to_s.to_sym]
   end
-
   def category_from_french(category)
     return unless category != nil
     category_hash.invert[category.to_s].to_s
   end
-
   def category_hash
     {categories_12345: "cat_12345", other_categories: "autres_cat"}
   end
 
   def inscription_period_to_french(period)
     return unless period != nil
-    {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registered: "non_inscrit"}[period.to_s.to_sym]
+    inscription_hash[period.to_s.to_sym]
+  end
+  def inscription_period_from_french(period)
+    return unless period != nil
+    inscription_hash.invert[period.to_s].to_s    
+  end
+  def inscription_hash
+    {more_than_a_year: "plus_d_un_an", less_than_a_year: "moins_d_un_an", not_registered: "non_inscrit"}
   end
 
   def allocation_type_to_french(allocation_type)
     return unless allocation_type != nil
+    allocation_hash[allocation_type.to_s.to_sym]
+  end
+  def allocation_type_from_french(allocation_type)
+    return unless allocation_type != nil
+    allocation_hash.invert[allocation_type.to_s].to_s    
+  end
+
+  def allocation_hash
     {
       ARE_ASP: "ARE_ASP", 
       ASS_AER_ATA_APS_ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
@@ -96,7 +106,7 @@ class TranslateAskerService
       RSA: "RSA", 
       AAH: "AAH", 
       none: "pas_indemnise"
-    }[allocation_type.to_s.to_sym]
+    }
   end
 
 end
