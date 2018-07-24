@@ -18,9 +18,6 @@ class TranslateAskerService
   end
   
   def from_french(api_asker)
-    p '- - - - - - - - - - - - - - api_asker- - - - - - - - - - - - - - - -' 
-    pp api_asker
-    p ''
     res = {}
     res[:spectacle]                = boolean_from_french(api_asker.v_spectacle)
     res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
