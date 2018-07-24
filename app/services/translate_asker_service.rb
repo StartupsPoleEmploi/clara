@@ -18,9 +18,13 @@ class TranslateAskerService
   end
   
   def from_french(api_asker)
+    p '- - - - - - - - - - - - - - api_asker- - - - - - - - - - - - - - - -' 
+    pp api_asker
+    p ''
     res = {}
     res[:spectacle]                = boolean_from_french(api_asker.v_spectacle)
     res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
+    res[:category]                 = category_from_french(api_asker.v_category)
     res[:zrr]                      = api_asker.v_zrr
     res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
     res[:age]                      = integer_from_french(api_asker.v_age)
@@ -59,7 +63,16 @@ class TranslateAskerService
 
   def category_to_french(category)
     return unless category != nil
-    {categories_12345: "cat_12345", other_categories: "autres_cat"}[category.to_s.to_sym]
+    category_hash[category.to_s.to_sym]
+  end
+
+  def category_from_french(category)
+    return unless category != nil
+    category_hash.invert[category.to_s].to_s
+  end
+
+  def category_hash
+    {categories_12345: "cat_12345", other_categories: "autres_cat"}
   end
 
   def inscription_period_to_french(period)

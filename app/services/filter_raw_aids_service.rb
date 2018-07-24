@@ -54,7 +54,4 @@ end
 # ]
 
 # res = FilterRawAidsService.new(uncertains).group_and_order
-# p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-# pp res
-# p ''
 

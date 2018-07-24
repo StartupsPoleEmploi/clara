@@ -30,9 +30,6 @@ class ZrrService
       escaped_address = URI.escape(@base_url + "/#{citycode}") 
       uri = URI.parse(escaped_address)
       response = HttpService.get_instance.get(uri)
-      p '- - - - - - - - - - - - - - response- - - - - - - - - - - - - - - -' 
-      pp response
-      p ''
       if !response.blank? && response.include?("timeout")
         return 'service_indisponible'
       elsif !response.blank? && response.include?("{\"id\":\"#{citycode}\"}")
