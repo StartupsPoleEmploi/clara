@@ -27,13 +27,12 @@ module Api
       # /api/v1/aids/eligible(.:format)
       def eligible
         track_call("/api/v1/aids/eligible", current_user.email)
-        api_asker, debug_mode = ApiAskerService.new(english_asker_params).to_api_asker
+        api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         if api_asker.valid?
-          rendered = {
+          render {
+            asker: not_nullify(reverse_translation_of(api_asker))
             aids: not_nullify(eligible_aids_for(processed_asker(api_asker)))
-          }
-          rendered[:asker] = api_asker if debug_mode
-          render json: rendered.to_json
+          }.to_json
         else
            render json: processed_errors(api_asker.errors).to_json, status: 400
         end
@@ -71,6 +70,10 @@ module Api
       end
 
       private
+
+      def reverse_translation_of(api_asker)
+        api_asker
+      end
 
       def not_nullify(hash_or_array)
         HashService.new.recursive_compact(hash_or_array)
