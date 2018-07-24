@@ -27,7 +27,7 @@ module Api
       # /api/v1/aids/eligible(.:format)
       def eligible
         track_call("/api/v1/aids/eligible", current_user.email)
-        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         if api_asker.valid?
            render json: jsonify(not_nullify(eligible_aids_for(processed_asker(api_asker))))
         else
@@ -39,7 +39,7 @@ module Api
       # /api/v1/aids/ineligible(.:format)
       def ineligible
         track_call("/api/v1/aids/ineligible", current_user.email)
-        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         if api_asker.valid?
            render json: jsonify(not_nullify(ineligible_aids_for(processed_asker(api_asker))))
         else
@@ -50,7 +50,7 @@ module Api
       # /api/v1/aids/uncertain(.:format)
       def uncertain
         track_call("/api/v1/aids/uncertain", current_user.email)
-        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         if api_asker.valid?
            render json: jsonify(not_nullify(uncertain_aids_for(processed_asker(api_asker))))
         else
