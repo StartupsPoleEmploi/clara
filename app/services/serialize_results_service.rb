@@ -30,31 +30,31 @@ class SerializeResultsService
     res
   end
 
-  def jsonify_eligible(asker)
+  def api_eligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
+      asker: asker.attributes,
       aids: whitelist(calculator.every_eligible)
     }
-    result.to_json
+    result
   end
 
-  def jsonify_ineligible(asker)
+  def api_ineligible(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
+      asker: asker.attributes,
       aids: whitelist(calculator.every_ineligible)
     }
-    result.to_json
+    result
   end
 
-  def jsonify_uncertain(asker)
+  def api_uncertain(asker)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
+      asker: asker.attributes,
       aids: whitelist(calculator.every_uncertain)
     }
-    result.to_json
+    result
   end
 
 private

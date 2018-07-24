@@ -29,7 +29,7 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_asker
         if api_asker.valid?
-           render json: eligible_aids_for(processed_asker(api_asker)) 
+           render json: jsonify(not_nullify(eligible_aids_for(processed_asker(api_asker))))
         else
            render json: processed_errors(api_asker.errors).to_json, status: 400
         end
@@ -41,7 +41,7 @@ module Api
         track_call("/api/v1/aids/ineligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_asker
         if api_asker.valid?
-           render json: ineligible_aids_for(processed_asker(api_asker)) 
+           render json: jsonify(not_nullify(ineligible_aids_for(processed_asker(api_asker))))
         else
            render json: processed_errors(api_asker.errors).to_json, status: 400
         end       
@@ -52,7 +52,7 @@ module Api
         track_call("/api/v1/aids/uncertain", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_asker
         if api_asker.valid?
-           render json: uncertain_aids_for(processed_asker(api_asker)) 
+           render json: jsonify(not_nullify(uncertain_aids_for(processed_asker(api_asker))))
         else
            render json: processed_errors(api_asker.errors).to_json, status: 400
         end       
@@ -67,6 +67,14 @@ module Api
       end
 
       private
+
+      def not_nullify(hash_or_array)
+        HashService.new.recursive_compact(hash_or_array)
+      end
+
+      def jsonify(hash_or_array)
+        hash_or_array.to_json
+      end
 
       def track_call(endpoint, who)
         TrackCallService.get_instance.for_endpoint(endpoint, who)
@@ -92,15 +100,15 @@ module Api
       end
 
       def eligible_aids_for(asker)
-        SerializeResultsService.get_instance.jsonify_eligible(asker)
+        SerializeResultsService.get_instance.api_eligible(asker)
       end
 
       def ineligible_aids_for(asker)
-        SerializeResultsService.get_instance.jsonify_ineligible(asker)
+        SerializeResultsService.get_instance.api_ineligible(asker)
       end
 
       def uncertain_aids_for(asker)
-        SerializeResultsService.get_instance.jsonify_uncertain(asker)
+        SerializeResultsService.get_instance.api_uncertain(asker)
       end
 
     end

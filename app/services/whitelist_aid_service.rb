@@ -13,8 +13,14 @@ class WhitelistAidService
   end
   
   def for_aid_in_list(aid_hash)
+    a = ActivatedModelsService.get_instance
+    p '- - - - - - - - - - - - - - aid_hash- - - - - - - - - - - - - - - -' 
+    pp aid_hash
+    p ''
     return {} unless aid_hash.is_a?(Hash)
-    wanted_keys = %w[name slug short_description contract_type_business_id contract_type_description]
+    aid_hash["contract_type"] = a.contract_types.find{|c| c["id"] == aid_hash["contract_type_id"] }["slug"] if aid_hash["contract_type_id"].is_a?(Integer) 
+    aid_hash["filters"].map!{|f| a.filters.find{|c| c["id"] == f["id"]}["name"]}
+    wanted_keys = %w[name slug short_description contract_type filters]
     return aid_hash.select { |key, _| wanted_keys.include? key }
   end
   
