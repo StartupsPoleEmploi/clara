@@ -6,6 +6,12 @@ module Api
 
       before_action :authenticate_user
 
+      # /api/v1/aids/ping(.:format)
+      def ping
+        track_call("/api/v1/ping", current_user.email)
+        render json: {status: "ok"}.to_json, status: 200
+      end
+
       # /api/v1/filters(.:format)
       def filters
         track_call("/api/v1/aids/filters", current_user.email)
@@ -82,11 +88,7 @@ module Api
         end      
       end
 
-      # /api/v1/aids/ping(.:format)
-      def ping
-        track_call("/api/v1/ping", current_user.email)
-        render json: {status: "ok"}.to_json, status: 200
-      end
+
 
       def slug_param
         (params.permit(:aid_slug).to_h)[:aid_slug]
