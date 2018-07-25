@@ -14,7 +14,10 @@ module Admin
     # def find_resource(param)
     #   Variable.find_by!(slug: param)
     # end
-
+    def find_resource(param)
+      result = Filter.find_by(slug: param)
+      result.blank? ? Filter.find_by(id: param) : result
+    end
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
     # disable 'edit' and 'destroy' links

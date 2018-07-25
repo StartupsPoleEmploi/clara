@@ -186,11 +186,15 @@ $(document).on('turbolinks:load', function () {
       }
       else if (action.type === 'OPEN_CONTRACT') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = false;
+        // allow no-filter
+        var found = _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name});
+        found.is_collapsed = false;
       }
       else if (action.type === 'CLOSE_CONTRACT') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-        _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name}).is_collapsed = true;
+        // allow no-filter
+        var found = _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name});
+        found.is_collapsed = true;
       }
       else if (action.type === 'FOLD_ELIGY') {
         var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains

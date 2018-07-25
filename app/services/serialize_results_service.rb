@@ -30,36 +30,47 @@ class SerializeResultsService
     res
   end
 
-  def jsonify_eligible(asker)
+  def api_eligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.every_eligible)
+      aids: whitelist(filter(calculator.every_eligible, filters))
     }
-    result.to_json
+    result
   end
 
-  def jsonify_ineligible(asker)
+  def api_ineligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.every_ineligible)
+      aids: whitelist(filter(calculator.every_ineligible, filters))
     }
-    result.to_json
+    result
   end
 
-  def jsonify_uncertain(asker)
+  def api_uncertain(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      asker: asker.attributes.delete_if { |k, v| v.nil? },
-      aids: whitelist(calculator.every_uncertain)
+      aids: whitelist(filter(calculator.every_uncertain, filters))
     }
-    result.to_json
+    result
   end
 
 private
   def whitelist(aids)
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
+  end
+
+  def filter(elies, filters)
+    return elies unless filters.is_a?(String) && !filters.empty?
+    a = ActivatedModelsService.get_instance
+    filters_array = filters.split(",")
+    elies.select do |ely| 
+      boolean_result = !ely["filters"].empty?
+      current_filter_array = ely["filters"].map do |ely_filter|
+        a.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+      end
+      intersection_array = current_filter_array & filters_array
+      !intersection_array.empty?
+    end
   end
 
 end

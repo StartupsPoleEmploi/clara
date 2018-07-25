@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.7.0 (23/07/2018)
+-[#771][FEATURE] API : filtres
+
+
 ## 11.6.0 (23/07/2018)
 -[#834][FEATURE] API : erreurs fonctionnelles.
 

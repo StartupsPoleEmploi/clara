@@ -1,6 +1,3 @@
-require "base64"
-
-
 # Validation of Asker differs when it is generated from API.
 # However, the Asker remains the same.
 # This is why a dedicated class is created for API validation.

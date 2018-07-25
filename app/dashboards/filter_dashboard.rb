@@ -10,6 +10,7 @@ class FilterDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     name: Field::String,
+    slug: Field::String,
     description: Field::String,
     aids: Field::HasMany,
     created_at: Field::DateTime,
@@ -25,6 +26,7 @@ class FilterDashboard < Administrate::BaseDashboard
     :id,
     # :aids,
     :name,
+    :slug,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,6 +35,7 @@ class FilterDashboard < Administrate::BaseDashboard
     :id,
     :aids,
     :name,
+    :slug,
     :description,
   ].freeze
 
@@ -41,6 +44,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :slug,
     :aids,
     :description,
   ].freeze

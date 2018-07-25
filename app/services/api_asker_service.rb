@@ -5,7 +5,7 @@ class ApiAskerService
     @english_asker = english_asker_attr.is_a?(Hash) ? english_asker_attr.symbolize_keys : {}
   end
 
-  def to_asker
+  def to_api_asker
     asker = ApiAsker.new
     asker.v_spectacle                 = @english_asker[:spectacle]
     asker.v_handicap                  = @english_asker[:disabled]
