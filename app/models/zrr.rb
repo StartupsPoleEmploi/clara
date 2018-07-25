@@ -1,0 +1,3 @@
+class Zrr < ApplicationRecord
+
+end

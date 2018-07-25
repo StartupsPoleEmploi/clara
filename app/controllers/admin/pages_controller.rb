@@ -19,6 +19,20 @@ module Admin
     def cache
     end
 
+    def zrr
+    end
+
+    def load_zrr
+      Zrr.create unless Zrr.first
+      z = Zrr.first
+      z.value = _get_csv_data
+      z.save
+      render json: {
+        status: "ok"
+      }
+    end
+
+
     def expire_welcome_page
       expire_page controller: "/welcome", action: "index"
     end
