@@ -82,6 +82,13 @@ module Api
         end      
       end
 
+      # /api/v1/aids/ping(.:format)
+      def ping
+        track_call("/api/v1/ping", current_user.email)
+        api_asker = ApiAskerService.new(english_asker_params).to_asker
+        render json: ping_for(processed_asker(api_asker))
+      end
+
       def slug_param
         (params.permit(:aid_slug).to_h)[:aid_slug]
       end
@@ -143,6 +150,9 @@ module Api
         SerializeResultsService.get_instance.api_uncertain(asker, filters)
       end
 
+      def ping_for(asker)
+        SerializeResultsService.get_instance.jsonify_ping(asker)
+      end
     end
   end
 end

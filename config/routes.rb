@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
       get 'aids/uncertain'  => 'api_aides#uncertain'
+      get 'ping' => 'api_aides#ping'
     end
   end
 

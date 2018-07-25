@@ -20,6 +20,47 @@
   "basePath": "/api/v1",
   "paths":
   {
+   "/ping":
+    {
+      "get":
+      {
+        "tags": [
+          "ping"
+        ],
+        "summary": "Ping the API, only returns a {status:'ok'} when called",
+        "description": "",
+        "operationId": "getPing",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+        {
+          "in": "header",
+          "name": "Authorization",
+          "type": "string",
+          "description": "Bearer [your JWT token here]",
+          "required": true
+        }],
+        "responses":
+        {
+          "200":
+          {
+            "description": "Found"
+          },
+          "500":
+          {
+            "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
+          }
+        }
+      }
+    },
     "/filters":
     {
       "get":
