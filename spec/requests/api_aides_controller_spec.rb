@@ -124,7 +124,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'ping' do 
+  describe 'Ping' do 
     response_returned = nil
     before do
       get '/api/v1/ping', { headers: authenticated_header }
