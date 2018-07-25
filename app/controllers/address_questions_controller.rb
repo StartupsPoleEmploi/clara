@@ -16,7 +16,6 @@ class AddressQuestionsController < ApplicationController
       if @address.valid?
         if @address.label.present?
           AddressService.new.upload(@address, @asker)
-          QpvService.get_instance.setDetailedQPV(@asker.v_location_street_number, @asker.v_location_route, @asker.v_location_zipcode, @asker.v_location_city)
         else
           AddressService.new.reset(@asker)
         end

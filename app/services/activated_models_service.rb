@@ -31,7 +31,7 @@ class ActivatedModelsService
       activated_models["all_contracts"]      = _clean_all_contracts(JSON.parse(all_contracts_json))
       activated_models["all_rules"]          = _clean_all_rules(JSON.parse(all_rules_json))
       activated_models["all_variables"]      = _clean_all_variables(JSON.parse(all_variables_json))
-      activated_models["all_zrrs"]           = Zrr.first.value
+      activated_models["all_zrrs"]           = Zrr.first ? Zrr.first.value : ""
       activated_models_json                  = activated_models.to_json
       CacheService.get_instance.write("activated_models_json", activated_models_json)
     ensure
