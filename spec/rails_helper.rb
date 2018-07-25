@@ -72,12 +72,10 @@ def qpv_and_zrr_both_ok
   allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
   allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
   QpvService.set_instance(qpv_layer)
-  ZrrService.set_instance(zrr_layer)
 end
 
 def enable_qpv_zrr_service
   QpvService.set_instance(nil)
-  ZrrService.set_instance(nil)
 end
 
 

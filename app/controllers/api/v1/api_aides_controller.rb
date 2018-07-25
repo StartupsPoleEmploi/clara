@@ -134,7 +134,7 @@ module Api
 
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
-        RehydrateAddressService.get_instance.from_citycode!(asker)
+        RehydrateAddressService.new.from_citycode!(asker)
       end
 
       def eligible_aids_for(asker, filters)

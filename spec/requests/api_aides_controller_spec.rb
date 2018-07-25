@@ -156,12 +156,6 @@ describe Api::V1::ApiAidesController, type: :request do
     QpvService.set_instance(qpv_layer)
   end
 
-  def _stub_zrr_with_INSIDE_ZRR    
-    zrr_layer = instance_double("ZrrService")
-    allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
-    ZrrService.set_instance(zrr_layer)
-  end
-
   def _stub_ban_with_correct_values
     ban_layer = instance_double("BanService")
     allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
@@ -170,10 +164,6 @@ describe Api::V1::ApiAidesController, type: :request do
 
   def _unstub_qpv
     QpvService.set_instance(nil)
-  end
-
-  def _unstub_zrr
-    ZrrService.set_instance(nil)
   end
 
   def _unstub_ban
