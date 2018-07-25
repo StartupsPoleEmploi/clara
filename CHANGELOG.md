@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 11.7.0 (23/07/2018)
+## 11.8.0 (25/07/2018)
+-[#837][FEATURE] API : Ajouter un ping en endpoint
+
+
+## 11.7.0 (24/07/2018)
 -[#771][FEATURE] API : filtres
 
 

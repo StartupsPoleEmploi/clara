@@ -87,9 +87,9 @@ describe ActivatedModelsService do
     "last_update"=>nil,
     "filters"=>[{"id"=>1}, {"id"=>2}]}],
 "all_filters"=>
-  [{"id"=>1, "name"=>"used_filter_1", "description"=>"a1"},
-   {"id"=>2, "name"=>"used_filter_2", "description"=>"a2"},
-   {"id"=>3, "name"=>"unused_filter_3", "description"=>"a3"}],
+  [{"id"=>1, "name"=>"used_filter_1", "slug"=>"used_filter_1", "description"=>"a1"},
+   {"id"=>2, "name"=>"used_filter_2", "slug"=>"used_filter_2", "description"=>"a2"},
+   {"id"=>3, "name"=>"unused_filter_3", "slug"=>"unused_filter_3", "description"=>"a3"}],
 "all_contracts"=>
   [{"id"=>1,
     "name"=>"c_contract_type_used",
