@@ -28,15 +28,15 @@ module Api
       def eligible
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
-        if api_asker.valid?
-          asker = processed_asker(api_asker)
-          render json: {
-            asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(eligible_aids_for(asker))
-          }.to_json
-        else
-           render json: processed_errors(api_asker.errors).to_json, status: 400
-        end
+        # errors first
+        render json: filter_params_error.to_json, status: 400 if filter_params_error
+        render json: processed_errors(api_asker.errors).to_json, status: 400 if !api_asker.valid?
+        # correct situation then
+        asker = processed_asker(api_asker)
+        render json: {
+          asker: not_nullify(reverse_translation_of(asker)),
+          aids: not_nullify(eligible_aids_for(asker))
+        }.to_json
       end
 
 
@@ -71,6 +71,10 @@ module Api
       end
 
       private
+
+      def filter_params_error
+        
+      end
 
       def reverse_translation_of(api_asker)
         TranslateAskerService.new.from_french(api_asker) 

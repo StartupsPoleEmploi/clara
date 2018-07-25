@@ -199,6 +199,13 @@
           "type": "string",
           "description": "Address : INSEE code of city",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "filters",
+          "type": "string",
+          "description": "garder-enfant,se-deplacer",
+          "required": false
         }
       ],
         "responses":

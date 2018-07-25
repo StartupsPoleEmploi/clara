@@ -15,12 +15,9 @@ class RehydrateAddressService
     @@the_double.nil? ? RehydrateAddressService.new : @@the_double
   end
 
-
   def from_citycode!(asker)
     return asker unless asker.is_a?(Asker) && asker.v_location_citycode != nil
-
-    asker.v_zrr = ZrrService.get_instance.isZRR(asker.v_location_citycode) 
-
+    asker.v_zrr = ZrrService.get_instance.isZRR(asker.v_location_citycode)
     asker
   end
 
