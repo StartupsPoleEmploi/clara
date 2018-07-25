@@ -149,9 +149,6 @@ module Api
         SerializeResultsService.get_instance.api_uncertain(asker, filters)
       end
 
-      def ping_for(asker)
-        SerializeResultsService.get_instance.jsonify_ping(asker)
-      end
     end
   end
 end

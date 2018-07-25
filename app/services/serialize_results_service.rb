@@ -54,13 +54,6 @@ class SerializeResultsService
     result
   end
 
-  def jsonify_ping(asker)
-    result = {
-      asker: "it is working"
-    }
-    result.to_json
-  end
-
 private
   def whitelist(aids)
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
