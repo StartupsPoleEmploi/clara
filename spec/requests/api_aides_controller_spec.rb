@@ -251,12 +251,10 @@ describe Api::V1::ApiAidesController, type: :request do
 
   describe 'ping' do 
     response_returned = nil
-    json_returned = nil
     before do
       track_layer = spy('HttpService')
       TrackCallService.set_instance(track_layer)
       get '/api/v1/ping', { headers: authenticated_header }
-      json_returned = JSON.parse(response.body)
       response_returned = response
     end
     after do
@@ -264,9 +262,6 @@ describe Api::V1::ApiAidesController, type: :request do
     end
     it 'With code 200' do 
       expect(response_returned).to have_http_status(200)
-    end
-    it 'With code 500' do
-      expect(response_returned).to have_http_status()
     end
   end
 
