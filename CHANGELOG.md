@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.0 (25/07/2018)
+-[#836][FEATURE] API : Annoncer une charge max
+
+
 ## 11.8.0 (25/07/2018)
 -[#837][FEATURE] API : Ajouter un ping en endpoint
 
