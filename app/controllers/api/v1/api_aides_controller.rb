@@ -48,22 +48,38 @@ module Api
       def ineligible
         track_call("/api/v1/aids/ineligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
-        if api_asker.valid?
-           render json: jsonify(not_nullify(ineligible_aids_for(processed_asker(api_asker))))
+        api_filters = ApiFilters.new(filters: filters_param)
+        errors_hash = {}
+        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
+        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        if !errors_hash.empty?
+          render json: errors_hash.to_json, status: 400
         else
-           render json: process_asker_errors(api_asker.errors).to_json, status: 400
-        end       
+          asker = processed_asker(api_asker)
+          render json: {
+            asker: not_nullify(reverse_translation_of(asker)),
+            aids: not_nullify(ineligible_aids_for(asker, api_filters.filters))
+          }.to_json     
+        end
       end
 
       # /api/v1/aids/uncertain(.:format)
       def uncertain
         track_call("/api/v1/aids/uncertain", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
-        if api_asker.valid?
-           render json: jsonify(not_nullify(uncertain_aids_for(processed_asker(api_asker))))
+        api_filters = ApiFilters.new(filters: filters_param)
+        errors_hash = {}
+        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
+        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        if !errors_hash.empty?
+          render json: errors_hash.to_json, status: 400
         else
-           render json: process_asker_errors(api_asker.errors).to_json, status: 400
-        end       
+          asker = processed_asker(api_asker)
+          render json: {
+            asker: not_nullify(reverse_translation_of(asker)),
+            aids: not_nullify(uncertain_aids_for(asker, api_filters.filters))
+          }.to_json     
+        end      
       end
 
       def slug_param
