@@ -1,5 +1,7 @@
 # ARA Changelog
 
+## 11.7.1 (25/07/2018)
+-[#764][BUG] Grossir l'axe Y dans /stats partie GA
 
 ## 11.6.0 (23/07/2018)
 -[#834][FEATURE] API : erreurs fonctionnelles.
