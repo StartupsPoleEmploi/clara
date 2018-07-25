@@ -135,12 +135,12 @@ module Api
         SerializeResultsService.get_instance.api_eligible(asker, filters)
       end
 
-      def ineligible_aids_for(asker)
-        SerializeResultsService.get_instance.api_ineligible(asker)
+      def ineligible_aids_for(asker, filters)
+        SerializeResultsService.get_instance.api_ineligible(asker, filters)
       end
 
-      def uncertain_aids_for(asker)
-        SerializeResultsService.get_instance.api_uncertain(asker)
+      def uncertain_aids_for(asker, filters)
+        SerializeResultsService.get_instance.api_uncertain(asker, filters)
       end
 
     end

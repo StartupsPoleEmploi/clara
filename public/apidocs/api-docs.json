@@ -319,6 +319,13 @@
           "type": "string",
           "description": "Address : INSEE code of city",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "filters",
+          "type": "string",
+          "description": "comma-separated values of filter's slug",
+          "required": false
         }],
         "responses":
         {
@@ -430,6 +437,13 @@
           "name": "location_citycode",
           "type": "string",
           "description": "Address : INSEE code of city",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "filters",
+          "type": "string",
+          "description": "comma-separated values of filter's slug",
           "required": false
         }],
         "responses":
