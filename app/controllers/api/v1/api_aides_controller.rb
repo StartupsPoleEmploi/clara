@@ -138,7 +138,12 @@ module Api
       end
 
       def eligible_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters)
+        local_asker = asker
+        if (params.permit(:random).to_h[:random] == "true")
+          p "---random stuff required---"
+          local_asker = RandomAskerService.new.go
+        end
+        SerializeResultsService.get_instance.api_eligible(local_asker, filters)
       end
 
       def ineligible_aids_for(asker, filters)
