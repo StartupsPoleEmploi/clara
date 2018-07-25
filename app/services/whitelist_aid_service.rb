@@ -8,7 +8,7 @@ class WhitelistAidService
 
   def for_a_filter(filter_hash)
     return {} unless filter_hash.is_a?(Hash)
-    wanted_keys = %w[name description]
+    wanted_keys = %w[name slug description]
     return filter_hash.select { |key, _| wanted_keys.include? key }
   end
   

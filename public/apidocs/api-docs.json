@@ -204,7 +204,7 @@
           "in": "query",
           "name": "filters",
           "type": "string",
-          "description": "garder-enfant,se-deplacer",
+          "description": "comma-separated values of filter's slug",
           "required": false
         }
       ],

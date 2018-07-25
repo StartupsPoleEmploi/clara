@@ -1,5 +1,5 @@
 # Filters that comes from API
-class ApiFilters
+class ApiFilters < ActiveType::Object
 
   attribute :filters, :string
 
@@ -7,8 +7,8 @@ class ApiFilters
   validate :one_of_the_values_must_be_amongst_activated_filters, unless: Proc.new { |a| a.filters.blank? }
 
   def single_value_must_be_amongst_activated_filters
-    if !filters.include?(",") && !has_filter(val)
-      errors.add(:filters, "La valeur doit être le slug d'un filtre actif (voir la liste avec GET /filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule.") unless customer.active?
+    if !filters.include?(",") && !has_filter(filters)
+      errors.add(:filters, "La valeur doit être le slug d'un filtre actif (voir la liste avec GET /filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule.")
     end
   end
 
@@ -16,7 +16,7 @@ class ApiFilters
     if filters.include?(",")
       filters.split(",").each do |e|
         if !has_filter(e)
-          errors.add(:filters, "#{e} n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)") unless customer.active?
+          errors.add(:filters, "#{e} n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)")
         end
       end
     end
@@ -24,7 +24,7 @@ class ApiFilters
 
 
   def has_filter(val)
-    ActivatedModelsService.get_instance.filters.find{|e| e.slug == val}
+    ActivatedModelsService.get_instance.filters.find{|e| e["slug"] == val}
   end
 
 end
