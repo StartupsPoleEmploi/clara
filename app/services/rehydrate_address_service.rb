@@ -17,12 +17,8 @@ class RehydrateAddressService
 
   def from_citycode!(asker)
     return asker unless asker.is_a?(Asker) && asker.v_location_citycode != nil
-    asker.v_zrr = ZrrService.get_instance.isZRR(asker.v_location_citycode)
+    asker.v_zrr = ZrrService.new.zrr?
     asker
   end
 
-  private
-  def qpv_args(asker)
-    [asker.v_location_street_number, asker.v_location_route, asker.v_location_zipcode, asker.v_location_city]
-  end
 end

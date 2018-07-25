@@ -63,7 +63,7 @@ class ActivatedModelsService
     @all_activated_models["all_variables"]
   end
 
-  def is_zrr(val)
+  def zrr?(val)
     str_val = val.to_s
     five_digits_only = /\A\d{5}\z/
     !!str_val.match(five_digits_only) && @all_activated_models["all_zrrs"].include?(str_val)

@@ -13,7 +13,7 @@ class TranslateAskerService
     asker.v_allocation_value_min = integer_to_french(api_asker.v_allocation_value_min)
     asker.v_age                  = integer_to_french(api_asker.v_age)
     asker.v_location_citycode    = integer_to_french(api_asker.v_location_citycode)
-    asker.v_zrr                  = api_asker.v_zrr
+    asker.v_zrr                  = boolean_to_french(api_asker.v_zrr)
     asker
   end
   
@@ -29,6 +29,7 @@ class TranslateAskerService
     res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
     res[:age]                      = integer_from_french(api_asker.v_age)
     res[:location_citycode]        = integer_from_french(api_asker.v_location_citycode)
+    res[:zrr]                      = boolean_from_french(api_asker.v_zrr)
     res
   end
   
