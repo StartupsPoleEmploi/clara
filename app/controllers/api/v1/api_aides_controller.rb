@@ -38,7 +38,7 @@ module Api
           asker = processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(eligible_aids_for(asker))
+            aids: not_nullify(eligible_aids_for(asker, api_filters.filters))
           }.to_json
         end
       end
@@ -115,8 +115,8 @@ module Api
         RehydrateAddressService.get_instance.from_citycode!(asker)
       end
 
-      def eligible_aids_for(asker)
-        SerializeResultsService.get_instance.api_eligible(asker)
+      def eligible_aids_for(asker, filters)
+        SerializeResultsService.get_instance.api_eligible(asker, filters)
       end
 
       def ineligible_aids_for(asker)

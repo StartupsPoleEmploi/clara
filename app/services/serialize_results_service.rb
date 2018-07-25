@@ -30,10 +30,10 @@ class SerializeResultsService
     res
   end
 
-  def api_eligible(asker)
+  def api_eligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
     result = {
-      aids: whitelist(calculator.every_eligible)
+      aids: whitelist(filter(calculator.every_eligible, filters))
     }
     result
   end
@@ -57,6 +57,16 @@ class SerializeResultsService
 private
   def whitelist(aids)
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
+  end
+
+  def filter(ely, filters)
+    p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
+    pp filters
+    p ''
+    p '- - - - - - - - - - - - - - ely- - - - - - - - - - - - - - - -' 
+    pp ely
+    p ''
+    ely
   end
 
 end
