@@ -13,4 +13,15 @@ describe AgeService do
       expect(result.number_of_years).to eq('a_age')
     end
   end
+  describe '.upload' do
+    it 'Should inject an age into asker' do
+    #given
+    #when
+    #then
+    expect(asker.v_age).to eq('age value')
+    end
+  end
+
+
 end
+
