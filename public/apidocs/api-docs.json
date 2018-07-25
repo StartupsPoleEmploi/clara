@@ -27,7 +27,7 @@
         "tags": [
           "ping"
         ],
-        "summary": "Ping the API, only returns a {status:'ok'} when called",
+        "summary": "Ping the API, only returns a {\"status\":\"ok\"} when called",
         "description": "",
         "operationId": "getPing",
         "consumes": [
@@ -50,13 +50,17 @@
           {
             "description": "Found"
           },
-          "500":
+          "401":
           {
-            "description": "Internal server error"
+            "description": "Unauthorized"
           },
           "429":
           {
             "description": "Too many request"
+          },
+          "500":
+          {
+            "description": "Internal server error"
           }
         }
       }
