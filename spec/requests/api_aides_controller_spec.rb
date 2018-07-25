@@ -259,11 +259,14 @@ describe Api::V1::ApiAidesController, type: :request do
       json_returned = JSON.parse(response.body)
       response_returned = response
     end
-    it 'It is tracked' do
-      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/ping", "foo@bar.com")    
+    after do
+      TrackCallService.set_instance(nil)
     end
     it 'With code 200' do 
-        expect(response_returned).to have_http_status(200)
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'With code 500' do
+      expect(response_returned).to have_http_status()
     end
   end
 
