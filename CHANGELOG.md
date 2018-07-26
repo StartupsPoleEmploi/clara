@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.2 (26/07/2018)
+-[#849b][TECH] API : profiling optional
+
+
 ## 11.9.1 (26/07/2018)
 -[#849][TECH] API : profiling
 
