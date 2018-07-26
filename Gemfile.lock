@@ -143,9 +143,6 @@ GEM
       ruby-progressbar (~> 1.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    goldiloader (2.1.1)
-      activerecord (>= 4.2, < 5.3)
-      activesupport (>= 4.2, < 5.3)
     gon (6.2.0)
       actionpack (>= 3.0)
       multi_json
@@ -465,7 +462,6 @@ DEPENDENCIES
   factory_bot_rails (~> 4.0)
   friendly_id (~> 5.1.0)
   fuubar
-  goldiloader
   gon
   google-api-client
   haml (~> 5)
