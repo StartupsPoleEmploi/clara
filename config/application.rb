@@ -2,7 +2,10 @@ require_relative 'boot'
 
 require 'rails/all'
 
-Bundler.require(*Rails.groups)
+groups = {
+  profile: %w(development production)
+}
+Bundler.require(*Rails.groups(groups))
 
 module Mae
   class Application < Rails::Application
