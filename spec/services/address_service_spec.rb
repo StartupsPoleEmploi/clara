@@ -55,7 +55,16 @@ describe AddressService do
   describe '.reset' do
     it 'Should reset the asker' do
       #given
+      asker = Asker.new
+      asker.v_location_label = 'myLabel'
+      asker.v_location_route = 'myRoute'
+      asker.v_location_city = 'myCity'
+      asker.v_location_zipcode = 'myZipCode'
+      asker.v_location_citycode = 'myCityCode'
+      asker.v_location_street_number = 'myStreetNumber'
+      asker.v_location_state = 'myState'
       #when
+      AddressService.new.reset(asker)
       #then
       expect(asker.v_location_label).to eq(nil)
       expect(asker.v_location_route).to eq(nil)
