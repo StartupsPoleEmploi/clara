@@ -51,5 +51,21 @@ describe AddressService do
       expect(address.state).to eq('myState')
     end
   end
+
+  describe '.reset' do
+    it 'Should reset the asker' do
+      #given
+      #when
+      #then
+      expect(asker.v_location_label).to eq(nil)
+      expect(asker.v_location_route).to eq(nil)
+      expect(asker.v_location_city).to eq(nil)
+      expect(asker.v_location_zipcode).to eq(nil)
+      expect(asker.v_location_citycode).to eq(nil)
+      expect(asker.v_location_street_number).to eq(nil)
+      expect(asker.v_location_state).to eq(nil)
+    end
+  end
+
 end
 
