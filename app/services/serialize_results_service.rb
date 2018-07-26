@@ -23,8 +23,8 @@ class SerializeResultsService
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
      flat_all_ineligible: calculator.every_ineligible,
-     flat_all_contract: ActivatedModelsService.get_instance.contract_types,
-     flat_all_filter: ActivatedModelsService.get_instance.filters,
+     flat_all_contract: ActivatedModelsService.instance.contract_types,
+     flat_all_filter: ActivatedModelsService.instance.filters,
      asker: asker.attributes
     }
     res
@@ -61,7 +61,7 @@ private
 
   def filter(elies, filters)
     return elies unless filters.is_a?(String) && !filters.empty?
-    a = ActivatedModelsService.get_instance
+    a = ActivatedModelsService.instance
     filters_array = filters.split(",")
     elies.select do |ely| 
       boolean_result = !ely["filters"].empty?

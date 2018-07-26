@@ -16,8 +16,8 @@ class RuletreeService
   end
 
   def initialize
-    @all_rules = ActivatedModelsService.get_instance.rules
-    @all_variables = ActivatedModelsService.get_instance.variables
+    @all_rules = ActivatedModelsService.instance.rules
+    @all_variables = ActivatedModelsService.instance.variables
   end
 
   def resolve(rule_id, criterion_hash = {}) 

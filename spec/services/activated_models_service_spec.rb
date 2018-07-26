@@ -27,7 +27,7 @@ describe ActivatedModelsService do
     it 'Must return activated aids, all filters, all rules, all contracts' do
       #given
       #when
-      sut = ActivatedModelsService.get_instance.read
+      sut = ActivatedModelsService.instance.read
       modified_sut = change_ids_in_hash(sut)
       #then
       expect(modified_sut).to eq(change_ids_in_hash(realistic_results))
@@ -46,7 +46,7 @@ describe ActivatedModelsService do
     it 'Must return data from cache' do
       #given
       #when
-      sut = ActivatedModelsService.get_instance.read
+      sut = ActivatedModelsService.instance.read
       #then
       expect(sut).to eq(JSON.parse(any_valid_json))      
     end

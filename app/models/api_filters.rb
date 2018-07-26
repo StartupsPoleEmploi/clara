@@ -24,7 +24,7 @@ class ApiFilters < ActiveType::Object
 
 
   def has_filter(val)
-    ActivatedModelsService.get_instance.filters.find{|e| e["slug"] == val}
+    ActivatedModelsService.instance.filters.find{|e| e["slug"] == val}
   end
 
 end

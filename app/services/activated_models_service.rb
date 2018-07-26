@@ -1,19 +1,6 @@
 class ActivatedModelsService
-
-  class << self
-    protected :new
-  end
-
-  @@the_double = nil
-
-  # Allow DI for testing purpose
-  def ActivatedModelsService.set_instance(the_double)
-    @@the_double = the_double
-  end
-
-  def ActivatedModelsService.get_instance
-    @@the_double.nil? ? ActivatedModelsService.new : @@the_double
-  end
+  include Singleton
+  
 
   def initialize
     @all_activated_models = Rails.cache.fetch("activated_models") do
