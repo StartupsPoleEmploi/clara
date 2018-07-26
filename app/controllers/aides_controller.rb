@@ -51,11 +51,6 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_with_qpv_zrr
-    p '- - - - - - - - - - - - - - augment_asker_with_qpv_zrr- - - - - - - - - - - - - - - -' 
-    p ''
-    p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
-    pp @asker
-    p ''
     CalculateAskerService.new(@asker).calculate_zrr_qpv
   end
 
