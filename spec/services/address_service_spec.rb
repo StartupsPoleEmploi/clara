@@ -3,7 +3,7 @@ require 'rails_helper'
 describe AddressService do
 
   describe '.upload' do
-    it 'should inject an address into asker' do
+    it 'Should inject an address into asker' do
       #given
       asker = Asker.new
       address = AddressForm.new
@@ -24,6 +24,21 @@ describe AddressService do
       expect(asker.v_location_citycode).to eq('myCityCode')
       expect(asker.v_location_street_number).to eq('myStreetNumber')
       expect(asker.v_location_state).to eq('myState')
+    end
+  end
+
+  describe '.download' do
+    it 'Should received an address from an asker' do
+      #given
+      #when
+      #then
+      expect(address.label).to eq('myLabel')
+      expect(address.route).to eq('myRoute')
+      expect(address.city).to eq('myCity')
+      expect(address.zipcode).to eq('myZipCode')
+      expect(address.citycode).to eq('myCityCode')
+      expect(address.street_number).to eq('myStreetNumber')
+      expect(address.state).to eq('myState')
     end
   end
 end
