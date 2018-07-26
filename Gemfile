@@ -38,6 +38,7 @@ gem 'pghero', '2.1.1'
 ## Devops
 gem 'newrelic_rpm'
 gem 'sentry-raven'
+gem 'ruby-prof'
 
 
 # Admin

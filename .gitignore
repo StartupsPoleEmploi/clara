@@ -33,6 +33,8 @@ ara
 
 # Ignore page cache
 /public/index.html
+# Ignore profiling
+/public/profile/*
 
 coverage
 

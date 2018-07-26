@@ -363,6 +363,7 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    ruby-prof (0.17.0)
     ruby-progressbar (1.9.0)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
@@ -496,6 +497,7 @@ DEPENDENCIES
   rails-html-sanitizer (>= 1.0.4)
   rb-fsevent
   rspec-rails
+  ruby-prof
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
