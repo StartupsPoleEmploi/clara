@@ -30,7 +30,17 @@ describe AddressService do
   describe '.download' do
     it 'Should received an address from an asker' do
       #given
+      asker = Asker.new
+      address = AddressForm.new
+      asker.v_location_label = 'myLabel'
+      asker.v_location_route = 'myRoute'
+      asker.v_location_city = 'myCity'
+      asker.v_location_zipcode = 'myZipCode'
+      asker.v_location_citycode = 'myCityCode'
+      asker.v_location_street_number = 'myStreetNumber'
+      asker.v_location_state = 'myState'
       #when
+      AddressService.new.download(address, asker)
       #then
       expect(address.label).to eq('myLabel')
       expect(address.route).to eq('myRoute')
