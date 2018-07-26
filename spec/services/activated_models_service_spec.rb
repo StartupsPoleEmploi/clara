@@ -146,6 +146,8 @@ describe ActivatedModelsService do
   "description"=>nil,
   "value_ineligible"=>nil,
   "slave_rules"=>[]}],
+"all_zrrs" => "",
+"all_users" => [],
 "all_variables"=>
   [{"id"=>1, "name"=>"v_age", "variable_type"=>"integer", "description"=>nil},
    {"id"=>2, "name"=>"v_qpv", "variable_type"=>"string", "description"=>nil},

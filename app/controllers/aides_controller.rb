@@ -35,21 +35,8 @@ class AidesController < ApplicationController
   end
 
   def pull_asker_from_query_param
-
-    # @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
-
-    #{}"#<Asker v_age: \"32\", v_allocation_type: \"RPS_RFPA_RFF_pensionretraite\", v_allocation_value_min: \"not_applicable\", v_category: \"autres_cat\", v_diplome: \"niveau_3\", v_duree_d_inscription: \"plus_d_un_an\", v_handicap: \"oui\", v_location_city: \"Berriac\", v_location_citycode: \"11037\", v_location_country: \"France\", v_location_label: \"11000 Berriac\", v_location_route: \"\", v_location_state: \"Occitanie (Languedoc-Roussillon)\", v_location_street_number: \"\", v_location_zipcode: \"11000\", v_qpv: nil, v_spectacle: \"non\", v_zrr: nil>"
-
     if (params[:for_id] == 'random')
-      @asker = Asker.new
-      @asker.v_handicap = ["oui", "non"].sample
-      @asker.v_spectacle = ["oui", "non"].sample
-      @asker.v_age = Array(17..69).map(&:to_s).sample
-      @asker.v_allocation_type = ["ARE_ASP", "ASS_AER_ATA_APS_AS-FNE", "RSA", "RPS_RFPA_RFF_pensionretraite", "AAH", "pas_indemnise"].sample
-      @asker.v_allocation_value_min = Array(1..3000).map(&:to_s).sample
-      @asker.v_diplome = ["niveau_1","niveau_2","niveau_3","niveau_4","niveau_5","niveau_infra_5"].sample
-      @asker.v_category = ["cat_12345","autres_cat"].sample
-      @asker.v_duree_d_inscription = ["plus_d_un_an","moins_d_un_an","non_inscrit"].sample
+      @asker = RandomAskerService.new.go
     else
       @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
     end

@@ -6,6 +6,12 @@ module Api
 
       before_action :authenticate_user
 
+      # /api/v1/aids/ping(.:format)
+      def ping
+        track_call("/api/v1/ping", current_user.email)
+        render json: {status: "ok"}.to_json, status: 200
+      end
+
       # /api/v1/filters(.:format)
       def filters
         track_call("/api/v1/aids/filters", current_user.email)
@@ -82,11 +88,7 @@ module Api
         end      
       end
 
-      # /api/v1/aids/ping(.:format)
-      def ping
-        track_call("/api/v1/ping", current_user.email)
-        render json: {status: "ok"}.to_json, status: 200
-      end
+
 
       def slug_param
         (params.permit(:aid_slug).to_h)[:aid_slug]
@@ -134,11 +136,15 @@ module Api
 
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
-        RehydrateAddressService.get_instance.from_citycode!(asker)
+        RehydrateAddressService.new.from_citycode!(asker)
       end
 
       def eligible_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters)
+        local_asker = asker
+        if (params.permit(:random).to_h[:random] == "true")
+          local_asker = RandomAskerService.new.go
+        end
+        SerializeResultsService.get_instance.api_eligible(local_asker, filters)
       end
 
       def ineligible_aids_for(asker, filters)

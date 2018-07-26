@@ -94,14 +94,7 @@ class ResultSituation < ViewObject
   end
 
   def zrr
-    case @asker[:v_zrr]
-    when 'en_zrr'
-      "oui"
-    when 'hors_zrr'
-      "non"
-    else
-      "indisponible"
-    end
+    @asker[:v_zrr] || "indisponible"
   end  
   
   def age
