@@ -17,19 +17,28 @@ class ActivatedModelsService
 
   def initialize
     @all_activated_models = Rails.cache.fetch("activated_models") do
-      all_activated_aids_json = Aid.activated.to_json(:include => [:filters])
-      all_filters_json = Filter.all.to_json
-      all_contracts_json = ContractType.all.to_json
-      all_variables_json = Variable.all.to_json
-      all_rules_json = Rule.all.to_json(:include => [:slave_rules])
-      all_users_json = User.all.to_json
+      all_activated_aids_json = Aid.activated.to_json(:only => [ :id, :rule_id, :contract_type_id ], :include => {filters: {only:[:id]}})
+        # { only: [:first_name, :last_name, :email]}
+        # Aid.first.to_json(:only => [ :id, :name ], :include => [:filters])
+        # Aid.first.to_json(:only => [ :id, :name ], :include => {:filters, only: [:slug]})
+        # Aid.first.to_json(:only => [ :name ], :include => {filters: {only:[:slug]}})
+
+      all_filters_json = Filter.all.to_json(:only => [ :id ])
+      all_contracts_json = ContractType.all.to_json(:only => [ :id ])
+      all_variables_json = Variable.all.to_json(:only => [ :id, :name, :variable_type, :description ])
+      r_all = JSON.parse(Rule.all.to_json(:only => [ :id, :value_eligible, :operator_type, :composition_type, :variable_id, :value_ineligible ], :include => {slave_rules: {only:[:id]}}))
+      all_rules = r_all.map{|h| HashService.new.recursive_compact(h)}
+      all_users_json = User.all.to_json(:only => [ :email ])
       activated_models = {}
-      activated_models["all_activated_aids"] = _clean_all_activated_aids(Oj.load(all_activated_aids_json))
-      activated_models["all_filters"]        = _clean_all_filters(Oj.load(all_filters_json))
-      activated_models["all_contracts"]      = _clean_all_contracts(Oj.load(all_contracts_json))
-      activated_models["all_rules"]          = _clean_all_rules(Oj.load(all_rules_json))
-      activated_models["all_variables"]      = _clean_all_variables(Oj.load(all_variables_json))
-      activated_models["all_users"]          = _clean_all_users(Oj.load(all_users_json))
+      activated_models["all_activated_aids"] = JSON.parse(all_activated_aids_json)
+      activated_models["all_filters"]        = JSON.parse(all_filters_json)
+      activated_models["all_contracts"]      = JSON.parse(all_contracts_json)
+      activated_models["all_rules"]          = all_rules
+      activated_models["all_variables"]      = JSON.parse(all_variables_json)
+      activated_models["all_users"]          = JSON.parse(all_users_json)
+      p '- - - - - - - - - - - - - - activated_models- - - - - - - - - - - - - - - -' 
+      pp activated_models
+      p ''
       activated_models
     end
   end
@@ -66,7 +75,12 @@ class ActivatedModelsService
     aids.each do |aid|  
       aid.delete("created_at")
       aid.delete("updated_at")
-      aid.delete("archived_at")
+      aid.delete("what")
+      aid.delete("short_description")
+      aid.delete("how_much")
+      aid.delete("additionnal_conditions")
+      aid.delete("limitations")
+      aid.delete("how_and_when")
       aid["filters"].map! do |slave_rule|
         slave_rule.select {|k,v| k == "id" }
       end
