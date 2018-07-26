@@ -7,13 +7,13 @@ describe AddressService do
       #given
       asker = Asker.new
       address = AddressForm.new
-      location.label = 'myLabel'
-      location.route = 'myRoute'
-      location.city = 'myCity'
-      location.zipcode = 'myZipCode'
-      location.citycode = 'myCityCode'
-      location.street_number = 'myStreetNumber'
-      location.state = 'myState'
+      address.label = 'myLabel'
+      address.route = 'myRoute'
+      address.city = 'myCity'
+      address.zipcode = 'myZipCode'
+      address.citycode = 'myCityCode'
+      address.street_number = 'myStreetNumber'
+      address.state = 'myState'
       #when
       AddressService.new.upload(address, asker)
       #then
