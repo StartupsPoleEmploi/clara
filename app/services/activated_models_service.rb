@@ -33,7 +33,7 @@ class ActivatedModelsService
       activated_models["all_rules"]          = _clean_all_rules(JSON.parse(all_rules_json))
       activated_models["all_variables"]      = _clean_all_variables(JSON.parse(all_variables_json))
       activated_models["all_zrrs"]           = Zrr.first ? Zrr.first.value : ""
-      activated_models["all_users"]          = _clean_all_users(JSON.parse(all_variables_json))
+      activated_models["all_users"]          = _clean_all_users(JSON.parse(all_users_json))
       activated_models_json                  = activated_models.to_json
       CacheService.get_instance.write("activated_models_json", activated_models_json)
     ensure
@@ -66,7 +66,7 @@ class ActivatedModelsService
   end
 
   def users
-    @all_activated_models["users"]
+    @all_activated_models["all_users"]
   end
 
   def zrr?(val)

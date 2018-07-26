@@ -13,7 +13,7 @@ class User < ApplicationRecord
   #   Rails.cache.fetch("user:#{single_key}") { User.find(single_key) }
   # end
 
-
+  after_save :invalidate_cache
     # def invalidate_cache
     #   Rails.cache.delete("user:#{id}")
     # end
@@ -21,19 +21,29 @@ class User < ApplicationRecord
   def self.from_token_payload payload
     p '- - - - - - - - - - - - - - payload- - - - - - - - - - - - - - - -' 
     pp payload
+    pp ActivatedModelsService.get_instance.users
     p ''
+    user_id = payload["sub"]
     # Returns a valid user, `nil` or raise
     # e.g.
-    # ActivatedModelsService.new.users.find{|e| e.id == payload["sub"]}
-    self.find payload["sub"]
+    # self.find payload["sub"]
+    # ActivatedModelsService.get_instance.users.find{|e| e["id"] == payload["sub"]}
+    Rails.cache.fetch("user:#{user_id}") { User.find(user_id) }
   end
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_request request
     p '- - - - - - - - - - - - - - self.from_token_request- - - - - - - - - - - - - - - -' 
     email = request.params["auth"] && request.params["auth"]["email"]
-    # ActivatedModelsService.new.users.find{|e| e.email == request.params["auth"]["email"]}
-    self.find_by email: email
+    Rails.cache.fetch("user_email:#{email}") { User.find_by(email: email) }
+    # self.find_by email: email
+    # ActivatedModelsService.get_instance.users.find{|e| e["email"] == request.params["auth"]["email"]}
   end
-
+  
+  private
+  
+  def invalidate_cache
+    Rails.cache.delete("user:#{id}")
+    Rails.cache.delete("user_email:#{email}")
+  end
 end
