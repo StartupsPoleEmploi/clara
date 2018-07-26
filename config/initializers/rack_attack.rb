@@ -17,7 +17,13 @@ class Rack::Attack
     req.ip if (Rails.env.production?) || (Rails.env.test? && ENV["THROTTLE_DURING_TEST"])
   end
 
-
+# Throttle login attempts for a given email parameter to 6 reqs/minute
+# Return the email as a discriminator on POST /login requests
+Rack::Attack.throttle('limit logins per email', limit: 6, period: 60) do |req|
+  if req.path == '/user_token' && req.post?
+    req.params['email']
+  end
+end
 
 end
 
