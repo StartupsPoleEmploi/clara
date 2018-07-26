@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.6 (26/07/2018)
+-[#849f][TECH] API : no more json storing
+
+
 ## 11.9.5 (26/07/2018)
 -[#849e][TECH] API : try oj
 

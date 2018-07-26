@@ -16,10 +16,8 @@ class ActivatedModelsService
   end
 
   def initialize
-    activated_models_json = CacheService.get_instance.read("activated_models_json")
-    begin
-      Oj.load(activated_models_json)
-    rescue Exception => e
+    activated_models = CacheService.get_instance.read("activated_models")
+    if activated_models == nil
       all_activated_aids_json = Aid.activated.to_json(:include => [:filters])
       all_filters_json = Filter.all.to_json
       all_contracts_json = ContractType.all.to_json
@@ -33,11 +31,9 @@ class ActivatedModelsService
       activated_models["all_rules"]          = _clean_all_rules(Oj.load(all_rules_json))
       activated_models["all_variables"]      = _clean_all_variables(Oj.load(all_variables_json))
       activated_models["all_users"]          = _clean_all_users(Oj.load(all_users_json))
-      activated_models_json                  = activated_models.to_json
-      CacheService.get_instance.write("activated_models_json", activated_models_json)
-    ensure
-      @all_activated_models = Oj.load(activated_models_json)
+      CacheService.get_instance.write("activated_models", activated_models)
     end
+    @all_activated_models = activated_models
   end
 
   def read
