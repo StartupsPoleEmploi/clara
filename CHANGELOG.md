@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.4 (26/07/2018)
+-[#849d][TECH] API : debugging to_json
+
+
 ## 11.9.3 (26/07/2018)
 -[#849c][TECH] API : profiling optional 2
 
