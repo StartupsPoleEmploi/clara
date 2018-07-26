@@ -19,24 +19,25 @@ class User < ApplicationRecord
     # end
     # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_payload payload
-    p '- - - - - - - - - - - - - - payload- - - - - - - - - - - - - - - -' 
-    pp payload
-    pp ActivatedModelsService.get_instance.users
-    p ''
+    # p '- - - - - - - - - - - - - - payload- - - - - - - - - - - - - - - -' 
+    # pp payload
+    # p ''
     user_id = payload["sub"]
     # Returns a valid user, `nil` or raise
     # e.g.
     # self.find payload["sub"]
     # ActivatedModelsService.get_instance.users.find{|e| e["id"] == payload["sub"]}
-    Rails.cache.fetch("user:#{user_id}") { User.find(user_id) }
+    Rails.cache.fetch("user:#{user_id}") { self.find(user_id) }
   end
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_request request
-    p '- - - - - - - - - - - - - - self.from_token_request- - - - - - - - - - - - - - - -' 
-    email = request.params["auth"] && request.params["auth"]["email"]
-    Rails.cache.fetch("user_email:#{email}") { User.find_by(email: email) }
-    # self.find_by email: email
+    # p '- - - - - - - - - - - - - - self.from_token_request- - - - - - - - - - - - - - - -' 
+    return nil unless request.params["auth"] && request.params["auth"]["email"]
+    email = request.params["auth"]["email"]
+    # Rails.cache.fetch("user_email:#{email}") { User.find_by(email: email) }
+    return nil if !ActivatedModelsService.get_instance.users.find{|u| u["email"] == email}
+    Rails.cache.fetch("user_email:#{email}") { self.find_by(email: email) }
     # ActivatedModelsService.get_instance.users.find{|e| e["email"] == request.params["auth"]["email"]}
   end
   

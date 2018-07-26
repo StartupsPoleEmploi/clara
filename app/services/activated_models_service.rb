@@ -25,6 +25,7 @@ class ActivatedModelsService
       all_contracts_json = ContractType.all.to_json
       all_variables_json = Variable.all.to_json
       all_rules_json = Rule.all.to_json(:include => [:slave_rules])
+      all_users_json = User.all.to_json
       activated_models = {}
       activated_models["all_activated_aids"] = _clean_all_activated_aids(JSON.parse(all_activated_aids_json))
       activated_models["all_filters"]        = _clean_all_filters(JSON.parse(all_filters_json))
@@ -32,6 +33,7 @@ class ActivatedModelsService
       activated_models["all_rules"]          = _clean_all_rules(JSON.parse(all_rules_json))
       activated_models["all_variables"]      = _clean_all_variables(JSON.parse(all_variables_json))
       activated_models["all_zrrs"]           = Zrr.first ? Zrr.first.value : ""
+      activated_models["all_users"]          = _clean_all_users(JSON.parse(all_users_json))
       activated_models_json                  = activated_models.to_json
       CacheService.get_instance.write("activated_models_json", activated_models_json)
     ensure
@@ -61,6 +63,10 @@ class ActivatedModelsService
 
   def variables
     @all_activated_models["all_variables"]
+  end
+
+  def users
+    @all_activated_models["all_users"]
   end
 
   def zrr?(val)
@@ -95,6 +101,14 @@ class ActivatedModelsService
       filter.delete("updated_at")
     end
     filters
+  end
+
+  def _clean_all_users(users)
+    users.each do |user|  
+      user.delete("created_at")
+      user.delete("updated_at")
+    end
+    users
   end
 
   def _clean_all_rules(rules)
