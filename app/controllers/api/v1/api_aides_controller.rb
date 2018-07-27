@@ -22,7 +22,7 @@ module Api
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
-        aid_attr = whitelist_one_aid_attr(Aid.find_by(slug: slug_param))
+        aid_attr = remove_ids!(not_nullify(whitelist_one_aid_attr(Aid.find_by(slug: slug_param))))
         if aid_attr != {} 
           render json: {aid: aid_attr}
         else
