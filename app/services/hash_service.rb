@@ -12,4 +12,15 @@ class HashService
     deep_copy.delete_if(&p)
   end
 
+  def recursive_id_removal(hash_or_array)
+    deep_copy = JSON.parse(hash_or_array.to_json)
+    p = proc do |*args|
+      k = args.first
+      k.delete_if(&p) if k.respond_to? :delete_if
+      k.is_a?(String) && (k.end_with?("_id") || k == "id")
+    end
+
+    deep_copy.delete_if(&p)
+  end
+
 end

@@ -7,6 +7,10 @@ class ActivatedModelsService
     end
   end
 
+  def regenerate
+    ActivatedModelsGeneratorService.new.regenerate
+  end
+
   def read
     @all_activated_models
   end
