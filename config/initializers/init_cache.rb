@@ -17,6 +17,4 @@ File.open(Rails.root.join('public','activated_models.txt'), 'w:UTF-8') do |file|
   file.write(activated_models.to_json) 
 end
 
-ActivatedModelsService.instance.write(activated_models)
-
 # puts File.read(Rails.root.join('public','activated_models.txt'))
