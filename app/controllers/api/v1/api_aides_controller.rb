@@ -43,7 +43,7 @@ module Api
         else
           local_asker = nil
           if (params.permit(:random).to_h[:random] == "true")
-            local_asker = RandomAskerService.new.go
+            local_asker = rehydrated_asker(RandomAskerService.new.go)
           else
             local_asker = processed_asker(api_asker)
           end
@@ -141,6 +141,10 @@ module Api
 
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
+        RehydrateAddressService.new.from_citycode!(asker)
+      end
+
+      def rehydrated_asker(asker)
         RehydrateAddressService.new.from_citycode!(asker)
       end
 
