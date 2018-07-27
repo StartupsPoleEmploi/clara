@@ -39,9 +39,9 @@ module Admin
 
     def expire_json_objects
       activated_models_deleted   = Rails.cache.delete("activated_models")
-      all_aids_deleted           = Rails.cache.delete("all_aids")
-      all_filters_deleted        = Rails.cache.delete("all_filters")
-      all_contract_types_deleted = Rails.cache.delete("all_contract_types")
+      all_aids_deleted           = Rails.cache.delete("aids")
+      all_filters_deleted        = Rails.cache.delete("filters")
+      all_contract_types_deleted = Rails.cache.delete("contract_types")
       regenerated_activated_models = ActivatedModelsService.instance.regenerate.empty?
         
       render json: {

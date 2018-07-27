@@ -15,8 +15,9 @@ module Api
       # /api/v1/filters(.:format)
       def filters
         track_call("/api/v1/aids/filters", current_user.email)
-        whitelisted_filters = whitelist_filters(ActivatedModelsService.instance.filters)
-        render json: {filters: whitelisted_filters}.to_json
+        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json}))
+        res = {filters: whitelisted_filters}
+        render json: remove_ids!(not_nullify(res)).to_json
       end
 
       # /api/v1/aids/detail/:aid_slug(.:format)
