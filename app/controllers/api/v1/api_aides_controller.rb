@@ -43,13 +43,13 @@ module Api
         else
           local_asker = nil
           if (params.permit(:random).to_h[:random] == "true")
-            local_asker = rehydrated_asker(RandomAskerService.new.go)
+            local_asker = RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go)
           else
             local_asker = processed_asker(api_asker)
           end
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: not_nullify(eligible_aids_for(local_asker, api_filters.filters))
+            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
           }.to_json
         end
       end
@@ -117,6 +117,10 @@ module Api
         HashService.new.recursive_compact(hash_or_array)
       end
 
+      def remove_ids!(hash_or_array)
+        HashService.new.reject_ids!(hash_or_array)
+      end
+
       def jsonify(hash_or_array)
         hash_or_array.to_json
       end
@@ -141,10 +145,6 @@ module Api
 
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
-        RehydrateAddressService.new.from_citycode!(asker)
-      end
-
-      def rehydrated_asker(asker)
         RehydrateAddressService.new.from_citycode!(asker)
       end
 
