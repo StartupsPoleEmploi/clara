@@ -32,7 +32,7 @@ module Api
 
       # /api/v1/aids/eligible(.:format)
       def eligible
-        # track_call("/api/v1/aids/eligible", current_user.email)
+        track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
