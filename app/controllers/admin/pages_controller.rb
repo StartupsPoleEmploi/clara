@@ -38,7 +38,7 @@ module Admin
     end
 
     def expire_json_objects
-      all_rules_json_deleted = CacheService.get_instance.delete("activated_models_json")
+      all_rules_json_deleted = CacheService.get_instance.delete("activated_models")
       render json: {
         status: "ok"
       }

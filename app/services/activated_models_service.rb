@@ -4,13 +4,9 @@ class ActivatedModelsService
 
   def initialize
     @all_activated_models = Rails.cache.fetch("activated_models") do
-      all_activated_aids_json = Aid.activated.to_json(:only => [ :id, :rule_id, :contract_type_id ], :include => {filters: {only:[:id]}})
-        # { only: [:first_name, :last_name, :email]}
-        # Aid.first.to_json(:only => [ :id, :name ], :include => [:filters])
-        # Aid.first.to_json(:only => [ :id, :name ], :include => {:filters, only: [:slug]})
-        # Aid.first.to_json(:only => [ :name ], :include => {filters: {only:[:slug]}})
 
-      all_filters_json = Filter.all.to_json(:only => [ :id ])
+      all_activated_aids_json = Aid.activated.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id ], :include => {filters: {only:[:id, :slug]}})
+      all_filters_json = Filter.all.to_json(:only => [ :id, :slug ])
       all_contracts_json = ContractType.all.to_json(:only => [ :id ])
       all_variables_json = Variable.all.to_json(:only => [ :id, :name, :variable_type, :description ])
       r_all = JSON.parse(Rule.all.to_json(:only => [ :id, :value_eligible, :operator_type, :composition_type, :variable_id, :value_ineligible ], :include => {slave_rules: {only:[:id]}}))
@@ -23,9 +19,9 @@ class ActivatedModelsService
       activated_models["all_rules"]          = all_rules
       activated_models["all_variables"]      = JSON.parse(all_variables_json)
       activated_models["all_users"]          = JSON.parse(all_users_json)
-      p '- - - - - - - - - - - - - - activated_models- - - - - - - - - - - - - - - -' 
-      pp activated_models
-      p ''
+      # p '- - - - - - - - - - - - - - activated_models- - - - - - - - - - - - - - - -' 
+      # pp activated_models
+      # p ''
       activated_models
     end
   end
@@ -68,8 +64,8 @@ class ActivatedModelsService
       aid.delete("additionnal_conditions")
       aid.delete("limitations")
       aid.delete("how_and_when")
-      aid["filters"].map! do |slave_rule|
-        slave_rule.select {|k,v| k == "id" }
+      aid["filters"].map! do |filter|
+        filter.select {|k,v| k == "id" }
       end
     end
     aids
