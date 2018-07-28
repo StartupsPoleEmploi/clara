@@ -17,12 +17,7 @@ class WhitelistAidService
     a = ActivatedModelsService.instance
     return {} unless aids.is_a?(Hash)
     aids["contract_type"] = a.contract_types.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
-    #  WEIRD BUG BELOW
-    aids["filters"].map!{|f| a.filters.find{|c| c["id"] == f["id"]}["slug"]} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
-    # pp '-------------------------------------------------------'
-    # pp aids["filters"]
-    # aids["filters"].map!{|f| f["slug"]}
-    # pp aids["filters"]
+    aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}["slug"]} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
     wanted_keys = %w[name slug short_description contract_type filters]
 
     return aids.select { |key, _| wanted_keys.include? key }
