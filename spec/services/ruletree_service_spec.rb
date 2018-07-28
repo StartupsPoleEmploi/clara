@@ -4,7 +4,7 @@ require 'securerandom'
 describe RuletreeService do
 
   describe ".evaluate ADULT" do
-    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    subject { RuletreeService.new.evaluate(rule, criterion_hash) }
     before do
       create :rule, :be_an_adult, name: 'an_adult'
     end
@@ -43,7 +43,7 @@ describe RuletreeService do
     before do
       create :rule, :be_a_child
     end
-    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    subject { RuletreeService.new.evaluate(rule, criterion_hash) }
     let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
@@ -103,7 +103,7 @@ describe RuletreeService do
     before do
       create :rule, :be_in_qpv
     end
-    subject { RuletreeService.get_instance.evaluate(rule, criterion_hash) }
+    subject { RuletreeService.new.evaluate(rule, criterion_hash) }
     let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
       let(:criterion_hash) { {} }
@@ -125,9 +125,9 @@ describe RuletreeService do
 
   describe ".resolve" do
     before do
-      RuletreeService.get_instance._stub_all_rules([rule.to_json(:include => [:slave_rules])])
+      RuletreeService.new._stub_all_rules([rule.to_json(:include => [:slave_rules])])
     end
-    subject { RuletreeService.get_instance.resolve(rule.id, asker.attributes) }
+    subject { RuletreeService.new.resolve(rule.id, asker.attributes) }
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
