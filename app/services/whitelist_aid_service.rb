@@ -1,9 +1,9 @@
 class WhitelistAidService
 
-  def for_a_detailed_aid(aid)
-    return {} unless aid.is_a?(Aid)
+  def for_a_detailed_aid(single_aid_as_hash)
+    return {} unless single_aid_as_hash.is_a?(Hash)
     wanted_keys = %w[name what slug short_description how_much additionnal_conditions how_and_when limitations archived_at]
-    return aid.attributes.select { |key, _| wanted_keys.include? key }
+    return single_aid_as_hash.select { |key, _| wanted_keys.include? key }
   end
 
   def for_a_filter(filter_hash)
