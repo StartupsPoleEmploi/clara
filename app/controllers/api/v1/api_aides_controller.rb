@@ -42,12 +42,7 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          local_asker = nil
-          if (params.permit(:random).to_h[:random] == "true")
-            local_asker = RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go)
-          else
-            local_asker = processed_asker(api_asker)
-          end
+          local_asker = params.permit(:random).to_h[:random] == "true" ? RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go) : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
             aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
@@ -67,11 +62,11 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          asker = processed_asker(api_asker)
+          local_asker = processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(ineligible_aids_for(asker, api_filters.filters))
-          }.to_json     
+            asker: not_nullify(reverse_translation_of(local_asker)),
+            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters)))
+          }.to_json
         end
       end
 
@@ -86,11 +81,11 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          asker = processed_asker(api_asker)
+          local_asker = processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(uncertain_aids_for(asker, api_filters.filters))
-          }.to_json     
+            asker: not_nullify(reverse_translation_of(local_asker)),
+            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters)))
+          }.to_json
         end      
       end
 
