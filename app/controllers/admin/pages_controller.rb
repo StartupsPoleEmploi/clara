@@ -48,6 +48,7 @@ module Admin
         activated_models_deleted: activated_models_deleted,
         nb_of_detailed_aids_deleted: nb_of_detailed_aids_deleted,
         all_filters_deleted: all_filters_deleted,
+        all_contract_types_deleted: all_contract_types_deleted,
         regenerated_activated_models: regenerated_activated_models,
       }
     end
