@@ -51,7 +51,7 @@ module Admin
       # nb_of_detailed_aids_deleted  = HashService.new.reject_keys_that_starts_with!(Rails.cache.instance_variable_get(:@data).keys, "aids:")
       all_filters_deleted          = Rails.cache.delete("filters")
       all_contract_types_deleted   = Rails.cache.delete("contract_types")
-      regenerated_activated_models = !ActivatedModelsService.instance.regenerate.empty?
+      regenerated_activated_models = !ActivatedModelsGeneratorService.new.regenerate.empty?
         
       render json: {
         activated_models_deleted: activated_models_deleted,
