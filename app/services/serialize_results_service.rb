@@ -23,7 +23,7 @@ class SerializeResultsService
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
      flat_all_ineligible: calculator.every_ineligible,
-     flat_all_contract: ActivatedModelsService.instance.contract_types,
+     flat_all_contract: Rails.cache.fetch('contract_types') {JSON.parse(ContractType.all.to_json)},
      flat_all_filter: ActivatedModelsService.instance.filters,
      asker: asker.attributes
     }
@@ -63,17 +63,11 @@ private
     return elies unless filters.is_a?(String) && !filters.empty?
     a = ActivatedModelsService.instance
     filters_array = filters.split(",")
-    # p '- - - - - - - - - - - - - - filters_array- - - - - - - - - - - - - - - -' 
-    # pp filters_array
-    # p ''
     elies.select do |ely| 
       boolean_result = !ely["filters"].empty?
       current_filter_array = ely["filters"].map do |ely_filter|
         a.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
       end
-      # p '- - - - - - - - - - - - - - current_filter_array- - - - - - - - - - - - - - - -' 
-      # pp current_filter_array
-      # p ''
       intersection_array = current_filter_array & filters_array
       !intersection_array.empty?
     end
