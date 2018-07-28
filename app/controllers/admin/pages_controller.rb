@@ -40,9 +40,6 @@ module Admin
     end
 
     def expire_json_objects
-      p '- - - - - - - - - - - - - - expire_json_objects- - - - - - - - - - - - - - - -' 
-      pp Rails.cache.instance_variable_get(:@data).keys
-      p ''
       activated_models_deleted     = Rails.cache.delete("activated_models")
       nb_of_detailed_aids_deleted = 0
       Rails.cache.instance_variable_get(:@data).keys.each do |k|  
