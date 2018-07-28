@@ -22,7 +22,7 @@ class RuleCheckService
   
   def check_custom_rule(rule, all_rules_composition)
     rule.custom_rule_checks.each do |c|
-      local_result = RuletreeService.get_instance.resolve(rule.id, c.hsh)  
+      local_result = RuletreeService.new.resolve(rule.id, c.hsh)  
       final_result = local_result.to_s == c.result.to_s ? 'ok' : 'error'
       all_rules_composition << { type: '3-custom', name: rule.name, result: final_result, link: edit_admin_rule_path(rule.id), description: c.name }
     end

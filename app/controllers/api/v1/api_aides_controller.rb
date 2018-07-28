@@ -15,7 +15,7 @@ module Api
       # /api/v1/filters(.:format)
       def filters
         track_call("/api/v1/aids/filters", current_user.email)
-        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json}))
+        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
         res = {filters: whitelisted_filters}
         render json: remove_ids!(not_nullify(res)).to_json
       end
@@ -23,9 +23,9 @@ module Api
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
-        aid_attr = remove_ids!(not_nullify(whitelist_one_aid_attr(Aid.find_by(slug: slug_param))))
-        if aid_attr != {} 
-          render json: {aid: aid_attr}
+        found_aid = Rails.cache.fetch("aids[#{slug_param}]") {Aid.find_by(slug: slug_param).to_json}
+        if found_aid
+          render json: {aid: remove_ids!(not_nullify(whitelist_one_aid_attr(JSON.parse(found_aid))))}
         else
           render json: {:error => "not-found"}.to_json, status: 404
         end
@@ -42,12 +42,7 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          local_asker = nil
-          if (params.permit(:random).to_h[:random] == "true")
-            local_asker = RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go)
-          else
-            local_asker = processed_asker(api_asker)
-          end
+          local_asker = params.permit(:random).to_h[:random] == "true" ? RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go) : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
             aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
@@ -67,11 +62,11 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          asker = processed_asker(api_asker)
+          local_asker = processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(ineligible_aids_for(asker, api_filters.filters))
-          }.to_json     
+            asker: not_nullify(reverse_translation_of(local_asker)),
+            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters)))
+          }.to_json
         end
       end
 
@@ -86,11 +81,11 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          asker = processed_asker(api_asker)
+          local_asker = processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(asker)),
-            aids: not_nullify(uncertain_aids_for(asker, api_filters.filters))
-          }.to_json     
+            asker: not_nullify(reverse_translation_of(local_asker)),
+            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters)))
+          }.to_json
         end      
       end
 

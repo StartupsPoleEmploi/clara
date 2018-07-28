@@ -23,11 +23,13 @@ module Admin
     end
 
     def load_zrr
+      deleted_zrrs_cache = Rails.cache.delete("zrrs")
       Zrr.create unless Zrr.first
       z = Zrr.first
       z.value = _get_csv_data
       z.save
       render json: {
+        deleted_zrrs_cache: deleted_zrrs_cache,
         status: "ok"
       }
     end
@@ -38,15 +40,21 @@ module Admin
     end
 
     def expire_json_objects
-      activated_models_deleted   = Rails.cache.delete("activated_models")
-      all_aids_deleted           = Rails.cache.delete("aids")
-      all_filters_deleted        = Rails.cache.delete("filters")
-      all_contract_types_deleted = Rails.cache.delete("contract_types")
-      regenerated_activated_models = ActivatedModelsService.instance.regenerate.empty?
+      activated_models_deleted     = Rails.cache.delete("activated_models")
+      nb_of_detailed_aids_deleted = 0
+      Rails.cache.instance_variable_get(:@data).keys.each do |k|  
+        if k.start_with? "aids["
+          Rails.cache.delete(k)
+          nb_of_detailed_aids_deleted += 1
+        end
+      end
+      all_filters_deleted          = Rails.cache.delete("filters")
+      all_contract_types_deleted   = Rails.cache.delete("contract_types")
+      regenerated_activated_models = !ActivatedModelsGeneratorService.new.regenerate.empty?
         
       render json: {
         activated_models_deleted: activated_models_deleted,
-        all_aids_deleted: all_aids_deleted,
+        nb_of_detailed_aids_deleted: nb_of_detailed_aids_deleted,
         all_filters_deleted: all_filters_deleted,
         all_contract_types_deleted: all_contract_types_deleted,
         regenerated_activated_models: regenerated_activated_models,

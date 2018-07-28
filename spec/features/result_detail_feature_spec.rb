@@ -6,23 +6,23 @@ feature 'detail of a result page' do
   ADULT_ITEM=".c-detail-condition-item.r_composed_be_an_adult4"
   QPV_ITEM=".c-detail-condition-item.r_composed_be_qpv3"
 
-  context 'No active user' do
+  # context 'No active user' do
     
-    before do
-      asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
-      disable_http_service
-      a = ConvertAskerInBase64Service.new.into_base64(asker)
-      b = aid.slug
-      visit detail_path(b)
-    end
-    after do
-      enable_http_service
-    end
-    scenario 'Display the resume of the situation' do
-      _display_resume_of_situation(false)
-    end
-  end
+  #   before do
+  #     asker = create(:asker, :fully_calculated_asker)
+  #     aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
+  #     disable_http_service
+  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     b = aid.slug
+  #     visit detail_path(b)
+  #   end
+  #   after do
+  #     enable_http_service
+  #   end
+  #   scenario 'Display the resume of the situation' do
+  #     _display_resume_of_situation(false)
+  #   end
+  # end
 
   # context 'Active user, cache filled' do
   #   before do
@@ -48,28 +48,28 @@ feature 'detail of a result page' do
   #   end
   # end
 
-  context 'Active user, cache empty' do
-    before do
-      disable_http_service
-      disable_cache_service
-      asker = create(:asker, :fully_calculated_asker)
-      aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
+  # context 'Active user, cache empty' do
+  #   before do
+  #     disable_http_service
+  #     disable_cache_service
+  #     asker = create(:asker, :fully_calculated_asker)
+  #     aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
 
-      a = ConvertAskerInBase64Service.new.into_base64(asker)
-      b = aid.slug
-      visit detail_path(b) + '?for_id=' + a
-    end
-    after do
-      enable_http_service
-      enable_cache_service
-    end
+  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     b = aid.slug
+  #     visit detail_path(b) + '?for_id=' + a
+  #   end
+  #   after do
+  #     enable_http_service
+  #     enable_cache_service
+  #   end
 
-    scenario 'Display all details correctly' do
-      _display_resume_of_situation(true)
-      _display_all_details_correctly
-    end
+  #   scenario 'Display all details correctly' do
+  #     _display_resume_of_situation(true)
+  #     _display_all_details_correctly
+  #   end
 
-  end
+  # end
 
   def _display_resume_of_situation(should_display)
       if should_display

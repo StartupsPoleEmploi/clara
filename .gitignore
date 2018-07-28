@@ -35,6 +35,8 @@ ara
 /public/index.html
 # Ignore profiling
 /public/profile/*
+# Ignore temp file
+/public/activated_models.txt
 
 coverage
 

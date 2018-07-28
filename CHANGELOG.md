@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.7 (27/07/2018)
+-[#849g][TECH] API : hard optimization
+
+
 ## 11.9.6 (26/07/2018)
 -[#849f][TECH] API : no more json storing
 

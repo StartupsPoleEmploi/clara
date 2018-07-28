@@ -1,9 +1,9 @@
 class WhitelistAidService
 
-  def for_a_detailed_aid(aid)
-    return {} unless aid.is_a?(Aid)
+  def for_a_detailed_aid(single_aid_as_hash)
+    return {} unless single_aid_as_hash.is_a?(Hash)
     wanted_keys = %w[name what slug short_description how_much additionnal_conditions how_and_when limitations archived_at]
-    return aid.attributes.select { |key, _| wanted_keys.include? key }
+    return single_aid_as_hash.select { |key, _| wanted_keys.include? key }
   end
 
   def for_a_filter(filter_hash)
@@ -13,18 +13,14 @@ class WhitelistAidService
   end
   
   def for_aid_in_list(aid_hash)
+    aids = aid_hash.deep_dup
     a = ActivatedModelsService.instance
-    return {} unless aid_hash.is_a?(Hash)
-    aid_hash["contract_type"] = a.contract_types.find{|c| c["id"] == aid_hash["contract_type_id"] }["slug"] if aid_hash["contract_type_id"].is_a?(Integer) 
-    #  WEIRD BUG BELOW
-    # aid_hash["filters"].map!{|f| a.filters.find{|c| p c;p f; c["id"] == f["id"]}["slug"]} if aid_hash["filters"].is_a?(Array) && !aid_hash["filters"].empty?
-    # pp '-------------------------------------------------------'
-    # pp aid_hash["filters"]
-    # aid_hash["filters"].map!{|f| f["slug"]}
-    # pp aid_hash["filters"]
+    return {} unless aids.is_a?(Hash)
+    aids["contract_type"] = a.contract_types.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
+    aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}["slug"]} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
     wanted_keys = %w[name slug short_description contract_type filters]
 
-    return aid_hash.select { |key, _| wanted_keys.include? key }
+    return aids.select { |key, _| wanted_keys.include? key }
   end
   
 end

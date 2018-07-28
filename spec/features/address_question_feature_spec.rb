@@ -73,23 +73,23 @@ feature 'address question' do
     end
   end
 
-  context 'User has received a link to results' do
-    before do
-      asker = create_realistic_asker
-      visit_aides_for_asker(asker)
-    end
-    scenario 'He then go to adress, the address form is hydrated' do
-      visit new_address_question_path
-      expect(tiv('input#search'))                     .to eq '45 Rue du Gas 79160 Villiers-en-Plaine'
-      expect(tiv('input#route'))                      .to eq 'Rue du Gas'
-      expect(tiv('input#locality'))                   .to eq 'Villiers-en-Plaine'
-      expect(tiv('input#postal_code'))                .to eq '79160'
-      expect(tiv('input#country'))                    .to eq 'France'
-      expect(tiv('input#administrative_area_level_1')).to eq 'Nouvelle-Aquitaine (Poitou-Charentes)'
-      expect(tiv('input#citycode'))                   .to eq '79351'
-      expect(tih('input#location_label'))             .to eq '45 Rue du Gas 79160 Villiers-en-Plaine'
-    end
-  end
+  # context 'User has received a link to results' do
+  #   before do
+  #     asker = create_realistic_asker
+  #     visit_aides_for_asker(asker)
+  #   end
+  #   scenario 'He then go to adress, the address form is hydrated' do
+  #     visit new_address_question_path
+  #     expect(tiv('input#search'))                     .to eq '45 Rue du Gas 79160 Villiers-en-Plaine'
+  #     expect(tiv('input#route'))                      .to eq 'Rue du Gas'
+  #     expect(tiv('input#locality'))                   .to eq 'Villiers-en-Plaine'
+  #     expect(tiv('input#postal_code'))                .to eq '79160'
+  #     expect(tiv('input#country'))                    .to eq 'France'
+  #     expect(tiv('input#administrative_area_level_1')).to eq 'Nouvelle-Aquitaine (Poitou-Charentes)'
+  #     expect(tiv('input#citycode'))                   .to eq '79351'
+  #     expect(tih('input#location_label'))             .to eq '45 Rue du Gas 79160 Villiers-en-Plaine'
+  #   end
+  # end
 
   def click_on_modify_address
     click_link('click_link').click
