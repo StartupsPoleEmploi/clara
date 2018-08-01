@@ -643,7 +643,10 @@
         {
           "201":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "jwt": "averylongtoken.that-respect-jwt-standard"
+            }
           },
           "404":
           {
