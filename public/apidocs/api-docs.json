@@ -249,7 +249,35 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
           },
           "400":
           {
@@ -368,7 +396,35 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
           },
           "400":
           {
@@ -487,7 +543,36 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
+
           },
           "400":
           {
