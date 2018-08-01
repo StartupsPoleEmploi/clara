@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.0 (01/08/2018)
+-[#846][FEATURE] API : response examples
+
+
 ## 11.9.9 (01/08/2018)
 -[#856][TECH] API : suppression de l'auth sur le ping
 
