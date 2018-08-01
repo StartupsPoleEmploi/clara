@@ -17,9 +17,11 @@ class HashService
     if x.is_a?(Array)
       x.each{|e| reject_ids! e}
     elsif x.is_a?(Hash)
-      x.reject!{|k,v| 'id' == k.to_s || k.to_s.end_with?("_id")}
-      x.each do |k,v| 
-        if x[k].is_a? Hash
+      # x.reject!{|k,v| 'id' == k.to_s || k.to_s.end_with?("_id")}
+      x.each do |k,v|
+        if 'id' == k.to_s || k.to_s.end_with?("_id")
+          x.delete(k) 
+        elsif x[k].is_a? Hash
           x[k].each{|m,n| reject_ids! x[k]}
         elsif x[k].is_a? Array
           x[k].each{|e| reject_ids! e}  
