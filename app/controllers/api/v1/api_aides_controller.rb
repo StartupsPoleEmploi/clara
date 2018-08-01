@@ -4,11 +4,11 @@ module Api
   module V1
     class ApiAidesController < Api::V1::ApiController
 
-      before_action :authenticate_user
+      before_action :authenticate_user, except: [:ping]
 
       # /api/v1/aids/ping(.:format)
       def ping
-        track_call("/api/v1/ping", current_user.email)
+        track_call("/api/v1/ping", request.remote_ip)
         render json: {status: "ok"}.to_json, status: 200
       end
 
