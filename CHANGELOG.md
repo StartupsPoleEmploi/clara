@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.9 (01/08/2018)
+-[#856][TECH] API : suppression de l'auth sur le ping
+
+
 ## 11.9.8 (01/08/2018)
 -[#855][TECH] API : un seul niveau d'imbrication pour lister les aides
 
