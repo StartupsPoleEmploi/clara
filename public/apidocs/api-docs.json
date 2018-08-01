@@ -85,7 +85,26 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "filters": [
+                {
+                  "name": "Travailler en alternance",
+                  "description": "Travailler en alternance",
+                  "slug": "travailler-en-alternance"
+                },
+                {
+                  "name": "S'informer sur les contrats spécifiques",
+                  "description": "S'informer sur les contrats spécifiques",
+                  "slug": "s-informer-sur-contrats-specifiques"
+                },
+                {
+                  "name": "Travailler en Europe ou à l'international",
+                  "description": "Travailler en Europe ou à l'international",
+                  "slug": "travailler-a-l-international"
+                }
+              ]
+            }
           },
           "500":
           {
