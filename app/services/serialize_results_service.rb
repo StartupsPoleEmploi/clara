@@ -32,26 +32,17 @@ class SerializeResultsService
 
   def api_eligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
-    result = {
-      aids: whitelist(filter(calculator.every_eligible, filters))
-    }
-    result
+    whitelist(filter(calculator.every_eligible, filters))
   end
 
   def api_ineligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
-    result = {
-      aids: whitelist(filter(calculator.every_ineligible, filters))
-    }
-    result
+    whitelist(filter(calculator.every_ineligible, filters))
   end
 
   def api_uncertain(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
-    result = {
-      aids: whitelist(filter(calculator.every_uncertain, filters))
-    }
-    result
+    whitelist(filter(calculator.every_uncertain, filters))
   end
 
 private
