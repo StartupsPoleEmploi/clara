@@ -41,7 +41,10 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "status":"ok"
+            } 
           },
           "429":
           {
