@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.9.8 (01/08/2018)
+-[#855][TECH] API : un seul niveau d'imbrication pour lister les aides
+
+
 ## 11.9.7 (27/07/2018)
 -[#849g][TECH] API : hard optimization
 
