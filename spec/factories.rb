@@ -296,44 +296,15 @@ FactoryBot.define do
     end
 
     trait :full_user_input do 
-      v_handicap 'non'
+      v_handicap 'oui'
       v_spectacle 'non'
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'
-      v_allocation_value_min 0
-      v_allocation_type 'AAH'
-      v_qpv nil
-      v_zrr nil
+      v_allocation_value_min 340
+      v_allocation_type 'ARE_ASP'
       v_age 35
-      v_location_label '45 Rue du Gas 79160 Villiers-en-Plaine'
-      v_location_route 'Rue du Gas'
-      v_location_city 'Villiers-en-Plaine'
-      v_location_country 'France'
-      v_location_zipcode '79160'
       v_location_citycode '79351'
-      v_location_street_number '45'
-      v_location_state 'Nouvelle-Aquitaine (Poitou-Charentes)'
-    end
-
-    trait :fully_calculated_asker do 
-      v_spectacle 'non'
-      v_diplome 'niveau_3'
-      v_category 'autres_cat'
-      v_duree_d_inscription 'plus_d_un_an'
-      v_allocation_value_min 0
-      v_allocation_type 'AAH'
-      v_qpv 'non'
-      v_zrr 'oui'
-      v_age 35
-      v_location_label '45 Rue du Gas 79160 Villiers-en-Plaine'
-      v_location_route 'Rue du Gas'
-      v_location_city 'Villiers-en-Plaine'
-      v_location_country 'France'
-      v_location_zipcode '79160'
-      v_location_citycode '79351'
-      v_location_street_number '45'
-      v_location_state 'Nouvelle-Aquitaine (Poitou-Charentes)'
     end
     
   end
