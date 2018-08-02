@@ -14,16 +14,21 @@ class HashService
 
   # Based on https://stackoverflow.com/a/35785227/2595513
   def reject_ids! x
-    x.reject!{|k,v| 'id' == k.to_s || k.to_s.end_with?("_id")} if x.is_a? Hash
-    if x.respond_to? :each
-      x.each do |k,v| 
-        if x[k].is_a? Hash
+    if x.is_a?(Array)
+      x.each{|e| reject_ids! e}
+    elsif x.is_a?(Hash)
+      # x.reject!{|k,v| 'id' == k.to_s || k.to_s.end_with?("_id")}
+      x.each do |k,v|
+        if 'id' == k.to_s || k.to_s.end_with?("_id")
+          x.delete(k) 
+        elsif x[k].is_a? Hash
           x[k].each{|m,n| reject_ids! x[k]}
         elsif x[k].is_a? Array
           x[k].each{|e| reject_ids! e}  
         end
       end
-    end
+    end 
+            
   end
 
   # Based on https://stackoverflow.com/a/35785227/2595513

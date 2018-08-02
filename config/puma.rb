@@ -7,6 +7,9 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 
+p "----------------Setting #{ENV['ARA_WEB_CONCURRENCY'] || "no"} workers---------------------------------"
+workers Integer(ENV["ARA_WEB_CONCURRENCY"]) if ENV["ARA_WEB_CONCURRENCY"]
+
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
 port        ENV.fetch("PORT") { 3000 }
