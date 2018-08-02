@@ -2,30 +2,33 @@ require 'rails_helper'
 
 feature 'result page' do 
 
+  
   context 'Nominal' do
 
     result_page = nil
 
     before(:each) do
-      # if result_page == nil
+      if result_page == nil
         p "result_page is nil"
         create_nominal_schema
         visit aides_path
-        result_page = page
-      # end
+        result_page = Nokogiri::HTML(page.html)
+      end
     end
     
     it 'Shows only actives aides' do
-      number_of_aids_displayed = result_page.all('.c-result-aid', :visible => true).count
+      number_of_aids_displayed = page.all('.c-result-aid', :visible => true).count
       expect(Aid.all.size).not_to eq(8)
       expect(Aid.activated.size).to eq(8)
       expect(number_of_aids_displayed).to eq(8)
     end
 
     it 'Group aid by contract type' do
-      save_and_open_page
-      number_of_moreid_contract_type = result_page.all('.c-result-line.more-id', :visible => true).count
-      expect(number_of_moreid_contract_type).to eq(1)
+      # save_and_open_page
+      # p result_page
+      p result_page.css('.c-result-line.more-id')[0].to_s
+      # number_of_moreid_contract_type = page.all('.c-result-line.more-id', :visible => true).count
+      # expect(number_of_moreid_contract_type).to eq(1)
     end
 
   end
