@@ -39,7 +39,11 @@ feature 'result page' do
     end
 
     it 'One aid contain all related aids, sorted by their ordre_affichage property' do
-      a = result_page.css(".c-result-line.more-id .c-result-aid").collect(&:text).map(&:strip).map(&:squeeze).map{|e|e.gsub(/[[:space:]]/, ' ')}
+      a = result_page.css(".c-result-line.more-id .c-result-aid")
+            .collect(&:text)
+            .map(&:strip)
+            .map(&:squeeze)
+            .map{|e|e.gsub(/[[:space:]]/, ' ')}
       expect(a).to eq([
         "aid_more_than_18 En savoir plus", 
         "aid_more_than_20 En savoir plus", 
@@ -48,7 +52,7 @@ feature 'result page' do
       ])
     end
 
-    it 'The situation is not displayed' do
+    it 'The situation block is not displayed' do
       expect(result_page.css('.c-result-situation').count).to eq 0
     end
 
