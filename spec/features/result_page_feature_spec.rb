@@ -56,6 +56,16 @@ feature 'result page' do
       expect(result_page.css('.c-result-situation').count).to eq 0
     end
 
+    it 'There is nothing related to eligibility' do
+      expect(n('.c-result-line--green')).to eq 0
+      expect(n('.c-result-line--orange')).to eq 0 
+      expect(n('.c-result-line--red')).to eq 0 
+
+      expect(n('.c-result-list--eligible')).to eq 0
+      expect(n('.c-result-list--uncertain')).to eq 0
+      expect(n('.c-result-list--ineligible')).to eq 0
+    end
+
   end
 
 
