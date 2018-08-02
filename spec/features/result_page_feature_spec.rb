@@ -9,7 +9,6 @@ feature 'result page' do
 
     before(:each) do
       if result_page == nil
-        p "result_page is nil"
         create_nominal_schema
         visit aides_path
         result_page = Nokogiri::HTML(page.html)
@@ -18,17 +17,17 @@ feature 'result page' do
     
     it 'Shows only actives aides' do
       number_of_aids_displayed = page.all('.c-result-aid', :visible => true).count
-      expect(Aid.all.size).not_to eq(8)
-      expect(Aid.activated.size).to eq(8)
+      expect(Aid.all.size)            .not_to eq(8)
+      expect(Aid.activated.size)      .to eq(8)
       expect(number_of_aids_displayed).to eq(8)
     end
 
     it 'Group aid by contract type' do
-      # save_and_open_page
-      # p result_page
-      p result_page.css('.c-result-line.more-id')[0].to_s
-      # number_of_moreid_contract_type = page.all('.c-result-line.more-id', :visible => true).count
-      # expect(number_of_moreid_contract_type).to eq(1)
+      expect(result_page.css('.c-result-line.more-id')  .count).to eq(1)
+      expect(result_page.css('.c-result-line.lessor-id').count).to eq(1)
+      expect(result_page.css('.c-result-line.less-id')  .count).to eq(1)
+      expect(result_page.css('.c-result-line.eqal-id')  .count).to eq(1)
+      expect(result_page.css('.c-result-line.zrr-id')   .count).to eq(1)
     end
 
   end
