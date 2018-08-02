@@ -41,7 +41,10 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "status":"ok"
+            } 
           },
           "429":
           {
@@ -82,7 +85,26 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "filters": [
+                {
+                  "name": "Travailler en alternance",
+                  "description": "Travailler en alternance",
+                  "slug": "travailler-en-alternance"
+                },
+                {
+                  "name": "S'informer sur les contrats spécifiques",
+                  "description": "S'informer sur les contrats spécifiques",
+                  "slug": "s-informer-sur-contrats-specifiques"
+                },
+                {
+                  "name": "Travailler en Europe ou à l'international",
+                  "description": "Travailler en Europe ou à l'international",
+                  "slug": "travailler-a-l-international"
+                }
+              ]
+            }
           },
           "500":
           {
@@ -130,7 +152,19 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example":{
+              "aid": {
+                "name": "Volontariat international (VI)",
+                "what": "<p>La mission peut &ecirc;tre effectu&eacute;e en VIE (volontariat international en entreprise) ou en VIA (volontariat international en administration), au sein de diff&eacute;rentes structures (ambassades, universit&eacute;s et laboratoires, centres culturels, organisations non gouvernementales, ...).</p>",
+                "slug": "vi-volontariat-international",
+                "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                "how_much": "<p>Vous percevez une indemnit&eacute; d&#39;un montant pouvant aller de 1432 euros &agrave; 4784 euros nets.**</p>",
+                "additionnal_conditions": "<p>Vous devez &nbsp;:</p>\r\n\r\n<p>- &ecirc;tre de nationalit&eacute; fran&ccedil;aise ou ressortissant(e) d&#39;un pays de l&#39;espace &eacute;conomique europ&eacute;en (EEE)</p>",
+                "how_and_when": "<p>Vous devez enregistrer votre candidature par internet sur le site <a href=\"http://www.civiweb.com\" rel=\"noopener\" target=\"_blank\">Civiweb</a>.</p>",
+                "limitations": "<p>** L&#39;indemnit&eacute; est fix&eacute;e par d&eacute;cret et varie selon le pays d&#39;affectation.</p>"
+              }
+            }
           },
           "404":
           {
@@ -246,7 +280,35 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
           },
           "400":
           {
@@ -365,7 +427,35 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
           },
           "400":
           {
@@ -484,7 +574,36 @@
         {
           "200":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+                "asker": {
+                  "zrr": "true",
+                  "allocation_type": "RSA",
+                  "age": "19",
+                  "location_citycode": "02004"
+                },
+                "aids": [
+                  {
+                    "name": "Volontariat international (VI)",
+                    "slug": "vi-volontariat-international",
+                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
+                    "filters": [],
+                    "contract_type": "emploi-international"
+                  },
+                  {
+                    "name": "Contrat d'apprentissage",
+                    "slug": "contrat-d-apprentissage",
+                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
+                    "filters": [
+                      "travailler-en-alternance",
+                      "aides-employeurs",
+                      "se-former-valoriser-ses-competences"
+                    ],
+                    "contract_type": "contrat-en-alternance"
+                  }
+                ]
+              }
+
           },
           "400":
           {
@@ -536,7 +655,10 @@
         {
           "201":
           {
-            "description": "Found"
+            "description": "Found",
+            "example": {
+              "jwt": "averylongtoken.that-respect-jwt-standard"
+            }
           },
           "404":
           {
