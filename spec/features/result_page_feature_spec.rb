@@ -17,9 +17,9 @@ feature 'result page' do
     
     it 'Shows only actives aides' do
       number_of_aids_displayed = result_page.css('.c-result-aid').count
-      expect(Aid.all.size)            .not_to eq(8)
-      expect(Aid.activated.size)      .to eq(8)
-      expect(number_of_aids_displayed).to eq(8)
+      expect(Aid.all.size)            .not_to eq 8
+      expect(Aid.activated.size)      .to eq 8
+      expect(number_of_aids_displayed).to eq 8
     end
 
     it 'Group aid by contract type' do
@@ -31,11 +31,11 @@ feature 'result page' do
     end
 
     it 'One aid contain all related aids' do
-      expect(result_page.css('.c-result-line.more-id .c-result-aid').count).to eq(4)
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_18').count).to eq(1)
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_19').count).to eq(1)
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_20').count).to eq(1)
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_21').count).to eq(1)
+      expect(result_page.css('.c-result-line.more-id .c-result-aid').count).to eq 4
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_18').count).to eq 1
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_19').count).to eq 1
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_20').count).to eq 1
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_21').count).to eq 1
     end
 
   end
