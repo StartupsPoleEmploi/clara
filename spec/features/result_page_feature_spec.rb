@@ -16,7 +16,7 @@ feature 'result page' do
     end
     
     it 'Shows only actives aides' do
-      number_of_aids_displayed = page.all('.c-result-aid', :visible => true).count
+      number_of_aids_displayed = result_page.css('.c-result-aid').count
       expect(Aid.all.size)            .not_to eq(8)
       expect(Aid.activated.size)      .to eq(8)
       expect(number_of_aids_displayed).to eq(8)
