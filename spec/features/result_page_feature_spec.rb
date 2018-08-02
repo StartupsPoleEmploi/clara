@@ -39,12 +39,12 @@ feature 'result page' do
     end
 
     it 'One aid contain all related aids, sorted by their ordre_affichage property' do
-      a = result_page.css(".c-result-line.more-id .c-result-aid")
+      aids_text = result_page.css(".c-result-line.more-id .c-result-aid")
             .collect(&:text)
             .map(&:strip)
             .map(&:squeeze)
             .map{|e|e.gsub(/[[:space:]]/, ' ')}
-      expect(a).to eq([
+      expect(aids_text).to eq([
         "aid_more_than_18 En savoir plus", 
         "aid_more_than_20 En savoir plus", 
         "aid_more_than_19 En savoir plus", 
@@ -57,17 +57,29 @@ feature 'result page' do
     end
 
     it 'There is nothing related to eligibility' do
-      expect(n('.c-result-line--green')).to eq 0
-      expect(n('.c-result-line--orange')).to eq 0 
-      expect(n('.c-result-line--red')).to eq 0 
+      expect(result_page.css('.c-result-line--green').count)     .to eq 0
+      expect(result_page.css('.c-result-line--orange').count)    .to eq 0 
+      expect(result_page.css('.c-result-line--red').count)       .to eq 0 
 
-      expect(n('.c-result-list--eligible')).to eq 0
-      expect(n('.c-result-list--uncertain')).to eq 0
-      expect(n('.c-result-list--ineligible')).to eq 0
+      expect(result_page.css('.c-result-list--eligible').count)  .to eq 0
+      expect(result_page.css('.c-result-list--uncertain').count) .to eq 0
+      expect(result_page.css('.c-result-list--ineligible').count).to eq 0
+    end
+
+    it 'No links leads directly to a calculated detailed aid' do
+      aids_links = result_page.css('a.c-result-aid').map { |e| e[:href] }
+      expect(aids_links.all? {|e| e.include?("/") && !e.include?("?for_id=")}).to eq true    
     end
 
   end
 
+  context 'User has a link to calculated result page' do
+    before(:each) do
+      disable_http_service
+      asker = create(:asker, :full_user_input)
+      visit aides_path + '?for_id=' + ConvertAskerInBase64Service.new.into_base64(asker)
+    end
+  end
 
   def create_nominal_schema
     v_age = create(:variable, :age)
