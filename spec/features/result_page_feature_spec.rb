@@ -30,6 +30,14 @@ feature 'result page' do
       expect(result_page.css('.c-result-line.zrr-id')   .count).to eq(1)
     end
 
+    it 'One aid contain all related aids' do
+      expect(result_page.css('.c-result-line.more-id .c-result-aid').count).to eq(4)
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_18').count).to eq(1)
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_19').count).to eq(1)
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_20').count).to eq(1)
+      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_21').count).to eq(1)
+    end
+
   end
 
 
