@@ -47,12 +47,12 @@ describe TranslateB64AskerService do
 
   it '.into_b64 and .from_b64, when chained, must end up with the same asker' do
     #given
-    asker = create(:asker, :full_user_input)
+    original_asker = create(:asker, :full_user_input)
     service = TranslateB64AskerService.new
     #when
-    recreated_asker = service.from_b64(service.into_b64(asker))
+    recreated_asker = service.from_b64(service.into_b64(original_asker))
     #then
-    expect(asker.attributes).to eq(recreated_asker.attributes)
+    expect(original_asker.attributes).to eq(recreated_asker.attributes)
   end
 
 end
