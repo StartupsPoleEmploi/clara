@@ -38,12 +38,12 @@ class AidesController < ApplicationController
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
     else
-      @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
+      @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end
   end
 
   def pull_existing_from_cache
-    @existing = CacheService.get_instance.read(params[:for_id]) if params[:for_id] != "random"
+    @existing = Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
   end
 
   def write_to_cache(cacheable)

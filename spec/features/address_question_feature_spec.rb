@@ -138,7 +138,7 @@ feature 'address question' do
   end
 
   def visit_aides_for_asker(asker)
-    visit aides_path + '?for_id=' + ConvertAskerInBase64Service.new.into_base64(asker)
+    visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
   end
 
   def create_realistic_asker

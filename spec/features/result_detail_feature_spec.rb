@@ -12,7 +12,7 @@ feature 'detail of a result page' do
   #     asker = create(:asker, :fully_calculated_asker)
   #     aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
   #     disable_http_service
-  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     a = TranslateB64AskerService.new.into_b64(asker)
   #     b = aid.slug
   #     visit detail_path(b)
   #   end
@@ -34,7 +34,7 @@ feature 'detail of a result page' do
   #     allow(cache_layer).to receive(:write).and_return(nil)
   #     CacheService.set_instance(cache_layer)
 
-  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     a = TranslateB64AskerService.new.into_b64(asker)
   #     b = aid.slug
   #     visit detail_path(b) + '?for_id=' + a
   #   end
@@ -55,7 +55,7 @@ feature 'detail of a result page' do
   #     asker = create(:asker, :fully_calculated_asker)
   #     aid = create(:aid, :aid_adult_or_spectacles_or_qpv, name: 'ze_name_for_adult_or_spectacle')
 
-  #     a = ConvertAskerInBase64Service.new.into_base64(asker)
+  #     a = TranslateB64AskerService.new.into_b64(asker)
   #     b = aid.slug
   #     visit detail_path(b) + '?for_id=' + a
   #   end

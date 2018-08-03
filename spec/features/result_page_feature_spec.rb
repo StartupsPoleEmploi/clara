@@ -76,7 +76,7 @@ feature 'result page' do
   context 'User has a link to calculated result page' do
     before(:each) do
       asker = create(:asker, :full_user_input)
-      visit aides_path + '?for_id=' + ConvertAskerInBase64Service.new.into_base64(asker)
+      visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
     end
   end
 

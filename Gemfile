@@ -32,7 +32,6 @@ gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
 
 gem 'clipboard' # debug purpose only
 gem 'actionpack-page_caching'
-gem 'pghero', '2.1.1'
 
 ## Devops
 gem 'newrelic_rpm'
