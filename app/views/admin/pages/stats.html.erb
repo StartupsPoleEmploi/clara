@@ -1,6 +1,6 @@
 <div style="margin-top: 2rem;">
 copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
-<%= form_with url: admin_load_stats_path, id: 'admin_load_stats_form' do |form| %>
+<%= form_with url: admin_load_stats_path, local: false, id: 'admin_load_stats_form' do |form| %>
   <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "Index des jours,Sessions\n01/01/2018,12\n02/01/2018,249\n03/01/2018,578" %>
   <%= form.submit 'Charger les sessions GA'%>
 <% end %>
@@ -20,7 +20,7 @@ copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charg
 
 <div style="margin-top: 2rem;">
 copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
-<%= form_with url: admin_load_stats_from_pe_path, id: 'admin_load_stats_from_pe_form' do |form| %>
+<%= form_with url: admin_load_stats_from_pe_path, local: false, id: 'admin_load_stats_from_pe_form' do |form| %>
   <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "Index des jours,Période,Segment,Sessions\n01/01/2018,1 janv. 2018 - 29 mai 2018,Tous les utilisateurs,12\n01/01/2018,1 janv. 2018 - 29 mai 2018,Conseillers PE,0" %>
   <%= form.submit 'Charger les données de trafic PE / hors PE'%>
 <% end %>
@@ -41,7 +41,7 @@ copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charg
 
 <div style="margin-top: 2rem;">
 Copiez/collez les données (au format CSV) dans le cadre puis cliquez sur "charger"
-<%= form_with url: admin_load_advisors_stats_path, id: 'admin_load_advisors_stats_form' do |form| %>
+<%= form_with url: admin_load_advisors_stats_path, local: false, id: 'admin_load_advisors_stats_form' do |form| %>
   <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "\"Number\",\"User\",\"Date Submitted\",\"Country\",\"Source URL\",\"Device\",\"Browser\",\"OS\",\"Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?\",\"A quelle fréquence utilisez-vous Clara ?\"\n\"1\",\"551c6f46\",\"2018-04-23 12:59:47\",\"France\",\"https://clara.pole-emploi.fr/aides?for_id=MjcsQVJFX0FTUCwxODAwLGNhdF8xMjM0NSxuaXZlYXVfMSxwbHVzX2RfdW5fYW4sbm9uLE1vbnRyZXVpbCw5MzA0OCxGcmFuY2UsNzAgUnVlIGRlIExhZ255IDkzMTAwIE1vbnRyZXVpbCxSdWUgZGUgTGFnbnksw45sZS1kZS1GcmFuY2UsNzAsOTMxMDAsbmlsLG91aSxuaWw=\",\"desktop\",\"Chrome 65.0.3325\",\"Windows 7\",\"+ de 15 minutes\",\"1 à 2 fois par jour\"" %>
   <%= form.submit 'Charger les données des conseillers'%>
 <% end %>
