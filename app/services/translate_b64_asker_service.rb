@@ -4,23 +4,19 @@ class TranslateB64AskerService
 
   def from_b64(asker_64)
     asker_array = Base64.urlsafe_decode64(asker_64).split(",")
-    # p asker_array
     base_keys = base_h.keys.sort_by(&:itself)
-    # p base_keys
     # https://stackoverflow.com/a/9137388/2595513
     asker_h = Hash[base_keys.zip(asker_array)] 
-    # p asker_h
     asker = Asker.new
     asker.v_spectacle              = boolean_to_b64(asker_h["spectacle"])
-    # asker.v_handicap             = boolean_to_b64(forid_asker.v_handicap)
-    # asker.v_diplome              = diploma_to_b64(forid_asker.v_diplome)
-    # asker.v_category             = category_to_b64(forid_asker.v_category)
-    # asker.v_duree_d_inscription  = inscription_period_to_b64(forid_asker.v_duree_d_inscription)
-    # asker.v_allocation_type      = allocation_type_to_b64(forid_asker.v_allocation_type)
-    # asker.v_allocation_value_min = integer_to_b64(forid_asker.v_allocation_value_min)
-    # asker.v_age                  = integer_to_b64(forid_asker.v_age)
-    # asker.v_location_citycode    = integer_to_b64(forid_asker.v_location_citycode)
-    p asker
+    asker.v_handicap               = boolean_to_b64(asker_h["disabled"])
+    asker.v_diplome                = diploma_to_b64(asker_h["diploma"])
+    asker.v_category               = category_to_b64(asker_h["category"])
+    asker.v_duree_d_inscription    = inscription_period_to_b64(asker_h["inscription_period"])
+    asker.v_allocation_type        = allocation_type_to_b64(asker_h["allocation_type"])
+    asker.v_allocation_value_min   = integer_to_b64(asker_h["monthly_allocation_value"])
+    asker.v_age                    = integer_to_b64(asker_h["age"])
+    asker.v_location_citycode      = integer_to_b64(asker_h["location_citycode"])
     asker
   end
   
@@ -35,7 +31,6 @@ class TranslateB64AskerService
     h["monthly_allocation_value"] = integer_from_b64(asker.v_allocation_value_min)
     h["age"]                      = integer_from_b64(asker.v_age)
     h["location_citycode"]        = integer_from_b64(asker.v_location_citycode)
-    p h
     Base64.urlsafe_encode64(h.keys.sort_by(&:itself).map{|e| h[e]}.join(','))
   end
   
