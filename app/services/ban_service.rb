@@ -25,15 +25,9 @@ class BanService
   end
 
   def get_zipcode_and_cityname(citycode)
-    p '- - - - - - - - - - - - - - citycode- - - - - - - - - - - - - - - -' 
-    pp citycode
-    p ''
     if (citycode && citycode.is_a?(String) && !citycode.blank?)
       escaped_address = URI.escape(@base_url + "rue&citycode=" + citycode) 
       uri = URI.parse(escaped_address)
-      p '- - - - - - - - - - - - - - uri- - - - - - - - - - - - - - - -' 
-      pp uri
-      p ''
       response = HttpService.get_instance.get(uri)
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
