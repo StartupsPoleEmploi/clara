@@ -42,7 +42,7 @@ module Api
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          local_asker = params.permit(:random).to_h[:random] == "true" ? RehydrateAddressService.new.from_citycode!(RandomAskerService.new.go) : processed_asker(api_asker)
+          local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
             aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
@@ -141,7 +141,7 @@ module Api
 
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
-        RehydrateAddressService.new.from_citycode!(asker)
+        CalculateAskerService.new(asker).calculate_zrr!
       end
 
       def eligible_aids_for(asker, filters)

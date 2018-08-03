@@ -51,7 +51,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_with_qpv_zrr
-    CalculateAskerService.new(@asker).calculate_zrr
+    CalculateAskerService.new(@asker).calculate_zrr!
   end
 
   def create_cacheable_results_from_asker
