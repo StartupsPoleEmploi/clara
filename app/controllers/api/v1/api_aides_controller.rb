@@ -142,7 +142,6 @@ module Api
       def processed_asker(api_asker)
         asker = TranslateAskerService.new.to_french(api_asker)
         CalculateAskerService.new(asker).calculate_zrr!
-        asker
       end
 
       def eligible_aids_for(asker, filters)

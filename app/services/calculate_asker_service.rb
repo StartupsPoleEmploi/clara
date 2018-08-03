@@ -7,5 +7,6 @@ class CalculateAskerService
 
   def calculate_zrr!
     @asker.v_zrr = ZrrService.new.zrr?(@asker.v_location_citycode) 
+    @asker
   end
 end
