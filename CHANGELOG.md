@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.2 (03/08/2018)
+-[#859b][BUG] Correction des stats
+
+
 ## 11.10.1 (03/08/2018)
 -[#859][BUG] Correction des stats
 
