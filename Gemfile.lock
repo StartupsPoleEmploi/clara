@@ -279,8 +279,6 @@ GEM
       activerecord (>= 4.2, < 5.3)
       request_store (~> 1.1)
     pg (0.21.0)
-    pghero (2.1.1)
-      activerecord
     phantomjs (2.1.1.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -482,7 +480,6 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.5)
   paper_trail (~> 9.0.0)
   pg (~> 0.18)
-  pghero (= 2.1.1)
   poltergeist
   pry-rails
   pry-remote
