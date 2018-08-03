@@ -4,10 +4,10 @@ class AidesController < ApplicationController
 
   def index
     if have_active_asker?
-      pull_existing_from_cache
-      if (@existing)
-        hydrate_view(@existing)
-        instantiate_asker(@existing)
+      existing = pull_existing_from_cache
+      if (existing)
+        hydrate_view(existing)
+        instantiate_asker(existing)
       else
         pull_asker_from_query_param
         augment_asker_with_qpv_zrr
@@ -43,7 +43,7 @@ class AidesController < ApplicationController
   end
 
   def pull_existing_from_cache
-    @existing = Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
+    Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
   end
 
   def write_to_cache(cacheable)
@@ -51,7 +51,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_with_qpv_zrr
-    CalculateAskerService.new(@asker).calculate_zrr_qpv
+    CalculateAskerService.new(@asker).calculate_zrr
   end
 
   def create_cacheable_results_from_asker
