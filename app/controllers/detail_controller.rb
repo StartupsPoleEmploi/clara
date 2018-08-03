@@ -9,8 +9,8 @@ class DetailController < ApplicationController
       if (existing) # already in the cache, we dont have to calculate anything
         @asker = Asker.new(existing[:asker])
       else
-        @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
-        CalculateAskerService.new(@asker).calculate_zrr_qpv
+        @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
+        RehydrateAddressService.new(@asker).from_citycode!
       end
       @loaded = DetailService.new(@aid).hashified_eligibility_and_rules(@asker)
     else

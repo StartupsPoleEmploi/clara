@@ -31,7 +31,7 @@ class OtherQuestionsController < ApplicationController
   end
 
   def redirect_to_next_question(request)
-    base64_str = ConvertAskerInBase64Service.new.into_base64(@asker)
+    base64_str = TranslateB64AskerService.new.into_b64(@asker)
     my_redirect_to QuestionManager.new.getNextPath(request.referer, base64_str)
   end
 

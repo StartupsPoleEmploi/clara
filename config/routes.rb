@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :admin do
-    mount PgHero::Engine, at: "pghero"
     resources :users
     resources :filters
     resources :aids

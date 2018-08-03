@@ -4,13 +4,13 @@ class AidesController < ApplicationController
 
   def index
     if have_active_asker?
-      pull_existing_from_cache
-      if (@existing)
-        hydrate_view(@existing)
-        instantiate_asker(@existing)
+      existing = pull_existing_from_cache
+      if (existing)
+        hydrate_view(existing)
+        instantiate_asker(existing)
       else
         pull_asker_from_query_param
-        augment_asker_with_qpv_zrr
+        augment_asker
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
         hydrate_view(cacheable)
@@ -38,20 +38,20 @@ class AidesController < ApplicationController
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
     else
-      @asker = ConvertAskerInBase64Service.new.from_base64(params[:for_id])
+      @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end
   end
 
   def pull_existing_from_cache
-    @existing = CacheService.get_instance.read(params[:for_id]) if params[:for_id] != "random"
+    Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
   end
 
   def write_to_cache(cacheable)
     CacheService.get_instance.write(params[:for_id], cacheable)
   end
 
-  def augment_asker_with_qpv_zrr
-    CalculateAskerService.new(@asker).calculate_zrr_qpv
+  def augment_asker
+    RehydrateAddressService.new.from_citycode!(@asker)
   end
 
   def create_cacheable_results_from_asker
