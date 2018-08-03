@@ -3,14 +3,15 @@ class TranslateB64AskerService
   
 
   def from_b64(asker_64)
-    asker = Asker.new
     asker_array = Base64.urlsafe_decode64(asker_64).split(",")
-    p asker_array
-    keys = base_h.keys.sort_by(&:itself)
-    p keys
-    final_h = Hash[keys.zip(asker_array)] 
-    p final_h
-    # asker.v_spectacle            = boolean_to_b64(forid_asker.v_spectacle)
+    # p asker_array
+    base_keys = base_h.keys.sort_by(&:itself)
+    # p base_keys
+    # https://stackoverflow.com/a/9137388/2595513
+    asker_h = Hash[base_keys.zip(asker_array)] 
+    # p asker_h
+    asker = Asker.new
+    asker.v_spectacle              = boolean_to_b64(asker_h["spectacle"])
     # asker.v_handicap             = boolean_to_b64(forid_asker.v_handicap)
     # asker.v_diplome              = diploma_to_b64(forid_asker.v_diplome)
     # asker.v_category             = category_to_b64(forid_asker.v_category)
@@ -19,7 +20,8 @@ class TranslateB64AskerService
     # asker.v_allocation_value_min = integer_to_b64(forid_asker.v_allocation_value_min)
     # asker.v_age                  = integer_to_b64(forid_asker.v_age)
     # asker.v_location_citycode    = integer_to_b64(forid_asker.v_location_citycode)
-    # asker
+    p asker
+    asker
   end
   
   def into_b64(asker)
@@ -63,7 +65,7 @@ class TranslateB64AskerService
 
   def diploma_to_b64(diploma)
     return unless diploma != nil
-    diploma_hash[diploma.to_s.to_sym]
+    diploma_hash[diploma.to_s]
   end
   def diploma_from_b64(diploma)
     return unless diploma != nil
@@ -75,7 +77,7 @@ class TranslateB64AskerService
 
   def boolean_to_b64(other)
     return unless other != nil
-    boolean_hash[other.to_s.to_sym]
+    boolean_hash[other.to_s]
   end
   def boolean_from_b64(other)
     return unless other != nil
@@ -88,7 +90,7 @@ class TranslateB64AskerService
 
   def category_to_b64(category)
     return unless category != nil
-    category_hash[category.to_s.to_sym]
+    category_hash[category.to_s]
   end
   def category_from_b64(category)
     return unless category != nil
@@ -100,7 +102,7 @@ class TranslateB64AskerService
 
   def inscription_period_to_b64(period)
     return unless period != nil
-    inscription_hash[period.to_s.to_sym]
+    inscription_hash[period.to_s]
   end
   def inscription_period_from_b64(period)
     return unless period != nil
@@ -112,7 +114,7 @@ class TranslateB64AskerService
 
   def allocation_type_to_b64(allocation_type)
     return unless allocation_type != nil
-    allocation_hash[allocation_type.to_s.to_sym]
+    allocation_hash[allocation_type.to_s]
   end
   def allocation_type_from_b64(allocation_type)
     return unless allocation_type != nil
