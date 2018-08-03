@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.1 (03/08/2018)
+-[#859][BUG] Correction des stats
+
+
 ## 11.10.0 (01/08/2018)
 -[#846][FEATURE] API : response examples
 
