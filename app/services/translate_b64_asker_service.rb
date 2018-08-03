@@ -2,34 +2,57 @@
 class TranslateB64AskerService
   
 
-  def to_b64(forid_asker)
+  def from_b64(asker_64)
     asker = Asker.new
-    asker.v_spectacle            = boolean_to_b64(forid_asker.v_spectacle)
-    asker.v_handicap             = boolean_to_b64(forid_asker.v_handicap)
-    asker.v_diplome              = diploma_to_b64(forid_asker.v_diplome)
-    asker.v_category             = category_to_b64(forid_asker.v_category)
-    asker.v_duree_d_inscription  = inscription_period_to_b64(forid_asker.v_duree_d_inscription)
-    asker.v_allocation_type      = allocation_type_to_b64(forid_asker.v_allocation_type)
-    asker.v_allocation_value_min = integer_to_b64(forid_asker.v_allocation_value_min)
-    asker.v_age                  = integer_to_b64(forid_asker.v_age)
-    asker.v_location_citycode    = integer_to_b64(forid_asker.v_location_citycode)
-    asker
+    asker_array = Base64.urlsafe_decode64(asker_64).split(",")
+    p asker_array
+    keys = base_h.keys.sort_by(&:itself)
+    p keys
+    final_h = Hash[keys.zip(asker_array)] 
+    p final_h
+    # asker.v_spectacle            = boolean_to_b64(forid_asker.v_spectacle)
+    # asker.v_handicap             = boolean_to_b64(forid_asker.v_handicap)
+    # asker.v_diplome              = diploma_to_b64(forid_asker.v_diplome)
+    # asker.v_category             = category_to_b64(forid_asker.v_category)
+    # asker.v_duree_d_inscription  = inscription_period_to_b64(forid_asker.v_duree_d_inscription)
+    # asker.v_allocation_type      = allocation_type_to_b64(forid_asker.v_allocation_type)
+    # asker.v_allocation_value_min = integer_to_b64(forid_asker.v_allocation_value_min)
+    # asker.v_age                  = integer_to_b64(forid_asker.v_age)
+    # asker.v_location_citycode    = integer_to_b64(forid_asker.v_location_citycode)
+    # asker
   end
   
-  def from_b64(forid_asker)
-    res = {}
-    res[:spectacle]                = boolean_from_b64(forid_asker.v_spectacle)
-    res[:disabled]                 = boolean_from_b64(forid_asker.v_handicap)
-    res[:diploma]                  = diploma_from_b64(forid_asker.v_diplome)
-    res[:category]                 = category_from_b64(forid_asker.v_category)
-    res[:inscription_period]       = inscription_period_from_b64(forid_asker.v_duree_d_inscription)
-    res[:allocation_type]          = allocation_type_from_b64(forid_asker.v_allocation_type)
-    res[:monthly_allocation_value] = integer_from_b64(forid_asker.v_allocation_value_min)
-    res[:age]                      = integer_from_b64(forid_asker.v_age)
-    res[:location_citycode]        = integer_from_b64(forid_asker.v_location_citycode)
-    res
+  def into_b64(asker)
+    h = base_h
+    h["spectacle"]                = boolean_from_b64(asker.v_spectacle)
+    h["disabled"]                 = boolean_from_b64(asker.v_handicap)
+    h["diploma"]                  = diploma_from_b64(asker.v_diplome)
+    h["category"]                 = category_from_b64(asker.v_category)
+    h["inscription_period"]       = inscription_period_from_b64(asker.v_duree_d_inscription)
+    h["allocation_type"]          = allocation_type_from_b64(asker.v_allocation_type)
+    h["monthly_allocation_value"] = integer_from_b64(asker.v_allocation_value_min)
+    h["age"]                      = integer_from_b64(asker.v_age)
+    h["location_citycode"]        = integer_from_b64(asker.v_location_citycode)
+    p h
+    Base64.urlsafe_encode64(h.keys.sort_by(&:itself).map{|e| h[e]}.join(','))
   end
   
+  private
+
+  def base_h
+    h = {}
+    h["spectacle"]                = ""
+    h["disabled"]                 = ""
+    h["diploma"]                  = ""
+    h["category"]                 = ""
+    h["inscription_period"]       = ""
+    h["allocation_type"]          = ""
+    h["monthly_allocation_value"] = ""
+    h["age"]                      = ""
+    h["location_citycode"]        = ""
+    h
+  end
+
   def integer_to_b64(the_int)
     return unless the_int != nil
     return the_int.to_s
