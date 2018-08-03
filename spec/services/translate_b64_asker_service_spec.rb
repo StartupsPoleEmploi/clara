@@ -11,7 +11,7 @@ describe TranslateB64AskerService do
     expect(sut).to eq("MzUsMSxvLDMsbyxwLDc5MzUxLDM0MCxu")
   end
 
-  it '.into_b64 The generated string must be an list properties once decoded' do
+  it '.into_b64 The generated string must be an list of properties once decoded' do
     #given
     asker = create(:asker, :full_user_input)
     str = TranslateB64AskerService.new.into_b64(asker)
