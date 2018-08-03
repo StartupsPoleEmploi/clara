@@ -50,27 +50,6 @@ feature 'address question' do
       # then
       expect_current_path_changed
     end
-    context 'QPV check' do
-      before(:each) do
-        qpv_layer = instance_double("QpvService")
-        allow(qpv_layer).to receive(:setDetailedQPV).with("12", "Rue des Carmes", "45000", "Orléans")
-        QpvService.set_instance(qpv_layer)
-      end
-      after(:each) do
-        QpvService.set_instance(nil)
-      end    
-      scenario 'QPV service is immediately required' do
-        # given
-        fill_a_nominal_address
-
-        set_address("12 Rue des Carmes 45000 Orléans")
-        
-        # when
-        go_next
-        # then
-        # !! expectation set in the "allow" method in before block
-      end
-    end
   end
 
   # context 'User has received a link to results' do
