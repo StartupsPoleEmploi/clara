@@ -10,7 +10,7 @@ class DetailController < ApplicationController
         @asker = Asker.new(existing[:asker])
       else
         @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
-        CalculateAskerService.new(@asker).calculate_zrr!
+        RehydrateAddressService.new(@asker).from_citycode!
       end
       @loaded = DetailService.new(@aid).hashified_eligibility_and_rules(@asker)
     else

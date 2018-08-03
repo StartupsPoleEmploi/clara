@@ -10,7 +10,7 @@ class AidesController < ApplicationController
         instantiate_asker(existing)
       else
         pull_asker_from_query_param
-        augment_asker_with_qpv_zrr
+        augment_asker
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
         hydrate_view(cacheable)
@@ -50,8 +50,8 @@ class AidesController < ApplicationController
     CacheService.get_instance.write(params[:for_id], cacheable)
   end
 
-  def augment_asker_with_qpv_zrr
-    CalculateAskerService.new(@asker).calculate_zrr!
+  def augment_asker
+    RehydrateAddressService.new(@asker).from_citycode!
   end
 
   def create_cacheable_results_from_asker
