@@ -51,7 +51,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker
-    RehydrateAddressService.new(@asker).from_citycode!
+    RehydrateAddressService.new.from_citycode!(@asker)
   end
 
   def create_cacheable_results_from_asker
