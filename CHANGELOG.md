@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.3 (03/08/2018)
+-[#858][TECH] rehydratation
+
+
 ## 11.10.2 (03/08/2018)
 -[#859b][BUG] Correction des stats
 
