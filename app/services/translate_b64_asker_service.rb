@@ -1,0 +1,109 @@
+
+class TranslateB64AskerService
+  
+
+  def to_b64(forid_asker)
+    asker = Asker.new
+    asker.v_spectacle            = boolean_to_b64(forid_asker.v_spectacle)
+    asker.v_handicap             = boolean_to_b64(forid_asker.v_handicap)
+    asker.v_diplome              = diploma_to_b64(forid_asker.v_diplome)
+    asker.v_category             = category_to_b64(forid_asker.v_category)
+    asker.v_duree_d_inscription  = inscription_period_to_b64(forid_asker.v_duree_d_inscription)
+    asker.v_allocation_type      = allocation_type_to_b64(forid_asker.v_allocation_type)
+    asker.v_allocation_value_min = integer_to_b64(forid_asker.v_allocation_value_min)
+    asker.v_age                  = integer_to_b64(forid_asker.v_age)
+    asker.v_location_citycode    = integer_to_b64(forid_asker.v_location_citycode)
+    asker
+  end
+  
+  def from_b64(forid_asker)
+    res = {}
+    res[:spectacle]                = boolean_from_b64(forid_asker.v_spectacle)
+    res[:disabled]                 = boolean_from_b64(forid_asker.v_handicap)
+    res[:diploma]                  = diploma_from_b64(forid_asker.v_diplome)
+    res[:category]                 = category_from_b64(forid_asker.v_category)
+    res[:inscription_period]       = inscription_period_from_b64(forid_asker.v_duree_d_inscription)
+    res[:allocation_type]          = allocation_type_from_b64(forid_asker.v_allocation_type)
+    res[:monthly_allocation_value] = integer_from_b64(forid_asker.v_allocation_value_min)
+    res[:age]                      = integer_from_b64(forid_asker.v_age)
+    res[:location_citycode]        = integer_from_b64(forid_asker.v_location_citycode)
+    res
+  end
+  
+  def integer_to_b64(the_int)
+    return unless the_int != nil
+    return the_int.to_s
+  end
+  def integer_from_b64(the_int)
+    integer_to_b64(the_int)
+  end
+
+  def diploma_to_b64(diploma)
+    return unless diploma != nil
+    diploma_hash[diploma.to_s.to_sym]
+  end
+  def diploma_from_b64(diploma)
+    return unless diploma != nil
+    diploma_hash.invert[diploma.to_s].to_s
+  end
+  def diploma_hash
+    {"1" => "niveau_1", "2" => "niveau_2", "3" => "niveau_3", "4" => "niveau_4", "5" => "niveau_5", "6" => "niveau_infra_5"}
+  end
+
+  def boolean_to_b64(other)
+    return unless other != nil
+    boolean_hash[other.to_s.to_sym]
+  end
+  def boolean_from_b64(other)
+    return unless other != nil
+    boolean_hash.invert[other.to_s].to_s
+  end
+  def boolean_hash
+    {"o" => "oui", "n" => "non"}
+  end
+
+
+  def category_to_b64(category)
+    return unless category != nil
+    category_hash[category.to_s.to_sym]
+  end
+  def category_from_b64(category)
+    return unless category != nil
+    category_hash.invert[category.to_s].to_s
+  end
+  def category_hash
+    {"1" => "cat_12345", "o" => "autres_cat"}
+  end
+
+  def inscription_period_to_b64(period)
+    return unless period != nil
+    inscription_hash[period.to_s.to_sym]
+  end
+  def inscription_period_from_b64(period)
+    return unless period != nil
+    inscription_hash.invert[period.to_s].to_s    
+  end
+  def inscription_hash
+    {"p" => "plus_d_un_an", "m" => "moins_d_un_an", "n" => "non_inscrit"}
+  end
+
+  def allocation_type_to_b64(allocation_type)
+    return unless allocation_type != nil
+    allocation_hash[allocation_type.to_s.to_sym]
+  end
+  def allocation_type_from_b64(allocation_type)
+    return unless allocation_type != nil
+    allocation_hash.invert[allocation_type.to_s].to_s    
+  end
+  def allocation_hash
+    {
+      "1" => "ARE_ASP", 
+      "2" => "ASS_AER_ATA_APS_AS-FNE", 
+      "3" => "RPS_RFPA_RFF_pensionretraite",
+      "4" => "RSA", 
+      "5" => "AAH", 
+      "6" => "pas_indemnise"
+    }
+  end
+
+end

@@ -75,7 +75,6 @@ feature 'result page' do
 
   context 'User has a link to calculated result page' do
     before(:each) do
-      disable_http_service
       asker = create(:asker, :full_user_input)
       visit aides_path + '?for_id=' + ConvertAskerInBase64Service.new.into_base64(asker)
     end
