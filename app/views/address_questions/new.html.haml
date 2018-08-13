@@ -57,7 +57,7 @@
               %tr
                 %td.label Country
                 %td.slimField
-                  %input#country.field{name: "address_form[country]", value:"#{@address.country}"}/
+                  %input#country.field{name: "address_form[country]", value:"#{@address.label ? 'France' : ''}"}/
                 %td.label Citycode
                 %td.wideField
                   %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
