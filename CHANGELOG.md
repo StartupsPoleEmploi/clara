@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.4 (13/08/2018)
+-[#858b][BUG] rehydratation bugfix
+
+
 ## 11.10.3 (03/08/2018)
 -[#858][TECH] rehydratation
 
