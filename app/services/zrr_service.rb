@@ -16,7 +16,7 @@ class ZrrService
     # zrrs = response.to_s
     # zrrs && zrrs.include?(citycode) ? "oui" : "non"
     zrrs = Rails.cache.fetch("zrrs") do
-      Zrr.first.value  
+      Zrr.first ? Zrr.first.value  : ""
     end
     zrrs && zrrs.include?(citycode) ? "oui" : "non"
   end
