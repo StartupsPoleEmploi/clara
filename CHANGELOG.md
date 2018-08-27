@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.5 (27/08/2018)
+-[#864][BUG] Form - arg error
+
+
 ## 11.10.4 (13/08/2018)
 -[#858b][BUG] rehydratation bugfix
 
@@ -20,7 +24,7 @@
 ## 11.10.0 (01/08/2018)
 -[#846][FEATURE] API : response examples
 
-
+  
 ## 11.9.9 (01/08/2018)
 -[#856][TECH] API : suppression de l'auth sur le ping
 
