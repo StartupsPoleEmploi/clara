@@ -10,13 +10,13 @@ class CategoryQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath('category', @asker)
     else
       @category = CategoryForm.new(allowed_params)
       @asker.v_category = @category.value
       save_asker
       if @category.valid?
-        my_redirect_to QuestionManager.new.getNextPath(request.referer, @category)
+        my_redirect_to QuestionManager.new.getNextPath('category', @category)
       else
         flash[:error] = @category.errors.messages.values.flatten
         my_redirect_to new_category_question_path

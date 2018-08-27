@@ -11,7 +11,7 @@ class OtherQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath(request.referer, @asker)
+      my_redirect_to QuestionManager.new.getPreviousPath('other', @asker)
     else
       @other = download_from_params
       if @other.valid?

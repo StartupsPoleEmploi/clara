@@ -3,12 +3,8 @@ require 'uri'
 class QuestionManager
    include Rails.application.routes.url_helpers
 
-  def getPreviousPath(referer, asker)
-  
-    from = URI(referer).path
-    func_name = from[ from.index('/')+1 .. from.rindex('_')-1 ]
-    self.public_send('before_' + func_name, asker)
-  
+  def getPreviousPath(referer, asker)  
+    self.public_send('before_' + referer, asker)
   end
 
   def getNextPath(*args)
