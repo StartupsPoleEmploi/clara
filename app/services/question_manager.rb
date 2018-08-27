@@ -18,9 +18,7 @@ class QuestionManager
     else
       referer = args[0]
       form = args[1]
-      from = URI(referer).path
-      func_name = from[ from.index('/')+1 .. from.rindex('_')-1 ]
-      self.public_send('after_' + func_name, form)
+      self.public_send('after_' + referer, form)
     end
   
   end

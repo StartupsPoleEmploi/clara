@@ -32,7 +32,7 @@ class OtherQuestionsController < ApplicationController
 
   def redirect_to_next_question(request)
     base64_str = TranslateB64AskerService.new.into_b64(@asker)
-    my_redirect_to QuestionManager.new.getNextPath(request.referer, base64_str)
+    my_redirect_to QuestionManager.new.getNextPath('other', base64_str)
   end
 
   def populate_errors(flash)

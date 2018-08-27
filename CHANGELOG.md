@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 11.10.6 (27/08/2018)
+-[#853][BUG] NoMethodError: undefined method '-' for nil:NilClass
+
+
 ## 11.10.5 (27/08/2018)
 -[#864][BUG] Form - arg error
 
