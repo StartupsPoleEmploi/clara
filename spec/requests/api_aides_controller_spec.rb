@@ -75,6 +75,7 @@ describe Api::V1::ApiAidesController, type: :request do
     track_layer = nil
     before do
       if response_returned == nil
+        filter_empty = create(:filter, name: 'filter-empty')
         filter_used = create(:filter, name: 'filter-used')
         filter_unused = create(:filter, name: 'filter-unused')
         create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_used])    
@@ -91,7 +92,8 @@ describe Api::V1::ApiAidesController, type: :request do
           "allocation_type"         => "ASS_AER_ATA_APS_ASFNE",
           "monthly_allocation_value"=> "1230",
           "age"                     => "42",
-          "location_citycode"       => "02004"
+          "location_citycode"       => "02004",
+          # "filters"                 => "filter-used"
         }, headers: authenticated_header 
         json_returned = JSON.parse(response.body)
         response_returned = response
