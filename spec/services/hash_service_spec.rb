@@ -38,12 +38,21 @@ describe HashService do
     end
   end
   describe 'reject_keys_that_starts_with!' do
-    it 'should count keys that starts with some value' do
+    it 'should count keys that starts with some value in a hash' do
       #given
       x = {"my_test" => 1, "something special" => 42, "my test" => 2, "my other test" => 3, "the chosen one" => 4}
       val = "my"
       #when
       result = HashService.new.reject_keys_that_starts_with!(x, val, count=0)
+      #then
+      expect(result).to eq(3)
+    end
+    it 'should count keys that starts with some value in a hash from a hash' do
+      #given
+      y = {"my_test" => 1, "hash" => {"my_cat" => 3, "something special" => 42}, "my test" => 2, "the chosen one" => 4}
+      val = "my"
+      #when
+      result = HashService.new.reject_keys_that_starts_with!(y, val, count=0)
       #then
       expect(result).to eq(3)
     end
