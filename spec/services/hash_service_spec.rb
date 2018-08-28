@@ -19,6 +19,8 @@ describe HashService do
       expect(result).to eq(["Good", "morning"])
     end
   end
+
+
   describe 'reject_ids!' do
     it 'should remove id and _id from an hash' do
       #given
@@ -36,7 +38,17 @@ describe HashService do
       #then
       expect(result).to eq("hi" => {"how" => 3}, "are you" => 5)
     end
+    it 'should remove id and _id from an array' do
+      #given
+      z = ["id", "_id", "test"]
+      #when
+      result = HashService.new.reject_ids!(z)
+      #then
+      expect(result).to eq("test")
+    end
   end
+
+
   describe 'reject_keys_that_starts_with!' do
     it 'should count keys that starts with some value in a hash' do
       #given
