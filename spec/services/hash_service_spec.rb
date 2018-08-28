@@ -20,13 +20,21 @@ describe HashService do
     end
   end
   describe 'reject_ids!' do
-    it 'should remove id and _id ' do
+    it 'should remove id and _id from an hash' do
       #given
       x = {"my_id" => 1, "id" => 2, "anything else" => 3}
       #when
       result = HashService.new.reject_ids!(x)
       #then
       expect(result).to eq({"anything else" => 3})
+    end
+    it 'should remove id and _id from a hash in a hash' do
+      #given
+      y = {"id" => 1, "hi" => {"id" => 2, "how" => 3}, "are you" => 5}
+      #when
+      result = HashService.new.reject_ids!(y)
+      #then
+      expect(result).to eq("hi" => {"how" => 3}, "are you" => 5)
     end
   end
   describe 'reject_keys_that_starts_with!' do
