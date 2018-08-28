@@ -7,28 +7,24 @@ class ActivatedModelsService
     end
   end
 
-  def read
-    @all_activated_models
-  end
-
   def rules
-    @all_activated_models["all_rules"]
+    Rails.env.test? ? JSON.parse(Rule.all.to_json) : @all_activated_models["all_rules"]
   end
 
   def aids
-    @all_activated_models["all_activated_aids"]
+    Rails.env.test? ? JSON.parse(Aid.activated.to_json) : @all_activated_models["all_activated_aids"]
   end
 
   def filters
-    @all_activated_models["all_filters"]
+    Rails.env.test? ? JSON.parse(Filter.all.to_json) :  @all_activated_models["all_filters"]
   end
 
   def contract_types
-    @all_activated_models["all_contracts"]
+    Rails.env.test? ? JSON.parse(ContractType.all.to_json) :  @all_activated_models["all_contracts"]
   end
 
   def variables
-    @all_activated_models["all_variables"]
+    Rails.env.test? ? JSON.parse(Variable.all.to_json) :  @all_activated_models["all_variables"]
   end
 
 end

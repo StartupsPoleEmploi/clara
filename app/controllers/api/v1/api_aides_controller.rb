@@ -43,6 +43,9 @@ module Api
           render json: errors_hash.to_json, status: 400
         else
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
+          p '- - - - - - - - - - - - - - local_asker- - - - - - - - - - - - - - - -' 
+          pp local_asker
+          p ''
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
             aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))

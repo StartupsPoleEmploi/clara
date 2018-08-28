@@ -106,7 +106,7 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
     end
-    it 'Returns eligible aids and calculated asker' do
+    it 'Returns eligible aids only, and calculated asker' do
       expect(json_returned).to eq(
         {
           "asker" => {
@@ -121,7 +121,11 @@ describe Api::V1::ApiAidesController, type: :request do
             "age"=>"42", 
             "location_citycode"=>"02004"
           }, 
-          "aids"=>[]
+          "aids"=>[
+            {"name"=>"Aide Adulte ou Spectacle", 
+              "slug"=>"aide-adulte-ou-spectacle", 
+              "short_description"=>"a short description"}
+          ]
         }
         )
     end
