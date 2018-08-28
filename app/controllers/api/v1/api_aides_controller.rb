@@ -56,8 +56,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
-        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -75,8 +74,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
-        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
