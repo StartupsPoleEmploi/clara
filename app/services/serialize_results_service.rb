@@ -54,8 +54,8 @@ private
     return elies unless filters.is_a?(String) && !filters.empty?
     a = ActivatedModelsService.instance
     filters_array = filters.split(",")
-    elies.select do |ely| 
-      boolean_result = !ely["filters"].empty?
+    elies.select do |ely|
+      ely["filters"] = [] if ely["filters"] == nil
       current_filter_array = ely["filters"].map do |ely_filter|
         a.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
       end

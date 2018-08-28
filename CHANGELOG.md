@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 12.0.0 (28/08/2018)
+-[#867][TECH] Tests de l'API
+
 
 ## 11.10.6 (27/08/2018)
 -[#853][BUG] NoMethodError: undefined method '-' for nil:NilClass

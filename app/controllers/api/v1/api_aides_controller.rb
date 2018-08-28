@@ -14,7 +14,7 @@ module Api
 
       # /api/v1/filters(.:format)
       def filters
-        track_call("/api/v1/aids/filters", current_user.email)
+        track_call("/api/v1/filters", current_user.email)
         whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
         res = {filters: whitelisted_filters}
         render json: remove_ids!(not_nullify(res)).to_json
@@ -24,7 +24,7 @@ module Api
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
         found_aid = Rails.cache.fetch("aids[#{slug_param}]") {Aid.find_by(slug: slug_param).to_json}
-        if found_aid
+        if found_aid != "null"
           render json: {aid: remove_ids!(not_nullify(whitelist_one_aid_attr(JSON.parse(found_aid))))}
         else
           render json: {:error => "not-found"}.to_json, status: 404
@@ -37,8 +37,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
-        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -57,8 +56,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
-        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -76,8 +74,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        errors_hash.merge!(api_filters.errors) if !api_filters.valid?
-        errors_hash.merge!(process_asker_errors(api_asker.errors)) if !api_asker.valid?
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -105,6 +102,15 @@ module Api
 
       private
 
+      def fill_errors!(errors_hash, api_filters, api_asker)
+        if !api_filters.valid?
+          errors_hash.merge!(api_filters.errors) 
+        end
+        if !api_asker.valid?
+          errors_hash.merge!(process_asker_errors(api_asker.errors)) 
+        end
+      end
+
       def reverse_translation_of(api_asker)
         TranslateAskerService.new.from_french(api_asker) 
       end
@@ -115,10 +121,6 @@ module Api
 
       def remove_ids!(hash_or_array)
         HashService.new.reject_ids!(hash_or_array)
-      end
-
-      def jsonify(hash_or_array)
-        hash_or_array.to_json
       end
 
       def track_call(endpoint, who)

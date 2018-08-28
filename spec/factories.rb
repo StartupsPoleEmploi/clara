@@ -194,6 +194,11 @@ FactoryBot.define do
         aid.rule = create(:rule, :be_a_spectacle)
       end
     end
+    trait :aid_adult do
+      before :create do |aid|
+        aid.rule = create(:rule, :be_an_adult)
+      end
+    end
     trait :aid_not_spectacle do
       before :create do |aid|
         aid.rule = create(:rule, :not_be_a_spectacle)
