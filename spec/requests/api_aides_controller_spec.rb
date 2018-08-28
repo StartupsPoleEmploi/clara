@@ -14,21 +14,23 @@ describe Api::V1::ApiAidesController, type: :request do
     json_returned = nil
     track_layer = nil
     before do
-      create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
-      track_layer = spy('HttpService')
-      TrackCallService.set_instance(track_layer)
-      get '/api/v1/aids/detail/aide-adulte-ou-spectacle', {headers: authenticated_header} 
-      json_returned = JSON.parse(response.body)
-      response_returned = response
+      if response_returned == nil
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/aids/detail/aide-adulte-ou-spectacle', {headers: authenticated_header} 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
     end
     after do
       TrackCallService.set_instance(nil)
     end
-    it 'Returns a successful answer' do
-      expect(response_returned).to be_success
-    end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/detail/:aid_slug", "foo@bar.com")
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
     end
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
@@ -44,12 +46,14 @@ describe Api::V1::ApiAidesController, type: :request do
     json_returned = nil
     track_layer = nil
     before do
-      create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
-      track_layer = spy('HttpService')
-      TrackCallService.set_instance(track_layer)
-      get '/api/v1/aids/detail/wrong_slug', {headers: authenticated_header} 
-      json_returned = JSON.parse(response.body)
-      response_returned = response
+      if response_returned == nil
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/aids/detail/wrong_slug', {headers: authenticated_header} 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
     end
     after do
       TrackCallService.set_instance(nil)
