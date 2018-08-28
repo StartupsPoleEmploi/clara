@@ -10,6 +10,14 @@ describe HashService do
       #then
       expect(result).to eq({ "Jane Doe" => 2 })
     end
+    it 'should remove all empty element from an array' do
+      #given
+      myArray = ["Good", nil, "morning"]
+      #when
+      result = HashService.new.recursive_compact(myArray)
+      #then
+      expect(result).to eq(["Good", "morning"])
+    end
   end
   describe 'reject_ids!' do
     it 'should remove id and _id ' do
