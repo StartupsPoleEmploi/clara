@@ -69,6 +69,64 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
+  describe 'Nominal /api/v1/aids/eligible' do
+    response_returned = nil
+    json_returned = nil
+    track_layer = nil
+    before do
+      if response_returned == nil
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
+        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle")    
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/aids/eligible', params: {   
+          "spectacle"               => "false",
+          "disabled"                => "true",
+          "diploma"                 => "level_3",
+          "category"                => "other_categories",
+          "inscription_period"      => "less_than_a_year",
+          "allocation_type"         => "ASS_AER_ATA_APS_ASFNE",
+          "monthly_allocation_value"=> "1230",
+          "age"                     => "42",
+          "location_citycode"       => "02004"
+        }, headers: authenticated_header 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      TrackCallService.set_instance(nil)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
+    end
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'Returns eligible aids and calculated asker' do
+      expect(json_returned).to eq(
+        {
+          "asker" => {
+            "spectacle"=>"false", 
+            "disabled"=>"true", 
+            "diploma"=>"level_3", 
+            "category"=>"other_categories", 
+            "inscription_period"=>"less_than_a_year", 
+            "zrr"=>"false", 
+            "allocation_type"=>"ASS_AER_ATA_APS_ASFNE", 
+            "monthly_allocation_value"=>"1230", 
+            "age"=>"42", 
+            "location_citycode"=>"02004"
+          }, 
+          "aids"=>[]
+        }
+        )
+    end
+  end
+
   describe 'throttling' do
     # before do
     #   ENV["THROTTLE_DURING_TEST"] = "true"
