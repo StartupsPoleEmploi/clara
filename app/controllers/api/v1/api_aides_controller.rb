@@ -24,7 +24,7 @@ module Api
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
         found_aid = Rails.cache.fetch("aids[#{slug_param}]") {Aid.find_by(slug: slug_param).to_json}
-        if found_aid
+        if found_aid != "null"
           render json: {aid: remove_ids!(not_nullify(whitelist_one_aid_attr(JSON.parse(found_aid))))}
         else
           render json: {:error => "not-found"}.to_json, status: 404
