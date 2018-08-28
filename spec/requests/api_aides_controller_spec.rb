@@ -143,30 +143,62 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'throttling' do
-    # before do
-    #   ENV["THROTTLE_DURING_TEST"] = "true"
-    # end
-    # after do
-    #   ENV["THROTTLE_DURING_TEST"] = nil
-    #   Rails.cache.clear
-    # end
-    # it 'Must NOT return 429 if NOT too much call' do
-    #   last_response = nil
-    #   2.times do
-    #     get "/api/v1/aids/eligible"
-    #     last_response = response
-    #   end
-    #   expect(last_response.status).not_to eq(429)            
-    # end
-    # it 'Must return 429 if too much call' do
-    #   last_response = nil
-    #   15.times do
-    #     get "/api/v1/aids/eligible"
-    #     last_response = response
-    #   end
-    #   expect(last_response.status).to eq(429)      
-    # end
+  describe 'FUNCTIONAL ERROR /api/v1/aids/eligible' do
+    response_returned = nil
+    json_returned = nil
+    track_layer = nil
+    before do
+      if response_returned == nil
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/aids/eligible', params: {   
+          "age"                     => "142",
+        }, headers: authenticated_header 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      TrackCallService.set_instance(nil)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
+    end
+    it 'Returns a unsuccessful answer' do
+      expect(response_returned).not_to be_success
+    end
+    it 'With code 400' do
+      expect(response_returned).to have_http_status(400)
+    end
+  end
+
+  describe 'UNEXISTING FILTER /api/v1/aids/eligible' do
+    response_returned = nil
+    json_returned = nil
+    track_layer = nil
+    before do
+      if response_returned == nil
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/aids/eligible', params: {   
+          "filters"                     => "unexisting_filter",
+        }, headers: authenticated_header 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      TrackCallService.set_instance(nil)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
+    end
+    it 'Returns a unsuccessful answer' do
+      expect(response_returned).not_to be_success
+    end
+    it 'With code 400' do
+      expect(response_returned).to have_http_status(400)
+    end
   end
 
   describe 'Unauthenticated' do
