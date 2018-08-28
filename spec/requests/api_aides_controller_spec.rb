@@ -75,12 +75,18 @@ describe Api::V1::ApiAidesController, type: :request do
     track_layer = nil
     before do
       if response_returned == nil
+        # Filter_empty helps to show that we can require multiple filters, even un-needed ones.
         filter_empty = create(:filter, name: 'filter-empty')
-        filter_used = create(:filter, name: 'filter-used')
-        filter_unused = create(:filter, name: 'filter-unused')
-        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_used])    
-        create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter", filters:[filter_unused])    
-        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_used])    
+        # The filter targeted
+        filter_targeted = create(:filter, name: 'filter-targeted')
+        # A filter not targeted, and not required
+        filter_untargeted = create(:filter, name: 'filter-untargeted')
+        # Aid that should be retrieved
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted])    
+        # Aid that should not be retrieved despite it is eligible : the filter is not targeted
+        create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter", filters:[filter_untargeted])    
+        # Aid that should not be retrieved despite correct filter : it is not eligible
+        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
         track_layer = spy('HttpService')
         TrackCallService.set_instance(track_layer)
         get '/api/v1/aids/eligible', params: {   
@@ -93,7 +99,7 @@ describe Api::V1::ApiAidesController, type: :request do
           "monthly_allocation_value"=> "1230",
           "age"                     => "42",
           "location_citycode"       => "02004",
-          "filters"                 => "filter-empty,filter-used"
+          "filters"                 => "filter-empty,filter-targeted"
         }, headers: authenticated_header 
         json_returned = JSON.parse(response.body)
         response_returned = response
@@ -130,7 +136,7 @@ describe Api::V1::ApiAidesController, type: :request do
             {"name"=>"Aide Adulte ou Spectacle Filtre", 
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
-              "filters"=>["filter-used"]}
+              "filters"=>["filter-targeted"]}
           ]
         }
         )
