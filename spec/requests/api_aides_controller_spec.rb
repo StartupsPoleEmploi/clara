@@ -9,6 +9,46 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
+  describe 'Nominal /filters' do
+    response_returned = nil
+    json_returned = nil
+    track_layer = nil
+    before do
+      if response_returned == nil
+        filter_1 = create(:filter, name: 'filter-1')
+        filter_2 = create(:filter, name: 'filter-2')
+        track_layer = spy('HttpService')
+        TrackCallService.set_instance(track_layer)
+        get '/api/v1/filters', {headers: authenticated_header} 
+        json_returned = JSON.parse(response.body)
+        response_returned = response
+      end
+    end
+    after do
+      TrackCallService.set_instance(nil)
+    end
+    it 'Is tracked' do
+      expect(track_layer).to have_received(:for_endpoint).with("/api/v1/filters", "foo@bar.com")
+    end
+    it 'Returns a successful answer' do
+      expect(response_returned).to be_success
+    end
+    it 'With code 200' do
+      expect(response_returned).to have_http_status(200)
+    end
+    it 'Returns all filters' do
+      expect(json_returned).to eq(
+        {
+          "filters"=>
+          [
+            {"name"=>"filter-1", "slug"=>"filter-1"}, 
+            {"name"=>"filter-2", "slug"=>"filter-2"}
+          ]
+        }
+      )
+    end
+  end
+
   describe 'Nominal aids/detail/:aid_slug' do
     response_returned = nil
     json_returned = nil
@@ -69,7 +109,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'Nominal /api/v1/aids/eligible' do
+  describe 'Nominal aids/eligible' do
     response_returned = nil
     json_returned = nil
     track_layer = nil
@@ -143,7 +183,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'FUNCTIONAL ERROR /api/v1/aids/eligible' do
+  describe 'FUNCTIONAL ERROR aids/eligible' do
     response_returned = nil
     json_returned = nil
     track_layer = nil
@@ -172,7 +212,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  describe 'UNEXISTING FILTER /api/v1/aids/eligible' do
+  describe 'UNEXISTING FILTER aids/eligible' do
     response_returned = nil
     json_returned = nil
     track_layer = nil
