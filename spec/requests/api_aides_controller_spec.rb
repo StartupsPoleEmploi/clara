@@ -96,36 +96,36 @@ describe Api::V1::ApiAidesController, type: :request do
   end
 
   describe 'Unauthenticated' do
-    # it 'Without header, refuses to answer to aids/eligible (401)' do
-    #   get '/api/v1/aids/eligible'
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
-    # it 'With a bad header, refuses to answer to aids/eligible (401)' do
-    #   get '/api/v1/aids/eligible', headers: { "Authorization": "Bearer foobar"}
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
-    # it 'Without header, refuses to answer to aids/ineligible (401)' do
-    #   get '/api/v1/aids/ineligible'
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
-    # it 'With a bad header, refuses to answer to aids/ineligible (401)' do
-    #   get '/api/v1/aids/ineligible', headers: { "Authorization": "Bearer foobar"}
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
-    # it 'Without header, refuses to answer to aids/uncertain (401)' do
-    #   get '/api/v1/aids/uncertain'
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
-    # it 'With a bad header, refuses to answer to aids/uncertain (401)' do
-    #   get '/api/v1/aids/uncertain', headers: { "Authorization": "Bearer foobar"}
-    #   expect(response).not_to be_success
-    #   expect(response).to have_http_status(401)
-    # end
+    it 'Without header, refuses to answer to aids/eligible (401)' do
+      get '/api/v1/aids/eligible'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/eligible (401)' do
+      get '/api/v1/aids/eligible', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'Without header, refuses to answer to aids/ineligible (401)' do
+      get '/api/v1/aids/ineligible'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/ineligible (401)' do
+      get '/api/v1/aids/ineligible', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'Without header, refuses to answer to aids/uncertain (401)' do
+      get '/api/v1/aids/uncertain'
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
+    it 'With a bad header, refuses to answer to aids/uncertain (401)' do
+      get '/api/v1/aids/uncertain', headers: { "Authorization": "Bearer foobar"}
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
+    end
   end
 
   describe 'Ping' do 
