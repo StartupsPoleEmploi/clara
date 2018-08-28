@@ -93,7 +93,7 @@ describe Api::V1::ApiAidesController, type: :request do
           "monthly_allocation_value"=> "1230",
           "age"                     => "42",
           "location_citycode"       => "02004",
-          # "filters"                 => "filter-used"
+          "filters"                 => "filter-empty,filter-used"
         }, headers: authenticated_header 
         json_returned = JSON.parse(response.body)
         response_returned = response
@@ -111,7 +111,7 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'With code 200' do
       expect(response_returned).to have_http_status(200)
     end
-    it 'Returns eligible aids only, and calculated asker' do
+    it 'Returns eligible, filtered aids only, and the calculated asker' do
       expect(json_returned).to eq(
         {
           "asker" => {
@@ -127,9 +127,10 @@ describe Api::V1::ApiAidesController, type: :request do
             "location_citycode"=>"02004"
           }, 
           "aids"=>[
-            {"name"=>"Aide Adulte ou Spectacle", 
-              "slug"=>"aide-adulte-ou-spectacle", 
-              "short_description"=>"a short description"}
+            {"name"=>"Aide Adulte ou Spectacle Filtre", 
+              "slug"=>"aide-adulte-ou-spectacle-filtre", 
+              "short_description"=>"a short description", 
+              "filters"=>["filter-used"]}
           ]
         }
         )
@@ -206,40 +207,7 @@ describe Api::V1::ApiAidesController, type: :request do
     end
   end
 
-  def _stub_qpv_with_INSIDE_QPV
-    qpv_layer = instance_double("QpvService")
-    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-    allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
-    QpvService.set_instance(qpv_layer)
-  end
 
-  def _stub_qpv_with_OUTSIDE_QPV
-    qpv_layer = instance_double("QpvService")
-    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-    allow(qpv_layer).to receive(:isDetailedQPV).and_return("hors_qpv")
-    QpvService.set_instance(qpv_layer)
-  end
-
-  def _stub_qpv_with_UNDEFINED_QPV
-    qpv_layer = instance_double("QpvService")
-    allow(qpv_layer).to receive(:setDetailedQPV).and_return(true)
-    allow(qpv_layer).to receive(:isDetailedQPV).and_return("erreur_injoignable")
-    QpvService.set_instance(qpv_layer)
-  end
-
-  def _stub_ban_with_correct_values
-    ban_layer = instance_double("BanService")
-    allow(ban_layer).to receive(:get_zipcode_and_cityname).and_return(["59440", "Avesnelles"])
-    BanService.set_instance(ban_layer)    
-  end
-
-  def _unstub_qpv
-    QpvService.set_instance(nil)
-  end
-
-  def _unstub_ban
-    BanService.set_instance(nil)
-  end
 
 
 end
