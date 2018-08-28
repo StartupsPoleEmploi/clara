@@ -14,7 +14,7 @@ module Api
 
       # /api/v1/filters(.:format)
       def filters
-        track_call("/api/v1/aids/filters", current_user.email)
+        track_call("/api/v1/filters", current_user.email)
         whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
         res = {filters: whitelisted_filters}
         render json: remove_ids!(not_nullify(res)).to_json
@@ -37,12 +37,7 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         errors_hash = {}
-        if !api_filters.valid?
-          errors_hash.merge!(api_filters.errors) 
-        end
-        if !api_asker.valid?
-          errors_hash.merge!(process_asker_errors(api_asker.errors)) 
-        end
+        fill_errors!(errors_hash, api_filters,api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -108,6 +103,15 @@ module Api
       end
 
       private
+
+      def fill_errors!(errors_hash, api_filters, api_asker)
+        if !api_filters.valid?
+          errors_hash.merge!(api_filters.errors) 
+        end
+        if !api_asker.valid?
+          errors_hash.merge!(process_asker_errors(api_asker.errors)) 
+        end
+      end
 
       def reverse_translation_of(api_asker)
         TranslateAskerService.new.from_french(api_asker) 
