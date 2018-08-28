@@ -75,8 +75,11 @@ describe Api::V1::ApiAidesController, type: :request do
     track_layer = nil
     before do
       if response_returned == nil
-        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
+        aide_right_filter = create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter")    
+        aide_wrong_filter = create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter")    
         create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle")    
+        filter_used = create(:filter, name: 'filter-used')
+        filter_unused = create(:filter, name: 'filter-unused')
         track_layer = spy('HttpService')
         TrackCallService.set_instance(track_layer)
         get '/api/v1/aids/eligible', params: {   

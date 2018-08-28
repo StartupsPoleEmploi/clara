@@ -46,9 +46,6 @@ class AidCalculationService
   end
 
   def _all_aids
-    p '- - - - - - - - - - - - - - @calculated_aids_as_hash- - - - - - - - - - - - - - - -' 
-    pp @calculated_aids_as_hash
-    p ''
     @calculated_aids_as_hash
   end
 
