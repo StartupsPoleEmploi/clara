@@ -123,10 +123,6 @@ module Api
         HashService.new.reject_ids!(hash_or_array)
       end
 
-      def jsonify(hash_or_array)
-        hash_or_array.to_json
-      end
-
       def track_call(endpoint, who)
         TrackCallService.get_instance.for_endpoint(endpoint, who)
       end
