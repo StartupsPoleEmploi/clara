@@ -21,5 +21,16 @@ describe HashService do
       expect(result).to eq({"anything else" => 3})
     end
   end
+  describe 'reject_keys_that_starts_with!' do
+    it 'should count keys that starts with some value' do
+      #given
+      x = {"my_test" => 1, "something special" => 42, "my test" => 2, "my other test" => 3, "the chosen one" => 4}
+      val = "my"
+      #when
+      result = HashService.new.reject_keys_that_starts_with!(x, val, count=0)
+      #then
+      expect(result).to eq(3)
+    end
+  end
 end
 
