@@ -58,8 +58,4 @@ class AidesController < ApplicationController
     SerializeResultsService.get_instance.go(@asker)
   end
 
-  def hashify_results(stuff)
-    DisplayResultsService.new(stuff).go
-  end
-
 end

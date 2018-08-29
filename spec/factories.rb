@@ -6,6 +6,10 @@ FactoryBot.define do
     
   end
 
+  factory :stat do
+    
+  end
+
   factory :user do
     trait :fake do
       email "foo@bar.com"
