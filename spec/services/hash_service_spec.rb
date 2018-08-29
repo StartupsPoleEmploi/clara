@@ -55,7 +55,15 @@ describe HashService do
       #when
       result = HashService.new.reject_ids!(z)
       #then
-      expect(result). to eq( {"good morning"=>1, "test" => [ {}, 3 ] })
+      expect(result).to eq( {"good morning"=>1, "test" => [ {}, 3 ] })
+    end
+    it 'should remove id and _id from hash in an array' do
+      #given
+      k = [1, "id", "_id", {"my_id" => 2, "id" => 3}]
+      #when
+      result = HashService.new.reject_ids!(k)
+      #then
+      expect(result).to eq([1, "id", "_id", {}])
     end
   end
 
