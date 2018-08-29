@@ -4,7 +4,6 @@ class ActivatedModelsGeneratorService
     activated_models = {}
     activated_models["all_activated_aids"] = JsonModelsService.aids
     activated_models["all_filters"]        = JsonModelsService.filters
-    activated_models["all_contracts"]      = JsonModelsService.contracts
     activated_models["all_rules"]          = JsonModelsService.rules
     activated_models["all_variables"]      = JsonModelsService.variables
 
