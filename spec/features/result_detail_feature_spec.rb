@@ -47,15 +47,15 @@ feature 'detail of a result page' do
     result_page = nil
     before do
       if result_page == nil
+        # fill database
         asker = create(:asker, :full_user_input)
         aid = create(:aid, :aid_adult_or_spectacle, name: 'ze_name_for_adult_or_spectacle')
+        # mock externalities
         disable_http_service
         allow(Rails).to receive(:cache).and_return(memory_store)
         Rails.cache.clear
-
-        a = TranslateB64AskerService.new.into_b64(asker)
-        b = aid.slug
-        visit detail_path(b) + '?for_id=' + a
+        # set system under test
+        visit detail_path(aid.slug) + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
         result_page = Nokogiri::HTML(page.html)
       end
     end
