@@ -96,6 +96,15 @@ describe HashService do
       #then
       expect(result).to eq(3)
     end
+    it 'should count keys that start with some value from a hash in an array' do
+      #given
+      k = [1, "hello", "my_test", {"my_test" => 2, "my_number" => 3}]
+      val = "my"
+      #when
+      result = HashService.new.reject_keys_that_starts_with!(k, val, count=0)
+      #then
+      expect(result).to eq(3)
+    end
   end
 
 end
