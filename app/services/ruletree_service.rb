@@ -1,15 +1,8 @@
 class RuletreeService
 
   def initialize
-    # VERY hacky, waiting for sth better.
-    if !Rails.env.test?
-      @all_rules = ActivatedModelsService.instance.rules
-      @all_variables = ActivatedModelsService.instance.variables
-    else
-      @all_variables = JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_type, :description ]))
-      r_all = JSON.parse(Rule.all.to_json(:only => [ :id, :name, :value_eligible, :operator_type, :composition_type, :variable_id, :value_ineligible ], :include => {slave_rules: {only:[:id, :name]}}))
-      @all_rules = r_all.map{|h| HashService.new.recursive_compact(h)}
-    end
+    @all_rules = ActivatedModelsService.instance.rules
+    @all_variables = ActivatedModelsService.instance.variables
   end
 
   def resolve(rule_id, criterion_hash = {}) 

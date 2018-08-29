@@ -17,10 +17,6 @@ class ActivatedModelsService
     !Rails.env.test? ? @cached_activated_models["all_filters"] : JsonModelsService.filters
   end
 
-  def contract_types
-    !Rails.env.test? ? @cached_activated_models["all_contracts"] : JsonModelsService.contracts
-  end
-
   def variables
     !Rails.env.test? ? @cached_activated_models["all_variables"] : JsonModelsService.variables
   end
