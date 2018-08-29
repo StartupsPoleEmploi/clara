@@ -11,7 +11,6 @@ class InscriptionQuestionsController < ApplicationController
 
   def create
     if params[:commit] == 'Revenir' 
-      pp '----------- REVENIR -----------------------------------------'
       my_redirect_to QuestionManager.new.getPreviousPath('inscription', @asker)
     else
       inscription = download_from_params
