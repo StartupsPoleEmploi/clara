@@ -6,6 +6,7 @@ class ActivatedModelsGeneratorService
     activated_models["all_filters"]        = JsonModelsService.filters
     activated_models["all_rules"]          = JsonModelsService.rules
     activated_models["all_variables"]      = JsonModelsService.variables
+    activated_models["all_contracts"]      = JsonModelsService.contracts
 
     # Icky, but works in a reasonable concurrent env
     File.open(Rails.root.join('public','activated_models.txt'), 'w:UTF-8') do |file| 

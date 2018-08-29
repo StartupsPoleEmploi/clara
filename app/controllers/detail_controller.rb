@@ -12,6 +12,9 @@ class DetailController < ApplicationController
         @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
         RehydrateAddressService.new.from_citycode!(@asker)
       end
+      p '- - - - - - - - - - - - - - @askerext- - - - - - - - - - - - - - - -' 
+      pp @asker
+      p ''
       @loaded = DetailService.new(@aid).hashified_eligibility_and_rules(@asker)
     else
       @loaded = DetailService.new(@aid).hashified_aid
