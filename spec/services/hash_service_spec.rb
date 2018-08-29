@@ -4,7 +4,7 @@ describe HashService do
   describe 'recursive_compact' do
     it 'should remove all empty elements from a hash' do
       #given
-      myHash = { "Jane Doe" => 2 , "Jim Doe" => nil }
+      myHash = { "Jane Doe" => 2 , "Jim Doe" => nil, 3 => nil }
       #when
       result = HashService.new.recursive_compact(myHash)
       #then
@@ -28,6 +28,7 @@ describe HashService do
       #then
       expect(result).to eq({"Good" => 4, "test" => ["Jim Doe"]})
     end
+
   end
 
 
@@ -46,7 +47,15 @@ describe HashService do
       #when
       result = HashService.new.reject_ids!(y)
       #then
-      expect(result).to eq("hi" => {"how" => 3}, "are you" => 5)
+      expect(result).to eq({"hi" => {"how" => 3}, "are you" => 5})
+    end
+    it 'should remove id and _id from an array in a hash' do
+      #given
+      z = { "good morning" => 1, "id" => 2, "test" => [ {"my_id" => 4}, 3 ], "your_id" => [42] }
+      #when
+      result = HashService.new.reject_ids!(z)
+      #then
+      expect(result). to eq( {"good morning"=>1, "test" => [ {}, 3 ] })
     end
   end
 
