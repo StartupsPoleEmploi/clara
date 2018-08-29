@@ -10,6 +10,7 @@ feature 'admin' do
   end 
 
   describe 'Visit all the admin models' do
+    
     scenario 'with an authorized user' do
       OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'pouet@pouet.com'}, credentials: {token: 'tolkien'}})
       create(:variable, :age)
@@ -28,13 +29,20 @@ feature 'admin' do
       click_button 'Créer un(e) Aid'
       expect(page).to have_selector('h1', text: "Détails #{aid_name}")
 
+      # See filters
+      click_link 'Filters'
+      expect(page).to have_selector('.cell-data.cell-data--string', text: "filter_name")
+
+      # See detail
+      # will click on ID to open detail
+      find('.cell-data--number .action-show').click
+      expect(current_path).to eq admin_filter_path("filter_name")
+
+
       # See variables
       click_link 'Variables'
       expect(page).to have_selector('.cell-data.cell-data--string', text: "v_age")
 
-      # See variables
-      click_link 'Filters'
-      expect(page).to have_selector('.cell-data.cell-data--string', text: "filter_name")
 
       # Create rule
       click_link 'Rules'
