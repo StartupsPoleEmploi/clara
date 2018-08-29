@@ -78,7 +78,6 @@ feature 'detail of a result page' do
       Rails.cache.clear
     end
     scenario 'Display explanation' do
-      save_and_open_page
       expect(result_page.css('.c-detail-why').count).to eq 1
     end
     scenario 'Display that adult is eligible' do

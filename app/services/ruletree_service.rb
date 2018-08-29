@@ -49,10 +49,6 @@ class RuletreeService
     return result
   end
 
-  def _all_rules
-    @all_rules
-  end
-
   def _stub_all_rules(rules)
     @all_rules = rules
     self

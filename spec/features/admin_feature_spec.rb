@@ -13,6 +13,7 @@ feature 'admin' do
     scenario 'with an authorized user' do
       OmniAuth.config.add_mock(:google_oauth2, {:uid => '12345', info: {email: 'pouet@pouet.com'}, credentials: {token: 'tolkien'}})
       create(:variable, :age)
+      create(:filter, name: 'filter_name')
 
       visit admin_root_path
       expect(page).to have_selector('h1', text: 'Aides')
@@ -30,6 +31,10 @@ feature 'admin' do
       # See variables
       click_link 'Variables'
       expect(page).to have_selector('.cell-data.cell-data--string', text: "v_age")
+
+      # See variables
+      click_link 'Filters'
+      expect(page).to have_selector('.cell-data.cell-data--string', text: "filter_name")
 
       # Create rule
       click_link 'Rules'
