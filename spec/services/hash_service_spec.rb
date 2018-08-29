@@ -10,6 +10,7 @@ describe HashService do
       #then
       expect(result).to eq({ "Jane Doe" => 2 })
     end
+
     it 'should remove all empty element from an array' do
       #given
       myArray = ["Good", nil, "morning"]
@@ -17,6 +18,15 @@ describe HashService do
       result = HashService.new.recursive_compact(myArray)
       #then
       expect(result).to eq(["Good", "morning"])
+    end
+
+    it 'should remove all empty element from an array in an hash' do
+      #given
+      myHashInAnArray = {"Good" => 4, "test" => ["Jim Doe", nil], 2 => nil}
+      #when
+      result = HashService.new.recursive_compact(myHashInAnArray)
+      #then
+      expect(result).to eq({"Good" => 4, "test" => ["Jim Doe"]})
     end
   end
 
@@ -37,14 +47,6 @@ describe HashService do
       result = HashService.new.reject_ids!(y)
       #then
       expect(result).to eq("hi" => {"how" => 3}, "are you" => 5)
-    end
-    it 'should remove id and _id from an array' do
-      #given
-      z = ["id", "_id", "test"]
-      #when
-      result = HashService.new.reject_ids!(z)
-      #then
-      expect(result).to eq("test")
     end
   end
 
@@ -67,16 +69,10 @@ describe HashService do
       result = HashService.new.reject_keys_that_starts_with!(y, val, count=0)
       #then
       expect(result).to eq(3)
+    
     end
-    # it 'should count keys that starts with some value in an array' do
-    #   #given
-    #   z = ["my_test", "my", "test"]
-    #   val = "my"
-    #   #when
-    #   result = HashService.new.reject_keys_that_starts_with!(z, val, count=0)
-    #   #then
-    #   expect(result).to eq(2)
-    # end
+  
   end
+
 end
 
