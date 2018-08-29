@@ -2,9 +2,7 @@ class ActivatedModelsService
   include Singleton
 
   def initialize
-    @all_activated_models = Rails.cache.fetch("activated_models") do
-      Oj.load(File.read(Rails.root.join('public','activated_models.txt')))
-    end
+    @all_activated_models = Rails.cache.fetch("activated_models") { Oj.load(File.read(Rails.root.join('public','activated_models.txt'))) }
   end
 
   def rules

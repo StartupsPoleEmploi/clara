@@ -20,8 +20,13 @@ feature 'HomeSpec' do
 
   scenario 'User go to first question if he/she clicks on the recall CTA' do
     visit root_path
-    expect(current_path).to eq root_path
     click_on('home-recall')
+    expect(current_path).to eq new_inscription_question_path
+  end
+
+  scenario 'User go to first question if he/she clicks on the main CTA' do
+    visit root_path
+    find('.c-main-cta').click
     expect(current_path).to eq new_inscription_question_path
   end
 
