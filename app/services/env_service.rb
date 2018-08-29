@@ -18,19 +18,11 @@ class EnvService
   def EnvService.get_instance
     @@the_double.nil? ? EnvService.new : @@the_double
   end
-  
-  def ara_url_qpvzrr
-    ENV['ARA_URL_QPVZRR'] || ''
-  end
-  
+    
   def ara_url_ban
     ENV['ARA_URL_BAN'] || ''
   end
-  
-  def ara_google_analytics_view_id
-    ENV['ARA_GOOGLE_ANALYTICS_VIEW_ID'] || ''
-  end
-  
+    
   def ara_google_analytics_id
     ENV['ARA_GOOGLE_ANALYTICS_ID'] || ''
   end
