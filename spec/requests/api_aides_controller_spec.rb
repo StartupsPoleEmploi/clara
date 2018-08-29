@@ -9,6 +9,10 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
+  before do
+    Rails.cache.clear
+  end
+
   describe 'Nominal /filters' do
     response_returned = nil
     json_returned = nil
