@@ -20,6 +20,25 @@ feature 'Stats' do
                   }
                 ]
               }'),
+              ga_pe: JSON.parse('{
+                "json_data": [
+                {
+                    "Segment": "Tous les utilisateurs",
+                    "Sessions": "12",
+                    "Index des jours": "01/01/2018"
+                  },
+                  {
+                    "Segment": "Conseillers PE",
+                    "Sessions": "0",
+                    "Index des jours": "01/01/2018"
+                  },
+                  {
+                    "Segment": "Tous les utilisateurs",
+                    "Sessions": "249",
+                    "Index des jours": "02/01/2018"
+                  }
+                ]
+              }'),
               hj_ad: JSON.parse('{
                   "json_data": [
                   {
@@ -49,16 +68,14 @@ feature 'Stats' do
           )
   end
 
-  scenario 'Visit index' do 
-    zzz = Stat.first
-    p '- - - - - - - - - - - - - - zzz- - - - - - - - - - - - - - - -' 
-    pp zzz
-    p ''
+  scenario 'Visit index, displays the total number of visitors' do 
     visit stats_index_path
+    expect(find('.c-stats-totalview__number').text).to eq "1378"
   end
 
-  # scenario 'Visit time' do 
-  #   visit stats_index_path
-  # end
+  scenario 'Visit time, display time spare per advisor' do 
+    visit stats_time_path
+    expect(find('.c-stats-savedtime__number').text).to eq "20 min 00 s"
+  end
 
 end
