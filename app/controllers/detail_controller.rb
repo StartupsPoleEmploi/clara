@@ -5,7 +5,7 @@ class DetailController < ApplicationController
   def show
     @aid = Aid.activated.friendly.find(params[:id])
     if has_active_user
-      existing = CacheService.get_instance.read(params[:for_id])
+      existing = Rails.cache.read(params[:for_id])
       if (existing) # already in the cache, we dont have to calculate anything
         @asker = Asker.new(existing[:asker])
       else

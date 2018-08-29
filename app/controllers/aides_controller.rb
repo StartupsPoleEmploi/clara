@@ -47,7 +47,7 @@ class AidesController < ApplicationController
   end
 
   def write_to_cache(cacheable)
-    CacheService.get_instance.write(params[:for_id], cacheable)
+    Rails.cache.write(params[:for_id], cacheable, {expires_in: 10.minutes})
   end
 
   def augment_asker
