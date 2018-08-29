@@ -13,11 +13,11 @@ describe HashService do
 
     it 'should remove all empty element from an array' do
       #given
-      myArray = ["Good", nil, "morning"]
+      myArray = ["Good", nil, "morning", 4]
       #when
       result = HashService.new.recursive_compact(myArray)
       #then
-      expect(result).to eq(["Good", "morning"])
+      expect(result).to eq(["Good", "morning", 4])
     end
 
     it 'should remove all empty element from an array in an hash' do
@@ -35,7 +35,7 @@ describe HashService do
   describe 'reject_ids!' do
     it 'should remove id and _id from an hash' do
       #given
-      x = {"my_id" => 1, "id" => 2, "anything else" => 3}
+      x = {"my_id" => 1, "_id" => 2, "anything else" => 3}
       #when
       result = HashService.new.reject_ids!(x)
       #then
@@ -43,7 +43,7 @@ describe HashService do
     end
     it 'should remove id and _id from a hash in a hash' do
       #given
-      y = {"id" => 1, "hi" => {"id" => 2, "how" => 3}, "are you" => 5}
+      y = {"id" => 1, "hi" => {"_id" => 2, "how" => 3}, "are you" => 5}
       #when
       result = HashService.new.reject_ids!(y)
       #then
