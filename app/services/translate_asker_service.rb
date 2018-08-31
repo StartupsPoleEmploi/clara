@@ -102,7 +102,7 @@ class TranslateAskerService
   def allocation_hash
     {
       ARE_ASP: "ARE_ASP", 
-      ASS_AER_ATA_APS_ASFNE: "ASS_AER_ATA_APS_AS-FNE", 
+      ASS_AER_APS_ASFNE: "ASS_AER_APS_AS-FNE", 
       RPS_RFPA_RFF_PENSION: "RPS_RFPA_RFF_pensionretraite",
       RSA: "RSA", 
       AAH: "AAH", 

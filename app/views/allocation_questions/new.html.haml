@@ -16,7 +16,7 @@
             %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
             
             = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'Une prestation d’assurance chômage : ARE / ASP'} 
-            = render 'shared/allocation_form_line', {id: 'ASS_AER_ATA_APS_AS-FNE',       value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / ATA / APS / AS-FNE'} 
+            = render 'shared/allocation_form_line', {id: 'ASS_AER_APS_AS-FNE',           value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / APS / AS-FNE'} 
             = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi les suivantes : RPS / RFPE / RFF / pension de retraite'} 
             = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
             = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 

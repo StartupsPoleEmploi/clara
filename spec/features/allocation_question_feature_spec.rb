@@ -16,7 +16,7 @@ feature 'allocation question' do
   before(:each) do
     visit new_allocation_question_path
     input_1 = find("input##{FIRST_OPTION}")
-    input_2 = find('input#ASS_AER_ATA_APS_AS-FNE')
+    input_2 = find('input#ASS_AER_APS_AS-FNE')
     input_3 = find('input#RPS_RFPA_RFF_pensionretraite')
     input_4 = find('input#RSA')
     input_5 = find('input#AAH')

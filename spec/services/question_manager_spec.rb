@@ -39,9 +39,9 @@ feature QuestionManager do
         let(:form) { Struct.new(:type).new('') }
         it { expect(subject).to eq new_age_question_path }
       end
-      context 'go from allocation to A.R.E, if type of allocation is "ASS_AER_ATA_APS_AS-FNE"' do
+      context 'go from allocation to A.R.E, if type of allocation is "ASS_AER_APS_AS-FNE"' do
         let(:referer) { 'allocation' }
-        let(:form) { Struct.new(:type).new('ASS_AER_ATA_APS_AS-FNE') }
+        let(:form) { Struct.new(:type).new('ASS_AER_APS_AS-FNE') }
         it { expect(subject).to eq new_are_question_path }
       end
       context 'go from allocation to A.R.E, if type of allocation is "ARE_ASP"' do
