@@ -6,7 +6,7 @@ feature 'Aides page' do
     seen = nil
     before do
       if !seen
-        create_2_different_aids
+        create_2_different_aids(create(:contract_type, :contract_type_1))
         disable_http_service
         visit aides_path
         seen = Nokogiri::HTML(page.html)        
@@ -48,9 +48,6 @@ feature 'Aides page' do
         contract_type = create(:contract_type, :contract_type_1)
         create_eligible_aid_for(asker, contract_type)
         create_ineligible_aid_for(asker, contract_type)
-        # contract = create(:contract_type, :contract_type_1)
-        # aid = create(:aid, :aid_adult_and_spectacle, name: 'ze_name_for_adult_and_spectacle', contract_type: contract)
-        # mock externalities
         disable_http_service
         allow(Rails).to receive(:cache).and_return(memory_store)
         Rails.cache.clear
@@ -63,12 +60,23 @@ feature 'Aides page' do
       enable_http_service
       Rails.cache.clear
     end
-    scenario 'Should display 1 eligible and 1 ineligible aid' do
-      save_and_open_page
+    scenario '2 aids are displayed' do
       expect(result_page.css('.c-resultaid').count).to eq 2
-      # should_have result_page, 2, ".c-result-aid"
-      # should_have seen, 1, ".c-result-list--eligible .c-result-aid"
-      # should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
+    end
+    scenario '1 is eligible' do
+      expect(result_page.css('#eligibles .c-resultaid').count).to eq 1
+    end
+    scenario '1 is ineligible' do
+      expect(result_page.css('#ineligibles .c-resultaid').count).to eq 1
+    end
+    scenario 'Title include "Vos résultats"' do
+      expect(result_page.css('title').text.include?("Vos résultats")).to eq true
+    end
+    scenario 'No detail-void' do
+      expect(result_page.css('.c-detail-void').count).to eq 0
+    end
+    scenario 'Breadcrumb is displayed' do
+      expect(result_page.css('.c-breadcrumb').count).to eq 1
     end
   end
   
