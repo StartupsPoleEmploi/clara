@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.2.0 (31/08/2018)
+-[#865][FEATURE] Operateur include
+
+
 ## 12.1.1 (31/08/2018)
 -[#865][FEATURE] Suppression de l'ATA
 
