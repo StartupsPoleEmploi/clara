@@ -72,11 +72,14 @@ feature 'Aides page' do
     scenario 'Title include "Vos résultats"' do
       expect(result_page.css('title').text.include?("Vos résultats")).to eq true
     end
+    scenario 'Breadcrumb is displayed' do
+      expect(result_page.css('.c-breadcrumb').count).to eq 1
+    end
     scenario 'No detail-void' do
       expect(result_page.css('.c-detail-void').count).to eq 0
     end
-    scenario 'Breadcrumb is displayed' do
-      expect(result_page.css('.c-breadcrumb').count).to eq 1
+    scenario 'No result-all' do
+      expect(result_page.css('.c-result-all').count).to eq 0
     end
   end
   
