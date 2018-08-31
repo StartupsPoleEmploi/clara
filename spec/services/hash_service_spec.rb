@@ -36,6 +36,22 @@ describe HashService do
       #then
       expect(result).to eq({})
     end
+    it 'should do nothing with an empty hash' do
+      #given
+      i = {}
+      #when
+      result = HashService.new.recursive_compact(i)
+      #then
+      expect(result).to eq({})
+    end
+    it "it shouldn't work with other params than array or hash" do
+      #given
+      j = 3
+      #when
+      result = HashService.new.recursive_compact(j)
+      #then
+      expect(result).to eq()
+    end
 
   end
 
