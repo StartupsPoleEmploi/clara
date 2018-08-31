@@ -128,6 +128,22 @@ describe RuletreeService do
       RuletreeService.new._stub_all_rules([rule.to_json(:include => [:slave_rules])])
     end
     subject { RuletreeService.new.resolve(rule.id, asker.attributes) }
+    context 'with a List' do
+      let(:asker) { create :asker, v_location_citycode: '02004'}
+      let(:variable) { create :variable, :location_citycode}
+      context 'Nominal inclusion' do
+        let(:rule) { create :rule, operator_type: :include, value_eligible: '02003,02004,02005', variable: variable }
+        context '02004 is included in 02003,02004,02005' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'Nominal exclusion' do
+        let(:rule) { create :rule, operator_type: :include, value_eligible: '12003,12004,12005', variable: variable }
+        context '02004 is NOT included in 12003,12004,12005' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+    end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
@@ -391,6 +407,14 @@ describe RuletreeService do
       sut = RuletreeService.new
       #when
       res = sut.send :force_type_of, 18, 'string'
+      #then
+      expect(res).to eq("18")
+    end
+    it 'cannot force anything else' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, "18", 'unexisting_type'
       #then
       expect(res).to eq("18")
     end
