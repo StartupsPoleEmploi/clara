@@ -28,6 +28,14 @@ describe HashService do
       #then
       expect(result).to eq({"Good" => 4, "test" => ["Jim Doe"]})
     end
+    it 'should do nothing with an empty hash' do
+      #given
+      i = {}
+      #when
+      result = HashService.new.recursive_compact(i)
+      #then
+      expect(result).to eq({})
+    end
 
   end
 
@@ -65,6 +73,14 @@ describe HashService do
       #then
       expect(result).to eq([1, "id", "_id", {}])
     end
+    it 'should do nothing with an empty hash' do
+      #given
+      i = {}
+      #when
+      result = HashService.new.reject_ids!(i)
+      #then
+      expect(result).to eq({})
+    end
   end
 
 
@@ -98,12 +114,21 @@ describe HashService do
     end
     it 'should count keys that start with some value from a hash in an array' do
       #given
-      k = [1, "hello", "my_test", {"my_test" => 2, "my_number" => 3}]
+      k = [1, "hello", "my_test", 8 => {"my_test2" => 2, "my_number" => 3}]
       val = "my"
       #when
       result = HashService.new.reject_keys_that_starts_with!(k, val, count=0)
       #then
-      expect(result).to eq(3)
+      expect(result).to eq(2)
+    end
+    it 'should do nothing with an empty hash' do
+      #given
+      i = {}
+      val = "my"
+      #when
+      result = HashService.new.reject_keys_that_starts_with!(i, val, count = 0)
+      #then
+      expect(result).to eq(0)
     end
   end
 
