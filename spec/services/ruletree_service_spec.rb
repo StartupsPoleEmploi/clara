@@ -377,6 +377,25 @@ describe RuletreeService do
     end
   end
 
+  describe '.force_type_of' do
+    it 'forces an integer' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, '18', 'integer'
+      #then
+      expect(res).to eq(18)
+    end
+    it 'forces an string' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, 18, 'string'
+      #then
+      expect(res).to eq("18")
+    end
+  end
+
   describe '.calculate' do
 
     it 'calculates integer, less_or_equal_than, more' do
