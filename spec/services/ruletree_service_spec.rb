@@ -379,6 +379,34 @@ describe RuletreeService do
 
   describe '.calculate' do
 
+    it 'calculates integer, less_or_equal_than, more' do
+      #given
+      operator_type = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 22
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, less_or_equal_than, eq' do
+      #given
+      operator_type = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 18
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
     it 'calculates integer, more_or_equal_than, more' do
       #given
       operator_type = "more_or_equal_than"
@@ -462,6 +490,20 @@ describe RuletreeService do
       res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
       #then
       expect(res).to eq(true)
+    end
+
+    it 'calculates integer, not_equal, eq' do
+      #given
+      operator_type = "not_equal"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 34
+      rule_value = "34"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
     end
 
   end
