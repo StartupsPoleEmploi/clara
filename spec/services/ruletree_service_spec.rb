@@ -128,6 +128,22 @@ describe RuletreeService do
       RuletreeService.new._stub_all_rules([rule.to_json(:include => [:slave_rules])])
     end
     subject { RuletreeService.new.resolve(rule.id, asker.attributes) }
+    context 'with a List' do
+      let(:asker) { create :asker, v_location_citycode: '02004'}
+      let(:variable) { create :variable, :location_citycode}
+      context 'Nominal inclusion' do
+        let(:rule) { create :rule, operator_type: :include, value_eligible: '02003,02004,02005', variable: variable }
+        context '02004 is included in 02003,02004,02005' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'Nominal exclusion' do
+        let(:rule) { create :rule, operator_type: :include, value_eligible: '12003,12004,12005', variable: variable }
+        context '02004 is NOT included in 12003,12004,12005' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
+    end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
@@ -375,5 +391,332 @@ describe RuletreeService do
         it { expect(subject).to eq "ineligible" }
       end
     end
+  end
+
+  describe '.force_type_of' do
+    it 'forces an integer' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, '18', 'integer'
+      #then
+      expect(res).to eq(18)
+    end
+    it 'forces an string' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, 18, 'string'
+      #then
+      expect(res).to eq("18")
+    end
+    it 'cannot force anything else' do
+      #given
+      sut = RuletreeService.new
+      #when
+      res = sut.send :force_type_of, "18", 'unexisting_type'
+      #then
+      expect(res).to eq("18")
+    end
+  end
+
+  describe '.calculate' do
+
+    it 'calculates integer, less_or_equal_than, more' do
+      #given
+      operator_type = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 22
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, less_or_equal_than, eq' do
+      #given
+      operator_type = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 18
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, less_or_equal_than, less' do
+      #given
+      operator_type = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 16
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, less_than, more' do
+      #given
+      operator_type = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 22
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, less_than, eq' do
+      #given
+      operator_type = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 18
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, less_than, less' do
+      #given
+      operator_type = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 16
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, more_or_equal_than, more' do
+      #given
+      operator_type = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 22
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, more_or_equal_than, equal' do
+      #given
+      operator_type = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 18
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, NOT more_or_equal_than, less' do
+      #given
+      operator_type = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 16
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+
+    it 'calculates integer, eq, eq' do
+      #given
+      operator_type = "eq"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 34
+      rule_value = "34"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, eq, diff' do
+      #given
+      operator_type = "eq"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 35
+      rule_value = "34"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, not_equal, diff' do
+      #given
+      operator_type = "not_equal"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 35
+      rule_value = "34"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, not_equal, eq' do
+      #given
+      operator_type = "not_equal"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 34
+      rule_value = "34"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, more_than, more' do
+      #given
+      operator_type = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 22
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates integer, more_than, eq' do
+      #given
+      operator_type = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 18
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates integer, more_than, less' do
+      #given
+      operator_type = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      criterion_value = 16
+      rule_value = "18"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates string, starts_with, same string' do
+      #given
+      operator_type = "starts_with"
+      rule_h = build(:rule, operator_type: operator_type).attributes
+      criterion_value = 'ASS'
+      rule_value = "ASS"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates string, starts_with, same string that starts with' do
+      #given
+      operator_type = "starts_with"
+      rule_h = build(:rule, operator_type: operator_type).attributes
+      criterion_value = 'ASSandsoon'
+      rule_value = "ASS"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'calculates string, starts_with, same string that DONT starts with' do
+      #given
+      operator_type = "starts_with"
+      rule_h = build(:rule, operator_type: operator_type).attributes
+      criterion_value = 'AaASSoon'
+      rule_value = "ASS"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
+    it 'calculates string, include, nominal' do
+      #given
+      operator_type = "include"
+      rule_h = build(:rule, operator_type: operator_type).attributes
+      criterion_value = "11"
+      rule_value = "11,22,33"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
+    it 'Unknown operator' do
+      #given
+      operator_type = "unknown"
+      rule_h = build(:rule).attributes
+      rule_h["operator_type"] = "unknown"
+      criterion_value = 'ASS'
+      rule_value = "ASS"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(false)
+    end
+
   end
 end

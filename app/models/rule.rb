@@ -2,7 +2,7 @@ class Rule < ApplicationRecord
   include Prefixable
   has_paper_trail ignore: [:updated_at]
 
-  enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with]
+  enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with, :include]
   enum composition_type: [:and_rule, :or_rule]
 
   has_many :compound_rules

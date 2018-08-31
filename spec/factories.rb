@@ -66,6 +66,11 @@ FactoryBot.define do
       variable_type :integer
     end
 
+    trait :location_citycode do 
+      name 'v_location_citycode'
+      variable_type :string
+    end
+
   end
 
   factory :rule do 
