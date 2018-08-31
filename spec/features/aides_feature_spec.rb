@@ -89,10 +89,12 @@ feature 'Aides page' do
     result_page = nil
     before do
       if result_page == nil
-        # set up data contex
+        # set up data context
         main_id = "NDMsMyxvLDUsbixwLCxub3RfYXBwbGljYWJsZSxu"
         asker = TranslateB64AskerService.new.from_b64(main_id)
-        aid = create(:aid, :aid_adult_and_spectacle, name: 'ze_name_for_adult_and_spectacle')
+        contract_type = create(:contract_type, :contract_type_1)
+        create_eligible_aid_for(asker, contract_type)
+        create_ineligible_aid_for(asker, contract_type)
         # mock externalities
         disable_http_service
         allow(Rails).to receive(:cache).and_return(memory_store)
@@ -115,6 +117,7 @@ feature 'Aides page' do
       Rails.cache.clear
     end
     scenario '2 aids are displayed' do
+      save_and_open_page
       expect(result_page.css('.c-resultaid').count).to eq 2
     end
     scenario '1 is eligible' do

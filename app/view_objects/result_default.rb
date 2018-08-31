@@ -21,6 +21,10 @@ class ResultDefault < ViewObject
     "#{str_title}"
   end
 
+  def filters
+    ActivatedModelsService.instance.filters
+  end
+
   def descr_for(aids_per_contract)
     @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["description"]
   end
