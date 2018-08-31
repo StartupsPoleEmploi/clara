@@ -28,7 +28,7 @@ feature 'detail of a result page' do
       if result_page == nil
         # fill database
         asker = create(:asker, :full_user_input)
-        aid = create(:aid, :aid_adult_or_spectacle, name: 'ze_name_for_adult_or_spectacle')
+        aid = create(:aid, :aid_adult_or_spectacle, name: 'ze_name_for_adult_or_spectacle', contract_type: create(:contract_type, :contract_type_1))
         # mock externalities
         disable_http_service
         allow(Rails).to receive(:cache).and_return(memory_store)

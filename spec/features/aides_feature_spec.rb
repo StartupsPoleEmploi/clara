@@ -36,14 +36,50 @@ feature 'Aides page' do
       enable_http_service
     end
   end
+
+  context 'Active user, cache empty' do
+    # See https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests
+    let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) } 
+    result_page = nil
+    before do
+      if result_page == nil
+        # fill database
+        asker = create(:asker, :full_user_input)
+        contract_type = create(:contract_type, :contract_type_1)
+        create_eligible_aid_for(asker, contract_type)
+        create_ineligible_aid_for(asker, contract_type)
+        # contract = create(:contract_type, :contract_type_1)
+        # aid = create(:aid, :aid_adult_and_spectacle, name: 'ze_name_for_adult_and_spectacle', contract_type: contract)
+        # mock externalities
+        disable_http_service
+        allow(Rails).to receive(:cache).and_return(memory_store)
+        Rails.cache.clear
+        # set system under test
+        visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
+        result_page = Nokogiri::HTML(page.html)
+      end
+    end
+    after do
+      enable_http_service
+      Rails.cache.clear
+    end
+    scenario 'Should display 1 eligible and 1 ineligible aid' do
+      save_and_open_page
+      expect(result_page.css('.c-resultaid').count).to eq 2
+      # should_have result_page, 2, ".c-result-aid"
+      # should_have seen, 1, ".c-result-list--eligible .c-result-aid"
+      # should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
+    end
+  end
   
   # context 'An active asker DOESNT Exist already in the cache' do
   #   seen = nil
   #   before do
   #     if !seen
   #       asker = create_realistic_asker
-  #       create_eligible_aid_for(asker)
-  #       create_ineligible_aid_for(asker)
+  #       contract_type = create(:contract_type, :contract_type_1)
+  #       create_eligible_aid_for(asker, contract_type)
+  #       create_ineligible_aid_for(asker, contract_type)
   #       disable_http_service
   #       visit_aides_for_asker(asker)
   #       seen = Nokogiri::HTML(page.html)
@@ -129,25 +165,25 @@ feature 'Aides page' do
     return create(:asker, :full_user_input)
   end
 
-  def create_aid_spectacle
-    create(:aid, :aid_spectacle, name: "aid_spectacle_1")
+  def create_aid_spectacle(contract_type)
+    create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: contract_type)
   end
 
-  def create_aid_not_spectacle
-    create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
+  def create_aid_not_spectacle(contract_type)
+    create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: contract_type)
   end
 
-  def create_eligible_aid_for(asker)
-    asker.v_spectacle == 'oui' ? create_aid_spectacle : create_aid_not_spectacle
+  def create_eligible_aid_for(asker, contract_type)
+    asker.v_spectacle == 'oui' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
-  def create_ineligible_aid_for(asker)
-    asker.v_spectacle == 'non' ? create_aid_spectacle : create_aid_not_spectacle
+  def create_ineligible_aid_for(asker, contract_type)
+    asker.v_spectacle == 'non' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
-  def create_2_different_aids
-    create(:aid, :aid_spectacle)
-    create(:aid, :aid_agepi)
+  def create_2_different_aids(contract_type)
+    create(:aid, :aid_spectacle, contract_type: contract_type)
+    create(:aid, :aid_agepi, contract_type: contract_type)
   end
 
   def realistic_cache_value

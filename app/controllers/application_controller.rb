@@ -30,6 +30,9 @@ class ApplicationController < ActionController::Base
 
   def hydrate_view(stuff)
     gon.loaded = stuff
+    p '- - - - - - - - - - - - - - stuff- - - - - - - - - - - - - - - -' 
+    pp stuff
+    p ''
     render locals: stuff
   end
 
