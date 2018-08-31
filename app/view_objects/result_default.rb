@@ -8,9 +8,7 @@ class ResultDefault < ViewObject
 
   def sort_and_order(prop)
     (@all_data[prop] || {})
-      .group_by{ |e| 
-        e['contract_type_id'] 
-      }
+      .group_by{ |e|   e['contract_type_id'] }
       .transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
       .values
       .sort_by{ |e| @contract_types.detect{|c| c["id"] == e.sample['contract_type_id']}["ordre_affichage"]}
@@ -19,10 +17,6 @@ class ResultDefault < ViewObject
   def title_for(aids_per_contract)
     str_title = @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["name"]
     "#{str_title}"
-  end
-
-  def filters
-    ActivatedModelsService.instance.filters
   end
 
   def descr_for(aids_per_contract)

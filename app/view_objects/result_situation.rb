@@ -81,17 +81,6 @@ class ResultSituation < ViewObject
   def location_label
     @asker[:v_location_label].blank? ? "indisponible" : @asker[:v_location_label]
   end
-  
-  def qpv
-    case @asker[:v_qpv]
-    when 'en_qpv'
-      "oui"
-    when 'hors_qpv'
-      "non"
-    else
-      "<a target='blank' href='https://sig.ville.gouv.fr/adresses/recherche'>vérifier</a>"
-    end
-  end
 
   def zrr
     @asker[:v_zrr] || "indisponible"
