@@ -59,7 +59,7 @@ feature 'detail of a result page' do
     result_page = nil
     before do
       if result_page == nil
-        # set up data contex
+        # set up data context
         main_id = "NDMsMyxvLDUsbixwLCxub3RfYXBwbGljYWJsZSxu"
         asker = TranslateB64AskerService.new.from_b64(main_id)
         aid = create(:aid, :aid_adult_or_spectacle, name: 'ze_name_for_adult_or_spectacle')
