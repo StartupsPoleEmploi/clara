@@ -105,60 +105,7 @@ describe ResultSituation do
       expect(sut.duree_d_inscription).to eq("non inscrit")
     end
   end
-#   describe '.allocation_value_min' do
-#     it 'Should respond exactly the same thing as the given allocation_value_min' do
-#       sut = ResultSituation.new(nil, {asker: {v_allocation_value_min: 'anything'}})
-#       expect(sut.allocation_value_min).to eq("anything")
-#       sut = ResultSituation.new(nil, {asker: {v_allocation_value_min: 'any_other_thing'}})
-#       expect(sut.allocation_value_min).to eq("any_other_thing")
-#     end
-#     it 'Should return a "indisponible" in the worst scenario' do
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.allocation_value_min).to eq("indisponible")
-#     end
-#   end
-#   describe '.handicap' do
-#     it 'Should respond exactly the same thing as the given handicap' do
-#       sut = ResultSituation.new(nil, {asker: {v_handicap: 'anything'}})
-#       expect(sut.handicap).to eq("anything")
-#       sut = ResultSituation.new(nil, {asker: {v_handicap: 'any_other_thing'}})
-#       expect(sut.handicap).to eq("any_other_thing")
-#     end
-#     it 'Should return a "indisponible" in the worst scenario' do
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.handicap).to eq("indisponible")
-#     end
-#   end
-#   describe '.spectacle' do
-#     it 'Should respond exactly the same thing as the given spectacle' do
-#       sut = ResultSituation.new(nil, {asker: {v_spectacle: 'anything'}})
-#       expect(sut.spectacle).to eq("anything")
-#       sut = ResultSituation.new(nil, {asker: {v_spectacle: 'any_other_thing'}})
-#       expect(sut.spectacle).to eq("any_other_thing")
-#     end
-#     it 'Should return a "indisponible" in the worst scenario' do
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.spectacle).to eq("indisponible")
-#     end
-#   end
-#   describe '.location_label' do
-#     it 'If defined, should respond exactly the same thing as the given location_label' do
-#       sut = ResultSituation.new(nil, {asker: {v_location_label: 'anything'}})
-#       expect(sut.location_label).to eq("anything")
-#       sut = ResultSituation.new(nil, {asker: {v_location_label: 'any_other_thing'}})
-#       expect(sut.location_label).to eq("any_other_thing")
-#     end
-#     it 'If NOT defined, should respond "indisponible"' do
-#       sut = ResultSituation.new(nil, {asker: {v_location_label: ''}})
-#       expect(sut.location_label).to eq("indisponible")
-#       sut = ResultSituation.new(nil, {asker: {v_location_label: nil}})
-#       expect(sut.location_label).to eq("indisponible")
-#       sut = ResultSituation.new(nil, {asker: {}})
-#       expect(sut.location_label).to eq("indisponible")
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.location_label).to eq("indisponible")
-#     end
-#   end
+
   describe '.age' do
     it 'Should respond exactly the same thing as the given age' do
       sut = ResultSituation.new(nil, {v_age: 'anything'})
@@ -231,42 +178,4 @@ describe ResultSituation do
       expect(sut.location_label).to eq("indisponible")
     end
   end
-#   describe '.qpv' do
-#     it 'Should respond "oui" if qpv is "en_qpv"' do
-#       sut = ResultSituation.new(nil, {asker: {v_qpv: 'en_qpv'}})
-#       expect(sut.qpv).to eq("oui")
-#     end
-#     it 'Should respond "non" if qpv is "hors_qpv"' do
-#       sut = ResultSituation.new(nil, {asker: {v_qpv: 'hors_qpv'}})
-#       expect(sut.qpv).to eq("non")
-#     end
-#     it 'Should respond "vérifier" if qpv is unknown' do
-#       sut = ResultSituation.new(nil, {asker: {v_qpv: 'nothing_relevant'}})
-#       expect(sut.qpv).to include("vérifier")
-#     end
-#     it 'Should return "vérifier" in the worst scenario' do
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.qpv).to include("vérifier")
-#       expect(sut.qpv).to include("https://sig.ville.gouv.fr/adresses/recherche")
-#     end
-#   end
-#   describe '.zrr' do
-#     it 'Should respond "oui" if zrr is "en_zrr"' do
-#       sut = ResultSituation.new(nil, {asker: {v_zrr: 'en_zrr'}})
-#       expect(sut.zrr).to eq("oui")
-#     end
-#     it 'Should respond "non" if zrr is "hors_zrr"' do
-#       sut = ResultSituation.new(nil, {asker: {v_zrr: 'hors_zrr'}})
-#       expect(sut.zrr).to eq("non")
-#     end
-#     it 'Should respond "indisponible" if zrr is unknown' do
-#       sut = ResultSituation.new(nil, {asker: {v_zrr: 'nothing_relevant'}})
-#       expect(sut.zrr).to eq("indisponible")
-#     end
-#     it 'Should return "indisponible" in the worst scenario' do
-#       sut = ResultSituation.new(nil, nil)
-#       expect(sut.zrr).to eq("indisponible")
-#     end
-#   end
-
 end

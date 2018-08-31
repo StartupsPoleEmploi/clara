@@ -24,6 +24,15 @@ feature 'category question' do
 
   end
 
+  scenario 'User can go back to previous question' do 
+
+    # given
+    # when
+    find('.js-previous').click
+    # then
+    expect(current_path).to eq new_inscription_question_path
+  end
+
   scenario 'If user validates without any checked checkboxes, user stay on page with an error message' do 
 
     # given

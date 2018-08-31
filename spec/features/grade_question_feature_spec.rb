@@ -35,6 +35,15 @@ feature 'grade question' do
 
   end
 
+  scenario 'User can go back to previous question' do 
+
+    # given
+    # when
+    find('.js-previous').click
+    # then
+    expect(current_path).to eq new_age_question_path
+  end
+
   scenario 'By default session do not have a v_diplome' do 
     # given
     # when
