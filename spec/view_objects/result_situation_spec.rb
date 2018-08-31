@@ -6,9 +6,9 @@ describe ResultSituation do
       sut = ResultSituation.new(nil, {v_allocation_type: 'ARE_ASP'})
       expect(sut.allocation_type).to eq("ARE ASP")
     end
-    it 'Should respond "ASS AER ATA APS AS-FNE" when category is ASS_AER_ATA_APS_AS-FNE' do
-      sut = ResultSituation.new(nil, {v_allocation_type: 'ASS_AER_ATA_APS_AS-FNE'})
-      expect(sut.allocation_type).to eq("ASS AER ATA APS AS-FNE")
+    it 'Should respond "ASS AER APS AS-FNE" when category is ASS_AER_APS_AS-FNE' do
+      sut = ResultSituation.new(nil, {v_allocation_type: 'ASS_AER_APS_AS-FNE'})
+      expect(sut.allocation_type).to eq("ASS AER APS AS-FNE")
     end
     it 'Should respond "RPS RFPA RFF ou pension de retraite" when category is RPS_RFPA_RFF_pensionretraite' do
       sut = ResultSituation.new(nil, {v_allocation_type: 'RPS_RFPA_RFF_pensionretraite'})

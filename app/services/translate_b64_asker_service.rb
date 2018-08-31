@@ -118,7 +118,7 @@ class TranslateB64AskerService
   def allocation_hash
     {
       "1" => "ARE_ASP", 
-      "2" => "ASS_AER_ATA_APS_AS-FNE", 
+      "2" => "ASS_AER_APS_AS-FNE", 
       "3" => "RPS_RFPA_RFF_pensionretraite",
       "4" => "RSA", 
       "5" => "AAH", 

@@ -63,8 +63,8 @@ class ResultSituation < ViewObject
     case @asker[:v_allocation_type]
     when 'ARE_ASP'
       "ARE ASP"
-    when 'ASS_AER_ATA_APS_AS-FNE'
-      "ASS AER ATA APS AS-FNE"
+    when 'ASS_AER_APS_AS-FNE'
+      "ASS AER APS AS-FNE"
     when 'RPS_RFPA_RFF_pensionretraite'
       "RPS RFPA RFF ou pension de retraite"
     when 'RSA'

@@ -139,7 +139,7 @@ describe Api::V1::ApiAidesController, type: :request do
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
-          "allocation_type"         => "ASS_AER_ATA_APS_ASFNE",
+          "allocation_type"         => "ASS_AER_APS_ASFNE",
           "monthly_allocation_value"=> "1230",
           "age"                     => "42",
           "location_citycode"       => "02004",
@@ -171,7 +171,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "category"=>"other_categories", 
             "inscription_period"=>"less_than_a_year", 
             "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_ATA_APS_ASFNE", 
+            "allocation_type"=>"ASS_AER_APS_ASFNE", 
             "monthly_allocation_value"=>"1230", 
             "age"=>"42", 
             "location_citycode"=>"02004"
@@ -272,7 +272,7 @@ describe Api::V1::ApiAidesController, type: :request do
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
-          "allocation_type"         => "ASS_AER_ATA_APS_ASFNE",
+          "allocation_type"         => "ASS_AER_APS_ASFNE",
           "monthly_allocation_value"=> "1230",
           "age"                     => "42",
           "location_citycode"       => "02004",
@@ -304,7 +304,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "category"=>"other_categories", 
             "inscription_period"=>"less_than_a_year", 
             "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_ATA_APS_ASFNE", 
+            "allocation_type"=>"ASS_AER_APS_ASFNE", 
             "monthly_allocation_value"=>"1230", 
             "age"=>"42", 
             "location_citycode"=>"02004"
@@ -404,7 +404,7 @@ describe Api::V1::ApiAidesController, type: :request do
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
-          "allocation_type"         => "ASS_AER_ATA_APS_ASFNE",
+          "allocation_type"         => "ASS_AER_APS_ASFNE",
           "monthly_allocation_value"=> "1230",
           "location_citycode"       => "02004",
           "filters"                 => "filter-empty,filter-targeted"
@@ -435,7 +435,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "category"=>"other_categories", 
             "inscription_period"=>"less_than_a_year", 
             "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_ATA_APS_ASFNE", 
+            "allocation_type"=>"ASS_AER_APS_ASFNE", 
             "monthly_allocation_value"=>"1230", 
             "location_citycode"=>"02004"
           }, 

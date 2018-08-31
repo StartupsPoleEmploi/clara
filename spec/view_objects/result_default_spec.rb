@@ -169,7 +169,7 @@ describe ResultDefault do
    "v_category"=>"cat_12345",
    "v_duree_d_inscription"=>"plus_d_un_an",
    "v_allocation_value_min"=>"424",
-   "v_allocation_type"=>"ASS_AER_ATA_APS_AS-FNE",
+   "v_allocation_type"=>"ASS_AER_APS_AS-FNE",
    "v_qpv"=>nil,
    "v_zrr"=>nil,
    "v_age"=>"22",

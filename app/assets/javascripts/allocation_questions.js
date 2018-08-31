@@ -13,10 +13,10 @@ $(document).on('ready turbolinks:load', function () {
       });
     });
 
-    $('.js-pnotify--ASS_AER_ATA_APS_AS-FNE').click(function() {
+    $('.js-pnotify--ASS_AER_APS_AS-FNE').click(function() {
       PNotify.removeAll();
       new PNotify({
-        title: 'ASS / AER / ATA / APS / AS-FNE',
+        title: 'ASS / AER / APS / AS-FNE',
         type: 'info',
         buttons:{
           sticker: false,
@@ -24,7 +24,6 @@ $(document).on('ready turbolinks:load', function () {
         text: '' +
           "ASS : Allocation de Solidarité Spécifique, versée par Pôle emploi lorsque l'ARE prend fin." +
           "\n\nAER/AS-FNE : Allocation Equivalent Retraite, Allocation Spéciale du Fonds National de l'Emploi, versées soit lorsque vous avez le nombre de trimestres requis pour avoir une retraite à taux plein, soit lorsque vous avez atteint l'âge de la retraite" +
-          "\n\nATA : Allocation Temporaire d'Attente, versée par Pôle emploi si vous étiez salarié(e) expatrié(e), apatride, détenu(e) liberé(e), bénéficiaire de la protection subsidiaire" +
           "\n\nAPS : Allocation de Professionnalisation et de Solidarité, versée par Pôle emploi lorsque vous êtes intermittent du spectacle"
       });
     });

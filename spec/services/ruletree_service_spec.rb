@@ -205,53 +205,53 @@ describe RuletreeService do
       end
     end
     context 'with a String' do
-      let(:asker) { create :asker, v_allocation_type: 'ASS_AER_ATA_APS_AS-FNE'}
+      let(:asker) { create :asker, v_allocation_type: 'ASS_AER_APS_AS-FNE'}
       let(:variable) { create :variable, variable_type: :string, name: 'v_allocation_type'}
       context 'equal a String, "eligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'ASS_AER_ATA_APS_AS-FNE', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE equal ASS_AER_ATA_APS_AS-FNE' do
+        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal String, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'not_ASS_AER_ATA_APS_AS-FNE', variable: variable }
-        context 'not_ASS_AER_ATA_APS_AS-FNE equal ASS_AER_ATA_APS_AS-FNE' do
+        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
+        context 'not_ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'not_equal a String, "eligible"' do
         let(:rule) { create :rule, operator_type: :not_equal, value_eligible: 'aaa', variable: variable }
-        context 'aaa not_equal ASS_AER_ATA_APS_AS-FNE' do
+        context 'aaa not_equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'not_equal String, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :not_equal, value_eligible: 'ASS_AER_ATA_APS_AS-FNE', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE equal ASS_AER_ATA_APS_AS-FNE' do
+        let(:rule) { create :rule, operator_type: :not_equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'starts_with String, "eligible"' do
         let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'ASS', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE starts_with ASS' do
+        context 'ASS_AER_APS_AS-FNE starts_with ASS' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case unsensitive, "eligible"' do
         let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'ass', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE starts_with ass' do
+        context 'ASS_AER_APS_AS-FNE starts_with ass' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case accent and non-alphanumeric, "eligible"' do
         let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'â-ss', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE starts_with â-ss' do
+        context 'ASS_AER_APS_AS-FNE starts_with â-ss' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, "ineligible"' do
         let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'XXX', variable: variable }
-        context 'ASS_AER_ATA_APS_AS-FNE starts_with XXX' do
+        context 'ASS_AER_APS_AS-FNE starts_with XXX' do
           it { expect(subject).to eq "ineligible" }
         end
       end

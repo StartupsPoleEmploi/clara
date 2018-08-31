@@ -1,6 +1,6 @@
 variable_list = [
   ["v_age",                       :integer, ""],
-  ["v_allocation_type",           :string, "ARE_ASP,ASS_AER_ATA_APS_AS-FNE,RSA,RPS_RFPA_RFF_pensionretraite,AAH,pas_indemnise"],
+  ["v_allocation_type",           :string, "ARE_ASP,ASS_AER_APS_AS-FNE,RSA,RPS_RFPA_RFF_pensionretraite,AAH,pas_indemnise"],
   ["v_allocation_value_min",      :integer, ""],
   ["v_category",                  :string, "cat_12345,autres_cat"],
   ["v_diplome",                   :string, "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5"],

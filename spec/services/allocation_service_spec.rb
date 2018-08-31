@@ -31,12 +31,12 @@ describe AllocationService do
       expect(asker.v_allocation_type).to eq('allocation type value')
     end
     
-    it 'if allocation_type is "ASS_AER_ATA_APS_AS-FNE" and v_allocation_value_min exists, v_allocation_value_min is untouched' do
+    it 'if allocation_type is "ASS_AER_APS_AS-FNE" and v_allocation_value_min exists, v_allocation_value_min is untouched' do
 
       # given
       asker = Asker.new
       allocation = AllocationForm.new
-      allocation.type = 'ASS_AER_ATA_APS_AS-FNE'
+      allocation.type = 'ASS_AER_APS_AS-FNE'
       asker.v_allocation_value_min = "42"
 
       # when

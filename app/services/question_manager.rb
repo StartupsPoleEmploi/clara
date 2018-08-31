@@ -32,7 +32,7 @@ class QuestionManager
   end
 
   def after_allocation(allocationForm)
-    if allocationForm.type == 'ASS_AER_ATA_APS_AS-FNE' || allocationForm.type == 'ARE_ASP'
+    if allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP'
       new_are_question_path
     else
       new_age_question_path
