@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.1.1 (31/08/2018)
+-[#865][FEATURE] Suppression de l'ATA
+
+
 ## 12.0.1 (29/08/2018)
 -[#868][TECH] Couverture tests
 
