@@ -15,14 +15,8 @@ class User < ApplicationRecord
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_request request
-    p '- - - - - - - - - - - - - - request- - - - - - - - - - - - - - - -' 
-    pp request.params["auth"]
-    p ''
     return nil unless request.respond_to?(:params) && request.params["auth"] && request.params["auth"]["email"]
     email = request.params["auth"]["email"]
-    p '- - - - - - - - - - - - - - email- - - - - - - - - - - - - - - -' 
-    pp email
-    p ''
     Rails.cache.fetch("user_email:#{email}") { self.find_by(email: email) }
   end
   
