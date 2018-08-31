@@ -99,14 +99,7 @@ feature 'Aides page' do
         disable_http_service
         allow(Rails).to receive(:cache).and_return(memory_store)
         Rails.cache.clear
-        Rails.cache.write(main_id, {asker: asker.attributes})
-        # asker = create(:asker, :full_user_input)
-        # contract_type = create(:contract_type, :contract_type_1)
-        # create_eligible_aid_for(asker, contract_type)
-        # create_ineligible_aid_for(asker, contract_type)
-        # disable_http_service
-        # allow(Rails).to receive(:cache).and_return(memory_store)
-        # Rails.cache.clear
+        Rails.cache.write(main_id, SerializeResultsService.get_instance.go(asker))
         # set system under test
         visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
         result_page = Nokogiri::HTML(page.html)
