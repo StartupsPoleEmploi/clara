@@ -17,6 +17,15 @@ feature 'address question' do
     expect_search_input_is_empty
   end
 
+  scenario 'User can go back to previous question' do 
+
+    # given
+    # when
+    find('.js-previous').click
+    # then
+    expect(current_path).to eq new_grade_question_path
+  end
+
   scenario 'By default no error are shown' do 
     expect_no_error_shown_to_user
   end
