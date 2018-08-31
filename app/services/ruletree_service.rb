@@ -34,9 +34,6 @@ class RuletreeService
   end
 
   def evaluate(rule, criterion_hash)
-    p '- - - - - - - - - - - - - - criterion_hash- - - - - - - - - - - - - - - -' 
-    pp criterion_hash
-    p ''
     result = calculate_default_value
     c = criterion_hash.stringify_keys if criterion_hash.is_a?(Hash)
     variable = @all_variables.detect { |e| e["id"] == rule["variable_id"] }
