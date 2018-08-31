@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'Stats' do 
-
+  the_stat = nil
   before do
-    create(:stat, 
+    the_stat = create(:stat, 
               ga: JSON.parse('{
                 "json_data": [
                   {
@@ -71,6 +71,13 @@ feature 'Stats' do
   scenario 'Visit index, displays the total number of visitors' do 
     visit stats_index_path
     expect(find('.c-stats-totalview__number').text).to eq "1378"
+  end
+
+  scenario 'Visit index, if anything is badly configured' do 
+    the_stat.ga["json_data"] = "blabla"
+    the_stat.save
+    visit stats_index_path
+    expect(find('.c-stats-totalview__number').text).to eq "0"
   end
 
   scenario 'Visit time, display time spare per advisor' do 
