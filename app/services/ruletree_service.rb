@@ -87,24 +87,26 @@ class RuletreeService
 
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
-    typed_user_value = force_type_of(rule_value, rule_type)
+    typed_rule_value = force_type_of(rule_value, rule_type)
 
     case rule["operator_type"]
       when 'eq'
-        typed_criterion_value == typed_user_value
+        typed_criterion_value == typed_rule_value
       when 'not_equal'
-        typed_criterion_value != typed_user_value
+        typed_criterion_value != typed_rule_value
       when 'more_than'
-        typed_criterion_value > typed_user_value
+        typed_criterion_value > typed_rule_value
       when 'more_or_equal_than'
-        typed_criterion_value >= typed_user_value
+        typed_criterion_value >= typed_rule_value
       when 'less_or_equal_than'
-        typed_criterion_value <= typed_user_value
+        typed_criterion_value <= typed_rule_value
       when 'less_than'
-        typed_criterion_value < typed_user_value
+        typed_criterion_value < typed_rule_value
+      when 'include'
+        typed_rule_value.split(",").include?(typed_criterion_value)
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_user_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         a.starts_with?(b)
       else
         false
