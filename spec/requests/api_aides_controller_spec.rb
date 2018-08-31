@@ -9,6 +9,10 @@ describe Api::V1::ApiAidesController, type: :request do
     }
   end
 
+  before do
+    Rails.cache.clear
+  end
+
   describe 'Nominal /filters' do
     response_returned = nil
     json_returned = nil
@@ -122,7 +126,7 @@ describe Api::V1::ApiAidesController, type: :request do
         # A filter not targeted, and not required
         filter_untargeted = create(:filter, name: 'filter-untargeted')
         # Aid that should be retrieved
-        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted])    
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted], contract_type: create(:contract_type, :contract_type_1))    
         # Aid that should not be retrieved despite it is eligible : the filter is not targeted
         create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter", filters:[filter_untargeted])    
         # Aid that should not be retrieved despite correct filter : it is not eligible
@@ -176,7 +180,8 @@ describe Api::V1::ApiAidesController, type: :request do
             {"name"=>"Aide Adulte ou Spectacle Filtre", 
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
-              "filters"=>["filter-targeted"]}
+              "filters"=>["filter-targeted"],
+              "contract_type"=>"n1"}
           ]
         }
         )
@@ -254,7 +259,7 @@ describe Api::V1::ApiAidesController, type: :request do
         # A filter not targeted, and not required
         filter_untargeted = create(:filter, name: 'filter-untargeted')
         # Aid that should be retrieved
-        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
+        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted], contract_type: create(:contract_type, :contract_type_1))    
         # Aid that should not be retrieved despite it is ineligible : the filter is not targeted
         create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter", filters:[filter_untargeted])    
         # Aid that should not be retrieved despite correct filter : it is not ineligible
@@ -307,7 +312,8 @@ describe Api::V1::ApiAidesController, type: :request do
           "aids"=>[
             {"name"=>"Aide Adulte et Spectacle", 
               "slug"=>"aide-adulte-et-spectacle", 
-              "filters"=>["filter-targeted"]}
+              "filters"=>["filter-targeted"],
+              "contract_type"=>"n1"}
           ]
         }
         )
@@ -385,11 +391,11 @@ describe Api::V1::ApiAidesController, type: :request do
         # A filter not targeted, and not required
         filter_untargeted = create(:filter, name: 'filter-untargeted')
         # Aid that should be retrieved
-        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
+        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted], contract_type: create(:contract_type, :contract_type_1))    
         # Aid that should not be retrieved despite it is uncertain : the filter is not targeted
         create(:aid, :aid_adult, name: "Aide Adulte", short_description: "adult with wrong filter", filters:[filter_untargeted])    
         # Aid that should not be retrieved despite correct filter : it is not uncertain
-        create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted])    
+        create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
         track_layer = spy('HttpService')
         TrackCallService.set_instance(track_layer)
         get '/api/v1/aids/uncertain', params: {   
@@ -437,7 +443,8 @@ describe Api::V1::ApiAidesController, type: :request do
             {"name"=>"Aide Adulte ou Spectacle Filtre", 
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
-              "filters"=>["filter-targeted"]}
+              "filters"=>["filter-targeted"],
+              "contract_type" => "n1"}
           ]
         }
         )
@@ -479,10 +486,11 @@ describe Api::V1::ApiAidesController, type: :request do
     track_layer = nil
     before do
       if response_returned == nil
+        filter_empty = create(:filter, name: 'filter-empty')
         track_layer = spy('HttpService')
         TrackCallService.set_instance(track_layer)
         get '/api/v1/aids/uncertain', params: {   
-          "filters"                     => "unexisting_filter",
+          "filters"                     => "filter-empty,unexisting_filter",
         }, headers: authenticated_header 
         json_returned = JSON.parse(response.body)
         response_returned = response

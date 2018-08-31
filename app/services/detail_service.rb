@@ -6,7 +6,6 @@ class DetailService
   end
 
   def hashified_eligibility_and_rules(asker)
-
     justification_service = JustificationService.new(@aid)
     is_eligible = RuletreeService.new.resolve(@aid.rule.id, asker.attributes)
     root_condition = justification_service.root_condition

@@ -16,7 +16,7 @@ class WhitelistAidService
     aids = aid_hash.deep_dup
     a = ActivatedModelsService.instance
     return {} unless aids.is_a?(Hash)
-    aids["contract_type"] = a.contract_types.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
+    aids["contract_type"] = a.contracts.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
     aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}["slug"]} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
     wanted_keys = %w[name slug short_description contract_type filters]
 

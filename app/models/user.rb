@@ -15,9 +15,8 @@ class User < ApplicationRecord
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_request request
-    return nil unless request.params["auth"] && request.params["auth"]["email"]
+    return nil unless request.respond_to?(:params) && request.params["auth"] && request.params["auth"]["email"]
     email = request.params["auth"]["email"]
-    # return nil if !ActivatedModelsService.instance.users.find{|u| u["email"] == email}
     Rails.cache.fetch("user_email:#{email}") { self.find_by(email: email) }
   end
   

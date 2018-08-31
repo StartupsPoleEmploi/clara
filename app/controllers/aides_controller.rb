@@ -6,8 +6,8 @@ class AidesController < ApplicationController
     if have_active_asker?
       existing = pull_existing_from_cache
       if (existing)
-        hydrate_view(existing)
         instantiate_asker(existing)
+        hydrate_view(existing)
       else
         pull_asker_from_query_param
         augment_asker
@@ -47,7 +47,7 @@ class AidesController < ApplicationController
   end
 
   def write_to_cache(cacheable)
-    CacheService.get_instance.write(params[:for_id], cacheable)
+    Rails.cache.write(params[:for_id], cacheable, {expires_in: 10.minutes})
   end
 
   def augment_asker
@@ -56,10 +56,6 @@ class AidesController < ApplicationController
 
   def create_cacheable_results_from_asker
     SerializeResultsService.get_instance.go(@asker)
-  end
-
-  def hashify_results(stuff)
-    DisplayResultsService.new(stuff).go
   end
 
 end

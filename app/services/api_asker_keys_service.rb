@@ -16,7 +16,4 @@ class ApiAskerKeysService
     }
   end
   
-  def reverse_hash
-    asker_hash.invert
-  end
 end

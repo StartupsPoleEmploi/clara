@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.0.1 (29/08/2018)
+-[#868][TECH] Couverture tests
+
+
 ## 12.0.0 (28/08/2018)
 -[#867][TECH] Tests de l'API
 

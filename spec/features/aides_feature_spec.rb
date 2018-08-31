@@ -6,7 +6,7 @@ feature 'Aides page' do
     seen = nil
     before do
       if !seen
-        create_2_different_aids
+        create_2_different_aids(create(:contract_type, :contract_type_1))
         disable_http_service
         visit aides_path
         seen = Nokogiri::HTML(page.html)        
@@ -36,80 +36,101 @@ feature 'Aides page' do
       enable_http_service
     end
   end
-  
-  # context 'An active asker DOESNT Exist already in the cache' do
-  #   seen = nil
-  #   before do
-  #     if !seen
-  #       asker = create_realistic_asker
-  #       create_eligible_aid_for(asker)
-  #       create_ineligible_aid_for(asker)
-  #       disable_http_service
-  #       visit_aides_for_asker(asker)
-  #       seen = Nokogiri::HTML(page.html)
-  #     end
-  #   end
-  #   scenario 'Should display 1 eligible and 1 ineligible aid' do
-  #     save_and_open_page
-  #     should_have seen, 2, ".c-result-aid"
-  #     should_have seen, 1, ".c-result-list--eligible .c-result-aid"
-  #     should_have seen, 1, ".c-result-list--ineligible .c-result-aid"
-  #   end
-  #   scenario 'Should have in the title "Vos résultats"' do
-  #     should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
-  #   end
-  #   scenario 'Should NOT have .c-result-all displayed' do
-  #     should_have seen, 0, ".c-result-all"
-  #   end
-  #   scenario 'Should have a breadcrumb displayed' do
-  #     should_have seen, 1, ".c-breadcrumb"
-  #   end
-  #   scenario 'Should have .c-result-default displayed' do
-  #     should_have seen, 1, ".c-result-default"
-  #   end
-  #   scenario 'Should NOT have .c-detail-void' do
-  #     should_have seen, 0, ".c-detail-void"
-  #   end
-  #   after do
-  #     enable_http_service
-  #   end
-  # end
 
-  # context 'An active asker ALREADY Exist already in the cache' do
-  #   seen = nil
-  #   before do
-  #     if !seen
-  #       disable_http_service
-  #       stub_cache_with_1_eligible_2_ineligible
-  #       visit_aides_for_id('any')
-  #       seen = Nokogiri::HTML(page.html)
-  #     end
-  #   end
-  #   scenario 'Should display 1 eligible and 2 ineligible aid' do
-  #     should_have seen, 3, ".c-result-aid"
-  #     should_have seen, 1, ".c-result-list--eligible .c-result-aid"
-  #     should_have seen, 2, ".c-result-list--ineligible .c-result-aid"
-  #   end
-  #   scenario 'Should have in the title "Vos résultats"' do
-  #     should_have seen, "1st", "title", :with_text_that_include, "Vos résultats"
-  #   end
-  #   scenario 'Should NOT have .c-result-all displayed' do
-  #     should_have seen, 0, ".c-result-all"
-  #   end
-  #   scenario 'Should have a breadcrumb displayed' do
-  #     should_have seen, 1, ".c-breadcrumb"
-  #   end
-  #   scenario 'Should have .c-result-default displayed' do
-  #     should_have seen, 1, ".c-result-default"
-  #   end
-  #   scenario 'Should NOT have .c-detail-void' do
-  #     should_have seen, 0, ".c-detail-void"
-  #   end
-  #   after do
-  #     enable_http_service
-  #     enable_cache_service
-  #   end
-  # end
+  context 'Active user, cache empty' do
+    # See https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests
+    let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) } 
+    result_page = nil
+    before do
+      if result_page == nil
+        # fill database
+        asker = create(:asker, :full_user_input)
+        contract_type = create(:contract_type, :contract_type_1)
+        create_eligible_aid_for(asker, contract_type)
+        create_ineligible_aid_for(asker, contract_type)
+        disable_http_service
+        allow(Rails).to receive(:cache).and_return(memory_store)
+        Rails.cache.clear
+        # set system under test
+        visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
+        result_page = Nokogiri::HTML(page.html)
+      end
+    end
+    after do
+      enable_http_service
+      Rails.cache.clear
+    end
+    scenario '2 aids are displayed' do
+      expect(result_page.css('.c-resultaid').count).to eq 2
+    end
+    scenario '1 is eligible' do
+      expect(result_page.css('#eligibles .c-resultaid').count).to eq 1
+    end
+    scenario '1 is ineligible' do
+      expect(result_page.css('#ineligibles .c-resultaid').count).to eq 1
+    end
+    scenario 'Title include "Vos résultats"' do
+      expect(result_page.css('title').text.include?("Vos résultats")).to eq true
+    end
+    scenario 'Breadcrumb is displayed' do
+      expect(result_page.css('.c-breadcrumb').count).to eq 1
+    end
+    scenario 'No detail-void' do
+      expect(result_page.css('.c-detail-void').count).to eq 0
+    end
+    scenario 'No result-all' do
+      expect(result_page.css('.c-result-all').count).to eq 0
+    end
+  end
+  
+  context 'Active user, cache filled' do
+    # See https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests
+    let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) } 
+    result_page = nil
+    before do
+      if result_page == nil
+        # set up data context
+        main_id = "NDMsMyxvLDUsbixwLCxub3RfYXBwbGljYWJsZSxu"
+        asker = TranslateB64AskerService.new.from_b64(main_id)
+        contract_type = create(:contract_type, :contract_type_1)
+        create_eligible_aid_for(asker, contract_type)
+        create_ineligible_aid_for(asker, contract_type)
+        # mock externalities
+        disable_http_service
+        allow(Rails).to receive(:cache).and_return(memory_store)
+        Rails.cache.clear
+        Rails.cache.write(main_id, SerializeResultsService.get_instance.go(asker))
+        # set system under test
+        visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
+        result_page = Nokogiri::HTML(page.html)
+      end
+    end
+    after do
+      enable_http_service
+      Rails.cache.clear
+    end
+    scenario '2 aids are displayed' do
+      expect(result_page.css('.c-resultaid').count).to eq 2
+    end
+    scenario '1 is eligible' do
+      expect(result_page.css('#eligibles .c-resultaid').count).to eq 1
+    end
+    scenario '1 is ineligible' do
+      expect(result_page.css('#ineligibles .c-resultaid').count).to eq 1
+    end
+    scenario 'Title include "Vos résultats"' do
+      expect(result_page.css('title').text.include?("Vos résultats")).to eq true
+    end
+    scenario 'Breadcrumb is displayed' do
+      expect(result_page.css('.c-breadcrumb').count).to eq 1
+    end
+    scenario 'No detail-void' do
+      expect(result_page.css('.c-detail-void').count).to eq 0
+    end
+    scenario 'No result-all' do
+      expect(result_page.css('.c-result-all').count).to eq 0
+    end
+  end
 
   def stub_cache_with_1_eligible_2_ineligible
       cache_layer = instance_double("CacheService")
@@ -129,25 +150,25 @@ feature 'Aides page' do
     return create(:asker, :full_user_input)
   end
 
-  def create_aid_spectacle
-    create(:aid, :aid_spectacle, name: "aid_spectacle_1")
+  def create_aid_spectacle(contract_type)
+    create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: contract_type)
   end
 
-  def create_aid_not_spectacle
-    create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
+  def create_aid_not_spectacle(contract_type)
+    create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: contract_type)
   end
 
-  def create_eligible_aid_for(asker)
-    asker.v_spectacle == 'oui' ? create_aid_spectacle : create_aid_not_spectacle
+  def create_eligible_aid_for(asker, contract_type)
+    asker.v_spectacle == 'oui' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
-  def create_ineligible_aid_for(asker)
-    asker.v_spectacle == 'non' ? create_aid_spectacle : create_aid_not_spectacle
+  def create_ineligible_aid_for(asker, contract_type)
+    asker.v_spectacle == 'non' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
-  def create_2_different_aids
-    create(:aid, :aid_spectacle)
-    create(:aid, :aid_agepi)
+  def create_2_different_aids(contract_type)
+    create(:aid, :aid_spectacle, contract_type: contract_type)
+    create(:aid, :aid_agepi, contract_type: contract_type)
   end
 
   def realistic_cache_value

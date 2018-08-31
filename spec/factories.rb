@@ -6,6 +6,10 @@ FactoryBot.define do
     
   end
 
+  factory :stat do
+    
+  end
+
   factory :user do
     trait :fake do
       email "foo@bar.com"
@@ -174,12 +178,6 @@ FactoryBot.define do
       end
     end
 
-    trait :be_an_adult_or_spectacles_or_in_qpv do 
-      composition_type :or_rule
-      before :create do |rule|
-        rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle1', description: 'spectacle description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult4', description: 'adult description'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv3', description: 'qpv description')]
-      end
-    end
   end
 
   factory :aid do 
@@ -233,11 +231,6 @@ FactoryBot.define do
     trait :aid_adult_or_qpv do
       before :create do |aid|
         aid.rule = create(:rule, :be_an_adult_or_in_qpv)
-      end
-    end
-    trait :aid_adult_or_spectacles_or_qpv do
-      before :create do |aid|
-        aid.rule = create(:rule, :be_an_adult_or_spectacles_or_in_qpv)
       end
     end
     trait :aid_agepi do 

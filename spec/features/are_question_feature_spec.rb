@@ -20,6 +20,17 @@ feature 'A.R.E question' do
     expect(asker_obj).not_to include "v_allocation_value_min: #{A_VALID_ARE}"
   end
 
+  scenario 'User can go back to previous question' do 
+
+    # given
+    visit new_are_question_path
+    
+    # when
+    find('.js-previous').click
+    # then
+    expect(current_path).to eq new_allocation_question_path
+  end
+
   scenario 'If user validate an empty field, user stay on page with an error message' do 
 
     # given

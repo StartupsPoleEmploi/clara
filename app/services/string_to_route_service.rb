@@ -23,12 +23,6 @@ private
   end
 
   def recognize_path
-    result = {}
-    begin
-      result = Rails.application.routes.recognize_path(fullpath, method: verb)
-    rescue
-      result = {}
-    end
-    result
+    Rails.application.routes.recognize_path(fullpath, method: verb)
   end
 end
