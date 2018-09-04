@@ -1,0 +1,38 @@
+.c-contact {
+
+} 
+
+.c-contact-card {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
+  border-radius: 5px;
+} 
+
+.c-contact-title {
+  font-size: 30px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #1d2c3c;
+}
+
+.c-contact-separator {
+  height: 2px;
+  background-color: #f5f7fa;
+}
+
+.c-information {
+  background-color: #057dbc;
+  color: white;
+}
+.c-contact-infotitle {
+  font-family: Roboto;
+  @include inuit-font-size(20px);
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0px;
+  color: #ffffff;
+}

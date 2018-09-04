@@ -5,10 +5,18 @@
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
-    .o-card
+    .c-contact-card
       .o-layout
         .o-layout__item{class:"u-1/1 u-3/4@tablet"}
-          %h1
+          %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
-        .o-layout__item{class:"u-1/1 u-1/4@tablet"}
-          infos
+          .c-contact-separator
+        .o-layout__item.c-information{class:"u-1/1 u-1/4@tablet"}
+          %h2.c-contact-infotitle.u-margin-left.u-padding-top
+            Informations
+          %p.u-margin-left
+            L&apos;éligibilité est donnée à titre indicatif. 
+          %p.u-margin-left
+            Les organismes qui gèrent les aides, sont les seuls compétents pour décider de leur attribution, et ont seuls la visibilité sur le budget qui leur est alloué. 
+          %p.u-margin-left
+            Malgré le soin apporté à leur rédaction et à leur actualisation, les informations indiquées sur les fiches ne peuvent en aucune manière engager la responsabilité du rédacteur.
