@@ -11,8 +11,20 @@
           %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
           .c-contact-separator
-            = form_with model: @contact, url: contact_index_path do |f|
-              = f.text_field :email, id: :email, class: :email
+            = form_with model: @contact, url: contact_index_path, local: false do |f|
+              %p
+                = f.text_field :first_name, id: :first_name
+                = f.text_field :last_name, id: :last_name
+              %p
+                = f.text_field :email, id: :email
+              %p
+                = f.text_field :region, id: :region
+              %p
+                = f.text_field :youare, id: :youare
+              %p
+                = f.text_field :askfor, id: :askfor
+              %p
+                = f.text_field :question, id: :question
               = f.submit 'Envoyer votre message', "class" => "c-contact-submit"
 
         .o-layout__item.c-information{class:"u-1/1 u-1/4@tablet"}
