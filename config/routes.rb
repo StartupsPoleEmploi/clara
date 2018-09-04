@@ -78,6 +78,8 @@ Rails.application.routes.draw do
   resources :are_questions,         only: [:new, :create]
   resources :other_questions,       only: [:new, :create]
 
+  resources :contact,               only: [:index, :create]
+
   # resources :aides, only: [:show, :index] 
   resources :aides, only: [:index] do
     collection do
