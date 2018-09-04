@@ -13,19 +13,26 @@
           .c-contact-separator
             = form_with model: @contact, url: contact_index_path, local: false do |f|
               %p
-                = f.text_field :first_name, id: :first_name
-                = f.text_field :last_name, id: :last_name
+                %label.c-contact-label Prénom
+                = f.text_field :first_name, id: :first_name, class: "c-contact-input"
+                %label.c-contact-label Nom
+                = f.text_field :last_name, id: :last_name, class: "c-contact-input"
               %p
-                = f.text_field :email, id: :email
+                %label.c-contact-label Email
+                = f.text_field :email, id: :email, class: "c-contact-input"
               %p
-                = f.text_field :region, id: :region
+                %label.c-contact-label Region
+                = f.text_field :region, id: :region, class: "c-contact-input"
               %p
-                = f.text_field :youare, id: :youare
+                %label.c-contact-label Vous êtes
+                = f.text_field :youare, id: :youare, class: "c-contact-input"
               %p
-                = f.text_field :askfor, id: :askfor
+                %label.c-contact-label Catégorie de la demande
+                = f.text_field :askfor, id: :askfor, class: "c-contact-input"
               %p
-                = f.text_field :question, id: :question
-              = f.submit 'Envoyer votre message', "class" => "c-contact-submit"
+                %label.c-contact-label Votre question
+                = f.text_field :question, id: :question, class: "c-contact-input"
+              = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
 
         .o-layout__item.c-information{class:"u-1/1 u-1/4@tablet"}
           %h2.c-contact-infotitle.u-margin-left-small.u-padding-top

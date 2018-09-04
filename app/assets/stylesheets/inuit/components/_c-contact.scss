@@ -5,6 +5,7 @@
 .c-contact-card {
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
   border-radius: 5px;
+  background-color: white;
 } 
 
 .c-contact-title {
@@ -40,10 +41,8 @@
 .c-contact-submit {
   border-radius: 5px;
   background-color: #d13a87;
-  width: 483px;
-  height: 21px;
   font-family: Roboto;
-  font-size: 18px;
+  @include inuit-font-size(18px);
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -51,4 +50,9 @@
   letter-spacing: -0.4px;
   text-align: center;
   color: #ffffff;
+  border: none;
  }
+
+.c-contact-label, .c-contact-input {
+  // display: block;
+}
