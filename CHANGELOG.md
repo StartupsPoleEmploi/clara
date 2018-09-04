@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.3.0 (06/09/2018)
+-[#61][FEATURE] Formulaire de contact
+
+
 ## 12.2.1 (04/09/2018)
 -[#868c][TECH] Coverage 100%
 
