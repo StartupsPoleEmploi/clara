@@ -6,8 +6,6 @@ class ContactController < ApplicationController
   end
 
   def create
-    p '- - - - - - - - - - - - - - create- - - - - - - - - - - - - - - -' 
-    p ''
     @contact = ContactForm.new(allowed_params)
     p '- - - - - - - - - - - - - - @contact- - - - - - - - - - - - - - - -' 
     pp @contact
