@@ -16,19 +16,38 @@
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Prénom
-                  = f.text_field :first_name, id: :first_name, class: "c-contact-input"
+                  = f.text_field :first_name, id: :first_name, class: "c-contact-input c-contact-input-text"
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Nom
-                  = f.text_field :last_name, id: :last_name, class: "c-contact-input"
+                  = f.text_field :last_name, id: :last_name, class: "c-contact-input c-contact-input-text"
             %p
               .c-contact-field
                 %label.c-contact-label Email
-                = f.text_field :email, id: :email, class: "c-contact-input"
+                = f.text_field :email, id: :email, class: "c-contact-input c-contact-input-text"
             %p
               .c-contact-field
                 %label.c-contact-label Region
-                = f.text_field :region, id: :region, class: "c-contact-input"
+                %select.c-contact-input
+                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre région
+                  %option{:value => "1"} Auvergne-Rhône-Alpes
+                  %option{:value => "2"} Bourgogne-Franche-Comté
+                  %option{:value => "3"} Bretagne
+                  %option{:value => "4"} Centre-Val de Loire
+                  %option{:value => "5"} Corse
+                  %option{:value => "6"} Grand Est
+                  %option{:value => "7"} Hauts-de-France
+                  %option{:value => "8"} Île-de-France
+                  %option{:value => "9"} Normandie
+                  %option{:value => "10"} Nouvelle-Aquitaine
+                  %option{:value => "11"} Occitanie
+                  %option{:value => "12"} Pays de la Loire
+                  %option{:value => "13"} Provence-Alpes-Côte d'Azur
+                  %option{:value => "14"} Guadeloupe
+                  %option{:value => "15"} Martinique
+                  %option{:value => "16"} Guyane
+                  %option{:value => "17"} La réunion
+                  %option{:value => "18"} Mayotte
             %p
               .c-contact-field
                 %label.c-contact-label Vous êtes
