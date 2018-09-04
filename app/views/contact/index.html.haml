@@ -11,31 +11,32 @@
           %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
           .c-contact-separator
-            = form_with model: @contact, url: contact_index_path, local: false, class: 'c-contact-form u-margin-left' do |f|
-              .o-layout
-                .o-layout__item{class:"u-1/2"}
-                  .c-contact-field
-                    %label.c-contact-label Prénom
-                    = f.text_field :first_name, id: :first_name, class: "c-contact-input"
-                .o-layout__item{class:"u-1/2"}
-                  %label.c-contact-label Nom
-                  = f.text_field :last_name, id: :last_name, class: "c-contact-input"
-              %p
-                %label.c-contact-label Email
-                = f.text_field :email, id: :email, class: "c-contact-input"
-              %p
-                %label.c-contact-label Region
-                = f.text_field :region, id: :region, class: "c-contact-input"
-              %p
-                %label.c-contact-label Vous êtes
-                = f.text_field :youare, id: :youare, class: "c-contact-input"
-              %p
-                %label.c-contact-label Catégorie de la demande
-                = f.text_field :askfor, id: :askfor, class: "c-contact-input"
-              %p
-                %label.c-contact-label Votre question
-                = f.text_field :question, id: :question, class: "c-contact-input"
-              = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
+          = form_with model: @contact, url: contact_index_path, local: false, class: 'c-contact-form u-margin-left' do |f|
+            .o-layout
+              .o-layout__item{class:"u-1/2"}
+                .c-contact-field
+                  %label.c-contact-label Prénom
+                  = f.text_field :first_name, id: :first_name, class: "c-contact-input"
+              .o-layout__item{class:"u-1/2"}
+                %label.c-contact-label Nom
+                = f.text_field :last_name, id: :last_name, class: "c-contact-input"
+            %p
+              %label.c-contact-label Email
+              = f.text_field :email, id: :email, class: "c-contact-input"
+            %p
+              %label.c-contact-label Region
+              = f.text_field :region, id: :region, class: "c-contact-input"
+            %p
+              %label.c-contact-label Vous êtes
+              = f.text_field :youare, id: :youare, class: "c-contact-input"
+            %p
+              %label.c-contact-label Catégorie de la demande
+              = f.text_field :askfor, id: :askfor, class: "c-contact-input"
+            %p
+              %label.c-contact-label Votre question
+              = f.text_field :question, id: :question, class: "c-contact-input"
+            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
+
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
           .c-information
@@ -45,5 +46,5 @@
               L&apos;éligibilité est donnée à titre indicatif. 
             %p.u-margin-left-small
               Les organismes qui gèrent les aides, sont les seuls compétents pour décider de leur attribution, et ont seuls la visibilité sur le budget qui leur est alloué. 
-            %p.u-margin-left-small
+            %p.u-margin-left-small.u-margin-bottom-none
               Malgré le soin apporté à leur rédaction et à leur actualisation, les informations indiquées sur les fiches ne peuvent en aucune manière engager la responsabilité du rédacteur.
