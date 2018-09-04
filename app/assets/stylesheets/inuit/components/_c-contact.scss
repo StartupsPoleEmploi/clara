@@ -53,6 +53,7 @@
   border: none;
  }
 
-.c-contact-label, .c-contact-input {
-  // display: block;
+.c-contact-field {
+  display: flex;
+  flex-direction: column;
 }
