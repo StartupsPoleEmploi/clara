@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.2.1 (04/09/2018)
+-[#868c][TECH] Coverage 100%
+
+
 ## 12.2.0 (31/08/2018)
 -[#865][FEATURE] Operateur include
 
