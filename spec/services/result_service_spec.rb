@@ -27,6 +27,27 @@ feature ResultService do
 
       end
     end
+    context 'Missing contract_type' do
+      it 'Should convert an ActiveRecord Object to hash, with ensured contract_type_order key' do
+
+        create(:rule, :be_an_adult, name: 'the_rule_name')
+        the_rule = Rule.last
+        create(:aid, name: 'aid_name', ordre_affichage: 4, rule: the_rule)
+        aid = Aid.last
+
+        result = ResultService.new.convert_to_displayable_hash([aid])
+
+        expect(result[0].slice(
+          "id", "contract_type_id", "contract_type_order", "contract_type_description", "name", "ordre_affichage", "contract_type_icon")
+        ).to eq(
+        {"id"=> aid.id, 
+          "contract_type_id"=> nil, 
+          "contract_type_order"=> 99999, 
+          "name"=>"aid_name", 
+          "ordre_affichage"=> 4  })
+
+      end
+    end
     context 'Worst case' do
       it 'Should return an empty hash if nothing is given' do
         result = ResultService.new.convert_to_displayable_hash(nil)

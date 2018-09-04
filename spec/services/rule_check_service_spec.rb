@@ -66,4 +66,15 @@ describe RuleCheckService do
 
   end
 
+  describe ".extract_descriptions" do
+    it 'returns an empty array if anything wrong occurs' do
+      # given
+      # when
+      sut = RuleCheckService.new.send :extract_descriptions, Date.new
+      # then
+      expect(sut).to eq([])
+    end
+
+  end
+
 end

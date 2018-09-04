@@ -57,6 +57,16 @@ RSpec.feature 'other question' do
     expect(page).to have_css('fieldset.is-error')
   end
 
+  scenario 'If user goes back, browser goes back' do 
+
+    # given
+    # when
+    find('.js-previous').click
+    
+    # then
+    expect(current_path).to eq new_address_question_path
+  end
+
   scenario 'When checking all VALUE checkbox, asker object is saved into session, user goes to next path' do 
 
     # given

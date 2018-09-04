@@ -3,13 +3,6 @@
 .c-result-line{"class" => v.clazz}
   - if v.has_line
     .c-result-line__content{"data-id" => "#{v.line_id}"}
-      
-      - if v.show_title
-        .c-result-line__icon
-          = v.icon
-
-        .h4-like.c-result-line__description
-          = v.pluralize_line_description
 
       - if v.show_expander
         .c-result-line__action.c-result-line__action--expanded

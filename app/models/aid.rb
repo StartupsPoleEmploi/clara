@@ -20,8 +20,4 @@ class Aid < ApplicationRecord
     name_changed?
   end
 
-  def self.eager_loaded
-    Aid.activated.includes(:contract_type).includes(rule: [:slave_rules, :variable])
-  end
-
 end

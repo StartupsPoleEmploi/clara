@@ -41,13 +41,13 @@ class SessionsController < ApplicationController
   end
 
   def extract_email_from(the_request)
-    res = ""
-    begin
-      res = the_request.env["omniauth.auth"]["info"]["email"]
-    rescue Exception => e
-      res = ""
-    end
-    res
+    is_valid = 
+    !!the_request && 
+      the_request.respond_to?(:env) && 
+      the_request.env["omniauth.auth"].is_a?(Hash) && 
+      the_request.env["omniauth.auth"]["info"].is_a?(Hash)
+
+     is_valid ? the_request.env["omniauth.auth"]["info"]["email"] : ""
   end
 
 end
