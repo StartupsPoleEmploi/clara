@@ -28,7 +28,7 @@
             %p
               .c-contact-field
                 %label.c-contact-label Region
-                %select.c-contact-input.c-contact-input-select
+                %select.c-contact-input.c-contact-input-select{:name => "contact_form[region]"}
                   %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre région
                   %option{:value => "1"} Auvergne-Rhône-Alpes
                   %option{:value => "2"} Bourgogne-Franche-Comté
