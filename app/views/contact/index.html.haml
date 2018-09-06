@@ -2,6 +2,7 @@
 - errors = flash[:error] || {}
 - has_error = !(errors.blank?)
 - ctext = 'c-contact-input c-contact-input-text'
+- csel = 'c-contact-input c-contact-input-select'
 - cerr = ' is-error'
 
 %main#main.mw1140p.center{role: "main"}
@@ -31,14 +32,20 @@
                 .c-contact-field
                   %label.c-contact-label Nom
                   = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
+                  - if errors["last_name"]
+                    %label.c-contact-smalllabel=errors["last_name"][0]
             %p
               .c-contact-field
                 %label.c-contact-label Email
                 = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                - if errors["email"]
+                  %label.c-contact-smalllabel=errors["email"][0]
             %p
               .c-contact-field
                 %label.c-contact-label Region
-                = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "c-contact-input c-contact-input-select"}
+                = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}"}
+                - if errors["region"]
+                  %label.c-contact-smalllabel=errors["region"][0]
 
             %p
               .c-contact-field
