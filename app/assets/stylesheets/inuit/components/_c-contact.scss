@@ -63,8 +63,8 @@
   width: 310px;
   height: 36px;
   border-radius: 4px;
-  background-color: #edeff2;
-  border:none;
+  border: solid 2px #edeff2;
+  background-color: white;
   padding: space(4);
 }
 
@@ -89,4 +89,15 @@
 
 .c-contact-numbered {
   @include inuit-font-size(18px);
+}
+
+.c-contact-input.is-error {
+  border: solid 4px #d0021b;
+  background-color: white;
+}
+
+.c-contact-smalllabel {
+  @include inuit-font-size(14px);
+  color: #d0021b;
+  font-weight: bold;
 }

@@ -1,9 +1,12 @@
 - title_data 'Contact'
-- has_error = !(flash[:error].blank?)
+- errors = flash[:error] || {}
+- has_error = !(errors.blank?)
+- ctext = 'c-contact-input c-contact-input-text'
+- cerr = ' is-error'
 
 %main#main.mw1140p.center{role: "main"}
   %p
-    =flash[:error]
+    =errors
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
@@ -21,15 +24,17 @@
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Prénom
-                  = f.text_field :first_name, id: :first_name, class: "c-contact-input c-contact-input-text", :value => @contact.first_name
+                  = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                  - if errors["first_name"]
+                    %label.c-contact-smalllabel=errors["first_name"][0]
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Nom
-                  = f.text_field :last_name, id: :last_name, class: "c-contact-input c-contact-input-text", :value => @contact.last_name
+                  = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
             %p
               .c-contact-field
                 %label.c-contact-label Email
-                = f.text_field :email, id: :email, class: "c-contact-input c-contact-input-text", :value => @contact.email
+                = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
             %p
               .c-contact-field
                 %label.c-contact-label Region
