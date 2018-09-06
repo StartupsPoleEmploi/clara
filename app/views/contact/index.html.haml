@@ -30,36 +30,45 @@
                 %label.c-contact-label Region
                 %select.c-contact-input.c-contact-input-select{:name => "contact_form[region]"}
                   %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre région
-                  %option{:value => "1"} Auvergne-Rhône-Alpes
-                  %option{:value => "2"} Bourgogne-Franche-Comté
-                  %option{:value => "3"} Bretagne
-                  %option{:value => "4"} Centre-Val de Loire
-                  %option{:value => "5"} Corse
-                  %option{:value => "6"} Grand Est
-                  %option{:value => "7"} Hauts-de-France
-                  %option{:value => "8"} Île-de-France
-                  %option{:value => "9"} Normandie
-                  %option{:value => "10"} Nouvelle-Aquitaine
-                  %option{:value => "11"} Occitanie
-                  %option{:value => "12"} Pays de la Loire
-                  %option{:value => "13"} Provence-Alpes-Côte d'Azur
-                  %option{:value => "14"} Guadeloupe
-                  %option{:value => "15"} Martinique
-                  %option{:value => "16"} Guyane
-                  %option{:value => "17"} La réunion
-                  %option{:value => "18"} Mayotte
+                  %option{:value => "ARA"} Auvergne-Rhône-Alpes
+                  %option{:value => "BFC"} Bourgogne-Franche-Comté
+                  %option{:value => "BRE"} Bretagne
+                  %option{:value => "CVL"} Centre-Val de Loire
+                  %option{:value => "COR"} Corse
+                  %option{:value => "GES"} Grand Est
+                  %option{:value => "HDF"} Hauts-de-France
+                  %option{:value => "IDF"} Île-de-France
+                  %option{:value => "NOR"} Normandie
+                  %option{:value => "NAQ"} Nouvelle-Aquitaine
+                  %option{:value => "OCC"} Occitanie
+                  %option{:value => "PDL"} Pays de la Loire
+                  %option{:value => "PAC"} Provence-Alpes-Côte d'Azur
+                  %option{:value => "GP"} Guadeloupe
+                  %option{:value => "MQ"} Martinique
+                  %option{:value => "GF"} Guyane
+                  %option{:value => "RE"} La réunion
+                  %option{:value => "YT"} Mayotte
             %p
               .c-contact-field
                 %label.c-contact-label Vous êtes
-                = f.text_field :youare, id: :youare, class: "c-contact-input"
+                %select.c-contact-input.c-contact-input-select{:name => "contact_form[youare]"}
+                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre status
+                  %option{:value => "particulier"} Un particulier
+                  %option{:value => "entreprise"} Une entreprise
+                  %option{:value => "institution"} Une institution
             %p.c-contact-separator
               .c-contact-field
                 %label.c-contact-label Catégorie de la demande
-                = f.text_field :askfor, id: :askfor, class: "c-contact-input"
+                %select.c-contact-input.c-contact-input-select{:name => "contact_form[askfor]"}
+                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Pourquoi vous contactez-nous ?
+                  %option{:value => "signaler"} Signaler un lien cassé
+                  %option{:value => "modifier"} Apporter une information pour modifier un contenu
+                  %option{:value => "referencer"} Référencer une nouvelle aide
+                  %option{:value => "autre"} Autre
             %p
               .c-contact-field
                 %label.c-contact-label Votre question
-                = f.text_field :question, id: :question, class: "c-contact-input"
+                = f.text_area :question, id: :question, class: "c-contact-input", rows: 6
             = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
 
 
