@@ -50,7 +50,9 @@
             %p
               .c-contact-field
                 %label.c-contact-label Vous êtes
-                = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre status"}, {class: "c-contact-input c-contact-input-select"}
+                = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre status"}, {class: "#{errors["youare"] ? csel+cerr : csel}"}
+                - if errors["youare"]
+                  %label.c-contact-smalllabel=errors["youare"][0]
             %p.c-contact-separator
               %h2.c-contact-numbered
                 %span.c-contact-number &nbsp;2&nbsp;
