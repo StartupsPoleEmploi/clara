@@ -15,7 +15,7 @@ class ContactForm < ActiveType::Object
   validates :email,      presence: { message: "L'email est obligatoire" }
   validates :email,      format: { 
                             with: URI::MailTo::EMAIL_REGEXP, 
-                            message: "only allows valid emails" },  
+                            message: "Un email valide est requis" },  
                             if: Proc.new { |c| c.email.present? }
   validates :region,     presence: { message: "Le choix de la région est obligatoire" }
   validates :youare,     presence: { message: "Cette information est manquante" }
