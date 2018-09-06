@@ -7,7 +7,8 @@
 - cerr = ' is-error'
 
 %main#main.mw1140p.center{role: "main"}
-
+  %p
+    =errors
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
@@ -16,6 +17,10 @@
         .o-layout__item{class:"u-1/1 u-3/4@tablet"}
           %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
+          %p.c-contact-errors-list.u-margin-left
+            %ul
+              - errors.each do |k,v|
+                %li=v[0]
           = form_with model: @contact, url: contact_index_path, local: false, class: 'c-contact-form u-margin-left' do |f|
             %p.c-contact-separator
             %h2.c-contact-numbered
