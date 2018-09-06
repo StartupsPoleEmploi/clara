@@ -11,12 +11,15 @@ class ContactForm < ActiveType::Object
   attribute :question, :string
 
   validates :first_name, presence: { message: "Le prénom est obligatoire" }
-  validates :last_name, presence: { message: "Le nom est obligatoire" }
-  validates :email, presence: { message: "L'email est obligatoire" }
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "only allows valid emails" },  if: Proc.new { |c| c.email.present? }
-  validates :region, presence: { message: "Le choix de la région est obligatoire" }
-  validates :youare, presence: { message: "Cette information est manquante" }
-  validates :askfor, presence: { message: "Une réponse est attendue pour catégoriser votre demande" }
-  validates :question, presence: { message: "Un message est obligatoire pour envoyer votre message" }
+  validates :last_name,  presence: { message: "Le nom est obligatoire" }
+  validates :email,      presence: { message: "L'email est obligatoire" }
+  validates :email,      format: { 
+                            with: URI::MailTo::EMAIL_REGEXP, 
+                            message: "only allows valid emails" },  
+                            if: Proc.new { |c| c.email.present? }
+  validates :region,     presence: { message: "Le choix de la région est obligatoire" }
+  validates :youare,     presence: { message: "Cette information est manquante" }
+  validates :askfor,     presence: { message: "Une réponse est attendue pour catégoriser votre demande" }
+  validates :question,   presence: { message: "Un message est obligatoire pour envoyer votre message" }
   
 end
