@@ -2,19 +2,22 @@ class ContactController < ApplicationController
   
 
   def index
+    p '- - - - - - - - - - - - - - index- - - - - - - - - - - - - - - -' 
+    p ''
     @contact = ContactForm.new
   end
 
   def create
+    @contact = ContactForm.new(allowed_params)
     p '- - - - - - - - - - - - - - @contact- - - - - - - - - - - - - - - -' 
     pp @contact
     p ''
-    @contact = ContactForm.new(allowed_params)
     if @contact.valid?
       redirect_to contact_sent_index_path
     else
       flash[:error] = @contact.errors.messages
-      redirect_to contact_index_path 
+      flash[:contact] = @contact.errors.messages
+      render :index
     end
   end
   

@@ -1,7 +1,8 @@
 - title_data 'Contact'
 
 %main#main.mw1140p.center{role: "main"}
-  = flash[:error]
+  %p= flash[:error]
+  %p= @contact.attributes
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
@@ -19,7 +20,7 @@
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Prénom
-                  = f.text_field :first_name, id: :first_name, class: "c-contact-input c-contact-input-text"
+                  = f.text_field :first_name, id: :first_name, class: "c-contact-input c-contact-input-text", :value => @contact.first_name
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Nom
