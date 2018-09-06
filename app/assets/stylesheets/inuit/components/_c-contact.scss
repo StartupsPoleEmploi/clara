@@ -64,7 +64,7 @@
   border-radius: 4px;
   background-color: #edeff2;
   border:none;
-  padding: space(4) space(4) space(4) space(4);
+  padding: space(4);
 }
 
 .c-contact-input-select {
@@ -75,5 +75,17 @@
   border-radius: 4px;
   background-color: #edeff2;
   border: none;
-  padding: space(4) space(4) space(4) space(4);
+  padding: space(4);
+}
+
+.c-contact-number {
+  width: 30px;
+  height: 30px;
+  border: solid 2px #057dbc;
+  border-radius: 50%;
+  padding: space(3);
+}
+
+.c-contact-numbered {
+  @include inuit-font-size(18px);
 }

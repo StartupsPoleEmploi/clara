@@ -12,6 +12,9 @@
             Formulaire de contact
           = form_with model: @contact, url: contact_index_path, local: false, class: 'c-contact-form u-margin-left' do |f|
             %p.c-contact-separator
+            %h2.c-contact-numbered
+              %span.c-contact-number &nbsp;1&nbsp;
+              %span Informations personnelles
             .o-layout
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
