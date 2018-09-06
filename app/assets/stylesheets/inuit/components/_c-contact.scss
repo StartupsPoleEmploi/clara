@@ -101,3 +101,19 @@
   color: #d0021b;
   font-weight: bold;
 }
+
+.c-contact-exclaim {
+  width: 15px;
+  height: 15px;
+  background-color: #d0021b;
+  border-radius: 50%;
+  padding: space(1);
+  color: white;
+  // font-weight: bold;
+}
+
+.c-contact-label {
+  @include inuit-font-size(16px);
+  font-weight: 500;
+  color: #1d2c3c;
+}
