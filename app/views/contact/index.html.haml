@@ -52,14 +52,20 @@
             %p
               .c-contact-field
                 %label.c-contact-label Region
-                = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}"}
+                %div
+                  = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}"}
+                  - if errors["region"]
+                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["region"]
                   %label.c-contact-smalllabel=errors["region"][0]
 
             %p
               .c-contact-field
                 %label.c-contact-label Vous êtes
-                = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre status"}, {class: "#{errors["youare"] ? csel+cerr : csel}"}
+                %div
+                  = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre status"}, {class: "#{errors["youare"] ? csel+cerr : csel}"}
+                  - if errors["youare"]
+                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["youare"]
                   %label.c-contact-smalllabel=errors["youare"][0]
             %p.c-contact-separator
@@ -69,7 +75,10 @@
 
               .c-contact-field
                 %label.c-contact-label Catégorie de la demande
-                = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "#{errors["askfor"] ? csel+cerr : csel}"}
+                %div
+                  = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "#{errors["askfor"] ? csel+cerr : csel}"}
+                  - if errors["askfor"]
+                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["askfor"]
                   %label.c-contact-smalllabel=errors["askfor"][0]
                   
