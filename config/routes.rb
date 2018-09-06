@@ -79,7 +79,8 @@ Rails.application.routes.draw do
   resources :other_questions,       only: [:new, :create]
 
   resources :contact,               only: [:index, :create]
-
+  resources :contact_sent,          only: [:index]
+  
   # resources :aides, only: [:show, :index] 
   resources :aides, only: [:index] do
     collection do

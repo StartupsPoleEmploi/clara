@@ -10,7 +10,7 @@ class ContactController < ApplicationController
     p '- - - - - - - - - - - - - - @contact- - - - - - - - - - - - - - - -' 
     pp @contact
     p ''
-
+    redirect_to contact_sent_index_path
   end
   
   def allowed_params
