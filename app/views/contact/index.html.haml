@@ -72,11 +72,13 @@
                   %option{:value => "modifier"} Apporter une information pour modifier un contenu
                   %option{:value => "referencer"} Référencer une nouvelle aide
                   %option{:value => "autre"} Autre
+                  
             %p
               .c-contact-field
                 %label.c-contact-label Votre question
                 = f.text_area :question, id: :question, class: "c-contact-input c-contact-input-textarea", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
-            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
+            %p.c-contact-separator
+            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom"
 
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
