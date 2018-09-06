@@ -27,42 +27,20 @@
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Nom
-                  = f.text_field :last_name, id: :last_name, class: "c-contact-input c-contact-input-text"
+                  = f.text_field :last_name, id: :last_name, class: "c-contact-input c-contact-input-text", :value => @contact.last_name
             %p
               .c-contact-field
                 %label.c-contact-label Email
-                = f.text_field :email, id: :email, class: "c-contact-input c-contact-input-text"
+                = f.text_field :email, id: :email, class: "c-contact-input c-contact-input-text", :value => @contact.email
             %p
               .c-contact-field
                 %label.c-contact-label Region
-                %select.c-contact-input.c-contact-input-select{:name => "contact_form[region]"}
-                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre région
-                  %option{:value => "ARA"} Auvergne-Rhône-Alpes
-                  %option{:value => "BFC"} Bourgogne-Franche-Comté
-                  %option{:value => "BRE"} Bretagne
-                  %option{:value => "CVL"} Centre-Val de Loire
-                  %option{:value => "COR"} Corse
-                  %option{:value => "GES"} Grand Est
-                  %option{:value => "HDF"} Hauts-de-France
-                  %option{:value => "IDF"} Île-de-France
-                  %option{:value => "NOR"} Normandie
-                  %option{:value => "NAQ"} Nouvelle-Aquitaine
-                  %option{:value => "OCC"} Occitanie
-                  %option{:value => "PDL"} Pays de la Loire
-                  %option{:value => "PAC"} Provence-Alpes-Côte d'Azur
-                  %option{:value => "GP"} Guadeloupe
-                  %option{:value => "MQ"} Martinique
-                  %option{:value => "GF"} Guyane
-                  %option{:value => "RE"} La réunion
-                  %option{:value => "YT"} Mayotte
+                = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "c-contact-input c-contact-input-select"}
+
             %p
               .c-contact-field
                 %label.c-contact-label Vous êtes
-                %select.c-contact-input.c-contact-input-select{:name => "contact_form[youare]"}
-                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Choisissez votre status
-                  %option{:value => "particulier"} Un particulier
-                  %option{:value => "entreprise"} Une entreprise
-                  %option{:value => "institution"} Une institution
+                = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre status"}, {class: "c-contact-input c-contact-input-select"}
             %p.c-contact-separator
               %h2.c-contact-numbered
                 %span.c-contact-number &nbsp;2&nbsp;
@@ -70,12 +48,7 @@
 
               .c-contact-field
                 %label.c-contact-label Catégorie de la demande
-                %select.c-contact-input.c-contact-input-select{:name => "contact_form[askfor]"}
-                  %option{:disabled => "disabled", :selected => "selected", :value => ""} Pourquoi vous contactez-nous ?
-                  %option{:value => "signaler"} Signaler un lien cassé
-                  %option{:value => "modifier"} Apporter une information pour modifier un contenu
-                  %option{:value => "referencer"} Référencer une nouvelle aide
-                  %option{:value => "autre"} Autre
+                = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "c-contact-input c-contact-input-select"}
                   
             %p
               .c-contact-field
