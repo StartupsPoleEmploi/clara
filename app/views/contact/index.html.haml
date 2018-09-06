@@ -25,7 +25,9 @@
               .o-layout__item{class:"u-1/2"}
                 .c-contact-field
                   %label.c-contact-label Prénom
-                  = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                  %div
+                    = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                    %span.c-contact-exclaim !
                   - if errors["first_name"]
                     %label.c-contact-smalllabel=errors["first_name"][0]
               .o-layout__item{class:"u-1/2"}
