@@ -6,11 +6,16 @@ class ContactController < ApplicationController
   end
 
   def create
-    @contact = ContactForm.new(allowed_params)
     p '- - - - - - - - - - - - - - @contact- - - - - - - - - - - - - - - -' 
     pp @contact
     p ''
-    redirect_to contact_sent_index_path
+    @contact = ContactForm.new(allowed_params)
+    if @contact.valid?
+      redirect_to contact_sent_index_path
+    else
+      flash[:error] = @contact.errors.messages
+      redirect_to contact_index_path 
+    end
   end
   
   def allowed_params

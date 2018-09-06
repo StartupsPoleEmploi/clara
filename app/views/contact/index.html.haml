@@ -1,7 +1,7 @@
 - title_data 'Contact'
 
 %main#main.mw1140p.center{role: "main"}
-  
+  = flash[:error]
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
@@ -68,13 +68,13 @@
             %p
               .c-contact-field
                 %label.c-contact-label Votre question
-                = f.text_area :question, id: :question, class: "c-contact-input c-contact-input-textarea", rows: 6
+                = f.text_area :question, id: :question, class: "c-contact-input c-contact-input-textarea", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
             = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge"
 
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
           .c-information
-            %h2.c-contact-infotitle.u-margin-left-small.u-padding-top
+            %h3.c-contact-infotitle.u-margin-left-small.u-padding-top
               Informations
             %p.u-margin-left-small
               L&apos;éligibilité est donnée à titre indicatif. 
