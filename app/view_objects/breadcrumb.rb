@@ -15,6 +15,10 @@ class Breadcrumb < ViewObject
     @current_path == "aides_path" && @context.params[:for_id]
   end
 
+  def display_contact?
+    @current_path == "contact_index_path"
+  end
+
   def display_detail?
     @current_path == "detail_path" && @context.params[:for_id]
   end
