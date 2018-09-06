@@ -3,11 +3,11 @@
 - has_error = !(errors.blank?)
 - ctext = 'c-contact-input c-contact-input-text'
 - csel = 'c-contact-input c-contact-input-select'
+- carea = 'c-contact-input c-contact-input-textarea'
 - cerr = ' is-error'
 
 %main#main.mw1140p.center{role: "main"}
-  %p
-    =errors
+
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
@@ -60,12 +60,16 @@
 
               .c-contact-field
                 %label.c-contact-label Catégorie de la demande
-                = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "c-contact-input c-contact-input-select"}
+                = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "#{errors["askfor"] ? csel+cerr : csel}"}
+                - if errors["askfor"]
+                  %label.c-contact-smalllabel=errors["askfor"][0]
                   
             %p
               .c-contact-field
                 %label.c-contact-label Votre question
-                = f.text_area :question, id: :question, class: "c-contact-input c-contact-input-textarea", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
+                = f.text_area :question, id: :question, class: "#{errors["question"] ? carea+cerr : carea}", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
+                - if errors["question"]
+                  %label.c-contact-smalllabel=errors["question"][0]
             %p.c-contact-separator
             = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom"
 
