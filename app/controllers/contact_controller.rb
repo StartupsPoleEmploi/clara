@@ -1,8 +1,9 @@
 class ContactController < ApplicationController
   
 
-  def index
+  def index(existing_contact=nil)
     p '- - - - - - - - - - - - - - index- - - - - - - - - - - - - - - -' 
+    p existing_contact
     p ''
     @contact = ContactForm.new
   end
@@ -16,8 +17,7 @@ class ContactController < ApplicationController
       redirect_to contact_sent_index_path
     else
       flash[:error] = @contact.errors.messages
-      flash[:contact] = @contact.errors.messages
-      render :index
+      redirect_to contact_index_path(@contact)
     end
   end
   

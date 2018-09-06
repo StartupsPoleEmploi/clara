@@ -1,8 +1,11 @@
 - title_data 'Contact'
+- has_error = !(flash[:error].blank?)
 
 %main#main.mw1140p.center{role: "main"}
-  %p= flash[:error]
-  %p= @contact.attributes
+  %p
+    =flash[:error]
+  %p
+    =has_error
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
