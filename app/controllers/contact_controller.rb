@@ -7,9 +7,6 @@ class ContactController < ApplicationController
 
   def create
     @contact = ContactForm.new(allowed_params)
-    p '- - - - - - - - - - - - - - @contact- - - - - - - - - - - - - - - -' 
-    pp @contact
-    p ''
     if @contact.valid?
       redirect_to contact_sent_index_path
     else
