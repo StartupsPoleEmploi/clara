@@ -108,6 +108,7 @@ feature 'Contact' do
     end
   end
 
+
   class self::StubEnv
 
     def initialize(ara_email_user, ara_email_destination)
@@ -123,12 +124,96 @@ feature 'Contact' do
   end
 
 
+  scenario 'First name is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#first_name.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#first_name.is-error')
+  end
+  scenario 'Last name is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#last_name.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#last_name.is-error')
+  end
+  scenario 'Email is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#email.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#email.is-error')
+  end
+  scenario 'Region is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#region.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#region.is-error')
+  end
+  scenario 'Youare is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#youare.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#youare.is-error')
+  end
+  scenario 'Askfor is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#askfor.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#askfor.is-error')
+  end
+  scenario 'Question is required' do
+    #given
+    visit contact_index_path
+    expect(page).not_to have_css('#question.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#question.is-error')
+  end
+  scenario 'Multiple fields are missing, list of errors is displayed on top of the page' do
+    #given
+    visit contact_index_path
+    find('#email').set('francis@drake.com')
+    find("#region").select("Bretagne")
+    find("#youare").select("Un particulier")
+    find("#askfor").select("Apporter une information pour modifier un contenu")
+    find("#question").set("Mais pourquoi une question ?")
+    expect(page).not_to have_css('.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(page).to have_css('.is-error', :count => 2)
+  end
+
   scenario 'After a successful attempt, cannot send sth again'
   scenario 'After a successful attempt, back button means back to welcome page'
   scenario 'If Honeypot if filled, the form fails to be validated'
   scenario 'If request object does not exists, origin is marked as unknown'
   scenario 'If request object is weird, origin is marked as bad-origin'
-  scenario 'Email is required'
   scenario 'Email, when exists, is to be properly formatted'
   scenario "Question's placeholder warns from individual queries"
   
