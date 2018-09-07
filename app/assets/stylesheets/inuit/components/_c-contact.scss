@@ -55,6 +55,12 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
+  @include mq($from: desktop) {
+    padding: space(4) space(10);
+  }
+  @include mq($until: desktop) {
+    padding: space(4) space(6);
+  }
  }
 
 .c-contact-field {
@@ -141,6 +147,8 @@
   border-bottom-right-radius: 5px;
   @include mq($from: desktop) {
     background-color: #057dbc;
+  }
+  @include mq($until: desktop) {
   }
 }
 
