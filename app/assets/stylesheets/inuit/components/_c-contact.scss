@@ -75,7 +75,7 @@
 }
 
 .c-contact-input-text {
-  max-width: 320px;
+  width: 255px;
   height: 36px;
   border-radius: 4px;
   border: solid 2px #edeff2;
@@ -161,3 +161,12 @@
 .c-contact-layout-item{
   flex-direction: column;
 } 
+.c-contact-form {
+  @include mq($from: mobile) {
+    margin-left: space(8);
+  }
+  @include mq($until: mobile) {
+    margin-left: space(2);
+  }
+  
+}
