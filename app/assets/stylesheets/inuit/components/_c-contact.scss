@@ -10,6 +10,11 @@
 
 .c-contact-title {
   @include inuit-font-size(30px);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #1d2c3c;
 }
 
@@ -18,12 +23,13 @@
   background-color: #f5f7fa;
 }
 
-.c-information {
+.c-contact-info {
   background-color: #057dbc;
   color: white;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
 .c-contact-infotitle {
   font-family: Roboto;
   @include inuit-font-size(20px);
@@ -57,7 +63,8 @@
 }
 
 .c-contact-input-text {
-  width: 310px;
+  max-width: 310px;
+  width: 50%;
   height: 36px;
   border-radius: 4px;
   border: solid 2px #edeff2;
@@ -66,7 +73,7 @@
 }
 
 .c-contact-input-select {
-  width: 310px;
+  width: 255px;
 }
 
 .c-contact-input-textarea {
@@ -122,3 +129,21 @@
 .c-contact-errors-list {
   color: #d0021b;
 }
+
+.c-blue-separator {
+  height: 2px;
+  opacity: 0.2;
+  background-color: #ffffff;
+}
+
+.c-contact-layout-item--info {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  @include mq($from: desktop) {
+    background-color: #057dbc;
+  }
+}
+
+.c-contact-layout-item{
+  flex-direction: column;
+} 
