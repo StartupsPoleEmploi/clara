@@ -29,8 +29,9 @@ feature 'Contact' do
 
   scenario 'Nominal' do 
     # given
-    env_stubber = self.class::StubEnv.new("clara@email.from", "clara@email.to")
-
+    # See https://makandracards.com/makandra/47189-rspec-how-to-define-classes-for-specs
+    # See https://robots.thoughtbot.com/testing-and-environment-variables#stub-env
+    env_stubber = self.class::StubEnv.new("from@clara.com", "sent_to@destination.com")
     visit contact_index_path
     # when
     find('#first_name').set('Francis')
@@ -43,9 +44,10 @@ feature 'Contact' do
     find('#send_message').click
     # then
     invite_email = ActionMailer::Base.deliveries.last
-    p '- - - - - - - - - - - - - - invite_email - - - - - - - - - - - - - - - -' 
-    pp invite_email
-    p ''
+    invite_email.tap do |mail|
+      expect(mail.from).to eq(["from@clara.com"])
+    end
+    # finally
     env_stubber.unstubb_env
     save_and_open_page
   end
