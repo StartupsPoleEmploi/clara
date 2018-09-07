@@ -9,6 +9,7 @@ class ContactForm < ActiveType::Object
   attribute :youare, :string
   attribute :askfor, :string
   attribute :question, :string
+  attribute :honey, :string
 
   validates :first_name, presence: { message: "Le prénom est obligatoire" }
   validates :last_name,  presence: { message: "Le nom est obligatoire" }
@@ -21,5 +22,6 @@ class ContactForm < ActiveType::Object
   validates :youare,     presence: { message: "Cette information est manquante" }
   validates :askfor,     presence: { message: "Une réponse est attendue pour catégoriser votre demande" }
   validates :question,   presence: { message: "Un message est obligatoire pour envoyer votre message" }
+  validates :honey,      presence: false
   
 end

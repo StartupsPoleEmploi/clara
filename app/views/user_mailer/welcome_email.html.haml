@@ -8,28 +8,28 @@
     %div
       %span
         %strong Prénom
-      %span=@contact.first_name
+      %span=@contact.first_name.html_safe
     %div
       %span
         %strong Nom
-      %span=@contact.last_name
+      %span=@contact.last_name.html_safe
     %div
       %span
         %strong Email
-      %span=@contact.email
+      %span=@contact.email.html_safe
     %div
       %span
         %strong Region
-      %span=@contact.region
+      %span=@contact.region.html_safe
     %div
       %span
         %strong Je suis
-      %span=@contact.youare
+      %span=@contact.youare.html_safe
     %div
       %span
         %strong Je signale
-      %span=@contact.askfor
+      %span=@contact.askfor.html_safe
     %div
       %span
         %strong Voici ma question
-      %span=@contact.question
+      %span=@contact.question.html_safe
