@@ -75,16 +75,27 @@
 }
 
 .c-contact-input-text {
-  width: 255px;
+
   height: 36px;
   border-radius: 4px;
   border: solid 2px #edeff2;
   background-color: white;
   padding: space(4);
+  @include mq($from: tablet) {
+    width: 255px;
+  }
+  @include mq($until: tablet) {
+    width: 155px;
+  }
 }
 
 .c-contact-input-select {
-  width: 255px;
+  @include mq($from: tablet) {
+    width: 255px;
+  }
+  @include mq($until: tablet) {
+    width: 155px;
+  }
 }
 
 .c-contact-input-textarea {
@@ -122,6 +133,15 @@
   width: 15px;
   height: 15px;
   background-color: #d0021b;
+  border-radius: 50%;
+  padding: space(1);
+  color: white;
+}
+
+.c-contact-green {
+  width: 15px;
+  height: 15px;
+  background-color: #05bca1;
   border-radius: 50%;
   padding: space(1);
   color: white;

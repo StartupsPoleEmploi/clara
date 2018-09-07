@@ -35,6 +35,8 @@
                     = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
                     - if errors["first_name"]
                       %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    - if !errors["first_name"] && has_error
+                      %span.c-contact-green &nbsp;✓&nbsp;
                   - if errors["first_name"]
                     %label.c-contact-smalllabel=errors["first_name"][0]
               .o-layout__item{class:"u-1/1 u-1/2@desktop"}
@@ -62,7 +64,7 @@
               .c-contact-field
                 %label.c-contact-label Region
                 %div
-                  = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
+                  = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choix de la région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
                   - if errors["region"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["region"]
@@ -72,7 +74,7 @@
               .c-contact-field
                 %label.c-contact-label Vous êtes
                 %div
-                  = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choisissez votre entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
+                  = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choix de l'entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
                   - if errors["youare"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["youare"]
