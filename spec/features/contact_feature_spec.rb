@@ -261,11 +261,12 @@ feature 'Contact' do
 
   end
 
-  scenario 'After a successful attempt, back button means back to welcome page' do
-    
-  end
   scenario "Question's placeholder warns from individual queries" do
-    
+    #given
+    #when
+    visit contact_index_path
+    #then
+    expect(find('#question')['placeholder']).to eq "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
   end
   
 end
