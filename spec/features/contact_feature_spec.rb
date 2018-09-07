@@ -2,6 +2,14 @@ require 'rails_helper'
 
 feature 'Contact' do 
 
+  around do |example|
+    ClimateControl.modify ARA_EMAIL_USER: 'env@ara_email_user' do
+      ClimateControl.modify ARA_EMAIL_DESTINATION: 'env@ara_email_destination' do
+        example.run
+      end
+    end
+  end
+
   scenario 'Contact form is displayed when accessing url directly' do 
     # given
     visit root_path
@@ -22,11 +30,11 @@ feature 'Contact' do
   end
 
   context 'Nominal' do
-    env_stubber = final_path = invite_email = result_page = last_path = nil
+    env_stubber = invite_email = result_page = last_path = nil
     before do
-      if env_stubber == nil
+      if invite_email == nil
         #setup
-        env_stubber = self.class::StubEnv.new("env@ara_email_user", "env@ara_email_destination")
+        # env_stubber = self.class::StubEnv.new("env@ara_email_user", "env@ara_email_destination")
         visit contact_index_path
         #act
         find('#first_name').set('Francis')
@@ -44,7 +52,7 @@ feature 'Contact' do
       end    
     end
     after do
-      env_stubber.unstubb_env
+      # env_stubber.unstubb_env
     end
     scenario 'Message subjet is "Demande de contact via le site clara"' do
       invite_email.tap do |mail|
@@ -99,21 +107,6 @@ feature 'Contact' do
       # See https://stackoverflow.com/a/15324291/2595513
       msg = "Votre message a été envoyé avec succès."
       expect(result_page.at("p:contains('#{msg}')").text.strip).to eq msg
-    end
-  end
-
-
-  class self::StubEnv
-
-    def initialize(ara_email_user, ara_email_destination)
-      @previous_ara_email_user = ENV["ARA_EMAIL_USER"]
-      ENV["ARA_EMAIL_USER"] = ara_email_user
-      @previous_ara_email_destination = ENV["ARA_EMAIL_DESTINATION"]
-      ENV["ARA_EMAIL_DESTINATION"] = ara_email_destination
-    end
-    def unstubb_env
-      ENV["ARA_EMAIL_USER"]        = @previous_ara_email_user
-      ENV["ARA_EMAIL_DESTINATION"] = @previous_ara_email_destination
     end
   end
 
