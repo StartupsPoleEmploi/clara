@@ -2,13 +2,6 @@ require 'rails_helper'
 
 feature 'Contact' do 
 
-  around do |example|
-    ClimateControl.modify ARA_EMAIL_USER: 'env@ara_email_user' do
-      ClimateControl.modify ARA_EMAIL_DESTINATION: 'env@ara_email_destination' do
-        example.run
-      end
-    end
-  end
 
   scenario 'Contact form is displayed when accessing url directly' do 
     # given
@@ -30,11 +23,17 @@ feature 'Contact' do
   end
 
   context 'Nominal' do
-    env_stubber = invite_email = result_page = last_path = nil
-    before do
-      if invite_email == nil
-        #setup
-        # env_stubber = self.class::StubEnv.new("env@ara_email_user", "env@ara_email_destination")
+    # env_stubber = invite_email = result_page = last_path = nil
+
+    around do |example|
+      ClimateControl.modify ARA_EMAIL_USER: 'env@ara_email_user' do
+        ClimateControl.modify ARA_EMAIL_DESTINATION: 'env@ara_email_destination' do
+         example.run
+        end
+      end
+    end
+
+    let(:suts) do
         visit contact_index_path
         #act
         find('#first_name').set('Francis')
@@ -49,64 +48,66 @@ feature 'Contact' do
         result_page = Nokogiri::HTML(page.html)
         last_path = current_path
         invite_email = ActionMailer::Base.deliveries.last
-      end    
+        {
+          result_page: result_page,
+          last_path: last_path,
+          invite_email: invite_email,
+        }
     end
-    after do
-      # env_stubber.unstubb_env
-    end
+
     scenario 'Message subjet is "Demande de contact via le site clara"' do
-      invite_email.tap do |mail|
+      suts[:invite_email].tap do |mail|
         expect(mail.subject).to eq('Demande de contact via le site clara')
       end
     end
     scenario 'Message is actually sent from ENV["ARA_EMAIL_USER"]' do
-      invite_email.tap do |mail|
+      suts[:invite_email].tap do |mail|
         expect(mail.from).to eq(["env@ara_email_user"])
       end
     end
     scenario 'Message is actually sent to ENV["ARA_EMAIL_DESTINATION"]' do
-      invite_email.tap do |mail|
+      suts[:invite_email].tap do |mail|
         expect(mail.to).to eq(["env@ara_email_destination"])
       end
     end
     scenario 'Message body has first_name' do
-      elt = Capybara.string(invite_email.body.encoded).find("#first_name").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#first_name").text
       expect(elt).to eq("Francis")
     end
     scenario 'Message body has last_name' do
-      elt = Capybara.string(invite_email.body.encoded).find("#last_name").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#last_name").text
       expect(elt).to eq("Drake")
     end
     scenario 'Message body has email' do
-      elt = Capybara.string(invite_email.body.encoded).find("#email").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#email").text
       expect(elt).to eq("francis@drake.com")
     end
     scenario 'Message body has region' do
-      elt = Capybara.string(invite_email.body.encoded).find("#region").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#region").text
       expect(elt).to eq("BRE")
     end
     scenario 'Message body has youare' do
-      elt = Capybara.string(invite_email.body.encoded).find("#youare").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#youare").text
       expect(elt).to eq("particulier")
     end
     scenario 'Message body has askfor' do
-      elt = Capybara.string(invite_email.body.encoded).find("#askfor").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#askfor").text
       expect(elt).to eq("modifier")
     end
     scenario 'Message body has question' do
-      elt = Capybara.string(invite_email.body.encoded).find("#question").text
+      elt = Capybara.string(suts[:invite_email].body.encoded).find("#question").text
       expect(elt).to eq("Mais pourquoi une question ?")
     end
     scenario 'Contact form is no more displayed' do
-      expect(result_page.css('.c-contact-form').count).to eq 0
+      expect(suts[:result_page].css('.c-contact-form').count).to eq 0
     end
     scenario 'User is sent to /contact_sent' do
-      expect(last_path).to eq contact_sent_index_path
+      expect(suts[:last_path]).to eq contact_sent_index_path
     end
     scenario 'A successful message is displayed' do
       # See https://stackoverflow.com/a/15324291/2595513
       msg = "Votre message a été envoyé avec succès."
-      expect(result_page.at("p:contains('#{msg}')").text.strip).to eq msg
+      expect(suts[:result_page].at("p:contains('#{msg}')").text.strip).to eq msg
     end
   end
 
