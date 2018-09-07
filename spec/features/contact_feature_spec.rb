@@ -30,6 +30,8 @@ feature 'Contact' do
     find('#last_name').set('Drake')
     find('#email').set('francis@drake.com')
     find("#region").select("Bretagne")
+    find("#youare").select("Un particulier")
+    find("#askfor").select("Apporter une information pour modifier un contenu")
     find('#send_message').click
     # then
     save_and_open_page
