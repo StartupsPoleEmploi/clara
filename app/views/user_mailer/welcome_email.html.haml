@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Un formulaire a été rempli correctement
+    %div
+      %span
+        %strong Depuis
+      %span#origin=@origin
+    %div
+      %span
+        %strong Prénom
+      %span#first_name=@contact.first_name.html_safe
+    %div
+      %span
+        %strong Nom
+      %span#last_name=@contact.last_name.html_safe
+    %div
+      %span
+        %strong Email
+      %span#email=@contact.email.html_safe
+    %div
+      %span
+        %strong Region
+      %span#region=@contact.region.html_safe
+    %div
+      %span
+        %strong Je suis
+      %span#youare=@contact.youare.html_safe
+    %div
+      %span
+        %strong Je signale
+      %span#askfor=@contact.askfor.html_safe
+    %div
+      %span
+        %strong Voici ma question
+      %span#question=@contact.question.html_safe

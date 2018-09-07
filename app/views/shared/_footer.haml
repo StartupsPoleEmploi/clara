@@ -13,7 +13,7 @@
           .c-footer__content.first
             .c-footer-cgu
               = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
-              = mail_to "clara.59224@pole-emploi.fr", "Nous contacter"
+              = link_to "Nous contacter", contact_index_path
             - if v.current_mode == 'home'
               .mts
               = render 'shared/footer_motherhome'
