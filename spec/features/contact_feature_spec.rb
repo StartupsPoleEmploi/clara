@@ -77,7 +77,15 @@ feature 'Contact' do
     end
     scenario 'Message body has email' do
       elt = Capybara.string(invite_email.body.encoded).find("#email").text
-      expect(elt).to eq("blabla")
+      expect(elt).to eq("francis@drake.com")
+    end
+    scenario 'Message body has region' do
+      elt = Capybara.string(invite_email.body.encoded).find("#region").text
+      expect(elt).to eq("BRE")
+    end
+    scenario 'Message body has youare' do
+      elt = Capybara.string(invite_email.body.encoded).find("#youare").text
+      expect(elt).to eq("particulier")
     end
     scenario 'Contact form is no more displayed' do
       expect(result_page.css('.c-contact-form').count).to eq 0
