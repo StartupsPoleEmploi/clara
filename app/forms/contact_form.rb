@@ -2,7 +2,6 @@ require 'uri'
 
 class ContactForm < ActiveType::Object
 
-  attribute :id, :integer, default: proc { Random.new_seed }
   attribute :first_name, :string
   attribute :last_name, :string
   attribute :email, :string

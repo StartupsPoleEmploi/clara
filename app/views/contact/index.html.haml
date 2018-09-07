@@ -22,7 +22,7 @@
           %ul.c-contact-errors-list.u-margin-left-large
             - errors.each do |k,v|
               %li=v[0]
-          = form_with model: @contact, url: contact_index_path, local: false, class: 'c-contact-form u-margin-left' do |f|
+          = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: false, class: 'c-contact-form u-margin-left' do |f|
             %p.c-contact-separator
             %h2.c-contact-numbered
               %span.c-contact-number &nbsp;1&nbsp;
@@ -98,7 +98,7 @@
                 - if errors["question"]
                   %label.c-contact-smalllabel=errors["question"][0]
             %p.c-contact-separator
-            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom"
+            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-form').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
 
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
