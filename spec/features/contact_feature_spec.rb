@@ -52,6 +52,11 @@ feature 'Contact' do
     after do
       env_stubber.unstubb_env
     end
+    scenario 'Message subjet is "Demande de contact via le site clara"' do
+      invite_email.tap do |mail|
+        expect(mail.subject).to eq('Demande de contact via le site clara')
+      end
+    end
     scenario 'Message is actually sent from ENV["ARA_EMAIL_USER"]' do
       invite_email.tap do |mail|
         expect(mail.from).to eq(["env@ara_email_user"])
@@ -73,31 +78,6 @@ feature 'Contact' do
       msg = "Votre message a été envoyé avec succès."
       expect(result_page.at("p:contains('#{msg}')").text.strip).to eq msg
     end
-  end
-
-  scenario 'Nominal' do 
-    # given
-    # See https://makandracards.com/makandra/47189-rspec-how-to-define-classes-for-specs
-    # See https://robots.thoughtbot.com/testing-and-environment-variables#stub-env
-    env_stubber = self.class::StubEnv.new("from@clara.com", "sent_to@destination.com")
-    visit contact_index_path
-    # when
-    find('#first_name').set('Francis')
-    find('#last_name').set('Drake')
-    find('#email').set('francis@drake.com')
-    find("#region").select("Bretagne")
-    find("#youare").select("Un particulier")
-    find("#askfor").select("Apporter une information pour modifier un contenu")
-    find("#question").set("Mais pourquoi une question ?")
-    find('#send_message').click
-    # then
-    invite_email = ActionMailer::Base.deliveries.last
-    invite_email.tap do |mail|
-      expect(mail.from).to eq(["from@clara.com"])
-    end
-    # finally
-    env_stubber.unstubb_env
-    save_and_open_page
   end
 
   class self::StubEnv
