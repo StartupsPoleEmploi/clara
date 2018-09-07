@@ -2,12 +2,6 @@ require 'rails_helper'
 
 feature 'Contact' do 
 
-  # around do |example|
-  #   ClimateControl.modify ARA_EMAIL_USER: 'ara@email.user.com' do
-  #     example.run
-  #   end
-  # end
-
   scenario 'Contact form is displayed when accessing url directly' do 
     # given
     visit root_path
@@ -231,10 +225,13 @@ feature 'Contact' do
     expect(find('.c-contact-errors-title').text).to eq "Veuillez corriger l'erreur ci-dessous"
     expect(page).to have_css('ul.c-contact-errors-list li', :count => 1)
   end
+  
+  scenario 'If Honeypot if filled, the form fails to be validated' do
+    
+  end
 
   scenario 'After a successful attempt, cannot send sth again'
   scenario 'After a successful attempt, back button means back to welcome page'
-  scenario 'If Honeypot if filled, the form fails to be validated'
   scenario 'If request object does not exists, origin is marked as unknown'
   scenario 'If request object is weird, origin is marked as bad-origin'
   scenario 'Email, when exists, is to be properly formatted'
