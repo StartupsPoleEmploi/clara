@@ -56,6 +56,9 @@
                 - if errors["email"]
                   %label.c-contact-smalllabel=errors["email"][0]
             %p
+              = f.text_field :honey, id: :honey
+                 
+            %p
               .c-contact-field
                 %label.c-contact-label Region
                 %div

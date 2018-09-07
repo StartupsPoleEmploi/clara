@@ -22,6 +22,10 @@ class ContactForm < ActiveType::Object
   validates :youare,     presence: { message: "Cette information est manquante" }
   validates :askfor,     presence: { message: "Une réponse est attendue pour catégoriser votre demande" }
   validates :question,   presence: { message: "Un message est obligatoire pour envoyer votre message" }
-  validates :honey,      presence: false
+  validate :honey_cant_be_filled
+
+  def honey_cant_be_filled
+    errors.add(:honey, "can't be filled") if !honey.blank?
+  end
   
 end
