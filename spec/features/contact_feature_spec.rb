@@ -45,13 +45,10 @@ feature 'Contact' do
         find("#question").set("Mais pourquoi une question ?")
         find('#send_message').click
         #feed for verification
-        result_page = Nokogiri::HTML(page.html)
-        last_path = current_path
-        invite_email = ActionMailer::Base.deliveries.last
         {
-          result_page: result_page,
-          last_path: last_path,
-          invite_email: invite_email,
+          result_page: Nokogiri::HTML(page.html),
+          last_path: current_path,
+          invite_email: ActionMailer::Base.deliveries.last,
         }
     end
 
