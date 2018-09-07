@@ -87,6 +87,14 @@ feature 'Contact' do
       elt = Capybara.string(invite_email.body.encoded).find("#youare").text
       expect(elt).to eq("particulier")
     end
+    scenario 'Message body has askfor' do
+      elt = Capybara.string(invite_email.body.encoded).find("#askfor").text
+      expect(elt).to eq("modifier")
+    end
+    scenario 'Message body has question' do
+      elt = Capybara.string(invite_email.body.encoded).find("#question").text
+      expect(elt).to eq("Mais pourquoi une question ?")
+    end
     scenario 'Contact form is no more displayed' do
       expect(result_page.css('.c-contact-form').count).to eq 0
     end
