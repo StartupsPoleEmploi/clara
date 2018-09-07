@@ -27,6 +27,43 @@ feature 'Contact' do
     expect(page).to have_css('.c-contact-card')
   end
 
+  context 'Nominal' do
+    env_stubber = final_path = invite_email = result_page = last_path = nil
+    before do
+      if env_stubber == nil
+        #setup
+        env_stubber = self.class::StubEnv.new("from@clara.com", "sent_to@destination.com")
+        visit contact_index_path
+        #act
+        find('#first_name').set('Francis')
+        find('#last_name').set('Drake')
+        find('#email').set('francis@drake.com')
+        find("#region").select("Bretagne")
+        find("#youare").select("Un particulier")
+        find("#askfor").select("Apporter une information pour modifier un contenu")
+        find("#question").set("Mais pourquoi une question ?")
+        find('#send_message').click
+        #feed for verification
+        result_page = Nokogiri::HTML(page.html)
+        last_path = current_path
+        invite_email = ActionMailer::Base.deliveries.last
+      end    
+    end
+    after do
+      env_stubber.unstubb_env
+    end
+    scenario 'Message is actually sent from ENV["ARA_EMAIL_USER"]' do
+      invite_email.tap do |mail|
+        expect(mail.from).to eq(["from@clara.com"])
+      end
+    end
+    scenario 'Message is actually sent to ENV["ARA_EMAIL_DESTINATION"]' do
+      invite_email.tap do |mail|
+        expect(mail.to).to eq(["sent_to@destination.com"])
+      end
+    end
+  end
+
   scenario 'Nominal' do 
     # given
     # See https://makandracards.com/makandra/47189-rspec-how-to-define-classes-for-specs
