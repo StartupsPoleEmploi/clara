@@ -203,10 +203,33 @@ feature 'Contact' do
     find("#askfor").select("Apporter une information pour modifier un contenu")
     find("#question").set("Mais pourquoi une question ?")
     expect(page).not_to have_css('.is-error')
+    expect(page).not_to have_css('ul.c-contact-errors-list li')
     #when
     find('#send_message').click
     #then
+    expect(current_path).to eq contact_index_path
     expect(page).to have_css('.is-error', :count => 2)
+    expect(find('.c-contact-errors-title').text).to eq "Veuillez corriger les erreurs ci-dessous"
+    expect(page).to have_css('ul.c-contact-errors-list li', :count => 2)
+  end
+  scenario 'Single field is missing, error is shown on top of the page' do
+    #given
+    visit contact_index_path
+    find('#last_name').set('Drake')
+    find('#email').set('francis@drake.com')
+    find("#region").select("Bretagne")
+    find("#youare").select("Un particulier")
+    find("#askfor").select("Apporter une information pour modifier un contenu")
+    find("#question").set("Mais pourquoi une question ?")
+    expect(page).not_to have_css('.is-error')
+    expect(page).not_to have_css('ul.c-contact-errors-list li')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('.is-error', :count => 1)
+    expect(find('.c-contact-errors-title').text).to eq "Veuillez corriger l'erreur ci-dessous"
+    expect(page).to have_css('ul.c-contact-errors-list li', :count => 1)
   end
 
   scenario 'After a successful attempt, cannot send sth again'
