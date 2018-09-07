@@ -32,7 +32,7 @@ feature 'Contact' do
     before do
       if env_stubber == nil
         #setup
-        env_stubber = self.class::StubEnv.new("from@clara.com", "sent_to@destination.com")
+        env_stubber = self.class::StubEnv.new("env@ara_email_user", "env@ara_email_destination")
         visit contact_index_path
         #act
         find('#first_name').set('Francis')
@@ -54,13 +54,24 @@ feature 'Contact' do
     end
     scenario 'Message is actually sent from ENV["ARA_EMAIL_USER"]' do
       invite_email.tap do |mail|
-        expect(mail.from).to eq(["from@clara.com"])
+        expect(mail.from).to eq(["env@ara_email_user"])
       end
     end
     scenario 'Message is actually sent to ENV["ARA_EMAIL_DESTINATION"]' do
       invite_email.tap do |mail|
-        expect(mail.to).to eq(["sent_to@destination.com"])
+        expect(mail.to).to eq(["env@ara_email_destination"])
       end
+    end
+    scenario 'Contact form is no more displayed' do
+      expect(result_page.css('.c-contact-form').count).to eq 0
+    end
+    scenario 'User is sent to /contact_sent' do
+      expect(last_path).to eq contact_sent_index_path
+    end
+    scenario 'A successful message is displayed' do
+      # See https://stackoverflow.com/a/15324291/2595513
+      msg = "Votre message a été envoyé avec succès."
+      expect(result_page.at("p:contains('#{msg}')").text.strip).to eq msg
     end
   end
 
