@@ -46,6 +46,8 @@
                     = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
                     - if errors["last_name"]
                       %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    - if !errors["last_name"] && has_error
+                      %span.c-contact-green &nbsp;✓&nbsp;
                   - if errors["last_name"]
                     %label.c-contact-smalllabel=errors["last_name"][0]
             %p
@@ -55,6 +57,8 @@
                   = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                  - if !errors["email"] && has_error
+                    %span.c-contact-green &nbsp;✓&nbsp;
                 - if errors["email"]
                   %label.c-contact-smalllabel=errors["email"][0]
             %p.u-display-none
@@ -67,6 +71,8 @@
                   = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choix de la région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
                   - if errors["region"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                  - if !errors["region"] && has_error
+                    %span.c-contact-green &nbsp;✓&nbsp;
                 - if errors["region"]
                   %label.c-contact-smalllabel=errors["region"][0]
 
@@ -77,6 +83,8 @@
                   = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choix de l'entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
                   - if errors["youare"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                  - if !errors["youare"] && has_error
+                    %span.c-contact-green &nbsp;✓&nbsp;
                 - if errors["youare"]
                   %label.c-contact-smalllabel=errors["youare"][0]
             %p.c-contact-separator
@@ -90,6 +98,8 @@
                   = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
                   - if errors["askfor"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                  - if !errors["askfor"] && has_error
+                    %span.c-contact-green &nbsp;✓&nbsp;
                 - if errors["askfor"]
                   %label.c-contact-smalllabel=errors["askfor"][0]
                   
