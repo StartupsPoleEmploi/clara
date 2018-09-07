@@ -9,7 +9,7 @@ class ContactController < ApplicationController
     @origin=request.host
     @contact = ContactForm.new(allowed_params)
     if @contact.valid?
-      UserMailer.with(contact: @contact, origin: @origin).welcome_email.deliver_now
+      UserMailer.with(contact: @contact, origin: @origin).welcome_email.deliver_later
       redirect_to contact_sent_index_path
     else
       flash[:error] = @contact.errors.messages
