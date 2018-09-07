@@ -2,6 +2,11 @@ require 'rails_helper'
 
 feature 'Contact' do 
 
+  # around do |example|
+  #   ClimateControl.modify ARA_EMAIL_USER: 'ara@email.user.com' do
+  #     example.run
+  #   end
+  # end
 
   scenario 'Contact form is displayed when accessing url directly' do 
     # given
@@ -24,6 +29,12 @@ feature 'Contact' do
 
   scenario 'Nominal' do 
     # given
+    env_stubber = self.class::StubEnv.new("clara@email.from", "clara@email.to")
+    # cached_ara_email_user = ENV["ARA_EMAIL_USER"]
+    # ENV["ARA_EMAIL_USER"] = "ara@email.user.com"
+    # cached_ara_email_destination = ENV["ARA_EMAIL_DESTINATION"]
+    # ENV["ARA_EMAIL_DESTINATION"] = "ara@email.destination.com"
+
     visit contact_index_path
     # when
     find('#first_name').set('Francis')
@@ -32,10 +43,31 @@ feature 'Contact' do
     find("#region").select("Bretagne")
     find("#youare").select("Un particulier")
     find("#askfor").select("Apporter une information pour modifier un contenu")
+    find("#question").set("Mais pourquoi une question ?")
     find('#send_message').click
     # then
+    invite_email = ActionMailer::Base.deliveries.last
+    p '- - - - - - - - - - - - - - invite_email - - - - - - - - - - - - - - - -' 
+    pp invite_email
+    p ''
+    env_stubber.unstubb_env
     save_and_open_page
   end
+
+  class self::StubEnv
+
+    def initialize(ara_email_user, ara_email_destination)
+      @previous_ara_email_user = ENV["ARA_EMAIL_USER"]
+      ENV["ARA_EMAIL_USER"] = ara_email_user
+      @previous_ara_email_destination = ENV["ARA_EMAIL_DESTINATION"]
+      ENV["ARA_EMAIL_DESTINATION"] = ara_email_destination
+    end
+    def unstubb_env
+      ENV["ARA_EMAIL_USER"]        = @previous_ara_email_user
+      ENV["ARA_EMAIL_DESTINATION"] = @previous_ara_email_destination
+    end
+  end
+
 
   scenario 'After a successful attempt, cannot send sth again'
   scenario 'After a successful attempt, back button means back to welcome page'
