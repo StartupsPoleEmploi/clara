@@ -19,7 +19,7 @@ class ContactForm < ActiveType::Object
                             message: "Un email valide est requis" },  
                             if: Proc.new { |c| c.email.present? }
   validates :region,     presence: { message: "Le choix de la région est obligatoire" }
-  validates :youare,     presence: { message: "Cette information est manquante" }
+  validates :youare,     presence: { message: "Le statut est obligatoire" }
   validates :askfor,     presence: { message: "Une réponse est attendue pour catégoriser votre demande" }
   validates :question,   presence: { message: "Un message est obligatoire pour envoyer votre message" }
   validate :honey_cant_be_filled
