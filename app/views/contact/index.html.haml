@@ -62,7 +62,7 @@
               .c-contact-field
                 %label.c-contact-label Region
                 %div
-                  = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}"}
+                  = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choisissez votre région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
                   - if errors["region"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                 - if errors["region"]
@@ -98,7 +98,7 @@
                 - if errors["question"]
                   %label.c-contact-smalllabel=errors["question"][0]
             %p.c-contact-separator
-            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-card').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
+            = f.submit 'Envoyer votre message', "id"=>"send_message", "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-card').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
 
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
