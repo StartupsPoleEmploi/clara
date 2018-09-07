@@ -12,6 +12,7 @@ class UserMailerPreview < ActionMailer::Preview
       askfor: "signaler",
       question: "Un de vos liens est cassé. En effet on ne peut plus vous envoyer de message ! \"#{User.all}\""
     )
-    UserMailer.with(contact: @contact).welcome_email
+    @origin = "monsite.com"
+    UserMailer.with(contact: @contact, origin: @origin).welcome_email
   end
 end
