@@ -27,5 +27,7 @@ feature 'Contact' do
   scenario 'If Honeypot if filled, the form fails to be validated'
   scenario 'If request object does not exists, origin is marked as unknown'
   scenario 'If request object is weird, origin is marked as bad-origin'
+  scenario 'Email is required'
+  scenario 'Email, when exists, is to be properly formatted'
   
 end
