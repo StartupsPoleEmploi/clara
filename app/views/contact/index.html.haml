@@ -21,7 +21,7 @@
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger les erreurs ci-dessous
           %ul.c-contact-errors-list.u-margin-left-large
             - errors.each do |k,v|
-              %li=v[0]
+              %li{"class" => k}=v[0]
           = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: false, class: 'c-contact-form u-margin-left' do |f|
             %p.c-contact-separator
             %h2.c-contact-numbered

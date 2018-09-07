@@ -147,7 +147,21 @@ feature 'Contact' do
     #then
     expect(current_path).to eq contact_index_path
     expect(page).to have_css('#email.is-error')
+    expect(find('ul.c-contact-errors-list li.email').text).to eq("L'email est obligatoire")    
   end
+  scenario 'Email, when exists, is to be properly formatted' do
+    #given
+    visit contact_index_path
+    find('#email').set('francis')
+    expect(page).not_to have_css('#email.is-error')
+    #when
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('#email.is-error')    
+    expect(find('ul.c-contact-errors-list li.email').text).to eq('Un email valide est requis')    
+  end
+
   scenario 'Region is required' do
     #given
     visit contact_index_path
@@ -227,14 +241,31 @@ feature 'Contact' do
   end
   
   scenario 'If Honeypot if filled, the form fails to be validated' do
-    
+    #given
+    visit contact_index_path
+
+    expect(page).not_to have_css('.is-error')
+    find('#first_name').set('Francis')
+    find('#last_name').set('Drake')
+    find('#email').set('francis@drake.com')
+    find("#region").select("Bretagne")
+    find("#youare").select("Un particulier")
+    find("#askfor").select("Apporter une information pour modifier un contenu")
+    find("#question").set("Mais pourquoi une question ?")
+    #when
+    find("#honey").set("anything, really")
+    find('#send_message').click
+    #then
+    expect(current_path).to eq contact_index_path
+    expect(page).to have_css('ul.c-contact-errors-list li', :count => 1)
+
   end
 
-  scenario 'After a successful attempt, cannot send sth again'
-  scenario 'After a successful attempt, back button means back to welcome page'
-  scenario 'If request object does not exists, origin is marked as unknown'
-  scenario 'If request object is weird, origin is marked as bad-origin'
-  scenario 'Email, when exists, is to be properly formatted'
-  scenario "Question's placeholder warns from individual queries"
+  scenario 'After a successful attempt, back button means back to welcome page' do
+    
+  end
+  scenario "Question's placeholder warns from individual queries" do
+    
+  end
   
 end
