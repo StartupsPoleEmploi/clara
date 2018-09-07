@@ -8,7 +8,7 @@ class ContactController < ApplicationController
   def create
     @contact = ContactForm.new(allowed_params)
     if @contact.valid?
-      UserMailer.welcome_email.deliver_now
+      UserMailer.with(contact: @contact).welcome_email.deliver_now
       redirect_to contact_sent_index_path
     else
       flash[:error] = @contact.errors.messages

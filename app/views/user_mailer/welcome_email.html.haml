@@ -1,3 +1,35 @@
-Welcome to sample.com
-You have successfully signed up to example.com
-Thanks for joining and have a great day!
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Un formulaire a été rempli correctement sur clara.pole-emploi.fr
+    %div
+      %span
+        %strong Prénom
+      %span=@contact.first_name
+    %div
+      %span
+        %strong Nom
+      %span=@contact.last_name
+    %div
+      %span
+        %strong Email
+      %span=@contact.email
+    %div
+      %span
+        %strong Region
+      %span=@contact.region
+    %div
+      %span
+        %strong Je suis
+      %span=@contact.youare
+    %div
+      %span
+        %strong Je signale
+      %span=@contact.askfor
+    %div
+      %span
+        %strong Voici ma question
+      %span=@contact.question
