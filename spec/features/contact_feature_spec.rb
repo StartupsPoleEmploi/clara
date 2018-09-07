@@ -29,5 +29,6 @@ feature 'Contact' do
   scenario 'If request object is weird, origin is marked as bad-origin'
   scenario 'Email is required'
   scenario 'Email, when exists, is to be properly formatted'
+  scenario "Question's placeholder warns from individual queries"
   
 end

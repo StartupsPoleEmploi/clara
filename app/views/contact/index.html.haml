@@ -98,7 +98,7 @@
                 - if errors["question"]
                   %label.c-contact-smalllabel=errors["question"][0]
             %p.c-contact-separator
-            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-form').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
+            = f.submit 'Envoyer votre message', "class" => "c-contact-submit u-padding-vertical-small u-padding-horizontal-huge u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-card').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
 
 
         .o-layout__item{class:"u-1/1 u-1/4@tablet"}
