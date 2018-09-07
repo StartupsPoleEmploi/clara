@@ -26,6 +26,7 @@ class ContactController < ApplicationController
      :youare,
      :askfor,
      :question,
+     :honey,
     ).to_h
   end
 
