@@ -26,8 +26,14 @@
 .c-contact-info {
   background-color: #057dbc;
   color: white;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  @include mq($from: desktop) {
+    border-top-right-radius: 5px;
+  }
+  @include mq($until: desktop) {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
 }
 
 .c-contact-infotitle {
