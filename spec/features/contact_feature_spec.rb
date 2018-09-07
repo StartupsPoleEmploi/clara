@@ -30,10 +30,6 @@ feature 'Contact' do
   scenario 'Nominal' do 
     # given
     env_stubber = self.class::StubEnv.new("clara@email.from", "clara@email.to")
-    # cached_ara_email_user = ENV["ARA_EMAIL_USER"]
-    # ENV["ARA_EMAIL_USER"] = "ara@email.user.com"
-    # cached_ara_email_destination = ENV["ARA_EMAIL_DESTINATION"]
-    # ENV["ARA_EMAIL_DESTINATION"] = "ara@email.destination.com"
 
     visit contact_index_path
     # when
