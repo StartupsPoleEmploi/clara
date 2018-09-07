@@ -67,6 +67,18 @@ feature 'Contact' do
         expect(mail.to).to eq(["env@ara_email_destination"])
       end
     end
+    scenario 'Message body has first_name' do
+      elt = Capybara.string(invite_email.body.encoded).find("#first_name").text
+      expect(elt).to eq("Francis")
+    end
+    scenario 'Message body has last_name' do
+      elt = Capybara.string(invite_email.body.encoded).find("#last_name").text
+      expect(elt).to eq("Drake")
+    end
+    scenario 'Message body has email' do
+      elt = Capybara.string(invite_email.body.encoded).find("#email").text
+      expect(elt).to eq("blabla")
+    end
     scenario 'Contact form is no more displayed' do
       expect(result_page.css('.c-contact-form').count).to eq 0
     end
