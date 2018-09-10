@@ -17,9 +17,6 @@
             Formulaire de contact
           - if errors.size == 1
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger l'erreur ci-dessous
-            %ul.c-contact-errors-list.u-margin-left-large
-              - errors.each do |k,v|
-                %li{"class" => k}=v[0]
           - if errors.size > 1
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger les erreurs ci-dessous
             %ul.c-contact-errors-list.u-margin-left-large
@@ -32,7 +29,7 @@
               %span Informations personnelles
             .o-layout
               .o-layout__item{class:"u-1/1 u-1/2@desktop"}
-                .c-contact-field
+                .c-contact-field.c-contact-field--first_name
                   %label.c-contact-label Prénom
                   %div
                     = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
@@ -43,7 +40,7 @@
                   - if errors["first_name"]
                     %label.c-contact-smalllabel=errors["first_name"][0]
               .o-layout__item{class:"u-1/1 u-1/2@desktop"}
-                .c-contact-field
+                .c-contact-field.c-contact-field--last_name
                   %label.c-contact-label Nom
                   %div
                     = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
@@ -54,10 +51,10 @@
                   - if errors["last_name"]
                     %label.c-contact-smalllabel=errors["last_name"][0]
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--email
                 %label.c-contact-label Email
                 %div
-                  = f.text_field :email, type: :email, required: :true, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                  = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["email"] && has_error
@@ -68,7 +65,7 @@
               = f.text_field :honey, id: :honey
                  
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--region
                 %label.c-contact-label Region
                 %div
                   = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choix de la région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
@@ -80,7 +77,7 @@
                   %label.c-contact-smalllabel=errors["region"][0]
 
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--youare
                 %label.c-contact-label Vous êtes
                 %div
                   = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choix de l'entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
@@ -95,7 +92,7 @@
                 %span.c-contact-number &nbsp;2&nbsp;
                 %span Demande à envoyer
 
-              .c-contact-field
+              .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
                 %div
                   = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Objet de votre message"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
@@ -107,7 +104,7 @@
                   %label.c-contact-smalllabel=errors["askfor"][0]
                   
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--question
                 %label.c-contact-label Votre message
                 = f.text_area :question, id: :question, class: "#{errors["question"] ? carea+cerr : carea}", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
                 - if errors["question"]
