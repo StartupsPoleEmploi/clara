@@ -6,7 +6,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    @origin = request.host
+    @origin = (defined? request) && (request.respond_to?(:host)) ? request.host.to_s : "unknown"
     @contact = ContactForm.new(allowed_params)
     if @contact.valid?
       UserMailer.with(contact: @contact, origin: @origin).welcome_email.deliver_now
