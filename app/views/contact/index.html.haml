@@ -95,7 +95,7 @@
               .c-contact-field
                 %label.c-contact-label Catégorie de la demande
                 %div
-                  = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Pourquoi vous contactez-nous ?"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
+                  = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Objet de votre message"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
                   - if errors["askfor"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["askfor"] && has_error
