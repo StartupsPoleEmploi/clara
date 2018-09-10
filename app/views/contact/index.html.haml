@@ -19,6 +19,7 @@
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger l'erreur ci-dessous
           - if errors.size > 1
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger les erreurs ci-dessous
+          - if errors.size > 0
             %ul.c-contact-errors-list.u-margin-left-large
               - errors.each do |k,v|
                 %li{"class" => k}=v[0]
