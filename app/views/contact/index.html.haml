@@ -54,7 +54,7 @@
               .c-contact-field
                 %label.c-contact-label Email
                 %div
-                  = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                  = f.text_field :email, type: :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
                     %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["email"] && has_error
