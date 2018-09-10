@@ -103,7 +103,7 @@ feature 'Contact' do
     end
     scenario 'A successful message is displayed' do
       # See https://stackoverflow.com/a/15324291/2595513
-      msg = "Votre message a été envoyé avec succès."
+      msg = "Votre message a bien été envoyé. Nos équipes reviendront vers vous dans les meilleurs délais (les questions plus complexes peuvent prendre plus de temps)."
       expect(suts[:result_page].at("p:contains('#{msg}')").text.strip).to eq msg
     end
   end
