@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.4.0 (10/09/2018)
+-[#871][FEATURE] Typographie formulaire de contact
+
+
 ## 12.3.0 (06/09/2018)
 -[#61][FEATURE] Formulaire de contact
 
