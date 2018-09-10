@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 12.5.0 (10/09/2018)
+-[#874][FEATURE] Formulaire, validation côté client
+
+
 ## 12.4.0 (10/09/2018)
 -[#871][FEATURE] Typographie formulaire de contact
 
