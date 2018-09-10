@@ -105,7 +105,7 @@
                   
             %p
               .c-contact-field
-                %label.c-contact-label Votre question
+                %label.c-contact-label Votre message
                 = f.text_area :question, id: :question, class: "#{errors["question"] ? carea+cerr : carea}", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
                 - if errors["question"]
                   %label.c-contact-smalllabel=errors["question"][0]
