@@ -10,7 +10,7 @@
     var $widget = $('[data-widget="accessible-autocomplete"]'),
       $input = $widget.find(options.search_selector),
       $clearText = $("#clearText"),
-      inputValMachin = "",
+      inputVal = "",
       $results = $widget.find(options.results_selector),
       results = [],
       $live = $widget.find(options.arialive_selector),
@@ -79,18 +79,18 @@
       
       
       // if input value didn't change, return
-      if ($input.val() === inputValMachin) {
+      if ($input.val() === inputVal) {
         return;
       }
       // save new input value
-      // inputValMachin = $input.val();
-      inputValMachin = options.transformInputValMachin($input.val());
-      inputValMachin = options.transformInputValMachin($input.val());
+      // inputVal = $input.val();
+      inputVal = options.transforminputVal($input.val());
+      inputVal = options.transforminputVal($input.val());
 
       // get and save autocomplete results
-      if (inputValMachin.length && (inputValMachin.length % options.autocomplete_every === 0)) {
+      if (inputVal.length && (inputVal.length % options.autocomplete_every === 0)) {
         $.get({
-          url: options.url() + inputValMachin,
+          url: options.url() + inputVal,
           success: function(e) {
             results = options.buildResultsFromAjax(e, pivot_map);
             // build list HTML
@@ -138,7 +138,7 @@
     function populating() {
       var selectedText = $results.find('[aria-selected="true"]').text();
       if (selectedText === "") {
-        selectedText = inputValMachin;
+        selectedText = inputVal;
       }
       $input.val(selectedText);
     }
@@ -185,7 +185,7 @@
           return;
         }
         if (kc === key.esc) {
-          $input.val(inputValMachin);
+          $input.val(inputVal);
           closeResults();
         }
       });
@@ -199,8 +199,8 @@
         clearSelected();
       });
       $clearText.on("click", function() {
-        inputValMachin = "";
-        $input.val(inputValMachin);
+        inputVal = "";
+        $input.val(inputVal);
       });
     }
     function init() {
