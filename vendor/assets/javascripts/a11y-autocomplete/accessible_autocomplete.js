@@ -10,7 +10,7 @@
     var $widget = $('[data-widget="accessible-autocomplete"]'),
       $input = $widget.find(options.search_selector),
       $clearText = $("#clearText"),
-      inputVal = "",
+      inputValMachin = "",
       $results = $widget.find(options.results_selector),
       results = [],
       $live = $widget.find(options.arialive_selector),
@@ -79,17 +79,18 @@
       
       
       // if input value didn't change, return
-      if ($input.val() === inputVal) {
+      if ($input.val() === inputValMachin) {
         return;
       }
       // save new input value
-      // inputVal = $input.val();
-      inputVal = options.transformInputVal($input.val());
+      // inputValMachin = $input.val();
+      inputValMachin = options.transformInputValMachin($input.val());
+      inputValMachin = options.transformInputValMachin($input.val());
 
       // get and save autocomplete results
-      if (inputVal.length && (inputVal.length % options.autocomplete_every === 0)) {
+      if (inputValMachin.length && (inputValMachin.length % options.autocomplete_every === 0)) {
         $.get({
-          url: options.url() + inputVal,
+          url: options.url() + inputValMachin,
           success: function(e) {
             results = options.buildResultsFromAjax(e, pivot_map);
             // build list HTML
@@ -137,7 +138,7 @@
     function populating() {
       var selectedText = $results.find('[aria-selected="true"]').text();
       if (selectedText === "") {
-        selectedText = inputVal;
+        selectedText = inputValMachin;
       }
       $input.val(selectedText);
     }
@@ -184,7 +185,7 @@
           return;
         }
         if (kc === key.esc) {
-          $input.val(inputVal);
+          $input.val(inputValMachin);
           closeResults();
         }
       });
@@ -198,8 +199,8 @@
         clearSelected();
       });
       $clearText.on("click", function() {
-        inputVal = "";
-        $input.val(inputVal);
+        inputValMachin = "";
+        $input.val(inputValMachin);
       });
     }
     function init() {
