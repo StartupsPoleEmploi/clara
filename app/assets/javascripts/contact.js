@@ -3,8 +3,6 @@ _.set(
   'clara.init_contact', 
   _.throttle(function() {
       var f_remove_errors = function(){
-        console.log($(this))
-        console.log($(this).closest('.c-contact-field'))
         var $elt = $(this);
         $elt.closest('.c-contact-field').find('.c-contact-validation').hide();
         $elt.closest('.c-contact-field').find('.is-error').removeClass('is-error');
