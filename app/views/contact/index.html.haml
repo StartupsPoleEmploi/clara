@@ -33,7 +33,7 @@
                 .c-contact-field.c-contact-field--first_name
                   %label.c-contact-label Prénom
                   %div
-                    = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                    = f.text_field :first_name, "autocomplete" => "given-name", id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
                     - if errors["first_name"]
                       %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["first_name"] && has_error
@@ -44,7 +44,7 @@
                 .c-contact-field.c-contact-field--last_name
                   %label.c-contact-label Nom
                   %div
-                    = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
+                    = f.text_field :last_name, "autocomplete" => "family-name", id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
                     - if errors["last_name"]
                       %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["last_name"] && has_error
@@ -55,7 +55,7 @@
               .c-contact-field.c-contact-field--email
                 %label.c-contact-label Email
                 %div
-                  = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                  = f.text_field :email, "autocomplete" => "email",  id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
                     %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["email"] && has_error
