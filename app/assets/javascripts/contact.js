@@ -7,7 +7,7 @@ _.set(
         $elt.closest('.c-contact-field').find('.c-contact-validation').hide();
         $elt.closest('.c-contact-field').find('.is-error').removeClass('is-error');
       };
-      $('.c-contact-input').on('keydown', f_remove_errors);
+      $('.c-contact-input').on('input', f_remove_errors);
       $('.c-contact-input-select').on('change', f_remove_errors);
     }, 
     1000)
