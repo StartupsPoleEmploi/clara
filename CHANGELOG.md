@@ -1,6 +1,10 @@
 # ARA Changelog
 
-## 12.5.0 (10/09/2018)
+## 12.5.1 (13/09/2018)
+-[#881][BUG] Formulaire - bugs
+
+
+## 12.5.0 (11/09/2018)
 -[#874][FEATURE] Formulaire, validation côté client
 
 

@@ -17,7 +17,7 @@
             Formulaire de contact
           - if errors.size > 0
             %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Une ou plusieurs erreurs ci-dessous ont empêché la validation du formulaire
-          = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: false, class: 'c-contact-form' do |f|
+          = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: true, class: 'c-contact-form' do |f|
             %p.c-contact-separator.u-margin-top
             %h2.c-contact-numbered
               %span.c-contact-number &nbsp;1&nbsp;
@@ -27,7 +27,7 @@
                 .c-contact-field.c-contact-field--first_name
                   %label.c-contact-label Prénom
                   %div
-                    = f.text_field :first_name, "autocomplete" => "given-name", id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                    = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
                     - if errors["first_name"]
                       %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["first_name"] && has_error
@@ -38,7 +38,7 @@
                 .c-contact-field.c-contact-field--last_name
                   %label.c-contact-label Nom
                   %div
-                    = f.text_field :last_name, "autocomplete" => "family-name", id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
+                    = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
                     - if errors["last_name"]
                       %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["last_name"] && has_error
@@ -49,7 +49,7 @@
               .c-contact-field.c-contact-field--email
                 %label.c-contact-label Email
                 %div
-                  = f.text_field :email, "autocomplete" => "email",  id: :email, type: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                  = f.text_field :email, id: :email, type: :text, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
                     %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["email"] && has_error
@@ -105,7 +105,8 @@
                 - if errors["question"]
                   %label.c-contact-smalllabel.c-contact-validation=errors["question"][0]
             %p.c-contact-separator
-            = f.submit 'Envoyer votre message', "id"=>"send_message", "class" => "c-contact-submit u-margin-bottom"
+            = f.submit 'Envoyer votre message', "id"=>"send_message", "class" => "c-contact-submit u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-card').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
+
 
 
         .o-layout__item.c-contact-layout-item.c-contact-layout-item--info{class:"u-1/1 u-1/3@desktop"}
