@@ -93,7 +93,8 @@
                   = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["autre","Autre"]],:first,:last do |rdb|
                     %div
                       = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
-
+                - if errors["askfor"]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["askfor"][0]
                   
             %p
               .c-contact-field.c-contact-field--question
