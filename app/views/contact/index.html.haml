@@ -15,16 +15,10 @@
         .o-layout__item.c-contact-layout-item.c-contact-layout-item--form{class:"u-1/1 u-2/3@desktop"}
           %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
-          - if errors.size == 1
-            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger l'erreur ci-dessous
-          - if errors.size > 1
-            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger les erreurs ci-dessous
           - if errors.size > 0
-            %ul.c-contact-errors-list.u-margin-left-large
-              - errors.each do |k,v|
-                %li{"class" => k}=v[0]
-          = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: false, class: 'c-contact-form' do |f|
-            %p.c-contact-separator
+            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Une ou plusieurs erreurs ci-dessous ont empêché la validation du formulaire
+          = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: true, class: 'c-contact-form' do |f|
+            %p.c-contact-separator.u-margin-top
             %h2.c-contact-numbered
               %span.c-contact-number &nbsp;1&nbsp;
               %span Informations personnelles

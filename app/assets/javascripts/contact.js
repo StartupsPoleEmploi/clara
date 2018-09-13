@@ -16,8 +16,6 @@ _.set(
 
 $(document).on('ready turbolinks:load', function () {
   if ($( 'body' ).hasClass('contact', 'index' )) {
-
     clara.init_contact();
-
   }
 });
