@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 12.4.1 (13/09/2018)
+-[#803][DESIGN] Logo FSE
+
 ## 12.4.0 (10/09/2018)
 -[#871][FEATURE] Typographie formulaire de contact
 
