@@ -85,7 +85,6 @@
       // save new input value
       // inputVal = $input.val();
       inputVal = options.transforminputVal($input.val());
-      inputVal = options.transforminputVal($input.val());
 
       // get and save autocomplete results
       if (inputVal.length && (inputVal.length % options.autocomplete_every === 0)) {
