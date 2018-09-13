@@ -22,6 +22,9 @@ $(document).on('ready turbolinks:load', function () {
       $to_be_focused = $("#first_name");
     } else {
       $to_be_focused = $(".is-error")[0];
+      if ($($to_be_focused).attr('id') === 'askfor') {
+        $to_be_focused = $("#contact_form_askfor_signaler");
+      }
     }
     $to_be_focused.focus();
   }

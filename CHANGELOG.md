@@ -1,5 +1,10 @@
 # ARA Changelog
 
+
+## 12.6.0 (13/09/2018)
+-[#880][FORM] Formulaire de contact - radiobuttons
+
+
 ## 12.5.1 (13/09/2018)
 -[#881][BUG] Formulaire - bugs
 

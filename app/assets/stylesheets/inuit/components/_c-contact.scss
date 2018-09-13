@@ -72,6 +72,9 @@
 .c-contact-field {
   display: flex;
   flex-direction: column;
+  input[type=radio] { 
+    transform: scale(1);
+  }
 }
 
 .c-contact-input-text {
@@ -122,6 +125,13 @@
 .c-contact-input.is-error {
   border: solid 4px #d0021b;
   background-color: white;
+}
+
+#askfor.is-error {
+  border: solid 4px #d0021b;
+  border-radius: 4px;
+  margin-right: space(8);
+  padding: space(2);
 }
 
 .c-contact-smalllabel {

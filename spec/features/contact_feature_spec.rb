@@ -41,7 +41,7 @@ feature 'Contact' do
         find('#email').set('francis@drake.com')
         find("#region").select("Bretagne")
         find("#youare").select("Un particulier")
-        find("#askfor").select("Apporter une information pour modifier un contenu")
+        choose("Apporter une information pour modifier un contenu")
         find("#question").set("Mais pourquoi une question ?")
         find('#send_message').click
         #feed for verification
@@ -197,7 +197,7 @@ feature 'Contact' do
     find('#email').set('francis@drake.com')
     find("#region").select("Bretagne")
     find("#youare").select("Un particulier")
-    find("#askfor").select("Apporter une information pour modifier un contenu")
+    choose("Apporter une information pour modifier un contenu")
     find("#question").set("Mais pourquoi une question ?")
     expect(page).not_to have_css('.is-error')
     expect(page).not_to have_css('ul.c-contact-errors-list li')
@@ -220,7 +220,7 @@ feature 'Contact' do
     find('#email').set('francis@drake.com')
     find("#region").select("Bretagne")
     find("#youare").select("Un particulier")
-    find("#askfor").select("Apporter une information pour modifier un contenu")
+    choose("Apporter une information pour modifier un contenu")
     find("#question").set("Mais pourquoi une question ?")
     #when
     find("#honey").set("anything, really")
