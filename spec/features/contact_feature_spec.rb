@@ -138,7 +138,6 @@ feature 'Contact' do
     #then
     expect(current_path).to eq contact_index_path
     expect(page).to have_css('#email.is-error')
-    expect(find('ul.c-contact-errors-list li.email').text).to eq("L'email est obligatoire")    
   end
   scenario 'Email, when exists, is to be properly formatted' do
     #given
@@ -150,7 +149,6 @@ feature 'Contact' do
     #then
     expect(current_path).to eq contact_index_path
     expect(page).to have_css('#email.is-error')    
-    expect(find('ul.c-contact-errors-list li.email').text).to eq('Un email valide est requis')    
   end
 
   scenario 'Region is required' do
@@ -193,7 +191,7 @@ feature 'Contact' do
     expect(current_path).to eq contact_index_path
     expect(page).to have_css('#question.is-error')
   end
-  scenario 'Multiple fields are missing, list of errors is displayed on top of the page' do
+  scenario 'Multiple fields are missing, error message is displayed on top of the page' do
     #given
     visit contact_index_path
     find('#email').set('francis@drake.com')
@@ -208,28 +206,9 @@ feature 'Contact' do
     #then
     expect(current_path).to eq contact_index_path
     expect(page).to have_css('.is-error', :count => 2)
-    expect(find('.c-contact-errors-title').text).to eq "Veuillez corriger les erreurs ci-dessous"
-    expect(page).to have_css('ul.c-contact-errors-list li', :count => 2)
+    expect(find('.c-contact-errors-title').text).to eq "Une ou plusieurs erreurs ci-dessous ont empêché la validation du formulaire"
   end
-  scenario 'Single field is missing, error is shown on top of the page' do
-    #given
-    visit contact_index_path
-    find('#last_name').set('Drake')
-    find('#email').set('francis@drake.com')
-    find("#region").select("Bretagne")
-    find("#youare").select("Un particulier")
-    find("#askfor").select("Apporter une information pour modifier un contenu")
-    find("#question").set("Mais pourquoi une question ?")
-    expect(page).not_to have_css('.is-error')
-    expect(page).not_to have_css('ul.c-contact-errors-list li')
-    #when
-    find('#send_message').click
-    #then
-    expect(current_path).to eq contact_index_path
-    expect(page).to have_css('.is-error', :count => 1)
-    expect(find('.c-contact-errors-title').text).to eq "Veuillez corriger l'erreur ci-dessous"
-    expect(page).to have_css('ul.c-contact-errors-list li', :count => 1)
-  end
+
   
   scenario 'If Honeypot if filled, the form fails to be validated' do
     #given
@@ -248,7 +227,6 @@ feature 'Contact' do
     find('#send_message').click
     #then
     expect(current_path).to eq contact_index_path
-    expect(page).to have_css('ul.c-contact-errors-list li', :count => 1)
 
   end
 

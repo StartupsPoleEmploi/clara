@@ -15,102 +15,97 @@
         .o-layout__item.c-contact-layout-item.c-contact-layout-item--form{class:"u-1/1 u-2/3@desktop"}
           %h1.c-contact-title.u-margin-left.u-padding-top
             Formulaire de contact
-          - if errors.size == 1
-            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger l'erreur ci-dessous
-          - if errors.size > 1
-            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Veuillez corriger les erreurs ci-dessous
-          %ul.c-contact-errors-list.u-margin-left-large
-            - errors.each do |k,v|
-              %li{"class" => k}=v[0]
+          - if errors.size > 0
+            %h2.c-contact-errors-title.u-margin-left.u-margin-bottom-none Une ou plusieurs erreurs ci-dessous ont empêché la validation du formulaire
           = form_with model: @contact, url: contact_index_path, id: "c-contact-form", local: false, class: 'c-contact-form' do |f|
-            %p.c-contact-separator
+            %p.c-contact-separator.u-margin-top
             %h2.c-contact-numbered
               %span.c-contact-number &nbsp;1&nbsp;
               %span Informations personnelles
             .o-layout
               .o-layout__item{class:"u-1/1 u-1/2@desktop"}
-                .c-contact-field
+                .c-contact-field.c-contact-field--first_name
                   %label.c-contact-label Prénom
                   %div
-                    = f.text_field :first_name, id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
+                    = f.text_field :first_name, "autocomplete" => "given-name", id: :first_name, class: "#{errors["first_name"] ? ctext+cerr : ctext}", :value => @contact.first_name
                     - if errors["first_name"]
-                      %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                      %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["first_name"] && has_error
-                      %span.c-contact-green &nbsp;✓&nbsp;
+                      %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                   - if errors["first_name"]
-                    %label.c-contact-smalllabel=errors["first_name"][0]
+                    %label.c-contact-smalllabel.c-contact-validation=errors["first_name"][0]
               .o-layout__item{class:"u-1/1 u-1/2@desktop"}
-                .c-contact-field
+                .c-contact-field.c-contact-field--last_name
                   %label.c-contact-label Nom
                   %div
-                    = f.text_field :last_name, id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
+                    = f.text_field :last_name, "autocomplete" => "family-name", id: :last_name, class: "#{errors["last_name"] ? ctext+cerr : ctext}", :value => @contact.last_name
                     - if errors["last_name"]
-                      %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                      %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                     - if !errors["last_name"] && has_error
-                      %span.c-contact-green &nbsp;✓&nbsp;
+                      %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                   - if errors["last_name"]
-                    %label.c-contact-smalllabel=errors["last_name"][0]
+                    %label.c-contact-smalllabel.c-contact-validation=errors["last_name"][0]
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--email
                 %label.c-contact-label Email
                 %div
-                  = f.text_field :email, id: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
+                  = f.text_field :email, "autocomplete" => "email",  id: :email, type: :email, class: "#{errors["email"] ? ctext+cerr : ctext}", :value => @contact.email
                   - if errors["email"]
-                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["email"] && has_error
-                    %span.c-contact-green &nbsp;✓&nbsp;
+                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                 - if errors["email"]
-                  %label.c-contact-smalllabel=errors["email"][0]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["email"][0]
             %p.u-display-none
               = f.text_field :honey, id: :honey
                  
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--region
                 %label.c-contact-label Region
                 %div
                   = f.select :region, [["Auvergne-Rhône-Alpes","ARA"],["Bourgogne-Franche-Comté","BFC"],["Bretagne","BRE"],["Centre-Val de Loire","CVL"],["Corse","COR"],["Grand Est","GES"],["Hauts-de-France","HDF"],["Île-de-France","IDF"],["Normandie","NOR"],["Nouvelle-Aquitaine","NAQ"],["Occitanie","OCC"],["Pays de la Loire","PDL"],["Provence-Alpes-Côte d'Azur","PAC"],["Guadeloupe","GP"],["Martinique","MQ"],["Guyane","GF"],["La réunion","RE"],["Mayotte","YT"]], {include_blank: "Choix de la région"}, {class: "#{errors["region"] ? csel+cerr : csel}", id:"region"}
                   - if errors["region"]
-                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["region"] && has_error
-                    %span.c-contact-green &nbsp;✓&nbsp;
+                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                 - if errors["region"]
-                  %label.c-contact-smalllabel=errors["region"][0]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["region"][0]
 
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--youare
                 %label.c-contact-label Vous êtes
                 %div
                   = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choix de l'entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
                   - if errors["youare"]
-                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["youare"] && has_error
-                    %span.c-contact-green &nbsp;✓&nbsp;
+                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                 - if errors["youare"]
-                  %label.c-contact-smalllabel=errors["youare"][0]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["youare"][0]
             %p.c-contact-separator
               %h2.c-contact-numbered
                 %span.c-contact-number &nbsp;2&nbsp;
                 %span Demande à envoyer
 
-              .c-contact-field
+              .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
                 %div
                   = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Objet de votre message"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
                   - if errors["askfor"]
-                    %span.c-contact-exclaim &nbsp;&nbsp;!&nbsp;&nbsp;
+                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
                   - if !errors["askfor"] && has_error
-                    %span.c-contact-green &nbsp;✓&nbsp;
+                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
                 - if errors["askfor"]
-                  %label.c-contact-smalllabel=errors["askfor"][0]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["askfor"][0]
                   
             %p
-              .c-contact-field
+              .c-contact-field.c-contact-field--question
                 %label.c-contact-label Votre message
                 = f.text_area :question, id: :question, class: "#{errors["question"] ? carea+cerr : carea}", rows: 6, placeholder: "Ce formulaire de contact n’est pas destiné à étudier les situations individuelles."
                 - if errors["question"]
-                  %label.c-contact-smalllabel=errors["question"][0]
+                  %label.c-contact-smalllabel.c-contact-validation=errors["question"][0]
             %p.c-contact-separator
-            = f.submit 'Envoyer votre message', "id"=>"send_message", "class" => "c-contact-submit u-margin-bottom", "onclick" =>"setTimeout(function(){$('.c-contact-card').replaceWith('Veuillez patienter...');$('.c-contact-errors-title').remove();}, 0)"
+            = f.submit 'Envoyer votre message', "id"=>"send_message", "class" => "c-contact-submit u-margin-bottom"
 
 
         .o-layout__item.c-contact-layout-item.c-contact-layout-item--info{class:"u-1/1 u-1/3@desktop"}

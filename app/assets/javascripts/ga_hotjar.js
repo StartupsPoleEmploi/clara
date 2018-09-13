@@ -10,7 +10,7 @@ $(document).on('ready', function () {
     window.is_google_analytics_session_already_defined = true;
     $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
       var current_ip = _.get(data, 'ip');
-      var pe_ips = _.split(window.clara.env.ARA_URL_PE, ",");
+      var pe_ips = _.split(_.get(window, 'clara.env.ARA_URL_PE'), ",");
       if (_.includes(pe_ips, current_ip)) {
         console.log("Bienvenue chez Pôle Emploi");
         //load hotjar
