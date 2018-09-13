@@ -40,7 +40,7 @@ feature 'Contact' do
         find('#last_name').set('Drake')
         find('#email').set('francis@drake.com')
         find("#region").select("Bretagne")
-        find("#youare").select("Un particulier")
+        choose("Un particulier")
         choose("Apporter une information pour modifier un contenu")
         find("#question").set("Mais pourquoi une question ?")
         find('#send_message').click
@@ -196,7 +196,7 @@ feature 'Contact' do
     visit contact_index_path
     find('#email').set('francis@drake.com')
     find("#region").select("Bretagne")
-    find("#youare").select("Un particulier")
+    choose("Un particulier")
     choose("Apporter une information pour modifier un contenu")
     find("#question").set("Mais pourquoi une question ?")
     expect(page).not_to have_css('.is-error')
@@ -219,7 +219,7 @@ feature 'Contact' do
     find('#last_name').set('Drake')
     find('#email').set('francis@drake.com')
     find("#region").select("Bretagne")
-    find("#youare").select("Un particulier")
+    choose("Un particulier")
     choose("Apporter une information pour modifier un contenu")
     find("#question").set("Mais pourquoi une question ?")
     #when
