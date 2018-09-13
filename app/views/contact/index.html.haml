@@ -74,14 +74,13 @@
             %p
               .c-contact-field.c-contact-field--youare
                 %label.c-contact-label Vous êtes
-                %div
-                  = f.select :youare, [["Un particulier","particulier"],["Une entreprise","entreprise"],["Une institution","institution"]], {include_blank: "Choix de l'entité"}, {class: "#{errors["youare"] ? csel+cerr : csel}", id: "youare"}
-                  - if errors["youare"]
-                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
-                  - if !errors["youare"] && has_error
-                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
+                #youare.c-contact-radiobuttonlist{class: "#{errors['youare'] ? cerr : ''}"}
+                  = f.collection_radio_buttons :youare, [["particulier", "Un particulier"],["entreprise", "Une entreprise"],["institution","Une institution"]],:first,:last do |rdb|
+                    %div
+                      = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
                 - if errors["youare"]
                   %label.c-contact-smalllabel.c-contact-validation=errors["youare"][0]
+
             %p.c-contact-separator
               %h2.c-contact-numbered
                 %span.c-contact-number &nbsp;2&nbsp;
@@ -89,7 +88,7 @@
 
               .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
-                #askfor{class: "#{errors['askfor'] ? cerr : ''}"}
+                #askfor.c-contact-radiobuttonlist{class: "#{errors['askfor'] ? cerr : ''}"}
                   = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["autre","Autre"]],:first,:last do |rdb|
                     %div
                       = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
