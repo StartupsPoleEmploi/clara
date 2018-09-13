@@ -1,7 +1,8 @@
 # ARA Changelog
-
+ 
 ## 12.8.0 (13/09/2018)
 -[#803][DESIGN] Logo FSE
+
 
 ## 12.7.0 (13/09/2018)
 -[#882][FORM] Formulaire de contact - entité
