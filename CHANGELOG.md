@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 12.7.0 (13/09/2018)
+-[#882][FORM] Formulaire de contact - entité
+
+
 ## 12.6.0 (13/09/2018)
 -[#880][FORM] Formulaire de contact - radiobuttons
 
