@@ -26,7 +26,6 @@ $(document).on('ready turbolinks:load', function () {
         $to_be_focused = $("#contact_form_askfor_signaler");
       }
     }
-    window.blabla = $to_be_focused;
     $to_be_focused.focus();
   }
 });
