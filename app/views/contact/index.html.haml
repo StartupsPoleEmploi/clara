@@ -90,7 +90,7 @@
               .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
                 %div
-                  = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"]],:first,:last,item_wrapper_tag: :div, label: false do |rdb|
+                  = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["autre","Autre"]],:first,:last,item_wrapper_tag: :div, label: false do |rdb|
                     %div
                       = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
 
