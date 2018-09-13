@@ -1,18 +1,32 @@
 .c-fselogozone { 
 }
-  ul.list-unstyled {
+
+ul.list-unstyled {
+    margin: 0;
+    padding: 0;
     list-style: none;
-    display:inline;
+    max-width:100%
+}
+
+ul.list-unstyled.inline-list li {
+    display: inline-block;
 }
 
 .list-unstyled li{ 
-  display:inline; 
-  float:left;
+  padding-top: 10px;
+  margin: 0 5px 0 0;
+  vertical-align: top;
+  width: 90px;
+  float : left;
+}
+
+.list-unstyled li.fse{
+  width:134px;
 }
 
 .list-unstyled p{
   display: block;
-  width: 200px;
+  width: 130px;
   color: #004fa2;
   font-size: 12px;
   line-height: 14px;
