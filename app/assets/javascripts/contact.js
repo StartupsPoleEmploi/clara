@@ -17,5 +17,13 @@ _.set(
 $(document).on('ready turbolinks:load', function () {
   if ($( 'body' ).hasClass('contact', 'index' )) {
     clara.init_contact();
+    var $to_be_focused = $("body");
+    if ($('.is-error').length === 0) {
+      $to_be_focused = $("#first_name");
+    } else {
+      $to_be_focused = $(".is-error")[0];
+    }
+    window.blabla = $to_be_focused;
+    $to_be_focused.focus();
   }
 });

@@ -1,7 +1,7 @@
 # ARA Changelog
 
 ## 12.5.1 (13/09/2018)
--[#881][BUG] Formulaire - "Veuillez patienter"
+-[#881][BUG] Formulaire - bugs
 
 
 ## 12.5.0 (11/09/2018)
