@@ -23,7 +23,6 @@ $(document).on('ready turbolinks:load', function () {
     } else {
       $to_be_focused = $(".is-error")[0];
     }
-    window.blabla = $to_be_focused;
     $to_be_focused.focus();
   }
 });
