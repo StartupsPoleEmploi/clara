@@ -1,12 +1,25 @@
 .c-fselogozone { 
-  align : right;
 }
   ul.list-unstyled {
-    margin: 0;
-    padding: 0;
     list-style: none;
+    display:inline;
 }
 
-.list-unstyled li{ display:inline; }
+.list-unstyled li{ 
+  display:inline; 
+  float: left;
+  margin-right:5px;
+}
+
+.list-unstyled p{
+  display: block;
+  width: 200px;
+  margin-top: 5px;
+  color: #004fa2;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: left;
+  margin:0;
+}
 
 
