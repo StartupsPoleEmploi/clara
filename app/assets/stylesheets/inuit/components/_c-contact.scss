@@ -72,6 +72,9 @@
 .c-contact-field {
   display: flex;
   flex-direction: column;
+  input[type=radio] { 
+    transform: scale(1);
+  }
 }
 
 .c-contact-input-text {

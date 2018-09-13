@@ -90,13 +90,10 @@
               .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
                 %div
-                  = f.select :askfor, [["Signaler un lien cassé","signaler"],["Apporter une information pour modifier un contenu","modifier"],["Référencer une nouvelle aide","referencer"],["Autre","autre"]], {include_blank: "Objet de votre message"}, {class: "#{errors["askfor"] ? csel+cerr : csel}", id: "askfor"}
-                  - if errors["askfor"]
-                    %span.c-contact-exclaim.c-contact-validation &nbsp;&nbsp;!&nbsp;&nbsp;
-                  - if !errors["askfor"] && has_error
-                    %span.c-contact-green.c-contact-validation &nbsp;✓&nbsp;
-                - if errors["askfor"]
-                  %label.c-contact-smalllabel.c-contact-validation=errors["askfor"][0]
+                  = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"]],:first,:last,item_wrapper_tag: :div, label: false do |rdb|
+                    %div
+                      = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
+
                   
             %p
               .c-contact-field.c-contact-field--question
