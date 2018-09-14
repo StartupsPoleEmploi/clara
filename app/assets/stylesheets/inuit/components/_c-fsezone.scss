@@ -1,14 +1,33 @@
-.c-fse-logo {
-  width : 120px;
+.c-fse {
+
 }
 
+.c-fse-logo {
+  width: 120px;
+  margin: 0 10px 0 0;
+}
+
+.c-fse-logo-pe{
+  margin: 0 10px 0 0;
+}
+
+.c-fse-logo-ue{
+  margin: 0 10px 0 0;
+}
+
+.c-fse-p {
+  margin: 0 10px 0 0;
+}
 
 .c-fse-p p{
   display: block;
-  width: 190px;
   color: #044da1;
   font-size: 9px;
   text-align: left;
+  width: 130px;
+  @include mq($from: desktop) {
+  width: 190px;
+  }
 }
 
 
