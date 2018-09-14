@@ -21,8 +21,9 @@
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %ul.o-line
-            %li.o-line__item
-              %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
+            .c-fse-logo
+              %li.o-line__item
+                %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
                 = render 'shared/logo_fse'
             %li.o-line__item
               %a{:href => "https://www.pole-emploi.fr/accueil/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)"}
