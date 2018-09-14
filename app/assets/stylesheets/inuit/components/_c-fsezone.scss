@@ -22,7 +22,7 @@
   text-align: left;
   width: 130px;
   @include mq($from: desktop) {
-  width: 190px;
+    width: 190px;
   }
 }
 
