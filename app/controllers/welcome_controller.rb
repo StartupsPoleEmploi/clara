@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  caches_page :index
+  caches_page :index unless Rails.env.development?
   skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
 
   def index
