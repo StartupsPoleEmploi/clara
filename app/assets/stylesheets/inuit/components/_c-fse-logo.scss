@@ -1,0 +1,47 @@
+.c-fse-logo { 
+}
+
+
+// Corresponds à la liste non stylée du premier logo su blablablabla
+ul.list-unstyled { 
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width:100%
+}
+
+ul.list-unstyled.inline-list li {
+    display: inline-block;
+}
+
+.list-unstyled li{ 
+  padding-top: 5px;
+  margin: 0 7px 0 0;
+  vertical-align: top;
+  width: 90px;
+  float : left;
+}
+
+.list-unstyled li.pole-emploi{
+  width: 70px;
+}
+
+.list-unstyled li.ue{
+  padding-top: 10px;
+}
+
+.list-unstyled li.fse{
+  width:134px;
+}
+
+.list-unstyled p{
+  display: block;
+  width: 190px;
+  color: #004fa2;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: left;
+  margin:0;
+}
+
+
