@@ -3,11 +3,11 @@
   margin: 0 10px 0 0;
 }
 
-.c-fse-logo-pe{
+.c-fse-logo-pe {
   margin: 0 10px 0 0;
 }
 
-.c-fse-logo-ue{
+.c-fse-logo-ue {
   margin: 0 10px 0 0;
 }
 
@@ -21,7 +21,7 @@
   font-size: 9px;
   text-align: left;
   width: 130px;
-  @include mq($from: desktop) {
+  @include mq($from: wide) {
     width: 190px;
   }
 }
