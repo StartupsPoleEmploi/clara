@@ -51,13 +51,16 @@ module Admin
       all_filters_deleted          = Rails.cache.delete("filters")
       all_contract_types_deleted   = Rails.cache.delete("contract_types")
       regenerated_activated_models = !ActivatedModelsGeneratorService.new.regenerate.empty?
-        
+      
+      activated_models_singleton_reinitialized  = ActivatedModelsService.instance.regenerate
+
       render json: {
         activated_models_deleted: activated_models_deleted,
         nb_of_detailed_aids_deleted: nb_of_detailed_aids_deleted,
         all_filters_deleted: all_filters_deleted,
         all_contract_types_deleted: all_contract_types_deleted,
         regenerated_activated_models: regenerated_activated_models,
+        activated_models_singleton_reinitialized: activated_models_singleton_reinitialized,
       }
     end
 

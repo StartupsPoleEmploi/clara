@@ -2,7 +2,12 @@ class ActivatedModelsService
   include Singleton
 
   def initialize
+    regenerate
+  end
+
+  def regenerate
     @cached_activated_models = Rails.cache.fetch("activated_models") { Oj.load(File.read(Rails.root.join('public','activated_models.txt'))) }
+    @cached_activated_models.is_a?(Hash) && !@cached_activated_models.empty?
   end
 
   def rules

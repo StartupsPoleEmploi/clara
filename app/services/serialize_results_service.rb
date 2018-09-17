@@ -18,8 +18,8 @@ class SerializeResultsService
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
      flat_all_ineligible: calculator.every_ineligible,
-     flat_all_contract: JSON.parse(Rails.cache.fetch("contract_types") {ContractType.all.to_json}),
-     flat_all_filter: JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}),
+     flat_all_contract: ActivatedModelsService.instance.contracts,
+     flat_all_filter: ActivatedModelsService.instance.filters,
      asker: asker.attributes
     }
     res
