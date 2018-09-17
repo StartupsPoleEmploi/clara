@@ -18,7 +18,9 @@ class SerializeResultsService
      flat_all_eligible: calculator.every_eligible,
      flat_all_uncertain: calculator.every_uncertain,
      flat_all_ineligible: calculator.every_ineligible,
+     # Deliberately NOT using ActivatedModelsService.instance.contracts, too much data are missing to display icons, description, etc
      flat_all_contract: JSON.parse(Rails.cache.fetch("contract_types") {ContractType.all.to_json}),
+     # Deliberately NOT using ActivatedModelsService.instance.filters, too much data are missing also
      flat_all_filter: JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}),
      asker: asker.attributes
     }

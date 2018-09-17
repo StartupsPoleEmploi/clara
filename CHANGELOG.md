@@ -1,5 +1,10 @@
 # ARA Changelog
  
+
+## 12.8.1 (17/09/2018)
+-[#883][BUG] Rendre le contract_type obligatoire
+
+
 ## 12.8.0 (14/09/2018)
 -[#803][DESIGN] Logo FSE
 

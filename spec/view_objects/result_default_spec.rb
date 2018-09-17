@@ -81,6 +81,31 @@ describe ResultDefault do
         ])     
     end
 
+    it 'Evict entries without contract_type' do
+      sut = ResultDefault.new(nil, nominal_data)
+      res = sut.sort_and_order("flat_all_ineligible")
+      expect(res).to eq([
+        
+        [{"id"=>7,
+         "name"=>"Aides aux bénéficiaires du RSA et adultes",
+         "slug"=>"aides-aux-beneficiaires-du-rsa-et-adultes",
+         "short_description"=>"",
+         "ordre_affichage"=>99,
+         "contract_type_id"=>2,
+         "filters"=>[{"id"=>1}, {"id"=>3}],
+         "eligibility"=>"ineligible"}],
+       [{"id"=>1,
+         "name"=>"Aide au bénéficiaire du RSA",
+         "slug"=>"aide-au-beneficiaire-du-rsa",
+         "short_description"=>"",
+         "ordre_affichage"=>2,
+         "contract_type_id"=>1,
+         "filters"=>[{"id"=>3}],
+         "eligibility"=>"ineligible"}]
+        
+        ])     
+    end
+
   end
 
   def nominal_data
@@ -133,6 +158,13 @@ describe ResultDefault do
     "short_description"=>"",
     "ordre_affichage"=>99,
     "contract_type_id"=>2,
+    "filters"=>[{"id"=>1}, {"id"=>3}],
+    "eligibility"=>"ineligible"},
+  {"id"=>17,
+    "name"=>"Missing contract_type",
+    "slug"=>"missing-contract-type",
+    "short_description"=>"",
+    "ordre_affichage"=>12,
     "filters"=>[{"id"=>1}, {"id"=>3}],
     "eligibility"=>"ineligible"}],
  :flat_all_contract=>
