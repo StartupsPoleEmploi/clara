@@ -1,0 +1,29 @@
+.c-fse-logo {
+  width: 90px;
+  margin: 0 10px 0 30px;
+}
+
+.c-fse-logo-pe {
+  margin: 0 10px 0 0;
+  width: 70px;
+}
+
+.c-fse-logo-ue {
+  margin: 0 10px 0 0;
+  width: 80px;
+}
+
+.c-fse-p {
+  margin: 0 0 0 0;
+}
+
+.c-fse-p p {
+  display: block;
+  color: #044da1;
+  font-size: 9px;
+  text-align: left;
+  width: 130px;
+  @include mq($from: wide) {
+    width: 190px;
+  }
+}
