@@ -8,7 +8,7 @@ class Aid < ApplicationRecord
   
   friendly_id :name, use: :slugged
   belongs_to :rule, optional: true
-  belongs_to :contract_type, required: true
+  belongs_to :contract_type, optional: true
 
   validates :name, presence: true, uniqueness: true  
 

@@ -7,11 +7,19 @@ class ResultDefault < ViewObject
   end
 
   def sort_and_order(prop)
+    p '- - - - - - - - - - - - - - sort_and_order- - - - - - - - - - - - - - - -' 
+    pp @all_data[prop]
+    p ''
+    res = 
     (@all_data[prop] || {})
       .group_by{ |e|   e['contract_type_id'] }
       .transform_values{|v| v.sort_by{|e| e['ordre_affichage']}}
       .values
       .sort_by{ |e| @contract_types.detect{|c| c["id"] == e.sample['contract_type_id']}["ordre_affichage"]}
+    p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+    pp res
+    p ''
+    res
   end
 
   def title_for(aids_per_contract)
