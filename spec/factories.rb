@@ -187,7 +187,7 @@ FactoryBot.define do
 
   factory :aid do 
     sequence(:name) { |n| "Aide #{n}" }
-    sequence(:contract_type) { |n| create(:contract_type, :contract_type_1) }
+    # sequence(:contract_type) { |n| create(:contract_type, :contract_type_1, description: "descr_#{n}", name: "name_#{n}", business_id:"b_#{n}") }
     trait :aid_spectacle do
       before :create do |aid|
         aid.rule = create(:rule, :be_a_spectacle)
