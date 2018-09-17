@@ -187,11 +187,6 @@ FactoryBot.define do
 
   factory :aid do 
     sequence(:name) { |n| "Aide #{n}" }
-    trait :aid_qpv do
-      before :create do |aid|
-        aid.rule = create(:rule, :be_in_qpv)
-      end
-    end
     trait :aid_spectacle do
       before :create do |aid|
         aid.rule = create(:rule, :be_a_spectacle)
@@ -216,11 +211,6 @@ FactoryBot.define do
         aid.what = 'what value'
         aid.additionnal_conditions = 'additionnal conditions value'
         aid.short_description = 'a short description'
-      end
-    end
-    trait :aid_qpv_and_zrr do
-      before :create do |aid|
-        aid.rule = create(:rule, :be_in_qpv_and_in_zrr)
       end
     end
     trait :aid_adult_and_spectacle do
