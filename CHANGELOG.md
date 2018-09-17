@@ -1,6 +1,10 @@
 # ARA Changelog
  
 
+## 12.8.2 (17/09/2018)
+-[#887][FEATURE] Accessibilité SVG FSE
+
+
 ## 12.8.1 (17/09/2018)
 -[#883][BUG] Rendre le contract_type obligatoire
 
