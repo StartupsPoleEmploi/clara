@@ -86,23 +86,22 @@ describe ResultDefault do
       res = sut.sort_and_order("flat_all_ineligible")
       expect(res).to eq([
         
-          [{"id"=>3,
-            "name"=>"Aide aux habitants en QPV adultes",
-            "slug"=>"aide-aux-habitants-en-qpv-adultes",
-            "short_description"=>"",
-            "ordre_affichage"=>3,
-            "contract_type_id"=>2,
-            "filters"=>[{"id"=>2}, {"id"=>1}, {"id"=>4}],
-            "eligibility"=>"uncertain"}],
-
-          [{"id"=>2,
-            "name"=>"Aide aux habitants en zone QPV",
-            "slug"=>"aide-aux-habitants-en-zone-qpv",
-            "short_description"=>"",
-            "ordre_affichage"=>1,
-            "contract_type_id"=>1,
-            "filters"=>[{"id"=>2}],
-            "eligibility"=>"uncertain"}],
+        [{"id"=>7,
+         "name"=>"Aides aux bénéficiaires du RSA et adultes",
+         "slug"=>"aides-aux-beneficiaires-du-rsa-et-adultes",
+         "short_description"=>"",
+         "ordre_affichage"=>99,
+         "contract_type_id"=>2,
+         "filters"=>[{"id"=>1}, {"id"=>3}],
+         "eligibility"=>"ineligible"}],
+       [{"id"=>1,
+         "name"=>"Aide au bénéficiaire du RSA",
+         "slug"=>"aide-au-beneficiaire-du-rsa",
+         "short_description"=>"",
+         "ordre_affichage"=>2,
+         "contract_type_id"=>1,
+         "filters"=>[{"id"=>3}],
+         "eligibility"=>"ineligible"}]
         
         ])     
     end
@@ -161,7 +160,7 @@ describe ResultDefault do
     "contract_type_id"=>2,
     "filters"=>[{"id"=>1}, {"id"=>3}],
     "eligibility"=>"ineligible"},
-     {"id"=>17,
+  {"id"=>17,
     "name"=>"Missing contract_type",
     "slug"=>"missing-contract-type",
     "short_description"=>"",
