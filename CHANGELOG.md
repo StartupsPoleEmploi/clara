@@ -1,6 +1,10 @@
 # ARA Changelog
  
 
+## 12.8.3 (17/09/2018)
+-[#824][FEATURETTE] Accessibilité logo Clara
+
+
 ## 12.8.2 (17/09/2018)
 -[#887][FEATURE] Accessibilité SVG FSE
 
