@@ -83,9 +83,6 @@ class ResultSituation < ViewObject
   end
 
   def zrr
-    p '- - - - - - - - - - - - - - zrr value inside view_object - - - - - - - - - - - - - - - -' 
-    pp @asker
-    p ''
     @asker[:v_zrr] || "indisponible"
   end  
   
