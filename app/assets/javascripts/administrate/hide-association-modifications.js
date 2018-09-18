@@ -2,9 +2,7 @@
 // Thus preventing to modify/delete an association in administrate
 
 $( document ).ready(function() {
-  // See https://stackoverflow.com/a/40725409/2595513
-  var lastPartOfUrl = window.location.pathname.split("/").pop();
-  if (_.isNumeric(lastPartOfUrl)) {
+  if (_.startsWith($('.main-content__header a.button').text(), "Modifier")) {
     // We're inside a detail page. Very hacky, indeed.
 
     // remove "modify" link

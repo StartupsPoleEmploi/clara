@@ -2,6 +2,7 @@ class Aid < ApplicationRecord
   extend FriendlyId  
 
   has_and_belongs_to_many :filters
+  has_and_belongs_to_many :level3_filters
 
   has_paper_trail ignore: [:updated_at]
 
