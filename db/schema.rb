@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_01_083539) do
+ActiveRecord::Schema.define(version: 2018_06_01_083537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,12 +95,6 @@ ActiveRecord::Schema.define(version: 2018_06_01_083539) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
-
-  create_table "level_1_filters", force: :cascade do |t|
-    t.text "name"
-    t.string "slug", null: false
-    t.index ["slug"], name: "index_level_1_filters_on_slug", unique: true
   end
 
   create_table "rule_checks", force: :cascade do |t|
