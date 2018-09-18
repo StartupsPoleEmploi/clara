@@ -2,7 +2,7 @@
 
  
 ## 13.0.0 (18/09/2018)
--[#876][FEATURE] Filtres à 3 niveaux
+-[#890][FEATURE] Filtres à 3 niveaux, CRUD
 
 
 ## 12.8.3 (17/09/2018)
