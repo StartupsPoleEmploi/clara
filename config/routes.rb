@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :level1_filters
+    resources :level2_filters
     resources :filters
     resources :aids
     resources :rules do 
