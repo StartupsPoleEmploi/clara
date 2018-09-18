@@ -11,6 +11,7 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
+    level3_filters: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
@@ -25,6 +26,7 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :level3_filters,
     # :created_at,
   ].freeze
 
@@ -34,9 +36,10 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :level3_filters,
+    :slug,
     :created_at,
     :updated_at,
-    :slug,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,6 +48,7 @@ class Level2FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
+    :level3_filters,
     # :slug,
   ].freeze
 
