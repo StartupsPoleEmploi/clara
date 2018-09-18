@@ -58,7 +58,6 @@ _.mixin({
 
   fromPropArray: function (propArray) {
     return _.reduce(propArray, function(obj, e, key) {
-      console.log(e)
       var z = {};
       z[e.prop] = e.value;
       _.assign(obj, z);
