@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_095618) do
+ActiveRecord::Schema.define(version: 2018_09_18_122727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_095618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "level1_filter_id"
+    t.index ["level1_filter_id"], name: "index_level2_filters_on_level1_filter_id"
     t.index ["slug"], name: "index_level2_filters_on_slug", unique: true
   end
 
@@ -187,5 +189,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_095618) do
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_rule_checks", "rules"
+  add_foreign_key "level2_filters", "level1_filters"
   add_foreign_key "rules", "variables"
 end
