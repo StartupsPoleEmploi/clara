@@ -1,6 +1,10 @@
 # ARA Changelog
 
  
+## 13.0.1 (18/09/2018)
+-[#891][BUG] ZRR marquée "f" si indisponible
+
+
 ## 13.0.0 (18/09/2018)
 -[#890][FEATURE] Filtres à 3 niveaux, CRUD
 
