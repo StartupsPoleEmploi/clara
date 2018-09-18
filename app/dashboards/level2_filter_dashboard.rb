@@ -26,7 +26,6 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :level3_filters,
     # :created_at,
   ].freeze
 

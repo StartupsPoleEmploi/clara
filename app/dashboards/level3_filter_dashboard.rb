@@ -11,9 +11,10 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
+    slug: Field::String,
+    confidentiality: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    slug: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,6 +26,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :confidentiality,
     # :created_at,
   ].freeze
 
@@ -34,9 +36,10 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :slug,
+    :confidentiality,
     :created_at,
     :updated_at,
-    :slug,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,6 +48,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
+    :confidentiality,
     # :slug,
   ].freeze
 
