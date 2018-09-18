@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_095614) do
 
   create_table "level1_filters", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
