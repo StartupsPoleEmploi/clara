@@ -13,6 +13,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     description: Field::Text,
     slug: Field::String,
     confidentiality: Field::Boolean,
+    aids: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -38,6 +39,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :description,
     :slug,
     :confidentiality,
+    :aids,
     :created_at,
     :updated_at,
   ].freeze
@@ -49,6 +51,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :confidentiality,
+    :aids,
     # :slug,
   ].freeze
 

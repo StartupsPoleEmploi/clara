@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_130700) do
+ActiveRecord::Schema.define(version: 2018_09_18_130701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,11 @@ ActiveRecord::Schema.define(version: 2018_09_18_130700) do
 
   create_table "aids_filters", id: false, force: :cascade do |t|
     t.bigint "filter_id", null: false
+    t.bigint "aid_id", null: false
+  end
+
+  create_table "aids_level3_filters", id: false, force: :cascade do |t|
+    t.bigint "level3_filter_id", null: false
     t.bigint "aid_id", null: false
   end
 

@@ -15,6 +15,7 @@ class AidDashboard < Administrate::BaseDashboard
     slug: Field::String,
     rule: Field::BelongsTo,
     contract_type: Field::BelongsTo,
+    level3_filters: Field::HasMany,
     filters: Field::HasMany,
     id: Field::Number,
     short_description: Field::String,
@@ -47,6 +48,7 @@ class AidDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :id,
+    :level3_filters,
     :filters,
     :ordre_affichage,
     :last_update,
@@ -68,6 +70,7 @@ class AidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :level3_filters,
     :filters,
     :slug,
     :last_update,
