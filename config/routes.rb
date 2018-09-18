@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :users
     resources :level1_filters
     resources :level2_filters
+    resources :level3_filters
     resources :filters
     resources :aids
     resources :rules do 
