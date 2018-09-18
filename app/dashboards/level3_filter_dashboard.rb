@@ -58,7 +58,7 @@ class Level3FilterDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how level3 filters are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(level3_filter)
-  #   "Level3Filter ##{level3_filter.id}"
-  # end
+  def display_resource(level3_filter)
+    level3_filter.name
+  end
 end
