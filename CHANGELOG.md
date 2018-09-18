@@ -1,6 +1,10 @@
 # ARA Changelog
 
  
+## 13.0.2 (19/09/2018)
+-[#892][FEATURETTE] Nommage explicite des level_filter enfants
+
+
 ## 13.0.1 (18/09/2018)
 -[#891][BUG] ZRR marquée "f" si indisponible
 

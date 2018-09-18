@@ -54,7 +54,7 @@ class Level1FilterDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how level1 filters are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(level1_filter)
-  #   "Level1Filter ##{level1_filter.id}"
-  # end
+  def display_resource(level1_filter)
+    level1_filter.name
+  end
 end

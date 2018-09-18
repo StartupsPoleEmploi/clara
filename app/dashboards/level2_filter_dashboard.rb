@@ -54,7 +54,7 @@ class Level2FilterDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how level2 filters are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(level2_filter)
-  #   "Level2Filter ##{level2_filter.id}"
-  # end
+  def display_resource(level2_filter)
+    level2_filter.name
+  end
 end
