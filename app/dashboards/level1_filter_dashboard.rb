@@ -25,7 +25,7 @@ class Level1FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :created_at,
+    # :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
