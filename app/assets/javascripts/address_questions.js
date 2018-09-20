@@ -14,7 +14,9 @@ _.set(window, 'clara.a11y.search1', {
     return _.get(window, 'clara.env.ARA_URL_BAN');
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
+    console.log(feature_collection)
     var properties = _.map(feature_collection.features, 'properties');
+    console.log(properties)
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -22,7 +24,6 @@ _.set(window, 'clara.a11y.search1', {
         return _.zipObject([the_name], [e]);
       });
     }
-
     var address_data = _.map(extract_props('citycode'), function(e, i) {
       return _.assign(
         {},
@@ -37,6 +38,7 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
+    console.log(address_data)
     var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
     var mapped_address_data = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
     _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
