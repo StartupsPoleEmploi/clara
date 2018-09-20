@@ -4,6 +4,10 @@ MagicLamp.define do
     render partial: 'admin/shared/c-simulator-result'
   end
 
+  fixture(name: "french_arrondissement_input") do
+    JSON.parse("{}")
+  end
+
   fixture(name: "multiple_towns_per_postcode_json") do
     JSON.parse('
     {
