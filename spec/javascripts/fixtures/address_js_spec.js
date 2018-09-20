@@ -153,7 +153,15 @@ describe('address_questions.js', function() {
     it('Should be defined', function() {
       expect(clara.a11y.search1.buildResultsFromAjax).toBeDefined();
     });
-    it('Should return labels', function() {
+    it('French arrondissement - Should return label', function() {
+      var pivot_map = {};
+      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
+      // when
+      var output = clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      // then
+      expect(output).toEqual(["75020 Paris"]);
+    });
+    it('Multiple towns per postcode - Should return labels', function() {
       var pivot_map = {};
       var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
       // when
