@@ -9,6 +9,7 @@ describe('address_questions.js', function() {
   var typical_input = {};
 
   beforeEach(function() {
+
     typical_input = {
       attribution: 'BAN',
       licence: 'ODbL 1.0',
@@ -152,41 +153,100 @@ describe('address_questions.js', function() {
     it('Should be defined', function() {
       expect(clara.a11y.search1.buildResultsFromAjax).toBeDefined();
     });
-    it('Should return labels', function() {
+    it('French arrondissement - Should return label', function() {
       var pivot_map = {};
+      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
       // when
-      var output = clara.a11y.search1.buildResultsFromAjax(typical_input, pivot_map);
+      var output = clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
       // then
-      expect(output).toEqual(['80000 Amiens', '34140 Meze']);
+      expect(output).toEqual(["75020 Paris"]);
     });
-    it('Should assign results from ajax to given pivot_map', function() {
+    it('French arrondissement - Should assign only one town in pivot_map', function() {
       var pivot_map = {};
+      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
       var expected_output = {
-        '34140 Meze': {
-          citycode: '34157',
-          context: '34, Herault, Languedoc-Roussillon',
-          postcode: '34140',
-          housenumber: '8',
-          city: 'Meze',
-          street: undefined,
-          name: '8 Boulevard du Port',
-          type: 'municipality'
-        },
-        '80000 Amiens': {
-          citycode: '80021',
-          context: '80, Somme, Picardie',
-          postcode: '80000',
-          housenumber: '8',
-          city: 'Amiens',
-          street: undefined,
-          name: '8 Boulevard du Port',
-          type: 'municipality'
+        "75020 Paris": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "75120",
+          "context": "75, Paris, Île-de-France",
+          "postcode": "75020",
+          "city": "Paris",
+          "name": "Rue des Pyrénées",
+          "type": "street"
         }
-        
+      };
+      // when
+      clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      // then
+      expect(pivot_map).toEqual(expected_output);
+    });
+    it('Multiple towns per postcode - Should return labels', function() {
+      var pivot_map = {};
+      var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
+      // when
+      var output = clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
+      // then
+      expect(output).toEqual(["43000 Le Puy-en-Velay", "43000 Espaly-Saint-Marcel", "43000 Polignac", "43000 Ceyssac", "43000 Aiguilhe"]);
+    });
+    it('Multiple towns per postcode - Should assign only one town in pivot_map', function() {
+      var pivot_map = {};
+      var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
+      var expected_output = {
+        "43000 Le Puy-en-Velay": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "43157",
+          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
+          "postcode": "43000",
+          "city": "Le Puy-en-Velay",
+          "name": "Le Puy-en-Velay",
+          "type": "municipality"
+        },
+        "43000 Espaly-Saint-Marcel": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "43089",
+          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
+          "postcode": "43000",
+          "city": "Espaly-Saint-Marcel",
+          "name": "Espaly-Saint-Marcel",
+          "type": "municipality"
+        },
+        "43000 Polignac": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "43152",
+          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
+          "postcode": "43000",
+          "city": "Polignac",
+          "name": "Polignac",
+          "type": "municipality"
+        },
+        "43000 Ceyssac": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "43045",
+          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
+          "postcode": "43000",
+          "city": "Ceyssac",
+          "name": "Ceyssac",
+          "type": "municipality"
+        },
+        "43000 Aiguilhe": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "43002",
+          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
+          "postcode": "43000",
+          "city": "Aiguilhe",
+          "name": "Aiguilhe",
+          "type": "municipality"
+        }
       };
 
       // when
-      clara.a11y.search1.buildResultsFromAjax(typical_input, pivot_map);
+      clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
       // then
       expect(pivot_map).toEqual(expected_output);
     });

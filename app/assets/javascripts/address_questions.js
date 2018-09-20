@@ -22,7 +22,6 @@ _.set(window, 'clara.a11y.search1', {
         return _.zipObject([the_name], [e]);
       });
     }
-
     var address_data = _.map(extract_props('citycode'), function(e, i) {
       return _.assign(
         {},
@@ -37,8 +36,20 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
-    var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
-    var mapped_address_data = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+
+    var municipality_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
+
+    var choosen_address_data = municipality_address_data;
+    if (_.size(municipality_address_data) === 0) {
+      var street_address_data = _.filter(address_data, function(a){return a.type ===  "street"});
+      var uniq_street_address_data = _.uniqBy(street_address_data, function(e){return _.get(e, 'city') + _.get(e, 'citycode')})
+      if (_.size(uniq_street_address_data) > 0) {
+        choosen_address_data = uniq_street_address_data
+      }
+    }
+
+    var mapped_address_data = _.map(choosen_address_data, function(e) {return e.postcode + " " + e.city})
+
     _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
 
     return mapped_address_data;
