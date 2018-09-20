@@ -155,41 +155,11 @@ describe('address_questions.js', function() {
     });
     it('Should return labels', function() {
       var pivot_map = {};
+      var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
       // when
-      var output = clara.a11y.search1.buildResultsFromAjax(typical_input, pivot_map);
+      var output = clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
       // then
-      expect(output).toEqual(['80000 Amiens', '34140 Meze']);
-    });
-    it('Nominal- Should assign results from ajax to given pivot_map', function() {
-      var pivot_map = {};
-      var expected_output = {
-        '34140 Meze': {
-          citycode: '34157',
-          context: '34, Herault, Languedoc-Roussillon',
-          postcode: '34140',
-          housenumber: '8',
-          city: 'Meze',
-          street: undefined,
-          name: '8 Boulevard du Port',
-          type: 'municipality'
-        },
-        '80000 Amiens': {
-          citycode: '80021',
-          context: '80, Somme, Picardie',
-          postcode: '80000',
-          housenumber: '8',
-          city: 'Amiens',
-          street: undefined,
-          name: '8 Boulevard du Port',
-          type: 'municipality'
-        }
-        
-      };
-
-      // when
-      clara.a11y.search1.buildResultsFromAjax(typical_input, pivot_map);
-      // then
-      expect(pivot_map).toEqual(expected_output);
+      expect(output).toEqual(["43000 Le Puy-en-Velay", "43000 Espaly-Saint-Marcel", "43000 Polignac", "43000 Ceyssac", "43000 Aiguilhe"]);
     });
     it('Multiple towns per postcode - Should assign only one town in pivot_map', function() {
       var pivot_map = {};
