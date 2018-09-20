@@ -14,9 +14,10 @@ _.set(window, 'clara.a11y.search1', {
     return _.get(window, 'clara.env.ARA_URL_BAN');
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
-    console.log(feature_collection)
     var properties = _.map(feature_collection.features, 'properties');
+    console.log("-------properties--------")
     console.log(properties)
+    console.log("")
 
     function extract_props(the_name) {
       var local_collection = _.map(properties, the_name);
@@ -38,10 +39,41 @@ _.set(window, 'clara.a11y.search1', {
         );
     });
 
+    console.log("-------address_data--------")
     console.log(address_data)
-    var filtered_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
-    var mapped_address_data = _.map(filtered_address_data, function(e) {return e.postcode + " " + e.city})
+    console.log("")
+
+    var municipality_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
+    console.log("-------municipality_address_data--------")
+    console.log(municipality_address_data)
+    console.log("")
+
+    var choosen_address_data = municipality_address_data;
+    if (_.size(municipality_address_data) === 0) {
+      var street_address_data = _.filter(address_data, function(a){return a.type ===  "street"});
+      console.log("-------street_address_data--------")
+      console.log(street_address_data)
+      console.log("")
+      var uniq_street_address_data = _.uniqBy(street_address_data, function(e){return _.get(e, 'city') + _.get(e, 'citycode')})
+      console.log("-------uniq_street_address_data--------")
+      console.log(uniq_street_address_data)
+      console.log("")
+      if (_.size(uniq_street_address_data) > 0) {
+        choosen_address_data = uniq_street_address_data
+      }
+    }
+
+
+    var mapped_address_data = _.map(choosen_address_data, function(e) {return e.postcode + " " + e.city})
+    console.log("-------mapped_address_data--------")
+    console.log(mapped_address_data)
+    console.log("")
+
     _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
+    console.log("-------pivot_map--------")
+    console.log(pivot_map)
+    console.log("")
+
 
     return mapped_address_data;
   },

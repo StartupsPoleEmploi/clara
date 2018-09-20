@@ -161,6 +161,26 @@ describe('address_questions.js', function() {
       // then
       expect(output).toEqual(["75020 Paris"]);
     });
+    it('French arrondissement - Should assign only one town in pivot_map', function() {
+      var pivot_map = {};
+      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
+      var expected_output = {
+        "75020 Paris": {
+          "housenumber":undefined,
+          "street":undefined,
+          "citycode": "75120",
+          "context": "75, Paris, Île-de-France",
+          "postcode": "75020",
+          "city": "Paris",
+          "name": "Rue des Pyrénées",
+          "type": "street"
+        }
+      };
+      // when
+      clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      // then
+      expect(pivot_map).toEqual(expected_output);
+    });
     it('Multiple towns per postcode - Should return labels', function() {
       var pivot_map = {};
       var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
@@ -227,9 +247,6 @@ describe('address_questions.js', function() {
 
       // when
       clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
-      console.log("pivot is")
-      console.log(pivot_map)
-      console.log(JSON.stringify(pivot_map, null, 2))
       // then
       expect(pivot_map).toEqual(expected_output);
     });
