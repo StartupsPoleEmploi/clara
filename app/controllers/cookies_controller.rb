@@ -16,14 +16,6 @@ class CookiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cooky
-      @cooky = CookieForm.new(session[:cookie])
-      p '- - - - - - - - - - - - - - @cooky- - - - - - - - - - - - - - - -' 
-      pp session[:cookie]
-      p ''
-      # @cooky = Cookie.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
