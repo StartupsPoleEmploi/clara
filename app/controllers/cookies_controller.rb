@@ -2,7 +2,7 @@ class CookiesController < ApplicationController
 
   # GET /cookies/preference/edit
   def edit
-    @cooky = CookieForm.new(cooky_params)
+    @cooky = CookieForm.new(session[:cookie])
   end
 
   # PATCH/PUT /cookies/preference
