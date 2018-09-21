@@ -19,6 +19,28 @@
             %button Tout interdire
 
 
+    .o-layout
+      .o-layout__item{:class => "u-1/2"}
+        %h2.c-cookie-preference Statistiques
+      .o-layout__item{:class => "u-1/2"}
+        .o-layout
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout autoriser
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout interdire
+
+
+    .o-layout
+      .o-layout__item{:class => "u-1/2"}
+        %h2.c-cookie-preference Navigation
+      .o-layout__item{:class => "u-1/2"}
+        .o-layout
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout autoriser
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout interdire
+
+
     = form_with model: @cooky, url: cooky_path, method: :put do |f|
       - if @cooky.errors.any?
         #error_explanation
