@@ -1,4 +1,4 @@
-= form_for @cooky do |f|
+= form_with url: cooky_path do |f|
   - if @cooky.errors.any?
     #error_explanation
       %h2= "#{pluralize(@cooky.errors.count, "error")} prohibited this cooky from being saved:"
