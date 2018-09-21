@@ -1,2 +1,0 @@
-class Cookie < ApplicationRecord
-end
