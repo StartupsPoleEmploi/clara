@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Statistic:
+  = @cooky.statistic
+%p
+  %b Navigation:
+  = @cooky.navigation
+
+= link_to 'Edit', edit_cooky_path(@cooky)
+\|
+= link_to 'Back', cookies_path

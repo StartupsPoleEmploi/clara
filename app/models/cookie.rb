@@ -1,0 +1,2 @@
+class Cookie < ApplicationRecord
+end

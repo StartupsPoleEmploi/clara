@@ -1,0 +1,16 @@
+= form_for @cooky do |f|
+  - if @cooky.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cooky.errors.count, "error")} prohibited this cooky from being saved:"
+      %ul
+        - @cooky.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :statistic
+    = f.check_box :statistic
+  .field
+    = f.label :navigation
+    = f.check_box :navigation
+  .actions
+    = f.submit 'Save'
