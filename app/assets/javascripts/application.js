@@ -33,6 +33,7 @@
 //= require_tree ./forms
 //= require ./result_default
 //= require ./aides_index
+//= require ./cookies
 //= require ./contact
 //= require ./ga_hotjar
 //= require ./google_analytics_push
