@@ -8,6 +8,13 @@
     %p.c-cookie-explanation 
       Sélectionnez votre choix concernant chaque catégorie de cookies. Cliquez sur “Valider et continuer” pour valider vos choix.
 
+    .o-layout
+      .o-layout__item{:class => "u-1/2"}
+        blabla
+      .o-layout__item{:class => "u-1/2"}
+        blabla
+
+
     = form_with model: @cooky, url: cooky_path, method: :put do |f|
       - if @cooky.errors.any?
         #error_explanation
