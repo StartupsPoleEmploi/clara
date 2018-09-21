@@ -1,3 +1,7 @@
 .c-cookie-title {
   @include inuit-font-size(26px);
 }
+
+.c-cookie-explanation {
+  @include inuit-font-size(18px);
+}
