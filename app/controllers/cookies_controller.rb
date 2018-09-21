@@ -7,23 +7,21 @@ class CookiesController < ApplicationController
   end
 
   # PATCH/PUT /cookies/preference
-  # PATCH/PUT /cookies/1.json
   def update
-    respond_to do |format|
-      if @cooky.update(cooky_params)
-        format.html { redirect_to @cooky, notice: 'Cookie was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cooky }
-      else
-        format.html { render :edit }
-        format.json { render json: @cooky.errors, status: :unprocessable_entity }
-      end
-    end
+    p '- - - - - - - - - - - - - - @cooky- - - - - - - - - - - - - - - -' 
+    pp @cooky
+    p ''
+    session[:cookie] = @cooky.attributes
+    redirect_to root_path
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cooky
       @cooky = CookieForm.new(session[:cookie])
+      p '- - - - - - - - - - - - - - @cooky- - - - - - - - - - - - - - - -' 
+      pp session[:cookie]
+      p ''
       # @cooky = Cookie.find(params[:id])
     end
 
