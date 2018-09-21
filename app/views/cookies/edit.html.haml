@@ -9,10 +9,14 @@
       Sélectionnez votre choix concernant chaque catégorie de cookies. Cliquez sur “Valider et continuer” pour valider vos choix.
 
     .o-layout
-      .o-layout__item{:class => " u-1/2"}
+      .o-layout__item{:class => "u-1/2"}
         %h2.c-cookie-preference Préférence pour tous les services
       .o-layout__item{:class => "u-1/2"}
-        blabla
+        .o-layout
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout autoriser
+          .o-layout__item{:class => "u-1/2"}
+            %button Tout interdire
 
 
     = form_with model: @cooky, url: cooky_path, method: :put do |f|
