@@ -14,15 +14,38 @@ $(document).on('ready turbolinks:load', function () {
     *
     **/
     var STATE_KEY = 'cookies_preference';
-    var initial_state = {};
+
+    var initial_state = {
+      statistic: false,
+      navigation: false
+    };
+
     var default_state = function() {
-      var previous_state = store.get(STATE_KEY);
+      var previous_state = {
+        statistic: $('#input_stat').is(':checked'),
+        navigation: $('#input_nav').is(':checked')
+      };
       var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
       return has_state ? previous_state : initial_state;
-    }
+    };
 
 
-
+    /**
+    *
+    *
+    *
+    *         MAIN REDUCER 
+    *
+    *
+    *
+    *
+    **/
+    var main_reducer = function(state, action) {
+      
+      if (state === undefined) {
+        return default_state();
+      }
+    };
 
     /**
     *

@@ -57,10 +57,10 @@
 
       .field
         = f.label :statistic
-        = f.check_box :statistic
+        = f.check_box :statistic, id: 'input_stat'
       .field
         = f.label :navigation
-        = f.check_box :navigation
+        = f.check_box :navigation, id: 'input_nav'
       .actions.u-text--right
         = f.submit 'Valider et continuer', "class" => "c-btn c-btn--result c-cookie-submit"
 
