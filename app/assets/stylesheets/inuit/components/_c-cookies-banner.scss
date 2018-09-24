@@ -8,7 +8,10 @@
 
 
 .c-cookies-banner-container {
-  padding: space(3) space(12);
+  padding: space(2);
+  @include mq($from: tablet) {
+    padding: space(3) space(12);
+  }
 }
 
 .c-cookies-button {
