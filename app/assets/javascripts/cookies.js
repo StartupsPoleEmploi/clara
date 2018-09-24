@@ -80,6 +80,7 @@ $(document).on('turbolinks:load', function () {
       var that = this;
       main_store.dispatch({type: 'FORBID_STATISTIC'});
     });
+
     $('#authorize_navigation').click(function(){
       console.log("clicked #authorize_navigation")
       var that = this;
@@ -89,6 +90,17 @@ $(document).on('turbolinks:load', function () {
       console.log("clicked #forbid_navigation")
       var that = this;
       main_store.dispatch({type: 'FORBID_NAVIGATION'});
+    });
+
+    $('#authorize_all').click(function(){
+      console.log("clicked #authorize_all")
+      var that = this;
+      main_store.dispatch({type: 'AUTHORIZE_ALL'});
+    });
+    $('#forbid_all').click(function(){
+      console.log("clicked #forbid_all")
+      var that = this;
+      main_store.dispatch({type: 'FORBID_ALL'});
     });
 
     /**
