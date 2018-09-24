@@ -2,7 +2,7 @@
 
  
 ## 13.1.0 (21/09/2018)
--[#889][FEATURE] Activer ou Désactiver les cookies
+-[#904][FEATURE] Activer ou Désactiver les cookies
 
 
 ## 13.0.3 (20/09/2018)
