@@ -8,6 +8,16 @@ class ApplicationController < ActionController::Base
   before_action :set_cache_headers
   # See https://sentry.io/pole-emploi/ara/getting-started/ruby-rails/
   before_action :set_raven_context
+
+  before_action :refuse_tracking
+
+  def refuse_tracking
+    if session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
+      gon.disable_analytics = true
+    else
+      gon.disable_analytics = false
+    end
+  end
   
   def my_redirect_to(url)
     # See https://github.com/turbolinks/turbolinks-rails/pull/41
