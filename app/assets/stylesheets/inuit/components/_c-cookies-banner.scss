@@ -10,23 +10,27 @@
 
 .c-cookies-banner p {
     display: inline-block;
-    max-width: 810px;
+    max-width: 850px;
     margin-top: 5px;
     text-align: left;
     color: #C0C0C0
 }
 
 .c-button-cookies {
-    margin-top: 16px;
+    margin-top: 21px;
     border: 0;
     white-space: nowrap;
     border-radius: 5rem;
     background-color: #FFFFFF;
-    padding: 0.5rem 1rem;
+    padding: 10px 30px;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
+}
+
+.c-button-cookies a {
+    color: #358ED7;
 }
 
