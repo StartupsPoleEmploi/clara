@@ -1,3 +1,6 @@
 $(document).on('turbolinks:load', function () {
-  console.log(!_.get(window, 'gon.disable_analytics'))
+  var disable_analytics = _.get(window, 'gon.disable_analytics');
+  if (disable_analytics === true) {
+    
+  }
 });
