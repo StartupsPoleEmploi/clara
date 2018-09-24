@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load', function () {
   if ($('body').hasClass('cookies', 'edit')) {
 
-    console.log('cookies editing...')
 
     /**
     *         INITIAL STATE 
@@ -36,9 +35,6 @@ $(document).on('turbolinks:load', function () {
     **/
     window.main_reducer = function(state, action) {
 
-      console.log("--- FIRED! ----- ")
-      console.log(state)
-      console.log(action)
       if (state === undefined) {
         return default_state();
       }
@@ -79,34 +75,28 @@ $(document).on('turbolinks:load', function () {
     *         DISPATCHERS 
     **/
     $('#authorize_statistic').click(function(){
-      console.log("clicked #authorize_statistic")
       var that = this;
       main_store.dispatch({type: 'AUTHORIZE_STATISTIC'});
     });
     $('#forbid_statistic').click(function(){
-      console.log("clicked #forbid_statistic")
       var that = this;
       main_store.dispatch({type: 'FORBID_STATISTIC'});
     });
 
     $('#authorize_navigation').click(function(){
-      console.log("clicked #authorize_navigation")
       var that = this;
       main_store.dispatch({type: 'AUTHORIZE_NAVIGATION'});
     });
     $('#forbid_navigation').click(function(){
-      console.log("clicked #forbid_navigation")
       var that = this;
       main_store.dispatch({type: 'FORBID_NAVIGATION'});
     });
 
     $('#authorize_all').click(function(){
-      console.log("clicked #authorize_all")
       var that = this;
       main_store.dispatch({type: 'AUTHORIZE_ALL'});
     });
     $('#forbid_all').click(function(){
-      console.log("clicked #forbid_all")
       var that = this;
       main_store.dispatch({type: 'FORBID_ALL'});
     });
