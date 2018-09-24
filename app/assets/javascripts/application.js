@@ -37,6 +37,7 @@
 //= require ./contact
 //= require ./ga_hotjar
 //= require ./google_analytics_push
+//= require ./remove_hotjar_analytics
 //= require ./print
 //= require ./welcome_index
 //= require ./stats_index
