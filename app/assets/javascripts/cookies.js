@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function () {
       disable_navigation: false
     };
 
-    window.default_state = function() {
+    var default_state = function() {
       var previous_state = {
         disable_statistic: $('#input_stat').is(':checked'),
         disable_navigation: $('#input_nav').is(':checked')
@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function () {
     /**
     *         MAIN REDUCER 
     **/
-    window.main_reducer = function(state, action) {
+    var main_reducer = function(state, action) {
 
       if (state === undefined) {
         return default_state();
@@ -69,7 +69,7 @@ $(document).on('turbolinks:load', function () {
     /**
     *         MAIN STORE 
     **/
-    window.main_store = Redux.createStore(main_reducer, default_state());
+    var main_store = Redux.createStore(main_reducer, default_state());
 
     /**
     *         DISPATCHERS 
