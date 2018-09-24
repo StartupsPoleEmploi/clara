@@ -25,7 +25,6 @@ _.set(window, 'clara.include_ga', function(){
 _.set(window, 'clara.exclude_ga', function(){
   $( "script[src*='analytics.com']" ).remove();    
   _.set(window, 'ga', {});
-  // window.ga = function(){console.log("analytics has been removed")}; 
 });
 
 
