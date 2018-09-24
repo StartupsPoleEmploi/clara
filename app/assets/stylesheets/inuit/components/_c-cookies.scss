@@ -19,7 +19,7 @@ h2.c-cookie-preference {
   margin-bottom: 5px;
 }
 .c-cookie-cta {
-  @include inuit-font-size(16px);
+  @include inuit-font-size(12px);
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
@@ -29,9 +29,14 @@ h2.c-cookie-preference {
   color: #ffffff;
   border-radius: 30px;
   border: none;
-  padding: space(4) space(8);
   cursor: pointer;
   font-family: 'Roboto';
+  padding: space(2);
+  @include mq($from: tablet) {
+    @include inuit-font-size(16px);
+    padding: space(4) space(8);
+  }
+
 }
 .c-cookie-cta.is-disabled {
   opacity: 0.6;
