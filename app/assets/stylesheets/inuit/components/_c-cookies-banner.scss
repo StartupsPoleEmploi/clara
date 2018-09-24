@@ -9,6 +9,9 @@
     @include mq($from: mobile) {
         height: 220px;
   }
+    @include mq($from: mobile) {
+        height: 180px;
+  }
 }
 
 .c-cookies-p {
@@ -42,6 +45,10 @@
         margin-top: 0px;
         margin-left:57px;
   }
+    @include mq($from: tablet) {
+        margin-top: 0px;
+        margin-left: 240px;
+    }
 }
 
 .c-cookies-button a {
