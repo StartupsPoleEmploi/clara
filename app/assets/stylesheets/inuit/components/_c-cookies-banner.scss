@@ -25,7 +25,6 @@
 }
 
 .c-cookies-banner-container .o-line {
-  background-color: red;
   @include mq($until: tablet) {
     display: block;
     width: inherit;
