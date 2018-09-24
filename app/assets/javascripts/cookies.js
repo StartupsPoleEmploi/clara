@@ -58,6 +58,8 @@ $(document).on('turbolinks:load', function () {
       if (action.type === 'FORBID_NAVIGATION') {
         newState.disable_navigation = true;
       }
+      
+      return newState;
     };
 
     /**
