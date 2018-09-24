@@ -58,7 +58,7 @@ $(document).on('turbolinks:load', function () {
       if (action.type === 'FORBID_NAVIGATION') {
         newState.disable_navigation = true;
       }
-      
+
       return newState;
     };
 
@@ -80,6 +80,16 @@ $(document).on('turbolinks:load', function () {
       var that = this;
       main_store.dispatch({type: 'FORBID_STATISTIC'});
     });
+    $('#authorize_navigation').click(function(){
+      console.log("clicked #authorize_navigation")
+      var that = this;
+      main_store.dispatch({type: 'AUTHORIZE_NAVIGATION'});
+    });
+    $('#forbid_navigation').click(function(){
+      console.log("clicked #forbid_navigation")
+      var that = this;
+      main_store.dispatch({type: 'FORBID_NAVIGATION'});
+    });
 
     /**
     *         SUBSCRIBERS
@@ -97,11 +107,11 @@ $(document).on('turbolinks:load', function () {
       }
 
       if (state.disable_navigation === true) {
-        disable_buttton("#authorize_navigation");
-        enable_buttton("#forbid_navigation");
-      } else {
         enable_buttton("#authorize_navigation");
         disable_buttton("#forbid_navigation");
+      } else {
+        disable_buttton("#authorize_navigation");
+        enable_buttton("#forbid_navigation");
       }
 
       if (_.every(state)) {
