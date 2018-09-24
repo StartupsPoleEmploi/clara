@@ -32,6 +32,9 @@ h2.c-cookie-preference {
   padding: space(4) space(8);
   cursor: pointer;
 }
+.c-cookie-cta.is-disabled {
+  opacity: 0.6;
+}
 .c-cookie-cta--green {
   background-color: #108670;
 }

@@ -61,11 +61,11 @@ $(document).on('ready turbolinks:load', function () {
       var state = main_store.getState();
 
       if (state.statistic === true) {
-        disable_buttton("#authorize_statistic")
-        enable_buttton("#forbid_statistic")
+        disable_buttton("#authorize_statistic");
+        enable_buttton("#forbid_statistic");
       } else {
-        enable_buttton("#authorize_statistic")
-        disable_buttton("#forbid_statistic")
+        enable_buttton("#authorize_statistic");
+        disable_buttton("#forbid_statistic");
       }
     }); 
 
