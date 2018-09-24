@@ -100,11 +100,10 @@ $(document).on('ready turbolinks:load', function () {
       //   disable_buttton("#authorize_all")
       // }
 
-      
-      // if _.every(state) {
-        // disable_buttton("#authorize_all");
-        // enable_buttton("#forbid_all");        
-      // } 
+      if (_.every(state)) {
+        disable_buttton("#forbid_all");
+        enable_buttton("#authorize_all");        
+      } 
       // else if _.none(state) {
       //   enable_buttton("#authorize_all");
       //   enable_buttton("#forbid_all");        
