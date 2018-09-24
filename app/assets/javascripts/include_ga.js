@@ -20,9 +20,21 @@ _.set(window, 'clara.include_ga', function(){
   });
 })
 
+_.set(window, 'clara.exclude_ga', function(){
+  $( "script[src*='analytics.com']" ).remove();    
+  window.ga = function(){console.log("analytics has been removed")}; 
+});
+
 
 $(document).on('turbolinks:load', function () {
 
+  var ga_script_not_yet_loaded = $( "script[src*='analytics.com']" ).length === 0;
+  var user_disabled_analytics = _.get(window, 'gon.disable_analytics') === true;
 
+  if (ga_script_not_yet_loaded && !user_disabled_analytics) {
+    clara.include_ga();
+  } else if (user_disabled_analytics) {
+    clara.exclude_ga();
+  }
 
 });
