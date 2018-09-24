@@ -2,6 +2,9 @@ class CookiesController < ApplicationController
 
   # GET /cookies/preference/edit
   def edit
+    pp '*********** Sessions blabla ***************'
+    session[:cookie][:disable_statistic]
+    session[:cookie][:disable_navigation]
     @cooky = CookieForm.new(session[:cookie])
   end
 
