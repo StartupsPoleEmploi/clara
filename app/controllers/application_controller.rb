@@ -17,6 +17,9 @@ class ApplicationController < ActionController::Base
     else
       gon.disable_analytics = false
     end
+      p '- - - - - - - - - - - - - - disable_analytics- - - - - - - - - - - - - - - -' 
+      pp gon.disable_analytics
+      p ''
   end
   
   def my_redirect_to(url)

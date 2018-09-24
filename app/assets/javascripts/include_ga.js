@@ -1,5 +1,7 @@
 _.set(window, 'clara.include_ga', function(){
+  
   //load google analytics scripts
+  _.unset(window, 'ga');
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');                
 
   //build google analytics default values and dimensions
@@ -22,7 +24,8 @@ _.set(window, 'clara.include_ga', function(){
 
 _.set(window, 'clara.exclude_ga', function(){
   $( "script[src*='analytics.com']" ).remove();    
-  window.ga = function(){console.log("analytics has been removed")}; 
+  _.set(window, 'ga', {});
+  // window.ga = function(){console.log("analytics has been removed")}; 
 });
 
 
