@@ -9,7 +9,7 @@
     @include mq($from: mobile) {
         height: 220px;
   }
-    @include mq($from: mobile) {
+    @include mq($from: tablet) {
         height: 180px;
   }
 }
