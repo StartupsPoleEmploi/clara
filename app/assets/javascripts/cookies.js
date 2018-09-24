@@ -36,7 +36,9 @@ $(document).on('ready turbolinks:load', function () {
     **/
     window.main_reducer = function(state, action) {
 
-
+      console.log("--- FIRED! ----- ")
+      console.log(state)
+      console.log(action)
       if (state === undefined) {
         return default_state();
       }
@@ -104,13 +106,14 @@ $(document).on('ready turbolinks:load', function () {
         disable_buttton("#forbid_all");
         enable_buttton("#authorize_all");        
       } 
-      // else if _.none(state) {
-      //   enable_buttton("#authorize_all");
-      //   enable_buttton("#forbid_all");        
-      // } else { // some
-      //   disable_buttton("#authorize_all");
-      //   disable_buttton("#forbid_all");        
-      // } 
+      else if (_.none(state)) {
+        enable_buttton("#forbid_all");
+        disable_buttton("#authorize_all");        
+      } 
+      else { // some
+        disable_buttton("#authorize_all");
+        disable_buttton("#forbid_all");        
+      } 
 
     }); 
 
