@@ -69,8 +69,14 @@ $(document).on('turbolinks:load', function () {
     *         DISPATCHERS 
     **/
     $('#authorize_statistic').click(function(){
+      console.log("clicked #authorize_statistic")
       var that = this;
-      main_store.dispatch({type: 'AUTHORIZE_STATISTIC', value: $(that).prop("checked")});
+      main_store.dispatch({type: 'AUTHORIZE_STATISTIC'});
+    });
+    $('#forbid_statistic').click(function(){
+      console.log("clicked #forbid_statistic")
+      var that = this;
+      main_store.dispatch({type: 'FORBID_STATISTIC'});
     });
 
     /**
