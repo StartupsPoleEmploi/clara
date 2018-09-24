@@ -123,8 +123,8 @@ $(document).on('turbolinks:load', function () {
         disable_buttton("#authorize_all");        
       } 
       else { // some
-        disable_buttton("#authorize_all");
-        disable_buttton("#forbid_all");        
+        enable_buttton("#authorize_all");
+        enable_buttton("#forbid_all");        
       } 
 
     }); 
