@@ -89,11 +89,11 @@ $(document).on('turbolinks:load', function () {
       var state = main_store.getState();
 
       if (state.disable_statistic === true) {
-        disable_buttton("#authorize_statistic");
-        enable_buttton("#forbid_statistic");
-      } else {
         enable_buttton("#authorize_statistic");
         disable_buttton("#forbid_statistic");
+      } else {
+        disable_buttton("#authorize_statistic");
+        enable_buttton("#forbid_statistic");
       }
 
       if (state.disable_navigation === true) {
