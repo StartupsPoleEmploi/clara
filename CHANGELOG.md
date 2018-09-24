@@ -1,5 +1,6 @@
 # ARA Changelog
 
+
 ## 13.2.0 (24/09/2018)
 -[#870][FEATURE] Bandeau pour cookies
  
