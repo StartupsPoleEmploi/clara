@@ -75,7 +75,18 @@ $(document).on('ready turbolinks:load', function () {
         enable_buttton("#authorize_navigation");
         disable_buttton("#forbid_navigation");
       }
-      
+
+      // if _.every(state) {
+      //   disable_buttton("#authorize_all");
+      //   enable_buttton("#forbid_all");        
+      // } else if _.none(state) {
+      //   enable_buttton("#authorize_all");
+      //   enable_buttton("#forbid_all");        
+      // } else { // some
+      //   disable_buttton("#authorize_all");
+      //   disable_buttton("#forbid_all");        
+      // } 
+
     }); 
 
     // fire initial state
