@@ -1,11 +1,18 @@
 .c-cookies-banner {
-    background-color: rgba(20,20,20,0.8);
-    min-height: 15px;
-    font-size: 13px;
-    color: #ccc;
-    line-height: 15px;
-    padding: 8px 0 8px 30px;
+    top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    background: #2b2b2b;
+    opacity: 0.9;
+    position: fixed;
 }
+
+.c-cookies-banner p {
+    display: inline-block;
+    max-width: 810px;
+    margin-top: 0px;
+    text-align: center;
+    color: #C0C0C0
+}
+
