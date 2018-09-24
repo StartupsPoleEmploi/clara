@@ -6,6 +6,9 @@
     opacity: 0.9;
     position: fixed;
     height: 60px;
+    @include mq($from: mobile) {
+        height: 220px;
+  }
 }
 
 .c-cookies-p {
@@ -13,7 +16,10 @@
     max-width: 880px;
     margin-top: 5px;
     text-align: left;
-    color: #C0C0C0
+    color: #C0C0C0;
+    @include mq($from: mobile) {
+        margin-bottom: 0px;
+  }
 }
 
 .c-cookies-p a{
@@ -32,6 +38,10 @@
     display: inline-block;
     font-size: 1rem;
     font-weight: bold;
+    @include mq($from: mobile) {
+        margin-top: 0px;
+        margin-left:57px;
+  }
 }
 
 .c-cookies-button a {
