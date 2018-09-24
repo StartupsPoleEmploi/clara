@@ -47,7 +47,7 @@
             %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
 
 
-    = form_with model: @cooky, url: cooky_path, method: :put do |f|
+    = form_with model: @cooky, url: cooky_path, method: :put, local: false do |f|
 
       .field.u-display-none
         = f.label :disable_statistic
