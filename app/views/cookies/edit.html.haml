@@ -1,0 +1,61 @@
+%main#main.mw1140p.center{role: "main"}
+  .u-useful-width.u-margin-constraint
+    %h1.c-cookie-title.u-margin-top.u-margin-bottom-large
+      Gestion de vos préférences sur les cookies
+
+    %p.c-cookie-explanation 
+      En activant les cookies, votre navigateur retient certaines informations de visite, et c’est grâce à cela que nous continuerons d’affiner votre expérience sur nos sites. 
+    %p.c-cookie-explanation 
+      Sélectionnez votre choix concernant chaque catégorie de cookies. Cliquez sur “Valider et continuer” pour valider vos choix.
+
+    .o-layout.c-cookie-line
+      .o-layout__item{:class => "u-1/2"}
+        %h2.c-cookie-preference Préférence pour tous les services
+      .o-layout__item{:class => "u-1/2"}
+        .o-layout
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#authorize_all.c-cookie-cta.c-cookie-cta--green Tout autoriser
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
+
+
+    .o-layout.c-cookie-line
+      .o-layout__item{:class => "u-1/2"}
+        %h2.c-cookie-preference 
+          Statistiques
+        %p.c-cookie-description
+          Ces cookies nous permettent d'analyser l'utilisation du site afin de pouvoir en mesurer et en améliorer la performance.
+      .o-layout__item{:class => "u-1/2"}
+        .o-layout
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
+
+
+    .o-layout.c-cookie-line
+      .o-layout__item{:class => "u-1/2"}
+        %h2.c-cookie-preference 
+          Navigation
+        %p.c-cookie-description
+          Ces cookies nous permettent d'analyser la navigation sur le site afin de l’améliorer et d’analyser les comportements des internautes 
+      .o-layout__item{:class => "u-1/2"}
+        .o-layout
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
+
+
+    = form_with model: @cooky, url: cooky_path, method: :put, local: true do |f|
+
+      .field.u-display-none
+        = f.label :disable_statistic
+        = f.check_box :disable_statistic, id: 'input_stat'
+      .field.u-display-none
+        = f.label :disable_navigation
+        = f.check_box :disable_navigation, id: 'input_nav'
+      .actions.u-text--right
+        = f.submit 'Valider et continuer', "class" => "c-btn c-btn--result c-cookie-submit"
+
+

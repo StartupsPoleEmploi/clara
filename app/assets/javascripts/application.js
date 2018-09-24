@@ -33,8 +33,10 @@
 //= require_tree ./forms
 //= require ./result_default
 //= require ./aides_index
+//= require ./cookies
 //= require ./contact
-//= require ./ga_hotjar
+//= require ./include_ga
+//= require ./include_hj
 //= require ./google_analytics_push
 //= require ./print
 //= require ./welcome_index

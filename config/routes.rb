@@ -84,6 +84,9 @@ Rails.application.routes.draw do
   resources :contact,               only: [:index, :create]
   resources :contact_sent,          only: [:index]
   
+  resources :cookies,               only: [:edit, :update]
+  
+  
   # resources :aides, only: [:show, :index] 
   resources :aides, only: [:index] do
     collection do

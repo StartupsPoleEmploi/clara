@@ -1,6 +1,6 @@
 .c-footer-motherhome
   %small
-    ="Copyright #{Time.now.year} ©CLARA"  
+    = link_to "Copyright #{Time.now.year} ©CLARA", edit_cooky_path('preference')
   %small
     = link_to "propulsé par POLE EMPLOI", "https://www.pole-emploi.fr/", target: "_blank", "class" => "c-propels-by"
   %small
