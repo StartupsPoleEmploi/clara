@@ -17,9 +17,11 @@ class ApplicationController < ActionController::Base
     else
       gon.disable_analytics = false
     end
-      p '- - - - - - - - - - - - - - disable_analytics- - - - - - - - - - - - - - - -' 
-      pp gon.disable_analytics
-      p ''
+    if session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
+      gon.disable_navigation = true
+    else
+      gon.disable_navigation = false
+    end
   end
   
   def my_redirect_to(url)

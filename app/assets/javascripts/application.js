@@ -36,6 +36,7 @@
 //= require ./cookies
 //= require ./contact
 //= require ./include_ga
+//= require ./include_hj
 //= require ./google_analytics_push
 //= require ./print
 //= require ./welcome_index
