@@ -35,9 +35,9 @@
 //= require ./aides_index
 //= require ./cookies
 //= require ./contact
-//= require ./ga_hotjar
+//= require ./include_ga
+//= require ./remove_ga
 //= require ./google_analytics_push
-//= require ./remove_hotjar_analytics
 //= require ./print
 //= require ./welcome_index
 //= require ./stats_index
