@@ -58,6 +58,14 @@ $(document).on('turbolinks:load', function () {
       if (action.type === 'FORBID_NAVIGATION') {
         newState.disable_navigation = true;
       }
+      if (action.type === 'AUTHORIZE_ALL') {
+        newState.disable_statistic = false;
+        newState.disable_navigation = false;
+      }
+      if (action.type === 'FORBID_ALL') {
+        newState.disable_statistic = true;
+        newState.disable_navigation = true;
+      }
 
       return newState;
     };
