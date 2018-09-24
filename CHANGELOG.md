@@ -1,6 +1,10 @@
 # ARA Changelog
 
  
+## 13.1.1 (24/09/2018)
+-[#905][BUG] Les cookies sur mobile
+
+
 ## 13.1.0 (21/09/2018)
 -[#904][FEATURE] Activer ou Désactiver les cookies
 
