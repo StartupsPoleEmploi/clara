@@ -1,6 +1,10 @@
 # ARA Changelog
 
  
+## 13.0.4 (24/09/2018)
+-[#870][DESIGN] Bandeau d'alerte des cookies 
+
+
 ## 13.0.3 (20/09/2018)
 -[#893][BUG] Table des codes postaux
 
