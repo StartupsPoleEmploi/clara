@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 13.0.5 (24/09/2018)
+-[#898][DESIGN] Bandeau d'alerte des cookies pour mobile
+
  
 ## 13.0.4 (24/09/2018)
 -[#870][DESIGN] Bandeau d'alerte des cookies 
