@@ -4,14 +4,7 @@ $(document).on('ready turbolinks:load', function () {
     console.log('cookies editing...')
 
     /**
-    *
-    *
-    *
     *         INITIAL STATE 
-    *
-    *
-    *
-    *
     **/
     var STATE_KEY = 'cookies_preference';
 
@@ -31,60 +24,34 @@ $(document).on('ready turbolinks:load', function () {
 
 
     /**
-    *
-    *
-    *
     *         MAIN REDUCER 
-    *
-    *
-    *
-    *
     **/
     var main_reducer = function(state, action) {
-      
+
       if (state === undefined) {
         return default_state();
       }
+
     };
 
     /**
-    *
-    *
-    *
     *         MAIN STORE 
-    *
-    *
-    *
-    *
     **/
     window.main_store = Redux.createStore(main_reducer, default_state());
 
     /**
-    *
-    *
-    *
     *         DISPATCHERS 
-    *
-    *
-    *
-    *
     **/
     $('.stuff').click(function(){
     });
 
     /**
-    *
-    *
-    *
     *         SUBSCRIBERS
-    *
-    *
-    *
-    *
     **/
     main_store.subscribe(function() {
 
       var state = main_store.getState();
+      
     });
 
     // fire initial state

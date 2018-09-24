@@ -14,9 +14,9 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--green Tout autoriser
+            %button#authorize_all.c-cookie-cta.c-cookie-cta--green Tout autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--red Tout interdire
+            %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
 
 
     .o-layout.c-cookie-line
@@ -28,9 +28,9 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--green Autoriser
+            %button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--red Interdire
+            %button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
 
 
     .o-layout.c-cookie-line
@@ -42,9 +42,9 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--green Autoriser
+            %button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button.c-cookie-cta.c-cookie-cta--red Interdire
+            %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
 
 
     = form_with model: @cooky, url: cooky_path, method: :put do |f|
