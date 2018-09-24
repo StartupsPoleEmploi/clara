@@ -26,12 +26,15 @@
 
 .c-cookies-banner-container .o-line {
   background-color: red;
-  @include mq($until: tablet) {
-    display: block;
-    width: inherit;
-  }
+  display: block;
+  width: inherit;
+  // @include mq($until: mobile) {
+  // }
 }
 
-
+.c-cookies-banner-container .o-line__item {
+  display: block;
+  vertical-align: inherit;
+}
 
 
