@@ -1,6 +1,9 @@
 # ARA Changelog
 
+## 13.2.0 (24/09/2018)
+-[#870][FEATURE] Bandeau pour cookies
  
+
 ## 13.1.1 (24/09/2018)
 -[#905][BUG] Les cookies sur mobile
 
