@@ -18,9 +18,9 @@ class ApplicationController < ActionController::Base
       gon.disable_analytics = false
     end
     if session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
-      gon.disable_navigation = true
+      gon.disable_hotjar = true
     else
-      gon.disable_navigation = false
+      gon.disable_hotjar = false
     end
   end
   
