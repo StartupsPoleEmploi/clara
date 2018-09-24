@@ -96,12 +96,6 @@ $(document).on('turbolinks:load', function () {
         disable_buttton("#forbid_navigation");
       }
 
-      // if (state.disable_statistic === true && state.disable_navigation === true) {
-      //   disable_buttton("#authorize_all")
-      // } else if (state.disable_statistic === false && state.disable_navigation === true) {
-      //   disable_buttton("#authorize_all")
-      // }
-
       if (_.every(state)) {
         disable_buttton("#forbid_all");
         enable_buttton("#authorize_all");        
