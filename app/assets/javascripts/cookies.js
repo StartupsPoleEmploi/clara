@@ -67,6 +67,15 @@ $(document).on('ready turbolinks:load', function () {
         enable_buttton("#authorize_statistic");
         disable_buttton("#forbid_statistic");
       }
+
+      if (state.navigation === true) {
+        disable_buttton("#authorize_navigation");
+        enable_buttton("#forbid_navigation");
+      } else {
+        enable_buttton("#authorize_navigation");
+        disable_buttton("#forbid_navigation");
+      }
+      
     }); 
 
     // fire initial state
