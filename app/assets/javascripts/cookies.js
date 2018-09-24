@@ -118,6 +118,7 @@ $(document).on('turbolinks:load', function () {
 
       var state = main_store.getState();
 
+      // state of simple buttons
       if (state.disable_statistic === true) {
         enable_buttton("#authorize_statistic");
         disable_buttton("#forbid_statistic");
@@ -134,6 +135,7 @@ $(document).on('turbolinks:load', function () {
         enable_buttton("#forbid_navigation");
       }
 
+      // state aggregated buttons
       if (_.every(state)) {
         disable_buttton("#forbid_all");
         enable_buttton("#authorize_all");        
@@ -147,6 +149,9 @@ $(document).on('turbolinks:load', function () {
         enable_buttton("#forbid_all");        
       } 
 
+      // state of form
+      $("#input_nav").prop( "checked", state.disable_navigation );
+      $("#input_stat").prop( "checked", state.disable_statistic );
     }); 
 
     // fire initial state
