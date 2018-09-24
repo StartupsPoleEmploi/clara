@@ -5,6 +5,8 @@ class CookiesController < ApplicationController
     pp '*********** Sessions blabla ***************'
     pp session[:cookie][:disable_statistic]
     pp session[:cookie][:disable_navigation]
+    pp session[:cookie]["disable_statistic"]
+    pp session[:cookie]["disable_navigation"]
     @cooky = CookieForm.new(session[:cookie])
   end
 
