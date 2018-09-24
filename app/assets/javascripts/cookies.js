@@ -76,6 +76,13 @@ $(document).on('ready turbolinks:load', function () {
         disable_buttton("#forbid_navigation");
       }
 
+      // if (state.statistic === true && state.navigation === true) {
+      //   disable_buttton("#authorize_all")
+      // } else if (state.statistic === false && state.navigation === true) {
+      //   disable_buttton("#authorize_all")
+      // }
+
+      
       // if _.every(state) {
       //   disable_buttton("#authorize_all");
       //   enable_buttton("#forbid_all");        
