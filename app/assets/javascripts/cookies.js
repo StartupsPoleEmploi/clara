@@ -102,9 +102,10 @@ $(document).on('ready turbolinks:load', function () {
 
       
       // if _.every(state) {
-      //   disable_buttton("#authorize_all");
-      //   enable_buttton("#forbid_all");        
-      // } else if _.none(state) {
+        // disable_buttton("#authorize_all");
+        // enable_buttton("#forbid_all");        
+      // } 
+      // else if _.none(state) {
       //   enable_buttton("#authorize_all");
       //   enable_buttton("#forbid_all");        
       // } else { // some
