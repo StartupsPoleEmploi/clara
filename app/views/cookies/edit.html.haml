@@ -56,11 +56,11 @@
               %li= message
 
       .field
-        = f.label :statistic
-        = f.check_box :statistic, id: 'input_stat'
+        = f.label :disable_statistic
+        = f.check_box :disable_statistic, id: 'input_stat'
       .field
-        = f.label :navigation
-        = f.check_box :navigation, id: 'input_nav'
+        = f.label :disable_navigation
+        = f.check_box :disable_navigation, id: 'input_nav'
       .actions.u-text--right
         = f.submit 'Valider et continuer', "class" => "c-btn c-btn--result c-cookie-submit"
 

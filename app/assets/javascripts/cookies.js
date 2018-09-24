@@ -9,14 +9,14 @@ $(document).on('ready turbolinks:load', function () {
     var STATE_KEY = 'cookies_preference';
 
     var initial_state = {
-      statistic: false,
-      navigation: false
+      disable_statistic: false,
+      disable_navigation: false
     };
 
     window.default_state = function() {
       var previous_state = {
-        statistic: $('#input_stat').is(':checked'),
-        navigation: $('#input_nav').is(':checked')
+        disable_statistic: $('#input_stat').is(':checked'),
+        disable_navigation: $('#input_nav').is(':checked')
       };
       var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
       return has_state ? previous_state : initial_state;
@@ -45,10 +45,16 @@ $(document).on('ready turbolinks:load', function () {
       var newState = JSON.parse(JSON.stringify(state));
 
       if (action.type === 'AUTHORIZE_STATISTIC') {
-        newState.statistic = true;
+        newState.disable_statistic = false;
       }
       if (action.type === 'FORBID_STATISTIC') {
-        newState.statistic = false;
+        newState.disable_statistic = true;
+      }
+      if (action.type === 'AUTHORIZE_NAVIGATION') {
+        newState.disable_navigation = false;
+      }
+      if (action.type === 'FORBID_NAVIGATION') {
+        newState.disable_navigation = true;
       }
     };
 
@@ -72,7 +78,7 @@ $(document).on('ready turbolinks:load', function () {
 
       var state = main_store.getState();
 
-      if (state.statistic === true) {
+      if (state.disable_statistic === true) {
         disable_buttton("#authorize_statistic");
         enable_buttton("#forbid_statistic");
       } else {
@@ -80,7 +86,7 @@ $(document).on('ready turbolinks:load', function () {
         disable_buttton("#forbid_statistic");
       }
 
-      if (state.navigation === true) {
+      if (state.disable_navigation === true) {
         disable_buttton("#authorize_navigation");
         enable_buttton("#forbid_navigation");
       } else {
@@ -88,9 +94,9 @@ $(document).on('ready turbolinks:load', function () {
         disable_buttton("#forbid_navigation");
       }
 
-      // if (state.statistic === true && state.navigation === true) {
+      // if (state.disable_statistic === true && state.disable_navigation === true) {
       //   disable_buttton("#authorize_all")
-      // } else if (state.statistic === false && state.navigation === true) {
+      // } else if (state.disable_statistic === false && state.disable_navigation === true) {
       //   disable_buttton("#authorize_all")
       // }
 

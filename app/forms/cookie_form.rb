@@ -1,6 +1,6 @@
 class CookieForm < ActiveType::Object
 
-  attribute :navigation, :string
-  attribute :statistic, :string
+  attribute :disable_navigation, :string
+  attribute :disable_statistic, :string
 
 end
