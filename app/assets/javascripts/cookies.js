@@ -13,7 +13,7 @@ $(document).on('ready turbolinks:load', function () {
       navigation: false
     };
 
-    var default_state = function() {
+    window.default_state = function() {
       var previous_state = {
         statistic: $('#input_stat').is(':checked'),
         navigation: $('#input_nav').is(':checked')
@@ -22,11 +22,19 @@ $(document).on('ready turbolinks:load', function () {
       return has_state ? previous_state : initial_state;
     };
 
+    var disable_buttton = function (id) {
+      $(id).attr("disabled", "disabled");
+      $(id).addClass("is-disabled");
+    }
+    var enable_buttton = function (id) {
+      $(id).removeAttr("disabled");
+      $(id).removeClass("is-disabled");
+    }
 
     /**
     *         MAIN REDUCER 
     **/
-    var main_reducer = function(state, action) {
+    window.main_reducer = function(state, action) {
 
       if (state === undefined) {
         return default_state();
@@ -51,8 +59,15 @@ $(document).on('ready turbolinks:load', function () {
     main_store.subscribe(function() {
 
       var state = main_store.getState();
-      
-    });
+
+      if (state.statistic === true) {
+        disable_buttton("#authorize_statistic")
+        enable_buttton("#forbid_statistic")
+      } else {
+        enable_buttton("#authorize_statistic")
+        disable_buttton("#forbid_statistic")
+      }
+    }); 
 
     // fire initial state
     main_store.dispatch({type: 'INIT'})
