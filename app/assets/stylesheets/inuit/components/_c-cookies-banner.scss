@@ -1,4 +1,5 @@
 .c-cookies-banner {
+<<<<<<< HEAD
   bottom: 0;
   left: 0;
   right: 0;
@@ -22,19 +23,33 @@
       margin-bottom: 0;
   }
 }
+=======
+  position: fixed;
+  bottom: 0;
+  background: #2b2b2b;
+  opacity: 0.9;
+  color: #C0C0C0;
+}
 
-.c-cookies-p a{
-    color: #C0C0C0
+>>>>>>> 79f6d91efde45c0268edb649583a13f59af6cc12
+
+.c-cookies-banner-container {
+  padding: space(2);
+  @include mq($from: tablet) {
+    padding: space(3) space(12);
+  }
 }
 
 .c-cookies-button {
+  margin-top: space(3);
   border: 0;
   white-space: nowrap;
-  border-radius: 5rem;
+  border-radius: space(3);
   background-color: #FFFFFF;
-  padding: 8px 28px;
+  padding: space(3);
   cursor: pointer;
   text-decoration: none;
+<<<<<<< HEAD
   font-size: 1rem;
   font-weight: bold;
   margin-left: 70px;
@@ -46,5 +61,28 @@
 
 .c-cookies-button a {
   color: #358ED7;
+=======
+  font-weight: bold;
+  color: #358ED7;
 }
 
+.c-cookies-banner-container .o-line {
+  @include mq($until: tablet) {
+    display: block;
+    width: inherit;
+  }
+}
+
+.c-cookies-banner-container .o-line__item {
+  @include mq($until: tablet) {
+    display: block;
+    vertical-align: inherit;
+    text-align: center;
+  }
+>>>>>>> 79f6d91efde45c0268edb649583a13f59af6cc12
+}
+
+
+.c-cookies-clickhere a {
+  color: #C0C0C0;
+}
