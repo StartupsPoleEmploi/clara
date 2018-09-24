@@ -36,10 +36,20 @@ $(document).on('ready turbolinks:load', function () {
     **/
     window.main_reducer = function(state, action) {
 
+
       if (state === undefined) {
         return default_state();
       }
 
+      // Works better than _.assign or Object.assign
+      var newState = JSON.parse(JSON.stringify(state));
+
+      if (action.type === 'AUTHORIZE_STATISTIC') {
+        newState.statistic = true;
+      }
+      if (action.type === 'FORBID_STATISTIC') {
+        newState.statistic = false;
+      }
     };
 
     /**
@@ -50,7 +60,9 @@ $(document).on('ready turbolinks:load', function () {
     /**
     *         DISPATCHERS 
     **/
-    $('.stuff').click(function(){
+    $('#authorize_statistic').click(function(){
+      var that = this;
+      main_store.dispatch({type: 'AUTHORIZE_STATISTIC', value: $(that).prop("checked")});
     });
 
     /**
