@@ -17,8 +17,9 @@
   margin-top: 5px;
   text-align: left;
   color: #C0C0C0;
+  margin-bottom: 0;
   @include mq($from: tablet) {
-      margin-bottom: 0px;
+      margin-bottom: 0;
   }
 }
 
@@ -37,10 +38,10 @@
   display: inline-block;
   font-size: 1rem;
   font-weight: bold;
-  margin-top: 10px;
-  margin-left:57px;
+  margin-left: 75px;
+  margin-bottom: 10px;
   @include mq($from: tablet) {
-    margin-top: 0;
+    margin-left:60px;
   }
 }
 
