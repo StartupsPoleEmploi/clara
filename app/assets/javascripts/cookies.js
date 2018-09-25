@@ -22,11 +22,11 @@ $(document).on('turbolinks:load', function () {
     };
 
     var disable_buttton = function (id) {
-      $(id).attr("disabled", "disabled");
+      // $(id).attr("disabled", "disabled");
       $(id).addClass("is-disabled");
     }
     var enable_buttton = function (id) {
-      $(id).removeAttr("disabled");
+      // $(id).removeAttr("disabled");
       $(id).removeClass("is-disabled");
     }
 
@@ -34,6 +34,10 @@ $(document).on('turbolinks:load', function () {
     *         MAIN REDUCER 
     **/
     var main_reducer = function(state, action) {
+
+      console.log('-----BOOM-------')
+      console.log(action);
+      console.log(state);
 
       if (state === undefined) {
         return default_state();
@@ -63,6 +67,7 @@ $(document).on('turbolinks:load', function () {
         newState.disable_navigation = true;
       }
 
+      console.log(newState);
       return newState;
     };
 
@@ -110,33 +115,33 @@ $(document).on('turbolinks:load', function () {
 
       // state of simple buttons
       if (state.disable_statistic === true) {
-        enable_buttton("#authorize_statistic");
-        disable_buttton("#forbid_statistic");
-      } else {
         disable_buttton("#authorize_statistic");
         enable_buttton("#forbid_statistic");
+      } else {
+        enable_buttton("#authorize_statistic");
+        disable_buttton("#forbid_statistic");
       }
 
       if (state.disable_navigation === true) {
-        enable_buttton("#authorize_navigation");
-        disable_buttton("#forbid_navigation");
-      } else {
         disable_buttton("#authorize_navigation");
         enable_buttton("#forbid_navigation");
+      } else {
+        enable_buttton("#authorize_navigation");
+        disable_buttton("#forbid_navigation");
       }
 
       // state aggregated buttons
       if (_.every(state)) {
-        disable_buttton("#forbid_all");
-        enable_buttton("#authorize_all");        
-      } 
-      else if (_.none(state)) {
         enable_buttton("#forbid_all");
         disable_buttton("#authorize_all");        
       } 
+      else if (_.none(state)) {
+        disable_buttton("#forbid_all");
+        enable_buttton("#authorize_all");        
+      } 
       else { // some
-        enable_buttton("#authorize_all");
-        enable_buttton("#forbid_all");        
+        disable_buttton("#authorize_all");
+        disable_buttton("#forbid_all");        
       } 
 
       // state of form
