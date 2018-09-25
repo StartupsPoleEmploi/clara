@@ -40,7 +40,10 @@ h2.c-cookie-preference {
 }
 .c-cookie-cta.is-disabled {
   opacity: 0.6;
-  cursor: default;
+  cursor: pointer;
+}
+.c-cookie-cta.is-disabled:hover {
+  opacity: 1;
 }
 .c-cookie-cta--green {
   background-color: #108670;
