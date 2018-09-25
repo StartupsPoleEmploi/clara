@@ -22,11 +22,9 @@ $(document).on('turbolinks:load', function () {
     };
 
     var disable_buttton = function (id) {
-      // $(id).attr("disabled", "disabled");
       $(id).addClass("is-disabled");
     }
     var enable_buttton = function (id) {
-      // $(id).removeAttr("disabled");
       $(id).removeClass("is-disabled");
     }
 
