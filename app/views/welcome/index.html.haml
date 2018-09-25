@@ -17,3 +17,5 @@
 
   - content_for :footer do
     = render partial: 'shared/footer', locals: {aides: type_aides, dispositifs: type_dispositifs, the_request: request}
+
+= render 'shared/cookies_banner'
