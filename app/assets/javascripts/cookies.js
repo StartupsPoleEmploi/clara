@@ -33,10 +33,6 @@ $(document).on('turbolinks:load', function () {
     **/
     var main_reducer = function(state, action) {
 
-      console.log('-----BOOM-------')
-      console.log(action);
-      console.log(state);
-
       if (state === undefined) {
         return default_state();
       }
