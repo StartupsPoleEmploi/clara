@@ -2,7 +2,7 @@
 
 
 ## 13.3.1 (26/09/2018)
--[#922][BUG] Inversion des opacités de boutons dans le formulaire de cookie
+-[#922][BUG] Bug sur resultats incertains sur certains contrats
 
  
 ## 13.3.0 (25/09/2018)
