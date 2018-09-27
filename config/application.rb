@@ -18,7 +18,7 @@ module Mae
     config.middleware.use Rack::Attack
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
 #To active ressources compression: https://stackoverflow.com/questions/25576440/how-to-enable-compression-in-ruby-on-rails
-    config.middleware.insert_before(Raven::Rack, Rack::Deflater)
+    config.middleware.insert_before(Rack::Sendfile, Rack::Deflater)
   end
 end
 
