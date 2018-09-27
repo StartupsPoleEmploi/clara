@@ -71,7 +71,16 @@ class RuletreeService
     calculate(rule, criterion_value, rule["value_ineligible"], rule_type)
   end
 
-  def calculate(rule, criterion_value, rule_value,  rule_type)
+  def calculate(rule, criterion_value, rule_value, rule_type)
+
+    if (rule["operator_type"] == 'starts_with')
+      pp "-=-=-=-=-=-=--=-=-=-=-=-=-= calculate =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-"
+      pp rule
+      pp criterion_value
+      pp rule_value
+      pp rule_type
+      pp ""
+    end
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
     typed_rule_value = force_type_of(rule_value, rule_type)
@@ -94,6 +103,9 @@ class RuletreeService
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        pp '-----------------------------a&b------------------------'
+        pp 'a is ' + a
+        pp 'b is ' + b
         a.starts_with?(b)
       else
         false
