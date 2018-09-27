@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 13.4.1 (27/09/2018)
+-[#927][TECH] Ajout de balise meta max
+
+
 ## 13.4.0 (27/09/2018)
 -[#906][TECH] Ajout meta validation pour la google search console
 
