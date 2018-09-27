@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 13.3.2 (26/09/2018)
+-[#926][BUG] Bug css débordement lien sigville
+
+ 
 ## 13.3.1 (26/09/2018)
 -[#922][BUG] Bug sur resultats incertains sur certains contrats
 

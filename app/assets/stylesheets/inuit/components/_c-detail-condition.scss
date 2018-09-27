@@ -24,4 +24,7 @@
 
 .c-detail-condition-text {
   margin-left: space(2);
+  a {
+    word-break: break-word;
+  }
 }
