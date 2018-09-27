@@ -71,7 +71,7 @@ class RuletreeService
     calculate(rule, criterion_value, rule["value_ineligible"], rule_type)
   end
 
-  def calculate(rule, criterion_value, rule_value,  rule_type)
+  def calculate(rule, criterion_value, rule_value, rule_type)
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
     typed_rule_value = force_type_of(rule_value, rule_type)
