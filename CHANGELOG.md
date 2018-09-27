@@ -1,7 +1,7 @@
 # ARA Changelog
 
 ## 13.3.2 (27/09/2018)
--[#914][SEO] Dépendance font
+-[#914][SEO] Dépendance des fonts
 
 
 ## 13.3.0 (25/09/2018)
