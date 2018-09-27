@@ -36,9 +36,9 @@ class BanService
           props = JSON.parse(response)["features"][0]["properties"]
           if props["postcode"] != nil && props["city"] != nil && props["context"] != nil
             region = props["context"].split(", ").last
-            pp '-----------------------------region is ------------------'
-            pp props["context"]
-            pp region
+            # pp '-----------------------------region is ------------------'
+            # pp props["context"]
+            # pp region
             return [props["postcode"], props["city"], region]
           else
             return "erreur_ville_introuvable"
