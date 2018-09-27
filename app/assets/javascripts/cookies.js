@@ -61,7 +61,6 @@ $(document).on('turbolinks:load', function () {
         newState.disable_navigation = true;
       }
 
-      console.log(newState);
       return newState;
     };
 
