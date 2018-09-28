@@ -31,7 +31,7 @@ h2.c-cookie-preference {
   border: none;
   cursor: pointer;
   font-family: 'Roboto';
-  padding: space(3);
+  padding: space(2);
   @include mq($from: tablet) {
     @include inuit-font-size(16px);
     padding: space(4) space(8);
