@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 13.4.7 (28/09/2018)
+-[#933][BUG] CGU : Il manque un changement dans le titre 
+
 
 ## 13.4.6 (28/09/2018)
 -[#925][TECH] Correction CGU
