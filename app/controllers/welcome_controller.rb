@@ -25,6 +25,9 @@ class WelcomeController < ApplicationController
   def terms
   end
 
+  def accept_all_cookies
+  end
+
   private
   def clean_asker_params
     session.delete :asker
