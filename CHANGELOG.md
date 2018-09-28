@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 13.5.0 (27/09/2018)
+-[#914][SEO] Dépendance des fonts
+
 
 ## 13.5.0 (28/09/2018)
 -[#909][DESIGN] Changement de design des boutons sur mobile 
