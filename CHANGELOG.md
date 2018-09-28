@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 13.5.0 (28/09/2018)
+-[#909][DESIGN] Changement de design des boutons sur mobile 
+
 
 ## 13.4.6 (28/09/2018)
 -[#925][TECH] Correction CGU
