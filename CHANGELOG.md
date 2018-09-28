@@ -1,5 +1,10 @@
 # ARA Changelog
 
+
+## 13.5.0 (28/09/2018)
+-[#928][BUG] Ne pas réafficher le bandeau une fois les préférences validées
+
+
 ## 13.4.2 (28/09/2018)
 -[#929][TECH] Ajout de balise meta ACM
 
