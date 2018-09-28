@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 13.4.5 (28/09/2018)
+-[#928c][BUG] Buggy banner, back to localStorage solution
+
+
 ## 13.4.4 (28/09/2018)
 -[#928b][BUG] Buggy banner
 
