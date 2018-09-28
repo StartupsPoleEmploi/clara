@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 13.5.1 (28/09/2018)
+-[#931][TECH] Tests unitaires sur les méta google search control
+
+
 ## 13.5.0 (28/09/2018)
 -[#909][DESIGN] Changement de design des boutons sur mobile 
 
