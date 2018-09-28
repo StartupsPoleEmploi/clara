@@ -1,5 +1,9 @@
 # ARA Changelog
 
+## 13.4.2 (28/09/2018)
+-[#929][TECH] Ajout de balise meta ACM
+
+
 ## 13.4.1 (27/09/2018)
 -[#927][TECH] Ajout de balise meta max
 
