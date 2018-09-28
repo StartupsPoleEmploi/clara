@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 13.4.4 (28/09/2018)
+-[#928b][BUG] Buggy banner
+
+
 ## 13.4.3 (28/09/2018)
 -[#928][BUG] Ne pas réafficher le bandeau une fois les préférences validées
 

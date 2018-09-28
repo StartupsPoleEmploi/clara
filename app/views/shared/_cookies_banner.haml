@@ -8,4 +8,4 @@
           %span.c-cookies-clickhere
             = link_to "cliquez ici!", edit_cooky_path('preference')
         .o-line__item
-          = button_to "J'accepte tout", {:controller => "welcome", :action => "accept_all_cookies" }, :remote => true,:id => 'accept_all_cookies_btn', :class => "c-cookies-button", :onclick => "document.getElementById('c-cookie-banner').style.display = 'none';"
+          = button_to "J'accepte tout", {:controller => "welcome", :action => "accept_all_cookies" }, :remote => true,:id => 'accept_all_cookies_btn', :class => "c-cookies-button", :onclick => "setTimeout(function(){document.getElementById('c-cookie-banner').style.display = 'none';}, 0);"
