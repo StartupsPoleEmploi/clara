@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 13.5.0 (28/09/2018)
+## 13.4.3 (28/09/2018)
 -[#928][BUG] Ne pas réafficher le bandeau une fois les préférences validées
 
 
