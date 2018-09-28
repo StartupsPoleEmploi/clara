@@ -8,6 +8,9 @@ class CookiesController < ApplicationController
   # PATCH/PUT /cookies/preference
   def update
     session[:cookie] = cooky_params
+    p '- - - - - - - - - - - - - - session[:cookie]- - - - - - - - - - - - - - - -' 
+    pp session[:cookie]
+    p ''
     redirect_to root_path
   end
 

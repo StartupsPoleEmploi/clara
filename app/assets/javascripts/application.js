@@ -39,7 +39,6 @@
 //= require ./include_hj
 //= require ./google_analytics_push
 //= require ./print
-//= require ./welcome_index
 //= require ./stats_index
 //= require ./stats_time
 //= require ./address_questions
