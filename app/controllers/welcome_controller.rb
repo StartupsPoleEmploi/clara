@@ -25,6 +25,10 @@ class WelcomeController < ApplicationController
   def terms
   end
 
+  def accept_all_cookies
+    session[:cookie] = {"disable_statistic"=>"0", "disable_navigation"=>"0"}
+  end
+
   private
   def clean_asker_params
     session.delete :asker
