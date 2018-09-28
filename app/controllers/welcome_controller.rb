@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   caches_page :index unless Rails.env.development?
-  skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
+  skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard, :accept_all_cookies]
 
   def index
     service = ContractTypeService.new
@@ -27,6 +27,7 @@ class WelcomeController < ApplicationController
 
   def accept_all_cookies
     session[:cookie] = {"disable_statistic"=>"0", "disable_navigation"=>"0"}
+    redirect_to root_path
   end
 
   private
