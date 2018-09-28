@@ -17,8 +17,12 @@ module Mae
     config.exceptions_app = self.routes
     config.middleware.use Rack::Attack
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
-#To active ressources compression: https://stackoverflow.com/questions/25576440/how-to-enable-compression-in-ruby-on-rails
+    # To active ressources compression: https://stackoverflow.com/questions/13734608/compressing-rails-assets-and-nginx-gzip/27964220#27964220
     config.middleware.insert_before(Rack::Sendfile, Rack::Deflater)
+    # Compress JavaScripts and CSS.
+    config.assets.compress = true
+    config.assets.js_compressor = Uglifier.new(mangle: false)
+
   end
 end
 
