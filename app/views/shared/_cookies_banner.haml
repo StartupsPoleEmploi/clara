@@ -2,7 +2,7 @@
 #c-cookie-banner.c-cookies-banner
   -# See https://stackoverflow.com/a/42845232/2595513
   -# See https://stackoverflow.com/a/31367135/2595513
-  %img.u-display-none{:onload => "var that=this;console.log('evaluating...');if (localStorage && localStorage.getItem('cookie_pref') === 'true') {that.parentElement.style.display = 'none'}", :src => "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>"}/
+  %img.u-display-none{:onload => "var that=this;if (localStorage && localStorage.getItem('cookie_pref') === 'true') {that.parentElement.style.display = 'none'}", :src => "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>"}/
   .c-cookies-banner-container
     .o-line
       .o-line__item
