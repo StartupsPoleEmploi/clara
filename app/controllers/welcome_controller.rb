@@ -4,9 +4,6 @@ class WelcomeController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:index, :start_wizard]
 
   def index
-    pp '------------session[:cookie]-----------'
-    pp session[:cookie]
-    pp ''
     service = ContractTypeService.new
     clean_asker_params
     hydrate_view({
