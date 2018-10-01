@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.0.0 (01/10/2018)
+-[#936][FEATURE] Modifier le destinataire de l'email
+
+
 ## 13.5.0 (28/09/2018)
 -[#909][DESIGN] Changement de design des boutons sur mobile 
 
