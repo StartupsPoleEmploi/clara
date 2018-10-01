@@ -2,7 +2,7 @@
 
 
 ## 14.0.0 (01/10/2018)
--[#936][FEATURE] Modifier le destinataire de l'email
+-[#936][FEATURE] Modifier le reply-to de l'email
 
 
 ## 13.5.0 (28/09/2018)
