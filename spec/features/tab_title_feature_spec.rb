@@ -24,12 +24,12 @@ feature 'TabTitle' do
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
   scenario 'Display a correct title for the inscription page' do
-    visit new_age_question_path
+    visit new_inscription_question_path
     expect(page).to have_title "Votre inscription à pe | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the inscription page' do
     expected_content = "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"
-    visit new_age_question_path
+    visit new_inscription_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
 
