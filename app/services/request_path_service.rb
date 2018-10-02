@@ -27,7 +27,7 @@ class RequestPathService
   end
 
   def question_path?
-    RoutesList.questions.values.include?(own_path)
+    RoutesList.questions.values.map { |e| e.gsub("(.:format)", "") }.include?(own_path)
   end
 
   def root_path?
