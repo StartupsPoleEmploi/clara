@@ -60,6 +60,9 @@ describe RequestPathService do
     it ".question_path? return true if the request path belongs to a question" do
       RoutesList.questions.each do |route, route_val|
         request = OpenStruct.new({path: route_val})
+        p '- - - - - - - - - - - - - - request- - - - - - - - - - - - - - - -' 
+        pp request
+        p ''
         sut = RequestPathService.get_instance(request)
         expect(sut.question_path?).to eq(true)
       end
