@@ -15,6 +15,10 @@ feature 'TabTitle' do
     visit contact_index_path
     expect(page).to have_title "Nous contacter | Clara – un service Pôle emploi"
   end
+  scenario 'Display a correct title for the cookies page' do
+    visit edit_cooky_path("preference")
+    expect(page).to have_title "Gestion des cookies | Clara – un service Pôle emploi"
+  end
   scenario 'Display a correct title for the aides page' do
     visit aides_path
     expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
