@@ -32,6 +32,15 @@ feature 'TabTitle' do
     visit new_inscription_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
+  scenario 'Display a correct title for the category page' do
+    visit new_category_question_path
+    expect(page).to have_title "Votre category à Pôle emploi | Clara – un service Pôle emploi"
+  end
+  scenario 'Display a correct description for the category page' do
+    expected_content = "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"
+    visit new_category_question_path
+    expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
+  end
 
   scenario 'Display a correct title for the contact page' do
     visit contact_index_path
