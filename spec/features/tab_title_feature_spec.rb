@@ -44,7 +44,7 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the allocation page' do
     visit new_allocation_question_path
-    expect(page).to have_title "blabla"
+    expect(page).to have_title "Vos allocations | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the allocation page' do
     expected_content = "fofo"
