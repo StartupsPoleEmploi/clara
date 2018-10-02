@@ -25,10 +25,6 @@ module TabTitleHelper
     end
 
     def calculate_description(description_data)
-      p '- - - - - - - - - - - - - - description_data- - - - - - - - - - - - - - - -' 
-      pp description_data
-      pp @request_service.question_path?
-      p ''
       res = ""
       if @request_service.root_path?
         res = "Découvrez les aides et mesures qui vont accélérer votre reprise d'emploi"
