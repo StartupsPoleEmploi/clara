@@ -1,6 +1,8 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 
 - title_data "Votre catégorie de demandeur d'emploi"
+- raw_description = 'Êtes-vous actuellement dans une des situations suivantes ?'
+- description_data(raw_description)
 
 %main#main.mw1140p.center{role: "main"}
   = render 'shared/breadcrumb'  
@@ -10,7 +12,7 @@
 
       = form_with model: @category, url: category_questions_path, local: false do |f|
         
-        = render 'shared/a_form_header', {e: e, title: "Êtes-vous actuellement dans l'une des situations suivantes ?"}
+        = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
         
         .c-question__form
           %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }

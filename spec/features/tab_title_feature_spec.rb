@@ -37,7 +37,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Votre catégorie de demandeur d'emploi | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the category page' do
-    expected_content = "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"
+    expected_content = "Êtes-vous actuellement dans une des situations suivantes ?"
     visit new_category_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
