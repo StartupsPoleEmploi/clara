@@ -12,12 +12,17 @@ feature 'TabTitle' do
     visit root_path
     # See https://stackoverflow.com/a/30582389/2595513
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
-
   end
 
   scenario 'Display a correct title for the age page' do
     visit new_age_question_path
     expect(page).to have_title "Votre âge | Clara – un service Pôle emploi"
+  end
+  scenario 'Display a correct description for the age page' do
+    expected_content = "Quel est votre âge ?"
+    visit new_age_question_path
+    # See https://stackoverflow.com/a/30582389/2595513
+    expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
 
   scenario 'Display a correct title for the contact page' do
