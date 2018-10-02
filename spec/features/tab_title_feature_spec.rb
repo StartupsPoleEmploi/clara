@@ -89,10 +89,10 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the other page' do
     visit new_other_question_path
-    expect(page).to have_title "blabla"
+    expect(page).to have_title "Situation particulière | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the other page' do
-    expected_content = "foofoo"
+    expected_content = "f"
     visit new_other_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
