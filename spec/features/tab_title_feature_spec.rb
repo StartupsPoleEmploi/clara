@@ -47,7 +47,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Vos allocations | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the allocation page' do
-    expected_content = "fofo"
+    expected_content = "Quelle allocation percevez-vous actuellement ?"
     visit new_allocation_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
