@@ -8,8 +8,11 @@ feature 'TabTitle' do
     expect(page).to have_title "Clara | Découvrez les aides de retour à l’emploi - un service Pôle emploi"
   end
   scenario 'Display a correct description for the home page' do
+    expected_content = "Découvrez les aides et mesures qui vont accélérer votre reprise d\\\'emploi"
     visit root_path
-    expect(page).to have_meta(:description, "Découvrez les aides et mesures qui vont accélérer votre reprise d\\\'emploi")
+    # See https://stackoverflow.com/a/30582389/2595513
+    expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
+
   end
 
   scenario 'Display a correct title for the age page' do
