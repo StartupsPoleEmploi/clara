@@ -80,7 +80,7 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the address page' do
     visit new_address_question_path
-    expect(page).to have_title "blabla"
+    expect(page).to have_title "Votre adresse | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the address page' do
     expected_content = "foofoo"
