@@ -71,7 +71,7 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the grade page' do
     visit new_grade_question_path
-    expect(page).to have_title "blabla"
+    expect(page).to have_title "Votre diplôme le plus élevé | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the grade page' do
     expected_content = "foofoo"
