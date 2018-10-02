@@ -25,7 +25,7 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the inscription page' do
     visit new_inscription_question_path
-    expect(page).to have_title "Votre inscription à pe | Clara – un service Pôle emploi"
+    expect(page).to have_title "Votre inscription à Pôle emploi | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the inscription page' do
     expected_content = "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"
