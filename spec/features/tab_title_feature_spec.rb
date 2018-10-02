@@ -51,6 +51,15 @@ feature 'TabTitle' do
     visit new_allocation_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
+  scenario 'Display a correct title for the are page' do
+    visit new_are_question_path
+    expect(page).to have_title "Vos ares | Clara – un service Pôle emploi"
+  end
+  scenario 'Display a correct description for the are page' do
+    expected_content = "Quelle are percevez-vous actuellement ?"
+    visit new_are_question_path
+    expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
+  end
 
 
   scenario 'Display a correct title for the contact page' do
