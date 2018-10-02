@@ -83,7 +83,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Votre adresse | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the address page' do
-    expected_content = "foofoo"
+    expected_content = "Quel est votre code postal de votre lieu de résidence ?"
     visit new_address_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
