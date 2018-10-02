@@ -31,9 +31,9 @@ module TabTitleHelper
       elsif @request_service.question_path?
         res = description_data
       end
-      p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-      pp res
-      p ''
+      # p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+      # pp res
+      # p ''
       res
     end
 
