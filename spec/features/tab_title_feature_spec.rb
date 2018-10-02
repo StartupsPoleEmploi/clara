@@ -53,10 +53,10 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct title for the are page' do
     visit new_are_question_path
-    expect(page).to have_title "Vos ares | Clara – un service Pôle emploi"
+    expect(page).to have_title "Votre montant d'allocation | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the are page' do
-    expected_content = "Quelle are percevez-vous actuellement ?"
+    expected_content = "Quel est le montant de cette allocation ?"
     visit new_are_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
