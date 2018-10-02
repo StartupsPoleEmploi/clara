@@ -78,6 +78,15 @@ feature 'TabTitle' do
     visit new_grade_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
+  scenario 'Display a correct title for the address page' do
+    visit new_address_question_path
+    expect(page).to have_title "blabla"
+  end
+  scenario 'Display a correct description for the address page' do
+    expected_content = "foofoo"
+    visit new_address_question_path
+    expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
+  end
 
 
   scenario 'Display a correct title for the contact page' do
