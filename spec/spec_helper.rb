@@ -30,7 +30,7 @@ RSpec::Matchers.define :have_meta do |name, expected|
     has_css?("meta[name='#{name}'][content='#{expected}']")
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     actual = first("meta[name='#{name}']")
     if actual
       "expected that meta #{name} would have content='#{expected}' but was '#{actual[:content]}'"

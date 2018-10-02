@@ -24,6 +24,10 @@ module TabTitleHelper
       smallest_title
     end
 
+    def calculate_description(description_data)
+      ''
+    end
+
     def default_title
       " | " + smallest_title
     end

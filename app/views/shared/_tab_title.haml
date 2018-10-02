@@ -1,8 +1,12 @@
 - title_data ||= ''
+- description_data ||= ''
 - actual_title = TabTitleHelper::TitleCalculator.new(request).calculate_title(title_data)
+- actual_description = TabTitleHelper::TitleCalculator.new(request).calculate_description(description_data)
 - prime_url = request.scheme + '://' + request.host
 
 %title= actual_title
+%le= actual_title
+%meta{:name => "description", :content => "#{actual_title}"}/
 %meta{:content => "website", :property => "og:type", :class => "og-type"}/
 %meta{:content => "https://res.cloudinary.com/bdavidxyz-com/image/upload/v1517222293/clara_nbhywg.png", :property => "og:image", :class => "og-image"}/
 %meta{:content => "Clara | Un service Pôle emploi", :property => "og:site_name", :class => "og-site-name"}/
