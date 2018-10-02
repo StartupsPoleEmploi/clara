@@ -1,4 +1,6 @@
 - title_data 'Votre diplôme le plus élevé'
+- raw_description = 'Quel est le diplôme le plus élevé que vous ayez obtenu ?'
+- description_data(raw_description)
 - has_error = !(flash[:error].blank?)
 
 %main#main.mw1140p.center{role: 'main'}
@@ -9,7 +11,7 @@
     .o-card
       = form_with model: @grade, url: grade_questions_path, local: false do |f|
         %h1.c-question-title.u-focusable{tabindex: '0'}
-          Quel est le diplôme le plus élevé que vous ayez obtenu ?
+          =raw_description
 
         .c-question__form
           %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }

@@ -74,7 +74,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Votre diplôme le plus élevé | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the grade page' do
-    expected_content = "foofoo"
+    expected_content = "Quel est le diplôme le plus élevé que vous ayez obtenu ?"
     visit new_grade_question_path
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
