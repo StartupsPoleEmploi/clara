@@ -9,7 +9,7 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct description for the home page' do
     visit root_path
-    expect(page).to have_meta(:description, 'blabla')
+    expect(page).to have_meta(:description, "Découvrez les aides et mesures qui vont accélérer votre reprise d\\\'emploi")
   end
 
   scenario 'Display a correct title for the age page' do
