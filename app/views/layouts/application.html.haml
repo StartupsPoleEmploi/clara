@@ -1,8 +1,8 @@
 !!!
 %html.c-html{:lang => "fr"}
   %head
-  
-    = render 'shared/tab_title', {title_data: (yield :title_data) }
+
+    = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:content => "initial-scale=1, maximum-scale=1", :name => "viewport"}
