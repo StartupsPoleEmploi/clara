@@ -1,5 +1,6 @@
-- title_data "#{@aid.name}"
 - aid = @loaded[:aid]
+- title_data "#{aid[:name]}"
+- description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
 
 %main#main.c-detail-show{role: "main"}
