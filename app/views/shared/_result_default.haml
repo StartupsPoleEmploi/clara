@@ -46,11 +46,11 @@
           %p.c-nothing__line.u-margin-top-none
             Activez moins de filtres dans votre recherche
 
-        #eligibles.u-margin-bottom
+        %section#eligibles.u-margin-bottom
           .c-resulteligy
             .u-display-flex
               %div
-                %h3.c-result-youcan="Vous pouvez bénéficier de"
+                %h1.c-result-youcan="Vous pouvez bénéficier de"
               .u-display-flex.u-margin-left-auto
                 %div{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
@@ -66,7 +66,7 @@
                         .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
-                          %h4.c-resultcontract-title
+                          %h2.c-resultcontract-title
                             %span.c-resultcontract-title__number
                               =aids_per_contract.size
                             %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
@@ -81,7 +81,7 @@
                       .c-resultaid{"data-aslug" => aid["slug"]}
                         .o-layout.o-layout--middle.o-layout--flush
                           %div{class:"o-layout__item u-3/4"}   
-                            %h5=aid["name"]
+                            %h3.c-resultaid__smalltitle=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
@@ -94,11 +94,11 @@
 
 
 
-        #uncertains.u-margin-bottom
+        %section#uncertains.u-margin-bottom
           .c-resulteligy
             .u-display-flex
               %div
-                %h3.c-result-youcan="Vous pourriez peut-être bénéficier de"
+                %h1.c-result-youcan="Vous pourriez peut-être bénéficier de"
               .u-display-flex.u-margin-left-auto
                 %div{"class" => "u-hide-until@wide"}
                   %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
@@ -114,7 +114,7 @@
                         .o-flag__img{class:"u-hide-until@wide"}
                           =v.icon_for(aids_per_contract)
                         .o-flag__body
-                          %h4.c-resultcontract-title
+                          %h2.c-resultcontract-title
                             %span.c-resultcontract-title__number
                               =aids_per_contract.size
                             %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
@@ -129,7 +129,7 @@
                       .c-resultaid{"data-aslug" => aid["slug"]}
                         .o-layout.o-layout--middle.o-layout--flush
                           %div{class:"o-layout__item u-3/4"}   
-                            %h5=aid["name"]
+                            %h3.c-resultaid__smalltitle=aid["name"]
                             %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
@@ -141,11 +141,11 @@
 
 
 
-        #ineligibles
+        %section#ineligibles
           .o_ineligibles__content
             .o-list-inline
               .o-list-inline__item
-                %h3.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
+                %h1.c-result-youcan.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
               .o-list-inline__item
                 %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal.js-toggle-ineligies Voir
             .c-resulteligy.u-margin-top-small.js-ineligibles-zone
@@ -167,7 +167,7 @@
                           .o-flag__img{class:"u-hide-until@wide"}
                             =v.icon_for(aids_per_contract)
                           .o-flag__body
-                            %h4.c-resultcontract-title
+                            %h2.c-resultcontract-title
                               %span.c-resultcontract-title__number
                                 =aids_per_contract.size
                               %span.c-resultcontract-title__text{"data-csingle" => v.single_for(aids_per_contract), "data-cplural" => v.plural_for(aids_per_contract)}
@@ -182,7 +182,7 @@
                         .c-resultaid{"data-aslug" => aid["slug"]}
                           .o-layout.o-layout--middle.o-layout--flush
                             %div{class:"o-layout__item u-3/4"}   
-                              %h5=aid["name"]
+                              %h3.c-resultaid__smalltitle=aid["name"]
                               %p.u-margin-bottom-none=aid["short_description"]
                               %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                                 - v.filters_of(aid).each do |one_filter|

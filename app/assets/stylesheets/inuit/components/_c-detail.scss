@@ -3,6 +3,11 @@
 }
 
 .c-detail-title {
+  // mimic h2 font-size
+  font-size: 1.75rem;
+  // mimic h2 line-height
+  line-height: 1.2857142857;
+
   color: white;
   height: 84px;
   background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
