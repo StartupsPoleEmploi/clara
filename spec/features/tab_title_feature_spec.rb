@@ -3,6 +3,7 @@ require 'spec_helper'
 
 feature 'TabTitle' do 
 
+
   scenario 'Display a correct title for the home page' do
     visit root_path
     expect(page).to have_title "Clara | Découvrez les aides de retour à l’emploi - un service Pôle emploi"
@@ -13,6 +14,7 @@ feature 'TabTitle' do
     # See https://stackoverflow.com/a/30582389/2595513
     expect(page).to have_css "meta[name='description'][content='#{expected_content}']", :visible => false
   end
+
 
 
   scenario 'Display a correct title for the inscription page' do
@@ -100,6 +102,7 @@ feature 'TabTitle' do
   end
 
 
+
   scenario 'Display a correct title for the contact page' do
     visit contact_index_path
     expect(page).to have_title "Nous contacter | Clara – un service Pôle emploi"
@@ -110,6 +113,8 @@ feature 'TabTitle' do
     meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
     expect(meta_description[:content]).to eq expected_content
   end
+
+
 
   scenario 'Display a correct title for the cookies page' do
     visit edit_cooky_path("preference")
@@ -122,10 +127,21 @@ feature 'TabTitle' do
     expect(meta_description[:content]).to eq expected_content
   end
 
+
+
   scenario 'Display a correct title for the aides page' do
     visit aides_path
     expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
   end
+  scenario 'Display a correct description for the aides page' do
+    expected_content = "blabla"
+    visit aides_path
+    meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
+    expect(meta_description[:content]).to eq expected_content
+  end
+
+
+
 
   scenario 'Display a correct title for the type page' do    
     visit type_path(create(:contract_type, :contract_type_1))
