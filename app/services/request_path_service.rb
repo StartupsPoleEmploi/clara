@@ -23,16 +23,23 @@ class RequestPathService
   end
 
   def own_path
-    @request.path
+    @request.path.gsub("(.:format)", "")
   end
 
   def question_path?
-    own_path_simplified = own_path.gsub("(.:format)", "")
-    RoutesList.questions.values.map { |e| e.gsub("(.:format)", "") }.include?(own_path_simplified)
+    RoutesList.questions.values.include?(own_path)
   end
 
   def root_path?
     RoutesList.all_pathes["root_path"] == own_path
+  end
+
+  def cookie_path?
+    RoutesList.all_pathes["edit_cooky_path"] == own_path
+  end
+
+  def contact_path?
+    RoutesList.all_pathes["contact_index_path"] == own_path
   end
 
   def type_path?
