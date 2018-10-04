@@ -10,10 +10,13 @@ module ApplicationHelper
     if request && request.respond_to?("path") && request.path.include?("/aides/detail")
       plain_text = Nokogiri::HTML(CGI::unescapeHTML(text)).text.to_s
       escaped_text = plain_text.split("(")[0].to_s.split(".")[0].to_s.split(":")[0].to_s
+      p '- - - - - - - - - - - - - - escaped_text- - - - - - - - - - - - - - - -' 
+      pp escaped_text
+      p ''
       if escaped_text.size > 155
         escaped_text = escaped_text.split(",")[0].to_s
       end
-      local_text = escaped_text
+      local_text = escaped_text.html_safe
     end
     content_for :description_data, local_text
   end
