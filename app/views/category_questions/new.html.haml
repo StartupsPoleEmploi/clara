@@ -1,7 +1,7 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 
 - title_data "Votre catégorie de demandeur d'emploi"
-- raw_description = "Êtes-vous actuellement dans l'une des situations suivantes ?"
+- raw_description = "Êtes-vous actuellement dans l'une des situations suivantes ?".html_safe
 - description_data(raw_description)
 
 %main#main.mw1140p.center{role: "main"}

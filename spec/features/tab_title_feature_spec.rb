@@ -31,7 +31,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Votre catégorie de demandeur d'emploi | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the category page' do
-    expected_content = "Êtes-vous actuellement dans l&#39;une des situations suivantes ?"
+    expected_content = "Êtes-vous actuellement dans l'une des situations suivantes ?"
     visit new_category_question_path
     meta_description = find(:css, "meta[name='description']", :visible => false)
     expect(meta_description[:content]).to eq expected_content
@@ -95,7 +95,7 @@ feature 'TabTitle' do
     expect(page).to have_title "Situation particulière | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the other page' do
-    expected_content = "Êtes-vous dans l&#39;une des situations suivantes ?"
+    expected_content = "Êtes-vous dans l'une des situations suivantes ?"
     visit new_other_question_path
     meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
     expect(meta_description[:content]).to eq expected_content
