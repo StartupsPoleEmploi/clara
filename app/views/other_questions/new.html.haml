@@ -1,5 +1,7 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 - title_data 'Situation particulière'
+- raw_description = "Êtes-vous dans l'une des situations suivantes ?".html_safe
+- description_data(raw_description)
 
 %main#main.mw1140p.center{role: "main"}
   = render 'shared/breadcrumb'
@@ -9,7 +11,7 @@
 
       = form_with model: @other, url: other_questions_path, local: false do |f|
     
-        = render 'shared/a_form_header', {e: e, title: "Êtes-vous dans l'une des situations suivantes ?", subtitle: "Cochez la ou les situations correspondantes"}
+        = render 'shared/a_form_header', {e: e, title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
         
         .o-centerbox-h
           %fieldset.c-fieldset.o-centerbox-h__item{ :class => e.has_error ? 'is-error' : '' }

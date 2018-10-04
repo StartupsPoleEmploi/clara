@@ -56,8 +56,12 @@
   justify-content: center;
 }
 
-h4.c-result-aid__title {
+h2.c-result-aid__title {
   margin-bottom: 0;
+  //mimic h4
+  font-size: 1.25rem;
+  //mimic h4
+  line-height: 1.5;
 }
 
 .c-result-aid__subtitle {

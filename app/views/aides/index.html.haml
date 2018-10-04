@@ -1,9 +1,11 @@
 
 - has_user = !params[:for_id].blank?
 - if has_user
-  - title_data "Vos résultats"
+  - title_data "Vos résultats".html_safe
+  - description_data "Vos résultats".html_safe
 - else 
-  - title_data "Découvrez toutes les aides et mesures de retour à l'emploi"
+  - title_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
+  - description_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
   
 - loaded = @loaded || {}
 

@@ -1,4 +1,6 @@
 - title_data 'Votre âge'
+- raw_description = 'Quel est votre âge ?'
+- description_data(raw_description)
 - has_error = !(flash[:error].blank?)
 - if has_error
   - classes_of_input = ['c-field', 'c-age-input', 'is-error']
@@ -13,7 +15,7 @@
     .o-card
       = form_with model: @age, url: age_questions_path, local: false do |f|
         %h1.c-question-title
-          %span.u-focusable{tabindex: "0"} Quel est votre âge ?
+          %span.u-focusable{tabindex: "0"}= raw_description
         .c-age__form
           = f.number_field :number_of_years, 
               class: classes_of_input, 

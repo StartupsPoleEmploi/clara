@@ -23,7 +23,7 @@ class RequestPathService
   end
 
   def own_path
-    @request.path
+    @request.path.gsub("(.:format)", "")
   end
 
   def question_path?
@@ -32,6 +32,14 @@ class RequestPathService
 
   def root_path?
     RoutesList.all_pathes["root_path"] == own_path
+  end
+
+  def cookie_path?
+    RoutesList.all_pathes["edit_cooky_path"] == own_path
+  end
+
+  def contact_path?
+    RoutesList.all_pathes["contact_index_path"] == own_path
   end
 
   def type_path?

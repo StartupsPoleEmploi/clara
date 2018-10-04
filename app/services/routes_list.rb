@@ -13,7 +13,7 @@
     end    
 
     def self.all_routes
-      Hash[Rails.application.routes.routes.map { |r| [r.name, r.path.spec.to_s] }]
+      Hash[Rails.application.routes.routes.map { |r| [r.name, r.path.spec.to_s] }].transform_values{ |e| e.gsub("(.:format)", "")}
     end    
 
     def self.all_pathes

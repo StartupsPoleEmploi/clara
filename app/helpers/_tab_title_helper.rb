@@ -24,6 +24,16 @@ module TabTitleHelper
       smallest_title
     end
 
+    def calculate_description(description_data)
+      res = ""
+      if @request_service.root_path?
+        res = "Découvrez les aides et mesures qui vont accélérer votre reprise d'emploi"
+      else
+        res = description_data
+      end
+      res
+    end
+
     def default_title
       " | " + smallest_title
     end

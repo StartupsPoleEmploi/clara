@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
 
   before_action :refuse_tracking
 
+  # See https://stackoverflow.com/a/38003702/2595513
+  after_action :set_response_language_header
+  def set_response_language_header
+      response.headers["Content-Language"] = "fr-FR"
+  end
+
+
   def refuse_tracking
     if session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
       gon.disable_analytics = true

@@ -1,4 +1,7 @@
 - title_data 'Votre adresse'
+- raw_description = 'Quel est votre code postal de votre lieu de résidence ?'
+- description_data(raw_description)
+
 - has_error = !(flash[:error].blank?)
 - if has_error
   - classes_of_input = ['c-field', 'c-address-input', 'is-error'].join(" ")

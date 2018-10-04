@@ -60,6 +60,10 @@ fieldset.c-resultfilterings {
 }
 
 .c-result-youcan {
+  // mimic h3
+  font-size: 1.5rem;
+  // mimic h3
+  line-height: 1.25;  
   margin-bottom: 0;
 }
 
@@ -78,11 +82,18 @@ fieldset.c-resultfilterings {
   font-size: 16px; // HACK
 }
 .c-resultcontract-title {
+  //mimic h4
+  font-size: 1.25rem;
+  //mimic h4
+  line-height: 1.5;
+
   margin-bottom: 0;
 }
 .c-resultcontract .o-flag__img {
   width: 80px;
 }
+
+
 
 .c-btn--result {
   font-size: 16px; // HACK
@@ -102,12 +113,16 @@ fieldset.c-resultfilterings {
   padding: $inuit-global-spacing-unit-small;
 }
 
-.c-resultaid h5 {
-  margin-bottom: 0;
-}
-
 .c-resultaid p {
   font-size: 16px; // HACK
+}
+
+.c-resultaid__smalltitle {
+  //mimic h5
+  font-size: 1.125rem;
+  //mimic h5
+  line-height: 1.3333333333;
+  margin-bottom: 0;
 }
 
 .c-btn--aid {

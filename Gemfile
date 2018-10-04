@@ -29,6 +29,7 @@ gem 'bulk_insert'
 gem 'gon'
 gem 'whenever', :require => false
 gem 'rails-html-sanitizer', '>= 1.0.4' # explicitly to avoid vulnerability issue
+gem 'rubyzip', '~> 1.2.2' # explicitly to avoid vulnerability issue
 
 gem 'clipboard' # debug purpose only
 gem 'actionpack-page_caching'

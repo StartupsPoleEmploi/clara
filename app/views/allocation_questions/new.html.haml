@@ -1,6 +1,7 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 - title_data 'Vos allocations'
-
+- raw_description = 'Quelle allocation percevez-vous actuellement ?'
+- description_data(raw_description)
 %main#main.mw1140p.center{role: "main"}
 
   = render 'shared/breadcrumb'
@@ -9,7 +10,7 @@
 
       = form_with model: @allocation, url: allocation_questions_path, local: false do |f|
 
-        = render 'shared/a_form_header', {e: e, title: "Quelle allocation percevez-vous actuellement ?"}
+        = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
       
         .c-question__form
           %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }

@@ -3,6 +3,11 @@
 }
 
 .c-detail-title {
+  // mimic h2 font-size
+  font-size: 1.75rem;
+  // mimic h2 line-height
+  line-height: 1.2857142857;
+
   color: white;
   height: 84px;
   background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
@@ -36,6 +41,10 @@
   padding-left: 0;
   justify-content: center;
   text-align: center;
+  // mimic h2 font-size
+  font-size: 1.75rem;
+  // mimic h2 line-height
+  line-height: 1.2857142857;
   @include mq($from: tablet) {
     justify-content: inherit;
     text-align: inherit;
@@ -56,6 +65,13 @@
   padding-right: space(4);
   padding-left: space(4);
   padding-bottom: space(4);
+}
+
+.c-detail-void__lines {
+  // mimic h3
+  font-size: 1.5rem;
+  // mimic h3
+  line-height: 1.25;
 }
 
 .c-detail-void__line {

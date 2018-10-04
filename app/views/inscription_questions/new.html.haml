@@ -1,5 +1,7 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 - title_data 'Votre inscription à Pôle emploi'
+- raw_description = 'Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?'
+- description_data(raw_description)
 
 %main#main.mw1140p.center{role: 'main'}
 
@@ -10,7 +12,7 @@
 
       = form_with model: @inscription, url: inscription_questions_path, local: false do |f|
 
-        = render 'shared/a_form_header', {e: e, title: "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"}
+        = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
 
         .c-question__form
           %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }

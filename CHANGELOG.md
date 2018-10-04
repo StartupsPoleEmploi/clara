@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.0.1 (02/10/2018)
+-[#915][BUG] Balises manquantes SEO
+
+
 ## 14.0.0 (01/10/2018)
 -[#936][FEATURE] Modifier le reply-to de l'email
 

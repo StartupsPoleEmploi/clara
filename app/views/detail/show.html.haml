@@ -1,12 +1,13 @@
-- title_data "#{@aid.name}"
 - aid = @loaded[:aid]
+- title_data "#{aid[:name]}"
+- description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
 
 %main#main.c-detail-show{role: "main"}
 
   = render 'shared/breadcrumb'
 
-  %h2.c-detail-title.u-margin-bottom-none
+  %h1.c-detail-title.u-margin-bottom-none
     .c-detail-title-inside.u-useful-width.u-margin-constraint
       = aid[:name]
   

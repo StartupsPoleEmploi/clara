@@ -200,6 +200,7 @@ FactoryBot.define do
     trait :aid_not_spectacle do
       before :create do |aid|
         aid.rule = create(:rule, :not_be_a_spectacle)
+        aid.what = "&lt;p&gt;Cette aide vise &amp;agrave; faciliter les d&amp;eacute;placements des personnes handicap&amp;eacute;es salari&amp;eacute;es, travailleurs ind&amp;eacute;pendants, demandeurs d&amp;#39;emploi, &amp;eacute;tudiants de l&amp;#39;enseignement sup&amp;eacute;rieur en stage obligatoire, stagiaires de la formation professionnelle"
       end
     end
     trait :aid_adult_or_spectacle do
