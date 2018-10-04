@@ -8,14 +8,8 @@ module ApplicationHelper
     # quick hack to shorten the description
     local_text = text.to_s
     if request && request.respond_to?("path") && request.path.include?("/aides/detail")
-      pp "hrrry"
       local_text = text.to_s.split("(")[0].to_s.split(".")[0].to_s.split(":")[0].to_s
     end
-    # p '- - - - - - - - - - - - - - request.path- - - - - - - - - - - - - - - -' 
-    # pp request.path
-    # p ''
-    # if request.path == detail_path
-    # end
     content_for :description_data, local_text
   end
 
