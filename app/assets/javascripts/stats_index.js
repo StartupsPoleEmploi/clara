@@ -1,6 +1,6 @@
-$(document).on('ready turbolinks:load', function () {
-  if ($('body').hasClass('stats') && $('body').hasClass('index')) {
-    /**
+_.set(window, 'clara.draw_stats', function() {
+
+   /**
     * Load from PE / not from PE
     */
     var json_data = JSON.parse($('.ct-gape').attr('data-loaded'))["json_data"]
@@ -65,5 +65,22 @@ $(document).on('ready turbolinks:load', function () {
       }
     );
 
+});
+
+
+$(document).on('turbolinks:load', function () {
+  
+  if ($('body').hasClass('stats') && $('body').hasClass('index')) {
+    if (_.get(window, 'Chartist')) {
+      clara.draw_stats();
+    } else {
+      $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js", function( data, textStatus, jqxhr ) {
+        $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.2/chartist-plugin-legend.min.js", function( data, textStatus, jqxhr ) {
+          console.log("Chartist loaded " + Chartist)
+          clara.draw_stats();
+        });
+      });
+    }
   }
+
 });

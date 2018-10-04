@@ -20,8 +20,6 @@
 //= require moment/moment
 //= require redux/redux
 //= require storejs/store.legacy
-//= require chartist/chartist
-//= require chartist/chartist-plugin-legend
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
