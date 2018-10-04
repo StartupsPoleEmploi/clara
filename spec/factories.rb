@@ -200,6 +200,7 @@ FactoryBot.define do
     trait :aid_not_spectacle do
       before :create do |aid|
         aid.rule = create(:rule, :not_be_a_spectacle)
+        aid.short_description = 'a short description, with some punctuation. or : a (parenthesis).'
       end
     end
     trait :aid_adult_or_spectacle do

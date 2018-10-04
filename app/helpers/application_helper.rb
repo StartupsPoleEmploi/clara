@@ -5,7 +5,9 @@ module ApplicationHelper
   end
 
   def description_data(text)
-    content_for :description_data, text.to_s
+    # quick hack to shorten the description
+    local_text = text.to_s.split("(")[0].to_s.split(".")[0].to_s.split(":")[0].to_s
+    content_for :description_data, local_text
   end
 
   def view_object(name, args = {})
