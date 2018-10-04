@@ -159,5 +159,12 @@ feature 'TabTitle' do
     visit type_path(create(:contract_type, :contract_type_1))
     expect(page).to have_title "n1 | Clara – un service Pôle emploi"
   end
+  scenario 'Display a correct description for the type page' do
+    expected_content = "blabla"
+    aid = create(:contract_type, :contract_type_1, description: "blablaZZ")
+    visit detail_path(aid.slug)
+    meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
+    expect(meta_description[:content]).to eq expected_content
+  end
 
 end
