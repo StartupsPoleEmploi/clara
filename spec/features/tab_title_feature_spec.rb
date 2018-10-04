@@ -134,12 +134,11 @@ feature 'TabTitle' do
     expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the aides page' do
-    expected_content = "blabla"
+    expected_content = "Découvrez toutes les aides et mesures de retour à l&#39;emploi"
     visit aides_path
     meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
     expect(meta_description[:content]).to eq expected_content
   end
-
 
 
 

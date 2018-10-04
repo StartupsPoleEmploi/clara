@@ -8,8 +8,12 @@
   margin-top: space(4);
 }
 
-h3.c-detail-item__title {
+h2.c-detail-item__title {
   margin-bottom: space(3);
+  // mimic h3
+  font-size: 1.5rem;
+  // mimic h3
+  line-height: 1.25;
 }
 
 .c-detail-list {
