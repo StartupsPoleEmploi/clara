@@ -161,8 +161,8 @@ feature 'TabTitle' do
   end
   scenario 'Display a correct description for the type page' do
     expected_content = "blabla"
-    aid = create(:contract_type, :contract_type_1, description: "blablaZZ")
-    visit detail_path(aid.slug)
+    c1 = create(:contract_type, :contract_type_1, description: "blablaZZ")
+    visit type_path(c1.slug)
     meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
     expect(meta_description[:content]).to eq expected_content
   end
