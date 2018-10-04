@@ -142,12 +142,12 @@ feature 'TabTitle' do
 
 
   scenario 'Display a correct title for the detail page' do
-    aid = create(:aid, :aid_adult_or_spectacle)
+    aid = create(:aid, :aid_adult_or_spectacle, name: "ze_name_for_adult_or_spectacle")
     visit detail_path(aid.slug)
     expect(page).to have_title "ze_name_for_adult_or_spectacle | Clara – un service Pôle emploi"
   end
   scenario 'Display a correct description for the detail page' do
-    expected_content = "blabla"
+    expected_content = "a short description, with some punctuation "
     aid = create(:aid, :aid_not_spectacle)
     visit detail_path(aid.slug)
     meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
