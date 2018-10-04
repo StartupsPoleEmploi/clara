@@ -28,12 +28,9 @@ module TabTitleHelper
       res = ""
       if @request_service.root_path?
         res = "Découvrez les aides et mesures qui vont accélérer votre reprise d'emploi"
-      elsif @request_service.question_path?
+      else
         res = description_data
       end
-      # p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-      # pp res
-      # p ''
       res
     end
 
