@@ -115,6 +115,12 @@ feature 'TabTitle' do
     visit edit_cooky_path("preference")
     expect(page).to have_title "Gestion des cookies | Clara – un service Pôle emploi"
   end
+  scenario 'Display a correct description for the cookie page' do
+    expected_content = "blabla"
+    visit edit_cooky_path("preference")
+    meta_description = find(:css, "meta[name='description']", :visible => false, :count => 1)
+    expect(meta_description[:content]).to eq expected_content
+  end
 
   scenario 'Display a correct title for the aides page' do
     visit aides_path
