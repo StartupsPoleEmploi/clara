@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-  if ($('body').hasClass('inscription_questions')) {
+  if ($('body').hasClasses('inscription_questions')) {
     
   }
 });

@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-  if ($( 'body' ).hasClass('allocation_questions', 'new' )) {
+  if ($( 'body' ).hasClasses('allocation_questions', 'new' )) {
 
     $('.js-pnotify--ARE_ASP').click(function() {
        PNotify.removeAll();

@@ -15,7 +15,7 @@ _.set(
 
 
 $(document).on('ready', function () {
-  if ($( 'body' ).hasClass('contact', 'index' )) {
+  if ($( 'body' ).hasClasses('contact', 'index' )) {
     clara.init_contact();
     var $to_be_focused = $("body");
     if ($('.is-error').length === 0) {

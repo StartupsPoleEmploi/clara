@@ -30,7 +30,6 @@
 //= require_tree ./forms
 //= require ./welcome_index
 //= require ./result_default
-//= require ./aides_index
 //= require ./cookies
 //= require ./contact
 //= require ./google_analytics_push
