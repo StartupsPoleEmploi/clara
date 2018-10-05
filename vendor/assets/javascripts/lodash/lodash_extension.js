@@ -6,11 +6,6 @@ _.mixin({
     });
   },
 
-  // see https://stackoverflow.com/a/43852081/2595513
-  toBoolean: function(v) {
-    return v==="false" || v==="null" || v==="NaN" || v==="undefined" || v==="0" ? false : !!v; 
-  },
-
   toPercentage: function(portion, total) {
     if (_.every(arguments, _.isNumber)) {
       return ((portion/total) * 100).toFixed(1) + '%'
@@ -29,14 +24,6 @@ _.mixin({
     var seconde = ('0'+now.getSeconds()).slice(-2);
     var ms = ('0'+now.getMilliseconds()).slice(-2);
     return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s" + ms + "ms"
-  },
-
-  // from https://davidwalsh.name/query-string-javascript
-  getUrlParameter: function(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   },
 
   // returns next element in an array, returns first element if last is given
@@ -66,12 +53,6 @@ _.mixin({
 
   },
   
-  allIds: function(collection) {
-    var good_input = _.isArray(collection) && !_.isEmpty(collection) && _.every(collection, function(e){return _.has(e, 'id');});
-    if (good_input) return _.map(collection, function(e){return e.id;});
-    return [];
-  },
-
   none: function() {
     return !_.some.apply(_, arguments);
   },
@@ -84,12 +65,6 @@ _.mixin({
     return _.defaultTo(_.countBy.apply(_, arguments)[true], 0);
   },
 
-
-  isNumeric: function(x) {
-    // see https://stackoverflow.com/a/26962405/2595513
-    // see https://github.com/lodash/lodash/issues/1148#issuecomment-347293517
-    return ((typeof x === 'number' || typeof x === 'string') && (Number(x) === Number(x)));
-  },
 
   injectToPropArray: function (source, destination) {
 

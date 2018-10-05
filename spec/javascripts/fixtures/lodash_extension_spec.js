@@ -68,39 +68,6 @@ describe("Lodash extension", function() {
     });
   });
 
-  describe("_.allIds", function() {
-    it ("Should be defined", function() {
-      expect(_.allIds).toBeDefined();
-    });
-    it ("Should return empty array if input is a bad one", function() {
-      expect(_.allIds()                      ).toEqual([]);
-      expect(_.allIds(null)                  ).toEqual([]);
-      expect(_.allIds(undefined)             ).toEqual([]);
-      expect(_.allIds(new Date())            ).toEqual([]);
-      expect(_.allIds(/^/)                   ).toEqual([]);
-      expect(_.allIds([])                    ).toEqual([]);
-      expect(_.allIds({})                    ).toEqual([]);
-      expect(_.allIds(true)                  ).toEqual([]);
-      expect(_.allIds(1)                     ).toEqual([]);
-      expect(_.allIds(1.23)                  ).toEqual([]);
-      expect(_.allIds(function(){})          ).toEqual([]);
-      expect(_.allIds(1, 2, 3)               ).toEqual([]);
-      expect(_.allIds({}, {}, {})            ).toEqual([]);
-      expect(_.allIds({id:1}, {id:2}, {id:3})).toEqual([]);
-    });
-    it ("Should return empty array if input lack of precision", function() {
-      expect(_.allIds([{}, {}, {}])                              ).toEqual([]);
-      expect(_.allIds([{a:1}, {a:2}, {a:3}])                     ).toEqual([]);
-      expect(_.allIds([{a:1}, {id:'the_id', a:2}, {id: 42, a:3}])).toEqual([]);
-    });
-    it ("Should return array of ids when apply", function() {
-      expect(_.allIds([{id:'the_id'}])).toEqual(['the_id']);
-      expect(_.allIds([{id:null}])).toEqual([null]);
-      expect(_.allIds([{id:undefined}])).toEqual([undefined]);
-      expect(_.allIds([{id:41, a:1}, {id:42, a:2}, {id: 43, a:3}])).toEqual([41, 42, 43]);
-    });
-  });
-
   describe("_.fromPropArray", function() {
     it ("Should be defined", function() {
       expect(_.fromPropArray).toBeDefined();

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.0.2 (05/10/2018)
+-[#943][FEATURETTE] JS optimisé
+-[#944][FEATURETTE] Ajouter et/ou alimenter la meta description à la page "conditions d'utilisation"
+
 ## 14.0.1 (02/10/2018)
 -[#915][BUG] Balises manquantes SEO
 

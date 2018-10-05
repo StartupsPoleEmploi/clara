@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
+  post 'accept_all_cookies' => 'welcome#accept_all_cookies'
 
   namespace :admin do
     resources :users

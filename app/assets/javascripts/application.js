@@ -15,13 +15,12 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require ./include_ga
+//= require ./include_hj
 //= require detect_flex/detect_flex-2009
 //= require ./browser_detection
-//= require moment/moment
 //= require redux/redux
 //= require storejs/store.legacy
-//= require chartist/chartist
-//= require chartist/chartist-plugin-legend
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
@@ -35,8 +34,6 @@
 //= require ./aides_index
 //= require ./cookies
 //= require ./contact
-//= require ./include_ga
-//= require ./include_hj
 //= require ./google_analytics_push
 //= require ./print
 //= require ./stats_index
