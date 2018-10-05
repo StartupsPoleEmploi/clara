@@ -27,7 +27,6 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'print', media: 'print'
-    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700", rel: "stylesheet"}
     = favicon_link_tag 'favicon.ico'        
     = javascript_tag "window.clara = window.clara || {}; clara.hotjar_id = '#{ENV['ARA_HOTJAR_ID']}';clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID']}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json}; clara.ga_is_disabled = #{ga_disabled?}; clara.hj_is_disabled = #{hj_disabled?};"
                 

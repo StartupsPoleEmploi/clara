@@ -35,6 +35,8 @@ ara
 /public/index.html
 # Ignore profiling
 /public/profile/*
+# Ignore precompiled assets
+/public/assets/*
 # Ignore temp file
 /public/activated_models.txt
 

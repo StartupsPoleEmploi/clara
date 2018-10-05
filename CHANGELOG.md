@@ -1,5 +1,10 @@
 # ARA Changelog
 
+
+## 14.0.4 (05/10/2018)
+-[#914][TECH] Hebergement des fonts
+
+
 ## 14.0.3 (05/10/2018)
 -[#945][TECH] Suppression turbolinks
 
