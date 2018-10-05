@@ -1,5 +1,8 @@
 $(document).on('turbolinks:load', function () { if ($('body').hasClass('welcome', 'index')) {
 
+
+  store.clearAll();
+  
   $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
     var current_ip = _.get(data, 'ip');
     var pe_ips = _.split(_.get(window, 'clara.env.ARA_URL_PE'), ",");

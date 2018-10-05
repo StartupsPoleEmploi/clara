@@ -31,3 +31,8 @@ fieldset {
 dd, ol, ul {
   margin-left: $inuit-global-spacing-unit;
 }
+
+/** added a special reformatting for tests*/
+ul.jasmine-specs {
+  margin-bottom: 0;
+}

@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function () {
   if (clara.ga_is_disabled) {
     $( "script[src*='analytics.com']" ).remove();    
-    _.set(window, 'ga', function(){console.log("ga is disabled")});
+    _.set(window, 'ga', function(){});
   } else {
     if (_.get(window, 'ga')) {
       // ok, analytics loaded, do nothing
