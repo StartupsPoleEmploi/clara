@@ -23,8 +23,6 @@ class WelcomeController < ApplicationController
   end
 
   def accept_all_cookies
-    p '- - - - - - - - - - - - - - accept_all_cookies- - - - - - - - - - - - - - - -' 
-    p ''
     session[:cookie] = {
       "disable_statistic" => "0",
       "disable_navigation" => "0"
