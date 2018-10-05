@@ -9,14 +9,15 @@ class ApplicationController < ActionController::Base
   # See https://sentry.io/pole-emploi/ara/getting-started/ruby-rails/
   before_action :set_raven_context
 
-  before_action :refuse_tracking
-
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end
 
+  def cookie_preference_already_defined?
+    session[:cookie] != nil
+  end
 
   def ga_disabled?
     session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
@@ -24,11 +25,6 @@ class ApplicationController < ActionController::Base
 
   def hj_disabled?
     session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
-  end
-
-  def refuse_tracking
-    gon.disable_analytics = ga_disabled?
-    gon.disable_hotjar = hj_disabled?
   end
   
   def my_redirect_to(url)
