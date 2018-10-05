@@ -110,7 +110,7 @@ $(document).on('ready', function () {
     spacing2: 25,
     context: $("body")
   };
-  if ($('body').hasClass('address_questions', 'new')) {
+  if ($('body').hasClasses('address_questions', 'new')) {
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
