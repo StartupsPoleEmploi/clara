@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 14.0.3 (05/10/2018)
+-[#945][TECH] Suppression turbolinks
+
 
 ## 14.0.2 (05/10/2018)
 -[#943][FEATURETTE] JS optimisé
