@@ -26,14 +26,6 @@ _.mixin({
     return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s" + ms + "ms"
   },
 
-  // from https://davidwalsh.name/query-string-javascript
-  getUrlParameter: function(name) {
-    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-  },
-
   // returns next element in an array, returns first element if last is given
   nextElementLooped: function (array, element) {
     
