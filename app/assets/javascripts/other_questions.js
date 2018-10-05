@@ -1,5 +1,5 @@
-$(document).on('ready turbolinks:load', function () {
-  if ($( 'body' ).hasClass('other_questions', 'new' )) {
+$(document).on('ready', function () {
+  if ($( 'body' ).hasClasses('other_questions', 'new' )) {
 
     $( 'input#none' ).click(function() {
       $('input#val_spectacle').prop('checked', false);

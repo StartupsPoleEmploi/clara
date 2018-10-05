@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).on('ready', function () {
   if (clara.hj_is_disabled) {
     $("script[src*='hotjar.com']").remove();    
     _.unset(window, 'hj');

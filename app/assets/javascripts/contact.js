@@ -14,8 +14,8 @@ _.set(
 );
 
 
-$(document).on('ready turbolinks:load', function () {
-  if ($( 'body' ).hasClass('contact', 'index' )) {
+$(document).on('ready', function () {
+  if ($( 'body' ).hasClasses('contact', 'index' )) {
     clara.init_contact();
     var $to_be_focused = $("body");
     if ($('.is-error').length === 0) {

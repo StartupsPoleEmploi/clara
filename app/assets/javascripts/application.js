@@ -25,13 +25,11 @@
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
 //= require rails-ujs
-//= require turbolinks
-//= require turbolinks_page_change
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
+//= require ./welcome_index
 //= require ./result_default
-//= require ./aides_index
 //= require ./cookies
 //= require ./contact
 //= require ./google_analytics_push
@@ -39,7 +37,6 @@
 //= require ./stats_index
 //= require ./stats_time
 //= require ./address_questions
-//= require ./inscription_questions
 //= require ./allocation_questions
 //= require ./age_questions
 //= require ./other_questions

@@ -1,4 +1,4 @@
-_.set(window, 'clara.draw_stats', function() {
+_.set(window, 'clara.draw_stats_index', function() {
 
    /**
     * Load from PE / not from PE
@@ -68,17 +68,17 @@ _.set(window, 'clara.draw_stats', function() {
 });
 
 
-$(document).on('turbolinks:load', function () {
+$(document).on('ready', function () {
   
-  if ($('body').hasClass('stats') && $('body').hasClass('index')) {
+  if ($('body').hasClasses('stats', 'index')) {
     if (_.get(window, 'Chartist')) {
-      clara.draw_stats();
+      clara.draw_stats_index();
     } else {
       $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js", function( data, textStatus, jqxhr ) {
         $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.2/chartist-plugin-legend.min.js", function( data, textStatus, jqxhr ) {
           $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js", function( data, textStatus, jqxhr ) {
             console.log("Chartist, plugin, and momentjs loaded ")
-            clara.draw_stats();
+            clara.draw_stats_index();
           });
         });
       });

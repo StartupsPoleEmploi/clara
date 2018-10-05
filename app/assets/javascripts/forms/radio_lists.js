@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
 
   $('.js-enterspace').keypress(function(e){
     var theCode = (e.keyCode ? e.keyCode : e.which);

@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($('.c-result-default').length) {
 
     var MOBILE_MAX_WIDTH = 739;

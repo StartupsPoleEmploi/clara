@@ -99,7 +99,7 @@ _.set(window, 'clara.a11y.search1', {
   }
 });
 
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   // Turbolinks breaks PNotify context, needs to reinstantiate it here 
   // See https://stackoverflow.com/a/28220612/2595513
   PNotify.prototype.options.stack  = {
@@ -110,7 +110,7 @@ $(document).on('ready turbolinks:load', function () {
     spacing2: 25,
     context: $("body")
   };
-  if ($('body').hasClass('address_questions', 'new')) {
+  if ($('body').hasClasses('address_questions', 'new')) {
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
