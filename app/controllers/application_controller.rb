@@ -27,16 +27,8 @@ class ApplicationController < ActionController::Base
   end
 
   def refuse_tracking
-    if session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
-      gon.disable_analytics = true
-    else
-      gon.disable_analytics = false
-    end
-    if session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
-      gon.disable_hotjar = true
-    else
-      gon.disable_hotjar = false
-    end
+    gon.disable_analytics = ga_disabled?
+    gon.disable_hotjar = hj_disabled?
   end
   
   def my_redirect_to(url)
