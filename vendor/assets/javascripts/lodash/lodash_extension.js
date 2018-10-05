@@ -61,12 +61,6 @@ _.mixin({
 
   },
   
-  allIds: function(collection) {
-    var good_input = _.isArray(collection) && !_.isEmpty(collection) && _.every(collection, function(e){return _.has(e, 'id');});
-    if (good_input) return _.map(collection, function(e){return e.id;});
-    return [];
-  },
-
   none: function() {
     return !_.some.apply(_, arguments);
   },
