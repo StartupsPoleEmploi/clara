@@ -1,6 +1,7 @@
 $(document).on('ready', function () {
   if ($('body').hasClass('cookies', 'edit')) {
 
+    console.log("inside cookies edit")
 
     /**
     *         INITIAL STATE 
