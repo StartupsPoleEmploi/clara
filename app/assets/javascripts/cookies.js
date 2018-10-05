@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($('body').hasClass('cookies', 'edit')) {
 
 

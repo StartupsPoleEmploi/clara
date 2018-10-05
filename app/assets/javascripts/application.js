@@ -28,6 +28,7 @@
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
 //= require_tree ./forms
+//= require ./welcome_index
 //= require ./result_default
 //= require ./aides_index
 //= require ./cookies

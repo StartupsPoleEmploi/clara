@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   var template_to_add = 
   "<div class='c-browser-deprecated u-padding' style='background-color: orange;'>" +
     "<div class='c-browser-deprecated__line'>" +

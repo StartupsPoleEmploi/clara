@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($('body').hasClass('aides', 'index')) {
 
 

@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($('body').hasClass('inscription_questions')) {
     
   }

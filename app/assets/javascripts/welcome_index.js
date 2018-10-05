@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () { if ($('body').hasClass('welcome', 'index')) {
+$(document).on('ready', function () { if ($('body').hasClass('welcome', 'index')) {
 
 
   store.clearAll();

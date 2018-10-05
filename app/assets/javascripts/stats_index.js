@@ -68,7 +68,7 @@ _.set(window, 'clara.draw_stats', function() {
 });
 
 
-$(document).on('turbolinks:load', function () {
+$(document).on('ready', function () {
   
   if ($('body').hasClass('stats') && $('body').hasClass('index')) {
     if (_.get(window, 'Chartist')) {

@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($( 'body' ).hasClass('other_questions', 'new' )) {
 
     $( 'input#none' ).click(function() {

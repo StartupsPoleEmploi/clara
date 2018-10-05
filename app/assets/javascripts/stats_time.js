@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function () {
+$(document).on('ready', function () {
   if ($('body').hasClass('stats') && $('body').hasClass('time')) {
 
     var loaded = JSON.parse($('.ct-savedtime').attr('data-loaded'));
