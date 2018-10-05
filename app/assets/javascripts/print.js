@@ -4,9 +4,11 @@ $(document).on('ready', function () {
     if (typeof ga === "function") {
       ga('send', 'event', 'results', 'print', document.location.pathname);
     }
-    window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "eligibles"});
-    window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "ineligibles"});
-    window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "uncertains"});
+    if (_.get(window, 'main_store')) {
+      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "eligibles"});
+      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "ineligibles"});
+      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "uncertains"});      
+    }
     window.print();
   });
 
