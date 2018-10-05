@@ -1,9 +1,6 @@
 module ApplicationHelper
 
   def cookie_preference_already_defined?
-    p '- - - - - - - - - - - - - - cookie_preference_already_defined?- - - - - - - - - - - - - - - -' 
-    pp session[:cookie]
-    p ''
     session[:cookie] != nil
   end
 
@@ -14,15 +11,6 @@ module ApplicationHelper
   def hj_disabled?
     session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
   end
-
-  # def user_in_pe?
-  #   p '- - - - - - - - - - - - - - user_in_pe?- - - - - - - - - - - - - - - -' 
-  #   pp ENV['ARA_URL_PE']
-  #   pp request.ip
-  #   pp request.env['HTTP_X_FORWARDED_FOR']
-  #   p ''
-  #   request && request.respond_to?("remote_ip") && ENV['ARA_URL_PE'].include?(request.remote_ip)
-  # end
 
   def title_data(text)
     content_for :title_data, text.to_s
