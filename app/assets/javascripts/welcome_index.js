@@ -1,22 +1,20 @@
-_.set(window, 'clara.include_ga', function(){
-  
+$(document).on('turbolinks:load', function () { if ($('body').hasClass('welcome', 'index')) {
+
+  $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function(data) {
+    var current_ip = _.get(data, 'ip');
+    var pe_ips = _.split(_.get(window, 'clara.env.ARA_URL_PE'), ",");
+    if (_.includes(pe_ips, current_ip)) {
+      console.log("Bienvenue chez Pôle Emploi");
       ga('set', 'dimension1', 'true');
+    } else {
       console.log("Bienvenue");
       ga('set', 'dimension1', 'false');
+    }
     console.log("IP : " + current_ip);
     console.log("Date : " + _.fullDateFr());
     console.log("Version : " + clara.version);
-});
+  });
 
-$(document).on('turbolinks:load', function () {
 
-  var ga_script_not_yet_loaded = $( "script[src*='analytics.com']" ).length === 0;
-  var user_disabled_analytics = _.get(window, 'gon.disable_analytics') === true;
 
-  if (ga_script_not_yet_loaded && !user_disabled_analytics) {
-    clara.include_ga();
-  } else if (user_disabled_analytics) {
-    clara.exclude_ga();
-  }
-
-});
+}});
