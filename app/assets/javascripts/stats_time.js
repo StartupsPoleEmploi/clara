@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-  if ($('body').hasClass('stats') && $('body').hasClass('time')) {
+  if ($('body').hasClasses('stats', 'time')) {
 
     var loaded = JSON.parse($('.ct-savedtime').attr('data-loaded'));
 

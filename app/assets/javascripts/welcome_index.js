@@ -1,4 +1,4 @@
-$(document).on('ready', function () { if ($('body').hasClass('welcome', 'index')) {
+$(document).on('ready', function () { if ($('body').hasClasses('welcome', 'index')) {
 
 
   store.clearAll();

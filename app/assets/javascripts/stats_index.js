@@ -70,7 +70,7 @@ _.set(window, 'clara.draw_stats', function() {
 
 $(document).on('ready', function () {
   
-  if ($('body').hasClass('stats') && $('body').hasClass('index')) {
+  if ($('body').hasClasses('stats', 'index')) {
     if (_.get(window, 'Chartist')) {
       clara.draw_stats();
     } else {
