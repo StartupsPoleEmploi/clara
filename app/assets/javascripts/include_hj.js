@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  if (clara.is_hj_disabled) {
+  if (clara.hj_is_disabled) {
     $("script[src*='hotjar.com']").remove();    
     _.unset(window, 'hj');
   } else {

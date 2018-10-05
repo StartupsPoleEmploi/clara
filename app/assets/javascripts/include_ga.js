@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function () {
-  if (clara.is_ga_disabled) {
+  if (clara.ga_is_disabled) {
     $( "script[src*='analytics.com']" ).remove();    
     _.unset(window, 'ga');
   } else {
