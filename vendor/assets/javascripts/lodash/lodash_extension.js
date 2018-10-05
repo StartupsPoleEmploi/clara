@@ -6,11 +6,6 @@ _.mixin({
     });
   },
 
-  // see https://stackoverflow.com/a/43852081/2595513
-  toBoolean: function(v) {
-    return v==="false" || v==="null" || v==="NaN" || v==="undefined" || v==="0" ? false : !!v; 
-  },
-
   toPercentage: function(portion, total) {
     if (_.every(arguments, _.isNumber)) {
       return ((portion/total) * 100).toFixed(1) + '%'
@@ -84,12 +79,6 @@ _.mixin({
     return _.defaultTo(_.countBy.apply(_, arguments)[true], 0);
   },
 
-
-  isNumeric: function(x) {
-    // see https://stackoverflow.com/a/26962405/2595513
-    // see https://github.com/lodash/lodash/issues/1148#issuecomment-347293517
-    return ((typeof x === 'number' || typeof x === 'string') && (Number(x) === Number(x)));
-  },
 
   injectToPropArray: function (source, destination) {
 
