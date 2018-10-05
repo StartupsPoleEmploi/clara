@@ -76,8 +76,10 @@ $(document).on('turbolinks:load', function () {
     } else {
       $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js", function( data, textStatus, jqxhr ) {
         $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.2/chartist-plugin-legend.min.js", function( data, textStatus, jqxhr ) {
-          console.log("Chartist loaded " + Chartist)
-          clara.draw_stats();
+          $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js", function( data, textStatus, jqxhr ) {
+            console.log("Chartist, plugin, and momentjs loaded ")
+            clara.draw_stats();
+          });
         });
       });
     }
