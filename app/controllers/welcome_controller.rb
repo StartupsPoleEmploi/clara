@@ -22,6 +22,15 @@ class WelcomeController < ApplicationController
     my_redirect_to QuestionManager.new.getNextPath
   end
 
+  def accept_all_cookies
+    p '- - - - - - - - - - - - - - accept_all_cookies- - - - - - - - - - - - - - - -' 
+    p ''
+    session[:cookie] = {
+      "disable_statistic" => "0",
+      "disable_navigation" => "0"
+    }
+  end
+
   def terms
   end
 

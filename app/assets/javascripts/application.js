@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require ./include_ga
+//= require ./include_hj
 //= require es5-shim/es5-shim
 //= require lodash/lodash
 //= require lodash/lodash_extension

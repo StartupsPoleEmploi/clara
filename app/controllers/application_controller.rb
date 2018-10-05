@@ -14,18 +14,6 @@ class ApplicationController < ActionController::Base
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end
-
-  def cookie_preference_already_defined?
-    session[:cookie] != nil
-  end
-
-  def ga_disabled?
-    session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
-  end
-
-  def hj_disabled?
-    session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
-  end
   
   def my_redirect_to(url)
     # See https://github.com/turbolinks/turbolinks-rails/pull/41

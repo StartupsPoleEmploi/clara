@@ -9,5 +9,5 @@
           %span.c-cookies-clickhere
             = link_to "cliquez ici!", edit_cooky_path('preference')
         .o-line__item
-          %button.c-cookies-button J'accepte tout
+          = button_to "J'accepte tout", accept_all_cookies_path, "class" => "c-cookies-button", "onclick" => "document.getElementById('c-cookie-banner').style.display='none';"
 
