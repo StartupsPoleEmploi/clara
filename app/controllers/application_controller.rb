@@ -11,12 +11,6 @@ class ApplicationController < ActionController::Base
 
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
-
-  before_action :set_javascript_global_variables
-
-  def set_javascript_global_variables
-  end
-
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end
