@@ -1,11 +1,17 @@
 # ARA Changelog
 
 
+## 14.0.7 (06/10/2018)
+-[#949b][TECH] Bug GA 2
+
+
 ## 14.0.6 (06/10/2018)
--[#914b][TECH] Hebergement des fonts, sur heroku aussi
+-[#949][TECH] Bug GA
+
 
 ## 14.0.5 (05/10/2018)
 -[#914b][TECH] Hebergement des fonts, sur heroku aussi
+
 
 ## 14.0.4 (05/10/2018)
 -[#914][TECH] Hebergement des fonts
