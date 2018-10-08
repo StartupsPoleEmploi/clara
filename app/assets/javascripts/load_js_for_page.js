@@ -12,8 +12,9 @@
 *
 */
 function load_js_for_page(array_of_selectors, a_function) {
-  $(document).on("ready turbolinks:load", 
-    function() {console.log("hey")}
+  $(document).on("ready turbolinks:load",  
+                  make_self_destructing_event_callback(1, a_function, array_of_selectors)
+    // function() {console.log("hey")}
     // function() {
       // if (_.every(array_of_selectors, function(sel){ return $('body').hasClass(sel);})) {
         // return 
@@ -38,7 +39,10 @@ function make_self_destructing_event_callback(maxExecutions, callback, selectors
       var is_page_corresponding_to_selectors = _.isEmpty(_.difference(selectors, current_selectors))
       if (debug) console.log("is_page_corresponding_to_selectors " + is_page_corresponding_to_selectors)
       if (debug) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
-      if (count++ >= maxExecutions && is_page_corresponding_to_selectors){
+      if (!is_page_corresponding_to_selectors) {
+        count = 0;
+      }
+      else if (count++ >= maxExecutions){
         if (debug) console.log("turned off event for " + event.type + " " + selectors + " for " + $('body').attr("class").split(' '));
         $(this).off(event)
         return;
