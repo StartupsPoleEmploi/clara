@@ -28,6 +28,7 @@ function make_self_destructing_event_callback(maxExecutions, callback, selectors
       // console.log(selectors)
       if (debug) console.log("within closure " + $('body').attr("class").split(' '))
       var current_selectors = $('body').attr("class").split(' ');
+      _.difference(selectors, current_selectors);
       // var is_page_corresponding_to_selectors = _.isEmpty(_.difference(selectors, current_selectors))
       if (debug) console.log("is_page_corresponding_to_selectors " + is_page_corresponding_to_selectors)
       if (debug) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
