@@ -60,7 +60,7 @@ feature 'HomeSpec' do
     expect(page).to have_css 'meta[name="google-site-verification"][content="YOm5sNGxbHWmN2Rf3Udg6v29ca5YjM3RNRz8TjWA6Pw"]', :visible => false
   end
 
-    scenario 'Home should a meta google search controler for Mar' do
+  scenario 'Home should a meta google search controler for Mar' do
     visit root_path 
     expect(page).to have_css 'meta[name="google-site-verification"][content="0jDmSXtIkrU_nDcXoExkAHbG0TmRlGrx7LdJoX9ktWg"]', :visible => false
   end
