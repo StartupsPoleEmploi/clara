@@ -98,7 +98,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'no-reply@clara.pole-emploi.fr'}
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'in-v3.mailjet.com',
     port: 587,
     user_name: ENV['ARA_EMAIL_USER'],
     password: ENV['ARA_EMAIL_PWD'],
