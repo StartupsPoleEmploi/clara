@@ -1,5 +1,4 @@
-$(document).on('ready', function () {
-  if ($('body').hasClasses('age_questions', 'new')) {
+load_js_for_page(["age_questions", "new"], function() {
     //https://stackoverflow.com/a/24271309/2595513
     $('input#age').on('keydown keyup', function(e) {
       if (
@@ -11,5 +10,4 @@ $(document).on('ready', function () {
         $(this).val(99);
       }
     });
-  }
 });
