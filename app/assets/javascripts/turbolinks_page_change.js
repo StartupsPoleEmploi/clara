@@ -15,11 +15,11 @@ $(document).on('turbolinks:request-end', function() {
 
 // DEBUG MODE
 
-$(document).on('turbolinks:request-start', function() {console.log('turbolinks:request-start')})
-$(document).on('turbolinks:request-end', function() {console.log('turbolinks:request-end')})
-$(document).on('turbolinks:click', function() {console.log('turbolinks:click')})
-$(document).on('turbolinks:visit', function() {console.log('turbolinks:visit')})
-$(document).on('turbolinks:before-cache', function() {console.log('turbolinks:before-cache')})
-$(document).on('turbolinks:before-render', function() {console.log('turbolinks:before-render')})
-$(document).on('turbolinks:render', function() {console.log('turbolinks:render')})
-$(document).on('turbolinks:load', function() {console.log('turbolinks:load')})
+// $(document).on('turbolinks:request-start', function() {console.log('turbolinks:request-start')})
+// $(document).on('turbolinks:request-end', function() {console.log('turbolinks:request-end')})
+// $(document).on('turbolinks:click', function() {console.log('turbolinks:click')})
+// $(document).on('turbolinks:visit', function() {console.log('turbolinks:visit')})
+// $(document).on('turbolinks:before-cache', function() {console.log('turbolinks:before-cache')})
+// $(document).on('turbolinks:before-render', function() {console.log('turbolinks:before-render')})
+// $(document).on('turbolinks:render', function() {console.log('turbolinks:render')})
+// $(document).on('turbolinks:load', function() {console.log('turbolinks:load')})

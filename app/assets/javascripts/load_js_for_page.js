@@ -19,15 +19,20 @@ function load_js_for_page(array_of_selectors, a_function) {
 
 function make_self_destructing_event_callback(maxExecutions, callback, selectors) {
 
+  var debug = (_.size(selectors) > 0);
+
   if (_.every(selectors, function(sel){ return $('body').hasClass(sel);})) {
-    if (_.size(selectors) > 0) console.log($('body').attr("class").split(' '));
-    // console.log("try to trigger loading for " + selectors)
+    if (debug) console.log($('body').attr("class").split(' '));
     var count = 0;
     return function(event) {
       // console.log(selectors)
-      if (_.size(selectors) > 0) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
+      if (debug) console.log("within closure " + $('body').attr("class").split(' '))
+      var current_selectors = $('body').attr("class").split(' ');
+      // var is_page_corresponding_to_selectors = _.isEmpty(_.difference(selectors, current_selectors))
+      if (debug) console.log("is_page_corresponding_to_selectors " + is_page_corresponding_to_selectors)
+      if (debug) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
       if (count++ >= maxExecutions){
-        if (_.size(selectors) > 0) console.log("turned off event for " + event.type + " " + selectors);
+        if (debug) console.log("turned off event for " + event.type + " " + selectors + " for " + $('body').attr("class").split(' '));
         $(this).off(event)
         return;
       }
