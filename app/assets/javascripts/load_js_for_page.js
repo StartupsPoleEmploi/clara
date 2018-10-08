@@ -12,9 +12,6 @@
 *
 */
 
-// DEBUG purpose : in the chrome console, >$ $(document).trigger( "ready")
-// $(document).on("ready", function(){console.log("I'm ready");});
-
 function load_js_for_page(selectors, a_function) {
   $(document).on("ready turbolinks:load", function() {
     if (_.isEmpty(selectors) || _.every(selectors, function(sel){return $('body').hasClass(sel)})) {
