@@ -12,34 +12,27 @@
 *
 */
 function load_js_for_page(array_of_selectors, a_function) {
-  $(document).on("ready turbolinks:load",  
-                  make_self_destructing_event_callback(1, a_function, array_of_selectors)
-    // function() {console.log("hey")}
-    // function() {
-      // if (_.every(array_of_selectors, function(sel){ return $('body').hasClass(sel);})) {
-        // return 
-        // make_self_destructing_event_callback(1, a_function, array_of_selectors)
-      // }
-    // }
-
-  );
+  $(document).on("turbolinks:load", function(){
+    // if ($( 'body' ).hasClasses('other_questions', 'new' ))
+  });
 }
 
 function make_self_destructing_event_callback(maxExecutions, callback, selectors) {
 
   var debug = (_.size(selectors) > 0);
-  if (debug) console.log("enter the arena")
-  if (_.every(selectors, function(sel){ return $('body').hasClass(sel);})) {
-    if (debug) console.log($('body').attr("class").split(' '));
+  // if (debug) console.log("enter the arena")
+  // if (_.every(selectors, function(sel){ return $('body').hasClass(sel);})) {
+    // if (debug) console.log($('body').attr("class").split(' '));
     var count = 0;
     return function(event) {
       // console.log(selectors)
-      if (debug) console.log("within closure " + $('body').attr("class").split(' '))
+      // if (debug) console.log("within closure " + $('body').attr("class").split(' '))
       var current_selectors = $('body').attr("class").split(' ');
       var is_page_corresponding_to_selectors = _.isEmpty(_.difference(selectors, current_selectors))
-      if (debug) console.log("is_page_corresponding_to_selectors " + is_page_corresponding_to_selectors)
-      if (debug) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
+      // if (debug) console.log("is_page_corresponding_to_selectors " + is_page_corresponding_to_selectors)
+      // if (debug) console.log("event is " + event.type + " with count " + count + " with selectors " + selectors);
       if (!is_page_corresponding_to_selectors) {
+        if (debug) console.log("resetted event for " + event.type + " " + selectors + " for " + $('body').attr("class").split(' '));
         count = 0;
       }
       else if (count++ >= maxExecutions){
@@ -47,10 +40,12 @@ function make_self_destructing_event_callback(maxExecutions, callback, selectors
         $(this).off(event)
         return;
       }
+
+
       //pass any normal arguments down to the wrapped callback
       return callback.apply(this, arguments);
     }
 
-  }
+  // }
 
 }

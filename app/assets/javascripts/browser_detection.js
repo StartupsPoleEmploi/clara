@@ -16,7 +16,7 @@ load_js_for_page([], function() {
   // $('.c-magic-number').text($(".c-magic-number").text() + " " + window._DD);
 
   // See https://github.com/ergcode/ergonomic.detect_flex#manual
-  console.log("checking flexbox depreciation");
+  // console.log("checking flexbox depreciation");
   if (window._DD !== 1) {
     if($('.c-browser-deprecated').length === 0) $('body').prepend(template_to_add);
   }

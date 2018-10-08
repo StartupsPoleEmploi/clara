@@ -19,7 +19,7 @@
 
   .u-useful-width.u-margin-constraint
     .o-card
-      = form_with model: @are, :local => true, url: are_questions_path do |f|
+      = form_with model: @are, :local => false, url: are_questions_path do |f|
 
         %h1.c-question-title.u-focusable{tabindex: "0"}
           =raw_description
