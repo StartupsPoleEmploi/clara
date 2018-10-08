@@ -25,7 +25,7 @@ function make_self_destructing_event_callback(maxExecutions, callback, selectors
     return function(event) {
       console.log("event is " + event.type);
       if (count++ >= maxExecutions){
-        console.log("turned off event for " + event.type);
+        console.log("turned off event for " + event.type + " " + selectors);
         $(this).off(event)
         return;
       }
