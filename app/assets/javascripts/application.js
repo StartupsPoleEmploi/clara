@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require es5-shim/es5-shim
+//= require rails-ujs
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
