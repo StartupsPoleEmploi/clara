@@ -15,6 +15,8 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require turbolinks
+//= require turbolinks_page_change
 //= require ./include_ga
 //= require ./include_hj
 //= require detect_flex/detect_flex-2009
