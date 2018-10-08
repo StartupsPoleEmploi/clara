@@ -12,7 +12,6 @@
 //
 //= require es5-shim/es5-shim
 //= require rails-ujs
-//= require js-logger/js-logger
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
