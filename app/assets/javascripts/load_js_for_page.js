@@ -19,8 +19,8 @@ function load_js_for_page(array_of_selectors, a_function) {
 
 function make_self_destructing_event_callback(maxExecutions, callback, selectors) {
 
-  console.log($('body').attr("class").split(' '));
   if (_.every(selectors, function(sel){ return $('body').hasClass(sel);})) {
+    if (_.size(selectors) > 0) console.log($('body').attr("class").split(' '));
     // console.log("try to trigger loading for " + selectors)
     var count = 0;
     return function(event) {
