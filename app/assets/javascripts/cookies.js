@@ -1,4 +1,4 @@
-$(document).on('ready', function () {if ($('body').hasClasses('cookies', 'edit')) {
+load_js_for_page(["cookies", "edit"], function() {
 
   /**
   *         INITIAL STATE 
@@ -144,4 +144,4 @@ $(document).on('ready', function () {if ($('body').hasClasses('cookies', 'edit')
   main_store.dispatch({type: 'INIT'})
 
 
-}});
+});
