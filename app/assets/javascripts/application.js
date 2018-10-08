@@ -10,26 +10,26 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require rails-ujs
 //= require es5-shim/es5-shim
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require pnotify/pnotify
+//= require jquery-accessible-simple-tooltip-aria
 //= require turbolinks
-//= require ./turbolinks_page_change
-//= require ./load_js_for_page
-//= require ./include_ga
-//= require ./include_hj
-//= require detect_flex/detect_flex-2009
-//= require ./browser_detection
 //= require redux/redux
+//= require detect_flex/detect_flex-2009
 //= require storejs/store.legacy
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
-//= require rails-ujs
-//= require pnotify/pnotify
-//= require jquery-accessible-simple-tooltip-aria
+//= require ./turbolinks_page_change
+//= require ./load_js_for_page
+//= require ./include_ga
+//= require ./include_hj
+//= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index
 //= require ./result_default
