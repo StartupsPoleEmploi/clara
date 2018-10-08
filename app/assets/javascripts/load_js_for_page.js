@@ -17,7 +17,7 @@ function load_js_for_page(array_of_selectors, a_function) {
     var count = 0;
     if ($( 'body' ).hasClass(_.join(array_of_selectors, ' '))) {
       if (count++ >= 1){
-        $(that).off(event);
+        console.log('refuse to call a_function')
         return;
       }
       console.log('calling a_function')
