@@ -30,4 +30,9 @@ feature 'HomeSpec' do
     expect(current_path).to eq new_inscription_question_path
   end
 
+  scenario 'Home should a meta google search controler for SebastienSEO' do
+    visit root_path 
+    expect(page).to have_css 'meta[name="google-site-verification"][content="neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q"]', :visible => false
+  end
+
 end
