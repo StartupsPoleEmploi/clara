@@ -11,19 +11,24 @@
 * The JS will be loaded only, whether "ready" or "turbolinks:load" is called.
 *
 */
+$(document).on("ready", function(){console.log("I'm ready");});
 function load_js_for_page(array_of_selectors, a_function) {
-  $(document).on("ready turbolinks:load", (function(){
-    var that = this;
-    var count = 0;
-    if ($( 'body' ).hasClass(_.join(array_of_selectors, ' '))) {
-      if (count++ >= 1){
-        console.log('refuse to call a_function')
-        return;
+  $(document).on("ready turbolinks:load", 
+    (function(){
+      return function(event) {
+        var that = this;
+        var count = 0;
+        console.log('count is ' + count)
+        if ($( 'body' ).hasClass(_.join(array_of_selectors, ' '))) {
+          if (count++ >= 1){
+            console.log("refused to continue, count is " + count)
+            return;
+          }
+          console.log('calling a_function')
+          return a_function();
+        }
       }
-      console.log('calling a_function')
-      return a_function();
-    }
-  })()
+    })()
   );
 }
 
