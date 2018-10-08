@@ -1,5 +1,4 @@
-$(document).on('ready', function () {
-  if ($( 'body' ).hasClasses('other_questions', 'new' )) {
+load_js_for_page(["other_questions", "new"], function() {
 
     $( 'input#none' ).click(function() {
       $('input#val_spectacle').prop('checked', false);
@@ -12,7 +11,6 @@ $(document).on('ready', function () {
 
     $( 'input#val_handicap' ).click(function() {
       $('input#none').prop('checked', false);
-    });   
-
-  }
+    });
+    
 });

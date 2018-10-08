@@ -1,5 +1,4 @@
-$(document).on('ready', function () { if ($('body').hasClasses('welcome', 'index')) {
-
+load_js_for_page(["welcome", "index"], function() {
 
   store.clearAll();
   
@@ -18,6 +17,4 @@ $(document).on('ready', function () { if ($('body').hasClasses('welcome', 'index
     console.log("Version : " + clara.version);
   });
 
-
-
-}});
+});
