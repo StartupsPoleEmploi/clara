@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 14.0.8 (08/10/2018)
+-[#937][TECH] Utiliser mailjet à la place de gmail
+
 ## 14.0.7 (06/10/2018)
 -[#949b][TECH] Bug GA 2
 
