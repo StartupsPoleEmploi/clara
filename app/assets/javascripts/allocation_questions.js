@@ -1,4 +1,4 @@
-load_js_for_page(["allocations_questions", "new"], function() {
+load_js_for_page(["allocation_questions", "new"], function() {
 
     $('.js-pnotify--ARE_ASP').click(function() {
        PNotify.removeAll();
