@@ -1,5 +1,5 @@
-$(document).on('ready', function () {
-
+load_js_for_page([], function(){
+  
   $('.c-breadcrumb-printer__item').click(function(e) {
     if (typeof ga === "function") {
       ga('send', 'event', 'results', 'print', document.location.pathname);
@@ -11,5 +11,5 @@ $(document).on('ready', function () {
     }
     window.print();
   });
-
+  
 });
