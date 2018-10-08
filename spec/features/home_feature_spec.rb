@@ -65,4 +65,9 @@ feature 'HomeSpec' do
     expect(page).to have_css 'meta[name="google-site-verification"][content="0jDmSXtIkrU_nDcXoExkAHbG0TmRlGrx7LdJoX9ktWg"]', :visible => false
   end
 
+  scenario 'Home should have 7 meta Google search controler' do
+    visit root_path 
+    expect(page).to have_css 'meta[name="google-site-verification"]', count:7, :visible => false
+  end
+
 end
