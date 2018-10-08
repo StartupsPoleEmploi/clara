@@ -1,5 +1,4 @@
-$(document).on('ready', function () {
-  if ($( 'body' ).hasClasses('allocation_questions', 'new' )) {
+load_js_for_page(["allocation_questions", "new"], function() {
 
     $('.js-pnotify--ARE_ASP').click(function() {
        PNotify.removeAll();
@@ -68,5 +67,4 @@ $(document).on('ready', function () {
       });
     });
 
-  }
 });

@@ -25,10 +25,11 @@
 
     = include_gon 
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = stylesheet_link_tag 'print', media: 'print'
     = favicon_link_tag 'favicon.ico'        
     = javascript_tag "window.clara = window.clara || {}; clara.hotjar_id = '#{ENV['ARA_HOTJAR_ID'].to_s}';clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID'].to_s}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json}; clara.ga_is_disabled = #{!!ga_disabled?}; clara.hj_is_disabled = #{!!hj_disabled?};"
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload', 'async' => Rails.env.production?, 'defer' => true
                 
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env}}
     .c-turbolinks-transition.u-hidden
@@ -43,5 +44,4 @@
         - else
           = render partial: 'shared/footer', locals: {the_request: request}
 
-  = javascript_include_tag 'application'
 

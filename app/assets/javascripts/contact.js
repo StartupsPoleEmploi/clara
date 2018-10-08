@@ -14,21 +14,21 @@ _.set(
 );
 
 
-$(document).on('ready', function () {
-  if ($( 'body' ).hasClasses('contact', 'index' )) {
-    clara.init_contact();
-    var $to_be_focused = $("body");
-    if ($('.is-error').length === 0) {
-      $to_be_focused = $("#first_name");
-    } else {
-      $to_be_focused = $(".is-error")[0];
-      if ($($to_be_focused).attr('id') === 'askfor') {
-        $to_be_focused = $("#contact_form_askfor_signaler");
-      }
-      if ($($to_be_focused).attr('id') === 'youare') {
-        $to_be_focused = $("#contact_form_youare_particulier");
-      }
+load_js_for_page(["contact", "index"], function() {
+
+  clara.init_contact();
+  var $to_be_focused = $("body");
+  if ($('.is-error').length === 0) {
+    $to_be_focused = $("#first_name");
+  } else {
+    $to_be_focused = $(".is-error")[0];
+    if ($($to_be_focused).attr('id') === 'askfor') {
+      $to_be_focused = $("#contact_form_askfor_signaler");
     }
-    $to_be_focused.focus();
+    if ($($to_be_focused).attr('id') === 'youare') {
+      $to_be_focused = $("#contact_form_youare_particulier");
+    }
   }
+  $to_be_focused.focus();
+    
 });

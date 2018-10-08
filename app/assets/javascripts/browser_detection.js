@@ -1,4 +1,5 @@
-$(document).on('ready', function () {
+load_js_for_page([], function() {
+
   var template_to_add = 
   "<div class='c-browser-deprecated u-padding' style='background-color: orange;'>" +
     "<div class='c-browser-deprecated__line'>" +
@@ -15,6 +16,7 @@ $(document).on('ready', function () {
   // $('.c-magic-number').text($(".c-magic-number").text() + " " + window._DD);
 
   // See https://github.com/ergcode/ergonomic.detect_flex#manual
+  // console.log("checking flexbox depreciation");
   if (window._DD !== 1) {
     if($('.c-browser-deprecated').length === 0) $('body').prepend(template_to_add);
   }

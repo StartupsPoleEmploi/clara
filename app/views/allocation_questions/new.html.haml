@@ -8,7 +8,7 @@
   .u-useful-width.u-margin-constraint
     .o-card
 
-      = form_with model: @allocation, url: allocation_questions_path, local: true do |f|
+      = form_with model: @allocation, url: allocation_questions_path, :local => false do |f|
 
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
       

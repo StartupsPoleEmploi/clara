@@ -1,7 +1,7 @@
-$(document).on('ready', function () {
+load_js_for_page([], function(){
   if (clara.hj_is_disabled) {
     $("script[src*='hotjar.com']").remove();    
-    _.unset(window, 'hj');
+    _.set(window, 'hj', function(){});
   } else {
     if (_.get(window, 'hj')) {
       // ok, hotjar loaded, do nothing

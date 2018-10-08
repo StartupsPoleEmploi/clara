@@ -9,7 +9,7 @@
   
   .u-useful-width.u-margin-constraint
     .o-card
-      = form_with model: @grade, url: grade_questions_path, local: true do |f|
+      = form_with model: @grade, url: grade_questions_path, :local => false do |f|
         %h1.c-question-title.u-focusable{tabindex: '0'}
           =raw_description
 
