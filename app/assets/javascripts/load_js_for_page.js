@@ -6,7 +6,6 @@ function load_js_for_page(array_of_selectors, a_function) {
   );
 }
 
-
 function make_self_destructing_event_callback(maxExecutions, callback, selectors) {
 
   if (selectors.every(function(sel){ return $('body').hasClass(sel);})) {
