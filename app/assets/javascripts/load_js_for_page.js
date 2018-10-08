@@ -11,7 +11,9 @@
 * The JS will be loaded only, whether "ready" or "turbolinks:load" is called.
 *
 */
-$(document).on("ready", function(){console.log("I'm ready");});
+
+// DEBUG purpose : in the chrome console, >$ $(document).trigger( "ready")
+// $(document).on("ready", function(){console.log("I'm ready");});
 
 function load_js_for_page(array_of_selectors, a_function) {
   $(document).on("ready turbolinks:load", max_one_call(a_function, array_of_selectors));
