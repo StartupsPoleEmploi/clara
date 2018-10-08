@@ -9,7 +9,7 @@
   .u-useful-width.u-margin-constraint  
     .o-card
 
-      = form_with model: @other, url: other_questions_path, local: true do |f|
+      = form_with model: @other, url: other_questions_path, :local => true do |f|
     
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
         
