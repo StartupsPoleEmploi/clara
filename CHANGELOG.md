@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.1.0 (08/10/2018)
+-[#946][TECH] Remettre turbolinks d'aplomb
+
+
 ## 14.0.7 (06/10/2018)
 -[#949b][TECH] Bug GA 2
 
