@@ -12,9 +12,19 @@
 *
 */
 function load_js_for_page(array_of_selectors, a_function) {
-  $(document).on("turbolinks:load", function(){
-    // if ($( 'body' ).hasClasses('other_questions', 'new' ))
-  });
+  $(document).on("ready turbolinks:load", (function(){
+    var that = this;
+    var count = 0;
+    if ($( 'body' ).hasClass(_.join(array_of_selectors, ' '))) {
+      if (count++ >= 1){
+        $(that).off(event);
+        return;
+      }
+      console.log('calling a_function')
+      return a_function();
+    }
+  })()
+  );
 }
 
 function make_self_destructing_event_callback(maxExecutions, callback, selectors) {
