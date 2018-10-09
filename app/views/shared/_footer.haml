@@ -14,6 +14,7 @@
             .c-footer-cgu
               = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
               = link_to "Nous contacter", contact_index_path
+              = link_to "RGPD", edit_cooky_path('preference')
             - if v.current_mode == 'home'
               .mts
               = render 'shared/footer_motherhome'
