@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 14.1.1 (09/10/2018)
+-[#931][TECH] Test unitaire GSC
+
+
 ## 14.1.0 (08/10/2018)
 -[#946][TECH] Remettre turbolinks d'aplomb
 
