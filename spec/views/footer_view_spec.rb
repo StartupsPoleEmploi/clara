@@ -18,11 +18,15 @@ describe 'Footer view' do
       it 'Should render with link to terms and conditions', type: :view do
         render partial: 'shared/footer', locals: {the_request: for_root_url}
         expect(rendered).to have_link("Conditions générales d'utilisation", href: "/conditions-generales-d-utilisation")
-      end      
+      end     
       it 'Should render with link to pole-emploi', type: :view do
         render partial: 'shared/footer', locals: {the_request: for_root_url}
         expect(rendered).to have_link("propulsé par POLE EMPLOI", href: "https://www.pole-emploi.fr/")
-      end      
+      end
+      it 'Should render with link to cookies preferences', type: :view do
+        render partial: 'shared/footer', locals: {the_request: for_root_url}
+        expect(rendered).to have_link("RGPD", href: "/cookies/preference/edit")
+      end       
     end
 
     describe 'link to "Toutes les aides"' do
