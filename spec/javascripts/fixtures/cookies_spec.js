@@ -4,12 +4,14 @@
 //= require cookies
 
 describe('cookies.js', function() {
-  describe('There are is authorize button', function(){
+  describe('There are an authorize_all button, a forbid_all button', function(){
     beforeEach(function() {
       $('body').append('<button id="authorize_all">Tout autoriser</button>')
+      $('body').append('<button id="forbid_all">Tout autoriser</button>')
     });
     afterEach(function() {
       $('#authorize_all').remove()
+      $('#forbid_all').remove()
     })
 
     it('Needs to be mapped to global clara', function() {
@@ -23,7 +25,7 @@ describe('cookies.js', function() {
     it('Needs to have a forbid_all button',function(){
       expect($('#forbid_all').length).toEqual(1);
     });
-    
+
   });
 
 });
