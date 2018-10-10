@@ -31,6 +31,9 @@ describe('cookies.js', function() {
     it('Needs to have a authorize_statistic button',function(){
       expect($('#authorize_statistic').length).toEqual(1);
     });
+    it('Needs to have a forbid_statistic button',function(){
+      expect($('#forbid_statistic').length).toEqual(1);
+    });
 
   });
 
