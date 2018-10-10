@@ -10,12 +10,14 @@ describe('cookies.js', function() {
       $('body').append('<button id="forbid_all">Tout autoriser</button>')
       $('body').append('<button id="authorize_statistic">Tout autoriser</button>')
       $('body').append('<button id="forbid_statistic">Tout autoriser</button>')
+      $('body').append('<button id="authorize_navigation">Tout autoriser</button>')
     });
     afterEach(function() {
       $('#authorize_all').remove()
       $('#forbid_all').remove()
       $('#authorize_statistic').remove()
       $('#forbid_statistic').remove()
+      $('#authorize_navigation').remove()
     })
 
     it('Needs to be mapped to global clara', function() {
