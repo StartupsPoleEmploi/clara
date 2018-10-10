@@ -8,10 +8,12 @@ describe('cookies.js', function() {
     beforeEach(function() {
       $('body').append('<button id="authorize_all">Tout autoriser</button>')
       $('body').append('<button id="forbid_all">Tout autoriser</button>')
+      $('body').append('<button id="authorize_statistic">Tout autoriser</button>')
     });
     afterEach(function() {
       $('#authorize_all').remove()
       $('#forbid_all').remove()
+      $('#authorize_statistic').remove()
     })
 
     it('Needs to be mapped to global clara', function() {
