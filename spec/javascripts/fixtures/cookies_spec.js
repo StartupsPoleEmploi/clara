@@ -19,6 +19,11 @@ describe('cookies.js', function() {
     it('Needs to have an authorize_all button',function(){
       expect($('#authorize_all').length).toEqual(1);
     });
+
+    it('Needs to have a forbid_all button',function(){
+      expect($('#forbid_all').length).toEqual(1);
+    });
+    
   });
 
 });
