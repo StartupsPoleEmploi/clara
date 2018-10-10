@@ -4,14 +4,16 @@
 //= require cookies
 
 describe('cookies.js', function() {
-  describe('There are an authorize_all button, a forbid_all button', function(){
+
+  describe('There are buttons for authorize_all, forbid_all, authorize_statistic, forbid_statistic, authorize_navigation, forbid_navigation ', function(){
     beforeEach(function() {
-      $('body').append('<button id="authorize_all">Tout autoriser</button>')
-      $('body').append('<button id="forbid_all">Tout autoriser</button>')
-      $('body').append('<button id="authorize_statistic">Tout autoriser</button>')
-      $('body').append('<button id="forbid_statistic">Tout autoriser</button>')
-      $('body').append('<button id="authorize_navigation">Tout autoriser</button>')
-      $('body').append('<button id="forbid_navigation">Tout autoriser</button>')
+      $('body').append('<button id="authorize_all">Tout autoriser</button>');
+      $('body').append('<button id="forbid_all">Tout autoriser</button>');
+      $('body').append('<button id="authorize_statistic">Tout autoriser</button>');
+      $('body').append('<button id="forbid_statistic">Tout autoriser</button>');
+      $('body').append('<button id="authorize_navigation">Tout autoriser</button>');
+      $('body').append('<button id="forbid_navigation">Tout autoriser</button>');
+      var main_reducer = {};
     });
     afterEach(function() {
       $('#authorize_all').remove()
@@ -22,6 +24,7 @@ describe('cookies.js', function() {
       $('#forbid_navigation').remove()
     })
 
+    //TESTING DOM
     it('Needs to be mapped to global clara', function() {
       expect(clara).toBeDefined();
     });
@@ -45,6 +48,14 @@ describe('cookies.js', function() {
     });
     it('Needs to have a forbid_navigation button',function(){
       expect($('#forbid_navigation').length).toEqual(1);
+    });
+    //TESTING REDUCER
+    it('Should return the initial state', function() {
+      main_reducer
+      expect(main_reducer).toEqual({
+        disable_statistic: false,
+        disable_navigation: false
+      })
     });
   });
 
