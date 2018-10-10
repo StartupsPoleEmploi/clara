@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.1.3 (10/10/2018)
+-[#912][TECH] Optimisation de la HP (tanaguru)
+
+
 ## 14.1.2 (09/10/2018)
 -[#953][TECH] Lien RGPD dans le footer
 
