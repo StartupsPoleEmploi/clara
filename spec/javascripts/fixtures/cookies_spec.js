@@ -26,6 +26,10 @@ describe('cookies.js', function() {
       expect($('#forbid_all').length).toEqual(1);
     });
 
+    it('Needs to have a authorize_statistic button',function(){
+      expect($('#authorize_statistic').length).toEqual(1);
+    });
+
   });
 
 });
