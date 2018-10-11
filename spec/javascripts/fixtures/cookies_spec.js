@@ -13,7 +13,7 @@ describe('cookies.js', function() {
       $('body').append('<button id="forbid_statistic">Tout autoriser</button>');
       $('body').append('<button id="authorize_navigation">Tout autoriser</button>');
       $('body').append('<button id="forbid_navigation">Tout autoriser</button>');
-      var main_reducer = {
+      var initial_state = {
         disable_statistic: false,
         disable_navigation: false 
       };
@@ -54,10 +54,9 @@ describe('cookies.js', function() {
       expect($('#forbid_navigation').length).toEqual(1);
     });
     it('Needs')
-    //TESTING REDUCER
+
     it('Should return the initial state', function() {
-      main_reducer
-      expect(main_reducer).toEqual({
+      expect(store.getState()).toEqual({
         disable_statistic: false,
         disable_navigation: false
       })
