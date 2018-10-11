@@ -2,6 +2,7 @@
 //= require lodash/lodash_extension
 //= require jquery
 //= require cookies
+//= require redux/redux
 
 describe('cookies.js', function() {
 
@@ -25,7 +26,7 @@ describe('cookies.js', function() {
       $('#forbid_statistic').remove()
       $('#authorize_navigation').remove()
       $('#forbid_navigation').remove()
-      var main_reducer = {};
+      var initial_state = {};
     });
 
     //TESTING DOM
@@ -55,12 +56,13 @@ describe('cookies.js', function() {
     });
     it('Needs')
 
-    it('Should return the initial state', function() {
-      expect(store.getState()).toEqual({
-        disable_statistic: false,
-        disable_navigation: false
-      })
-    });
+      describe('Redux tests', function(){
+        it('Should return the initial state', function() {
+          expect(store.getState()).toEqual({
+            disable_statistic: false,
+            disable_navigation: false
+          });
+        });
+      });
   });
-
 });
