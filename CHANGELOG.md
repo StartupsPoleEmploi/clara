@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 14.1.3 (11/10/2018)
+-[#955][BUG] Ajout d'un for pour un label
+
 
 ## 14.1.2 (09/10/2018)
 -[#953][TECH] Lien RGPD dans le footer
