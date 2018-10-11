@@ -13,7 +13,10 @@ describe('cookies.js', function() {
       $('body').append('<button id="forbid_statistic">Tout autoriser</button>');
       $('body').append('<button id="authorize_navigation">Tout autoriser</button>');
       $('body').append('<button id="forbid_navigation">Tout autoriser</button>');
-      var main_reducer = {};
+      var main_reducer = {
+        disable_statistic: false,
+        disable_navigation: false 
+      };
     });
     afterEach(function() {
       $('#authorize_all').remove()
@@ -22,7 +25,8 @@ describe('cookies.js', function() {
       $('#forbid_statistic').remove()
       $('#authorize_navigation').remove()
       $('#forbid_navigation').remove()
-    })
+      var main_reducer = {};
+    });
 
     //TESTING DOM
     it('Needs to be mapped to global clara', function() {
@@ -49,6 +53,7 @@ describe('cookies.js', function() {
     it('Needs to have a forbid_navigation button',function(){
       expect($('#forbid_navigation').length).toEqual(1);
     });
+    it('Needs')
     //TESTING REDUCER
     it('Should return the initial state', function() {
       main_reducer
