@@ -20,6 +20,25 @@ module Api
         render json: remove_ids!(not_nullify(res)).to_json
       end
 
+      # /api/v1/level3_filters(.:format)
+      def level3_filters
+        track_call("/api/v1/level3_filters", current_user.email)
+        all_filters = JSON.parse(Rails.cache.fetch("level3_filters") {_build_level3_filter_grape.to_json})
+        res = {level3_filters: all_filters}
+        render json: remove_ids!(not_nullify(res)).to_json
+      end
+      def _build_level3_filter_grape
+        Level3Filter.all.map do |e|  
+          {
+            slug: e.slug,
+            name: e.name,
+            description: e.description,
+            level2_filter: e.level2_filter ? e.level2_filter.slug : nil,
+            level1_filter: e.level2_filter && e.level2_filter.level1_filter ? e.level2_filter.level1_filter.slug : nil,
+          }
+        end
+      end
+
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)

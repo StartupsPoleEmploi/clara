@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
+## 14.2.0 (12/10/2018)
+-[#969][FEATURE] Afficher tous les filtres de niveau 3
+
+
 ## 14.1.2 (09/10/2018)
--[#953][TECH] Lien RGPD dans le footer
+-[#953][FEATURE] Lien RGPD dans le footer
 
 
 ## 14.1.1 (09/10/2018)

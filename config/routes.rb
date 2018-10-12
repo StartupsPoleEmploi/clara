@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
+      get 'level3_filters'  => 'api_aides#level3_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
@@ -46,7 +47,6 @@ Rails.application.routes.draw do
       get 'loadrefdata'
       get 'cache'
       get 'zrr'
-      post 'expire_welcome_page'
       post 'expire_json_objects'
       post 'rename_eligible_value'
       post 'archive_all_aids'

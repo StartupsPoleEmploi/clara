@@ -2,9 +2,11 @@ class Level2Filter < ApplicationRecord
   extend FriendlyId
 
   validates :name, presence: true, uniqueness: true
+  friendly_id :name, use: :slugged
+
 
   has_many :level3_filters
-  friendly_id :name, use: :slugged
+  belongs_to :level1_filter
 
   def should_generate_new_friendly_id?
     name_changed?

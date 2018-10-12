@@ -35,9 +35,6 @@ module Admin
     end
 
 
-    def expire_welcome_page
-      expire_page controller: "/welcome", action: "index"
-    end
 
     def expire_json_objects
       activated_models_deleted     = Rails.cache.delete("activated_models")
@@ -48,6 +45,8 @@ module Admin
           nb_of_detailed_aids_deleted += 1
         end
       end
+      welcome_page          = Rails.cache.delete("view_data_for_welcome_page")
+      all_level3_filters_deleted   = Rails.cache.delete("level3_filters")
       all_filters_deleted          = Rails.cache.delete("filters")
       all_contract_types_deleted   = Rails.cache.delete("contract_types")
       regenerated_activated_models = !ActivatedModelsGeneratorService.new.regenerate.empty?
@@ -55,8 +54,10 @@ module Admin
       activated_models_singleton_reinitialized  = ActivatedModelsService.instance.regenerate
 
       render json: {
+        welcome_page: welcome_page,
         activated_models_deleted: activated_models_deleted,
         nb_of_detailed_aids_deleted: nb_of_detailed_aids_deleted,
+        all_level3_filters_deleted: all_level3_filters_deleted,
         all_filters_deleted: all_filters_deleted,
         all_contract_types_deleted: all_contract_types_deleted,
         regenerated_activated_models: regenerated_activated_models,
