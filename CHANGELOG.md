@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.1.3 (12/10/2018)
+-[#963][BUG] Supprimer les div dans les H1
+
+
 ## 14.1.2 (09/10/2018)
 -[#953][TECH] Lien RGPD dans le footer
 
