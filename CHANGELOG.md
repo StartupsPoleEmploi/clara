@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.2.0 (12/10/2018)
+-[#942][TECH] Lien RGPD dans le footer
+
+
 ## 14.1.2 (09/10/2018)
 -[#953][TECH] Lien RGPD dans le footer
 
