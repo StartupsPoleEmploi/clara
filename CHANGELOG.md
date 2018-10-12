@@ -6,7 +6,7 @@
 
 
 ## 14.1.2 (09/10/2018)
--[#953][TECH] Lien RGPD dans le footer
+-[#953][FEATURE] Lien RGPD dans le footer
 
 
 ## 14.1.1 (09/10/2018)
