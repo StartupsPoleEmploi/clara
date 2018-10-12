@@ -20,10 +20,10 @@ module Api
         render json: remove_ids!(not_nullify(res)).to_json
       end
 
-      # /api/v1/brp_filters(.:format)
-      def brp_filters
-        track_call("/api/v1/brp_filters", current_user.email)
-        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("brp_filters") {Level3Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
+      # /api/v1/level3_filters(.:format)
+      def level3_filters
+        track_call("/api/v1/level3_filters", current_user.email)
+        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("level3_filters") {Level3Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
         res = {filters: whitelisted_filters}
         render json: remove_ids!(not_nullify(res)).to_json
       end

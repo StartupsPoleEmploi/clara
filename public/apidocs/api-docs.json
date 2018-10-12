@@ -57,6 +57,58 @@
         }
       }
     },
+    "/level3_filters":
+    {
+      "get":
+      {
+        "tags": [
+          "filters"
+        ],
+        "summary": "Get all filters",
+        "description": "",
+        "operationId": "getAllFilters",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+        {
+          "in": "header",
+          "name": "Authorization",
+          "type": "string",
+          "description": "Bearer [your JWT token here]",
+          "required": true
+        }],
+        "responses":
+        {
+          "200":
+          {
+            "description": "Found",
+            "example": {
+              "level3_filters": [
+                {
+                  "name": "Gérer un problème d'alcool",
+                  "description": "Savoir gérer un problème d'alcool",
+                  "slug": "gerer-un-probleme-d-alcool",
+                  "level2_filter": "gerer-une-addiction",
+                  "level1_filter": "gerer-une-contrainte-personnelle"
+                }
+              ]
+            }
+          },
+          "500":
+          {
+            "description": "Internal server error"
+          },
+          "429":
+          {
+            "description": "Too many request"
+          }
+        }
+      }
+    },
     "/filters":
     {
       "get":

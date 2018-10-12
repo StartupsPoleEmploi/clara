@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
+      get 'level3_filters'  => 'api_aides#level3_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
