@@ -35,9 +35,6 @@ module Admin
     end
 
 
-    def expire_welcome_page
-      expire_page controller: "/welcome", action: "index"
-    end
 
     def expire_json_objects
       activated_models_deleted     = Rails.cache.delete("activated_models")
