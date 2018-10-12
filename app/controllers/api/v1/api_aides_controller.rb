@@ -24,7 +24,7 @@ module Api
       def level3_filters
         track_call("/api/v1/level3_filters", current_user.email)
         all_filters = JSON.parse(Rails.cache.fetch("level3_filters") {_build_level3_filter_grape.to_json})
-        res = {level3_filter: all_filters}
+        res = {level3_filters: all_filters}
         render json: remove_ids!(not_nullify(res)).to_json
       end
       def _build_level3_filter_grape
