@@ -33,8 +33,8 @@ module Api
             slug: e.slug,
             name: e.name,
             description: e.description,
-            level2_filter: e.level2_filter.slug,
-            level1_filter: e.level2_filter.level1_filter.slug,
+            level2_filter: e.level2_filter ? e.level2_filter.slug : nil,
+            level1_filter: e.level2_filter && e.level2_filter.level1_filter ? e.level2_filter.level1_filter.slug : nil,
           }
         end
       end
