@@ -23,9 +23,20 @@ module Api
       # /api/v1/level3_filters(.:format)
       def level3_filters
         track_call("/api/v1/level3_filters", current_user.email)
-        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("level3_filters") {Level3Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
-        res = {filters: whitelisted_filters}
+        all_filters = JSON.parse(Rails.cache.fetch("level3_filters") {_build_level3_filter_grape.to_json})
+        res = {level3_filter: all_filters}
         render json: remove_ids!(not_nullify(res)).to_json
+      end
+      def _build_level3_filter_grape
+        Level3Filter.all.map do |e|  
+          {
+            slug: e.slug,
+            name: e.name,
+            description: e.description,
+            level2_filter: e.level2_filter.slug,
+            level1_filter: e.level2_filter.level1_filter.slug,
+          }
+        end
       end
 
       # /api/v1/aids/detail/:aid_slug(.:format)
