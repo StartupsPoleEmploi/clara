@@ -20,6 +20,14 @@ module Api
         render json: remove_ids!(not_nullify(res)).to_json
       end
 
+      # /api/v1/brp_filters(.:format)
+      def brp_filters
+        track_call("/api/v1/brp_filters", current_user.email)
+        whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("brp_filters") {Level3Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
+        res = {filters: whitelisted_filters}
+        render json: remove_ids!(not_nullify(res)).to_json
+      end
+
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
         track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
