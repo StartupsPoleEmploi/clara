@@ -59,7 +59,7 @@ private
     p ''
 
     non_empty_filters = filters.is_a?(String) && !filters.empty?
-    non_empty_level3_filters = level3_filters.is_a?(String) && level3_filters.empty?
+    non_empty_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
 
     active = ActivatedModelsService.instance
 
@@ -78,12 +78,16 @@ private
 
     # Level3 filter    
     if non_empty_level3_filters
+      p '- - - - - - - - - - - - - - non_empty_level3_filters- - - - - - - - - - - - - - - -' 
       level3_filters_array = level3_filters.split(",")
       elies.select do |ely|
         ely["level3_filters"] = [] if ely["level3_filters"] == nil
         current_filter_array = ely["level3_filters"].map do |ely_filter|
           active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
         end
+        p '- - - - - - - - - - - - - - current_filter_array- - - - - - - - - - - - - - - -' 
+        pp current_filter_array
+        p ''
         intersection_array = current_filter_array & level3_filters_array
         !intersection_array.empty?
       end
