@@ -15,6 +15,10 @@ class JsonModelsService
     JSON.parse(Filter.all.to_json(:only => [ :id, :slug ]))
   end
 
+  def self.level3_filters
+    JSON.parse(Filter.all.to_json(:only => [ :id, :slug ]))
+  end
+
   def self.contracts
     JSON.parse(ContractType.all.to_json(:only => [ :id, :slug ]))
   end
