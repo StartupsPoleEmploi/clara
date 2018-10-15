@@ -91,6 +91,8 @@ private
       selected_elies = regular_elies
     elsif has_level3_filters
       selected_elies = level3_elies
+    else
+      selected_elies = elies
     end
       
 

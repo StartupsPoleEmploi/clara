@@ -481,6 +481,13 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "level3_filters",
+          "type": "string",
+          "description": "comma-separated values of level3_filter's slug",
+          "required": false
         }],
         "responses":
         {
@@ -627,6 +634,13 @@
           "name": "filters",
           "type": "string",
           "description": "comma-separated values of filter's slug",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "level3_filters",
+          "type": "string",
+          "description": "comma-separated values of level3_filter's slug",
           "required": false
         }],
         "responses":
