@@ -48,6 +48,15 @@ private
   end
 
   def filter(elies, filters, level3_filters)
+    p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
+    pp elies
+    p ''
+    p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
+    pp filters
+    p ''
+    p '- - - - - - - - - - - - - - level3_filters- - - - - - - - - - - - - - - -' 
+    pp level3_filters
+    p ''
 
     non_empty_filters = filters.is_a?(String) && !filters.empty?
     non_empty_level3_filters = level3_filters.is_a?(String) && level3_filters.empty?
