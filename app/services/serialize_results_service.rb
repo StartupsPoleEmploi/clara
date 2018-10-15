@@ -83,16 +83,9 @@ private
       end
     end
 
-    p '- - - - - - - - - - - - - - level3_elies- - - - - - - - - - - - - - - -' 
-    # pp level3_elies
-    pp level3_elies.map { |e| e["id"]  }
-    pp regular_elies.map{ |e| e["id"]  }
     intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
-    pp intersection_of_filters
-    selection = elies.select { |e| intersection_of_filters.include?(e["id"])  }
-    pp selection
-    p ''
-    selection
+    selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }
+    selected_elies
   end
 
 end
