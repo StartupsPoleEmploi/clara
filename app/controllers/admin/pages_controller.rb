@@ -39,10 +39,13 @@ module Admin
     def expire_json_objects
       activated_models_deleted     = Rails.cache.delete("activated_models")
       nb_of_detailed_aids_deleted = 0
-      Rails.cache.instance_variable_get(:@data).keys.each do |k|  
-        if k.start_with? "aids["
-          Rails.cache.delete(k)
-          nb_of_detailed_aids_deleted += 1
+      cache_hash = Rails.cache.instance_variable_get(:@data)
+      if cache_hash.is_a?(Hash)
+        cache_hash.keys.each do |k|  
+          if k.start_with? "aids["
+            Rails.cache.delete(k)
+            nb_of_detailed_aids_deleted += 1
+          end
         end
       end
       welcome_page          = Rails.cache.delete("view_data_for_welcome_page")
