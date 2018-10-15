@@ -48,15 +48,6 @@ private
   end
 
   def filter(elies, filters, level3_filters)
-    p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    pp elies.size
-    # p ''
-    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
-    # pp filters
-    # p ''
-    # p '- - - - - - - - - - - - - - level3_filters- - - - - - - - - - - - - - - -' 
-    # pp level3_filters
-    # p ''
 
     non_empty_filters = filters.is_a?(String) && !filters.empty?
     non_empty_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
@@ -80,35 +71,16 @@ private
 
     # Level3 filter    
     if non_empty_level3_filters
-      # p '- - - - - - - - - - - - - - non_empty_level3_filters- - - - - - - - - - - - - - - -' 
       level3_filters_array = level3_filters.split(",")
       selected_elies += elies.select do |ely|
         ely["level3_filters"] = [] if ely["level3_filters"] == nil
         current_filter_array = ely["level3_filters"].map do |ely_filter|
           active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
         end
-        # p ''
-        # p '- - - - - - - - - - - - - - current_filter_array- - - - - - - - - - - - - - - -' 
-        # pp current_filter_array
-        # p ''
-        # p '- - - - - - - - - - - - - - level3_filters_array- - - - - - - - - - - - - - - -' 
-        # pp level3_filters_array
-        # p ''
         intersection_array = current_filter_array & level3_filters_array
-        # p '- - - - - - - - - - - - - - intersection_array- - - - - - - - - - - - - - - -' 
-        # pp intersection_array
-        # p ''
-        # true
         !intersection_array.empty?
       end
     end
-
-    p '- - - - - - - - - - - - - - selected_elies- - - - - - - - - - - - - - - -' 
-    pp selected_elies.size
-    p ''
-    p '- - - - - - - - - - - - - - END elies- - - - - - - - - - - - - - - -' 
-    pp elies.size
-    p ''
 
     selected_elies
   end
