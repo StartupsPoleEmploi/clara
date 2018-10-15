@@ -365,7 +365,7 @@
                       "aides-employeurs",
                       "se-former-valoriser-ses-competences"
                     ],
-                    "level3_filters": [""],
+                    "level3_filters": [],
                     "contract_type": "contrat-en-alternance"
                   }
                 ]
@@ -521,7 +521,7 @@
                       "aides-employeurs",
                       "se-former-valoriser-ses-competences"
                     ],
-                    "level3_filters": [""],
+                    "level3_filters": [],
                     "contract_type": "contrat-en-alternance"
                   }
                 ]
