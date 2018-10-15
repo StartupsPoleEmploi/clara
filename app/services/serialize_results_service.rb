@@ -47,18 +47,41 @@ private
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def filter(elies, filters)
-    return elies unless filters.is_a?(String) && !filters.empty?
-    a = ActivatedModelsService.instance
-    filters_array = filters.split(",")
-    elies.select do |ely|
-      ely["filters"] = [] if ely["filters"] == nil
-      current_filter_array = ely["filters"].map do |ely_filter|
-        a.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+  def filter(elies, filters, level3_filters)
+
+    non_empty_filters = filters.is_a?(String) && !filters.empty?
+    non_empty_level3_filters = level3_filters.is_a?(String) && level3_filters.empty?
+
+    active = ActivatedModelsService.instance
+
+    # Regular filter    
+    if non_empty_filters
+      filters_array = filters.split(",")
+      elies.select do |ely|
+        ely["filters"] = [] if ely["filters"] == nil
+        current_filter_array = ely["filters"].map do |ely_filter|
+          active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+        end
+        intersection_array = current_filter_array & filters_array
+        !intersection_array.empty?
       end
-      intersection_array = current_filter_array & filters_array
-      !intersection_array.empty?
     end
+
+    # Level3 filter    
+    if non_empty_level3_filters
+      level3_filters_array = level3_filters.split(",")
+      elies.select do |ely|
+        ely["level3_filters"] = [] if ely["level3_filters"] == nil
+        current_filter_array = ely["level3_filters"].map do |ely_filter|
+          active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+        end
+        intersection_array = current_filter_array & level3_filters_array
+        !intersection_array.empty?
+      end
+    end
+
+
+    elies
   end
 
 end
