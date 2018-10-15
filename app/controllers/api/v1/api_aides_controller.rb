@@ -55,8 +55,9 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
+        api_level3_filters = ApiFilters.new(level3_filters: level3_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters,api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -118,10 +119,16 @@ module Api
       def filters_param
         params.permit(:filters).to_h[:filters]
       end
+      def level3_filters_param
+        params.permit(:level3_filters).to_h[:level3_filters]
+      end
 
       private
 
-      def fill_errors!(errors_hash, api_filters, api_asker)
+      def fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+        if !api_level3_filters.valid?
+          errors_hash.merge!(api_level3_filters.errors) 
+        end
         if !api_filters.valid?
           errors_hash.merge!(api_filters.errors) 
         end
