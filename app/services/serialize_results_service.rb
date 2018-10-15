@@ -27,9 +27,9 @@ class SerializeResultsService
     res
   end
 
-  def api_eligible(asker, filters)
+  def api_eligible(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_eligible, filters))
+    whitelist(filter(calculator.every_eligible, filters, level3_filters))
   end
 
   def api_ineligible(asker, filters)

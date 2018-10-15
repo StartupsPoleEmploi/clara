@@ -64,7 +64,7 @@ module Api
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
+            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
           }.to_json
         end
       end
@@ -172,8 +172,8 @@ module Api
         CalculateAskerService.new(asker).calculate_zrr!
       end
 
-      def eligible_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters)
+      def eligible_aids_for(asker, filters, level3_filters)
+        SerializeResultsService.get_instance.api_eligible(asker, filters, level3_filters)
       end
 
       def ineligible_aids_for(asker, filters)
