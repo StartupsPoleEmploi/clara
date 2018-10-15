@@ -55,7 +55,7 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
-        api_level3_filters = ApiFilters.new(level3_filters: level3_filters_param)
+        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?

@@ -8,7 +8,7 @@ class ApiLevel3Filters < ActiveType::Object
 
   def single_value_must_be_amongst_activated_filters
     if !filters.include?(",") && !has_filter(filters)
-      errors.add(:filters, "La valeur doit être le slug d'un filtre de niveau 3 actif (voir la liste avec GET /filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule.")
+      errors.add(:level3_filters, "La valeur doit être le slug d'un filtre de niveau 3 actif (voir la liste avec GET /level3_filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule.")
     end
   end
 
@@ -16,7 +16,7 @@ class ApiLevel3Filters < ActiveType::Object
     if filters.include?(",")
       filters.split(",").each do |e|
         if !has_filter(e)
-          errors.add(:filters, "#{e} n'est pas le slug d'un filtre de niveau 3 actif (voir la liste avec GET /filters)")
+          errors.add(:level3_filters, "#{e} n'est pas le slug d'un filtre de niveau 3 actif (voir la liste avec GET /level3_filters)")
         end
       end
     end
