@@ -326,6 +326,13 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "level3_filters",
+          "type": "string",
+          "description": "comma-separated values of level3_filter's slug",
+          "required": false
         }
       ],
         "responses":
@@ -346,6 +353,7 @@
                     "slug": "vi-volontariat-international",
                     "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
                     "filters": [],
+                    "level3_filters": ["gerer-des-problemes-d-argent"],
                     "contract_type": "emploi-international"
                   },
                   {
@@ -357,6 +365,7 @@
                       "aides-employeurs",
                       "se-former-valoriser-ses-competences"
                     ],
+                    "level3_filters": [],
                     "contract_type": "contrat-en-alternance"
                   }
                 ]
@@ -474,6 +483,13 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "level3_filters",
+          "type": "string",
+          "description": "comma-separated values of level3_filter's slug",
+          "required": false
         }],
         "responses":
         {
@@ -493,6 +509,7 @@
                     "slug": "vi-volontariat-international",
                     "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
                     "filters": [],
+                    "level3_filters": ["gerer-des-problemes-d-argent"],
                     "contract_type": "emploi-international"
                   },
                   {
@@ -504,6 +521,7 @@
                       "aides-employeurs",
                       "se-former-valoriser-ses-competences"
                     ],
+                    "level3_filters": [],
                     "contract_type": "contrat-en-alternance"
                   }
                 ]
@@ -621,6 +639,13 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "level3_filters",
+          "type": "string",
+          "description": "comma-separated values of level3_filter's slug",
+          "required": false
         }],
         "responses":
         {
@@ -640,6 +665,7 @@
                     "slug": "vi-volontariat-international",
                     "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
                     "filters": [],
+                    "level3_filters": ["gerer-des-problemes-d-argent"],
                     "contract_type": "emploi-international"
                   },
                   {
@@ -651,6 +677,7 @@
                       "aides-employeurs",
                       "se-former-valoriser-ses-competences"
                     ],
+                    "level3_filters": [],
                     "contract_type": "contrat-en-alternance"
                   }
                 ]

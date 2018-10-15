@@ -18,7 +18,8 @@ class WhitelistAidService
     return {} unless aids.is_a?(Hash)
     aids["contract_type"] = a.contracts.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
     aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}["slug"]} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
-    wanted_keys = %w[name slug short_description contract_type filters]
+    aids["level3_filters"].map!{|f| a.level3_filters.find{|c|  c["id"] == f["id"]}["slug"]} if aids["level3_filters"].is_a?(Array) && !aids["level3_filters"].empty?
+    wanted_keys = %w[name slug short_description contract_type filters level3_filters]
 
     return aids.select { |key, _| wanted_keys.include? key }
   end

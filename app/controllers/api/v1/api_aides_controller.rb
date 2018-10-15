@@ -55,15 +55,16 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
+        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters,api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters)))
+            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
           }.to_json
         end
       end
@@ -74,15 +75,16 @@ module Api
         track_call("/api/v1/aids/ineligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
+        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters,api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          local_asker = processed_asker(api_asker)
+          local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters)))
+            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
           }.to_json
         end
       end
@@ -92,17 +94,18 @@ module Api
         track_call("/api/v1/aids/uncertain", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
+        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters,api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
-          local_asker = processed_asker(api_asker)
+          local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters)))
+            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
           }.to_json
-        end      
+        end     
       end
 
 
@@ -118,10 +121,16 @@ module Api
       def filters_param
         params.permit(:filters).to_h[:filters]
       end
+      def level3_filters_param
+        params.permit(:level3_filters).to_h[:level3_filters]
+      end
 
       private
 
-      def fill_errors!(errors_hash, api_filters, api_asker)
+      def fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+        if !api_level3_filters.valid?
+          errors_hash.merge!(api_level3_filters.errors) 
+        end
         if !api_filters.valid?
           errors_hash.merge!(api_filters.errors) 
         end
@@ -165,16 +174,16 @@ module Api
         CalculateAskerService.new(asker).calculate_zrr!
       end
 
-      def eligible_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters)
+      def eligible_aids_for(asker, filters, level3_filters)
+        SerializeResultsService.get_instance.api_eligible(asker, filters, level3_filters)
       end
 
-      def ineligible_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_ineligible(asker, filters)
+      def ineligible_aids_for(asker, filters, level3_filters)
+        SerializeResultsService.get_instance.api_ineligible(asker, filters, level3_filters)
       end
 
-      def uncertain_aids_for(asker, filters)
-        SerializeResultsService.get_instance.api_uncertain(asker, filters)
+      def uncertain_aids_for(asker, filters, level3_filters)
+        SerializeResultsService.get_instance.api_uncertain(asker, filters, level3_filters)
       end
 
     end
