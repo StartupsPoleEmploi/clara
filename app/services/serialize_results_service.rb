@@ -32,14 +32,14 @@ class SerializeResultsService
     whitelist(filter(calculator.every_eligible, filters, level3_filters))
   end
 
-  def api_ineligible(asker, filters)
+  def api_ineligible(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_ineligible, filters))
+    whitelist(filter(calculator.every_ineligible, filters, level3_filters))
   end
 
-  def api_uncertain(asker, filters)
+  def api_uncertain(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_uncertain, filters))
+    whitelist(filter(calculator.every_uncertain, filters, level3_filters))
   end
 
 private
@@ -49,8 +49,8 @@ private
 
   def filter(elies, filters, level3_filters)
 
-    non_empty_filters = filters.is_a?(String) && !filters.empty?
-    non_empty_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
+    has_regular_filters = filters.is_a?(String) && !filters.empty?
+    has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
 
     active = ActivatedModelsService.instance
 
@@ -58,7 +58,7 @@ private
     level3_elies = []
 
     # Regular filter    
-    if non_empty_filters
+    if has_regular_filters
       filters_array = filters.split(",")
       regular_elies += elies.select do |ely|
         ely["filters"] = [] if ely["filters"] == nil
@@ -71,7 +71,7 @@ private
     end
 
     # Level3 filter    
-    if non_empty_level3_filters
+    if has_level3_filters
       level3_filters_array = level3_filters.split(",")
       level3_elies += elies.select do |ely|
         ely["level3_filters"] = [] if ely["level3_filters"] == nil
@@ -83,8 +83,17 @@ private
       end
     end
 
-    intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
-    selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }
+    selected_elies = []
+    if has_regular_filters && has_level3_filters
+      intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
+      selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }      
+    elsif has_regular_filters
+      selected_elies = regular_elies
+    elsif has_level3_filters
+      selected_elies = level3_elies
+    end
+      
+
     selected_elies
   end
 

@@ -181,6 +181,7 @@ describe Api::V1::ApiAidesController, type: :request do
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
               "filters"=>["filter-targeted"],
+              "level3_filters"=>[],
               "contract_type"=>"n1"}
           ]
         }
@@ -313,6 +314,7 @@ describe Api::V1::ApiAidesController, type: :request do
             {"name"=>"Aide Adulte et Spectacle", 
               "slug"=>"aide-adulte-et-spectacle", 
               "filters"=>["filter-targeted"],
+              "level3_filters"=>[],
               "contract_type"=>"n1"}
           ]
         }
@@ -444,6 +446,7 @@ describe Api::V1::ApiAidesController, type: :request do
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
               "filters"=>["filter-targeted"],
+              "level3_filters"=>[],
               "contract_type" => "n1"}
           ]
         }
