@@ -54,12 +54,13 @@ private
 
     active = ActivatedModelsService.instance
 
-    selected_elies = []
+    regular_elies = []
+    level3_elies = []
 
     # Regular filter    
     if non_empty_filters
       filters_array = filters.split(",")
-      selected_elies += elies.select do |ely|
+      regular_elies += elies.select do |ely|
         ely["filters"] = [] if ely["filters"] == nil
         current_filter_array = ely["filters"].map do |ely_filter|
           active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
@@ -72,7 +73,7 @@ private
     # Level3 filter    
     if non_empty_level3_filters
       level3_filters_array = level3_filters.split(",")
-      selected_elies += elies.select do |ely|
+      level3_elies += elies.select do |ely|
         ely["level3_filters"] = [] if ely["level3_filters"] == nil
         current_filter_array = ely["level3_filters"].map do |ely_filter|
           active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
@@ -82,7 +83,16 @@ private
       end
     end
 
-    selected_elies
+    p '- - - - - - - - - - - - - - level3_elies- - - - - - - - - - - - - - - -' 
+    # pp level3_elies
+    pp level3_elies.map { |e| e["id"]  }
+    pp regular_elies.map{ |e| e["id"]  }
+    intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
+    pp intersection_of_filters
+    selection = elies.select { |e| intersection_of_filters.include?(e["id"])  }
+    pp selection
+    p ''
+    selection
   end
 
 end
