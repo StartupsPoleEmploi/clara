@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.2.1 (15/10/2018)
+-[#973][BUG] Cache qui renvoie une erreur
+
+
 ## 14.2.0 (12/10/2018)
 -[#969][FEATURE] Afficher tous les filtres de niveau 3
 
