@@ -18,14 +18,12 @@
 //= require jquery/jquery-extension
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
-//= require turbolinks
 //= require redux/redux
 //= require detect_flex/detect_flex-2009
 //= require storejs/store.legacy
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
-//= require ./turbolinks_page_change
 //= require ./load_js_for_page
 //= require ./include_ga
 //= require ./browser_detection
