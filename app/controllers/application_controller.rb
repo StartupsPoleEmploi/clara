@@ -4,7 +4,6 @@ require 'asker'
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  # before_action :set_cookies_preference  
   # back button that works, see http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
   before_action :set_cache_headers
   # See https://sentry.io/pole-emploi/ara/getting-started/ruby-rails/
@@ -12,11 +11,6 @@ class ApplicationController < ActionController::Base
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
 
-
-  # def set_cookies_preference
-  #   gon.is_ga_disabled = session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
-  #   gon.is_hj_disabled = session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
-  # end
 
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
