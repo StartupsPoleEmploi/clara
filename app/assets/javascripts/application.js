@@ -25,7 +25,6 @@
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
 //= require ./load_js_for_page
-//= require ./include_ga
 //= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index
