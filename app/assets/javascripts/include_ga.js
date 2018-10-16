@@ -1,9 +1,9 @@
 load_js_for_page([], function(){
-  if (clara.ga_is_disabled) {
+  if (gon.is_ga_disabled) {
     $( "script[src*='analytics.com']" ).remove();    
-    _.set(window, 'ga', function(){});
+    _.set(window, 'ga', function(){return 42});
   } else {
-    if (_.get(window, 'ga')) {
+    if (_.get(window, 'ga') && ga() !== 42) {
       // ok, analytics loaded, do nothing
     } else {
       //load analytics

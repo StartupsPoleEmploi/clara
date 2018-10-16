@@ -1,9 +1,9 @@
 load_js_for_page([], function(){
-  if (clara.hj_is_disabled) {
+  if (gon.is_hj_disabled) {
     $("script[src*='hotjar.com']").remove();    
-    _.set(window, 'hj', function(){});
+    _.set(window, 'hj', function(){return 42});
   } else {
-    if (_.get(window, 'hj')) {
+    if (_.get(window, 'hj') && hj() !== 42) {
       // ok, hotjar loaded, do nothing
     } else {
       //load hotjar
