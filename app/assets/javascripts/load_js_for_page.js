@@ -8,12 +8,12 @@
 *
 * Usage : load_js_for_page(["welcome", "index"], function loaded_function() {});
 *
-* The JS will be loaded only, whether "ready" or "turbolinks:load" is called.
+* The JS will be loaded only once, whether "ready" or "turbolinks:load" is called.
 *
 */
 
 function load_js_for_page(selectors, a_function) {
-  $(document).on("ready turbolinks:load", function() {
+  $(document).on("ready turbolinks:load", function(event) {
     if (_.isEmpty(selectors) || _.every(selectors, function(sel){return $('body').hasClass(sel)})) {
       a_function();
     }
