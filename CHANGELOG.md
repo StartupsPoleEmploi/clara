@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.1 (16/10/2018)
+-[#976][BUG] Activation/désactivation HJ/GA
+
+
 ## 14.3.0 (15/10/2018)
 -[#942][FEATURE] Filtres de niveau 3 dans l'API
 

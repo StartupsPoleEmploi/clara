@@ -144,4 +144,13 @@ load_js_for_page(["cookies", "edit"], function() {
   main_store.dispatch({type: 'INIT'})
 
 
+
+  $("#validate_and_continue").click(function(evt) {
+    evt.preventDefault();
+    console.log("--------validate_and_continue------------")
+    $('#cookie_form').trigger('submit.rails');
+    // console.log("submitted");
+    // return true;
+  })
+
 });
