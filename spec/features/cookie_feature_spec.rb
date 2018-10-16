@@ -18,10 +18,12 @@ feature 'CookieSpec' do
 
   scenario 'User can refuse hotjar' do
     visit edit_cooky_path("preference")
+    #
   end
 
   scenario 'User can refuse analytics' do
     visit edit_cooky_path("preference")
+    #
   end
 
 
