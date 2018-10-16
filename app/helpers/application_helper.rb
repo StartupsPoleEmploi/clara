@@ -4,6 +4,10 @@ module ApplicationHelper
     session[:cookie] != nil
   end
 
+  def title_data(text)
+    content_for :title_data, text.to_s
+  end
+
   def ga_disabled?
     session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
   end
@@ -12,9 +16,6 @@ module ApplicationHelper
     session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
   end
 
-  def title_data(text)
-    content_for :title_data, text.to_s
-  end
 
   def description_data(text)
     local_text = text.to_s

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.1 (15/10/2018)
+-[#920][SEO] Différer l'utilisation du code JS
+
+
 ## 14.3.0 (15/10/2018)
 -[#942][FEATURE] Filtres de niveau 3 dans l'API
 

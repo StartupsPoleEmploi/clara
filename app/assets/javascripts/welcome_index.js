@@ -7,10 +7,10 @@ load_js_for_page(["welcome", "index"], function() {
     var pe_ips = _.split(_.get(window, 'clara.env.ARA_URL_PE'), ",");
     if (_.includes(pe_ips, current_ip)) {
       console.log("Bienvenue chez Pôle Emploi");
-      ga('set', 'dimension1', 'true');
+      if (typeof ga === "function") ga('set', 'dimension1', 'true');
     } else {
       console.log("Bienvenue");
-      ga('set', 'dimension1', 'false');
+      if (typeof ga === "function") ga('set', 'dimension1', 'false');
     }
     console.log("IP : " + current_ip);
     console.log("Date : " + _.fullDateFr());

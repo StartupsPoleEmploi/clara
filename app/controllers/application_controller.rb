@@ -3,14 +3,15 @@ require 'asker'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  
+
   # back button that works, see http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
   before_action :set_cache_headers
   # See https://sentry.io/pole-emploi/ara/getting-started/ruby-rails/
   before_action :set_raven_context
-
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
+
+
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end
