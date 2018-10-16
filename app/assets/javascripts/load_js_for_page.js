@@ -13,7 +13,8 @@
 */
 
 function load_js_for_page(selectors, a_function) {
-  $(document).on("ready turbolinks:load", function() {
+  $(document).on("ready turbolinks:load", function(event) {
+    if (selectors[0] === "welcome") console.log("fire!" + selectors + " " + event.type)
     if (_.isEmpty(selectors) || _.every(selectors, function(sel){return $('body').hasClass(sel)})) {
       a_function();
     }
