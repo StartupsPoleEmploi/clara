@@ -28,7 +28,6 @@
 //= require ./turbolinks_page_change
 //= require ./load_js_for_page
 //= require ./include_ga
-//= require ./include_hj
 //= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index
