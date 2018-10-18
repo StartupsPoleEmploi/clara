@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.4 (18/10/2018)
+-[#970][BUG] Bug logo sur mobile
+
+
 ## 14.3.3 (18/10/2018)
 -[#967][A11Y] Remettre le tabindex par défaut
 
