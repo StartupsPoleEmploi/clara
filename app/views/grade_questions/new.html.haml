@@ -10,7 +10,7 @@
   .u-useful-width.u-margin-constraint
     .o-card
       = form_with model: @grade, url: grade_questions_path, :local => true do |f|
-        %h1.c-question-title.u-focusable
+        %h1.c-question-title
           =raw_description
 
         .c-question__form
@@ -41,7 +41,7 @@
               %label.c-radiolabel{for: 'niveau_2'}
                 Bac +3 (Licence)
                 
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio3'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio3'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_3',
                   @grade.value == 'niveau_3', 
@@ -53,7 +53,7 @@
               %label.c-radiolabel{for: 'niveau_3'}
                 Bac +1 à bac +2 (BTS / DUT)
                 
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio4'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio4'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_4',
                   @grade.value == 'niveau_4', 
@@ -65,7 +65,7 @@
               %label.c-radiolabel{for: 'niveau_4'}
                 Bac
                 
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio5'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio5'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_5',
                   @grade.value == 'niveau_5', 
@@ -77,7 +77,7 @@
               %label.c-radiolabel{for: 'niveau_5'}
                 CAP / BEP
                 
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio6'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio6'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_infra_5',
                   @grade.value == 'niveau_infra_5', 
