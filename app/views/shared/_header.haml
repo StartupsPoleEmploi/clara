@@ -5,7 +5,7 @@
         .o-layout__item{:class => "u1/1"}
           .c-qh__logo
             %a.c-logozone{href: root_path}
-              = render 'shared/logo_black'
+              = image_tag(empty_image, data: { "src" => image_path("logo-clara.svg") })
             %a.c-logozone{href: "https://www.pole-emploi.fr/"}
-              = render 'shared/logo_pe'
+              = image_tag(empty_image, data: { "src" => image_path("logo-pe.svg") })
           .c-qh__cta

@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require es5-shim/es5-shim
+//= require ./async_image_loading
 //= require rails-ujs
 //= require lodash/lodash
 //= require lodash/lodash_extension

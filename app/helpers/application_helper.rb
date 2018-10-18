@@ -16,6 +16,9 @@ module ApplicationHelper
     session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
   end
 
+  def empty_image
+    'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='
+  end
 
   def description_data(text)
     local_text = text.to_s
