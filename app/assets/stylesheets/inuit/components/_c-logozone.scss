@@ -3,8 +3,11 @@
 .c-logozone {
 }
 
-.svg-logo-clara-black {
-  border-right: 1px solid grey;
+.c-logozone--firstimg {
+  text-decoration: none;
+  img {
+    border-right: 1px solid grey;
+  }
 }
 
 .c-logozone > .svg-logo-pe {
