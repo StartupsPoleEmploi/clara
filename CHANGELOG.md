@@ -2,7 +2,7 @@
 
 
 ## 14.3.2 (18/10/2018)
--[#960][BUG] Ordre affichage des aides
+-[#980][BUG] Ordre affichage des aides
 
 
 ## 14.3.1 (16/10/2018)
