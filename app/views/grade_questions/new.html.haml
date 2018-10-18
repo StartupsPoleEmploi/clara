@@ -17,7 +17,7 @@
           %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
             %legend.u-hidden-visually Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.
             
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio1'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio1'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_1',
                   @grade.value == 'niveau_1', 
@@ -29,7 +29,7 @@
               %label.c-radiolabel{for: 'niveau_1'}
                 Bac +4 et + (Master) / diplômes d’ingénieur
                 
-            .c-radioline.js-enterspace.u-margin-top-none.u-focusable{tabindex: '0', id: 'radio2'}
+            .c-radioline.js-enterspace.u-margin-top-none{id: 'radio2'}
               = radio_button_tag 'grade_form[value]',
                   'niveau_2',
                   @grade.value == 'niveau_2', 
