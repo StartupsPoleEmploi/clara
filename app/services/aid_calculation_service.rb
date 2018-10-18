@@ -15,6 +15,9 @@ class AidCalculationService
     @calculated_aids_as_hash =  aids_as_hash.map do |aid_as_hash|
       eligibility = RuletreeService.new.resolve(aid_as_hash["rule_id"], asker.attributes)
       aid_as_hash["eligibility"] = eligibility
+      # p '- - - - - - - - - - - - - - aid_as_hash- - - - - - - - - - - - - - - -' 
+      # pp aid_as_hash
+      # p ''
       aid_as_hash
     end
   end
