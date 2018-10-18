@@ -17,9 +17,6 @@ class FilterRawAidsService
         result['icon'] = v[0]['contract_type_icon']
         result['order'] = v[0]['contract_type_order']
         result['unfold'] = {'value' => false}
-        # p '- - - - - - - - - - - - - - result- - - - - - - - - - - - - - - -' 
-        # pp result
-        # p ''
         result
       end
     end
