@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
+## 14.3.5 (18/10/2018)
+-[#979][TECH] Remettre à nouveau turbolinks
+
+
 ## 14.3.4 (18/10/2018)
--[#970][BUG] Bug logo sur mobile
+-[#990][BUG] Bug logo sur mobile
 
 
 ## 14.3.3 (18/10/2018)
