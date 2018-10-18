@@ -32,11 +32,11 @@ class ApplicationController < ActionController::Base
       @asker = Asker.new
       session[:asker] = @asker.to_json.to_s
     end
-    gon.asker = @asker # for debug purposes
+    # gon.asker = @asker # for debug purposes
   end
 
   def hydrate_view(stuff)
-    gon.loaded = stuff
+    # gon.loaded = stuff # for debug purposes
     render locals: stuff
   end
 
