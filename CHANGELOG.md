@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.3 (18/10/2018)
+-[#967][A11Y] Remettre le tabindex par défaut
+
+
 ## 14.3.2 (18/10/2018)
 -[#980][BUG] Ordre affichage des aides
 
