@@ -27,6 +27,9 @@
   line-height: 0;
   min-width: space(8);
   margin: space(3) 0 space(3) 0;
+  @include mq($until: tablet) {
+    margin-top: space(2);
+  }
 }
 
 .svg-logo-pe {
