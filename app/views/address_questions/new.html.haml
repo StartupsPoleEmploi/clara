@@ -34,7 +34,7 @@
                               name: "address_form[label]", |
                               type: "#{@address.label ? 'text' : 'number'}", |
                               value: "#{@address.label}"}
-              %ul#results.autocomplete-list{role: "listbox", style: "display: none;", tabindex: "0"}
+              %ul#results.autocomplete-list{role: "listbox", style: "display: none;"}
               %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
               .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
           %input#location_label.u-hidden{value: "#{@address.label}"}
