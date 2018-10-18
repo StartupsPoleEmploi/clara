@@ -19,10 +19,10 @@ load_js_for_page(["cookies", "edit"], function() {
     return has_state ? previous_state : initial_state;
   };
 
-  var disable_buttton = function (id) {
+  var disable_button = function (id) {
     $(id).addClass("is-disabled");
   }
-  var enable_buttton = function (id) {
+  var enable_button = function (id) {
     $(id).removeClass("is-disabled");
   }
 
@@ -106,33 +106,33 @@ load_js_for_page(["cookies", "edit"], function() {
 
     // state of simple buttons
     if (state.disable_statistic === true) {
-      disable_buttton("#authorize_statistic");
-      enable_buttton("#forbid_statistic");
+      disable_button("#authorize_statistic");
+      enable_button("#forbid_statistic");
     } else {
-      enable_buttton("#authorize_statistic");
-      disable_buttton("#forbid_statistic");
+      enable_button("#authorize_statistic");
+      disable_button("#forbid_statistic");
     }
 
     if (state.disable_navigation === true) {
-      disable_buttton("#authorize_navigation");
-      enable_buttton("#forbid_navigation");
+      disable_button("#authorize_navigation");
+      enable_button("#forbid_navigation");
     } else {
-      enable_buttton("#authorize_navigation");
-      disable_buttton("#forbid_navigation");
+      enable_button("#authorize_navigation");
+      disable_button("#forbid_navigation");
     }
 
     // state aggregated buttons
     if (_.every(state)) {
-      enable_buttton("#forbid_all");
-      disable_buttton("#authorize_all");        
+      enable_button("#forbid_all");
+      disable_button("#authorize_all");        
     } 
     else if (_.none(state)) {
-      disable_buttton("#forbid_all");
-      enable_buttton("#authorize_all");        
+      disable_button("#forbid_all");
+      enable_button("#authorize_all");        
     } 
     else { // some
-      disable_buttton("#authorize_all");
-      disable_buttton("#forbid_all");        
+      disable_button("#authorize_all");
+      disable_button("#forbid_all");        
     } 
 
     // state of form
