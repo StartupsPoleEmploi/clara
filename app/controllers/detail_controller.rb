@@ -16,7 +16,7 @@ class DetailController < ApplicationController
     else
       @loaded = DetailService.new(@aid).hashified_aid
     end
-    gon.loaded = @loaded # testing & debug purpose only
+    # gon.loaded = @loaded # testing & debug purpose only
   end
 
   def has_active_user

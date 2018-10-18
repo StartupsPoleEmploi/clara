@@ -12,6 +12,7 @@ gem 'puma', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'rack-attack'
+gem 'turbolinks'
 
 gem 'haml', '~> 5'
 gem 'haml-rails'
