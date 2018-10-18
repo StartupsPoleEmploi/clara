@@ -50,8 +50,8 @@
           .o-layout__item{:class => "u-1/2 u-text--center"}
             %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
 
-
-    = form_with model: @cooky, url: cooky_path, method: :put, :local => false do |f|
+    -# Deliberately avoid XHR request here, in order to force hotjar and analytics reevaluation
+    = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
 
       .field.u-display-none
         = f.label :disable_statistic
@@ -60,6 +60,6 @@
         = f.label :disable_navigation
         = f.check_box :disable_navigation, id: 'input_nav'
       .actions.u-text--right
-        = f.submit 'Valider et continuer', "class" => "c-btn c-btn--result c-cookie-submit"
+        %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
 
 
