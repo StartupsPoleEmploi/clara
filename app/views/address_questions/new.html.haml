@@ -17,8 +17,8 @@
   .u-useful-width.u-margin-constraint
     .o-card
       = form_with model: @address, url: address_questions_path, :local => true do |f|
-        %h1.c-question-title.u-focusable.js-title{tabindex: "0"} (Facultatif) Quel est votre code postal de votre lieu de résidence ?
-        .c-question-subtitle.u-focusable{tabindex: "0"}
+        %h1.c-question-title.js-title (Facultatif) Quel est votre code postal de votre lieu de résidence ?
+        .c-question-subtitle
           Entrez votre code postal à 5 chiffres
         .c-address__content
           #a11yAutocomplete
