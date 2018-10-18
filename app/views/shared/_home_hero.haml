@@ -1,10 +1,8 @@
 .c-newhomehero
   .c-newhomehero__header
     .u-useful-width.u-margin-constraint
-      %a.c-logozone.c-logozone--firstimg{href: root_path}
-        = image_tag(empty_image, alt: "Clara, Vos aides en un clic – site en version Bêta", data: { "src" => image_path("logo-clara.svg") })
-      %a.c-logozone{href: "https://www.pole-emploi.fr/"}
-        = image_tag(empty_image, alt: "Pôle Emploi", data: { "src" => image_path("logo-pe.svg") })
+      = render 'shared/logozone'
+
   .c-newhomehero__content.u-padding-vertical-large
     .u-useful-width.u-margin-constraint
       .o-layout.o-layout--middle
