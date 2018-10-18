@@ -21,11 +21,11 @@
     .o-card
       = form_with model: @are, :local => true, url: are_questions_path do |f|
 
-        %h1.c-question-title.u-focusable{tabindex: "0"}
+        %h1.c-question-title
           =raw_description
 
         .c-are__form{:class => classes_of_are_form}
-          %label.c-label.u-focusable.u-text--left{tabindex: "0", id: "minimum-descr"} 
+          %label.c-label.u-text--left{ id: "minimum-descr"} 
             Montant par mois
             .c-are-input
               = f.number_field :minimum_income, 
@@ -34,7 +34,6 @@
                 value: @are.minimum_income,            
                 autofocus: true,           
                 autocomplete: 'off',       
-                tabindex: '0',
                 'aria-describedby' => aria_described_by_of_input             
               %div.mls.c-are-euro
                 €

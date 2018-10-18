@@ -15,7 +15,7 @@
     .o-card
       = form_with model: @age, url: age_questions_path, :local => true do |f|
         %h1.c-question-title
-          %span.u-focusable{tabindex: "0"}= raw_description
+          %span= raw_description
         .c-age__form
           = f.number_field :number_of_years, 
               class: classes_of_input, 
@@ -24,11 +24,10 @@
               autofocus: true, 
               autocomplete: 'off',
               'aria-describedby' => aria_described_by_of_input, 
-              'aria-required' => 'true',
-              tabindex: '0'
+              'aria-required' => 'true'
           .c-age-error
             - if has_error
-              %label.c-age-error__label.c-label.is-error.u-focusable{tabindex: "0"}
+              %label.c-age-error__label.c-label.is-error
                 =flash[:error][0]
             - else
               .c-age-error__label.visibility-hidden &nbsp;

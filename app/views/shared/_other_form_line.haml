@@ -3,12 +3,11 @@
 - current_text ||= ""
 
 .tooltip-responsive-swap--bottom
-  .c-radioline.js-enterspace.u-focusable{tabindex: "0", id: "radio_#{id}"}
+  .c-radioline.js-enterspace{id: "radio_#{id}"}
     = check_box_tag "other_form[#{id}]", |
                     "#{id}", |
                     "#{current_val}" == "oui", | 
                     id: "#{id}", |
-                    tabindex: -1, |
                     class: "c-radioinput", |
                     onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
                     onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |

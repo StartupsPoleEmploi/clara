@@ -18,12 +18,11 @@
           %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
             %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-            .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio1'}
+            .c-radioline.js-enterspace{id: 'radio1'}
               = radio_button_tag 'category_form[value]', |
                   'autres_cat', |
                   false, | 
                   id: 'autres_cat', |
-                  tabindex: -1, |
                   checked: @category.value=='autres_cat', |
                   class: 'c-radioinput', |
                   onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
@@ -40,12 +39,11 @@
                     %li En formation autre que formation professionnelle
 
                 
-            .c-radioline.u-focusable.js-enterspace{tabindex: '0', id: 'radio2'}
+            .c-radioline.js-enterspace{id: 'radio2'}
               = radio_button_tag 'category_form[value]', |
                   'cat_12345', |
                   false, | 
                   id: 'cat_12345', |
-                  tabindex: -1, |
                   checked: @category.value=='cat_12345', |
                   class: 'c-radioinput', |
                   onfocusout: '$("#radio2").toggleClass( "is-activated" )', |

@@ -1,12 +1,11 @@
-
-
-.c-logozone {
+.c-logozone--clara {
+  text-decoration: none;
+  img {
+    padding-right: space(3);
+    border-right: 1px solid grey;
+  }
 }
 
-.svg-logo-clara-black {
-  border-right: 1px solid grey;
-}
-
-.c-logozone > .svg-logo-pe {
-  margin-left: space(1);
+.c-logozone .c-logozone--pe img {
+  margin-left: space(2);
 }

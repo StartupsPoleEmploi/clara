@@ -16,7 +16,6 @@ module ApplicationHelper
     session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
   end
 
-
   def description_data(text)
     local_text = text.to_s
     if request && request.respond_to?("path") && request.path.include?("/aides/detail")
