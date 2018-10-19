@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.4.1 (19/10/2018)
+-[#993b][BUG] Meta image typo
+
+
 ## 14.4.0 (19/10/2018)
 -[#993][FEATURE] Focus sur la première réponse
 
