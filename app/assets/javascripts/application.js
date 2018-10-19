@@ -39,6 +39,10 @@
 //= require ./print
 //= require ./stats_index
 //= require ./stats_time
+//= require ./inscription_questions
+//= require ./category_questions
+//= require ./allocation_questions
+//= require ./grade_questions
 //= require ./address_questions
 //= require ./age_questions
 //= require ./other_questions
