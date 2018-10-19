@@ -15,22 +15,23 @@
             = f.submit 'Je commence', class: 'c-main-cta'
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %div{:class => "u-hide u-show@desktop"}
-            = image_tag("data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=", id: "home-hero-image",alt: "Personnes utilisant Clara", data: { "src" => image_path("home-hero.svg") }) 
+            = image_tag(empty_image, alt: "Des gens entrain d'utiliser Clara", data: { "src" => image_path("home-hero.svg") }) 
       .o-layout{:class => "u-hide u-show@desktop"}
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %ul.o-line
             %li.o-line__item
               .c-fse-logo
-                %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "L'europe s'engage en France - Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", "aria-label" => "L'europe s'engage en France - Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
-                = image_tag(empty_image, id: "logo-fse-image", alt: "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("home-hero.svg") }) 
+                %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
+                  = image_tag(empty_image, alt: "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-fse.svg") }) 
             %li.o-line__item
               .c-fse-logo-pe
                 %a{:href => "https://www.pole-emploi.fr/accueil/", :rel => "noopener noreferrer", :target => "_blank", :title => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)"}
-                  = render 'shared/logo_fse_pe'
+                  = image_tag(empty_image, alt: "Pôle Emploi", data: { "src" => image_path("logo-pe.svg") }) 
             %li.o-line__item
               .c-fse-logo-ue
-                %a{:href => "https://europa.eu/european-union/index_fr", :rel => "noopener noreferrer", :target => "_blank", :title => "Union européenne - Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Union européenne - Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)"}
+                %a{:href => "https://europa.eu/european-union/index_fr", :rel => "noopener noreferrer", :target => "_blank", :title => "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Union européenne - Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)"}
+                  = image_tag(empty_image, alt: "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-ue.svg") }) 
                   = render 'shared/logo_ue'
             %li.o-line__item
               .c-fse-p
