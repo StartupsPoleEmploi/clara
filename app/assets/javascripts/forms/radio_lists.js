@@ -7,4 +7,4 @@ load_js_for_page([], function(){
     }
   });    
   
-});
+}, "global_radio_list");

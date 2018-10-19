@@ -12,4 +12,4 @@ load_js_for_page([], function(){
     window.print();
   });
   
-});
+}, "global_print");
