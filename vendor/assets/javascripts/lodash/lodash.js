@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,cond"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -7005,6 +7005,57 @@
   /*------------------------------------------------------------------------*/
 
   /**
+   * Creates a function that iterates over `pairs` and invokes the corresponding
+   * function of the first predicate to return truthy. The predicate-function
+   * pairs are invoked with the `this` binding and arguments of the created
+   * function.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Util
+   * @param {Array} pairs The predicate-function pairs.
+   * @returns {Function} Returns the new composite function.
+   * @example
+   *
+   * var func = _.cond([
+   *   [_.matches({ 'a': 1 }),           _.constant('matches A')],
+   *   [_.conforms({ 'b': _.isNumber }), _.constant('matches B')],
+   *   [_.stubTrue,                      _.constant('no match')]
+   * ]);
+   *
+   * func({ 'a': 1, 'b': 2 });
+   * // => 'matches A'
+   *
+   * func({ 'a': 0, 'b': 1 });
+   * // => 'matches B'
+   *
+   * func({ 'a': '1', 'b': '2' });
+   * // => 'no match'
+   */
+  function cond(pairs) {
+    var length = pairs == null ? 0 : pairs.length,
+        toIteratee = getIteratee();
+
+    pairs = !length ? [] : arrayMap(pairs, function(pair) {
+      if (typeof pair[1] != 'function') {
+        throw new TypeError(FUNC_ERROR_TEXT);
+      }
+      return [toIteratee(pair[0]), pair[1]];
+    });
+
+    return baseRest(function(args) {
+      var index = -1;
+      while (++index < length) {
+        var pair = pairs[index];
+        if (apply(pair[0], this, args)) {
+          return apply(pair[1], this, args);
+        }
+      }
+    });
+  }
+
+  /**
    * Creates a function that returns `value`.
    *
    * @static
@@ -7328,6 +7379,7 @@
   // Add methods that return wrapped values in chain sequences.
   lodash.assign = assign;
   lodash.chain = chain;
+  lodash.cond = cond;
   lodash.constant = constant;
   lodash.countBy = countBy;
   lodash.debounce = debounce;
