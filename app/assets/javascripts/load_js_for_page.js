@@ -17,8 +17,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
   // debug purpose only
   var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
 
-  // extracted from https://stackoverflow.com/a/52466715/2595513
-  function makeSelfDestructingEventCallback(maxExecutions) {
+  function create_once_callback() {
     return function(internal_callback) {
       var countObj = {};
       return function(event) {
@@ -34,7 +33,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
         // try to call the the given a_function only if it's belong to the current page (or can be applied to all pages)
         if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
           // too many call, reset
-          if (countObj[current_page] > maxExecutions) {
+          if (countObj[current_page] > 1) {
             countObj[current_page] = 0;
           } else {
             // ok, fire a_function
@@ -46,7 +45,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
     
   }
 
-  var only_one_possible_call = makeSelfDestructingEventCallback(1);
+  var only_one_possible_call = create_once_callback();
 
   var should_apply_on_all_pages = function(){
     return _.isEmpty(selectors);
