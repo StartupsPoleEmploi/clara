@@ -1052,6 +1052,7 @@
 ## 3.7.0 (06/12/2017)
 - force SSL in production
 
+
 ## 3.6.0 (06/12/2017)
 - [#480][FEATURE] form - enlever les écritures inclusives
 
