@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require es5-shim/es5-shim
+//= require promise/promise-polyfill
 //= require rails-ujs
 //= require turbolinks
 //= require lodash/lodash
@@ -27,6 +28,7 @@
 //= require a11y-autocomplete/accessible_autocomplete
 //= require ./turbolinks_page_change
 //= require ./load_js_for_page
+//= require ./lazy_img_loading
 //= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index

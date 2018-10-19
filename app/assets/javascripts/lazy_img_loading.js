@@ -13,15 +13,15 @@ if (window.caches) {
 
     // Check if response for this image is cached
     return window.caches.match(src).
-    then(response => {
-      if (response) {
-        // The image is cached - load it
-        img.setAttribute('src', src);
-        img.removeAttribute('data-src');
-      }
-    })
-  })).
-  then(initialiseLazyLoading); // finished loads from cache, lazy load others
+      then(response => {
+        if (response) {
+          // The image is cached - load it
+          img.setAttribute('src', src);
+          img.removeAttribute('data-src');
+        }
+      })
+      })).
+      then(initialiseLazyLoading); // finished loads from cache, lazy load others
 } else {
   // cache not supported - lazy load all
   initialiseLazyLoading();
