@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.4.3 (19/10/2018)
+-[#954][TECH] Detection vieux matériel
+
+
 ## 14.4.2 (19/10/2018)
 -[#995][BUG] Outline bug
 
