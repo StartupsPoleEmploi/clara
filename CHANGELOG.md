@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.4.2 (19/10/2018)
+-[#995][BUG] Outline bug
+
+
 ## 14.4.1 (19/10/2018)
 -[#993b][BUG] Meta image typo
 
@@ -1047,6 +1051,7 @@
 
 ## 3.7.0 (06/12/2017)
 - force SSL in production
+
 
 ## 3.6.0 (06/12/2017)
 - [#480][FEATURE] form - enlever les écritures inclusives

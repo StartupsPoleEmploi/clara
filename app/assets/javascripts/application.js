@@ -12,7 +12,6 @@
 //
 //= require es5-shim/es5-shim
 //= require rails-ujs
-//= require turbolinks
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
@@ -26,7 +25,6 @@
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
-//= require ./turbolinks_page_change
 //= require ./load_js_for_page
 //= require ./lazy_img_loading
 //= require ./browser_detection
