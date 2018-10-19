@@ -53,19 +53,13 @@ function load_js_for_page(selectors, a_function, optional_id) {
     return res;
   };
 
-  var callback = function(e) {
+  var call_a_function = function(e) {
     // console.log("function " + local_id + " is called with event " + event.type);
     a_function();
   };
-
-  var func = _.cond([
-    [should_apply_on_all_pages, callback],
-    [should_apply_on_selected_page, callback]
-  ]);
-
   
   // $(document).on("ready turbolinks:load", function(an_event) {only_one_possible_call(func)(an_event)});
-  $(document).on("ready turbolinks:load", only_one_possible_call(callback));
+  $(document).on("ready turbolinks:load", only_one_possible_call(call_a_function));
 
 };
 
