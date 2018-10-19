@@ -1,47 +1,33 @@
-load_js_for_page([], function() {
+// Don't forget fallback if turbolinks not supported
+$(document).on("turbolinks:load", function() {
 
-
-// Determine the images to be lazy loaded
-var lazyImages = document.querySelectorAll('img[data-src]');
-
-// Check for Cache support
-if (window.caches) {
-  var lazyImages = Array.prototype.slice.call(document.querySelectorAll('img[data-src]'));
-
-  Promise.all(lazyImages.map(img => {
-    var src = img.getAttribute('data-src');
-
-    // Check if response for this image is cached
-    return window.caches.match(src).
-      then(response => {
-        if (response) {
-          // The image is cached - load it
-          img.setAttribute('src', src);
-          img.removeAttribute('data-src');
-        }
-      })
-      })).
-      then(initialiseLazyLoading); // finished loads from cache, lazy load others
-} else {
-  // cache not supported - lazy load all
-  initialiseLazyLoading();
-}
-
-function initialiseLazyLoading() {
-  // Determine the images to be lazy loaded
   var lazyImages = document.querySelectorAll('img[data-src]');
+  console.log(lazyImages[0].getAttribute('data-src'))
+  console.log(lazyImages[1].getAttribute('data-src'))
 
-  // ... set up lazy loading
-  for (var i=0; i<lazyImages.length; i++) {
-    if (lazyImages[i].getAttribute('data-src')) {
-      lazyImages[i].setAttribute('src', lazyImages[i].getAttribute('data-src'));
-      lazyImages[i].removeAttribute('data-src');
+  _.each(lazyImages, function(image){
+
+    var actual_src = image.getAttribute('data-src');
+
+    if (actual_src) {
+      $.cacheImage(actual_src, {
+        load    : function (e) {
+          image.setAttribute('src', actual_src);
+          image.removeAttribute('data-src');
+          console.log('Loaded',    this, e); 
+        },
+        error   : function (e) { 
+          console.log('Error',     this, e); 
+        },
+        abort   : function (e) { 
+          console.log('Aborted',   this, e); 
+        },
+        // complete callback is called on load, error and abort
+        complete: function (e) { 
+          console.log('Completed', this, e); 
+        }
+      });
     }
-  }
-}
-
-
-
-
-
+  });
 });
+

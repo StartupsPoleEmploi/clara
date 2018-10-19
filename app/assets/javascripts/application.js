@@ -18,6 +18,7 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require jquery/jquery-cache-image
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
 //= require redux/redux
