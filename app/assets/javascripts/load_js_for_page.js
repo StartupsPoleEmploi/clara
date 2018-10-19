@@ -17,7 +17,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
   // extracted from https://stackoverflow.com/a/52466715/2595513
   function makeSelfDestructingEventCallback(maxExecutions) {
     return function(callback) {
-      console.log("entering fcallback with selectors " + selectors)
+      // console.log("entering fcallback with selectors " + selectors)
       var count = 0;
       return function(event) {
         if (count++ >= maxExecutions){
@@ -58,7 +58,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
   ]);
 
   
-  $(document).on("ready turbolinks:load", function(e) {only_one_possible_call(func)(e)});
+  $(document).on("ready turbolinks:load", function(an_event) {only_one_possible_call(func)(an_event)});
 
 };
 
