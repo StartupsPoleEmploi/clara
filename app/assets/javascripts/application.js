@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require es5-shim/es5-shim
 //= require rails-ujs
 //= require lodash/lodash
 //= require lodash/lodash_extension
@@ -21,6 +20,7 @@
 //= require jquery-accessible-simple-tooltip-aria
 //= require redux/redux
 //= require detect_flex/detect_flex-2009
+//= require detect_flex/is-es5-supported
 //= require storejs/store.legacy
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
