@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.6 (19/10/2018)
+-[#992][TECH] Appel de callback en doublon
+
+
 ## 14.3.5 (18/10/2018)
 -[#979][TECH] Remettre à nouveau turbolinks
 
