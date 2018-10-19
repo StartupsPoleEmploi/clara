@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.3.7 (19/10/2018)
+-[#987][TECH] Charger les images en asynchrone
+
+
 ## 14.3.6 (19/10/2018)
 -[#992][TECH] Appel de callback en doublon
 
