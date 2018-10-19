@@ -25,7 +25,9 @@ function load_js_for_page(selectors, a_function, optional_id) {
         // identify current page
         var current_page = $('body').attr('class').split(" ").join(",");
         // reset all counters that are not from the current page
-        countObj = _.resetAllKeysBut(countObj, current_page, 0);
+        var newObj = {}
+        newObj[current_page] = countObj[current_page];
+        countObj = newObj;
         // increment counter for current page
         countObj[current_page] = _.defaultTo(countObj[current_page], 0) + 1;
         // console.log("for " + local_id + " countObj is " + JSON.stringify(countObj, null, 2));

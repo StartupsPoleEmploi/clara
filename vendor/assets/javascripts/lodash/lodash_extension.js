@@ -1,17 +1,5 @@
 _.mixin({
 
-  resetAllKeysBut: function (plainObject, key, resetValue) {
-    if (!_.isPlainObject(plainObject)) return {}
-    if (!_.isString(key)) return {}
-    return _.mapValues(plainObject, function(value, prop) {
-      if (prop === key) {
-        return value;
-      } else {
-        return resetValue;
-      }
-    });
-  },
-
   toPropArray: function (obj) {
     return _.map(obj, function(value, prop) {
       return { prop: prop, value: value };
