@@ -1,4 +1,4 @@
-load_js_for_page([], function() {
+$( document ).ready(function() {
 
   var template_to_add = 
   "<div class='c-browser-deprecated u-padding' style='background-color: orange;'>" +
