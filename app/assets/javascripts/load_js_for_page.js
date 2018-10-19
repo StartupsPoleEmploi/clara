@@ -14,6 +14,7 @@
 
 function load_js_for_page(selectors, a_function, optional_id) {
 
+  // debug purpose only
   var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
 
   // extracted from https://stackoverflow.com/a/52466715/2595513
@@ -21,15 +22,20 @@ function load_js_for_page(selectors, a_function, optional_id) {
     return function(internal_callback) {
       var countObj = {};
       return function(event) {
+        // identify current page
         var current_page = $('body').attr('class').split(" ").join(",");
+        // reset all counters that are not from the current page
         countObj = _.resetAllKeysBut(countObj, current_page, 0);
+        // increment counter for current page
         countObj[current_page] = _.defaultTo(countObj[current_page], 0) + 1;
-        var applyable = should_apply_on_all_pages() || should_apply_on_selected_page()
-        if (applyable) {
+        // try to call the the given a_function only if it's belong to the current page (or can be applied to all pages)
+        if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
           console.log("for " + local_id + " countObj is " + JSON.stringify(countObj, null, 2));
+          // too many call, reset
           if (countObj[current_page] > maxExecutions) {
             countObj[current_page] = 0;
           } else {
+            // ok, fire a_function
             return internal_callback.apply(this, arguments); 
           }
         }
@@ -39,8 +45,6 @@ function load_js_for_page(selectors, a_function, optional_id) {
   }
 
   var only_one_possible_call = makeSelfDestructingEventCallback(1);
-
-
 
   var should_apply_on_all_pages = function(){
     return _.isEmpty(selectors);
@@ -64,53 +68,3 @@ function load_js_for_page(selectors, a_function, optional_id) {
 
 };
 
-
-
-//a curried wrapper that will ensure the callback "self-destructs" and will be unbound correctly
-// function makeSelfDestructingEventCallback(maxExecutions) {
-//   return function(callback) {
-//     let count = 0;
-//     return function(event) {
-//       if (count++ >= maxExecutions){
-//         $(this).off(event)
-//         return;
-//       }
-//       //pass any normal arguments down to the wrapped callback
-//       return callback.apply(this, arguments);
-//     }
-//   }
-  
-// }
-// var one = makeSelfDestructingEventCallback(1);
-
-// function callback(event) {
-//   console.log("button clicked");
-// }
-
-// let two = makeSelfDestructingEventCallback(2);
-
-// $('#clickme').on("click mousedown mouseup", one(callback));
-// $('#clickme-two').on("click mousedown mouseup", two(callback));
-
-  // $(document).on("ready turbolinks:load", function(event) {
-  //   // if (_.isEmpty(selectors) || _.every(selectors, function(sel){return $('body').hasClass(sel)})) {
-  //     var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
-  //     console.log("function " + local_id + " is called with event " + event.type);
-  //     a_function();
-  //   // }
-  // });
-
-// var func = _.cond([
-//   [_.matches({ 'a': 1 }),           _.constant('matches A')],
-//   [_.conforms({ 'b': _.isNumber }), _.constant('matches B')],
-//   [_.stubTrue,                      _.constant('no match')]
-// ]);
- 
-// func({ 'a': 1, 'b': 2 });
-// // => 'matches A'
- 
-// func({ 'a': 0, 'b': 1 });
-// // => 'matches B'
- 
-// func({ 'a': '1', 'b': '2' });
-// // => 'no match'
