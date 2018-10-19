@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.4.2 (19/10/2018)
+-[#995][BUG] Outline bug
+
+
 ## 14.4.1 (19/10/2018)
 -[#993b][BUG] Meta image typo
 
