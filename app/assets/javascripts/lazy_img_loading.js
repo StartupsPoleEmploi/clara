@@ -1,4 +1,3 @@
-// Don't forget fallback if turbolinks not supported
 $(document).on("ready turbolinks:before-render turbolinks:load", function() {
 
   var lazyImages = document.querySelectorAll('img[data-src]');
