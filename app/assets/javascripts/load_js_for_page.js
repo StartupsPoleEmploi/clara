@@ -19,24 +19,15 @@ function load_js_for_page(selectors, a_function, optional_id) {
   // extracted from https://stackoverflow.com/a/52466715/2595513
   function makeSelfDestructingEventCallback(maxExecutions) {
     return function(internal_callback) {
-      // console.log("entering fcallback with selectors " + selectors)
-      var count = 0;
-      // var current_id = local_id;
+      var count = {};
       return function(event) {
-        if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
-          count += 1;
+        var current_page = $('body').attr('class').split(" ").join(",");
+        count[current_page] = _.defaultTo(count[current_page], 0) + 1;
+        console.log("for local_id " + local_id + " count is " + JSON.stringify(count, null, 2));
+        if (count[current_page] > maxExecutions) {
+
         } else {
-          return;
-        }
-        console.log("count of " +  local_id + " is " + count)
-        if (count > maxExecutions){
-          // $(this).off(event)
-          count = 0;
-          return;
-        } else {
-          // count = 0;
-          //pass any normal arguments down to the wrapped callback
-          return internal_callback.apply(this, arguments);          
+          return internal_callback.apply(this, arguments); 
         }
       }
     }
@@ -60,7 +51,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
   };
 
   var callback = function(e) {
-    console.log("function " + local_id + " is called with event " + event.type);
+    // console.log("function " + local_id + " is called with event " + event.type);
     a_function();
   };
 
