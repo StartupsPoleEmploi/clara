@@ -1,0 +1,14 @@
+{
+  "name": "cssnak",
+  "private": true,
+  "dependencies": {
+    "gulp": "latest",
+    "browser-sync": "latest",
+    "gulp-util": "latest",
+    "gulp-sass": "latest",
+    "gulp-coffee": "latest",
+    "gulp-uglify": "latest",
+    "gulp-concat": "latest",
+    "gulp-connect": "latest"
+  }
+}
