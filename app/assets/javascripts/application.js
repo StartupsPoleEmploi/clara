@@ -17,6 +17,7 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery-extension
+//= require jquery/jquery-cache-image
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
 //= require redux/redux
@@ -27,6 +28,7 @@
 //= require a11y-autocomplete/accessible_autocomplete
 //= require ./turbolinks_page_change
 //= require ./load_js_for_page
+//= require ./lazy_img_loading
 //= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index
