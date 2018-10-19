@@ -24,6 +24,8 @@ function load_js_for_page(selectors, a_function, optional_id) {
       return function(event) {
         if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
           count += 1;
+        } else {
+          count = 0;
         }
         console.log("count of " +  local_id + " is " + count)
         if (count > maxExecutions){
@@ -56,6 +58,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
 
   var callback = function(e) {
     console.log("function " + local_id + " is called with event " + event.type);
+    a_function();
   };
 
   var func = _.cond([
