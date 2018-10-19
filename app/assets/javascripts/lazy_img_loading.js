@@ -1,9 +1,7 @@
 // Don't forget fallback if turbolinks not supported
-$(document).on("turbolinks:load", function() {
+$(document).on("ready turbolinks:before-render turbolinks:load", function() {
 
   var lazyImages = document.querySelectorAll('img[data-src]');
-  console.log(lazyImages[0].getAttribute('data-src'))
-  console.log(lazyImages[1].getAttribute('data-src'))
 
   _.each(lazyImages, function(image){
 
