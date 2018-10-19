@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require es5-shim/es5-shim
-//= require promise/promise-polyfill
 //= require rails-ujs
 //= require turbolinks
 //= require lodash/lodash
