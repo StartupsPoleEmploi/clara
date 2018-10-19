@@ -14,6 +14,25 @@
 
 function load_js_for_page(selectors, a_function, optional_id) {
 
+  // extracted from https://stackoverflow.com/a/52466715/2595513
+  function makeSelfDestructingEventCallback(maxExecutions) {
+    return function(callback) {
+      let count = 0;
+      return function(event) {
+        if (count++ >= maxExecutions){
+          $(this).off(event)
+          return;
+        }
+        //pass any normal arguments down to the wrapped callback
+        return callback.apply(this, arguments);
+      }
+    }
+    
+  }
+
+  var only_one_possible_call = makeSelfDestructingEventCallback(1);
+
+
   var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
 
   var should_apply_on_all_pages = function(){
@@ -38,9 +57,38 @@ function load_js_for_page(selectors, a_function, optional_id) {
   ]);
 
   
-  $(document).on("ready turbolinks:load", func);
+  $(document).on("ready turbolinks:load", only_one_possible_call(func));
 
 };
+
+
+
+//a curried wrapper that will ensure the callback "self-destructs" and will be unbound correctly
+// function makeSelfDestructingEventCallback(maxExecutions) {
+//   return function(callback) {
+//     let count = 0;
+//     return function(event) {
+//       if (count++ >= maxExecutions){
+//         $(this).off(event)
+//         return;
+//       }
+//       //pass any normal arguments down to the wrapped callback
+//       return callback.apply(this, arguments);
+//     }
+//   }
+  
+// }
+// var one = makeSelfDestructingEventCallback(1);
+
+// function callback(event) {
+//   console.log("button clicked");
+// }
+
+// let two = makeSelfDestructingEventCallback(2);
+
+// $('#clickme').on("click mousedown mouseup", one(callback));
+// $('#clickme-two').on("click mousedown mouseup", two(callback));
+
   // $(document).on("ready turbolinks:load", function(event) {
   //   // if (_.isEmpty(selectors) || _.every(selectors, function(sel){return $('body').hasClass(sel)})) {
   //     var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
