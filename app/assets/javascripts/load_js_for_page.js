@@ -23,11 +23,14 @@ function load_js_for_page(selectors, a_function, optional_id) {
       return function(event) {
         var current_page = $('body').attr('class').split(" ").join(",");
         count[current_page] = _.defaultTo(count[current_page], 0) + 1;
-        console.log("for local_id " + local_id + " count is " + JSON.stringify(count, null, 2));
-        if (count[current_page] > maxExecutions) {
-
-        } else {
-          return internal_callback.apply(this, arguments); 
+        var applyable = should_apply_on_all_pages() || should_apply_on_selected_page()
+        if (applyable) {
+          console.log("for " + local_id + " count is " + JSON.stringify(count, null, 2));
+          if (count[current_page] > maxExecutions) {
+            count[current_page] = 0;
+          } else {
+            return internal_callback.apply(this, arguments); 
+          }
         }
       }
     }
@@ -62,7 +65,7 @@ function load_js_for_page(selectors, a_function, optional_id) {
 
   
   // $(document).on("ready turbolinks:load", function(an_event) {only_one_possible_call(func)(an_event)});
-  $(document).on("ready turbolinks:load", only_one_possible_call(func));
+  $(document).on("ready turbolinks:load", only_one_possible_call(callback));
 
 };
 
