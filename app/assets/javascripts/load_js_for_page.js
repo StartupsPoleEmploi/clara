@@ -28,9 +28,9 @@ function load_js_for_page(selectors, a_function, optional_id) {
         countObj = _.resetAllKeysBut(countObj, current_page, 0);
         // increment counter for current page
         countObj[current_page] = _.defaultTo(countObj[current_page], 0) + 1;
+        // console.log("for " + local_id + " countObj is " + JSON.stringify(countObj, null, 2));
         // try to call the the given a_function only if it's belong to the current page (or can be applied to all pages)
         if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
-          console.log("for " + local_id + " countObj is " + JSON.stringify(countObj, null, 2));
           // too many call, reset
           if (countObj[current_page] > maxExecutions) {
             countObj[current_page] = 0;
