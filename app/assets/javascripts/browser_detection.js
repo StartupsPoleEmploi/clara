@@ -20,5 +20,5 @@ load_js_for_page([], function() {
   if (window._DD !== 1) {
     if($('.c-browser-deprecated').length === 0) $('body').prepend(template_to_add);
   }
-}, "browser_detection");
+}, "global_browser_detection");
 

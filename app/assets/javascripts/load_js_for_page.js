@@ -14,14 +14,21 @@
 
 function load_js_for_page(selectors, a_function, optional_id) {
 
+  var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
+
   // extracted from https://stackoverflow.com/a/52466715/2595513
   function makeSelfDestructingEventCallback(maxExecutions) {
     return function(callback) {
       // console.log("entering fcallback with selectors " + selectors)
       var count = 0;
       return function(event) {
-        if (count++ >= maxExecutions){
+        if (should_apply_on_all_pages() || should_apply_on_selected_page()) {
+          count += 1;
+        }
+        console.log("count of " +  local_id + " is " + count)
+        if (count > maxExecutions){
           $(this).off(event)
+          count = 0;
           return;
         }
         //pass any normal arguments down to the wrapped callback
@@ -34,7 +41,6 @@ function load_js_for_page(selectors, a_function, optional_id) {
   var only_one_possible_call = makeSelfDestructingEventCallback(1);
 
 
-  var local_id = _.isEmpty(selectors) ? optional_id : selectors.toString();
 
   var should_apply_on_all_pages = function(){
     return _.isEmpty(selectors);
@@ -58,7 +64,8 @@ function load_js_for_page(selectors, a_function, optional_id) {
   ]);
 
   
-  $(document).on("ready turbolinks:load", function(an_event) {only_one_possible_call(func)(an_event)});
+  // $(document).on("ready turbolinks:load", function(an_event) {only_one_possible_call(func)(an_event)});
+  $(document).on("ready turbolinks:load", only_one_possible_call(func));
 
 };
 
