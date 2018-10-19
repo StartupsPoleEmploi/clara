@@ -1,4 +1,4 @@
-$(document).on("ready turbolinks:before-render turbolinks:load", function() {
+load_js_for_page([], function() {
 
   var lazyImages = document.querySelectorAll('img[data-src]');
 
@@ -11,7 +11,7 @@ $(document).on("ready turbolinks:before-render turbolinks:load", function() {
         load    : function (e) {
           image.setAttribute('src', actual_src);
           image.removeAttribute('data-src');
-          console.log('Loaded',    this, e); 
+          // console.log('Loaded',    this, e); 
         },
         error   : function (e) { 
           console.log('Error',     this, e); 
@@ -21,7 +21,7 @@ $(document).on("ready turbolinks:before-render turbolinks:load", function() {
         },
         // complete callback is called on load, error and abort
         complete: function (e) { 
-          console.log('Completed', this, e); 
+          // console.log('Completed', this, e); 
         }
       });
     }
