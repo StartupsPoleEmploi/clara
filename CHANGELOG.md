@@ -2,6 +2,10 @@
 
 
 
+## 14.4.7 (22/10/2018)
+-[#998][TECH] Refaire suite de test
+
+
 ## 14.4.6 (22/10/2018)
 -[#997][BUG] Bug couleur
 
