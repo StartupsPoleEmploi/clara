@@ -23,6 +23,7 @@ feature 'result page' do
     end
 
     it 'Group aid by contract type' do
+      save_and_open_page
       expect(result_page.css('.c-result-line.more-id')  .count).to eq 1
       expect(result_page.css('.c-result-line.lessor-id').count).to eq 1
       expect(result_page.css('.c-result-line.less-id')  .count).to eq 1

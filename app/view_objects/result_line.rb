@@ -6,8 +6,10 @@ class ResultLine < ViewObject
     @line =          hash_for(locals[:line])
     @aids =          array_of_hash_for(@line[:aids])
     @contract_type = hash_for(locals[:contract_type])
+    p '- - - - - - - - - - - - - - @contract_type- - - - - - - - - - - - - - - -' 
+    pp @contract_type
+    p ''
     @show_expander = boolean_for(locals[:show_expander])
-    @clazz =         string_for(locals[:clazz])
   end
 
   def has_line
@@ -15,7 +17,7 @@ class ResultLine < ViewObject
   end
 
   def line_id
-    "#{@clazz}__#{_safe_biz_id}"
+    "#{_safe_biz_id}"
   end
   
   def clazz
@@ -42,7 +44,7 @@ class ResultLine < ViewObject
   end
 
   def _safe_biz_id
-    "#{@line[:contract_type_business_id]}".parameterize
+    "#{@contract_type[:business_id]}"
   end
 
 end
