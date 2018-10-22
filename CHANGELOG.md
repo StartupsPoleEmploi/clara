@@ -2,7 +2,7 @@
 
 
 ## 14.4.6 (22/10/2018)
--[#982][BUG] Supprimer les div dans les h1
+-[#963][BUG] Supprimer les div dans les h1
 
 
 ## 14.4.5 (22/10/2018)
