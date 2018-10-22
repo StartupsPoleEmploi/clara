@@ -13,7 +13,6 @@ feature 'A show type page' do
       end
     end
     it 'Should have css of contract_type business id' do
-      save_and_open_page
       should_have seen, 1, ".c-detail-title--amob"
     end
     it 'Should have title of contract_type' do
