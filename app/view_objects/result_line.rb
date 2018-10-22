@@ -6,18 +6,19 @@ class ResultLine < ViewObject
     p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
     pp locals
     p ''
-    # @line =          hash_for(locals[:line])
-    # @aids =          array_of_hash_for(@line[:aids])
-    # @contract_type = hash_for(locals[:contract_type])
+    @aids =          array_of_hash_for(locals[:aids])
+    p '- - - - - - - - - - - - - - @aids- - - - - - - - - - - - - - - -' 
+    pp @aids
+    p ''
+    @contract = hash_for(locals[:contract])
+    p '- - - - - - - - - - - - - - @contract- - - - - - - - - - - - - - - -' 
+    pp @contract
+    p ''
     # @clazz =         string_for(locals[:clazz])
   end
 
   def has_line
     # !@line.blank?
-  end
-
-  def line_id
-    # "#{@clazz}__#{_safe_biz_id}"
   end
   
   def clazz
