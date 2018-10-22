@@ -6,9 +6,9 @@ class ResultLine < ViewObject
     @line =          hash_for(locals[:line])
     @aids =          array_of_hash_for(@line[:aids])
     @contract_type = hash_for(locals[:contract_type])
-    p '- - - - - - - - - - - - - - @contract_type- - - - - - - - - - - - - - - -' 
-    pp @contract_type
-    p ''
+    # p '- - - - - - - - - - - - - - @contract_type- - - - - - - - - - - - - - - -' 
+    # pp @contract_type
+    # p ''
     @show_expander = boolean_for(locals[:show_expander])
   end
 
