@@ -5,8 +5,7 @@ class ResultLine < ViewObject
     locals =         hash_for(args)
     @line =          hash_for(locals[:line])
     @aids =          array_of_hash_for(locals[:aids])
-    @contracts = array_of_hash_for(locals[:contracts])
-    @show_expander = boolean_for(locals[:show_expander])
+    @contracts =      array_of_hash_for(locals[:contracts])
   end
 
   def has_line
