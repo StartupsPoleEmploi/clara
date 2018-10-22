@@ -40,6 +40,186 @@
        font-url(asset-path('roboto-v18-latin/roboto-v18-latin-700.svg#Roboto')) format('svg'); /* Legacy iOS */
 }
 
-@import 'inuit/clara.main';
-@import 'chartist/chartist';
+/* ==========================================================================
+   INUITCSS 6.0.0
+   ========================================================================== */
+
+/**
+ * inuitcss, by @csswizardry
+ *
+ * github.com/inuitcss | inuitcss.com
+ */
+
+/**
+ * This is an example inuitcss manifest file. DO NOT MODIFY THIS FILE DIRECTLY.
+ * Instead, copy and paste it into your own CSS directory and make additions,
+ * extensions, and modifications there.
+ */
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Config...............Project-level configuration and feature switches.
+ * Core.................inuitcss’ core and setup settings.
+ * Global...............Project-wide variables and settings.
+ *
+ * TOOLS
+ * Font-size............A mixin which guarantees baseline-friendly line-heights.
+ * Clearfix.............Micro clearfix mixin.
+ * Hidden...............Mixin for hiding elements.
+ * Sass MQ..............inuitcss’ default media query manager.
+ *
+ * GENERIC
+ * Box-sizing...........Better default `box-sizing`.
+ * Normalize.css........A level playing field using @necolas’ Normalize.css.
+ * Reset................A tiny reset to complement Normalize.css.
+ * Shared...............Sensibly and tersely share some global commonalities
+ *                      (particularly useful when managing vertical rhythm).
+ *
+ * ELEMENTS
+ * Page.................Set up our document’s default `font-size` and
+ *                      `line-height`.
+ * Headings.............Very minimal (i.e. only font-size information) for
+ *                      headings 1 through 6.
+ * Images...............Base image styles.
+ * Tables...............Simple table styles.
+ *
+ * OBJECTS
+ * Wrapper..............Page constraint object.
+ * Layout...............Generic layout module.
+ * Media................Image- and text-like content side by side. The
+ *                      poster-child of OOCSS.
+ * Flag.................Table-layout-based advancement on the Media object.
+ * List-bare............Lists with no bullets or indents.
+ * List-inline..........A list whose items all site in a line.
+ * Box..................Simple boxing abstraction.
+ * Block................Image-on-top-of-text object.
+ * Ratio................A container for maintaining aspect ratio of content.
+ * Crop.................Provide a cropping context for media (images, etc.).
+ * Table................Classes for manipulating `table`s.
+ * Pack.................Pack items into available horizontal space.
+ *
+ * COMPONENTS
+ * Buttons..............An example button component, and how it fits into the
+ *                      inuitcss framework.
+ *
+ * UTILITIES
+ * Clearfix.............Bind our clearfix onto a utility class.
+ * Widths...............Simple width helper classes.
+ * Headings.............Reassigning our heading styles to helper classes.
+ * Spacings.............Nudge bits of the DOM around with these spacing
+ *                      classes.
+ * Responsive-Spacings..Enhances the function of normal spacings for
+ *                      responsive usage.
+ * Print................Reset-like styles taken from the HTML5 Boilerplate.
+ * Hide.................Helper classes to hide content
+ */
+
+// SETTINGS
+@import "inuit/settings/clara.settings.config";
+@import "inuit/settings/settings.core";
+@import "inuit/settings/clara.settings.global";
+
+
+
+
+
+// TOOLS
+@import "inuit/tools/tools.font-size";
+@import "inuit/tools/tools.clearfix";
+@import "inuit/tools/tools.hidden";
+@import "inuit/../sass-mq/mq";
+
+
+
+
+
+// GENERIC
+@import "inuit/generic/generic.box-sizing";
+@import "inuit/generic/generic.normalize";
+@import "inuit/generic/generic.reset";
+@import "inuit/generic/generic.shared";
+
+
+
+
+
+// ELEMENTS
+@import "inuit/elements/elements.page";
+@import "inuit/elements/elements.headings";
+@import "inuit/elements/elements.images";
+@import "inuit/elements/elements.tables";
+
+
+
+
+
+// OBJECTS
+//
+// Uncomment and add to this section as necessary.
+
+@import "inuit/objects/objects.wrapper";
+@import "inuit/objects/objects.layout";
+@import "inuit/objects/objects.media";
+@import "inuit/objects/objects.flag";
+@import "inuit/objects/objects.list-bare";
+@import "inuit/objects/objects.list-inline";
+@import "inuit/objects/objects.line";
+@import "inuit/objects/objects.box";
+@import "inuit/objects/objects.centerbox";
+@import "inuit/objects/objects.block";
+@import "inuit/objects/objects.ratio";
+@import "inuit/objects/objects.crop";
+@import "inuit/objects/objects.table";
+@import "inuit/objects/objects.pack";
+
+
+
+
+
+// COMPONENTS
+//
+// Build and include your project’s UI components here.
+@import "inuit/components/*";
+
+
+
+
+
+// UTILITIES
+@import "inuit/utilities/utilities.clearfix";
+
+// Be aware that enabling offsets produces a large chunk of classes which might
+// bloat your CSS, depending of the amount of breakpoints you defined.
+// Only set this to `true` if you are absolutely sure about what you are doing.
+$inuit-offsets: true;
+@import "inuit/utilities/utilities.responsive-align";
+@import "inuit/utilities/utilities.align";
+$inuit-fractions: 1 2 3 4 5 6;
+@import "inuit/utilities/utilities.widths";
+@import "inuit/utilities/utilities.headings";
+@import "inuit/utilities/utilities.spacings";
+@import "inuit/utilities/utilities.responsive-hide";
+
+$inuit-responsive-spacing-directions: $inuit-spacing-directions !default;
+$inuit-responsive-spacing-properties: $inuit-spacing-properties !default;
+$inuit-responsive-spacing-sizes: (
+  null: $inuit-global-spacing-unit,
+  "-nano": $inuit-global-spacing-unit-nano,
+  "-micro": $inuit-global-spacing-unit-micro,
+  "-tiny": $inuit-global-spacing-unit-tiny,
+  "-small": $inuit-global-spacing-unit-small,
+  "-small-plus": $inuit-global-spacing-unit-small-plus,
+  "-large": $inuit-global-spacing-unit-large,
+  "-huge": $inuit-global-spacing-unit-huge,
+  "-none": 0
+);
+@import "inuit/utilities/utilities.responsive-spacings";
+@import "inuit/utilities/utilities.print";
+@import "inuit/utilities/utilities.hide";
+$inuit-displays: true;
+$inuit-display-aliases: true;
+@import "inuit/utilities/utilities.responsive-display";
+
 
