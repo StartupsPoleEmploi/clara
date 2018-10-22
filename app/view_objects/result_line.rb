@@ -4,11 +4,8 @@ class ResultLine < ViewObject
   def after_init(args)
     locals =         hash_for(args)
     @line =          hash_for(locals[:line])
-    @aids =          array_of_hash_for(@line[:aids])
-    @contract_type = hash_for(locals[:contract_type])
-    # p '- - - - - - - - - - - - - - @contract_type- - - - - - - - - - - - - - - -' 
-    # pp @contract_type
-    # p ''
+    @aids =          array_of_hash_for(locals[:aids])
+    @contracts = array_of_hash_for(locals[:contracts])
     @show_expander = boolean_for(locals[:show_expander])
   end
 
