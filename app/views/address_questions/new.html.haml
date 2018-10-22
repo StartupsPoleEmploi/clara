@@ -22,7 +22,7 @@
           Entrez votre code postal à 5 chiffres
         .c-address__content
           #a11yAutocomplete
-            %span{"data-widget" => "accessible-autocomplete"}
+            %div{"data-widget" => "accessible-autocomplete"}
               %input#search{"placeholder" => "Exemple : 44220", |
                               "aria-activedescendant" => "", |
                               "aria-autocomplete" => "both", |
@@ -65,7 +65,7 @@
                 %td.wideField
                   %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
 
-          %span
+          %div
             - if has_error
               %label#address-error.c-label.is-error= flash[:error][0]
             - else
