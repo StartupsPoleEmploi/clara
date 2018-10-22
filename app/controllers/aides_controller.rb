@@ -21,9 +21,15 @@ class AidesController < ApplicationController
   end
 
   def hash_of_all_active_aids
+    activated = ActivatedModelsService.instance
+    aids = activated.aids
+    contracts = activated.contracts
+    contract_type_ids = aids.map{|e| e["contract_type_id"]}
     res = {
-      "aids" => ActivatedModelsService.instance.aids
-    } 
+      "aids" => aids,
+      # "aids" => aids.map { |e| e.delete("filters");e.delete("level3_filters"); },
+      "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
+    }
     res
   end
 

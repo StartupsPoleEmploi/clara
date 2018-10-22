@@ -1,11 +1,9 @@
-- lines ||= []
-
 .c-result-all.u-useful-width.u-margin-constraint
   %h1 Toutes nos aides
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-      - lines.each do |line|
-        = render 'shared/result_line', {line: line}
+      - local_assigns["aids"].each do |aid|
+        = render 'shared/result_line', {aid: aid, contract: local_assigns["contracts"].detect{|e| e["id"] == aid["contract_type_id"]}}
     
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       = render 'shared/detail_void'
