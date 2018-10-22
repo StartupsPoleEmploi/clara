@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 14.4.5 (22/10/2018)
+-[#982][TECH] Supprimer l'appel en BDD pour pour aides_controller
+
+
 ## 14.4.4 (19/10/2018)
 -[#954b][TECH] Detection vieux matériel
 

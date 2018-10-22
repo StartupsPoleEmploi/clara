@@ -21,9 +21,10 @@ class AidesController < ApplicationController
   end
 
   def hash_of_all_active_aids
-    {
-      "aids" => ResultService.new.convert_to_displayable_hash(Aid.activated)
-    }
+    res = {
+      "aids" => ActivatedModelsService.instance.aids
+    } 
+    res
   end
 
   def have_active_asker?
