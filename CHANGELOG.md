@@ -1,7 +1,6 @@
 # ARA Changelog
 
 
-
 ## 14.4.6 (22/10/2018)
 -[#997][BUG] Couleurs bandeau
 
