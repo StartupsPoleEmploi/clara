@@ -22,10 +22,10 @@ class ResultLine < ViewObject
   end
   
   def clazz
-    # suffix = "green"  if @clazz == "eligible"
-    # suffix = "orange" if @clazz == "uncertain"
-    # suffix = "red"    if @clazz == "ineligible"
-    # "c-result-line--#{suffix} #{_safe_biz_id}"
+    suffix = "green"  if @clazz == "eligible"
+    suffix = "orange" if @clazz == "uncertain"
+    suffix = "red"    if @clazz == "ineligible"
+    "c-result-line--#{suffix} #{_safe_biz_id}"
   end
 
   def ordered_aids
@@ -41,7 +41,7 @@ class ResultLine < ViewObject
   end
 
   def _safe_biz_id
-    # "#{@line[:contract_type_business_id]}".parameterize
+    "#{@contract['business_id']}".parameterize
   end
 
 end
