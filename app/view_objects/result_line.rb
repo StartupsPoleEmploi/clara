@@ -6,7 +6,6 @@ class ResultLine < ViewObject
     @line =          hash_for(locals[:line])
     @aids =          array_of_hash_for(@line[:aids])
     @contract_type = hash_for(locals[:contract_type])
-    @show_expander = boolean_for(locals[:show_expander])
     @clazz =         string_for(locals[:clazz])
   end
 
@@ -23,10 +22,6 @@ class ResultLine < ViewObject
     suffix = "orange" if @clazz == "uncertain"
     suffix = "red"    if @clazz == "ineligible"
     "c-result-line--#{suffix} #{_safe_biz_id}"
-  end
-
-  def show_expander
-    @show_expander
   end
 
   def ordered_aids
