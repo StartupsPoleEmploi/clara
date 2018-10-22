@@ -16,13 +16,6 @@ feature 'CookieSpec' do
     #
   end
 
-  scenario 'When visiting RGPD page, the form points to a page request, in order to force head reevaluation, thus removing hotjar and analytics from head if use do not want them' do
-    visit edit_cooky_path("preference")
-    expect(page).not_to have_css('form[data-remote="true"]')
-    visit root_path
-    expect(page).to have_css('form[data-remote="true"]')
-  end
-
   scenario 'User can refuse hotjar' do
     visit edit_cooky_path("preference")
     #
