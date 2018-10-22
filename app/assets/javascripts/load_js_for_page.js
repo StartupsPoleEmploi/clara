@@ -13,7 +13,7 @@
 */
 
 function load_js_for_page(selectors, a_function, optional_id) {
-  if (!_.isArray(selectors) || !_.isFunction(a_function)) return;
+  if (!$.isArray(selectors) || !$.isFunction(a_function)) return;
 
   var should_apply_on_all_pages = _.isEmpty(selectors);
   var should_apply_on_selected_page = 
