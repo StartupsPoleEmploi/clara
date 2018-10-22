@@ -2,11 +2,11 @@
 class ResultLine < ViewObject
 
   def after_init(args)
-    locals =         hash_for(args)
+    locals = hash_for(args)
     p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
     pp locals
     p ''
-    @aids =          array_of_hash_for(locals[:aids])
+    @aids =  array_of_hash_for(locals[:aids])
     p '- - - - - - - - - - - - - - @aids- - - - - - - - - - - - - - - -' 
     pp @aids
     p ''
@@ -29,8 +29,7 @@ class ResultLine < ViewObject
   end
 
   def ordered_aids
-    # @aids.sort_by { |aid| aid[:ordre_affichage] }
-    []
+    @aids.sort_by { |aid| aid[:ordre_affichage] }
   end
 
   def aids_size
