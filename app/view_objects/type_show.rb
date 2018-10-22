@@ -2,9 +2,6 @@ class TypeShow < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
-    pp locals
-    p ''
     @contract = hash_for(locals[:contract])
     @aids = array_for(locals[:aids])
   end
