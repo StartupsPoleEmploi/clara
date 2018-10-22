@@ -3,17 +3,17 @@ class ResultLine < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
-    pp locals
-    p ''
+    # p '- - - - - - - - - - - - - - locals- - - - - - - - - - - - - - - -' 
+    # pp locals
+    # p ''
     @aids =  array_of_hash_for(locals[:aids])
-    p '- - - - - - - - - - - - - - @aids- - - - - - - - - - - - - - - -' 
-    pp @aids
-    p ''
+    # p '- - - - - - - - - - - - - - @aids- - - - - - - - - - - - - - - -' 
+    # pp @aids
+    # p ''
     @contract = hash_for(locals[:contract])
-    p '- - - - - - - - - - - - - - @contract- - - - - - - - - - - - - - - -' 
-    pp @contract
-    p ''
+    # p '- - - - - - - - - - - - - - @contract- - - - - - - - - - - - - - - -' 
+    # pp @contract
+    # p ''
     # @clazz =         string_for(locals[:clazz])
   end
 
@@ -41,7 +41,8 @@ class ResultLine < ViewObject
   end
 
   def _safe_biz_id
-    "#{@contract['business_id']}".parameterize
+    res = "#{@contract[:business_id]}".parameterize
+    res
   end
 
 end
