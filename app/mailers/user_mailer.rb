@@ -3,7 +3,6 @@ class UserMailer < ApplicationMailer
   def welcome_email
     @contact = params[:contact] 
     @origin = params[:origin] 
-    # mail(from: ENV['ARA_EMAIL_USER'], reply_to: @contact.email, to: ENV['ARA_EMAIL_DESTINATION'], subject: "Demande de contact via le site clara")
     mail(
       from: ENV['ARA_EMAIL_FROM'],
       to: ENV['ARA_EMAIL_DESTINATION'],
