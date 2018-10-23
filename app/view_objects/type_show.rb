@@ -2,20 +2,20 @@ class TypeShow < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    @contract_type = hash_for(locals[:contract_type])
+    @contract = hash_for(locals[:contract])
     @aids = array_for(locals[:aids])
   end
 
   def contract_type
-    @contract_type
+    @contract
   end
 
   def title
-    @contract_type[:description]
+    @contract[:description]
   end
 
   def clazz
-    "c-detail-title--#{@contract_type[:business_id]}"
+    "c-detail-title--#{@contract[:business_id]}"
   end
 
   def has_line
@@ -27,7 +27,7 @@ class TypeShow < ViewObject
   end
 
   def title_of_tab
-    "#{@contract_type[:name]}"
+    "#{@contract[:name]}"
   end
 
 end

@@ -6,8 +6,8 @@ feature 'A show type page' do
     before do
       if !seen
         @contract_type = create(:contract_type, :contract_type_amob)
-        create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: @contract_type)
-        create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: @contract_type)
+        create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: @contract_type, ordre_affichage: 12)
+        create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: @contract_type, ordre_affichage: 7)
         visit type_path(@contract_type.slug)
         seen = Nokogiri::HTML(page.html)
       end

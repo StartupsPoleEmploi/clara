@@ -1,18 +1,8 @@
 - v = view_object(:result_line, local_assigns)
 
 .c-result-line{"class" => v.clazz}
-  - if v.has_line
-    .c-result-line__content{"data-id" => "#{v.line_id}"}
-
-      - if v.show_expander
-        .c-result-line__action.c-result-line__action--expanded
-          <svg width="30px" height="30px" id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" class="c-expander__svg"><title>replier</title><path id="path3_fill" data-name="path3 fill" d="M0,3A3,3,0,0,1,3,0H22a3,3,0,0,1,3,3V22a3,3,0,0,1-3,3H3a3,3,0,0,1-3-3Z" class="clzzh-1"></path><path id="path4_fill" data-name="path4 fill" d="M6.75,17l5.75-5.91L18.25,17,20,15.2,12.5,7.49,5,15.2Z" class="clzzh-2"></path></svg>
-
-        .c-result-line__action.c-result-line__action--reduced
-          <svg width="30px" height="30px" id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><title>deplier-ferme</title><path id="path4_stroke_2x" data-name="path4 stroke 2x" class="clzzm-1" d="M3.7,1.85H21.3V0H3.7ZM23.15,3.7V21.3H25V3.7ZM21.3,23.15H3.7V25H21.3ZM1.85,21.3V3.7H0V21.3ZM3.7,0A3.7,3.7,0,0,0,0,3.7H1.85A1.85,1.85,0,0,1,3.7,1.85ZM21.3,1.85A1.85,1.85,0,0,1,23.15,3.7H25A3.7,3.7,0,0,0,21.3,0ZM23.15,21.3a1.85,1.85,0,0,1-1.85,1.85V25A3.7,3.7,0,0,0,25,21.3ZM3.7,23.15A1.85,1.85,0,0,1,1.85,21.3H0A3.7,3.7,0,0,0,3.7,25Z"></path><path id="path5_fill" data-name="path5 fill" class="clzzm-1" d="M18.25,8,12.5,13.91,6.75,8,5,9.8l7.5,7.71L20,9.8Z"></path></svg>
-
-    .is-visible.c-result-line__aids
-    = render 'shared/type_explanation', {number_of_aids: v.aids_size, business_id: v.business_id }
-    - v.ordered_aids.each_with_index do |aid, i|
-      = render 'shared/result_aid', {aid: aid, the_index: i, for_id: request.query_parameters[:for_id].to_s}
+  .is-visible.c-result-line__aids
+  = render 'shared/type_explanation', {number_of_aids: local_assigns[:aids].size, business_id: local_assigns[:contract]["business_id"] }
+  - v.ordered_aids.each_with_index do |aid, i|
+    = render 'shared/result_aid', {aid: aid, the_index: i, for_id: request.query_parameters[:for_id].to_s}
       

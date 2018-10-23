@@ -1,6 +1,13 @@
 # ARA Changelog
 
 
+## 14.4.7 (22/10/2018)
+-[#998][TECH] Refaire suite de test
+
+
+## 14.4.6 (22/10/2018)
+-[#997][BUG] Bug couleur
+
 
 ## 14.4.5 (22/10/2018)
 -[#982][TECH] Supprimer l'appel en BDD pour pour aides_controller

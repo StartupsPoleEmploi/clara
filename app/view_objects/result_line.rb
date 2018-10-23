@@ -2,20 +2,9 @@
 class ResultLine < ViewObject
 
   def after_init(args)
-    locals =         hash_for(args)
-    @line =          hash_for(locals[:line])
-    @aids =          array_of_hash_for(@line[:aids])
-    @contract_type = hash_for(locals[:contract_type])
-    @show_expander = boolean_for(locals[:show_expander])
-    @clazz =         string_for(locals[:clazz])
-  end
-
-  def has_line
-    !@line.blank?
-  end
-
-  def line_id
-    "#{@clazz}__#{_safe_biz_id}"
+    locals = hash_for(args)
+    @aids =  array_of_hash_for(locals[:aids])
+    @contract = hash_for(locals[:contract])
   end
   
   def clazz
@@ -25,24 +14,13 @@ class ResultLine < ViewObject
     "c-result-line--#{suffix} #{_safe_biz_id}"
   end
 
-  def show_expander
-    @show_expander
-  end
-
   def ordered_aids
     @aids.sort_by { |aid| aid[:ordre_affichage] }
   end
 
-  def aids_size
-    @aids.size
-  end
-
-  def business_id
-    @contract_type[:business_id]
-  end
-
   def _safe_biz_id
-    "#{@line[:contract_type_business_id]}".parameterize
+    res = "#{@contract[:business_id]}".parameterize
+    res
   end
 
 end

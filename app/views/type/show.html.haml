@@ -1,5 +1,5 @@
 - @loaded ||= {}
-- v = view_object(:type_show, {contract_type: local_assigns[:contract_type], aids: local_assigns[:aids]})
+- v = view_object(:type_show, local_assigns)
 - title_data v.title_of_tab
 - description_data(v.contract_type[:description].to_s.html_safe)
 
@@ -15,7 +15,7 @@
     .o-layout
       .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
         - if v.has_line
-          = render 'shared/result_line', {line: v.line, contract_type: v.contract_type}
+          = render 'shared/result_line', local_assigns
       .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
         = render 'shared/detail_void'
 
