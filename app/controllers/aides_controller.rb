@@ -27,7 +27,6 @@ class AidesController < ApplicationController
     contract_type_ids = aids.map{|e| e["contract_type_id"]}
     res = {
       "aids" => aids,
-      # "aids" => aids.map { |e| e.delete("filters");e.delete("level3_filters"); },
       "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
     }
     res
