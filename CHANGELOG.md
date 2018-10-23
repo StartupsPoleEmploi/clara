@@ -1,7 +1,6 @@
 # ARA Changelog
 
 
-
 ## 14.4.7 (22/10/2018)
 -[#998][TECH] Refaire suite de test
 
