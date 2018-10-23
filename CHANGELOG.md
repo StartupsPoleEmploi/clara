@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 14.5.0 (23/10/2018)
+-[#937][FEATURE] Mailjet pour le formulaire de contact
+
+
 ## 14.4.7 (22/10/2018)
 -[#998][TECH] Refaire suite de test
 
