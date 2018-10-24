@@ -11,7 +11,8 @@ class EligibilityController < ApplicationController
       write_to_cache(cached_results)
     end
     hydrate_view(
-      eligibilities:  cached_results["flat_all_eligible"],
+      contract:  {},
+      aids: cached_results["flat_all_eligible"]
     )
   end
 
