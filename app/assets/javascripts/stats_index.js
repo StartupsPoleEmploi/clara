@@ -40,10 +40,17 @@ _.set(window, 'clara.draw_stats_index', function() {
     * Load sessions
     */
     var json_data = JSON.parse($('.ct-gabarline').attr('data-loaded'))["json_data"]
+    console.log("json_data")
+    console.log(json_data)
 
+    /* to have the isoWeek : https://stackoverflow.com/a/32748101/9619912  */
     var grouped_board = _.groupBy(json_data, function(e) {
+      _.map(e, )
       return moment(e["Index des jours"], "DD/MM/YYYY").startOf('isoWeek');
     });
+
+    console.log("grouped_board")
+    console.log(grouped_board)
 
     var week_board = _.map(grouped_board, function(v, k) {
       return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"].match(/\d/g).join(""))}))
