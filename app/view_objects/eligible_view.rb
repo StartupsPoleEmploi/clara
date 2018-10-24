@@ -15,7 +15,7 @@ class EligibleView < ViewObject
   end
 
   def clazz
-    "c-eligible-title--#{@context.params[:id]}"
+    "c-eligible-title--#{@context.params[:action]}"
   end
 
   def line
