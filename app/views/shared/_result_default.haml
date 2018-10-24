@@ -92,7 +92,7 @@
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
                       %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
-                    
+
                   .c-resultaids
                     - aids_per_contract.each do |aid|
                       .c-resultaid{"data-aslug" => aid["slug"]}
@@ -115,18 +115,6 @@
             .o-list-inline
               .o-list-inline__item
                 %h1.c-result-youcan.u-margin-bottom-none="Vous ne pouvez pas bénéficier de"
-              .o-list-inline__item
-                %button.c-hide-button.u-margin-left-tiny.u-padding-horizontal.js-toggle-ineligies Voir
-            .c-resulteligy.u-margin-top-small.js-ineligibles-zone
-              .u-display-flex
-                %div
-              .u-display-flex
-                .u-margin-left-auto{"class" => "u-hide-until@wide"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
-                    Tout déplier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
-                    Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
-                %div{:style => "clear: both;"}
               #o_aids_per_contract
                 - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
                   .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
