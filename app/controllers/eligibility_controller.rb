@@ -9,7 +9,7 @@ class EligibilityController < ApplicationController
       contract:  contract,
       aids: eligibles_of_contract
     }
-    hydrate_view(view_data)
+    hydrate_view(view_data, "eligibility/show")
   end
 
   def ineligible
@@ -21,7 +21,7 @@ class EligibilityController < ApplicationController
       contract:  contract,
       aids: ineligibles_of_contract
     }
-    hydrate_view(view_data)
+    hydrate_view(view_data, "eligibility/show")
   end
 
   def uncertain
@@ -33,7 +33,7 @@ class EligibilityController < ApplicationController
       contract:  contract,
       aids: uncertains_of_contract
     }
-    hydrate_view(view_data)
+    hydrate_view(view_data, "eligibility/show")
   end
 
   def extract_cached_results
