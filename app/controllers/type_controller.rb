@@ -11,6 +11,7 @@ class TypeController < ApplicationController
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
       end
+      
     else
       activated = ActivatedModelsService.instance
       contract = activated.contracts.detect{ |contract| contract["slug"] ==  params[:id] }
