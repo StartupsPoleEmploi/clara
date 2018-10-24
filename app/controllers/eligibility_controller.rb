@@ -1,15 +1,18 @@
 class EligibilityController < ApplicationController
 
   def eligible
-    existing = pull_existing_from_cache
-    if (existing)
-      instantiate_asker(existing)
+    cached_results = pull_existing_from_cache
+    if (cached_results)
+      instantiate_asker(cached_results)
     else
       pull_asker_from_query_param
       augment_asker
-      cacheable = create_cacheable_results_from_asker
-      write_to_cache(cacheable)
-    end      
+      cached_results = create_cacheable_results_from_asker
+      write_to_cache(cached_results)
+    end
+    hydrate_view(
+      eligibilities:  cached_results["flat_all_eligible"],
+    )
   end
 
   def have_active_asker?
