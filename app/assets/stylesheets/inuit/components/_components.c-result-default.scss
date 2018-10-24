@@ -90,15 +90,18 @@ fieldset.c-resultfilterings {
   margin-bottom: 0;
 }
 .c-resultcontract .o-flag__img {
-  width: 80px;
+  height: 60px;
+  width: 60px;
 }
 
 
 
 .c-btn--result {
-  font-size: 16px; // HACK
-  color:#057dbc;
-  border-color:#057dbc;
+  font-size: 16px;
+  color: white;
+  border-color: #057dbc;
+  box-shadow: -2px 2px 2px 1px #aaaaaa;
+  background-color: #057dbc;
   svg path {
     fill: #057dbc;
   }

@@ -45,19 +45,7 @@
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
                       %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
-                  .c-resultaids
-                    - aids_per_contract.each do |aid|
-                      .c-resultaid{"data-aslug" => aid["slug"]}
-                        .o-layout.o-layout--middle.o-layout--flush
-                          %div{class:"o-layout__item u-3/4"}   
-                            %h3.c-resultaid__smalltitle=aid["name"]
-                            %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
-                              - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
-                          %div{class:"o-layout__item u-1/4 u-text--right"}
-                            %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
-        
+
 
 
 
@@ -68,12 +56,6 @@
             .u-display-flex
               %div
                 %h1.c-result-youcan="Vous pourriez peut-être bénéficier de"
-              .u-display-flex.u-margin-left-auto
-                %div{"class" => "u-hide-until@wide"}
-                  %button{"class" => "c-btn c-btn--small c-btn--result js-fold"}
-                    Tout déplier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
-                  %button{"class" => "c-btn c-btn--small c-btn--result js-unfold"}
-                    Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
             #o_aids_per_contract
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
                 .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
@@ -92,21 +74,6 @@
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
                       %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
-
-                  .c-resultaids
-                    - aids_per_contract.each do |aid|
-                      .c-resultaid{"data-aslug" => aid["slug"]}
-                        .o-layout.o-layout--middle.o-layout--flush
-                          %div{class:"o-layout__item u-3/4"}   
-                            %h3.c-resultaid__smalltitle=aid["name"]
-                            %p.u-margin-bottom-none=aid["short_description"]
-                            %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
-                              - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
-                          %div{class:"o-layout__item u-1/4 u-text--right"}
-                            %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
-        
-
 
 
 
@@ -131,23 +98,9 @@
                                 =v.title_for(aids_per_contract)
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)
-                      %div{"class"=>"o-layout__item u-1/4 u-text--right", "aria-hidden"=>"true"}   
-                        %button{"class" => "c-btn c-btn--small c-btn--result js-open"} <span class="c-resultcaretopen u-hide-until@wide">Ouvrir&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg></span>
-                        %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="c-resultcaretclose u-hide-until@wide">Replier&nbsp;&nbsp;</span><span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
-                    .c-resultaids
-                      - aids_per_contract.each do |aid|
-                        .c-resultaid{"data-aslug" => aid["slug"]}
-                          .o-layout.o-layout--middle.o-layout--flush
-                            %div{class:"o-layout__item u-3/4"}   
-                              %h3.c-resultaid__smalltitle=aid["name"]
-                              %p.u-margin-bottom-none=aid["short_description"]
-                              %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
-                                - v.filters_of(aid).each do |one_filter|
-                                  %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                      %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
+                        %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
 
-                            %div{class:"o-layout__item u-1/4 u-text--right"}
-                              %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
-          
 
 
       .o-layout__item{class:"u-1/1 u-1/3@tablet"}
