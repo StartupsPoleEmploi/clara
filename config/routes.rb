@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   resources :aides, only: [:index] do
     collection do
       resources :type, only: [:show]
+      resources :pertype, only: [:show]
       resources :detail, only: [:show]
     end
   end
