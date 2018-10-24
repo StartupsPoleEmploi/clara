@@ -1,0 +1,7 @@
+- v = view_object(:eligible_line, local_assigns)
+
+.c-eligible-line
+  .c-eligible-line__aids
+  - v.ordered_aids.each_with_index do |aid, i|
+    = render 'shared/result_aid', {aid: aid, the_index: i, for_id: request.query_parameters[:for_id].to_s}
+      

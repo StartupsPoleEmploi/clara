@@ -1,0 +1,106 @@
+.c-eligible-line {
+  margin-top: space(3);
+  border-radius: space(3);
+  border: 1px solid $grey-border;
+  background-color: $color-white;
+  border-top: 0;
+}
+
+.c-eligible-line__action {
+  margin-left: auto;
+}
+
+.c-eligible-line__content {
+  display: flex;
+  cursor: pointer;
+}
+
+
+
+.c-eligible-line--green {
+  border-left-width: 5px;
+  border-left-color: #028138;
+  .c-eligible-line__icon{
+    svg {
+      fill: #028138;
+      stroke: #028138;
+    }
+  }
+}
+
+.c-eligible-line--orange {
+  border-left-width: 5px;
+  border-left-color: #F2994A;
+  .c-eligible-line__icon{
+    svg {
+      fill: #F2994A;
+      stroke: #F2994A;
+    }
+  }
+}
+
+.c-eligible-line--red {
+  border-left-width: 5px;
+  border-left-color: #d90028;
+  .c-eligible-line__icon{
+    svg {
+      fill: #d90028;
+      stroke: #d90028;
+    }
+  }
+}
+
+.c-eligible-line__icon {
+  display: flex;
+  align-items: center;
+  margin-left: space(0);
+  svg {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    &.default-svg {
+      width: 30px;
+      min-width: 30px;
+      height: 30px;
+      margin-right: 5px;
+      margin-left: 5px;
+    }
+  }
+  @include mq($from: mobile) {
+    margin-left: space(3);
+    svg {
+      width: 60px;
+      min-width: 60px;
+      height: 60px;
+      &.default-svg {
+        width: 45px;
+        min-width: 45px;
+        height: 45px;
+        margin-right: 7px;
+        margin-left: 7px;
+      }
+    }
+  }
+}
+
+.c-eligible-line__description {
+  display: flex;
+  height: space(8);
+  cursor: pointer;
+  font-weight: bold;
+  flex-direction: row;
+  align-items: center;
+  margin-left: space(0);
+  @include mq($from: mobile) {
+    margin-left: space(3);
+  }
+}
+
+.c-eligible-line__action {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: space(4);
+  min-width: 30px;
+  cursor: pointer;
+}

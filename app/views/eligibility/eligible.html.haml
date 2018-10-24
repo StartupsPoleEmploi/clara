@@ -4,7 +4,7 @@
 
 = render 'shared/breadcrumb', {where: 'detail'}
 
-%main#main.c-type-show{role: "main"}
+%main#main.c-eligible-view{role: "main"}
 
   %h1.c-detail-title{"class" => v.clazz}
     .c-detail-title-inside.u-useful-width.u-margin-constraint
@@ -13,5 +13,5 @@
   .c-detail-show2.u-useful-width.u-margin-constraint
     .o-layout
       .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-        = render 'shared/result_line', local_assigns
+        = render 'shared/eligible_line', {aids: local_assigns[:aids]}
 
