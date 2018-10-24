@@ -15,7 +15,7 @@ class ResultLine < ViewObject
   end
 
   def ordered_aids
-    @aids.sort_by { |aid| aid[:ordre_affichage] }
+    @aids.sort_by { |aid| aid[:ordre_affichage] || 0 }
   end
 
   def _safe_biz_id
