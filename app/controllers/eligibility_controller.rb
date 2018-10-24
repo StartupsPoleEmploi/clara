@@ -1,15 +1,7 @@
 class EligibilityController < ApplicationController
 
   def eligible
-    cached_results = pull_existing_from_cache
-    if (cached_results)
-      instantiate_asker(cached_results)
-    else
-      pull_asker_from_query_param
-      augment_asker
-      cached_results = create_cacheable_results_from_asker
-      write_to_cache(cached_results)
-    end
+    cached_results = extract_cached_results
     contract = ActivatedModelsService.instance.contracts.detect{ |contract| contract["slug"] ==  params[:id] }
     eligibles = cached_results[:flat_all_eligible]
     eligibles_of_contract = eligibles.find_all{ |eligible| eligible["contract_type_id"] == contract["id"] }
@@ -19,6 +11,19 @@ class EligibilityController < ApplicationController
     }
     p view_data
     hydrate_view(view_data)
+  end
+
+  def extract_cached_results
+    cached_results = pull_existing_from_cache
+    if (cached_results)
+      instantiate_asker(cached_results)
+    else
+      pull_asker_from_query_param
+      augment_asker
+      cached_results = create_cacheable_results_from_asker
+      write_to_cache(cached_results)
+    end
+    cached_results
   end
 
   def pull_asker_from_query_param
