@@ -13,11 +13,9 @@ class Breadcrumb < ViewObject
 
   def display_results?
     aides_path_with_user = @current_path == "aides_path" && @context.params[:for_id]
-    eligibility_path = @current_path == "eligible_type_path" || @current_path == "ineligible_type_path" || @current_path == "uncertain_type_path"
-    p '- - - - - - - - - - - - - - eligibility_path- - - - - - - - - - - - - - - -' 
-    pp eligibility_path
-    p ''
-    aides_path_with_user || aides_path_with_user
+    # eligibility_path = @current_path == "eligible_type_path" || @current_path == "ineligible_type_path" || @current_path == "uncertain_type_path"
+    # aides_path_with_user || aides_path_with_user
+    aides_path_with_user
   end
 
   def display_contact?
