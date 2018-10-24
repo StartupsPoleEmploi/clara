@@ -73,7 +73,8 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
-                      %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
+                      =link_to "Voir les résultats", uncertain_type_path(v.slug_for(aids_per_contract)) + "?for_id=" + params[:for_id], "class" => "c-btn c-btn--small c-btn--result"
+                      
 
 
 
@@ -99,7 +100,8 @@
                             %p.c-resultcontract_descr
                               =v.descr_for(aids_per_contract)
                       %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
-                        %button{"class" => "c-btn c-btn--small c-btn--result js-close"} <span class="">Voir les résultats&nbsp;&nbsp;</span>
+                        =link_to "Voir les résultats", ineligible_type_path(v.slug_for(aids_per_contract)) + "?for_id=" + params[:for_id], "class" => "c-btn c-btn--small c-btn--result"
+
 
 
 
