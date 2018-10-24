@@ -15,7 +15,7 @@ class EligibleView < ViewObject
   end
 
   def clazz
-    "c-detail-title--#{@contract[:business_id]}"
+    "c-eligible-title--#{@context.params[:id]}"
   end
 
   def line
