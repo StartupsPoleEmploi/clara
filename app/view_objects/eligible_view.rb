@@ -18,10 +18,6 @@ class EligibleView < ViewObject
     "c-detail-title--#{@contract[:business_id]}"
   end
 
-  def has_line
-    @aids.size > 0
-  end
-
   def line
     FilterRawAidsService.new(@aids).go[0]
   end
