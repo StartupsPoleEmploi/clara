@@ -4,6 +4,7 @@ class UserMailer < ApplicationMailer
     @contact = params[:contact] 
     @origin = params[:origin] 
     mail(
+      subject: "Demande de contact via le site Clara",
       from: ENV['ARA_EMAIL_FROM'],
       to: ENV['ARA_EMAIL_DESTINATION'],
       cc: ENV['ARA_EMAIL_CC'],
