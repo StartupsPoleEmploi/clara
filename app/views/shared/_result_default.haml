@@ -44,7 +44,7 @@
                           %p.c-resultcontract_descr
                             =v.descr_for(aids_per_contract)
                     %div{"class"=>"o-layout__item u-1/4 u-text--right"}   
-                      %a{"class" => "c-btn c-btn--small c-btn--result js-close", "href" => '"#{eligible_type_path(slug_for(aids_per_contract))}"'} <span class="">Voir les résultats&nbsp;&nbsp;</span>
+                      =link_to "Voir les résultats", eligible_type_path(v.slug_for(aids_per_contract)) + "?for_id=" + params[:for_id], "class" => "c-btn c-btn--small c-btn--result"
 
 
 
