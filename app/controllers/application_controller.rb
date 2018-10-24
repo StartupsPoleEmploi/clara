@@ -35,9 +35,10 @@ class ApplicationController < ActionController::Base
     # gon.asker = @asker # for debug purposes
   end
 
-  def hydrate_view(stuff)
+  def hydrate_view(stuff, template=nil)
     # gon.loaded = stuff # for debug purposes
-    render locals: stuff
+    render locals: stuff if template == nil
+    render locals: stuff, template: template if template != nil
   end
 
   private

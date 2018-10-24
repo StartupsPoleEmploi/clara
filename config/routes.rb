@@ -93,6 +93,9 @@ Rails.application.routes.draw do
   resources :aides, only: [:index] do
     collection do
       resources :type, only: [:show]
+      resources :eligible, only: [:show], :to => 'eligibility#eligible', :as => 'eligible_type'
+      resources :ineligible, only: [:show], :to => 'eligibility#ineligible', :as => 'ineligible_type'
+      resources :uncertain, only: [:show], :to => 'eligibility#uncertain', :as => 'uncertain_type'
       resources :detail, only: [:show]
     end
   end
