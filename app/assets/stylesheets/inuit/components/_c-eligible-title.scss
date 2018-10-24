@@ -31,11 +31,13 @@
   padding-left: 0;
   justify-content: center;
   text-align: center;
-  // mimic h2 font-size
-  font-size: 1.75rem;
-  // mimic h2 line-height
-  line-height: 1.2857142857;
+  font-size: 1.3rem;
+  line-height: 1.1;
   @include mq($from: tablet) {
+    // mimic h2 font-size
+    font-size: 1.75rem;
+    // mimic h2 line-height
+    line-height: 1.2857142857;
     justify-content: inherit;
     text-align: inherit;
     padding-left: 6rem;
