@@ -1,8 +1,8 @@
 # ARA Changelog
 
 
-## 14.6.0 (24/10/2018)
--[#1004][FEATURE] Changement du titre de l'email
+## 14.6.1 (24/10/2018)
+-[#959][TECH] Enlever momentJS
 
 
 ## 14.5.1 (23/10/2018)
