@@ -9,7 +9,30 @@ class EligibilityController < ApplicationController
       contract:  contract,
       aids: eligibles_of_contract
     }
-    p view_data
+    hydrate_view(view_data)
+  end
+
+  def ineligible
+    cached_results = extract_cached_results
+    contract = ActivatedModelsService.instance.contracts.detect{ |contract| contract["slug"] ==  params[:id] }
+    ineligibles = cached_results[:flat_all_ineligible]
+    ineligibles_of_contract = ineligibles.find_all{ |ineligible| ineligible["contract_type_id"] == contract["id"] }
+    view_data = {
+      contract:  contract,
+      aids: ineligibles_of_contract
+    }
+    hydrate_view(view_data)
+  end
+
+  def uncertain
+    cached_results = extract_cached_results
+    contract = ActivatedModelsService.instance.contracts.detect{ |contract| contract["slug"] ==  params[:id] }
+    uncertains = cached_results[:flat_all_uncertain]
+    uncertains_of_contract = uncertains.find_all{ |uncertain| uncertain["contract_type_id"] == contract["id"] }
+    view_data = {
+      contract:  contract,
+      aids: uncertains_of_contract
+    }
     hydrate_view(view_data)
   end
 
