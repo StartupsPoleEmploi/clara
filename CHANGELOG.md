@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.0 (24/10/2018)
+-[#1002][FEATURE] Changement de la page de résultats
+
+
 ## 14.6.0 (24/10/2018)
 -[#1004][FEATURE] Changement du titre de l'email
 
