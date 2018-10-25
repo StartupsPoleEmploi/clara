@@ -37,5 +37,5 @@
 
     - if has_active_user
       .c-detail-back
-        = link_to 'Tous les résultats', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back c-navbutton--allresults js-previous';
+        = link_to 'Retour', link_to_aides_pertype(@loaded[:is_eligible],@loaded[:contract]["slug"],params[:for_id]), :class => 'c-navbutton c-navbutton--back c-navbutton--allresults js-previous';
 

@@ -16,14 +16,14 @@
         - elsif v.display_results_per_type?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
-          %span.c-breadcrumb-current.c-breadcrumb-current--detail 
+          %span.c-breadcrumb-current.c-breadcrumb-current--pertype 
             =v.pertype
         - elsif v.display_contact?
           %span.c-breadcrumb-current.c-breadcrumb-current--results Nous contacter
         - elsif v.display_detail?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
-          %a{ :href => v.link_to_aides_pertype, :class => 'c-breadcrumb-link' }
+          %a{ :href => v.link_to_aides_pertype, :class => 'c-breadcrumb-link c-breadcrumb-current--pertype' }
             =v.pertype
           &nbsp;/&nbsp; 
           %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail

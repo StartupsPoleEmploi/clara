@@ -20,6 +20,16 @@ module ApplicationHelper
     "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
   end
 
+  def link_to_aides_pertype(ability, slug, for_id)
+    res = ""
+    if ability == "eligible"
+      res = "#{eligible_type_path(slug)}?for_id=#{for_id}"
+    elsif ability == "uncertain"
+      res = "#{uncertain_type_path(slug)}?for_id=#{for_id}"
+    elsif ability == "ineligible"
+      res = "#{ineligible_type_path(slug)}?for_id=#{for_id}"
+    end    
+  end
 
   def description_data(text)
     local_text = text.to_s

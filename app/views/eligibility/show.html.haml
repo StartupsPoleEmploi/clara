@@ -14,7 +14,9 @@
     .o-layout
       .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
         = render 'shared/eligible_line', {aids: local_assigns[:aids]}
+    .o-layout
+      .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+        .c-detail-back
+          = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back c-navbutton--allresults js-previous';
 
-      .c-detail-back
-        = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back c-navbutton--allresults js-previous';
 
