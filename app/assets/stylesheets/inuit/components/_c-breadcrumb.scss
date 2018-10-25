@@ -44,6 +44,15 @@
 .c-breadcrumb-current {
   margin-right: auto;
 }
+.c-breadcrumb-current--pertype {
+  @include mq($until: tablet) {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 100px;
+    max-width: 100px;
+    overflow: hidden;
+  }
+}
 
 .c-breadcrumb-print {
   margin-left: auto;

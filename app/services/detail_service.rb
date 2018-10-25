@@ -21,6 +21,7 @@ class DetailService
 
     return {
       aid: @aid, 
+      contract: _contract_of(@aid), 
       is_eligible: is_eligible, 
       root_condition: root_condition, 
       root_rules: root_rules
@@ -30,6 +31,12 @@ class DetailService
   def hashified_aid
     return {
       aid: @aid, 
+      contract: _contract_of(@aid), 
     }
   end
+
+  def _contract_of(an_aid)
+    ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  an_aid["contract_type_id"] }
+  end
+
 end

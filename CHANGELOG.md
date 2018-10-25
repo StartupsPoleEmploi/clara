@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.1 (25/10/2018)
+-[#1008][FEATURE] Améliorations fil d'ariane
+
+
 ## 15.0.0 (24/10/2018)
 -[#1002][FEATURE] Changement de la page de résultats
 
