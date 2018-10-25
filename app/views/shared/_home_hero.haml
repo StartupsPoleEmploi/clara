@@ -7,10 +7,13 @@
     .u-useful-width.u-margin-constraint
       .o-layout.o-layout--middle
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-          %h1{:class => "u-text--center u-textalign-left-from@desktop"} 
-            .c-newhomehero__title Découvrez les aides et mesures 
-            .c-newhomehero__title qui vont accélérer votre  
-            .c-newhomehero__title reprise d'emploi
+          .c-newhomehero__title
+            %h1{:class => "u-text--center u-textalign-left-from@desktop"} 
+              Découvrez les aides et mesures 
+              %br{:class =>"u-hide u-show@tablet"}
+              qui vont accélérer votre
+              %br{:class => "u-hide u-show@tablet u-show@desktop"}
+              reprise d'emploi
           = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
             = f.submit 'Je commence', class: 'c-main-cta'
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
