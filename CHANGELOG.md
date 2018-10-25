@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.2 (25/10/2018)
+-[#1009][BUG] Bug titre détail sur mobile
+
+
 ## 15.0.1 (25/10/2018)
 -[#1008][FEATURE] Améliorations fil d'ariane
 
