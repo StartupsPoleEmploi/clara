@@ -43,9 +43,13 @@ _.set(window, 'clara.draw_stats_index', function() {
     console.log("json_data")
     console.log(json_data)
 
-    /* to have the isoWeek : https://stackoverflow.com/a/32748101/9619912  */
+
+    //to have the isoWeek : https://stackoverflow.com/a/32748101/9619912   
+    //to have the range of days refering to his iso week : https://stackoverflow.com/a/45355966/9619912
+    //to have the date of iso week starting : https://stackoverflow.com/a/16591175/9619912
+
+
     var grouped_board = _.groupBy(json_data, function(e) {
-      _.map(e, )
       return moment(e["Index des jours"], "DD/MM/YYYY").startOf('isoWeek');
     });
 
