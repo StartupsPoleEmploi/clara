@@ -12,12 +12,11 @@ class EligibleView < ViewObject
 
   def title
     intro = ""
-    intro = "Vous n'y êtes pas éligible." if @context.params[:action] == "ineligible"
-    intro = "Vous y êtes éligible." if @context.params[:action] == "eligible"
-    intro = "Vous y êtes peut-être éligible." if @context.params[:action] == "uncertain"
+    intro = "Inéligible" if @context.params[:action] == "ineligible"
+    intro = "Éligible" if @context.params[:action] == "eligible"
+    intro = "Peut-être éligible" if @context.params[:action] == "uncertain"
 
-    "#{@aids.size} #{@contract[:description]}. #{intro}"
-    
+    "#{intro} : #{@aids.size} #{@contract[:description]}"
   end
 
   def clazz
