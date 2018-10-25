@@ -3,6 +3,7 @@ class Breadcrumb < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @contract = hash_for(locals[:contract])
+    @ability = string_for(locals[:ability])
     @context = locals[:context] if locals[:context]
     @current_path = StringToRouteService.new(@context.request).path
   end
@@ -33,6 +34,18 @@ class Breadcrumb < ViewObject
 
   def link_to_aides
     "#{aides_path}?for_id=#{@context.params[:for_id]}"
+  end
+
+  def link_to_aides_pertype
+    res = "#{aides_path}?for_id=#{@context.params[:for_id]}"
+    if @ability == "eligible"
+      res = ""
+    elsif @ability == "uncertain"
+      res = ""
+    elsif @ability == "ineligible"
+      res = ""
+    end
+      
   end
 
   def pertype
