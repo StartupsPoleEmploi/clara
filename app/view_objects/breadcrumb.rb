@@ -39,11 +39,11 @@ class Breadcrumb < ViewObject
   def link_to_aides_pertype
     res = "#{aides_path}?for_id=#{@context.params[:for_id]}"
     if @ability == "eligible"
-      res = ""
+      res = "#{eligible_type_path}?for_id=#{@context.params[:for_id]}"
     elsif @ability == "uncertain"
-      res = ""
+      res = "#{uncertain_type_path}?for_id=#{@context.params[:for_id]}"
     elsif @ability == "ineligible"
-      res = ""
+      res = "#{ineligible_type_path}?for_id=#{@context.params[:for_id]}"
     end
       
   end
