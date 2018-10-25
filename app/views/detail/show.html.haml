@@ -1,13 +1,12 @@
 - aid = @loaded[:aid]
 - contract = @loaded[:contract]
-- contract_name = @loaded && @loaded[:contract] ? @loaded[:contract]["name"] : "Non défini"
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
 
 %main#main.c-detail-show{role: "main"}
 
-  = render 'shared/breadcrumb', {pertype: contract_name}
+  = render 'shared/breadcrumb', {contract: @loaded[:contract], ability: @loaded[:is_eligible]}
 
   %h1.c-detail-title.u-margin-bottom-none
     .c-detail-title-inside.u-useful-width.u-margin-constraint

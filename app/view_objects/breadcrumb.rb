@@ -2,7 +2,7 @@ class Breadcrumb < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    @pertype = string_for(locals[:pertype])
+    @contract = hash_for(locals[:contract])
     @context = locals[:context] if locals[:context]
     @current_path = StringToRouteService.new(@context.request).path
   end
@@ -36,7 +36,7 @@ class Breadcrumb < ViewObject
   end
 
   def pertype
-    @pertype
+    @contract[:name]
   end
 
 end
