@@ -10,7 +10,7 @@ class EligibleView < ViewObject
     @contract
   end
 
-  def title
+  def title_pertype
     intro = ""
     intro = "Inéligible" if @context.params[:action] == "ineligible"
     intro = "Éligible" if @context.params[:action] == "eligible"
