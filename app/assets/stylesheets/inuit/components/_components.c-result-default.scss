@@ -106,7 +106,7 @@ fieldset.c-resultfilterings {
   svg path {
     fill: #057dbc;
   }
-  @include mq($until: tablet) {
+  @include mq($until: desktop) {
     width: 70px;
     overflow: hidden;
     white-space: nowrap;
