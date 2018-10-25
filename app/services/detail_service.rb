@@ -18,9 +18,11 @@ class DetailService
       status = status_array[index]
       root_rule = status.merge(root_rule)
     end
+    contract = ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  @aid["id"] }
 
     return {
       aid: @aid, 
+      contract: contract, 
       is_eligible: is_eligible, 
       root_condition: root_condition, 
       root_rules: root_rules
