@@ -106,6 +106,12 @@ fieldset.c-resultfilterings {
   svg path {
     fill: #057dbc;
   }
+  @include mq($until: tablet) {
+    width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 .c-resultcaret {
