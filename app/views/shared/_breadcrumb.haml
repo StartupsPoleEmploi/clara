@@ -1,5 +1,6 @@
 - v = view_object(:breadcrumb, local_assigns)
 
+=local_assigns[:ability]
 .c-breadcrumb.u-useful-width.u-margin-constraint
   .o-layout
     .o-layout__item{:class => "u-1/2"}
@@ -23,7 +24,7 @@
         - elsif v.display_detail?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
-          %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' }
+          %a{ :href => v.link_to_aides_pertype, :class => 'c-breadcrumb-link' }
             =v.pertype
           &nbsp;/&nbsp; 
           %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail
