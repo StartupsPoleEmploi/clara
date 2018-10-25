@@ -27,7 +27,7 @@
 }
 
 .c-result-aid__cta {
-  padding: $inuit-global-spacing-unit-small $inuit-global-spacing-unit;
+  padding: $inuit-global-spacing-unit-tiny $inuit-global-spacing-unit-small;
   box-shadow: -2px 2px 2px 1px #aaaaaa;
   color:white;
   background-color: #057dbc;
@@ -37,9 +37,6 @@
   margin-left: auto;
   a {
     text-decoration: none;
-  }
-  @include mq($from: mobile) {
-    padding: space(5) space(5);
   }
   @include mq($until: tablet) {
     min-width: 70px;
