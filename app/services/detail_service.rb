@@ -18,11 +18,10 @@ class DetailService
       status = status_array[index]
       root_rule = status.merge(root_rule)
     end
-    contract = ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  @aid["id"] }
 
     return {
       aid: @aid, 
-      contract: contract, 
+      contract: _contract_of(@aid), ntract, 
       is_eligible: is_eligible, 
       root_condition: root_condition, 
       root_rules: root_rules
@@ -32,6 +31,12 @@ class DetailService
   def hashified_aid
     return {
       aid: @aid, 
+      contract: _contract_of(@aid), ntract, 
     }
   end
+
+  def _contract_of(an_aid)
+    ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  an_aid["id"] }
+  end
+
 end

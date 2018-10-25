@@ -5,6 +5,7 @@
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
 
+=contract
 %main#main.c-detail-show{role: "main"}
 
   = render 'shared/breadcrumb', {pertype: contract_name}
