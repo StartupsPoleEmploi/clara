@@ -21,7 +21,7 @@ class DetailService
 
     return {
       aid: @aid, 
-      contract: _contract_of(@aid), ntract, 
+      contract: _contract_of(@aid), 
       is_eligible: is_eligible, 
       root_condition: root_condition, 
       root_rules: root_rules
@@ -31,7 +31,7 @@ class DetailService
   def hashified_aid
     return {
       aid: @aid, 
-      contract: _contract_of(@aid), ntract, 
+      contract: _contract_of(@aid), 
     }
   end
 
