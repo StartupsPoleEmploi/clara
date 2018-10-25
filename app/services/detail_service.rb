@@ -36,7 +36,7 @@ class DetailService
   end
 
   def _contract_of(an_aid)
-    ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  an_aid["id"] }
+    ActivatedModelsService.instance.contracts.detect{ |contract| contract["id"] ==  an_aid["contract_type_id"] }
   end
 
 end
