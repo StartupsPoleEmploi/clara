@@ -9,7 +9,9 @@
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           .c-newhomehero__title
             %h1{:class => "u-text--center u-textalign-left-from@desktop"} 
-              Découvrez les aides et mesures qui vont accélérer votre reprise d'emploi
+              %span Découvrez les aides et mesures 
+              %span qui vont accélérer
+              %span votre reprise d'emploi
           = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
             = f.submit 'Je commence', class: 'c-main-cta'
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
