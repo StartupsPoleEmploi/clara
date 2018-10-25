@@ -13,6 +13,11 @@
           %span.c-breadcrumb-current.c-breadcrumb-current--question Formulaire
         - elsif v.display_results?
           %span.c-breadcrumb-current.c-breadcrumb-current--results Résultats
+        - elsif v.display_results_per_type?
+          %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
+          &nbsp;/&nbsp;
+          %span.c-breadcrumb-current.c-breadcrumb-current--detail 
+            =v.pertype
         - elsif v.display_contact?
           %span.c-breadcrumb-current.c-breadcrumb-current--results Nous contacter
         - elsif v.display_detail?
