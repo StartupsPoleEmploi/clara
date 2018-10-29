@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.3 (29/10/2018)
+-[#1011][TECH] Optimisation tanaguru de la page categorie_question
+
+
 ## 15.0.2 (25/10/2018)
 -[#1009][BUG] Bug titre détail sur mobile
 
