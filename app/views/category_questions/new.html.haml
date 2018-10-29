@@ -27,16 +27,15 @@
                   class: 'c-radioinput', |
                   onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
                   onfocusin: '$("#radio1").toggleClass( "is-activated" )'
-              %label.c-radiolabel.c-category__radiolabel.c-category-element__label{for: 'autres_cat'}
-                .o-centerbox-v
-                  .c-category__tick
-                    \-
-                  %ul.c-category__brace
-                    %li En activité à temps complet (hors contrat aidé)
-                    %li En création d'entreprise
-                    %li En arrêt maladie
-                    %li En congé maternité ou congé parental
-                    %li En formation autre que formation professionnelle
+              .c-radiolabel.c-category__radiolabel.c-category-element__label.o-centerbox-v
+                .c-category__tick
+                  \-
+                %ul.c-category__brace
+                  %li En activité à temps complet (hors contrat aidé)
+                  %li En création d'entreprise
+                  %li En arrêt maladie
+                  %li En congé maternité ou congé parental
+                  %li En formation autre que formation professionnelle
 
                 
             .c-radioline.js-enterspace{id: 'radio2'}
