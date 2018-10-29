@@ -1,8 +1,8 @@
 # ARA Changelog
 
 
-## 15.0.2 (25/10/2018)
--[#1009][BUG] Bug titre détail sur mobile
+## 15.0.3 (29/10/2018)
+-[#1015][TECH] Optimisation tanaguru de age_question
 
 
 ## 15.0.1 (25/10/2018)
