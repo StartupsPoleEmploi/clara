@@ -125,7 +125,7 @@ load_js_for_page(["address_questions", "new"], function() {
     if (PNotify && localStorage && _.isEmpty(localStorage.getItem("soon_finished_info"))) {
      localStorage.setItem("soon_finished_info", "true");
      PNotify.removeAll();
-//     setTimeout(function(){
+     setTimeout(function(){
        new PNotify({
         title: 'Plus que 2 questions',
         type: 'info',
@@ -135,7 +135,7 @@ load_js_for_page(["address_questions", "new"], function() {
         hide:false,
         text: "Plus que 2 questions et vous obtenez vos résultats (celle-ci est facultative)"
       });
-//     }, 10000);
+     }, 500);
    }
 
 });
