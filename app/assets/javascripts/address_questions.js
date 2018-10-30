@@ -132,7 +132,6 @@ load_js_for_page(["address_questions", "new"], function() {
         buttons:{
           sticker: false,
         },
-        hide:false,
         text: "Plus que 2 questions et vous obtenez vos résultats (celle-ci est facultative)"
       });
      }, 500);
