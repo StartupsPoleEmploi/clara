@@ -33,7 +33,8 @@
                               class: classes_of_input, |
                               name: "address_form[label]", |
                               type: "#{@address.label ? 'text' : 'number'}", |
-                              value: "#{@address.label}"}
+                              value: "#{@address.label}", |
+                              title: "Mon code postal"}
               %ul#results.autocomplete-list{role: "listbox", style: "display: none;"}
               %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
               .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
