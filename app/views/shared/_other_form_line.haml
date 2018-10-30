@@ -9,8 +9,6 @@
                     "#{current_val}" == "oui", | 
                     id: "#{id}", |
                     class: "c-radioinput", |
-                    onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
-                    onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
     %label.c-radiolabel{for: "#{id}"}
       =current_text
     
