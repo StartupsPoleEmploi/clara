@@ -17,14 +17,18 @@
         %h1.c-question-title
           %span= raw_description
         .c-age__form
-          = f.number_field :number_of_years, 
+          %label{for:'age'}
+            = f.number_field :number_of_years, 
               class: classes_of_input, 
               id: 'age', 
               value: @age.number_of_years, 
               autofocus: true, 
               autocomplete: 'off',
               'aria-describedby' => aria_described_by_of_input, 
-              'aria-required' => 'true'
+              'aria-required' => 'true',
+              title: "Mon âge"
+          
+
           .c-age-error
             - if has_error
               %label.c-age-error__label.c-label.is-error
