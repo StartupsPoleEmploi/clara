@@ -43,6 +43,7 @@
 
 .c-breadcrumb-current {
   margin-right: auto;
+  text-decoration: none;
 }
 .c-breadcrumb-current--pertype {
   @include mq($until: tablet) {

@@ -10,23 +10,23 @@
           <span class="c-breadcrumb-home-text">Accueil</span>
         &nbsp;/&nbsp;
         - if v.display_form?
-          %span.c-breadcrumb-current.c-breadcrumb-current--question Formulaire
+          %a.c-breadcrumb-current.c-breadcrumb-current--question{ :href => "", "aria-current"=>"page"} Formulaire
         - elsif v.display_results?
-          %span.c-breadcrumb-current.c-breadcrumb-current--results Résultats
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => "", "aria-current"=>"page"} Résultats
         - elsif v.display_results_per_type?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
-          %span.c-breadcrumb-current.c-breadcrumb-current--pertype 
+          %a.c-breadcrumb-current.c-breadcrumb-current--pertype{ :href => "", "aria-current"=>"page"} 
             =v.pertype
         - elsif v.display_contact?
-          %span.c-breadcrumb-current.c-breadcrumb-current--results Nous contacter
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => "", "aria-current"=>"page"} Nous contacter
         - elsif v.display_detail?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
           %a{ :href => v.link_to_aides_pertype, :class => 'c-breadcrumb-link c-breadcrumb-current--pertype' }
             =v.pertype
           &nbsp;/&nbsp; 
-          %span.c-breadcrumb-current.c-breadcrumb-current--detail Détail
+          %a.c-breadcrumb-current.c-breadcrumb-current--detail{ :href => "", "aria-current"=>"page"} Détail
 
     .o-layout__item{:class => "u-1/2"}
       - if v.display_print?
