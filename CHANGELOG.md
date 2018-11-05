@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.5 (5/11/2018)
+-[#1021][BUG] Taille des radiobuttons sur mobile
+
+
 ## 15.0.4 (5/11/2018)
 -[#1022][DESIGN] Amélioration de l'encart d'aide sur l'écran d'allocation
 
