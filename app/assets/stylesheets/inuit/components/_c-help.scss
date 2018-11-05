@@ -9,13 +9,18 @@
 .c-help--allocation {
 
   h2 {
+    // mimic h6
+    font-size: 1rem;
+    // mimic h6
+    line-height: 1.5;
     // mimic h5
-    font-size: 1.125rem;
+    // font-size: 1.125rem;
     // mimic h5
-    line-height: 1.3333333333;    
+    // line-height: 1.3333333333;    
   }
   span {
     display: block;
+    @include inuit-font-size(14px);
   }  
   height: 190px;
   overflow-y: scroll;
