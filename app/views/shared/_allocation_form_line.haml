@@ -4,13 +4,15 @@
 - hide_svg ||= false
 
 .c-radioline.js-enterspace{id: "radio_#{id}"}
-  = radio_button_tag "allocation_form[type]", |
-      "#{id}", |
-      "#{value}" == "#{id}", | 
-      id: "#{id}", |
-      class: 'c-radioinput', | 
-      onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
-      onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+  .c-radiocontainer
+    = radio_button_tag "allocation_form[type]", |
+        "#{id}", |
+        "#{value}" == "#{id}", | 
+        id: "#{id}", |
+        class: 'c-radioinput', | 
+        onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
+        onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+  
   %label.c-radiolabel{for: "#{id}"}
     %span="#{text}"
 
