@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.4 (5/11/2018)
+-[#1022][DESIGN] Amélioration de l'encart d'aide sur l'écran d'allocation
+
+
 ## 15.0.3 (5/11/2018)
 -[#1013][BUG] Retour du détail des acronymes de la question allocation
 

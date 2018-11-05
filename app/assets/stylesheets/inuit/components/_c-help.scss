@@ -9,19 +9,20 @@
 .c-help--allocation {
 
   h2 {
-    // mimic h5
-    font-size: 1.125rem;
-    // mimic h5
-    line-height: 1.3333333333;    
+    // mimic h6
+    font-size: 1rem;
+    // mimic h6
+    line-height: 1.5;
   }
   span {
     display: block;
+    @include inuit-font-size(14px);
   }  
   height: 190px;
   overflow-y: scroll;
   margin: space(4) space(0);
   @include mq($from: tablet) {
     margin: space(0) space(0);
-    height: 350px;
+    height: 275px;
   }
 }
