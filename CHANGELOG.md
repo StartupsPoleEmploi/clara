@@ -1,5 +1,8 @@
 # ARA Changelog
 
+## 15.0.6 (5/11/2018)
+-[#956][TECH] Indiquer le fil d'ariane aux moteurs de recherche
+
 
 ## 15.0.5 (5/11/2018)
 -[#1021][BUG] Taille des radiobuttons sur mobile

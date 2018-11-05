@@ -1,5 +1,9 @@
 .c-breadcrumb {
   @extend .u-margin-vertical-small;
+  nav {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .c-results-index .c-breadcrumb {
@@ -11,10 +15,6 @@
 .c-breadcrumb-home-text {
   color: #333;
   margin-left: space(1);
-}
-.c-breadcrumb-string {
-  display: flex;
-  align-items: center;
 }
 
 .c-breadcrumb-link-home {
@@ -43,6 +43,7 @@
 
 .c-breadcrumb-current {
   margin-right: auto;
+  text-decoration: none;
 }
 .c-breadcrumb-current--pertype {
   @include mq($until: tablet) {
