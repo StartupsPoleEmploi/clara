@@ -13,7 +13,7 @@
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
       
         .o-layout.o-layout--stretch.o-layout--center
-          .o-layout__item{:class => "u-1/1 u-1/3@tablet"}
+          .o-layout__item{:class => "u-1/1 u-2/4@tablet"}
             .c-question__form
               %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
                 %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
@@ -26,7 +26,7 @@
                 = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé(e)', hide_svg: true} 
               
               = render 'shared/error_in_form', e: e     
-          .o-layout__item{:class => "u-1/1 u-1/3@tablet"}
+          .o-layout__item{:class => "u-1/1 u-1/4@tablet"}
             %section.c-help.c-help--allocation{:tabindex=>"0"}
               %h2 Aide : Liste complète des allocations
                
