@@ -166,11 +166,13 @@ fieldset.c-resultfilterings {
 /** checkbox **/
 input[type=checkbox] {
   transform: scale(1.5);
+  min-width: 20px;
 }
 
 /** checkbox **/
 input[type=radio] {
   transform: scale(1.5);
+  min-width: 20px;
 }
 
 
