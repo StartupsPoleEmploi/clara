@@ -1,11 +1,24 @@
 .c-help {
-  margin-left: space(1);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-width: space(5);
-  justify-content: center;
-  @include mq($from: mobile) {
-    justify-content: flex-end;
+  border-radius: 4px;
+  border: solid 1px #edb433;
+  background-color: #fdf7e8;
+  padding: space(6);
+}
+
+
+.c-help--allocation {
+  h2 {
+    // mimic h5
+    font-size: 1.125rem;
+    // mimic h5
+    line-height: 1.3333333333;    
+  }
+  span {
+    display: block;
   }  
+  height: 190px;
+  overflow-y: scroll;
+  @include mq($from: tablet) {
+    height: 350px;
+  }
 }
