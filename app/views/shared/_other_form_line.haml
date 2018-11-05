@@ -4,13 +4,14 @@
 
 .tooltip-responsive-swap--bottom
   .c-radioline.js-enterspace{id: "radio_#{id}"}
-    = check_box_tag "other_form[#{id}]", |
-                    "#{id}", |
-                    "#{current_val}" == "oui", | 
-                    id: "#{id}", |
-                    class: "c-radioinput", |
-                    onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
-                    onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+    .c-radiocontainer
+      = check_box_tag "other_form[#{id}]", |
+                      "#{id}", |
+                      "#{current_val}" == "oui", | 
+                      id: "#{id}", |
+                      class: "c-radioinput", |
+                      onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
+                      onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
     %label.c-radiolabel{for: "#{id}"}
       =current_text
     
