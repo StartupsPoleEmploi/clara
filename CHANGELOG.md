@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 15.0.3 (5/11/2018)
+-[#1013][BUG] Retour du détail des acronymes de la question allocation
+
+
 ## 15.0.2 (25/10/2018)
 -[#1009][BUG] Bug titre détail sur mobile
 
