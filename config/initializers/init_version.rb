@@ -2,8 +2,5 @@ major = ENV["MAJOR_VERSION"] || 15
 minor = ENV["MINOR_VERSION"] || 0
 build = ENV["BUILD_VERSION"] || 6
 
-
->>>>>>> 123e33b... merging
-
 ARA_VERSION = "#{[major.to_s, minor.to_s, build.to_s].join('.')}"
 ARA_EXT_URL = ENV.to_h.select { |key, value| key.to_s.match(/^ARA_URL/) }
