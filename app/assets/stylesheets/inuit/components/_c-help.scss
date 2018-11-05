@@ -7,6 +7,7 @@
 
 
 .c-help--allocation {
+
   h2 {
     // mimic h5
     font-size: 1.125rem;
@@ -18,7 +19,9 @@
   }  
   height: 190px;
   overflow-y: scroll;
+  margin: space(4) space(0);
   @include mq($from: tablet) {
+    margin: space(0) space(0);
     height: 350px;
   }
 }
