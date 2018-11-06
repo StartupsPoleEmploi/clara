@@ -6,7 +6,7 @@
 
 
 ## 16.0.3 (6/11/2018)
--[#1006][SEO] Optimisation de la Home Page pour Tanaguru
+-[#1006b][SEO] Optimisation de la Home Page pour Tanaguru
 
 
 ## 16.0.2 (6/11/2018)
