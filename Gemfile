@@ -19,7 +19,7 @@ gem 'haml-rails'
 gem 'sass-rails', '~> 5.0'
 gem 'pg', '~> 0.18'
 gem 'friendly_id', '~> 5.1.0'
-gem 'loofah', '>= 2.2.2'
+gem 'loofah', '>= 2.2.3'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'annotate', '2.4.0'
