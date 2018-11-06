@@ -1,5 +1,10 @@
 # ARA Changelog
 
+
+## 15.0.7 (6/11/2018)
+-[#1006][SEO] Optimisation HP Tanaguru
+
+
 ## 15.0.6 (5/11/2018)
 -[#956][TECH] Indiquer le fil d'ariane aux moteurs de recherche
 
