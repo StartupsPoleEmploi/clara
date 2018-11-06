@@ -1,14 +1,15 @@
 - aid = @loaded[:aid]
+- contract = @loaded[:contract]
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
 
 %main#main.c-detail-show{role: "main"}
 
-  = render 'shared/breadcrumb'
+  = render 'shared/breadcrumb', {contract: @loaded[:contract], ability: @loaded[:is_eligible]}
 
   %h1.c-detail-title.u-margin-bottom-none
-    .c-detail-title-inside.u-useful-width.u-margin-constraint
+    %span.c-detail-title-inside.u-useful-width.u-margin-constraint
       = aid[:name]
   
   .u-useful-width.u-margin-constraint.u-margin-vertical-small
@@ -36,5 +37,4 @@
 
     - if has_active_user
       .c-detail-back
-        = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
-
+        = link_to 'Retour', link_to_aides_pertype(@loaded[:is_eligible],@loaded[:contract]["slug"],params[:for_id]), :class => 'c-navbutton c-navbutton--back c-navbutton--allresults js-previous';
