@@ -9,8 +9,9 @@
 }
 
 .c-newhomehero__title {
-  // @include inuit-font-size(26px);
-  // font-weight: 500;
+  span {
+    display: block;
+  }
 }
 
 .c-newhomehero__header {
