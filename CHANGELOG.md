@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.4 (6/11/2018)
+-[#956b][SEO] Indiquer le fil d'ariane aux moteurs de recherche
+
+
 ## 16.0.3 (6/11/2018)
 -[#1006][SEO] Optimisation de la Home Page pour Tanaguru
 
