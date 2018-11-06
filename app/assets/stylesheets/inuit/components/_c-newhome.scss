@@ -284,6 +284,9 @@ h2.c-newhomerecall__content {
 
 .c-newhomerecall__content--line {
   color: white;
+  span {
+    display: block;
+  }
 }
 
 .c-newhomerecall__content--cta {
