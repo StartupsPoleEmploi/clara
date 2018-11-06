@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.5 (6/11/2018)
+-[#1025][BUG] Mobile : accepter les cookies dans le bandeau
+
+
 ## 16.0.4 (6/11/2018)
 -[#956b][SEO] Indiquer le fil d'ariane aux moteurs de recherche
 
