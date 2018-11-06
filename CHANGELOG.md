@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.0 (24/10/2018)
+-[#1024][FEATURE] Rollback de version, retour à la 14.6.0
+
+
 ## 14.6.0 (24/10/2018)
 -[#1004][FEATURE] Changement du titre de l'email
 
