@@ -8,7 +8,7 @@
 %main#main.c-type-show{role: "main"}
 
   %h1.c-detail-title{"class" => v.clazz}
-    .c-detail-title-inside.u-useful-width.u-margin-constraint
+    %span.c-detail-title-inside.u-useful-width.u-margin-constraint
       =v.title
 
   .c-detail-show2.u-useful-width.u-margin-constraint
@@ -18,4 +18,3 @@
           = render 'shared/result_line', local_assigns
       .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
         = render 'shared/detail_void'
-
