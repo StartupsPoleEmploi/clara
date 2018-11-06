@@ -1,5 +1,5 @@
 
-// no use of load_js_per_page here, because of browser support
+// no use of load_js_for_page here, because of browser support
 $( document ).ready(function() {
 
   var template_to_add = 
