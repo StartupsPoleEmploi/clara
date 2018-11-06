@@ -9,8 +9,9 @@
 }
 
 .c-newhomehero__title {
-  // @include inuit-font-size(26px);
-  // font-weight: 500;
+  span {
+    display: block;
+  }
 }
 
 .c-newhomehero__header {
@@ -187,7 +188,7 @@ h2.c-newhomeexample__title {
 .c-newhomeexample__card-txt--1 {
 }
 .c-newhomeexample__card-txt {
-  color:#72808E;
+  color:#6A788A
 }
 .c-newhomeexample__card-txt.first {
   margin-top: space(2);
@@ -201,7 +202,7 @@ h2.c-newhomeexample__title {
 .c-newhomeexample__card-plus {
   font-weight: bold;
   margin-top: space(2);
-  color: #2D8CFF;
+  color: #206FF6;
   a {
     color: inherit;
     text-decoration: inherit;
@@ -283,6 +284,9 @@ h2.c-newhomerecall__content {
 
 .c-newhomerecall__content--line {
   color: white;
+  span {
+    display: block;
+  }
 }
 
 .c-newhomerecall__content--cta {
@@ -300,4 +304,3 @@ h2.c-newhomerecall__content {
     display: inline-block;    
   }
 }
-
