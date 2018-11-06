@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+## 16.0.2 (6/11/2018)
+-[#1009b][BUG] Titre du détail d'une aide trop gros
+-[#10013b][BUG] Encarts explicatifs qui ont disparu de la question alloc
+
+
 ## 16.0.1 (6/11/2018)
 -[#1009b][BUG] Titre du détail d'une aide trop gros
 
