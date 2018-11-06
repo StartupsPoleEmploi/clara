@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 16.0.0 (24/10/2018)
+## 16.0.1 (6/11/2018)
+-[#1009b][BUG] Titre du détail d'une aide trop gros
+
+
+## 16.0.0 (6/11/2018)
 -[#1024][FEATURE] Rollback de version, retour à la 14.6.0
 
 
