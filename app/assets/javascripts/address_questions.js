@@ -120,21 +120,5 @@ load_js_for_page(["address_questions", "new"], function() {
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     clara.a11y.autocomplete(clara.a11y.search1);
 
-    /* Encourage
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    if (PNotify && localStorage && _.isEmpty(localStorage.getItem("soon_finished_info"))) {
-     localStorage.setItem("soon_finished_info", "true");
-     PNotify.removeAll();
-     setTimeout(function(){
-       new PNotify({
-        title: 'Plus que 2 questions',
-        type: 'info',
-        buttons:{
-          sticker: false,
-        },
-        text: "Plus que 2 questions et vous obtenez vos résultats (celle-ci est facultative)"
-      });
-     }, 500);
-   }
 
 });
