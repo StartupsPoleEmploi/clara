@@ -59,7 +59,7 @@
 
   documentHeadLink.removeChild(elementForTesting);
 
-  if (window._DD === 1) {
+  if (window._DD !== 1) {
 
     var content_to_add = document.createElement("div");
     content_to_add.id = "content_to_add";
