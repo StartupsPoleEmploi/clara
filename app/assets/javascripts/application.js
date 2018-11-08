@@ -19,15 +19,12 @@
 //= require pnotify/pnotify
 //= require jquery-accessible-simple-tooltip-aria
 //= require redux/redux
-//= require detect_flex/detect_flex-2009
-//= require detect_flex/is-es5-supported
 //= require storejs/store.legacy
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
 //= require ./load_js_for_page
 //= require ./lazy_img_loading
-//= require ./browser_detection
 //= require_tree ./forms
 //= require ./welcome_index
 //= require ./result_default
