@@ -1,5 +1,7 @@
 /* 
  * forked and amended from https://raw.githubusercontent.com/ergcode/ergonomic.detect_flex/master/detect_flex-2009.js
+ * !!WARNING : This script is manually minified and inserted at the very bottom of application.html.haml
+ * Do not insert into application.js, because with old device, first bugs prevents this script to execute correctly
  */
 
 
@@ -58,7 +60,6 @@
   documentHeadLink.removeChild(elementForTesting);
 
   if (window._DD === 1) {
-    // $('body').prepend(template_to_add);
 
     var content_to_add = document.createElement("div");
     content_to_add.id = "content_to_add";
