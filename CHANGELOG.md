@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.10 (7/11/2018)
+-[#1018][SEO] Tanaguru address question
+
+
 ## 16.0.9 (7/11/2018)
 -[#1016d][SEO] removed aria-current
 
