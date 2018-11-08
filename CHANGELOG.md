@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.9 (7/11/2018)
+-[#1016d][SEO] removed aria-current
+
+
 ## 16.0.8 (7/11/2018)
 -[#1016c][SEO] Tanaguru Attribute "aria-current" not allowed on element "a"
 
