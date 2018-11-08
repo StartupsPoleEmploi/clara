@@ -10,15 +10,15 @@
           <span class="c-breadcrumb-home-text">Accueil</span>
         &nbsp;/&nbsp;
         - if v.display_form?
-          %a.c-breadcrumb-current.c-breadcrumb-current--question{ :href => "", "aria-current"=>"page"} Formulaire
+          %div.c-breadcrumb-current.c-breadcrumb-current--question{"aria-current"=>"page"} Formulaire
         - elsif v.display_results?
-          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => "", "aria-current"=>"page"} Résultats
+          %div.c-breadcrumb-current.c-breadcrumb-current--results{"aria-current"=>"page"} Résultats
         - elsif v.display_contact?
-          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => "", "aria-current"=>"page"} Nous contacter
+          %div.c-breadcrumb-current.c-breadcrumb-current--results{"aria-current"=>"page"} Nous contacter
         - elsif v.display_detail?
           %a{ :href => v.link_to_aides, :class => 'c-breadcrumb-link' } Résultats
           &nbsp;/&nbsp;
-          %a.c-breadcrumb-current.c-breadcrumb-current--detail{ :href => "", "aria-current"=>"page"} Détail
+          %div.c-breadcrumb-current.c-breadcrumb-current--detail{"aria-current"=>"page"} Détail
 
     .o-layout__item{:class => "u-1/2"}
       - if v.display_print?
