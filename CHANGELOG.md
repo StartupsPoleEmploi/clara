@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.6 (7/11/2018)
+-[#1026][BUG] Vieux matériel pas toujours détecté
+
+
 ## 16.0.5 (6/11/2018)
 -[#1025][BUG] Mobile : accepter les cookies dans le bandeau
 
