@@ -17,6 +17,7 @@
         %h1.c-question-title
           %span= raw_description
         .c-age__form
+          %label{for:'age', "class" => "u-hidden-visually"} age :
           = f.number_field :number_of_years, 
               class: classes_of_input, 
               id: 'age', 
