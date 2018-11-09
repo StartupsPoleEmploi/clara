@@ -20,15 +20,14 @@
 
             .c-radioline.js-enterspace{id: 'radio1'}
               .c-radiocontainer
+                %label{for:'autres_cat', "class" => "u-hidden-visually"} autres catégories :
                 = radio_button_tag 'category_form[value]', |
                     'autres_cat', |
                     false, | 
                     id: 'autres_cat', |
                     checked: @category.value=='autres_cat', |
-                    class: 'c-radioinput', |
-                    onfocusout: '$("#radio1").toggleClass( "is-activated" )', |
-                    onfocusin: '$("#radio1").toggleClass( "is-activated" )'
-              %label.c-radiolabel.c-category__radiolabel.c-category-element__label{for: 'autres_cat'}
+                    class: 'c-radioinput'
+              .c-radiolabel.c-category__radiolabel.c-category-element__label
                 .o-centerbox-v
                   .c-category__tick
                     \-
@@ -42,14 +41,13 @@
                 
             .c-radioline.js-enterspace{id: 'radio2'}
               .c-radiocontainer          
+                %label{for:'cat_12345', "class" => "u-hidden-visually"} catégorie 1, 2, 3, 4 ou 5
                 = radio_button_tag 'category_form[value]', |
                     'cat_12345', |
                     false, | 
                     id: 'cat_12345', |
                     checked: @category.value=='cat_12345', |
-                    class: 'c-radioinput', |
-                    onfocusout: '$("#radio2").toggleClass( "is-activated" )', |
-                    onfocusin: '$("#radio2").toggleClass( "is-activated" )'
+                    class: 'c-radioinput'
               %label.c-radiolabel.c-category__radiolabel{for: 'cat_12345', class: 'u-5/6@tablet u-1/2'}
                 %span.c-category__second-span Je ne suis dans aucune de ces situations
 
