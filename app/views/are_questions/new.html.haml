@@ -25,18 +25,19 @@
           =raw_description
 
         .c-are__form{:class => classes_of_are_form}
-          %label.c-label.u-text--left{ id: "minimum-descr"} 
-            Montant par mois
-            .c-are-input
-              = f.number_field :minimum_income, 
-                class: classes_of_input,    
-                id: 'inputmin',            
-                value: @are.minimum_income,            
-                autofocus: true,           
-                autocomplete: 'off',       
-                'aria-describedby' => aria_described_by_of_input             
-              %div.mls.c-are-euro
-                €
+          %label.c-label.u-text--left{ id: "minimum-descr"} Montant par mois
+            
+          = f.number_field :minimum_income, 
+            class: classes_of_input,    
+            id: 'inputmin',            
+            value: @are.minimum_income,            
+            autofocus: true,           
+            autocomplete: 'off',
+            title: "Montant par mois de l'allocation",       
+            'aria-describedby' => aria_described_by_of_input             
+
+          %div.mls.c-are-euro
+            €
 
             - if has_error
               %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
