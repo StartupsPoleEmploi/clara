@@ -23,47 +23,38 @@
         .c-address__content
           #a11yAutocomplete
             %div{"data-widget" => "accessible-autocomplete"}
-              %input#search{"placeholder" => "Exemple : 44220", |
-                              "aria-activedescendant" => "", |
-                              "aria-autocomplete" => "both", |
-                              "aria-describedby" => aria_described_by_of_input, |
-                              "aria-expanded" => "false", |
-                              "aria-owns" => "results", |
-                              autocomplete: "off", |
-                              class: classes_of_input, |
-                              name: "address_form[label]", |
-                              type: "#{@address.label ? 'text' : 'number'}", |
-                              value: "#{@address.label}"}
+              %label{for: "search"}
+                %input#search{search_hash(@address, classes_of_input)}
               %ul#results.autocomplete-list{role: "listbox", style: "display: none;"}
               %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
               .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}
           %input#location_label.u-hidden{value: "#{@address.label}"}
-
-            %table#address_form.u-hidden
-              %tr
-                %td.label Street address
-                %td.slimField
-                  %input#street_number.field{name: "address_form[street_number]", value:"#{@address.street_number}"}/
-                %td.wideField{:colspan => "2"}
-                  %input#route.field{name: "address_form[route]", value:"#{@address.route}"}/
-              %tr
-                %td.label City
-                %td.wideField{:colspan => "3"}
-                  %input#locality.field{name: "address_form[city]", value:"#{@address.city}"}/
-              %tr
-                %td.label State
-                %td.slimField
-                  %input#administrative_area_level_1.field{name: "address_form[state]", value:"#{@address.state}"}/
-                %td.label Zip code
-                %td.wideField
-                  %input#postal_code.field{name: "address_form[zipcode]", value:"#{@address.zipcode}"}/
-              %tr
-                %td.label Country
-                %td.slimField
-                  %input#country.field{name: "address_form[country]", value:"#{@address.label ? 'France' : ''}"}/
-                %td.label Citycode
-                %td.wideField
-                  %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
+        
+          %table#address_form.u-hidden
+            %tr
+              %td.label Street address
+              %td.slimField
+                %input#street_number.field{name: "address_form[street_number]", value:"#{@address.street_number}"}/
+              %td.wideField{:colspan => "2"}
+                %input#route.field{name: "address_form[route]", value:"#{@address.route}"}/
+            %tr
+              %td.label City
+              %td.wideField{:colspan => "3"}
+                %input#locality.field{name: "address_form[city]", value:"#{@address.city}"}/
+            %tr
+              %td.label State
+              %td.slimField
+                %input#administrative_area_level_1.field{name: "address_form[state]", value:"#{@address.state}"}/
+              %td.label Zip code
+              %td.wideField
+                %input#postal_code.field{name: "address_form[zipcode]", value:"#{@address.zipcode}"}/
+            %tr
+              %td.label Country
+              %td.slimField
+                %input#country.field{name: "address_form[country]", value:"#{@address.label ? 'France' : ''}"}/
+              %td.label Citycode
+              %td.wideField
+                %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
 
           %div
             - if has_error
