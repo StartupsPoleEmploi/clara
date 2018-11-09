@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.13 (9/11/2018)
+-[#1014b][SEO] Tanaguru A.R.E question
+
+
 ## 16.0.12 (9/11/2018)
 -[#1015b][SEO] Tanaguru age question
 

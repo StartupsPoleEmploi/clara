@@ -13,10 +13,10 @@
 .c-are-euro {
   font-size: space(7);
 }
-.c-are-input {
-  display: flex;
-  align-items: center;
-  width: 1.5 * space(12) !important;    
+
+#inputmin {
+  width: 1.5 * space(12);    
+  @extend .u-padding-vertical-small;
   input {
     @extend .u-padding-vertical-small;
   }
