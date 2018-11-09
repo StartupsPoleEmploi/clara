@@ -20,6 +20,9 @@ module ApplicationHelper
     "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
   end
 
+  def search_hash(address, classes_of_input)
+    {"placeholder" => "Exemple : 44220", "aria-autocomplete" => "both", "aria-describedby" => "a11yAutocomplete", "aria-expanded" => "false", "aria-owns" => "results", autocomplete: "off", "class" => classes_of_input, name: "address_form[label]", value: "#{address.label}", title: "Mon code postal"}.delete_if { |k, v| v.empty? }
+  end
 
   def description_data(text)
     local_text = text.to_s

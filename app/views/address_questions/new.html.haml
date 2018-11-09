@@ -24,18 +24,7 @@
           #a11yAutocomplete
             %div{"data-widget" => "accessible-autocomplete"}
               %label{for: "search"}
-                %input#search{"placeholder" => "Exemple : 44220", |
-                                "aria-activedescendant" => "", |
-                                "aria-autocomplete" => "both", |
-                                "aria-describedby" => "a11yAutocomplete", |
-                                "aria-expanded" => "false", |
-                                "aria-owns" => "results", |
-                                autocomplete: "off", |
-                                class: classes_of_input, |
-                                name: "address_form[label]", |
-                                type: "#{@address.label ? 'text' : 'number'}", |
-                                value: "#{@address.label}", |
-                                title: "Mon code postal"}
+                %input#search{search_hash(@address, classes_of_input)}
               %ul#results.autocomplete-list{role: "listbox", style: "display: none;"}
               %span#initInstr{style: "display: none;"} Quand l'autocomplete est disponible, appuyez sur les touches haut et bas pour sélectionner une valeur.
               .screen-reader-text.u-hidden-visually{"aria-live" => "assertive"}

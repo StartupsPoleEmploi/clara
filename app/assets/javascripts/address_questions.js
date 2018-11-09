@@ -101,19 +101,11 @@ _.set(window, 'clara.a11y.search1', {
 
 load_js_for_page(["address_questions", "new"], function() {
 
-  // Turbolinks breaks PNotify context, needs to reinstantiate it here 
-  // See https://stackoverflow.com/a/28220612/2595513
-  PNotify.prototype.options.stack  = {
-    dir1: "down",
-    dir2: "left",
-    push: "bottom",
-    spacing1: 25,
-    spacing2: 25,
-    context: $("body")
-  };
-
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
+    if ($(clara.a11y.search1.search_selector).val() === "") {
+      $(clara.a11y.search1.search_selector).prop("type", "number");
+    }
     $(clara.a11y.search1.search_selector).focus();
 
     /* Autocomplete
