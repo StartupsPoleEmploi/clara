@@ -104,6 +104,7 @@ load_js_for_page(["address_questions", "new"], function() {
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     if ($(clara.a11y.search1.search_selector).val() === "") {
+      // Must set type="number" dynamically like this, or tanaguru test won't pass
       $(clara.a11y.search1.search_selector).prop("type", "number");
     }
     $(clara.a11y.search1.search_selector).focus();
