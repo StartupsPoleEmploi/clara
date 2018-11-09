@@ -1,23 +1,27 @@
 # ARA Changelog
 
 
-## 16.0.10 (7/11/2018)
+## 16.0.11 (9/11/2018)
+-[#1017b][SEO] Tanaguru other question
+
+
+## 16.0.10 (9/11/2018)
 -[#1018][SEO] Tanaguru address question
 
 
-## 16.0.9 (7/11/2018)
+## 16.0.9 (8/11/2018)
 -[#1016d][SEO] removed aria-current
 
 
-## 16.0.8 (7/11/2018)
+## 16.0.8 (8/11/2018)
 -[#1016c][SEO] Tanaguru Attribute "aria-current" not allowed on element "a"
 
 
-## 16.0.7 (7/11/2018)
+## 16.0.7 (8/11/2018)
 -[#1016b][SEO] Tanaguru grade question
 
 
-## 16.0.6 (7/11/2018)
+## 16.0.6 (8/11/2018)
 -[#1026][BUG] Vieux matériel pas toujours détecté
 
 
