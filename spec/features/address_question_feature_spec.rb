@@ -104,7 +104,7 @@ feature 'address question' do
   end
 
   def expect_search_input_is_empty
-    expect(find('input#search', :visible => true).value).to eq('')
+    expect(find('input#search', :visible => true).value).to eq(nil)
   end
 
   def set_address(address)
