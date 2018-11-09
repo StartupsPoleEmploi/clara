@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.0.16 (9/11/2018)
+-[#1010b][SEO] Tanaguru inscription question
+
+
 ## 16.0.15 (9/11/2018)
 -[#1011b][SEO] Tanaguru category question
 

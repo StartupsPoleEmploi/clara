@@ -7,8 +7,6 @@
       "#{id}", |
       "#{value}" == "#{id}", | 
       id: "#{id}", |
-      class: 'c-radioinput', | 
-      onfocusout: "$('#radio_#{id}').toggleClass( 'is-activated' )", |
-      onfocusin: "$('#radio_#{id}').toggleClass( 'is-activated' )" |
+      class: 'c-radioinput'
   %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
     =text
