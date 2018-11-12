@@ -25,11 +25,11 @@
           =raw_description
 
         .c-are__form{:class => classes_of_are_form}
-          %label{for: "inputmin", :class => "c-label c-are-label", id: "minimum-descr"} Montant par mois
+          %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Montant par mois
             
           = f.number_field :minimum_income, 
             class: classes_of_input,    
-            id: 'inputmin',            
+            id: 'montant',            
             value: @are.minimum_income,            
             autofocus: true,           
             autocomplete: 'off',

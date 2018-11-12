@@ -21,7 +21,7 @@
   font-size: space(7);
 }
 
-#inputmin {
+.c-are__form .c-field {
   width: 1.5 * space(12);    
   @extend .u-padding-vertical-small;
   input {
