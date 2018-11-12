@@ -24,19 +24,19 @@ class CustomFilterDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :custom_parent_filter,
-    :aids,
     :id,
     :name,
+    :aids,
+    :custom_parent_filter,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :custom_parent_filter,
-    :aids,
     :id,
     :name,
+    :custom_parent_filter,
+    :aids,
     :description,
     :created_at,
     :updated_at,
@@ -47,11 +47,10 @@ class CustomFilterDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :name,
     :custom_parent_filter,
     :aids,
-    :name,
     :description,
-    :slug,
   ].freeze
 
   # Overwrite this method to customize how custom filters are displayed
