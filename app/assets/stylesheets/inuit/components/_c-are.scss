@@ -1,8 +1,4 @@
 .c-are__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: space(6);
   text-align: center;
   &.is-error {
@@ -10,11 +6,22 @@
   }  
 }
 
+.c-are-label {
+  display: block;
+  text-align: center;
+  margin-left: -42px; // Hack, sorry, to left-align label text
+}
+
+.c-are-error {
+  text-align: center;
+  margin-left: -11px;
+}
+
 .c-are-euro {
   font-size: space(7);
 }
 
-#inputmin {
+.c-are__form .c-field {
   width: 1.5 * space(12);    
   @extend .u-padding-vertical-small;
   input {

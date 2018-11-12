@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.1.1 (12/11/2018)
+-[#1032][SEO] Optimisations question ARE
+
+
 ## 16.1.0 (12/11/2018)
 -[#1033][FEATURE] Admin : filtres personnalisés
 
