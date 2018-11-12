@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_130701) do
+ActiveRecord::Schema.define(version: 2018_11_12_105620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 2018_09_18_130701) do
     t.index ["contract_type_id"], name: "index_aids_on_contract_type_id"
     t.index ["rule_id"], name: "index_aids_on_rule_id"
     t.index ["slug"], name: "index_aids_on_slug", unique: true
+  end
+
+  create_table "aids_custom_filters", id: false, force: :cascade do |t|
+    t.bigint "custom_filter_id", null: false
+    t.bigint "aid_id", null: false
   end
 
   create_table "aids_filters", id: false, force: :cascade do |t|
@@ -69,6 +74,26 @@ ActiveRecord::Schema.define(version: 2018_09_18_130701) do
     t.string "plural"
     t.index ["business_id"], name: "index_contract_types_on_business_id", unique: true
     t.index ["slug"], name: "index_contract_types_on_slug", unique: true
+  end
+
+  create_table "custom_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.bigint "custom_parent_filter_id"
+    t.index ["custom_parent_filter_id"], name: "index_custom_filters_on_custom_parent_filter_id"
+    t.index ["slug"], name: "index_custom_filters_on_slug", unique: true
+  end
+
+  create_table "custom_parent_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_custom_parent_filters_on_slug", unique: true
   end
 
   create_table "custom_rule_checks", force: :cascade do |t|
@@ -196,6 +221,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_130701) do
   add_foreign_key "aids", "contract_types"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
+  add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
   add_foreign_key "level2_filters", "level1_filters"
   add_foreign_key "level3_filters", "level2_filters"

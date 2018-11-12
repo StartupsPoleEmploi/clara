@@ -1,8 +1,8 @@
 # ARA Changelog
 
 
-## 16.0.16 (9/11/2018)
--[#1010b][SEO] Tanaguru inscription question
+## 16.1.0 (12/11/2018)
+-[#1033][FEATURE] Admin : filtres personnalisés
 
 
 ## 16.0.15 (9/11/2018)
