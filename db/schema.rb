@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_130701) do
+ActiveRecord::Schema.define(version: 2018_11_12_105616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2018_09_18_130701) do
     t.string "plural"
     t.index ["business_id"], name: "index_contract_types_on_business_id", unique: true
     t.index ["slug"], name: "index_contract_types_on_slug", unique: true
+  end
+
+  create_table "custom_parent_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_custom_parent_filters_on_slug", unique: true
   end
 
   create_table "custom_rule_checks", force: :cascade do |t|
