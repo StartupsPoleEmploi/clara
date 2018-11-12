@@ -1,13 +1,15 @@
 .c-are__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   padding: space(6);
   text-align: center;
   &.is-error {
     padding-bottom: space(0);
   }  
+}
+
+.c-are-label {
+  display: block;
+  text-align: center;
+  margin-left: -42px; // Hack, sorry, to left-align label text
 }
 
 .c-are-euro {

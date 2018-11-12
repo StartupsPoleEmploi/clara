@@ -25,7 +25,7 @@
           =raw_description
 
         .c-are__form{:class => classes_of_are_form}
-          %label.c-label.u-text--left{ id: "minimum-descr"} Montant par mois
+          %label{for: "inputmin", :class => "c-label c-are-label", id: "minimum-descr"} Montant par mois
             
           = f.number_field :minimum_income, 
             class: classes_of_input,    
@@ -36,7 +36,7 @@
             title: "Montant par mois de l'allocation",       
             'aria-describedby' => aria_described_by_of_input             
 
-          %div.mls.c-are-euro
+          %span.mls.c-are-euro
             €
 
             - if has_error
