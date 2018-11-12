@@ -11,9 +11,10 @@ module Admin
     # end
 
     # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   CustomFilter.find_by!(slug: param)
-    # end
+    def find_resource(param)
+      result = CustomFilter.find_by(slug: param)
+      result.blank? ? CustomFilter.find_by(id: param) : result
+    end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
