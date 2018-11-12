@@ -8,8 +8,6 @@ class Level3Filter < ApplicationRecord
 
   belongs_to :level2_filter
 
-  
-
 
   def should_generate_new_friendly_id?
     name_changed?

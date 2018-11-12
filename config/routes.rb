@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :level2_filters
     resources :level3_filters
     resources :filters
+    resources :custom_filters
+    resources :custom_parent_filters
     resources :aids
     resources :rules do 
       get 'resolve', on: :member
