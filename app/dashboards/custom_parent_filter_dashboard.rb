@@ -54,7 +54,7 @@ class CustomParentFilterDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how custom parent filters are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(custom_parent_filter)
-  #   "CustomParentFilter ##{custom_parent_filter.id}"
-  # end
+  def display_resource(custom_parent_filter)
+    custom_parent_filter.name
+  end
 end

@@ -57,7 +57,7 @@ class CustomFilterDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how custom filters are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(custom_filter)
-  #   "CustomFilter ##{custom_filter.id}"
-  # end
+  def display_resource(custom_filter)
+    custom_filter.name
+  end
 end
