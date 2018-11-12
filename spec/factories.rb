@@ -6,6 +6,10 @@ FactoryBot.define do
     
   end
 
+  factory :level3_filter do
+    
+  end
+
   factory :stat do
     
   end
