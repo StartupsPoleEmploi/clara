@@ -29,30 +29,41 @@ class SerializeResultsService
 
   def api_eligible(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_eligible, filters, level3_filters))
+    _whitelist(_filter(calculator.every_eligible, filters, level3_filters))
   end
 
   def api_ineligible(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_ineligible, filters, level3_filters))
+    _whitelist(_filter(calculator.every_ineligible, filters, level3_filters))
   end
 
   def api_uncertain(asker, filters, level3_filters)
     calculator = AidCalculationService.get_instance(asker)
-    whitelist(filter(calculator.every_uncertain, filters, level3_filters))
+    _whitelist(_filter(calculator.every_uncertain, filters, level3_filters))
   end
 
-private
-  def whitelist(aids)
+  def _whitelist(aids)
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def filter(elies, filters, level3_filters)
+  def _filter(elies, filters, level3_filters)
+    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
+    # pp elies
+    # p ''
+    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
+    # pp filters
+    # p ''
+    # p '- - - - - - - - - - - - - - level3_filters- - - - - - - - - - - - - - - -' 
+    # pp level3_filters
+    # p ''
 
     has_regular_filters = filters.is_a?(String) && !filters.empty?
     has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
 
     active = ActivatedModelsService.instance
+    # p '- - - - - - - - - - - - - - active.filters- - - - - - - - - - - - - - - -' 
+    # pp active.filters
+    # p ''
 
     regular_elies = []
     level3_elies = []
