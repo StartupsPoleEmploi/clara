@@ -33,7 +33,25 @@ describe SerializeResultsService do
     let(:argent) {create(:level3_filter, :name => "argent")}
 
     let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1")}
+    let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2")}
 
+    #
+    # NO FILTER
+    #
+    it 'Do not affect elies if no filter is required' do
+      elies = []
+              .push(ely_factory(42, [], [], []))
+              .push(ely_factory(43, [], [], []))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(42)
+      expect(res[1]["id"]).to eq(43)
+    end
 
     #
     # SIMPLE FILTER
@@ -154,30 +172,6 @@ describe SerializeResultsService do
     #
     # CUSTOM FILTER
     #
-    it 'Do not affect elies if no filter is required' do
-      elies = []
-              .push(ely_factory(42, [], [], []))
-              .push(ely_factory(43, [], [], []))
-      simple_filters = nil
-      level3_filters = nil
-      custom_filters = nil
-      custom_parent_filters = nil
-
-      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
-      expect(res.size).to eq(2)
-    end
-    it 'Removes all if custom_filters is required, but no elies has any filter attached' do
-      elies = []
-              .push(ely_factory(42, [], [], []))
-              .push(ely_factory(43, [], [], []))
-      simple_filters = nil
-      level3_filters = nil
-      custom_filters = "custom-filter"
-      custom_parent_filters = nil
-
-      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
-      expect(res.size).to eq(0)
-    end
     it 'Select corresponding custom filters' do
       elies = []
               .push(ely_factory(42, [], [], [custom_filter_1]))
@@ -189,7 +183,23 @@ describe SerializeResultsService do
 
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
-      expect(res[1]["id"]).to eq(42)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Select corresponding custom filters (more complicated example)' do
+      elies = []
+              .push(ely_factory(42, [], [], [custom_filter_1]))
+              .push(ely_factory(43, [], [addiction], []))
+              .push(ely_factory(44, [se_divertir, se_deplacer], [addiction], [custom_filter_2, custom_filter_1]))
+              .push(ely_factory(45, [se_divertir, se_deplacer, se_mouvoir], [addiction], []))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = "custom-filter-42,custom-filter-1,custom-filter-2"
+      custom_parent_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(42)
+      expect(res[1]["id"]).to eq(44)
     end
 
     #
