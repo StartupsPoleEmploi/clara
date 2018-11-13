@@ -35,8 +35,8 @@ describe SerializeResultsService do
     let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1")}
     let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2")}
 
-    let(:custom_parent_filter_1) {create(:custom_filter, :name => "custom parent filter 1")}
-    let(:custom_parent_filter_2) {create(:custom_filter, :name => "custom parent filter 2")}
+    let(:custom_parent_filter_1) {create(:custom_parent_filter, :name => "custom parent filter 1")}
+    let(:custom_parent_filter_2) {create(:custom_parent_filter, :name => "custom parent filter 2")}
 
     #
     # NO FILTER
