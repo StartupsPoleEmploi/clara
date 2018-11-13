@@ -162,7 +162,7 @@ describe SerializeResultsService do
       custom_filters = nil
       custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(2)
     end
     it 'Removes all if custom_filters is required, but no elies has any filter attached' do
