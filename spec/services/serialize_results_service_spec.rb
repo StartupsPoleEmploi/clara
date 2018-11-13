@@ -43,8 +43,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "se-divertir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(0)
     end
     it 'Is able to filter according to simple filter only, simplest scenario' do
@@ -53,8 +55,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "se-divertir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -64,8 +68,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "se-mouvoir,se-divertir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -75,8 +81,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "se-divertir,se-mouvoir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -86,8 +94,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "se-divertir,se-deplacer"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -97,8 +107,10 @@ describe SerializeResultsService do
               .push(ely_factory(43, [], []))
       simple_filters = "inexisting,se-divertir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -109,8 +121,10 @@ describe SerializeResultsService do
               .push(ely_factory(44, [se_divertir], []))
       simple_filters = "inexisting,se-divertir"
       level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(2)
       expect(res[0]["id"]).to eq(42)
       expect(res[1]["id"]).to eq(44)
@@ -127,8 +141,10 @@ describe SerializeResultsService do
               .push(ely_factory(44, [], [addiction]))
       simple_filters = nil
       level3_filters = "addiction,argent"
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(2)
       expect(res[0]["id"]).to eq(43)
       expect(res[1]["id"]).to eq(44)
@@ -144,6 +160,7 @@ describe SerializeResultsService do
       simple_filters = nil
       level3_filters = nil
       custom_filters = nil
+      custom_parent_filters = nil
 
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
       expect(res.size).to eq(2)
@@ -155,8 +172,9 @@ describe SerializeResultsService do
       simple_filters = nil
       level3_filters = nil
       custom_filters = "custom-filter"
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(0)
     end
 
@@ -170,8 +188,10 @@ describe SerializeResultsService do
               .push(ely_factory(44, [se_deplacer], [argent]))
       simple_filters = "se-divertir,se-regarder"
       level3_filters = "argent"
+      custom_filters = nil
+      custom_parent_filters = nil
 
-      res = sut._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)     
     end

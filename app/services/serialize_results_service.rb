@@ -63,46 +63,29 @@ class SerializeResultsService
     resulting_elies    
   end
 
-  def _filter(elies, filters, level3_filters, custom_filters=[], custom_parent_filters=[])
+  def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
     has_regular_filters = filters.is_a?(String) && !filters.empty?
     has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
     # active = ActivatedModelsService.instance
 
     regular_elies       = _find_elies("filters", filters, elies)
+    p '- - - - - - - - - - - - - - regular_elies- - - - - - - - - - - - - - - -' 
+    pp regular_elies
+    p ''
     level3_elies        = _find_elies("level3_filters", level3_filters, elies)
+    p '- - - - - - - - - - - - - - level3_elies- - - - - - - - - - - - - - - -' 
+    pp level3_elies
+    p ''
     custom_elies        = _find_elies("custom_filters", custom_filters, elies)
     custom_parent_elies = []
-
-    # Regular filter    
-    # if has_regular_filters
-    #   filters_array = filters.split(",")
-    #   regular_elies += elies.select do |ely|
-    #     ely["filters"] = [] if ely["filters"] == nil
-    #     current_filter_array = ely["filters"].map do |ely_filter|
-    #       active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
-    #     end
-    #     intersection_array = current_filter_array & filters_array
-    #     !intersection_array.empty?
-    #   end
-    # end
-
-    # Level3 filter    
-    # if has_level3_filters
-    #   level3_filters_array = level3_filters.split(",")
-    #   level3_elies += elies.select do |ely|
-    #     ely["level3_filters"] = [] if ely["level3_filters"] == nil
-    #     current_filter_array = ely["level3_filters"].map do |ely_filter|
-    #       active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
-    #     end
-    #     intersection_array = current_filter_array & level3_filters_array
-    #     !intersection_array.empty?
-    #   end
-    # end
 
     selected_elies = []
     filtered_elies = [regular_elies, level3_elies, custom_elies, custom_parent_elies]
 
     number_of_filter_required = filtered_elies.count{|e| e.size > 0}
+    p '- - - - - - - - - - - - - - number_of_filter_required- - - - - - - - - - - - - - - -' 
+    pp number_of_filter_required
+    p ''
 
     if number_of_filter_required == 0
       # if no filter is required by user, just don't filter, send the elies back
