@@ -31,6 +31,10 @@ describe SerializeResultsService do
     let(:argent) {create(:level3_filter, :name => "argent")}
 
 
+
+    #
+    # SIMPLE FILTER
+    #
     it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
       elies = []
               .push(ely_factory(42, [], []))
@@ -96,17 +100,36 @@ describe SerializeResultsService do
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
-    it "Is able to filter according to level3 filter only" do
+
+
+    #
+    # LEVEL3 FILTER
+    #
+    it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
       elies = []
-              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(42, [], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = nil
+      level3_filters = "argent"
+
+      res = sut._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(0)
+    end
+    it 'Is able to filter according to level3 filter only, simplest scenario' do
+      elies = []
+              .push(ely_factory(42, [], []))
               .push(ely_factory(43, [], [argent]))
       simple_filters = nil
-      level3_filters = "argent,addiction"
+      level3_filters = "argent"
 
       res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)
     end
+
+    #
+    # LEVEL3 FILTER AND SIMPLE FILTER
+    #
     it 'Is able to filter according to both level3 and simple filter' do
       elies = []
               .push(ely_factory(42, [se_divertir, se_deplacer], [addiction]))
