@@ -206,6 +206,23 @@ describe SerializeResultsService do
     end
 
     #
+    # CUSTOM PARENT FILTER
+    #
+    it 'Select corresponding custom parent filters' do
+      elies = []
+              .push(ely_factory(42, [], [], [custom_filter_1]))
+              .push(ely_factory(43, [], [addiction], [], [custom_parent_filter_1]))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = "custom-parent-filter-1"
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(43)
+    end
+
+    #
     # LEVEL3 FILTER AND SIMPLE FILTER
     #
     it 'Is able to filter according to both level3 and simple filter' do
