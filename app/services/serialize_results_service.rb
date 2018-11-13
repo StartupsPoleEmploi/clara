@@ -66,34 +66,22 @@ class SerializeResultsService
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
 
     regular_elies       = _find_elies("filters", filters, elies)
-    # p '- - - - - - - - - - - - - - regular_elies- - - - - - - - - - - - - - - -' 
-    # pp regular_elies
-    # p ''
     level3_elies        = _find_elies("level3_filters", level3_filters, elies)
-    # p '- - - - - - - - - - - - - - level3_elies- - - - - - - - - - - - - - - -' 
-    # pp level3_elies
-    # p ''
     custom_elies        = _find_elies("custom_filters", custom_filters, elies)
-    custom_parent_elies = []
+    custom_parent_elies = _find_elies("custom_parent_filters", custom_parent_filters, elies)
 
     selected_elies = []
 
     all_hash = {
-      regular: {elies:regular_elies, filters:filters},
-      level3: {elies:level3_elies, filters:level3_filters},
-      custom: {elies:custom_elies, filters:custom_filters},
-      parent: {elies:custom_parent_elies, filters:custom_parent_filters},
+      regular: {elies: regular_elies, filters: filters},
+      level3: {elies: level3_elies, filters: level3_filters},
+      custom: {elies: custom_elies, filters: custom_filters},
+      parent: {elies: custom_parent_elies, filters: custom_parent_filters},
     }
 
     is_filter_required = proc { |k,v| v.is_a?(Hash) && v[:filters].is_a?(String) && !v[:filters].empty? }
 
     number_of_filter_required = all_hash.count(&is_filter_required)
-    # p '- - - - - - - - - - - - - - all_hash- - - - - - - - - - - - - - - -' 
-    # pp all_hash
-    # p ''
-    # p '- - - - - - - - - - - - - - number_of_filter_required- - - - - - - - - - - - - - - -' 
-    # pp number_of_filter_required
-    # p ''
 
     if number_of_filter_required == 0
       # if no filter is required by user, just don't filter, send the elies back
