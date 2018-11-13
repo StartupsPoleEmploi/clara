@@ -6,7 +6,7 @@ describe SerializeResultsService do
     {"id"=>a_filter.id, "slug"=>a_filter.slug}
   end
 
-  def ely_factory(an_id, simple_filters, level3_filters)
+  def ely_factory(an_id, simple_filters, level3_filters, custom_filters=[], custom_parent_filters=[])
     {"id"=>an_id,
       "name"              => "Aide Number #{an_id}",
       "slug"              => "aide-number-#{an_id}",
@@ -184,6 +184,21 @@ describe SerializeResultsService do
       expect(res.size).to eq(2)
       expect(res[0]["id"]).to eq(43)
       expect(res[1]["id"]).to eq(44)
+    end
+
+    #
+    # CUSTOM FILTER
+    #
+    it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
+      elies = []
+              .push(ely_factory(42, [], [], []))
+              .push(ely_factory(43, [], [], []))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
+      expect(res.size).to eq(0)
     end
 
     #
