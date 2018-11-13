@@ -6,7 +6,7 @@ describe SerializeResultsService do
     {"id"=>a_filter.id, "slug"=>a_filter.slug}
   end
 
-  def ely_factory(an_id, simple_filters, level3_filters, custom_filters=[], custom_parent_filters=[])
+  def ely_factory(an_id, simple_filters, level3_filters, custom_filters=[])
     {"id"=>an_id,
       "name"                 => "Aide Number #{an_id}",
       "slug"                 => "aide-number-#{an_id}",
@@ -16,7 +16,6 @@ describe SerializeResultsService do
       "filters"              => simple_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
       "level3_filters"       => level3_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
       "custom_filters"       => custom_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "custom_parent_filters"=> custom_parent_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
       "eligibility"          => ["eligible", "ineligible", "uncertain"].sample
     }
   end
@@ -32,11 +31,11 @@ describe SerializeResultsService do
     let(:addiction) {create(:level3_filter, :name => "addiction")}
     let(:argent) {create(:level3_filter, :name => "argent")}
 
-    let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1")}
-    let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2")}
 
     let(:custom_parent_filter_1) {create(:custom_parent_filter, :name => "custom parent filter 1")}
-    let(:custom_parent_filter_2) {create(:custom_parent_filter, :name => "custom parent filter 2")}
+
+    let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1", custom_parent_filter: custom_parent_filter_1)}
+    let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2", custom_parent_filter: custom_parent_filter_1)}
 
     #
     # NO FILTER
@@ -208,10 +207,10 @@ describe SerializeResultsService do
     #
     # CUSTOM PARENT FILTER
     #
-    it 'Select corresponding custom parent filters' do
+    it 'Custom parent filters actually pick custom filter' do
       elies = []
-              .push(ely_factory(42, [], [],          [custom_filter_1], []))
-              .push(ely_factory(43, [], [addiction], [],                 [custom_parent_filter_1]))
+              .push(ely_factory(42, [], [], []))
+              .push(ely_factory(43, [], [], []))
       simple_filters = nil
       level3_filters = nil
       custom_filters = nil
@@ -250,11 +249,13 @@ describe SerializeResultsService do
       simple_filters = "se-divertir,se-regarder"
       level3_filters = "argent,inexisting"
       custom_filters = "inexisting,custom-filter-1,inexisting_too"
-      custom_parent_filters = "custom-parent-filter-1,custom-parent-filter-2"
+      # custom_parent_filters = "custom-parent-filter-1,custom-parent-filter-2"
+      custom_parent_filters = nil
 
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(46)     
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(43)     
+      expect(res[1]["id"]).to eq(46)     
     end
   end
 end

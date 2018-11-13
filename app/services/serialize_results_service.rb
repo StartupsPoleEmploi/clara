@@ -64,14 +64,19 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
-    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    # pp elies
+    p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
+    pp elies
+    p ''
+    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_filters
+    # pp custom_parent_filters
+    # pp ActivatedModelsService.instance.custom_filters
+    # pp ActivatedModelsService.instance.custom_parent_filters
     # p ''
 
     regular_elies       = _find_elies("filters", filters, elies)
     level3_elies        = _find_elies("level3_filters", level3_filters, elies)
     custom_elies        = _find_elies("custom_filters", custom_filters, elies)
-    custom_parent_elies = _find_elies("custom_parent_filters", custom_parent_filters, elies)
 
     selected_elies = []
 
@@ -79,7 +84,6 @@ class SerializeResultsService
       regular: {elies: regular_elies, filters: filters},
       level3: {elies: level3_elies, filters: level3_filters},
       custom: {elies: custom_elies, filters: custom_filters},
-      parent: {elies: custom_parent_elies, filters: custom_parent_filters},
     }
 
     is_filter_required = proc { |k,v| v.is_a?(Hash) && v[:filters].is_a?(String) && !v[:filters].empty? }
