@@ -64,9 +64,6 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
-    has_regular_filters = filters.is_a?(String) && !filters.empty?
-    has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
-    # active = ActivatedModelsService.instance
 
     regular_elies       = _find_elies("filters", filters, elies)
     # p '- - - - - - - - - - - - - - regular_elies- - - - - - - - - - - - - - - -' 
