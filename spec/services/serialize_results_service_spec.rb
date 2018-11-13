@@ -189,13 +189,24 @@ describe SerializeResultsService do
     #
     # CUSTOM FILTER
     #
-    it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
+    it 'Do not affect elies if not filter is required' do
       elies = []
               .push(ely_factory(42, [], [], []))
               .push(ely_factory(43, [], [], []))
       simple_filters = nil
       level3_filters = nil
       custom_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
+      expect(res.size).to eq(2)
+    end
+    it 'Removes all if custom_filters is required, but no elies has any filter attached' do
+      elies = []
+              .push(ely_factory(42, [], [], []))
+              .push(ely_factory(43, [], [], []))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = "custom-filter"
 
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters)
       expect(res.size).to eq(0)
