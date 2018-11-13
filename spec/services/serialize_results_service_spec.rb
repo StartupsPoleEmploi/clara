@@ -148,6 +148,30 @@ describe SerializeResultsService do
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)
     end
+    it 'Is able to filter according to level3 filter only, even when requiring multiple filters twice' do
+      elies = []
+              .push(ely_factory(42, [], []))
+              .push(ely_factory(43, [], [argent, addiction]))
+      simple_filters = nil
+      level3_filters = "addiction,argent"
+
+      res = sut._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(43)
+    end
+    it 'Is able to filter multiple eligies with level3 filters' do
+      elies = []
+              .push(ely_factory(42, [], []))
+              .push(ely_factory(43, [], [argent, addiction]))
+              .push(ely_factory(44, [], [addiction]))
+      simple_filters = nil
+      level3_filters = "addiction,argent"
+
+      res = sut._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(43)
+      expect(res[1]["id"]).to eq(44)
+    end
 
     #
     # LEVEL3 FILTER AND SIMPLE FILTER
