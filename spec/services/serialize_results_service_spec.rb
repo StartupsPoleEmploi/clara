@@ -65,7 +65,7 @@ describe SerializeResultsService do
       expect(res.size).to eq(2)
     end
     it 'Is able to filter according to both level3 and simple filter' do
-      simple_filters = "se-regarder,se-divertir"
+      simple_filters = "se-regarder,se-deplacer"
       level3_filters = "argent,attente"
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
