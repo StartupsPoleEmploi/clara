@@ -105,7 +105,11 @@ class SerializeResultsService
     else
       # if multiple filters are required by user, send back intersection of filtering
       intersection_of_filters = 
-        all_hash.map { |e| e[:elies]  }.delete_if{|e| e.size == 0}.inject(:&)
+        all_hash
+          .map { |k,v| v[:elies]  }
+          .delete_if{|e| e.size == 0}
+          .map { |e| e.map { |e| e["id"] } }
+          .inject(:&)
       selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  } 
     end        
 
