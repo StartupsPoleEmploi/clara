@@ -100,6 +100,19 @@ describe SerializeResultsService do
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
+    it 'Is able to filter multiple eligies with simple filter' do
+      elies = []
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], []))
+              .push(ely_factory(44, [se_divertir], []))
+      simple_filters = "inexisting,se-divertir"
+      level3_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(42)
+      expect(res[1]["id"]).to eq(44)
+    end
 
 
     #
