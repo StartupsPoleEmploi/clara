@@ -3,15 +3,18 @@ require 'securerandom'
 FactoryBot.define do
 
   factory :filter do
-    
   end
 
   factory :level3_filter do
-    
+  end
+
+  factory :custom_filter do
+  end
+
+  factory :custom_parent_filter do
   end
 
   factory :stat do
-    
   end
 
   factory :user do

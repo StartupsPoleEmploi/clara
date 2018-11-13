@@ -32,6 +32,7 @@ describe SerializeResultsService do
     let(:addiction) {create(:level3_filter, :name => "addiction")}
     let(:argent) {create(:level3_filter, :name => "argent")}
 
+    let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1")}
 
 
     #
@@ -176,6 +177,19 @@ describe SerializeResultsService do
 
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(0)
+    end
+    it 'Select corresponding custom filters' do
+      elies = []
+              .push(ely_factory(42, [], [], [custom_filter_1]))
+              .push(ely_factory(43, [], [addiction], []))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = "custom-filter-1"
+      custom_parent_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(1)
+      expect(res[1]["id"]).to eq(42)
     end
 
     #
