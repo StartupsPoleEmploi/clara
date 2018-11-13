@@ -56,8 +56,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
-        api_custom_filters = ApiCustomFilters.new(filters: "")
-        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
+        api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -78,8 +78,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
-        api_custom_filters = ApiCustomFilters.new(filters: "")
-        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
+        api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -99,8 +99,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
-        api_custom_filters = ApiCustomFilters.new(filters: "")
-        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
+        api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -129,6 +129,12 @@ module Api
       end
       def level3_filters_param
         params.permit(:level3_filters).to_h[:level3_filters]
+      end
+      def custom_filters_param
+        params.permit(:custom_filters).to_h[:custom_filters]
+      end
+      def custom_parent_filters_param
+        params.permit(:custom_parent_filters).to_h[:custom_parent_filters]
       end
 
       private
