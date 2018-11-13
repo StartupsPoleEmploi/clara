@@ -8,14 +8,16 @@ describe SerializeResultsService do
 
   def ely_factory(an_id, simple_filters, level3_filters, custom_filters=[], custom_parent_filters=[])
     {"id"=>an_id,
-      "name"              => "Aide Number #{an_id}",
-      "slug"              => "aide-number-#{an_id}",
-      "short_description" => "aide générée automatiquement, numéro #{an_id}",
-      "ordre_affichage"   => [1,2,3,4].sample,
-      "contract_type_id"  => [1,2,3,4].sample,
-      "filters"           => simple_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "level3_filters"    => level3_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "eligibility"       => ["eligible", "ineligible", "uncertain"].sample
+      "name"                 => "Aide Number #{an_id}",
+      "slug"                 => "aide-number-#{an_id}",
+      "short_description"    => "aide générée automatiquement, numéro #{an_id}",
+      "ordre_affichage"      => [1,2,3,4].sample,
+      "contract_type_id"     => [1,2,3,4].sample,
+      "filters"              => simple_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
+      "level3_filters"       => level3_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
+      "custom_filters"       => custom_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
+      "custom_parent_filters"=> custom_parent_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
+      "eligibility"          => ["eligible", "ineligible", "uncertain"].sample
     }
   end
 
