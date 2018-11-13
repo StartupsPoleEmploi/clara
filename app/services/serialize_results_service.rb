@@ -70,7 +70,7 @@ class SerializeResultsService
 
     regular_elies       = _find_elies("filters", filters, elies)
     level3_elies        = _find_elies("level3_filters", level3_filters, elies)
-    custom_elies        = []
+    custom_elies        = _find_elies("custom_filters", custom_filters, elies)
     custom_parent_elies = []
 
     # Regular filter    
@@ -100,17 +100,21 @@ class SerializeResultsService
     # end
 
     selected_elies = []
-    if has_regular_filters && has_level3_filters
-      intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
-      selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }      
-    elsif has_regular_filters
-      selected_elies = regular_elies
-    elsif has_level3_filters
-      selected_elies = level3_elies
-    else
+    filtered_elies = [regular_elies, level3_elies, custom_elies, custom_parent_elies]
+
+    number_of_filter_required = filtered_elies.count{|e| e.size > 0}
+
+    if number_of_filter_required == 0
+      # if no filter is required by user, just don't filter, send the elies back
       selected_elies = elies
-    end
-      
+    elsif number_of_filter_required == 1
+      # if only one filter is required by user, just send back the filtered items
+      selected_elies = filtered_elies.find{|e| e.size > 0}
+    else
+      # if multiple filters are required by user, send back intersection of filtering
+      intersection_of_filters = filtered_elies.delete_if{|e| e.size == 0}.inject(:&)
+      selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  } 
+    end        
 
     selected_elies
   end
