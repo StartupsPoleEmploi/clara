@@ -42,7 +42,7 @@ describe SerializeResultsService do
       create :rule, :be_an_adult, name: 'an_adult'
     end
     it 'Is able to filter according to simple filter only' do
-      simple_filters = "garde-enfant,se-divertir"
+      simple_filters = "se-regarder,se-divertir"
       level3_filters = nil
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
@@ -50,12 +50,18 @@ describe SerializeResultsService do
     end
     it "Is able to filter according to level3 filter only" do
       simple_filters = nil
-      level3_filters = "garde-enfant,argent"
+      level3_filters = "attente,argent"
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
     end
-    it 'Is able to filter according to both level3 and simple filter'
+    it 'Is able to filter according to both level3 and simple filter' do
+      simple_filters = "se-regarder,se-divertir"
+      level3_filters = "attente,argent"
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(2)      
+    end
     it 'Returns empty eligies if input are not properly set'
   end
 end
