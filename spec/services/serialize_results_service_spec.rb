@@ -22,11 +22,9 @@ describe SerializeResultsService do
   describe '._filter' do
     let(:se_divertir) {create(:filter, :name => "se divertir")}
     let(:se_deplacer) {create(:filter, :name => "se deplacer")}
-    let(:se_reprendre) {create(:filter, :name => "se reprendre")}
 
     let(:addiction) {create(:level3_filter, :name => "addiction")}
     let(:argent) {create(:level3_filter, :name => "argent")}
-    let(:attente) {create(:level3_filter, :name => "attente")}
 
 
     it 'Is able to filter according to simple filter only' do
