@@ -23,6 +23,10 @@ class JsonModelsService
     JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug ]))
   end
 
+  def self.custom_parent_filters
+    JSON.parse(CustomParentFilter.all.to_json(:only => [ :id, :slug ]))
+  end
+
   def self.contracts
     JSON.parse(ContractType.all.to_json(:only => [ :id, :slug, :description, :business_id, :name  ]))
   end

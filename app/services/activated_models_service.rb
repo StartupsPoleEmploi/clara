@@ -30,6 +30,10 @@ class ActivatedModelsService
     !Rails.env.test? ? @cached_activated_models["all_custom_filters"] : JsonModelsService.custom_filters
   end
 
+  def custom_parent_filters
+    !Rails.env.test? ? @cached_activated_models["all_custom_parent_filters"] : JsonModelsService.custom_parent_filters
+  end
+
   def contracts
     !Rails.env.test? ? @cached_activated_models["all_contracts"] : JsonModelsService.contracts
   end
