@@ -98,15 +98,8 @@ class SerializeResultsService
     end
 
     selected_elies = []
-    p '------'
-    p level3_elies.map { |e| e["id"]  }
-    p regular_elies.map { |e| e["id"]  }
-    p ''
     if has_regular_filters && has_level3_filters
       intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
-      p '- - - - - - - - - - - - - - intersection_of_filters- - - - - - - - - - - - - - - -' 
-      pp intersection_of_filters
-      p ''
       selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }      
     elsif has_regular_filters
       selected_elies = regular_elies
