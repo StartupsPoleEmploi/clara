@@ -46,16 +46,19 @@ class SerializeResultsService
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def _find_elies(property, initial_filters)
+  def _find_elies(property, initial_filters, all_elies)
     resulting_elies = []
-    filters_array = initial_filters.split(",")
-    resulting_elies += elies.select do |ely|
-      ely[property] = [] if ely[property] == nil
-      current_filter_array = ely[property].map do |ely_filter|
-        active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+    if (initial_filters.is_a?(String) && !initial_filters.empty?)
+      active = ActivatedModelsService.instance
+      filters_array = initial_filters.split(",")
+      resulting_elies += all_elies.select do |ely|
+        ely[property] = [] if ely[property] == nil
+        current_filter_array = ely[property].map do |ely_filter|
+          active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+        end
+        intersection_array = current_filter_array & filters_array
+        !intersection_array.empty?
       end
-      intersection_array = current_filter_array & filters_array
-      !intersection_array.empty?
     end
     resulting_elies    
   end
@@ -64,38 +67,38 @@ class SerializeResultsService
     has_regular_filters = filters.is_a?(String) && !filters.empty?
     has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
 
-    active = ActivatedModelsService.instance
+    # active = ActivatedModelsService.instance
 
-    regular_elies       = []
-    level3_elies        = []
+    regular_elies       = _find_elies("filters", filters, elies)
+    level3_elies        = _find_elies("level3_filters", level3_filters, elies)
     custom_elies        = []
     custom_parent_elies = []
 
     # Regular filter    
-    if has_regular_filters
-      filters_array = filters.split(",")
-      regular_elies += elies.select do |ely|
-        ely["filters"] = [] if ely["filters"] == nil
-        current_filter_array = ely["filters"].map do |ely_filter|
-          active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
-        end
-        intersection_array = current_filter_array & filters_array
-        !intersection_array.empty?
-      end
-    end
+    # if has_regular_filters
+    #   filters_array = filters.split(",")
+    #   regular_elies += elies.select do |ely|
+    #     ely["filters"] = [] if ely["filters"] == nil
+    #     current_filter_array = ely["filters"].map do |ely_filter|
+    #       active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+    #     end
+    #     intersection_array = current_filter_array & filters_array
+    #     !intersection_array.empty?
+    #   end
+    # end
 
     # Level3 filter    
-    if has_level3_filters
-      level3_filters_array = level3_filters.split(",")
-      level3_elies += elies.select do |ely|
-        ely["level3_filters"] = [] if ely["level3_filters"] == nil
-        current_filter_array = ely["level3_filters"].map do |ely_filter|
-          active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
-        end
-        intersection_array = current_filter_array & level3_filters_array
-        !intersection_array.empty?
-      end
-    end
+    # if has_level3_filters
+    #   level3_filters_array = level3_filters.split(",")
+    #   level3_elies += elies.select do |ely|
+    #     ely["level3_filters"] = [] if ely["level3_filters"] == nil
+    #     current_filter_array = ely["level3_filters"].map do |ely_filter|
+    #       active.level3_filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+    #     end
+    #     intersection_array = current_filter_array & level3_filters_array
+    #     !intersection_array.empty?
+    #   end
+    # end
 
     selected_elies = []
     if has_regular_filters && has_level3_filters
