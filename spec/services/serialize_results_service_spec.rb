@@ -35,6 +35,15 @@ describe SerializeResultsService do
           "contract_type_id"=>1,
           "filters"=>[{"id"=>se_deplacer.id, "slug"=>se_deplacer.slug}],
           "level3_filters"=>[],
+          "eligibility"=>"uncertain"},
+       {"id"=>11,
+          "name"=>"Dispositif insertion",
+          "slug"=>"disposition-insertion",
+          "short_description"=>"Un disposition d'insertion",
+          "ordre_affichage"=>12,
+          "contract_type_id"=>2,
+          "filters"=>[{"id"=>se_deplacer.id, "slug"=>se_deplacer.slug}],
+          "level3_filters"=>[{"id"=>addiction.id, "slug"=>addiction.slug}, {"id"=>argent.id, "slug"=>argent.slug}],
           "eligibility"=>"uncertain"}
       ]
     }
@@ -53,14 +62,14 @@ describe SerializeResultsService do
       level3_filters = "attente,argent"
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(1)
+      expect(res.size).to eq(2)
     end
     it 'Is able to filter according to both level3 and simple filter' do
       simple_filters = "se-regarder,se-divertir"
-      level3_filters = "attente,argent"
+      level3_filters = "argent,attente"
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(2)      
+      expect(res.size).to eq(1)      
     end
     it 'Returns empty eligies if input are not properly set'
   end
