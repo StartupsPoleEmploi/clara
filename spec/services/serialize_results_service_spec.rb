@@ -22,16 +22,71 @@ describe SerializeResultsService do
   describe '._filter' do
     let(:se_divertir) {create(:filter, :name => "se divertir")}
     let(:se_deplacer) {create(:filter, :name => "se deplacer")}
+    let(:se_mouvoir) {create(:filter, :name => "se mouvoir")}
 
     let(:addiction) {create(:level3_filter, :name => "addiction")}
     let(:argent) {create(:level3_filter, :name => "argent")}
 
 
-    it 'Is able to filter according to simple filter only' do
+    it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
+      elies = []
+              .push(ely_factory(42, [], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "se-divertir"
+      level3_filters = nil
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(0)
+    end
+    it 'Is able to filter according to simple filter only, simplest scenario' do
+      elies = []
+              .push(ely_factory(42, [se_divertir], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "se-divertir"
+      level3_filters = nil
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Is able to filter according to simple filter only, even when requiring multiple filters, last position' do
       elies = []
               .push(ely_factory(42, [se_divertir, se_deplacer], []))
               .push(ely_factory(43, [], []))
-      simple_filters = "se-regarder,se-divertir"
+      simple_filters = "se-mouvoir,se-divertir"
+      level3_filters = nil
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Is able to filter according to simple filter only, even when requiring multiple filters, first position' do
+      elies = []
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "se-divertir,se-mouvoir"
+      level3_filters = nil
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Is able to filter according to simple filter only, even when requiring multiple filters twice' do
+      elies = []
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "se-divertir,se-deplacer"
+      level3_filters = nil
+
+      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Is able to filter according to simple filter only, even when requiring inexisting filter' do
+      elies = []
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "inexisting,se-divertir"
       level3_filters = nil
 
       res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
