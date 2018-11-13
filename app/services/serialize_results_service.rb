@@ -46,7 +46,7 @@ class SerializeResultsService
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def _filter(elies, filters, level3_filters)
+  def _filter(elies, filters, level3_filters, custom_filters=[], custom_parent_filters=[])
     # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
     # pp elies
     # p ''
