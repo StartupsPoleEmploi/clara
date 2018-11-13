@@ -46,28 +46,30 @@ class SerializeResultsService
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def _filter(elies, filters, level3_filters, custom_filters=[], custom_parent_filters=[])
-    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    # pp elies
-    # p ''
-    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
-    # pp filters
-    # p ''
-    # p '- - - - - - - - - - - - - - level3_filters- - - - - - - - - - - - - - - -' 
-    # pp level3_filters
-    # p ''
+  def _find_elies(property, initial_filters)
+    resulting_elies = []
+    filters_array = initial_filters.split(",")
+    resulting_elies += elies.select do |ely|
+      ely[property] = [] if ely[property] == nil
+      current_filter_array = ely[property].map do |ely_filter|
+        active.filters.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+      end
+      intersection_array = current_filter_array & filters_array
+      !intersection_array.empty?
+    end
+    resulting_elies    
+  end
 
+  def _filter(elies, filters, level3_filters, custom_filters=[], custom_parent_filters=[])
     has_regular_filters = filters.is_a?(String) && !filters.empty?
     has_level3_filters = level3_filters.is_a?(String) && !level3_filters.empty?
 
     active = ActivatedModelsService.instance
-    # p '- - - - - - - - - - - - - - active.filters- - - - - - - - - - - - - - - -' 
-    # pp active.filters
-    # pp active.level3_filters
-    # p ''
 
-    regular_elies = []
-    level3_elies = []
+    regular_elies       = []
+    level3_elies        = []
+    custom_elies        = []
+    custom_parent_elies = []
 
     # Regular filter    
     if has_regular_filters
@@ -96,8 +98,15 @@ class SerializeResultsService
     end
 
     selected_elies = []
+    p '------'
+    p level3_elies.map { |e| e["id"]  }
+    p regular_elies.map { |e| e["id"]  }
+    p ''
     if has_regular_filters && has_level3_filters
       intersection_of_filters = level3_elies.map { |e| e["id"]  } & regular_elies.map{ |e| e["id"]  }
+      p '- - - - - - - - - - - - - - intersection_of_filters- - - - - - - - - - - - - - - -' 
+      pp intersection_of_filters
+      p ''
       selected_elies = elies.select { |e| intersection_of_filters.include?(e["id"])  }      
     elsif has_regular_filters
       selected_elies = regular_elies
