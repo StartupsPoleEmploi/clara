@@ -19,6 +19,9 @@ describe SerializeResultsService do
     }
   end
 
+  # System under test
+  let(:sut) {SerializeResultsService.get_instance}
+  
   describe '._filter' do
     let(:se_divertir) {create(:filter, :name => "se divertir")}
     let(:se_deplacer) {create(:filter, :name => "se deplacer")}
@@ -35,7 +38,7 @@ describe SerializeResultsService do
       simple_filters = "se-divertir"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(0)
     end
     it 'Is able to filter according to simple filter only, simplest scenario' do
@@ -45,7 +48,7 @@ describe SerializeResultsService do
       simple_filters = "se-divertir"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -56,7 +59,7 @@ describe SerializeResultsService do
       simple_filters = "se-mouvoir,se-divertir"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -67,7 +70,7 @@ describe SerializeResultsService do
       simple_filters = "se-divertir,se-mouvoir"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -78,7 +81,7 @@ describe SerializeResultsService do
       simple_filters = "se-divertir,se-deplacer"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -89,7 +92,7 @@ describe SerializeResultsService do
       simple_filters = "inexisting,se-divertir"
       level3_filters = nil
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(42)
     end
@@ -100,7 +103,7 @@ describe SerializeResultsService do
       simple_filters = nil
       level3_filters = "argent,addiction"
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)
     end
@@ -112,10 +115,9 @@ describe SerializeResultsService do
       simple_filters = "se-divertir,se-regarder"
       level3_filters = "argent"
 
-      res = SerializeResultsService.get_instance._filter(elies, simple_filters, level3_filters)
+      res = sut._filter(elies, simple_filters, level3_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)     
     end
-    it 'Returns empty eligies if input are not properly set'
   end
 end
