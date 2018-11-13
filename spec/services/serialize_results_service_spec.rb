@@ -223,7 +223,7 @@ describe SerializeResultsService do
     end
 
     #
-    # LEVEL3 FILTER AND SIMPLE FILTER
+    # COMBINATIONS
     #
     it 'Is able to filter according to both level3 and simple filter' do
       elies = []
@@ -238,6 +238,23 @@ describe SerializeResultsService do
       res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
       expect(res.size).to eq(1)
       expect(res[0]["id"]).to eq(43)     
+    end
+    it 'Is able to combine all filters' do
+      elies = []
+              .push(ely_factory(41, [se_mouvoir], [addiction], [], []))
+              .push(ely_factory(42, [se_divertir, se_deplacer], [addiction], [custom_filter_1], [custom_parent_filter_1]))
+              .push(ely_factory(43, [se_divertir], [argent], [custom_filter_1], []))
+              .push(ely_factory(44, [se_deplacer], [argent], [], [custom_parent_filter_1]))
+              .push(ely_factory(45, [se_divertir], [argent], [custom_filter_2], [custom_parent_filter_2]))
+              .push(ely_factory(46, [se_divertir], [argent,addiction], [custom_filter_1,custom_filter_2], [custom_parent_filter_2]))
+      simple_filters = "se-divertir,se-regarder"
+      level3_filters = "argent,inexisting"
+      custom_filters = "inexisting,custom-filter-1,inexisting_too"
+      custom_parent_filters = "custom-parent-filter-1,custom-parent-filter-2"
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(46)     
     end
   end
 end
