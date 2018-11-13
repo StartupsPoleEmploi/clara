@@ -118,60 +118,6 @@ describe SerializeResultsService do
     #
     # LEVEL3 FILTER
     #
-    it 'Removed all eligies if filter is required, but eligies are affected to any filter' do
-      elies = []
-              .push(ely_factory(42, [], []))
-              .push(ely_factory(43, [], []))
-      simple_filters = nil
-      level3_filters = "argent"
-
-      res = sut._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(0)
-    end
-    it 'Is able to filter according to level3 filter only, simplest scenario' do
-      elies = []
-              .push(ely_factory(42, [], []))
-              .push(ely_factory(43, [], [argent]))
-      simple_filters = nil
-      level3_filters = "argent"
-
-      res = sut._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(43)
-    end
-    it 'Is able to filter according to level3 filter only, even when requiring multiple filters, last position' do
-      elies = []
-              .push(ely_factory(42, [], []))
-              .push(ely_factory(43, [], [argent]))
-      simple_filters = nil
-      level3_filters = "argent,addiction"
-
-      res = sut._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(43)
-    end
-    it 'Is able to filter according to level3 filter only, even when requiring multiple filters, first position' do
-      elies = []
-              .push(ely_factory(42, [], []))
-              .push(ely_factory(43, [], [argent]))
-      simple_filters = nil
-      level3_filters = "addiction,argent"
-
-      res = sut._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(43)
-    end
-    it 'Is able to filter according to level3 filter only, even when requiring multiple filters twice' do
-      elies = []
-              .push(ely_factory(42, [], []))
-              .push(ely_factory(43, [], [argent, addiction]))
-      simple_filters = nil
-      level3_filters = "addiction,argent"
-
-      res = sut._filter(elies, simple_filters, level3_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(43)
-    end
     it 'Is able to filter multiple eligies with level3 filters' do
       elies = []
               .push(ely_factory(42, [], []))
