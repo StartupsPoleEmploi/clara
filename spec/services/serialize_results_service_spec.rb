@@ -6,7 +6,7 @@ describe SerializeResultsService do
     {"id"=>a_filter.id, "slug"=>a_filter.slug}
   end
 
-  def elies_factory(an_id, simple_filters, level3_filters)
+  def ely_factory(an_id, simple_filters, level3_filters)
     {"id"=>an_id,
       "name"              => "Aide Number #{an_id}",
       "slug"              => "aide-number-#{an_id}",
@@ -31,8 +31,8 @@ describe SerializeResultsService do
 
     it 'Is able to filter according to simple filter only' do
       elies = []
-              .push(elies_factory(42, [se_divertir, se_deplacer], []))
-              .push(elies_factory(43, [], []))
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], []))
       simple_filters = "se-regarder,se-divertir"
       level3_filters = nil
 
@@ -42,8 +42,8 @@ describe SerializeResultsService do
     end
     it "Is able to filter according to level3 filter only" do
       elies = []
-              .push(elies_factory(42, [se_divertir, se_deplacer], []))
-              .push(elies_factory(43, [], [argent]))
+              .push(ely_factory(42, [se_divertir, se_deplacer], []))
+              .push(ely_factory(43, [], [argent]))
       simple_filters = nil
       level3_filters = "argent,addiction"
 
@@ -53,9 +53,9 @@ describe SerializeResultsService do
     end
     it 'Is able to filter according to both level3 and simple filter' do
       elies = []
-              .push(elies_factory(42, [se_divertir, se_deplacer], [addiction]))
-              .push(elies_factory(43, [se_divertir], [argent]))
-              .push(elies_factory(44, [se_deplacer], [argent]))
+              .push(ely_factory(42, [se_divertir, se_deplacer], [addiction]))
+              .push(ely_factory(43, [se_divertir], [argent]))
+              .push(ely_factory(44, [se_deplacer], [argent]))
       simple_filters = "se-divertir,se-regarder"
       level3_filters = "argent"
 
