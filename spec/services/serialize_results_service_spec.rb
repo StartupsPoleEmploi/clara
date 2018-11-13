@@ -210,8 +210,8 @@ describe SerializeResultsService do
     #
     it 'Select corresponding custom parent filters' do
       elies = []
-              .push(ely_factory(42, [], [], [custom_filter_1]))
-              .push(ely_factory(43, [], [addiction], [], [custom_parent_filter_1]))
+              .push(ely_factory(42, [], [],          [custom_filter_1], []))
+              .push(ely_factory(43, [], [addiction], [],                 [custom_parent_filter_1]))
       simple_filters = nil
       level3_filters = nil
       custom_filters = nil
