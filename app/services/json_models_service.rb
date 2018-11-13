@@ -8,7 +8,7 @@ class JsonModelsService
   end
 
   def self.aids
-    JSON.parse(Aid.activated.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug]}, custom_parent_filters: {only:[:id, :slug]}, level3_filters: {only:[:id, :slug]}}))
+    JSON.parse(Aid.activated.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug]}, level3_filters: {only:[:id, :slug]}}))
   end
 
   def self.filters
@@ -20,7 +20,7 @@ class JsonModelsService
   end
 
   def self.custom_filters
-    JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug ]))
+    JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug, :custom_parent_filter_id ]))
   end
 
   def self.custom_parent_filters
