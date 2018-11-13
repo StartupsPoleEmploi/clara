@@ -56,6 +56,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_custom_filters = ApiCustomFilters.new(filters: "")
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -64,7 +66,7 @@ module Api
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
+            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
       end
@@ -76,6 +78,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_custom_filters = ApiCustomFilters.new(filters: "")
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -84,7 +88,7 @@ module Api
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
+            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
       end
@@ -95,6 +99,8 @@ module Api
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_custom_filters = ApiCustomFilters.new(filters: "")
+        api_custom_parent_filters = ApiCustomParentFilters.new(filters: "")
         errors_hash = {}
         fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
         if !errors_hash.empty?
@@ -103,7 +109,7 @@ module Api
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
             asker: not_nullify(reverse_translation_of(local_asker)),
-            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_level3_filters.filters)))
+            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end     
       end
@@ -174,16 +180,16 @@ module Api
         CalculateAskerService.new(asker).calculate_zrr!
       end
 
-      def eligible_aids_for(asker, filters, level3_filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters, level3_filters)
+      def eligible_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_eligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
       end
 
-      def ineligible_aids_for(asker, filters, level3_filters)
-        SerializeResultsService.get_instance.api_ineligible(asker, filters, level3_filters)
+      def ineligible_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_ineligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
       end
 
-      def uncertain_aids_for(asker, filters, level3_filters)
-        SerializeResultsService.get_instance.api_uncertain(asker, filters, level3_filters)
+      def uncertain_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_uncertain(asker, filters, level3_filters, custom_filters, custom_parent_filters)
       end
 
     end

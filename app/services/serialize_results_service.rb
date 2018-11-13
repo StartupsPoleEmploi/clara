@@ -27,19 +27,19 @@ class SerializeResultsService
     res
   end
 
-  def api_eligible(asker, filters, level3_filters)
+  def api_eligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_eligible, filters, level3_filters))
+    _whitelist(_filter(calculator.every_eligible, filters, level3_filters, custom_filters, custom_parent_filters))
   end
 
-  def api_ineligible(asker, filters, level3_filters)
+  def api_ineligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_ineligible, filters, level3_filters))
+    _whitelist(_filter(calculator.every_ineligible, filters, level3_filters, custom_filters, custom_parent_filters))
   end
 
-  def api_uncertain(asker, filters, level3_filters)
+  def api_uncertain(asker, filters, level3_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_uncertain, filters, level3_filters))
+    _whitelist(_filter(calculator.every_uncertain, filters, level3_filters, custom_filters, custom_parent_filters))
   end
 
   def _whitelist(aids)
