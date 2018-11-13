@@ -87,8 +87,6 @@ class SerializeResultsService
       custom: {elies:custom_elies, filters:custom_filters},
       parent: {elies:custom_parent_elies, filters:custom_parent_filters},
     }
-    filtered_elies = [regular_elies, level3_elies, custom_elies, custom_parent_elies]
-    all_filters = [filters, level3_filters, custom_filters, custom_parent_filters]
 
     is_filter_required = proc { |k,v| v.is_a?(Hash) && v[:filters].is_a?(String) && !v[:filters].empty? }
 
