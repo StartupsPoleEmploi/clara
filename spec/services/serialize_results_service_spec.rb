@@ -137,7 +137,7 @@ describe SerializeResultsService do
     #
     # CUSTOM FILTER
     #
-    it 'Do not affect elies if not filter is required' do
+    it 'Do not affect elies if no filter is required' do
       elies = []
               .push(ely_factory(42, [], [], []))
               .push(ely_factory(43, [], [], []))
