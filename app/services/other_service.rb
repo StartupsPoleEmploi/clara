@@ -19,9 +19,6 @@ class OtherService
     @asker.v_spectacle  = other.val_spectacle.nil?    ? 'non':'oui'
     @asker.v_handicap   = other.val_handicap.nil? ? 'non':'oui'
     @asker.v_cadre   = other.val_cadre.nil? ? 'non':'oui'
-    p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
-    pp @asker
-    p ''
   end
 
 end

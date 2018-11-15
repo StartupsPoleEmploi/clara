@@ -38,9 +38,6 @@ class AidesController < ApplicationController
 
   def instantiate_asker(existing)
     @asker = Asker.new(existing[:asker])
-    p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
-    pp @asker
-    p ''
   end
 
   def pull_asker_from_query_param
