@@ -24,7 +24,6 @@ describe WhitelistAidService do
       #when
       sut = WhitelistAidService.new.for_aid_in_list(aid_hash)
       #then
-      pp sut
       expect(sut["unwanted_key"]).to be nil
     end
     it 'Should extract properly custom filters' do
