@@ -34,10 +34,7 @@ class WhitelistAidService
       # pp aids["custom_filters"]
       # p ''
       aids["custom_filters"].map! do |f| 
-        parent = a.custom_parent_filters.find{|c|  c["id"] == f["id"]}
-        # p '- - - - - - - - - - - - - - parent- - - - - - - - - - - - - - - -' 
-        # pp parent
-        # p ''
+        parent = a.custom_parent_filters.find{|c|  c["id"] == f["custom_parent_filter_id"]}
         {"slug" => f["slug"], "parent_slug" => parent["slug"]}
       end
       # p '- - - - - - - - - - - - - - AFTER aids["custom_filters"]- - - - - - - - - - - - - - - -' 

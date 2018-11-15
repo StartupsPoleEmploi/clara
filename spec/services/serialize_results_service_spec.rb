@@ -272,21 +272,36 @@ describe SerializeResultsService do
     #
     # CUSTOM PARENT FILTER
     #
-    # it 'Custom parent filters actually pick underlying custom filter' do
-    #   elies = []
-    #           .push(ely_factory(42, [], [], [custom_filter_1]))
-    #           .push(ely_factory(43, [], [], [custom_filter_1, custom_filter_2]))
-    #           .push(ely_factory(44, [], [], [custom_filter_3]))
-    #   simple_filters = nil
-    #   level3_filters = nil
-    #   custom_filters = nil
-    #   custom_parent_filters = "custom-parent-filter-1"
+    it 'Custom parent filters actually pick underlying custom filter' do
+      elies = []
+              .push(ely_factory(42, [], [], [custom_filter_1]))
+              .push(ely_factory(43, [], [], [custom_filter_2]))
+              .push(ely_factory(44, [], [], [custom_filter_3]))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = "custom-parent-filter-a"
 
-    #   res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
-    #   expect(res.size).to eq(2)
-    #   expect(res[0]["id"]).to eq(42)
-    #   expect(res[1]["id"]).to eq(43)
-    # end
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(42)
+      expect(res[1]["id"]).to eq(43)
+    end
+    it 'Custom parent is actually equivalent to select all child filter of parent' do
+      elies = []
+              .push(ely_factory(42, [], [], [custom_filter_1]))
+              .push(ely_factory(43, [], [], [custom_filter_2]))
+              .push(ely_factory(44, [], [], [custom_filter_3]))
+      simple_filters = nil
+      level3_filters = nil
+      custom_filters = "custom-filter-1,custom-filter-2"
+      custom_parent_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(2)
+      expect(res[0]["id"]).to eq(42)
+      expect(res[1]["id"]).to eq(43)
+    end
 
     #
     # COMBINATIONS
