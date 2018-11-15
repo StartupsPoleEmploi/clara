@@ -13,6 +13,9 @@ class WhitelistAidService
   end
   
   def for_aid_in_list(aid_hash)
+    p '- - - - - - - - - - - - - - aid_hash- - - - - - - - - - - - - - - -' 
+    pp aid_hash
+    p ''
     aids = aid_hash.deep_dup
     a = ActivatedModelsService.instance
     return {} unless aids.is_a?(Hash)
