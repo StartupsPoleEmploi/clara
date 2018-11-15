@@ -18,7 +18,7 @@ describe TranslateB64AskerService do
     #when
     sut = Base64.urlsafe_decode64(str)
     #then
-    expect(sut).to eq("35,1,o,3,o,p,79351,340,n")
+    expect(sut).to eq("35,1,o,o,3,o,p,79351,340,n")
   end
 
   it '.from_b64 Should return an asker' do
@@ -32,17 +32,18 @@ describe TranslateB64AskerService do
   it '.from_b64 asker properties must be filled' do
     #given
     #when
-    sut = TranslateB64AskerService.new.from_b64("MjYsNCxvLDMsbyxtLDgyNzEyLDIwMDMsbg==")
+    sut = TranslateB64AskerService.new.from_b64("MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8=")
     #then
-    expect(sut.v_handicap)            .to eq("oui")
-    expect(sut.v_spectacle)           .to eq("non")
+    expect(sut.v_handicap)            .to eq("non")
+    expect(sut.v_spectacle)           .to eq("oui")
+    expect(sut.v_cadre)               .to eq("oui")
     expect(sut.v_diplome)             .to eq("niveau_3")
-    expect(sut.v_category)            .to eq("autres_cat")
-    expect(sut.v_duree_d_inscription) .to eq("moins_d_un_an")
-    expect(sut.v_allocation_value_min).to eq("2003")
-    expect(sut.v_allocation_type)     .to eq("RSA")
-    expect(sut.v_age)                 .to eq("26")
-    expect(sut.v_location_citycode)   .to eq("82712")
+    expect(sut.v_category)            .to eq("cat_12345")
+    expect(sut.v_duree_d_inscription) .to eq("plus_d_un_an")
+    expect(sut.v_allocation_value_min).to eq("143")
+    expect(sut.v_allocation_type)     .to eq("ASS_AER_APS_AS-FNE")
+    expect(sut.v_age)                 .to eq("34")
+    expect(sut.v_location_citycode)   .to eq("91114")
   end
 
   it '.into_b64 and .from_b64, when chained, must end up with the same asker' do
