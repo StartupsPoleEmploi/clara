@@ -24,14 +24,15 @@ describe WhitelistAidService do
       #when
       sut = WhitelistAidService.new.for_aid_in_list(aid_hash)
       #then
-      expect(aid_hash["unwanted_key"]).to be nil
-
-      expect(sut.is_a?(Hash)).to eq true
+      pp sut
+      expect(sut["unwanted_key"]).to be nil
     end
     it 'Should extract properly custom filters' do
       #given
       #when
+      sut = WhitelistAidService.new.for_aid_in_list(aid_hash)
       #then
+      expect(sut["custom_filters"]).to eq [{"slug"=>"zen_3", "parent_slug"=>"parent-a"}]
     end
   end
 end
