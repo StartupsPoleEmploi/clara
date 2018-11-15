@@ -83,8 +83,8 @@ feature 'detail of a result page' do
     scenario 'Display that adult is eligible' do
       expect(result_page.css('.c-detail-condition.eligible .c-detail-condition-text').text).to eq "adult description"
     end
-    scenario 'Display that spectacle is ineligible' do
-      expect(result_page.css('.c-detail-condition.ineligible .c-detail-condition-text').text).to eq "spectacle description"
+    scenario 'Display that spectacle is uncertain' do
+      expect(result_page.css('.c-detail-condition.uncertain .c-detail-condition-text').text).to eq "spectacle description"
     end
   end
 
