@@ -64,9 +64,9 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
-    p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    pp elies
-    p ''
+    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
+    # pp elies
+    # p ''
     # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
     # pp custom_filters
     # pp custom_parent_filters

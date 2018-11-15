@@ -8,7 +8,7 @@ class JsonModelsService
   end
 
   def self.aids
-    JSON.parse(Aid.activated.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug]}, level3_filters: {only:[:id, :slug]}}))
+    JSON.parse(Aid.activated.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, level3_filters: {only:[:id, :slug]}}))
   end
 
   def self.filters
