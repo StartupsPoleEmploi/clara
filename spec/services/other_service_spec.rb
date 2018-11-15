@@ -53,6 +53,7 @@ describe OtherService do
       other = OtherForm.new
       other.val_spectacle    = 'ze_val_spectacle'
       other.val_handicap = 'ze_val_handicap'
+      other.val_cadre = 'ze_val_cadre'
       other.none = 'ze_none'
 
       # when
@@ -61,6 +62,7 @@ describe OtherService do
       # then
       expect(asker.v_handicap).to eq('oui')
       expect(asker.v_spectacle).to eq('oui')
+      expect(asker.v_cadre).to eq('oui')
     end
   end
 end
