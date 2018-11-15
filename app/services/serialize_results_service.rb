@@ -46,23 +46,6 @@ class SerializeResultsService
     aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
-  def _find_elies(property, initial_filters, all_elies)
-    resulting_elies = []
-    if (initial_filters.is_a?(String) && !initial_filters.empty?)
-      active = ActivatedModelsService.instance
-      filters_array = initial_filters.split(",")
-      resulting_elies += all_elies.select do |ely|
-        ely[property] = [] if ely[property] == nil
-        current_filter_array = ely[property].map do |ely_filter|
-          active.public_send(property).find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
-        end
-        intersection_array = current_filter_array & filters_array
-        !intersection_array.empty?
-      end
-    end
-    resulting_elies    
-  end
-
   def _extract_custom_childrens(custom_parent_slug_list)
     res = ""
 
@@ -85,6 +68,23 @@ class SerializeResultsService
     # end
   end
 
+  def _find_elies(property, initial_filters, all_elies)
+    resulting_elies = []
+    if (initial_filters.is_a?(String) && !initial_filters.empty?)
+      active = ActivatedModelsService.instance
+      filters_array = initial_filters.split(",")
+      resulting_elies += all_elies.select do |ely|
+        ely[property] = [] if ely[property] == nil
+        current_filter_array = ely[property].map do |ely_filter|
+          active.public_send(property).find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+        end
+        intersection_array = current_filter_array & filters_array
+        !intersection_array.empty?
+      end
+    end
+    resulting_elies    
+  end
+
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
     # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
     # pp elies
@@ -96,9 +96,10 @@ class SerializeResultsService
     # pp ActivatedModelsService.instance.custom_parent_filters
     # p ''
 
-    regular_elies       = _find_elies("filters", filters, elies)
-    level3_elies        = _find_elies("level3_filters", level3_filters, elies)
-    custom_elies        = _find_elies("custom_filters", custom_filters, elies)
+    regular_elies              = _find_elies("filters", filters, elies)
+    level3_elies               = _find_elies("level3_filters", level3_filters, elies)
+    custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)
+    custom_elies               = _find_elies("custom_filters", custom_filters.to_s + custom_filters_from_parent, elies)
 
     selected_elies = []
 
