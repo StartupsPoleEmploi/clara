@@ -10,6 +10,7 @@ class OtherForm < ActiveType::Object
   def needs_at_least_one_value
     if !val_spectacle.present? && 
         !val_handicap.present? && 
+        !val_cadre.present? && 
         !none.present?
       errors.add(:needs_at_least_one_value, 'Doit être rempli')
     end 

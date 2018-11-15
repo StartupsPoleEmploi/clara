@@ -2,6 +2,7 @@ class Asker < ActiveType::Object
 
   attribute :v_handicap,                  :string
   attribute :v_spectacle,                 :string
+  attribute :v_cadre,                 :string
   attribute :v_diplome,                   :string
   attribute :v_category,                  :string
   attribute :v_duree_d_inscription,       :string
