@@ -6,16 +6,10 @@ class AidesController < ApplicationController
     if have_active_asker?
       existing = pull_existing_from_cache
       if (existing)
-        p '- - - - - - - - - - - - - - EEEexisting- - - - - - - - - - - - - - - -' 
-        pp existing
-        p ''
         instantiate_asker(existing)
         hydrate_view(existing)
       else
         pull_asker_from_query_param
-        p '- - - - - - - - - - - - - - pull_asker_from_query_param- - - - - - - - - - - - - - - -' 
-        pp @asker
-        p ''
         augment_asker
         cacheable = create_cacheable_results_from_asker
         write_to_cache(cacheable)
