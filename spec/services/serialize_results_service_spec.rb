@@ -39,6 +39,29 @@ describe SerializeResultsService do
       expect(res).to eq("children-1,children-2,children-3")
     end
     
+    it "Should also works with one parent" do
+      #given
+      #when
+      res = sut._extract_custom_childrens("parent-a")
+      #then
+      expect(res).to eq("children-1,children-2")
+    end
+    
+    it "Should return empty String if wrong input" do
+      #given
+      #when
+      res = sut._extract_custom_childrens("")
+      #then
+      expect(res).to eq("")
+    end
+
+    it "Should throw error for unexisting parent" do
+      #given
+      #when
+      #then
+      expect{sut._extract_custom_childrens("inexisting")}.to raise_error(NoMethodError)
+    end
+    
   end
 
   describe '._filter' do
