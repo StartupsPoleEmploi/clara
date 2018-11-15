@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 16.2.0 (12/11/2018)
+## 16.2.0 (13&15/11/2018)
 -[#894][API] Appel possible des customs filters
 
 
