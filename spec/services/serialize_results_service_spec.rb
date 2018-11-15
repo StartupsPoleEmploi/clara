@@ -23,6 +23,7 @@ describe SerializeResultsService do
   # System under test
   let(:sut) {SerializeResultsService.get_instance}
 
+
   describe '._extract_custom_childrens' do
     let!(:custom_parent_filter_a) {create(:custom_parent_filter, :name => "parent a")}
     let!(:custom_parent_filter_b) {create(:custom_parent_filter, :name => "parent b")}
@@ -47,10 +48,18 @@ describe SerializeResultsService do
       expect(res).to eq("children-1,children-2")
     end
     
-    it "Should return empty String if wrong input" do
+    it "Should return empty String if nothing is given as input" do
       #given
       #when
       res = sut._extract_custom_childrens("")
+      #then
+      expect(res).to eq("")
+    end
+
+    it "Should return empty String if wrong input is given" do
+      #given
+      #when
+      res = sut._extract_custom_childrens(Date.new)
       #then
       expect(res).to eq("")
     end
@@ -118,6 +127,19 @@ describe SerializeResultsService do
               .push(ely_factory(42, [se_divertir], []))
               .push(ely_factory(43, [], []))
       simple_filters = "se-divertir"
+      level3_filters = nil
+      custom_filters = nil
+      custom_parent_filters = nil
+
+      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+      expect(res.size).to eq(1)
+      expect(res[0]["id"]).to eq(42)
+    end
+    it 'Is able to resist to doubled filter' do
+      elies = []
+              .push(ely_factory(42, [se_divertir], []))
+              .push(ely_factory(43, [], []))
+      simple_filters = "se-divertir,se-divertir"
       level3_filters = nil
       custom_filters = nil
       custom_parent_filters = nil
