@@ -8,7 +8,7 @@ describe TranslateB64AskerService do
     #when
     sut = TranslateB64AskerService.new.into_b64(asker)
     #then
-    expect(sut).to eq("MzUsMSxvLDMsbyxwLDc5MzUxLDM0MCxu")
+    expect(sut).to eq("MzUsMSxvLG8sMyxvLHAsNzkzNTEsMzQwLG4=")
   end
 
   it '.into_b64 The generated string must be an list of properties once decoded' do
