@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.3.0 (16/11/2018)
+-[#1007][FEATURE] Ajout de la variable cadre
+
+
 ## 16.2.0 (13&15/11/2018)
 -[#894][API] Appel possible des customs filters
 
