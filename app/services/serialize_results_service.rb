@@ -70,12 +70,6 @@ class SerializeResultsService
 
   def _find_elies(property, initial_filters, all_elies)
     resulting_elies = []
-    if property == "custom_filters"
-      pp '--------------------'
-      pp property
-      pp initial_filters
-      pp ''
-    end
     if (initial_filters.is_a?(String) && !initial_filters.empty?)
       active = ActivatedModelsService.instance
       filters_array = initial_filters.split(",")
@@ -121,9 +115,6 @@ class SerializeResultsService
     is_filter_required = proc { |k,v| v.is_a?(Hash) && v[:filters].is_a?(String) && !v[:filters].empty? }
 
     number_of_filter_required = all_hash.count(&is_filter_required)
-    p '- - - - - - - - - - - - - - number_of_filter_required- - - - - - - - - - - - - - - -' 
-    pp number_of_filter_required
-    p ''
 
     if number_of_filter_required == 0
       # if no filter is required by user, just don't filter, send the elies back
