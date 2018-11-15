@@ -60,12 +60,6 @@ class SerializeResultsService
       res = selection.map { |e| e["slug"]  }.join(",")
     end
     res
-    # parents_slug.each do |parent_slug|
-    #   active_parents = active.custom_parent_filters.select { |c| c["slug"] == parent_slug }
-    #   p '- - - - - - - - - - - - - - active_parents- - - - - - - - - - - - - - - -' 
-    #   pp active_parents
-    #   p ''
-    # end
   end
 
   def _find_elies(property, initial_filters, all_elies)
@@ -86,23 +80,11 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
-    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    # pp elies
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_filters
-    # pp custom_parent_filters
-    # pp ActivatedModelsService.instance.custom_filters
-    # pp ActivatedModelsService.instance.custom_parent_filters
-    # p ''
-
     regular_elies              = _find_elies("filters", filters, elies)
     level3_elies               = _find_elies("level3_filters", level3_filters, elies)
     custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)
     custom_filters_called      = custom_filters.to_s + custom_filters_from_parent.to_s
     custom_elies               = _find_elies("custom_filters", custom_filters_called, elies)
-
-    # pp custom_elies
 
     selected_elies = []
 

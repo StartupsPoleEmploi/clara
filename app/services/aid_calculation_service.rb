@@ -20,11 +20,7 @@ class AidCalculationService
   end
 
   def every_eligible
-    all_e = _every_aids_that_are("eligible")
-    # p '- - - - - - - - - - - - - - all_e- - - - - - - - - - - - - - - -' 
-    # pp all_e
-    # p ''
-    all_e
+    _every_aids_that_are("eligible")
   end
 
   def every_uncertain
