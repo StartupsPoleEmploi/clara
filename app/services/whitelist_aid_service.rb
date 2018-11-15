@@ -16,10 +16,18 @@ class WhitelistAidService
     aids = aid_hash.deep_dup
     a = ActivatedModelsService.instance
     return {} unless aids.is_a?(Hash)
-    aids["contract_type"] = a.contracts.find{|c| c["id"] == aids["contract_type_id"] }["slug"] if aids["contract_type_id"].is_a?(Integer) 
-    aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}} if aids["filters"].is_a?(Array) && !aids["filters"].empty?
-    aids["level3_filters"].map!{|f| a.level3_filters.find{|c|  c["id"] == f["id"]}} if aids["level3_filters"].is_a?(Array) && !aids["level3_filters"].empty?
-    aids["custom_filters"].map!{|f| a.custom_filters.find{|c|  c["id"] == f["id"]}} if aids["custom_filters"].is_a?(Array) && !aids["custom_filters"].empty?
+    if aids["contract_type_id"].is_a?(Integer)
+      aids["contract_type"] = a.contracts.find{|c| c["id"] == aids["contract_type_id"] }["slug"]  
+    end
+    if aids["filters"].is_a?(Array) && !aids["filters"].empty?
+      aids["filters"].map!{|f| a.filters.find{|c|  c["id"] == f["id"]}}
+    end
+    if aids["level3_filters"].is_a?(Array) && !aids["level3_filters"].empty?
+      aids["level3_filters"].map!{|f| a.level3_filters.find{|c|  c["id"] == f["id"]}}
+    end
+    if aids["custom_filters"].is_a?(Array) && !aids["custom_filters"].empty?
+      aids["custom_filters"].map!{|f| a.custom_filters.find{|c|  c["id"] == f["id"]}}
+    end
     wanted_keys = %w[name slug short_description contract_type filters level3_filters custom_filters custom_parent_filters]
     # p '- - - - - - - - - - - - - - aids- - - - - - - - - - - - - - - -' 
     # pp aids
