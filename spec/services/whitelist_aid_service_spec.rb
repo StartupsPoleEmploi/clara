@@ -18,16 +18,20 @@ describe WhitelistAidService do
            "eligibility"=>"eligible",
            "unwanted_key"=>42}
     }
-    it 'Should extract properly custom filters' do
+    it 'Should remove undesirable keys' do
       #given
       expect(aid_hash["unwanted_key"]).not_to be nil
       #when
-      #then
-
       sut = WhitelistAidService.new.for_aid_in_list(aid_hash)
+      #then
+      expect(aid_hash["unwanted_key"]).to be nil
+
       expect(sut.is_a?(Hash)).to eq true
-      # expect(aid_hash["unwanted_key"]).to exist
-      # expect(subject["unwanted_key"]).not_to exist
+    end
+    it 'Should extract properly custom filters' do
+      #given
+      #when
+      #then
     end
   end
 end
