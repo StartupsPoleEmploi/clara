@@ -65,7 +65,12 @@ module Api
         else
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(local_asker)),
+            input: {
+              asker: not_nullify(reverse_translation_of(local_asker)),
+              filters: filters_param,
+              custom_filters: custom_filters_param,
+              custom_parent_filters: custom_parent_filters_param
+            }.delete_if { |k, v| v.nil? },
             aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
@@ -87,7 +92,12 @@ module Api
         else
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(local_asker)),
+            input: {
+              asker: not_nullify(reverse_translation_of(local_asker)),
+              filters: filters_param,
+              custom_filters: custom_filters_param,
+              custom_parent_filters: custom_parent_filters_param
+            }.delete_if { |k, v| v.nil? },
             aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
@@ -108,7 +118,12 @@ module Api
         else
           local_asker = params.permit(:random).to_h[:random] == "true" ? CalculateAskerService.new(RandomAskerService.new.go).calculate_zrr! : processed_asker(api_asker)
           render json: {
-            asker: not_nullify(reverse_translation_of(local_asker)),
+            input: {
+              asker: not_nullify(reverse_translation_of(local_asker)),
+              filters: filters_param,
+              custom_filters: custom_filters_param,
+              custom_parent_filters: custom_parent_filters_param
+            }.delete_if { |k, v| v.nil? },
             aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end     
