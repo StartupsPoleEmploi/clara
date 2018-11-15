@@ -6,7 +6,7 @@ describe SerializeResultsService do
     {"id"=>a_filter.id, "slug"=>a_filter.slug}
   end
 
-  def ely_factory(an_id, simple_filters, level3_filters, custom_filters=[])
+  def ely_factory(an_id, simple_filters, level3_filters=[], custom_filters=[])
     {"id"=>an_id,
       "name"                 => "Aide Number #{an_id}",
       "slug"                 => "aide-number-#{an_id}",
@@ -32,10 +32,12 @@ describe SerializeResultsService do
     let(:argent) {create(:level3_filter, :name => "argent")}
 
 
-    let(:custom_parent_filter_1) {create(:custom_parent_filter, :name => "custom parent filter 1")}
+    let(:custom_parent_filter_a) {create(:custom_parent_filter, :name => "custom parent filter a")}
+    let(:custom_parent_filter_b) {create(:custom_parent_filter, :name => "custom parent filter b")}
 
-    let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1", custom_parent_filter: custom_parent_filter_1)}
-    let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2", custom_parent_filter: custom_parent_filter_1)}
+    let(:custom_filter_1) {create(:custom_filter, :name => "custom filter 1", custom_parent_filter: custom_parent_filter_a)}
+    let(:custom_filter_2) {create(:custom_filter, :name => "custom filter 2", custom_parent_filter: custom_parent_filter_a)}
+    let(:custom_filter_3) {create(:custom_filter, :name => "custom filter 3", custom_parent_filter: custom_parent_filter_b)}
 
     #
     # NO FILTER
@@ -207,19 +209,21 @@ describe SerializeResultsService do
     #
     # CUSTOM PARENT FILTER
     #
-    it 'Custom parent filters actually pick custom filter' do
-      elies = []
-              .push(ely_factory(42, [], [], []))
-              .push(ely_factory(43, [], [], []))
-      simple_filters = nil
-      level3_filters = nil
-      custom_filters = nil
-      custom_parent_filters = "custom-parent-filter-1"
+    # it 'Custom parent filters actually pick underlying custom filter' do
+    #   elies = []
+    #           .push(ely_factory(42, [], [], [custom_filter_1]))
+    #           .push(ely_factory(43, [], [], [custom_filter_1, custom_filter_2]))
+    #           .push(ely_factory(44, [], [], [custom_filter_3]))
+    #   simple_filters = nil
+    #   level3_filters = nil
+    #   custom_filters = nil
+    #   custom_parent_filters = "custom-parent-filter-1"
 
-      res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
-      expect(res.size).to eq(1)
-      expect(res[0]["id"]).to eq(43)
-    end
+    #   res = sut._filter(elies, simple_filters, level3_filters, custom_filters, custom_parent_filters)
+    #   expect(res.size).to eq(2)
+    #   expect(res[0]["id"]).to eq(42)
+    #   expect(res[1]["id"]).to eq(43)
+    # end
 
     #
     # COMBINATIONS
@@ -240,12 +244,12 @@ describe SerializeResultsService do
     end
     it 'Is able to combine all filters' do
       elies = []
-              .push(ely_factory(41, [se_mouvoir], [addiction], [], []))
-              .push(ely_factory(42, [se_divertir, se_deplacer], [addiction], [custom_filter_1], [custom_parent_filter_1]))
-              .push(ely_factory(43, [se_divertir], [argent], [custom_filter_1], []))
-              .push(ely_factory(44, [se_deplacer], [argent], [], [custom_parent_filter_1]))
-              .push(ely_factory(45, [se_divertir], [argent], [custom_filter_2], [custom_parent_filter_2]))
-              .push(ely_factory(46, [se_divertir], [argent,addiction], [custom_filter_1,custom_filter_2], [custom_parent_filter_2]))
+              .push(ely_factory(41, [se_mouvoir], [addiction], []))
+              .push(ely_factory(42, [se_divertir, se_deplacer], [addiction], [custom_filter_1]))
+              .push(ely_factory(43, [se_divertir], [argent], [custom_filter_1]))
+              .push(ely_factory(44, [se_deplacer], [argent], []))
+              .push(ely_factory(45, [se_divertir], [argent], [custom_filter_2]))
+              .push(ely_factory(46, [se_divertir], [argent,addiction], [custom_filter_1,custom_filter_2]))
       simple_filters = "se-divertir,se-regarder"
       level3_filters = "argent,inexisting"
       custom_filters = "inexisting,custom-filter-1,inexisting_too"
