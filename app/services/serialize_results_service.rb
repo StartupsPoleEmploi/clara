@@ -63,6 +63,12 @@ class SerializeResultsService
     resulting_elies    
   end
 
+  def _extract_custom_childrens(custom_parent_slug_list)
+    parents_slug = custom_parent_slug_list.split(",")
+    active = ActivatedModelsService.instance
+    active.custom_parent_filters
+  end
+
   def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
     p '- - - - - - - - - - - - - - level3_filters- - - - - - - - - - - - - - - -' 
     pp level3_filters

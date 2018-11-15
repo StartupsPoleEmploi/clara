@@ -22,7 +22,25 @@ describe SerializeResultsService do
 
   # System under test
   let(:sut) {SerializeResultsService.get_instance}
-  
+
+  describe '._extract_custom_childrens' do
+    let(:custom_parent_filter_a) {create(:custom_parent_filter, :name => "parent a")}
+    let(:custom_parent_filter_b) {create(:custom_parent_filter, :name => "parent b")}
+
+    let(:custom_filter_1) {create(:custom_filter, :name => "children 1", custom_parent_filter: custom_parent_filter_a)}
+    let(:custom_filter_2) {create(:custom_filter, :name => "children 2", custom_parent_filter: custom_parent_filter_a)}
+    let(:custom_filter_3) {create(:custom_filter, :name => "children 3", custom_parent_filter: custom_parent_filter_b)}
+
+    it "Should convert a list of comma-separated parent's slug into a list of children slug" do
+      #given
+      #when
+      res = sut._extract_custom_childrens("parent-a,parent-b")
+      #then
+      expect(res).to eq("children1,children-2,children-3")
+    end
+    
+  end
+
   describe '._filter' do
     let(:se_divertir) {create(:filter, :name => "se divertir")}
     let(:se_deplacer) {create(:filter, :name => "se deplacer")}
