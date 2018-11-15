@@ -59,7 +59,7 @@ module Api
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -81,7 +81,7 @@ module Api
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -102,7 +102,7 @@ module Api
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -139,12 +139,18 @@ module Api
 
       private
 
-      def fill_errors!(errors_hash, api_filters, api_level3_filters, api_asker)
+      def fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !api_level3_filters.valid?
           errors_hash.merge!(api_level3_filters.errors) 
         end
         if !api_filters.valid?
           errors_hash.merge!(api_filters.errors) 
+        end
+        if !api_custom_filters.valid?
+          errors_hash.merge!(api_custom_filters.errors) 
+        end
+        if !api_custom_parent_filters.valid?
+          errors_hash.merge!(api_custom_parent_filters.errors) 
         end
         if !api_asker.valid?
           errors_hash.merge!(process_asker_errors(api_asker.errors)) 
