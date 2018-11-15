@@ -8,6 +8,7 @@ describe OtherService do
       asker = Asker.new
       asker.v_spectacle  = 'ze_val_spectacle'
       asker.v_handicap   = 'ze_val_handicap'
+      asker.v_cadre   = 'ze_val_cadre'
 
       # when
       other = OtherService.new(asker).download_from_asker
@@ -15,12 +16,14 @@ describe OtherService do
       # then
       expect(other.val_spectacle).to eq('ze_val_spectacle')
       expect(other.val_handicap).to eq('ze_val_handicap')
+      expect(other.val_cadre).to eq('ze_val_cadre')
     end
     it '"none" props should be nil, if one of the other props is not "oui"' do
       # given
       asker = Asker.new
       asker.v_spectacle = 'oui'
       asker.v_handicap  = 'non'
+      asker.v_cadre  = 'oui'
 
       # when
       other = OtherService.new(asker).download_from_asker
@@ -33,6 +36,7 @@ describe OtherService do
       asker = Asker.new
       asker.v_spectacle = 'non'
       asker.v_handicap  = 'non'
+      asker.v_cadre  = 'non'
 
       # when
       other = OtherService.new(asker).download_from_asker
