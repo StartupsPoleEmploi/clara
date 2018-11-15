@@ -36,7 +36,7 @@ describe SerializeResultsService do
       #when
       res = sut._extract_custom_childrens("parent-a,parent-b")
       #then
-      expect(res).to eq("children1,children-2,children-3")
+      expect(res).to eq("children-1,children-2,children-3")
     end
     
   end

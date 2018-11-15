@@ -74,7 +74,7 @@ class SerializeResultsService
     parent_ids = parent_slugs.map { |parent_slug|  active.custom_parent_filters.find { |c| c["slug"] == parent_slug }["id"] }
     selection = active.custom_filters.select { |custom_filter|  parent_ids.include?(custom_filter["custom_parent_filter_id"]) }
     if selection.is_a?(Array) && !selection.empty?
-      res = selection.map { |e| e["slug"]  }
+      res = selection.map { |e| e["slug"]  }.join(",")
     end
     res
     # parents_slug.each do |parent_slug|
