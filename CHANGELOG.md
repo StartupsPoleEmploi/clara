@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.2.0 (13&15/11/2018)
+-[#894][API] Appel possible des customs filters
+
+
 ## 16.1.1 (12/11/2018)
 -[#1032][SEO] Optimisations question ARE
 

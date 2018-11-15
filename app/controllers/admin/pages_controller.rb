@@ -48,11 +48,13 @@ module Admin
           end
         end
       end
-      welcome_page          = Rails.cache.delete("view_data_for_welcome_page")
-      all_level3_filters_deleted   = Rails.cache.delete("level3_filters")
-      all_filters_deleted          = Rails.cache.delete("filters")
-      all_contract_types_deleted   = Rails.cache.delete("contract_types")
-      regenerated_activated_models = !ActivatedModelsGeneratorService.new.regenerate.empty?
+      welcome_page                      = Rails.cache.delete("view_data_for_welcome_page")
+      all_level3_filters_deleted        = Rails.cache.delete("level3_filters")
+      all_custom_filters_deleted        = Rails.cache.delete("custom_filters")
+      all_custom_parent_filters_deleted = Rails.cache.delete("custom_parent_filters")
+      all_filters_deleted               = Rails.cache.delete("filters")
+      all_contract_types_deleted        = Rails.cache.delete("contract_types")
+      regenerated_activated_models      = !ActivatedModelsGeneratorService.new.regenerate.empty?
       
       activated_models_singleton_reinitialized  = ActivatedModelsService.instance.regenerate
 
@@ -61,6 +63,8 @@ module Admin
         activated_models_deleted: activated_models_deleted,
         nb_of_detailed_aids_deleted: nb_of_detailed_aids_deleted,
         all_level3_filters_deleted: all_level3_filters_deleted,
+        all_custom_filters_deleted: all_custom_filters_deleted,
+        all_custom_parent_filters_deleted: all_custom_parent_filters_deleted,
         all_filters_deleted: all_filters_deleted,
         all_contract_types_deleted: all_contract_types_deleted,
         regenerated_activated_models: regenerated_activated_models,

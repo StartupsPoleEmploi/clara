@@ -333,6 +333,20 @@
           "type": "string",
           "description": "comma-separated values of level3_filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_filters",
+          "type": "string",
+          "description": "comma-separated values of custom_filter's slug",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_parent_filters",
+          "type": "string",
+          "description": "comma-separated values of custom parent filter's slug",
+          "required": false
         }
       ],
         "responses":
@@ -490,7 +504,22 @@
           "type": "string",
           "description": "comma-separated values of level3_filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_filters",
+          "type": "string",
+          "description": "comma-separated values of custom_filter's slug",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_parent_filters",
+          "type": "string",
+          "description": "comma-separated values of custom parent filter's slug",
+          "required": false
         }],
+        
         "responses":
         {
           "200":
@@ -646,7 +675,22 @@
           "type": "string",
           "description": "comma-separated values of level3_filter's slug",
           "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_filters",
+          "type": "string",
+          "description": "comma-separated values of custom_filter's slug",
+          "required": false
+        },
+        {
+          "in": "query",
+          "name": "custom_parent_filters",
+          "type": "string",
+          "description": "comma-separated values of custom parent filter's slug",
+          "required": false
         }],
+        
         "responses":
         {
           "200":

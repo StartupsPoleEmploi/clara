@@ -164,28 +164,34 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns eligible, filtered aids only, and the calculated asker' do
       expect(json_returned).to eq(
         {
-          "asker" => {
-            "spectacle"=>"false", 
-            "disabled"=>"true", 
-            "diploma"=>"level_3", 
-            "category"=>"other_categories", 
-            "inscription_period"=>"less_than_a_year", 
-            "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_APS_ASFNE", 
-            "monthly_allocation_value"=>"1230", 
-            "age"=>"42", 
-            "location_citycode"=>"02004"
-          }, 
-          "aids"=>[
-            {"name"=>"Aide Adulte ou Spectacle Filtre", 
-              "slug"=>"aide-adulte-ou-spectacle-filtre", 
-              "short_description"=>"a short description", 
-              "filters"=>["filter-targeted"],
-              "level3_filters"=>[],
-              "contract_type"=>"n1"}
-          ]
+          "input" => {
+            "asker" => {
+              "spectacle" => "false", 
+              "disabled" => "true", 
+              "diploma" => "level_3", 
+              "category" => "other_categories", 
+              "inscription_period" => "less_than_a_year", 
+              "zrr" => "false", 
+              "allocation_type" => "ASS_AER_APS_ASFNE", 
+              "monthly_allocation_value" => "1230", 
+              "age" => "42", 
+              "location_citycode" => "02004"
+            }, 
+            "filters" => "filter-empty,filter-targeted"
+          },
+          "aids" => [{
+            "name" => "Aide Adulte ou Spectacle Filtre",
+            "slug" => "aide-adulte-ou-spectacle-filtre",
+            "short_description" => "a short description",
+            "filters" => [{
+              "slug" => "filter-targeted"
+            }],
+            "custom_filters" => [],
+            "level3_filters" => [],
+            "contract_type" => "n1"
+          }],
         }
-        )
+      )
     end
   end
 
@@ -298,27 +304,29 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns ineligible, filtered aids only, and the calculated asker' do
       expect(json_returned).to eq(
         {
-          "asker" => {
-            "spectacle"=>"false", 
-            "disabled"=>"true", 
-            "diploma"=>"level_3", 
-            "category"=>"other_categories", 
-            "inscription_period"=>"less_than_a_year", 
-            "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_APS_ASFNE", 
-            "monthly_allocation_value"=>"1230", 
-            "age"=>"42", 
-            "location_citycode"=>"02004"
-          }, 
-          "aids"=>[
-            {"name"=>"Aide Adulte et Spectacle", 
-              "slug"=>"aide-adulte-et-spectacle", 
-              "filters"=>["filter-targeted"],
+          "input"=> {
+            "asker"=> {
+              "spectacle"=>"false",
+              "disabled"=>"true",
+              "diploma"=>"level_3",
+              "category"=>"other_categories",
+              "inscription_period"=>"less_than_a_year",
+              "zrr"=>"false",
+              "allocation_type"=>"ASS_AER_APS_ASFNE",
+              "monthly_allocation_value"=>"1230",
+              "age"=>"42",
+              "location_citycode"=>"02004"
+            },
+           "filters"=>"filter-empty,filter-targeted"
+          },
+          "aids"=>
+            [{"name"=>"Aide Adulte et Spectacle",
+              "slug"=>"aide-adulte-et-spectacle",
+              "filters"=>[{"slug"=>"filter-targeted"}],
+              "custom_filters"=>[],
               "level3_filters"=>[],
-              "contract_type"=>"n1"}
-          ]
-        }
-        )
+              "contract_type"=>"n1"}]}
+      )
     end
   end
 
@@ -430,27 +438,31 @@ describe Api::V1::ApiAidesController, type: :request do
     it 'Returns uncertain, filtered aids only, and the calculated asker' do
       expect(json_returned).to eq(
         {
-          "asker" => {
-            "spectacle"=>"false", 
-            "disabled"=>"true", 
-            "diploma"=>"level_3", 
-            "category"=>"other_categories", 
-            "inscription_period"=>"less_than_a_year", 
-            "zrr"=>"false", 
-            "allocation_type"=>"ASS_AER_APS_ASFNE", 
-            "monthly_allocation_value"=>"1230", 
-            "location_citycode"=>"02004"
-          }, 
-          "aids"=>[
-            {"name"=>"Aide Adulte ou Spectacle Filtre", 
+          "input" => {
+            "asker"=> {
+              "spectacle"=>"false", 
+              "disabled"=>"true", 
+              "diploma"=>"level_3", 
+              "category"=>"other_categories", 
+              "inscription_period"=>"less_than_a_year", 
+              "zrr"=>"false", 
+              "allocation_type"=>"ASS_AER_APS_ASFNE", 
+              "monthly_allocation_value"=>"1230", 
+              "location_citycode"=>"02004"
+            }, 
+            "filters"=>"filter-empty,filter-targeted"
+          },
+          "aids" => [{
+              "name"=>"Aide Adulte ou Spectacle Filtre", 
               "slug"=>"aide-adulte-ou-spectacle-filtre", 
               "short_description"=>"a short description", 
-              "filters"=>["filter-targeted"],
-              "level3_filters"=>[],
-              "contract_type" => "n1"}
-          ]
+              "filters"=>[{"slug"=>"filter-targeted"}], 
+              "custom_filters"=>[], 
+              "level3_filters"=>[], 
+              "contract_type"=>"n1"
+            }]
         }
-        )
+      )
     end
   end
 

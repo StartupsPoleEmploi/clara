@@ -4,7 +4,7 @@ feature 'A.R.E question' do
 
   NOT_A_VALID_ARE = 'this_is_text_not_number'
   A_VALID_ARE = '888'
-  INPUT_MIN = 'input#inputmin'
+  INPUT_MIN = 'input#montant'
 
   scenario 'By default the input field are empty' do 
 
