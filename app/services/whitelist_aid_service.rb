@@ -28,12 +28,22 @@ class WhitelistAidService
     # if aids["level3_filters"].is_a?(Array) && !aids["level3_filters"].empty?
     #   aids["level3_filters"].map!{|f| a.level3_filters.find{|c|  c["id"] == f["id"]}}
     # end
-    # if aids["custom_filters"].is_a?(Array) && !aids["custom_filters"].empty?
-    #   aids["custom_filters"].map!{|f| a.custom_filters.find{|c|  c["id"] == f["id"]}}
-    #   p '- - - - - - - - - - - - - - aids["custom_filters"]- - - - - - - - - - - - - - - -' 
-    #   pp aids["custom_filters"]
-    #   p ''
-    # end
+    if aids["custom_filters"].is_a?(Array) && !aids["custom_filters"].empty?
+      # aids["custom_filters"].map!{|f| a.custom_filters.find{|c|  c["id"] == f["id"]}}
+      p '- - - - - - - - - - - - - - BEFORE aids["custom_filters"]- - - - - - - - - - - - - - - -' 
+      pp aids["custom_filters"]
+      p ''
+      aids["custom_filters"].map! do |f| 
+        parent = a.custom_parent_filters.find{|c|  c["id"] == f["id"]}
+        p '- - - - - - - - - - - - - - parent- - - - - - - - - - - - - - - -' 
+        pp parent
+        p ''
+        {"slug" => f["slug"], "parent_slug" => parent["slug"]}
+      end
+      p '- - - - - - - - - - - - - - AFTER aids["custom_filters"]- - - - - - - - - - - - - - - -' 
+      pp aids["custom_filters"]
+      p ''
+    end
     wanted_keys = %w[name slug short_description contract_type filters level3_filters custom_filters custom_parent_filters]
     # p '- - - - - - - - - - - - - - aids- - - - - - - - - - - - - - - -' 
     # pp aids
