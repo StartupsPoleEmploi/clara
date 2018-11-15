@@ -66,10 +66,10 @@ class SerializeResultsService
   def _extract_custom_childrens(custom_parent_slug_list)
     active = ActivatedModelsService.instance
     
-    parents_slugs = custom_parent_slug_list.split(",")
-    parents_ids = parents_slugs.map { |e|  active.custom_parent_filters.select { |c| c["slug"] == parents_slugs }["id"] }
-    p '- - - - - - - - - - - - - - parents_ids- - - - - - - - - - - - - - - -' 
-    pp parents_ids
+    parent_slugs = custom_parent_slug_list.split(",")
+    parent_ids = parent_slugs.map { |parent_slug|  active.custom_parent_filters.find { |c| c["slug"] == parent_slug }["id"] }
+    p '- - - - - - - - - - - - - - parent_ids- - - - - - - - - - - - - - - -' 
+    pp parent_ids
     p ''
     # parents_slug.each do |parent_slug|
     #   active_parents = active.custom_parent_filters.select { |c| c["slug"] == parent_slug }
