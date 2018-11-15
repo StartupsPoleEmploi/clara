@@ -64,11 +64,19 @@ class SerializeResultsService
   end
 
   def _extract_custom_childrens(custom_parent_slug_list)
+    res = ""
+
+    return res if !(custom_parent_slug_list.is_a?(String) && !custom_parent_slug_list.empty?) 
+
     active = ActivatedModelsService.instance
     
     parent_slugs = custom_parent_slug_list.split(",")
     parent_ids = parent_slugs.map { |parent_slug|  active.custom_parent_filters.find { |c| c["slug"] == parent_slug }["id"] }
-    active.custom_filters.select { |custom_filter|  parent_ids.include?(custom_filter["custom_parent_filter_id"]) }
+    selection = active.custom_filters.select { |custom_filter|  parent_ids.include?(custom_filter["custom_parent_filter_id"]) }
+    if selection.is_a?(Array) && !selection.empty?
+      res = selection.map { |e| e["slug"]  }
+    end
+    res
     # parents_slug.each do |parent_slug|
     #   active_parents = active.custom_parent_filters.select { |c| c["slug"] == parent_slug }
     #   p '- - - - - - - - - - - - - - active_parents- - - - - - - - - - - - - - - -' 
