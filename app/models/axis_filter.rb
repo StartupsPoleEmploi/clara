@@ -1,4 +1,4 @@
-class Level2Filter < ApplicationRecord 
+class AxisFilter < ApplicationRecord 
   extend FriendlyId
 
   validates :name, presence: true, uniqueness: true
