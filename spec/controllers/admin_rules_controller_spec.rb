@@ -21,8 +21,8 @@ describe Admin::RulesController do
       #when
       params_as_hash = Admin::RulesController.new._asker_params(stubbed_params).to_h
       #then
-      expected_keys = Asker.new.attributes.keys.sort
-      actual_keys = params_as_hash.keys.sort
+      expected_keys = Asker.new.attributes.keys
+      actual_keys = params_as_hash.keys
       expect(expected_keys.is_a?(Array)).to eq(true)
       expect(actual_keys.is_a?(Array)).to eq(true)
       expect(expected_keys.size > 0).to eq(true)
