@@ -41,9 +41,9 @@ module Admin
 
     def _asker_params(stubbed_params=nil)
       internal_params = stubbed_params == nil ? params : stubbed_params
-      internal_params.require(:asker).permit(:v_handicap, :v_spectacle, :v_diplome,
+      internal_params.require(:asker).permit(:v_handicap, :v_spectacle, :v_diplome, :v_cadre,
         :v_category, :v_duree_d_inscription, :v_allocation_value_min, :v_allocation_type,
-        :v_location_label, :v_qpv, :v_zrr, :v_age, :v_location_citycode, :v_location_country, :v_location_label, :v_location_route, :v_location_state, :v_location_street_number, :v_location_zipcode)
+        :v_location_label, :v_qpv, :v_zrr, :v_age, :v_location_city, :v_location_citycode, :v_location_country, :v_location_label, :v_location_route, :v_location_state, :v_location_street_number, :v_location_zipcode)
     end
 
     def _simulation_params

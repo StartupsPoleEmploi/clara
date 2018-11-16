@@ -13,11 +13,6 @@ describe Admin::RulesController do
       params_as_hash = Admin::RulesController.new._asker_params(stubbed_params).to_h
       expect(params_as_hash.values.any?(&:blank?)).to eq false
       
-      # all_asker_keys = Asker.new.attributes.keys
-      # ordered_params_as_hash = params_as_hash.sort
-      # ordered_all_asker_keys = all_asker_keys.sort
-      # expect(ordered_params_as_hash).not_to eq nil
-      # expect(ordered_all_asker_keys).not_to eq nil
     end
     it 'Params of simulation should have all keys that a asker can have' do
       #given
@@ -35,15 +30,8 @@ describe Admin::RulesController do
       expect(expected_keys.all? { |e| e.is_a?(String)  }).to eq(true)
       expect(actual_keys.all? { |e| e.is_a?(String)  }).to eq(true)
 
-      keys_intersection = expected_keys - actual_keys
-      expect(keys_intersection).to eq []
-
-      p '- - - - - - - - - - - - - - params_as_hash- - - - - - - - - - - - - - - -' 
-      # pp params_as_hash.keys
-      # pp params_as_hash.keys.sort
-      # pp expected_keys
-      # pp actual_keys
-      p ''
+      keys_difference = expected_keys - actual_keys
+      expect(keys_difference).to eq []
 
     end
   end
