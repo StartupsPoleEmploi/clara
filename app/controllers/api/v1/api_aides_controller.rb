@@ -34,7 +34,7 @@ module Api
             name: e.name,
             description: e.description,
             axis_filter: e.axis_filter ? e.axis_filter.slug : nil,
-            level1_filter: e.axis_filter && e.axis_filter.level1_filter ? e.axis_filter.level1_filter.slug : nil,
+            domain_filter: e.axis_filter && e.axis_filter.domain_filter ? e.axis_filter.domain_filter.slug : nil,
           }
         end
       end

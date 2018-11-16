@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_105623) do
+ActiveRecord::Schema.define(version: 2018_11_12_105624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 2018_11_12_105623) do
     t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
   end
 
+  create_table "domain_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_domain_filters_on_slug", unique: true
+  end
+
   create_table "filters", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -141,15 +150,6 @@ ActiveRecord::Schema.define(version: 2018_11_12_105623) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
-
-  create_table "level1_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_level1_filters_on_slug", unique: true
   end
 
   create_table "need_filters", force: :cascade do |t|
@@ -224,7 +224,7 @@ ActiveRecord::Schema.define(version: 2018_11_12_105623) do
   end
 
   add_foreign_key "aids", "contract_types"
-  add_foreign_key "axis_filters", "level1_filters"
+  add_foreign_key "axis_filters", "domain_filters", column: "level1_filter_id"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_filters", "custom_parent_filters"

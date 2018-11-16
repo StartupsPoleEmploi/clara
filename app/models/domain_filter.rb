@@ -1,4 +1,4 @@
-class Level1Filter < ApplicationRecord 
+class DomainFilter < ApplicationRecord 
   extend FriendlyId
 
   validates :name, presence: true, uniqueness: true

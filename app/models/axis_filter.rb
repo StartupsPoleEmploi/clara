@@ -6,7 +6,7 @@ class AxisFilter < ApplicationRecord
 
 
   has_many :need_filters
-  belongs_to :level1_filter
+  belongs_to :domain_filter
 
   def should_generate_new_friendly_id?
     name_changed?

@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Level1FilterDashboard < Administrate::BaseDashboard
+class DomainFilterDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -51,10 +51,10 @@ class Level1FilterDashboard < Administrate::BaseDashboard
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how level1 filters are displayed
+  # Overwrite this method to customize how domain filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(level1_filter)
-    level1_filter.name
+  def display_resource(domain_filter)
+    domain_filter.name
   end
 end
