@@ -6,6 +6,7 @@ class TranslateAskerService
     asker = Asker.new
     asker.v_spectacle            = boolean_to_french(api_asker.v_spectacle)
     asker.v_handicap             = boolean_to_french(api_asker.v_handicap)
+    asker.v_cadre                = boolean_to_french(api_asker.v_cadre)
     asker.v_diplome              = diploma_to_french(api_asker.v_diplome)
     asker.v_category             = category_to_french(api_asker.v_category)
     asker.v_duree_d_inscription  = inscription_period_to_french(api_asker.v_duree_d_inscription)
@@ -21,6 +22,7 @@ class TranslateAskerService
     res = {}
     res[:spectacle]                = boolean_from_french(api_asker.v_spectacle)
     res[:disabled]                 = boolean_from_french(api_asker.v_handicap)
+    res[:executive]                = boolean_from_french(api_asker.v_cadre)
     res[:diploma]                  = diploma_from_french(api_asker.v_diplome)
     res[:category]                 = category_from_french(api_asker.v_category)
     res[:inscription_period]       = inscription_period_from_french(api_asker.v_duree_d_inscription)
