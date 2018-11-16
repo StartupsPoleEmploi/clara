@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Level3FilterDashboard < Administrate::BaseDashboard
+class NeedFilterDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -55,10 +55,10 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how level3 filters are displayed
+  # Overwrite this method to customize how need filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(level3_filter)
-    level3_filter.name
+  def display_resource(need_filter)
+    need_filter.name
   end
 end

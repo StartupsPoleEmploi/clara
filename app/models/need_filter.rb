@@ -1,4 +1,4 @@
-class Level3Filter < ApplicationRecord 
+class NeedFilter < ApplicationRecord 
   extend FriendlyId
 
   has_and_belongs_to_many :aids

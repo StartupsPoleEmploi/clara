@@ -14,7 +14,7 @@ describe WhitelistAidService do
            "contract_type_id"=>contract_type.id,
            "filters"=>[{"id"=>7, "slug"=>"travailler-a-l-international"}],
            "custom_filters"=>[{"id"=>5, "slug"=>"zen_3", "custom_parent_filter_id"=>custom_parent_filter.id}],
-           "level3_filters"=>[{"id"=>1, "slug"=>"gerer-un-probleme-d-alcool"}],
+           "need_filters"=>[{"id"=>1, "slug"=>"gerer-un-probleme-d-alcool"}],
            "eligibility"=>"eligible",
            "unwanted_key"=>42}
     }

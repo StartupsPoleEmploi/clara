@@ -5,7 +5,7 @@ class Level2Filter < ApplicationRecord
   friendly_id :name, use: :slugged
 
 
-  has_many :level3_filters
+  has_many :need_filters
   belongs_to :level1_filter
 
   def should_generate_new_friendly_id?

@@ -5,7 +5,7 @@ FactoryBot.define do
   factory :filter do
   end
 
-  factory :level3_filter do
+  factory :need_filter do
   end
 
   factory :custom_filter do

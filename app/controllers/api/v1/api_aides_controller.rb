@@ -20,15 +20,15 @@ module Api
         render json: remove_ids!(not_nullify(res)).to_json
       end
 
-      # /api/v1/level3_filters(.:format)
-      def level3_filters
-        track_call("/api/v1/level3_filters", current_user.email)
-        all_filters = JSON.parse(Rails.cache.fetch("level3_filters") {_build_level3_filter_grape.to_json})
-        res = {level3_filters: all_filters}
+      # /api/v1/need_filters(.:format)
+      def need_filters
+        track_call("/api/v1/need_filters", current_user.email)
+        all_filters = JSON.parse(Rails.cache.fetch("need_filters") {_build_need_filter_grape.to_json})
+        res = {need_filters: all_filters}
         render json: remove_ids!(not_nullify(res)).to_json
       end
-      def _build_level3_filter_grape
-        Level3Filter.all.map do |e|  
+      def _build_need_filter_grape
+        NeedFilter.all.map do |e|  
           {
             slug: e.slug,
             name: e.name,
@@ -55,11 +55,11 @@ module Api
         track_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
-        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_need_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -71,7 +71,7 @@ module Api
               custom_filters: custom_filters_param,
               custom_parent_filters: custom_parent_filters_param
             }.delete_if { |k, v| v.nil? },
-            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
+            aids: remove_ids!(not_nullify(eligible_aids_for(local_asker, api_filters.filters, api_need_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
       end
@@ -82,11 +82,11 @@ module Api
         track_call("/api/v1/aids/ineligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
-        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_need_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -98,7 +98,7 @@ module Api
               custom_filters: custom_filters_param,
               custom_parent_filters: custom_parent_filters_param
             }.delete_if { |k, v| v.nil? },
-            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
+            aids: remove_ids!(not_nullify(ineligible_aids_for(local_asker, api_filters.filters, api_need_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end
       end
@@ -108,11 +108,11 @@ module Api
         track_call("/api/v1/aids/uncertain", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
-        api_level3_filters = ApiLevel3Filters.new(filters: level3_filters_param)
+        api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
         api_custom_filters = ApiCustomFilters.new(filters: custom_filters_param)
         api_custom_parent_filters = ApiCustomParentFilters.new(filters: custom_parent_filters_param)
         errors_hash = {}
-        fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
+        fill_errors!(errors_hash, api_filters, api_need_filters, api_custom_filters, api_custom_parent_filters, api_asker)
         if !errors_hash.empty?
           render json: errors_hash.to_json, status: 400
         else
@@ -124,7 +124,7 @@ module Api
               custom_filters: custom_filters_param,
               custom_parent_filters: custom_parent_filters_param
             }.delete_if { |k, v| v.nil? },
-            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_level3_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
+            aids: remove_ids!(not_nullify(uncertain_aids_for(local_asker, api_filters.filters, api_need_filters.filters, api_custom_filters.filters, api_custom_parent_filters.filters)))
           }.to_json
         end     
       end
@@ -142,8 +142,8 @@ module Api
       def filters_param
         params.permit(:filters).to_h[:filters]
       end
-      def level3_filters_param
-        params.permit(:level3_filters).to_h[:level3_filters]
+      def need_filters_param
+        params.permit(:need_filters).to_h[:need_filters]
       end
       def custom_filters_param
         params.permit(:custom_filters).to_h[:custom_filters]
@@ -154,9 +154,9 @@ module Api
 
       private
 
-      def fill_errors!(errors_hash, api_filters, api_level3_filters, api_custom_filters, api_custom_parent_filters, api_asker)
-        if !api_level3_filters.valid?
-          errors_hash.merge!(api_level3_filters.errors) 
+      def fill_errors!(errors_hash, api_filters, api_need_filters, api_custom_filters, api_custom_parent_filters, api_asker)
+        if !api_need_filters.valid?
+          errors_hash.merge!(api_need_filters.errors) 
         end
         if !api_filters.valid?
           errors_hash.merge!(api_filters.errors) 
@@ -207,16 +207,16 @@ module Api
         CalculateAskerService.new(asker).calculate_zrr!
       end
 
-      def eligible_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
-        SerializeResultsService.get_instance.api_eligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+      def eligible_aids_for(asker, filters, need_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_eligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
       end
 
-      def ineligible_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
-        SerializeResultsService.get_instance.api_ineligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+      def ineligible_aids_for(asker, filters, need_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_ineligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
       end
 
-      def uncertain_aids_for(asker, filters, level3_filters, custom_filters, custom_parent_filters)
-        SerializeResultsService.get_instance.api_uncertain(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+      def uncertain_aids_for(asker, filters, need_filters, custom_filters, custom_parent_filters)
+        SerializeResultsService.get_instance.api_uncertain(asker, filters, need_filters, custom_filters, custom_parent_filters)
       end
 
     end

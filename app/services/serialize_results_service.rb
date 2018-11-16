@@ -27,19 +27,19 @@ class SerializeResultsService
     res
   end
 
-  def api_eligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+  def api_eligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_eligible, filters, level3_filters, custom_filters, custom_parent_filters))
+    _whitelist(_filter(calculator.every_eligible, filters, need_filters, custom_filters, custom_parent_filters))
   end
 
-  def api_ineligible(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+  def api_ineligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_ineligible, filters, level3_filters, custom_filters, custom_parent_filters))
+    _whitelist(_filter(calculator.every_ineligible, filters, need_filters, custom_filters, custom_parent_filters))
   end
 
-  def api_uncertain(asker, filters, level3_filters, custom_filters, custom_parent_filters)
+  def api_uncertain(asker, filters, need_filters, custom_filters, custom_parent_filters)
     calculator = AidCalculationService.get_instance(asker)
-    _whitelist(_filter(calculator.every_uncertain, filters, level3_filters, custom_filters, custom_parent_filters))
+    _whitelist(_filter(calculator.every_uncertain, filters, need_filters, custom_filters, custom_parent_filters))
   end
 
   def _whitelist(aids)
@@ -79,9 +79,9 @@ class SerializeResultsService
     resulting_elies    
   end
 
-  def _filter(elies, filters, level3_filters, custom_filters, custom_parent_filters)
+  def _filter(elies, filters, need_filters, custom_filters, custom_parent_filters)
     regular_elies              = _find_elies("filters", filters, elies)
-    level3_elies               = _find_elies("level3_filters", level3_filters, elies)
+    need_elies               = _find_elies("need_filters", need_filters, elies)
     custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)
     custom_filters_called      = custom_filters.to_s + custom_filters_from_parent.to_s
     custom_elies               = _find_elies("custom_filters", custom_filters_called, elies)
@@ -90,7 +90,7 @@ class SerializeResultsService
 
     all_hash = {
       regular: {elies: regular_elies, filters: filters},
-      level3: {elies: level3_elies, filters: level3_filters},
+      need: {elies: need_elies, filters: need_filters},
       custom: {elies: custom_elies, filters: custom_filters_called},
     }
 

@@ -57,7 +57,7 @@
         }
       }
     },
-    "/level3_filters":
+    "/need_filters":
     {
       "get":
       {
@@ -87,7 +87,7 @@
           {
             "description": "Found",
             "example": {
-              "level3_filters": [
+              "need_filters": [
                 {
                   "name": "Gérer un problème d'alcool",
                   "description": "Savoir gérer un problème d'alcool",
@@ -336,9 +336,9 @@
         },
         {
           "in": "query",
-          "name": "level3_filters",
+          "name": "need_filters",
           "type": "string",
-          "description": "comma-separated values of level3_filter's slug",
+          "description": "comma-separated values of need_filter's slug",
           "required": false
         },
         {
@@ -396,7 +396,7 @@
                       "parent_slug": "lbf"
                     }
                   ],
-                  "level3_filters": [
+                  "need_filters": [
                     {
                       "slug": "gerer-un-probleme-d-argent"
                     }
@@ -528,9 +528,9 @@
         },
         {
           "in": "query",
-          "name": "level3_filters",
+          "name": "need_filters",
           "type": "string",
-          "description": "comma-separated values of level3_filter's slug",
+          "description": "comma-separated values of need_filter's slug",
           "required": false
         },
         {
@@ -588,7 +588,7 @@
                       "parent_slug": "lbf"
                     }
                   ],
-                  "level3_filters": [
+                  "need_filters": [
                     {
                       "slug": "gerer-un-probleme-d-argent"
                     }
@@ -720,9 +720,9 @@
         },
         {
           "in": "query",
-          "name": "level3_filters",
+          "name": "need_filters",
           "type": "string",
-          "description": "comma-separated values of level3_filter's slug",
+          "description": "comma-separated values of need_filter's slug",
           "required": false
         },
         {
@@ -780,7 +780,7 @@
                       "parent_slug": "lbf"
                     }
                   ],
-                  "level3_filters": [
+                  "need_filters": [
                     {
                       "slug": "gerer-un-probleme-d-argent"
                     }
