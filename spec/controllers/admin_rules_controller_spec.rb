@@ -23,6 +23,8 @@ describe Admin::RulesController do
       #then
       expected_keys = Asker.new.attributes.keys
       actual_keys = params_as_hash.keys
+
+      # Check first that both array are non-empty and full of Strings
       expect(expected_keys.is_a?(Array)).to eq(true)
       expect(actual_keys.is_a?(Array)).to eq(true)
       expect(expected_keys.size > 0).to eq(true)
@@ -30,6 +32,8 @@ describe Admin::RulesController do
       expect(expected_keys.all? { |e| e.is_a?(String)  }).to eq(true)
       expect(actual_keys.all? { |e| e.is_a?(String)  }).to eq(true)
 
+      # Actual test happens here : both arrays should have the same elements,
+      # Otherwise the failing test will show the keys that are missing.
       keys_difference = expected_keys - actual_keys
       expect(keys_difference).to eq []
 
