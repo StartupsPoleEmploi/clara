@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_105624) do
+ActiveRecord::Schema.define(version: 2018_11_12_105626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_105624) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.bigint "level1_filter_id"
+    t.bigint "domain_filter_id"
+    t.index ["domain_filter_id"], name: "index_axis_filters_on_domain_filter_id"
     t.index ["level1_filter_id"], name: "index_axis_filters_on_level1_filter_id"
     t.index ["slug"], name: "index_axis_filters_on_slug", unique: true
   end
@@ -160,6 +162,8 @@ ActiveRecord::Schema.define(version: 2018_11_12_105624) do
     t.string "slug"
     t.bigint "level2_filter_id"
     t.boolean "confidentiality", default: true
+    t.bigint "axis_filter_id"
+    t.index ["axis_filter_id"], name: "index_need_filters_on_axis_filter_id"
     t.index ["level2_filter_id"], name: "index_need_filters_on_level2_filter_id"
     t.index ["slug"], name: "index_need_filters_on_slug", unique: true
   end
@@ -224,11 +228,13 @@ ActiveRecord::Schema.define(version: 2018_11_12_105624) do
   end
 
   add_foreign_key "aids", "contract_types"
+  add_foreign_key "axis_filters", "domain_filters"
   add_foreign_key "axis_filters", "domain_filters", column: "level1_filter_id"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
+  add_foreign_key "need_filters", "axis_filters"
   add_foreign_key "need_filters", "axis_filters", column: "level2_filter_id"
   add_foreign_key "rules", "variables"
 end
