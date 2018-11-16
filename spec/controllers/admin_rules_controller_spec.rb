@@ -26,23 +26,23 @@ describe Admin::RulesController do
       #when
       params_as_hash = Admin::RulesController.new._asker_params(stubbed_params).to_h
       #then
-      ordered_asker_keys = Asker.new.attributes.keys.sort
-      ordered_params_keys = params_as_hash.keys.sort
-      expect(ordered_asker_keys.is_a?(Array)).to eq(true)
-      expect(ordered_params_keys.is_a?(Array)).to eq(true)
-      expect(ordered_asker_keys.size > 0).to eq(true)
-      expect(ordered_params_keys.size > 0).to eq(true)
-      expect(ordered_asker_keys.all? { |e| e.is_a?(String)  }).to eq(true)
-      expect(ordered_params_keys.all? { |e| e.is_a?(String)  }).to eq(true)
+      expected_keys = Asker.new.attributes.keys.sort
+      actual_keys = params_as_hash.keys.sort
+      expect(expected_keys.is_a?(Array)).to eq(true)
+      expect(actual_keys.is_a?(Array)).to eq(true)
+      expect(expected_keys.size > 0).to eq(true)
+      expect(actual_keys.size > 0).to eq(true)
+      expect(expected_keys.all? { |e| e.is_a?(String)  }).to eq(true)
+      expect(actual_keys.all? { |e| e.is_a?(String)  }).to eq(true)
 
-      keys_intersection = ordered_asker_keys & ordered_params_keys
+      keys_intersection = expected_keys - actual_keys
       expect(keys_intersection).to eq []
 
       p '- - - - - - - - - - - - - - params_as_hash- - - - - - - - - - - - - - - -' 
       # pp params_as_hash.keys
       # pp params_as_hash.keys.sort
-      # pp ordered_asker_keys
-      # pp ordered_params_keys
+      # pp expected_keys
+      # pp actual_keys
       p ''
 
     end
