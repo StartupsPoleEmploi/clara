@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 16.3.0 (16/11/2018)
+## 16.3.0 (16&17/11/2018)
 -[#1007][FEATURE] Ajout de la variable cadre
 
 
