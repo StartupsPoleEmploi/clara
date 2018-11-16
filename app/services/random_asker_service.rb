@@ -18,5 +18,12 @@ class RandomAskerService
     asker.v_location_citycode = Array(10000..99999).map(&:to_s).sample.to_s
     asker
   end
+
+  def full
+    asker = go
+    attributes = asker.attributes
+    non_blank_attributes = attributes.transform_values { |v| v.blank? ? "any" : v }
+    Asker.new(non_blank_attributes)
+  end
   
 end
