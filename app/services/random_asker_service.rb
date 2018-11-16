@@ -8,6 +8,7 @@ class RandomAskerService
     asker = Asker.new
     asker.v_handicap = ["oui", "non"].sample
     asker.v_spectacle = ["oui", "non"].sample
+    asker.v_cadre = ["oui", "non"].sample
     asker.v_age = Array(17..69).map(&:to_s).sample
     asker.v_allocation_type = ["ARE_ASP", "ASS_AER_APS_AS-FNE", "RSA", "RPS_RFPA_RFF_pensionretraite", "AAH", "pas_indemnise"].sample
     asker.v_allocation_value_min = Array(1..3000).map(&:to_s).sample
