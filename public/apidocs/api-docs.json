@@ -92,7 +92,7 @@
                   "name": "Gérer un problème d'alcool",
                   "description": "Savoir gérer un problème d'alcool",
                   "slug": "gerer-un-probleme-d-alcool",
-                  "level2_filter": "gerer-une-addiction",
+                  "axis_filter": "gerer-une-addiction",
                   "level1_filter": "gerer-une-contrainte-personnelle"
                 }
               ]

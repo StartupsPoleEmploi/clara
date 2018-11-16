@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :level1_filters
-    resources :level2_filters
+    resources :axis_filters
     resources :need_filters
     resources :filters
     resources :custom_filters
