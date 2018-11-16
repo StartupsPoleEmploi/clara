@@ -11,7 +11,7 @@ class DomainFilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
-    axis_filters: Field::HasMany,
+    axle_filters: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
@@ -36,7 +36,7 @@ class DomainFilterDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :slug,
-    :axis_filters,
+    :axle_filters,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,7 +47,7 @@ class DomainFilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
-    :axis_filters,
+    :axle_filters,
     # :slug,
   ].freeze
 

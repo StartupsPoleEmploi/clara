@@ -51,10 +51,10 @@ class AxisFilterDashboard < Administrate::BaseDashboard
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how axis filters are displayed
+  # Overwrite this method to customize how axle filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(axis_filter)
-    axis_filter.name
+  def display_resource(axle_filter)
+    axle_filter.name
   end
 end

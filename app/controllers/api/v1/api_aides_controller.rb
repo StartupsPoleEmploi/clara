@@ -33,8 +33,8 @@ module Api
             slug: e.slug,
             name: e.name,
             description: e.description,
-            axis_filter: e.axis_filter ? e.axis_filter.slug : nil,
-            domain_filter: e.axis_filter && e.axis_filter.domain_filter ? e.axis_filter.domain_filter.slug : nil,
+            axle_filter: e.axle_filter ? e.axle_filter.slug : nil,
+            domain_filter: e.axle_filter && e.axle_filter.domain_filter ? e.axle_filter.domain_filter.slug : nil,
           }
         end
       end

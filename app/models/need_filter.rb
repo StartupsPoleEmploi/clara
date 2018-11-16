@@ -6,7 +6,7 @@ class NeedFilter < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   friendly_id :name, use: :slugged
 
-  belongs_to :axis_filter
+  belongs_to :axle_filter
 
 
   def should_generate_new_friendly_id?
