@@ -9,6 +9,7 @@ class ApiAskerService
     asker = ApiAsker.new
     asker.v_spectacle                 = @english_asker[:spectacle]
     asker.v_handicap                  = @english_asker[:disabled]
+    asker.v_cadre                     = @english_asker[:executive]
     asker.v_diplome                   = @english_asker[:diploma]
     asker.v_category                  = @english_asker[:category]
     asker.v_duree_d_inscription       = @english_asker[:inscription_period]
