@@ -8,6 +8,7 @@ class TranslateB64AskerService
     # https://stackoverflow.com/a/9137388/2595513
     asker_h = Hash[base_keys.zip(asker_array)] 
     asker = Asker.new
+    asker.v_cadre              = boolean_to_b64(asker_h["cadre"])
     asker.v_spectacle              = boolean_to_b64(asker_h["spectacle"])
     asker.v_handicap               = boolean_to_b64(asker_h["disabled"])
     asker.v_diplome                = diploma_to_b64(asker_h["diploma"])
@@ -22,6 +23,7 @@ class TranslateB64AskerService
   
   def into_b64(asker)
     h = base_h
+    h["cadre"]                = boolean_from_b64(asker.v_cadre)
     h["spectacle"]                = boolean_from_b64(asker.v_spectacle)
     h["disabled"]                 = boolean_from_b64(asker.v_handicap)
     h["diploma"]                  = diploma_from_b64(asker.v_diplome)
@@ -38,6 +40,7 @@ class TranslateB64AskerService
 
   def base_h
     h = {}
+    h["cadre"]                    = ""
     h["spectacle"]                = ""
     h["disabled"]                 = ""
     h["diploma"]                  = ""

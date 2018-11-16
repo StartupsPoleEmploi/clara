@@ -3,7 +3,7 @@
   "info":
   {
     "description": "Ceci est la documentation de l'API Clara.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "title": "Clara API",
     "termsOfService": "https://clara.pole-emploi.fr/conditions-generales-d-utilisation",
     "contact":
@@ -273,6 +273,13 @@
         },
         {
           "in": "query",
+          "name": "executive",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "diploma",
           "type": "string",
           "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
@@ -355,35 +362,49 @@
           {
             "description": "Found",
             "example": {
+              "input": {
                 "asker": {
+                  "spectacle": "true",
+                  "disabled": "true",
+                  "executive": "true",
+                  "diploma": "level_3",
+                  "category": "categories_12345",
+                  "inscription_period": "less_than_a_year",
                   "zrr": "true",
-                  "allocation_type": "RSA",
-                  "age": "19",
+                  "allocation_type": "ARE_ASP",
+                  "monthly_allocation_value": "3209",
+                  "age": "31",
                   "location_citycode": "02004"
                 },
-                "aids": [
-                  {
-                    "name": "Volontariat international (VI)",
-                    "slug": "vi-volontariat-international",
-                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
-                    "filters": [],
-                    "level3_filters": ["gerer-des-problemes-d-argent"],
-                    "contract_type": "emploi-international"
-                  },
-                  {
-                    "name": "Contrat d'apprentissage",
-                    "slug": "contrat-d-apprentissage",
-                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
-                    "filters": [
-                      "travailler-en-alternance",
-                      "aides-employeurs",
-                      "se-former-valoriser-ses-competences"
-                    ],
-                    "level3_filters": [],
-                    "contract_type": "contrat-en-alternance"
-                  }
-                ]
-              }
+                "filters": "garder-enfant",
+                "custom_filters": "lbf_2",
+                "custom_parent_filters": "lbf"
+              },
+              "aids": [
+                {
+                  "name": "aide aux cadres",
+                  "slug": "aide-aux-cadres",
+                  "short_description": "reserve aux cadres",
+                  "filters": [
+                    {
+                      "slug": "garder-enfant"
+                    }
+                  ],
+                  "custom_filters": [
+                    {
+                      "slug": "lbf_2",
+                      "parent_slug": "lbf"
+                    }
+                  ],
+                  "level3_filters": [
+                    {
+                      "slug": "gerer-un-probleme-d-argent"
+                    }
+                  ],
+                  "contract_type": "contrat-cadre"
+                }
+              ]
+            }
           },
           "400":
           {
@@ -444,6 +465,13 @@
         },
         {
           "in": "query",
+          "name": "executive",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "diploma",
           "type": "string",
           "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
@@ -526,35 +554,49 @@
           {
             "description": "Found",
             "example": {
+              "input": {
                 "asker": {
+                  "spectacle": "true",
+                  "disabled": "true",
+                  "executive": "true",
+                  "diploma": "level_3",
+                  "category": "categories_12345",
+                  "inscription_period": "less_than_a_year",
                   "zrr": "true",
-                  "allocation_type": "RSA",
-                  "age": "19",
+                  "allocation_type": "ARE_ASP",
+                  "monthly_allocation_value": "3209",
+                  "age": "31",
                   "location_citycode": "02004"
                 },
-                "aids": [
-                  {
-                    "name": "Volontariat international (VI)",
-                    "slug": "vi-volontariat-international",
-                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
-                    "filters": [],
-                    "level3_filters": ["gerer-des-problemes-d-argent"],
-                    "contract_type": "emploi-international"
-                  },
-                  {
-                    "name": "Contrat d'apprentissage",
-                    "slug": "contrat-d-apprentissage",
-                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
-                    "filters": [
-                      "travailler-en-alternance",
-                      "aides-employeurs",
-                      "se-former-valoriser-ses-competences"
-                    ],
-                    "level3_filters": [],
-                    "contract_type": "contrat-en-alternance"
-                  }
-                ]
-              }
+                "filters": "garder-enfant",
+                "custom_filters": "lbf_2",
+                "custom_parent_filters": "lbf"
+              },
+              "aids": [
+                {
+                  "name": "aide aux cadres",
+                  "slug": "aide-aux-cadres",
+                  "short_description": "reserve aux cadres",
+                  "filters": [
+                    {
+                      "slug": "garder-enfant"
+                    }
+                  ],
+                  "custom_filters": [
+                    {
+                      "slug": "lbf_2",
+                      "parent_slug": "lbf"
+                    }
+                  ],
+                  "level3_filters": [
+                    {
+                      "slug": "gerer-un-probleme-d-argent"
+                    }
+                  ],
+                  "contract_type": "contrat-cadre"
+                }
+              ]
+            }
           },
           "400":
           {
@@ -615,6 +657,13 @@
         },
         {
           "in": "query",
+          "name": "executive",
+          "type": "string",
+          "description": "true,false",
+          "required": false
+        },
+        {
+          "in": "query",
           "name": "diploma",
           "type": "string",
           "description": "level_1,level_2,level_3,level_4,level_5,level_below_5",
@@ -697,36 +746,49 @@
           {
             "description": "Found",
             "example": {
+              "input": {
                 "asker": {
+                  "spectacle": "true",
+                  "disabled": "true",
+                  "executive": "true",
+                  "diploma": "level_3",
+                  "category": "categories_12345",
+                  "inscription_period": "less_than_a_year",
                   "zrr": "true",
-                  "allocation_type": "RSA",
-                  "age": "19",
+                  "allocation_type": "ARE_ASP",
+                  "monthly_allocation_value": "3209",
+                  "age": "31",
                   "location_citycode": "02004"
                 },
-                "aids": [
-                  {
-                    "name": "Volontariat international (VI)",
-                    "slug": "vi-volontariat-international",
-                    "short_description": "Mission rémunérée qui permet d'avoir une première expérience à l'international",
-                    "filters": [],
-                    "level3_filters": ["gerer-des-problemes-d-argent"],
-                    "contract_type": "emploi-international"
-                  },
-                  {
-                    "name": "Contrat d'apprentissage",
-                    "slug": "contrat-d-apprentissage",
-                    "short_description": "Dispositif de formation initiale associant formation pratique en entreprise et enseignement théorique",
-                    "filters": [
-                      "travailler-en-alternance",
-                      "aides-employeurs",
-                      "se-former-valoriser-ses-competences"
-                    ],
-                    "level3_filters": [],
-                    "contract_type": "contrat-en-alternance"
-                  }
-                ]
-              }
-
+                "filters": "garder-enfant",
+                "custom_filters": "lbf_2",
+                "custom_parent_filters": "lbf"
+              },
+              "aids": [
+                {
+                  "name": "aide aux cadres",
+                  "slug": "aide-aux-cadres",
+                  "short_description": "reserve aux cadres",
+                  "filters": [
+                    {
+                      "slug": "garder-enfant"
+                    }
+                  ],
+                  "custom_filters": [
+                    {
+                      "slug": "lbf_2",
+                      "parent_slug": "lbf"
+                    }
+                  ],
+                  "level3_filters": [
+                    {
+                      "slug": "gerer-un-probleme-d-argent"
+                    }
+                  ],
+                  "contract_type": "contrat-cadre"
+                }
+              ]
+            }
           },
           "400":
           {

@@ -19,6 +19,7 @@
          
             = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien(ne) du spectacle'} 
             = render 'shared/other_form_line', {id: 'val_handicap', current_val: @other.val_handicap, current_text: 'Bénéficiaire de l\'obligation d\'emploi (reconnu(e) en situation de handicap)'} 
+            = render 'shared/other_form_line', {id: 'val_cadre', current_val: @other.val_cadre, current_text: 'Cadre et/ou en recherche d\'un poste d\'encadrement'} 
             = render 'shared/other_form_line', {id: 'none',         current_val: @other.none,         current_text: 'Je ne suis dans aucune de ces situations'} 
 
           = render 'shared/error_in_form', e: e

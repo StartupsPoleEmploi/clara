@@ -57,7 +57,7 @@ class OtherQuestionsController < ApplicationController
   end
 
   def allowed_params
-    params.require(:other_form).permit(:val_spectacle, :val_handicap, :none).to_h if params[:other_form].present?
+    params.require(:other_form).permit(:val_spectacle, :val_handicap, :val_cadre, :none).to_h if params[:other_form].present?
   end
   
 end

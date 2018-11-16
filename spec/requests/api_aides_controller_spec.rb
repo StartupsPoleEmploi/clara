@@ -136,6 +136,7 @@ describe Api::V1::ApiAidesController, type: :request do
         get '/api/v1/aids/eligible', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
+          "executive"               => "true",
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
@@ -168,6 +169,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "asker" => {
               "spectacle" => "false", 
               "disabled" => "true", 
+              "executive" => "true", 
               "diploma" => "level_3", 
               "category" => "other_categories", 
               "inscription_period" => "less_than_a_year", 
@@ -276,6 +278,7 @@ describe Api::V1::ApiAidesController, type: :request do
         get '/api/v1/aids/ineligible', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
+          "executive"               => "true", 
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
@@ -308,6 +311,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "asker"=> {
               "spectacle"=>"false",
               "disabled"=>"true",
+              "executive" => "true", 
               "diploma"=>"level_3",
               "category"=>"other_categories",
               "inscription_period"=>"less_than_a_year",
@@ -411,6 +415,7 @@ describe Api::V1::ApiAidesController, type: :request do
         get '/api/v1/aids/uncertain', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
+          "executive"               => "true", 
           "diploma"                 => "level_3",
           "category"                => "other_categories",
           "inscription_period"      => "less_than_a_year",
@@ -442,6 +447,7 @@ describe Api::V1::ApiAidesController, type: :request do
             "asker"=> {
               "spectacle"=>"false", 
               "disabled"=>"true", 
+              "executive" => "true",
               "diploma"=>"level_3", 
               "category"=>"other_categories", 
               "inscription_period"=>"less_than_a_year", 

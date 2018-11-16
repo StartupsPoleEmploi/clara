@@ -299,6 +299,7 @@ FactoryBot.define do
     trait :full_user_input do 
       v_handicap 'oui'
       v_spectacle 'non'
+      v_cadre 'oui'
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'

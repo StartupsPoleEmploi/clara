@@ -9,6 +9,7 @@ variable_list = [
   ["v_protection_internationale", :string, "oui,non"],
   ["v_handicap",                  :string, "oui,non"],
   ["v_spectacle",                 :string, "oui,non"],
+  ["v_cadre",                     :string, "oui,non"],
   ["v_location_city",             :string, ""],
   ["v_location_citycode",         :string, ""],
   ["v_location_country",          :string, ""],

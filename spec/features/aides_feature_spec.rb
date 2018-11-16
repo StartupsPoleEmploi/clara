@@ -118,7 +118,7 @@ feature 'Aides page' do
     before do
       if result_page == nil
         # set up data context
-        main_id = "NDMsMyxvLDUsbixwLCxub3RfYXBwbGljYWJsZSxu"
+        main_id = "MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8="
         asker = TranslateB64AskerService.new.from_b64(main_id)
         contract_type = create(:contract_type, :contract_type_1)
         create_eligible_aid_for(asker, contract_type)

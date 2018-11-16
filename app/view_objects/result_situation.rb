@@ -8,6 +8,10 @@ class ResultSituation < ViewObject
     @asker[:v_handicap] || "indisponible"
   end
 
+  def cadre
+    @asker[:v_cadre] || "indisponible"
+  end
+
   def spectacle
     @asker[:v_spectacle] || "indisponible"
   end
