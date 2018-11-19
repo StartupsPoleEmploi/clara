@@ -19,6 +19,9 @@ feature 'ConfidentialitySpec' do
   end
 
   scenario 'Browsers links have target=_blank' do
+    visit confidentiality_index_path
+    safari_target = find("a.blabla")
+    expect(safari_target).to eq "blabla"
   end
 
   scenario 'There is an access from the welcome page' do
