@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.4.3 (19/11/2018)
+-[#1036][TECH] Desactivation temporaire de l'initialisation du cache au démarrage
+
+
 ## 16.4.2 (19/11/2018)
 -[#1035][TECH] Test de la page de cookies
 
