@@ -40,7 +40,7 @@
       %li 
         %strong Google Chrome :
         %a{href:"https://support.google.com/chrome/answer/95647?hl=fr"} https://support.google.com/chrome/answer/95647?hl=fr
-        %span ou Allez dans le menu « <strong>Outils</strong> » &gt; Cliquez sur « <strong>Paramètres</strong> » &gt; Cliquez sur « <strong>Afficher les paramètres avancés</strong> », puis sur « <strong>Paramètres de contenu</strong> » &gt; « <strong>Autoriser le stockage des données locales</strong> » doit être sélectionné. Une fois cela effectué, sélectionnez « <strong>Bloquer tous les cookies</strong> »)
+        %span ou Allez dans le <strong>menu</strong> « <strong>Outils</strong> » &gt; Cliquez sur « <strong>Paramètres</strong> » &gt; Cliquez sur « <strong>Afficher les paramètres avancés</strong> », puis sur « <strong>Paramètres de contenu</strong> » &gt; « <strong>Autoriser le stockage des données locales</strong> » <strong>doit être sélectionné</strong>. Une fois cela effectué, <strong>sélectionnez</strong> « <strong>Bloquer tous les cookies</strong> »)
       %li 
         %strong Internet Explorer : 
         %a{href:"http://windows.microsoft.com/fr-fr/internet-explorer/delete-manage-cookies#ie=ie-11"} http://windows.microsoft.com/fr-fr/internet-explorer/delete-manage-cookies#ie=ie-11
@@ -50,3 +50,10 @@
       %li 
         %strong Safari :
         %a{href:"https://support.apple.com/kb/PH19214?locale=fr_FR"} https://support.apple.com/kb/PH19214?locale=fr_FR
+
+    %p Veuillez noter que la plupart des navigateurs acceptent automatiquement des cookies et si vous ne souhaitez pas que des cookies soient utilisés, vous aurez peut-être besoin de supprimer ou bloquer vous-même les cookies.
+    %p 
+      %span
+        Nous vous offrons la possibilité de bloquer leur collecte en cliquant sur 
+      =link_to "le lien suivant", edit_cooky_path("preference")
+
