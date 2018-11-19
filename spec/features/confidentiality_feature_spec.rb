@@ -8,7 +8,7 @@ feature 'ConfidentialitySpec' do
     expect(page).to have_title("Cookies et politique de confidentialité")
   end
 
-  scenario 'Confidentiality page has 2 back button' do
+  scenario 'Confidentiality page has 2 back buttons' do
     visit confidentiality_index_path
     expect(page).to have_selector(".c-confidentiality-back", count: 2)
   end
