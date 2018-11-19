@@ -1,11 +1,32 @@
-.c-confidentiality {}
+.c-confidentiality {
+  
+  @include inuit-font-size(16px);
 
-h1.c-confidentiality-title {
-   @include inuit-font-size(30px);
-   font-weight: 500;
-   font-style: normal;
-   font-stretch: normal;
-   line-height: normal;
-   letter-spacing: normal;
-   color: #333333;
+  h1 {
+    @include inuit-font-size(30px);
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #333333;
+  }
+  h2 {
+    @include inuit-font-size(18px);
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.22;
+    letter-spacing: normal;
+    color: #000000;
+  }
+
+}
+
+.c-confidentiality__container {
+  padding-right: space(2);
+  @include mq($from: desktop) {
+    padding-right: space(12) * 3;
+  }
 }
