@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   resources :contact_sent,          only: [:index]
   
   resources :cookies,               only: [:edit, :update]
+  resources :confidentiality,       only: [:index]
   
   
   # resources :aides, only: [:show, :index] 

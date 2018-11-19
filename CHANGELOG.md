@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.5.0 (19/11/2018)
+-[#896][FEATURE] Confidentialité et informations sur les cookies
+
+
 ## 16.4.3 (19/11/2018)
 -[#1036][TECH] Desactivation temporaire de l'initialisation du cache au démarrage
 
