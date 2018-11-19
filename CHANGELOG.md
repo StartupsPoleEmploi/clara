@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 16.4.2 (17/11/2018)
+## 16.4.2 (19/11/2018)
 -[#1035][TECH] Test de la page de cookies
 
 
