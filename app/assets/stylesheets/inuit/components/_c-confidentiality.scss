@@ -31,3 +31,8 @@ h3.c-confidentiality-title {
     padding-right: space(12) * 3;
   }
 }
+.c-confidentiality-list {
+  li + li {
+    margin-top: space(7);
+  }
+}
