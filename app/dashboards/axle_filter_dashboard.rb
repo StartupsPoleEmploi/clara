@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Level3FilterDashboard < Administrate::BaseDashboard
+class AxleFilterDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,11 +11,10 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
-    slug: Field::String,
-    confidentiality: Field::Boolean,
-    aids: Field::HasMany,
+    need_filters: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    slug: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,7 +26,6 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :confidentiality,
     # :created_at,
   ].freeze
 
@@ -37,9 +35,8 @@ class Level3FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :need_filters,
     :slug,
-    :confidentiality,
-    :aids,
     :created_at,
     :updated_at,
   ].freeze
@@ -50,15 +47,14 @@ class Level3FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
-    :confidentiality,
-    :aids,
+    :need_filters,
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how level3 filters are displayed
+  # Overwrite this method to customize how axle filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(level3_filter)
-    level3_filter.name
+  def display_resource(axle_filter)
+    axle_filter.name
   end
 end

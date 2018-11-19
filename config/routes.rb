@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
-      get 'level3_filters'  => 'api_aides#level3_filters'
+      get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
@@ -30,9 +30,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :level1_filters
-    resources :level2_filters
-    resources :level3_filters
+    resources :domain_filters
+    resources :axle_filters
+    resources :need_filters
     resources :filters
     resources :custom_filters
     resources :custom_parent_filters

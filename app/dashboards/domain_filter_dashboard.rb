@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Level2FilterDashboard < Administrate::BaseDashboard
+class DomainFilterDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,7 +11,7 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
-    level3_filters: Field::HasMany,
+    axle_filters: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
@@ -35,8 +35,8 @@ class Level2FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
-    :level3_filters,
     :slug,
+    :axle_filters,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,14 +47,14 @@ class Level2FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
-    :level3_filters,
+    :axle_filters,
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how level2 filters are displayed
+  # Overwrite this method to customize how domain filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(level2_filter)
-    level2_filter.name
+  def display_resource(domain_filter)
+    domain_filter.name
   end
 end

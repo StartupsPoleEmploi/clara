@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_12_105620) do
+ActiveRecord::Schema.define(version: 2018_11_12_105639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,20 @@ ActiveRecord::Schema.define(version: 2018_11_12_105620) do
     t.bigint "aid_id", null: false
   end
 
-  create_table "aids_level3_filters", id: false, force: :cascade do |t|
-    t.bigint "level3_filter_id", null: false
+  create_table "aids_need_filters", id: false, force: :cascade do |t|
+    t.bigint "need_filter_id", null: false
     t.bigint "aid_id", null: false
+  end
+
+  create_table "axle_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.bigint "domain_filter_id"
+    t.index ["domain_filter_id"], name: "index_axle_filters_on_domain_filter_id"
+    t.index ["slug"], name: "index_axle_filters_on_slug", unique: true
   end
 
   create_table "compound_rules", id: :serial, force: :cascade do |t|
@@ -106,6 +117,15 @@ ActiveRecord::Schema.define(version: 2018_11_12_105620) do
     t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
   end
 
+  create_table "domain_filters", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_domain_filters_on_slug", unique: true
+  end
+
   create_table "filters", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -127,36 +147,16 @@ ActiveRecord::Schema.define(version: 2018_11_12_105620) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "level1_filters", force: :cascade do |t|
+  create_table "need_filters", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.index ["slug"], name: "index_level1_filters_on_slug", unique: true
-  end
-
-  create_table "level2_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "level1_filter_id"
-    t.index ["level1_filter_id"], name: "index_level2_filters_on_level1_filter_id"
-    t.index ["slug"], name: "index_level2_filters_on_slug", unique: true
-  end
-
-  create_table "level3_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "level2_filter_id"
+    t.bigint "axle_filter_id"
     t.boolean "confidentiality", default: true
-    t.index ["level2_filter_id"], name: "index_level3_filters_on_level2_filter_id"
-    t.index ["slug"], name: "index_level3_filters_on_slug", unique: true
+    t.index ["axle_filter_id"], name: "index_need_filters_on_axle_filter_id"
+    t.index ["slug"], name: "index_need_filters_on_slug", unique: true
   end
 
   create_table "rule_checks", force: :cascade do |t|
@@ -219,11 +219,11 @@ ActiveRecord::Schema.define(version: 2018_11_12_105620) do
   end
 
   add_foreign_key "aids", "contract_types"
+  add_foreign_key "axle_filters", "domain_filters"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
-  add_foreign_key "level2_filters", "level1_filters"
-  add_foreign_key "level3_filters", "level2_filters"
+  add_foreign_key "need_filters", "axle_filters"
   add_foreign_key "rules", "variables"
 end

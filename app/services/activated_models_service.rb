@@ -22,8 +22,8 @@ class ActivatedModelsService
     !Rails.env.test? ? @cached_activated_models["all_filters"] : JsonModelsService.filters
   end
 
-  def level3_filters
-    !Rails.env.test? ? @cached_activated_models["all_level3_filters"] : JsonModelsService.level3_filters
+  def need_filters
+    !Rails.env.test? ? @cached_activated_models["all_need_filters"] : JsonModelsService.need_filters
   end
 
   def custom_filters

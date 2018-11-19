@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class Level1FilterDashboard < Administrate::BaseDashboard
+class NeedFilterDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -11,10 +11,11 @@ class Level1FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
-    level2_filters: Field::HasMany,
+    slug: Field::String,
+    confidentiality: Field::Boolean,
+    aids: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    slug: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,6 +27,7 @@ class Level1FilterDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :confidentiality,
     # :created_at,
   ].freeze
 
@@ -36,7 +38,8 @@ class Level1FilterDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :slug,
-    :level2_filters,
+    :confidentiality,
+    :aids,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,14 +50,15 @@ class Level1FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :description,
-    :level2_filters,
+    :confidentiality,
+    :aids,
     # :slug,
   ].freeze
 
-  # Overwrite this method to customize how level1 filters are displayed
+  # Overwrite this method to customize how need filters are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(level1_filter)
-    level1_filter.name
+  def display_resource(need_filter)
+    need_filter.name
   end
 end

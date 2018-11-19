@@ -25,7 +25,7 @@ class WhitelistAidService
         {"slug" => f["slug"], "parent_slug" => parent["slug"]}
       end
     end
-    wanted_keys = %w[name slug short_description contract_type filters level3_filters custom_filters custom_parent_filters]
+    wanted_keys = %w[name slug short_description contract_type filters need_filters custom_filters custom_parent_filters]
 
     return aids.select { |key, _| wanted_keys.include? key }
   end
