@@ -13,4 +13,9 @@ feature 'ConfidentialitySpec' do
     expect(page).to have_selector(".c-confidentiality-backbutton", count: 2)
   end
 
+  scenario 'confidentiality page has a breadcrumb' do
+    visit confidentiality_index_path
+    expect(page).to have_selector(".c-confidentiality-backbutton", count: 2)
+  end
+
 end
