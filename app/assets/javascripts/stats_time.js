@@ -7,12 +7,12 @@ _.set(window, 'clara.draw_stats_time', function() {
   }, {
     height: 300,
     showArea: true,
-    axleX: {
-      // On the x-axle start means top and end means bottom
+    axisX: {
+      // On the x-axis start means top and end means bottom
       position: 'start'
     },
-    axleY: {
-      // On the y-axle start means left and end means right
+    axisY: {
+      // On the y-axis start means left and end means right
       position: 'end'
     }
   });

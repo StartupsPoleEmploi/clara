@@ -29,7 +29,7 @@ _.set(window, 'clara.draw_stats_index', function() {
         reverseData: true,
         horizontalBars: true,
         seriesBarDistance: 30,
-        axleY: {
+        axisY: {
           offset: 70
         }
       }
