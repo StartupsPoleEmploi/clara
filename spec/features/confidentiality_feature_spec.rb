@@ -32,17 +32,30 @@ feature 'ConfidentialitySpec' do
     expect(current_path).to eq confidentiality_index_path    
   end
 
-  scenario 'Back buttons leads to previous page' do
+  scenario 'First back buttons leads to previous page' do
+    # Given
+    visit new_other_question_path
+    click_link "Cookies et politique de confidentialité"
+    expect(current_path).to eq confidentiality_index_path    
+    # When
+    page.all('.c-confidentiality-back')[0].click
+
+    # Then
+    expect(current_path).to eq new_other_question_path
+
+  end
+
+  scenario 'Last back buttons leads to previous page' do
     # Given
     visit new_other_question_path
     click_link "Cookies et politique de confidentialité"
     expect(current_path).to eq confidentiality_index_path    
     
     # When
-    first(".c-confidentiality-back").click
+    page.all('.c-confidentiality-back')[1].click
 
     # Then
-    expect(current_path).to eq confidentiality_index_path
+    expect(current_path).to eq new_other_question_path
 
   end
 
