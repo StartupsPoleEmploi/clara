@@ -1,32 +1,28 @@
-.c-confidentiality {
-  
+
+h1.c-confidentiality-title {
+  @include inuit-font-size(30px);
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+}
+h2.c-confidentiality-title {
+  @include inuit-font-size(18px);
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.22;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+h3.c-confidentiality-title {
   @include inuit-font-size(16px);
-
-  h1 {
-    @include inuit-font-size(30px);
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #333333;
-  }
-  h2 {
-    @include inuit-font-size(18px);
-    font-family: Roboto;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 2.22;
-    letter-spacing: normal;
-    color: #000000;
-  }
-
-  h3 {
-    @include inuit-font-size(16px);
-    line-height: 1.3333333333;
-    margin-bottom: 0;
-  }
+  line-height: 1.3333333333;
+  margin-bottom: 0;
 }
 
 .c-confidentiality__container {
