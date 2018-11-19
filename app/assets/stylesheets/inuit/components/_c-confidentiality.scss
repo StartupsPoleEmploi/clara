@@ -1,4 +1,3 @@
-
 h1.c-confidentiality-title {
   @include inuit-font-size(30px);
   font-weight: 500;
@@ -8,6 +7,7 @@ h1.c-confidentiality-title {
   letter-spacing: normal;
   color: #333333;
 }
+
 h2.c-confidentiality-title {
   @include inuit-font-size(18px);
   font-family: Roboto;
@@ -31,6 +31,7 @@ h3.c-confidentiality-title {
     padding-right: space(12) * 3;
   }
 }
+
 .c-confidentiality-list {
   li + li {
     margin-top: space(7);
