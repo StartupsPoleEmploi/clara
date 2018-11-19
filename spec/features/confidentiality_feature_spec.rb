@@ -18,7 +18,13 @@ feature 'ConfidentialitySpec' do
     expect(page).to have_selector(".c-breadcrumb", count: 1)
   end
 
-  scenario 'Browsers links have target=_blank'
-  scenario 'There is an access from the welcome page'
+  scenario 'Browsers links have target=_blank' do
+  end
+
+  scenario 'There is an access from the welcome page' do
+    visit root_path
+    click_link "Cookies et politique de confidentialité"
+    expect(current_path).to eq confidentiality_index_path    
+  end
 
 end
