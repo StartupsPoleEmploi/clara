@@ -18,8 +18,23 @@ feature 'CookieSpec' do
   end
 
   scenario 'User can refuse hotjar' do
+
+    # Given
+    visit root_path
+    expect(page).to have_selector("#ga-script", visible: false)
+    expect(page).to have_selector("#ga-create-script", visible: false)
+
+    #When
     visit edit_cooky_path("preference")
-    #
+    find("#input_stat").set(true)
+    page.check("#input_stat")
+    find("#submit-cookie-preference")
+    save_and_open_page
+    #Then
+    visit root_path
+    expect(page).to have_selector("#ga-script", visible: false)
+    expect(page).to have_selector("#ga-create-script", visible: false)
+
   end
 
   scenario 'User can refuse analytics' do
