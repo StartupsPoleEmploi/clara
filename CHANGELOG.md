@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.4.1 (19/11/2018)
+-[#1003b][FEATURE] Renommage des filtres à niveau, débuggage
+
+
 ## 16.4.0 (17/11/2018)
 -[#1003][FEATURE] Renommage des filtres à niveau
 
