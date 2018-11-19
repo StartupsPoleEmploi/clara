@@ -19,6 +19,7 @@ feature 'ConfidentialitySpec' do
   end
 
   scenario 'Browsers links have target=_blank' do
+    visit confidentiality_index_path
     expect(find(".c-confidentiality__browserlink--chrome")['target']).to eq "_blank"
     expect(find(".c-confidentiality__browserlink--firefox")['target']).to eq "_blank"
     expect(find(".c-confidentiality__browserlink--ie")['target']).to eq "_blank"
