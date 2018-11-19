@@ -13,6 +13,8 @@
           %a.c-breadcrumb-current.c-breadcrumb-current--question{ :href => ""} Formulaire
         - elsif v.display_results?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats
+        - elsif v.display_confidentiality?
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Cookies et confidentialité
         - elsif v.display_contact?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Nous contacter
         - elsif v.display_detail?
