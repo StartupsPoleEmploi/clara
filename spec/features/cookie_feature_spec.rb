@@ -5,11 +5,12 @@ feature 'CookieSpec' do
 
   scenario 'When visiting the home page, hotjar script is included by default' do
     visit root_path
-    #
+    expect(page).to have_selector("#hj-script", visible: false)
   end
-  scenario 'When visiting the home page, analytics script is included by default' do
+  scenario 'When visiting the home page, 2 analytics scripts are included by default' do
     visit root_path
-    #
+    expect(page).to have_selector("#ga-script", visible: false)
+    expect(page).to have_selector("#ga-create-script", visible: false)
   end
   scenario 'When visiting RGPD page, all cookies are accepted by user' do
     visit edit_cooky_path("preference")
