@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.4.4 (19/11/2018)
+-[#1001][TECH] Les checkboxs de la page de cookies sont maintenant des radios buttons.
+
+
 ## 16.4.3 (19/11/2018)
 -[#1036][TECH] Desactivation temporaire de l'initialisation du cache au démarrage
 
