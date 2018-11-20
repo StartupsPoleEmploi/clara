@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.6.0 (20/11/2018)
+-[#895][FEATURE] Avoir le visuel des filtres utilisés sur chaque aide
+
+
 ## 16.5.0 (20/11/2018)
 -[#896][FEATURE] Confidentialité et informations sur les cookies
 
