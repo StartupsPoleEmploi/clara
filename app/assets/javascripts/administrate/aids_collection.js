@@ -4,13 +4,16 @@ $( document ).ready(function() {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
 
+  function clean_column_of(stuff) {
+    extract_column_for(stuff).each(function(i,e){$(e).empty();});
+  }
+
   function treat_successfully_retrieved_filters(aids) {
-    extract_column_for("filters").each(function(i,e){$(e).empty();});
-    extract_column_for("need_filters").each(function(i,e){$(e).empty();});
-    extract_column_for("custom_filters").each(function(i,e){$(e).empty();});
+    var items = ["filters", "need_filters", "custom_filters"]
+    _.each(items, clean_column_of);
     _.each(aids, function(aid) {
       var $row = find_row_whose_id_is(aid["id"]);
-      _.each(["filters", "need_filters", "custom_filters"], function(item) {
+      _.each(items, function(item) {
         var $cell = find_cell_for($row, item);
         _.each(aid[item], function(filter_obj){
           $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
