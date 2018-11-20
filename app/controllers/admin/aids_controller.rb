@@ -11,10 +11,18 @@ module Admin
     
     def find_filters 
       p '- - - - - - - - - - - - - - find_filters- - - - - - - - - - - - - - - -' 
+      pp find_filters_params.to_h
       p ''
+      of_aids = find_filters_params
+      
+
       render json: {
         status: "ok"
       }
+    end
+
+    def find_filters_params
+      params.permit(:ids => []).to_h
     end
 
   end
