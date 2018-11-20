@@ -1,0 +1,12 @@
+- id ||= ""
+- value ||= ""
+- text ||= ""
+
+.c-radioline.js-enterspace{id: "radio_#{id}"}
+  = radio_button_tag "cookie_form[value]", |
+      "#{id}", |
+      "#{value}" == "#{id}", | 
+      id: "#{id}", |
+      class: 'c-radioinput'
+  %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
+    =text
