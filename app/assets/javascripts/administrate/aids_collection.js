@@ -7,21 +7,13 @@ $( document ).ready(function() {
   function treat_successfully_retrieved_filters(aids) {
     _.each(aids, function(aid) {
       var $row = find_row_whose_id_is(aid["id"]);
-      var $cell = find_cell_for($row, "filters");
-      $cell.empty();
-      _.each(aid["filters"], function(filter_obj){
-        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
-      });
-      var $cell = find_cell_for($row, "need_filters");
-      $cell.empty();
-      _.each(aid["need_filters"], function(filter_obj){
-        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
-      });
-      var $cell = find_cell_for($row, "custom_filters");
-      $cell.empty();
-      _.each(aid["custom_filters"], function(filter_obj){
-        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
-      });
+      _.each(["filters", "need_filters", "custom_filters"], function(item) {
+        var $cell = find_cell_for($row, item);
+        $cell.empty();
+        _.each(aid[item], function(filter_obj){
+          $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+        });
+      })
     });
   }
 
