@@ -7,6 +7,8 @@ load_js_for_page(["cookies", "edit"], function() {
   if($("#authorize_all").is(":checked")) {
     $("#authorize_statistic").prop("checked", true);
     $("#authorize_navigation").prop("checked", true);
+    $("#input_nav").prop("checked", false);
+    $("#input_stat").prop("checked", false);
   };
 
   $("#authorize_all").click(function() {
