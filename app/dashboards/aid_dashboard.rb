@@ -42,8 +42,8 @@ class AidDashboard < Administrate::BaseDashboard
     :last_update,
     :contract_type,
     :need_filters,
+    :custom_filters,
     :filters,
-    :custom_filters
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
