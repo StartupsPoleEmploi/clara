@@ -20,12 +20,11 @@ load_js_for_page(["cookies", "edit"], function() {
   });
 
   $("#forbid_statistic").click(function() {
-    $("#hide_control_all").prop(":checked", true);
-    $("#authorize_all").prop(":checked", false);
+    $('input[name=control_all]').prop('checked',false);
   });
-    
+
   $("#forbid_navigation").click(function() {
-    $("#hide_control_all").prop(":checked", true);
+    $('input[name=control_all]').prop('checked',false);
   });
 
 });
