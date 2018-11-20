@@ -42,8 +42,8 @@ $( document ).ready(function() {
         type:'GET',
         dataType:'json',
         data:{
-          ids: displayed_ids,
-          authenticity_token: window._token
+          ids: displayed_ids
+          // authenticity_token: window._token
         },
         success:function(data){
           console.log(data);
