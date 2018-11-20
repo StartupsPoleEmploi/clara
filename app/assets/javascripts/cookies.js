@@ -12,11 +12,15 @@ load_js_for_page(["cookies", "edit"], function() {
   $("#authorize_all").click(function() {
     $("#authorize_statistic").prop("checked", true);
     $("#authorize_navigation").prop("checked", true);
+    $("#input_nav").prop("checked", false);
+    $("#input_stat").prop("checked", false);
   });
 
   $("#forbid_all").click(function() {
     $("#forbid_statistic").prop("checked", true);
     $("#forbid_navigation").prop("checked", true);
+    $("#input_nav").prop("checked", true);
+    $("#input_stat").prop("checked", true);
   });
 
   $("#forbid_statistic").click(function() {
@@ -50,5 +54,6 @@ load_js_for_page(["cookies", "edit"], function() {
       $("#forbid_all").prop("checked", true);
     };
   });
+
 
 });
