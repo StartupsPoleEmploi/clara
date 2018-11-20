@@ -14,7 +14,6 @@ $( document ).ready(function() {
       function endsWith(str, suffix) {
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
       }
-      // console.log($(elt).find('a').attr('href'))
       if (endsWith($(elt).find('a').attr('href'), "=custom_filters")) {
         custom_filters_position = current_index;
       }
@@ -24,7 +23,6 @@ $( document ).ready(function() {
       if (endsWith($(elt).find('a').attr('href'), "=filters")) {
         clara_filters_position = current_index;
       }
-      // need_filters_position = endsWith($(elt).find('a').attr('href'), "need_filters") ? i : 0;
     });
     console.log('need_filters_position ' + need_filters_position)
     console.log('clara_filters_position ' + clara_filters_position)
