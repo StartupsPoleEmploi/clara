@@ -6,8 +6,12 @@ $( document ).ready(function() {
 
   function treat_successfully_retrieved_filters(aids) {
     _.each(aids, function(aid) {
-      // var $row = find_row_whose_id_is(aid["id"]);
-      // var $cell = find_cell_for($row, "filters");
+      var $row = find_row_whose_id_is(aid["id"]);
+      var $cell = find_cell_for($row, "filters");
+      $cell.empty();
+      _.each(aid["filters"], function(filter_obj){
+        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+      });
     });
     console.log("aids are " + JSON.stringify(aids[0]));
     var darow = find_row_whose_id_is(42);
@@ -19,7 +23,7 @@ $( document ).ready(function() {
   function find_cell_for(jq_row, filter_column_name) {
     var col_nb = find_col_nb_for(filter_column_name);
     console.log(col_nb);
-    $(jq_row).find("td:eq(" + col_nb + ")").text("blabla")
+    return $(jq_row).find("td:eq(" + col_nb + ")");
   }
 
   function find_row_whose_id_is(id_value) {
