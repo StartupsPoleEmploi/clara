@@ -50,9 +50,11 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %input{:name => "navigation", :type => "radio", :value => "authorize_navigation", :id => "authorize_navigation"} Autoriser
+            %input{:name => "navigation", :type => "radio", :value => "authorize_navigation", :id => "authorize_navigation"}
+            %label.c-radiolabel.u-padding-left-small{for: "authorize_navigation"} Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %input{:name => "navigation", :type => "radio", :value => "forbid_navigation", :id => "forbid_navigation"} Interdire
+            %input{:name => "navigation", :type => "radio", :value => "forbid_navigation", :id => "forbid_navigation"} 
+            %label.c-radiolabel.u-padding-left-small{for: "forbid_navigation"} Interdire
 
     -# Deliberately avoid XHR request here, in order to force hotjar and analytics reevaluation
     = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
