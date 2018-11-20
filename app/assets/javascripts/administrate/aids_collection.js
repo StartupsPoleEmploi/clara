@@ -13,24 +13,24 @@ $( document ).ready(function() {
         $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
       });
     });
-    console.log("aids are " + JSON.stringify(aids[0]));
-    var darow = find_row_whose_id_is(42);
-    console.log(darow);
-    var dacell = find_cell_for(darow, "filters");
-    console.log(dacell);
+    // console.log("aids are " + JSON.stringify(aids[0]));
+    // var darow = find_row_whose_id_is(42);
+    // console.log(darow);
+    // var dacell = find_cell_for(darow, "filters");
+    // console.log(dacell);
   }
 
   function find_cell_for(jq_row, filter_column_name) {
     var col_nb = find_col_nb_for(filter_column_name);
-    console.log(col_nb);
+    // console.log(col_nb);
     return $(jq_row).find("td:eq(" + col_nb + ")");
   }
 
   function find_row_whose_id_is(id_value) {
     var id_col_nb = find_col_nb_for("id");
-    console.log(id_col_nb)
+    // console.log(id_col_nb)
     var id_value_as_str = id_value.toString();
-    console.log(id_value_as_str)
+    // console.log(id_value_as_str)
     return $('.js-table-row').filter(function(i, e) {
       var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
       // console.log(id_as_string)
