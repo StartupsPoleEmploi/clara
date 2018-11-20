@@ -2,6 +2,23 @@ load_js_for_page(["cookies", "edit"], function() {
 
   $("input:radio:first").focus();
 
+  $("#authorize_all").prop("checked", true);
+
+  if( $("#authorize_all").is(":checked")) {
+    $("#authorize_statistic").prop("checked", true);
+    $("#authorize_navigation").prop("checked", true);
+  };
+
+  $("#authorize_all").click(function() {
+    $("#authorize_statistic").prop("checked", true);
+    $("#authorize_navigation").prop("checked", true);
+  })
+
+  $("#forbid_all").click(function() {
+    $("#forbid_statistic").prop("checked", true);
+    $("#forbid_navigation").prop("checked", true);
+  })
+
 /*  var STATE_KEY = 'cookies_preference';
 
   var initial_state = {
