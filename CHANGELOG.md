@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.5.1 (20/11/2018)
+-[#958][TECH] Remplacer le foit par un fout
+
+
 ## 16.5.0 (20/11/2018)
 -[#896][FEATURE] Confidentialité et informations sur les cookies
 
