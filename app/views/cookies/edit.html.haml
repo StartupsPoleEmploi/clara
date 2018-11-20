@@ -48,9 +48,11 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
+            /%button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
+            %input{:name => "navigation", :type => "radio", :value => "authorize_navigation"}/
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
+            /%button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
+            %input{:name => "navigation", :type => "radio", :value => "forbid_navigation"}/
 
     -# Deliberately avoid XHR request here, in order to force hotjar and analytics reevaluation
     = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
