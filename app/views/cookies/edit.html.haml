@@ -31,13 +31,12 @@
           Ces cookies nous permettent d'analyser l'utilisation du site afin de pouvoir en mesurer et en améliorer la performance.
       .o-layout__item{:class => "u-1/2"}
         .o-layout
-          %form{:action => ""}
-            .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "statistic", :type => "radio", :value => "authorize_statistic"}/
-              /%button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
-            .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "statistic", :type => "radio", :value => "forbid_statistic"}/
-              /%button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %input{:name => "statistic", :type => "radio", :value => "authorize_statistic"}/
+            /%button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
+          .o-layout__item{:class => "u-1/2 u-text--center"}
+            %input{:name => "statistic", :type => "radio", :value => "forbid_statistic"}/
+            /%button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
 
 
     .o-layout.c-cookie-line
