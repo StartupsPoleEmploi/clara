@@ -54,7 +54,6 @@ $( document ).ready(function() {
 
   function extract_column_for(stuff) {
     var col_nb = find_col_nb_for(stuff);
-    console.log("col_nb is " + col_nb);
     return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
   }
 
