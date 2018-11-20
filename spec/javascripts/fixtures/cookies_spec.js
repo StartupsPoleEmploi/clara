@@ -13,9 +13,7 @@ describe('cookies.js', function() {
     $('body').append('<input id="authorize_statistic" name="statistic" type="radio" value="authorize_statistic"></input>');
     $('body').append('<input id="forbid_statistic" name="statistic" type="radio" value="forbid_statistic"></input>');
     // when
-/*    $("#authorize_all").click(function(){
-      $("#authorize_all").prop("checked", true) 
-    }*/
+    $("#authorize_all").click()
     // then
     expect($("#authorize_statistic").is(":checked")).toBe(true)
     expect($("#authorize_navigation").is(":checked")).toBe(true)
