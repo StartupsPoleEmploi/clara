@@ -16,10 +16,13 @@ module Admin
       p ''
       activated = ActivatedModelsService.instance
       selected_aids = activated.aids.select { |aid| of_aids.include?(aid["id"])  }
-
+      p '- - - - - - - - - - - - - - selected_aids- - - - - - - - - - - - - - - -' 
+      pp selected_aids
+      p ''
+      raw_aids = selected_aids.map{|aid| aid.select{|x| x == "id" || x.end_with?("filters")} }
       render json: {
         status: "ok",
-        aids_size: selected_aids.size
+        aids: raw_aids
       }
     end
 
