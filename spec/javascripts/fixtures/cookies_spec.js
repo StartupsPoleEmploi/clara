@@ -16,7 +16,7 @@ describe('cookies.js', function() {
     $('body').append('<input id="authorize_navigation" name="statistic" type="radio" value="authorize_navigation"></input>');
     $('body').append('<input id="forbid_navigation" name="statistic" type="radio" value="forbid_navigation"></input>');
     // when
-    $("#authorize_all").click()
+    test()
     // then
     expect($("#authorize_statistic").is(":checked")).toBe(true)
     expect($("#authorize_navigation").is(":checked")).toBe(true)

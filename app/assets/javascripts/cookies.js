@@ -11,12 +11,12 @@ load_js_for_page(["cookies", "edit"], function() {
     $("#input_stat").prop("checked", false);
   };
 
-  $("#authorize_all").click(function() {
+/*  $("#authorize_all").click(function() {
     $("#authorize_statistic").prop("checked", true);
     $("#authorize_navigation").prop("checked", true);
     $("#input_nav").prop("checked", false);
     $("#input_stat").prop("checked", false);
-  });
+  });*/
 
   $("#forbid_all").click(function() {
     $("#forbid_statistic").prop("checked", true);
@@ -56,5 +56,16 @@ load_js_for_page(["cookies", "edit"], function() {
     };
   });
 
+  function test (){
+    console.log("d")
+    $("#authorize_all").click(function() {
+      console.log("d2")
+      $("#authorize_statistic").prop("checked", true);
+      $("#authorize_navigation").prop("checked", true);
+      $("#input_nav").prop("checked", false);
+      $("#input_stat").prop("checked", false);
+  });
+  }
+  test()
 
 });
