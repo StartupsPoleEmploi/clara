@@ -39,4 +39,16 @@ load_js_for_page(["cookies", "edit"], function() {
     };
   });
 
+  $("#forbid_navigation").click(function() {
+    if($("#forbid_statistic").is(":checked")) {
+      $("#forbid_all").prop("checked", true);
+    };
+  });
+
+  $("#forbid_statistic").click(function() {
+    if($("#forbid_navigation").is(":checked")) {
+      $("#forbid_all").prop("checked", true);
+    };
+  });
+
 });
