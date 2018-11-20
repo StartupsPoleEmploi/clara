@@ -1,5 +1,9 @@
 $( document ).ready(function() {
 
+  function treat_successfully_retrieved_filters(aids) {
+    console.log("aids are " + JSON.stringify(aids[0]))
+  }
+
   if (window.location.pathname === "/admin/aids") {
     // console.log('You are now on admin aids collection');
 
@@ -48,7 +52,8 @@ $( document ).ready(function() {
           // authenticity_token: window._token
         },
         success:function(data){
-          console.log(data);
+          // console.log(data);
+          treat_successfully_retrieved_filters(data["aids"])
         },
         error:function(data){
           console.log("error");
