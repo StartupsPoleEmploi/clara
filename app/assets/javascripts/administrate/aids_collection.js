@@ -12,12 +12,17 @@ $( document ).ready(function() {
       _.each(aid["filters"], function(filter_obj){
         $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
       });
+      var $cell = find_cell_for($row, "need_filters");
+      $cell.empty();
+      _.each(aid["need_filters"], function(filter_obj){
+        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+      });
+      var $cell = find_cell_for($row, "custom_filters");
+      $cell.empty();
+      _.each(aid["custom_filters"], function(filter_obj){
+        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+      });
     });
-    // console.log("aids are " + JSON.stringify(aids[0]));
-    // var darow = find_row_whose_id_is(42);
-    // console.log(darow);
-    // var dacell = find_cell_for(darow, "filters");
-    // console.log(dacell);
   }
 
   function find_cell_for(jq_row, filter_column_name) {
