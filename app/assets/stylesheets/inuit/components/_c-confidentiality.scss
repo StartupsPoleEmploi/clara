@@ -40,9 +40,15 @@ h3.c-confidentiality-title {
 
 .c-confidentiality__container {
   padding-right: space(2);
-  @include mq($from: desktop) {
+  @include mq($from: tablet) {
     padding-right: space(12) * 3;
   }
+
+  width: 60%;
+  @include mq($from: tablet) {
+    width: inherit;
+  }
+
 }
 
 .c-confidentiality-list {
