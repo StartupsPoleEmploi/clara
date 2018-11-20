@@ -1,11 +1,25 @@
 .c-confidentiality {
   p, li {
+    @include inuit-font-size(14px);
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.5;
     letter-spacing: normal;
     color: #333333;
+    @include mq($from: tablet) {
+      @include inuit-font-size(16px);
+    }
+  }
+  // Links create an overflow
+  a { 
+    display: inline-block;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top
+    // display: block;
   }
 }
 
@@ -44,10 +58,7 @@ h3.c-confidentiality-title {
     padding-right: space(12) * 3;
   }
 
-  // width: 60%;
-  // @include mq($from: tablet) {
-  //   width: inherit;
-  // }
+
 
 }
 
