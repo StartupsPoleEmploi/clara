@@ -18,10 +18,8 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            /%button#authorize_all.c-cookie-cta.c-cookie-cta--green Tout autoriser
             %input{:name => "control_all", :type => "radio", :value => "authorize_all", :id => "authorize_all"} Tout autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            /%button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
             %input{:name => "control_all", :type => "radio", :value => "forbid_all", :id => "forbid_all"} Tout interdire
 
 
@@ -35,10 +33,8 @@
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
             %input{:name => "statistic", :type => "radio", :value => "authorize_statistic", :id => "authorize_statistic"} Autoriser
-            /%button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
             %input{:name => "statistic", :type => "radio", :value => "forbid_statistic", :id => "forbid_statistic"} Interdire
-            /%button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
 
 
     .o-layout.c-cookie-line
@@ -50,10 +46,8 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            /%button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
             %input{:name => "navigation", :type => "radio", :value => "authorize_navigation", :id => "authorize_navigation"} Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            /%button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
             %input{:name => "navigation", :type => "radio", :value => "forbid_navigation", :id => "forbid_navigation"} Interdire
 
     -# Deliberately avoid XHR request here, in order to force hotjar and analytics reevaluation
