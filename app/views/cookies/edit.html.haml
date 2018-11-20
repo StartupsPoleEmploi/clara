@@ -34,9 +34,11 @@
       .o-layout__item{:class => "u-1/2"}
         .o-layout
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %input{:name => "statistic", :type => "radio", :value => "authorize_statistic", :id => "authorize_statistic"} Autoriser
+            %input{:name => "statistic", :type => "radio", :value => "authorize_statistic", :id => "authorize_statistic"}
+            %label.c-radiolabel.u-padding-left-small{for: "authorize_statistic"} Autoriser
           .o-layout__item{:class => "u-1/2 u-text--center"}
-            %input{:name => "statistic", :type => "radio", :value => "forbid_statistic", :id => "forbid_statistic"} Interdire
+            %input{:name => "statistic", :type => "radio", :value => "forbid_statistic", :id => "forbid_statistic"}
+            %label.c-radiolabel.u-padding-left-small{for: "forbid_statistic"} Interdire
 
 
     .o-layout.c-cookie-line
