@@ -5,11 +5,13 @@ $( document ).ready(function() {
   }
 
   function treat_successfully_retrieved_filters(aids) {
+    extract_column_for("filters").each(function(i,e){$(e).empty();});
+    extract_column_for("need_filters").each(function(i,e){$(e).empty();});
+    extract_column_for("custom_filters").each(function(i,e){$(e).empty();});
     _.each(aids, function(aid) {
       var $row = find_row_whose_id_is(aid["id"]);
       _.each(["filters", "need_filters", "custom_filters"], function(item) {
         var $cell = find_cell_for($row, item);
-        $cell.empty();
         _.each(aid[item], function(filter_obj){
           $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
         });
@@ -47,14 +49,18 @@ $( document ).ready(function() {
     return id_col_nb;
   }
 
+  function extract_column_for(stuff) {
+    var col_nb = find_col_nb_for(stuff);
+    console.log("col_nb is " + col_nb);
+    return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
+  }
+
   if (window.location.pathname === "/admin/aids") {
 
     var displayed_ids = []
     $('.js-table-row').each(function(i,e) {
       var id_as_string = $(e).find("td:eq(" + find_col_nb_for("id") + ")").text().trim();
-
       displayed_ids.push(parseInt(id_as_string, 10));
-
     });
       console.log(displayed_ids);
 
