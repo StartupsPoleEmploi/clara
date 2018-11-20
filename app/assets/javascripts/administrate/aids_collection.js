@@ -32,7 +32,9 @@ $( document ).ready(function() {
 
     var displayed_ids = []
     $('.js-table-row').each(function(i,e) {
-      displayed_ids.push($(e).find("td:eq(" + id_position + ")").text().trim());
+      var id_as_string = $(e).find("td:eq(" + id_position + ")").text().trim();
+
+      displayed_ids.push(parseInt(id_as_string, 10));
 
     });
       console.log(displayed_ids);

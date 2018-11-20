@@ -10,14 +10,16 @@ module Admin
     end
     
     def find_filters 
+      of_aids = find_filters_params["ids"].map { |e| e.to_i  }
       p '- - - - - - - - - - - - - - find_filters- - - - - - - - - - - - - - - -' 
-      pp find_filters_params.to_h
+      pp of_aids
       p ''
-      of_aids = find_filters_params
-      
+      activated = ActivatedModelsService.instance
+      selected_aids = activated.aids.select { |aid| of_aids.include?(aid["id"])  }
 
       render json: {
-        status: "ok"
+        status: "ok",
+        aids_size: selected_aids.size
       }
     end
 
