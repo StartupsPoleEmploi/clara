@@ -13,13 +13,14 @@
   }
   // Links create an overflow
   a { 
-    display: inline-block;
-    max-width: 250px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: top
-    // display: block;
+    @include mq($until: tablet) {
+      display: inline-block;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: top
+    }
   }
 }
 
