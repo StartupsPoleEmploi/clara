@@ -27,8 +27,16 @@ load_js_for_page(["cookies", "edit"], function() {
     $('input[name=control_all]').prop('checked',false);
   });
 
-  if($("#authorize_statistic").is(":checked") && $("#authorize_navigation").is(":checked")) {
-    $("#authorize_all").prop("checked", true);
-  }
+  $("#authorize_navigation").click(function() {
+    if($("#authorize_statistic").is(":checked")) {
+      $("#authorize_all").prop("checked", true);
+    };
+  });
+
+  $("#authorize_statistic").click(function() {
+    if($("#authorize_navigation").is(":checked")) {
+      $("#authorize_all").prop("checked", true);
+    };
+  });
 
 });
