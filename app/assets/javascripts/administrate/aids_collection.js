@@ -33,10 +33,26 @@ $( document ).ready(function() {
     var displayed_ids = []
     $('.js-table-row').each(function(i,e) {
       displayed_ids.push($(e).find("td:eq(" + id_position + ")").text().trim());
-      
+
     });
       console.log(displayed_ids);
 
+    $.ajax({
+        url: "/admin/find_filters",
+        type:'GET',
+        dataType:'json',
+        data:{
+          ids: displayed_ids,
+          authenticity_token: window._token
+        },
+        success:function(data){
+          console.log(data);
+        },
+        error:function(data){
+          console.log("error");
+          console.error(data);
+        }
+      });
 
   }
 });

@@ -8,6 +8,14 @@ module Admin
       @asker = Asker.new
       super
     end
+    
+    def find_filters 
+      p '- - - - - - - - - - - - - - find_filters- - - - - - - - - - - - - - - -' 
+      p ''
+      render json: {
+        status: "ok"
+      }
+    end
 
   end
 end
