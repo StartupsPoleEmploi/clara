@@ -275,7 +275,15 @@ describe('cookies.js', function() {
       expect($("#forbid_all").is(":checked")).toBe(true);
     });
   });
+
   describe('forbid_statistic', function() {
-    
+    it('Should uncheck authorize_all when you click on forbid_statistic', function() {
+      //given
+      clara.cookies.forbid_statistic();
+      //when
+      $('#forbid_statistic').click();
+      //then
+      expect($("#authorize_all").is(":checked")).toBe(false);
+    });
   });
 });
