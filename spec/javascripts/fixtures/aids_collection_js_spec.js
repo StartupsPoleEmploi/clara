@@ -119,12 +119,12 @@ describe('aids_collection.js', function() {
       var res = find_cell_for($row, "need_filters");
       expect(res.prop("tagName")).toEqual("TD");
     });  
-    it('Row with given ID (7) and filter "need_filters" has position(x,y) 42, 42 in the table', function() {
+    it('Row with given ID (7) and filter "need_filters" has position(x,y) 5, 7 in the table', function() {
       var $row = find_row_whose_id_is(7);
       var res = find_cell_for($row, "need_filters");
       // See https://stackoverflow.com/a/1775509/2595513
-      expect(res[0].cellIndex).toEqual(42);
-      expect(res[0].parentNode.rowIndex).toEqual(42);
+      expect(res[0].cellIndex).toEqual(5);
+      expect(res[0].parentNode.rowIndex).toEqual(7);
     });  
   });
   
