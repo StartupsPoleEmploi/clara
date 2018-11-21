@@ -275,4 +275,7 @@ describe('cookies.js', function() {
       expect($("#forbid_all").is(":checked")).toBe(true);
     });
   });
+  describe('forbid_statistic', function() {
+    
+  });
 });
