@@ -35,12 +35,16 @@ describe('cookies.js', function() {
     $("#forbid_statistic").remove();
   })
 
-  it("Should check all checkbox when you click on 'Tout Autoriser'", function() {
-    // given
-    // when
-    clara.cookies.authorize_all();
-    // then
-    expect($("#authorize_statistic").is(":checked")).toBe(true)
-    expect($("#authorize_navigation").is(":checked")).toBe(true)
+  describe('authorize_all', function() {
+    
+    it("Should check authorize_statistic when you click on 'Tout Autoriser'", function() {
+      // given
+      // when
+      clara.cookies.authorize_all();
+      // then
+      expect($("#authorize_navigation").is(":checked")).toBe(true)
+    });
+
+    
   });
 });
