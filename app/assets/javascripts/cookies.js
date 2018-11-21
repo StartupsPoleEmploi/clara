@@ -40,7 +40,15 @@ _.set(window, 'clara.cookies', {
         };
       });
     },
-
+    forbid_navigation: function () {
+      $("#forbid_navigation").click(function() {
+        $('input[name=control_all]').prop('checked',false);
+        $("#input_nav").prop("checked", true);
+        if($("#forbid_statistic").is(":checked")) {
+          $("#forbid_all").prop("checked", true);
+        };
+      });
+    }
 });
 
 load_js_for_page(["cookies", "edit"], function() {
@@ -52,17 +60,11 @@ load_js_for_page(["cookies", "edit"], function() {
   clara.cookies.forbid_all();
   clara.cookies.authorize_navigation();
   clara.cookies.authorize_statistic();
+  clara.cookies.forbid_navigation();
 
 
 
 
-  $("#forbid_navigation").click(function() {
-    $('input[name=control_all]').prop('checked',false);
-    $("#input_nav").prop("checked", true);
-    if($("#forbid_statistic").is(":checked")) {
-      $("#forbid_all").prop("checked", true);
-    };
-  });
 
   $("#forbid_statistic").click(function() {
     $('input[name=control_all]').prop('checked',false);
