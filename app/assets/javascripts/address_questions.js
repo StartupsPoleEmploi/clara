@@ -100,7 +100,7 @@ _.set(window, 'clara.a11y.search1', {
 });
 
 
-_.defaultTo(_.get(window, 'load_js_for_page'), function(){})(["address_questions", "new"], function() {
+load_js(["address_questions", "new"], function() {
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/

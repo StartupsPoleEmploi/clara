@@ -3,8 +3,8 @@
 //= require jquery
 //= require administrate/aids_collection
 describe('aids_collection.js', function() {
+
   describe('clara.aids.find_col_nb_for', function() {
-    
     // inspired by https://stackoverflow.com/a/14292476/2595513
     var htmlContent;
     var find_col_nb_for;
@@ -17,10 +17,9 @@ describe('aids_collection.js', function() {
     });
     afterEach(function(){
       // comment line below so that can you see the table inside the browser when debugging
-      // $('table[aria-labelledby="page-title"]').remove();
+      $('table[aria-labelledby="page-title"]').remove();
       htmlContent = null;
     });
-
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
       expect(_.isFunction(find_col_nb_for)).toEqual(true);
     });  
@@ -55,4 +54,5 @@ describe('aids_collection.js', function() {
       expect(res).toEqual(-1);
     });  
   });
+  
 });
