@@ -95,7 +95,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#authorize_statistic").is(":checked")).toBe(true);
     });
@@ -103,7 +103,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(true);
     });
@@ -111,7 +111,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#forbid_navigation").is(":checked")).toBe(false);
     });
@@ -119,7 +119,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#forbid_statistic").is(":checked")).toBe(false);
     });
@@ -127,7 +127,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#input_nav").is(":checked")).toBe(false);
     });
@@ -135,7 +135,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.authorize_all();
       //when
-      $('#authorize_all').click()
+      $('#authorize_all').click();
       //then
       expect($("#input_stat").is(":checked")).toBe(false);
     });
@@ -145,7 +145,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('#forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#forbid_statistic").is(":checked")).toBe(true);
     });
@@ -153,7 +153,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('#forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#forbid_navigation").is(":checked")).toBe(true);
     });
@@ -161,7 +161,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('#forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#input_nav").is(":checked")).toBe(true);
     });
@@ -169,7 +169,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('#forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#input_stat").is(":checked")).toBe(true);
     });
@@ -177,7 +177,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(false);
     });
@@ -185,7 +185,7 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('forbid_all').click()
+      $('#forbid_all').click();
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(false);
     });
@@ -193,8 +193,11 @@ describe('cookies.js', function() {
   describe('authorize_navigation', function() {
     it('Should uncheck forbid_all when you click on authorize_navigation', function() {
       //given
+      clara.cookies.authorize_navigation();
       //when
+      $('#authorize_navigation').click();
       //then
+      expect($("#forbid_all").is(":checked")).toBe(false);
     });
   });
 
