@@ -9,10 +9,12 @@ describe('aids_collection.js', function() {
   var find_col_nb_for;
   var extract_column_for;
   var clean_column_of;
+  var find_row_whose_id_is;
   beforeEach(function(){
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
     clean_column_of = _.get(window, "clara.aids.clean_column_of");
+    find_row_whose_id_is = _.get(window, "clara.aids.clean_column_of");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
