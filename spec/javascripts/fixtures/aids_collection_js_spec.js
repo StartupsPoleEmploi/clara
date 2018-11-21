@@ -163,9 +163,12 @@ describe('aids_collection.js', function() {
     it('Shoud define a clara.aids.extract_all_ids function', function() {
       expect(_.isFunction(extract_all_ids)).toEqual(true);
     });  
-    it('Should return an array', function() {});  
-    it('Should return an array of integer', function() {});  
-    it('Should return the correct array of integer', function() {});  
+    it('Should return an array', function() {
+      expect(_.isArray(extract_all_ids())).toEqual(true);
+    });  
+    it('Should return the correct array of integer', function() {
+      expect(extract_all_ids()).toEqual([ 29, 32, 31, 38, 27, 66, 7, 35, 82, 39, 81, 90, 75, 21, 44, 93, 52, 57, 28, 68 ]);
+    });  
   });
   
 
