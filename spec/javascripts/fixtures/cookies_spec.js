@@ -26,7 +26,7 @@ describe('cookies.js', function() {
                         ');
   });
 
-  afterEach(function() {
+/*  afterEach(function() {
     $("#authorize_all").remove();
     $("#forbid_all").remove();
     $("#authorize_statistic").remove();
@@ -35,7 +35,7 @@ describe('cookies.js', function() {
     $("#forbid_statistic").remove();
     $("#input_stat").remove();
     $("#input_nav").remove();
-  })
+  })*/
 
   describe('init_cookies_preferences', function() {
     
@@ -91,10 +91,11 @@ describe('cookies.js', function() {
   });
 
   describe('authorize_all', function() {
-    it('Should check authorize_statistic when you click on authorize_all', function() {
+    it('test', function() {
       //given
-      //when
       clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
       //then
       expect($("#authorize_statistic").is(":checked")).toBe(true);
     });
