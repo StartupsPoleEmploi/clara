@@ -7,7 +7,9 @@ describe('aids_collection.js', function() {
     
     // inspired by https://stackoverflow.com/a/14292476/2595513
     var htmlContent;
+    var find_col_nb_for;
     beforeEach(function(){
+      find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
       var realistic_paginated_aid_collection = MagicLamp.load("realistic_paginated_aid_collection");
       htmlContent = $(realistic_paginated_aid_collection);
       htmlContent.attr("id", "realistic_paginated_aid_collection")
@@ -20,19 +22,15 @@ describe('aids_collection.js', function() {
     });
 
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
-      expect(_.isFunction(_.get(window, "clara.aids.find_col_nb_for"))).toEqual(true);
+      expect(_.isFunction(find_col_nb_for)).toEqual(true);
     });  
     it('Is able to find column number of column "id" in a paginated collection', function() {
-      // given
-      var find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
       // when
       var res = find_col_nb_for("id");
       // the
       expect(res).toEqual(1);
     });  
     it('Is able to find column number of column "filters" in a paginated collection', function() {
-      // given
-      var find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
       // when
       var res = find_col_nb_for("filters");
       // the
