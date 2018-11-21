@@ -48,6 +48,45 @@ describe('cookies.js', function() {
       expect($("#authorize_navigation").is(":checked")).toBe(true)
     });
 
-
+    it("Arriving on the page authorize_statistic should be checked", function() {
+      // given
+      $("#authorize_all").prop("checked", true)
+      // when
+      clara.cookies.init_cookies_preferences();
+      // then
+      expect($("#authorize_statistic").is(":checked")).toBe(true)
+    });
+    it("Arriving on the page forbid_statistic should be unchecked", function() {
+      // given
+      $("#authorize_all").prop("checked", true)
+      // when
+      clara.cookies.init_cookies_preferences();
+      // then
+      expect($("#forbid_statistic").is(":checked")).toBe(false)
+    });
+    it("Arriving on the page forbid_navigation should be unchecked", function() {
+      // given
+      $("#authorize_all").prop("checked", true)
+      // when
+      clara.cookies.init_cookies_preferences();
+      // then
+      expect($("#forbid_navigation").is(":checked")).toBe(false)
+    });
+    it("Arriving on the page input_nav should be unchecked", function() {
+      // given
+      $("#authorize_all").prop("checked", true)
+      // when
+      clara.cookies.init_cookies_preferences();
+      // then
+      expect($("#input_nav").is(":checked")).toBe(false)
+    });
+    it("Arriving on the page input_stat should be unchecked", function() {
+      // given
+      $("#authorize_all").prop("checked", true)
+      // when
+      clara.cookies.init_cookies_preferences();
+      // then
+      expect($("#input_stat").is(":checked")).toBe(false)
+    });
   });
 });
