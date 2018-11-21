@@ -35,16 +35,10 @@ _.set(window, 'clara.aids.find_cell_for', function(jq_row, filter_column_name) {
 });
 
 _.set(window, 'clara.aids.treat_successfully_retrieved_filters', function(aids) {
-  console.log("aids are : ");
-  console.log(JSON.stringify(aids));
-  console.log("");
   var items = ["filters", "need_filters", "custom_filters"];
   _.each(items, clara.aids.clean_column_of);
   _.each(aids, function(aid) {
     var $row = clara.aids.find_row_whose_id_is(aid["id"]);
-    console.log("$row");
-    console.log($row);
-    console.log("");
     _.each(items, function(item) {
       var $cell = clara.aids.find_cell_for($row, item);
       _.each(aid[item], function(filter_obj){
