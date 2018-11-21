@@ -1,3 +1,5 @@
+//= require fontfaceobserver
+
 load_js_for_page(["welcome", "index"], function() {
 
   store.clearAll();
@@ -16,5 +18,13 @@ load_js_for_page(["welcome", "index"], function() {
     console.log("Date : " + _.fullDateFr());
     console.log("Version : " + clara.version);
   });
+
+
+
+var font = new FontFaceObserver('Roboto');
+
+font.load().then(function () {
+  console.log('My Family has loaded');
+});
 
 });
