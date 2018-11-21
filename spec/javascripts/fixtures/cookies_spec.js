@@ -6,11 +6,11 @@
 
 describe('cookies.js', function() {
 
-
-
-  
   it('Should have clara mapped', function() {
     expect(clara).toBeDefined();
+  });
+
+  it('Should have cookies mapped to clara', function() {
     expect(clara.cookies).toBeDefined();
   });
 
@@ -24,20 +24,21 @@ describe('cookies.js', function() {
                         ');
   });
 
-  afterEach(function() {
+/*  afterEach(function() {
     $("#authorize_all").remove();
     $("#forbid_all").remove();
     $("#authorize_statistic").remove();
     $("#authorize_navigation").remove();
     $("#forbid_navigation").remove();
     $("#forbid_statistic").remove();
-  })
+  })*/
 
   it("Should check all checkbox when you click on 'Tout Autoriser'", function() {
     // given
     // when
+    clara.cookies();
     // then
-//    expect($("#authorize_statistic").is(":checked")).toBe(true)
-//    expect($("#authorize_navigation").is(":checked")).toBe(true)
+    expect($("#authorize_statistic").is(":checked")).toBe(true)
+    expect($("#authorize_navigation").is(":checked")).toBe(true)
   });
 });
