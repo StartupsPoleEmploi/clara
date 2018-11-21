@@ -31,7 +31,7 @@ $( document ).ready(function() {
     var items = ["filters", "need_filters", "custom_filters"]
     _.each(items, clara.aids.clean_column_of);
     _.each(aids, function(aid) {
-      var $row = find_row_whose_id_is(aid["id"]);
+      var $row = clara.aids.find_row_whose_id_is(aid["id"]);
       _.each(items, function(item) {
         var $cell = find_cell_for($row, item);
         _.each(aid[item], function(filter_obj){
@@ -44,15 +44,6 @@ $( document ).ready(function() {
   function find_cell_for(jq_row, filter_column_name) {
     var col_nb = clara.aids.find_col_nb_for(filter_column_name);
     return $(jq_row).find("td:eq(" + col_nb + ")");
-  }
-
-  function find_row_whose_id_is(id_value) {
-    var id_col_nb = clara.aids.find_col_nb_for("id");
-    var id_value_as_str = id_value.toString();
-    return $('.js-table-row').filter(function(i, e) {
-      var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
-      return id_value_as_str === id_as_string;
-    });
   }
 
   if (window.location.pathname === "/admin/aids") {
