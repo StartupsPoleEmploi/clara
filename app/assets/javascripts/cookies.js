@@ -1,4 +1,12 @@
 _.set(window, 'clara.cookies', {
+    init_cookies_preferences: function() {
+      if($("#authorize_all").is(":checked")) {
+        $("#authorize_statistic").prop("checked", true);
+        $("#authorize_navigation").prop("checked", true);
+        $("#input_nav").prop("checked", false);
+        $("#input_stat").prop("checked", false);
+      };
+    };
     authorize_all: function() {
       $("#authorize_all").click(function() {
         $("#authorize_statistic").prop("checked", true);
@@ -21,17 +29,11 @@ _.set(window, 'clara.cookies', {
 load_js_for_page(["cookies", "edit"], function() {
 
   $("input:radio:first").focus();
-
-  clara.cookies.authorize_all();
-
   $("#authorize_all").prop("checked", true);
+  clara.cookies.init_cookies_preferences();
+  clara.cookies.authorize_all();
+  clara.cookies.forbid_all();
 
-  if($("#authorize_all").is(":checked")) {
-    $("#authorize_statistic").prop("checked", true);
-    $("#authorize_navigation").prop("checked", true);
-    $("#input_nav").prop("checked", false);
-    $("#input_stat").prop("checked", false);
-  };
 
 
   $("#forbid_all").click(function() {
