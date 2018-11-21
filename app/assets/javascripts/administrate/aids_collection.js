@@ -1,4 +1,4 @@
-_.set(window, 'clara.aids.find_col_nb_for', function(stuff){
+_.set(window, 'clara.aids.find_col_nb_for', function(stuff) {
     var id_col_nb = -1;
     $('th[role="columnheader"]').each(function(current_index, elt) {
       var href_value = $(elt).find('a').attr('href');
@@ -8,6 +8,10 @@ _.set(window, 'clara.aids.find_col_nb_for', function(stuff){
       }
     });
     return id_col_nb;
+});
+_.set(window, 'clara.aids.extract_column_for', function(stuff) {
+    var col_nb = clara.aids.find_col_nb_for(stuff);
+    return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
 });
 
 $( document ).ready(function() {
