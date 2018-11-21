@@ -29,6 +29,11 @@ _.set(window, 'clara.aids.find_row_whose_id_is', function(id_value) {
   });
 });
 
+_.set(window, 'clara.aids.find_cell_for', function(jq_row, filter_column_name) {
+  var col_nb = clara.aids.find_col_nb_for(filter_column_name);
+  return $(jq_row).find("td:eq(" + col_nb + ")");
+});
+
 $( document ).ready(function() {
 
   function treat_successfully_retrieved_filters(aids) {
@@ -37,17 +42,12 @@ $( document ).ready(function() {
     _.each(aids, function(aid) {
       var $row = clara.aids.find_row_whose_id_is(aid["id"]);
       _.each(items, function(item) {
-        var $cell = find_cell_for($row, item);
+        var $cell = clara.aids.find_cell_for($row, item);
         _.each(aid[item], function(filter_obj){
           $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
         });
       })
     });
-  }
-
-  function find_cell_for(jq_row, filter_column_name) {
-    var col_nb = clara.aids.find_col_nb_for(filter_column_name);
-    return $(jq_row).find("td:eq(" + col_nb + ")");
   }
 
   if (window.location.pathname === "/admin/aids") {

@@ -10,11 +10,13 @@ describe('aids_collection.js', function() {
   var extract_column_for;
   var clean_column_of;
   var find_row_whose_id_is;
+  var find_cell_for;
   beforeEach(function(){
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
     clean_column_of = _.get(window, "clara.aids.clean_column_of");
     find_row_whose_id_is = _.get(window, "clara.aids.find_row_whose_id_is");
+    find_cell_for = _.get(window, "clara.aids.find_cell_for");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
@@ -109,17 +111,17 @@ describe('aids_collection.js', function() {
     });  
     it('Should return a jQuery object', function() {
       var $row = find_row_whose_id_is(7);
-      var res = find_cell_for("need_filters");
+      var res = find_cell_for($row, "need_filters");
       expect(res instanceof jQuery).toEqual(true);
     });  
     it('Should return a jQuery object cell', function() {
       var $row = find_row_whose_id_is(7);
-      var res = find_cell_for("need_filters");
+      var res = find_cell_for($row, "need_filters");
       expect(res.prop("tagName")).toEqual("TD");
     });  
     it('Row with given ID (7) and filter "need_filters" has position(x,y) 42, 42 in the table', function() {
       var $row = find_row_whose_id_is(7);
-      var res = find_cell_for("need_filters");
+      var res = find_cell_for($row, "need_filters");
       // See https://stackoverflow.com/a/1775509/2595513
       expect(res[0].cellIndex).toEqual(42);
       expect(res[0].parentNode.rowIndex).toEqual(42);
