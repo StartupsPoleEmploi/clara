@@ -35,6 +35,8 @@ _.set(window, 'clara.aids.find_cell_for', function(jq_row, filter_column_name) {
 });
 
 _.set(window, 'clara.aids.treat_successfully_retrieved_filters', function(aids) {
+  console.log("aids are : ")
+  console.log(JSON.stringify(aids))
   var items = ["filters", "need_filters", "custom_filters"]
   _.each(items, clara.aids.clean_column_of);
   _.each(aids, function(aid) {
