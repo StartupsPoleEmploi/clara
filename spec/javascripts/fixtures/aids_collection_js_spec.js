@@ -40,6 +40,12 @@ describe('aids_collection.js', function() {
       // when
       var res = find_col_nb_for("need_filters");
       // the
+      expect(res).toEqual(5);
+    });  
+    it('Is able to find column number of column "custom_filters" in a paginated collection', function() {
+      // when
+      var res = find_col_nb_for("custom_filters");
+      // the
       expect(res).toEqual(7);
     });  
   });
