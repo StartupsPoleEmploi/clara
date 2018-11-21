@@ -32,12 +32,12 @@ $( document ).ready(function() {
   }
 
   function find_cell_for(jq_row, filter_column_name) {
-    var col_nb = find_col_nb_for(filter_column_name);
+    var col_nb = clara.aids.find_col_nb_for(filter_column_name);
     return $(jq_row).find("td:eq(" + col_nb + ")");
   }
 
   function find_row_whose_id_is(id_value) {
-    var id_col_nb = find_col_nb_for("id");
+    var id_col_nb = clara.aids.find_col_nb_for("id");
     var id_value_as_str = id_value.toString();
     return $('.js-table-row').filter(function(i, e) {
       var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
@@ -45,20 +45,8 @@ $( document ).ready(function() {
     });
   }
 
-  function find_col_nb_for(stuff) {
-    var id_col_nb = -1;
-    $('th[role="columnheader"]').each(function(current_index, elt) {
-      var href_value = $(elt).find('a').attr('href');
-      var current_target = href_value.split("order=")[1].split("&")[0];  
-      if (current_target === stuff) {
-        id_col_nb = current_index;
-      }
-    });
-    return id_col_nb;
-  }
-
   function extract_column_for(stuff) {
-    var col_nb = find_col_nb_for(stuff);
+    var col_nb = clara.aids.find_col_nb_for(stuff);
     return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
   }
 
@@ -66,10 +54,10 @@ $( document ).ready(function() {
 
     var displayed_ids = []
     $('.js-table-row').each(function(i,e) {
-      var id_as_string = $(e).find("td:eq(" + find_col_nb_for("id") + ")").text().trim();
+      var id_as_string = $(e).find("td:eq(" + clara.aids.find_col_nb_for("id") + ")").text().trim();
       displayed_ids.push(parseInt(id_as_string, 10));
     });
-      console.log(find_col_nb_for("id"));
+      console.log(clara.aids.find_col_nb_for("id"));
       console.log(displayed_ids);
 
     $.ajax({
