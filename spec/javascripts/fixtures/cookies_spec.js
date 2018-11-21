@@ -173,6 +173,14 @@ describe('cookies.js', function() {
       //then
       expect($("#input_stat").is(":checked")).toBe(true);
     });
+    it('Should not check authorize_navigation when you click on forbid_all', function() {
+      //given
+      clara.cookies.forbid_all();
+      //when
+      $('authorize_navigation').click()
+      //then
+      expect($("#authorize_navigation").is(":checked")).toBe(false);
+    });
   }); 
 
 });
