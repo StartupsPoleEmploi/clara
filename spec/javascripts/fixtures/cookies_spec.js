@@ -251,11 +251,19 @@ describe('cookies.js', function() {
   describe('forbid_navigation', function() {
     it('Should uncheck authorize_all when you click on forbid_navigation', function() {
       //given
-      clara.cookies.forbid_statistic();
+      clara.cookies.forbid_navigation();
       //when
-      $('#authorize_statistic').click();
+      $('#forbid_navigation').click();
       //then
       expect($("#authorize_all").is(":checked")).toBe(false);
+    });
+    it('Should check input_nav when you click on forbid_navigation', function() {
+      //given
+      clara.cookies.forbid_navigation();
+      //when
+      $('#forbid_navigation').click();
+      //then
+      expect($("#input_nav").is(":checked")).toBe(true);
     });
   });
 });
