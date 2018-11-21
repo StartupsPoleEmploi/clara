@@ -16,6 +16,14 @@ _.set(window, 'clara.aids.extract_column_for', function(stuff) {
 _.set(window, 'clara.aids.clean_column_of', function(stuff) {
   clara.aids.extract_column_for(stuff).each(function(i,e){$(e).empty();});
 });
+_.set(window, 'clara.aids.find_row_whose_id_is', function(id_value) {
+  var id_col_nb = clara.aids.find_col_nb_for("id");
+  var id_value_as_str = id_value.toString();
+  return $('.js-table-row').filter(function(i, e) {
+    var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
+    return id_value_as_str === id_as_string;
+  });
+});
 
 $( document ).ready(function() {
 

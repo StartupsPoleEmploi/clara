@@ -14,7 +14,7 @@ describe('aids_collection.js', function() {
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
     clean_column_of = _.get(window, "clara.aids.clean_column_of");
-    find_row_whose_id_is = _.get(window, "clara.aids.clean_column_of");
+    find_row_whose_id_is = _.get(window, "clara.aids.find_row_whose_id_is");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
@@ -89,8 +89,13 @@ describe('aids_collection.js', function() {
     it('Shoud define a clara.aids.find_row_whose_id_is function', function() {
       expect(_.isFunction(find_row_whose_id_is)).toEqual(true);
     });  
+    it('Should return a jQuery object', function() {
+      var res = find_row_whose_id_is(7);
+      expect(res instanceof jQuery).toEqual(true);
+    });  
     it('Should be able to find a row with given ID', function() {
-      
+      // var res = find_row_whose_id_is(7);
+      // expect(res).toEqual(2);
     });  
   });
   
