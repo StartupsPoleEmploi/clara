@@ -58,25 +58,45 @@ _.set(window, 'clara.aids.extract_all_ids', function() {
 });
 
 
-$( document ).ready(function() {
 
-  if (window.location.pathname === "/admin/aids") {
+load_js_prod(function only_if(){console.log("hey");return window.location.pathname === "/admin/aids"}, function () {
 
-    $.ajax({
-        url: "/admin/find_filters",
-        type:'GET',
-        dataType:'json',
-        data:{
-          ids: clara.aids.extract_all_ids()
-        },
-        success:function(data){
-          clara.aids.treat_successfully_retrieved_filters(data["aids"])
-        },
-        error:function(data){
-          console.log("error");
-          console.error(data);
-        }
-      });
+  $.ajax({
+    url: "/admin/find_filters",
+    type:'GET',
+    dataType:'json',
+    data:{
+      ids: clara.aids.extract_all_ids()
+    },
+    success:function(data){
+      clara.aids.treat_successfully_retrieved_filters(data["aids"])
+    },
+    error:function(data){
+      console.log("error");
+      console.error(data);
+    }
+  });
 
-  }
 });
+
+// $( document ).ready(function() {
+
+//   if (window.location.pathname === "/admin/aids") {
+
+//     $.ajax({
+//         url: "/admin/find_filters",
+//         type:'GET',
+//         dataType:'json',
+//         data:{
+//           ids: clara.aids.extract_all_ids()
+//         },
+//         success:function(data){
+//           clara.aids.treat_successfully_retrieved_filters(data["aids"])
+//         },
+//         error:function(data){
+//           console.log("error");
+//           console.error(data);
+//         }
+//       });
+//     }
+// });

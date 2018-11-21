@@ -1,5 +1,6 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
+//= require load_js_prod
 //= require jquery
 //= require administrate/aids_collection
 describe('aids_collection.js', function() {
