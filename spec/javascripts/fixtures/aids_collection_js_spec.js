@@ -30,5 +30,13 @@ describe('aids_collection.js', function() {
       // the
       expect(res).toEqual(1);
     });  
+    it('Is able to find column number of column "filters" in a paginated collection', function() {
+      // given
+      var find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
+      // when
+      var res = find_col_nb_for("filters");
+      // the
+      expect(res).toEqual(7);
+    });  
   });
 });
