@@ -18,7 +18,7 @@ $( document ).ready(function() {
 
 
   function clean_column_of(stuff) {
-    extract_column_for(stuff).each(function(i,e){$(e).empty();});
+    clara.aids.extract_column_for(stuff).each(function(i,e){$(e).empty();});
   }
 
   function treat_successfully_retrieved_filters(aids) {
@@ -47,11 +47,6 @@ $( document ).ready(function() {
       var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
       return id_value_as_str === id_as_string;
     });
-  }
-
-  function extract_column_for(stuff) {
-    var col_nb = clara.aids.find_col_nb_for(stuff);
-    return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
   }
 
   if (window.location.pathname === "/admin/aids") {
