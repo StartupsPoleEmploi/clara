@@ -91,13 +91,21 @@ describe('cookies.js', function() {
   });
 
   describe('authorize_all', function() {
-    it('test', function() {
+    it('Should check authorize_statistic when you click on authorize_all', function() {
       //given
       clara.cookies.authorize_all();
       //when
       $('#authorize_all').click()
       //then
       expect($("#authorize_statistic").is(":checked")).toBe(true);
+    });
+    it('Should check authorize_navigation when you click on authorize_all', function() {
+      //given
+      clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
+      //then
+      expect($("#authorize_navigation").is(":checked")).toBe(true);
     });
   });
 
