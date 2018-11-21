@@ -14,7 +14,7 @@ describe('cookies.js', function() {
     expect(clara.cookies).toBeDefined();
   });
 
-  beforeEach(function() { 
+/*  beforeEach(function() { 
     $('body').append(' <input id="authorize_all" name="control_all" type="radio" value="authorize_all"></input>           \
                             <input id="forbid_all" name="control_all" type="radio" value="forbid_all"></input>          \
                             <input id="authorize_statistic" name="statistic" type="radio" value="authorize_statistic"></input>                                             \
@@ -22,7 +22,7 @@ describe('cookies.js', function() {
                             <input id="authorize_navigation" name="navigation" type="radio" value="authorize_navigation"></input>  \
                             <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation"></input>                         \
                         ');
-  });
+  });*/
 
 /*  afterEach(function() {
     $("#authorize_all").remove();
@@ -35,6 +35,13 @@ describe('cookies.js', function() {
 
   it("Should check all checkbox when you click on 'Tout Autoriser'", function() {
     // given
+    $('body').append(' <input id="authorize_all" name="control_all" type="radio" value="authorize_all"></input>           \
+                            <input id="forbid_all" name="control_all" type="radio" value="forbid_all"></input>          \
+                            <input id="authorize_statistic" name="statistic" type="radio" value="authorize_statistic"></input>                                             \
+                            <input id="forbid_statistic" name="statistic" type="radio" value="forbid_statistic"></input>              \
+                            <input id="authorize_navigation" name="navigation" type="radio" value="authorize_navigation"></input>  \
+                            <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation"></input>                         \
+                        ');
     // when
     clara.cookies();
     // then
