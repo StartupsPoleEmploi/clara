@@ -199,6 +199,14 @@ describe('cookies.js', function() {
       //then
       expect($("#forbid_all").is(":checked")).toBe(false);
     });
+    it('Should uncheck input_nav when you click on authorize_navigation', function() {
+      //given
+      clara.cookies.authorize_navigation();
+      //when
+      $('#authorize_navigation').click();
+      //then
+      expect($("#input_nav").is(":checked")).toBe(false);
+    });
   });
 
 });
