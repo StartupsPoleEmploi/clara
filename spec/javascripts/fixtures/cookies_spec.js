@@ -207,13 +207,22 @@ describe('cookies.js', function() {
       //then
       expect($("#input_nav").is(":checked")).toBe(false);
     });
-    it('Should check authorize_navigation when you click on authorize_navigation', function() {
+/*    it('Should check authorize_navigation when you click on authorize_navigation', function() {
       //given
       //when
-      clara.cookies.authorize_navigation();
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(true);
+    });*/
+    it('Should check authorize_all when you click on authorize_navigation and if authorize_statistic is checked', function() {
+      //given
+      $("#authorize_statistic").prop("checked", true);
+      clara.cookies.authorize_navigation();
+      //when
+      $('#authorize_navigation').click();
+      //then
+      expect($("#authorize_all").is(":checked")).toBe(true);
     });
+
   });
 
 });
