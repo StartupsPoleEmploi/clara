@@ -1,6 +1,19 @@
-//load_js_for_page(["cookies", "edit"], function() {
+_.set(window, 'clara.cookies', function() {
+    $("#authorize_all").click(function() {
+      $("#authorize_statistic").prop("checked", true);
+      $("#authorize_navigation").prop("checked", true);
+      $("#input_nav").prop("checked", false);
+      $("#input_stat").prop("checked", false);
+    });
+  }
+
+);
+
+load_js_for_page(["cookies", "edit"], function() {
 
   $("input:radio:first").focus();
+
+  clara.cookies();
 
   $("#authorize_all").prop("checked", true);
 
@@ -11,7 +24,7 @@
     $("#input_stat").prop("checked", false);
   };
 
-  var test = function() {
+/*  var test = function() {
     $("#authorize_all").click(function() {
       console.log("bb")
       $("#authorize_statistic").prop("checked", true);
@@ -20,7 +33,14 @@
       $("#input_stat").prop("checked", false);
     });
   }
-  test();
+  test();*/
+
+/*  $("#authorize_all").click(function() {
+    $("#authorize_statistic").prop("checked", true);
+    $("#authorize_navigation").prop("checked", true);
+    $("#input_nav").prop("checked", false);
+    $("#input_stat").prop("checked", false);
+  });*/
 
   $("#forbid_all").click(function() {
     $("#forbid_statistic").prop("checked", true);
@@ -60,5 +80,5 @@
     };
   });
 
-//  })
+  })
   

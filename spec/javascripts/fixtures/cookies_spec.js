@@ -25,6 +25,7 @@ describe('cookies.js', function() {
   
   it('Should have clara mapped', function() {
     expect(clara).toBeDefined();
+    expect(clara.cookies).toBeDefined();
   });
 
   beforeEach(function() { 
