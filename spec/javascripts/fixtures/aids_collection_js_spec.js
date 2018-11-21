@@ -17,36 +17,42 @@ describe('aids_collection.js', function() {
     });
     afterEach(function(){
       // comment line below so that can you see the table inside the browser when debugging
-      $('table[aria-labelledby="page-title"]').remove();
+      // $('table[aria-labelledby="page-title"]').remove();
       htmlContent = null;
     });
 
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
       expect(_.isFunction(find_col_nb_for)).toEqual(true);
     });  
-    it('Is able to find column number of column "id" in a paginated collection', function() {
+    it('Is able to find column number (1) of column "id" in a paginated collection', function() {
       // when
       var res = find_col_nb_for("id");
       // the
       expect(res).toEqual(1);
     });  
-    it('Is able to find column number of column "filters" in a paginated collection', function() {
+    it('Is able to find column number (7) of column "filters" in a paginated collection', function() {
       // when
       var res = find_col_nb_for("filters");
       // the
       expect(res).toEqual(7);
     });  
-    it('Is able to find column number of column "need_filters" in a paginated collection', function() {
+    it('Is able to find column number (5) of column "need_filters" in a paginated collection', function() {
       // when
       var res = find_col_nb_for("need_filters");
       // the
       expect(res).toEqual(5);
     });  
-    it('Is able to find column number of column "custom_filters" in a paginated collection', function() {
+    it('Is able to find column number (6) of column "custom_filters" in a paginated collection', function() {
       // when
       var res = find_col_nb_for("custom_filters");
       // the
       expect(res).toEqual(6);
+    });  
+    it('Should return -1 for a column that doesn\'t exist', function() {
+      // when
+      var res = find_col_nb_for("unexisting_value");
+      // the
+      expect(res).toEqual(-1);
     });  
   });
 });
