@@ -10,9 +10,7 @@ describe('aids_collection.js', function() {
     var find_col_nb_for;
     beforeEach(function(){
       find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
-      var realistic_paginated_aid_collection = MagicLamp.load("realistic_paginated_aid_collection");
-      htmlContent = $(realistic_paginated_aid_collection);
-      htmlContent.attr("id", "realistic_paginated_aid_collection")
+      htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
       $(document.body).append(htmlContent);
     });
     afterEach(function(){
@@ -61,9 +59,7 @@ describe('aids_collection.js', function() {
     var extract_column_for;
     beforeEach(function(){
       extract_column_for = _.get(window, "clara.aids.extract_column_for");
-      var realistic_paginated_aid_collection = MagicLamp.load("realistic_paginated_aid_collection");
-      htmlContent = $(realistic_paginated_aid_collection);
-      htmlContent.attr("id", "realistic_paginated_aid_collection");
+      htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
       $(document.body).append(htmlContent);
     });
     afterEach(function(){
