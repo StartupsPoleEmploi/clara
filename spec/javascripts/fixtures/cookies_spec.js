@@ -177,10 +177,25 @@ describe('cookies.js', function() {
       //given
       clara.cookies.forbid_all();
       //when
-      $('authorize_navigation').click()
+      $('forbid_all').click()
+      //then
+      expect($("#authorize_navigation").is(":checked")).toBe(false);
+    });
+    it('Should not check authorize_statistic when you click on forbid_all', function() {
+      //given
+      clara.cookies.forbid_all();
+      //when
+      $('forbid_all').click()
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(false);
     });
   }); 
+  describe('authorize_navigation', function() {
+    it('Should uncheck forbid_all when you click on authorize_navigation', function() {
+      //given
+      //when
+      //then
+    });
+  });
 
 });
