@@ -68,20 +68,12 @@ $( document ).ready(function() {
 
   if (window.location.pathname === "/admin/aids") {
 
-    var displayed_ids = []
-    $('.js-table-row').each(function(i,e) {
-      var id_as_string = $(e).find("td:eq(" + clara.aids.find_col_nb_for("id") + ")").text().trim();
-      displayed_ids.push(parseInt(id_as_string, 10));
-    });
-    console.log(clara.aids.find_col_nb_for("id"));
-    console.log(displayed_ids);
-
     $.ajax({
         url: "/admin/find_filters",
         type:'GET',
         dataType:'json',
         data:{
-          ids: displayed_ids
+          ids: clara.aids.extract_all_ids()
           // authenticity_token: window._token
         },
         success:function(data){
