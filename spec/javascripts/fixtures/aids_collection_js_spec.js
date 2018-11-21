@@ -46,7 +46,7 @@ describe('aids_collection.js', function() {
       // when
       var res = find_col_nb_for("custom_filters");
       // the
-      expect(res).toEqual(7);
+      expect(res).toEqual(6);
     });  
   });
 });
