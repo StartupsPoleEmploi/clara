@@ -93,9 +93,13 @@ describe('aids_collection.js', function() {
       var res = find_row_whose_id_is(7);
       expect(res instanceof jQuery).toEqual(true);
     });  
-    it('Should be able to find a row with given ID', function() {
-      // var res = find_row_whose_id_is(7);
-      // expect(res).toEqual(2);
+    it('Should return a jQuery object row', function() {
+      var res = find_row_whose_id_is(7);
+      expect(res.prop("tagName")).toEqual("TR");
+    });  
+    it('Row with given ID (7) is "Autre frais dérogatoire"', function() {
+      var res = find_row_whose_id_is(7);
+      expect(res.attr("data-url")).toEqual("/admin/aids/autres-frais-derogatoires");
     });  
   });
   
