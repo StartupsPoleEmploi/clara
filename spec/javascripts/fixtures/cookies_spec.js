@@ -89,4 +89,9 @@ describe('cookies.js', function() {
       expect($("#input_stat").is(":checked")).toBe(false)
     });
   });
+
+  describe('authorize_all', function() {
+    
+  });
+
 });
