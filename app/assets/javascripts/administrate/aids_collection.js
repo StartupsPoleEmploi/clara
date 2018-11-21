@@ -1,23 +1,17 @@
-_.set(window, 'clara.aids.query_string', function(){
-    // from https://stackoverflow.com/a/3855394/2595513
-    if (a == "") return {};
-    var b = {};
-    for (var i = 0; i < a.length; ++i)
-    {
-        var p=a[i].split('=', 2);
-        if (p.length == 1)
-            b[p[0]] = "";
-        else
-            b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-    }
-    return b;
+_.set(window, 'clara.aids.find_col_nb_for', function(stuff){
+    var id_col_nb = -1;
+    $('th[role="columnheader"]').each(function(current_index, elt) {
+      var href_value = $(elt).find('a').attr('href');
+      var current_target = href_value.split("order=")[1].split("&")[0];  
+      if (current_target === stuff) {
+        id_col_nb = current_index;
+      }
+    });
+    return id_col_nb;
 });
 
 $( document ).ready(function() {
 
-  function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-  }
 
   function clean_column_of(stuff) {
     extract_column_for(stuff).each(function(i,e){$(e).empty();});
