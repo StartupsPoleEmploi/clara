@@ -26,7 +26,7 @@ describe('cookies.js', function() {
                         ');
   });
 
-/*  afterEach(function() {
+  afterEach(function() {
     $("#authorize_all").remove();
     $("#forbid_all").remove();
     $("#authorize_statistic").remove();
@@ -35,7 +35,7 @@ describe('cookies.js', function() {
     $("#forbid_statistic").remove();
     $("#input_stat").remove();
     $("#input_nav").remove();
-  })*/
+  })
 
   describe('init_cookies_preferences', function() {
     
@@ -107,6 +107,41 @@ describe('cookies.js', function() {
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(true);
     });
+    it('Should not check forbid_navigation when you click on authorize_all', function() {
+      //given
+      clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
+      //then
+      expect($("#forbid_navigation").is(":checked")).toBe(false);
+    });
+    it('Should not check forbid_statistic when you click on authorize_all', function() {
+      //given
+      clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
+      //then
+      expect($("#forbid_statistic").is(":checked")).toBe(false);
+    });
+    it('Should not check input_nav when you click on authorize_all', function() {
+      //given
+      clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
+      //then
+      expect($("#input_nav").is(":checked")).toBe(false);
+    });
+    it('Should not check input_stat when you click on authorize_all', function() {
+      //given
+      clara.cookies.authorize_all();
+      //when
+      $('#authorize_all').click()
+      //then
+      expect($("#input_stat").is(":checked")).toBe(false);
+    });
+  });
+  describe('forbid_all', function() {
+    
   });
 
 });
