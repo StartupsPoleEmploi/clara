@@ -24,33 +24,33 @@ describe('aids_collection.js', function() {
       expect(_.isFunction(find_col_nb_for)).toEqual(true);
     });  
     it('Is able to find column number (1) of column "id" in a paginated collection', function() {
-      // when
+      // When
       var res = find_col_nb_for("id");
-      // the
+      // Then
       expect(res).toEqual(1);
     });  
     it('Is able to find column number (7) of column "filters" in a paginated collection', function() {
-      // when
+      // When
       var res = find_col_nb_for("filters");
-      // the
+      // Then
       expect(res).toEqual(7);
     });  
     it('Is able to find column number (5) of column "need_filters" in a paginated collection', function() {
-      // when
+      // When
       var res = find_col_nb_for("need_filters");
-      // the
+      // Then
       expect(res).toEqual(5);
     });  
     it('Is able to find column number (6) of column "custom_filters" in a paginated collection', function() {
-      // when
+      // When
       var res = find_col_nb_for("custom_filters");
-      // the
+      // Then
       expect(res).toEqual(6);
     });  
     it('Should return -1 for a column that doesn\'t exist', function() {
-      // when
+      // When
       var res = find_col_nb_for("unexisting_value");
-      // the
+      // Then
       expect(res).toEqual(-1);
     });  
   });
