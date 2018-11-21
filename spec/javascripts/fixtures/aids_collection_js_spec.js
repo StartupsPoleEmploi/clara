@@ -4,20 +4,22 @@
 //= require administrate/aids_collection
 describe('aids_collection.js', function() {
 
+  // inspired by https://stackoverflow.com/a/14292476/2595513
+  var htmlContent;
+  var find_col_nb_for;
+  var extract_column_for;
+  beforeEach(function(){
+    find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
+    extract_column_for = _.get(window, "clara.aids.extract_column_for");
+    htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
+    $(document.body).append(htmlContent);
+  });
+  afterEach(function(){
+    // comment line below so that can you see the table inside the browser when debugging
+    $('table[aria-labelledby="page-title"]').remove();
+    htmlContent = null;
+  });
   describe('clara.aids.find_col_nb_for', function() {
-    // inspired by https://stackoverflow.com/a/14292476/2595513
-    var htmlContent;
-    var find_col_nb_for;
-    beforeEach(function(){
-      find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
-      htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
-      $(document.body).append(htmlContent);
-    });
-    afterEach(function(){
-      // comment line below so that can you see the table inside the browser when debugging
-      $('table[aria-labelledby="page-title"]').remove();
-      htmlContent = null;
-    });
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
       expect(_.isFunction(find_col_nb_for)).toEqual(true);
     });  
@@ -54,19 +56,6 @@ describe('aids_collection.js', function() {
   });
 
   describe('clara.aids.extract_column_for', function() {
-    // inspired by https://stackoverflow.com/a/14292476/2595513
-    var htmlContent;
-    var extract_column_for;
-    beforeEach(function(){
-      extract_column_for = _.get(window, "clara.aids.extract_column_for");
-      htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
-      $(document.body).append(htmlContent);
-    });
-    afterEach(function(){
-      // comment line below so that can you see the table inside the browser when debugging
-      $('table[aria-labelledby="page-title"]').remove();
-      htmlContent = null;
-    });
     it('Shoud define a clara.aids.extract_column_for function', function() {
       expect(_.isFunction(extract_column_for)).toEqual(true);
     });  
