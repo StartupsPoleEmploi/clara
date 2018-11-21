@@ -19,6 +19,7 @@ describe('aids_collection.js', function() {
     $('table[aria-labelledby="page-title"]').remove();
     htmlContent = null;
   });
+
   describe('clara.aids.find_col_nb_for', function() {
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
       expect(_.isFunction(find_col_nb_for)).toEqual(true);

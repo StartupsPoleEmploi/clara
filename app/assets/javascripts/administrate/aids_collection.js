@@ -13,17 +13,15 @@ _.set(window, 'clara.aids.extract_column_for', function(stuff) {
     var col_nb = clara.aids.find_col_nb_for(stuff);
     return $('tr.js-table-row td:nth-child('+ (col_nb+1) +')');
 });
+_.set(window, 'clara.aids.clean_column_of', function(stuff) {
+  clara.aids.extract_column_for(stuff).each(function(i,e){$(e).empty();});
+});
 
 $( document ).ready(function() {
 
-
-  function clean_column_of(stuff) {
-    clara.aids.extract_column_for(stuff).each(function(i,e){$(e).empty();});
-  }
-
   function treat_successfully_retrieved_filters(aids) {
     var items = ["filters", "need_filters", "custom_filters"]
-    _.each(items, clean_column_of);
+    _.each(items, clara.aids.clean_column_of);
     _.each(aids, function(aid) {
       var $row = find_row_whose_id_is(aid["id"]);
       _.each(items, function(item) {
