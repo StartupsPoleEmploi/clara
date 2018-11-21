@@ -285,5 +285,13 @@ describe('cookies.js', function() {
       //then
       expect($("#authorize_all").is(":checked")).toBe(false);
     });
+    it('Should check input_stat when you click on forbid_statistic', function() {
+      //given
+      clara.cookies.forbid_statistic();
+      //when
+      $('#forbid_statistic').click();
+      //then
+      expect($("#input_stat").is(":checked")).toBe(true);
+    });
   });
 });
