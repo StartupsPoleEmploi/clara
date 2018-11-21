@@ -48,6 +48,16 @@ _.set(window, 'clara.cookies', {
           $("#forbid_all").prop("checked", true);
         };
       });
+    },
+
+    forbid_statistic: function () {
+      $("#forbid_statistic").click(function() {
+        $('input[name=control_all]').prop('checked',false);
+        $("#input_stat").prop("checked", true);
+        if($("#forbid_navigation").is(":checked")) {
+          $("#forbid_all").prop("checked", true);
+        };
+      });
     }
 });
 
@@ -61,18 +71,7 @@ load_js_for_page(["cookies", "edit"], function() {
   clara.cookies.authorize_navigation();
   clara.cookies.authorize_statistic();
   clara.cookies.forbid_navigation();
+  clara.cookies.forbid_statistic();
 
-
-
-
-
-  $("#forbid_statistic").click(function() {
-    $('input[name=control_all]').prop('checked',false);
-    $("#input_stat").prop("checked", true);
-    if($("#forbid_navigation").is(":checked")) {
-      $("#forbid_all").prop("checked", true);
-    };
-  });
-
-  })
+});
   
