@@ -237,5 +237,18 @@ describe('cookies.js', function() {
       //then
       expect($("#input_nav").is(":checked")).toBe(false);
     });
+    it('Should check authorize_all when you click on authorize_statistic and if authorize_navigation is checked', function() {
+      //given
+      $("#authorize_navigation").prop("checked", true);
+      clara.cookies.authorize_statistic();
+      //when
+      $('#authorize_statistic').click();
+      //then
+      expect($("#authorize_all").is(":checked")).toBe(true);
+    });
+  });
+
+  describe('forbid_navigation', function() {
+    
   });
 });
