@@ -91,7 +91,12 @@ describe('cookies.js', function() {
   });
 
   describe('authorize_all', function() {
-    
+    it('Should check authorize_statistic when you click on authorize_all', function() {
+      //given
+      //when
+      //then
+      expect($("#authorize_statistic").is(":checked")).toBe(true)
+    });
   });
 
 });
