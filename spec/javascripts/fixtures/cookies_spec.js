@@ -140,6 +140,7 @@ describe('cookies.js', function() {
       expect($("#input_stat").is(":checked")).toBe(false);
     });
   });
+
   describe('forbid_all', function() {
     it('Should check forbid_statistic when you click on forbid_all', function() {
       //given
@@ -190,6 +191,7 @@ describe('cookies.js', function() {
       expect($("#authorize_navigation").is(":checked")).toBe(false);
     });
   }); 
+
   describe('authorize_navigation', function() {
     it('Should uncheck forbid_all when you click on authorize_navigation', function() {
       //given
@@ -207,12 +209,6 @@ describe('cookies.js', function() {
       //then
       expect($("#input_nav").is(":checked")).toBe(false);
     });
-/*    it('Should check authorize_navigation when you click on authorize_navigation', function() {
-      //given
-      //when
-      //then
-      expect($("#authorize_navigation").is(":checked")).toBe(true);
-    });*/
     it('Should check authorize_all when you click on authorize_navigation and if authorize_statistic is checked', function() {
       //given
       $("#authorize_statistic").prop("checked", true);
@@ -222,7 +218,16 @@ describe('cookies.js', function() {
       //then
       expect($("#authorize_all").is(":checked")).toBe(true);
     });
-
   });
 
+  describe('authorize_statistic', function() {
+    it('Should uncheck forbid_all when you click on authorize_statistic', function() {
+      //given
+      clara.cookies.authorize_statistic();
+      //when
+      $('#authorize_statistic').click();
+      //then
+      expect($("#forbid_all").is(":checked")).toBe(false);
+    });
+  });
 });
