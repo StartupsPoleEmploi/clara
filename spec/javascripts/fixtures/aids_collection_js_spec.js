@@ -11,12 +11,14 @@ describe('aids_collection.js', function() {
   var clean_column_of;
   var find_row_whose_id_is;
   var find_cell_for;
+  var treat_successfully_retrieved_filters;
   beforeEach(function(){
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
     clean_column_of = _.get(window, "clara.aids.clean_column_of");
     find_row_whose_id_is = _.get(window, "clara.aids.find_row_whose_id_is");
     find_cell_for = _.get(window, "clara.aids.find_cell_for");
+    treat_successfully_retrieved_filters = _.get(window, "clara.aids.treat_successfully_retrieved_filters");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
@@ -132,6 +134,15 @@ describe('aids_collection.js', function() {
       // See https://stackoverflow.com/a/1775509/2595513
       expect(res[0].cellIndex).toEqual(7);
       expect(res[0].parentNode.rowIndex).toEqual(7);
+    });  
+  });
+  
+  describe('clara.aids.treat_successfully_retrieved_filters', function() {
+    it('Shoud define a clara.aids.treat_successfully_retrieved_filters function', function() {
+      expect(_.isFunction(treat_successfully_retrieved_filters)).toEqual(true);
+    });  
+    it('Should be able to put ftags inside the right cell', function() {
+      
     });  
   });
   

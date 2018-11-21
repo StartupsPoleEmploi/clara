@@ -58,8 +58,8 @@ $( document ).ready(function() {
       var id_as_string = $(e).find("td:eq(" + clara.aids.find_col_nb_for("id") + ")").text().trim();
       displayed_ids.push(parseInt(id_as_string, 10));
     });
-      console.log(clara.aids.find_col_nb_for("id"));
-      console.log(displayed_ids);
+    console.log(clara.aids.find_col_nb_for("id"));
+    console.log(displayed_ids);
 
     $.ajax({
         url: "/admin/find_filters",
