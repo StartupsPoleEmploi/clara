@@ -13,7 +13,6 @@ _.set(window, 'clara.cookies', {
         $("#authorize_navigation").prop("checked", true);
         $("#input_nav").prop("checked", false);
         $("#input_stat").prop("checked", false);
-        console.log("byebye")
       });
     },
     forbid_all: function() {
@@ -26,6 +25,7 @@ _.set(window, 'clara.cookies', {
     },
     authorize_navigation: function () {
       $("#authorize_navigation").click(function() {
+        $('input[name=control_all]').prop('checked',false);
         $("#input_nav").prop("checked", false);
         if($("#authorize_statistic").is(":checked")) {
           $("#authorize_all").prop("checked", true);
@@ -34,6 +34,7 @@ _.set(window, 'clara.cookies', {
     },
     authorize_statistic: function() {
       $("#authorize_statistic").click(function() {
+        $('input[name=control_all]').prop('checked',false);
         $("#input_stat").prop("checked", false);
         if($("#authorize_navigation").is(":checked")) {
           $("#authorize_all").prop("checked", true);
