@@ -265,5 +265,14 @@ describe('cookies.js', function() {
       //then
       expect($("#input_nav").is(":checked")).toBe(true);
     });
+    it('Should check forbid_all when you click on forbid_navigation and that forbid_statistic is checked', function() {
+      //given
+      $('#forbid_statistic').prop("checked", true)
+      clara.cookies.forbid_navigation();
+      //when
+      $('#forbid_navigation').click();
+      //then
+      expect($("#forbid_all").is(":checked")).toBe(true);
+    });
   });
 });
