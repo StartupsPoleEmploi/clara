@@ -43,7 +43,7 @@ describe('cookies.js', function() {
                             <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation"></input>                         \
                         ');
     // when
-    clara.cookies();
+    clara.cookies.authorize_all();
     // then
     expect($("#authorize_statistic").is(":checked")).toBe(true)
     expect($("#authorize_navigation").is(":checked")).toBe(true)
