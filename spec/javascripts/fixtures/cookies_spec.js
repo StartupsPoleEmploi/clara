@@ -229,5 +229,13 @@ describe('cookies.js', function() {
       //then
       expect($("#forbid_all").is(":checked")).toBe(false);
     });
+    it('Should uncheck input_nav when you click on authorize_statistic', function() {
+      //given
+      clara.cookies.authorize_statistic();
+      //when
+      $('#authorize_statistic').click();
+      //then
+      expect($("#input_nav").is(":checked")).toBe(false);
+    });
   });
 });
