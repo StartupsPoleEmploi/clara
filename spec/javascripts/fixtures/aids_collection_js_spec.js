@@ -83,5 +83,14 @@ describe('aids_collection.js', function() {
     });  
   });
   
+  describe('clara.aids.find_row_whose_id_is', function() {
+    it('Shoud define a clara.aids.find_row_whose_id_is function', function() {
+      expect(_.isFunction(find_row_whose_id_is)).toEqual(true);
+    });  
+    it('Should be able to find a row with given ID', function() {
+      
+    });  
+  });
+  
 
 });
