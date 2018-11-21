@@ -74,8 +74,12 @@ describe('aids_collection.js', function() {
       expect(_.isFunction(clean_column_of)).toEqual(true);
     });  
     it('Should be able to clean column that has all IDs', function() {
+      // Given
+      expect($(extract_column_for("id")).map(function(i,e){return $(e).text().trim()}).toArray()).toEqual(["29", "32", "31", "38", "27", "66", "7", "35", "82", "39", "81", "90", "75", "21", "44", "93", "52", "57", "28", "68"]);
+      // When
       var res = clean_column_of("id");
-      // expect($(res).map(function(i,e){return $(e).text().trim()}).toArray()).toEqual(["29", "32", "31", "38", "27", "66", "7", "35", "82", "39", "81", "90", "75", "21", "44", "93", "52", "57", "28", "68"]);
+      // Then
+      expect($(extract_column_for("id")).map(function(i,e){return $(e).text().trim()}).toArray()).toEqual(["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
     });  
   });
   
