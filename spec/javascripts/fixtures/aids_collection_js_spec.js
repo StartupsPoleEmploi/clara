@@ -4,17 +4,19 @@
 //= require administrate/aids_collection
 describe('aids_collection.js', function() {
   describe('clara.aids.find_col_nb_for', function() {
+    
+    // inspired by https://stackoverflow.com/a/14292476/2595513
     var htmlContent;
-
     beforeEach(function(){
       var realistic_paginated_aid_collection = MagicLamp.load("realistic_paginated_aid_collection");
       htmlContent = $(realistic_paginated_aid_collection);
       $(document.body).append(htmlContent);
     });
     afterEach(function(){
-      htmlContent.remove();
+      $('table[aria-labelledby="page-title"]').remove();
       htmlContent = null;
     });
+
     it('Shoud define a clara.aids.find_col_nb_for function', function() {
       expect(_.isFunction(_.get(window, "clara.aids.find_col_nb_for"))).toEqual(true);
     });  
