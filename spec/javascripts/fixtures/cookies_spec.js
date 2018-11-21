@@ -26,14 +26,14 @@ describe('cookies.js', function() {
                         ');
   });
 
-  afterEach(function() {
+/*  afterEach(function() {
     $("#authorize_all").remove();
     $("#forbid_all").remove();
     $("#authorize_statistic").remove();
     $("#authorize_navigation").remove();
     $("#forbid_navigation").remove();
     $("#forbid_statistic").remove();
-  })
+  })*/
 
   describe('authorize_all', function() {
     
