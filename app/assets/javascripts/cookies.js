@@ -4,6 +4,7 @@ _.set(window, 'clara.cookies', function() {
       $("#authorize_navigation").prop("checked", true);
       $("#input_nav").prop("checked", false);
       $("#input_stat").prop("checked", false);
+      console.log("byebye")
     });
   }
 
