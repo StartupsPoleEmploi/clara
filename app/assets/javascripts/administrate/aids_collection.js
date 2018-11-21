@@ -74,7 +74,6 @@ $( document ).ready(function() {
         dataType:'json',
         data:{
           ids: clara.aids.extract_all_ids()
-          // authenticity_token: window._token
         },
         success:function(data){
           clara.aids.treat_successfully_retrieved_filters(data["aids"])
