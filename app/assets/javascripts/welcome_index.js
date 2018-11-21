@@ -21,10 +21,16 @@ load_js_for_page(["welcome", "index"], function() {
 
 
 
-var font = new FontFaceObserver('Roboto');
+var fontRoboto = new FontFaceObserver('Roboto');
+var fontSansSerif = new FontFaceObserver('sans-serif');
 
-font.load().then(function () {
-  console.log('My Family has loaded');
+
+fontRoboto.load().then(function () {
+  console.log('Family Roboto is available');
+});
+
+fontSansSerif.load().then(function () {
+  console.log('Family SansSerif is available');
 });
 
 });
