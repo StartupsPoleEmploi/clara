@@ -1,7 +1,5 @@
-$( document ).ready(function() {
-
-  // from https://stackoverflow.com/a/3855394/2595513
-  function query_string(a) {
+_.set(window, 'clara.aids.query_string', function(){
+    // from https://stackoverflow.com/a/3855394/2595513
     if (a == "") return {};
     var b = {};
     for (var i = 0; i < a.length; ++i)
@@ -13,7 +11,9 @@ $( document ).ready(function() {
             b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
     }
     return b;
-  }
+});
+
+$( document ).ready(function() {
 
   function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
@@ -39,20 +39,14 @@ $( document ).ready(function() {
 
   function find_cell_for(jq_row, filter_column_name) {
     var col_nb = find_col_nb_for(filter_column_name);
-    // console.log(col_nb);
     return $(jq_row).find("td:eq(" + col_nb + ")");
   }
 
   function find_row_whose_id_is(id_value) {
     var id_col_nb = find_col_nb_for("id");
-    // console.log(id_col_nb)
     var id_value_as_str = id_value.toString();
-    // console.log(id_value_as_str)
     return $('.js-table-row').filter(function(i, e) {
       var id_as_string = $(e).find("td:eq(" + id_col_nb + ")").text().trim();
-      // console.log(id_as_string)
-      // console.log(id_value_as_str)
-      // console.log("")
       return id_value_as_str === id_as_string;
     });
   }
@@ -93,7 +87,6 @@ $( document ).ready(function() {
           // authenticity_token: window._token
         },
         success:function(data){
-          // console.log(data);
           treat_successfully_retrieved_filters(data["aids"])
         },
         error:function(data){

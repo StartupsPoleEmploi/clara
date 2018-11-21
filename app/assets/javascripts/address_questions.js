@@ -99,7 +99,8 @@ _.set(window, 'clara.a11y.search1', {
   }
 });
 
-load_js_for_page(["address_questions", "new"], function() {
+
+_.defaultTo(_.get(window, 'load_js_for_page'), function(){})(["address_questions", "new"], function() {
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
