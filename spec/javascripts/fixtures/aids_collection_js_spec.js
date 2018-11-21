@@ -10,9 +10,11 @@ describe('aids_collection.js', function() {
     beforeEach(function(){
       var realistic_paginated_aid_collection = MagicLamp.load("realistic_paginated_aid_collection");
       htmlContent = $(realistic_paginated_aid_collection);
+      htmlContent.attr("id", "realistic_paginated_aid_collection")
       $(document.body).append(htmlContent);
     });
     afterEach(function(){
+      // comment line below so that can you see the table inside the browser when debugging
       $('table[aria-labelledby="page-title"]').remove();
       htmlContent = null;
     });
