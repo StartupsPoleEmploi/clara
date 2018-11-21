@@ -66,6 +66,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'pry-remote'
   gem 'jasmine'
+  gem 'jasmine-jquery-rails'
   gem 'magic_lamp'
 end
 
