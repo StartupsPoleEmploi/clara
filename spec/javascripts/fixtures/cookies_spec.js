@@ -149,6 +149,14 @@ describe('cookies.js', function() {
       //then
       expect($("#forbid_statistic").is(":checked")).toBe(true);
     });
+    it('Should check forbid_nav when you click on forbid_all', function() {
+      //given
+      clara.cookies.forbid_all();
+      //when
+      $('#forbid_all').click()
+      //then
+      expect($("#forbid_navigation").is(":checked")).toBe(true);
+    });
   }); 
 
 });
