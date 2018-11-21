@@ -35,19 +35,32 @@ _.set(window, 'clara.aids.find_cell_for', function(jq_row, filter_column_name) {
 });
 
 _.set(window, 'clara.aids.treat_successfully_retrieved_filters', function(aids) {
-  console.log("aids are : ")
-  console.log(JSON.stringify(aids))
-  var items = ["filters", "need_filters", "custom_filters"]
+  console.log("aids are : ");
+  console.log(JSON.stringify(aids));
+  console.log("");
+  var items = ["filters", "need_filters", "custom_filters"];
   _.each(items, clara.aids.clean_column_of);
   _.each(aids, function(aid) {
     var $row = clara.aids.find_row_whose_id_is(aid["id"]);
+    console.log("$row");
+    console.log($row);
+    console.log("");
     _.each(items, function(item) {
       var $cell = clara.aids.find_cell_for($row, item);
       _.each(aid[item], function(filter_obj){
-        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>");
       });
     })
   });
+});
+
+_.set(window, 'clara.aids.extract_all_ids', function() {
+    var displayed_ids = []
+    $('.js-table-row').each(function(i,e) {
+      var id_as_string = $(e).find("td:eq(" + clara.aids.find_col_nb_for("id") + ")").text().trim();
+      displayed_ids.push(parseInt(id_as_string, 10));
+    });
+    return displayed_ids;
 });
 
 

@@ -12,6 +12,7 @@ describe('aids_collection.js', function() {
   var find_row_whose_id_is;
   var find_cell_for;
   var treat_successfully_retrieved_filters;
+  var extract_all_ids;
   beforeEach(function(){
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
@@ -19,6 +20,7 @@ describe('aids_collection.js', function() {
     find_row_whose_id_is = _.get(window, "clara.aids.find_row_whose_id_is");
     find_cell_for = _.get(window, "clara.aids.find_cell_for");
     treat_successfully_retrieved_filters = _.get(window, "clara.aids.treat_successfully_retrieved_filters");
+    extract_all_ids = _.get(window, "clara.aids.extract_all_ids");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
@@ -143,19 +145,27 @@ describe('aids_collection.js', function() {
     });  
     it('Should be able to put ftags inside the right cell', function() {
       // Given
-      $('table[aria-labelledby="page-title"] tr td').empty(); // empties each cell of the table
       var $row = find_row_whose_id_is(7);
-      var initial_cell_content = find_cell_for($row, "filters").text().trim();
-      expect(initial_cell_content).toEqual("");
+      var initial_cell_content = find_cell_for($row, "filters").html();
+      expect(initial_cell_content).toEqual(' <a href="/admin/aids/autres-frais-derogatoires" class="action-show"> 2 filter </a> ');
       // When
       var aids_from_api = [{"id":7,"filters":[{"id":4,"slug":"accompagne-recherche-emploi"},{"id":2,"slug":"se-deplacer"}],"custom_filters":[],"need_filters":[]}]
       treat_successfully_retrieved_filters(aids_from_api)
       // Then
       var $row = find_row_whose_id_is(7);
-      var final_cell_content = find_cell_for($row, "filters").text().trim();
-      expect(final_cell_content).toEqual("blabla");
+      var final_cell_content = find_cell_for($row, "filters").html();
+      expect(final_cell_content).toEqual('<div class="ftag">accompagne-recherche-emploi</div><div class="ftag">se-deplacer</div>');
 
     });  
+  });
+  
+  describe('clara.aids.extract_all_ids', function() {
+    it('Shoud define a clara.aids.extract_all_ids function', function() {
+      expect(_.isFunction(extract_all_ids)).toEqual(true);
+    });  
+    it('Should return an array', function() {});  
+    it('Should return an array of integer', function() {});  
+    it('Should return the correct array of integer', function() {});  
   });
   
 
