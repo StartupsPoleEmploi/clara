@@ -103,5 +103,28 @@ describe('aids_collection.js', function() {
     });  
   });
   
+  describe('clara.aids.find_cell_for', function() {
+    it('Shoud define a clara.aids.find_cell_for function', function() {
+      expect(_.isFunction(find_cell_for)).toEqual(true);
+    });  
+    it('Should return a jQuery object', function() {
+      var $row = find_row_whose_id_is(7);
+      var res = find_cell_for("need_filters");
+      expect(res instanceof jQuery).toEqual(true);
+    });  
+    it('Should return a jQuery object cell', function() {
+      var $row = find_row_whose_id_is(7);
+      var res = find_cell_for("need_filters");
+      expect(res.prop("tagName")).toEqual("TD");
+    });  
+    it('Row with given ID (7) and filter "need_filters" has position(x,y) 42, 42 in the table', function() {
+      var $row = find_row_whose_id_is(7);
+      var res = find_cell_for("need_filters");
+      // See https://stackoverflow.com/a/1775509/2595513
+      expect(res[0].cellIndex).toEqual(42);
+      expect(res[0].parentNode.rowIndex).toEqual(42);
+    });  
+  });
+  
 
 });
