@@ -23,7 +23,17 @@ _.set(window, 'clara.cookies', {
         $("#input_nav").prop("checked", true);
         $("#input_stat").prop("checked", true);
       });
+    },
+    authorize_navigation: function () {
+      $("#authorize_navigation").click(function() {
+        $("#input_nav").prop("checked", false);
+        if($("#authorize_statistic").is(":checked")) {
+          $("#authorize_all").prop("checked", true);
+        };
+      });
     }
+
+
 });
 
 load_js_for_page(["cookies", "edit"], function() {
@@ -33,23 +43,9 @@ load_js_for_page(["cookies", "edit"], function() {
   clara.cookies.init_cookies_preferences();
   clara.cookies.authorize_all();
   clara.cookies.forbid_all();
+  clara.cookies.authorize_navigation();
 
 
-
-  $("#forbid_all").click(function() {
-    $("#forbid_statistic").prop("checked", true);
-    $("#forbid_navigation").prop("checked", true);
-    $("#input_nav").prop("checked", true);
-    $("#input_stat").prop("checked", true);
-  });
-
-
-  $("#authorize_navigation").click(function() {
-    $("#input_nav").prop("checked", false);
-    if($("#authorize_statistic").is(":checked")) {
-      $("#authorize_all").prop("checked", true);
-    };
-  });
 
   $("#authorize_statistic").click(function() {
     $("#input_stat").prop("checked", false);
