@@ -50,7 +50,6 @@ _.set(window, 'clara.cookies', {
         };
       });
     },
-
     forbid_statistic: function () {
       $("#forbid_statistic").click(function() {
         $('input[name=control_all]').prop('checked',false);

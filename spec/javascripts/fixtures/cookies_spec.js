@@ -26,25 +26,28 @@ describe('cookies.js', function() {
                         ');
   });
 
-/*  afterEach(function() {
+  afterEach(function() {
     $("#authorize_all").remove();
     $("#forbid_all").remove();
     $("#authorize_statistic").remove();
     $("#authorize_navigation").remove();
     $("#forbid_navigation").remove();
     $("#forbid_statistic").remove();
-  })*/
+    $("#input_stat").remove();
+    $("#input_nav").remove();
+  })
 
-  describe('authorize_all', function() {
+  describe('init_cookies_preferences', function() {
     
-    it("Should check authorize_statistic when you click on 'Tout Autoriser'", function() {
+    it("Arriving on the page authorize_navigation should be checked", function() {
       // given
+      $("#authorize_all").prop("checked", true)
       // when
-      clara.cookies.authorize_all();
+      clara.cookies.init_cookies_preferences();
       // then
       expect($("#authorize_navigation").is(":checked")).toBe(true)
     });
 
-    
+
   });
 });
