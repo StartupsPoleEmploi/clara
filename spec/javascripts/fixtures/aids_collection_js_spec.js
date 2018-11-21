@@ -8,9 +8,11 @@ describe('aids_collection.js', function() {
   var htmlContent;
   var find_col_nb_for;
   var extract_column_for;
+  var clean_column_of;
   beforeEach(function(){
     find_col_nb_for = _.get(window, "clara.aids.find_col_nb_for");
     extract_column_for = _.get(window, "clara.aids.extract_column_for");
+    clean_column_of = _.get(window, "clara.aids.clean_column_of");
     htmlContent = $(MagicLamp.load("realistic_paginated_aid_collection"));
     $(document.body).append(htmlContent);
   });
@@ -64,6 +66,16 @@ describe('aids_collection.js', function() {
       var res = extract_column_for("id");
       expect(res.length).toEqual(20);
       expect($(res).map(function(i,e){return $(e).text().trim()}).toArray()).toEqual(["29", "32", "31", "38", "27", "66", "7", "35", "82", "39", "81", "90", "75", "21", "44", "93", "52", "57", "28", "68"]);
+    });  
+  });
+  
+  describe('clara.aids.clean_column_of', function() {
+    it('Shoud define a clara.aids.clean_column_of function', function() {
+      expect(_.isFunction(clean_column_of)).toEqual(true);
+    });  
+    it('Should be able to clean column that has all IDs', function() {
+      var res = clean_column_of("id");
+      // expect($(res).map(function(i,e){return $(e).text().trim()}).toArray()).toEqual(["29", "32", "31", "38", "27", "66", "7", "35", "82", "39", "81", "90", "75", "21", "44", "93", "52", "57", "28", "68"]);
     });  
   });
   
