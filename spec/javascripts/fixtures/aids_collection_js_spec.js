@@ -126,6 +126,13 @@ describe('aids_collection.js', function() {
       expect(res[0].cellIndex).toEqual(5);
       expect(res[0].parentNode.rowIndex).toEqual(7);
     });  
+    it('Row with given ID (7) and filter "filters" has position(x,y) 7, 7 in the table', function() {
+      var $row = find_row_whose_id_is(7);
+      var res = find_cell_for($row, "filters");
+      // See https://stackoverflow.com/a/1775509/2595513
+      expect(res[0].cellIndex).toEqual(7);
+      expect(res[0].parentNode.rowIndex).toEqual(7);
+    });  
   });
   
 

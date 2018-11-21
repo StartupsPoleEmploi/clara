@@ -34,21 +34,22 @@ _.set(window, 'clara.aids.find_cell_for', function(jq_row, filter_column_name) {
   return $(jq_row).find("td:eq(" + col_nb + ")");
 });
 
-$( document ).ready(function() {
+_.set(window, 'clara.aids.treat_successfully_retrieved_filters', function(aids) {
+  var items = ["filters", "need_filters", "custom_filters"]
+  _.each(items, clara.aids.clean_column_of);
+  _.each(aids, function(aid) {
+    var $row = clara.aids.find_row_whose_id_is(aid["id"]);
+    _.each(items, function(item) {
+      var $cell = clara.aids.find_cell_for($row, item);
+      _.each(aid[item], function(filter_obj){
+        $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
+      });
+    })
+  });
+});
 
-  function treat_successfully_retrieved_filters(aids) {
-    var items = ["filters", "need_filters", "custom_filters"]
-    _.each(items, clara.aids.clean_column_of);
-    _.each(aids, function(aid) {
-      var $row = clara.aids.find_row_whose_id_is(aid["id"]);
-      _.each(items, function(item) {
-        var $cell = clara.aids.find_cell_for($row, item);
-        _.each(aid[item], function(filter_obj){
-          $cell.append("<div class='ftag'>" + filter_obj["slug"] + "</div>")
-        });
-      })
-    });
-  }
+
+$( document ).ready(function() {
 
   if (window.location.pathname === "/admin/aids") {
 
@@ -69,7 +70,7 @@ $( document ).ready(function() {
           // authenticity_token: window._token
         },
         success:function(data){
-          treat_successfully_retrieved_filters(data["aids"])
+          clara.aids.treat_successfully_retrieved_filters(data["aids"])
         },
         error:function(data){
           console.log("error");
