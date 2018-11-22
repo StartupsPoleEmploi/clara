@@ -8,6 +8,10 @@
 -[#1037][DESIGN] 1.5 line-height sur le H3 de la page de confidentialité
 
 
+## 16.5.1 (22/11/2018)
+-[#938][TECH] Renommer l'object dans le formulaire de contact
+
+
 ## 16.5.0 (20/11/2018)
 -[#896][FEATURE] Confidentialité et informations sur les cookies
 
