@@ -144,7 +144,7 @@ describe('aids_collection.js', function() {
     it('Shoud define a clara.aids.treat_successfully_retrieved_filters function', function() {
       expect(_.isFunction(treat_successfully_retrieved_filters)).toEqual(true);
     });  
-    it('Should be able to put ftags inside the right cell', function() {
+    it('Should be able to put ftags of "filters" inside the right cell', function() {
       // Given
       var $row = find_row_whose_id_is(7);
       var initial_cell_content = find_cell_for($row, "filters").html();
@@ -153,11 +153,10 @@ describe('aids_collection.js', function() {
       var aids_from_api = [{"id":7,"filters":[{"id":4,"slug":"accompagne-recherche-emploi"},{"id":2,"slug":"se-deplacer"}],"custom_filters":[],"need_filters":[]}]
       treat_successfully_retrieved_filters(aids_from_api)
       // Then
-      var $row = find_row_whose_id_is(7);
       var final_cell_content = find_cell_for($row, "filters").html();
       expect(final_cell_content).toEqual('<div class="ftag">accompagne-recherche-emploi</div><div class="ftag">se-deplacer</div>');
 
-    });  
+    });   
   });
   
   describe('clara.aids.extract_all_ids', function() {
