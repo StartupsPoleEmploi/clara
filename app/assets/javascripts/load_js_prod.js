@@ -7,6 +7,6 @@
 */
 
 function load_js_prod(cond_f, actual_f, optional_id) {
-  return _.defaultTo(_.get(window, 'load_js_per_page'), function(){})(cond_f, actual_f, optional_id);
+  return _.defaultTo(_.get(window, 'clara.load_js_per_page'), function(){})(cond_f, actual_f, optional_id);
 };
 

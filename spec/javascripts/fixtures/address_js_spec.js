@@ -4,7 +4,7 @@
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
-//= require load_js
+//= require load_js_prod
 //= require address_questions
 describe('address_questions.js', function() {
   var typical_input = {};

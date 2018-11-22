@@ -11,9 +11,11 @@ module Admin
     
     def find_filters 
       of_aids = find_filters_params["ids"].map { |e| e.to_i  }
-      activated = ActivatedModelsService.instance
-      selected_aids = activated.aids.select { |aid| of_aids.include?(aid["id"])  }
+      # aids = JSON.parse(Aid.all.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
+      aids = ActivatedModelsService.instance.aids
+      selected_aids = aids.select { |aid| of_aids.include?(aid["id"])  }
       raw_aids = selected_aids.map{|aid| aid.select{|x| x == "id" || x.end_with?("filters")} }
+
       render json: {
         status: "ok",
         aids: raw_aids
