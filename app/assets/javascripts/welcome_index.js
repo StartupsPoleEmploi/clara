@@ -1,4 +1,4 @@
-load_js_prod(function only_if(){return $("body").hasClasses("welcome", "index")}, function() {
+clara.load_js(function only_if(){return $("body").hasClasses("welcome", "index")}, function() {
 
   store.clearAll();
   

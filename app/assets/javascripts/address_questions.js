@@ -100,7 +100,7 @@ _.set(window, 'clara.a11y.search1', {
 });
 
 
-load_js_prod(function only_if(){return $("body").hasClasses("address_questions", "new")}, function() {
+clara.load_js(function only_if(){return $("body").hasClasses("address_questions", "new")}, function() {
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/

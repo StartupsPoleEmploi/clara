@@ -17,7 +17,6 @@ jQuery.fn.extend({
     var result = false;
     for (var i = args.length - 1; i >= 0; i--) {
       var clazz = "" +  args[i]; // force clazz to be a String
-      console.log(clazz);
       if ($(this).hasClass(clazz)) {
         result = true;
       } else {
