@@ -22,7 +22,7 @@
           .o-layout__item{:class => "u-1/2 u-text--center"}
             %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
 
-
+      
     = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
 
       .o-layout.c-cookie-line
@@ -36,8 +36,9 @@
             .o-layout__item{:class => "u-1/2 u-text--center"}
               = render 'shared/inscription_form_line', {id: 'authorize_statistic', value: @cooky.authorize_statistic, text: 'Autoriser'} 
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
-              = render 'shared/inscription_form_line', {id: 'forbid_statistic', value: @cooky.forbid_statistic, text: 'Interdir'} 
+              = render 'shared/inscription_form_line', {id: 'forbid_statistic', value: @cooky.forbid_statistic, text: 'Interdire'} 
 
+    = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
