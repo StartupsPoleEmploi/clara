@@ -171,5 +171,31 @@ describe('aids_collection.js', function() {
     });  
   });
   
+  describe('clara.aids.trigger_function', function() {
+    it('Shoud define a clara.aids.extract_all_ids function', function() {
+      expect(_.isFunction(clara.aids.trigger_function)).toEqual(true);
+    });  
+    it('Should say yes when window.location.pathname is /admin/aids', function() {
+      var res = clara.aids.trigger_function({location: {pathname: "/admin/aids"}});
+      expect(res).toEqual(true);
+    });  
+    it('Should say yes when window.location.pathname is /admin/', function() {
+      var res = clara.aids.trigger_function({location: {pathname: "/admin"}});
+      expect(res).toEqual(true);
+    });  
+    it('Should say no if path is "wrong_value"', function() {
+      var res = clara.aids.trigger_function({location: {pathname: "wrong_value"}});
+      expect(res).toEqual(false);
+    });  
+    it('Should say no if path is a Date', function() {
+      var res = clara.aids.trigger_function({location: {pathname: new Date(1234567)}});
+      expect(res).toEqual(false);
+    });  
+    it('Should say no path is not there', function() {
+      var res = clara.aids.trigger_function({});
+      expect(res).toEqual(false);
+    });  
+  });
+  
 
 });

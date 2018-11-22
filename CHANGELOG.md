@@ -1,7 +1,9 @@
 # ARA Changelog
 
+## 16.6.1 (22/11/2018)
+-[#895b][BUG] Tags qui s'affichent sur admin/aids même quand c'est la page par défaut
 
-## 16.6.0 (20/11/2018)
+## 16.6.0 (22/11/2018)
 -[#895][FEATURE] Avoir le visuel des filtres utilisés sur chaque aide
 -[#1037][DESIGN] 1.5 line-height sur le H3 de la page de confidentialité
 

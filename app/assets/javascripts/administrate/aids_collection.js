@@ -57,9 +57,13 @@ _.set(window, 'clara.aids.extract_all_ids', function() {
     return displayed_ids;
 });
 
+_.set(window, 'clara.aids.trigger_function', function(stubbed_window) {
+  var local_window = stubbed_window || window;
+  var pathname = _.get(local_window, "location.pathname");
+  return pathname === "/admin/aids" || pathname === "/admin";
+});
 
-
-clara.load_js(function only_if(){return window.location.pathname === "/admin/aids"}, function () {
+clara.load_js(clara.aids.trigger_function, function () {
 
   $.ajax({
     url: "/admin/find_filters",
