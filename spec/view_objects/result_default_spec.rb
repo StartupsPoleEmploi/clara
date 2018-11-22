@@ -80,9 +80,35 @@ describe ResultDefault do
         
         ])     
     end
+
     it 'Evict entries without contract_type' do
+      sut = ResultDefault.new(nil, nominal_data)
+      res = sut.sort_and_order("flat_all_ineligible")
+      expect(res).to eq([
+        
+        [{"id"=>7,
+         "name"=>"Aides aux bénéficiaires du RSA et adultes",
+         "slug"=>"aides-aux-beneficiaires-du-rsa-et-adultes",
+         "short_description"=>"",
+         "ordre_affichage"=>99,
+         "contract_type_id"=>2,
+         "filters"=>[{"id"=>1}, {"id"=>3}],
+         "eligibility"=>"ineligible"}],
+       [{"id"=>1,
+         "name"=>"Aide au bénéficiaire du RSA",
+         "slug"=>"aide-au-beneficiaire-du-rsa",
+         "short_description"=>"",
+         "ordre_affichage"=>2,
+         "contract_type_id"=>1,
+         "filters"=>[{"id"=>3}],
+         "eligibility"=>"ineligible"}]
+        
+        ])     
+    end
+
+    it 'Accepts empty ordre_affichage' do
       missing_ordre_affichage = nominal_data
-      missing_ordre_affichage[:flat_all_eligible][0]["ordre_affichage"] = nil
+      missing_ordre_affichage[:flat_all_eligible][1]["ordre_affichage"] = nil
       sut = ResultDefault.new(nil, missing_ordre_affichage)
       res = sut.sort_and_order("flat_all_eligible")
       expect(res).to eq(
@@ -105,7 +131,7 @@ describe ResultDefault do
             "eligibility"=>"eligible"},
            ]
         ]
-      )    
+      )   
     end
 
   end

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.6.4 (22/11/2018)
+-[#1040][TECH] Test unitaire sur le order_affichage manquant
+
+
 ## 16.6.3 (22/11/2018)
 -[#1038][BUG] Bug de prod : ça plante si l'ordre d'affichage n'est pas renseigné
 
