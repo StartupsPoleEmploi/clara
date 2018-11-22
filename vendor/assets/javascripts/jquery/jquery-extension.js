@@ -13,8 +13,8 @@ jQuery.fn.extend({
     return this.map(function(){return $(this).data()[dataext]}).get();
   },
   hasClasses: function() {
-    var args = Array.prototype.slice.call(arguments);
     var result = false;
+    var args = Array.prototype.slice.call(arguments);
     for (var i = args.length - 1; i >= 0; i--) {
       var clazz = "" +  args[i]; // force clazz to be a String
       if ($(this).hasClass(clazz)) {
