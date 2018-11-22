@@ -3,8 +3,6 @@ _.set(window, 'clara.cookies', {
       $("#authorize_all").click(function() {
         $("#authorize_statistic").prop("checked", true);
         $("#authorize_navigation").prop("checked", true);
-        // $("#input_nav").prop("checked", false);
-        // $("#input_stat").prop("checked", false);
       });
     },
     forbid_all: function() {
