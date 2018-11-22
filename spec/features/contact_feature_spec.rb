@@ -57,9 +57,10 @@ feature 'Contact' do
         expect(mail.subject).to eq('Demande de contact via le site Clara')
       end
     end
-    scenario 'Message is actually sent from ENV["ARA_EMAIL_USER"]' do
+    scenario 'Message is actually sent from ENV["ARA_EMAIL_FROM"]' do
+      test = ENV["ARA_EMAIL_FROM"]
       suts[:invite_email].tap do |mail|
-        expect(mail.from).to eq(["env@ara_email_user"])
+        expect(mail.from).to eq(test)
       end
     end
     scenario 'Message is actually sent to ENV["ARA_EMAIL_DESTINATION"]' do
