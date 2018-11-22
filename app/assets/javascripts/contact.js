@@ -16,6 +16,12 @@ _.set(
 
 load_js_for_page(["contact", "index"], function() {
 
+  var roboto = new FontFaceObserver('Roboto');
+
+  roboto.load().then(function () {
+    document.body.className += " fonts-loaded";
+  });
+
   clara.init_contact();
   var $to_be_focused = $("body");
   if ($('.is-error').length === 0) {
