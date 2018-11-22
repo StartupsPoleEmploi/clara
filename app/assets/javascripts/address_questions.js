@@ -101,17 +101,23 @@ _.set(window, 'clara.a11y.search1', {
 
 load_js_for_page(["address_questions", "new"], function() {
 
-    /* Init
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    if ($(clara.a11y.search1.search_selector).val() === "") {
-      // Must set type="number" dynamically like this, or tanaguru test won't pass
-      $(clara.a11y.search1.search_selector).prop("type", "number");
-    }
-    $(clara.a11y.search1.search_selector).focus();
+  /* Init
+  ––––––––––––––––––––––––––––––––––––––––––––––––––*/
+  if ($(clara.a11y.search1.search_selector).val() === "") {
+    // Must set type="number" dynamically like this, or tanaguru test won't pass
+    $(clara.a11y.search1.search_selector).prop("type", "number");
+  }
+  $(clara.a11y.search1.search_selector).focus();
 
-    /* Autocomplete
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    clara.a11y.autocomplete(clara.a11y.search1);
+  /* Autocomplete
+  ––––––––––––––––––––––––––––––––––––––––––––––––––*/
+  clara.a11y.autocomplete(clara.a11y.search1);
+
+  var roboto = new FontFaceObserver('Roboto');
+
+  roboto.load().then(function () {
+    document.body.className += " fonts-loaded";
+  });
 
 
 });
