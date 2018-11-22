@@ -15,6 +15,6 @@ class CookiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
-      params.require(:cookie_form).permit(:value, :value)
+      params.require(:cookie_form).permit(:id, :id)
     end
 end
