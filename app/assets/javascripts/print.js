@@ -1,4 +1,4 @@
-load_js_for_page([], function(){
+clara.load_js(function only_if(){return true}, function() {
   
   $('.c-breadcrumb-printer__item').click(function(e) {
     if (typeof ga === "function") {

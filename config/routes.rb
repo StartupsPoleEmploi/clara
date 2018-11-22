@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       post 'save_simulation', on: :member
       delete 'delete_simulation', on: :member
     end
+    get 'find_filters' => 'aids#find_filters'
     controller 'pages' do
       get 'stats'
       get 'rename'

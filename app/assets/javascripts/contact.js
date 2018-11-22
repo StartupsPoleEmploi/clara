@@ -13,8 +13,7 @@ _.set(
     1000)
 );
 
-
-load_js_for_page(["contact", "index"], function() {
+clara.load_js(function only_if(){return $("body").hasClasses("contact", "index")}, function() {
 
   clara.init_contact();
   var $to_be_focused = $("body");

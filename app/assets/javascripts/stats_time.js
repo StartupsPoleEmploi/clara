@@ -18,8 +18,7 @@ _.set(window, 'clara.draw_stats_time', function() {
   });
 });
 
-
-load_js_for_page(["stats", "time"], function() {
+clara.load_js(function only_if(){return $("body").hasClasses("stats", "time")}, function() {
 
     if (_.get(window, 'Chartist')) {
       clara.draw_stats_time();

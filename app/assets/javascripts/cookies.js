@@ -1,4 +1,4 @@
-load_js_for_page(["cookies", "edit"], function() {
+clara.load_js(function only_if(){return $("body").hasClasses("cookies", "edit")}, function() {
 
   /**
   *         INITIAL STATE 
