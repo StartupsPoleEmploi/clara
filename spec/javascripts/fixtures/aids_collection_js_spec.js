@@ -180,8 +180,14 @@ describe('aids_collection.js', function() {
       expect(res).toEqual(true);
     });  
     it('Should say yes when window.location.pathname is /admin/', function() {
+      var res = clara.aids.trigger_function({location: {pathname: "/admin"}});
+      expect(res).toEqual(true);
     });  
-    it('Should say no otherwise', function() {
+    it('Should say no if path is "wrong_value"', function() {
+    });  
+    it('Should say no if path is a Date', function() {
+    });  
+    it('Should say no path is not there', function() {
     });  
   });
   

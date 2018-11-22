@@ -60,7 +60,7 @@ _.set(window, 'clara.aids.extract_all_ids', function() {
 _.set(window, 'clara.aids.trigger_function', function(stubbed_window) {
   var local_window = stubbed_window || window;
   var pathname = _.get(local_window, "location.pathname");
-  return pathname === "/admin/aids" || pathname === "/admin"
+  return pathname === "/admin/aids" || pathname === "/admin";
 });
 clara.load_js(clara.aids.trigger_function, function () {
 
