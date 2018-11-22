@@ -1,4 +1,4 @@
-load_js_for_page(["other_questions", "new"], function() {
+load_js_prod(function only_if(){return $("body").hasClasses("other_questions", "new")}, function() {
 
     $("input:checkbox:first").focus();
 

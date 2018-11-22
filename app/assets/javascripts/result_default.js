@@ -1,4 +1,4 @@
-load_js_for_page(["aides", "index"], function() {
+load_js_prod(function only_if(){return $("body").hasClasses("aides", "index")}, function() {
 
 
     var MOBILE_MAX_WIDTH = 739;

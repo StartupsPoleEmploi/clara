@@ -1,4 +1,4 @@
-load_js_for_page(["cookies", "edit"], function() {
+load_js_prod(function only_if(){return $("body").hasClasses("cookies", "edit")}, function() {
 
   /**
   *         INITIAL STATE 

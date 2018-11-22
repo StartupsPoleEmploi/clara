@@ -67,7 +67,7 @@ _.set(window, 'clara.draw_stats_index', function() {
 
 });
 
-load_js_for_page(["stats", "index"], function() {
+load_js_prod(function only_if(){return $("body").hasClasses("stats", "index")}, function() {
 
   if (_.get(window, 'Chartist')) {
     clara.draw_stats_index();

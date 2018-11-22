@@ -1,4 +1,4 @@
-load_js_for_page([], function(){
+load_js_prod(function only_if(){return true}, function() {
 
   $('.js-enterspace').keypress(function(e){
     var theCode = (e.keyCode ? e.keyCode : e.which);
