@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.6.3 (22/11/2018)
+-[#1038][BUG] Bug de prod : ça plante si l'ordre d'affichage n'est pas renseigné
+
+
 ## 16.6.2 (22/11/2018)
 -[#938][TECH] Refactoring du code du formulaire de contact
 
