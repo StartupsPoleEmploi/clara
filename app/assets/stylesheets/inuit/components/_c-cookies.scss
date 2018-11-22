@@ -18,6 +18,7 @@ h2.c-cookie-preference {
   color: #333333;
   margin-bottom: 5px;
 }
+
 .c-cookie-cta {
   @include inuit-font-size(12px);
   font-weight: 500;
@@ -39,13 +40,29 @@ h2.c-cookie-preference {
 
 }
 
+.c-cookie-cta--green {  
+  background-color: #108670;  
+}
+.c-cookie-cta--green:hover {  
+  background-color: #0d715e;  
+}
+
+.c-cookie-cta--red {  
+  background-color: #d0021b;  
+}
+.c-cookie-cta--red:hover {  
+  background-color: #b30319;  
+}
+
 .c-cookie-line {
   border-top: 2px solid #d8d8d8 ;
   padding: space(6) space(0);
 }
+
 .c-cookie-description {
   margin-bottom: 0;
 }
+
 .c-cookie-submit {
 
 }
