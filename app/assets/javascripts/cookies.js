@@ -1,5 +1,11 @@
 load_js_for_page(["cookies", "edit"], function() {
 
+  var roboto = new FontFaceObserver('Roboto');
+
+  roboto.load().then(function () {
+    document.body.className += " fonts-loaded";
+  });
+
   /**
   *         INITIAL STATE 
   **/
