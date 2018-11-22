@@ -80,30 +80,32 @@ describe ResultDefault do
         
         ])     
     end
-
     it 'Evict entries without contract_type' do
-      sut = ResultDefault.new(nil, nominal_data)
-      res = sut.sort_and_order("flat_all_ineligible")
-      expect(res).to eq([
-        
-        [{"id"=>7,
-         "name"=>"Aides aux bénéficiaires du RSA et adultes",
-         "slug"=>"aides-aux-beneficiaires-du-rsa-et-adultes",
-         "short_description"=>"",
-         "ordre_affichage"=>99,
-         "contract_type_id"=>2,
-         "filters"=>[{"id"=>1}, {"id"=>3}],
-         "eligibility"=>"ineligible"}],
-       [{"id"=>1,
-         "name"=>"Aide au bénéficiaire du RSA",
-         "slug"=>"aide-au-beneficiaire-du-rsa",
-         "short_description"=>"",
-         "ordre_affichage"=>2,
-         "contract_type_id"=>1,
-         "filters"=>[{"id"=>3}],
-         "eligibility"=>"ineligible"}]
-        
-        ])     
+      missing_ordre_affichage = nominal_data
+      missing_ordre_affichage[:flat_all_eligible][0]["ordre_affichage"] = nil
+      sut = ResultDefault.new(nil, missing_ordre_affichage)
+      res = sut.sort_and_order("flat_all_eligible")
+      expect(res).to eq(
+        [
+          [{"id"=>6,
+            "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
+            "slug"=>"aides-aux-beneficiaires-du-rsa-ou-adultes",
+            "short_description"=>"",
+            "ordre_affichage"=>nil,
+            "contract_type_id"=>2,
+            "filters"=>[{"id"=>1}, {"id"=>3}],
+            "eligibility"=>"eligible"},
+            {"id"=>4,
+            "name"=>"Aides aux habitants en QPV ou adultes",
+            "slug"=>"aides-aux-habitants-en-qpv-ou-adultes",
+            "short_description"=>"",
+            "ordre_affichage"=>5,
+            "contract_type_id"=>2,
+            "filters"=>[{"id"=>1}, {"id"=>2}],
+            "eligibility"=>"eligible"},
+           ]
+        ]
+      )    
     end
 
   end
