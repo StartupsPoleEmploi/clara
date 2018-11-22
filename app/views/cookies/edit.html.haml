@@ -34,11 +34,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "statistic", :type => "radio", :value => "authorize_statistic", :id => "authorize_statistic"}
-              %label.c-radiolabel.u-padding-left-small{for: "authorize_statistic"} Autoriser
-            .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "statistic", :type => "radio", :value => "forbid_statistic", :id => "forbid_statistic"}
-              %label.c-radiolabel.u-padding-left-small{for: "forbid_statistic"} Interdire
+              = render 'shared/inscription_form_line', {id: 'authorize_statistic', value: @cooky.value, text: 'Autoriser'} 
+            .o-layout__item{:class => "u-1/2 u-text--center"}                          
+              = render 'shared/inscription_form_line', {id: 'forbid_statistic', value: @cooky.value, text: 'Interdir'} 
 
 
       .o-layout.c-cookie-line
@@ -50,11 +48,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "navigation", :type => "radio", :value => "authorize_navigation", :id => "authorize_navigation"}
-              %label.c-radiolabel.u-padding-left-small{for: "authorize_navigation"} Autoriser
+              = render 'shared/inscription_form_line', {id: 'authorize_navigation', value: @cooky.value, text: 'Autoriser'} 
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              %input{:name => "navigation", :type => "radio", :value => "forbid_navigation", :id => "forbid_navigation"} 
-              %label.c-radiolabel.u-padding-left-small{for: "forbid_navigation"} Interdire
+              = render 'shared/inscription_form_line', {id: 'forbid_navigation', value: @cooky.value, text: 'Interdire'} 
 
 
       .actions.u-text--right
