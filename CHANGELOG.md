@@ -1,7 +1,13 @@
 # ARA Changelog
 
+
+## 16.6.2 (22/11/2018)
+-[#939][TECH] Tests pour l'envoie d'email
+
+
 ## 16.6.1 (22/11/2018)
 -[#895b][BUG] Tags qui s'affichent sur admin/aids même quand c'est la page par défaut
+
 
 ## 16.6.0 (22/11/2018)
 -[#895][FEATURE] Avoir le visuel des filtres utilisés sur chaque aide
