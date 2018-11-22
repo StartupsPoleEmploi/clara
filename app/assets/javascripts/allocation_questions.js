@@ -6,7 +6,6 @@ load_js_for_page(["allocation_questions", "new"], function() {
 
   roboto.load().then(function () {
     document.body.className += " fonts-loaded";
-    console.log("Police roboto est prête")
   });
   
 });
