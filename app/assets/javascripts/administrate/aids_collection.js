@@ -62,6 +62,7 @@ _.set(window, 'clara.aids.trigger_function', function(stubbed_window) {
   var pathname = _.get(local_window, "location.pathname");
   return pathname === "/admin/aids" || pathname === "/admin";
 });
+
 clara.load_js(clara.aids.trigger_function, function () {
 
   $.ajax({

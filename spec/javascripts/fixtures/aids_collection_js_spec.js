@@ -188,8 +188,12 @@ describe('aids_collection.js', function() {
       expect(res).toEqual(false);
     });  
     it('Should say no if path is a Date', function() {
+      var res = clara.aids.trigger_function({location: {pathname: new Date(1234567)}});
+      expect(res).toEqual(false);
     });  
     it('Should say no path is not there', function() {
+      var res = clara.aids.trigger_function({});
+      expect(res).toEqual(false);
     });  
   });
   
