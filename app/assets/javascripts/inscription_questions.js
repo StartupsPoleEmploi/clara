@@ -17,7 +17,7 @@ load_js_for_page(["inscription_questions", "new"], function() {
     roboto500.load(),
     roboto700.load()
   ]).then(function() {
-    document.documentElement.className += " fonts-loaded";
+    document.body.className += " fonts-loaded";
     console.log("Roboto font is available")
   });
   
