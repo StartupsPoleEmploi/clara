@@ -11,7 +11,7 @@ class ResultDefault < ViewObject
     (@all_data[prop] || {})
       .reject {|e|  e['contract_type_id'] == nil }
       .group_by{ |e|   e['contract_type_id'] }
-      .transform_values{|v| v.sort_by{|e| e['ordre_affichage'] || 0 }}
+      .transform_values{|v| v.sort_by{|e| e['ordre_affichage'] || 0}}
       .values
       .sort_by{ |e| @contract_types.detect{|c| c["id"] == e.sample['contract_type_id']}["ordre_affichage"]}
     res
