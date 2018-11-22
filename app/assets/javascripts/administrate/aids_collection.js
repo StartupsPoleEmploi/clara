@@ -78,25 +78,3 @@ clara.load_js(function only_if(){return window.location.pathname === "/admin/aid
   });
 
 });
-
-// $( document ).ready(function() {
-
-//   if (window.location.pathname === "/admin/aids") {
-
-//     $.ajax({
-//         url: "/admin/find_filters",
-//         type:'GET',
-//         dataType:'json',
-//         data:{
-//           ids: clara.aids.extract_all_ids()
-//         },
-//         success:function(data){
-//           clara.aids.treat_successfully_retrieved_filters(data["aids"])
-//         },
-//         error:function(data){
-//           console.log("error");
-//           console.error(data);
-//         }
-//       });
-//     }
-// });
