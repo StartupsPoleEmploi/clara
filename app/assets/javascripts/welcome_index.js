@@ -21,7 +21,7 @@ load_js_for_page(["welcome", "index"], function() {
 
 
 
-var fontRoboto = new FontFaceObserver('Roboto');
+/*var fontRoboto = new FontFaceObserver('Roboto');
 var fontSansSerif = new FontFaceObserver('sans-serif');
 
 
@@ -31,6 +31,16 @@ fontRoboto.load().then(function () {
 
 fontSansSerif.load().then(function () {
   console.log('Family SansSerif is available');
-});
+});*/
+
+/*var fontRoboto = new FontFaceObserver('Roboto');
+var fontSansSerif = new FontFaceObserver('sans-serif');
+
+Promise.all([fontRoboto.load(), fontSansSerif.load()]).then(function () {
+  console.log('Family roboto & sans-serif serie have loaded');
+});*/
+
+
+
 
 });
