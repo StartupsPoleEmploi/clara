@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
 
-  def welcome_email
+  def contacts_email
     @contact = params[:contact] 
     @origin = params[:origin] 
     mail(
