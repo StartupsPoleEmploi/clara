@@ -2,23 +2,12 @@ load_js_for_page(["inscription_questions", "new"], function() {
 
   $("input:radio:first").focus();
 
-  var roboto400 = new FontFaceObserver("Roboto", {
-  weight: 400
-  });
-  var roboto500 = new FontFaceObserver("Roboto", {
-    weight: 500
-  });
-  var roboto700 = new FontFaceObserver("Roboto", {
-    weight: 700
+  var roboto400 = new FontFaceObserver('Roboto');
+
+  roboto.load().then(function () {
+    document.body.className += " fonts-loaded";
+    console.log("Police roboto est prête")
   });
 
-  Promise.all([
-    roboto400.load(),
-    roboto500.load(),
-    roboto700.load()
-  ]).then(function() {
-    document.body.className += " fonts-loaded";
-    console.log("Roboto font is available")
-  });
-  
+
 });
