@@ -1,6 +1,3 @@
-//= require fontfaceobserver
-
-
 load_js_for_page(["welcome", "index"], function() {
 
   store.clearAll();

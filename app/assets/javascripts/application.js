@@ -22,6 +22,7 @@
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
+//= require fontfaceobserver/fontfaceobserver
 //= require ./load_js_for_page
 //= require ./lazy_img_loading
 //= require_tree ./forms
