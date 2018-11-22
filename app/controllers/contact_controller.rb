@@ -9,7 +9,7 @@ class ContactController < ApplicationController
     @origin = (defined? request) && (request.respond_to?(:host)) ? request.host.to_s : "unknown"
     @contact = ContactForm.new(allowed_params)
     if @contact.valid?
-      UserMailer.with(contact: @contact, origin: @origin).contacts_email.deliver_now
+      UserMailer.with(contact: @contact, origin: @origin).contact_email.deliver_now
       redirect_to contact_sent_index_path
     else
       flash[:error] = @contact.errors.messages
