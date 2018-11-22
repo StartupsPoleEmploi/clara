@@ -1,5 +1,6 @@
 //= require fontfaceobserver
 
+
 load_js_for_page(["welcome", "index"], function() {
 
   store.clearAll();
@@ -24,14 +25,14 @@ load_js_for_page(["welcome", "index"], function() {
 /*var fontRoboto = new FontFaceObserver('Roboto');
 var fontSansSerif = new FontFaceObserver('sans-serif');
 
+fontSansSerif.load().then(function () {
+  console.log('Family SansSerif is available');
+});
 
 fontRoboto.load().then(function () {
   console.log('Family Roboto is available');
 });
-
-fontSansSerif.load().then(function () {
-  console.log('Family SansSerif is available');
-});*/
+*/
 
 /*var fontRoboto = new FontFaceObserver('Roboto');
 var fontSansSerif = new FontFaceObserver('sans-serif');
@@ -40,7 +41,21 @@ Promise.all([fontRoboto.load(), fontSansSerif.load()]).then(function () {
   console.log('Family roboto & sans-serif serie have loaded');
 });*/
 
+/*var observer = new FontFaceObserver("Roboto", {
+  weight: 400
+});
 
+observer.load(null, 40).then(function() {
+  console.log("Font is available");
+}, function() {
+  console.log("Font is not available after waiting 5 seconds");
+});*/
+
+var font = new FontFaceObserver('Roboto');
+
+font.load().then(function () {
+  document.documentElement.className += " fonts-loaded";
+});
 
 
 });
