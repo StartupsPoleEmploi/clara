@@ -59,7 +59,7 @@ _.set(window, 'clara.aids.extract_all_ids', function() {
 
 
 
-load_js_prod(function only_if(){console.log("hey");return window.location.pathname === "/admin/aids"}, function () {
+load_js_prod(function only_if(){return window.location.pathname === "/admin/aids"}, function () {
 
   $.ajax({
     url: "/admin/find_filters",
