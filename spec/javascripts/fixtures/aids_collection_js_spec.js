@@ -184,6 +184,8 @@ describe('aids_collection.js', function() {
       expect(res).toEqual(true);
     });  
     it('Should say no if path is "wrong_value"', function() {
+      var res = clara.aids.trigger_function({location: {pathname: "wrong_value"}});
+      expect(res).toEqual(false);
     });  
     it('Should say no if path is a Date', function() {
     });  
