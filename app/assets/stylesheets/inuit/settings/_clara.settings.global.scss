@@ -35,10 +35,8 @@ body {
   font-family: sans-serif, 'Roboto';
 }
 
-.fonts-loaded {
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
+body.fonts-loaded {
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
