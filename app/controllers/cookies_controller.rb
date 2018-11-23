@@ -2,13 +2,36 @@ class CookiesController < ApplicationController
 
   # GET /cookies/preference/edit
   def edit
+    p 'cooky ----------------------'
     @cooky = CookieForm.new(session[:cookie])
   end
 
   # PATCH/PUT /cookies/preference
   def update
+    p '@cooky ----------------------------'
+    p @cooky
+
+    p ':cookie ----------------------------'
+    p :cookie
+
     p 'params ---------------------------'
     p params 
+
+    p 'cooky_params ------------------'
+    p cooky_params
+
+    p ':authorize_statistic -----------'
+    p :authorize_statistic
+
+    p ':forbid_statistic -----------'
+    p :forbid_statistic
+
+    p ':authorize_navigation -----------'
+    p :authorize_navigation
+
+    p ':forbid_navigation -----------'
+    p :forbid_navigation
+
     session[:cookie] = cooky_params
     redirect_to root_path
   end

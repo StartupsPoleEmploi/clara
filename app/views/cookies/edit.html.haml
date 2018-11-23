@@ -23,7 +23,7 @@
             %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
 
       
-    = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
+    = form_with model: @cooky, url: cooky_path, :method => :put, :local => true, id: "cookie-form" do |f|
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -34,9 +34,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}  
-              = render 'shared/cookies_form1_line', {id: 'authorize_statistic', value: @cooky.authorize_statistic, text: 'Autoriser'}           
+              = render 'shared/cookies_form1_line', {id: 'authorize_statistic', value: @cooky.value, text: 'Autoriser'}           
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
-              = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: @cooky.forbid_statistic, text: 'Interdire'}       
+              = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: @cooky.value, text: 'Interdire'}       
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -47,9 +47,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: @cooky.authorize_navigation, text: 'Autoriser'}       
+              = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: @cooky.value, text: 'Autoriser'}       
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: @cooky.forbid_navigation, text: 'Interdire'}                     
+              = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: @cooky.value, text: 'Interdire'}                     
 
       .actions.u-text--right
         %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
