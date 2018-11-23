@@ -13,6 +13,7 @@ class Aid < ApplicationRecord
   belongs_to :contract_type, optional: true
 
   validates :name, presence: true, uniqueness: true  
+  validates :ordre_affichage, presence: true
 
   scope :unarchived, -> { where(archived_at: nil) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.6.5 (22/11/2018)
+-[#1041][FEATURETTE] ordre_affichage obligatoire
+
+
 ## 16.6.4 (22/11/2018)
 -[#1040][TECH] Test unitaire sur le order_affichage manquant
 
