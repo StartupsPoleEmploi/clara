@@ -4,7 +4,7 @@ class CookieForm < ActiveType::Object
   attribute :forbid_statistic, :string
   attribute :authorize_navigation, :string
   attribute :forbid_navigation, :string
-  attribute :value, :string
+  #attribute :value, :string
 
 
 end

@@ -8,7 +8,7 @@ class CookiesController < ApplicationController
   # PATCH/PUT /cookies/preference
   def update
 
-    p 'params ---------------------------'
+    p 'params --------------------------- 2'
     p params 
 
     if params[:commit] == 'authorize_statistic' && 'authorize_navigation'
@@ -22,7 +22,7 @@ class CookiesController < ApplicationController
 
     p 'session[:cookie]'
     p session[:cookie]
-    
+
     redirect_to root_path
   end
 
