@@ -38,8 +38,6 @@
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
               = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: @cooky.forbid_statistic, name: "statistic", text: 'Interdire'} 
 
-      //= form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form2" do |f|
-
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
           %h2.c-cookie-preference 
