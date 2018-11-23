@@ -34,9 +34,21 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = render 'shared/cookies_form1_line', {id: 'authorize_statistic', value: @cooky.authorize_statistic, name: "statistic", text: 'Autoriser'} 
+              = radio_button_tag 'grade_form_statistic',
+                'authorize_statistic',
+                @cooky.value == 'authorize_statistic', 
+                id: 'authorise_statistic',
+                class: 'c-radioinput'
+              %label.c-radiolabel{for: 'authorise_statistic'}
+                Autoriser
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
-              = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: @cooky.forbid_statistic, name: "statistic", text: 'Interdire'} 
+              = radio_button_tag 'grade_form_statistic',
+                'forbid_statistic',
+                @cooky.value == 'forbid_statistic', 
+                id: 'forbid_statistic',
+                class: 'c-radioinput'
+              %label.c-radiolabel{for: 'forbid_statistic'}
+                Interdire
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -47,9 +59,21 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: @cooky.authorize_navigation, text: 'Autoriser'} 
+              = radio_button_tag 'grade_form_navigation',
+                'authorize_navigation',
+                @cooky.value == 'authorize_navigation', 
+                id: 'authorize_navigation',
+                class: 'c-radioinput'
+              %label.c-radiolabel{for: 'authorize_navigation'}
+                Autoriser
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: @cooky.forbid_navigation, text: 'Interdire'} 
+              = radio_button_tag 'grade_form_navigation',
+                'forbid_navigation',
+                @cooky.value == 'forbid_navigation', 
+                id: 'forbid_navigation',
+                class: 'c-radioinput'
+              %label.c-radiolabel{for: 'forbid_navigation'}
+                Interdire
 
       .actions.u-text--right
         %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
