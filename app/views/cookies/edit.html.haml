@@ -34,17 +34,17 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = radio_button_tag 'grade_form[statistic]',
+              = radio_button_tag 'cookies_form[statistic]',
                 'authorize_statistic',
-                "#{value}" == "#{id}", 
+                @cooky.value == 'authorize_statistic', 
                 id: 'authorise_statistic',
                 class: 'c-radioinput'
               %label.c-radiolabel{for: 'authorise_statistic'}
                 Autoriser
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
-              = radio_button_tag 'grade_form[statistic]',
+              = radio_button_tag 'cookies_form[statistic]',
                 'forbid_statistic',
-                "#{value}" == "#{id}", 
+                @cooky.value == 'forbid_statistic', 
                 id: 'forbid_statistic',
                 class: 'c-radioinput'
               %label.c-radiolabel{for: 'forbid_statistic'}
@@ -59,17 +59,17 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = radio_button_tag 'grade_form[navigation]',
+              = radio_button_tag 'cookies_form[navigation]',
                 'authorize_navigation',
-                "#{value}" == "#{id}", 
+                @cooky.value == 'authorize_navigation', 
                 id: 'authorize_navigation',
                 class: 'c-radioinput'
               %label.c-radiolabel{for: 'authorize_navigation'}
                 Autoriser
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = radio_button_tag 'grade_form[navigation]',
+              = radio_button_tag 'cookies_form[navigation]',
                 'forbid_navigation',
-                "#{value}" == "#{id}",  
+                @cooky.value == 'forbid_navigation', 
                 id: 'forbid_navigation',
                 class: 'c-radioinput'
               %label.c-radiolabel{for: 'forbid_navigation'}
