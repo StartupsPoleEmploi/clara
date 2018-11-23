@@ -34,15 +34,24 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              .c-radioline.js-enterspace.u-margin-top-none{id: 'authorize_statistic'}
-                .c-radiocontainer            
-                = radio_button_tag "cookie_form[value]", |
-                  'authorize_statistic', |
-                  @cooky.value == 'authorize_statistic', |
-                  id: 'authorize_statistic', |
-                  class: 'c-radioinput'
-                %label.c-radiolabel{for: 'authorize_statistic'}
-                  Autoriser
+              / .c-radioline.js-enterspace.u-margin-top-none{id: 'authorize_statistic'}
+              /   .c-radiocontainer            
+              /   = radio_button_tag "cookie_form[value]", |
+              /     'authorize_statistic', |
+              /     @cooky.value == 'authorize_statistic', |
+              /     id: 'authorize_statistic', |
+              /     class: 'c-radioinput'
+              /   %label.c-radiolabel{for: 'authorize_statistic'}
+              /     Autoriser
+              .c-radioline.js-enterspace.u-margin-top-none{id: 'radio1'}
+                .c-radiocontainer
+                  = radio_button_tag 'grade_form[value]',
+                      'niveau_1',
+                      @grade.value == 'niveau_1', 
+                      id: 'niveau_1',
+                      class: 'c-radioinput'
+                %label.c-radiolabel{for: 'niveau_1'}
+                  Bac +4 et + (Master) / diplômes d’ingénieur              
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
               = radio_button_tag 'cookies_form[statistic]',
                 'forbid_statistic',
