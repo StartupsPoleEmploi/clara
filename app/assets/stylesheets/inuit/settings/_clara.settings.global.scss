@@ -32,6 +32,10 @@ $font-stack-common    : 'Roboto', sans-serif;
 
 // fonts
 body {
+  font-family: sans-serif, 'Roboto';
+}
+
+body.fonts-loaded {
   font-family: 'Roboto', sans-serif;
 }
 
