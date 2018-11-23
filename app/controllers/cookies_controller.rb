@@ -12,9 +12,9 @@ class CookiesController < ApplicationController
     p params 
 
     if params[:commit] == 'authorize_statistic' 
-      do p 'authorize_statistic ----------------------'
+      p 'authorize_statistic ----------------------'
     else
-      do p 'other ----------------' else
+      p 'other ----------------' 
     end
 
 
