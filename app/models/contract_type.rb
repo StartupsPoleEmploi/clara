@@ -6,6 +6,7 @@ class ContractType < ApplicationRecord
   friendly_id :name, use: :slugged
   validates :description, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
+  validates :ordre_affichage, presence: true
   validates :business_id, uniqueness: true, presence: true, format: {with: Regexp.new('\A' + '[a-z0-9-]+' + '\z')}
 
   scope :aides, -> { where(category: 'aide') }
