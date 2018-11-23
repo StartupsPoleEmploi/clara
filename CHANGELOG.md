@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 16.6.5 (22/11/2018)
+## 16.7.0 (23/11/2018)
+-[#1044][FEATURE] clara as main email
+
+
+## 16.6.5 (23/11/2018)
 -[#1041][FEATURETTE] ordre_affichage obligatoire
 
 
