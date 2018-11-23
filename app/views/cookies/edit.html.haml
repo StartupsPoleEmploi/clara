@@ -36,7 +36,7 @@
             .o-layout__item{:class => "u-1/2 u-text--center"}
               .c-radioline.js-enterspace.u-margin-top-none{id: 'authorize_statistic'}
                 .c-radiocontainer            
-                = radio_button_tag "cookie_form[value]", |
+                = radio_button_tag "cookie_form1[value]", |
                   'authorize_statistic', |
                   @cooky.value == 'authorize_statistic', |
                   id: 'authorize_statistic', |
@@ -44,7 +44,7 @@
                 %label.c-radiolabel{for: 'authorize_statistic'}
                   Autoriser             
             .o-layout__item{:class => "u-1/2 u-text--center"}                          
-              = radio_button_tag 'cookies_form[statistic]',
+              = radio_button_tag 'cookies_form1[value]',
                 'forbid_statistic',
                 @cooky.value == 'forbid_statistic', 
                 id: 'forbid_statistic',
@@ -61,7 +61,7 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = radio_button_tag 'cookies_form[navigation]',
+              = radio_button_tag 'cookies_form2[value]',
                 'authorize_navigation',
                 @cooky.value == 'authorize_navigation', 
                 id: 'authorize_navigation',
@@ -69,7 +69,7 @@
               %label.c-radiolabel{for: 'authorize_navigation'}
                 Autoriser
             .o-layout__item{:class => "u-1/2 u-text--center"}
-              = radio_button_tag 'cookies_form[navigation]',
+              = radio_button_tag 'cookies_form2[value]',
                 'forbid_navigation',
                 @cooky.value == 'forbid_navigation', 
                 id: 'forbid_navigation',
