@@ -11,7 +11,7 @@ class CookiesController < ApplicationController
     p 'params ---------------------------'
     p params 
 
-    if params[:commit] == 'authorize_statistic' 
+    if params[:commit] == 'authorize_statistic' && 'authorize_navigation'
       p 'authorize_statistic ----------------------'
     else
       p 'other ----------------' 
