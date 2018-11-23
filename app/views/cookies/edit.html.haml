@@ -23,7 +23,7 @@
             %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
 
       
-    = form_with model: @cooky, url: cooky_path, :method => :put, :local => true, id: "cookie-form" do |f|
+    = form_with model: @cooky, url: cooky_path, method:  :put, :local => true, id: "cookie-form" do |f|
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
