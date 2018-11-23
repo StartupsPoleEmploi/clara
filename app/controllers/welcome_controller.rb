@@ -25,8 +25,8 @@ class WelcomeController < ApplicationController
   def accept_all_cookies
     session[:cookie] = {
       "authorize_statistic" => "1",
-      "authorize_navigation" => "1",
       "forbid_statistic" => "0",
+      "authorize_navigation" => "1",
       "forbid_navigation" => "0"
     }
   end

@@ -19,6 +19,10 @@ class CookiesController < ApplicationController
 
 
     session[:cookie] = cooky_params
+
+    p 'session[:cookie]'
+    p session[:cookie]
+    
     redirect_to root_path
   end
 
