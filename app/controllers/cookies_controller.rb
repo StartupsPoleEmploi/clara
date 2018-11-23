@@ -11,6 +11,13 @@ class CookiesController < ApplicationController
     p 'params ---------------------------'
     p params 
 
+    if params[:commit] == 'authorize_statistic' 
+      do p 'authorize_statistic ----------------------'
+    else
+      do p 'other ----------------' else
+    end
+
+
     session[:cookie] = cooky_params
     redirect_to root_path
   end
