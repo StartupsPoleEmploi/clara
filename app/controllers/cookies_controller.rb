@@ -17,9 +17,6 @@ class CookiesController < ApplicationController
     p 'params ---------------------------'
     p params 
 
-    p 'cooky_params ------------------'
-    p cooky_params
-
     p ':authorize_statistic -----------'
     p :authorize_statistic
 
