@@ -132,14 +132,14 @@ describe RuletreeService do
       let(:asker) { create :asker, v_location_citycode: '02004'}
       let(:variable) { create :variable, :location_citycode}
       context 'Nominal inclusion' do
-        let(:rule) { create :rule, operator_type: :include, value_eligible: '02003,02004,02005', variable: variable }
-        context '02004 is included in 02003,02004,02005' do
+        let(:rule) { create :rule, operator_type: :amongst, value_eligible: '02003,02004,02005', variable: variable }
+        context '02004 is amongst in 02003,02004,02005' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'Nominal exclusion' do
-        let(:rule) { create :rule, operator_type: :include, value_eligible: '12003,12004,12005', variable: variable }
-        context '02004 is NOT included in 12003,12004,12005' do
+        let(:rule) { create :rule, operator_type: :amongst, value_eligible: '12003,12004,12005', variable: variable }
+        context '02004 is NOT amongst in 12003,12004,12005' do
           it { expect(subject).to eq "ineligible" }
         end
       end
