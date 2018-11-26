@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.7.2 (23/11/2018)
+-[#1045][FEATURETTE] Renommer l'operateur "include" par "is_included_in_list"
+
+
 ## 16.7.1 (23/11/2018)
 -[#958][TECH] Changer FOIT en FOUT
 
