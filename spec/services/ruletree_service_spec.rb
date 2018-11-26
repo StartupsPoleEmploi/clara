@@ -689,9 +689,9 @@ describe RuletreeService do
       expect(res).to eq(false)
     end
 
-    it 'calculates string, include, nominal' do
+    it 'calculates string, amongst, nominal' do
       #given
-      operator_type = "include"
+      operator_type = "amongst"
       rule_h = build(:rule, operator_type: operator_type).attributes
       criterion_value = "11"
       rule_value = "11,22,33"
