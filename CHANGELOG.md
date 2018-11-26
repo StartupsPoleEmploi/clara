@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.7.1 (26/11/2018)
+-[#958][TECH] FOIT remplacé par un FOUT
+
+
 ## 16.7.0 (23/11/2018)
 -[#1044][FEATURE] clara as main email
 
