@@ -89,7 +89,7 @@ class RuletreeService
         typed_criterion_value <= typed_rule_value
       when 'less_than'
         typed_criterion_value < typed_rule_value
-      when 'include'
+      when 'amongst'
         typed_rule_value.split(",").include?(typed_criterion_value)
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
