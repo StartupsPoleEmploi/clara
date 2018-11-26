@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.7.1 (23/11/2018)
+-[#958][TECH] Changer FOIT en FOUT
+
+
 ## 16.7.0 (23/11/2018)
 -[#1044][FEATURE] clara as main email
 
