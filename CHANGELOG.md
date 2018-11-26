@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 16.7.1 (23/11/2018)
+## 16.7.2 (26/11/2018)
+-[#1045][FEATURETTE] Renommer l'operateur "include" par "amongst"
+
+
+## 16.7.1 (26/11/2018)
 -[#958][TECH] Changer FOIT en FOUT
 
 
