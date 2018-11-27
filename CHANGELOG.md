@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.7.3 (27/11/2018)
+-[#1046][BUG] Toutes nos aides : ne pas afficher d'en-tête
+
+
 ## 16.7.2 (26/11/2018)
 -[#1045][FEATURETTE] Renommer l'operateur "include" par "amongst"
 
