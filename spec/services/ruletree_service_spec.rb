@@ -143,6 +143,18 @@ describe RuletreeService do
           it { expect(subject).to eq "ineligible" }
         end
       end
+      context 'Not Amongst, yes' do
+        let(:rule) { create :rule, operator_type: :not_amongst, value_eligible: '02003,02004,02005', variable: variable }
+        context '33404 is NOT amongst in 02003,02004,02005' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'Not Amongst, no' do
+        let(:rule) { create :rule, operator_type: :not_amongst, value_eligible: '12003,12004,12005', variable: variable }
+        context '02004 is NOT amongst in 12003,12004,12005' do
+          it { expect(subject).to eq "ineligible" }
+        end
+      end
     end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
