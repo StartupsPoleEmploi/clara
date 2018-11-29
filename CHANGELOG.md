@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.8.0 (27/11/2018)
+-[#996][FEATURE] operateur "not_amongst"
+
+
 ## 16.7.3 (27/11/2018)
 -[#1046][BUG] Toutes nos aides : ne pas afficher d'en-tête
 
