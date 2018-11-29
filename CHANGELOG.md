@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 16.8.0 (27/11/2018)
+## 16.8.1 (29/11/2018)
+-[#1043][DESIGN] décalage sur le Logo FSE
+
+
+## 16.8.0 (29/11/2018)
 -[#996][FEATURE] operateur "not_amongst"
 
 
