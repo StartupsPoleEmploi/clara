@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.8.2 (29/11/2018)
+-[#1019][FEATURETTE] balise robots noindex sur la page de résultats
+
+
 ## 16.8.1 (29/11/2018)
 -[#1043][DESIGN] décalage sur le Logo FSE
 
