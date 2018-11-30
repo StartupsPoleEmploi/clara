@@ -175,15 +175,20 @@ feature 'TabTitle' do
     scenario 'Display meta noindex on a result page when there is a user' do    
       asker = create(:asker, :full_user_input)
       visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
-      meta_noindex = find(:css, "meta[name='robots'][content='noindex']", :visible => false, :count => 1)
+      count_descr = page.all("meta[name='description']", :visible => false).count
+      count_noindex = page.all("meta[name='robots'][content='noindex']", :visible => false).count
+      expect(count_descr).to eq(1)
+      expect(count_noindex).to eq(1)
     end
     scenario 'Result page : Do not display meta noindex when there is no user' do    
       visit aides_path
-      meta_noindex = find(:css, "meta[name='robots'][content='noindex']", :visible => false, :count => 0)
+      count_noindex = page.all("meta[name='robots'][content='noindex']", :visible => false).count
+      expect(count_noindex).to eq(0)
     end
     scenario 'Any other page : Do not display meta noindex' do    
       visit root_path
-      meta_noindex = find(:css, "meta[name='robots'][content='noindex']", :visible => false, :count => 0)
+      count_noindex = page.all("meta[name='robots'][content='noindex']", :visible => false).count
+      expect(count_noindex).to eq(0)
     end    
   end
 
