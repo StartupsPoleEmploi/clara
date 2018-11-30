@@ -1,7 +1,10 @@
 - title_data ||= ''
 - description_data ||= ''
-- actual_title = TabTitleHelper::TitleCalculator.new(request).calculate_title(title_data)
-- actual_description = TabTitleHelper::TitleCalculator.new(request).calculate_description(description_data)
+- view_service = TabTitleHelper::TitleCalculator.new(request)
+- actual_title = view_service.calculate_title(title_data)
+- actual_description = view_service.calculate_description(description_data)
+- is_result_page = view_service.result_page?
+- has_user = !!params[:for_id]
 - prime_url = request.scheme + '://' + request.host
 
 %title= actual_title
@@ -13,3 +16,6 @@
 %meta{:content => "Clara est un service Pôle emploi qui permet de découvrir en 2 minutes les aides et mesures dont vous pouvez bénéficier", :property => "og:description", :class => "og-description"}/
 %meta{:content => "#{prime_url}#{request.fullpath}", :property => "og:url", :class => "og-url"}/
 
+- if is_result_page && has_user
+  %meta{:name => "robots", :content => "noindex"}/
+  
