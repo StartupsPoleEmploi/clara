@@ -34,6 +34,10 @@ module TabTitleHelper
       res
     end
 
+    def result_page?
+      @request_service.aides_path?
+    end
+
     def default_title
       " | " + smallest_title
     end
