@@ -172,7 +172,7 @@ feature 'TabTitle' do
       req_str = "https://api-adresse.data.gouv.fr/search/?citycode=79351&limit=20&q=rue"
       WebMock.stub_request(:get,req_str).to_return(status: 200, body: "", headers: {})
     end
-    scenario 'Display meta noindex on a result page when there is a user' do    
+    scenario 'Result page : Display meta noindex when there is a user' do    
       asker = create(:asker, :full_user_input)
       visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
       count_noindex = page.all("meta[name='robots'][content='noindex']", :visible => false).count
