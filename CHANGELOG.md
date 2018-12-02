@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.8.3 (03/12/2018)
+-[#1051][FEATURETTE] tracer la requete d'origine
+
+
 ## 16.8.2 (29/11/2018)
 -[#1019][FEATURETTE] balise robots noindex sur la page de résultats
 

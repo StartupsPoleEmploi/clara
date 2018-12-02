@@ -101,10 +101,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :req,       only: [:index]
+  
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
-  
+
   get 'errors/not_found'
   get 'errors/internal_server_error'
   get 'sitemap.xml', :to => 'sitemap#index', :as => 'main_sitemap'
