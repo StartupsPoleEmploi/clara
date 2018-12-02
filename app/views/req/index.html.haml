@@ -1,1 +1,3 @@
 =ap(request.headers.env.reject { |key| key.to_s.include?('.') }).html_safe
+
+=request.remote_ip
