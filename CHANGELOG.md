@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.9.0 (03/12/2018)
+-[#1052][FEATURE] détecter le traffic PE depuis le serveur
+
+
 ## 16.8.5 (03/12/2018)
 -[#1051c][FEATURETTE] tracer la requete d'origine 3
 

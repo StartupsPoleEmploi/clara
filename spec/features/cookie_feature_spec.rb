@@ -14,6 +14,18 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#ga-create-script", visible: false)
   end
   
+  scenario 'When visiting the home page, dimension1 (fromPE) is set to true or false' do
+    visit root_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+  end
+  
+  scenario 'When visiting any page, dimension1 (fromPE) is set to true or false' do
+    visit other_questions_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+    visit grade_questions_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+  end
+  
   scenario 'When visiting RGPD page, statistics are enabled by default' do
     visit edit_cooky_path("preference")
     disable_statistics_checkbox = "input#input_stat"
