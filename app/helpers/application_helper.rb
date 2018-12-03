@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
   def from_pe?
+    urls = ENV['ARA_URL_PE'] || "nothing"
     
   end
 
