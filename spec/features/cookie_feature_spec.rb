@@ -14,6 +14,38 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#ga-create-script", visible: false)
   end
   
+  scenario 'When visiting the home page, dimension1 (fromPE) is set to true or false' do
+    visit root_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+  end
+  
+  scenario 'When visiting any page, dimension1 (fromPE) is set to true or false' do
+    visit new_other_question_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+    visit new_grade_question_path
+    expect(page).to have_selector("#ga-frompe", visible: false)
+  end
+  
+  context 'User is from PE' do
+    scenario 'There is a script that points the fromPE analytics var to true' do
+      allow_any_instance_of( ApplicationHelper ).to receive(:from_pe?).and_return(true) 
+      visit root_path
+      expect(page).to have_selector("#ga-frompe", visible: false)
+      expect(page).to have_selector("#ga-frompe.ga-frompe-true", visible: false)
+      expect(page).not_to have_selector("#ga-frompe.ga-frompe-false", visible: false)
+    end
+  end
+  context 'User is NOT from PE' do
+    scenario 'There is a script that points the fromPE analytics var to false' do
+      allow_any_instance_of( ApplicationHelper ).to receive(:from_pe?).and_return(false) 
+      visit root_path
+      expect(page).to have_selector("#ga-frompe", visible: false)
+      expect(page).not_to have_selector("#ga-frompe.ga-frompe-true", visible: false)
+      expect(page).to have_selector("#ga-frompe.ga-frompe-false", visible: false)
+    end
+  end
+
+  
   scenario 'When visiting RGPD page, statistics are enabled by default' do
     visit edit_cooky_path("preference")
     disable_statistics_checkbox = "input#input_stat"
