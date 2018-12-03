@@ -20,7 +20,7 @@ class CookiesController < ApplicationController
 
 
     session[:cookie] = cooky_params
-
+    p :log
     p 'session[:cookie]'
     p session[:cookie]
     p 'END'
@@ -32,7 +32,7 @@ class CookiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
-      params.require(:cookies_form1).permit(:authorize_statistic, :forbid_statistic)
-      params.require(:cookies_form2).permit(:authorize_navigation, :forbid_navigation)
+      params.require(:cookies_form1).permit(:value)
+      #params.require(:cookies_form2).permit(:authorize_navigation, :forbid_navigation)
     end
 end
