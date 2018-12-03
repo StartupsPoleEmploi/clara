@@ -32,7 +32,7 @@ class CookiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
-      params.require(:cookies_form1, :cookies_form2).permit(:value, :value)
+      params.require(:cookies_form1).permit(:value).require(:cookies_form2).permit(:value)
       #params.require(:cookies_form2).permit(:value)
     end
 end
