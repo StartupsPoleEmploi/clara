@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.8.5 (03/12/2018)
+-[#1051c][FEATURETTE] tracer la requete d'origine 3
+
+
 ## 16.8.4 (03/12/2018)
 -[#1051b][FEATURETTE] tracer la requete d'origine 2
 
