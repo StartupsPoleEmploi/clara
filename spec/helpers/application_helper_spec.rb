@@ -26,7 +26,7 @@ describe ApplicationHelper, type: :helper do
     end    
     context 'ARA_URL_PE badly filled' do
       around do |example|
-        ClimateControl.modify ARA_URL_PE: '' do
+        ClimateControl.modify ARA_URL_PE: nil do
           example.run
         end
       end
