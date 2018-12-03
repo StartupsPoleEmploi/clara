@@ -102,6 +102,7 @@ Rails.application.routes.draw do
   end
 
   resources :req,       only: [:index]
+  resources :reqip,    only: [:index]
   
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
