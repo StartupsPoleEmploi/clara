@@ -15,16 +15,29 @@ describe ApplicationHelper, type: :helper do
           example.run
         end
       end
-      context 'Remote IP is from PE' do
-        it "#from_pe? Should return true" do
-          expect(helper.from_pe?).to eq(true)
+      it "#from_pe? should return true if IP is from PE" do
+        fake_request = OpenStruct.new({remote_ip: "111.28.209.38"})
+        expect(helper.from_pe?(fake_request)).to eq(true)
+      end
+      it "#from_pe? should return false if IP is NOT from PE" do
+        fake_request = OpenStruct.new({remote_ip: "222.33.54.12"})
+        expect(helper.from_pe?(fake_request)).to eq(false)
+      end
+    end    
+    context 'ARA_URL_PE badly filled' do
+      around do |example|
+        ClimateControl.modify ARA_URL_PE: '' do
+          example.run
         end
       end
-      context 'Remote IP is NOT from PE' do
-        it "#from_pe? Should return false" do
-          expect(helper.from_pe?).to eq(false)
-        end
-      end   
+      it "#from_pe? should return false, even if IP is from PE" do
+        fake_request = OpenStruct.new({remote_ip: "111.28.209.38"})
+        expect(helper.from_pe?(fake_request)).to eq(false)
+      end
+      it "#from_pe? should return false if IP is NOT from PE" do
+        fake_request = OpenStruct.new({remote_ip: "222.33.54.12"})
+        expect(helper.from_pe?(fake_request)).to eq(false)
+      end
     end    
   end
 end
