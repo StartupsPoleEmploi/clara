@@ -28,7 +28,7 @@ gem "autoprefixer-rails"
 gem "active_type"
 gem "bulk_insert"
 gem "gon"
-gem "whenever", :require => false
+gem "whenever", require: false
 gem "rails-html-sanitizer", ">= 1.0.4" # explicitly to avoid vulnerability issue
 gem "rubyzip", "~> 1.2.2" # explicitly to avoid vulnerability issue
 
@@ -89,7 +89,7 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
   gem "rack-livereload"
-  gem "rb-fsevent",        :require => false
+  gem "rb-fsevent", require: false
   gem "letter_opener_web", "~> 1.0"
 end
 
