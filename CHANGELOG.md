@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.9.1 (04/12/2018)
+-[#1050][TECH] passage à Teaspoon pour les tests fronts
+
+
 ## 16.9.0 (03/12/2018)
 -[#1052][FEATURE] détecter le traffic PE depuis le serveur
 
