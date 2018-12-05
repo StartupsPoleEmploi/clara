@@ -24,10 +24,7 @@
 
       
     = form_with model: @cooky, url: cooky_path, method:  :put, :local => true, id: "cookie-form" do |f|
-      - if @cooky.errors.any?
-        - @cooky.errors.messages.each do |message|
-          .message= message.last.last.html_safe
-      
+      %legend.u-hidden-visually Cochez vos préférences pour les cookies, de statistiques et de navigation : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.      
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
           %h2.c-cookie-preference 
