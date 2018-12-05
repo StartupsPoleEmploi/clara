@@ -9,8 +9,6 @@ class GradeQuestionsController < ApplicationController
   end
 
   def create
-    p 'params -----------'
-    p params
 
     if params[:commit] == 'Revenir' 
       my_redirect_to QuestionManager.new.getPreviousPath('grade', @asker)
