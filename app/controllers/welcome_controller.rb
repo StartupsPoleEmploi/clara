@@ -22,6 +22,7 @@ class WelcomeController < ApplicationController
     my_redirect_to QuestionManager.new.getNextPath
   end
 
+=begin  
   def accept_all_cookies
     session[:cookie] = {
       "authorize_statistic" => "1",
@@ -30,6 +31,7 @@ class WelcomeController < ApplicationController
       "forbid_navigation" => "0"
     }
   end
+=end
 
   def terms
   end

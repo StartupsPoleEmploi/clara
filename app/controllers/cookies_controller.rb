@@ -12,15 +12,9 @@ class CookiesController < ApplicationController
     p params 
     p 'END ----------------------------------------'
 
-    #if params[:commit] == 'authorize_statistic' && 'authorize_navigation'
-    #  p 'authorize_statistic ----------------------'
-    #else
-    #  p 'other ----------------' 
-    #end
 
 
     session[:cookie] = cooky_params
-    p :log
     p 'session[:cookie]'
     p session[:cookie]
     p 'END'
@@ -32,7 +26,6 @@ class CookiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
-      params.require(:cookies_form1).permit(:value).require(:cookies_form2).permit(:value)
-      #params.require(:cookies_form2).permit(:value)
+      params.require(:choices).permit(:analytics, :hotjar)
     end
 end
