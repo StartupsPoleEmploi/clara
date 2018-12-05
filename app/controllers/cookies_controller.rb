@@ -8,12 +8,6 @@ class CookiesController < ApplicationController
   # PATCH/PUT /cookies/preference
   def update
 
-    p 'PARAMS -------------------------------------'
-    p params 
-    p 'END ----------------------------------------'
-
-
-
     session[:cookie] = cooky_params
     p 'session[:cookie]'
     p session[:cookie]
