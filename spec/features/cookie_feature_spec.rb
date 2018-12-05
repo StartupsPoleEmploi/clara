@@ -14,18 +14,6 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#ga-create-script", visible: false)
   end
   
-  scenario 'When visiting RGPD page, statistics are enabled by default' do
-    visit edit_cooky_path("preference")
-    disable_statistics_checkbox = "input#input_stat"
-    expect(page.find(disable_statistics_checkbox)).not_to be_checked
-  end
-
-  scenario 'When visiting RGPD page, navigation is enabled by default' do
-    visit edit_cooky_path("preference")
-    disable_navigation_checkbox = "input#input_nav"
-    expect(page.find(disable_navigation_checkbox)).not_to be_checked
-  end
-
   scenario 'User can refuse analytics' do
 
     # Given
