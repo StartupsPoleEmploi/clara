@@ -34,8 +34,6 @@ describe('cookies.js', function() {
     $("#forbid_navigation").remove();
     $("#forbid_statistic").remove();
   })
-
-  describe('init_cookies_preferences', function() {
     
   describe('authorize_all', function() {
     it('Should check authorize_statistic when you click on authorize_all', function() {
