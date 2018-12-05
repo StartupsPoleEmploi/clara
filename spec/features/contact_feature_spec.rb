@@ -28,7 +28,9 @@ feature 'Contact' do
     around do |example|
       ClimateControl.modify ARA_EMAIL_USER: 'env@ara_email_user' do
         ClimateControl.modify ARA_EMAIL_DESTINATION: 'env@ara_email_destination' do
-         example.run
+          ClimateControl.modify ARA_EMAIL_FROM: 'env@ara_email_from' do
+            example.run
+          end
         end
       end
     end
@@ -58,9 +60,8 @@ feature 'Contact' do
       end
     end
     scenario 'Message is actually sent from ENV["ARA_EMAIL_FROM"]' do
-      test = ENV["ARA_EMAIL_FROM"]
       suts[:invite_email].tap do |mail|
-        expect(mail.from).to eq(test)
+        expect(mail.from).to eq(["env@ara_email_from"])
       end
     end
     scenario 'Message is actually sent to ENV["ARA_EMAIL_DESTINATION"]' do
