@@ -23,7 +23,7 @@ feature 'CookieSpec' do
 
     #When
     visit edit_cooky_path("preference")
-    find("#input_stat").set(true)
+    find("#forbid_statistic").set(true)
     find("#submit-cookie-preference").click
 
     #Then
@@ -40,7 +40,7 @@ feature 'CookieSpec' do
 
     #When
     visit edit_cooky_path("preference")
-    find("#input_nav").set(true)
+    find("#forbid_navigation").set(true)
     find("#submit-cookie-preference").click
 
     #Then
