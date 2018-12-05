@@ -12,8 +12,10 @@ _.set(window, 'clara.cookies', {
       });
     },
     radiobuttons_state: function() {
-
-    };
+      if( $("#ga-script").length === 1 && $("#ga-create-script").length === 1) {
+        $("#authorize_statistic").prop("checked", true);
+      }
+    }
 });
 
 
