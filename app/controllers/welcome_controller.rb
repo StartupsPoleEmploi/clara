@@ -22,14 +22,12 @@ class WelcomeController < ApplicationController
     my_redirect_to QuestionManager.new.getNextPath
   end
 
-  
   def accept_all_cookies
     session[:cookie] = {
        "analytics" => "authorize_statistic",
        "hotjar" => "authorize_navigation",
     }
   end
-
 
   def terms
   end

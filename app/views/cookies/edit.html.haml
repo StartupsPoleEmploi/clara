@@ -50,7 +50,9 @@
               = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: "authorized", text: 'Autoriser'}       
             .o-layout__item{:class => "u-1/2 u-text--center"}
               = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: "forbidden", text: 'Interdire'}                     
-
+      
+      = render 'shared/error_in_form', f: f
+      
       .actions.u-text--right
         %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
 

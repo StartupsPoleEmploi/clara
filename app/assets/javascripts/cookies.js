@@ -11,7 +11,12 @@ _.set(window, 'clara.cookies', {
         $("#forbid_navigation").prop("checked", true);
       });
     },
+    radiobuttons_state: function() {
+
+    };
 });
+
+
 
 clara.load_js(function only_if(){return $("body").hasClasses("cookies", "edit")}, function() {
 
