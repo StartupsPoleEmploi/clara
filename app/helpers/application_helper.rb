@@ -9,11 +9,11 @@ module ApplicationHelper
   end
 
   def ga_disabled?
-    session[:cookie] && session[:cookie]["forbid_statistic"] && session[:cookie]["forbid_statistic"] == "1"
+    session[:cookie] && session[:cookie]["analytics"] && session[:cookie]["analytics"] == "forbid_statistic"
   end
 
   def hj_disabled?
-    session[:cookie] && session[:cookie]["forbid_navigation"] && session[:cookie]["forbid_navigation"] == "1"
+    session[:cookie] && session[:cookie]["hotjar"] && session[:cookie]["hotjar"] == "forbid_navigation"
   end
 
   def empty_image
