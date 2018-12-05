@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.9.1 (05/12/2018)
+-[#870][FEATURE] vidéo en modal sur la page d'acceuil
+
+
 ## 16.9.0 (03/12/2018)
 -[#1052][FEATURE] détecter le traffic PE depuis le serveur
 
