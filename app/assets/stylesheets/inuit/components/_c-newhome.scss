@@ -336,30 +336,28 @@ dialog {
   position: fixed;
   left: 15%;
   top: 5%;
-  width: 70%;
+  width: 55%;
+  height: 75%;
   max-height: 98vh;
   right: auto;
   border: 2px solid #000; 
   background: #fff;
   z-index: 667;
-  padding: 2em;
+  padding: 1em;
   overflow: auto;
 }
 .simple-modal-close {
   float: right;
-  background: #933;
+  background: #FFFFFF;
   border-radius: 1em;
-  color: #fff;
+  color: #358ED7;
   padding: .25em;
   text-decoration: none;
   line-height: 1.2;
   text-align: center;
 }
-.simple-modal-close:focus,
-.simple-modal-close:hover,
-.simple-modal-close:active {
-  background: #882525;
-}
+.simple-modal-close:focus
+
 .simple-modal-overlay[data-background-click="disabled"] {
   cursor: auto;
 }
