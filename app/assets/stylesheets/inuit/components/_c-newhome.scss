@@ -405,41 +405,8 @@ dialog {
   cursor: pointer;
 }
 
-.simple-left-modal {
-  left: auto;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  z-index: 667;
-  position: fixed;
-  width: 40em;
-  max-width: 100%;
-  padding: 1em;
-  font-size: 1em;
-  border: 0;
-  overflow: auto;
-  background-color: #fff ;
-  background-image:
-      -webkit-linear-gradient(
-        top,
-        #882525 3em,
-        #f7f7f7 3em
-      );  background-image:
-      linear-gradient(
-        to bottom,
-        #882525 3em,
-        #f7f7f7 3em
-      );
-  background-attachment: local;
-}
-.simple-left-modal-close {
-  position: absolute;
-  top: .25em;
-  right: 0;
-  background: transparent;
-  color: #fff;
-}
+
+
 
 
 .circle{

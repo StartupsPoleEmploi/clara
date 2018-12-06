@@ -16,16 +16,17 @@
                 = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
                   = f.submit 'Je commence', class: 'c-main-cta'
               .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-                .js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title", "data-modal-content-id" => "modal_id_2nd_example"} 
-                  %div{:class => "u-hide"}
-                    #modal_id_2nd_example
-                      %iframe{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "405", :src => "https://www.youtube.com/embed/8IDnLjfAt5U?rel=0", :width => "720"}
+                .js-modal{"data-modal-close-text" => "Fermer X", "data-modal-close-title" => "Close it, really", "data-modal-content-id" => "modal_id_2nd_example", "data-modal-prefix-class" => "simple"}
                   %ul.o-line    
                     %li.o-line__item.play             
                       %a.button.button-play 
                     %li.o-line__item
                       %span.video Voir la vidéo
                       %span.time Durée : 1:30min
+                #modal_id_2nd_example.hidden
+                  %iframe{:allow => "autoplay; encrypted-media", :allowfullscreen => "", :frameborder => "0", :height => "405", :src => "https://www.youtube.com/embed/8IDnLjfAt5U?rel=0", :width => "720"}
+                  = succeed "," do
+                    %code
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "Des gens entrain d'utiliser Clara", data: { "src" => image_path("home-hero.svg") }) 
