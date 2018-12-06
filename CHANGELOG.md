@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.10.0 (06/12/2018)
+-[#1001][DESIGN] page de cookies avec radiobuttons
+
+
 ## 16.9.2 (06/12/2018)
 -[#1055][TECH] passage à Rails 5.2.1.1
 
