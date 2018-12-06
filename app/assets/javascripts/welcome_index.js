@@ -220,5 +220,11 @@ clara.load_js(function only_if(){return $("body").hasClasses("welcome", "index")
             $close.focus();
         });
 
+    $(function() {
+      $('#js_modal').click(function(event){
+        event.preventDefault();
+        $('div#modal_id_2nd_example').toggle();
+      });
+    });   
 
 });
