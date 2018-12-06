@@ -6,30 +6,25 @@ describe('cookies.js', function() {
   });
 
   beforeEach(function() { 
-    $('body').append(' <input id="authorize_all" name="control_all" type="button" value="authorize_all"></input>           \
-                            <input id="forbid_all" name="control_all" type="button" value="forbid_all"></input>          \
-                            <input id="authorize_statistic" name="statistic" type="radio" value="authorize_statistic"></input>                                             \
-                            <input id="forbid_statistic" name="statistic" type="radio" value="forbid_statistic"></input>              \
-                            <input id="authorize_navigation" name="navigation" type="radio" value="authorize_navigation"></input>  \
-                            <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation"></input>                         \
-                            <input id="input_nav" type="checkbox" value="input_nav"></input>                         \
-                            <input id="input_stat" type="checkbox" value="input_stat"></input>                         \
-                        ');
+    $('body').append('\
+      <div class="test-only">\
+        <input id="authorize_all" name="control_all" type="button" value="authorize_all">\
+        <input id="forbid_all" name="control_all" type="button" value="forbid_all">\
+        <input id="authorize_statistic" name="statistic" type="radio" value="authorize_statistic">\
+        <input id="forbid_statistic" name="statistic" type="radio" value="forbid_statistic">\
+        <input id="authorize_navigation" name="navigation" type="radio" value="authorize_navigation">\
+        <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation">\
+      </div>\
+    ');
   });
 
   afterEach(function() {
-    $("#authorize_all").remove();
-    $("#forbid_all").remove();
-    $("#authorize_statistic").remove();
-    $("#authorize_navigation").remove();
-    $("#forbid_navigation").remove();
-    $("#forbid_statistic").remove();
+    $(".test-only").remove();
   })
     
   describe('authorize_all', function() {
     it('Should check authorize_statistic when you click on authorize_all', function() {
       //given
-      clara.cookies.authorize_all();
       //when
       $('#authorize_all').click();
       //then
@@ -37,7 +32,6 @@ describe('cookies.js', function() {
     });
     it('Should check authorize_navigation when you click on authorize_all', function() {
       //given
-      clara.cookies.authorize_all();
       //when
       $('#authorize_all').click();
       //then
@@ -45,7 +39,6 @@ describe('cookies.js', function() {
     });
     it('Should not check forbid_navigation when you click on authorize_all', function() {
       //given
-      clara.cookies.authorize_all();
       //when
       $('#authorize_all').click();
       //then
@@ -53,7 +46,6 @@ describe('cookies.js', function() {
     });
     it('Should not check forbid_statistic when you click on authorize_all', function() {
       //given
-      clara.cookies.authorize_all();
       //when
       $('#authorize_all').click();
       //then
@@ -65,7 +57,6 @@ describe('cookies.js', function() {
   describe('forbid_all', function() {
     it('Should check forbid_statistic when you click on forbid_all', function() {
       //given
-      clara.cookies.forbid_all();
       //when
       $('#forbid_all').click();
       //then
@@ -73,7 +64,6 @@ describe('cookies.js', function() {
     });
     it('Should check forbid_navigation when you click on forbid_all', function() {
       //given
-      clara.cookies.forbid_all();
       //when
       $('#forbid_all').click();
       //then
@@ -82,7 +72,6 @@ describe('cookies.js', function() {
 
     it('Should not check authorize_navigation when you click on forbid_all', function() {
       //given
-      clara.cookies.forbid_all();
       //when
       $('#forbid_all').click();
       //then
@@ -90,7 +79,6 @@ describe('cookies.js', function() {
     });
     it('Should not check authorize_statistic when you click on forbid_all', function() {
       //given
-      clara.cookies.forbid_all();
       //when
       $('#forbid_all').click();
       //then
