@@ -14,7 +14,7 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
-//= require jquery/jquery-extension
+//= require jquery/jquery_extension
 //= require jquery/jquery-cache-image
 //= require fontfaceobserver/fontfaceobserver
 //= require redux/redux

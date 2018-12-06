@@ -1,6 +1,3 @@
-//= require lodash/lodash
-//= require lodash/lodash_extension
-//= require jquery
 //= require vuejs/vue
 //= require administrate/c-simulator-result
 describe("CSimulatorResult", function() {

@@ -1,11 +1,4 @@
-//= require jquery/jquery
-//= require jquery/jquery-extension
 describe("jQuery extension", function() {
-
-  it("Needs jQuery", function() {
-    expect($).toBeDefined();
-    expect($.fn.jquery).toEqual("1.12.4");
-  });
 
   beforeEach(function(){
     $(document.body).addClass("aaa")

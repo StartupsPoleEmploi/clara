@@ -1,10 +1,4 @@
-//= require lodash/lodash
-//= require lodash/lodash_extension
 describe("Lodash extension", function() {
-
-  it("Needs lodash", function() {
-    expect(_).toBeDefined();
-  });
 
   describe("_.nextElementLooped", function() {
     it ("Should be defined", function() {
@@ -35,6 +29,7 @@ describe("Lodash extension", function() {
       expect(_.nextElementLooped(input, target)).toEqual(output);
     });
   });
+
   describe("_.none", function() {
     var ALL_FALSE = {e_0: false, e_1: false};
     var ALL_TRUE = {e_0: true, e_1: true};
