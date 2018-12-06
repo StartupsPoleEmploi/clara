@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.9.2 (06/12/2018)
+-[#1055][TECH] passage à Rails 5.2.1.1
+
+
 ## 16.9.1 (04/12/2018)
 -[#1050][TECH] passage à Teaspoon pour les tests fronts
 
