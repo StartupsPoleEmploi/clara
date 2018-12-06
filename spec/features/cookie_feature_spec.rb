@@ -8,10 +8,11 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#hj-script", visible: false)
   end
 
-  scenario 'When visiting the home page, 2 analytics scripts are included by default' do
+  scenario 'When visiting the home page, 3 analytics scripts are included by default' do
     visit root_path
     expect(page).to have_selector("#ga-script", visible: false)
     expect(page).to have_selector("#ga-create-script", visible: false)
+    expect(page).to have_selector("#ga-frompe", visible: false)
   end
   
   scenario 'User can refuse analytics' do
@@ -20,6 +21,7 @@ feature 'CookieSpec' do
     visit root_path
     expect(page).to have_selector("#ga-script", visible: false)
     expect(page).to have_selector("#ga-create-script", visible: false)
+    expect(page).to have_selector("#ga-frompe", visible: false)
 
     #When
     visit edit_cooky_path("preference")
@@ -30,6 +32,7 @@ feature 'CookieSpec' do
     visit root_path
     expect(page).not_to have_selector("#ga-script", visible: false)
     expect(page).not_to have_selector("#ga-create-script", visible: false)
+    expect(page).not_to have_selector("#ga-frompe", visible: false)
 
   end
 
