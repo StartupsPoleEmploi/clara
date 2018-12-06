@@ -11,14 +11,14 @@
             %span Découvrez les aides et mesures 
             %span qui vont accélérer votre
             %span reprise d'emploi
-          .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-            = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
-              = f.submit 'Je commence', class: 'c-main-cta'
-          .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-            .js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title"} 
-              %a.button.button-play Voir la vidéo
-              %span Durée : 1:30min
-
+            .o-layout
+              .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
+                = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
+                  = f.submit 'Je commence', class: 'c-main-cta'
+              .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
+                .js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title"} 
+                  %a.button.button-play Voir la vidéo
+                  %span Durée : 1:30min
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "Des gens entrain d'utiliser Clara", data: { "src" => image_path("home-hero.svg") }) 
