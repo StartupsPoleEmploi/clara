@@ -336,11 +336,9 @@ dialog {
   position: fixed;
   left: 15%;
   top: 5%;
-  width: 55%;
-  height: 75%;
+  width: 53%;
   max-height: 98vh;
-  right: auto;
-  border: 2px solid #000; 
+  right: auto; 
   background: #fff;
   z-index: 667;
   padding: 1em;
@@ -349,12 +347,14 @@ dialog {
 .simple-modal-close {
   float: right;
   background: #FFFFFF;
-  border-radius: 1em;
   color: #358ED7;
   padding: .25em;
   text-decoration: none;
   line-height: 1.2;
   text-align: center;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border-color: #358ED7;
 }
 .simple-modal-close:focus
 
