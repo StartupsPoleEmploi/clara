@@ -8,17 +8,12 @@ module ApplicationHelper
     content_for :title_data, text.to_s
   end
 
-  def from_pe?(the_request)
-    urls = ENV['ARA_URL_PE'] || "nothing"
-    urls.split(",").include?(the_request.remote_ip)
-  end
-
   def ga_disabled?
-    session[:cookie] && session[:cookie]["disable_statistic"] && session[:cookie]["disable_statistic"] == "1"
+    session[:cookie] && session[:cookie]["analytics"] && session[:cookie]["analytics"] == "forbid_statistic"
   end
 
   def hj_disabled?
-    session[:cookie] && session[:cookie]["disable_navigation"] && session[:cookie]["disable_navigation"] == "1"
+    session[:cookie] && session[:cookie]["hotjar"] && session[:cookie]["hotjar"] == "forbid_navigation"
   end
 
   def empty_image

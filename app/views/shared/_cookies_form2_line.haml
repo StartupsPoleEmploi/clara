@@ -1,0 +1,13 @@
+- id ||= ""
+- value ||= ""
+- text ||= ""
+
+.c-radioline.js-enterspace{id: "radio_#{id}"}
+  = radio_button_tag "choices[hotjar]", |
+      "#{id}", |
+      "#{value}" == "#{id}", | 
+      id: "#{id}", |
+      required: 'required', |
+      class: 'c-radioinput'
+  %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
+    =text
