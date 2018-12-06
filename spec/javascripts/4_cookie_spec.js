@@ -43,6 +43,26 @@ describe('cookies.js', function() {
       //then
       expect($("#authorize_navigation").is(":checked")).toBe(true);
     });
+    it('Should say no to analytics if ga-create script is not already here', function() {
+      //given
+      clara.cookies.setup_initial_radiobuttons_state();
+      expect($("#authorize_statistic").is(":checked")).toBe(true);
+      //when
+      $("#ga-script").remove();
+      //then
+      clara.cookies.setup_initial_radiobuttons_state();
+      expect($("#authorize_statistic").is(":checked")).toBe(false);
+    });
+    it('Should say no to hotjar if hj-create script is not already here', function() {
+      //given
+      clara.cookies.setup_initial_radiobuttons_state();
+      expect($("#authorize_navigation").is(":checked")).toBe(true);
+      //when
+      $("#hj-script").remove();
+      //then
+      clara.cookies.setup_initial_radiobuttons_state();
+      expect($("#authorize_navigation").is(":checked")).toBe(false);
+    });
 
   });
 
