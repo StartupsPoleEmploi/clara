@@ -1,6 +1,9 @@
 class CookieForm < ActiveType::Object
 
-  attribute :disable_navigation, :string
-  attribute :disable_statistic, :string
+  attribute :analytics, :string
+  attribute :hotjar, :string
+
+  validates :analytics, presence: true
+  validates :hotjar, presence: true
 
 end

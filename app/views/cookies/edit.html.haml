@@ -1,6 +1,6 @@
 - title_data 'Gestion des cookies'
 - description_data 'En activant les cookies, votre navigateur retient certaines informations de visite.'
-
+- e = view_object(:error_view_object, {errors: flash[:error]})
 
 %main#main{role: "main"}
   .u-useful-width.u-margin-constraint
@@ -17,49 +17,40 @@
         %h2.c-cookie-preference Préférence pour tous les services
       .o-layout__item{:class => "u-1/2"}
         .o-layout
-          .o-layout__item{:class => "u-1/2 u-text--center"}
+          .o-layout__item{:class => "u-1/2"}
             %button#authorize_all.c-cookie-cta.c-cookie-cta--green Tout autoriser
-          .o-layout__item{:class => "u-1/2 u-text--center"}
+          .o-layout__item{:class => "u-1/2"}
             %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
 
+      
+    = form_with model: @cooky, url: cooky_path, method:  :put, :local => true, id: "cookie-form" do |f|
+      %legend.u-hidden-visually Cochez vos préférences pour les cookies, de statistiques et de navigation  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.      
+      .o-layout.c-cookie-line
+        .o-layout__item{:class => "u-1/2"}
+          %h2.c-cookie-preference 
+            Statistiques
+          %p.c-cookie-description
+            Ces cookies nous permettent d'analyser l'utilisation du site afin de pouvoir en mesurer et en améliorer la performance.
+        .o-layout__item{:class => "u-1/2"}
+          .o-layout
+            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}  
+              = render 'shared/cookies_form1_line', {id: 'authorize_statistic', value: "authorized", text: 'Autoriser'}           
+            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}                          
+              = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: "forbidden", text: 'Interdire'}       
 
-    .o-layout.c-cookie-line
-      .o-layout__item{:class => "u-1/2"}
-        %h2.c-cookie-preference 
-          Statistiques
-        %p.c-cookie-description
-          Ces cookies nous permettent d'analyser l'utilisation du site afin de pouvoir en mesurer et en améliorer la performance.
-      .o-layout__item{:class => "u-1/2"}
-        .o-layout
-          .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#authorize_statistic.c-cookie-cta.c-cookie-cta--green Autoriser
-          .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#forbid_statistic.c-cookie-cta.c-cookie-cta--red Interdire
-
-
-    .o-layout.c-cookie-line
-      .o-layout__item{:class => "u-1/2"}
-        %h2.c-cookie-preference 
-          Navigation
-        %p.c-cookie-description
-          Ces cookies nous permettent d'analyser la navigation sur le site afin de l’améliorer et d’analyser les comportements des internautes 
-      .o-layout__item{:class => "u-1/2"}
-        .o-layout
-          .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#authorize_navigation.c-cookie-cta.c-cookie-cta--green Autoriser
-          .o-layout__item{:class => "u-1/2 u-text--center"}
-            %button#forbid_navigation.c-cookie-cta.c-cookie-cta--red Interdire
-
-    -# Deliberately avoid XHR request here, in order to force hotjar and analytics reevaluation
-    = form_with model: @cooky, url: cooky_path, method: :put, :local => true, id: "cookie-form" do |f|
-
-      .field.u-display-none
-        = f.label :disable_statistic
-        = f.check_box :disable_statistic, id: 'input_stat'
-      .field.u-display-none
-        = f.label :disable_navigation
-        = f.check_box :disable_navigation, id: 'input_nav'
+      .o-layout.c-cookie-line
+        .o-layout__item{:class => "u-1/2"}
+          %h2.c-cookie-preference  
+            Navigation
+          %p.c-cookie-description
+            Ces cookies nous permettent d'analyser la navigation sur le site afin de l’améliorer et d’analyser les comportements des internautes 
+        .o-layout__item{:class => "u-1/2"}
+          .o-layout
+            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
+              = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: "authorized", text: 'Autoriser'}       
+            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
+              = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: "forbidden", text: 'Interdire'}                     
+      
+      
       .actions.u-text--right
         %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
-
-

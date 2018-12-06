@@ -24,8 +24,8 @@ class WelcomeController < ApplicationController
 
   def accept_all_cookies
     session[:cookie] = {
-      "disable_statistic" => "0",
-      "disable_navigation" => "0"
+       "analytics" => "authorize_statistic",
+       "hotjar" => "authorize_navigation",
     }
   end
 

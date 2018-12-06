@@ -1,8 +1,9 @@
 /**
 *
-* Avoid to force the load_js_per_page file to be included.
+* Avoid to force the main function (actual_f) to be triggered  
+* if the file load_js_per_page is not included.
 * 
-* Useful for tests.
+* Very useful for testing.
 *
 */
 

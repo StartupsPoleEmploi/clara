@@ -7,7 +7,9 @@ class CookiesController < ApplicationController
 
   # PATCH/PUT /cookies/preference
   def update
+
     session[:cookie] = cooky_params
+    
     redirect_to root_path
   end
 
@@ -15,6 +17,6 @@ class CookiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cooky_params
-      params.require(:cookie_form).permit(:disable_statistic, :disable_navigation)
+      params.require(:choices).permit(:analytics, :hotjar)
     end
 end
