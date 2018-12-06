@@ -1,3 +1,4 @@
+//= require load_js_per_page
 //= require cookies
 describe('cookies.js', function() {
 
@@ -6,6 +7,8 @@ describe('cookies.js', function() {
   });
 
   beforeEach(function() { 
+    $('body').addClass("cookies")
+    $('body').addClass("edit")
     $('body').append('\
       <div class="test-only">\
         <input id="authorize_all" name="control_all" type="button" value="authorize_all">\
@@ -20,6 +23,8 @@ describe('cookies.js', function() {
 
   afterEach(function() {
     $(".test-only").remove();
+    $('body').removeClass("cookies")
+    $('body').removeClass("edit")
   })
     
   describe('authorize_all', function() {
