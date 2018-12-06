@@ -7,8 +7,7 @@ describe('cookies.js', function() {
   });
 
   beforeEach(function() { 
-    $('body').addClass("cookies")
-    $('body').addClass("edit")
+
     $('body').append('\
       <div class="test-only">\
         <input id="authorize_all" name="control_all" type="button" value="authorize_all">\
@@ -19,12 +18,13 @@ describe('cookies.js', function() {
         <input id="forbid_navigation" name="navigation" type="radio" value="forbid_navigation">\
       </div>\
     ');
+
+    clara.cookies.main_function();
+
   });
 
   afterEach(function() {
     $(".test-only").remove();
-    $('body').removeClass("cookies")
-    $('body').removeClass("edit")
   })
     
   describe('authorize_all', function() {
