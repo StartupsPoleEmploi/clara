@@ -20,3 +20,4 @@ class CookiesController < ApplicationController
       params.require(:choices).permit(:analytics, :hotjar)
     end
 end
+
