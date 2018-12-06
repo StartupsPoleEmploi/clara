@@ -443,7 +443,6 @@ dialog {
   align-items:center;
   width:100%;
   height:100vh;
-  background:darkgrey;
 }
 
 .circle{
@@ -463,13 +462,11 @@ dialog {
 .button-play{
   display:block;
   position:relative;
-  border:8px solid white;
+  border:8px solid black;
   box-shadow:0 4px 6px -3px rgba(black, .3), inset 0 3px 4px -2px rgba(black, .25);
   position:relative;
   width:112px;
   height:112px;
-  background:grey;
-  background-image: linear-gradient(120deg, rgba(lighten(grey, 15%), .3) 50%, grey 51%);
   border-radius:50%; 
   transition: all .2s cubic-bezier(0.68, -0.55, 0.465, 1.55) .2s, border-width .4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
   
@@ -484,7 +481,7 @@ dialog {
     border:30px solid transparent;
     border-width:25px 0px 25px 40px;
     border-radius:0;
-    border-left-color:white;
+    border-left-color:black;
     transform:translate(-13px, 50%);
     
 
