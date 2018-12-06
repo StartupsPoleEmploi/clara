@@ -18,11 +18,11 @@
               .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
                 .js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title"} 
                   %ul.o-line    
-                    %li.o-line__item             
+                    %li.o-line__item.play             
                       %a.button.button-play 
                     %li.o-line__item
-                      %span Voir la vidéo
-                      %span Durée : 1:30min
+                      %span.video Voir la vidéo
+                      %span.time Durée : 1:30min
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "Des gens entrain d'utiliser Clara", data: { "src" => image_path("home-hero.svg") }) 
