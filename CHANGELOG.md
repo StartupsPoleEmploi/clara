@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 16.10.1 (06/12/2018)
+## 16.10.2 (07/12/2018)
+-[#1042][DESIGN] rétablissement encouragement question adresse
+
+
+## 16.10.1 (07/12/2018)
 -[#939][TECH] test des emails
 
 
