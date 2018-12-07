@@ -9,10 +9,10 @@
   text-align: center;
   margin-top: space(2);
   margin-bottom: space(4);
+  @include inuit-font-size(14px);
   @include mq($from: tablet) {
     margin: auto;
     width: 70%;
-    margin-left: 0;
   }
 }
 
