@@ -7,6 +7,8 @@
 
 .c-help--address {
   text-align: center;
+  margin-top: space(2);
+  margin-bottom: space(4);
   @include mq($from: tablet) {
     margin: auto;
     width: 70%;
