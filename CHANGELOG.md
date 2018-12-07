@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.10.0 (07/12/2018)
+-[#870][FEATURE] video en modal sur la page d'acceuil
+
+
 ## 16.10.0 (06/12/2018)
 -[#1001][DESIGN] page de cookies avec radiobuttons
 
