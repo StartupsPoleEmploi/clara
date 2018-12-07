@@ -434,7 +434,11 @@ dialog {
   height:25px;
   border-radius:50%; 
   transition: all .2s cubic-bezier(0.68, -0.55, 0.465, 1.55) .2s, border-width .4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
-  
+  @include mq($from: desktop) {
+    text-align:left;
+  }
+
+
   &:before{
     display:block;
     position:relative;
@@ -449,26 +453,40 @@ dialog {
     border-radius:0;
     border-left-color:black;
     transform:translate(-13px, 50%);
+    @include mq($from: desktop) {
+      text-align:left;
+    }
   }
   
+
 }
 
 
 .play {
   width: 26px;
+  @include mq($until: desktop) {
+    display:none;
+  }
   @include mq($from: desktop) {
+    text-align:left;
   }
 }
 
 .video {
   font-size: 16px;
   text-align:center;
+  @include mq($from: desktop) {
+    text-align:left;
+  }
 }
 
 .time {
   font-size: 12px;
   font-weight: normal;
   text-align:center;
+  @include mq($from: desktop) {
+    text-align:left;
+  }
 }
 
 div.hidden { 
