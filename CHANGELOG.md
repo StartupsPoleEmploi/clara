@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.10.1 (06/12/2018)
+-[#939][TECH] test des emails
+
+
 ## 16.10.0 (06/12/2018)
 -[#1001][DESIGN] page de cookies avec radiobuttons
 
