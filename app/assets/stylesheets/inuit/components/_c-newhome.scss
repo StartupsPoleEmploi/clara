@@ -373,6 +373,12 @@ dialog {
     bottom: 5%;
     width: 90%;
   }
+
+  .modal-content iframe {
+    height: 405px;
+    width: 720px;
+}
+
   
 }
 
@@ -387,7 +393,6 @@ dialog {
   }
 
   .modal-content iframe {
-
 
   width: 100%;
   height: 100%;
@@ -410,23 +415,6 @@ dialog {
   cursor: pointer;
 }
 
-
-
-
-
-.circle{
-  display:block;
-  position:relative;
-  top:-4px;
-  left:-4px;
-  width:20px;
-  height:20px;
-  stroke-dasharray:1000px;
-  stroke-dashoffset:0;
-  transform-origin: 50% 50%;
-  transition: all .8s linear .2s, opacity 0s linear 0s;
-  
-}
 
 .button-play{
   cursor: pointer;
@@ -513,9 +501,7 @@ div.hidden {
 
 .modal-content iframe {
 
-  position: absolute;
-  top: 0;
-  left: 0;
+
  
   @include mq($from: desktop) {
     height: 405px;
