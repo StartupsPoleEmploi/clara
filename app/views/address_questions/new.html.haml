@@ -18,12 +18,12 @@
     .o-card
       = form_with model: @address, url: address_questions_path, :local => true do |f|
         %h1.c-question-title.js-title (Facultatif) Quel est votre code postal de votre lieu de résidence ?
-        .c-question-subtitle
-          Entrez votre code postal à 5 chiffres
-        .c-address__content
-          .o-layout.o-layout--stretch.o-layout--center
-            .o-layout__item{:class => "u-1/1 u-2/4@tablet"}
-
+        .o-layout.o-layout--stretch.o-layout--center
+          .o-layout__item{:class => "u-1/1 u-1/3@tablet"}
+          .o-layout__item{:class => "u-1/1 u-1/3@tablet", :style => "flex-direction: column"}
+            .c-question-subtitle
+              Entrez votre code postal à 5 chiffres
+            .c-address__content
               #a11yAutocomplete
                 %div{"data-widget" => "accessible-autocomplete"}
                   %label{for: "search"}
@@ -64,8 +64,8 @@
                   %label#address-error.c-label.is-error= flash[:error][0]
                 - else
                   %label.c-label.flex-container.h4-like.visibility-hidden
-            
-            .o-layout__item{:class => "u-1/1 u-1/4@tablet"}
-
+                
+          .o-layout__item{:class => "u-1/1 u-1/3@tablet"}
+            text pour aider
 
         = render 'nav/next_previous', f: f
