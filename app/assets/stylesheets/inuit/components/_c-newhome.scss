@@ -453,16 +453,18 @@ dialog {
 
 
 .play {
-  @include mq($from: tablet) {
-    width: 26px;
+  width: 26px;
+  @include mq($from: desktop) {
   }
 }
 
 .video {
+  width: 100px;
   font-size: 16px;
 }
 
 .time {
+  width: 100px;
   font-size: 12px;
   font-weight: normal;
 }
