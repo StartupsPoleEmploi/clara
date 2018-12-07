@@ -5,6 +5,16 @@
   padding: space(6);
 }
 
+.c-help--address {
+  text-align: center;
+  margin-top: space(2);
+  margin-bottom: space(4);
+  @include mq($from: tablet) {
+    margin: auto;
+    width: 70%;
+    margin-left: 0;
+  }
+}
 
 .c-help--allocation {
 
