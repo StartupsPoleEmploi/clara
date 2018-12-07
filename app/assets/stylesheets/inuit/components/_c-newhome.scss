@@ -386,6 +386,13 @@ dialog {
     bottom: 1%;
   }
 
+  .modal-content iframe {
+
+
+  width: 100%;
+  height: 100%;
+
+  }
 }
 
 
@@ -509,8 +516,6 @@ div.hidden {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
  
   @include mq($from: desktop) {
     height: 405px;
