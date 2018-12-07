@@ -65,11 +65,8 @@
                 - else
                   %label.c-label.flex-container.h4-like.visibility-hidden
                 
-          .o-layout__item{:class => "u-1/1 u-1/3@tablet"}
-            .o-layout.o-layout--stretch.o-layout--center
-              .o-layout__item{:class => "u-1/1 u-4/6@tablet", :style => "align-items: center"}
-                %span.c-help
-                  <strong>Plus que 2 questions</strong> avant d'obtenir vos résultats
-              .o-layout__item{:class => "u-1/1 u-1/6@tablet"}
+          .o-layout__item{:class => "u-1/1 u-1/3@tablet", :style => "justify-content: center"}
+            %span.c-help.c-help--address
+              <strong>Plus que 2 questions</strong> avant d'obtenir vos résultats
 
         = render 'nav/next_previous', f: f
