@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 16.10.3 (07/12/2018)
+-[#1042b][DESIGN] rétablissement encouragement question adresse
+
+
 ## 16.10.2 (07/12/2018)
 -[#1042][DESIGN] rétablissement encouragement question adresse
 
