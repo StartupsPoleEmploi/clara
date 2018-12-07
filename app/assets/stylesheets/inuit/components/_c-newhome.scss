@@ -422,7 +422,7 @@ dialog {
 }
 
 .button-play{
-  
+  cursor: pointer;
   display:block;
   position:relative;
   text-align:center;
@@ -440,6 +440,7 @@ dialog {
 
 
   &:before{
+    cursor: pointer;
     display:block;
     position:relative;
     text-align:center;
@@ -464,6 +465,7 @@ dialog {
 
 .play {
   width: 26px;
+  text-align:right;
   @include mq($until: desktop) {
     display:none;
   }
@@ -475,6 +477,7 @@ dialog {
 .video {
   font-size: 16px;
   text-align:center;
+  cursor: pointer;
   @include mq($from: desktop) {
     text-align:left;
   }
@@ -484,6 +487,7 @@ dialog {
   font-size: 12px;
   font-weight: normal;
   text-align:center;
+  cursor: pointer;
   @include mq($from: desktop) {
     text-align:left;
   }
@@ -491,4 +495,15 @@ dialog {
 
 div.hidden { 
   display: none; 
+}
+
+.iframe {
+
+    height: 305px;
+    width: 320px;  
+
+    @include mq($from: desktop) {
+      height: 405px;
+      width: 720px;
+  }
 }
