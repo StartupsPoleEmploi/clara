@@ -100,6 +100,7 @@ Rails.application.routes.draw do
       resources :detail, only: [:show]
     end
   end
+  post 'aids/search_for_aids'
 
   resources :req,       only: [:index]
   resources :reqip,    only: [:index]

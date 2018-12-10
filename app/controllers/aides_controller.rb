@@ -29,6 +29,9 @@ class AidesController < ApplicationController
     Aid.all.activated.page(2).per(5)
   end
 
+  def search_for_aids
+  end
+
   def hash_of_all_active_aids
     activated = ActivatedModelsService.instance
     aids = activated.aids
