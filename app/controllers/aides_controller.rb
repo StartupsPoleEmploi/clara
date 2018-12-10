@@ -16,7 +16,11 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
-      hydrate_view({"aids" => _aides_index_search})
+      aids_h, total_nb = _aides_index_search
+      hydrate_view({
+        "aids" => aids_h,
+        "total_nb" => total_nb,
+      })
     end
   end
 
@@ -34,25 +38,20 @@ class AidesController < ApplicationController
     
     @aids = aids.page(page_nb).per(5)
     @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
-    @h_aids
+    return @h_aids, aids.size
   end
 
   def search_for_aids
-    p '==== = = == = = == = = = = = '
-    p params
     plain_text_search = params.extract!(:plain_text_search).permit(:plain_text_search).to_h[:plain_text_search]
     page_nb = params.extract!(:page_nb).permit(:page_nb).to_h[:page_nb]
-    p '==== = = =plain_text_search= = = == = = = = = '
-    p plain_text_search
-    p '==== = = =page_nb= = = == = = = = = '
-    p page_nb
-    # redirect_to 
-    # if !plain_text_search.strip.blank?
-      if (!page_nb.blank?)
-        redirect_to action: "index", usearch: plain_text_search, page: page_nb
-      else
-        redirect_to action: "index", usearch: plain_text_search
-      end
+    redirect_h = {action: "index"}
+    redirect_h[:usearch] = plain_text_search unless plain_text_search.blank?
+    redirect_h[:page] = page_nb unless page_nb.blank?
+    redirect_to redirect_h
+    # if (!page_nb.blank?)
+    #   redirect_to action: "index", usearch: plain_text_search, page: page_nb
+    # else
+    #   redirect_to action: "index", usearch: plain_text_search
     # end
   end
 

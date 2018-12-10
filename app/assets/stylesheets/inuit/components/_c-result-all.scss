@@ -4,6 +4,25 @@
 
 h1.c-result-all-title {
   @include inuit-font-size(26px);
+  margin-bottom: space(6);
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+}
+
+h2.c-result-all-subtitle {
+  @include inuit-font-size(18px);
+  margin-top: space(6);
+  margin-bottom: space(6);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  color: #333333;
 }
 
 .c-result-all {
