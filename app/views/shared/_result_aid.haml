@@ -3,11 +3,12 @@
 - the_index ||= 1
 - v = view_object(:result_aid, {aid: aid, the_index: the_index, for_id: for_id})
 
-%a.c-result-aid.js-possible-name{"class" => v.css_addendum(the_index), "href" => v.link_to_detailed_aid}
+.c-result-aid.js-possible-name{"class" => v.css_addendum(the_index)}
   .c-result-aid__text
     %h2.c-result-aid__title
       =v.name
     .c-result-aid__subtitle
       =v.short_description
   .c-result-aid__cta
-    <span>En savoir</span><span>&nbsp;plus</span>
+    %a{"href" => v.link_to_detailed_aid}
+      <span>En savoir</span><span>&nbsp;plus</span>

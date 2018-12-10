@@ -12,6 +12,14 @@ h1.c-result-all-title {
   }
 }
 
-#search_form {
+.c-search-form {
+  position: relative;
   background-color: #0b2d3d;
+}
+
+.c-search-usearch {
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  margin: space(2);
 }
