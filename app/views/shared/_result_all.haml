@@ -9,7 +9,7 @@
       = @stuff
       = paginate @aids
       - if local_assigns["aids"]
-        = render 'shared/result_line', {hide_title: true, aids: local_assigns["aids"], contract: local_assigns["contracts"].detect{|e| e["id"] == local_assigns["aids"][0]["contract_type_id"]}}
+        = render 'shared/result_line', {hide_title: true, aids: local_assigns["aids"]}
 
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       = render 'shared/detail_void'

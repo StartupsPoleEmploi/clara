@@ -23,21 +23,14 @@ class AidesController < ApplicationController
       aids = nil
       if usearch
         aids = Aid.roughly_spelled_like(usearch).activated
-        p '- - - - - - - - - - - - - - aidsSIZE- - - - - - - - - - - - - - - -' 
-        pp aids.size
-        p ''
       else
         aids = Aid.all.activated
       end
       
       @aids = aids.page(page_nb).per(5)
       @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
-      activated = ActivatedModelsService.instance
-      contracts = activated.contracts
-      contract_type_ids = @h_aids.map{|e| e["contract_type_id"]}
       hydrate_view({
         "aids" => @h_aids,
-        "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
       })
     end
   end
