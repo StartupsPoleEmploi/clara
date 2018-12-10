@@ -16,28 +16,28 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
-      usearch = params.extract!(:usearch).permit(:usearch).to_h[:usearch]
-      page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
-      page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
-
-      aids = nil
-      if usearch
-        aids = Aid.roughly_spelled_like(usearch).activated
-      else
-        aids = Aid.all.activated
-      end
-      
-      @aids = aids.page(page_nb).per(5)
-      @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
-      hydrate_view({
-        "aids" => @h_aids,
-      })
+      hydrate_view({"aids" => _aides_index_search})
     end
   end
 
-  def _searchable_aids
-    Aid.all.activated.page(2).per(5)
-    # Aid.activated.roughly_spelled_like('myylite')
+  def _aides_index_search
+    usearch = params.extract!(:usearch).permit(:usearch).to_h[:usearch]
+    p '- - - - - - - - - - - - - - usearch- - - - - - - - - - - - - - - -' 
+    pp usearch
+    p ''
+    page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
+    page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
+
+    aids = nil
+    if usearch
+      aids = Aid.roughly_spelled_like(usearch).activated
+    else
+      aids = Aid.all.activated
+    end
+    
+    @aids = aids.page(page_nb).per(5)
+    @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
+    @h_aids
   end
 
   def search_for_aids

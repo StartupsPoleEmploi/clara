@@ -1,5 +1,7 @@
 .c-result-all.u-useful-width.u-margin-constraint
   %h1.c-result-all-title Toutes nos aides
+  %h4=params[:usearch]
+  %h4=params[:page]
   = form_with url: aides_search_for_aids_path do |form|
     = form.text_field :plain_text_search, value: params[:usearch]
     = form.hidden_field :page_nb, value: params[:page]
