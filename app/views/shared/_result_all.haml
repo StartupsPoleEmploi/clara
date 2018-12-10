@@ -2,8 +2,6 @@
   %h1 Toutes nos aides
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-      - local_assigns["aids"].group_by{|e| e["contract_type_id"]}.each_value do |aids|
-        = render 'shared/result_line', {hide_title: true, aids: aids, contract: local_assigns["contracts"].detect{|e| e["id"] == aids[0]["contract_type_id"]}}
-
+      =@stuff
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       = render 'shared/detail_void'

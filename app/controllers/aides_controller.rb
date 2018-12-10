@@ -16,8 +16,17 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
-      hydrate_view(hash_of_all_active_aids)
+      # hydrate_view(hash_of_all_active_aids)
+      aaa = _searchable_aids
+      @stuff = aaa.map { |e| e.id  }
+      p '- - - - - - - - - - - - - - @stuff- - - - - - - - - - - - - - - -' 
+      pp @stuff
+      p ''
     end
+  end
+
+  def _searchable_aids
+    Aid.all.activated.page(2).per(5)
   end
 
   def hash_of_all_active_aids
