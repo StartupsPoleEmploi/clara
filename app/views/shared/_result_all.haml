@@ -1,6 +1,5 @@
 .c-result-all.u-useful-width.u-margin-constraint
   %h1.c-result-all-title Toutes nos aides
-  %h4=request.query_parameters["usearch"]
   = form_with url: aides_search_for_aids_path, id: "search_form", :class => "c-search-form" do |form|
     = form.text_field :plain_text_search, value: request.query_parameters["usearch"], id: "usearch_input", :class => "c-search-usearch", :placeholder => "Rechercher une aide ou un mot clé"
     = form.hidden_field :page_nb, value: request.query_parameters["page"], id: "page_nb_input", :class => "c-search-pagenb"
