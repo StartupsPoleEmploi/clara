@@ -14,6 +14,7 @@ gem "jbuilder", "~> 2.5"
 gem "rack-attack"
 gem "mailjet"
 gem "kaminari"
+gem "pg_search"
 gem "rack", ">= 2.0.6"
 
 gem "haml", "~> 5"
