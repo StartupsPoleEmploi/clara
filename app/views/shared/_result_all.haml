@@ -5,7 +5,7 @@
   = form_with url: aides_search_for_aids_path, id: "search_form", :class => "c-search-form" do |form|
     = form.text_field :plain_text_search, value: params[:usearch], id: "usearch_input", :class => "c-search-usearch"
     = form.hidden_field :page_nb, value: params[:page], id: "page_nb_input", :class => "c-search-pagenb"
-    = form.submit "Chercher"
+    = form.submit "&#x1F50D;Chercher".html_safe, :class => "c-search-form-submit"
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
       = @stuff

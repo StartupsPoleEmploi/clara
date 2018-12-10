@@ -15,6 +15,7 @@ h1.c-result-all-title {
 .c-search-form {
   position: relative;
   background-color: #0b2d3d;
+  text-align: center;
 }
 
 .c-search-usearch {
@@ -22,4 +23,21 @@ h1.c-result-all-title {
   border-radius: 24px;
   border: none;
   margin: space(2);
+  width: 75%;
+}
+
+.c-search-form-submit {
+  // right: 3rem;
+  // @include mq($from: mobile) {
+  //   right: 6rem;
+  // }
+  // @include mq($from: tablet) {
+  //   right: 8rem;
+  // }
+  // @include mq($from: desktop) {
+  //   right: 10rem;
+  // }
+  right: 16%;
+  position: absolute;
+  top: 1rem;
 }
