@@ -17,14 +17,8 @@ class AidesController < ApplicationController
       end
     else
       usearch = params.extract!(:usearch).permit(:usearch).to_h[:usearch]
-      p '- - - - - - - - - - - - - - usearch- - - - - - - - - - - - - - - -' 
-      pp usearch
-      p ''
       page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
       page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
-      p '- - - - - - - - - - - - - - page_nb- - - - - - - - - - - - - - - -' 
-      pp page_nb
-      p ''
 
       aids = nil
       if usearch
