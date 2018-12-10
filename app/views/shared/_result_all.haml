@@ -2,9 +2,9 @@
   %h1.c-result-all-title Toutes nos aides
   %h4=params[:usearch]
   %h4=params[:page]
-  = form_with url: aides_search_for_aids_path do |form|
-    = form.text_field :plain_text_search, value: params[:usearch]
-    = form.hidden_field :page_nb, value: params[:page]
+  = form_with url: aides_search_for_aids_path, id: "search_form" do |form|
+    = form.text_field :plain_text_search, value: params[:usearch], id: "usearch_input"
+    = form.hidden_field :page_nb, value: params[:page], id: "page_nb_input"
     = form.submit "Chercher"
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
