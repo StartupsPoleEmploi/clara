@@ -16,38 +16,25 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
-
-
-      # contract_type_ids = aids.map{|e| e["contract_type_id"]}
-      # res = {
-      #   "aids" => aids,
-      #   "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
-      # }
-
-      # hydrate_view(hash_of_all_active_aids)
-      # aaa = _searchable_aids
-      # @stuff = aaa.map { |e| e.id  }
       search = params.extract!(:search).permit(:search).to_h[:search]
-      p '- - - - - - - - - - - - - - @stuff- - - - - - - - - - - - - - - -' 
-      pp search
-      # pp @stuff
-      # pp params
+      page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
+      page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
+      p '- - - - - - - - - - - - - - page_nb- - - - - - - - - - - - - - - -' 
+      pp page_nb
       p ''
 
       aids = nil
       if search
         aids = Aid.roughly_spelled_like(search).activated
+        p '- - - - - - - - - - - - - - aidsSIZE- - - - - - - - - - - - - - - -' 
+        pp aids.size
+        p ''
       else
         aids = Aid.all.activated
       end
       
-      # @stuff = aids.page(1).per(5).map{|e| e.name}.to_json
-      @aids = aids.page(1).per(5)
+      @aids = aids.page(page_nb).per(5)
       @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
-      p '- - - - - - - - - - - - - - @h_aids- - - - - - - - - - - - - - - -' 
-      pp @h_aids
-      p ''
-      # @stuff = @aids.map{|e| e.name}.to_json
       activated = ActivatedModelsService.instance
       contracts = activated.contracts
       contract_type_ids = @h_aids.map{|e| e["contract_type_id"]}
