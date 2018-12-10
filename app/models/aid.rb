@@ -8,7 +8,6 @@ class Aid < ApplicationRecord
                   :using => {
                     :tsearch => {:any_word => true},
                     :dmetaphone => {:any_word => true},
-                    :trigram => {:threshold => 0.3},
                   }
 
   has_and_belongs_to_many :filters

@@ -17,17 +17,25 @@ class AidesController < ApplicationController
       end
     else
       # hydrate_view(hash_of_all_active_aids)
-      aaa = _searchable_aids
-      @stuff = aaa.map { |e| e.id  }
+      # aaa = _searchable_aids
+      # @stuff = aaa.map { |e| e.id  }
       search = params.extract!(:search).permit(:search).to_h[:search]
       p '- - - - - - - - - - - - - - @stuff- - - - - - - - - - - - - - - -' 
       pp search
       # pp @stuff
       # pp params
       p ''
-      # aids = Aid.activated.roughly_spelled_like(plain_text_search)
-      # @stuff = aids.page(1).per(5)
 
+      aids = nil
+      if search
+        aids = Aid.roughly_spelled_like(search).activated
+      else
+        aids = Aid.all.activated
+      end
+      
+      # @stuff = aids.page(1).per(5).map{|e| e.name}.to_json
+      @aids = aids.page(1).per(5)
+      @stuff = @aids.map{|e| e.name}.to_json
     end
   end
 
@@ -40,10 +48,19 @@ class AidesController < ApplicationController
     p '==== = = == = = == = = = = = '
     p params
     plain_text_search = params.extract!(:plain_text_search).permit(:plain_text_search).to_h[:plain_text_search]
+    page_nb = params.extract!(:page_nb).permit(:page_nb).to_h[:page_nb]
     p '==== = = =plain_text_search= = = == = = = = = '
     p plain_text_search
+    p '==== = = =page_nb= = = == = = = = = '
+    p page_nb
     # redirect_to 
-    redirect_to action: "index", search: plain_text_search
+    # if !plain_text_search.strip.blank?
+      if (!page_nb.blank?)
+        redirect_to action: "index", usearch: plain_text_search, page: page_nb
+      else
+        redirect_to action: "index", usearch: plain_text_search
+      end
+    # end
   end
 
   def hash_of_all_active_aids
