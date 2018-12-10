@@ -17,6 +17,8 @@ h1.c-result-all-title {
   background-color: #0b2d3d;
   text-align: center;
   border-radius: 4px;
+  padding-top: space(5);
+  padding-bottom: space(5);
 }
 
 .c-search-usearch {
@@ -31,7 +33,7 @@ h1.c-result-all-title {
 .c-search-form-submit {
   right: 4%;
   position: absolute;
-  top: 0.4rem;
+  top: 1.1rem;
   color: white;
   border-radius: 24px;
   background-color: #057dbc;

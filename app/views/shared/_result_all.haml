@@ -1,10 +1,9 @@
 .c-result-all.u-useful-width.u-margin-constraint
   %h1.c-result-all-title Toutes nos aides
-  %h4=params[:usearch]
-  %h4=params[:page]
+  %h4=request.query_parameters["usearch"]
   = form_with url: aides_search_for_aids_path, id: "search_form", :class => "c-search-form" do |form|
-    = form.text_field :plain_text_search, value: params[:usearch], id: "usearch_input", :class => "c-search-usearch", :placeholder => "Rechercher une aide ou un mot clé"
-    = form.hidden_field :page_nb, value: params[:page], id: "page_nb_input", :class => "c-search-pagenb"
+    = form.text_field :plain_text_search, value: request.query_parameters["usearch"], id: "usearch_input", :class => "c-search-usearch", :placeholder => "Rechercher une aide ou un mot clé"
+    = form.hidden_field :page_nb, value: request.query_parameters["page"], id: "page_nb_input", :class => "c-search-pagenb"
     = form.submit "&#128269;Chercher".html_safe, :class => "c-search-form-submit"
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
@@ -14,4 +13,4 @@
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       = render 'shared/detail_void'
   %nav
-    = paginate @aids
+    = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
