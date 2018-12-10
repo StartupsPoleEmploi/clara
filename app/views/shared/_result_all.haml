@@ -8,7 +8,6 @@
     = form.submit "&#128269;Chercher".html_safe, :class => "c-search-form-submit"
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-      = @stuff
       = paginate @aids
       - if local_assigns["aids"]
         = render 'shared/result_line', {hide_title: true, aids: local_assigns["aids"]}
