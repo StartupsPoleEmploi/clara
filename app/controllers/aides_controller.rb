@@ -16,7 +16,10 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
-      search = params.extract!(:search).permit(:search).to_h[:search]
+      usearch = params.extract!(:usearch).permit(:usearch).to_h[:usearch]
+      p '- - - - - - - - - - - - - - usearch- - - - - - - - - - - - - - - -' 
+      pp usearch
+      p ''
       page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
       page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
       p '- - - - - - - - - - - - - - page_nb- - - - - - - - - - - - - - - -' 
@@ -24,8 +27,8 @@ class AidesController < ApplicationController
       p ''
 
       aids = nil
-      if search
-        aids = Aid.roughly_spelled_like(search).activated
+      if usearch
+        aids = Aid.roughly_spelled_like(usearch).activated
         p '- - - - - - - - - - - - - - aidsSIZE- - - - - - - - - - - - - - - -' 
         pp aids.size
         p ''
