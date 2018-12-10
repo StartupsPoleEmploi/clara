@@ -2,7 +2,7 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  pg_search_scope :search_for, against: %i(name short_description what)
+  pg_search_scope :search_for, against: %i(name short_description what), :using => [:tsearch, :dmetaphone]
 
   has_and_belongs_to_many :filters
   has_and_belongs_to_many :need_filters
