@@ -1,7 +1,7 @@
 .c-result-all.u-useful-width.u-margin-constraint
   %h1.c-result-all-title Toutes nos aides
   %nav
-    = form_with url: aids_search_for_aids_path do |form|
+    = form_with url: aides_search_for_aids_path do |form|
       = form.text_field :plain_text_search
       = form.submit "Chercher"
   .o-layout

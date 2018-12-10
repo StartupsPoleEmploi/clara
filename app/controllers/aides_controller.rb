@@ -19,17 +19,31 @@ class AidesController < ApplicationController
       # hydrate_view(hash_of_all_active_aids)
       aaa = _searchable_aids
       @stuff = aaa.map { |e| e.id  }
+      search = params.extract!(:search).permit(:search).to_h[:search]
       p '- - - - - - - - - - - - - - @stuff- - - - - - - - - - - - - - - -' 
-      pp @stuff
+      pp search
+      # pp @stuff
+      # pp params
       p ''
+      # aids = Aid.activated.roughly_spelled_like(plain_text_search)
+      # @stuff = aids.page(1).per(5)
+
     end
   end
 
   def _searchable_aids
     Aid.all.activated.page(2).per(5)
+    # Aid.activated.roughly_spelled_like('myylite')
   end
 
   def search_for_aids
+    p '==== = = == = = == = = = = = '
+    p params
+    plain_text_search = params.extract!(:plain_text_search).permit(:plain_text_search).to_h[:plain_text_search]
+    p '==== = = =plain_text_search= = = == = = = = = '
+    p plain_text_search
+    # redirect_to 
+    redirect_to action: "index", search: plain_text_search
   end
 
   def hash_of_all_active_aids
