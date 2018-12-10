@@ -487,6 +487,7 @@ DEPENDENCIES
   haml (~> 5)
   haml-rails
   jbuilder (~> 2.5)
+  kaminari
   knock
   launchy
   letter_opener_web (~> 1.0)
