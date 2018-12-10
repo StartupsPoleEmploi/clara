@@ -48,11 +48,6 @@ class AidesController < ApplicationController
     redirect_h[:usearch] = plain_text_search unless plain_text_search.blank?
     redirect_h[:page] = page_nb unless page_nb.blank?
     redirect_to redirect_h
-    # if (!page_nb.blank?)
-    #   redirect_to action: "index", usearch: plain_text_search, page: page_nb
-    # else
-    #   redirect_to action: "index", usearch: plain_text_search
-    # end
   end
 
   def hash_of_all_active_aids
