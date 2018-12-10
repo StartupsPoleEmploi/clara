@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.0.0 (10/12/2018)
+-[#972][FEATURE] moteur de recherche des aides
+
+
 ## 16.10.3 (07/12/2018)
 -[#1042b][DESIGN] rétablissement encouragement question adresse
 
