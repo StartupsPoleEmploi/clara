@@ -16,6 +16,14 @@ class AidesController < ApplicationController
         hydrate_view(cacheable)
       end
     else
+
+
+      # contract_type_ids = aids.map{|e| e["contract_type_id"]}
+      # res = {
+      #   "aids" => aids,
+      #   "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
+      # }
+
       # hydrate_view(hash_of_all_active_aids)
       # aaa = _searchable_aids
       # @stuff = aaa.map { |e| e.id  }
@@ -35,7 +43,18 @@ class AidesController < ApplicationController
       
       # @stuff = aids.page(1).per(5).map{|e| e.name}.to_json
       @aids = aids.page(1).per(5)
-      @stuff = @aids.map{|e| e.name}.to_json
+      @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
+      p '- - - - - - - - - - - - - - @h_aids- - - - - - - - - - - - - - - -' 
+      pp @h_aids
+      p ''
+      # @stuff = @aids.map{|e| e.name}.to_json
+      activated = ActivatedModelsService.instance
+      contracts = activated.contracts
+      contract_type_ids = @h_aids.map{|e| e["contract_type_id"]}
+      hydrate_view({
+        "aids" => @h_aids,
+        "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
+      })
     end
   end
 
