@@ -18,12 +18,11 @@ feature 'result page' do
     end
     it 'User can click to next page, it updates aids accordingly' do
       #given
-      first_aid_before_pagination = find_all(".c-result-aid__title")[0].text
+      first_aid_before_pagination = first_displayed_aid
       #when
       find('nav.pagination .next a[rel="next"]').click
       #then
-      first_aid_after_pagination = find_all(".c-result-aid__title")[0].text
-      expect(first_aid_before_pagination).not_to eq first_aid_after_pagination
+      expect(first_aid_before_pagination).not_to eq first_displayed_aid
     end
     it 'User can search for something, it updates aids accordingly' do
       #given
@@ -33,8 +32,7 @@ feature 'result page' do
       #when
       search_for_something
       #then
-      first_aid_after = first_displayed_aid
-      expect(first_aid_before).not_to eq first_aid_after
+      expect(first_aid_before).not_to eq first_displayed_aid
     end
   end
 
