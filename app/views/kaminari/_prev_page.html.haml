@@ -5,8 +5,9 @@
 -#    total_pages:   total number of pages
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
+-#   A11Y : see https://getbootstrap.com/docs/4.0/components/pagination/#working-with-icons
 %span.prev
   - unless current_page.first?
     = link_to(url, {:remote => true, rel: 'prev'}) do
       %span=t('views.pagination.previous').html_safe
-
+      %span.u-sr-only Previous

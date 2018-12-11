@@ -7,14 +7,14 @@ nav.pagination {
 
   .next, .prev, .last, .first, .page {
     a {
-    width: 40px;
-    height: 40px;
-    background-color: #e2eaf5;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: space(3);
+      width: 40px;
+      height: 40px;
+      background-color: #e2eaf5;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: space(3);
       text-decoration: none;
     }
   }
@@ -28,7 +28,26 @@ nav.pagination {
   }
 
   .page.current {
+    width: 40px;
+    height: 40px;
     background-color: #0b2d3d;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: space(3);
+    text-decoration: none;
     color: white;      
+  }
+  .page.gap {
+    width: 40px;
+    height: 40px;
+    background-color: #e2eaf5;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: space(3);
+    text-decoration: none;
   }
 }
