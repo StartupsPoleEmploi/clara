@@ -13,6 +13,9 @@ feature 'result page' do
     it 'Displays total number of aids' do
       expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara")
     end
+    it 'Displays 5 aids per page' do
+      expect(page).to have_css(".c-result-aid",  count: 5)
+    end
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
@@ -27,16 +30,53 @@ feature 'result page' do
     it 'User can search for something, it updates aids accordingly' do
       #given
       first_aid_before = first_displayed_aid
-      fake_search_result = two_last_aids
-      allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
+      stub_sql_search
       #when
-      search_for_something
+      search_for_something_great
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
     end
+    it 'Search can be accessed through URL' do
+      #given
+      expect(find("#usearch_input").value).to eq nil 
+      first_aid_before = first_displayed_aid
+      stub_sql_search      
+      #when
+      visit aides_path+"?usearch=mobilite"
+      #then
+      expect(find("#usearch_input").value).to eq "mobilite" 
+      expect(first_aid_before).not_to eq first_displayed_aid
+    end
+    it 'Pagination can be accessed through URL' do
+      #given
+      expect(find(".page.current").text).to eq "1" 
+      #when
+      visit aides_path+"?page=2"
+      #then
+      expect(find(".page.current").text).to eq "2" 
+    end
+    it 'Page number is resetted / disappear from URL / if user make a new search' do
+      #given
+      stub_sql_search
+      visit aides_path+"?page=2&usearch=mobilite"
+      #when
+      search_for_something_great
+      #then
+      expect(find(".page.current").text).to eq "1"       
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+    end
   end
 
-  def search_for_something
+  def current_fullpath
+    URI.parse(current_url).request_uri
+  end
+
+  def stub_sql_search
+    fake_search_result = two_last_aids
+    allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
+  end
+
+  def search_for_something_great
     first('input#usearch_input').set("more")
     find(".c-search-form-submit").click
   end
