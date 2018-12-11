@@ -6,6 +6,7 @@ nav.pagination {
   margin-bottom: space(6);
 
   .next, .prev, .last, .first, .page {
+    a {
     width: 40px;
     height: 40px;
     background-color: #e2eaf5;
@@ -14,7 +15,6 @@ nav.pagination {
     align-items: center;
     justify-content: center;
     margin-right: space(3);
-    a {
       text-decoration: none;
     }
   }
@@ -29,6 +29,6 @@ nav.pagination {
 
   .page.current {
     background-color: #0b2d3d;
-    color: white;
+    color: white;      
   }
 }
