@@ -5,6 +5,7 @@ fr:
       last: ">>"
       previous: "<"
       next: ">"
+      truncate: "..."
   administrate:
     actions:
       new: "Nouveau"
