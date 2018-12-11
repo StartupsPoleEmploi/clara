@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(version: 2018_12_10_103112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
   enable_extension "pg_stat_statements"
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "aids", id: :serial, force: :cascade do |t|
     t.string "name"

@@ -16,15 +16,24 @@ feature 'result page' do
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
-    it 'Can click to next page and update aids accordingly' do
+    it 'User can click to next page, it updates aids accordingly' do
       #given
       first_aid_before_pagination = find_all(".c-result-aid__title")[0].text
       #when
       find('nav.pagination .next a[rel="next"]').click
-      # save_and_open_page
       #then
       first_aid_after_pagination = find_all(".c-result-aid__title")[0].text
       expect(first_aid_before_pagination).not_to eq first_aid_after_pagination
+    end
+    it 'User can search for something, it updates aids accordingly' do
+      #given
+      save_and_open_page
+      #when
+      first('input#usearch_input').set("more")
+      find(".c-search-form-submit").click
+      #then
+      save_and_open_page
+
     end
   end
 
