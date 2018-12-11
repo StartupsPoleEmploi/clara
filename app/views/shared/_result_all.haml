@@ -34,8 +34,9 @@
         = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
 
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
-      .c-result-all__rightblock
+      .c-result-all__rightblock{:class => "u-hide u-show@desktop"}
         = render 'shared/detail_void'
+      
 
   %a.c-btn.c-btn--small.c-btn--result{href: "/"}
     <strong><</strong> Retour
