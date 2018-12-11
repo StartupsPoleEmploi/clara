@@ -27,7 +27,7 @@ feature 'result page' do
       #then
       expect(first_aid_before_pagination).not_to eq first_displayed_aid
     end
-    it 'User can search for something, it updates aids accordingly' do
+    it 'User can search for something, it updates aids and URL accordingly' do
       #given
       first_aid_before = first_displayed_aid
       stub_sql_search
@@ -35,6 +35,7 @@ feature 'result page' do
       search_for_something_great
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
+      expect(current_fullpath).to eq "/aides?usearch=more"      
     end
     it 'Search can be accessed through URL' do
       #given
