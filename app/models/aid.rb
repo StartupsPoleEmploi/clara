@@ -6,8 +6,8 @@ class Aid < ApplicationRecord
   pg_search_scope :roughly_spelled_like,
                   :against => %i(name short_description what),
                   :using => {
-                    :tsearch => {:any_word => true},
-                    :dmetaphone => {:any_word => true},
+                    :tsearch => {},
+                    :dmetaphone => {},
                   }
 
   has_and_belongs_to_many :filters
