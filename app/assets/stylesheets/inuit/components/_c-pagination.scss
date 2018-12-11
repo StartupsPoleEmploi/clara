@@ -1,5 +1,9 @@
 nav.pagination {
+  
   display: flex;
+  justify-content: center;
+  margin-top: space(4);
+
   .next, .prev, .last, .first, .page {
     width: 40px;
     height: 40px;
@@ -13,6 +17,7 @@ nav.pagination {
       text-decoration: none;
     }
   }
+
   .page.current {
     background-color: #0b2d3d;
     color: white;
