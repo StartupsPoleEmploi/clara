@@ -2,81 +2,17 @@ require 'rails_helper'
 
 feature 'result page' do 
 
-  
-  context 'Nominal' do
-
-    result_page = nil
-
-    before(:each) do
-      if result_page == nil
-        create_nominal_schema
-        visit aides_path
-        result_page = Nokogiri::HTML(page.html)
-      end
+  context 'No User' do
+    before do
+      create_nominal_schema
+      visit aides_path      
     end
-    
-    it 'Shows only actives aides' do
-      number_of_aids_displayed = result_page.css('.c-result-aid').count
-      expect(Aid.all.size)            .not_to eq 8
-      expect(Aid.activated.size)      .to eq 8
-      expect(number_of_aids_displayed).to eq 8
+    it 'Has a search input' do
+      expect(page).to have_css('input#usearch_input')
     end
+    it 'Displays total number of aids' do
+      expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara")
 
-    it 'Group aid by contract type' do
-      expect(result_page.css('.c-result-line.more-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.lessor-id').count).to eq 1
-      expect(result_page.css('.c-result-line.less-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.eqal-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.zrr-id')   .count).to eq 1
-    end
-
-    it 'One aid contain all related aids' do
-      expect(result_page.css('.c-result-line.more-id .c-result-aid').count).to eq 4
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_18').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_19').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_20').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_21').count).to eq 1
-    end
-
-    it 'One aid contain all related aids, sorted by their ordre_affichage property' do
-      aids_text = result_page.css(".c-result-line.more-id .c-result-aid")
-            .collect(&:text)
-            .map(&:strip)
-            .map(&:squeeze)
-            .map{|e|e.gsub(/[[:space:]]/, ' ')}
-      expect(aids_text).to eq([
-        "aid_more_than_18 En savoir plus", 
-        "aid_more_than_20 En savoir plus", 
-        "aid_more_than_19 En savoir plus", 
-        "aid_more_than_21 En savoir plus"
-      ])
-    end
-
-    it 'The situation block is not displayed' do
-      expect(result_page.css('.c-result-situation').count).to eq 0
-    end
-
-    it 'There is nothing related to eligibility' do
-      expect(result_page.css('.c-result-line--green').count)     .to eq 0
-      expect(result_page.css('.c-result-line--orange').count)    .to eq 0 
-      expect(result_page.css('.c-result-line--red').count)       .to eq 0 
-
-      expect(result_page.css('.c-result-list--eligible').count)  .to eq 0
-      expect(result_page.css('.c-result-list--uncertain').count) .to eq 0
-      expect(result_page.css('.c-result-list--ineligible').count).to eq 0
-    end
-
-    it 'No links leads directly to a calculated detailed aid' do
-      aids_links = result_page.css('a.c-result-aid').map { |e| e[:href] }
-      expect(aids_links.all? {|e| e.include?("/") && !e.include?("?for_id=")}).to eq true    
-    end
-
-  end
-
-  context 'User has a link to calculated result page' do
-    before(:each) do
-      asker = create(:asker, :full_user_input)
-      visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
     end
   end
 
