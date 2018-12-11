@@ -12,7 +12,9 @@ feature 'result page' do
     end
     it 'Displays total number of aids' do
       expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara")
-
+    end
+    it 'Displays a pagination' do
+      expect(page).to have_css("nav.pagination")
     end
   end
 
