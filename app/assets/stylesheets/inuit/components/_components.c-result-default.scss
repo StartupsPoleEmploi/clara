@@ -95,10 +95,11 @@ fieldset.c-resultfilterings {
 
 
 
-.c-btn--result {
+a.c-btn--result, .c-btn--result {
   font-size: 16px; // HACK
   color:#057dbc;
   border-color:#057dbc;
+  text-decoration: none;
   svg path {
     fill: #057dbc;
   }

@@ -1,5 +1,14 @@
 class Aid < ApplicationRecord
   extend FriendlyId  
+  include PgSearch
+
+  # See https://github.com/Casecommons/pg_search
+  pg_search_scope :roughly_spelled_like,
+                  :against => %i(name short_description what),
+                  :using => {
+                    :tsearch => {:any_word => true},
+                    :dmetaphone => {:any_word => true},
+                  }
 
   has_and_belongs_to_many :filters
   has_and_belongs_to_many :need_filters

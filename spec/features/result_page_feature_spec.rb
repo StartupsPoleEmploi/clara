@@ -2,82 +2,96 @@ require 'rails_helper'
 
 feature 'result page' do 
 
-  
-  context 'Nominal' do
-
-    result_page = nil
-
-    before(:each) do
-      if result_page == nil
-        create_nominal_schema
-        visit aides_path
-        result_page = Nokogiri::HTML(page.html)
-      end
+  context 'No User' do
+    before do
+      create_nominal_schema
+      visit aides_path      
     end
-    
-    it 'Shows only actives aides' do
-      number_of_aids_displayed = result_page.css('.c-result-aid').count
-      expect(Aid.all.size)            .not_to eq 8
-      expect(Aid.activated.size)      .to eq 8
-      expect(number_of_aids_displayed).to eq 8
+    it 'Has a search input' do
+      expect(page).to have_css('input#usearch_input')
     end
-
-    it 'Group aid by contract type' do
-      expect(result_page.css('.c-result-line.more-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.lessor-id').count).to eq 1
-      expect(result_page.css('.c-result-line.less-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.eqal-id')  .count).to eq 1
-      expect(result_page.css('.c-result-line.zrr-id')   .count).to eq 1
+    it 'Displays total number of aids' do
+      expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara")
     end
-
-    it 'One aid contain all related aids' do
-      expect(result_page.css('.c-result-line.more-id .c-result-aid').count).to eq 4
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_18').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_19').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_20').count).to eq 1
-      expect(result_page.css('.c-result-line.more-id .c-result-aid.aid_more_than_21').count).to eq 1
+    it 'Displays 5 aids per page' do
+      expect(page).to have_css(".c-result-aid",  count: 5)
     end
-
-    it 'One aid contain all related aids, sorted by their ordre_affichage property' do
-      aids_text = result_page.css(".c-result-line.more-id .c-result-aid")
-            .collect(&:text)
-            .map(&:strip)
-            .map(&:squeeze)
-            .map{|e|e.gsub(/[[:space:]]/, ' ')}
-      expect(aids_text).to eq([
-        "aid_more_than_18 En savoir plus", 
-        "aid_more_than_20 En savoir plus", 
-        "aid_more_than_19 En savoir plus", 
-        "aid_more_than_21 En savoir plus"
-      ])
+    it 'Displays a pagination' do
+      expect(page).to have_css("nav.pagination")
     end
-
-    it 'The situation block is not displayed' do
-      expect(result_page.css('.c-result-situation').count).to eq 0
+    it 'User can click to next page, it updates aids accordingly' do
+      #given
+      first_aid_before_pagination = first_displayed_aid
+      #when
+      find('nav.pagination .next a[rel="next"]').click
+      #then
+      expect(first_aid_before_pagination).not_to eq first_displayed_aid
     end
-
-    it 'There is nothing related to eligibility' do
-      expect(result_page.css('.c-result-line--green').count)     .to eq 0
-      expect(result_page.css('.c-result-line--orange').count)    .to eq 0 
-      expect(result_page.css('.c-result-line--red').count)       .to eq 0 
-
-      expect(result_page.css('.c-result-list--eligible').count)  .to eq 0
-      expect(result_page.css('.c-result-list--uncertain').count) .to eq 0
-      expect(result_page.css('.c-result-list--ineligible').count).to eq 0
+    it 'User can search for something, it updates aids and URL accordingly' do
+      #given
+      first_aid_before = first_displayed_aid
+      stub_sql_search
+      #when
+      search_for_something_great
+      #then
+      expect(first_aid_before).not_to eq first_displayed_aid
+      expect(current_fullpath).to eq "/aides?usearch=more"      
     end
-
-    it 'No links leads directly to a calculated detailed aid' do
-      aids_links = result_page.css('a.c-result-aid').map { |e| e[:href] }
-      expect(aids_links.all? {|e| e.include?("/") && !e.include?("?for_id=")}).to eq true    
+    it 'Search can be accessed through URL' do
+      #given
+      expect(find("#usearch_input").value).to eq nil 
+      first_aid_before = first_displayed_aid
+      stub_sql_search      
+      #when
+      visit aides_path + "?usearch=mobilite"
+      #then
+      expect(find("#usearch_input").value).to eq "mobilite" 
+      expect(first_aid_before).not_to eq first_displayed_aid
     end
-
+    it 'Pagination can be accessed through URL' do
+      #given
+      expect(find(".page.current").text).to eq "1" 
+      #when
+      visit aides_path + "?page=2"
+      #then
+      expect(find(".page.current").text).to eq "2" 
+    end
+    it 'Page number is resetted / disappear from URL / if user make a new search' do
+      #given
+      stub_sql_search
+      visit aides_path + "?page=2&usearch=mobilite"
+      #when
+      search_for_something_great
+      #then
+      expect(find(".page.current").text).to eq "1"       
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+    end
   end
 
-  context 'User has a link to calculated result page' do
-    before(:each) do
-      asker = create(:asker, :full_user_input)
-      visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
-    end
+  def current_fullpath
+    URI.parse(current_url).request_uri
+  end
+
+  def stub_sql_search
+    fake_search_result = two_last_aids
+    allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
+  end
+
+  def search_for_something_great
+    first('input#usearch_input').set("more")
+    find(".c-search-form-submit").click
+  end
+
+  def stub_aid_model
+    class_double("Aid").as_stubbed_const
+  end
+
+  def two_last_aids
+     Aid.limit(2).order('id desc')
+  end
+
+  def first_displayed_aid
+    find_all(".c-result-aid__title")[0].text
   end
 
   def create_nominal_schema

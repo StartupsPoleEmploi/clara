@@ -27,18 +27,26 @@
 }
 
 .c-result-aid__cta {
-  padding: 0 space(4);
-  color:white;
+  padding: space(2) space(6);
   background-color: #057dbc;
   border-radius: 35px;
   text-align: center;
   white-space: nowrap;
   margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+
   a {
     text-decoration: none;
+    color:white;
   }
-  @include mq($from: mobile) {
-    padding: 0 space(4);
+  @include mq($from: tablet) {
+    padding: space(4) space(6);
   }
 }  
 
@@ -62,10 +70,23 @@ h2.c-result-aid__title {
   font-size: 1.25rem;
   //mimic h4
   line-height: 1.5;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #333333;
 }
 
 .c-result-aid__subtitle {
   display: inline-block;
-  line-height: 1.4;
-  color: #6d6d6d;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #333333;
 }

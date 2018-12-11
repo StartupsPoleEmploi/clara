@@ -70,10 +70,13 @@
 }
 
 .c-detail-void__lines {
-  // mimic h3
-  font-size: 1.5rem;
-  // mimic h3
-  line-height: 1.25;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #333333;
 }
 
 .c-detail-void__line {
@@ -100,7 +103,14 @@ a.c-detail-cta {
   color: white;
   text-decoration: none;
   display: inline-block;
+  font-size: 16px;
   font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }
 
 .c-detail-goback {

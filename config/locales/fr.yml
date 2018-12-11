@@ -1,4 +1,11 @@
 fr:
+  views:
+    pagination:
+      first: "<<"
+      last: ">>"
+      previous: "<"
+      next: ">"
+      truncate: "..."
   administrate:
     actions:
       new: "Nouveau"
