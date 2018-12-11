@@ -27,14 +27,33 @@ feature 'result page' do
     end
     it 'User can search for something, it updates aids accordingly' do
       #given
-      save_and_open_page
+      first_aid_before = first_displayed_aid
+      fake_search_result = two_last_aids
+      allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
       #when
-      first('input#usearch_input').set("more")
-      find(".c-search-form-submit").click
+      search_for_something
       #then
-      save_and_open_page
-
+      first_aid_after = first_displayed_aid
+      expect(first_aid_before).not_to eq first_aid_after
     end
+  end
+
+  def search_for_something
+    first('input#usearch_input').set("more")
+    find(".c-search-form-submit").click
+  end
+
+  def stub_aid_model
+    class_double("Aid").as_stubbed_const
+  end
+
+  def two_last_aids
+     res = Aid.limit(2).order('id desc')
+     res
+  end
+
+  def first_displayed_aid
+    find_all(".c-result-aid__title")[0].text
   end
 
   def create_nominal_schema
