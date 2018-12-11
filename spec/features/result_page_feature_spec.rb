@@ -42,7 +42,7 @@ feature 'result page' do
       first_aid_before = first_displayed_aid
       stub_sql_search      
       #when
-      visit aides_path+"?usearch=mobilite"
+      visit aides_path + "?usearch=mobilite"
       #then
       expect(find("#usearch_input").value).to eq "mobilite" 
       expect(first_aid_before).not_to eq first_displayed_aid
@@ -51,14 +51,14 @@ feature 'result page' do
       #given
       expect(find(".page.current").text).to eq "1" 
       #when
-      visit aides_path+"?page=2"
+      visit aides_path + "?page=2"
       #then
       expect(find(".page.current").text).to eq "2" 
     end
     it 'Page number is resetted / disappear from URL / if user make a new search' do
       #given
       stub_sql_search
-      visit aides_path+"?page=2&usearch=mobilite"
+      visit aides_path + "?page=2&usearch=mobilite"
       #when
       search_for_something_great
       #then
