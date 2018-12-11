@@ -27,18 +27,26 @@
 }
 
 .c-result-aid__cta {
-  padding: 0 space(4);
+  padding: space(2) space(6);
   background-color: #057dbc;
   border-radius: 35px;
   text-align: center;
   white-space: nowrap;
   margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ffffff;
+
   a {
     text-decoration: none;
     color:white;
   }
-  @include mq($from: mobile) {
-    padding: 0 space(4);
+  @include mq($from: tablet) {
+    padding: space(4) space(6);
   }
 }  
 

@@ -11,22 +11,27 @@
     = form.hidden_field :page_nb, value: page, id: "page_nb_input", :class => "c-search-pagenb"
     = form.submit 'Chercher', :class => "c-search-form-submit"
 
-  - if usearch && total_nb > 0
-    %h2.c-result-all-subtitle
-      #{total_nb} Aide(s) ou mesure(s) sont disponibles pour cette recherche  
-  - elsif total_nb == 0
-    %h2.c-result-all-subtitle
-      La recherche n'a retourné aucun résultat
-  - else
-    %h2.c-result-all-subtitle
-      #{total_nb} aides et mesures sont disponibles sur Clara
 
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-      - if aids.size > 0
-        = render 'shared/result_line', {hide_title: true, aids: aids}
+      .c-result-all__leftblock
+        - if total_nb == 0
+          %h2.c-result-all-subtitle
+            La recherche n'a retourné aucun résultat
+        - elsif usearch && total_nb == 1
+          %h2.c-result-all-subtitle
+            Une seule aide ou mesure est disponible pour cette recherche  
+        - elsif usearch && total_nb > 1
+          %h2.c-result-all-subtitle
+            #{total_nb} aides ou mesures sont disponibles pour cette recherche  
+        - else
+          %h2.c-result-all-subtitle
+            #{total_nb} aides et mesures sont disponibles sur Clara
+        - if aids.size > 0
+          = render 'shared/result_line', {hide_title: true, aids: aids}
 
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
-      = render 'shared/detail_void'
+      .c-result-all__rightblock
+        = render 'shared/detail_void'
 
   = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
