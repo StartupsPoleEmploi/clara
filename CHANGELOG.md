@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.1.0 (11/12/2018)
+-[#1058][FEATURE] recherche en "OU" sur le moteur de recherche
+
+
 ## 17.0.0 (10/12/2018)
 -[#972][FEATURE] moteur de recherche des aides
 
