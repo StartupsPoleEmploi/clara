@@ -46,8 +46,7 @@ feature 'result page' do
   end
 
   def two_last_aids
-     res = Aid.limit(2).order('id desc')
-     res
+     Aid.limit(2).order('id desc')
   end
 
   def first_displayed_aid
