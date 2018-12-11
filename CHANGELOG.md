@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.1.1 (11/12/2018)
+-[#1059][BUG] suivant/précédent non cliquable dans la pagination
+
+
 ## 17.1.0 (11/12/2018)
 -[#1058][FEATURE] recherche en "OU" sur le moteur de recherche
 
