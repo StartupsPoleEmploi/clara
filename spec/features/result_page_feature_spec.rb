@@ -16,6 +16,16 @@ feature 'result page' do
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
+    it 'Can click to next page and update aids accordingly' do
+      #given
+      first_aid_before_pagination = find_all(".c-result-aid__title")[0].text
+      #when
+      find('nav.pagination .next a[rel="next"]').click
+      # save_and_open_page
+      #then
+      first_aid_after_pagination = find_all(".c-result-aid__title")[0].text
+      expect(first_aid_before_pagination).not_to eq first_aid_after_pagination
+    end
   end
 
   def create_nominal_schema

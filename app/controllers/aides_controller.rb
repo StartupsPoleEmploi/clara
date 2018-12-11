@@ -54,18 +54,6 @@ class AidesController < ApplicationController
     redirect_to redirect_h
   end
 
-  def hash_of_all_active_aids
-    activated = ActivatedModelsService.instance
-    aids = activated.aids
-    contracts = activated.contracts
-    contract_type_ids = aids.map{|e| e["contract_type_id"]}
-    res = {
-      "aids" => aids,
-      "contracts" => contracts.select { |contract| contract_type_ids.include?(contract["id"]) } 
-    }
-    res
-  end
-
   def have_active_asker?
     !!params[:for_id]
   end
