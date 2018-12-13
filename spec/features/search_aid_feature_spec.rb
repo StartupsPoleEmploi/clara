@@ -34,7 +34,7 @@ feature 'Search for aids' do
     it 'User can search for something, it updates aids and URL accordingly' do
       #given
       first_aid_before = first_displayed_aid
-      stub_sql_search
+      _stub_sql_search
       #when
       search_for_something_great
       #then
@@ -43,9 +43,10 @@ feature 'Search for aids' do
     end
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
-      stub_sql_search
-      search_layer = class_double("TrackSearch").as_stubbed_const
-      allow(search_layer).to receive(:call).with({user_search: "more"})
+      _stub_sql_search
+      # _set_cookie_pref_to(analytics: true)
+      # track_search = class_spy("TrackSearch")
+      # allow(sut).to receive(:call).with({user_search: "more"})
       #when
       search_for_something_great
       #then
@@ -53,7 +54,8 @@ feature 'Search for aids' do
     end
     xit 'User can search for something, the call is NOT tracked if the user does not accept' do
       #given
-      stub_sql_search
+      _stub_sql_search
+      _set_cookie_pref_to(analytics: true)
       #when
       search_for_something_great
       #then
@@ -62,7 +64,7 @@ feature 'Search for aids' do
       #given
       expect(find("#usearch_input").value).to eq nil 
       first_aid_before = first_displayed_aid
-      stub_sql_search      
+      _stub_sql_search      
       #when
       visit aides_path + "?usearch=mobilite"
       #then
@@ -79,7 +81,7 @@ feature 'Search for aids' do
     end
     it 'Page number is resetted / disappear from URL / if user make a new search' do
       #given
-      stub_sql_search
+      _stub_sql_search
       visit aides_path + "?page=2&usearch=mobilite"
       #when
       search_for_something_great
@@ -93,7 +95,7 @@ feature 'Search for aids' do
     URI.parse(current_url).request_uri
   end
 
-  def stub_sql_search
+  def _stub_sql_search
     fake_search_result = two_last_aids
     allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
   end
