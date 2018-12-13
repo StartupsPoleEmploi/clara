@@ -44,13 +44,13 @@ feature 'Search for aids' do
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
       _stub_sql_search
-      # _set_cookie_pref_to(analytics: true)
-      track_search = class_spy("TrackSearch")
+      search_layer = class_double("TrackSearch").as_stubbed_const
+      allow(search_layer).to receive(:call).with({user_search: "more"})
       #when
       search_for_something_great
       #then
       expect(current_fullpath).to eq "/aides?usearch=more"      
-      expect(track_search).to have_received(:call)
+      expect(search_layer).to have_received(:call)
     end
     xit 'User can search for something, the call is NOT tracked if the user does not accept' do
       #given
