@@ -41,6 +41,23 @@ feature 'Search for aids' do
       expect(first_aid_before).not_to eq first_displayed_aid
       expect(current_fullpath).to eq "/aides?usearch=more"      
     end
+    it 'User can search for something, the call is tracked if the user accepts' do
+      #given
+      stub_sql_search
+      search_layer = class_double("TrackSearch").as_stubbed_const
+      allow(search_layer).to receive(:call).with({user_search: "more"})
+      #when
+      search_for_something_great
+      #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+    end
+    xit 'User can search for something, the call is NOT tracked if the user does not accept' do
+      #given
+      stub_sql_search
+      #when
+      search_for_something_great
+      #then
+    end
     it 'Search can be accessed through URL' do
       #given
       expect(find("#usearch_input").value).to eq nil 
