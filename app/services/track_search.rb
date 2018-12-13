@@ -3,7 +3,8 @@ require 'securerandom'
 
 class TrackSearch < ClaraService
   initialize_with_keywords :user_search
-
+  is_callable
+  
   def call
     if @user_search.is_a?(String) && !@user_search.blank?
       uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)
