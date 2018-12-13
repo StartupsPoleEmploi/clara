@@ -1,10 +1,10 @@
 fr:
   views:
     pagination:
-      first: "<<"
-      last: ">>"
-      previous: "<"
-      next: ">"
+      first: "première page"
+      last: "dernière page"
+      previous: "page précédente"
+      next: "page suivante"
       truncate: "..."
   administrate:
     actions:
