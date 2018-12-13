@@ -62,7 +62,7 @@ describe TrackSearch do
       search_layer = class_double("TrackSearch").as_stubbed_const
       allow(search_layer).to receive(:call).with({user_search: "any"}).and_return("ok for stubbing")
       # when
-      res = call_me
+      res = _call_me
       # then 
       expect(res).to eq("ok for stubbing")
     end
@@ -95,7 +95,7 @@ describe TrackSearch do
     http_layer
   end
 
-  def call_me
+  def _call_me
     TrackSearch.call({user_search: "any"})
   end
 
