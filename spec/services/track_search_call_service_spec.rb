@@ -43,7 +43,6 @@ describe TrackSearch do
   describe 'Avoid call if there is anything wrong' do
     it 'With keywords " " (blank String)' do
       # given
-      _setup_test_with(:ga_receive => "  ")
       # when
       res = TrackSearch.call(user_search: "  ")
       # then   
@@ -51,10 +50,8 @@ describe TrackSearch do
     end
     it 'With keywords Date (wrong type)' do
       # given
-      wrong_type = Date.new
-      _setup_test_with(:ga_receive => wrong_type)
       # when
-      res = TrackSearch.call(user_search: wrong_type)
+      res = TrackSearch.call(user_search: Date.new)
       # then   
       expect(res).to eq("not called")  
     end
