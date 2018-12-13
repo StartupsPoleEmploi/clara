@@ -68,10 +68,11 @@ describe TrackSearch do
       with_url: URI.parse("analytics_collect"), 
       with_params:{
         "ea"=>arg_hash[:ga_receive], 
+        "tid" => "analytics_id", 
         "ec"=>"search", 
         "t"=>"event", 
-        "tid" => "analytics_id", 
-        "v" => "1"}
+        "v" => "1"
+      }
     )
   end
 
