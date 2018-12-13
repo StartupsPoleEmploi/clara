@@ -4,7 +4,7 @@ nav.pagination {
   justify-content: center;
   margin-top: space(6);
   margin-bottom: space(6);
-
+  flex-wrap: wrap;
   .next, .prev, .last, .first, .page {
     a {
       width: 40px;
@@ -17,6 +17,7 @@ nav.pagination {
       margin-right: space(3);
       text-decoration: none;
     }
+    margin-bottom: space(4);
   }
 
   .next, .prev, .last, .first {
