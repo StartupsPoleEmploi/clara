@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe TrackSearchCallService do
+describe TrackSearch do
 
   describe 'Can post to analytics endpoint with one keyword' do
     it 'With keyword "aid"' do
@@ -8,7 +8,7 @@ describe TrackSearchCallService do
       # when
       # then   
     end
-    it 'With keyword "aid"' do
+    it 'With keyword "help"' do
       # given
       # when
       # then   

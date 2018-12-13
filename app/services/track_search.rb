@@ -1,7 +1,7 @@
 require 'uri'
 require 'securerandom'
 
-class TrackSearchCallService < ClaraService
+class TrackSearch < ClaraService
   initialize_with_keywords :keywords
   is_callable
 
