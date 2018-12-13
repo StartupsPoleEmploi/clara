@@ -66,6 +66,7 @@ describe TrackSearch do
       with_params:{
         "v" => "1",
         "tid" => "analytics_id", 
+        "uid" => kind_of(String), 
         "t"=>"event", 
         "ec"=>"search", 
         "ea"=>arg_hash[:ga_receive], 
