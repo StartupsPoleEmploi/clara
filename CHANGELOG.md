@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.1.3 (13/12/2018)
+-[#1063][BUG] Responsive search
+
+
 ## 17.1.2 (13/12/2018)
 -[#1060][BUG] Si pas de pagination bouton "Retour" collé
 
