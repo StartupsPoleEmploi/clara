@@ -23,7 +23,7 @@ class HttpService
   def post_form(uri, params)
     begin
       Timeout::timeout(2) do
-        res = Net::HTTP.post_form(uri, params)
+        Net::HTTP.post_form(uri, params)
       end
     rescue Exception => e 
      p "Net::HTTP post_form request failed with #{e.message}" unless Rails.env.test?
