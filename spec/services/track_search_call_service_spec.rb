@@ -81,7 +81,6 @@ describe TrackSearch do
       .with(arg_hash[:with_url], hash_including(arg_hash[:with_params]))
       .and_return("test is ok")
     )
-    HttpService.set_instance(http_layer)
     http_layer
   end
 
