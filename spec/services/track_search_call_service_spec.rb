@@ -49,10 +49,14 @@ describe TrackSearch do
       # then   
       expect(res).to eq("not called")  
     end
-    xit 'With keywords Date (wrong type)' do
+    it 'With keywords Date (wrong type)' do
       # given
+      wrong_type = Date.new
+      _setup_test_with(:ga_receive => wrong_type)
       # when
+      res = TrackSearch.call(user_search: wrong_type)
       # then   
+      expect(res).to eq("not called")  
     end
   end
 
