@@ -56,6 +56,17 @@ describe TrackSearch do
       expect(res).to eq("not called")  
     end
   end
+  describe 'Service can be stubbed' do
+    it 'Stub is possible' do
+      # given
+      search_layer = class_double("TrackSearch").as_stubbed_const
+      allow(search_layer).to receive(:call).with({user_search: "any"}).and_return("ok for stubbing")
+      # when
+      res = call_me
+      # then 
+      expect(res).to eq("ok for stubbing")
+    end
+  end
 
   def _setup_test_with(arg_hash)
     allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
@@ -82,6 +93,10 @@ describe TrackSearch do
       .and_return("test is ok")
     )
     http_layer
+  end
+
+  def call_me
+    TrackSearch.call({user_search: "any"})
   end
 
 end
