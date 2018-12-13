@@ -13,8 +13,9 @@ class TrackSearch < ClaraService
                  "tid" => EnvService.get_instance.ara_google_analytics_id,
                  "uid" => SecureRandom.hex,
                  "t" => "event",
-                 "ec" => "search",
-                 "ea" => @user_search
+                 "ec" => "aids",
+                 "ea" => "search",
+                 "el" => @user_search,
                }
       HttpService.get_instance.post_form(uri, params)
     else

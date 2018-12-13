@@ -25,7 +25,7 @@ class CookiePreference < ClaraService
   end
 
   def set_preference(preference)
-    session[:cookie] = preference
+    current_session[:cookie] = preference
   end
 
 end
