@@ -5,17 +5,7 @@ describe TrackSearch do
   describe 'Can post to analytics endpoint with one keyword' do
     it 'With keyword "aid"' do
       # given
-      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
-      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
-      http_layer = _allow_http_layer(
-        with_action: :post_form, 
-        with_url: URI.parse("analytics_collect"), 
-        with_params:{
-          "ea"=>"aid", 
-          "ec"=>"search", 
-          "t"=>"event", 
-          "tid" => "analytics_id", 
-          "v" => "1"})
+      _setup_test_with(:user_search_string => "aid")
       # when
       res = TrackSearch.call(keywords: "aid")
       # then
@@ -24,17 +14,7 @@ describe TrackSearch do
     end
     it 'With keyword "help"' do
       # given
-      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
-      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
-      http_layer = _allow_http_layer(
-        with_action: :post_form, 
-        with_url: URI.parse("analytics_collect"), 
-        with_params:{
-          "ea"=>"help", 
-          "ec"=>"search", 
-          "t"=>"event", 
-          "tid" => "analytics_id", 
-          "v" => "1"})
+      _setup_test_with(:user_search_string => "help")
       # when
       res = TrackSearch.call(keywords: "help")
       # then
@@ -74,8 +54,8 @@ describe TrackSearch do
       with_action: :post_form, 
       with_url: URI.parse("analytics_collect"), 
       with_params:{
-        "ea"=>"aid", 
-        "ec"=>arg_hash[:user_search_string], 
+        "ea"=>arg_hash[:user_search_string], 
+        "ec"=>"search", 
         "t"=>"event", 
         "tid" => "analytics_id", 
         "v" => "1"}
