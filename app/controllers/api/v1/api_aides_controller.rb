@@ -8,13 +8,13 @@ module Api
 
       # /api/v1/aids/ping(.:format)
       def ping
-        track_call("/api/v1/ping", request.remote_ip)
+        _track_api_call("/api/v1/ping", request.remote_ip)
         render json: {status: "ok"}.to_json, status: 200
       end
 
       # /api/v1/filters(.:format)
       def filters
-        track_call("/api/v1/filters", current_user.email)
+        _track_api_call("/api/v1/filters", current_user.email)
         whitelisted_filters = whitelist_filters(JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}))
         res = {filters: whitelisted_filters}
         render json: remove_ids!(not_nullify(res)).to_json
@@ -22,7 +22,7 @@ module Api
 
       # /api/v1/need_filters(.:format)
       def need_filters
-        track_call("/api/v1/need_filters", current_user.email)
+        _track_api_call("/api/v1/need_filters", current_user.email)
         all_filters = JSON.parse(Rails.cache.fetch("need_filters") {_build_need_filter_grape.to_json})
         res = {need_filters: all_filters}
         render json: remove_ids!(not_nullify(res)).to_json
@@ -41,7 +41,7 @@ module Api
 
       # /api/v1/aids/detail/:aid_slug(.:format)
       def detail
-        track_call("/api/v1/aids/detail/:aid_slug", current_user.email)
+        _track_api_call("/api/v1/aids/detail/:aid_slug", current_user.email)
         found_aid = Rails.cache.fetch("aids[#{slug_param}]") {Aid.find_by(slug: slug_param).to_json}
         if found_aid != "null"
           render json: {aid: remove_ids!(not_nullify(whitelist_one_aid_attr(JSON.parse(found_aid))))}
@@ -52,7 +52,7 @@ module Api
 
       # /api/v1/aids/eligible(.:format)
       def eligible
-        track_call("/api/v1/aids/eligible", current_user.email)
+        _track_api_call("/api/v1/aids/eligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
@@ -79,7 +79,7 @@ module Api
 
       # /api/v1/aids/ineligible(.:format)
       def ineligible
-        track_call("/api/v1/aids/ineligible", current_user.email)
+        _track_api_call("/api/v1/aids/ineligible", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
@@ -105,7 +105,7 @@ module Api
 
       # /api/v1/aids/uncertain(.:format)
       def uncertain
-        track_call("/api/v1/aids/uncertain", current_user.email)
+        _track_api_call("/api/v1/aids/uncertain", current_user.email)
         api_asker = ApiAskerService.new(english_asker_params).to_api_asker
         api_filters = ApiFilters.new(filters: filters_param)
         api_need_filters = ApiNeedFilters.new(filters: need_filters_param)
@@ -184,8 +184,8 @@ module Api
         HashService.new.reject_ids!(hash_or_array)
       end
 
-      def track_call(endpoint, who)
-        TrackCallService.get_instance.for_endpoint(endpoint, who)
+      def _track_api_call(endpoint, who)
+        TrackApiCallService.get_instance.for_endpoint(endpoint, who)
       end
 
       def whitelist_one_aid_attr(aid)

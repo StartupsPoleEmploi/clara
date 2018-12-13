@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.2.0 (13/12/2018)
+-[#1062][BUG] Event analytics for search
+
+
 ## 17.1.3 (13/12/2018)
 -[#1063][BUG] Responsive search
 

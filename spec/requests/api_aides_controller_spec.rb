@@ -22,14 +22,14 @@ describe Api::V1::ApiAidesController, type: :request do
         filter_1 = create(:filter, name: 'filter-1')
         filter_2 = create(:filter, name: 'filter-2')
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/filters', {headers: authenticated_header} 
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/filters", "foo@bar.com")
@@ -61,14 +61,14 @@ describe Api::V1::ApiAidesController, type: :request do
       if response_returned == nil
         create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/detail/aide-adulte-ou-spectacle', {headers: authenticated_header} 
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/detail/:aid_slug", "foo@bar.com")
@@ -93,14 +93,14 @@ describe Api::V1::ApiAidesController, type: :request do
       if response_returned == nil
         create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle")    
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/detail/wrong_slug', {headers: authenticated_header} 
         json_returned = JSON.parse(response.body)
         response_returned = response
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/detail/:aid_slug", "foo@bar.com")
@@ -132,7 +132,7 @@ describe Api::V1::ApiAidesController, type: :request do
         # Aid that should not be retrieved despite correct filter : it is not eligible
         create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/eligible', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
@@ -151,7 +151,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
@@ -204,7 +204,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       if response_returned == nil
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/eligible', params: {   
           "age"                     => "142",
         }, headers: authenticated_header 
@@ -213,7 +213,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
@@ -233,7 +233,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       if response_returned == nil
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/eligible', params: {   
           "filters"                     => "unexisting_filter",
         }, headers: authenticated_header 
@@ -242,7 +242,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/eligible", "foo@bar.com")
@@ -274,7 +274,7 @@ describe Api::V1::ApiAidesController, type: :request do
         # Aid that should not be retrieved despite correct filter : it is not ineligible
         create(:aid, :aid_adult_or_spectacle, name: "Aide Adulte ou Spectacle Filtre", short_description: "adult and spectacle with right filter", filters:[filter_targeted])    
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/ineligible', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
@@ -293,7 +293,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/ineligible", "foo@bar.com")
@@ -341,7 +341,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       if response_returned == nil
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/ineligible', params: {   
           "age"                     => "142",
         }, headers: authenticated_header 
@@ -350,7 +350,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/ineligible", "foo@bar.com")
@@ -370,7 +370,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       if response_returned == nil
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/ineligible', params: {   
           "filters"                     => "unexisting_filter",
         }, headers: authenticated_header 
@@ -379,7 +379,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/ineligible", "foo@bar.com")
@@ -411,7 +411,7 @@ describe Api::V1::ApiAidesController, type: :request do
         # Aid that should not be retrieved despite correct filter : it is not uncertain
         create(:aid, :aid_adult_and_spectacle, name: "Aide Adulte et Spectacle", filters:[filter_targeted])    
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/uncertain', params: {   
           "spectacle"               => "false",
           "disabled"                => "true",
@@ -429,7 +429,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/uncertain", "foo@bar.com")
@@ -479,7 +479,7 @@ describe Api::V1::ApiAidesController, type: :request do
     before do
       if response_returned == nil
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/uncertain', params: {   
           "age"                     => "142",
         }, headers: authenticated_header 
@@ -488,7 +488,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/uncertain", "foo@bar.com")
@@ -509,7 +509,7 @@ describe Api::V1::ApiAidesController, type: :request do
       if response_returned == nil
         filter_empty = create(:filter, name: 'filter-empty')
         track_layer = spy('HttpService')
-        TrackCallService.set_instance(track_layer)
+        TrackApiCallService.set_instance(track_layer)
         get '/api/v1/aids/uncertain', params: {   
           "filters"                     => "filter-empty,unexisting_filter",
         }, headers: authenticated_header 
@@ -518,7 +518,7 @@ describe Api::V1::ApiAidesController, type: :request do
       end
     end
     after do
-      TrackCallService.set_instance(nil)
+      TrackApiCallService.set_instance(nil)
     end
     it 'Is tracked' do
       expect(track_layer).to have_received(:for_endpoint).with("/api/v1/aids/uncertain", "foo@bar.com")

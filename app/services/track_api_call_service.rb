@@ -1,6 +1,6 @@
 require 'uri'
 
-class TrackCallService
+class TrackApiCallService
 
   class << self
     protected :new
@@ -9,12 +9,12 @@ class TrackCallService
   @@the_double = nil
 
   # Allow DI for testing purpose
-  def TrackCallService.set_instance(the_double)
+  def TrackApiCallService.set_instance(the_double)
     @@the_double = the_double
   end
 
-  def TrackCallService.get_instance
-    @@the_double.nil? ? TrackCallService.new : @@the_double
+  def TrackApiCallService.get_instance
+    @@the_double.nil? ? TrackApiCallService.new : @@the_double
   end
 
   def for_endpoint(endpoint, who)
