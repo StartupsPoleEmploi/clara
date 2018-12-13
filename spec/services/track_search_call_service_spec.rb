@@ -25,22 +25,25 @@ describe TrackSearch do
   describe 'Can post to analytics endpoint with multiples keywords' do
     it 'With keywords "aid social"' do
       # given
+      _setup_test_with(:user_search_string => "aid social")
       # when
+      res = TrackSearch.call(keywords: "aid social")
       # then   
+      expect(res).to eq("test is ok")
     end
-    it 'With keywords "help aid active"' do
+    xit 'With keywords "help aid active"' do
       # given
       # when
       # then   
     end
   end
   describe 'Avoid call if there is anything wrong' do
-    it 'With keywords " " (blank String)' do
+    xit 'With keywords " " (blank String)' do
       # given
       # when
       # then   
     end
-    it 'With keywords Date (wrong type)' do
+    xit 'With keywords Date (wrong type)' do
       # given
       # when
       # then   
