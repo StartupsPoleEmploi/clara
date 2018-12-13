@@ -2,7 +2,7 @@ require 'uri'
 require 'securerandom'
 
 class TrackSearch < ClaraService
-  initialize_with_keywords :keywords
+  initialize_with_keywords :user_search
 
   def call
     uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)

@@ -5,18 +5,18 @@ describe TrackSearch do
   describe 'Can post to analytics endpoint with one keyword' do
     it 'With keyword "aid"' do
       # given
-      _setup_test_with(:user_search_string => "aid")
+      _setup_test_with(:ga_receive => "aid")
       # when
-      res = TrackSearch.call(keywords: "aid")
+      res = TrackSearch.call(user_search: "aid")
       # then
       expect(res).to eq("test is ok")   
 
     end
     it 'With keyword "help"' do
       # given
-      _setup_test_with(:user_search_string => "help")
+      _setup_test_with(:ga_receive => "help")
       # when
-      res = TrackSearch.call(keywords: "help")
+      res = TrackSearch.call(user_search: "help")
       # then
       expect(res).to eq("test is ok")   
  
@@ -25,23 +25,29 @@ describe TrackSearch do
   describe 'Can post to analytics endpoint with multiples keywords' do
     it 'With keywords "aid social"' do
       # given
-      _setup_test_with(:user_search_string => "aid social")
+      _setup_test_with(:ga_receive => "aid social")
       # when
-      res = TrackSearch.call(keywords: "aid social")
+      res = TrackSearch.call(user_search: "aid social")
       # then   
       expect(res).to eq("test is ok")
     end
-    xit 'With keywords "help aid active"' do
+    it 'With keywords "help aid active"' do
       # given
+      _setup_test_with(:ga_receive => "help aid active")
       # when
+      res = TrackSearch.call(user_search: "help aid active")
       # then   
+      expect(res).to eq("test is ok")
     end
   end
   describe 'Avoid call if there is anything wrong' do
-    xit 'With keywords " " (blank String)' do
+    it 'With keywords " " (blank String)' do
       # given
+      _setup_test_with(:ga_receive => "  ")
       # when
+      res = TrackSearch.call(user_search: "  ")
       # then   
+      expect(res).to eq("not called")  
     end
     xit 'With keywords Date (wrong type)' do
       # given
@@ -57,7 +63,7 @@ describe TrackSearch do
       with_action: :post_form, 
       with_url: URI.parse("analytics_collect"), 
       with_params:{
-        "ea"=>arg_hash[:user_search_string], 
+        "ea"=>arg_hash[:ga_receive], 
         "ec"=>"search", 
         "t"=>"event", 
         "tid" => "analytics_id", 
