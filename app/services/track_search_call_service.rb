@@ -1,32 +1,19 @@
 require 'uri'
 require 'securerandom'
 
-class TrackSearchCallService
+class TrackSearchCallService < ClaraService
+  initialize_with_keywords :keywords
+  is_callable
 
-  class << self
-    protected :new
-  end
-
-  @@the_double = nil
-
-  # Allow DI for testing purpose
-  def TrackSearchCallService.set_instance(the_double)
-    @@the_double = the_double
-  end
-
-  def TrackSearchCallService.get_instance
-    @@the_double.nil? ? TrackSearchCallService.new : @@the_double
-  end 
-
-  def for_endpoint(keywords)
+  def call
     uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)
     params = {
-               "v" => "1",
+              "v" => "1",
                "tid" => EnvService.get_instance.ara_google_analytics_id,
                "uid" => SecureRandom.hex,
                "t" => "event",
                "ec" => "search",
-               "ea" => keywords
+               "ea" => @keywords
              }
     HttpService.get_instance.post_form(uri, params)
   end
