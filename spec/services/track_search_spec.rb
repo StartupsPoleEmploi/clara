@@ -79,8 +79,9 @@ describe TrackSearch do
         "tid" => "analytics_id", 
         "uid" => kind_of(String), 
         "t"=>"event", 
-        "ec"=>"search", 
-        "ea"=>arg_hash[:ga_receive], 
+        "ec"=>"aids", 
+        "ea"=>"search", 
+        "el"=>arg_hash[:ga_receive], 
       }
     )
   end
