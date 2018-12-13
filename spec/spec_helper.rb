@@ -17,7 +17,7 @@ RSpec.configure do |config|
   end
 
   config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
+    mocks.verify_partial_doubles = false
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups

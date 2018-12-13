@@ -45,18 +45,23 @@ feature 'Search for aids' do
       #given
       _stub_sql_search
       search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(false)
       #when
       search_for_something_great
       #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
       expect(search_layer).to have_received(:call).with({user_search: "more"})
     end
-    xit 'User can search for something, the call is NOT tracked if the user does not accept' do
+    it 'User can search for something, the call is NOT tracked if the user does not accept' do
       #given
       _stub_sql_search
-      _set_cookie_pref_to(analytics: true)
+      search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(true)
       #when
       search_for_something_great
       #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(search_layer).not_to have_received(:call)
     end
     it 'Search can be accessed through URL' do
       #given
