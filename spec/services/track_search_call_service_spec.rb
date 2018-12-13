@@ -71,7 +71,7 @@ describe TrackSearch do
   def _setup_test_with(arg_hash)
     allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
     allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
-    http_layer = _allow_http_layer(
+    _allow_http_layer(
       with_action: :post_form, 
       with_url: URI.parse("analytics_collect"), 
       with_params:{
@@ -92,7 +92,6 @@ describe TrackSearch do
       .with(arg_hash[:with_url], hash_including(arg_hash[:with_params]))
       .and_return("test is ok")
     )
-    http_layer
   end
 
   def _call_me

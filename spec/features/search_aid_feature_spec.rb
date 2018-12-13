@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-feature 'result page' do 
+feature 'Search for aids' do 
 
-  context 'No User' do
+  context 'Nominal' do
     before do
+      disable_http_service
       create_nominal_schema
       visit aides_path      
+    end
+    after do
+      enable_http_service
     end
     it 'Has a search input' do
       expect(page).to have_css('input#usearch_input')
