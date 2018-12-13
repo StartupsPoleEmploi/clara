@@ -1,7 +1,13 @@
 module ApplicationHelper
 
   def cookie_preference_already_defined?
-    session[:cookie] != nil
+    CookiePreference.new(current_session: session).cookie_preference_already_defined?
+  end
+  def ga_disabled?
+    CookiePreference.new(current_session: session).ga_disabled?
+  end
+  def hj_disabled?
+    CookiePreference.new(current_session: session).hj_disabled?
   end
 
   def title_data(text)
@@ -13,13 +19,6 @@ module ApplicationHelper
     urls.split(",").include?(the_request.remote_ip)
   end
 
-  def ga_disabled?
-    session[:cookie] && session[:cookie]["analytics"] && session[:cookie]["analytics"] == "forbid_statistic"
-  end
-
-  def hj_disabled?
-    session[:cookie] && session[:cookie]["hotjar"] && session[:cookie]["hotjar"] == "forbid_navigation"
-  end
 
   def empty_image
     "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="

@@ -66,5 +66,5 @@ end
 
 class ClaraService
   extend SmartInit
-  is_callable
+  
 end

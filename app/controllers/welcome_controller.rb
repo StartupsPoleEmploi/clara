@@ -23,10 +23,7 @@ class WelcomeController < ApplicationController
   end
 
   def accept_all_cookies
-    session[:cookie] = {
-       "analytics" => "authorize_statistic",
-       "hotjar" => "authorize_navigation",
-    }
+    CookiePreference.new(current_session: session).accept_all_cookies
   end
 
   def terms
