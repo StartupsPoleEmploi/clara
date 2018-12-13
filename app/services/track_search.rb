@@ -3,7 +3,6 @@ require 'securerandom'
 
 class TrackSearch < ClaraService
   initialize_with_keywords :keywords
-  is_callable
 
   def call
     uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)
@@ -18,4 +17,4 @@ class TrackSearch < ClaraService
     HttpService.get_instance.post_form(uri, params)
   end
 
-  end
+end

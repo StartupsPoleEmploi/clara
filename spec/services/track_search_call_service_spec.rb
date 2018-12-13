@@ -5,8 +5,23 @@ describe TrackSearch do
   describe 'Can post to analytics endpoint with one keyword' do
     it 'With keyword "aid"' do
       # given
+      env_layer = ENV
+      allow(env_layer).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
+      allow(env_layer).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
+      _allow_http_layer(
+        with_action: :post_form, 
+        with_url: URI.parse("analytics_collect"), 
+        with_params:{
+          "ea"=>"aid", 
+          "ec"=>"search", 
+          "t"=>"event", 
+          "tid" => "analytics_id", 
+          "v" => "1"})
       # when
+      TrackSearch.call(keywords: "aid")
       # then   
+      # logger.should_receive(:account_opened).exactly(1).times
+
     end
     it 'With keyword "help"' do
       # given
@@ -37,6 +52,12 @@ describe TrackSearch do
       # when
       # then   
     end
+  end
+
+  def _allow_http_layer(arg_hash)
+    http_layer = instance_double("HttpService")
+    allow(http_layer).to receive(arg_hash[:with_action]).with(arg_hash[:with_url], hash_including(arg_hash[:with_params]))
+    HttpService.set_instance(http_layer)
   end
 
 end
