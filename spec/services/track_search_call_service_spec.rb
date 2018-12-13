@@ -19,14 +19,27 @@ describe TrackSearch do
       # when
       res = TrackSearch.call(keywords: "aid")
       # then
-      expect(res).to eq("ok")   
-      # http_layer.should_receive(:post_form).exactly(1).times
+      expect(res).to eq("test is ok")   
 
     end
     it 'With keyword "help"' do
       # given
+      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
+      allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
+      http_layer = _allow_http_layer(
+        with_action: :post_form, 
+        with_url: URI.parse("analytics_collect"), 
+        with_params:{
+          "ea"=>"help", 
+          "ec"=>"search", 
+          "t"=>"event", 
+          "tid" => "analytics_id", 
+          "v" => "1"})
       # when
-      # then   
+      res = TrackSearch.call(keywords: "help")
+      # then
+      expect(res).to eq("test is ok")   
+ 
     end
   end
   describe 'Can post to analytics endpoint with multiples keywords' do
@@ -54,9 +67,28 @@ describe TrackSearch do
     end
   end
 
+  def _setup_test_with(arg_hash)
+    allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return("analytics_collect")
+    allow(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("analytics_id")
+    http_layer = _allow_http_layer(
+      with_action: :post_form, 
+      with_url: URI.parse("analytics_collect"), 
+      with_params:{
+        "ea"=>"aid", 
+        "ec"=>arg_hash[:user_search_string], 
+        "t"=>"event", 
+        "tid" => "analytics_id", 
+        "v" => "1"}
+    )
+  end
+
   def _allow_http_layer(arg_hash)
-    http_layer = instance_double("HttpService")
-    allow(http_layer).to receive(arg_hash[:with_action]).with(arg_hash[:with_url], hash_including(arg_hash[:with_params]))
+    http_layer = class_double("Net::HTTP").as_stubbed_const
+    allow(http_layer).to ( 
+      receive(arg_hash[:with_action])
+      .with(arg_hash[:with_url], hash_including(arg_hash[:with_params]))
+      .and_return("test is ok")
+    )
     HttpService.set_instance(http_layer)
     http_layer
   end

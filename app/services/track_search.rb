@@ -15,7 +15,6 @@ class TrackSearch < ClaraService
                "ea" => @keywords
              }
     HttpService.get_instance.post_form(uri, params)
-    "ok"
   end
 
 end
