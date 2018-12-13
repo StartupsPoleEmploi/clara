@@ -2,6 +2,10 @@
   width: 100%;
 }
 
+.c-result-all__separator {
+  margin-top: space(6);
+}
+
 h1.c-result-all-title {
   @include inuit-font-size(26px);
   margin-bottom: space(6);
