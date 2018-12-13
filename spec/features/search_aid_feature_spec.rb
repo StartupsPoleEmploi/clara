@@ -44,12 +44,10 @@ feature 'Search for aids' do
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
       _stub_sql_search
-      search_layer = class_double("TrackSearch").as_stubbed_const
-      allow(search_layer).to receive(:call)
+      search_layer = _fake_track_search
       #when
       search_for_something_great
       #then
-      expect(current_fullpath).to eq "/aides?usearch=more"      
       expect(search_layer).to have_received(:call).with({user_search: "more"})
     end
     xit 'User can search for something, the call is NOT tracked if the user does not accept' do
@@ -101,6 +99,9 @@ feature 'Search for aids' do
   end
 
   def _fake_track_search
+    track_search = class_double("TrackSearch").as_stubbed_const
+    allow(track_search).to receive(:call)
+    track_search
   end
 
   def search_for_something_great
