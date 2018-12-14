@@ -43,6 +43,7 @@ def disable_http_service
   http_layer = instance_double("HttpService")
   allow(http_layer).to receive(:get).and_return("unexisting_value")
   allow(http_layer).to receive(:post).and_return("unexisting_value")
+  allow(http_layer).to receive(:post_form).and_return("unexisting_value")
   HttpService.set_instance(http_layer)
 end
 def enable_http_service

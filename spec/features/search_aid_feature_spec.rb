@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-feature 'result page' do 
+feature 'Search for aids' do 
 
-  context 'No User' do
+  context 'Nominal' do
     before do
+      disable_http_service
       create_nominal_schema
       visit aides_path      
+    end
+    after do
+      enable_http_service
     end
     it 'Has a search input' do
       expect(page).to have_css('input#usearch_input')
@@ -30,18 +34,40 @@ feature 'result page' do
     it 'User can search for something, it updates aids and URL accordingly' do
       #given
       first_aid_before = first_displayed_aid
-      stub_sql_search
+      _stub_sql_search
       #when
       search_for_something_great
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
       expect(current_fullpath).to eq "/aides?usearch=more"      
     end
+    it 'User can search for something, the call is tracked if the user accepts' do
+      #given
+      _stub_sql_search
+      search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(false)
+      #when
+      search_for_something_great
+      #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(search_layer).to have_received(:call).with({user_search: "more"})
+    end
+    it 'User can search for something, the call is NOT tracked if the user does not accept' do
+      #given
+      _stub_sql_search
+      search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(true)
+      #when
+      search_for_something_great
+      #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(search_layer).not_to have_received(:call)
+    end
     it 'Search can be accessed through URL' do
       #given
       expect(find("#usearch_input").value).to eq nil 
       first_aid_before = first_displayed_aid
-      stub_sql_search      
+      _stub_sql_search      
       #when
       visit aides_path + "?usearch=mobilite"
       #then
@@ -58,7 +84,7 @@ feature 'result page' do
     end
     it 'Page number is resetted / disappear from URL / if user make a new search' do
       #given
-      stub_sql_search
+      _stub_sql_search
       visit aides_path + "?page=2&usearch=mobilite"
       #when
       search_for_something_great
@@ -72,9 +98,15 @@ feature 'result page' do
     URI.parse(current_url).request_uri
   end
 
-  def stub_sql_search
+  def _stub_sql_search
     fake_search_result = two_last_aids
     allow(stub_aid_model).to receive(:roughly_spelled_like).and_return(fake_search_result)
+  end
+
+  def _fake_track_search
+    track_search = class_double("TrackSearch").as_stubbed_const
+    allow(track_search).to receive(:call)
+    track_search
   end
 
   def search_for_something_great
