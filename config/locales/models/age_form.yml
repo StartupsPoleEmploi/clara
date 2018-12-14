@@ -7,5 +7,5 @@ fr:
             number_of_years:
               blank: "L'âge est obligatoire."
               not_a_number: "Vous devez renseigner votre âge sur 2 chiffres."
-              greater_than_or_equal_to: "Il n\'est pas possible de s\'inscrire en-dessous de %{count} ans."
-              less_than_or_equal_to: "Il n\'est pas possible de s\'inscrire au-dessus de %{count} ans." 
+              greater_than_or_equal_to: "Il n'est pas possible de s'inscrire en-dessous de %{count} ans."
+              less_than_or_equal_to: "Il n'est pas possible de s'inscrire au-dessus de %{count} ans." 
