@@ -1,5 +1,6 @@
-clara.load_js(function only_if(){return $("body").hasClasses("aides", "index")}, function() {
+clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") && $.urlParam("for_id") != null;}, function() {
 
+    console.log("loaded result_default");
 
     var MOBILE_MAX_WIDTH = 739;
     var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
