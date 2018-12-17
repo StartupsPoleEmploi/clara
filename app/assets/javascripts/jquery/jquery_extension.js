@@ -1,11 +1,20 @@
-$.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
-    if (results==null){
-       return null;
+$.urlParam = function(name) {
+  var result = null;
+  var candidates_array = new RegExp('[\?&]' + name + '=([^&#]*)').exec($.currentUrl());
+  if ($.isArray(candidates_array) && candidates_array.length > 1) {
+    if (typeof candidates_array[1] === "string") {
+      result = decodeURIComponent(candidates_array[1]); // param present and filled
+    } else {
+      result = ""; // param present but empty
     }
-    else{
-       return results[1] || 0;
-    }
+  } else {
+    result = null; // param not present
+  }
+  return result;
+};
+
+$.currentUrl = function() {
+  return window.location.href;
 }
 
 jQuery.fn.extend({

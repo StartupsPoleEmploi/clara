@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 17.2.0 (13/12/2018)
+## 17.2.1 (17/12/2018)
+-[#1062][BUG] bugs restants sur le search
+
+
+## 17.2.0 (14/12/2018)
 -[#1062][BUG] Event analytics for search
 
 

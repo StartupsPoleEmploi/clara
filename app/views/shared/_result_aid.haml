@@ -11,4 +11,7 @@
       =v.short_description
   .c-result-aid__cta
     %a{"href" => v.link_to_detailed_aid}
-      <span>Voir l'aide</span>
+      %span 
+        Voir l'aide 
+      %span{"class" => "u-sr-only"}
+        =v.name

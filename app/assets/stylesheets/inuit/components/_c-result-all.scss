@@ -9,12 +9,16 @@
 h1.c-result-all-title {
   @include inuit-font-size(26px);
   margin-bottom: space(6);
+  margin-top: space(6);
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   color: #333333;
+  @include mq($from: tablet) {
+    margin-top: 0;
+  }
 }
 
 h2.c-result-all-subtitle {
