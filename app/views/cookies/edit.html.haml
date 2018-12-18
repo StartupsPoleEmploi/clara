@@ -2,8 +2,6 @@
 - description_data 'En activant les cookies, votre navigateur retient certaines informations de visite.'
 - e = view_object(:error_view_object, {errors: flash[:error]})
 - cookie_preference = CookiePreference.new(current_session: session)
-- current_ga_value = cookie_preference.current_ga_authorization_value
-- current_hj_value = cookie_preference.current_hj_authorization_value
 - is_ga_disabled = cookie_preference.ga_disabled?
 - is_hj_disabled = cookie_preference.hj_disabled?
 
@@ -41,9 +39,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}  
-              = render 'shared/cookies_form_line', {id: 'authorize_statistic', value: current_ga_value, text: 'Autoriser', choice: 'analytics', already_checked: !is_ga_disabled}           
+              = render 'shared/cookies_form_line', {id: 'authorize_statistic', text: 'Autoriser', choice: 'analytics', already_checked: !is_ga_disabled}           
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}                          
-              = render 'shared/cookies_form_line', {id: 'forbid_statistic', value: current_ga_value, text: 'Interdire', choice: 'analytics', already_checked: is_ga_disabled}       
+              = render 'shared/cookies_form_line', {id: 'forbid_statistic', text: 'Interdire', choice: 'analytics', already_checked: is_ga_disabled}       
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -54,9 +52,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form_line', {id: 'authorize_navigation', value: current_hj_value, text: 'Autoriser', choice: 'hotjar', already_checked: !is_hj_disabled}       
+              = render 'shared/cookies_form_line', {id: 'authorize_navigation', text: 'Autoriser', choice: 'hotjar', already_checked: !is_hj_disabled}       
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form_line', {id: 'forbid_navigation', value: current_hj_value, text: 'Interdire', choice: 'hotjar', already_checked: is_hj_disabled}                     
+              = render 'shared/cookies_form_line', {id: 'forbid_navigation', text: 'Interdire', choice: 'hotjar', already_checked: is_hj_disabled}                     
       
       
       .actions.u-text--right
