@@ -17,16 +17,6 @@ class CookiePreference < ClaraService
     current_session[:cookie] && current_session[:cookie]["hotjar"] && current_session[:cookie]["hotjar"] == "forbid_navigation"
   end
 
-  def current_ga_authorization_value
-    value = current_session.try(:[], :cookie).try(:[], "analytics")
-    !!value ? value : "authorize_statistic"
-  end
-
-  def current_hj_authorization_value
-    value = current_session.try(:[], :cookie).try(:[], "hotjar")
-    !!value ? value : "authorize_navigation"
-  end
-
   def accept_all_cookies
     current_session[:cookie] = {
      "analytics" => "authorize_statistic",
