@@ -18,11 +18,13 @@ class CookiePreference < ClaraService
   end
 
   def current_ga_authorization_value
-    current_session.try(:[], :cookie).try(:[], "analytics")
+    value = current_session.try(:[], :cookie).try(:[], "analytics")
+    !!value ? value : "authorize_statistic"
   end
 
   def current_hj_authorization_value
-    current_session.try(:[], :cookie).try(:[], "hotjar")
+    value = current_session.try(:[], :cookie).try(:[], "hotjar")
+    !!value ? value : "authorize_navigation"
   end
 
   def accept_all_cookies
