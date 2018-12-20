@@ -2,10 +2,10 @@
 - value ||= ""
 - text ||= ""
 
-.c-radioline.js-enterspace{id: "radio_#{id}"}
-  = radio_button_tag "choices[analytics]", |
+.c-radioline.c-cookies-form-line.js-enterspace{id: "radio_#{id}"}
+  = radio_button_tag "choices[#{choice}]", |
       "#{id}", |
-      "#{value}" == "#{id}", | 
+      already_checked, | 
       id: "#{id}", |
       required: 'required', |
       class: 'c-radioinput'

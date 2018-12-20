@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.3.0 (20/12/2018)
+-[#907][FEATURE] Page confidentialité, corrections
+
+
 ## 17.2.1 (17/12/2018)
 -[#1062][BUG] bugs restants sur le search
 

@@ -66,3 +66,7 @@ h2.c-cookie-preference {
 .c-cookie-submit {
 
 }
+
+.c-cookies-form-line .c-radiolabel {
+  @include inuit-font-size(18px);
+}

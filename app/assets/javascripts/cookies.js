@@ -8,7 +8,6 @@ _.set(window, 'clara.cookies', {
       $("input:radio:first").focus();
       clara.cookies.setup_authorize_all_callbacks();
       clara.cookies.setup_forbid_all_callbacks();
-      clara.cookies.setup_initial_radiobuttons_state();
     },
 
     setup_authorize_all_callbacks: function() {
@@ -23,19 +22,6 @@ _.set(window, 'clara.cookies', {
         $("#forbid_statistic").prop("checked", true);
         $("#forbid_navigation").prop("checked", true);
       });
-    },
-
-    setup_initial_radiobuttons_state: function() {
-      if( $("#ga-script").length === 1) {
-        $("#authorize_statistic").prop("checked", true);
-      } else {
-        $("#forbid_statistic").prop("checked", true);
-      }
-      if( $("#hj-script").length === 1 ) {
-        $("#authorize_navigation").prop("checked", true);
-      } else {
-        $("#forbid_navigation").prop("checked", true);
-      }      
     }
 });
 

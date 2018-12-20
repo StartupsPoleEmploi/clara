@@ -9,9 +9,11 @@
 
     %p.c-cookie-explanation 
       En activant les cookies, votre navigateur retient certaines informations de visite, et c’est grâce à cela que nous continuerons d’affiner votre expérience sur nos sites. 
-    %p.c-cookie-explanation 
       Sélectionnez votre choix concernant chaque catégorie de cookies. Cliquez sur “Valider et continuer” pour valider vos choix.
-
+      %span
+        =link_to "En savoir plus", confidentiality_index_path
+      %span
+        sur notre politique de confidentialité.
     .o-layout.c-cookie-line
       .o-layout__item{:class => "u-1/2"}
         %h2.c-cookie-preference Préférence pour tous les services
@@ -34,9 +36,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}  
-              = render 'shared/cookies_form1_line', {id: 'authorize_statistic', value: "authorized", text: 'Autoriser'}           
+              = render 'shared/cookies_form_line', {id: 'authorize_statistic', text: 'Autoriser', choice: 'analytics', already_checked: !@is_ga_disabled}           
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}                          
-              = render 'shared/cookies_form1_line', {id: 'forbid_statistic', value: "forbidden", text: 'Interdire'}       
+              = render 'shared/cookies_form_line', {id: 'forbid_statistic', text: 'Interdire', choice: 'analytics', already_checked: @is_ga_disabled}       
 
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -47,9 +49,9 @@
         .o-layout__item{:class => "u-1/2"}
           .o-layout
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'authorize_navigation', value: "authorized", text: 'Autoriser'}       
+              = render 'shared/cookies_form_line', {id: 'authorize_navigation', text: 'Autoriser', choice: 'hotjar', already_checked: !@is_hj_disabled}       
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form2_line', {id: 'forbid_navigation', value: "forbidden", text: 'Interdire'}                     
+              = render 'shared/cookies_form_line', {id: 'forbid_navigation', text: 'Interdire', choice: 'hotjar', already_checked: @is_hj_disabled}                     
       
       
       .actions.u-text--right
