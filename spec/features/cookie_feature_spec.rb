@@ -15,6 +15,38 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#ga-frompe", visible: false)
   end
   
+  scenario 'By default everything is authorized' do
+    #given
+    #when
+    visit edit_cooky_path("preference")
+    #then
+    expect(find("#forbid_statistic")).not_to be_checked
+    expect(find("#forbid_navigation")).not_to be_checked
+    expect(find("#authorize_statistic")).to be_checked
+    expect(find("#authorize_navigation")).to be_checked
+  end
+
+  scenario "The application can remember user\'s choices" do
+    #given
+    visit edit_cooky_path("preference")
+    expect(find("#forbid_statistic")).not_to be_checked
+    expect(find("#forbid_navigation")).not_to be_checked
+    expect(find("#authorize_statistic")).to be_checked
+    expect(find("#authorize_navigation")).to be_checked
+    #when
+    find("#forbid_statistic").click
+    find("#forbid_navigation").click
+    find("#submit-cookie-preference").click
+    visit root_path
+    click_link "RGPD"
+    #then
+    expect(find("#forbid_statistic")).to be_checked
+    expect(find("#forbid_navigation")).to be_checked
+    expect(find("#authorize_statistic")).not_to be_checked
+    expect(find("#authorize_navigation")).not_to be_checked
+  end
+
+
   scenario 'User can refuse analytics' do
 
     # Given
