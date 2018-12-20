@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 17.3.0 (17/12/2018)
+## 17.3.0 (20/12/2018)
 -[#907][FEATURE] Page confidentialité, corrections
 
 
