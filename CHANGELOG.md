@@ -1,12 +1,16 @@
 # ARA Changelog
 
 
+## 17.3.1 (21/12/2018)
+-[#1048][BUG] Pouvoir supprimer une règle dans le BO.
+
+
 ## 17.3.0 (20/12/2018)
 -[#907][FEATURE] Page confidentialité, corrections
 
 
 ## 17.2.1 (17/12/2018)
--[#1062][BUG] bugs restants sur le search
+-[#1067][BUG] bugs restants sur le search
 
 
 ## 17.2.0 (14/12/2018)
