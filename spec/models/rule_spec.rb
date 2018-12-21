@@ -6,7 +6,6 @@ describe Rule, type: :model do
     it 'Should allow destruction of composite rule without destroying child rules' do
       #given
       complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "to_be_destroyed")
-      # p Rule.all.to_json
       expect(rule_exists?("r_to_be_destroyed")).to eq true
       expect(rule_exists?("r_composed_be_a_spectacle1")).to eq true
       expect(rule_exists?("r_composed_be_an_adult1")).to eq true
