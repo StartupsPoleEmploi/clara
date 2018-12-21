@@ -19,7 +19,11 @@ class Rule < ApplicationRecord
            :validate_simple_rule_mandatory_fields, 
            :validate_complex_rule_mandatory_fields
 
+  before_destroy :remove_compound_rules
 
+  def remove_compound_rules
+    compound_rules.destroy_all
+  end
 
   def validate_non_empty_rule
     return unless is_empty_rule?
