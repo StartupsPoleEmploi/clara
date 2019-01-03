@@ -1,13 +1,9 @@
-clara.js_define("cookies", {
-
-    trigger_function: function() {
-      return $("body").hasClasses("cookies", "edit");
-    },
+clara.js_define("edit_cooky", {
 
     main_function: function() {
       $("input:radio:first").focus();
-      clara.cookies.setup_authorize_all_callbacks();
-      clara.cookies.setup_forbid_all_callbacks();
+      clara.edit_cooky.setup_authorize_all_callbacks();
+      clara.edit_cooky.setup_forbid_all_callbacks();
     },
 
     setup_authorize_all_callbacks: function() {

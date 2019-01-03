@@ -30,7 +30,7 @@
     = favicon_link_tag 'favicon.ico'        
     = javascript_include_tag 'application', 'async' => Rails.env.production?, 'defer' => Rails.env.production?
                 
-  %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env}}
+  %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.call(a_request: request)}}
     .c-turbolinks-transition.u-hidden
       .c-loader
     .c-body__wrapper
