@@ -55,7 +55,7 @@ feature 'admin' do
       fill_in('Value eligible', with: '17')
       click_button 'Créer un(e) Rule'
 
-      expect(page).to have_selector('h1', text: "Détails Rule #r_#{rule_name}")
+      expect(page).to have_selector('h1', text: "Détails r_rule")
 
       # Create rule
       click_link 'Rule Checks'
