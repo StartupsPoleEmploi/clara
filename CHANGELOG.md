@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.3.2 (3/1/2019)
+-[#1073][FEATURETTE] Mettre en évidence une notification dans le BO.
+
+
 ## 17.3.1 (21/12/2018)
 -[#1048][BUG] Pouvoir supprimer une règle dans le BO.
 
