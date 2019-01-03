@@ -5,11 +5,12 @@ describe 'Aides index partial' do
 
     context 'Nominal' do
       it 'Renders a correct title', type: :view do
-        locally = nominal_locals
+        #given
+        #when
         _fake_request(build_req(aides_path))
-        render template: "aides/index.html.haml", aids: locally[:aids], total_nb: locally[:total_nb]
+        render partial: "shared/aides_index.haml", locals: nominal_locals
+        #then
         expect(rendered).to have_title("blabla")
-
       end
     end
 

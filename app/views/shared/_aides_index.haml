@@ -1,0 +1,28 @@
+- v = view_object(:aides_index, local_assigns)
+
+
+- has_user = !params[:for_id].blank?
+- if has_user
+  - title_data "Vos résultats".html_safe
+  - description_data "Vos résultats".html_safe
+- elsif !request.query_parameters["usearch"].blank?
+  - page_nb = request.query_parameters["page"].blank? ? "1" : request.query_parameters["page"]
+  - total_nb = local_assigns["total_nb"]
+  - divided = total_nb.to_f / GetPaginationSearchNumberService.call.to_f
+  - divided_floor = (total_nb / GetPaginationSearchNumberService.call).floor
+  - max_page = divided_floor == divided ? divided_floor : divided_floor + 1
+  - title_data "Résultat de recherche – #{local_assigns["total_nb"]} aides et mesures sont disponibles - page #{page_nb} sur #{max_page}".html_safe
+  - description_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
+- else 
+  - title_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
+  - description_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
+  
+  
+%main#main.c-results-index{role: 'main'}
+  = render 'shared/breadcrumb'
+
+  - if has_user
+    = render 'shared/result_default', local_assigns
+  - else
+    = render 'shared/result_all', local_assigns
+      
