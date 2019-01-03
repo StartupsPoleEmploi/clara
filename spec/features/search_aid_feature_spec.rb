@@ -20,6 +20,9 @@ feature 'Search for aids' do
     it 'Displays 5 aids per page' do
       expect(page).to have_css(".c-result-aid",  count: 5)
     end
+    it 'Displays a normal title' do
+      expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
+    end
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
@@ -31,7 +34,7 @@ feature 'Search for aids' do
       #then
       expect(first_aid_before_pagination).not_to eq first_displayed_aid
     end
-    it 'User can search for something, it updates aids and URL accordingly' do
+    it 'User can search for something, it updates aids, URL, and title accordingly' do
       #given
       first_aid_before = first_displayed_aid
       _stub_sql_search
@@ -40,6 +43,8 @@ feature 'Search for aids' do
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
       expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(page).to have_title "bla"
+
     end
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
