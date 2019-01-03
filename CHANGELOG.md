@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.4.0 (3/1/2019)
+-[#1075][FEATURE] Admin : Mettre les dépendances dans l'ordre alphabétique
+
+
 ## 17.3.2 (3/1/2019)
 -[#1073][FEATURETTE] Mettre en évidence une notification dans le BO.
 

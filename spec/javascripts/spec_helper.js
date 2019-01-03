@@ -4,5 +4,7 @@
 //= require jquery/jquery
 //= require jquery/jquery_extension
 //= require load_js
+//= require js_define
+//= require js_valve
 //= require support/jasmine-jquery
 //= require support/jasmine-matchers

@@ -1,13 +1,10 @@
-_.set(window, 'clara.cookies', {
-
-    trigger_function: function() {
-      return $("body").hasClasses("cookies", "edit");
-    },
+clara.js_define("edit_cooky", {
 
     main_function: function() {
+      var that = this;
       $("input:radio:first").focus();
-      clara.cookies.setup_authorize_all_callbacks();
-      clara.cookies.setup_forbid_all_callbacks();
+      that.setup_authorize_all_callbacks();
+      that.setup_forbid_all_callbacks();
     },
 
     setup_authorize_all_callbacks: function() {
@@ -25,10 +22,3 @@ _.set(window, 'clara.cookies', {
     }
 });
 
-
-
-clara.load_js(
-  clara.cookies.trigger_function,
-  clara.cookies.main_function
-);
-  

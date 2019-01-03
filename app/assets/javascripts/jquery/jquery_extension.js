@@ -1,3 +1,7 @@
+$.currentAppPath = function() {
+  return $('body').attr("data-path");
+}
+
 $.urlParam = function(name) {
   var result = null;
   var candidates_array = new RegExp('[\?&]' + name + '=([^&#]*)').exec($.currentUrl());
