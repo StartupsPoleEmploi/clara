@@ -6,8 +6,8 @@ describe 'Aides index partial' do
     context 'Nominal' do
       it 'Renders a correct title', type: :view do
         locally = nominal_locals
-        locally[:context] = build_req(aides_path)
-        render template: "aides/index.html.haml", locals: locally
+        _fake_request(build_req(aides_path))
+        render template: "aides/index.html.haml", aids: locally[:aids], total_nb: locally[:total_nb]
         expect(rendered).to have_title("blabla")
 
       end
@@ -20,6 +20,12 @@ describe 'Aides index partial' do
           request: OpenStruct.new({request_method: 'GET', fullpath: path, path: path})
         }
       )
+    end
+
+    def _fake_request(req)
+      stubbed_request = class_double("StubRequest").as_stubbed_const
+      allow(stubbed_request).to receive(:call).and_return(req)
+      stubbed_request
     end
 
 

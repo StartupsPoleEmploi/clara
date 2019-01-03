@@ -1,4 +1,4 @@
-class StubbableRequestService < ClaraService
+class StubRequest < ClaraService
   initialize_with_keywords :a_request
 
   is_callable
