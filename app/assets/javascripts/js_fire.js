@@ -1,11 +1,11 @@
 _.set(window,'clara.js_fire',
 
-  function (condition_function, appliable_function, optional_id) {
+  function (obj, optional_id) {
 
     $( document ).ready(function() {
-      if (condition_function()) {
+      if (obj.trigger_function()) {
         console.debug("loaded JS " + optional_id);
-        appliable_function();
+        obj.main_function();
       }
     });
 

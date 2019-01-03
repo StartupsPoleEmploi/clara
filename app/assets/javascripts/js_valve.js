@@ -6,11 +6,11 @@
 *
 */
 
-_.set(window, "clara.js_valve", function (cond_f, actual_f, optional_id) {
+_.set(window, "clara.js_valve", function (obj, optional_id) {
   return _.defaultTo(
             _.get(window, 'clara.js_fire'),
             _.noop
-          )(cond_f, actual_f, optional_id);
+          )(obj, optional_id);
 });
 
 
