@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 17.4.1 (3/1/2019)
+-[#1069][DESIGN] Input avec ou sans icône
+
+
 ## 17.4.0 (3/1/2019)
 -[#1075][FEATURE] Admin : Mettre les dépendances dans l'ordre alphabétique
 
