@@ -87,6 +87,14 @@ feature 'Search for aids' do
       #then
       expect(find(".page.current").text).to eq "2" 
     end
+    it 'Pagination and search can be both accessed through URL, title is thus updated accordingly' do
+      #given
+      _stub_sql_search
+      #when
+      visit aides_path + "?page=2&usearch=mobilite"
+      #then
+      expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 2 sur 1 | Clara – un service Pôle emploi"
+    end
     it 'Page number is resetted / disappear from URL / if user make a new search' do
       #given
       _stub_sql_search
