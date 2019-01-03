@@ -12,8 +12,8 @@ describe 'Aides index partial' do
         locals["skip_pagination"] = true
         render partial: "shared/aides_index.haml", locals: locals
         #then
-        expect(rendered).to have_css(".c-result-all-title")
-
+        page = Nokogiri::HTML(rendered)
+        expect(page.title).to eq("blabla")
       end
     end
 
