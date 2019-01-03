@@ -31,7 +31,8 @@
         - if aids.size > 0
           = render 'shared/result_line', {hide_title: true, aids: aids}
 
-        = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
+        - unless local_assigns["skip_pagination"]
+          = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
 
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       .c-result-all__rightblock{:class => "u-hide u-show@desktop"}

@@ -8,16 +8,18 @@ describe 'Aides index partial' do
         #given
         #when
         _fake_request(build_req(aides_path))
-        render partial: "shared/aides_index.haml", locals: nominal_locals
+        locals = nominal_locals
+        locals["skip_pagination"] = true
+        render partial: "shared/aides_index.haml", locals: locals
         #then
-        expect(rendered).to have_title("blabla")
+        expect(rendered).to have_css(".c-result-all-title")
+
       end
     end
 
     def build_req(path, for_id=nil)
       OpenStruct.new(
         {
-          params: {for_id: for_id}, 
           request: OpenStruct.new({request_method: 'GET', fullpath: path, path: path})
         }
       )
@@ -31,7 +33,7 @@ describe 'Aides index partial' do
 
 
     def nominal_locals
-      {:aids=>
+      {"aids"=>
         [{"id"=>22,
           "name"=>"Aide à la mobilité Agefiph",
           "slug"=>"aide-a-la-mobilite-agefiph",
@@ -93,7 +95,7 @@ describe 'Aides index partial' do
           "filters"=>[{"id"=>10, "slug"=>"se-former-valoriser-ses-competences"}],
           "custom_filters"=>[],
           "need_filters"=>[]}],
-        :total_nb=>14}
+        "total_nb"=>14}
     end
 
 end
