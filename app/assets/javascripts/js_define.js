@@ -10,11 +10,11 @@ _.set(window, "clara.js_define", function(object_name, actual_object) {
   });
 
   // take all function, trigger_function can also be overriden this way
-  _.assign(ry[object_name], actual_object);
+  _.assign(clara[object_name], actual_object);
 
   clara.js_valve(
-    ry[object_name].trigger_function,
-    ry[object_name].main_function,
+    clara[object_name].trigger_function,
+    clara[object_name].main_function,
     object_name
   );
 

@@ -23,6 +23,9 @@
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
+//= require ./js_define
+//= require ./js_valve
+//= require ./js_fire
 //= require ./load_js_per_page
 //= require ./load_js
 //= require ./lazy_img_loading
