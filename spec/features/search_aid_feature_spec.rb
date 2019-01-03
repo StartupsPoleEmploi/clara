@@ -26,13 +26,14 @@ feature 'Search for aids' do
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
-    it 'User can click to next page, it updates aids accordingly' do
+    it 'User can click to next page, it updates aids, but title stay the same' do
       #given
       first_aid_before_pagination = first_displayed_aid
       #when
       find('nav.pagination .next a[rel="next"]').click
       #then
       expect(first_aid_before_pagination).not_to eq first_displayed_aid
+      expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
     end
     it 'User can search for something, it updates aids, URL, and title accordingly' do
       #given
@@ -43,8 +44,7 @@ feature 'Search for aids' do
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
       expect(current_fullpath).to eq "/aides?usearch=more"      
-      expect(page).to have_title "bla"
-
+      expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 1 sur 1 | Clara – un service Pôle emploi"
     end
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
