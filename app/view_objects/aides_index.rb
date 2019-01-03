@@ -4,9 +4,9 @@ class AidesIndex < ViewObject
     locals = hash_for(args)
     @myrequest = StubRequest.call(a_request: @context.request)
     @total_nb = integer_for(locals[:total_nb])
-    p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    pp args
-    p ''
+    # p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
+    # pp args
+    # p ''
   end
 
   def has_user
