@@ -68,6 +68,6 @@ class RuleDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(rule)
-    "Rule ##{rule.name}"
+    "#{rule.name}"
   end
 end
