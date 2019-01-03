@@ -10,7 +10,7 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index")},
    if ($( window ).width() < 530) {
      $("#usearch_input").attr("placeholder", "Rechercher");
    } else {
-     $("#usearch_input").attr("placeholder", "Rechercher une aide ou un mot clé");
+     $("#usearch_input").attr("placeholder", "Rechercher une aide");
    }  
   }
 
