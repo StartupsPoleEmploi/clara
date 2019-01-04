@@ -61,7 +61,7 @@ describe AidesIndex do
 
     it 'Title includes page 2/3 if page param is 2 and total_nb of page is 14' do
       #given
-      sut = AidesIndex.new(build_url({}), nominal_locals)
+      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"2"}), nominal_locals)
       #when
       res = sut.title
       #then
