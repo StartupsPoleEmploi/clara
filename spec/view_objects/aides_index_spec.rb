@@ -78,6 +78,17 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
+      expect(res).to eq("Résultat de recherche – 10 aides et mesures sont disponibles - page 2 sur 2")
+    end
+
+    it 'Title includes page 1/1 if page param is 1 and total_nb of page is 1' do
+      #given
+      locals = nominal_locals
+      locals["total_nb"] = 1
+      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"1"}), locals)
+      #when
+      res = sut.title
+      #then
       expect(res).to eq("foo")
     end
 
