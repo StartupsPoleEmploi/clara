@@ -29,7 +29,16 @@ describe AidesIndex do
       #when
       res = sut.description
       #then
-      expect(res).to eq("blabla")
+      expect(res).to eq("Vos résultats")
+    end
+
+    it 'Description has another value if user is NOT here' do
+      #given
+      sut = AidesIndex.new(build_url(for_id: "abcd"), nominal_locals)
+      #when
+      res = sut.description
+      #then
+      expect(res).to eq("Découvrez toutes les aides et mesures de retour à l'emploi")
     end
 
     def build_url(h_params)
