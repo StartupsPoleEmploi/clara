@@ -46,7 +46,7 @@ It renders the `_table` partial to display details about the resources.
         "labels.rule.new_simple_resource",
         name: page.resource_name.titleize.downcase
       ),
-      new_admin_rule_path(rule_kind: "composite"),
+      new_admin_rule_path(rule_kind: "simple"),
       class: "button",
     ) %>
   </div>
@@ -57,7 +57,7 @@ It renders the `_table` partial to display details about the resources.
          "labels.rule.new_composite_resource",
          name: page.resource_name.titleize.downcase
        ),
-       new_admin_rule_path(rule_kind: "simple"),
+       new_admin_rule_path(rule_kind: "composite"),
        class: "button",
      ) %>
   </div>
