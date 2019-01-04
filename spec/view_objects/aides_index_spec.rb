@@ -47,7 +47,7 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
-      expect(res).to eq("meh")
+      expect(res).to eq("Vos résultats")
     end
 
     def build_url(h_params)
