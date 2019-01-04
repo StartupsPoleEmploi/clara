@@ -187,7 +187,7 @@ fr:
       rule:
         name: Nom
         variable: Variable
-        aids: Aides
+        aids: Aides concernées
   number:
     currency:
       format:
