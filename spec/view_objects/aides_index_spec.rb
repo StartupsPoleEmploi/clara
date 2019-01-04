@@ -50,6 +50,15 @@ describe AidesIndex do
       expect(res).to eq("Vos résultats")
     end
 
+    it 'Title has another value if user is not here' do
+      #given
+      sut = AidesIndex.new(build_url({}), nominal_locals)
+      #when
+      res = sut.title
+      #then
+      expect(res).to eq("bla")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(
