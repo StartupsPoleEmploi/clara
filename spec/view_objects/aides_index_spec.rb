@@ -41,6 +41,15 @@ describe AidesIndex do
       expect(res).to eq("Découvrez toutes les aides et mesures de retour à l'emploi")
     end
 
+    it 'Title has a value if user is here' do
+      #given
+      sut = AidesIndex.new(build_url(for_id: "abcd"), nominal_locals)
+      #when
+      res = sut.title
+      #then
+      expect(res).to eq("meh")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(
