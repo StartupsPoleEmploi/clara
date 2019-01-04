@@ -16,6 +16,7 @@ gem "mailjet"
 gem "kaminari"
 gem "pg_search"
 gem "rack", ">= 2.0.6"
+gem "settingslogic"
 
 gem "haml", "~> 5"
 gem "haml-rails"
