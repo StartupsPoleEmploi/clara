@@ -34,7 +34,7 @@ describe AidesIndex do
 
     it 'Description has another value if user is NOT here' do
       #given
-      sut = AidesIndex.new(build_url(for_id: "abcd"), nominal_locals)
+      sut = AidesIndex.new(build_url({}), nominal_locals)
       #when
       res = sut.description
       #then
