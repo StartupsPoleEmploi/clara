@@ -1,23 +1,23 @@
 class AidesIndex < ViewObject
 
   def after_init(args)
-    locals = hash_for(args)
-    @myrequest = StubRequest.call(a_request: @context.request)
-    @total_nb = integer_for(locals[:total_nb])
+    locals = args.try(:with_indifferent_access) || {}.with_indifferent_access
+    @request = @context.request
+    @total_nb = locals[:total_nb].try(:to_i) || 0
     # p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
     # pp args
     # p ''
   end
 
   def has_user
-    !@myrequest.query_parameters["for_id"].blank?
+    !@request.query_parameters["for_id"].blank?
   end
 
   def title
     if has_user
       "Vos résultats"
-    elsif !@myrequest.query_parameters["usearch"].blank?
-      page_nb = @myrequest.query_parameters["page"].blank? ? "1" : @myrequest.query_parameters["page"]
+    elsif !@request.query_parameters["usearch"].blank?
+      page_nb = @request.query_parameters["page"].blank? ? "1" : @request.query_parameters["page"]
       total_nb = @total_nb
       divided = total_nb.to_f / GetPaginationSearchNumberService.call.to_f
       divided_floor = (total_nb / GetPaginationSearchNumberService.call).floor

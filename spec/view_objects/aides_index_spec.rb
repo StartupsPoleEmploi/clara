@@ -92,6 +92,17 @@ describe AidesIndex do
       expect(res).to eq("Résultat de recherche – 1 aides et mesures sont disponibles - page 1 sur 1")
     end
 
+    it 'Edge case : Title includes page 2/1 if page param is 2 and total_nb of page is 1 (Do not fail)' do
+      #given
+      locals = nominal_locals
+      locals["total_nb"] = 1
+      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"2"}), locals)
+      #when
+      res = sut.title
+      #then
+      expect(res).to eq("Résultat de recherche – 1 aides et mesures sont disponibles - page 2 sur 1")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(
