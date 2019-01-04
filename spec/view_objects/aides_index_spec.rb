@@ -103,6 +103,17 @@ describe AidesIndex do
       expect(res).to eq("Résultat de recherche – 1 aides et mesures sont disponibles - page 2 sur 1")
     end
 
+    it 'Edge case : Search returns no result (total_nb is 0)' do
+      #given
+      locals = nominal_locals
+      locals["total_nb"] = 0
+      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"2"}), locals)
+      #when
+      res = sut.title
+      #then
+      expect(res).to eq("Résultat de recherche – la recherche n'a retourné aucun résultat")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(

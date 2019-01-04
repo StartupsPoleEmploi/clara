@@ -14,12 +14,16 @@ class AidesIndex < ViewObject
     if has_user
       "Vos résultats"
     elsif !@request.query_parameters["usearch"].blank?
-      page_nb = @request.query_parameters["page"].blank? ? "1" : @request.query_parameters["page"]
-      total_nb = @total_nb
-      divided = total_nb.to_f / GetPaginationSearchNumberService.call.to_f
-      divided_floor = (total_nb / GetPaginationSearchNumberService.call).floor
-      max_page = divided_floor == divided ? divided_floor : divided_floor + 1
-      "Résultat de recherche – #{total_nb} aides et mesures sont disponibles - page #{page_nb} sur #{max_page}"
+      if @total_nb == 0
+        "Résultat de recherche – la recherche n'a retourné aucun résultat"        
+      else
+        page_nb = @request.query_parameters["page"].blank? ? "1" : @request.query_parameters["page"]
+        total_nb = @total_nb
+        divided = total_nb.to_f / GetPaginationSearchNumberService.call.to_f
+        divided_floor = (total_nb / GetPaginationSearchNumberService.call).floor
+        max_page = divided_floor == divided ? divided_floor : divided_floor + 1
+        "Résultat de recherche – #{total_nb} aides et mesures sont disponibles - page #{page_nb} sur #{max_page}"        
+      end
     else
       "Découvrez toutes les aides et mesures de retour à l'emploi"
     end
