@@ -15,8 +15,8 @@ fr:
       edit: "✎ Modifier"
   labels:
     rule:
-      new_simple_resource: "Nouvelle règle simple"
-      new_composite_resource: "Nouvelle règle composite"
+      new_simple_resource: "Créer règle simple"
+      new_composite_resource: "Créer règle composite"
   activerecord:
     models:
       rule: "Règles"
@@ -33,6 +33,7 @@ fr:
     attributes:
       rule:
         name: "Nom"
+        operator_type: "Combiner avec"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
