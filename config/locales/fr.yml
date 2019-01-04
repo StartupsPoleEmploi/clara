@@ -10,6 +10,13 @@ fr:
     actions:
       new: "Nouveau"
       show: "Détails"
+      back: "← Retour"
+      destroy: "🗑Supprimer"
+      edit: "✎ Modifier"
+  labels:
+    rule:
+      new_simple_resource: "Nouvelle règle simple"
+      new_composite_resource: "Nouvelle règle composite"
   activerecord:
     models:
       rule: "Règles"
@@ -23,6 +30,9 @@ fr:
       axle_filter: "Axes"
       domain_filter: "Domaines"
       user: "Utilisateurs"
+    attributes:
+      rule:
+        name: "Nom"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
@@ -172,6 +182,7 @@ fr:
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
+
   number:
     currency:
       format:
