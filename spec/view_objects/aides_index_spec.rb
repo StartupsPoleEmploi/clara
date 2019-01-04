@@ -74,7 +74,7 @@ describe AidesIndex do
       #given
       locals = nominal_locals
       locals["total_nb"] = 10
-      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"10"}), locals)
+      sut = AidesIndex.new(build_url({usearch:"mobilite", page:"2"}), locals)
       #when
       res = sut.title
       #then
