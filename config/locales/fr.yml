@@ -183,7 +183,10 @@ fr:
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
-
+    label:
+      rule:
+        name: Nom
+        variable: Variable
   number:
     currency:
       format:
