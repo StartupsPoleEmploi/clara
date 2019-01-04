@@ -4,7 +4,7 @@ class GetPaginationSearchNumberService < ClaraService
 
   # Number of items per page
   def call
-    return 5
+    5
   end
 
 end

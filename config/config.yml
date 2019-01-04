@@ -1,0 +1,11 @@
+defaults: &defaults
+  aids_per_page: 5
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
