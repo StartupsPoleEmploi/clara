@@ -19,6 +19,10 @@ fr:
       custom_parent_filter: "Filtres personnalisés parents"
       rule_check: "Vérification des règles"
       filter: "Filtres"
+      need_filter: "Besoins"
+      axle_filter: "Axes"
+      domain_filter: "Domaines"
+      user: "Utilisateurs"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
