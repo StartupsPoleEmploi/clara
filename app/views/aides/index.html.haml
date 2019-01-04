@@ -1,18 +1,12 @@
+- v = view_object(:aides_index, local_assigns)
 
-- has_user = !params[:for_id].blank?
-- if has_user
-  - title_data "Vos résultats".html_safe
-  - description_data "Vos résultats".html_safe
-- else 
-  - title_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
-  - description_data "Découvrez toutes les aides et mesures de retour à l'emploi".html_safe
+- title_data v.title.html_safe
+- description_data v.description.html_safe
   
-- loaded = @loaded || {}
-
 %main#main.c-results-index{role: 'main'}
   = render 'shared/breadcrumb'
 
-  - if has_user
+  - if v.has_user
     = render 'shared/result_default', local_assigns
   - else
     = render 'shared/result_all', local_assigns

@@ -20,18 +20,22 @@ feature 'Search for aids' do
     it 'Displays 5 aids per page' do
       expect(page).to have_css(".c-result-aid",  count: 5)
     end
+    it 'Displays a normal title' do
+      expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
+    end
     it 'Displays a pagination' do
       expect(page).to have_css("nav.pagination")
     end
-    it 'User can click to next page, it updates aids accordingly' do
+    it 'User can click to next page, it updates aids, but title stay the same' do
       #given
       first_aid_before_pagination = first_displayed_aid
       #when
       find('nav.pagination .next a[rel="next"]').click
       #then
       expect(first_aid_before_pagination).not_to eq first_displayed_aid
+      expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
     end
-    it 'User can search for something, it updates aids and URL accordingly' do
+    it 'User can search for something, it updates aids, URL, and title accordingly' do
       #given
       first_aid_before = first_displayed_aid
       _stub_sql_search
@@ -40,6 +44,7 @@ feature 'Search for aids' do
       #then
       expect(first_aid_before).not_to eq first_displayed_aid
       expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 1 sur 1 | Clara – un service Pôle emploi"
     end
     it 'User can search for something, the call is tracked if the user accepts' do
       #given
@@ -81,6 +86,14 @@ feature 'Search for aids' do
       visit aides_path + "?page=2"
       #then
       expect(find(".page.current").text).to eq "2" 
+    end
+    it 'Pagination and search can be both accessed through URL, title is thus updated accordingly' do
+      #given
+      _stub_sql_search
+      #when
+      visit aides_path + "?page=2&usearch=mobilite"
+      #then
+      expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 2 sur 1 | Clara – un service Pôle emploi"
     end
     it 'Page number is resetted / disappear from URL / if user make a new search' do
       #given

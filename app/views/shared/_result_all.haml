@@ -7,10 +7,10 @@
   %h1.c-result-all-title Toutes nos aides
 
   = form_with url: aides_search_for_aids_path, id: "search_form", :class => "c-search-form" do |form|
-    = form.text_field :plain_text_search, value: usearch, id: "usearch_input", :class => "c-search-usearch", :placeholder => "Rechercher une aide ou un mot clé"
+    = form.text_field :plain_text_search, value: usearch, id: "usearch_input", :class => "c-search-usearch", :placeholder => "Rechercher une aide"
     = form.hidden_field :page_nb, value: page, id: "page_nb_input", :class => "c-search-pagenb"
     = form.hidden_field :previous_search, value: usearch, id: "previous_search", :class => "c-search-previous-search"
-    = form.submit 'Chercher', :class => "c-search-form-submit"
+    = form.submit '', :class => "c-search-form-submit"
 
 
   .o-layout
@@ -31,7 +31,8 @@
         - if aids.size > 0
           = render 'shared/result_line', {hide_title: true, aids: aids}
 
-        = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
+        - unless local_assigns["skip_pagination"]
+          = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
 
     .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
       .c-result-all__rightblock{:class => "u-hide u-show@desktop"}
