@@ -1,12 +1,9 @@
 class AidesIndex < ViewObject
 
   def after_init(args)
-    locals = args.try(:with_indifferent_access) || {}.with_indifferent_access
+    locals = hash_for(args)
     @request = @context.request
-    @total_nb = locals[:total_nb].try(:to_i) || 0
-    # p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    # pp args
-    # p ''
+    @total_nb = integer_for(locals[:total_nb])
   end
 
   def has_user

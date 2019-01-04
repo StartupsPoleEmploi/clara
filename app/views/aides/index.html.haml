@@ -1,2 +1,13 @@
-= render 'shared/aides_index', local_assigns
+- v = view_object(:aides_index, local_assigns)
+
+- title_data v.title.html_safe
+- description_data v.description.html_safe
+  
+%main#main.c-results-index{role: 'main'}
+  = render 'shared/breadcrumb'
+
+  - if v.has_user
+    = render 'shared/result_default', local_assigns
+  - else
+    = render 'shared/result_all', local_assigns
       

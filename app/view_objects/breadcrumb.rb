@@ -3,8 +3,8 @@ class Breadcrumb < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @where = string_for(locals[:where])
-    local_request = StubRequest.call(a_request: @context.request)
-    @current_path = StringToRouteService.new(local_request).path
+    @context = locals[:context] if locals[:context]
+    @current_path = StringToRouteService.new(@context.request).path
   end
 
   def display_form?
