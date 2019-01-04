@@ -56,7 +56,7 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
-      expect(res).to eq("bla")
+      expect(res).to eq("Découvrez toutes les aides et mesures de retour à l'emploi")
     end
 
     def build_url(h_params)
