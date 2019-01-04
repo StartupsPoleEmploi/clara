@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 17.4.1 (3/1/2019)
+## 18.0.0 (4/1/2019)
+-[#1077][ADMIN] BO : traduction de la barre de navigation
+
+
+## 17.4.1 (4/1/2019)
 -[#1069][DESIGN] Input avec ou sans icône
 
 
