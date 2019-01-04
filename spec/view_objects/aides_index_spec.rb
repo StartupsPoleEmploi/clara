@@ -23,6 +23,15 @@ describe AidesIndex do
       expect(res).to eq(false)
     end
 
+    it 'Description has a value if user is here' do
+      #given
+      sut = AidesIndex.new(build_url(for_id: "abcd"), nominal_locals)
+      #when
+      res = sut.description
+      #then
+      expect(res).to eq("blabla")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(
