@@ -59,6 +59,15 @@ describe AidesIndex do
       expect(res).to eq("Découvrez toutes les aides et mesures de retour à l'emploi")
     end
 
+    it 'Title includes page 2/3 if page param is 2 and total_nb of page is 14' do
+      #given
+      sut = AidesIndex.new(build_url({}), nominal_locals)
+      #when
+      res = sut.title
+      #then
+      expect(res).to eq("meh")
+    end
+
     def build_url(h_params)
       query_h = h_params.with_indifferent_access
       OpenStruct.new(
