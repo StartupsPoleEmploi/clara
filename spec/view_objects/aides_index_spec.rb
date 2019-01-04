@@ -89,7 +89,7 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
-      expect(res).to eq("foo")
+      expect(res).to eq("Résultat de recherche – 1 aides et mesures sont disponibles - page 1 sur 1")
     end
 
     def build_url(h_params)
