@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.3.0 (7/1/2019)
+-[#1081][ADMIN] création règle simple / composite
+
+
 ## 18.2.0 (7/1/2019)
 -[#1080][SEARCH] le search doit s'executer sur tous les champs
 
