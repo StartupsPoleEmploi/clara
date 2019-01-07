@@ -1,7 +1,6 @@
 # ARA Changelog
 
 
-
 ## 18.3.0 (7/1/2019)
 -[#1081][ADMIN] création règle simple / composite
 
