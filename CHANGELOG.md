@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.2.1 (7/1/2019)
+-[#1083][BUG] disparition du footer
+
+
 ## 18.2.0 (7/1/2019)
 -[#1080][SEARCH] le search doit s'executer sur tous les champs
 
