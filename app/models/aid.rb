@@ -4,7 +4,7 @@ class Aid < ApplicationRecord
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
-                  :against => %i(name short_description what short_description how_much additionnal_conditions how_and_when limitations),
+                  :against => %i(name short_description what how_much additionnal_conditions how_and_when limitations),
                   :using => {
                     :tsearch => {},
                     :dmetaphone => {},
