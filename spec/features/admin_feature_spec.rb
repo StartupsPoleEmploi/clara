@@ -30,7 +30,7 @@ feature 'admin' do
       expect(page).to have_selector('h1', text: "Détails #{aid_name}")
 
       # See filters
-      click_link 'Filters'
+      click_link 'Filtres'
       expect(page).to have_selector('.cell-data.cell-data--string', text: "filter_name")
 
       # See detail
@@ -42,23 +42,6 @@ feature 'admin' do
       # See variables
       click_link 'Variables'
       expect(page).to have_selector('.cell-data.cell-data--string', text: "v_age")
-
-
-      # Create rule
-      click_link 'Rules'
-      click_link 'Création rule'
-      
-      rule_name = 'rule'
-      fill_in('Name', with: rule_name)
-      select("v_age", from: 'Variable')
-      select('More Than', from: 'Operator type')
-      fill_in('Value eligible', with: '17')
-      click_button 'Créer un(e) Rule'
-
-      expect(page).to have_selector('h1', text: "Détails r_rule")
-
-      # Create rule
-      click_link 'Rule Checks'
 
       click_link 'Se déconnecter'
     end
