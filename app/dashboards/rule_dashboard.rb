@@ -30,6 +30,7 @@ class RuleDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :variable,
+    :aids,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
