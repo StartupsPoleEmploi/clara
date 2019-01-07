@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.2.0 (7/1/2019)
+-[#1080][SEARCH] le search doit s'executer sur tous les champs
+
+
 ## 18.1.0 (7/1/2019)
 -[#1078][ADMIN] BO : écran listes de règles
 
