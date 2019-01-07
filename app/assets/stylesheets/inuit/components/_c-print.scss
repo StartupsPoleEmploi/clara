@@ -1,10 +1,15 @@
-footer, 
-.js-open, 
-.js-close, 
-.js-toggle-ineligies, 
-.c-body__wrapper .c-body__footer,
-.c-filterings-area, 
-.js-recap-zone, 
-.c-btn--aid {
-  display: none;
+@media print {
+  
+  footer, 
+  .js-open, 
+  .js-close, 
+  .js-toggle-ineligies, 
+  .c-body__wrapper .c-body__footer,
+  .c-filterings-area, 
+  .js-recap-zone, 
+  .c-btn.c-btn--aid 
+  {
+    display: none;
+  }
+
 }
