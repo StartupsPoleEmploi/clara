@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 18.1.0 (4/1/2019)
+## 18.1.0 (7/1/2019)
 -[#1078][ADMIN] BO : écran listes de règles
 
 
