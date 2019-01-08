@@ -183,6 +183,9 @@ fr:
     select:
       prompt: Veuillez sélectionner
     submit:
+      rule:
+        create: "Créer cette règle"
+        update: "Mettre à jour cette règle"
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
