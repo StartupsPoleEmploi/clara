@@ -194,6 +194,7 @@ fr:
         variable: Variable
         aids: Aides concernées
         slave_rules: Règles enfants
+        value_eligible: Valeur
   number:
     currency:
       format:
