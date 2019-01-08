@@ -1,4 +1,20 @@
 fr:
+  rule:
+    composition_type:
+      and_rule: "et"
+      or_rule: "ou"
+    operator_type:
+      eq: "Égal à"
+      not_equal: "Pas égal à"
+      more_or_equal_than: "Supérieur ou égal à"
+      more_than: "Supérieur à"
+      less_or_equal_than: "Inférieur ou égal à"
+      less_than: "Inférieur à"
+      starts_with: "Commence par"
+      ends_with: "Fini par"
+      include: "Contient"
+      amongst: "Parmi"
+      not_amongst: "Pas parmi"
   views:
     pagination:
       first: "première page"
