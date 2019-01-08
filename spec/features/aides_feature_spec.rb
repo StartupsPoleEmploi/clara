@@ -152,10 +152,10 @@ feature 'Aides page' do
       expect(w.css('.c-breadcrumb').count).to print_eq 1,
         "Breadcrumb is displayed"
 
-    expect(w.css('.c-detail-void').count).to print_eq 0,
+      expect(w.css('.c-detail-void').count).to print_eq 0,
         "No detail-void"
 
-    expect(w.css('.c-result-all').count).to print_eq 0,
+      expect(w.css('.c-result-all').count).to print_eq 0,
         "No result-all"
     end
   end
