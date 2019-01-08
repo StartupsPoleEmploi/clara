@@ -20,6 +20,10 @@ class WithVariableField < Administrate::Field::Associative
     data && data.send(primary_key)
   end
 
+  def to_s
+    data
+  end
+
   private
 
   def candidate_resources
@@ -33,7 +37,4 @@ class WithVariableField < Administrate::Field::Associative
     associated_dashboard.display_resource(resource)
   end
 
-  def to_s
-    data
-  end
 end
