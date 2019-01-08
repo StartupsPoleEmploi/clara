@@ -88,11 +88,14 @@ feature 'Aides page' do
       enable_http_service
       Rails.cache.clear
     end
-    scenario '2 aids are displayed' do
-      expect(result_page.css('.c-resultaid').count).to eq 2
+    scenario 'Various checks amongst generated page passes' do
+      expect(result_page.css('.c-resultaid').count).to eq(2), 
+        "2 aids should be displayed"
+        
+      expect(result_page.css('#eligibles .c-resultaid').count).to eq(1),
+        "1 is eligible"
     end
     scenario '1 is eligible' do
-      expect(result_page.css('#eligibles .c-resultaid').count).to eq 1
     end
     scenario '1 is ineligible' do
       expect(result_page.css('#ineligibles .c-resultaid').count).to eq 1
