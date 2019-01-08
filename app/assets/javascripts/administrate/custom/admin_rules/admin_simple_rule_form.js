@@ -33,7 +33,7 @@ clara.js_define("admin_simple_rule_form", {
   _set_callbacks: function(){
     var that = this;
 
-    var $original_input = $("#rule_value").clone();
+    var $original_input = $("#rule_value_eligible").clone();
     that._set_value_type($original_input);
     $("#rule_variable_id").change(function(){
       that._set_value_type($original_input);
@@ -90,34 +90,31 @@ clara.js_define("admin_simple_rule_form", {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       var elements = $("select#rule_variable_id").find('option:selected').attr("data-elements");
-      var original_name = $("#rule_value").attr("name");
-      var original_value = $("#rule_value").val();
+      var original_name = $("#rule_value_eligible").attr("name");
+      var original_value = $("#rule_value_eligible").val();
 
       that._value_type_reset();
       if (kind === "selectionnable") {
         var splitted_elts = _.split(elements, ",");
-        var $new_select = that._populate_options("rule_value", splitted_elts, splitted_elts, original_name, original_value);
-        $("#rule_value").replaceWith($new_select);
+        var $new_select = that._populate_options("rule_value_eligible", splitted_elts, splitted_elts, original_name, original_value);
+        $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "integer") {
-        $("#rule_value").replaceWith($original_input);
-        $("#rule_value").attr("type", "number");
-        $("#rule_value").attr("placeholder", "Example : 18");
+        $("#rule_value_eligible").replaceWith($original_input);
+        $("#rule_value_eligible").attr("type", "number");
+        $("#rule_value_eligible").attr("placeholder", "Example : 18");
         if (_.includes($("#rule_operator_type").val(), "amongst")) {
-          $("#rule_value").attr("type", "text");
-          clara.zu_admin.find_input_with_text("Value").parent().prepend('<label style="font-size:12px;" class="c-label c-value-label">Use "," to separate 2 numbers. For example one-and-half and twenty-two : 1.5,22</label>');
-          $("#rule_value").attr("placeholder", "Example : 1.5;22");
+          $("#rule_value_eligible").attr("type", "text");
+          $("#rule_value_eligible").attr("placeholder", "Example : 1.5;22");
         }
-        clara.zu_admin.find_input_with_text("Value").parent().prepend('<label style="font-size:12px;" class="c-label c-value-label">Use "." as decimal separator (one and half is 1.5)</label>');
       } else if (kind === "boolean") {
-        var $new_select = that._populate_options("rule_value", [I18n.t("rule.value.true", {locale: "en"}), I18n.t("rule.value.false", {locale: "en"})], [I18n.t("rule.value.true", {locale: $('body').data('locale')}), I18n.t("rule.value.false", {locale: $('body').data('locale')})], original_name, original_value);
-        $("#rule_value").replaceWith($new_select);
+        var $new_select = that._populate_options("rule_value_eligible", [I18n.t("rule.value.true", {locale: "en"}), I18n.t("rule.value.false", {locale: "en"})], [I18n.t("rule.value.true", {locale: $('body').data('locale')}), I18n.t("rule.value.false", {locale: $('body').data('locale')})], original_name, original_value);
+        $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "string") {
-        $("#rule_value").replaceWith($original_input);
-        $("#rule_value").attr("type", "text");
-        $("#rule_value").attr("placeholder", "Example : A52BZ");
+        $("#rule_value_eligible").replaceWith($original_input);
+        $("#rule_value_eligible").attr("type", "text");
+        $("#rule_value_eligible").attr("placeholder", "Example : A52BZ");
         if (_.includes($("#rule_operator_type").val(), "amongst")) {
-          clara.zu_admin.find_input_with_text("Value").parent().prepend('<label style="font-size:12px;" class="c-label c-value-label">Use "," to separate 2 values. For example value1 and value2 : value1,value2</label>');
-          $("#rule_value").attr("placeholder", "Example : value1;value2");
+          $("#rule_value_eligible").attr("placeholder", "Example : value1;value2");
         }
       }
   },
