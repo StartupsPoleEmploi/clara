@@ -32,7 +32,7 @@ fr:
   labels:
     rule:
       new_simple_resource: "Créer règle simple"
-      new_composite_resource: "Créer règle composite"
+      new_composite_resource: "Créer règle composée"
   activerecord:
     models:
       rule: "Règles"
@@ -208,7 +208,7 @@ fr:
     label:
       rule:
         new_simple_resource: Créer une règle simple
-        new_composite_resource: Créer une règle composite
+        new_composite_resource: Créer une règle composée
         name: Nom
         variable: Variable
         aids: Aides concernées
