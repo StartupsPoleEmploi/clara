@@ -17,7 +17,7 @@ and renders all form fields for a resource's editable attributes.
 <%- kind = page.resource.try(:kind) || params[:rule_kind] %>
 
 <%- mandatory_simple_rules = ["name", "variable", "operator_type", "value"] %>
-<%- mandatory_composite_rules = ["name", "child_rules", "composition_type"] %>
+<%- mandatory_composite_rules = ["name", "slave_rules", "composition_type"] %>
 <%- mandatory_list = kind == "composite" ? mandatory_composite_rules : mandatory_simple_rules %>
 
 
@@ -25,7 +25,7 @@ and renders all form fields for a resource's editable attributes.
 <%- exclusion_composite_rules = ["variable", "operator_type", "value_eligible", "value_ineligible", "aids"] %>
 <%- exclusion_list = kind == "composite" ? exclusion_composite_rules : exclusion_simple_rules %>
 
-<%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "child_rules" => "help.rule.child_rules", "composition_type" => "help.rule.composition_type"} %>
+<%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "slave_rules" => "help.rule.slave_rules", "composition_type" => "help.rule.composition_type"} %>
 <%- placeholder_h = {"name" => "placeholder.rule.name", "description" => "placeholder.rule.description"} %>
 
 
@@ -54,7 +54,7 @@ and renders all form fields for a resource's editable attributes.
     <%- is_mandatory = mandatory_list.include?(attr_name)%>
     <% unless is_excluded -%>
       <div class="field-unit field-unit--<%= attribute.html_class %>">
-        <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, help: help_h[attr_name], placeholder: placeholder_h[attr_name] %>
+        <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
       </div>
     <% end -%>
   <% end -%>
