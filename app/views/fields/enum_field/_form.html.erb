@@ -1,6 +1,20 @@
+<%- choice = field.resource.try(field.attribute) %>
+<%- is_mandatory ||= false %>
+<%- help ||= nil %>
+
 <div class="field-unit__label">
-  <%= f.label field.attribute %>
+  <%= f.label field.attribute, id: "label_#{field.attribute}" %>
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.select field.attribute, field.select_field_values(f), include_blank: true %>
+  <% if help %>
+    <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+  <% end %>
+  <%= f.select field.attribute, {}, {include_blank: true}, {class: 'my-class'} do %>
+    <% field.select_field_values(f).each do |v| %>
+      <%= content_tag :option, t("#{field.resource.class.name.downcase.to_s + '.' + field.attribute.to_s  + '.' + v[1]}"), value: v[1], selected: choice == v[1] %>
+    <% end %>
+  <% end %>
 </div>

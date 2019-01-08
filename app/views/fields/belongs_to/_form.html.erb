@@ -15,12 +15,17 @@ that displays all possible records to associate with.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
 %>
+<%- is_mandatory ||= false %>
+<%- arr = field.associated_resource_options.compact.map { |e| e } %>
 
 <div class="field-unit__label">
-  <%= f.label field.permitted_attribute %>
+  <%= f.label field.permitted_attribute, id: "label_#{field.attribute}" %>
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.select(field.permitted_attribute) do %>
-    <%= options_for_select(field.associated_resource_options, field.selected_option) %>
+  <%= f.select field.permitted_attribute, {}, {include_blank: true}, {class: 'my-class'} do %>
+    <%= options_for_select(field.associated_resource_options.compact, field.selected_option) %>
   <% end %>
 </div>

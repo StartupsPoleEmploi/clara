@@ -16,7 +16,7 @@ and renders all form fields for a resource's editable attributes.
 
 <%- kind = page.resource.try(:kind) || params[:rule_kind] %>
 
-<%- mandatory_simple_rules = ["name", "variable", "operator_type", "value"] %>
+<%- mandatory_simple_rules = ["name", "variable", "operator_type", "value_eligible"] %>
 <%- mandatory_composite_rules = ["name", "slave_rules", "composition_type"] %>
 <%- mandatory_list = kind == "composite" ? mandatory_composite_rules : mandatory_simple_rules %>
 

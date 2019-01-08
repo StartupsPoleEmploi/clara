@@ -14,9 +14,19 @@ This partial renders a textarea element for a text attribute.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/Text
 %>
 
+<%- is_mandatory ||= false %>
+<%- help ||= nil %>
+<%- placeholder ||= nil %>
+
 <div class="field-unit__label">
-  <%= f.label field.attribute %>
+  <%= f.label field.attribute, id: "#{field.attribute}" %>
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_area field.attribute %>
+  <% if help %>
+    <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+  <% end %>
+  <%= f.text_area field.attribute, placeholder: t(placeholder, default: "") %>
 </div>
