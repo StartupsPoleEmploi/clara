@@ -14,6 +14,21 @@ and renders all form fields for a resource's editable attributes.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
+<%- kind = page.resource.try(:kind) || params[:rule_kind] %>
+
+<%- mandatory_simple_rules = ["name", "variable", "operator_type", "value"] %>
+<%- mandatory_composite_rules = ["name", "child_rules", "composition_type"] %>
+<%- mandatory_list = kind == "composite" ? mandatory_composite_rules : mandatory_simple_rules %>
+
+
+<%- exclusion_simple_rules = ["composition_type", "slave_rules", "value_ineligible", "aids"] %>
+<%- exclusion_composite_rules = ["variable", "operator_type", "value"] %>
+<%- exclusion_list = kind == "composite" ? exclusion_composite_rules : exclusion_simple_rules %>
+
+<%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "child_rules" => "help.rule.child_rules", "composition_type" => "help.rule.composition_type"} %>
+<%- placeholder_h = {"name" => "placeholder.rule.name", "description" => "placeholder.rule.description"} %>
+
+
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
@@ -34,9 +49,14 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <div class="field-unit field-unit--<%= attribute.html_class %>">
-      <%= render_field attribute, f: f %>
-    </div>
+    <%- attr_name = attribute.attribute.to_s%>
+    <%- is_excluded = exclusion_list.include?(attr_name)%>
+    <%- is_mandatory = mandatory_list.include?(attr_name)%>
+    <% unless is_excluded -%>
+      <div class="field-unit field-unit--<%= attribute.html_class %>">
+        <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, help: help_h[attr_name], placeholder: placeholder_h[attr_name] %>
+      </div>
+    <% end -%>
   <% end -%>
 
   <div class="form-actions">

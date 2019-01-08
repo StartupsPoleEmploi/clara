@@ -33,7 +33,8 @@ fr:
     attributes:
       rule:
         name: "Nom"
-        operator_type: "Combiner avec"
+        operator_type: "Opérateur"
+        value_eligible: "Valeur"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
