@@ -7,7 +7,7 @@
     .c-radiocontainer
       = check_box_tag "other_form[#{id}]", |
                       "#{id}", |
-                      "#{current_val}" == "oui", | 
+                      "#{current_val}" == "true", | 
                       id: "#{id}", |
                       class: "c-radioinput"
     %label.c-radiolabel{for: "#{id}"}

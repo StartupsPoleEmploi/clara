@@ -37,7 +37,7 @@ feature 'Aides page' do
     end
   end
 
-  context 'Active user, cache empty, random user' do
+  context 'Active user, cache empty, random user,' do
     # See https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests
     let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) } 
     result_page = nil
@@ -187,11 +187,11 @@ feature 'Aides page' do
   end
 
   def create_eligible_aid_for(asker, contract_type)
-    asker.v_spectacle == 'oui' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
+    asker.v_spectacle == "true" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
   def create_ineligible_aid_for(asker, contract_type)
-    asker.v_spectacle == 'non' ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
+    asker.v_spectacle == "false" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
   def create_2_different_aids(contract_type)
@@ -200,7 +200,7 @@ feature 'Aides page' do
   end
 
   def realistic_cache_value
-    {:flat_all_eligible=>[{"id"=>4, "name"=>"Aides soit spectacle soit plus de 30", "what"=>"<p>Une description pour&nbsp;Aides soit spectacle soit plus de 30</p>", "slug"=>"aides-soit-spectacle-soit-plus-de-30", "short_description"=>"ou spectacle ou 30+", "how_much"=>"<p>un montant pour&nbsp;Aides soit spectacle soit plus de 30</p>", "additionnal_conditions"=>"<p>crit&egrave;res compl&eacute;mentaire pour&nbsp;Aides soit spectacle soit plus de 30</p>", "how_and_when"=>"<p>comment faire la demande pour&nbsp;Aides soit spectacle soit plus de 30</p>", "limitations"=>"<p>r&eacute;serves pour&nbsp;Aides soit spectacle soit plus de 30</p>", "rule_id"=>4, "ordre_affichage"=>0, "contract_type_id"=>6, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Type d'aide pour les spectacles"}], :flat_all_ineligible=>[{"id"=>1, "name"=>"aide aux plus de 30 ans", "what"=>"<p>description compl&egrave;te aides aux plus de 30 ans</p>", "slug"=>"aide-aux-plus-de-30-ans", "short_description"=>"un aide bienvenue", "how_much"=>"", "additionnal_conditions"=>"", "how_and_when"=>"", "limitations"=>"", "rule_id"=>1, "ordre_affichage"=>0, "contract_type_id"=>5, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Toutes les aides liées à l'âge du demandeur d'emploi"}, {"id"=>3, "name"=>"Aides aux spectacles de plus de 30 ans", "what"=>"<p>une description pour l'Aides aux spectacles de plus de 30 ans</p>", "slug"=>"aides-aux-spectacles-de-plus-de-30-ans", "short_description"=>"spectacle et 30+", "how_much"=>"", "additionnal_conditions"=>"", "how_and_when"=>"", "limitations"=>"", "rule_id"=>3, "ordre_affichage"=>0, "contract_type_id"=>6, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Type d'aide pour les spectacles"}], :asker=>{:v_handicap=>"non", :v_spectacle=>"oui", :v_diplome=>"niveau_3", :v_category=>nil, :v_duree_d_inscription=>nil, :v_allocation_value_min=>nil, :v_allocation_type=>nil, :v_qpv=>"ne s'applique pas", :v_zrr=>"", :v_age=>28, :v_location_label=>nil, :v_location_route=>nil, :v_location_city=>nil, :v_location_country=>nil, :v_location_zipcode=>nil, :v_location_citycode=>nil, :v_location_street_number=>nil, :v_location_state=>nil}}
+    {:flat_all_eligible=>[{"id"=>4, "name"=>"Aides soit spectacle soit plus de 30", "what"=>"<p>Une description pour&nbsp;Aides soit spectacle soit plus de 30</p>", "slug"=>"aides-soit-spectacle-soit-plus-de-30", "short_description"=>"ou spectacle ou 30+", "how_much"=>"<p>un montant pour&nbsp;Aides soit spectacle soit plus de 30</p>", "additionnal_conditions"=>"<p>crit&egrave;res compl&eacute;mentaire pour&nbsp;Aides soit spectacle soit plus de 30</p>", "how_and_when"=>"<p>comment faire la demande pour&nbsp;Aides soit spectacle soit plus de 30</p>", "limitations"=>"<p>r&eacute;serves pour&nbsp;Aides soit spectacle soit plus de 30</p>", "rule_id"=>4, "ordre_affichage"=>0, "contract_type_id"=>6, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Type d'aide pour les spectacles"}], :flat_all_ineligible=>[{"id"=>1, "name"=>"aide aux plus de 30 ans", "what"=>"<p>description compl&egrave;te aides aux plus de 30 ans</p>", "slug"=>"aide-aux-plus-de-30-ans", "short_description"=>"un aide bienvenue", "how_much"=>"", "additionnal_conditions"=>"", "how_and_when"=>"", "limitations"=>"", "rule_id"=>1, "ordre_affichage"=>0, "contract_type_id"=>5, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Toutes les aides liées à l'âge du demandeur d'emploi"}, {"id"=>3, "name"=>"Aides aux spectacles de plus de 30 ans", "what"=>"<p>une description pour l'Aides aux spectacles de plus de 30 ans</p>", "slug"=>"aides-aux-spectacles-de-plus-de-30-ans", "short_description"=>"spectacle et 30+", "how_much"=>"", "additionnal_conditions"=>"", "how_and_when"=>"", "limitations"=>"", "rule_id"=>3, "ordre_affichage"=>0, "contract_type_id"=>6, "archived_at"=>nil, "contract_type_order"=>0, "contract_type_icon"=>"", "contract_type_description"=>"Type d'aide pour les spectacles"}], :asker=>{:v_handicap=>false, :v_spectacle=>true, :v_diplome=>"niveau_3", :v_category=>nil, :v_duree_d_inscription=>nil, :v_allocation_value_min=>nil, :v_allocation_type=>nil, :v_qpv=>"ne s'applique pas", :v_zrr=>"", :v_age=>28, :v_location_label=>nil, :v_location_route=>nil, :v_location_city=>nil, :v_location_country=>nil, :v_location_zipcode=>nil, :v_location_citycode=>nil, :v_location_street_number=>nil, :v_location_state=>nil}}
   end
 
 end

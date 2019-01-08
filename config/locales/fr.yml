@@ -1,5 +1,8 @@
 fr:
   rule:
+    value_eligible:
+      :true: "vrai"
+      :false: "faux"
     composition_type:
       and_rule: "et"
       or_rule: "ou"

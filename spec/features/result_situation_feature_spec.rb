@@ -42,10 +42,10 @@ require 'rails_helper'
 # describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'age',                css_text: '35'} end
 # describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'grade',              css_text: 'Bac +1 à +2'} end
 # describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'address',            css_text: '45 Rue du Gas 79160 Villiers-en-Plaine'} end
-# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'zrr',                css_text: 'oui'} end
-# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'qpv',                css_text: 'oui'} end
-# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'spectacle',           css_text: 'non'} end
-# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'handicap',           css_text: 'non'} end
+# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'zrr',                css_text: true} end
+# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'qpv',                css_text: true} end
+# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'spectacle',           css_text: false} end
+# describe "Nominal asker" do it_should_behave_like "a field of the asker situation", {asker: "nominal", css_suffix: 'handicap',           css_text: false} end
 
 
 #   def visit_aides_for_asker(asker)

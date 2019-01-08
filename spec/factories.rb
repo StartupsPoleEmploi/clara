@@ -33,14 +33,12 @@ FactoryBot.define do
 
     trait :spectacle do 
       name 'v_spectacle'
-      description 'oui,non'
-      variable_type :string
+      variable_type :boolean
     end
 
     trait :handicap do 
       name 'v_handicap'
-      description 'oui,non'
-      variable_type :string
+      variable_type :boolean
     end
 
     trait :qpv do 
@@ -137,21 +135,21 @@ FactoryBot.define do
       name 'be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible 'oui'
+      value_eligible "true"
     end
 
     trait :not_be_a_spectacle do 
       name 'not_be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible 'non'
+      value_eligible "false"
     end
 
     trait :be_handicaped do 
       name 'be_a_handicaped' 
       association :variable, :handicap
       operator_type :eq
-      value_eligible 'oui'
+      value_eligible "true"
     end
 
     trait :be_an_adult_and_a_spectacles do 
@@ -278,7 +276,7 @@ FactoryBot.define do
   factory :asker do 
     skip_create
     v_age '25'
-    v_spectacle 'non'
+    v_spectacle "false"
 
     trait :ado do 
       v_age '16'
@@ -289,17 +287,17 @@ FactoryBot.define do
     end
 
     trait :spectacle do 
-      v_spectacle 'oui'
+      v_spectacle "true"
     end
 
     trait :handicaped do 
-      v_handicap 'oui'
+      v_handicap "true"
     end
 
     trait :full_user_input do 
-      v_handicap 'oui'
-      v_spectacle 'non'
-      v_cadre 'oui'
+      v_handicap "true"
+      v_spectacle "false"
+      v_cadre "true"
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'

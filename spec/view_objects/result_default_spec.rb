@@ -223,8 +223,8 @@ describe ResultDefault do
     "name"=>"special",
     "description"=>"Filtre marqué \"spécial\"..."}],
  :asker=>
-  {"v_handicap"=>"oui",
-   "v_spectacle"=>"non",
+  {"v_handicap"=>true,
+   "v_spectacle"=>false,
    "v_diplome"=>"niveau_3",
    "v_category"=>"cat_12345",
    "v_duree_d_inscription"=>"plus_d_un_an",

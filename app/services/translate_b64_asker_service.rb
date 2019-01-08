@@ -82,7 +82,7 @@ class TranslateB64AskerService
     boolean_hash.invert[other.to_s].to_s
   end
   def boolean_hash
-    {"o" => "oui", "n" => "non"}
+    {"o" => "true", "n" => "false"}
   end
 
 

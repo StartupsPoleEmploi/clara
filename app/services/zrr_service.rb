@@ -12,7 +12,7 @@ class ZrrService
     zrrs = Rails.cache.fetch("zrrs") do
       Zrr.first ? Zrr.first.value  : ""
     end
-    zrrs && zrrs.include?(citycode) ? "oui" : "non"
+    zrrs && zrrs.include?(citycode) ? "true" : "false"
   end
   
 
