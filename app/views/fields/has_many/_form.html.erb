@@ -1,7 +1,7 @@
 <%#
 # HasMany Form Partial
 
-This partial renders an input element for belongs_to relationships.
+This partial renders an input element for has_many relationships.
 By default, the input is a collection select box
 that displays all possible records to associate with.
 The collection select box supports multiple inputs,
@@ -18,11 +18,19 @@ and is augmented with [Selectize].
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 [Selectize]: http://brianreavis.github.io/selectize.js
 %>
+<%- is_mandatory ||= false %>
+<%- help ||= nil %>
 
 <div class="field-unit__label">
-  <%= f.label field.attribute_key, field.attribute %>
+  <%= f.label field.attribute, for: "#{f.object_name}_#{field.attribute_key}", id: "label_#{field.attribute}" %>
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
 </div>
 <div class="field-unit__field">
+  <% if help %>
+    <%= f.label t(help, default: ""), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+  <% end %>
   <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_options) %>
   <% end %>

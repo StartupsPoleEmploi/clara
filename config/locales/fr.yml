@@ -35,6 +35,8 @@ fr:
         name: "Nom"
         operator_type: "Opérateur"
         value_eligible: "Valeur"
+        rule_slave_rule_ids: "Règles enfants"
+        composition_type: "Combiner avec"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
@@ -191,6 +193,7 @@ fr:
         name: Nom
         variable: Variable
         aids: Aides concernées
+        slave_rules: Règles enfants
   number:
     currency:
       format:

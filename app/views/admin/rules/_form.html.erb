@@ -22,7 +22,7 @@ and renders all form fields for a resource's editable attributes.
 
 
 <%- exclusion_simple_rules = ["composition_type", "slave_rules", "value_ineligible", "aids"] %>
-<%- exclusion_composite_rules = ["variable", "operator_type", "value"] %>
+<%- exclusion_composite_rules = ["variable", "operator_type", "value_eligible", "value_ineligible", "aids"] %>
 <%- exclusion_list = kind == "composite" ? exclusion_composite_rules : exclusion_simple_rules %>
 
 <%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "child_rules" => "help.rule.child_rules", "composition_type" => "help.rule.composition_type"} %>
