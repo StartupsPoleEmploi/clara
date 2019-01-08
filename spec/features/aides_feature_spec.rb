@@ -86,27 +86,27 @@ feature 'Aides page' do
     end
     scenario 'Various checks amongst generated page passes' do
       result_page = Nokogiri::HTML(page.html)
-      expect(result_page.css('.c-resultaid').count).to eq(2), 
+
+      expect(result_page.css('.c-resultaid').count).to print_eq 2, 
         "2 aids should be displayed"
 
-      expect(result_page.css('#eligibles .c-resultaid').count).to eq(1),
+      expect(result_page.css('#eligibles .c-resultaid').count).to print_eq 1,
         "1 is eligible"
 
-      expect(result_page.css('#ineligibles .c-resultaid').count).to eq(1),
+      expect(result_page.css('#ineligibles .c-resultaid').count).to print_eq 1,
         "1 is ineligible"
       
-      expect(result_page.css('title').text.include?("Vos résultats")).to eq(true),
+      expect(result_page.css('title').text.include?("Vos résultats")).to print_eq true,
         "Title include \"Vos résultats\""
 
-      expect(result_page.css('.c-breadcrumb').count).to eq(1),
+      expect(result_page.css('.c-breadcrumb').count).to print_eq 1,
         "Breadcrumb is displayed"
 
-      expect(result_page.css('.c-detail-void').count).to eq(0),
+      expect(result_page.css('.c-detail-void').count).to print_eq 0,
         "No detail-void"
 
-      expect(result_page.css('.c-result-all').count).to eq(0),
+      expect(result_page.css('.c-result-all').count).to print_eq 0,
         "No result-all"
-
     end
 
   end
@@ -114,49 +114,49 @@ feature 'Aides page' do
   context 'Active user, cache filled' do
     # See https://makandracards.com/makandra/46189-how-to-rails-cache-for-individual-rspec-tests
     let(:memory_store) { ActiveSupport::Cache.lookup_store(:memory_store) } 
-    result_page = nil
     before do
-      if result_page == nil
-        # set up data context
-        main_id = "MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8="
-        asker = TranslateB64AskerService.new.from_b64(main_id)
-        contract_type = create(:contract_type, :contract_type_1)
-        create_eligible_aid_for(asker, contract_type)
-        create_ineligible_aid_for(asker, contract_type)
-        # mock externalities
-        disable_http_service
-        allow(Rails).to receive(:cache).and_return(memory_store)
-        Rails.cache.clear
-        Rails.cache.write(main_id, SerializeResultsService.get_instance.go(asker))
-        # set system under test
-        visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
-        result_page = Nokogiri::HTML(page.html)
-      end
+      # set up data context
+      main_id = "MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8="
+      asker = TranslateB64AskerService.new.from_b64(main_id)
+      contract_type = create(:contract_type, :contract_type_1)
+      create_eligible_aid_for(asker, contract_type)
+      create_ineligible_aid_for(asker, contract_type)
+      # mock externalities
+      disable_http_service
+      allow(Rails).to receive(:cache).and_return(memory_store)
+      Rails.cache.clear
+      Rails.cache.write(main_id, SerializeResultsService.get_instance.go(asker))
+      # set system under test
+      visit aides_path + '?for_id=' + TranslateB64AskerService.new.into_b64(asker)
+      result_page = Nokogiri::HTML(page.html)
     end
     after do
       enable_http_service
       Rails.cache.clear
     end
-    scenario '2 aids are displayed' do
-      expect(result_page.css('.c-resultaid').count).to eq 2
-    end
-    scenario '1 is eligible' do
-      expect(result_page.css('#eligibles .c-resultaid').count).to eq 1
-    end
-    scenario '1 is ineligible' do
-      expect(result_page.css('#ineligibles .c-resultaid').count).to eq 1
-    end
-    scenario 'Title include "Vos résultats"' do
-      expect(result_page.css('title').text.include?("Vos résultats")).to eq true
-    end
-    scenario 'Breadcrumb is displayed' do
-      expect(result_page.css('.c-breadcrumb').count).to eq 1
-    end
-    scenario 'No detail-void' do
-      expect(result_page.css('.c-detail-void').count).to eq 0
-    end
-    scenario 'No result-all' do
-      expect(result_page.css('.c-result-all').count).to eq 0
+    scenario 'Various checks amongst generated page passes' do
+      w = Nokogiri::HTML(page.html)
+
+      expect(w.css('.c-resultaid').count).to print_eq 2,
+        "2 aids should be displayed"
+
+      expect(w.css('#eligibles .c-resultaid').count).to print_eq 1,
+        "1 is eligible"
+
+      expect(w.css('#ineligibles .c-resultaid').count).to print_eq 1,
+        "1 is ineligible"
+
+      expect(w.css('title').text.include?("Vos résultats")).to print_eq true,
+        "Title include \"Vos résultats\""
+
+      expect(w.css('.c-breadcrumb').count).to print_eq 1,
+        "Breadcrumb is displayed"
+
+    expect(w.css('.c-detail-void').count).to print_eq 0,
+        "No detail-void"
+
+    expect(w.css('.c-result-all').count).to print_eq 0,
+        "No result-all"
     end
   end
 
