@@ -8,18 +8,18 @@ class RuleDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    slave_rules: Field::HasMany.with_options(class_name: "Rule"),
-    variable: Field::BelongsTo,
-    aids: Field::HasMany,
-    id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
-    value_eligible: Field::String,
+    slave_rules:      Field::HasMany.with_options(class_name: "Rule"),
+    variable:         WithVariableField,
+    aids:             Field::HasMany,
+    id:               Field::Number,
+    name:             Field::String,
+    description:      Field::Text,
+    value_eligible:   Field::String,
     value_ineligible: Field::String,
-    operator_type: EnumField,
+    operator_type:    EnumField,
     composition_type: EnumField,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at:       Field::DateTime,
+    updated_at:       Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

@@ -32,7 +32,7 @@ private
   def extract_descriptions(rule)
     res = []
     begin
-      res = rule.variable.description.split(',').map {|e| e.strip}
+      res = rule.variable.elements.split(',').map {|e| e.strip}
     rescue Exception => e
       res = []
     end

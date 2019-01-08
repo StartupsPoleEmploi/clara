@@ -12,6 +12,7 @@ class VariableDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     description: Field::Text,
+    elements: Field::Text,
     variable_type: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -27,6 +28,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name,
     :variable_type,
     :description,
+    :elements,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :description,
+    :elements,
     :variable_type,
     :created_at,
     :updated_at,
@@ -46,6 +49,7 @@ class VariableDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :variable_type,
+    :elements,
     :description,
   ].freeze
 

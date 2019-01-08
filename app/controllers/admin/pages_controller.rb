@@ -134,5 +134,32 @@ module Admin
     end
 
 
+    def get_transfer_descr
+    end
+
+    def post_transfer_descr
+      Variable.all.each do |v|  
+        unless v.description.blank?
+          v.elements = v.description
+          v.variable_type = :selectionnable
+        end
+        v.description = ''
+        v.save
+      end
+      render json: {
+        status: "ok"
+      }
+    end
+
+    def reverse_transfer_descr
+      Variable.all.each do |v|  
+        v.description = v.elements
+        v.save
+      end
+      render json: {
+        status: "ok"
+      }
+    end
+
   end
 end
