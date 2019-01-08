@@ -15,26 +15,14 @@ to do the heavy lifting.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
+
+<%- title_simple = t("helpers.label.rule.new_simple_resource", name: display_resource_name(page.resource_name).titleize) %>
+<%- title_composite = t("helpers.label.rule.new_composite_resource", name: display_resource_name(page.resource_name).titleize) %>
 <%- kind = page.resource.try(:kind) || params[:rule_kind] %>
-
-<%- mandatory_simple_rules = ["name", "variable", "operator_type", "value"] %>
-<%- mandatory_composite_rules = ["name", "child_rules", "composition_type"] %>
-<%- mandatory_list = kind == "composite" ? mandatory_composite_rules : mandatory_simple_rules %>
-
-
-<%- exclusion_simple_rules = ["composition_type", "child_rules"] %>
-<%- exclusion_composite_rules = ["variable", "operator_type", "value"] %>
-<%- exclusion_list = kind == "composite" ? exclusion_composite_rules : exclusion_simple_rules %>
-
-<%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "child_rules" => "help.rule.child_rules", "composition_type" => "help.rule.composition_type"} %>
-<%- placeholder_h = {"name" => "placeholder.rule.name", "description" => "placeholder.rule.description"} %>
-
+<%- actual_title = kind == "composite" ? title_composite : title_simple %>
 
 <% content_for(:title) do %>
-  <%= t(
-    "administrate.actions.new_resource",
-    name: display_resource_name(page.resource_name).titleize
-  ) %>
+  <%= actual_title %>
 <% end %>
 
 <header class="main-content__header" role="banner">

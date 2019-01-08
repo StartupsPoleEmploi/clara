@@ -186,6 +186,8 @@ fr:
       update: Modifier ce(tte) %{model}
     label:
       rule:
+        new_simple_resource: Créer une règle simple
+        new_composite_resource: Créer une règle composite
         name: Nom
         variable: Variable
         aids: Aides concernées
