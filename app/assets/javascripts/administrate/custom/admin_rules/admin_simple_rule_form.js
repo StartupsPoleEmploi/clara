@@ -55,9 +55,9 @@ clara.js_define("admin_simple_rule_form", {
   _set_operator_type: function(all_choices, first_state) {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
-      if (kind === "element") {
+      if (kind === "selectionnable") {
         that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal", "more_than", "more_or_equal_than", "less_than", "less_or_equal_than"]);
-      } else if (kind === "number") {
+      } else if (kind === "integer") {
         that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       } else if (kind === "boolean") {
         that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal"]);
@@ -94,11 +94,11 @@ clara.js_define("admin_simple_rule_form", {
       var original_value = $("#rule_value").val();
 
       that._value_type_reset();
-      if (kind === "element") {
+      if (kind === "selectionnable") {
         var splitted_elts = _.split(elements, ",");
         var $new_select = that._populate_options("rule_value", splitted_elts, splitted_elts, original_name, original_value);
         $("#rule_value").replaceWith($new_select);
-      } else if (kind === "number") {
+      } else if (kind === "integer") {
         $("#rule_value").replaceWith($original_input);
         $("#rule_value").attr("type", "number");
         $("#rule_value").attr("placeholder", "Example : 18");
