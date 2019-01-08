@@ -14,7 +14,7 @@
   <% end %>
   <%= f.select field.attribute, {}, {include_blank: true}, {class: 'my-class'} do %>
     <% field.select_field_values(f).each do |v| %>
-      <%= content_tag :option, t("#{field.resource.class.name.downcase.to_s + '.' + field.attribute.to_s  + '.' + v[1]}"), value: v[1], selected: choice == v[1] %>
+      <%= content_tag :option, t("#{field.resource.class.name.downcase.to_s + '.' + field.attribute.to_s  + '.' + v[1]}"), value: v[1], selected: choice == v[1]  %>
     <% end %>
   <% end %>
 </div>
