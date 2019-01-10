@@ -161,5 +161,13 @@ module Admin
       }
     end
 
+    def delete_qpv_records
+      ActiveRecord::Base.connection.disable_referential_integrity do
+        Book.destroy_all
+        Genre.destroy_all
+        # ...create data 
+      end
+    end
+
   end
 end

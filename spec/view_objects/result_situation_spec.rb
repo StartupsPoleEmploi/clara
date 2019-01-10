@@ -119,39 +119,51 @@ describe ResultSituation do
     end
   end
   describe '.zrr' do
-    it 'Should respond exactly the same thing as the given zrr' do
-      sut = ResultSituation.new(nil, {v_zrr: 'anything'})
-      expect(sut.zrr).to eq("anything")
-      sut = ResultSituation.new(nil, {v_zrr: 'any_other_thing'})
-      expect(sut.zrr).to eq("any_other_thing")
+    it 'Should respond "oui" when given String is "true"' do
+      sut = ResultSituation.new(nil, {v_zrr: 'true'})
+      expect(sut.zrr).to eq("oui")
     end
-    it 'Should return "indisponible" in the worst scenario' do
+    it 'Should respond "non" when given data is sth else than "true"' do
+      sut = ResultSituation.new(nil, {v_zrr: 'rerere'})
+      expect(sut.zrr).to eq("non")
+      sut = ResultSituation.new(nil, {v_zrr: Date.new})
+      expect(sut.zrr).to eq("non")
+    end
+    it 'Should return "indisponible" when data is not available' do
       sut = ResultSituation.new(nil, nil)
       expect(sut.zrr).to eq("indisponible")
     end
   end
   describe '.handicap' do
-    it 'Should respond exactly the same thing as the given handicap' do
-      sut = ResultSituation.new(nil, {v_handicap: 'anything'})
-      expect(sut.handicap).to eq("anything")
-      sut = ResultSituation.new(nil, {v_handicap: 'any_other_thing'})
-      expect(sut.handicap).to eq("any_other_thing")
+    it 'Should respond "oui" when given String is "true"' do
+      sut = ResultSituation.new(nil, {v_handicap: 'true'})
+      expect(sut.handicap).to eq("oui")
     end
-    it 'Should return "indisponible" in the worst scenario' do
+    it 'Should respond "non" when given data is sth else than "true"' do
+      sut = ResultSituation.new(nil, {v_handicap: 'rerere'})
+      expect(sut.handicap).to eq("non")
+      sut = ResultSituation.new(nil, {v_handicap: Date.new})
+      expect(sut.handicap).to eq("non")
+    end
+    it 'Should return "indisponible" when data is not available' do
       sut = ResultSituation.new(nil, nil)
       expect(sut.handicap).to eq("indisponible")
     end
   end
   describe '.spectacle' do
-    it 'Should respond exactly the same thing as the given spectacle' do
-      sut = ResultSituation.new(nil, {v_spectacle: 'anything'})
-      expect(sut.spectacle).to eq("anything")
-      sut = ResultSituation.new(nil, {v_spectacle: 'any_other_thing'})
-      expect(sut.spectacle).to eq("any_other_thing")
+    it 'Should respond "oui" when given String is "true"' do
+      sut = ResultSituation.new(nil, {v_spectacle: 'true'})
+      expect(sut.spectacle).to eq("oui")
     end
-    it 'Should return "indisponible" in the worst scenario' do
+    it 'Should respond "non" when given data is sth else than "true"' do
+      sut = ResultSituation.new(nil, {v_spectacle: 'rerere'})
+      expect(sut.spectacle).to eq("non")
+      sut = ResultSituation.new(nil, {v_spectacle: Date.new})
+      expect(sut.spectacle).to eq("non")
+    end
+    it 'Should return "indisponible" when data is not available' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.spectacle).to eq("indisponible")
+      expect(sut.handicap).to eq("indisponible")
     end
   end
   describe '.allocation_value_min' do

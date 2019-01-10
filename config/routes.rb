@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       get 'get_transfer_descr'
       post 'post_transfer_descr'
       post 'reverse_transfer_descr'
+      post 'delete_qpv_records'
       post 'expire_json_objects'
       post 'rename_eligible_value'
       post 'archive_all_aids'
