@@ -141,7 +141,7 @@ module Admin
       Variable.all.each do |v|  
         unless v.description.blank?
           v.elements = v.description
-          v.variable_type = v.elements == "oui,non" ? :boolean : :selectionnable
+          v.variable_type = v.description == "oui,non" ? :boolean : :selectionnable
         end
         v.description = nil
         v.save
@@ -159,14 +159,6 @@ module Admin
       render json: {
         status: "ok"
       }
-    end
-
-    def delete_qpv_records
-      ActiveRecord::Base.connection.disable_referential_integrity do
-        Book.destroy_all
-        Genre.destroy_all
-        # ...create data 
-      end
     end
 
   end

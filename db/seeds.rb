@@ -19,6 +19,7 @@ variable_list = [
   ["v_location_street_number",    :string, ""],
   ["v_location_zipcode",          :string, ""],
   ["v_zrr",                       :boolean, ""]
+  ["v_qpv",                       :boolean, ""]
 ]
 
 existing_variables = Variable.all.map(&:name)
