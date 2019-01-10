@@ -72,10 +72,7 @@ clara.js_define("admin_simple_rule_form", {
       return _.includes(user_choices, one_choice.value);
     });
     var current_variable = $('#rule_variable_id option:selected').text();
-    console.log(current_variable)
     var force_selection = current_variable === first_state.for_var;
-    console.log(force_selection)
-    console.log(first_state)
     _.each(actual_choices, function(actual_choice){
       var current_value_is_origin = actual_choice.value === first_state.val;
       if (force_selection && current_value_is_origin) {
