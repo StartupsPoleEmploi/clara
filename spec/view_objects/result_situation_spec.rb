@@ -119,8 +119,8 @@ describe ResultSituation do
     end
   end
   describe '.zrr' do
-    it 'Should respond "oui" when given String is "true"' do
-      sut = ResultSituation.new(nil, {v_zrr: 'true'})
+    it 'Should respond "oui" when given String is "oui"' do
+      sut = ResultSituation.new(nil, {v_zrr: 'oui'})
       expect(sut.zrr).to eq("oui")
     end
     it 'Should respond "non" when given data is sth else than "true"' do
@@ -135,8 +135,8 @@ describe ResultSituation do
     end
   end
   describe '.handicap' do
-    it 'Should respond "oui" when given String is "true"' do
-      sut = ResultSituation.new(nil, {v_handicap: 'true'})
+    it 'Should respond "oui" when given String is "oui"' do
+      sut = ResultSituation.new(nil, {v_handicap: 'oui'})
       expect(sut.handicap).to eq("oui")
     end
     it 'Should respond "non" when given data is sth else than "true"' do
@@ -151,8 +151,8 @@ describe ResultSituation do
     end
   end
   describe '.spectacle' do
-    it 'Should respond "oui" when given String is "true"' do
-      sut = ResultSituation.new(nil, {v_spectacle: 'true'})
+    it 'Should respond "oui" when given String is "oui"' do
+      sut = ResultSituation.new(nil, {v_spectacle: 'oui'})
       expect(sut.spectacle).to eq("oui")
     end
     it 'Should respond "non" when given data is sth else than "true"' do
