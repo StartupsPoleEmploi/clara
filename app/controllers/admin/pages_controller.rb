@@ -138,9 +138,7 @@ module Admin
     end
 
     def post_transfer_descr
-      p'+++out+++'
       unless Variable.any? { |v| !v.elements.blank? }
-        p'+++in+++'
         Variable.all.each do |v|  
           unless v.description.blank?
             v.elements = v.description
