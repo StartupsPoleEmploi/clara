@@ -138,27 +138,24 @@ module Admin
     end
 
     def post_transfer_descr
-      Variable.all.each do |v|  
-        unless v.description.blank?
-          v.elements = v.description
-          v.variable_type = :selectionnable if !v.description.blank?
+      unless Variable.any? { |v| !v.elements.blank? }
+        Variable.all.each do |v|  
+          unless v.description.blank?
+            v.elements = v.description
+            v.variable_type = :selectionnable if !v.description.blank?
+          end
+          v.elements = "oui,non" if v.name == "v_qpv"
+          v.description = nil
+          v.save
         end
-        v.description = nil
-        v.save
       end
       render json: {
         status: "ok"
       }
     end
 
-    def reverse_transfer_descr
-      Variable.all.each do |v|  
-        v.description = v.elements
-        v.save
-      end
-      render json: {
-        status: "ok"
-      }
+    def reset_ineligible_value
+
     end
 
   end
