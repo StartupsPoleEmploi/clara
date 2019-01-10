@@ -4,9 +4,7 @@ class RuleCheckService
   def check_type(rule)
     state = 'error'
     if rule.variable.present?
-      if rule.variable.variable_type == 'boolean'
-        state='ok' if rule.value_eligible.to_s == 'true' || rule.value_eligible.to_s == 'false'
-      elsif rule.variable.variable_type == 'integer'
+      if rule.variable.variable_type == 'integer'
         state='ok' if !!( rule.value_eligible.match /^(\d)+$/ )
       elsif rule.variable.variable_type == 'string' && rule.operator_type == "starts_with"
         state = 'ok' if rule.value_eligible != ''

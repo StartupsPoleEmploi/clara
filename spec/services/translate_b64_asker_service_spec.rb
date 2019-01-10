@@ -34,9 +34,9 @@ describe TranslateB64AskerService do
     #when
     sut = TranslateB64AskerService.new.from_b64("MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8=")
     #then
-    expect(sut.v_handicap)            .to eq("false")
-    expect(sut.v_spectacle)           .to eq("true")
-    expect(sut.v_cadre)               .to eq("true")
+    expect(sut.v_handicap)            .to eq("non")
+    expect(sut.v_spectacle)           .to eq("oui")
+    expect(sut.v_cadre)               .to eq("oui")
     expect(sut.v_diplome)             .to eq("niveau_3")
     expect(sut.v_category)            .to eq("cat_12345")
     expect(sut.v_duree_d_inscription) .to eq("plus_d_un_an")

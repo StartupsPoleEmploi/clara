@@ -21,9 +21,9 @@ describe OtherService do
     it '"none" props should be nil, if one of the other props is not true' do
       # given
       asker = Asker.new
-      asker.v_spectacle = "true"
-      asker.v_handicap  = "false"
-      asker.v_cadre  = "true"
+      asker.v_spectacle = "oui"
+      asker.v_handicap  = "non"
+      asker.v_cadre  = "oui"
 
       # when
       other = OtherService.new(asker).download_from_asker
@@ -34,15 +34,15 @@ describe OtherService do
     it '"none" props should be true, if all of the other props is false' do
       # given
       asker = Asker.new
-      asker.v_spectacle = "false"
-      asker.v_handicap  = "false"
-      asker.v_cadre  = "false"
+      asker.v_spectacle = "non"
+      asker.v_handicap  = "non"
+      asker.v_cadre  = "non"
 
       # when
       other = OtherService.new(asker).download_from_asker
 
       # then
-      expect(other.none).to eq("true")
+      expect(other.none).to eq("oui")
     end
   end
 
@@ -60,9 +60,9 @@ describe OtherService do
       OtherService.new(asker).upload_to_asker(other)
 
       # then
-      expect(asker.v_handicap).to eq("true")
-      expect(asker.v_spectacle).to eq("true")
-      expect(asker.v_cadre).to eq("true")
+      expect(asker.v_handicap).to eq("oui")
+      expect(asker.v_spectacle).to eq("oui")
+      expect(asker.v_cadre).to eq("oui")
     end
   end
 end

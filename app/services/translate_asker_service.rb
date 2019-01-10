@@ -64,7 +64,7 @@ class TranslateAskerService
     boolean_hash.invert[other.to_s].to_s
   end
   def boolean_hash
-    {true: "true", false: "false"}
+    {true: "oui", false: "non"}
   end
 
 

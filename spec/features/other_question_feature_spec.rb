@@ -82,8 +82,8 @@ RSpec.feature 'other question' do
     # then
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
-    expect(asker_obj).to include '"v_spectacle":"true"'
-    expect(asker_obj).to include '"v_handicap":"true"'
+    expect(asker_obj).to include '"v_spectacle":"oui"'
+    expect(asker_obj).to include '"v_handicap":"oui"'
 
     expect(current_path).not_to eq new_other_question_path
   end
@@ -102,8 +102,8 @@ RSpec.feature 'other question' do
     expect_all_unchecked([ocbSpectacle, ocbHandicap, ocbNone].map(&:element))
     session_hash = page.get_rack_session
     asker_obj = session_hash['asker']
-    expect(asker_obj).not_to include '"v_spectacle":true'
-    expect(asker_obj).not_to include '"v_handicap":true'
+    expect(asker_obj).not_to include '"v_spectacle":"oui"'
+    expect(asker_obj).not_to include '"v_handicap":"oui"'
   end
   
 end

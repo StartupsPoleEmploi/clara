@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Admin::RulesController do
   describe 'Params' do
     it 'Params returns a ActionController::Parameters' do
-      stubbed_params = ActionController::Parameters.new({asker: {v_handicap:true}})
+      stubbed_params = ActionController::Parameters.new({asker: {v_handicap:"oui"}})
       res = Admin::RulesController.new._asker_params(stubbed_params)
       expect(res.is_a?(ActionController::Parameters)).to eq true
     end

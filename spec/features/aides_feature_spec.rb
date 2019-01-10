@@ -187,11 +187,11 @@ feature 'Aides page' do
   end
 
   def create_eligible_aid_for(asker, contract_type)
-    asker.v_spectacle == "true" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
+    asker.v_spectacle == "oui" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
   def create_ineligible_aid_for(asker, contract_type)
-    asker.v_spectacle == "false" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
+    asker.v_spectacle == "non" ? create_aid_spectacle(contract_type) : create_aid_not_spectacle(contract_type)
   end
 
   def create_2_different_aids(contract_type)

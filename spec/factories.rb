@@ -43,7 +43,8 @@ FactoryBot.define do
 
     trait :qpv do 
       name 'v_qpv'
-      variable_type :string
+      description 'oui,non'
+      variable_type :selectionnable
     end
 
     trait :location_state do 
@@ -53,17 +54,18 @@ FactoryBot.define do
 
     trait :zrr do 
       name 'v_zrr'
-      variable_type :string
+      description 'oui,non'
+      variable_type :selectionnable
     end
 
     trait :categorie do 
       name 'v_category'
-      variable_type :string
+      variable_type :selectionnable
     end
 
     trait :allocation_type do 
       name 'v_allocation_type'
-      variable_type :string
+      variable_type :selectionnable
     end
 
     trait :allocation_value_min do 
@@ -134,21 +136,21 @@ FactoryBot.define do
       name 'be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible "true"
+      value_eligible "oui"
     end
 
     trait :not_be_a_spectacle do 
       name 'not_be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible "false"
+      value_eligible "non"
     end
 
     trait :be_handicaped do 
       name 'be_a_handicaped' 
       association :variable, :handicap
       operator_type :eq
-      value_eligible "true"
+      value_eligible "oui"
     end
 
     trait :be_an_adult_and_a_spectacles do 
@@ -275,7 +277,7 @@ FactoryBot.define do
   factory :asker do 
     skip_create
     v_age '25'
-    v_spectacle "false"
+    v_spectacle "non"
 
     trait :ado do 
       v_age '16'
@@ -286,17 +288,17 @@ FactoryBot.define do
     end
 
     trait :spectacle do 
-      v_spectacle "true"
+      v_spectacle "oui"
     end
 
     trait :handicaped do 
-      v_handicap "true"
+      v_handicap "oui"
     end
 
     trait :full_user_input do 
-      v_handicap "true"
-      v_spectacle "false"
-      v_cadre "true"
+      v_handicap "oui"
+      v_spectacle "non"
+      v_cadre "oui"
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'
