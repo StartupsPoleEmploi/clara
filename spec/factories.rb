@@ -33,12 +33,12 @@ FactoryBot.define do
 
     trait :spectacle do 
       name 'v_spectacle'
-      variable_type :boolean
+      variable_type :selectionnable
     end
 
     trait :handicap do 
       name 'v_handicap'
-      variable_type :boolean
+      variable_type :selectionnable
     end
 
     trait :qpv do 
@@ -83,6 +83,13 @@ FactoryBot.define do
   factory :rule do 
     sequence(:name) { |n| "rule_#{n}" }
   
+    trait :be_paris do
+      name 'be_paris' 
+      association :variable, :location_citycode
+      operator_type :eq
+      value_eligible '75056'
+    end
+
     trait :be_an_adult do
       name 'be_an_adult' 
       association :variable, :age

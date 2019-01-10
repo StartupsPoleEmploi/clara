@@ -6,9 +6,9 @@ class RuleCheckService
     if rule.variable.present?
       if rule.variable.variable_type == 'integer'
         state='ok' if !!( rule.value_eligible.match /^(\d)+$/ )
-      elsif rule.variable.variable_type == 'string' && rule.operator_type == "starts_with"
+      elsif rule.variable.variable_type == 'string'
         state = 'ok' if rule.value_eligible != ''
-      elsif rule.variable.variable_type == 'string' && (rule.operator_type == "eq" || rule.operator_type == "not_equal")
+      elsif rule.variable.variable_type == 'selectionnable'
         array_of_possibilities = extract_descriptions(rule)
         state = 'ok' if array_of_possibilities.include?(rule.value_eligible)
       else
