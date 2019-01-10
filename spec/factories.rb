@@ -33,6 +33,7 @@ FactoryBot.define do
 
     trait :spectacle do 
       name 'v_spectacle'
+      elements 'oui,non'
       variable_type :selectionnable
     end
 

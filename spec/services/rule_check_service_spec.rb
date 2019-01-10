@@ -18,17 +18,16 @@ describe RuleCheckService do
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'ok'
     end
+    it 'Return ok, if rule.value_eligible is correct' do
+      rule_under_test = build(:rule, :be_a_spectacle)
+      result = RuleCheckService.new.check_type(rule_under_test)
+      expect(result).to eq 'ok'
+    end
     it 'Return error, if rule.value_eligible is wrong' do
       rule_under_test = build(:rule, :be_a_spectacle)
       rule_under_test.value_eligible = nil
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'error'
-    end
-    it 'Return ok, if rule.variable.description is missing' do
-      rule_under_test = build(:rule, :be_a_spectacle)
-      rule_under_test.variable.description = ''
-      result = RuleCheckService.new.check_type(rule_under_test)
-      expect(result).to eq 'ok'
     end
     it 'Return error if rule.variable.variable_type does not exists' do
       v  = build(:variable, :handicap)
