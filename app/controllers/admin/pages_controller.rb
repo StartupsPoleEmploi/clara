@@ -138,7 +138,9 @@ module Admin
     end
 
     def post_transfer_descr
+      p'+++out+++'
       unless Variable.any? { |v| !v.elements.blank? }
+        p'+++in+++'
         Variable.all.each do |v|  
           unless v.description.blank?
             v.elements = v.description
@@ -148,6 +150,10 @@ module Admin
           v.description = nil
           v.save
         end
+      end
+      Rule.where.not(value_ineligible: "").each do |r|
+        r.value_ineligible = ""
+        r.save
       end
       render json: {
         status: "ok"
