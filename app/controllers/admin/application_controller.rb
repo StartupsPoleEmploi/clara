@@ -21,6 +21,12 @@ module Admin
       I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
     end
 
+    def default_url_options
+      super.merge(
+        locale: I18n.locale
+      )
+    end
+
     def authenticate_admin
       return if ENV['ARA_SKIP_ADMIN_AUTH']
       redirect_to signin_path unless current_user_email
