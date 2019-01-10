@@ -8,6 +8,7 @@
 //= require jquery
 //= require jquery/jquery_extension
 //= require a11y-autocomplete/namespacing
+//= require i18n/translations
 //= require jquery_ujs
 //= require selectize
 //= require moment

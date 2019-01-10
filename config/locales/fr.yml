@@ -1,4 +1,7 @@
 fr:
+  boolean:
+    :true: "vrai"
+    :false: "faux"    
   rule:
     value_eligible:
       :true: "vrai"

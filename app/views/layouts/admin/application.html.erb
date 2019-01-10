@@ -24,7 +24,7 @@ By default, it renders:
   <%= render "stylesheet" %>
   <%= csrf_meta_tags %>
 </head>
-<body data-path="<%= GetCurrentPathService.call(a_request: request) %>">
+<body data-path="<%= GetCurrentPathService.call(a_request: request) %>" data-locale="<%= I18n.locale %>">
   <%= render "icons" %>
 
   <div class="app-container">

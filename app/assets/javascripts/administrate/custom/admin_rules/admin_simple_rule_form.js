@@ -56,13 +56,13 @@ clara.js_define("admin_simple_rule_form", {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       if (kind === "selectionnable") {
-        that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal", "more_than", "more_or_equal_than", "less_than", "less_or_equal_than"]);
+        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "more_or_equal_than", "less_than", "less_or_equal_than"]);
       } else if (kind === "integer") {
-        that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
+        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       } else if (kind === "boolean") {
-        that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal"]);
+        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal"]);
       } else if (kind === "string") {
-        that._whitelist_operator_type(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
+        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       }
   },
 
@@ -101,18 +101,27 @@ clara.js_define("admin_simple_rule_form", {
       } else if (kind === "integer") {
         $("#rule_value_eligible").replaceWith($original_input);
         $("#rule_value_eligible").attr("type", "number");
-        $("#rule_value_eligible").attr("placeholder", "Example : 18");
         if (_.includes($("#rule_operator_type").val(), "amongst")) {
           $("#rule_value_eligible").attr("type", "text");
-          $("#rule_value_eligible").attr("placeholder", "Example : 1.5;22");
         }
       } else if (kind === "boolean") {
-        var $new_select = that._populate_options("rule_value_eligible", [I18n.t("rule.value.true", {locale: "en"}), I18n.t("rule.value.false", {locale: "en"})], [I18n.t("rule.value.true", {locale: $('body').data('locale')}), I18n.t("rule.value.false", {locale: $('body').data('locale')})], original_name, original_value);
+        var $new_select = that._populate_options(
+          "rule_value_eligible", 
+          [ 
+            true,
+            false 
+          ], 
+          [
+            I18n.t("boolean.true", {locale: $('body').data('locale')}), 
+            I18n.t("boolean.false", {locale: $('body').data('locale')})
+          ], 
+          original_name, 
+          original_value
+        );
         $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "string") {
         $("#rule_value_eligible").replaceWith($original_input);
         $("#rule_value_eligible").attr("type", "text");
-        $("#rule_value_eligible").attr("placeholder", "Example : A52BZ");
         if (_.includes($("#rule_operator_type").val(), "amongst")) {
           $("#rule_value_eligible").attr("placeholder", "Example : value1;value2");
         }

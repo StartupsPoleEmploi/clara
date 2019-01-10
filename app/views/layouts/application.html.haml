@@ -1,5 +1,5 @@
 !!!
-%html.c-html{:lang => "fr"}
+%html.c-html{:lang => "#{I18n.locale}"}
   %head
 
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
