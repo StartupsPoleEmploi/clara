@@ -108,8 +108,6 @@ class RuletreeService
         the_value.to_i
       when 'string'
         the_value.to_s
-      when 'boolean'
-        the_value.to_s.downcase == "true"
       else
         the_value
     end
