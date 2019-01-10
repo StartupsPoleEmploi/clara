@@ -29,9 +29,13 @@ from the associated resource class's dashboard.
         <%= link_to name, admin_tag_path(name) %>
       <% elsif klass == "Rule" %>
         <%= link_to name, admin_rule_path(name) %>
+      <% elsif klass == "Aid" %>
+        <div>
+          <%= link_to name, admin_aid_path(name) %>
+        </div>
       <% end %>
     </span>
-    <% unless name == names.last %>
+    <% unless name == names.last || klass == "Aid" %>
       <span>,&nbsp;</span>
     <% end %>
   <% end %>

@@ -99,8 +99,7 @@ FactoryBot.define do
       name 'be_in_qpv' 
       association :variable, :qpv
       operator_type :eq
-      value_eligible 'en_qpv'
-      value_ineligible 'hors_qpv'
+      value_eligible 'true'
     end
 
     trait :be_in_guyane do
@@ -114,7 +113,7 @@ FactoryBot.define do
       name 'be_in_zrr' 
       association :variable, :zrr
       operator_type :eq
-      value_eligible 'en_zrr'
+      value_eligible 'true'
     end
 
     trait :not_be_an_adult do
