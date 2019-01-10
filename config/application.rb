@@ -13,6 +13,7 @@ module Mae
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
     config.i18n.default_locale = :fr
+    config.i18n.available_locales = [:fr, :en]  
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.exceptions_app = self.routes
     config.middleware.use Rack::Attack

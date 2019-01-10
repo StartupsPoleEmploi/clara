@@ -6,9 +6,26 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    before_action :set_locale
     before_action :authenticate_admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
+    
+ 
+    def set_locale
+      I18n.locale = extract_locale || I18n.default_locale
+    end
+     
+    def extract_locale
+      parsed_locale = params[:locale]
+      I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
+    end
+
+    def default_url_options
+      super.merge(
+        locale: I18n.locale
+      )
+    end
 
     def authenticate_admin
       return if ENV['ARA_SKIP_ADMIN_AUTH']

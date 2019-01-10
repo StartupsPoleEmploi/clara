@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.3.0 (7/1/2019)
+-[#1081][ADMIN] BO : création règle simple ou composite
+
+
 ## 18.2.1 (7/1/2019)
 -[#1083][BUG] disparition du footer
 

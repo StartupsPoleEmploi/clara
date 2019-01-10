@@ -33,19 +33,19 @@ FactoryBot.define do
 
     trait :spectacle do 
       name 'v_spectacle'
-      description 'oui,non'
-      variable_type :string
+      elements 'oui,non'
+      variable_type :selectionnable
     end
 
     trait :handicap do 
       name 'v_handicap'
-      description 'oui,non'
-      variable_type :string
+      variable_type :selectionnable
     end
 
     trait :qpv do 
       name 'v_qpv'
-      variable_type :string
+      description 'oui,non'
+      variable_type :selectionnable
     end
 
     trait :location_state do 
@@ -55,17 +55,18 @@ FactoryBot.define do
 
     trait :zrr do 
       name 'v_zrr'
-      variable_type :string
+      description 'oui,non'
+      variable_type :selectionnable
     end
 
     trait :categorie do 
       name 'v_category'
-      variable_type :string
+      variable_type :selectionnable
     end
 
     trait :allocation_type do 
       name 'v_allocation_type'
-      variable_type :string
+      variable_type :selectionnable
     end
 
     trait :allocation_value_min do 
@@ -83,6 +84,13 @@ FactoryBot.define do
   factory :rule do 
     sequence(:name) { |n| "rule_#{n}" }
   
+    trait :be_paris do
+      name 'be_paris' 
+      association :variable, :location_citycode
+      operator_type :eq
+      value_eligible '75056'
+    end
+
     trait :be_an_adult do
       name 'be_an_adult' 
       association :variable, :age
@@ -101,8 +109,7 @@ FactoryBot.define do
       name 'be_in_qpv' 
       association :variable, :qpv
       operator_type :eq
-      value_eligible 'en_qpv'
-      value_ineligible 'hors_qpv'
+      value_eligible 'oui'
     end
 
     trait :be_in_guyane do
@@ -116,7 +123,7 @@ FactoryBot.define do
       name 'be_in_zrr' 
       association :variable, :zrr
       operator_type :eq
-      value_eligible 'en_zrr'
+      value_eligible 'oui'
     end
 
     trait :not_be_an_adult do
@@ -137,21 +144,21 @@ FactoryBot.define do
       name 'be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible 'oui'
+      value_eligible "oui"
     end
 
     trait :not_be_a_spectacle do 
       name 'not_be_a_spectacle' 
       association :variable, :spectacle
       operator_type :eq
-      value_eligible 'non'
+      value_eligible "non"
     end
 
     trait :be_handicaped do 
       name 'be_a_handicaped' 
       association :variable, :handicap
       operator_type :eq
-      value_eligible 'oui'
+      value_eligible "oui"
     end
 
     trait :be_an_adult_and_a_spectacles do 
@@ -278,7 +285,7 @@ FactoryBot.define do
   factory :asker do 
     skip_create
     v_age '25'
-    v_spectacle 'non'
+    v_spectacle "non"
 
     trait :ado do 
       v_age '16'
@@ -289,17 +296,17 @@ FactoryBot.define do
     end
 
     trait :spectacle do 
-      v_spectacle 'oui'
+      v_spectacle "oui"
     end
 
     trait :handicaped do 
-      v_handicap 'oui'
+      v_handicap "oui"
     end
 
     trait :full_user_input do 
-      v_handicap 'oui'
-      v_spectacle 'non'
-      v_cadre 'oui'
+      v_handicap "oui"
+      v_spectacle "non"
+      v_cadre "oui"
       v_diplome 'niveau_3'
       v_category 'autres_cat'
       v_duree_d_inscription 'plus_d_un_an'

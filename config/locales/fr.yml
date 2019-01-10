@@ -1,4 +1,20 @@
 fr:
+  rule:
+    composition_type:
+      and_rule: "et"
+      or_rule: "ou"
+    operator_type:
+      eq: "Égal à"
+      not_equal: "Pas égal à"
+      more_or_equal_than: "Supérieur ou égal à"
+      more_than: "Supérieur à"
+      less_or_equal_than: "Inférieur ou égal à"
+      less_than: "Inférieur à"
+      starts_with: "Commence par"
+      ends_with: "Fini par"
+      include: "Contient"
+      amongst: "Parmi"
+      not_amongst: "Pas parmi"
   views:
     pagination:
       first: "première page"
@@ -16,7 +32,7 @@ fr:
   labels:
     rule:
       new_simple_resource: "Créer règle simple"
-      new_composite_resource: "Créer règle composite"
+      new_composite_resource: "Créer règle composée"
   activerecord:
     models:
       rule: "Règles"
@@ -33,7 +49,10 @@ fr:
     attributes:
       rule:
         name: "Nom"
-        operator_type: "Combiner avec"
+        operator_type: "Opérateur"
+        value_eligible: "Valeur"
+        rule_slave_rule_ids: "Règles enfants"
+        composition_type: "Combiner avec"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
@@ -180,14 +199,21 @@ fr:
     select:
       prompt: Veuillez sélectionner
     submit:
+      rule:
+        create: "Créer cette règle"
+        update: "Mettre à jour cette règle"
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
     label:
       rule:
+        new_simple_resource: Créer une règle simple
+        new_composite_resource: Créer une règle composée
         name: Nom
         variable: Variable
         aids: Aides concernées
+        slave_rules: Règles enfants
+        value_eligible: Valeur
   number:
     currency:
       format:

@@ -12,12 +12,19 @@
   margin-left: 1rem;
   text-align: right;
   width: calc(15% - 1rem);
+  label {
+    display: inline;
+  }
 }
 
 .field-unit__field {
   float: left;
   margin-left: 2rem;
   width: 45%;
+}
+
+.field-unit__label-mandatory {
+  color: red;
 }
 
 .field-unit--nested {

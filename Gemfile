@@ -60,6 +60,7 @@ gem "dotenv-rails"
 gem "knock"
 gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
+gem "i18n-js"
 
 group :development, :test do
   gem "byebug", platform: :mri

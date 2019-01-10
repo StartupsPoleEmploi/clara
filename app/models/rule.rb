@@ -5,25 +5,20 @@ class Rule < ApplicationRecord
   enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with, :amongst, :not_amongst]
   enum composition_type: [:and_rule, :or_rule]
 
-  has_many :compound_rules
+  has_many :compound_rules, dependent: :delete_all
   has_many :slave_rules, through: :compound_rules
   belongs_to :variable, optional: true
 
   has_many :aids
   has_many :contract_type
-  has_many :custom_rule_checks
+  has_many :custom_rule_checks, dependent: :delete_all
+
 
   validates :name, presence: true, uniqueness: true
   validate :validate_non_empty_rule, 
            :validate_non_ambiguous_type, 
            :validate_simple_rule_mandatory_fields, 
            :validate_complex_rule_mandatory_fields
-
-  before_destroy :remove_compound_rules
-
-  def remove_compound_rules
-    compound_rules.destroy_all
-  end
 
   def validate_non_empty_rule
     return unless is_empty_rule?

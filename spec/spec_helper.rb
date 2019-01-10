@@ -22,3 +22,19 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 end
+
+
+RSpec::Matchers.define :print_eq do |expected, msg|
+  match do |actual|
+    res = actual == expected
+    if res
+      ap "-- " + msg, color: {string: :green}
+    else
+      ap "-- " + msg, color: {string: :red}
+    end
+    res
+  end
+end
+
+
+

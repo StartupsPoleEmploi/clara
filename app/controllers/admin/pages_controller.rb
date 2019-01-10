@@ -134,5 +134,29 @@ module Admin
     end
 
 
+    def get_transfer_descr
+    end
+
+    def post_transfer_descr
+      unless Variable.any? { |v| !v.elements.blank? }
+        Variable.all.each do |v|  
+          unless v.description.blank?
+            v.elements = v.description
+            v.variable_type = :selectionnable if !v.description.blank?
+          end
+          v.elements = "oui,non" if v.name == "v_qpv"
+          v.description = nil
+          v.save
+        end
+      end
+      Rule.where.not(value_ineligible: "").each do |r|
+        r.value_ineligible = ""
+        r.save
+      end
+      render json: {
+        status: "ok"
+      }
+    end
+
   end
 end

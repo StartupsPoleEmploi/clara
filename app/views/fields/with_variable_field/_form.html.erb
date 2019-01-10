@@ -16,7 +16,6 @@ that displays all possible records to associate with.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
 %>
 <%- is_mandatory ||= false %>
-<%- arr = field.associated_resource_options.compact.map { |e| e } %>
 
 <div class="field-unit__label">
   <%= f.label field.permitted_attribute, id: "label_#{field.attribute}" %>

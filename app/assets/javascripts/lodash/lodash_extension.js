@@ -13,6 +13,14 @@ _.mixin({
     return ''
   },
 
+  voidString: function(str) {
+    var result = "" 
+    if (_.isString(str)) {
+      result = str;
+    }
+    return result;
+  },
+
   fullDateFr: function() {
     var now = new Date();
  

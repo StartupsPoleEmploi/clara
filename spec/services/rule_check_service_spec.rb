@@ -8,13 +8,8 @@ describe RuleCheckService do
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'ok'
     end
-    it 'Can validate a string rule with eq' do
-      rule_under_test = build(:rule, :be_a_spectacle)
-      result = RuleCheckService.new.check_type(rule_under_test)
-      expect(result).to eq 'ok'
-    end
-    it 'Can validate a string rule with not_eq' do
-      rule_under_test = build(:rule, :not_be_a_spectacle)
+    it 'Can validate a string rule' do
+      rule_under_test = build(:rule, :be_paris)
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'ok'
     end
@@ -23,15 +18,14 @@ describe RuleCheckService do
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'ok'
     end
+    it 'Return ok, if rule.value_eligible is correct' do
+      rule_under_test = build(:rule, :be_a_spectacle)
+      result = RuleCheckService.new.check_type(rule_under_test)
+      expect(result).to eq 'ok'
+    end
     it 'Return error, if rule.value_eligible is wrong' do
       rule_under_test = build(:rule, :be_a_spectacle)
       rule_under_test.value_eligible = nil
-      result = RuleCheckService.new.check_type(rule_under_test)
-      expect(result).to eq 'error'
-    end
-    it 'Return error, if rule.variable.description is missing' do
-      rule_under_test = build(:rule, :be_a_spectacle)
-      rule_under_test.variable.description = ''
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'error'
     end

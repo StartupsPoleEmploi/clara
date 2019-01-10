@@ -99,29 +99,6 @@ describe RuletreeService do
     end
   end
 
-  describe "UNCERTAIN .evaluate" do
-    before do
-      create :rule, :be_in_qpv
-    end
-    subject { RuletreeService.new.evaluate(rule, criterion_hash) }
-    let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
-    context 'should return "uncertain" when criterion hash is empty' do
-      let(:criterion_hash) { {} }
-      it { expect(subject).to eq 'uncertain' }
-    end
-    context 'should return "uncertain" when criteria is present but with unknown value' do
-      let(:criterion_hash) { {v_qpv: 'foo'} }
-      it { expect(subject).to eq 'uncertain' }
-    end
-    context 'should return "ineligible" when criteria is present as ineligible' do
-      let(:criterion_hash) { {v_qpv: 'hors_qpv'} }
-      it { expect(subject).to eq 'ineligible' }
-    end
-    context 'should return "eligible" when criteria is present and satisfied' do
-      let(:criterion_hash) { {v_qpv: 'en_qpv'} }
-      it { expect(subject).to eq 'eligible' }
-    end
-  end
 
   describe ".resolve" do
     before do
@@ -339,15 +316,15 @@ describe RuletreeService do
         it { expect(subject).to eq "uncertain" }
       end
       context '1st is eligible, 2nd is not eligible' do
-        let(:asker) { create :asker, :adult, v_qpv: 'hors_qpv' }
+        let(:asker) { create :asker, :adult, v_qpv: "non" }
         it { expect(subject).to eq "ineligible" }
       end
       context '1st is eligible, 2nd is eligible' do
-        let(:asker) { create :asker, :adult, v_qpv: 'en_qpv' }
+        let(:asker) { create :asker, :adult, v_qpv: "oui" }
         it { expect(subject).to eq "eligible" }
       end
       context '1st is ineligible, 2nd is eligible' do
-        let(:asker) { create :asker, :ado, v_qpv: 'en_qpv' }
+        let(:asker) { create :asker, :ado, v_qpv: "oui" }
         it { expect(subject).to eq "ineligible" }
       end
       context '1st is ineligible, 2nd is explicitly uncertain' do
@@ -355,7 +332,7 @@ describe RuletreeService do
         it { expect(subject).to eq "ineligible" }
       end
       context '1st is eligible, 2nd is explicitly uncertain' do
-        let(:asker) { create :asker, :adult, v_qpv: 'foo' }
+        let(:asker) { create :asker, :adult, v_qpv: nil }
         it { expect(subject).to eq "uncertain" }
       end
     end
@@ -370,19 +347,19 @@ describe RuletreeService do
         it { expect(subject).to eq "eligible" }
       end
       context '1st is eligible, 2nd is not eligible' do
-        let(:asker) { create :asker, :adult, v_qpv: 'hors_qpv' }
+        let(:asker) { create :asker, :adult, v_qpv: "non" }
         it { expect(subject).to eq "eligible" }
       end
       context '1st is eligible, 2nd is eligible' do
-        let(:asker) { create :asker, :adult, v_qpv: 'en_qpv' }
+        let(:asker) { create :asker, :adult, v_qpv: "oui" }
         it { expect(subject).to eq "eligible" }
       end
       context '1st is ineligible, 2nd is eligible' do
-        let(:asker) { create :asker, :ado, v_qpv: 'en_qpv' }
+        let(:asker) { create :asker, :ado, v_qpv: "oui" }
         it { expect(subject).to eq "eligible" }
       end
       context '1st is ineligible, 2nd is explicitly uncertain' do
-        let(:asker) { create :asker, :ado, v_qpv: 'foo' }
+        let(:asker) { create :asker, :ado, v_qpv: nil }
         it { expect(subject).to eq "uncertain" }
       end
       context '1st is eligible, 2nd is explicitly uncertain' do

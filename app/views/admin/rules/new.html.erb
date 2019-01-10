@@ -15,11 +15,14 @@ to do the heavy lifting.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
+
+<%- title_simple = t("helpers.label.rule.new_simple_resource", name: display_resource_name(page.resource_name).titleize) %>
+<%- title_composite = t("helpers.label.rule.new_composite_resource", name: display_resource_name(page.resource_name).titleize) %>
+<%- kind = page.resource.try(:kind) || params[:rule_kind] %>
+<%- actual_title = kind == "composite" ? title_composite : title_simple %>
+
 <% content_for(:title) do %>
-  <%= t(
-    "administrate.actions.new_resource",
-    name: display_resource_name(page.resource_name).titleize
-  ) %>
+  <%= actual_title %>
 <% end %>
 
 <header class="main-content__header" role="banner">

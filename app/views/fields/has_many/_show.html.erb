@@ -18,18 +18,29 @@ from the associated resource class's dashboard.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 %>
 
-<% if field.resources.any? %>
-  <%= render(
-    "collection",
-    collection_presenter: field.associated_collection,
-    resources: field.resources(params[field.name]),
-    table_title: field.name
-  ) %>
 
-  <% if field.more_than_limit? %>
-    <%= paginate field.resources(params[field.name]), param_name: "#{field.name}" %>
+<% if field.resources.any? %>
+  <%- names =  field.data.map { |e| e.name } %>  
+  <%- klass =  field.data[0].class.name %>  
+
+  <% names.each do |name| %>
+    <span>
+      <% if klass == "Tag" %>
+        <%= link_to name, admin_tag_path(name) %>
+      <% elsif klass == "Rule" %>
+        <%= link_to name, admin_rule_path(name) %>
+      <% elsif klass == "Aid" %>
+        <div>
+          <%= link_to name, admin_aid_path(name) %>
+        </div>
+      <% end %>
+    </span>
+    <% unless name == names.last || klass == "Aid" %>
+      <span>,&nbsp;</span>
+    <% end %>
   <% end %>
 
 <% else %>
   <%= t("administrate.fields.has_many.none", default: "–") %>
 <% end %>
+

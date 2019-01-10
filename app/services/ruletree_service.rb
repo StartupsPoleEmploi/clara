@@ -43,8 +43,7 @@ class RuletreeService
       return "ineligible" if !type_is_accurate(criterion_value, rule_type)
       return "ineligible" if criterion_value == "not_applicable"
       return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)
-      return "ineligible" if rule["value_ineligible"].blank?
-      return "ineligible" if calculate_is_ineligible(rule, criterion_value, rule_type)
+      return "ineligible"
     end
     return result
   end
