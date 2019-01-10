@@ -4,16 +4,20 @@ class ResultSituation < ViewObject
     @asker = hash_for(args)
   end
 
+  def _print_boolean(val)
+    val.blank? ? "indisponible" : val == "true" ? "oui" : "non"
+  end
+
   def handicap
-    @asker[:v_handicap] || "indisponible"
+    _print_boolean(@asker[:v_handicap])
   end
 
   def cadre
-    @asker[:v_cadre] || "indisponible"
+    _print_boolean(@asker[:v_cadre])
   end
 
   def spectacle
-    @asker[:v_spectacle] || "indisponible"
+    _print_boolean(@asker[:v_spectacle])
   end
 
   def diplome
@@ -87,7 +91,7 @@ class ResultSituation < ViewObject
   end
 
   def zrr
-    @asker[:v_zrr] || "indisponible"
+    _print_boolean(@asker[:v_zrr])
   end  
   
   def age
