@@ -34,12 +34,6 @@ class RuletreeService
   end
 
   def evaluate(rule, criterion_hash)
-    p '- - - - - - - - - - - - - - criterion_hash- - - - - - - - - - - - - - - -' 
-    pp criterion_hash
-    p ''
-    p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
-    pp rule
-    p ''
     result = calculate_default_value
     c = criterion_hash.stringify_keys if criterion_hash.is_a?(Hash)
     variable = @all_variables.detect { |e| e["id"] == rule["variable_id"] }
@@ -50,7 +44,6 @@ class RuletreeService
       return "ineligible" if criterion_value == "not_applicable"
       return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)
       return "ineligible"
-      # return "ineligible" if calculate_is_ineligible(rule, criterion_value, rule_type)
     end
     return result
   end
@@ -80,13 +73,7 @@ class RuletreeService
   def calculate(rule, criterion_value, rule_value, rule_type)
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
-    p '- - - - - - - - - - - - - - typed_criterion_value- - - - - - - - - - - - - - - -' 
-    pp typed_criterion_value
-    p ''
     typed_rule_value = force_type_of(rule_value, rule_type)
-    p '- - - - - - - - - - - - - - typed_rule_value- - - - - - - - - - - - - - - -' 
-    pp typed_rule_value
-    p ''
 
     case rule["operator_type"]
       when 'eq'
