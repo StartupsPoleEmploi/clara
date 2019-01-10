@@ -5,7 +5,7 @@ class ResultSituation < ViewObject
   end
 
   def _print_boolean(val)
-    val.blank? ? "indisponible" : val == "true" ? "oui" : "non"
+    val.blank? ? "indisponible" : val == "oui" ? "oui" : "non"
   end
 
   def handicap
