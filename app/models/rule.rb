@@ -19,17 +19,6 @@ class Rule < ApplicationRecord
            :validate_simple_rule_mandatory_fields, 
            :validate_complex_rule_mandatory_fields
 
-  # before_destroy :remove_compound_rules_and_rulechecks
-
-  # def remove_compound_rules_and_rulechecks
-  #   # self.save
-  #   p '- - - - - - - - - - - - - - destroy_all- - - - - - - - - - - - - - - -' 
-  #   p ''
-  #   # slave_rules = []
-  #   # compound_rules.destroy_all
-  #   # custom_rule_checks.destroy_all
-  # end
-
   def validate_non_empty_rule
     return unless is_empty_rule?
     errors.add(:non_empty_rule, "Rule cannot be empty")

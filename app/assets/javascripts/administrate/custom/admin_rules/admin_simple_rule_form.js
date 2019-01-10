@@ -56,7 +56,7 @@ clara.js_define("admin_simple_rule_form", {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       if (kind === "selectionnable") {
-        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "more_or_equal_than", "less_than", "less_or_equal_than"]);
+        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal"]);
       } else if (kind === "integer") {
         that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       } else if (kind === "boolean") {

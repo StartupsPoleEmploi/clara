@@ -13,8 +13,6 @@ module Admin
     
  
     def set_locale
-      p '- - - - - - - - - - - - - - set_locale- - - - - - - - - - - - - - - -' 
-      p ''
       I18n.locale = extract_locale || I18n.default_locale
     end
      
