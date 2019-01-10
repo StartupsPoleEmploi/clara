@@ -141,6 +141,7 @@ module Admin
       Variable.all.each do |v|  
         unless v.description.blank?
           v.elements = v.description
+          v.variable_type = :selectionnable if !v.description.blank?
         end
         v.description = nil
         v.save
