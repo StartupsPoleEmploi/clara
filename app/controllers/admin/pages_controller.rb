@@ -158,9 +158,5 @@ module Admin
       }
     end
 
-    def reset_ineligible_value
-
-    end
-
   end
 end
