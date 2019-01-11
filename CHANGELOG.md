@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.5.0 (11/1/2019)
+-[#1091][ADMIN] BO : restriction de valeurs possible si 2 possibilités
+
+
 ## 18.4.0 (11/1/2019)
 -[#1088][ADMIN] BO : toujours une valeur par défaut dans les selects
 
