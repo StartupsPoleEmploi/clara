@@ -44,7 +44,6 @@ clara.js_define("admin_simple_rule_form", {
 
     var $selected = $('#rule_operator_type option[selected="selected"]');
     var first_state = {val:$selected.val(), for_var:$("#rule_variable_id option:selected").text()};
-    window.first_state = first_state;
     var all_choices = $("#rule_operator_type option").map(function(i,e){return {value: $(e).val(), text:$(e).text().trim()};}).toArray();
     that._set_operator_type(all_choices, first_state);
     $("#rule_variable_id").change(function(){
@@ -131,6 +130,7 @@ clara.js_define("admin_simple_rule_form", {
     console.log('original_value')
     console.log(original_value)
     var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
+    $result.append("<option value=\"\"></option>");
     for(var i = 0; i < options.length; i++) {
       var opt = options[i];
       var opt_en = options_en[i];
