@@ -18,7 +18,7 @@ clara.js_define("admin_simple_rule_form", {
     });
 
     var $selected = $('#rule_operator_type option[selected="selected"]');
-    var first_state = {val:$selected.val(), for_var:$("#rule_variable_id option:selected").text()};
+    var first_state = {val:$selected.val(), for_var: $("#rule_variable_id option:selected").val()};
     var all_choices = $("#rule_operator_type option").map(function(i,e){return {value: $(e).val(), text:$(e).text().trim()};}).toArray();
     that._set_operator_type(all_choices, first_state);
     $("#rule_variable_id").change(function(){
@@ -27,6 +27,9 @@ clara.js_define("admin_simple_rule_form", {
   },
 
   _set_operator_type: function(all_choices, first_state) {
+      console.log("first_state")
+      console.log(first_state)
+      console.log("")
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       if (kind === "selectionnable") {
@@ -64,14 +67,16 @@ clara.js_define("admin_simple_rule_form", {
   _set_value_type: function($original_input) {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
-      var elements = $("select#rule_variable_id").find('option:selected').attr("data-elements");
+      var elements_raw = $("select#rule_variable_id").find('option:selected').attr("data-elements");
+      var elements_translation = $("select#rule_variable_id").find('option:selected').attr("data-elements-translation");
       var original_name = $("#rule_value_eligible").attr("name");
       var original_value = $("#rule_value_eligible").val();
 
       that._value_type_reset();
       if (kind === "selectionnable") {
-        var splitted_elts = _.split(elements, ",");
-        var $new_select = that._populate_options("rule_value_eligible", splitted_elts, splitted_elts, original_name, original_value);
+        var elements_raw_arr = _.split(elements_raw, ",");
+        var elements_translation_arr = _.split(elements_translation, ",");
+        var $new_select = that._populate_options("rule_value_eligible", elements_raw_arr, elements_translation_arr, original_name, original_value);
         $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "integer") {
         $("#rule_value_eligible").replaceWith($original_input);
@@ -93,6 +98,19 @@ clara.js_define("admin_simple_rule_form", {
   },
 
   _populate_options: function(select_id, options_en, options, original_name, original_value) {
+    console.log('')
+    console.log('select_id')
+    console.log(select_id)
+    console.log('')
+    console.log('options_en')
+    console.log(options_en)
+    console.log('')
+    console.log('original_name')
+    console.log(original_name)
+    console.log('')
+    console.log('original_value')
+    console.log(original_value)
+    console.log('')
     var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
     $result.append("<option value=\"\"></option>");
     _.each(options, function(opt, i){

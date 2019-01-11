@@ -16,6 +16,9 @@ that displays all possible records to associate with.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
 %>
 <%- is_mandatory ||= false %>
+<% custom_options = field.associated_resource_options.compact %>
+<% custom_selected = custom_options.find{|c| c[1] == field.selected_option} %>
+<% custom_options.map!{|c| c[1] = c[0];c} %>
 
 <div class="field-unit__label">
   <%= f.label field.permitted_attribute, id: "label_#{field.attribute}" %>
@@ -23,8 +26,8 @@ that displays all possible records to associate with.
     <span class="field-unit__label-mandatory">*</span>
   <% end %>
 </div>
-<div class="field-unit__field">
+<div class="field-unit__field" data-meh="", data-foo="<%=field.selected_option%>">
   <%= f.select field.permitted_attribute, {}, {include_blank: true}, {class: 'my-class'} do %>
-    <%= options_for_select(field.associated_resource_options.compact, field.selected_option) %>
+    <%= options_for_select(custom_options, custom_selected) %>
   <% end %>
 </div>
