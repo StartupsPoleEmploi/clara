@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 18.3.0 (7/1/2019)
+## 18.4.0 (11/1/2019)
+-[#1088][ADMIN] BO : toujours une valeur par défaut dans les selects
+
+
+## 18.3.0 (10/1/2019)
 -[#1081][ADMIN] BO : création règle simple ou composite
 
 

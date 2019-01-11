@@ -27,10 +27,12 @@ end
 RSpec::Matchers.define :print_eq do |expected, msg|
   match do |actual|
     res = actual == expected
+    args = Hash[ ARGV.flat_map{|s| s.scan(/--?([^=\s]+)(?:=(\S+))?/) } ]
+
     if res
-      ap "-- " + msg, color: {string: :green}
+      ap "-- " + msg, color: {string: :green} unless args.key?('format')
     else
-      ap "-- " + msg, color: {string: :red}
+      ap "-- " + msg, color: {string: :red} unless args.key?('format')
     end
     res
   end

@@ -1,5 +1,4 @@
 clara.js_define("admin_simple_rule_form", {
-// _.set(window, "clara.admin_simple_rule_form", {
 
   dress: function(){
     var that = this;
@@ -44,7 +43,6 @@ clara.js_define("admin_simple_rule_form", {
 
     var $selected = $('#rule_operator_type option[selected="selected"]');
     var first_state = {val:$selected.val(), for_var:$("#rule_variable_id option:selected").text()};
-    window.first_state = first_state;
     var all_choices = $("#rule_operator_type option").map(function(i,e){return {value: $(e).val(), text:$(e).text().trim()};}).toArray();
     that._set_operator_type(all_choices, first_state);
     $("#rule_variable_id").change(function(){
@@ -71,6 +69,7 @@ clara.js_define("admin_simple_rule_form", {
     });
     var current_variable = $('#rule_variable_id option:selected').text();
     var force_selection = current_variable === first_state.for_var;
+    $('#rule_operator_type').append('<option value=""></option>');
     _.each(actual_choices, function(actual_choice){
       var current_value_is_origin = actual_choice.value === first_state.val;
       if (force_selection && current_value_is_origin) {
@@ -128,14 +127,12 @@ clara.js_define("admin_simple_rule_form", {
   },
 
   _populate_options: function(select_id, options_en, options, original_name, original_value) {
-    console.log('original_value')
-    console.log(original_value)
     var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
-    for(var i = 0; i < options.length; i++) {
-      var opt = options[i];
+    $result.append("<option value=\"\"></option>");
+    _.each(options, function(opt, i){
       var opt_en = options_en[i];
       $result.append("<option value=\"" + opt_en + "\">" + opt + "</option>");
-    }
+    });
     $result.find('option[value="' + original_value + '"]').attr("selected", "selected");
     return $result;
   }
