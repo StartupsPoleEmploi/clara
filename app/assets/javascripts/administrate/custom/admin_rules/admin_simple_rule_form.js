@@ -69,6 +69,7 @@ clara.js_define("admin_simple_rule_form", {
     });
     var current_variable = $('#rule_variable_id option:selected').text();
     var force_selection = current_variable === first_state.for_var;
+    $('#rule_operator_type').append('<option value=""></option>');
     _.each(actual_choices, function(actual_choice){
       var current_value_is_origin = actual_choice.value === first_state.val;
       if (force_selection && current_value_is_origin) {
@@ -130,11 +131,10 @@ clara.js_define("admin_simple_rule_form", {
     console.log(original_value)
     var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
     $result.append("<option value=\"\"></option>");
-    for(var i = 0; i < options.length; i++) {
-      var opt = options[i];
+    _.each(options, function(opt, i){
       var opt_en = options_en[i];
       $result.append("<option value=\"" + opt_en + "\">" + opt + "</option>");
-    }
+    });
     $result.find('option[value="' + original_value + '"]').attr("selected", "selected");
     return $result;
   }
