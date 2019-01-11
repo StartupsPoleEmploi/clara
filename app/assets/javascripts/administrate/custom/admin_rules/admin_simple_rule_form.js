@@ -1,5 +1,4 @@
 clara.js_define("admin_simple_rule_form", {
-// _.set(window, "clara.admin_simple_rule_form", {
 
   dress: function(){
     var that = this;
