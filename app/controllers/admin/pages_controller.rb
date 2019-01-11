@@ -157,7 +157,7 @@ module Admin
     def post_translation_creation
       Variable.all.each do |v|  
         v.elements_translation = "categorie_12345,autres_categorie" if v.name == "v_category"
-        v.elements_translation = "bac_plus_4_ou_au_dela,bac_plus_3,bac_plus_1_ou_2,bac,cap_bep,aucun_diplome" if v.name == "v_diplome"
+        v.elements_translation = "bac + 4 (niveau 1),bac_plus_3,bac_plus_1_ou_2,bac,cap_bep,aucun_diplome" if v.name == "v_diplome"
         v.save
       end
       render json: {
