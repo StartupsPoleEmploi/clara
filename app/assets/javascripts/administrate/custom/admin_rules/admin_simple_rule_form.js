@@ -127,8 +127,6 @@ clara.js_define("admin_simple_rule_form", {
   },
 
   _populate_options: function(select_id, options_en, options, original_name, original_value) {
-    console.log('original_value')
-    console.log(original_value)
     var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
     $result.append("<option value=\"\"></option>");
     _.each(options, function(opt, i){
