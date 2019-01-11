@@ -13,6 +13,7 @@ class VariableDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: Field::Text,
     elements: Field::Text,
+    elements_translation: Field::Text,
     variable_type: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,11 +25,11 @@ class VariableDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
+    # :id,
     :name,
     :variable_type,
-    :description,
     :elements,
+    :elements_translation,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -36,8 +37,8 @@ class VariableDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
-    :description,
     :elements,
+    :elements_translation,
     :variable_type,
     :created_at,
     :updated_at,
@@ -50,7 +51,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name,
     :variable_type,
     :elements,
-    :description,
+    :elements_translation,
   ].freeze
 
   # Overwrite this method to customize how variables are displayed

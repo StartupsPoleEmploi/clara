@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       get 'zrr'
       get 'get_transfer_descr'
       post 'post_transfer_descr'
+      post 'post_translation_creation'
       post 'expire_json_objects'
       post 'rename_eligible_value'
       post 'archive_all_aids'

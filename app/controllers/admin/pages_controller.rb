@@ -149,9 +149,16 @@ module Admin
           v.save
         end
       end
-      Rule.where.not(value_ineligible: "").each do |r|
-        r.value_ineligible = ""
-        r.save
+      render json: {
+        status: "ok"
+      }
+    end
+
+    def post_translation_creation
+      Variable.all.each do |v|  
+        v.elements_translation = "categorie_12345,autres_categorie" if v.name == "v_category"
+        v.elements_translation = "bac_plus_4_ou_au_dela,bac_plus_3,bac_plus_1_ou_2,bac,cap_bep,aucun_diplome" if v.name == "v_diplome"
+        v.save
       end
       render json: {
         status: "ok"
