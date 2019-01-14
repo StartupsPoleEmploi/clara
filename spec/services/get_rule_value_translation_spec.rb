@@ -14,6 +14,17 @@ describe GetRuleValueTranslation do
       #then
       expect(result).to eq "moins d'un an"
     end
+    it 'Can returns another translated value of a Rule' do
+      #given
+      rule = build(:rule, :old_inscription)
+      #when
+      result = GetRuleValueTranslation.call(
+        variable_id: rule.variable_id, 
+        key_value: 'plus_d_un_an'
+      )
+      #then
+      expect(result).to eq "plus d'un an"
+    end
   end
 
 end
