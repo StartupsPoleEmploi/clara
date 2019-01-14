@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.6.0 (14/1/2019)
+-[#1089][ADMIN] BO : traduire les variables qui sont en anglais
+
+
 ## 18.5.0 (11/1/2019)
 -[#1091][ADMIN] BO : restriction de valeurs possible si 2 possibilités
 
