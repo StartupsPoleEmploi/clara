@@ -5,8 +5,9 @@ clara.js_define("zu_clean_select", {
   trigger_function: _.stubFalse,
 
   main_function: function(arg_h) {
-    _remove_empty_option_if_only_one_choice(arg_h);
-    _sort_options_alphabetically();
+    var that = this;
+    that._remove_empty_option_if_only_one_choice(arg_h);
+    that._sort_options_alphabetically();
   },
 
   _remove_empty_option_if_only_one_choice: function(arg_h) {
@@ -17,7 +18,7 @@ clara.js_define("zu_clean_select", {
   },
 
   _sort_options_alphabetically: function() {
-    
+
   }
 
 });
