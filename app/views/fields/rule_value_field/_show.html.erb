@@ -1,18 +1,3 @@
-<%#
-# String Show Partial
-
-This partial renders a string attribute,
-to be displayed on a resource's show page.
-
-By default, the attribute is rendered as an unformatted string.
-
-## Local variables:
-
-- `field`:
-  An instance of [Administrate::Field::String][1].
-  A wrapper around the String pulled from the database.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/String
-%>
-
-<%= field.data %>
+<span data-meh="<%= field.inspect %>">
+  <%= GetRuleValueTranslation.call(variable_id: field.resource.send(:variable_id), key_value: field.data) %>
+</span>
