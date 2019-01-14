@@ -79,21 +79,6 @@ clara.js_define("admin_simple_rule_form", {
         if (_.includes($("#rule_operator_type").val(), "amongst")) {
           $("#rule_value_eligible").attr("type", "text");
         }
-      } else if (kind === "boolean") {
-        var $new_select = that._populate_options(
-          "rule_value_eligible", 
-          [ 
-            true,
-            false 
-          ], 
-          [
-            I18n.t("boolean.true", {locale: $('body').data('locale')}), 
-            I18n.t("boolean.false", {locale: $('body').data('locale')})
-          ], 
-          original_name, 
-          original_value
-        );
-        $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "string") {
         $("#rule_value_eligible").replaceWith($original_input);
         $("#rule_value_eligible").attr("type", "text");
