@@ -2,7 +2,6 @@ class GetRuleValueTranslation < ClaraService
   initialize_with_keywords :variable_id, :key_value
   is_callable
 
-
   def call
     v = Variable.find(@variable_id)
     translations = v.elements_translation.split(",")
