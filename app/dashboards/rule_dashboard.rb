@@ -14,7 +14,7 @@ class RuleDashboard < Administrate::BaseDashboard
     id:               Field::Number,
     name:             Field::String,
     description:      Field::Text,
-    value_eligible:   Field::String,
+    value_eligible:   RuleValueField,
     value_ineligible: Field::String,
     operator_type:    EnumField,
     composition_type: EnumField,

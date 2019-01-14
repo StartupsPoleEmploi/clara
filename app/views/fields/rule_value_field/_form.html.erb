@@ -1,0 +1,39 @@
+<%#
+# String Form Partial
+
+This partial renders an input element for String attributes.
+By default, the input is a text field.
+
+## Local variables:
+
+- `f`:
+  A Rails form generator, used to help create the appropriate input fields.
+- `field`:
+  An instance of [Administrate::Field::String][1].
+  A wrapper around the String pulled from the database.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/String
+%>
+<%- is_mandatory ||= false %>
+<%- help ||= nil %>
+<%- placeholder ||= nil %>
+
+
+<div class="field-unit__label">
+  <% label_text = t(
+    "helpers.label.#{f.object.class.name.underscore}.#{field.attribute}",
+    default: field.attribute.to_s,
+  ).titleize %>
+
+  <%= f.label label_text, for:"#{f.object.class.name.underscore}_#{field.attribute}", id: "label_#{field.attribute}" %>
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
+</div>
+<div class="field-unit__field">
+
+  <% if help %>
+    <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+  <% end %>
+  <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
+</div>
