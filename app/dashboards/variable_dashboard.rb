@@ -11,6 +11,7 @@ class VariableDashboard < Administrate::BaseDashboard
     rule: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    name_translation: Field::Text,
     description: Field::Text,
     elements: Field::Text,
     variable_type: EnumField,
@@ -24,8 +25,8 @@ class VariableDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
     :name,
+    :name_translation,
     :variable_type,
     :description,
     :elements,
@@ -34,8 +35,8 @@ class VariableDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
+    :name_translation,
     :description,
     :elements,
     :variable_type,
@@ -47,7 +48,7 @@ class VariableDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
+    :name_translation,
     :variable_type,
     :elements,
     :description,
@@ -57,6 +58,9 @@ class VariableDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(variable)
-    "#{variable.name}"
+    name = "#{variable.name}"
+    translation = "#{variable.name_translation}"
+    is_translated = !translation.blank?
+    is_translated ? translation : name
   end
 end
