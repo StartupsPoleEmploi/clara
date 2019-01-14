@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103114) do
+ActiveRecord::Schema.define(version: 2018_12_10_103115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103114) do
     t.text "description"
     t.text "elements"
     t.text "name_translation"
+    t.text "elements_translation"
   end
 
   create_table "versions", force: :cascade do |t|

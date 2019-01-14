@@ -1,5 +1,5 @@
-class AddNameTranslationToVariables < ActiveRecord::Migration[5.0]
+class AddElementsTranslationToVariables < ActiveRecord::Migration[5.0]
   def change
-    add_column :variables, :name_translation, :text
+    add_column :variables, :elements_translation, :text
   end
 end

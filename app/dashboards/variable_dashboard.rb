@@ -14,6 +14,7 @@ class VariableDashboard < Administrate::BaseDashboard
     name_translation: Field::Text,
     description: Field::Text,
     elements: Field::Text,
+    elements_translation: Field::Text,
     variable_type: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -30,6 +31,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :variable_type,
     :description,
     :elements,
+    :elements_translation,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,6 +41,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name_translation,
     :description,
     :elements,
+    :elements_translation,
     :variable_type,
     :created_at,
     :updated_at,
@@ -51,6 +54,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name_translation,
     :variable_type,
     :elements,
+    :elements_translation,
     :description,
   ].freeze
 
