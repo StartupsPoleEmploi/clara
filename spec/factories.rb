@@ -39,8 +39,8 @@ FactoryBot.define do
 
     trait :duree_d_inscription do 
       name "v_duree_d_inscription"
-      elements "plus d'un an,moins d'un an,non inscrit"
-      elements_translation "plus_d_un_an,moins_d_un_an,non_inscrit"
+      elements "plus_d_un_an,moins_d_un_an,non_inscrit"
+      elements_translation "plus d'un an,moins d'un an,non inscrit"
       variable_type :selectionnable
     end
 
