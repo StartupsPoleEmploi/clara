@@ -59,7 +59,7 @@ clara.js_define("admin_simple_rule_form", {
         $('#rule_operator_type').append('<option value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
       }
     });
-    clara.zu_clean_select.invoke({for_select: $('#rule_operator_type')})
+    clara.zu_clean_select.main_function({for_select: $('#rule_operator_type')})
   },
 
   _set_value_type: function($original_input) {
@@ -102,7 +102,7 @@ clara.js_define("admin_simple_rule_form", {
       var opt_en = options_en[i];
       $result.append("<option value=\"" + opt_en + "\">" + opt + "</option>");
     });
-    clara.zu_clean_select.invoke({for_select: $result});
+    clara.zu_clean_select.main_function({for_select: $result});
     $result.find('option[value="' + original_value + '"]').attr("selected", "selected");
     return $result;
   }
