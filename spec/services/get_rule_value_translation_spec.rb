@@ -12,7 +12,7 @@ describe GetRuleValueTranslation do
         key_value: 'moins_d_un_an'
       )
       #then
-      expect(result).to eq 'blabla'
+      expect(result).to eq "moins d'un an"
     end
   end
 
