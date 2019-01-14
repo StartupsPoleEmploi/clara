@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.8.0 (15/1/2019)
+-[#1096][ADMIN] BO : pas d'opérateur vide si un seul est disponible
+
+
 ## 18.7.0 (14/1/2019)
 -[#1092][ADMIN] BO : traduire les elements
 
