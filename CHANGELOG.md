@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.7.0 (14/1/2019)
+-[#1092][ADMIN] BO : traduire les elements
+
+
 ## 18.6.0 (14/1/2019)
 -[#1089][ADMIN] BO : traduire les variables qui sont en anglais
 

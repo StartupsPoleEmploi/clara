@@ -37,6 +37,13 @@ FactoryBot.define do
       variable_type :selectionnable
     end
 
+    trait :duree_d_inscription do 
+      name "v_duree_d_inscription"
+      elements "plus_d_un_an,moins_d_un_an,non_inscrit"
+      elements_translation "plus d'un an,moins d'un an,non inscrit"
+      variable_type :selectionnable
+    end
+
     trait :handicap do 
       name 'v_handicap'
       variable_type :selectionnable
@@ -84,6 +91,13 @@ FactoryBot.define do
   factory :rule do 
     sequence(:name) { |n| "rule_#{n}" }
   
+    trait :old_inscription do
+      name 'old_inscription' 
+      association :variable, :duree_d_inscription
+      operator_type :eq
+      value_eligible 'plus_d_un_an'
+    end
+
     trait :be_paris do
       name 'be_paris' 
       association :variable, :location_citycode
