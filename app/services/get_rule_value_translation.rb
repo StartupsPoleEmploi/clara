@@ -3,11 +3,17 @@ class GetRuleValueTranslation < ClaraService
   is_callable
 
   def call
-    v = Variable.find(@variable_id)
-    translations = v.elements_translation.split(",")
-    keys = v.elements.split(",")
-    index_of_key = keys.find_index(@key_value)
-    translations[index_of_key]
+    result = @key_value
+    v = Variable.find_by(id: @variable_id)
+    if v
+      if !v.elements_translation.blank?
+        translations = v.elements_translation.split(",")
+        keys = v.elements.split(",")
+        index_of_key = keys.find_index(@key_value)
+        result = translations[index_of_key]
+      end
+    end
+    result
   end
 
 end

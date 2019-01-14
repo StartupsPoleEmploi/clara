@@ -25,6 +25,17 @@ describe GetRuleValueTranslation do
       #then
       expect(result).to eq "plus d'un an"
     end
+    it 'Can return the normal value of a Rule if there is no translation' do
+      #given
+      rule = build(:rule, :be_paris)
+      #when
+      result = GetRuleValueTranslation.call(
+        variable_id: rule.variable_id, 
+        key_value: "75056"
+      )
+      #then
+      expect(result).to eq "75056"
+    end
   end
 
 end
