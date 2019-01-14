@@ -65,13 +65,19 @@ clara.js_define("admin_simple_rule_form", {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       var elements = $("select#rule_variable_id").find('option:selected').attr("data-elements");
+      var elements_translation = _.voidString($("select#rule_variable_id").find('option:selected').attr("data-elements-translation"));
+      // console.log(elements)
+      // console.log(elements_translation)
       var original_name = $("#rule_value_eligible").attr("name");
       var original_value = $("#rule_value_eligible").val();
 
       that._value_type_reset();
       if (kind === "selectionnable") {
-        var splitted_elts = _.split(elements, ",");
-        var $new_select = that._populate_options("rule_value_eligible", splitted_elts, splitted_elts, original_name, original_value);
+        var actual_values = _.split(elements, ",");
+        var translated_values = elements_translation === "" ? actual_values : _.split(elements_translation, ",");
+        console.log(actual_values)
+        console.log(translated_values)
+        var $new_select = that._populate_options("rule_value_eligible", actual_values, translated_values, original_name, original_value);
         $("#rule_value_eligible").replaceWith($new_select);
       } else if (kind === "integer") {
         $("#rule_value_eligible").replaceWith($original_input);
