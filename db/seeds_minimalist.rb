@@ -166,64 +166,12 @@ existing_rules = Rule.all.map(&:name)
 rule_list.each do |rule_attributes|
   unless existing_rules.include?(rule_attributes[:name])
     new_rule = Rule.new(rule_attributes.except(:slave_rules))
-    p '- - - - - - - - - - - - - - new_rule- - - - - - - - - - - - - - - -' 
-    pp new_rule
-    p ''
     if rule_attributes[:slave_rules]
-      p '- - - - - - - - - - - - - - rule_attributes- - - - - - - - - - - - - - - -' 
-      pp rule_attributes
-      p ''
-      aaa = rule_attributes[:slave_rules].map { |slave_rule_name|  Rule.find_by(name: slave_rule_name)  }
-      # new_rule.slave_rules = rule_attributes[:slave_rules].map { |slave_rule_name|  slav_rule_name)  }
-      p '- - - - - - - - - - - - - - aaa- - - - - - - - - - - - - - - -' 
-      pp aaa
-      p ''
-      new_rule.slave_rules = aaa
-      pp '+++++++++++++++++++++++++++++'
-      pp new_rule
+      new_rule.slave_rules = rule_attributes[:slave_rules].map { |slave_rule_name|  Rule.find_by(name: slave_rule_name)  }
     end
     new_rule.save!
   end
 end
-
-
-# simple_rule_list.each do |rule_attributes|
-#   unless existing_rules.include?(rule_attributes[:name])
-#     new_rule = Rule.new(rule_attributes)
-#     new_rule.save!
-#   end
-# end
-
-
-# complex_rule_list = [
-
-
-# ]
-
-# complex_rule_list.each do |rule_attributes|
-#   unless existing_rules.include?(rule_attributes[:name])
-#     new_rule = Rule.new(rule_attributes)
-#     new_rule.save!
-#   end
-# end
-
-# rule_list.each do |rule_attributes|
-#   unless existing_rules.include?(rule_attributes[:name])
-#     new_rule = Rule.new(rule_attributes.except(:slave_rules))
-#     # if rule_attributes[:slave_rules]
-#     #   p '- - - - - - - - - - - - - - rule_attributes- - - - - - - - - - - - - - - -' 
-#     #   pp rule_attributes
-#     #   p ''
-#     #   aaa = rule_attributes[:slave_rules].map { |slave_rule_name|  slav_rule_name)  }
-#     #   # new_rule.slave_rules = rule_attributes[:slave_rules].map { |slave_rule_name|  slav_rule_name)  }
-#     #   p '- - - - - - - - - - - - - - aaa- - - - - - - - - - - - - - - -' 
-#     #   pp aaa
-#     #   p ''
-#     # end
-#     new_rule.save
-#   end
-# end
-
 
 
 
