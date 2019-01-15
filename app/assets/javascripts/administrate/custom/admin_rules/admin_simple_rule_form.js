@@ -3,6 +3,23 @@ clara.js_define("admin_simple_rule_form", {
   dress: function(){
     var that = this;
     that._set_callbacks();
+    that._order_variables_alphabetically();
+  },
+
+  _order_variables_alphabetically: function() {
+    $select = $("#rule_variable_id")
+
+    var my_options = $select.find("option");
+    var selected = $select.val();
+
+    my_options.sort(function(a,b) {
+        if (a.text > b.text) return 1;
+        if (a.text < b.text) return -1;
+        return 0
+    });
+
+    $select.empty().append( my_options );
+    $select.val(selected);
   },
 
   _set_callbacks: function(){
