@@ -20,22 +20,22 @@ from the associated resource class's dashboard.
 
 
 <% if field.resources.any? %>
-  <%- names =  field.data.map { |e| e.name } %>  
+  <%- names_and_ids =  field.data.map { |e| {name: e.name, id: e.id} } %>  
   <%- klass =  field.data[0].class.name %>  
 
-  <% names.each do |name| %>
-    <span>
+  <% names_and_ids.each do |name_and_id| %>
+    <span data-meh="<%=field.inspect%>">
       <% if klass == "Tag" %>
-        <%= link_to name, admin_tag_path(name) %>
+        <%= link_to name_and_id[:name], admin_tag_path(name_and_id[:id]) %>
       <% elsif klass == "Rule" %>
-        <%= link_to name, admin_rule_path(name) %>
+        <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
       <% elsif klass == "Aid" %>
         <div>
-          <%= link_to name, admin_aid_path(name) %>
+          <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:id]) %>
         </div>
       <% end %>
     </span>
-    <% unless name == names.last || klass == "Aid" %>
+    <% unless name_and_id[:name] == names_and_ids.last[:name] || klass == "Aid" %>
       <span>,&nbsp;</span>
     <% end %>
   <% end %>
