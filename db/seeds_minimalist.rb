@@ -135,7 +135,7 @@ rule_list = [
      description: "Avoir entre 18 et 28 ans et être inscrit/e à Pôle emploi depuis plus de 12 mois dans les 18 derniers mois",
      composition_type: :and_rule,
      slave_rules: [ "r_age_sup_18", 
-                   "r_age_inf_18", 
+                   "r_age_inf_28", 
                    "r_deld"],
   },
   {
@@ -143,7 +143,7 @@ rule_list = [
      description: "Avoir entre 18 et 28 ans et un diplôme inférieur au 1er cycle de l'enseignement supérieur",
      composition_type: :and_rule,
      slave_rules: [ "r_age_sup_18", 
-                   "r_age_inf_18", 
+                   "r_age_inf_28", 
                    "r_diplome_4_ou_5_ou_infra_5"],
   },
   {
@@ -163,22 +163,26 @@ rule_list = [
 
 existing_rules = Rule.all.map(&:name)
 
-
 rule_list.each do |rule_attributes|
   unless existing_rules.include?(rule_attributes[:name])
     new_rule = Rule.new(rule_attributes.except(:slave_rules))
+    p '- - - - - - - - - - - - - - new_rule- - - - - - - - - - - - - - - -' 
+    pp new_rule
+    p ''
     if rule_attributes[:slave_rules]
-      # p '- - - - - - - - - - - - - - rule_attributes- - - - - - - - - - - - - - - -' 
-      # pp rule_attributes
-      # p ''
+      p '- - - - - - - - - - - - - - rule_attributes- - - - - - - - - - - - - - - -' 
+      pp rule_attributes
+      p ''
       aaa = rule_attributes[:slave_rules].map { |slave_rule_name|  Rule.find_by(name: slave_rule_name)  }
       # new_rule.slave_rules = rule_attributes[:slave_rules].map { |slave_rule_name|  slav_rule_name)  }
       p '- - - - - - - - - - - - - - aaa- - - - - - - - - - - - - - - -' 
       pp aaa
       p ''
-      new_rule.slave_rules = aaa 
+      new_rule.slave_rules = aaa
+      pp '+++++++++++++++++++++++++++++'
+      pp new_rule
     end
-    new_rule.save
+    new_rule.save!
   end
 end
 
