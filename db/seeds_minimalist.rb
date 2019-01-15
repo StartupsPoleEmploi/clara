@@ -82,7 +82,7 @@ end
 # # Rules
 # ##################################################################
 
-rule_list = [
+simple_rule_list = [
   {
      name: "r_deld",
      variable: Variable.find_by(name:"v_duree_d_inscription"),
@@ -122,47 +122,60 @@ rule_list = [
      value_eligible: "18",
      operator_type: :more_than,
      description: "Avoir plus de 18 ans"
-  },
+  }
+]
+
+existing_rules = Rule.all.map(&:name)
+
+simple_rule_list.each do |rule_attributes|
+  unless existing_rules.include?(rule_attributes[:name])
+    new_rule = Rule.new(rule_attributes)
+    new_rule.save!
+  end
+end
+
+
+complex_rule_list = [
+
   {
      name: "r_diplome_4_ou_5_ou_infra_5",
      composition_type: :or_rule,
-     slave_rules: ["r_diplome_niveau_4", "r_diplome_niveau_5", "r_diplome_infra_5"],
+     slave_rules: [Rule.find_by(name: "r_diplome_niveau_4"), 
+                  Rule.find_by(name: "r_diplome_niveau_5"), 
+                  Rule.find_by(name: "r_diplome_infra_5")],
   },
   {
      name: "r_age_sup_18_et_age_inf_28_et_deld",
      description: "Avoir entre 18 et 28 ans et être inscrit/e à Pôle emploi depuis plus de 12 mois dans les 18 derniers mois",
      composition_type: :and_rule,
-     slave_rules: ["r_age_sup_18", "r_age_inf_18", "r_deld"]
+     slave_rules: [Rule.find_by(name: "r_age_sup_18"), 
+                  Rule.find_by(name: "r_age_inf_18"), 
+                  Rule.find_by(name: "r_deld")],
   },
   {
      name: "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3",
      description: "Avoir entre 18 et 28 ans et un diplôme inférieur au 1er cycle de l'enseignement supérieur",
      composition_type: :and_rule,
-     slave_rules: ["r_age_sup_18", "r_age_inf_18", "r_diplome_4_ou_5_ou_infra_5"]
+     slave_rules: [Rule.find_by(name: "r_age_sup_18"), 
+                  Rule.find_by(name: "r_age_inf_18"), 
+                  Rule.find_by(name: "r_diplome_4_ou_5_ou_infra_5")],
   },
   {
      name: "r_CIVIS",
      composition_type: :and_rule,
-     slave_rules: ["r_age_sup_18_et_age_inf_28_et_deld", 
-                    "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3"]
+     slave_rules: [Rule.find_by(name: "r_age_sup_18_et_age_inf_28_et_deld"), 
+                  Rule.find_by(name: "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3")],
+
   },
   {
      name: "r_VI",
      composition_type: :and_rule,
-     slave_rules: ["r_age_sup_18", 
-                    "r_age_inf_28"]
+     slave_rules: [Rule.find_by(name: "r_age_sup_18"), 
+                  Rule.find_by(name: "r_age_inf_28")],
   },
 ]
 
-existing_rules = Rule.all.map(&:name)
-
-complex_rule_list = rule_list.select{|r| !!r[:slave_rules]}
-simple_rule_list = rule_list.select{|r| !r[:slave_rules]}
-
-simple_rule_list.each do |rule_attributes|
-  # p '- - - - - - - - - - - - - - rule_attributes- - - - - - - - - - - - - - - -' 
-  # pp rule_attributes
-  # p ''
+complex_rule_list.each do |rule_attributes|
   unless existing_rules.include?(rule_attributes[:name])
     new_rule = Rule.new(rule_attributes)
     new_rule.save!
