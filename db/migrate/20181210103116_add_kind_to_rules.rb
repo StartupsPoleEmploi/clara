@@ -1,5 +1,5 @@
-class AddElementsTranslationToVariables < ActiveRecord::Migration[5.0]
+class AddKindToRules < ActiveRecord::Migration[5.0]
   def change
-    add_column :variables, :elements_translation, :text
+    add_column :rules, :kind, :string
   end
 end
