@@ -85,64 +85,64 @@ end
 rule_list = [
   {
      name: "r_deld",
-     operator_type: "eq",
+     operator_type: :eq,
      value_eligible: "plus_d_un_an",
      description: "Être inscrit depuis 1 an ou plus"
   },
   {
      name: "r_diplome_niveau_4",
-     operator_type: "eq",
+     operator_type: :eq,
      value_eligible: "niveau_4",
   },
   {
      name: "r_diplome_niveau_5",
-     operator_type: "eq",
+     operator_type: :eq,
      value_eligible: "niveau_5",
   },
   {
      name: "r_diplome_infra_5",
-     operator_type: "eq",
+     operator_type: :eq,
      value_eligible: "niveau_infra_5",
      description: "Être inscrit depuis 1 an ou plus"
   },
   {
      name: "r_age_inf_28",
      value_eligible: "28",
-     operator_type: "less_than",
+     operator_type: :less_than,
      description: "Avoir moins de 28 ans"
   },
   {
      name: "r_age_sup_18",
      value_eligible: "18",
-     operator_type: "more_than",
+     operator_type: :more_than,
      description: "Avoir plus de 18 ans"
   },
   {
      name: "r_diplome_4_ou_5_ou_infra_5",
-     composition_type: "or_rule",
+     composition_type: :or_rule,
      slave_rules: ["r_diplome_niveau_4", "r_diplome_niveau_5", "r_diplome_infra_5"],
   },
   {
      name: "r_age_sup_18_et_age_inf_28_et_deld",
      description: "Avoir entre 18 et 28 ans et être inscrit/e à Pôle emploi depuis plus de 12 mois dans les 18 derniers mois",
-     composition_type: "and_rule",
+     composition_type: :and_rule,
      slave_rules: ["r_age_sup_18", "r_age_inf_18", "r_deld"]
   },
   {
      name: "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3",
      description: "Avoir entre 18 et 28 ans et un diplôme inférieur au 1er cycle de l'enseignement supérieur",
-     composition_type: "and_rule",
+     composition_type: :and_rule,
      slave_rules: ["r_age_sup_18", "r_age_inf_18", "r_diplome_4_ou_5_ou_infra_5"]
   },
   {
      name: "r_CIVIS",
-     composition_type: "and_rule",
+     composition_type: :and_rule,
      slave_rules: ["r_age_sup_18_et_age_inf_28_et_deld", 
                     "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3"]
   },
   {
      name: "r_VI",
-     composition_type: "and_rule",
+     composition_type: :and_rule,
      slave_rules: ["r_age_sup_18", 
                     "r_age_inf_28"]
   },
@@ -150,9 +150,11 @@ rule_list = [
 
 existing_rules = Rule.all.map(&:name)
 
-rule_list.each do |rule|
-  unless existing_rules.include?(rule[:name])
-    Rule.create!(rule)
+rule_list.each do |rule_attributes|
+  unless existing_rules.include?(rule_attributes[:name])
+    new_rule = Rule.new(rule_attributes.except(:slave_rules))
+    new_rule.slave_rules = rule_attributes[:slave_rules].map { |slave_rule_name| Rule.find_by(name: slave_rule_name)  }
+    new_rule.save
   end
 end
 
@@ -198,6 +200,10 @@ contract_list.each do |contract|
 end
 
 
+##################################################################
+# Aids
+##################################################################
+
 aid_list = [
   {
      name: "Contrat d'insertion dans la vie sociale (CIVIS)",
@@ -223,9 +229,7 @@ aid_list = [
      additionnal_conditions: "<p>Vous devez &nbsp;:</p>\r\n\r\n<ul>\r\n\t<li>&ecirc;tre de nationalit&eacute; fran&ccedil;aise ou ressortissant(e) d&#39;un pays de l&#39;espace &eacute;conomique europ&eacute;en (EEE)</li>\r\n\t<li>&ecirc;tre en r&egrave;gle avec les obligations de service national du pays dont vous &ecirc;tes ressortissant(e)</li>\r\n\t<li>jouir de vos droits civiques et avoir un casier judiciaire vierge</li>\r\n</ul>\r\n\r\n<p>Vous ne pouvez r&eacute;aliser qu&#39;une seule mission de volontariat international.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
      how_and_when: "<p>Vous devez enregistrer votre candidature par internet sur le site <a href=\"http://www.civiweb.com\" rel=\"noopener\" target=\"_blank\">Civiweb</a>.</p>\r\n\r\n<p>Une confirmation &eacute;crite d&#39;inscription vous parvient dans les 30 jours suivants.</p>\r\n\r\n<p>Par la suite, vous pouvez effectuer des recherches de missions en consultant r&eacute;guli&egrave;rement les offres du site CIVI et/ou en contactant directement les entreprises fran&ccedil;aises exportatrices et les administrations potentielles.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
      limitations: "<p>* La dur&eacute;e moyenne observ&eacute;e est de 17 mois.</p>\r\n\r\n<p>** L&#39;indemnit&eacute; est fix&eacute;e par d&eacute;cret et varie selon le pays d&#39;affectation.</p>\r\n\r\n<p>Voir toutes les opportunit&eacute;s sur le <a href=\"http://www.decouvrirlemonde.jeunes.gouv.fr/\" target=\"_blank\">portail gouvernemental pour la mobilit&eacute; des jeunes.</a></p>\r\n",
-     rule_id: 69,
      ordre_affichage: 63,
-     contract_type_id: 3,
      archived_at: nil,
      last_update: "",
      contract_type_slug: "emploi-international",
@@ -234,5 +238,14 @@ aid_list = [
 
 ]
 
+existing_aids = Aid.all.map(&:slug)
 
+aid_list.each do |aid_attributes|
+  unless existing_aids.include?(aid_attributes[:slug])
+    new_aid = Aid.new(aid_attributes.except(:contract_type_slug).except(:rule_name))
+    new_aid.contract_type = ContractType.find_by(slug: aid_attributes[:contract_type_slug])
+    new_aid.rule = Rule.find_by(name: aid_attributes[:rule_name])
+    new_aid.save
+  end
+end
 
