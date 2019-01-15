@@ -10,7 +10,7 @@ clara.js_define("zu_clean_select", {
   },
 
   _remove_empty_option_if_only_one_choice: function(arg_h) {
-    $select = arg_h.for_select
+    var $select = arg_h.for_select
     if ($select.find("option").length === 2) {
       $select.find('option[value=""]').remove();
     }
