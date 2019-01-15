@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.9.0 (15/1/2019)
+-[#1097][ADMIN] BO : trier les variables par ordre alphabétique
+
+
 ## 18.8.0 (15/1/2019)
 -[#1096][ADMIN] BO : pas d'opérateur vide si un seul est disponible
 

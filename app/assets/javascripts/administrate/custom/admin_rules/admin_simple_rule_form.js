@@ -3,6 +3,25 @@ clara.js_define("admin_simple_rule_form", {
   dress: function(){
     var that = this;
     that._set_callbacks();
+    that._order_variables_alphabetically();
+  },
+
+  _order_variables_alphabetically: function() {
+    $select = $("#rule_variable_id")
+
+    var my_options = $select.find("option");
+    var selected = $select.val();
+
+    my_options.sort(function(a,b) {
+      var aa = _.deburr(a.text);
+      var bb = _.deburr(b.text);
+      if (aa > bb) return 1;
+      if (aa < bb) return -1;
+      return 0;
+    });
+
+    $select.empty().append( my_options );
+    $select.val(selected);
   },
 
   _set_callbacks: function(){
@@ -59,7 +78,7 @@ clara.js_define("admin_simple_rule_form", {
         $('#rule_operator_type').append('<option value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
       }
     });
-    clara.zu_clean_select.invoke({for_select: $('#rule_operator_type')})
+    clara.zu_clean_select.main_function({for_select: $('#rule_operator_type')})
   },
 
   _set_value_type: function($original_input) {
@@ -102,7 +121,7 @@ clara.js_define("admin_simple_rule_form", {
       var opt_en = options_en[i];
       $result.append("<option value=\"" + opt_en + "\">" + opt + "</option>");
     });
-    clara.zu_clean_select.invoke({for_select: $result});
+    clara.zu_clean_select.main_function({for_select: $result});
     $result.find('option[value="' + original_value + '"]').attr("selected", "selected");
     return $result;
   }
