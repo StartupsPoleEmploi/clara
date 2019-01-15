@@ -1,5 +1,10 @@
 class ContractType < ApplicationRecord 
   extend FriendlyId
+
+  after_save    { ExpireCache.call }
+  after_update  { ExpireCache.call }
+  after_destroy { ExpireCache.call }
+  after_create  { ExpireCache.call }
   
   SLUG_FORMAT = /([[:lower:]]|[0-9]+-?[[:lower:]])(-[[:lower:]0-9]+|[[:lower:]0-9])*/
 

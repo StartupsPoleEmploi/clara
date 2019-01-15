@@ -1,6 +1,11 @@
 class NeedFilter < ApplicationRecord 
   extend FriendlyId
 
+  after_save    { ExpireCache.call }
+  after_update  { ExpireCache.call }
+  after_destroy { ExpireCache.call }
+  after_create  { ExpireCache.call }
+
   has_and_belongs_to_many :aids
 
   validates :name, presence: true, uniqueness: true
