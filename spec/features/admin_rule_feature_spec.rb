@@ -25,9 +25,5 @@ feature 'admin rule' do
     expect(page.all('a[href="/admin/rules/new?locale=fr&rule_kind=composite"]').count).to print_eq 1,
       "You can create a complex rule"
 
-
-  end
-
-
-  
+  end  
 end
