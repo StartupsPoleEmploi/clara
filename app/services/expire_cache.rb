@@ -3,7 +3,6 @@ class ExpireCache < ClaraService
   is_callable
 
   def call
-    pp "++++++++++++++++++++++++++++EXPIRE+++++++++++++++++++++++++++++++"
     activated_models_deleted     = Rails.cache.delete("activated_models")
     nb_of_detailed_aids_deleted = 0
     cache_hash = Rails.cache.instance_variable_get(:@data)
