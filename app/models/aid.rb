@@ -8,7 +8,6 @@ class Aid < ApplicationRecord
   after_create  { ExpireCache.call }
 
   after_touch do |e|
-    pp '++++++++++++++++++++++++++ TOUCHED ++++++++++++++++++++++++++++++++++++++'
     ExpireCache.call    
   end
 
