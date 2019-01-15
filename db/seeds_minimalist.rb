@@ -247,6 +247,20 @@ aid_list = [
      contract_type: ContractType.find_by(slug: "emploi-international"),
      rule: Rule.find_by(name: "r_VI"),
   },
+  {
+     name: "Aide incitative à la reprise d'emploi (activité salariée)",
+     what: "<p>Cette aide permet de cumuler l'Allocation d'aide au retour &agrave; l'emploi (ARE) &nbsp;avec une r&eacute;mun&eacute;ration (activit&eacute; professionnelle salari&eacute;e exerc&eacute;e en France ou &agrave; l'&eacute;tranger).</p>\r\n<p>Cette aide est vers&eacute;e lorsque vous reprenez un emploi et que le salaire est inf&eacute;rieur &agrave; votre allocation ch&ocirc;mage.</p>",
+     short_description: "Cumul d'une partie de l'allocation chômage avec votre salaire",
+     how_much: "<p>Vous allez cumuler votre salaire avec une partie de votre allocation mensuelle.</p>\r\n<p>La partie de cette allocation est &eacute;gale &agrave; votre allocation pr&eacute;c&eacute;dente totale moins 70% de la r&eacute;mun&eacute;ration brute que vous percevez au titre de votre reprise d'emploi.</p>\r\n<p>Le montant d'allocation re&ccedil;u lorsque vous travaillez est donc inf&eacute;rieur &agrave; celui que vous receviez sans travailler. Ce diff&eacute;rentiel est converti en jours et permet de prolonger la dur&eacute;e de vos droits.</p>\r\n<p>Vous pouvez calculer le montant approximatif du compl&eacute;ment gr&acirc;ce &agrave; un <a href=\"https://candidat.pole-emploi.fr/candidat/simucalcul/repriseemploi\" target=\"_blank\" rel=\"noopener\">outil de simulation</a>.</p>",
+     additionnal_conditions: "<p>Pour un mois donn&eacute;, le total (ARE + salaire) ne doit pas d&eacute;passer le montant du salaire brut que vous perceviez ant&eacute;rieurement.</p>",
+     how_and_when: "<p>Lorsque vous reprenez une activit&eacute; professionnelle, vous devez informer P&ocirc;le emploi au moment de votre actualisation.</p>\r\n<p>Lorsque vous allez vous actualiser sur pole-emploi.fr ou par t&eacute;l&eacute;phone, vous allez d&eacute;clarer le nombre d'heures travaill&eacute;es dans le mois ainsi que le montant du salaire brut per&ccedil;u (ou une estimation si vous n'avez pas encore re&ccedil;u votre bulletin de paie).&nbsp;</p>\r\n<p>D&egrave;s que vous avez votre bulletin de paie, scannez-le depuis votre espace personnel <a href=\"http://www.pole-emploi.fr/accueil/\" target=\"_blank\" rel=\"noopener\">pole-emploi.fr</a>.</p>\r\n<p>Le calcul du compl&eacute;ment se fera automatiquement.</p>",
+     limitations: "<p>Le cumul des allocations et des r&eacute;mun&eacute;rations ne peut exc&eacute;der le montant mensuel du salaire de r&eacute;f&eacute;rence.</p>",
+     rule_id: 58,
+     ordre_affichage: 41,
+     contract_type_id: 6,
+     archived_at: nil,
+     last_update: nil
+  }
 ]
 
 existing_aids = Aid.all.map(&:slug)
