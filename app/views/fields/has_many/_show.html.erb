@@ -24,14 +24,14 @@ from the associated resource class's dashboard.
   <%- klass =  field.data[0].class.name %>  
 
   <% names_and_ids.each do |name_and_id| %>
-    <span data-meh="<%=field.inspect%>">
+    <span>
       <% if klass == "Tag" %>
         <%= link_to name_and_id[:name], admin_tag_path(name_and_id[:id]) %>
       <% elsif klass == "Rule" %>
         <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
       <% elsif klass == "Aid" %>
         <div>
-          <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:id]) %>
+          <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:name]) %>
         </div>
       <% end %>
     </span>
