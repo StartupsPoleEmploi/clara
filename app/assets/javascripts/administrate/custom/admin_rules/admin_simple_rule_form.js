@@ -13,9 +13,11 @@ clara.js_define("admin_simple_rule_form", {
     var selected = $select.val();
 
     my_options.sort(function(a,b) {
-        if (a.text > b.text) return 1;
-        if (a.text < b.text) return -1;
-        return 0
+      var aa = _.deburr(a.text);
+      var bb = _.deburr(b.text);
+      if (aa > bb) return 1;
+      if (aa < bb) return -1;
+      return 0;
     });
 
     $select.empty().append( my_options );
