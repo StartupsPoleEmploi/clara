@@ -59,14 +59,13 @@ class AidesController < ApplicationController
   end
 
   def pull_asker
-    p '- - - - - - - - - - - - - - pull_asker- - - - - - - - - - - - - - - -' 
-    pp session[:asker]
-    p ''
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
     elsif asker_exists?
+      p '- - - - - - - - - - - - - - asker_exists, yes- - - - - - - - - - - - - - - -' 
       @asker = require_asker
     else
+      p '- - - - - - - - - - - - - - no asker, translate- - - - - - - - - - - - - - - -' 
       @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end
   end

@@ -6,6 +6,7 @@ class ExpireCache < ClaraService
   def call
     Rails.cache.clear
     ActivatedModelsGeneratorService.new.regenerate
+    ActivatedModelsService.instance.regenerate
     # activated_models_deleted     = Rails.cache.delete("activated_models")
     # nb_of_detailed_aids_deleted = 0
     # cache_hash = Rails.cache.instance_variable_get(:@data)
