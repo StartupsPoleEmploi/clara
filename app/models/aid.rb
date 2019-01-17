@@ -2,10 +2,10 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  after_save    { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_update  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_destroy { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_create  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
+  after_save    { ExpireCache.call }
+  after_update  { ExpireCache.call }
+  after_destroy { ExpireCache.call }
+  after_create  { ExpireCache.call }
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
