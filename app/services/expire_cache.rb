@@ -1,3 +1,4 @@
+# deprecated
 class ExpireCache < ClaraService
 
   is_callable

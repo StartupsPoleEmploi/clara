@@ -84,6 +84,13 @@ end
 
 rule_list = [
   {
+     name: "r_AREASP",
+     variable: Variable.find_by(name:"v_allocation_type"),
+     operator_type: :eq,
+     value_eligible: "ARE_ASP",
+     description: "Être indemnisé/e au titre de l'allocation de retour à l'emploi"
+  },
+  {
      name: "r_deld",
      variable: Variable.find_by(name:"v_duree_d_inscription"),
      operator_type: :eq,
@@ -177,9 +184,9 @@ end
 
 
 
-# ##################################################################
-# # Contracts
-# ##################################################################
+##################################################################
+# Contracts
+##################################################################
 
 contract_list = [
   {
@@ -214,14 +221,13 @@ contract_list.each do |contract|
 end
 
 
-# ##################################################################
-# # Aids
-# ##################################################################
+##################################################################
+# Aids
+##################################################################
 
 aid_list = [
   {
      name: "Contrat d'insertion dans la vie sociale (CIVIS)",
-     slug: "civis-contrat-d-insertion-dans-la-vie-sociale",
      what:"<p>Le CIVIS est sign&eacute; avec la <a href=\"http://www.mission-locale.fr/\" target=\"_blank\" rel=\"noopener\">mission locale</a> ou la permanence d'Accueil d'Information et d'Orientation (PAIO) qui d&eacute;signe un conseiller r&eacute;f&eacute;rent.</p>\r\n<p>Ce conseiller va vous accompagner pour r&eacute;aliser votre projet d'insertion au travers de diverses actions : entretiens, ateliers collectifs, mises en situation professionnelle, propositions d'emploi, de stage, de formation, ...</p>\r\n<p>Le CIVIS est conclu pour une dur&eacute;e d'un an.</p>",
      short_description: "Accompagnement vers l'accès à un emploi durable",
      how_much: "<p>Une aide financi&egrave;re peut &ecirc;tre propos&eacute;e si vous ne percevez aucune r&eacute;mun&eacute;ration au titre d'un emploi ou d'un stage, ni d'autres allocations.</p>\r\n<p>Elle est vers&eacute;e chaque mois et peut &ecirc;tre suspendue ou supprim&eacute;e en cas de non respect des engagements au titre du CIVIS.</p>\r\n<p>Son montant varie selon votre situation personnelle et votre projet d'insertion, et dans la limite maximum de 15 euros sur 1 jour, 450 euros sur 1 mois et 1800 euros sur 1 an.</p>",
@@ -237,7 +243,6 @@ aid_list = [
   {
      name: "Volontariat international (VI)",
      what: "<p>La mission peut &ecirc;tre effectu&eacute;e en VIE (volontariat international en entreprise) ou en VIA (volontariat international en administration), au sein de diff&eacute;rentes structures (ambassades, universit&eacute;s et laboratoires, centres culturels, organisations non gouvernementales, ...).</p>\r\n\r\n<p>Il existe des missions tr&egrave;s vari&eacute;es :</p>\r\n\r\n<ul>\r\n\t<li>pour le VIE elles concernent principalement les domaines informatique, marketing, finance, contr&ocirc;le de gestion, promotion et assistance technique, commerce et industrie</li>\r\n\t<li>pour le VIA, il s&#39;agit de missions propos&eacute;es par les services d&#39;Etat &agrave; l&#39;&eacute;tranger : animateurs culturels, attach&eacute;s de presse, m&eacute;decins, cuisiniers, architectes, informaticiens, attach&eacute;s de coop&eacute;ration culturelle ou scientifique, graphistes, ...</li>\r\n</ul>\r\n\r\n<p>La mission peut durer de 6 &agrave; 24 mois* et permet de participer au rayonnement &eacute;conomique, culturel et scientifique de la France &agrave; l&#39;&eacute;tranger.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
-     slug: "vi-volontariat-international",
      short_description: "Mission rémunérée qui permet d'avoir une première expérience à l'international",
      how_much: "<p>Vous percevez une indemnit&eacute; d&#39;un montant pouvant aller de 1432 euros &agrave; 4784 euros nets.**</p>\r\n\r\n<p>Les frais de voyage et de transport de bagages aller/retour sont pris en charge.</p>\r\n\r\n<p>Pendant toute la dur&eacute;e de la mission, vous b&eacute;n&eacute;ficiez d&#39;une couverture sociale et d&#39;un suivi.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
      additionnal_conditions: "<p>Vous devez &nbsp;:</p>\r\n\r\n<ul>\r\n\t<li>&ecirc;tre de nationalit&eacute; fran&ccedil;aise ou ressortissant(e) d&#39;un pays de l&#39;espace &eacute;conomique europ&eacute;en (EEE)</li>\r\n\t<li>&ecirc;tre en r&egrave;gle avec les obligations de service national du pays dont vous &ecirc;tes ressortissant(e)</li>\r\n\t<li>jouir de vos droits civiques et avoir un casier judiciaire vierge</li>\r\n</ul>\r\n\r\n<p>Vous ne pouvez r&eacute;aliser qu&#39;une seule mission de volontariat international.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
@@ -249,6 +254,19 @@ aid_list = [
      contract_type: ContractType.find_by(slug: "emploi-international"),
      rule: Rule.find_by(name: "r_VI"),
   },
+  {
+     name: "Aide incitative à la reprise d'emploi (activité salariée)",
+     what: "<p>Cette aide permet de cumuler l'Allocation d'aide au retour &agrave; l'emploi (ARE) &nbsp;avec une r&eacute;mun&eacute;ration (activit&eacute; professionnelle salari&eacute;e exerc&eacute;e en France ou &agrave; l'&eacute;tranger).</p>\r\n<p>Cette aide est vers&eacute;e lorsque vous reprenez un emploi et que le salaire est inf&eacute;rieur &agrave; votre allocation ch&ocirc;mage.</p>",
+     short_description: "Cumul d'une partie de l'allocation chômage avec votre salaire",
+     how_much: "<p>Vous allez cumuler votre salaire avec une partie de votre allocation mensuelle.</p>\r\n<p>La partie de cette allocation est &eacute;gale &agrave; votre allocation pr&eacute;c&eacute;dente totale moins 70% de la r&eacute;mun&eacute;ration brute que vous percevez au titre de votre reprise d'emploi.</p>\r\n<p>Le montant d'allocation re&ccedil;u lorsque vous travaillez est donc inf&eacute;rieur &agrave; celui que vous receviez sans travailler. Ce diff&eacute;rentiel est converti en jours et permet de prolonger la dur&eacute;e de vos droits.</p>\r\n<p>Vous pouvez calculer le montant approximatif du compl&eacute;ment gr&acirc;ce &agrave; un <a href=\"https://candidat.pole-emploi.fr/candidat/simucalcul/repriseemploi\" target=\"_blank\" rel=\"noopener\">outil de simulation</a>.</p>",
+     additionnal_conditions: "<p>Pour un mois donn&eacute;, le total (ARE + salaire) ne doit pas d&eacute;passer le montant du salaire brut que vous perceviez ant&eacute;rieurement.</p>",
+     how_and_when: "<p>Lorsque vous reprenez une activit&eacute; professionnelle, vous devez informer P&ocirc;le emploi au moment de votre actualisation.</p>\r\n<p>Lorsque vous allez vous actualiser sur pole-emploi.fr ou par t&eacute;l&eacute;phone, vous allez d&eacute;clarer le nombre d'heures travaill&eacute;es dans le mois ainsi que le montant du salaire brut per&ccedil;u (ou une estimation si vous n'avez pas encore re&ccedil;u votre bulletin de paie).&nbsp;</p>\r\n<p>D&egrave;s que vous avez votre bulletin de paie, scannez-le depuis votre espace personnel <a href=\"http://www.pole-emploi.fr/accueil/\" target=\"_blank\" rel=\"noopener\">pole-emploi.fr</a>.</p>\r\n<p>Le calcul du compl&eacute;ment se fera automatiquement.</p>",
+     limitations: "<p>Le cumul des allocations et des r&eacute;mun&eacute;rations ne peut exc&eacute;der le montant mensuel du salaire de r&eacute;f&eacute;rence.</p>",
+     ordre_affichage: 41,
+     archived_at: nil,
+     contract_type: ContractType.find_by(slug: "appui-a-l-embauche"),
+     rule: Rule.find_by(name: "r_AREASP"),
+  }
 ]
 
 existing_aids = Aid.all.map(&:slug)

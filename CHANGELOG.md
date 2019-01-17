@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.10.1 (17/1/2019)
+-[#1101][ADMIN] BO : vider le cache à chaque fois que c'est nécessaire, bug
+
+
 ## 18.10.0 (17/1/2019)
 -[#1101][ADMIN] BO : vider le cache à chaque fois que c'est nécessaire
 
