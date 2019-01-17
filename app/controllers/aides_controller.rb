@@ -11,9 +11,9 @@ class AidesController < ApplicationController
       else
         pull_asker_from_query_param
         augment_asker
-        cacheable = create_cacheable_results_from_asker
-        write_to_cache(cacheable)
-        hydrate_view(cacheable)
+        results = create_results_from_asker
+        write_to_cache(results)
+        hydrate_view(results)
       end
     else
       aids_h, total_nb = _aides_index_search
@@ -85,7 +85,7 @@ class AidesController < ApplicationController
     RehydrateAddressService.new.from_citycode!(@asker)
   end
 
-  def create_cacheable_results_from_asker
+  def create_results_from_asker
     SerializeResultsService.get_instance.go(@asker)
   end
 
