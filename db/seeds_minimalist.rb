@@ -84,6 +84,13 @@ end
 
 rule_list = [
   {
+     name: "r_AREASP",
+     variable: Variable.find_by(name:"v_allocation_type"),
+     operator_type: :eq,
+     value_eligible: "ARE_ASP",
+     description: "Être indemnisé/e au titre de l'allocation de retour à l'emploi"
+  },
+  {
      name: "r_deld",
      variable: Variable.find_by(name:"v_duree_d_inscription"),
      operator_type: :eq,
@@ -177,9 +184,9 @@ end
 
 
 
-# ##################################################################
-# # Contracts
-# ##################################################################
+##################################################################
+# Contracts
+##################################################################
 
 contract_list = [
   {
@@ -214,9 +221,9 @@ contract_list.each do |contract|
 end
 
 
-# ##################################################################
-# # Aids
-# ##################################################################
+##################################################################
+# Aids
+##################################################################
 
 aid_list = [
   {
@@ -255,11 +262,10 @@ aid_list = [
      additionnal_conditions: "<p>Pour un mois donn&eacute;, le total (ARE + salaire) ne doit pas d&eacute;passer le montant du salaire brut que vous perceviez ant&eacute;rieurement.</p>",
      how_and_when: "<p>Lorsque vous reprenez une activit&eacute; professionnelle, vous devez informer P&ocirc;le emploi au moment de votre actualisation.</p>\r\n<p>Lorsque vous allez vous actualiser sur pole-emploi.fr ou par t&eacute;l&eacute;phone, vous allez d&eacute;clarer le nombre d'heures travaill&eacute;es dans le mois ainsi que le montant du salaire brut per&ccedil;u (ou une estimation si vous n'avez pas encore re&ccedil;u votre bulletin de paie).&nbsp;</p>\r\n<p>D&egrave;s que vous avez votre bulletin de paie, scannez-le depuis votre espace personnel <a href=\"http://www.pole-emploi.fr/accueil/\" target=\"_blank\" rel=\"noopener\">pole-emploi.fr</a>.</p>\r\n<p>Le calcul du compl&eacute;ment se fera automatiquement.</p>",
      limitations: "<p>Le cumul des allocations et des r&eacute;mun&eacute;rations ne peut exc&eacute;der le montant mensuel du salaire de r&eacute;f&eacute;rence.</p>",
-     rule_id: 58,
      ordre_affichage: 41,
-     contract_type_id: 6,
      archived_at: nil,
-     last_update: nil
+     contract_type: ContractType.find_by(slug: "appui-a-l-embauche"),
+     rule: Rule.find_by(name: "r_AREASP"),
   }
 ]
 
