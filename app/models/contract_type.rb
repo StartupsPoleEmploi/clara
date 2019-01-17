@@ -1,10 +1,10 @@
 class ContractType < ApplicationRecord 
   extend FriendlyId
 
-  after_save    { ExpireCache.call }
-  after_update  { ExpireCache.call }
-  after_destroy { ExpireCache.call }
-  after_create  { ExpireCache.call }
+  after_save    { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
+  after_update  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
+  after_destroy { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
+  after_create  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
   
   SLUG_FORMAT = /([[:lower:]]|[0-9]+-?[[:lower:]])(-[[:lower:]0-9]+|[[:lower:]0-9])*/
 
