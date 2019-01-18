@@ -20,10 +20,6 @@ class EnvService
     @@the_double.nil? ? EnvService.new : @@the_double
   end
     
-  def ara_url_ban
-    ENV['ARA_URL_BAN'] || ''
-  end
-    
   def ara_google_analytics_id
     ENV['ARA_GOOGLE_ANALYTICS_ID'] || ''
   end
