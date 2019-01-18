@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.10.3 (18/1/2019)
+-[#1104][TECH] Test du RehydrateAddressService
+
+
 ## 18.10.2 (18/1/2019)
 -[#1101c][ADMIN] BO : vider le cache à chaque fois que c'est nécessaire, bug 2
 
