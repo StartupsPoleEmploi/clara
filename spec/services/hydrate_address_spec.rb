@@ -20,19 +20,16 @@ describe HydrateAddress do
     it "Returns an asker with same attributes if citycode is not here" do
       asker = Asker.new(v_location_zipcode: "02340")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
-      expect(returned_asker.is_a?(Asker)).to eq(true)
       expect(returned_asker.attributes).to eq(asker.attributes)
     end
     it "Returns an asker with same attributes if zipcode is already here" do
       asker = Asker.new(v_location_citycode: "02004", v_location_zipcode: "02340")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
-      expect(returned_asker.is_a?(Asker)).to eq(true)
       expect(returned_asker.attributes).to eq(asker.attributes)
     end
     it "Returns an asker with fulfilled geo attributes if citycode is here, but not zipcode" do
       asker = Asker.new(v_location_citycode: "02004")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
-      expect(returned_asker.is_a?(Asker)).to eq(true)
       expect(returned_asker.attributes).to eq(asker.attributes)
     end
   end

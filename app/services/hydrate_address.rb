@@ -7,8 +7,16 @@ class HydrateAddress < ClaraService
       raise ArgumentError.new("Arguments must be attributes of an Asker")
     end
     output_asker = Asker.new(@asker_attributes)
-    citycode = asker_attributes[:v_location_citycode]
-    zipcode = asker_attributes[:v_location_zipcode]
+    citycode = output_asker.v_location_citycode
+    p '- - - - - - - - - - - - - - citycode- - - - - - - - - - - - - - - -' 
+    pp citycode
+    pp citycode.blank?
+    p ''
+    zipcode = output_asker.v_location_zipcode
+    p '- - - - - - - - - - - - - - zipcode- - - - - - - - - - - - - - - -' 
+    pp zipcode
+    pp zipcode.present?
+    p ''
     return output_asker if citycode.blank?
     return output_asker if zipcode.present?
     p '- - - - - - - - - - - - - - RehydrateAddressService inside- - - - - - - - - - - - - - - -' 
