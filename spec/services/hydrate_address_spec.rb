@@ -18,19 +18,24 @@ describe HydrateAddress do
       expect(subject.is_a?(Asker)).to eq(true)
     end
     it "Returns an asker with same attributes if citycode is not here" do
-      asker = Asker.new(v_location_zipcode: "02340")
+      asker = Asker.new(v_location_zipcode: "59440")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
       expect(returned_asker.attributes).to eq(asker.attributes)
     end
     it "Returns an asker with same attributes if zipcode is already here" do
-      asker = Asker.new(v_location_citycode: "02004", v_location_zipcode: "02340")
+      asker = Asker.new(v_location_citycode: "59035", v_location_zipcode: "59440")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
       expect(returned_asker.attributes).to eq(asker.attributes)
     end
     it "Returns an asker with fulfilled geo attributes if citycode is here, but not zipcode" do
-      asker = Asker.new(v_location_citycode: "02004")
+      asker = Asker.new(v_location_citycode: "59035")
       returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
-      expect(returned_asker.attributes).to eq(asker.attributes)
+      h = returned_asker.attributes
+      expect(h["v_location_city"]).to eq("Avesnelles")
+      expect(h["v_location_label"]).to eq("59440 Avesnelles")
+      expect(h["v_location_state"]).to eq("Hauts-de-France (Nord-Pas-de-Calais)")
+      expect(h["v_location_zipcode"]).to eq("59440")
+      expect(h["v_zrr"]).to eq("oui")
     end
   end
 
