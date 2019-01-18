@@ -32,24 +32,24 @@ describe GetZipCityRegion do
         HttpService.set_instance(http_layer)
         expect(GetZipCityRegion.call(citycode: '59035')).to eq 'erreur_ville_introuvable'
       end
-      # it 'Should return String "erreur_ville_introuvable" if no answer is given' do
-      #   http_layer = instance_double("HttpService")
-      #   allow(http_layer).to receive(:get).and_return({}.to_json)
-      #   HttpService.set_instance(http_layer)
-      #   expect(GetZipCityRegion.call(citycode: '59035')).to eq 'erreur_ville_introuvable'
-      # end
-      # it 'Should return String "erreur_service_indisponible" if "timeout" string in the answer' do
-      #   http_layer = instance_double("HttpService")
-      #   allow(http_layer).to receive(:get).and_return({"timeout"=>"yes"}.to_json)
-      #   HttpService.set_instance(http_layer)
-      #   expect(GetZipCityRegion.call(citycode: '59035')).to eq 'erreur_service_indisponible'
-      # end
-      # it 'Should return String "erreur_technique" if no string is passed' do
-      #   http_layer = instance_double("HttpService")
-      #   allow(http_layer).to receive(:get).and_return({}.to_json)
-      #   HttpService.set_instance(http_layer)
-      #   expect(BanService.get_instance.get_zip_city_region(Date.new)).to eq 'erreur_technique'
-      # end
+      it 'Should return String "erreur_ville_introuvable" if no answer is given' do
+        http_layer = instance_double("HttpService")
+        allow(http_layer).to receive(:get).and_return({}.to_json)
+        HttpService.set_instance(http_layer)
+        expect(GetZipCityRegion.call(citycode: '59035')).to eq 'erreur_ville_introuvable'
+      end
+      it 'Should return String "erreur_service_indisponible" if "timeout" string in the answer' do
+        http_layer = instance_double("HttpService")
+        allow(http_layer).to receive(:get).and_return({"timeout"=>"yes"}.to_json)
+        HttpService.set_instance(http_layer)
+        expect(GetZipCityRegion.call(citycode: '59035')).to eq 'erreur_service_indisponible'
+      end
+      it 'Should return String "erreur_technique" if no string is passed' do
+        http_layer = instance_double("HttpService")
+        allow(http_layer).to receive(:get).and_return({}.to_json)
+        HttpService.set_instance(http_layer)
+        expect(GetZipCityRegion.call(citycode: //)).to eq 'erreur_technique'
+      end
     end
     
 
