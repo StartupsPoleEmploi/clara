@@ -71,7 +71,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_if_necessary
-    RehydrateAddressService.new.from_citycode!(@asker)
+    @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
   end
 
   def create_results_from_asker
