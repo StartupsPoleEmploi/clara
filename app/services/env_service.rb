@@ -2,6 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
+# deprecated. Try to use ENV[] directly.
 class EnvService
 
   class << self
