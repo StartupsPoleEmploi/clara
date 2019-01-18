@@ -4,17 +4,10 @@ class AidesController < ApplicationController
 
   def index
     if have_active_asker?
-      existing = pull_existing_from_cache
-      if (existing)
-        instantiate_asker(existing)
-        hydrate_view(existing)
-      else
-        pull_asker_from_query_param
-        augment_asker
-        cacheable = create_cacheable_results_from_asker
-        write_to_cache(cacheable)
-        hydrate_view(cacheable)
-      end
+      pull_asker
+      augment_asker_if_necessary
+      results = create_results_from_asker
+      hydrate_view(results)
     else
       aids_h, total_nb = _aides_index_search
       hydrate_view({
@@ -61,31 +54,27 @@ class AidesController < ApplicationController
     !!params[:for_id]
   end
 
-  def instantiate_asker(existing)
-    @asker = Asker.new(existing[:asker])
-  end
-
-  def pull_asker_from_query_param
+  def pull_asker
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
+    elsif asker_exists?
+      # p '- - - - - - - - - - - - - - asker_exists, yes- - - - - - - - - - - - - - - -' 
+      @asker = require_asker
     else
+      # p '- - - - - - - - - - - - - - no asker, translate- - - - - - - - - - - - - - - -' 
       @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end
   end
 
-  def pull_existing_from_cache
+  def pull_existing_results_from_cache
     Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
   end
 
-  def write_to_cache(cacheable)
-    Rails.cache.write(params[:for_id], cacheable, {expires_in: 10.minutes})
-  end
-
-  def augment_asker
+  def augment_asker_if_necessary
     RehydrateAddressService.new.from_citycode!(@asker)
   end
 
-  def create_cacheable_results_from_asker
+  def create_results_from_asker
     SerializeResultsService.get_instance.go(@asker)
   end
 

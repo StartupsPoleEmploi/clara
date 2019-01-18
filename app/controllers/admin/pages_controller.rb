@@ -36,8 +36,7 @@ module Admin
 
 
     def expire_json_objects
-      Rails.cache.clear
-      ActivatedModelsService.instance.regenerate
+      ExpireCache.call
       render json: {
         status: "ok"
       }

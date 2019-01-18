@@ -1,10 +1,10 @@
 class Rule < ApplicationRecord
   include Prefixable
 
-  after_save    { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_update  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_destroy { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
-  after_create  { Rails.cache.clear;ActivatedModelsService.instance.regenerate }
+  after_save    { ExpireCache.call }
+  after_update  { ExpireCache.call }
+  after_destroy { ExpireCache.call }
+  after_create  { ExpireCache.call }
 
   has_paper_trail ignore: [:updated_at]
 
