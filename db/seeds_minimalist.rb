@@ -277,3 +277,14 @@ aid_list.each do |aid_attributes|
   end
 end
 
+##################################################################
+# Zrrs
+##################################################################
+
+zrr_list = [
+  "02004", # Agnicourt
+  "49490", # Noyant-Villages
+  "71520", # StPierreleVieux
+]
+Zrr.destroy_all
+Zrr.new(value: zrr_list.join(",")).save

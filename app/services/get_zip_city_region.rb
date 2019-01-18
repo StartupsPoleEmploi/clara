@@ -2,31 +2,13 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-class BanService
+class GetZipCityRegion < ClaraService
+  initialize_with_keywords :citycode
+  is_callable
 
-  class << self
-    protected :new
-  end
-
-  @@the_double = nil
-
-  # Allow DI for testing purpose
-  def BanService.set_instance(the_double)
-    @@the_double = the_double
-  end
-
-  def BanService.get_instance
-    @@the_double.nil? ? BanService.new : @@the_double
-  end
-  
-  def initialize
-    @base_url = EnvService.get_instance.ara_url_ban
-    @base_url = @base_url
-  end
-
-  def get_zip_city_region(citycode)
-    if (citycode && citycode.is_a?(String) && !citycode.blank?)
-      escaped_address = URI.escape(@base_url + "rue&citycode=" + citycode) 
+  def call
+    if (@citycode && @citycode.is_a?(String) && !@citycode.blank?)
+      escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "rue&citycode=" + @citycode) 
       uri = URI.parse(escaped_address)
       response = HttpService.get_instance.get(uri)
       if !response.blank? && response.include?("timeout")

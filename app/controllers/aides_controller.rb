@@ -66,12 +66,8 @@ class AidesController < ApplicationController
     end
   end
 
-  def pull_existing_results_from_cache
-    Rails.cache.read(params[:for_id]) if params[:for_id] != "random"
-  end
-
   def augment_asker_if_necessary
-    RehydrateAddressService.new.from_citycode!(@asker)
+    @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
   end
 
   def create_results_from_asker

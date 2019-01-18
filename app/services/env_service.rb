@@ -2,6 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
+# deprecated. Try to use ENV[] directly.
 class EnvService
 
   class << self
@@ -17,10 +18,6 @@ class EnvService
 
   def EnvService.get_instance
     @@the_double.nil? ? EnvService.new : @@the_double
-  end
-    
-  def ara_url_ban
-    ENV['ARA_URL_BAN'] || ''
   end
     
   def ara_google_analytics_id

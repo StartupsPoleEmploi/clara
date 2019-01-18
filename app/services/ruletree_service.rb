@@ -66,9 +66,6 @@ class RuletreeService
   def calculate_is_eligible(rule, criterion_value, rule_type)
     calculate(rule, criterion_value, rule["value_eligible"], rule_type)
   end
-  def calculate_is_ineligible(rule, criterion_value, rule_type)
-    calculate(rule, criterion_value, rule["value_ineligible"], rule_type)
-  end
 
   def calculate(rule, criterion_value, rule_value, rule_type)
 
