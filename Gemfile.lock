@@ -418,6 +418,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     slop (3.6.0)
+    smart_init (2.0.3)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -530,6 +531,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-raven
   simplecov
+  smart_init
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
