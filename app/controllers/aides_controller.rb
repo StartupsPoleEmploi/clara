@@ -54,10 +54,6 @@ class AidesController < ApplicationController
     !!params[:for_id]
   end
 
-  def instantiate_asker_from_existing_results(existing_results)
-    @asker = Asker.new(existing_results[:asker])
-  end
-
   def pull_asker
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
