@@ -2,9 +2,11 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-class ZrrService
+class IsZrr < ClaraService
+  initialize_with_keywords :citycode
+  is_callable
 
-  def zrr?(citycode)
+  def call
     str_val = citycode.to_s
     five_digits_only = /\A\d{5}\z/
     has_5_digits = !!str_val.match(five_digits_only)
@@ -15,5 +17,4 @@ class ZrrService
     zrrs && zrrs.include?(citycode) ? "oui" : "non"
   end
   
-
 end
