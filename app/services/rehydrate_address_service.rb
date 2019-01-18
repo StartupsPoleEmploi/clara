@@ -2,8 +2,8 @@ class RehydrateAddressService
 
   def from_citycode!(asker)
     return asker unless asker.is_a?(Asker) && asker.v_location_citycode != nil && !asker.v_location_zipcode.blank?
-    p '- - - - - - - - - - - - - - RehydrateAddressService inside- - - - - - - - - - - - - - - -' 
-    p ''
+    # p '- - - - - - - - - - - - - - RehydrateAddressService inside- - - - - - - - - - - - - - - -' 
+    # p ''
     CalculateAskerService.new(asker).calculate_zrr!
     zip_city_region = BanService.get_instance.get_zip_city_region(asker.v_location_citycode)
     got_them = zip_city_region.is_a?(Array)
