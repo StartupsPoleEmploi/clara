@@ -8,16 +8,29 @@ describe HydrateAddress do
   end
   describe "call" do
     it "Raise an error if arg is not a asker attributes hash" do
-      # given
-      # when
-      # then
       expect { HydrateAddress.call(asker_attributes: //) }.to raise_error(ArgumentError)
     end
     it "Do not raise an error if arg is a asker attributes hash" do
-      # given
-      # when
-      # then
       expect { HydrateAddress.call(asker_attributes: Asker.new.attributes) }.not_to raise_error
+    end
+    it "Returns an asker" do
+      subject = HydrateAddress.call(asker_attributes: Asker.new.attributes) 
+      expect(subject.is_a?(Asker)).to eq(true)
+    end
+    it "Returns an asker with same attributes if citycode is not here" do
+      asker = Asker.new(v_location_zipcode: "02340")
+      returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
+      expect(returned_asker.attributes).to eq(asker.attributes)
+    end
+    it "Returns an asker with same attributes if zipcode is already here" do
+      asker = Asker.new(v_location_citycode: "02004", v_location_zipcode: "02340")
+      returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
+      expect(returned_asker.attributes).to eq(asker.attributes)
+    end
+    it "Returns an asker with fulfilled geo attributes if citycode is here, but not zipcode" do
+      asker = Asker.new(v_location_citycode: "02004")
+      returned_asker = HydrateAddress.call(asker_attributes: asker.attributes) 
+      expect(returned_asker.attributes).to eq(asker.attributes)
     end
   end
 
