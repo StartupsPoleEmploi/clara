@@ -27,8 +27,7 @@ class HydrateAddress < ClaraService
   end
 
   def _valid_args
-    empty_asker = Asker.new
-    @asker_attributes.is_a?(Hash) && empty_asker.keys.sort == @asker_attributes.keys.sort
+    @asker_attributes.is_a?(Hash) && Asker.new.attributes.keys.sort == @asker_attributes.keys.sort
   end
 
 end

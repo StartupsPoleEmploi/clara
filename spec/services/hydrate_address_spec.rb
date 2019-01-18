@@ -13,6 +13,12 @@ describe HydrateAddress do
       # then
       expect { HydrateAddress.call(asker_attributes: //) }.to raise_error(ArgumentError)
     end
+    it "Do not raise an error if arg is a asker attributes hash" do
+      # given
+      # when
+      # then
+      expect { HydrateAddress.call(asker_attributes: Asker.new.attributes) }.not_to raise_error
+    end
   end
 
   def _fake_is_zrr
