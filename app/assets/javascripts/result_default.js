@@ -88,7 +88,7 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
     };
 
     var default_state = function() {
-      var previous_state = 42;
+      var previous_state = store.get(state_key());;
       var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
       return has_state ? previous_state : initial_state;
     }
