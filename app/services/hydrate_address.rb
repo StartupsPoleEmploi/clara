@@ -9,7 +9,7 @@ class HydrateAddress < ClaraService
     output_asker = Asker.new(@asker_attributes)
     citycode = asker_attributes[:v_location_citycode]
     zipcode = asker_attributes[:v_location_zipcode]
-    return output_asker if citycode == nil
+    return output_asker if citycode.blank?
     return output_asker if zipcode.present?
     p '- - - - - - - - - - - - - - RehydrateAddressService inside- - - - - - - - - - - - - - - -' 
     p ''
