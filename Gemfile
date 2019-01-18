@@ -37,7 +37,6 @@ gem "rubyzip", "~> 1.2.2" # explicitly to avoid vulnerability issue
 gem "clipboard" # debug purpose only
 gem "actionpack-page_caching"
 gem "awesome_print"
-gem "smart_init"
 
 ## Devops
 gem "newrelic_rpm"
