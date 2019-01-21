@@ -43,9 +43,6 @@ class RuleValidator < ActiveModel::Validator
                             ]
 
     other_attributes = attr_h.except(*attributes_whitelist)
-    p '- - - - - - - - - - - - - - other_attributes- - - - - - - - - - - - - - - -' 
-    pp other_attributes
-    p ''
     other_attributes.each do |k,v|  
       if v.present?
         record.errors.add(k, :confirmation)
