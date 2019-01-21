@@ -70,4 +70,9 @@ feature 'HomeSpec' do
     expect(page).to have_css 'meta[name="google-site-verification"]', count:7, :visible => false
   end
 
+  scenario 'Display clickable modal for video through js-modal component' do
+    visit root_path 
+    expect(page).to have_css ('.js-modal')
+  end
+
 end
