@@ -20,8 +20,8 @@ class Rule < ApplicationRecord
   has_many :custom_rule_checks, dependent: :delete_all
 
 
-  validates :name, presence: true, uniqueness: true
-  validates_with KindValidator
+  validates :name, uniqueness: true
+  validates_with RuleValidator
   # validate :kind, 
   # validate :validate_non_empty_rule, 
   #          :validate_non_ambiguous_type, 

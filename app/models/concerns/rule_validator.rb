@@ -1,4 +1,4 @@
-class KindValidator < ActiveModel::Validator
+class RuleValidator < ActiveModel::Validator
   def validate(record)
     p '- - - - - - - - - - - - - - attributes- - - - - - - - - - - - - - - -' 
     pp record.attributes
@@ -13,10 +13,26 @@ class KindValidator < ActiveModel::Validator
   end
 
   def _validate_simple_rule(record)
-    _validate_simple_rule_fields(record)
+    _validate_simple_rule_authorized_fields(record)
+    _validate_simple_rule_mandatory_fields(record)
   end
 
-  def _validate_simple_rule_fields(record)
+  def _validate_simple_rule_mandatory_fields(record)
+    attr_h = record.attributes
+    attributes_mandatory = ["name",
+                              "kind",
+                              "variable_id",
+                              "operator_type",
+                              "value_eligible",
+                            ]
+    attributes_mandatory.each do |mandatory_attr|
+      if attr_h[mandatory_attr].blank?
+        record.errors.add(mandatory_attr, :blank)
+      end
+    end
+  end
+
+  def _validate_simple_rule_authorized_fields(record)
     attr_h = record.attributes
     attributes_whitelist = ["name", 
                               "kind", 
