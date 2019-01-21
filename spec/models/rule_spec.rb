@@ -74,6 +74,26 @@ describe Rule, type: :model do
           expect(_nb_of_errors_for(rule)).to eq 1
         end
       end
+      describe 'Can invalidate a simple Rule if a mandatory field is missing' do
+        it 'rule.name is mandatory for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.name = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.description is optional for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.description = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 0
+        end
+      end
     end
   end
 
