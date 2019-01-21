@@ -55,6 +55,24 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
+        it 'rule.composition_type is not authorized for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.composition_type = :and_rule
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.value_ineligible is deprecated, thus is not authorized for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.value_ineligible = "43"
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
   end
