@@ -122,6 +122,15 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
+        it 'rule.kind is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.kind = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
 
@@ -187,6 +196,15 @@ describe Rule, type: :model do
           #given
           rule = create(:rule, :be_an_adult)
           rule.name = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.kind is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.kind = nil
           #when
           rule.valid?
           #then
