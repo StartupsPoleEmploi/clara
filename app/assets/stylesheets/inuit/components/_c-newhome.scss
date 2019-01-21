@@ -367,7 +367,7 @@ dialog {
 @media (max-width: 55.625em) {
 
   .simple-modal {
-    left: 5%;
+    left: 2%;
     top: 5%;
     bottom: 5%;
     width: 90%;
@@ -489,25 +489,28 @@ div.hidden {
 
 iframe {  
 
+  display: block;
   margin-top: space(8);
   left: 0;
   top:0 ; 
   position: absolute;
 
-  @media (max-width: 44.375em) {
+  @include mq($from: mobile) {
     height: 97%;
-    width: 50%;
+    width: 100%;
+    text-align:center;
   }
   
-  @media (max-width: 55.625em) {
+  @include mq($from: tablet) {
     height: 92%;
-    width: 720px;
+    width: 100%;
+    text-align:center;
   }
 
   @include mq($from: desktop) {
     height: 405px;
     width: 720px;
-    left: 1%;
+    text-align:center;
     bottom: 1%;
   }
 }
