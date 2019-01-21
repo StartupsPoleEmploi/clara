@@ -21,6 +21,8 @@ class Rule < ApplicationRecord
 
 
   validates :name, presence: true, uniqueness: true
+  validates_with KindValidator
+  # validate :kind, 
   # validate :validate_non_empty_rule, 
   #          :validate_non_ambiguous_type, 
   #          :validate_simple_rule_mandatory_fields, 
