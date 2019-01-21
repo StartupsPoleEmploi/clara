@@ -334,12 +334,10 @@ dialog {
 /* modal */
 .simple-modal {
   position: fixed;
-  left: 15%;
   top: 5%;
-  width: 53%;
-  height: 40%;
+  width: 740px;
+  height: 450px;
   //max-height: 98vh;
-  right: auto; 
   background: #fff;
   z-index: 667;
   padding: .25em;
@@ -373,6 +371,7 @@ dialog {
     top: 5%;
     bottom: 5%;
     width: 90%;
+    height: 43%;
   }
 
 }
@@ -491,14 +490,24 @@ div.hidden {
 iframe {  
 
   margin-top: space(8);
-  height: 97%;
-  width: 100%;
   left: 0;
   top:0 ; 
   position: absolute;
+
+  @media (max-width: 44.375em) {
+    height: 97%;
+    width: 50%;
+  }
   
+  @media (max-width: 55.625em) {
+    height: 92%;
+    width: 720px;
+  }
+
   @include mq($from: desktop) {
     height: 405px;
     width: 720px;
+    left: 1%;
+    bottom: 1%;
   }
 }
