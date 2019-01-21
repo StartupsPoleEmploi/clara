@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.11.0 (18/1/2019)
+-[#1093][ADMIN] BO : formulaires en erreur
+
+
 ## 18.10.3 (18/1/2019)
 -[#1104][TECH] Test du RehydrateAddressService
 
