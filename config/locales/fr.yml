@@ -160,7 +160,7 @@ fr:
       second: Seconde
       year: Année
   errors:
-    format: "%{attribute} %{message}"
+    format: "%{attribute} : la valeur %{message}"
     messages:
       accepted: doit être accepté(e)
       blank: doit être rempli(e)
