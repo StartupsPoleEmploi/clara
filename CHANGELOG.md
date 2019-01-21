@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.10.4 (18/1/2019)
+-[#780][FEATURE] Video en modal sur HP
+
+
 ## 18.10.3 (18/1/2019)
 -[#1104][TECH] Test du RehydrateAddressService
 
