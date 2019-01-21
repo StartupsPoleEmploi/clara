@@ -70,7 +70,8 @@ describe Rule, type: :model do
       it 'Can invalidate a simple Rule if name already exists' do
         #given
         rule1 = create(:rule, :be_an_adult)
-        rule2 = build(:rule, :be_an_adult)
+        rule2 = create(:rule, :be_a_child)
+        rule2.name = rule1.name
         #when
         rule2.valid?
         #then
