@@ -66,6 +66,15 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
+        it 'rule.operator_type is not authorized for a composite rule' do
+          #given
+          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule.operator_type = :less_than
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
 

@@ -9,6 +9,35 @@ class RuleValidator < ActiveModel::Validator
     end
   end
 
+  def _validate_composite_rule(record)
+    _validate_composite_rule_authorized_fields(record)
+    _validate_composite_rule_mandatory_fields(record)    
+  end
+
+  def _validate_composite_rule_authorized_fields(record)
+    attr_h = JSON.parse(record.to_json(:include => {slave_rules: {only:[:id, :name]}}))
+    attributes_whitelist = ["name", 
+                              "kind", 
+                              "description", 
+                              "slave_rules", 
+                              "composition_type", 
+                              "id", 
+                              "created_at", 
+                              "updated_at", 
+                            ]
+
+    other_attributes = attr_h.except(*attributes_whitelist)
+    other_attributes.each do |k,v|  
+      if v.present?
+        record.errors.add(k, :present)
+      end
+    end
+  end
+
+  def _validate_composite_rule_mandatory_fields(record)
+
+  end
+
   def _validate_simple_rule(record)
     _validate_simple_rule_authorized_fields(record)
     _validate_simple_rule_mandatory_fields(record)
@@ -50,8 +79,6 @@ class RuleValidator < ActiveModel::Validator
     end
   end
 
-  def _validate_composite_rule(attr_h)
-    
-  end
+
 
 end
