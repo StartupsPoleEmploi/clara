@@ -101,7 +101,24 @@ describe Rule, type: :model do
           rule.name = ""
           #when
           rule.valid?
-          pp rule.errors.inspect
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.slave_rules is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.slave_rules = []
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.composition_type is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.composition_type = nil
+          #when
+          rule.valid?
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
