@@ -36,6 +36,15 @@ describe Rule, type: :model do
         #then
         expect(_nb_of_errors_for(rule)).to eq 0
       end
+      it 'Can invalidate a simple Rule if name already exists' do
+        #given
+        rule1 = create(:rule, :be_an_adult)
+        rule2 = build(:rule, :be_an_adult)
+        #when
+        rule2.valid?
+        #then
+        expect(_nb_of_errors_for(rule2)).to eq 1
+      end
       it 'Can invalidate a simple Rule if kind is not valid' do
         #given
         rule = build(:rule, :be_an_adult)
