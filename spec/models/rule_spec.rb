@@ -45,14 +45,16 @@ describe Rule, type: :model do
         #then
         expect(_nb_of_errors_for(rule)).to eq 1
       end
-      it 'Can invalidate a simple Rule if an unauthorized field is filled' do
-        #given
-        rule = build(:rule, :be_an_adult)
-        rule.slave_rules = [build(:rule, :be_paris), build(:rule, :be_a_child)]
-        #when
-        rule.valid?
-        #then
-        expect(_nb_of_errors_for(rule)).to eq 1
+      describe 'Can invalidate a simple Rule if an unauthorized field is filled' do
+        it 'rule.slave_rules is not authorized for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.slave_rules = [build(:rule, :be_paris), build(:rule, :be_a_child)]
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
   end
