@@ -33,7 +33,7 @@ class KindValidator < ActiveModel::Validator
     p '- - - - - - - - - - - - - - other_attributes- - - - - - - - - - - - - - - -' 
     pp other_attributes
     p ''
-    unless other_attributes.all? { |k,v| v.blank?  }
+    unless other_attributes.values.all? { |v| v.blank?  }
       record.errors.add(:kind, :confirmation)
     end
   end
