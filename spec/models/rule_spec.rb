@@ -22,6 +22,20 @@ describe Rule, type: :model do
     Rule.find_by(name: name) != nil
   end
 
+  def _nb_of_errors_for(rule)
+    rule.errors.messages.size
+  end
 
+  describe 'Validation' do
+    it 'Can validate a valid Rule' do
+      #given
+      rule = create(:rule, :be_an_adult)
+      #when
+      # rule.kind="blazer"
+      rule.valid?
+      #then
+      expect(_nb_of_errors_for(rule)).to eq 0
+    end
+  end
 
 end
