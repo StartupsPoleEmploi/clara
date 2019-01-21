@@ -27,14 +27,33 @@ describe Rule, type: :model do
   end
 
   describe 'Validation' do
-    it 'Can validate a valid Rule' do
-      #given
-      rule = create(:rule, :be_an_adult)
-      #when
-      # rule.kind="blazer"
-      rule.valid?
-      #then
-      expect(_nb_of_errors_for(rule)).to eq 0
+    describe 'Simple rule' do
+      it 'Can validate a valid simple Rule' do
+        #given
+        rule = build(:rule, :be_an_adult)
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 0
+      end
+      it 'Can invalidate a simple Rule if kind is not valid' do
+        #given
+        rule = build(:rule, :be_an_adult)
+        rule.kind = "wrong_value"
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 1
+      end
+      it 'Can invalidate a simple Rule if an unauthorized field is filled' do
+        #given
+        rule = build(:rule, :be_an_adult)
+        rule.slave_rules = [build(:rule, :be_paris), build(:rule, :be_a_child)]
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 1
+      end
     end
   end
 
