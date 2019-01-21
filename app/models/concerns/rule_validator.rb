@@ -35,7 +35,17 @@ class RuleValidator < ActiveModel::Validator
   end
 
   def _validate_composite_rule_mandatory_fields(record)
-
+    attr_h = JSON.parse(record.to_json(:include => {slave_rules: {only:[:id, :name]}}))
+    attributes_mandatory = ["name",
+                              "kind",
+                              "slave_rules",
+                              "composition_type",
+                            ]
+    attributes_mandatory.each do |mandatory_attr|
+      if attr_h[mandatory_attr].blank?
+        record.errors.add(mandatory_attr, :blank)
+      end
+    end
   end
 
   def _validate_simple_rule(record)

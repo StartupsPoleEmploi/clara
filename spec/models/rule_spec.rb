@@ -31,7 +31,7 @@ describe Rule, type: :model do
     describe 'Composite rule' do
       it 'Can validate a valid composite Rule' do
         #given
-        rule = build(:rule, :be_an_adult_and_a_spectacles)
+        rule = create(:rule, :be_an_adult_and_a_spectacles)
         #when
         rule.valid?
         #then
@@ -49,7 +49,7 @@ describe Rule, type: :model do
       end
       it 'Can invalidate a composite Rule if kind is not valid' do
         #given
-        rule = build(:rule, :be_an_adult_and_a_spectacles)
+        rule = create(:rule, :be_an_adult_and_a_spectacles)
         rule.kind = "wrong_value"
         #when
         rule.valid?
@@ -59,7 +59,7 @@ describe Rule, type: :model do
       describe 'Can invalidate a composite Rule if an unauthorized field is filled' do
         it 'rule.variable is not authorized for a composite rule' do
           #given
-          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
           rule.variable = create(:variable, :age)
           #when
           rule.valid?
@@ -68,7 +68,7 @@ describe Rule, type: :model do
         end
         it 'rule.operator_type is not authorized for a composite rule' do
           #given
-          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
           rule.operator_type = :less_than
           #when
           rule.valid?
@@ -77,7 +77,7 @@ describe Rule, type: :model do
         end
         it 'rule.value_eligible is not authorized for a composite rule' do
           #given
-          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
           rule.value_eligible = "41"
           #when
           rule.valid?
@@ -86,10 +86,22 @@ describe Rule, type: :model do
         end
         it 'rule.value_ineligible is deprecated, thus not authorized for a composite rule' do
           #given
-          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
           rule.value_eligible = "41"
           #when
           rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+      end
+      describe 'Can invalidate a composite Rule if a mandatory field is missing' do
+        it 'rule.name is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.name = ""
+          #when
+          rule.valid?
+          pp rule.errors.inspect
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
@@ -99,7 +111,7 @@ describe Rule, type: :model do
     describe 'Simple rule' do
       it 'Can validate a valid simple Rule' do
         #given
-        rule = build(:rule, :be_an_adult)
+        rule = create(:rule, :be_an_adult)
         #when
         rule.valid?
         #then
@@ -117,7 +129,7 @@ describe Rule, type: :model do
       end
       it 'Can invalidate a simple Rule if kind is not valid' do
         #given
-        rule = build(:rule, :be_an_adult)
+        rule = create(:rule, :be_an_adult)
         rule.kind = "wrong_value"
         #when
         rule.valid?
@@ -127,8 +139,8 @@ describe Rule, type: :model do
       describe 'Can invalidate a simple Rule if an unauthorized field is filled' do
         it 'rule.slave_rules is not authorized for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
-          rule.slave_rules = [build(:rule, :be_paris), build(:rule, :be_a_child)]
+          rule = create(:rule, :be_an_adult)
+          rule.slave_rules = [create(:rule, :be_paris), create(:rule, :be_a_child)]
           #when
           rule.valid?
           #then
@@ -136,7 +148,7 @@ describe Rule, type: :model do
         end
         it 'rule.composition_type is not authorized for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.composition_type = :and_rule
           #when
           rule.valid?
@@ -145,7 +157,7 @@ describe Rule, type: :model do
         end
         it 'rule.value_ineligible is deprecated, thus is not authorized for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.value_ineligible = "43"
           #when
           rule.valid?
@@ -156,7 +168,7 @@ describe Rule, type: :model do
       describe 'Can invalidate a simple Rule if a mandatory field is missing' do
         it 'rule.name is mandatory for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.name = ""
           #when
           rule.valid?
@@ -165,7 +177,7 @@ describe Rule, type: :model do
         end
         it 'rule.description is optional for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.description = ""
           #when
           rule.valid?
@@ -174,7 +186,7 @@ describe Rule, type: :model do
         end
         it 'rule.variable is mandatory for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.variable = nil
           #when
           rule.valid?
@@ -183,7 +195,7 @@ describe Rule, type: :model do
         end
         it 'rule.operator_type is mandatory for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.operator_type = nil
           #when
           rule.valid?
@@ -192,7 +204,7 @@ describe Rule, type: :model do
         end
         it 'rule.value_eligible is mandatory for a simple rule' do
           #given
-          rule = build(:rule, :be_an_adult)
+          rule = create(:rule, :be_an_adult)
           rule.value_eligible = nil
           #when
           rule.valid?
