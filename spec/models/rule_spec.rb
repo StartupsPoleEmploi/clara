@@ -36,6 +36,15 @@ describe Rule, type: :model do
         #then
         expect(_nb_of_errors_for(rule)).to eq 0
       end
+      it 'Can invalidate a composite Rule if name already exists' do
+        #given
+        rule1 = create(:rule, :be_an_adult_and_a_spectacles)
+        rule2 = build(:rule, :be_an_adult_and_a_spectacles)
+        #when
+        rule2.valid?
+        #then
+        expect(_nb_of_errors_for(rule2)).to eq 1
+      end
     end
     describe 'Simple rule' do
       it 'Can validate a valid simple Rule' do
