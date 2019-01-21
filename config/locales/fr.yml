@@ -23,6 +23,8 @@ fr:
       next: "page suivante"
       truncate: "..."
   administrate:
+    form:
+      errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
     actions:
       new: "Nouveau"
       show: "Détails"

@@ -14,7 +14,8 @@ and renders all form fields for a resource's editable attributes.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
-<%- kind = request.query_parameters["rule_kind"] ? request.query_parameters["rule_kind"] :  page.resource.try(:operator_type).blank? ? "composite" : "simple"  %>
+<%- rule_kind_param = request.query_parameters["rule_kind"]%>
+<%- kind = rule_kind_param ? rule_kind_param :  page.resource.try(:kind)  %>
 
 <%- mandatory_simple_rules = ["name", "variable", "operator_type", "value_eligible"] %>
 <%- mandatory_composite_rules = ["name", "slave_rules", "composition_type"] %>
@@ -41,7 +42,7 @@ and renders all form fields for a resource's editable attributes.
 
       <ul>
         <% page.resource.errors.full_messages.each do |message| %>
-          <li class="flash-error"><%= message %></li>
+          <li class="flash-error" data-med="<%=page.resource.errors.inspect%>"><%= message %></li>
         <% end %>
       </ul>
     </div>

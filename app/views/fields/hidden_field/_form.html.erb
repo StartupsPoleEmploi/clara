@@ -1,6 +1,4 @@
-<div class="field-unit__label">
-  <%= f.label field.attribute %>
-</div>
+<%- predefined_value ||= "" %>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute %>
+  <%= f.hidden_field field.attribute, value: predefined_value %>
 </div>
