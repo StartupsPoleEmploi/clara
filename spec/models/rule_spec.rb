@@ -56,6 +56,17 @@ describe Rule, type: :model do
         #then
         expect(_nb_of_errors_for(rule)).to eq 1
       end
+      describe 'Can invalidate a composite Rule if an unauthorized field is filled' do
+        it 'rule.variable is not authorized for a composite rule' do
+          #given
+          rule = build(:rule, :be_an_adult_and_a_spectacles)
+          rule.variable = create(:variable, :age)
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+      end
     end
 
     describe 'Simple rule' do
