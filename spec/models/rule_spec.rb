@@ -27,6 +27,7 @@ describe Rule, type: :model do
   end
 
   describe 'Validation' do
+
     describe 'Composite rule' do
       it 'Can validate a valid composite Rule' do
         #given
@@ -39,13 +40,24 @@ describe Rule, type: :model do
       it 'Can invalidate a composite Rule if name already exists' do
         #given
         rule1 = create(:rule, :be_an_adult_and_a_spectacles)
-        rule2 = build(:rule, :be_an_adult_and_a_spectacles)
+        rule2 = create(:rule, :be_an_adult_or_a_spectacles)
+        rule2.name = rule1.name
         #when
         rule2.valid?
         #then
         expect(_nb_of_errors_for(rule2)).to eq 1
       end
+      it 'Can invalidate a composite Rule if kind is not valid' do
+        #given
+        rule = build(:rule, :be_an_adult_and_a_spectacles)
+        rule.kind = "wrong_value"
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 1
+      end
     end
+
     describe 'Simple rule' do
       it 'Can validate a valid simple Rule' do
         #given
