@@ -160,13 +160,13 @@ fr:
       second: Seconde
       year: Année
   errors:
-    format: "%{attribute} : la valeur %{message}"
+    format: "%{attribute} : %{message}"
     messages:
       accepted: doit être accepté(e)
-      blank: doit être renseignée
+      blank: doit être renseigné
       present: doit être vide
       confirmation: ne concorde pas avec %{attribute}
-      empty: doit être renseignée
+      empty: doit être renseigné
       equal_to: doit être égal à %{count}
       even: doit être pair
       exclusion: n'est pas disponible

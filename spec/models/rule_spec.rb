@@ -22,31 +22,6 @@ describe Rule, type: :model do
     Rule.find_by(name: name) != nil
   end
 
-  describe '.validate_non_empty_rule' do
-    it 'should NOT be valid for an empty rule' do
-      # given
-      empty_rule  = build(:rule)
-      # when
-      empty_rule.valid?
-      # then
-      expect(empty_rule.errors[:non_empty_rule].length).to eq 1
-    end
-    it 'should be valid for a simple rule' do
-      # given
-      simple_rule = create(:rule, :be_an_adult)
-      # when
-      simple_rule.valid?
-      # then
-      expect(simple_rule.errors[:non_empty_rule].length).to eq 0
-    end
-    it 'should be valid for a complex rule' do
-      # given
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      # when
-      complex_rule.valid?
-      # then
-      expect(complex_rule.errors[:non_empty_rule].length).to eq 0
-    end
-  end
+
 
 end
