@@ -1,8 +1,5 @@
 class RuleValidator < ActiveModel::Validator
   def validate(record)
-    p '- - - - - - - - - - - - - - attributes- - - - - - - - - - - - - - - -' 
-    pp record.attributes
-    p ''
     if record.kind != "simple" && record.kind != "composite"
       record.errors.add(:kind, :invalid)
     elsif record.kind == "simple"
@@ -46,9 +43,6 @@ class RuleValidator < ActiveModel::Validator
                             ]
 
     other_attributes = attr_h.except(*attributes_whitelist)
-    p '- - - - - - - - - - - - - - other_attributes- - - - - - - - - - - - - - - -' 
-    pp other_attributes
-    p ''
     unless other_attributes.values.all? { |v| v.blank?  }
       record.errors.add(:kind, :confirmation)
     end
