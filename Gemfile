@@ -95,4 +95,3 @@ group :development do
   gem "rb-fsevent", require: false
   gem "letter_opener_web", "~> 1.0"
 end
-
