@@ -27,6 +27,16 @@ describe Rule, type: :model do
   end
 
   describe 'Validation' do
+    describe 'Composite rule' do
+      it 'Can validate a valid composite Rule' do
+        #given
+        rule = build(:rule, :be_an_adult_and_a_spectacles)
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 0
+      end
+    end
     describe 'Simple rule' do
       it 'Can validate a valid simple Rule' do
         #given
