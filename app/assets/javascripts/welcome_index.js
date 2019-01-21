@@ -171,8 +171,10 @@ clara.load_js(function only_if(){return $("body").hasClasses("welcome", "index")
             var $this = $(this),
                 $close = $('#js-modal-close');
 
+
             if (event.keyCode == 27) { // esc
                 $close.trigger('click');
+
             }
             if (event.keyCode == 9) { // tab or maj+tab
 
@@ -219,6 +221,7 @@ clara.load_js(function only_if(){return $("body").hasClasses("welcome", "index")
 
             $close.focus();
         });
+
 
 
 });
