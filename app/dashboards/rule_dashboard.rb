@@ -62,7 +62,7 @@ class RuleDashboard < Administrate::BaseDashboard
     :variable,
     :operator_type,
     :value_eligible,
-    # :value_ineligible,
+    :value_ineligible,
     :slave_rules,
     :composition_type,
     :aids,
