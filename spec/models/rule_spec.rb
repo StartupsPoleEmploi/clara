@@ -93,6 +93,15 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 0
         end
+        it 'rule.operator_type is mandatory for a simple rule' do
+          #given
+          rule = build(:rule, :be_an_adult)
+          rule.operator_type = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
   end
