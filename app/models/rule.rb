@@ -17,7 +17,6 @@ class Rule < ApplicationRecord
     more_or_equal_than: "more_or_equal_than", 
     less_or_equal_than: "less_or_equal_than", 
     starts_with: "starts_with", 
-    include: "include", 
     amongst: "amongst", 
     not_amongst: "not_amongst"
   }

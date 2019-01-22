@@ -115,7 +115,6 @@ module Admin
       Rule.where(operator_type: :more_or_equal_than).update_all(operator_kind: 'more_or_equal_than')
       Rule.where(operator_type: :less_or_equal_than).update_all(operator_kind: 'less_or_equal_than')
       Rule.where(operator_type: :starts_with).update_all(operator_kind: 'starts_with')
-      Rule.where(operator_type: :include).update_all(operator_kind: 'include')
       Rule.where(operator_type: :amongst).update_all(operator_kind: 'amongst')
       Rule.where(operator_type: :not_amongst).update_all(operator_kind: 'not_amongst')
       
