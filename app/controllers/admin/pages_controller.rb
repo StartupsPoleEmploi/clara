@@ -109,16 +109,16 @@ module Admin
 
     def post_op
       Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
-      # Rule.where(operator_type: :not_equal).update_all(operator_kind: 'not_equal')
-      # Rule.where(operator_type: :more_than).update_all(operator_kind: 'more_than')
-      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
-      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
-      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
-      # Rule.where("operator_type is 1").update_all(operator_type: 'eq')
-      # Rule.where("operator_type is 2").update_all(operator_type: 'eq')
-      # Rule.where("operator_type is 3").update_all(operator_type: 'eq')
-      p '- - - - - - - - - - - - - - post_op- - - - - - - - - - - - - - - -' 
-      p ''      
+      Rule.where(operator_type: :not_equal).update_all(operator_kind: 'not_equal')
+      Rule.where(operator_type: :more_than).update_all(operator_kind: 'more_than')
+      Rule.where(operator_type: :less_than).update_all(operator_kind: 'less_than')
+      Rule.where(operator_type: :more_or_equal_than).update_all(operator_kind: 'more_or_equal_than')
+      Rule.where(operator_type: :less_or_equal_than).update_all(operator_kind: 'less_or_equal_than')
+      Rule.where(operator_type: :starts_with).update_all(operator_kind: 'starts_with')
+      Rule.where(operator_type: :include).update_all(operator_kind: 'include')
+      Rule.where(operator_type: :amongst).update_all(operator_kind: 'amongst')
+      Rule.where(operator_type: :not_amongst).update_all(operator_kind: 'not_amongst')
+      
       render json: {
         status: "ok"
       }
