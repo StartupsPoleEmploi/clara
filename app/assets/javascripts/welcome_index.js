@@ -1,6 +1,4 @@
-clara.load_js(function only_if() {
-  return $("body").hasClasses("welcome", "index")
-}, function() {
+clara.js_define('root', function() {
 
   store.clearAll();
   console.log("Version : " + clara.version);
@@ -200,5 +198,5 @@ clara.load_js(function only_if() {
     if (event.keyCode == 27) { 
       $('#js-modal-close').click()
   }
-});
+  });
 });
