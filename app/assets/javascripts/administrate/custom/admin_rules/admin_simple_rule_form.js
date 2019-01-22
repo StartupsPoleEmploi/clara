@@ -32,53 +32,53 @@ clara.js_define("admin_simple_rule_form", {
     $("#rule_variable_id").change(function(){
       that._set_value_type($original_input);
     });
-    $("#rule_operator_type").change(function(){
+    $("#rule_operator_kind").change(function(){
       that._set_value_type($original_input);
     });
 
-    var $selected = $('#rule_operator_type option[selected="selected"]');
+    var $selected = $('#rule_operator_kind option[selected="selected"]');
     var first_state = {val:$selected.val(), for_var:$("#rule_variable_id option:selected").text()};
-    var all_choices = $("#rule_operator_type option").map(function(i,e){return {value: $(e).val(), text:$(e).text().trim()};}).toArray();
-    that._set_operator_type(all_choices, first_state);
+    var all_choices = $("#rule_operator_kind option").map(function(i,e){return {value: $(e).val(), text:$(e).text().trim()};}).toArray();
+    that._set_operator_kind(all_choices, first_state);
     $("#rule_variable_id").change(function(){
-      that._set_operator_type(all_choices, first_state);
+      that._set_operator_kind(all_choices, first_state);
     });
   },
 
-  _set_operator_type: function(all_choices, first_state) {
+  _set_operator_kind: function(all_choices, first_state) {
       var that = this;
       var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
       if (kind === "selectionnable") {
         var elts_size = $("select#rule_variable_id").find('option:selected').attr("data-elements").split(",").length;
         if (elts_size <= 2) {
-          that._whitelist_operator_type(first_state, all_choices, ["eq"]);
+          that._whitelist_operator_kind(first_state, all_choices, ["eq"]);
         } else {
-          that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal"]);
+          that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal"]);
         }
       } else if (kind === "integer") {
-        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with"]);
       } else if (kind === "string") {
-        that._whitelist_operator_type(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       }
   },
 
-  _whitelist_operator_type: function(first_state, all_choices, user_choices) {
-    $('#rule_operator_type').empty();
+  _whitelist_operator_kind: function(first_state, all_choices, user_choices) {
+    $('#rule_operator_kind').empty();
     var actual_choices = all_choices.filter(function(one_choice){
       return _.includes(user_choices, one_choice.value);
     });
     var current_variable = $('#rule_variable_id option:selected').text();
     var force_selection = current_variable === first_state.for_var;
-    $('#rule_operator_type').append('<option value=""></option>');
+    $('#rule_operator_kind').append('<option value=""></option>');
     _.each(actual_choices, function(actual_choice){
       var current_value_is_origin = actual_choice.value === first_state.val;
       if (force_selection && current_value_is_origin) {
-        $('#rule_operator_type').append('<option selected="selected" value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
+        $('#rule_operator_kind').append('<option selected="selected" value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
       } else {
-        $('#rule_operator_type').append('<option value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
+        $('#rule_operator_kind').append('<option value="' + actual_choice.value + '">' + actual_choice.text + '</option>');
       }
     });
-    clara.zu_clean_select.main_function({for_select: $('#rule_operator_type')})
+    clara.zu_clean_select.main_function({for_select: $('#rule_operator_kind')})
   },
 
   _set_value_type: function($original_input) {
@@ -98,13 +98,13 @@ clara.js_define("admin_simple_rule_form", {
       } else if (kind === "integer") {
         $("#rule_value_eligible").replaceWith($original_input);
         $("#rule_value_eligible").attr("type", "number");
-        if (_.includes($("#rule_operator_type").val(), "amongst")) {
+        if (_.includes($("#rule_operator_kind").val(), "amongst")) {
           $("#rule_value_eligible").attr("type", "text");
         }
       } else if (kind === "string") {
         $("#rule_value_eligible").replaceWith($original_input);
         $("#rule_value_eligible").attr("type", "text");
-        if (_.includes($("#rule_operator_type").val(), "amongst")) {
+        if (_.includes($("#rule_operator_kind").val(), "amongst")) {
           $("#rule_value_eligible").attr("placeholder", "Example : value1;value2");
         }
       }

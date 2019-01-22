@@ -109,27 +109,27 @@ describe RuletreeService do
       let(:asker) { create :asker, v_location_citycode: '02004'}
       let(:variable) { create :variable, :location_citycode}
       context 'Amongst, yes' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :amongst, value_eligible: '02003,02004,02005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :amongst, value_eligible: '02003,02004,02005', variable: variable }
         context '02004 is amongst 02003,02004,02005' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'Amongst, no' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :amongst, value_eligible: '12003,12004,12005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :amongst, value_eligible: '12003,12004,12005', variable: variable }
         context '02004 is NOT amongst 12003,12004,12005' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'Not Amongst, yes' do
         let(:asker) { create :asker, v_location_citycode: '33404'}
-        let(:rule) { create :rule, kind: "simple", operator_type: :not_amongst, value_eligible: '02003,02004,02005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :not_amongst, value_eligible: '02003,02004,02005', variable: variable }
         context '33404 is NOT amongst 02003,02004,02005' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'Not Amongst, no' do
         let(:asker) { create :asker, v_location_citycode: '12003'}
-        let(:rule) { create :rule, kind: "simple", operator_type: :not_amongst, value_eligible: '12003,12004,12005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :not_amongst, value_eligible: '12003,12004,12005', variable: variable }
         context '12003 is NOT-NOT amongst 12003,12004,12005' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -139,73 +139,73 @@ describe RuletreeService do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
       context 'more_or_equal_than an Integer, limit case, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is more or equal than 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_or_equal_than an Integer, nominal case, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '12', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: '12', variable: variable }
         context '19 is more or equal than 12' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_or_equal_than an Integer, nominal case, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '27', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: '27', variable: variable }
         context '19 is not more or equal than 27' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'less_or_equal_than an Integer, limit case, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :less_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is less or equal than 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_or_equal_than an Integer, nominal case, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '27', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :less_or_equal_than, value_eligible: '27', variable: variable }
         context '19 is less or equal than 27' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_or_equal_than an Integer, nominal case, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '12', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :less_or_equal_than, value_eligible: '12', variable: variable }
         context '19 is not less or equal than 12' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'more_than an Integer, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :more_than, value_eligible: '18', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_than, value_eligible: '18', variable: variable }
         context '19 is more than 18' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_than an Integer, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :more_than, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_than, value_eligible: '20', variable: variable }
         context '19 is more than 20' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'less_than an Integer, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :less_than, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :less_than, value_eligible: '20', variable: variable }
         context '19 is less than 20' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_than an Integer, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :less_than, value_eligible: '17', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :less_than, value_eligible: '17', variable: variable }
         context '19 is less than 17' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'equal an Integer, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: '19', variable: variable }
         context '19 equal 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal an Integer, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: '20', variable: variable }
         context '19 equal 20' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -215,49 +215,49 @@ describe RuletreeService do
       let(:asker) { create :asker, v_allocation_type: 'ASS_AER_APS_AS-FNE'}
       let(:variable) { create :variable, variable_type: :string, name: 'v_allocation_type'}
       context 'equal a String, "eligible"' do
-        let(:rule) { create :rule,  kind: "simple",operator_type: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule,  kind: "simple",operator_kind: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal String, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
         context 'not_ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'not_equal a String, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :not_equal, value_eligible: 'aaa', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :not_equal, value_eligible: 'aaa', variable: variable }
         context 'aaa not_equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'not_equal String, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :not_equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :not_equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'starts_with String, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'ASS', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :starts_with, value_eligible: 'ASS', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with ASS' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case unsensitive, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'ass', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :starts_with, value_eligible: 'ass', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with ass' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case accent and non-alphanumeric, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'â-ss', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :starts_with, value_eligible: 'â-ss', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with â-ss' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'XXX', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :starts_with, value_eligible: 'XXX', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with XXX' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -415,8 +415,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_or_equal_than, more' do
       #given
-      operator_type = "less_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 22
       rule_value = "18"
       rule_type = "integer"
@@ -429,8 +429,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_or_equal_than, eq' do
       #given
-      operator_type = "less_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 18
       rule_value = "18"
       rule_type = "integer"
@@ -443,8 +443,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_or_equal_than, less' do
       #given
-      operator_type = "less_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 16
       rule_value = "18"
       rule_type = "integer"
@@ -457,8 +457,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_than, more' do
       #given
-      operator_type = "less_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 22
       rule_value = "18"
       rule_type = "integer"
@@ -471,8 +471,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_than, eq' do
       #given
-      operator_type = "less_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 18
       rule_value = "18"
       rule_type = "integer"
@@ -485,8 +485,8 @@ describe RuletreeService do
 
     it 'calculates integer, less_than, less' do
       #given
-      operator_type = "less_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "less_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 16
       rule_value = "18"
       rule_type = "integer"
@@ -499,8 +499,8 @@ describe RuletreeService do
 
     it 'calculates integer, more_or_equal_than, more' do
       #given
-      operator_type = "more_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 22
       rule_value = "18"
       rule_type = "integer"
@@ -513,8 +513,8 @@ describe RuletreeService do
 
     it 'calculates integer, more_or_equal_than, equal' do
       #given
-      operator_type = "more_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 18
       rule_value = "18"
       rule_type = "integer"
@@ -527,8 +527,8 @@ describe RuletreeService do
 
     it 'calculates integer, NOT more_or_equal_than, less' do
       #given
-      operator_type = "more_or_equal_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_or_equal_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 16
       rule_value = "18"
       rule_type = "integer"
@@ -542,8 +542,8 @@ describe RuletreeService do
 
     it 'calculates integer, eq, eq' do
       #given
-      operator_type = "eq"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "eq"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 34
       rule_value = "34"
       rule_type = "integer"
@@ -556,8 +556,8 @@ describe RuletreeService do
 
     it 'calculates integer, eq, diff' do
       #given
-      operator_type = "eq"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "eq"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 35
       rule_value = "34"
       rule_type = "integer"
@@ -570,8 +570,8 @@ describe RuletreeService do
 
     it 'calculates integer, not_equal, diff' do
       #given
-      operator_type = "not_equal"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "not_equal"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 35
       rule_value = "34"
       rule_type = "integer"
@@ -584,8 +584,8 @@ describe RuletreeService do
 
     it 'calculates integer, not_equal, eq' do
       #given
-      operator_type = "not_equal"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "not_equal"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 34
       rule_value = "34"
       rule_type = "integer"
@@ -598,8 +598,8 @@ describe RuletreeService do
 
     it 'calculates integer, more_than, more' do
       #given
-      operator_type = "more_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 22
       rule_value = "18"
       rule_type = "integer"
@@ -612,8 +612,8 @@ describe RuletreeService do
 
     it 'calculates integer, more_than, eq' do
       #given
-      operator_type = "more_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 18
       rule_value = "18"
       rule_type = "integer"
@@ -626,8 +626,8 @@ describe RuletreeService do
 
     it 'calculates integer, more_than, less' do
       #given
-      operator_type = "more_than"
-      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_type: operator_type).attributes
+      operator_kind = "more_than"
+      rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 16
       rule_value = "18"
       rule_type = "integer"
@@ -640,8 +640,8 @@ describe RuletreeService do
 
     it 'calculates string, starts_with, same string' do
       #given
-      operator_type = "starts_with"
-      rule_h = build(:rule, operator_type: operator_type).attributes
+      operator_kind = "starts_with"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
       criterion_value = 'ASS'
       rule_value = "ASS"
       rule_type = "string"
@@ -654,8 +654,8 @@ describe RuletreeService do
 
     it 'calculates string, starts_with, same string that starts with' do
       #given
-      operator_type = "starts_with"
-      rule_h = build(:rule, operator_type: operator_type).attributes
+      operator_kind = "starts_with"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
       criterion_value = 'ASSandsoon'
       rule_value = "ASS"
       rule_type = "string"
@@ -668,8 +668,8 @@ describe RuletreeService do
 
     it 'calculates string, starts_with, same string that DONT starts with' do
       #given
-      operator_type = "starts_with"
-      rule_h = build(:rule, operator_type: operator_type).attributes
+      operator_kind = "starts_with"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
       criterion_value = 'AaASSoon'
       rule_value = "ASS"
       rule_type = "string"
@@ -682,8 +682,8 @@ describe RuletreeService do
 
     it 'calculates string, amongst, nominal' do
       #given
-      operator_type = "amongst"
-      rule_h = build(:rule, operator_type: operator_type).attributes
+      operator_kind = "amongst"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
       criterion_value = "11"
       rule_value = "11,22,33"
       rule_type = "string"
@@ -696,9 +696,9 @@ describe RuletreeService do
 
     it 'Unknown operator' do
       #given
-      operator_type = "unknown"
+      operator_kind = "unknown"
       rule_h = build(:rule).attributes
-      rule_h["operator_type"] = "unknown"
+      rule_h["operator_kind"] = "unknown"
       criterion_value = 'ASS'
       rule_value = "ASS"
       rule_type = "string"

@@ -17,13 +17,13 @@ and renders all form fields for a resource's editable attributes.
 <%- rule_kind_param = request.query_parameters["rule_kind"]%>
 <%- kind = rule_kind_param ? rule_kind_param :  page.resource.try(:kind)  %>
 
-<%- mandatory_simple_rules = ["name", "variable", "operator_type", "value_eligible"] %>
+<%- mandatory_simple_rules = ["name", "variable", "operator_kind", "value_eligible"] %>
 <%- mandatory_composite_rules = ["name", "slave_rules", "composition_type"] %>
 <%- mandatory_list = kind == "composite" ? mandatory_composite_rules : mandatory_simple_rules %>
 
 
 <%- exclusion_simple_rules = ["composition_type", "slave_rules", "value_ineligible", "aids"] %>
-<%- exclusion_composite_rules = ["variable", "operator_type", "value_eligible", "value_ineligible", "aids"] %>
+<%- exclusion_composite_rules = ["variable", "operator_kind", "value_eligible", "value_ineligible", "aids"] %>
 <%- exclusion_list = kind == "composite" ? exclusion_composite_rules : exclusion_simple_rules %>
 
 <%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "slave_rules" => "help.rule.slave_rules", "composition_type" => "help.rule.composition_type"} %>

@@ -72,7 +72,7 @@ class RuletreeService
     typed_criterion_value = force_type_of(criterion_value, rule_type)
     typed_rule_value = force_type_of(rule_value, rule_type)
 
-    case rule["operator_type"]
+    case rule["operator_kind"]
       when 'eq'
         typed_criterion_value == typed_rule_value
       when 'not_equal'

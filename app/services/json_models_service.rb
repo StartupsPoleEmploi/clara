@@ -2,7 +2,7 @@ class JsonModelsService
 
 
   def self.rules
-    r_all = JSON.parse(Rule.all.to_json(:only => [ :id, :name, :value_eligible, :operator_type, :composition_type, :variable_id, :value_ineligible ], :include => {slave_rules: {only:[:id, :name]}}))
+    r_all = JSON.parse(Rule.all.to_json(:only => [ :id, :name, :value_eligible, :operator_kind, :composition_type, :variable_id, :value_ineligible ], :include => {slave_rules: {only:[:id, :name]}}))
     all_rules = r_all.map{|h| HashService.new.recursive_compact(h)}
     all_rules
   end

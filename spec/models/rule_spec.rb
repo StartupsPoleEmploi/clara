@@ -66,10 +66,10 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
-        it 'rule.operator_type is not authorized for a composite rule' do
+        it 'rule.operator_kind is not authorized for a composite rule' do
           #given
           rule = create(:rule, :be_an_adult_and_a_spectacles)
-          rule.operator_type = :less_than
+          rule.operator_kind = :less_than
           #when
           rule.valid?
           #then
@@ -228,10 +228,10 @@ describe Rule, type: :model do
           #then
           expect(_nb_of_errors_for(rule)).to eq 1
         end
-        it 'rule.operator_type is mandatory for a simple rule' do
+        it 'rule.operator_kind is mandatory for a simple rule' do
           #given
           rule = create(:rule, :be_an_adult)
-          rule.operator_type = nil
+          rule.operator_kind = nil
           #when
           rule.valid?
           #then

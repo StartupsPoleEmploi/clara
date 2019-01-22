@@ -58,7 +58,7 @@ class RuleValidator < ActiveModel::Validator
     attributes_mandatory = ["name",
                               "kind",
                               "variable_id",
-                              "operator_type",
+                              "operator_kind",
                               "value_eligible",
                             ]
     attributes_mandatory.each do |mandatory_attr|
@@ -74,7 +74,7 @@ class RuleValidator < ActiveModel::Validator
                               "kind", 
                               "description", 
                               "variable_id", 
-                              "operator_type", 
+                              "operator_kind", 
                               "value_eligible",
                               "id", 
                               "created_at", 
