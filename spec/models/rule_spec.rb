@@ -143,6 +143,13 @@ describe Rule, type: :model do
           expect(_nb_of_errors_for(rule)).to eq 1
         end
         it 'rule.slave_rules is invalid with 1 rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.slave_rules = [create(:rule, :be_an_adult)]
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
         end
         it 'rule.slave_rules is valid with 2 rules' do
         end
