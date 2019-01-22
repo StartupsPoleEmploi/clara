@@ -161,6 +161,13 @@ describe Rule, type: :model do
           expect(_nb_of_errors_for(rule)).to eq 0
         end
         it 'rule.slave_rules is valid with 3 rules' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.slave_rules = [create(:rule, :be_an_adult), create(:rule, :be_a_child), create(:rule, :be_paris)]
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 0
         end
       end
     end
