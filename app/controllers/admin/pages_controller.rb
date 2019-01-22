@@ -108,14 +108,8 @@ module Admin
     end
 
     def post_kind
-      Rule.all.each do |rule|
-        if rule.operator_type.blank?
-          rule.kind = "composite"
-        else
-          rule.kind = "simple"
-        end
-        rule.save
-      end
+      Rule.where("operator_type is not null").update_all(kind: 'simple')
+      Rule.where("operator_type is null").update_all(kind: 'composite')
       render json: {
         status: "ok"
       }

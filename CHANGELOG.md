@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 18.11.0 (18/1/2019)
+## 18.11.1 (22/1/2019)
+-[#1108][ADMIN] BO : formulaires en erreur, bug
+
+
+## 18.11.0 (21/1/2019)
 -[#1093][ADMIN] BO : formulaires en erreur
 
 
