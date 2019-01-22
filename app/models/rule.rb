@@ -8,7 +8,7 @@ class Rule < ApplicationRecord
 
   has_paper_trail ignore: [:updated_at]
 
-  enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with, :amongst, :not_amongst]
+  enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with, :amongst, :not_amongst], _suffix: true
   enum operator_kind: {
     equal: "equal", 
     not_equal: "not_equal", 

@@ -108,7 +108,12 @@ module Admin
     end
 
     def post_op
-      Rule.where(operator_type: :eq).update_all(operator_type: 'eq')
+      Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
+      # Rule.where(operator_type: :not_equal).update_all(operator_kind: 'not_equal')
+      # Rule.where(operator_type: :more_than).update_all(operator_kind: 'more_than')
+      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
+      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
+      # Rule.where(operator_type: :eq).update_all(operator_kind: 'equal')
       # Rule.where("operator_type is 1").update_all(operator_type: 'eq')
       # Rule.where("operator_type is 2").update_all(operator_type: 'eq')
       # Rule.where("operator_type is 3").update_all(operator_type: 'eq')
