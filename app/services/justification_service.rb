@@ -6,7 +6,7 @@ class JustificationService
 
   def root_rules
     if @aid != nil && @aid.rule != nil
-      return @aid.rule.slave_rules if @aid.rule.is_complex_rule?
+      return @aid.rule.slave_rules if @aid.rule.kind == "composite"
       return [@aid.rule] if @aid.rule.kind == "simple"
     end
     []

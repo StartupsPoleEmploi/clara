@@ -23,5 +23,4 @@ class Rule < ApplicationRecord
   validates :name, uniqueness: true
   validates_with RuleValidator
 
-
 end
