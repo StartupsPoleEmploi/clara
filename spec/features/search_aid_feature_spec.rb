@@ -148,7 +148,7 @@ feature 'Search for aids' do
     r_more_than_20 = create(:rule, variable: v_age, operator_kind: :more_than, value_eligible: '20', kind: "simple")
     r_more_than_21 = create(:rule, variable: v_age, operator_kind: :more_than, value_eligible: '21', kind: "simple")
     r_less_than_18 = create(:rule, variable: v_age, operator_kind: :less_than, value_eligible: '18', kind: "simple")
-    r_eqal_than_18 = create(:rule, variable: v_age, operator_kind: :eq, value_eligible: '18', kind: "simple")
+    r_eqal_than_18 = create(:rule, variable: v_age, operator_kind: :equal, value_eligible: '18', kind: "simple")
     r_less_or_eq_18 = create(:rule, variable: v_age, operator_kind: :less_or_equal_than, value_eligible: '18', kind: "simple")
 
     contract_type_more   = create(:contract_type, name: 'more'  , description: 'more_description',   slug: 'more-slug',    business_id: 'more-id',   ordre_affichage: 4)
