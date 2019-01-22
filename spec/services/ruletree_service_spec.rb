@@ -6,7 +6,7 @@ describe RuletreeService do
   describe ".evaluate ADULT" do
     subject { RuletreeService.new.evaluate(rule, criterion_hash) }
     before do
-      create :rule, :be_an_adult, name: 'an_adult'
+      create :rule, :be_an_adult, name: 'an_adult', kind: "simple"
     end
     let(:rule) {JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
     context 'should return "uncertain" when criterion hash is empty' do
@@ -41,7 +41,7 @@ describe RuletreeService do
 
   describe ".evaluate CHILD" do
     before do
-      create :rule, :be_a_child
+      create :rule, :be_a_child, kind: "simple"
     end
     subject { RuletreeService.new.evaluate(rule, criterion_hash) }
     let(:rule) { JSON.parse(Rule.last.to_json(:include => [:slave_rules])) }
@@ -109,27 +109,27 @@ describe RuletreeService do
       let(:asker) { create :asker, v_location_citycode: '02004'}
       let(:variable) { create :variable, :location_citycode}
       context 'Amongst, yes' do
-        let(:rule) { create :rule, operator_type: :amongst, value_eligible: '02003,02004,02005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :amongst, value_eligible: '02003,02004,02005', variable: variable }
         context '02004 is amongst 02003,02004,02005' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'Amongst, no' do
-        let(:rule) { create :rule, operator_type: :amongst, value_eligible: '12003,12004,12005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :amongst, value_eligible: '12003,12004,12005', variable: variable }
         context '02004 is NOT amongst 12003,12004,12005' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'Not Amongst, yes' do
         let(:asker) { create :asker, v_location_citycode: '33404'}
-        let(:rule) { create :rule, operator_type: :not_amongst, value_eligible: '02003,02004,02005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :not_amongst, value_eligible: '02003,02004,02005', variable: variable }
         context '33404 is NOT amongst 02003,02004,02005' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'Not Amongst, no' do
         let(:asker) { create :asker, v_location_citycode: '12003'}
-        let(:rule) { create :rule, operator_type: :not_amongst, value_eligible: '12003,12004,12005', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :not_amongst, value_eligible: '12003,12004,12005', variable: variable }
         context '12003 is NOT-NOT amongst 12003,12004,12005' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -139,73 +139,73 @@ describe RuletreeService do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
       context 'more_or_equal_than an Integer, limit case, "eligible"' do
-        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is more or equal than 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_or_equal_than an Integer, nominal case, "eligible"' do
-        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '12', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '12', variable: variable }
         context '19 is more or equal than 12' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_or_equal_than an Integer, nominal case, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :more_or_equal_than, value_eligible: '27', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :more_or_equal_than, value_eligible: '27', variable: variable }
         context '19 is not more or equal than 27' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'less_or_equal_than an Integer, limit case, "eligible"' do
-        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '19', variable: variable }
         context '19 is less or equal than 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_or_equal_than an Integer, nominal case, "eligible"' do
-        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '27', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '27', variable: variable }
         context '19 is less or equal than 27' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_or_equal_than an Integer, nominal case, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :less_or_equal_than, value_eligible: '12', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :less_or_equal_than, value_eligible: '12', variable: variable }
         context '19 is not less or equal than 12' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'more_than an Integer, "eligible"' do
-        let(:rule) { create :rule, operator_type: :more_than, value_eligible: '18', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :more_than, value_eligible: '18', variable: variable }
         context '19 is more than 18' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'more_than an Integer, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :more_than, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :more_than, value_eligible: '20', variable: variable }
         context '19 is more than 20' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'less_than an Integer, "eligible"' do
-        let(:rule) { create :rule, operator_type: :less_than, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :less_than, value_eligible: '20', variable: variable }
         context '19 is less than 20' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'less_than an Integer, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :less_than, value_eligible: '17', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :less_than, value_eligible: '17', variable: variable }
         context '19 is less than 17' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'equal an Integer, "eligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: '19', variable: variable }
         context '19 equal 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal an Integer, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: '20', variable: variable }
         context '19 equal 20' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -215,49 +215,49 @@ describe RuletreeService do
       let(:asker) { create :asker, v_allocation_type: 'ASS_AER_APS_AS-FNE'}
       let(:variable) { create :variable, variable_type: :string, name: 'v_allocation_type'}
       context 'equal a String, "eligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule,  kind: "simple",operator_type: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal String, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
         context 'not_ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'not_equal a String, "eligible"' do
-        let(:rule) { create :rule, operator_type: :not_equal, value_eligible: 'aaa', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :not_equal, value_eligible: 'aaa', variable: variable }
         context 'aaa not_equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'not_equal String, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :not_equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :not_equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
       end
       context 'starts_with String, "eligible"' do
-        let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'ASS', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'ASS', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with ASS' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case unsensitive, "eligible"' do
-        let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'ass', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'ass', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with ass' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, case accent and non-alphanumeric, "eligible"' do
-        let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'â-ss', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'â-ss', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with â-ss' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'starts_with String, "ineligible"' do
-        let(:rule) { create :rule, operator_type: :starts_with, value_eligible: 'XXX', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_type: :starts_with, value_eligible: 'XXX', variable: variable }
         context 'ASS_AER_APS_AS-FNE starts_with XXX' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -368,7 +368,7 @@ describe RuletreeService do
       end
     end
     context 'with (rule_a AND rule_b) OR rule_c' do
-      let(:rule) { create :rule, name: 'be_an_adult_and_a_spectacles_OR_be_handicaped', composition_type: :or_rule, slave_rules: [create(:rule, :be_an_adult_and_a_spectacles), create(:rule, :be_handicaped)]}
+      let(:rule) { create :rule, kind: "composite", name: 'be_an_adult_and_a_spectacles_OR_be_handicaped', composition_type: :or_rule, slave_rules: [create(:rule, :be_an_adult_and_a_spectacles), create(:rule, :be_handicaped)]}
       context 'with rule_c=true only' do
         let(:asker) { create :asker, :handicaped }
         it { expect(subject).to eq "eligible" }
