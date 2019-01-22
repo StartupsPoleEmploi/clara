@@ -103,6 +103,18 @@ module Admin
       CustomRuleCheck.where(result: initial_value).update_all("result = '#{final_value}'")
     end
 
+    def get_op
+      
+    end
+
+    def post_op
+      p '- - - - - - - - - - - - - - post_op- - - - - - - - - - - - - - - -' 
+      p ''      
+      render json: {
+        status: "ok"
+      }
+    end
+
 
     def get_kind
     end

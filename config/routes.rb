@@ -50,6 +50,8 @@ Rails.application.routes.draw do
       get 'loadrefdata'
       get 'cache'
       get 'zrr'
+      get 'get_op'
+      post 'post_op'
       get 'get_kind'
       post 'post_kind'
       get 'get_transfer_descr'
