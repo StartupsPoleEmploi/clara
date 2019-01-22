@@ -103,6 +103,16 @@ module Admin
       CustomRuleCheck.where(result: initial_value).update_all("result = '#{final_value}'")
     end
 
+    def get_optypsup
+    end
+
+    def post_optypsup
+      Rule.where("operator_type is not null").update_all(operator_type: nil)      
+      render json: {
+        status: "ok"
+      }
+    end
+
     def get_op
       
     end
