@@ -1,7 +1,7 @@
 # ARA Changelog
 
 
-## 18.10.4 (18/1/2019)
+## 18.12.0 (18/1/2019)
 -[#780][FEATURE] Video en modal sur HP
 
 
