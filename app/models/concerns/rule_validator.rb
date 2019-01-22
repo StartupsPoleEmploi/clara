@@ -1,12 +1,6 @@
 class RuleValidator < ActiveModel::Validator
   def validate(record)
-    p '- - - - - - - - - - - - - - record0- - - - - - - - - - - - - - - -' 
-    pp record.errors
-    p ''
     if record.kind != "simple" && record.kind != "composite"
-      p '- - - - - - - - - - - - - - record1- - - - - - - - - - - - - - - -' 
-      pp record.errors
-      p ''
       record.errors.add(:kind, :invalid)
     elsif record.kind == "simple"
       _validate_simple_rule(record)
