@@ -62,7 +62,6 @@ class RuleDashboard < Administrate::BaseDashboard
     :kind,
     :description,
     :variable,
-    :operator_type,
     :operator_kind,
     :value_eligible,
     :value_ineligible,

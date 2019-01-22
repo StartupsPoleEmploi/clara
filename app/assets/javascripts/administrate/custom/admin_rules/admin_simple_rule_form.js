@@ -51,14 +51,14 @@ clara.js_define("admin_simple_rule_form", {
       if (kind === "selectionnable") {
         var elts_size = $("select#rule_variable_id").find('option:selected').attr("data-elements").split(",").length;
         if (elts_size <= 2) {
-          that._whitelist_operator_kind(first_state, all_choices, ["eq"]);
+          that._whitelist_operator_kind(first_state, all_choices, ["equal"]);
         } else {
-          that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal"]);
+          that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal"]);
         }
       } else if (kind === "integer") {
-        that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with"]);
       } else if (kind === "string") {
-        that._whitelist_operator_kind(first_state, all_choices, ["eq", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
       }
   },
 
