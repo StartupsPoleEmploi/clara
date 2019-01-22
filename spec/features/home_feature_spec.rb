@@ -72,7 +72,7 @@ feature 'HomeSpec' do
 
   scenario 'Display clickable modal for video through js-modal component' do
     visit root_path 
-    expect(page).to have_css ('.js-modal')
+    expect(page).to have_css('.js-modal')
   end
 
 end

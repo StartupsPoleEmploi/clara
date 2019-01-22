@@ -389,21 +389,6 @@ dialog {
 }
 
 
-/* another modal styling example */
-/* tooltip modal for it’s easy button */
-.simple-left-modal-overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, .8);
-  opacity: .8;
-  z-index: 666;
-  cursor: pointer;
-}
-
-
 .button-play{
   cursor: pointer;
   display:block;
