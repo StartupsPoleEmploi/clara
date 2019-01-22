@@ -310,7 +310,6 @@ h2.c-newhomerecall__content {
   }
 }
 
-
 /* needed for old browsers */
 dialog {
   display: block;
@@ -335,9 +334,8 @@ dialog {
 .simple-modal {
   position: fixed;
   top: 5%;
-  width: 740px;
+  width: 720px;
   height: 450px;
-  //max-height: 98vh;
   background: #fff;
   z-index: 667;
   padding: .25em;
@@ -361,9 +359,7 @@ dialog {
   cursor: auto;
 }
 
-/* it can be easily adapted in media-queries for tablets/mobile */
-
-/* for this example: tablets */
+/* tablets */
 @media (max-width: 55.625em) {
 
   .simple-modal {
@@ -376,7 +372,7 @@ dialog {
 
 }
 
-/* for this example: mobile */
+/* mobile */
 @media (max-width: 44.375em) {
 
   .simple-modal {
@@ -387,7 +383,6 @@ dialog {
     bottom: 1%;
   }
 }
-
 
 .button-play{
   cursor: pointer;
@@ -405,7 +400,6 @@ dialog {
   @include mq($from: desktop) {
     text-align:left;
   }
-
 
   &:before{
     cursor: pointer;
@@ -426,10 +420,7 @@ dialog {
       text-align:left;
     }
   }
-  
-
 }
-
 
 .play {
   width: 26px;
@@ -470,7 +461,6 @@ div.hidden {
 }
 
 iframe {  
-
   display: block;
   margin-top: space(8);
   left: 0;
@@ -491,15 +481,15 @@ iframe {
 
   @include mq($from: desktop) {
     height: 405px;
-    width: 720px;
+    width: 100%;
     text-align:center;
     bottom: 1%;
   }
 }
 
 .js-modal {
+  margin-top: 8px;
   background-color: #E2EAF5;
-  margin-left: 20px;
   padding: 0;
   border: none;
   background: none;

@@ -8,25 +8,19 @@ clara.load_js(function only_if() {
   // init
   var $modals = $('.js-modal'),
     $body = $('body');
-
   $modals.each(function(index_to_expand) {
     var $this = $(this),
       index_lisible = index_to_expand + 1;
-
     $this.attr({
       'id': 'label_modal_' + index_lisible,
       'aria-haspopup': 'dialog'
     });
-
   });
-
   // jQuery formatted selector to search for focusable items
   var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
-
   if ($('#js-modal-page').length === 0) { // just to avoid missing #js-modal-page
     $body.wrapInner('<div id="js-modal-page"></div>');
   }
-
   // events ------------------
   $body.on('click', '.js-modal', function(event) {
     var $this = $(this),
@@ -49,7 +43,6 @@ clara.load_js(function only_if() {
       $modal_code,
       $modal_overlay,
       $page = $('#js-modal-page');
-
     // insert code at the end
     $modal_code = '<' + $modal_tag + ' ' + $modal_role_dialog + ' ' + $modal_role_alertdialog + ' id="js-modal" class="' + $modal_prefix_classes + 'modal" aria-labelledby="modal-title" open ' + $modal_aria + '><div role="document" class="' + $modal_prefix_classes + 'modal__wrapper">';
     $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
@@ -63,7 +56,6 @@ clara.load_js(function only_if() {
     if ($modal_title !== '') {
       $modal_code += '<h1 id="modal-title" class="' + $modal_prefix_classes + 'modal-title">' + $modal_title + '</h1>';
     }
-
     if ($modal_text !== '') {
       $modal_code += '<p>' + $modal_text + '</p>';
     } else {
@@ -88,7 +80,6 @@ clara.load_js(function only_if() {
     } else {
       $modal_overlay = '<span id="js-modal-overlay" class="' + $modal_prefix_classes + 'modal-overlay" data-background-click="disabled"></span>';
     }
-
     $($modal_overlay).insertAfter($('#js-modal'));
 
     if ($modal_focus_id !== '') {
@@ -96,10 +87,7 @@ clara.load_js(function only_if() {
     } else {
       $('#js-modal-close').focus();
     }
-
-
     event.preventDefault();
-
   })
   // close button and esc key
   $body.on('click', '#js-modal-close', function() {
@@ -112,15 +100,12 @@ clara.load_js(function only_if() {
         $class_element_reverse = $class_element + '--reverse',
         $js_modal_overlay = $('#js-modal-overlay'),
         $page = $('#js-modal-page');
-
       $page.removeAttr('aria-hidden');
-
       var delay = $js_modal.css("animation-duration");
       //alert(delay);
       if (delay != '0s') {
         var timeout = parseFloat(delay.replace('s', '')) * 1000;
         timeout++;
-
         $js_modal.removeClass($class_element);
         setTimeout(function() {
           $js_modal.addClass($class_element_reverse);
@@ -145,21 +130,17 @@ clara.load_js(function only_if() {
         }
         $($focus_back).focus();
       }
-
     })
     .on('click', '#js-modal-overlay', function(event) {
       var $close = $('#js-modal-close');
-
       event.preventDefault();
       $close.trigger('click');
-
     })
     .on('click', '.js-modal-close', function(event) {
       var $close = $('#js-modal-close');
 
       event.preventDefault();
       $close.trigger('click');
-
     })
     .on('keydown', '#js-modal-overlay', function(event) {
       var $close = $('#js-modal-close');
@@ -172,14 +153,10 @@ clara.load_js(function only_if() {
     .on("keydown", "#js-modal", function(event) {
       var $this = $(this),
         $close = $('#js-modal-close');
-
-
       if (event.keyCode == 27) { // esc
         $close.trigger('click');
-
       }
       if (event.keyCode == 9) { // tab or maj+tab
-
         // get list of all children elements in given object
         var children = $this.find('*');
 
@@ -202,10 +179,7 @@ clara.load_js(function only_if() {
           focusableItems.get(numberOfFocusableItems - 1).focus();
           event.preventDefault();
         }
-
-
       }
-
     })
     .on("keyup", ":not(#js-modal)", function(event) {
       var $js_modal = $('#js-modal'),
@@ -216,14 +190,9 @@ clara.load_js(function only_if() {
       if ($js_modal.length && event.keyCode == 9 && in_jsmodal === false) { // tab or maj+tab
         $close.focus();
       }
-
     })
     .on('focus', '#js-modal-tabindex', function() {
       var $close = $('#js-modal-close');
-
       $close.focus();
     });
-
-
-
 });
