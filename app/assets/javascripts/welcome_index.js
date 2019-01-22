@@ -195,4 +195,10 @@ clara.load_js(function only_if() {
       var $close = $('#js-modal-close');
       $close.focus();
     });
+
+  $(document).keydown(function(event) { 
+    if (event.keyCode == 27) { 
+      $('#js-modal-close').click()
+  }
+});
 });
