@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.12.0 (22/1/2019)
+-[#1107][ADMIN] créer opérateur "ne commence pas par"
+
+
 ## 18.11.1 (22/1/2019)
 -[#1108][ADMIN] BO : formulaires en erreur, bug
 

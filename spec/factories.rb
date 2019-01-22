@@ -95,7 +95,7 @@ FactoryBot.define do
       name 'old_inscription' 
       kind 'simple' 
       association :variable, :duree_d_inscription
-      operator_type :eq
+      operator_kind :equal
       value_eligible 'plus_d_un_an'
     end
 
@@ -103,7 +103,7 @@ FactoryBot.define do
       name 'be_paris' 
       kind 'simple' 
       association :variable, :location_citycode
-      operator_type :eq
+      operator_kind :equal
       value_eligible '75056'
     end
 
@@ -111,7 +111,7 @@ FactoryBot.define do
       name 'be_an_adult' 
       kind 'simple' 
       association :variable, :age
-      operator_type :more_than
+      operator_kind :more_than
       value_eligible '18'
     end
 
@@ -119,7 +119,7 @@ FactoryBot.define do
       name 'be_a_child' 
       kind 'simple' 
       association :variable, :age
-      operator_type :less_than
+      operator_kind :less_than
       value_eligible '18'
     end
 
@@ -127,7 +127,7 @@ FactoryBot.define do
       name 'be_in_qpv' 
       kind 'simple' 
       association :variable, :qpv
-      operator_type :eq
+      operator_kind :equal
       value_eligible 'oui'
     end
 
@@ -135,7 +135,7 @@ FactoryBot.define do
       name 'be_in_guyane' 
       kind 'simple' 
       association :variable, :location_state
-      operator_type :starts_with
+      operator_kind :starts_with
       value_eligible 'guyane'
     end
 
@@ -143,7 +143,7 @@ FactoryBot.define do
       name 'be_in_zrr' 
       kind 'simple' 
       association :variable, :zrr
-      operator_type :eq
+      operator_kind :equal
       value_eligible 'oui'
     end
 
@@ -151,7 +151,7 @@ FactoryBot.define do
       name 'not_be_an_adult' 
       kind 'simple' 
       association :variable, :age
-      operator_type :less_than
+      operator_kind :less_than
       value_eligible '18'
     end
 
@@ -159,7 +159,7 @@ FactoryBot.define do
       name 'have_allocation_below_min' 
       kind 'simple' 
       association :variable, :allocation_value_min
-      operator_type :less_than
+      operator_kind :less_than
       value_eligible '149'
     end
 
@@ -167,7 +167,7 @@ FactoryBot.define do
       name 'be_a_spectacle' 
       kind 'simple' 
       association :variable, :spectacle
-      operator_type :eq
+      operator_kind :equal
       value_eligible "oui"
     end
 
@@ -175,7 +175,7 @@ FactoryBot.define do
       name 'not_be_a_spectacle' 
       kind 'simple' 
       association :variable, :spectacle
-      operator_type :eq
+      operator_kind :equal
       value_eligible "non"
     end
 
@@ -183,7 +183,7 @@ FactoryBot.define do
       name 'be_a_handicaped' 
       kind 'simple' 
       association :variable, :handicap
-      operator_type :eq
+      operator_kind :equal
       value_eligible "oui"
     end
 

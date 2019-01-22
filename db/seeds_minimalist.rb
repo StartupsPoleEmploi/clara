@@ -87,7 +87,7 @@ rule_list = [
      kind: "simple",
      name: "r_AREASP",
      variable: Variable.find_by(name:"v_allocation_type"),
-     operator_type: :eq,
+     operator_kind: :equal,
      value_eligible: "ARE_ASP",
      description: "Être indemnisé/e au titre de l'allocation de retour à l'emploi"
   },
@@ -95,7 +95,7 @@ rule_list = [
      kind: "simple",
      name: "r_deld",
      variable: Variable.find_by(name:"v_duree_d_inscription"),
-     operator_type: :eq,
+     operator_kind: :equal,
      value_eligible: "plus_d_un_an",
      description: "Être inscrit depuis 1 an ou plus"
   },
@@ -103,21 +103,21 @@ rule_list = [
      kind: "simple",
      name: "r_diplome_niveau_4",
      variable: Variable.find_by(name: "v_diplome"),
-     operator_type: :eq,
+     operator_kind: :equal,
      value_eligible: "niveau_4",
   },
   {
      kind: "simple",
      name: "r_diplome_niveau_5",
      variable: Variable.find_by(name: "v_diplome"),
-     operator_type: :eq,
+     operator_kind: :equal,
      value_eligible: "niveau_5",
   },
   {
      kind: "simple",
      name: "r_diplome_infra_5",
      variable: Variable.find_by(name: "v_diplome"),
-     operator_type: :eq,
+     operator_kind: :equal,
      value_eligible: "niveau_infra_5",
      description: "Être inscrit depuis 1 an ou plus"
   },
@@ -126,7 +126,7 @@ rule_list = [
      name: "r_age_inf_28",
      variable: Variable.find_by(name: "v_age"),
      value_eligible: "28",
-     operator_type: :less_than,
+     operator_kind: :less_than,
      description: "Avoir moins de 28 ans"
   },
   {
@@ -134,7 +134,7 @@ rule_list = [
      name: "r_age_sup_18",
      variable: Variable.find_by(name: "v_age"),
      value_eligible: "18",
-     operator_type: :more_than,
+     operator_kind: :more_than,
      description: "Avoir plus de 18 ans"
   },
   {
