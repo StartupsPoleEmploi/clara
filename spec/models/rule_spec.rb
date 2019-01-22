@@ -22,184 +22,231 @@ describe Rule, type: :model do
     Rule.find_by(name: name) != nil
   end
 
-  describe '.validate_non_empty_rule' do
-    it 'should NOT be valid for an empty rule' do
-      # given
-      empty_rule  = build(:rule)
-      # when
-      empty_rule.valid?
-      # then
-      expect(empty_rule.errors[:non_empty_rule].length).to eq 1
-    end
-    it 'should be valid for a simple rule' do
-      # given
-      simple_rule = create(:rule, :be_an_adult)
-      # when
-      simple_rule.valid?
-      # then
-      expect(simple_rule.errors[:non_empty_rule].length).to eq 0
-    end
-    it 'should be valid for a complex rule' do
-      # given
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      # when
-      complex_rule.valid?
-      # then
-      expect(complex_rule.errors[:non_empty_rule].length).to eq 0
-    end
+  def _nb_of_errors_for(rule)
+    rule.errors.messages.size
   end
 
-  describe '.validate_non_ambiguous_type' do
-    before(:each) do |example|
-      if example.metadata[:need_init]
-        @ambiguous_rule = create(:rule, :be_an_adult_or_a_spectacles)
-        @ambiguous_rule.value_eligible = '42'
+  describe 'Validation' do
 
-
-        expect(@ambiguous_rule.is_complex_rule?).to eq true
-        expect(@ambiguous_rule.is_simple_rule?).to eq true
-        expect(@ambiguous_rule.is_ambiguous_rule?).to eq true
+    describe 'Composite rule' do
+      it 'Can validate a valid composite Rule' do
+        #given
+        rule = create(:rule, :be_an_adult_and_a_spectacles)
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 0
+      end
+      it 'Can invalidate a composite Rule if name already exists' do
+        #given
+        rule1 = create(:rule, :be_an_adult_and_a_spectacles)
+        rule2 = create(:rule, :be_an_adult_or_a_spectacles)
+        rule2.name = rule1.name
+        #when
+        rule2.valid?
+        #then
+        expect(_nb_of_errors_for(rule2)).to eq 1
+      end
+      it 'Can invalidate a composite Rule if kind is not valid' do
+        #given
+        rule = create(:rule, :be_an_adult_and_a_spectacles)
+        rule.kind = "wrong_value"
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 1
+      end
+      describe 'Can invalidate a composite Rule if an unauthorized field is filled' do
+        it 'rule.variable is not authorized for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.variable = create(:variable, :age)
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.operator_type is not authorized for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.operator_type = :less_than
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.value_eligible is not authorized for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.value_eligible = "41"
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.value_ineligible is deprecated, thus not authorized for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.value_eligible = "41"
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+      end
+      describe 'Can invalidate a composite Rule if a mandatory field is missing' do
+        it 'rule.name is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.name = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.slave_rules is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.slave_rules = []
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.composition_type is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.composition_type = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.kind is mandatory for a composite rule' do
+          #given
+          rule = create(:rule, :be_an_adult_and_a_spectacles)
+          rule.kind = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
       end
     end
-    it 'cannot have a field of each type', :need_init do
-      # when
-      @ambiguous_rule.valid?
-      # then
-      expect(@ambiguous_rule.errors[:non_ambiguous_type].length).to eq 1
-    end
-    it 'cannot have all fields', :need_init do
-      # given
-      @ambiguous_rule.composition_type = :and_rule
-      @ambiguous_rule.operator_type = :more_than
-      @ambiguous_rule.variable = create(:variable, :age)
-      # when
-      @ambiguous_rule.valid?
-      # then
-      expect(@ambiguous_rule.errors[:non_ambiguous_type].length).to eq 1
-    end
-    it 'can be a simple rule' do
-      #given
-      simple_rule = create(:rule, :be_an_adult)
-      #when
-      simple_rule.valid?
-      # then
-      expect(simple_rule.errors[:non_ambiguous_type].length).to eq 0
-    end
-    it 'can be a complex rule' do
-      #given
-      complex_rule = create(:rule, :be_an_adult_and_a_spectacles)
-      #when
-      complex_rule.valid?
-      # then
-      expect(complex_rule.errors[:non_ambiguous_type].length).to eq 0
-    end
-    it 'can be an empty rule' do
-      # given
-      empty_rule  = build(:rule)
-      # when
-      empty_rule.valid?
-      # then
-      expect(empty_rule.errors[:non_ambiguous_type].length).to eq 0
-    end
-  end
 
-  describe '.validate_complex_rule_mandatory_fields' do
-    it 'should be valid for a correct complex rule' do
-      #given
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      # when
-      complex_rule.valid?
-      #then
-      expect(complex_rule.errors[:complex_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should be valid for a correct simple rule' do
-      #given
-      simple_rule = create(:rule, :be_an_adult)
-      # when
-      simple_rule.valid?
-      #then
-      expect(simple_rule.errors[:complex_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should be valid for an ambiguous complex rule' do
-      #given
-      ambiguous_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      ambiguous_rule.value_eligible = '42'
-      # when
-      ambiguous_rule.valid?
-      #then
-      expect(ambiguous_rule.errors[:complex_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should NOT be valid if slave_rules is missing' do
-      #given
-      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      incomplete_complex_rule.slave_rules = []
-      # when
-      incomplete_complex_rule.valid?
-      #then
-      expect(incomplete_complex_rule).not_to be_valid
-      expect(incomplete_complex_rule.errors[:complex_rule_mandatory_fields].length).to eq 1
-    end
-    it 'should NOT be valid if composition_type are missing' do
-      #given
-      incomplete_complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      incomplete_complex_rule.composition_type = nil
-      # when
-      incomplete_complex_rule.valid?
-      #then
-      expect(incomplete_complex_rule).not_to be_valid
-      expect(incomplete_complex_rule.errors[:complex_rule_mandatory_fields].length).to eq 1
-    end
-  end
-
-  describe '.validate_simple_rule_mandatory_fields' do
-    it 'should be valid for a correct simple rule' do
-      #given
-      simple_rule = create(:rule, :be_an_adult)
-      # when
-      simple_rule.valid?
-      #then
-      expect(simple_rule.errors[:simple_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should be valid for a correct complex rule' do
-      #given
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles)
-      # when
-      complex_rule.valid?
-      #then
-      expect(complex_rule.errors[:simple_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should be valid for an ambiguous simple rule' do
-      #given
-      ambiguous_rule = create(:rule, :be_an_adult)
-      ambiguous_rule.value_eligible = '42'
-      # when
-      ambiguous_rule.valid?
-      #then
-      expect(ambiguous_rule.errors[:simple_rule_mandatory_fields].length).to eq 0
-    end
-    it 'should NOT be valid if variable is missing' do
-      #given
-      incomplete_simple_rule = build(:rule, name: 'incomplete', operator_type: :more_than, value_eligible: '42')
-      # when
-      incomplete_simple_rule.valid?
-      #then
-      expect(incomplete_simple_rule.errors[:simple_rule_mandatory_fields].length).to eq 1
-    end
-    it 'should NOT be valid if operator_type is missing' do
-      #given
-      incomplete_simple_rule = build(:rule, name: 'incomplete', value_eligible: '42', variable: create(:variable, :age))
-      # when
-      incomplete_simple_rule.valid?
-      #then
-      expect(incomplete_simple_rule.errors[:simple_rule_mandatory_fields].length).to eq 1
-    end
-    it 'should NOT be valid if value is missing' do
-      #given
-      incomplete_simple_rule = build(:rule, name: 'incomplete', value_eligible: '42', operator_type: :more_than)
-      # when
-      incomplete_simple_rule.valid?
-      #then
-      expect(incomplete_simple_rule.errors[:simple_rule_mandatory_fields].length).to eq 1
+    describe 'Simple rule' do
+      it 'Can validate a valid simple Rule' do
+        #given
+        rule = create(:rule, :be_an_adult)
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 0
+      end
+      it 'Can invalidate a simple Rule if name already exists' do
+        #given
+        rule1 = create(:rule, :be_an_adult)
+        rule2 = create(:rule, :be_a_child)
+        rule2.name = rule1.name
+        #when
+        rule2.valid?
+        #then
+        expect(_nb_of_errors_for(rule2)).to eq 1
+      end
+      it 'Can invalidate a simple Rule if kind is not valid' do
+        #given
+        rule = create(:rule, :be_an_adult)
+        rule.kind = "wrong_value"
+        #when
+        rule.valid?
+        #then
+        expect(_nb_of_errors_for(rule)).to eq 1
+      end
+      describe 'Can invalidate a simple Rule if an unauthorized field is filled' do
+        it 'rule.slave_rules is not authorized for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.slave_rules = [create(:rule, :be_paris), create(:rule, :be_a_child)]
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.composition_type is not authorized for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.composition_type = :and_rule
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.value_ineligible is deprecated, thus is not authorized for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.value_ineligible = "43"
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+      end
+      describe 'Can invalidate a simple Rule if a mandatory field is missing' do
+        it 'rule.name is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.name = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.kind is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.kind = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.description is optional for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.description = ""
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 0
+        end
+        it 'rule.variable is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.variable = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.operator_type is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.operator_type = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+        it 'rule.value_eligible is mandatory for a simple rule' do
+          #given
+          rule = create(:rule, :be_an_adult)
+          rule.value_eligible = nil
+          #when
+          rule.valid?
+          #then
+          expect(_nb_of_errors_for(rule)).to eq 1
+        end
+      end
     end
   end
 

@@ -8,6 +8,7 @@ class RuleDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    kind:             HiddenField,
     slave_rules:      Field::HasMany.with_options(class_name: "Rule"),
     variable:         WithVariableField,
     aids:             Field::HasMany,
@@ -36,9 +37,10 @@ class RuleDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :id,
+    :kind,
     :slave_rules,
     :variable,
-    :id,
     :name,
     :description,
     :value_eligible,
@@ -55,11 +57,12 @@ class RuleDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :kind,
     :description,
     :variable,
     :operator_type,
     :value_eligible,
-    # :value_ineligible,
+    :value_ineligible,
     :slave_rules,
     :composition_type,
     :aids,

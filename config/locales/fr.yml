@@ -23,6 +23,8 @@ fr:
       next: "page suivante"
       truncate: "..."
   administrate:
+    form:
+      errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
     actions:
       new: "Nouveau"
       show: "Détails"
@@ -158,13 +160,13 @@ fr:
       second: Seconde
       year: Année
   errors:
-    format: "%{attribute} %{message}"
+    format: "%{attribute} : %{message}"
     messages:
       accepted: doit être accepté(e)
-      blank: doit être rempli(e)
+      blank: doit être renseigné(e)
       present: doit être vide
       confirmation: ne concorde pas avec %{attribute}
-      empty: doit être rempli(e)
+      empty: doit être renseigné(e)
       equal_to: doit être égal à %{count}
       even: doit être pair
       exclusion: n'est pas disponible

@@ -84,6 +84,7 @@ end
 
 rule_list = [
   {
+     kind: "simple",
      name: "r_AREASP",
      variable: Variable.find_by(name:"v_allocation_type"),
      operator_type: :eq,
@@ -91,6 +92,7 @@ rule_list = [
      description: "Être indemnisé/e au titre de l'allocation de retour à l'emploi"
   },
   {
+     kind: "simple",
      name: "r_deld",
      variable: Variable.find_by(name:"v_duree_d_inscription"),
      operator_type: :eq,
@@ -98,18 +100,21 @@ rule_list = [
      description: "Être inscrit depuis 1 an ou plus"
   },
   {
+     kind: "simple",
      name: "r_diplome_niveau_4",
      variable: Variable.find_by(name: "v_diplome"),
      operator_type: :eq,
      value_eligible: "niveau_4",
   },
   {
+     kind: "simple",
      name: "r_diplome_niveau_5",
      variable: Variable.find_by(name: "v_diplome"),
      operator_type: :eq,
      value_eligible: "niveau_5",
   },
   {
+     kind: "simple",
      name: "r_diplome_infra_5",
      variable: Variable.find_by(name: "v_diplome"),
      operator_type: :eq,
@@ -117,6 +122,7 @@ rule_list = [
      description: "Être inscrit depuis 1 an ou plus"
   },
   {
+     kind: "simple",
      name: "r_age_inf_28",
      variable: Variable.find_by(name: "v_age"),
      value_eligible: "28",
@@ -124,6 +130,7 @@ rule_list = [
      description: "Avoir moins de 28 ans"
   },
   {
+     kind: "simple",
      name: "r_age_sup_18",
      variable: Variable.find_by(name: "v_age"),
      value_eligible: "18",
@@ -131,6 +138,7 @@ rule_list = [
      description: "Avoir plus de 18 ans"
   },
   {
+     kind: "composite",
      name: "r_diplome_4_ou_5_ou_infra_5",
      composition_type: :or_rule,
      slave_rules: [ "r_diplome_niveau_4", 
@@ -138,6 +146,7 @@ rule_list = [
                    "r_diplome_infra_5"],
   },
   {
+     kind: "composite",
      name: "r_age_sup_18_et_age_inf_28_et_deld",
      description: "Avoir entre 18 et 28 ans et être inscrit/e à Pôle emploi depuis plus de 12 mois dans les 18 derniers mois",
      composition_type: :and_rule,
@@ -146,6 +155,7 @@ rule_list = [
                    "r_deld"],
   },
   {
+     kind: "composite",
      name: "r_age_sup_18_et_age_inf_28_et_diplome_inf_niveau_3",
      description: "Avoir entre 18 et 28 ans et un diplôme inférieur au 1er cycle de l'enseignement supérieur",
      composition_type: :and_rule,
@@ -154,6 +164,7 @@ rule_list = [
                    "r_diplome_4_ou_5_ou_infra_5"],
   },
   {
+     kind: "composite",
      name: "r_CIVIS",
      composition_type: :and_rule,
      slave_rules: [ "r_age_sup_18_et_age_inf_28_et_deld", 
@@ -161,6 +172,7 @@ rule_list = [
 
   },
   {
+     kind: "composite",
      name: "r_VI",
      composition_type: :and_rule,
      slave_rules: [ "r_age_sup_18", 

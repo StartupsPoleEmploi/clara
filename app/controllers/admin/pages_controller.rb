@@ -104,6 +104,23 @@ module Admin
     end
 
 
+    def get_kind
+    end
+
+    def post_kind
+      Rule.all.each do |rule|
+        if rule.operator_type.blank?
+          rule.kind = "composite"
+        else
+          rule.kind = "simple"
+        end
+        rule.save
+      end
+      render json: {
+        status: "ok"
+      }
+    end
+
     def get_transfer_descr
     end
 

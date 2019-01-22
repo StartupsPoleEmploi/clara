@@ -93,6 +93,7 @@ FactoryBot.define do
   
     trait :old_inscription do
       name 'old_inscription' 
+      kind 'simple' 
       association :variable, :duree_d_inscription
       operator_type :eq
       value_eligible 'plus_d_un_an'
@@ -100,6 +101,7 @@ FactoryBot.define do
 
     trait :be_paris do
       name 'be_paris' 
+      kind 'simple' 
       association :variable, :location_citycode
       operator_type :eq
       value_eligible '75056'
@@ -107,6 +109,7 @@ FactoryBot.define do
 
     trait :be_an_adult do
       name 'be_an_adult' 
+      kind 'simple' 
       association :variable, :age
       operator_type :more_than
       value_eligible '18'
@@ -114,6 +117,7 @@ FactoryBot.define do
 
     trait :be_a_child do
       name 'be_a_child' 
+      kind 'simple' 
       association :variable, :age
       operator_type :less_than
       value_eligible '18'
@@ -121,6 +125,7 @@ FactoryBot.define do
 
     trait :be_in_qpv do
       name 'be_in_qpv' 
+      kind 'simple' 
       association :variable, :qpv
       operator_type :eq
       value_eligible 'oui'
@@ -128,6 +133,7 @@ FactoryBot.define do
 
     trait :be_in_guyane do
       name 'be_in_guyane' 
+      kind 'simple' 
       association :variable, :location_state
       operator_type :starts_with
       value_eligible 'guyane'
@@ -135,6 +141,7 @@ FactoryBot.define do
 
     trait :be_in_zrr do
       name 'be_in_zrr' 
+      kind 'simple' 
       association :variable, :zrr
       operator_type :eq
       value_eligible 'oui'
@@ -142,6 +149,7 @@ FactoryBot.define do
 
     trait :not_be_an_adult do
       name 'not_be_an_adult' 
+      kind 'simple' 
       association :variable, :age
       operator_type :less_than
       value_eligible '18'
@@ -149,6 +157,7 @@ FactoryBot.define do
 
     trait :have_allocation_below_min do 
       name 'have_allocation_below_min' 
+      kind 'simple' 
       association :variable, :allocation_value_min
       operator_type :less_than
       value_eligible '149'
@@ -156,6 +165,7 @@ FactoryBot.define do
 
     trait :be_a_spectacle do 
       name 'be_a_spectacle' 
+      kind 'simple' 
       association :variable, :spectacle
       operator_type :eq
       value_eligible "oui"
@@ -163,6 +173,7 @@ FactoryBot.define do
 
     trait :not_be_a_spectacle do 
       name 'not_be_a_spectacle' 
+      kind 'simple' 
       association :variable, :spectacle
       operator_type :eq
       value_eligible "non"
@@ -170,12 +181,14 @@ FactoryBot.define do
 
     trait :be_handicaped do 
       name 'be_a_handicaped' 
+      kind 'simple' 
       association :variable, :handicap
       operator_type :eq
       value_eligible "oui"
     end
 
     trait :be_an_adult_and_a_spectacles do 
+      kind 'composite' 
       composition_type :and_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle0'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult0')]
@@ -184,6 +197,7 @@ FactoryBot.define do
 
 
     trait :be_an_adult_or_a_spectacles do 
+      kind 'composite' 
       composition_type :or_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_a_spectacle, name: 'composed_be_a_spectacle1', description: 'spectacle description'), FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult1', description: 'adult description')]
@@ -191,6 +205,7 @@ FactoryBot.define do
     end
 
     trait :be_an_adult_and_in_qpv do 
+      kind 'composite' 
       composition_type :and_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult2'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv1')]
@@ -198,6 +213,7 @@ FactoryBot.define do
     end
 
     trait :be_in_qpv_and_in_zrr do 
+      kind 'composite' 
       composition_type :and_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpvgeo'), FactoryBot.create(:rule, :be_in_zrr, name: 'composed_be_in_zrrgeo')]
@@ -205,6 +221,7 @@ FactoryBot.define do
     end
 
     trait :be_an_adult_or_in_qpv do 
+      kind 'composite' 
       composition_type :or_rule
       before :create do |rule|
         rule.slave_rules << [FactoryBot.create(:rule, :be_an_adult, name: 'composed_be_an_adult3'), FactoryBot.create(:rule, :be_in_qpv, name: 'composed_be_qpv2')]
