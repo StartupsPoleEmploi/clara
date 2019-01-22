@@ -12,6 +12,7 @@ class RuleValidator < ActiveModel::Validator
   def _validate_composite_rule(record)
     _validate_composite_rule_authorized_fields(record)
     _validate_composite_rule_mandatory_fields(record)    
+    _validate_composite_rule_numerality_of_fields(record)
   end
 
   def _validate_composite_rule_authorized_fields(record)
@@ -45,6 +46,13 @@ class RuleValidator < ActiveModel::Validator
       if attr_h[mandatory_attr].blank?
         record.errors.add(mandatory_attr, :blank)
       end
+    end
+  end
+
+  def _validate_composite_rule_numerality_of_fields(record)
+    attr_h = JSON.parse(record.to_json(:include => {slave_rules: {only:[:id, :name]}}))
+    if attr_h["slave_rules"].size < 2
+      record.errors.add("slave_rules", :slave_rules_number, count: 2)
     end
   end
 
