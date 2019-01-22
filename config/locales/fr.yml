@@ -163,10 +163,10 @@ fr:
     format: "%{attribute} : %{message}"
     messages:
       accepted: doit être accepté(e)
-      blank: doit être renseigné
+      blank: doit être renseigné(e)
       present: doit être vide
       confirmation: ne concorde pas avec %{attribute}
-      empty: doit être renseigné
+      empty: doit être renseigné(e)
       equal_to: doit être égal à %{count}
       even: doit être pair
       exclusion: n'est pas disponible
