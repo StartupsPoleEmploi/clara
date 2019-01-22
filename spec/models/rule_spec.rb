@@ -158,7 +158,7 @@ describe Rule, type: :model do
           #when
           rule.valid?
           #then
-          expect(_nb_of_errors_for(rule)).to eq 1
+          expect(_nb_of_errors_for(rule)).to eq 0
         end
         it 'rule.slave_rules is valid with 3 rules' do
         end
