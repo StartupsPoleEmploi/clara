@@ -199,13 +199,13 @@ describe RuletreeService do
         end
       end
       context 'equal an Integer, "eligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: '19', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :equal, value_eligible: '19', variable: variable }
         context '19 equal 19' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal an Integer, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: '20', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :equal, value_eligible: '20', variable: variable }
         context '19 equal 20' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -215,13 +215,13 @@ describe RuletreeService do
       let(:asker) { create :asker, v_allocation_type: 'ASS_AER_APS_AS-FNE'}
       let(:variable) { create :variable, variable_type: :string, name: 'v_allocation_type'}
       context 'equal a String, "eligible"' do
-        let(:rule) { create :rule,  kind: "simple",operator_kind: :eq, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule,  kind: "simple",operator_kind: :equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "eligible" }
         end
       end
       context 'equal String, "ineligible"' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :eq, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
+        let(:rule) { create :rule, kind: "simple", operator_kind: :equal, value_eligible: 'not_ASS_AER_APS_AS-FNE', variable: variable }
         context 'not_ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do
           it { expect(subject).to eq "ineligible" }
         end
@@ -540,9 +540,9 @@ describe RuletreeService do
     end
 
 
-    it 'calculates integer, eq, eq' do
+    it 'calculates integer, equal, equal' do
       #given
-      operator_kind = "eq"
+      operator_kind = "equal"
       rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 34
       rule_value = "34"
@@ -554,9 +554,9 @@ describe RuletreeService do
       expect(res).to eq(true)
     end
 
-    it 'calculates integer, eq, diff' do
+    it 'calculates integer, equal, diff' do
       #given
-      operator_kind = "eq"
+      operator_kind = "equal"
       rule_h = build(:rule, :be_an_adult, name: 'an_adult', operator_kind: operator_kind).attributes
       criterion_value = 35
       rule_value = "34"
