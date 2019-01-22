@@ -108,6 +108,10 @@ module Admin
     end
 
     def post_op
+      Rule.where(operator_type: :eq).update_all(operator_type: 'eq')
+      # Rule.where("operator_type is 1").update_all(operator_type: 'eq')
+      # Rule.where("operator_type is 2").update_all(operator_type: 'eq')
+      # Rule.where("operator_type is 3").update_all(operator_type: 'eq')
       p '- - - - - - - - - - - - - - post_op- - - - - - - - - - - - - - - -' 
       p ''      
       render json: {
