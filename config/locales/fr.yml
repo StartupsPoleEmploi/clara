@@ -163,6 +163,7 @@ fr:
   errors:
     format: "%{attribute} : %{message}"
     messages:
+      slave_rules_number: renseigner au moins %{count} règles enfants
       accepted: doit être accepté(e)
       blank: doit être renseigné(e)
       present: doit être vide

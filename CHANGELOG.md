@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.12.1 (24/1/2019)
+-[#1111][ADMIN] BO : une seule règle enfant autorisée par règle composite
+
+
 ## 18.12.0 (22/1/2019)
 -[#1107][ADMIN] créer opérateur "ne commence pas par"
 
