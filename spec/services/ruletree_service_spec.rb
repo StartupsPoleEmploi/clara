@@ -680,6 +680,20 @@ describe RuletreeService do
       expect(res).to eq(false)
     end
 
+    it 'calculates string, not_starts_with, with a string that do not start with' do
+      #given
+      operator_kind = "not_starts_with"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
+      criterion_value = 'AaASSoon'
+      rule_value = "ASS"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      #then
+      expect(res).to eq(true)
+    end
+
     it 'calculates string, amongst, nominal' do
       #given
       operator_kind = "amongst"

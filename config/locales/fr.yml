@@ -11,6 +11,7 @@ fr:
       less_or_equal_than: "Inférieur ou égal à"
       less_than: "Inférieur à"
       starts_with: "Commence par"
+      not_starts_with: "Ne commence pas par"
       ends_with: "Fini par"
       include: "Contient"
       amongst: "Parmi"

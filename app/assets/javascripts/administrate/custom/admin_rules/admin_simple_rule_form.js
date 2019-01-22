@@ -56,9 +56,9 @@ clara.js_define("admin_simple_rule_form", {
           that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal"]);
         }
       } else if (kind === "integer") {
-        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "not_starts_with"]);
       } else if (kind === "string") {
-        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "amongst", "not_amongst"]);
+        that._whitelist_operator_kind(first_state, all_choices, ["equal", "not_equal", "more_than", "less_than", "more_or_equal_than", "less_or_equal_than", "starts_with", "not_starts_with", "amongst", "not_amongst"]);
       }
   },
 
