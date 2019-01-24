@@ -1,5 +1,7 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe ExpireCacheJob, type: :job do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+# RSpec.describe ExpireCacheJob, type: :job do
+#   describe "Nominal" do
+    
+#   end
+# end
