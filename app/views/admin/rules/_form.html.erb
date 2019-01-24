@@ -53,10 +53,10 @@ and renders all form fields for a resource's editable attributes.
     <% unless is_excluded %>
       <div class="field-unit field-unit--<%= attribute.html_class %>" data-attr="<%=attribute.attribute.inspect%>">
         <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
+        <% if errors_messages_h.key?(attribute.attribute) %>
+          helllo
+        <% end %>
       </div>
-      <% if errors_messages_h.key?(attribute.attribute) %>
-        
-      <% end %>
     <% end %>
   <% end %>
 
