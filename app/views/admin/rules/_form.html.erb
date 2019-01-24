@@ -50,11 +50,13 @@ and renders all form fields for a resource's editable attributes.
     <%- attr_name = attribute.attribute.to_s%>
     <%- is_excluded = exclusion_list.include?(attr_name)%>
     <%- is_mandatory = mandatory_list.include?(attr_name)%>
+    <%- is_errored = errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0%>
+    
     <% unless is_excluded %>
-      <div class="field-unit field-unit--<%= attribute.html_class %>" data-attr="<%=attribute.attribute.inspect%>">
+      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>" data-attr="<%=attribute.attribute.inspect%>">
         <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
-        <% if errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0 -%>
-          <div class="field-unit-error-msg">
+        <% if is_errored -%>
+          <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
             &nbsp;⚠ <%= errors_messages_h[attribute.attribute][0] %>
           </div>
         <% end %>

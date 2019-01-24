@@ -34,10 +34,20 @@
 .field-unit-error-msg {
   background-color: red;
   color: white;
+  font-weight: bold;
 }
 
 h2.flash-error {
   color: white;
+}
+
+.field-unit-error-msg--has-many {
+  margin-top: -.4rem;
+}
+
+.field-unit--errored-true .field-unit__field {
+  border: 2px solid red;
+  border-radius: 5px;
 }
 
 .field-unit--nested {
