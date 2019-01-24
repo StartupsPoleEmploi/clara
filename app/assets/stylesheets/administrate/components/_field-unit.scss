@@ -31,6 +31,15 @@
   display: inline;
 }
 
+.field-unit-error-msg {
+  background-color: red;
+  color: white;
+}
+
+h2.flash-error {
+  color: white;
+}
+
 .field-unit--nested {
   border: $base-border;
   margin-left: 7.5%;
