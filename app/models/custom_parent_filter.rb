@@ -1,10 +1,10 @@
 class CustomParentFilter < ApplicationRecord 
   extend FriendlyId
 
-  after_save    { ExpireCache.call }
-  after_update  { ExpireCache.call }
-  after_destroy { ExpireCache.call }
-  after_create  { ExpireCache.call }
+  after_save    { ExpireCacheJob.perform_later }
+  after_update  { ExpireCacheJob.perform_later }
+  after_destroy { ExpireCacheJob.perform_later }
+  after_create  { ExpireCacheJob.perform_later }
 
 
   validates :name, presence: true, uniqueness: true

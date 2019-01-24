@@ -1,10 +1,10 @@
 class Rule < ApplicationRecord
   include Prefixable
 
-  after_save    { ExpireCache.call }
-  after_update  { ExpireCache.call }
-  after_destroy { ExpireCache.call }
-  after_create  { ExpireCache.call }
+  after_save    { ExpireCacheJob.perform_later }
+  after_update  { ExpireCacheJob.perform_later }
+  after_destroy { ExpireCacheJob.perform_later }
+  after_create  { ExpireCacheJob.perform_later }
 
   has_paper_trail ignore: [:updated_at]
 
