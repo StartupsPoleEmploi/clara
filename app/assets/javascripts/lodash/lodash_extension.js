@@ -21,19 +21,6 @@ _.mixin({
     return result;
   },
 
-  fullDateFr: function() {
-    var now = new Date();
- 
-    var annee   = now.getFullYear();
-    var mois    = ('0'+(now.getMonth()+1)).slice(-2);
-    var jour    = ('0'+now.getDate()   ).slice(-2);
-    var heure   = ('0'+now.getHours()  ).slice(-2);
-    var minute  = ('0'+now.getMinutes()).slice(-2);
-    var seconde = ('0'+now.getSeconds()).slice(-2);
-    var ms = ('0'+now.getMilliseconds()).slice(-2);
-    return jour + "/" + mois + "/" + annee + " " + heure + "h" + minute + "m" + seconde + "s" + ms + "ms"
-  },
-
   // returns next element in an array, returns first element if last is given
   nextElementLooped: function (array, element) {
     
