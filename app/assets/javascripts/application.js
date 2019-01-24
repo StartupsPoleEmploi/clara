@@ -32,7 +32,7 @@
 //= require ./font_load
 //= require_tree ./forms
 //= require ./welcome_index
-//= require ./result_default
+//= require ./aides
 //= require ./edit_cooky
 //= require ./contact
 //= require ./google_analytics_push
