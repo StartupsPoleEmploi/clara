@@ -28,11 +28,14 @@ and renders all form fields for a resource's editable attributes.
 
 <%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "slave_rules" => "help.rule.slave_rules", "composition_type" => "help.rule.composition_type"} %>
 <%- placeholder_h = {"name" => "placeholder.rule.name", "description" => "placeholder.rule.description"} %>
+<%- errors_messages_h = page.resource.errors.messages %>
+<%- errors_messages_h.transform_keys!{ |key| key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key} %>
+
 
 <%= form_for([namespace, page.resource], html: { class: "form", "data-kind" => "#{kind}" }) do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h2  class="flash-error" data-errors="<%=errors_messages_h%>">
         <%= t(
           "administrate.form.errors",
           pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
@@ -40,11 +43,6 @@ and renders all form fields for a resource's editable attributes.
         ) %>
       </h2>
 
-      <ul>
-        <% page.resource.errors.full_messages.each do |message| %>
-          <li class="flash-error" data-med="<%=page.resource.errors.inspect%>"><%= message %></li>
-        <% end %>
-      </ul>
     </div>
   <% end %>
 
@@ -52,12 +50,15 @@ and renders all form fields for a resource's editable attributes.
     <%- attr_name = attribute.attribute.to_s%>
     <%- is_excluded = exclusion_list.include?(attr_name)%>
     <%- is_mandatory = mandatory_list.include?(attr_name)%>
-    <% unless is_excluded -%>
-      <div class="field-unit field-unit--<%= attribute.html_class %>">
+    <% unless is_excluded %>
+      <div class="field-unit field-unit--<%= attribute.html_class %>" data-attr="<%=attribute.attribute.inspect%>">
         <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
       </div>
-    <% end -%>
-  <% end -%>
+      <% if errors_messages_h.key?(attribute.attribute) %>
+        
+      <% end %>
+    <% end %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.submit %>
