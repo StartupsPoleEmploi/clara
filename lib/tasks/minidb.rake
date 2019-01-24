@@ -9,12 +9,13 @@ namespace :minidb do
         fill_rules_array(slave_rule["id"], array_to_fill, all_rules)
       end
     end
-
   end
 
   task :recreate => :environment do
     if Rails.env.development?
       p "Recreating a minidatabase from production data"
+      activated_models = ActivatedModelsService.instance
+      all_rules = activated_models.rules
 
       # Only a few aids
       Aid.where.not(
@@ -26,21 +27,15 @@ namespace :minidb do
 
 
       # Only a few rules from the few aids
-      activated_models = ActivatedModelsService.instance
-      all_rules = activated_models.rules
       root_rules_id = activated_models.aids.map { |aid| aid["rule_id"] }
-      # selected_rules = Rule.all.select { |r| root_rules_id.include?(r.id)   }
-      p root_rules_id.inspect
-      selected_rules = all_rules.select{|r| root_rules_id.include?(r["id"])}
-      p selected_rules.size
-      p selected_rules
-      raw_selected_rules = selected_rules.map { |e| e["id"] }
-      p raw_selected_rules
       array_of_searched_rules = []
       root_rules_id.each do |root_rule_id|
         fill_rules_array(root_rule_id, array_of_searched_rules, all_rules)
       end
       p array_of_searched_rules
+      ActiveRecord::Base.connection.disable_referential_integrity do
+        Rule.where.not(id: array_of_searched_rules).destroy_all
+      end
       # fill_rules_array(selected_rules)
     else
       p "Recreate a minidatabase is for development mode only"
