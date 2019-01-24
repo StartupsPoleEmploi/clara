@@ -1,4 +1,4 @@
-//= require edit_cooky
+//= require custom/edit_cooky
 describe('edit_cooky.js', function() {
 
   it('Should have edit_cooky mapped to clara', function() {
