@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.12.2 (24/1/2019)
+-[#1111][ADMIN] BO : ergonomie des messages d'erreurs
+
+
 ## 18.12.1 (24/1/2019)
 -[#1111][ADMIN] BO : une seule règle enfant autorisée par règle composite
 
