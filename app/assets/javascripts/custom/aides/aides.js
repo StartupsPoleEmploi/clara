@@ -229,7 +229,11 @@ clara.js_define("aides", {
     *
     *
     **/
-    window.main_store = Redux.createStore(main_reducer, default_state(initial_state));
+    window.main_store = 
+      Redux.createStore(
+        main_reducer, 
+        clara.please_get_aides_default_state.main_function(initial_state)
+      );
 
 
     /**
