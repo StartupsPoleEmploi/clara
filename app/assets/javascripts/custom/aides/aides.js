@@ -86,9 +86,10 @@ clara.js_define("aides", {
     };
 
     var default_state = function() {
-      var previous_state = store.get(clara.please_get_state_key.main_function());
-      var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
-      return has_state ? previous_state : initial_state;
+      return clara.please_get_aides_default_state.main_function(initial_state);
+      // var previous_state = store.get(clara.please_get_state_key.main_function());
+      // var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
+      // return has_state ? previous_state : initial_state;
     }
 
     var iterate_through_aids = function(callable_function, state) {
