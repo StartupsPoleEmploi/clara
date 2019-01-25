@@ -3,9 +3,10 @@ clara.js_define("please_set_aides_state", {
   trigger_function: _.stubFalse,
 
   main_function: function(the_initial_state) {
+    var that = this;
     var key = clara.please_get_state_key.main_function();
     if (_.isObject(the_initial_state) && !_.isEmpty(the_initial_state)) {
-      var obj_to_store = _extract_from_state(the_initial_state);
+      var obj_to_store = that._extract_from_state(the_initial_state);
       store.set(key, obj_to_store);
     }
   },
@@ -20,7 +21,7 @@ clara.js_define("please_set_aides_state", {
     aids_ineligibles = _.defaultTo(
                           _.get(the_initial_state, "ineligibles_zone.ineligibles.aids"), 
                           []);
-    
+    return _.concat(aids_eligibles, aids_uncertains, aids_ineligibles);
   }
 
 });

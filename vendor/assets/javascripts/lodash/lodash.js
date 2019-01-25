@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,unionBy"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -4911,6 +4911,43 @@
   /*------------------------------------------------------------------------*/
 
   /**
+   * Creates a new array concatenating `array` with any additional arrays
+   * and/or values.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Array
+   * @param {Array} array The array to concatenate.
+   * @param {...*} [values] The values to concatenate.
+   * @returns {Array} Returns the new concatenated array.
+   * @example
+   *
+   * var array = [1];
+   * var other = _.concat(array, 2, [3], [[4]]);
+   *
+   * console.log(other);
+   * // => [1, 2, 3, [4]]
+   *
+   * console.log(array);
+   * // => [1]
+   */
+  function concat() {
+    var length = arguments.length;
+    if (!length) {
+      return [];
+    }
+    var args = Array(length - 1),
+        array = arguments[0],
+        index = length;
+
+    while (index--) {
+      args[index - 1] = arguments[index];
+    }
+    return arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1));
+  }
+
+  /**
    * This method is like `_.find` except that it returns the index of the first
    * element `predicate` returns truthy for instead of the element itself.
    *
@@ -5045,6 +5082,37 @@
   function reverse(array) {
     return array == null ? array : nativeReverse.call(array);
   }
+
+  /**
+   * This method is like `_.union` except that it accepts `iteratee` which is
+   * invoked for each element of each `arrays` to generate the criterion by
+   * which uniqueness is computed. Result values are chosen from the first
+   * array in which the value occurs. The iteratee is invoked with one argument:
+   * (value).
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Array
+   * @param {...Array} [arrays] The arrays to inspect.
+   * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
+   * @returns {Array} Returns the new array of combined values.
+   * @example
+   *
+   * _.unionBy([2.1], [1.2, 2.3], Math.floor);
+   * // => [2.1, 1.2]
+   *
+   * // The `_.property` iteratee shorthand.
+   * _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
+   * // => [{ 'x': 1 }, { 'x': 2 }]
+   */
+  var unionBy = baseRest(function(arrays) {
+    var iteratee = last(arrays);
+    if (isArrayLikeObject(iteratee)) {
+      iteratee = undefined;
+    }
+    return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), getIteratee(iteratee, 2));
+  });
 
   /**
    * This method is like `_.uniq` except that it accepts `iteratee` which is
@@ -7760,6 +7828,7 @@
   // Add methods that return wrapped values in chain sequences.
   lodash.assign = assign;
   lodash.chain = chain;
+  lodash.concat = concat;
   lodash.constant = constant;
   lodash.countBy = countBy;
   lodash.debounce = debounce;
@@ -7783,6 +7852,7 @@
   lodash.throttle = throttle;
   lodash.thru = thru;
   lodash.toArray = toArray;
+  lodash.unionBy = unionBy;
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
   lodash.values = values;
