@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,unionBy"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -669,6 +669,26 @@
         : iteratee(accumulator, value, index, collection);
     });
     return accumulator;
+  }
+
+  /**
+   * The base implementation of `_.sortBy` which uses `comparer` to define the
+   * sort order of `array` and replaces criteria objects with their corresponding
+   * values.
+   *
+   * @private
+   * @param {Array} array The array to sort.
+   * @param {Function} comparer The function to define sort order.
+   * @returns {Array} Returns `array`.
+   */
+  function baseSortBy(array, comparer) {
+    var length = array.length;
+
+    array.sort(comparer);
+    while (length--) {
+      array[length] = array[length].value;
+    }
+    return array;
   }
 
   /**
@@ -2733,6 +2753,31 @@
   }
 
   /**
+   * The base implementation of `_.orderBy` without param guards.
+   *
+   * @private
+   * @param {Array|Object} collection The collection to iterate over.
+   * @param {Function[]|Object[]|string[]} iteratees The iteratees to sort by.
+   * @param {string[]} orders The sort orders of `iteratees`.
+   * @returns {Array} Returns the new sorted array.
+   */
+  function baseOrderBy(collection, iteratees, orders) {
+    var index = -1;
+    iteratees = arrayMap(iteratees.length ? iteratees : [identity], baseUnary(getIteratee()));
+
+    var result = baseMap(collection, function(value, key, collection) {
+      var criteria = arrayMap(iteratees, function(iteratee) {
+        return iteratee(value);
+      });
+      return { 'criteria': criteria, 'index': ++index, 'value': value };
+    });
+
+    return baseSortBy(result, function(object, other) {
+      return compareMultiple(object, other, orders);
+    });
+  }
+
+  /**
    * A specialized version of `baseProperty` which supports deep paths.
    *
    * @private
@@ -3149,6 +3194,85 @@
   function cloneTypedArray(typedArray, isDeep) {
     var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
     return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+  }
+
+  /**
+   * Compares values to sort them in ascending order.
+   *
+   * @private
+   * @param {*} value The value to compare.
+   * @param {*} other The other value to compare.
+   * @returns {number} Returns the sort order indicator for `value`.
+   */
+  function compareAscending(value, other) {
+    if (value !== other) {
+      var valIsDefined = value !== undefined,
+          valIsNull = value === null,
+          valIsReflexive = value === value,
+          valIsSymbol = isSymbol(value);
+
+      var othIsDefined = other !== undefined,
+          othIsNull = other === null,
+          othIsReflexive = other === other,
+          othIsSymbol = isSymbol(other);
+
+      if ((!othIsNull && !othIsSymbol && !valIsSymbol && value > other) ||
+          (valIsSymbol && othIsDefined && othIsReflexive && !othIsNull && !othIsSymbol) ||
+          (valIsNull && othIsDefined && othIsReflexive) ||
+          (!valIsDefined && othIsReflexive) ||
+          !valIsReflexive) {
+        return 1;
+      }
+      if ((!valIsNull && !valIsSymbol && !othIsSymbol && value < other) ||
+          (othIsSymbol && valIsDefined && valIsReflexive && !valIsNull && !valIsSymbol) ||
+          (othIsNull && valIsDefined && valIsReflexive) ||
+          (!othIsDefined && valIsReflexive) ||
+          !othIsReflexive) {
+        return -1;
+      }
+    }
+    return 0;
+  }
+
+  /**
+   * Used by `_.orderBy` to compare multiple properties of a value to another
+   * and stable sort them.
+   *
+   * If `orders` is unspecified, all values are sorted in ascending order. Otherwise,
+   * specify an order of "desc" for descending or "asc" for ascending sort order
+   * of corresponding values.
+   *
+   * @private
+   * @param {Object} object The object to compare.
+   * @param {Object} other The other object to compare.
+   * @param {boolean[]|string[]} orders The order to sort by for each property.
+   * @returns {number} Returns the sort order indicator for `object`.
+   */
+  function compareMultiple(object, other, orders) {
+    var index = -1,
+        objCriteria = object.criteria,
+        othCriteria = other.criteria,
+        length = objCriteria.length,
+        ordersLength = orders.length;
+
+    while (++index < length) {
+      var result = compareAscending(objCriteria[index], othCriteria[index]);
+      if (result) {
+        if (index >= ordersLength) {
+          return result;
+        }
+        var order = orders[index];
+        return result * (order == 'desc' ? -1 : 1);
+      }
+    }
+    // Fixes an `Array#sort` bug in the JS engine embedded in Adobe applications
+    // that causes it, under certain circumstances, to provide the same value for
+    // `object` and `other`. See https://github.com/jashkenas/underscore/pull/1247
+    // for more details.
+    //
+    // This also ensures a stable sort in V8 and other engines.
+    // See https://bugs.chromium.org/p/v8/issues/detail?id=90 for more details.
+    return object.index - other.index;
   }
 
   /**
@@ -5084,37 +5208,6 @@
   }
 
   /**
-   * This method is like `_.union` except that it accepts `iteratee` which is
-   * invoked for each element of each `arrays` to generate the criterion by
-   * which uniqueness is computed. Result values are chosen from the first
-   * array in which the value occurs. The iteratee is invoked with one argument:
-   * (value).
-   *
-   * @static
-   * @memberOf _
-   * @since 4.0.0
-   * @category Array
-   * @param {...Array} [arrays] The arrays to inspect.
-   * @param {Function} [iteratee=_.identity] The iteratee invoked per element.
-   * @returns {Array} Returns the new array of combined values.
-   * @example
-   *
-   * _.unionBy([2.1], [1.2, 2.3], Math.floor);
-   * // => [2.1, 1.2]
-   *
-   * // The `_.property` iteratee shorthand.
-   * _.unionBy([{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }], 'x');
-   * // => [{ 'x': 1 }, { 'x': 2 }]
-   */
-  var unionBy = baseRest(function(arrays) {
-    var iteratee = last(arrays);
-    if (isArrayLikeObject(iteratee)) {
-      iteratee = undefined;
-    }
-    return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), getIteratee(iteratee, 2));
-  });
-
-  /**
    * This method is like `_.uniq` except that it accepts `iteratee` which is
    * invoked for each element in `array` to generate the criterion by which
    * uniqueness is computed. The order of result values is determined by the
@@ -5947,6 +6040,48 @@
     }
     return func(collection, getIteratee(predicate, 3));
   }
+
+  /**
+   * Creates an array of elements, sorted in ascending order by the results of
+   * running each element in a collection thru each iteratee. This method
+   * performs a stable sort, that is, it preserves the original sort order of
+   * equal elements. The iteratees are invoked with one argument: (value).
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Collection
+   * @param {Array|Object} collection The collection to iterate over.
+   * @param {...(Function|Function[])} [iteratees=[_.identity]]
+   *  The iteratees to sort by.
+   * @returns {Array} Returns the new sorted array.
+   * @example
+   *
+   * var users = [
+   *   { 'user': 'fred',   'age': 48 },
+   *   { 'user': 'barney', 'age': 36 },
+   *   { 'user': 'fred',   'age': 40 },
+   *   { 'user': 'barney', 'age': 34 }
+   * ];
+   *
+   * _.sortBy(users, [function(o) { return o.user; }]);
+   * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+   *
+   * _.sortBy(users, ['user', 'age']);
+   * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+   */
+  var sortBy = baseRest(function(collection, iteratees) {
+    if (collection == null) {
+      return [];
+    }
+    var length = iteratees.length;
+    if (length > 1 && isIterateeCall(collection, iteratees[0], iteratees[1])) {
+      iteratees = [];
+    } else if (length > 2 && isIterateeCall(iteratees[0], iteratees[1], iteratees[2])) {
+      iteratees = [iteratees[0]];
+    }
+    return baseOrderBy(collection, baseFlatten(iteratees, 1), []);
+  });
 
   /*------------------------------------------------------------------------*/
 
@@ -7847,12 +7982,12 @@
   lodash.property = property;
   lodash.reverse = reverse;
   lodash.set = set;
+  lodash.sortBy = sortBy;
   lodash.split = split;
   lodash.tap = tap;
   lodash.throttle = throttle;
   lodash.thru = thru;
   lodash.toArray = toArray;
-  lodash.unionBy = unionBy;
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
   lodash.values = values;
