@@ -125,7 +125,8 @@ clara.js_define("aides", {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return default_state(initial_state);
+        return clara.please_get_aides_default_state.main_function(initial_state);
+        // return default_state(initial_state);
       }
 
       // Works better than _.assign or Object.assign
