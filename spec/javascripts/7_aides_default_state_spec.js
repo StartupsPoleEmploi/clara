@@ -8,10 +8,10 @@ describe('please_get_aides_default_state.js', function() {
   describe('State is existing', function() {
     beforeEach(function() {
     });
-    it('returns initial state if not yet existing', function() {
+    it('returns given initial state if not yet existing', function() {
       spyOn(clara.please_get_state_key, "main_function").and.callFake(function(){return null});
         res = clara.please_get_aides_default_state.main_function("my_initial_state");
-        expect(res).toEqual("blabla");
+        expect(res).toEqual("my_initial_state");
     });
   });
 
