@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -3029,6 +3029,17 @@
   }
 
   /**
+   * Casts `value` to `identity` if it's not a function.
+   *
+   * @private
+   * @param {*} value The value to inspect.
+   * @returns {Function} Returns cast function.
+   */
+  function castFunction(value) {
+    return typeof value == 'function' ? value : identity;
+  }
+
+  /**
    * Casts `value` to a path array if it's not one.
    *
    * @private
@@ -3395,6 +3406,27 @@
   }
 
   /**
+   * Creates a function that wraps `func` to invoke it with the optional `this`
+   * binding of `thisArg`.
+   *
+   * @private
+   * @param {Function} func The function to wrap.
+   * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+   * @param {*} [thisArg] The `this` binding of `func`.
+   * @returns {Function} Returns the new wrapped function.
+   */
+  function createBind(func, bitmask, thisArg) {
+    var isBind = bitmask & WRAP_BIND_FLAG,
+        Ctor = createCtor(func);
+
+    function wrapper() {
+      var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
+      return fn.apply(isBind ? thisArg : this, arguments);
+    }
+    return wrapper;
+  }
+
+  /**
    * Creates a function that produces an instance of `Ctor` regardless of
    * whether it was invoked as part of a `new` expression or by `call` or `apply`.
    *
@@ -3425,6 +3457,43 @@
       // See https://es5.github.io/#x13.2.2 for more details.
       return isObject(result) ? result : thisBinding;
     };
+  }
+
+  /**
+   * Creates a function that wraps `func` to enable currying.
+   *
+   * @private
+   * @param {Function} func The function to wrap.
+   * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+   * @param {number} arity The arity of `func`.
+   * @returns {Function} Returns the new wrapped function.
+   */
+  function createCurry(func, bitmask, arity) {
+    var Ctor = createCtor(func);
+
+    function wrapper() {
+      var length = arguments.length,
+          args = Array(length),
+          index = length,
+          placeholder = getHolder(wrapper);
+
+      while (index--) {
+        args[index] = arguments[index];
+      }
+      var holders = (length < 3 && args[0] !== placeholder && args[length - 1] !== placeholder)
+        ? []
+        : replaceHolders(args, placeholder);
+
+      length -= holders.length;
+      if (length < arity) {
+        return createRecurry(
+          func, bitmask, createHybrid, wrapper.placeholder, undefined,
+          args, holders, undefined, undefined, arity - length);
+      }
+      var fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
+      return apply(fn, this, args);
+    }
+    return wrapper;
   }
 
   /**
@@ -3521,6 +3590,41 @@
   }
 
   /**
+   * Creates a function that wraps `func` to invoke it with the `this` binding
+   * of `thisArg` and `partials` prepended to the arguments it receives.
+   *
+   * @private
+   * @param {Function} func The function to wrap.
+   * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+   * @param {*} thisArg The `this` binding of `func`.
+   * @param {Array} partials The arguments to prepend to those provided to
+   *  the new function.
+   * @returns {Function} Returns the new wrapped function.
+   */
+  function createPartial(func, bitmask, thisArg, partials) {
+    var isBind = bitmask & WRAP_BIND_FLAG,
+        Ctor = createCtor(func);
+
+    function wrapper() {
+      var argsIndex = -1,
+          argsLength = arguments.length,
+          leftIndex = -1,
+          leftLength = partials.length,
+          args = Array(leftLength + argsLength),
+          fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
+
+      while (++leftIndex < leftLength) {
+        args[leftIndex] = partials[leftIndex];
+      }
+      while (argsLength--) {
+        args[leftIndex++] = arguments[++argsIndex];
+      }
+      return apply(fn, isBind ? thisArg : this, args);
+    }
+    return wrapper;
+  }
+
+  /**
    * Creates a function that wraps `func` to continue currying.
    *
    * @private
@@ -3573,6 +3677,86 @@
   var createSet = !(Set && (1 / setToArray(new Set([,-0]))[1]) == INFINITY) ? noop : function(values) {
     return new Set(values);
   };
+
+  /**
+   * Creates a function that either curries or invokes `func` with optional
+   * `this` binding and partially applied arguments.
+   *
+   * @private
+   * @param {Function|string} func The function or method name to wrap.
+   * @param {number} bitmask The bitmask flags.
+   *    1 - `_.bind`
+   *    2 - `_.bindKey`
+   *    4 - `_.curry` or `_.curryRight` of a bound function
+   *    8 - `_.curry`
+   *   16 - `_.curryRight`
+   *   32 - `_.partial`
+   *   64 - `_.partialRight`
+   *  128 - `_.rearg`
+   *  256 - `_.ary`
+   *  512 - `_.flip`
+   * @param {*} [thisArg] The `this` binding of `func`.
+   * @param {Array} [partials] The arguments to be partially applied.
+   * @param {Array} [holders] The `partials` placeholder indexes.
+   * @param {Array} [argPos] The argument positions of the new function.
+   * @param {number} [ary] The arity cap of `func`.
+   * @param {number} [arity] The arity of `func`.
+   * @returns {Function} Returns the new wrapped function.
+   */
+  function createWrap(func, bitmask, thisArg, partials, holders, argPos, ary, arity) {
+    var isBindKey = bitmask & WRAP_BIND_KEY_FLAG;
+    if (!isBindKey && typeof func != 'function') {
+      throw new TypeError(FUNC_ERROR_TEXT);
+    }
+    var length = partials ? partials.length : 0;
+    if (!length) {
+      bitmask &= ~(WRAP_PARTIAL_FLAG | WRAP_PARTIAL_RIGHT_FLAG);
+      partials = holders = undefined;
+    }
+    ary = ary === undefined ? ary : nativeMax(toInteger(ary), 0);
+    arity = arity === undefined ? arity : toInteger(arity);
+    length -= holders ? holders.length : 0;
+
+    if (bitmask & WRAP_PARTIAL_RIGHT_FLAG) {
+      var partialsRight = partials,
+          holdersRight = holders;
+
+      partials = holders = undefined;
+    }
+    var data = isBindKey ? undefined : getData(func);
+
+    var newData = [
+      func, bitmask, thisArg, partials, holders, partialsRight, holdersRight,
+      argPos, ary, arity
+    ];
+
+    if (data) {
+      mergeData(newData, data);
+    }
+    func = newData[0];
+    bitmask = newData[1];
+    thisArg = newData[2];
+    partials = newData[3];
+    holders = newData[4];
+    arity = newData[9] = newData[9] === undefined
+      ? (isBindKey ? 0 : func.length)
+      : nativeMax(newData[9] - length, 0);
+
+    if (!arity && bitmask & (WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG)) {
+      bitmask &= ~(WRAP_CURRY_FLAG | WRAP_CURRY_RIGHT_FLAG);
+    }
+    if (!bitmask || bitmask == WRAP_BIND_FLAG) {
+      var result = createBind(func, bitmask, thisArg);
+    } else if (bitmask == WRAP_CURRY_FLAG || bitmask == WRAP_CURRY_RIGHT_FLAG) {
+      result = createCurry(func, bitmask, arity);
+    } else if ((bitmask == WRAP_PARTIAL_FLAG || bitmask == (WRAP_BIND_FLAG | WRAP_PARTIAL_FLAG)) && !holders.length) {
+      result = createPartial(func, bitmask, thisArg, partials);
+    } else {
+      result = createHybrid.apply(undefined, newData);
+    }
+    var setter = data ? baseSetData : setData;
+    return setWrapToString(setter(result, newData), func, bitmask);
+  }
 
   /**
    * A specialized version of `baseIsEqualDeep` for arrays with support for
@@ -4399,6 +4583,77 @@
 
     var cache = result.cache;
     return result;
+  }
+
+  /**
+   * Merges the function metadata of `source` into `data`.
+   *
+   * Merging metadata reduces the number of wrappers used to invoke a function.
+   * This is possible because methods like `_.bind`, `_.curry`, and `_.partial`
+   * may be applied regardless of execution order. Methods like `_.ary` and
+   * `_.rearg` modify function arguments, making the order in which they are
+   * executed important, preventing the merging of metadata. However, we make
+   * an exception for a safe combined case where curried functions have `_.ary`
+   * and or `_.rearg` applied.
+   *
+   * @private
+   * @param {Array} data The destination metadata.
+   * @param {Array} source The source metadata.
+   * @returns {Array} Returns `data`.
+   */
+  function mergeData(data, source) {
+    var bitmask = data[1],
+        srcBitmask = source[1],
+        newBitmask = bitmask | srcBitmask,
+        isCommon = newBitmask < (WRAP_BIND_FLAG | WRAP_BIND_KEY_FLAG | WRAP_ARY_FLAG);
+
+    var isCombo =
+      ((srcBitmask == WRAP_ARY_FLAG) && (bitmask == WRAP_CURRY_FLAG)) ||
+      ((srcBitmask == WRAP_ARY_FLAG) && (bitmask == WRAP_REARG_FLAG) && (data[7].length <= source[8])) ||
+      ((srcBitmask == (WRAP_ARY_FLAG | WRAP_REARG_FLAG)) && (source[7].length <= source[8]) && (bitmask == WRAP_CURRY_FLAG));
+
+    // Exit early if metadata can't be merged.
+    if (!(isCommon || isCombo)) {
+      return data;
+    }
+    // Use source `thisArg` if available.
+    if (srcBitmask & WRAP_BIND_FLAG) {
+      data[2] = source[2];
+      // Set when currying a bound function.
+      newBitmask |= bitmask & WRAP_BIND_FLAG ? 0 : WRAP_CURRY_BOUND_FLAG;
+    }
+    // Compose partial arguments.
+    var value = source[3];
+    if (value) {
+      var partials = data[3];
+      data[3] = partials ? composeArgs(partials, value, source[4]) : value;
+      data[4] = partials ? replaceHolders(data[3], PLACEHOLDER) : source[4];
+    }
+    // Compose partial right arguments.
+    value = source[5];
+    if (value) {
+      partials = data[5];
+      data[5] = partials ? composeArgsRight(partials, value, source[6]) : value;
+      data[6] = partials ? replaceHolders(data[5], PLACEHOLDER) : source[6];
+    }
+    // Use source `argPos` if available.
+    value = source[7];
+    if (value) {
+      data[7] = value;
+    }
+    // Use source `ary` if it's smaller.
+    if (srcBitmask & WRAP_ARY_FLAG) {
+      data[8] = data[8] == null ? source[8] : nativeMin(data[8], source[8]);
+    }
+    // Use source `arity` if one is not provided.
+    if (data[9] == null) {
+      data[9] = source[9];
+    }
+    // Use source `func` and merge bitmasks.
+    data[0] = source[0];
+    data[1] = newBitmask;
+
+    return data;
   }
 
   /**
@@ -5931,6 +6186,44 @@
   }
 
   /**
+   * Creates a function that invokes `func` with `partials` prepended to the
+   * arguments it receives. This method is like `_.bind` except it does **not**
+   * alter the `this` binding.
+   *
+   * The `_.partial.placeholder` value, which defaults to `_` in monolithic
+   * builds, may be used as a placeholder for partially applied arguments.
+   *
+   * **Note:** This method doesn't set the "length" property of partially
+   * applied functions.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.2.0
+   * @category Function
+   * @param {Function} func The function to partially apply arguments to.
+   * @param {...*} [partials] The arguments to be partially applied.
+   * @returns {Function} Returns the new partially applied function.
+   * @example
+   *
+   * function greet(greeting, name) {
+   *   return greeting + ' ' + name;
+   * }
+   *
+   * var sayHelloTo = _.partial(greet, 'hello');
+   * sayHelloTo('fred');
+   * // => 'hello fred'
+   *
+   * // Partially applied with placeholders.
+   * var greetFred = _.partial(greet, _, 'fred');
+   * greetFred('hi');
+   * // => 'hi fred'
+   */
+  var partial = baseRest(function(func, partials) {
+    var holders = replaceHolders(partials, getHolder(partial));
+    return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
+  });
+
+  /**
    * Creates a throttled function that only invokes `func` at most once per
    * every `wait` milliseconds. The throttled function comes with a `cancel`
    * method to cancel delayed `func` invocations and a `flush` method to
@@ -5990,6 +6283,32 @@
       'maxWait': wait,
       'trailing': trailing
     });
+  }
+
+  /**
+   * Creates a function that provides `value` to `wrapper` as its first
+   * argument. Any additional arguments provided to the function are appended
+   * to those provided to the `wrapper`. The wrapper is invoked with the `this`
+   * binding of the created function.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Function
+   * @param {*} value The value to wrap.
+   * @param {Function} [wrapper=identity] The wrapper function.
+   * @returns {Function} Returns the new function.
+   * @example
+   *
+   * var p = _.wrap(_.escape, function(func, text) {
+   *   return '<p>' + func(text) + '</p>';
+   * });
+   *
+   * p('fred, barney, & pebbles');
+   * // => '<p>fred, barney, &amp; pebbles</p>'
+   */
+  function wrap(value, wrapper) {
+    return partial(castFunction(wrapper), value);
   }
 
   /*------------------------------------------------------------------------*/
@@ -7455,6 +7774,7 @@
   lodash.memoize = memoize;
   lodash.mixin = mixin;
   lodash.negate = negate;
+  lodash.partial = partial;
   lodash.property = property;
   lodash.reverse = reverse;
   lodash.set = set;
@@ -7466,6 +7786,7 @@
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
   lodash.values = values;
+  lodash.wrap = wrap;
   lodash.zipObject = zipObject;
 
   // Add methods to `lodash.prototype`.
@@ -7544,6 +7865,9 @@
    * @type {string}
    */
   lodash.VERSION = VERSION;
+
+  // Assign default placeholders.
+  partial.placeholder = lodash;
 
   // Add `LazyWrapper` methods for `_.drop` and `_.take` variants.
   arrayEach(['drop', 'take'], function(methodName, index) {

@@ -13,6 +13,11 @@ describe('please_get_aides_default_state.js', function() {
         res = clara.please_get_aides_default_state.main_function("my_initial_state");
         expect(res).toEqual("my_initial_state");
     });
+    it('returns given initial state if empty object exists', function() {
+      spyOn(clara.please_get_state_key, "main_function").and.callFake(function(){return {};});
+        res = clara.please_get_aides_default_state.main_function("my_initial_state");
+        expect(res).toEqual("my_initial_state");
+    });
   });
 
 });
