@@ -204,7 +204,9 @@ clara.js_define("aides", {
         });
       }
       
-      store.set(clara.please_get_state_key.main_function(), newState);
+      clara.set_aides_state.please(newState)
+      // store.set(clara.please_get_state_key.main_function(), newState);
+
 
       return newState;
     }

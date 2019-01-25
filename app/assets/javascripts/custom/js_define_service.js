@@ -12,7 +12,7 @@ _.set(window, "clara.js_define_service", function(object_name, actual_object) {
   // define a JS object
   // by default will trigger only on the right page if object_name follow Rails conventions
   _.set(window, get_obj_path(), {
-    // no trigger function, no main function, nothing
+    trigger_function: _.stubFalse,
     please: function() {
       console.warn("Please override the \"please\" method when defining a service")
     }
