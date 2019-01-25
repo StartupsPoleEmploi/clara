@@ -8,16 +8,22 @@ describe('please_get_aides_default_state.js', function() {
   describe('State is existing', function() {
     beforeEach(function() {
     });
-    it('returns given initial state if not yet existing', function() {
-      spyOn(clara.please_get_state_key, "main_function").and.callFake(function(){return null});
-        res = clara.please_get_aides_default_state.main_function("my_initial_state");
-        expect(res).toEqual("my_initial_state");
+    it('returns given initial state if previous_state is not yet existing', function() {
+      spyOn(store, "get").and.callFake(_.wrap(null));
+      res = clara.please_get_aides_default_state.main_function("my_initial_state");
+      expect(res).toEqual("my_initial_state");
     });
-    it('returns given initial state if empty object exists', function() {
-      spyOn(clara.please_get_state_key, "main_function").and.callFake(function(){return {};});
-        res = clara.please_get_aides_default_state.main_function("my_initial_state");
-        expect(res).toEqual("my_initial_state");
+    it('returns given initial state if previous_state exists but as empty object', function() {
+      spyOn(store, "get").and.callFake(_.wrap({}));
+      res = clara.please_get_aides_default_state.main_function("my_initial_state");
+      expect(res).toEqual("my_initial_state");
+    });
+    it('returns previous state if previous_state exists as non-empty object', function() {
+      spyOn(store, "get").and.callFake(_.wrap({a:42}));
+      res = clara.please_get_aides_default_state.main_function("my_initial_state");
+      expect(res).toEqual({a:42});
     });
   });
 
 });
+  
