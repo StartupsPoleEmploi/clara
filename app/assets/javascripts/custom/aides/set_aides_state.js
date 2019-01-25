@@ -1,8 +1,6 @@
-clara.js_define("please_set_aides_state", {
+clara.js_define_service("set_aides_state", {
 
-  trigger_function: _.stubFalse,
-
-  main_function: function(the_initial_state) {
+  please: function(the_initial_state) {
     var that = this;
     var key = clara.please_get_state_key.main_function();
     if (_.isObject(the_initial_state) && !_.isEmpty(the_initial_state)) {
