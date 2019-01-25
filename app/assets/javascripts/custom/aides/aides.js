@@ -90,7 +90,7 @@ clara.js_define("aides", {
     };
 
     var default_state = function() {
-      var previous_state = store.get(state_key());
+      var previous_state = store.get(clara.please_get_state_key.main_function());
       var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
       return has_state ? previous_state : initial_state;
     }
@@ -212,7 +212,7 @@ clara.js_define("aides", {
         });
       }
       
-      store.set(state_key(), newState);
+      store.set(clara.please_get_state_key.main_function(), newState);
 
       return newState;
     }

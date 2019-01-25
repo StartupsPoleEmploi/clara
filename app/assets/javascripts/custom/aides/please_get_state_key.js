@@ -1,6 +1,6 @@
-clara.js_define("aides.please_get_state_key", {
+clara.js_define("please_get_state_key", {
 
-  trigger_function: function(){return false;},
+  trigger_function: _.stubFalse,
 
   main_function: function() {
     return 'state_of_' + $.urlParam('for_id');

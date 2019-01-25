@@ -32,7 +32,8 @@
 //= require custom/font_load
 //= require_tree ./forms
 //= require custom/welcome_index
-//= require_tree ./custom/aides
+//= require custom/aides/please_get_state_key
+//= require custom/aides/aides
 //= require custom/edit_cooky
 //= require custom/contact
 //= require custom/google_analytics_push
