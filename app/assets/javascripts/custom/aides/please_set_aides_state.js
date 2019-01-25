@@ -33,9 +33,7 @@ clara.js_define("please_set_aides_state", {
 
     var concatenated = _.concat(aids_eligibles, aids_uncertains, aids_ineligibles)
     var concatenated_sorted = _.sortBy(concatenated)
-    // console.log(" ")
-    console.log(concatenated);
-    return;
+    return concatenated_sorted;
   },
 
   _extract_ely: function(an_initial_state, a_status) {
