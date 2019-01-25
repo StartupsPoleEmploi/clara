@@ -1,6 +1,6 @@
 //= require redux/redux
 //= require storejs/store.legacy
-//= require_tree custom/aides
+//= require_tree ../../app/assets/javascripts/custom/aides
 describe('aides.js', function() {
 
   beforeEach(function() { 
