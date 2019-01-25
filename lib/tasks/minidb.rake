@@ -1,6 +1,7 @@
 namespace :minidb do
 
   def fill_rules_array(rule_id, array_to_fill, all_rules)
+    return if array_to_fill.include?(rule_id) 
     array_to_fill << rule_id
     current_rule = all_rules.find{|r| rule_id == r["id"]}
 
@@ -20,9 +21,15 @@ namespace :minidb do
       # Only a few aids
       Aid.where.not(
         slug:[
+          "garantie-jeunes",
+          "service-militaire-volontaire-smv",
           "vsi-volontariat-de-solidarite-internationale",
           "volontariat-associatif",
           "autres-frais-derogatoires",
+          "erasmus",
+          "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+          "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
+          "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
 
