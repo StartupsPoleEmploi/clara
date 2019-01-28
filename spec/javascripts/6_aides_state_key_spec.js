@@ -1,10 +1,6 @@
 //= require custom/aides/aides_state_key.js
 describe('aides_state_key.js', function() {
 
-  it('Should have aides_state_key mapped to clara', function() {
-    expect(clara.aides_state_key).toBeDefined();
-  });
-
   describe('URL is http://clara.com/aides?for_id=foridval', function() {
     beforeEach(function() {
       var url_to_test = "http://clara.com/aides?for_id=foridval";

@@ -1,10 +1,6 @@
 //= require custom/edit_cooky
 describe('edit_cooky.js', function() {
 
-  it('Should have edit_cooky mapped to clara', function() {
-    expect(clara.edit_cooky).toBeDefined();
-  });
-
   beforeEach(function() { 
 
     $('body').append('\

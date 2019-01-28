@@ -1,10 +1,6 @@
 //= require_tree ../../app/assets/javascripts/custom/aides
 describe('aides_extract_raw_data.js', function() {
 
-  it('Should have aides_extract_raw_data mapped to clara', function() {
-    expect(clara.aides_extract_raw_data).toBeDefined();
-  });
-
   describe('.aides_extract_raw_data', function() {
     it('extract data from store thanks to state_key', function() {
       var realistic_state = MagicLamp.loadJSON("nominal_aides_state");

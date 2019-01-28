@@ -1,10 +1,6 @@
 //= require custom/aides/aides_default_state.js
 describe('aides_default_state.js', function() {
 
-  it('Should have aides_default_state mapped to clara', function() {
-    expect(clara.aides_default_state).toBeDefined();
-  });
-
   describe('State is existing', function() {
     beforeEach(function() {
     });
