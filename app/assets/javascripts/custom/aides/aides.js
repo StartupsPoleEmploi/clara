@@ -120,7 +120,6 @@ clara.js_define("aides", {
       
       if (state === undefined) {
         return clara.aides_default_state.please(initial_state);
-        // return default_state(initial_state);
       }
 
       // Works better than _.assign or Object.assign
