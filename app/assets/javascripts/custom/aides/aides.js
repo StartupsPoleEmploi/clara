@@ -204,7 +204,7 @@ clara.js_define("aides", {
         });
       }
       
-      clara.aides_set_state.please(newState)
+      clara.aides_set_state.please(newState);
 
 
       return newState;
