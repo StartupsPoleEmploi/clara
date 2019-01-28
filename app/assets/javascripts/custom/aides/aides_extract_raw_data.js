@@ -2,29 +2,28 @@ clara.js_define("aides_extract_raw_data", {
 
   please_if: _.stubFalse,
 
-  please: function(the_initial_state) {
+  please: function(given_state) {
 
     var that = this;
-    console.log("the_initial_state")
-    console.log(the_initial_state)
     aids_eligibles = 
       _.defaultTo(
-        that._extract_ely(the_initial_state, "eligibles_zone.eligibles"),
+        that._extract_ely(given_state, "eligibles_zone.eligibles"),
         []
       );
     aids_ineligibles = 
       _.defaultTo(
-        that._extract_ely(the_initial_state, "ineligibles_zone.ineligibles"),
+        that._extract_ely(given_state, "ineligibles_zone.ineligibles"),
         []
       );
     aids_uncertains = 
       _.defaultTo(
-        that._extract_ely(the_initial_state, "uncertains_zone.uncertains"),
+        that._extract_ely(given_state, "uncertains_zone.uncertains"),
         []
       );
 
     var concatenated = _.concat(aids_eligibles, aids_uncertains, aids_ineligibles)
     var concatenated_sorted = _.sortBy(concatenated)
+    console.log(concatenated_sorted)
     return concatenated_sorted;
   
   },
