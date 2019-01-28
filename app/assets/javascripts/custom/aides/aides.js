@@ -205,7 +205,6 @@ clara.js_define("aides", {
       }
       
       clara.aides_set_state.please(newState)
-      // store.set(clara.aides_state_key.please(), newState);
 
 
       return newState;
