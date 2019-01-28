@@ -13,7 +13,7 @@ as defined by the routes in the `admin/` namespace
     <%= link_to 'Se déconnecter', signout_path  %>    
   </div>
   <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
-    <% unless resource.resource == 'pages' || resource.resource == 'status' %>
+    <% unless resource.resource == 'pages' || resource.resource == 'variables' || resource.resource == 'status' %>
       <%= link_to(
         display_resource_name(resource),
         [namespace, resource_index_route_key(resource)],
