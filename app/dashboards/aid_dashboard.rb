@@ -74,8 +74,6 @@ class AidDashboard < Administrate::BaseDashboard
     :need_filters,
     :filters,
     :custom_filters,
-    :slug,
-    :last_update,
     :archived_at,
     :rule,
     :contract_type,
