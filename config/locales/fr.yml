@@ -210,6 +210,8 @@ fr:
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
     label:
+      aid:
+        filters: Filtres
       rule:
         new_simple_resource: Créer une règle simple
         new_composite_resource: Créer une règle composée
