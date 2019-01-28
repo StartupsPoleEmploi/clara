@@ -211,7 +211,12 @@ fr:
       update: Modifier ce(tte) %{model}
     label:
       aid:
-        filters: Filtres
+        rule: règle
+        need_filters: Besoins
+        filters: Filtres page résultat 
+        contract_type: Rubrique
+        last_update: Dernière mise à jour
+        archived_at: Date d'arrêt de diffusion sur le site
       rule:
         new_simple_resource: Créer une règle simple
         new_composite_resource: Créer une règle composée
