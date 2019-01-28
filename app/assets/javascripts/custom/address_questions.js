@@ -1,4 +1,4 @@
-_.set(window, 'clara.a11y.search1', {
+_.set(window, 'clara.search1', {
   search_selector: '#search',
   results_selector: '#results',
   arialive_selector: '[aria-live]',
@@ -85,7 +85,7 @@ _.set(window, 'clara.a11y.search1', {
       $('#street_number').val(obj.housenumber);
       $('#locality').val(obj.city);
       $('#route').val(the_route);
-      $('#location_label').val($(clara.a11y.search1.search_selector).val().trim());
+      $('#location_label').val($(clara.search1.search_selector).val().trim());
 
       $('.js-next').focus();
     }
@@ -104,15 +104,15 @@ clara.load_js(function only_if(){return $("body").hasClasses("address_questions"
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    if ($(clara.a11y.search1.search_selector).val() === "") {
+    if ($(clara.search1.search_selector).val() === "") {
       // Must set type="number" dynamically like this, or tanaguru test won't pass
-      $(clara.a11y.search1.search_selector).prop("type", "number");
+      $(clara.search1.search_selector).prop("type", "number");
     }
-    $(clara.a11y.search1.search_selector).focus();
+    $(clara.search1.search_selector).focus();
 
     /* Autocomplete
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    clara.a11y.autocomplete(clara.a11y.search1);
+    clara.a11y.autocomplete(clara.search1);
 
 
 });

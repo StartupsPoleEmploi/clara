@@ -1,12 +1,10 @@
-clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") && $.urlParam("for_id") != null;}, function() {
+clara.js_define("aides", {
+
+  please: function() {
 
     var MOBILE_MAX_WIDTH = 739;
     var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
     var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
-
-    function state_key() {
-      return 'state_of_' + $.urlParam('for_id');
-    }
 
     function track_filter(filter_name) {
       if (typeof ga === "function") {
@@ -87,11 +85,6 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
       }
     };
 
-    var default_state = function() {
-      var previous_state = store.get(state_key());
-      var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);
-      return has_state ? previous_state : initial_state;
-    }
 
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
@@ -126,7 +119,8 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return default_state();
+        return clara.aides_default_state.please(initial_state);
+        // return default_state(initial_state);
       }
 
       // Works better than _.assign or Object.assign
@@ -210,7 +204,8 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
         });
       }
       
-      store.set(state_key(), newState);
+      clara.aides_set_state.please(newState);
+
 
       return newState;
     }
@@ -229,7 +224,11 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
     *
     *
     **/
-    window.main_store = Redux.createStore(main_reducer, default_state());
+    window.main_store = 
+      Redux.createStore(
+        main_reducer, 
+        clara.aides_default_state.please(initial_state)
+      );
 
 
     /**
@@ -420,5 +419,8 @@ clara.load_js(function only_if(){return $("body").hasClasses("aides", "index") &
 
     // fire initial state
     main_store.dispatch({type: 'INIT'})
+
+
+  }
 
 });

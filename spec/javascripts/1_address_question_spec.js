@@ -1,7 +1,7 @@
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
-//= require address_questions
+//= require custom/address_questions
 describe('address_questions.js', function() {
   var typical_input = {};
 
@@ -55,18 +55,26 @@ describe('address_questions.js', function() {
       ]
     };
   });
-
-  it('Needs autocompletion to be mapped to global clara.a11y', function() {
-    expect(clara).toBeDefined();
-    expect(clara.a11y).toBeDefined();
-    expect(clara.a11y.autocomplete).toBeDefined();
+  describe('Definitions', function() {
+    it('Needs clara to be defined', function() {
+      expect(clara).toBeDefined();
+    });
+    it('Needs clara.a11y to be defined', function() {
+      expect(clara.a11y).toBeDefined();
+    });
+    it('Needs clara.a11y.autocomplete to be defined', function() {
+      expect(clara.a11y.autocomplete).toBeDefined();
+    });
+    it('Needs clara.search1 to be defined', function() {
+      expect(clara.search1).toBeDefined();
+    });
   });
 
   it('Should be able to autocomplete every 1 chars', function() {
-    expect(clara.a11y.search1.autocomplete_every).toBe(1);
+    expect(clara.search1.autocomplete_every).toBe(1);
   });
   it('Should have autocompletion mapped to the #search input', function() {
-    expect(clara.a11y.search1.search_selector).toBe('#search');
+    expect(clara.search1.search_selector).toBe('#search');
   });
   describe('.search1.contentOfInputManuallyChanged', function() {
     var all_selectors = ['citycode', 'administrative_area_level_1', 'country', 'postal_code', 'street_number', 'locality', 'route'];
@@ -80,7 +88,7 @@ describe('address_questions.js', function() {
       // given
       _.each(all_selectors, function(selector){expect($('#' + selector).val()).toEqual('sth')})
       // when
-      clara.a11y.search1.contentOfInputManuallyChanged();
+      clara.search1.contentOfInputManuallyChanged();
       // then
       _.each(all_selectors, function(selector){expect($('#' + selector).val()).toEqual('')})
     });
@@ -101,7 +109,7 @@ describe('address_questions.js', function() {
       // given
       _.each(all_selectors, function(selector){expect($('#' + selector).val()).toEqual('sth')})
       // when
-      clara.a11y.search1.errorOccured();
+      clara.search1.errorOccured();
       // then
       _.each(all_selectors, function(selector){expect($('#' + selector).val()).toEqual('')})
     });
@@ -109,7 +117,7 @@ describe('address_questions.js', function() {
       // given
       expect($('.c-address__content:visible').length).toEqual(1)
       // when
-      clara.a11y.search1.errorOccured();
+      clara.search1.errorOccured();
       // then
       expect($('.c-address__content:visible').length).toEqual(0)
     });
@@ -117,44 +125,44 @@ describe('address_questions.js', function() {
       // given
       expect($('.c-address__explanation .sorry').length).toEqual(0)
       // when
-      clara.a11y.search1.errorOccured();
+      clara.search1.errorOccured();
       // then
       expect($('.c-address__explanation .sorry').length).toEqual(1)
     });
   });
   describe('.search1.transformInputVal', function() {
     it('Should be defined', function() {
-      expect(clara.a11y.search1.transformInputVal).toBeDefined();
+      expect(clara.search1.transformInputVal).toBeDefined();
     });
     it('Should transform "bd" into "boulevard"', function() {
-      expect(clara.a11y.search1.transformInputVal('11 bd machin')).toEqual('11 boulevard machin');
+      expect(clara.search1.transformInputVal('11 bd machin')).toEqual('11 boulevard machin');
     });
     it('Should transform "BD" into "boulevard"', function() {
-      expect(clara.a11y.search1.transformInputVal('11 BD machin')).toEqual('11 boulevard machin');
+      expect(clara.search1.transformInputVal('11 BD machin')).toEqual('11 boulevard machin');
     });
   });
   describe('.search1.url', function() {
     it('Should be defined', function() {
-      expect(clara.a11y.search1.url).toBeDefined();
+      expect(clara.search1.url).toBeDefined();
     });
     it('Should return undefined if window.clara.env.ARA_URL_BAN is not properly set', function() {
       _.set(window, 'clara.env.ARA_URL_BAN', undefined)
-      expect(clara.a11y.search1.url()).toEqual(undefined);
+      expect(clara.search1.url()).toEqual(undefined);
     });
     it('Should get window.clara.env.ARA_URL_BAN', function() {
       _.set(window, 'clara.env.ARA_URL_BAN', 'http://url_from_ban.com')
-      expect(clara.a11y.search1.url()).toEqual('http://url_from_ban.com');
+      expect(clara.search1.url()).toEqual('http://url_from_ban.com');
     });
   });
   describe('.search1.buildResultsFromAjax', function() {
     it('Should be defined', function() {
-      expect(clara.a11y.search1.buildResultsFromAjax).toBeDefined();
+      expect(clara.search1.buildResultsFromAjax).toBeDefined();
     });
     it('French arrondissement - Should return label', function() {
       var pivot_map = {};
       var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
       // when
-      var output = clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      var output = clara.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
       // then
       expect(output).toEqual(["75020 Paris"]);
     });
@@ -174,7 +182,7 @@ describe('address_questions.js', function() {
         }
       };
       // when
-      clara.a11y.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      clara.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
       // then
       expect(pivot_map).toEqual(expected_output);
     });
@@ -182,7 +190,7 @@ describe('address_questions.js', function() {
       var pivot_map = {};
       var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
       // when
-      var output = clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
+      var output = clara.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
       // then
       expect(output).toEqual(["43000 Le Puy-en-Velay", "43000 Espaly-Saint-Marcel", "43000 Polignac", "43000 Ceyssac", "43000 Aiguilhe"]);
     });
@@ -243,7 +251,7 @@ describe('address_questions.js', function() {
       };
 
       // when
-      clara.a11y.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
+      clara.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
       // then
       expect(pivot_map).toEqual(expected_output);
     });

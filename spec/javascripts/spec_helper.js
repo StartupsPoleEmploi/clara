@@ -3,8 +3,8 @@
 //= require lodash/lodash_extension
 //= require jquery/jquery
 //= require jquery/jquery_extension
-//= require load_js
-//= require js_define
-//= require js_valve
+//= require custom/load_js
+//= require custom/js_define
+//= require custom/js_valve
 //= require support/jasmine-jquery
 //= require support/jasmine-matchers

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.13.0 (25/1/2019)
+-[#1106][ADMIN] BO : voir les modifications directement sur la page de résultats en front.
+
+
 ## 18.12.2 (24/1/2019)
 -[#1111][ADMIN] BO : ergonomie des messages d'erreurs
 

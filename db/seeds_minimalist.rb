@@ -278,7 +278,21 @@ aid_list = [
      archived_at: nil,
      contract_type: ContractType.find_by(slug: "appui-a-l-embauche"),
      rule: Rule.find_by(name: "r_AREASP"),
-  }
+  },
+  {
+     name: "Volontariat de solidarité internationale (VSI)",
+     what: "<p>Vous vous engagez comme volontaire dans des associations qui ont pour objet des actions de solidarit&eacute; internationale dans le domaine de l&#39;enseignement, du d&eacute;veloppement, du d&eacute;veloppement rural, de la sant&eacute; (parfois pour des actions d&#39;urgences).</p>\r\n\r\n<p>Par exemple (liste non exhaustive) &nbsp;:&nbsp;Action Contre la Faim,&nbsp;ATD Quart Monde,&nbsp;Croix Rouge fran&ccedil;aise, Handicap international, M&eacute;decins du monde, Plan&egrave;te enfants, ...*</p>\r\n\r\n<p>La mission dure entre 6 mois et 2 ans.**</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
+     short_description: "Missions effectuées en dehors de l'espace économique européen et au sein d'associations agréées",
+     how_much: "<p>Le montant minimum de votre indemnisation est de 100 euros par mois, hors prise en charge du logement, du transport et de la nourriture.***</p>\r\n\r\n<p>Vous &ecirc;tes affili&eacute; &agrave; un r&eacute;gime de s&eacute;curit&eacute; sociale qui couvre la maladie, la maternit&eacute;, l&#39;invalidit&eacute;, le d&eacute;c&egrave;s, l&#39;accident du travail et maladies professionnelles.&nbsp;</p>\r\n\r\n<p>L&#39;association prend en charge pour vous et vos ayants droit une assurance maladie compl&eacute;mentaire, une assurance responsabilit&eacute; civile et une assurance rapatriement sanitaire.</p>\r\n\r\n<p>En fin de mission, vous pouvez b&eacute;n&eacute;ficier de :</p>\r\n\r\n<ul>\r\n\t<li>la prime d&#39;insertion professionnelle si vous &ecirc;tes inscrit/e comme demandeur d&#39;emploi et que vous ne remplissez pas les conditions pour avoir le RSA. Cette prime est d&#39;un montant de &nbsp;2001 euros maximum, vers&eacute;e tous les 3 mois pendant 9 mois maximum</li>\r\n\t<li>l&#39;indemnit&eacute; de r&eacute;installation si vous avez effectu&eacute; au moins 24 mois de mission en continu. Son montant est de 3700 euros.</li>\r\n</ul>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
+     additionnal_conditions: "<p>Vous devez accomplir votre mission en dehors du pays dont vous &ecirc;tes ressortissant/e ou r&eacute;sident/e.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
+     how_and_when: "<p>Pour trouver une mission, vous pouvez contacter directement les associations agr&eacute;es pour le VSI ou vous rendre sur la <a href=\"http://www.france-volontaires.org\" rel=\"noopener\" target=\"_blank\">plateforme France volontaires.</a></p>\r\n\r\n<p>Ensuite, vous signez un contrat de VSI avec l&#39;association qui vous forme et prend en charge les frais de voyages li&eacute;s &agrave; votre mission.</p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
+     limitations: "<p>* <a href=\"http://www.diplomatie.gouv.fr/IMG/pdf/liste_associations_agreees_2016_cle419424.pdf\" rel=\"noopener\" target=\"_blank\">Liste compl&egrave;te</a></p>\r\n\r\n<p>** La dur&eacute;e cumul&eacute;e des diff&eacute;rentes missions ne peut pas exc&eacute;der 6 ans.</p>\r\n\r\n<p>*** Il ne s&#39;agit pas d&#39;un salaire : il n&#39;y a donc pas d&#39;imposition sur le revenu et pas de pr&eacute;l&egrave;vement au titre des contributions et cotisations sociales.</p>\r\n\r\n<p>Voir toutes les opportunit&eacute;s sur le <a href=\"http://www.decouvrirlemonde.jeunes.gouv.fr/\" target=\"_blank\">portail gouvernemental pour la mobilit&eacute; des jeunes.</a></p>\r\n\r\n<div id=\"sconnect-is-installed\" style=\"display: none;\">2.5.0.0</div>\r\n",
+     rule: Rule.find_by(name: "r_age_sup_18"),
+     ordre_affichage: 64,
+     contract_type: ContractType.find_by(slug: "emploi-international"),
+     archived_at: nil,
+     last_update: "",
+  },
 ]
 
 existing_aids = Aid.all.map(&:slug)
