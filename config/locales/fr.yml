@@ -211,7 +211,7 @@ fr:
       update: Modifier ce(tte) %{model}
     label:
       aid:
-        rule: règle
+        rule: Règle
         need_filters: Besoins
         filters: Filtres page résultat 
         contract_type: Rubrique
