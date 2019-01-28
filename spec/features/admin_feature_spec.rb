@@ -38,11 +38,6 @@ feature 'admin' do
       find('.cell-data--number .action-show').click
       expect(current_path).to eq admin_filter_path("filter_name")
 
-
-      # See variables
-      click_link 'Variables'
-      expect(page).to have_selector('.cell-data.cell-data--string', text: "v_age")
-
       click_link 'Se déconnecter'
     end
     scenario 'with invalid credentials' do 

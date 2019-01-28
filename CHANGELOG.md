@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.14.0 (28/1/2019)
+-[#1115][ADMIN] BO : ne plus faire apparaître les variables
+
+
 ## 18.13.0 (25/1/2019)
 -[#1106][ADMIN] BO : voir les modifications directement sur la page de résultats en front.
 
