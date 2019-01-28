@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.15.0 (29/1/2019)
+-[#1120][ADMIN] BO : refonte de la page de détail d'une aide
+
+
 ## 18.14.0 (28/1/2019)
 -[#1115][ADMIN] BO : ne plus faire apparaître les variables
 
