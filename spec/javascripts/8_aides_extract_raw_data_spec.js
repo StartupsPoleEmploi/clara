@@ -1,14 +1,14 @@
 //= require_tree ../../app/assets/javascripts/custom/aides
-describe('extract_aides_from_state.js', function() {
+describe('aides_extract_raw_data.js', function() {
 
-  it('Should have extract_aides_from_state mapped to clara', function() {
-    expect(clara.extract_aides_from_state).toBeDefined();
+  it('Should have aides_extract_raw_data mapped to clara', function() {
+    expect(clara.aides_extract_raw_data).toBeDefined();
   });
 
-  describe('.extract_aides_from_state', function() {
+  describe('.aides_extract_raw_data', function() {
     it('extract data from store thanks to state_key', function() {
       var realistic_state = MagicLamp.loadJSON("nominal_aides_state");
-      var res = clara.extract_aides_from_state.please(realistic_state);
+      var res = clara.aides_extract_raw_data.please(realistic_state);
       // concatenated and sorted slug of all aids shown on page
       expect(res).toEqual(
         [

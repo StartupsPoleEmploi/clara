@@ -119,7 +119,7 @@ clara.js_define("aides", {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return clara.please_get_aides_default_state.main_function(initial_state);
+        return clara.aides_default_state.main_function(initial_state);
         // return default_state(initial_state);
       }
 
@@ -204,8 +204,8 @@ clara.js_define("aides", {
         });
       }
       
-      clara.set_aides_state.please(newState)
-      // store.set(clara.please_get_state_key.main_function(), newState);
+      clara.aides_set_state.please(newState)
+      // store.set(clara.aides_state_key.main_function(), newState);
 
 
       return newState;
@@ -228,7 +228,7 @@ clara.js_define("aides", {
     window.main_store = 
       Redux.createStore(
         main_reducer, 
-        clara.please_get_aides_default_state.main_function(initial_state)
+        clara.aides_default_state.main_function(initial_state)
       );
 
 

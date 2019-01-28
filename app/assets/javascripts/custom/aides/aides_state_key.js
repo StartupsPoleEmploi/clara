@@ -1,4 +1,4 @@
-clara.js_define("please_get_state_key", {
+clara.js_define("aides_state_key", {
 
   trigger_function: _.stubFalse,
 
