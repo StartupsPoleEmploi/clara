@@ -1,9 +1,9 @@
 clara.js_define("aides_default_state", {
 
-  trigger_function: _.stubFalse,
+  please_if: _.stubFalse,
 
-  main_function: function(the_initial_state) {
-    var previous_state = store.get(clara.aides_state_key.main_function());
+  please: function(the_initial_state) {
+    var previous_state = store.get(clara.aides_state_key.please());
     console.log("previous_state");
     console.log(previous_state);
     var has_state = _.isPlainObject(previous_state) && _.isNotEmpty(previous_state);

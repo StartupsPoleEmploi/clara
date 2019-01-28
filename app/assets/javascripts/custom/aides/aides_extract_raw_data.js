@@ -1,6 +1,6 @@
 clara.js_define("aides_extract_raw_data", {
 
-  trigger_function: _.stubFalse,
+  please_if: _.stubFalse,
 
   please: function(the_initial_state) {
 

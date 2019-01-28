@@ -1,6 +1,6 @@
 clara.js_define("aides", {
 
-  main_function: function() {
+  please: function() {
 
     var MOBILE_MAX_WIDTH = 739;
     var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
@@ -119,7 +119,7 @@ clara.js_define("aides", {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return clara.aides_default_state.main_function(initial_state);
+        return clara.aides_default_state.please(initial_state);
         // return default_state(initial_state);
       }
 
@@ -205,7 +205,7 @@ clara.js_define("aides", {
       }
       
       clara.aides_set_state.please(newState)
-      // store.set(clara.aides_state_key.main_function(), newState);
+      // store.set(clara.aides_state_key.please(), newState);
 
 
       return newState;
@@ -228,7 +228,7 @@ clara.js_define("aides", {
     window.main_store = 
       Redux.createStore(
         main_reducer, 
-        clara.aides_default_state.main_function(initial_state)
+        clara.aides_default_state.please(initial_state)
       );
 
 

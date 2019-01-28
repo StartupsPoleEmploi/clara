@@ -1,8 +1,8 @@
 clara.js_define("aides_state_key", {
 
-  trigger_function: _.stubFalse,
+  please_if: _.stubFalse,
 
-  main_function: function() {
+  please: function() {
     return 'state_of_' + $.urlParam('for_id');
   }
 
