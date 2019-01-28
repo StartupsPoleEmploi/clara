@@ -17,9 +17,13 @@ that displays all possible records to associate with.
 %>
 <%- is_mandatory ||= false %>
 <%- arr = field.associated_resource_options.compact.map { |e| e } %>
+<% label_text = t(
+  "helpers.label.#{f.object.class.name.underscore}.#{field.attribute}",
+  default: field.attribute.to_s,
+).titleize %>
 
 <div class="field-unit__label">
-  <%= f.label field.permitted_attribute, id: "label_#{field.attribute}" %>
+  <%= f.label label_text, id: "label_#{field.attribute}" %>
   <% if is_mandatory %>
     <span class="field-unit__label-mandatory">*</span>
   <% end %>
