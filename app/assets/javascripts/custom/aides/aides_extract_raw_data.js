@@ -23,7 +23,6 @@ clara.js_define("aides_extract_raw_data", {
 
     var concatenated = _.concat(aids_eligibles, aids_uncertains, aids_ineligibles)
     var concatenated_sorted = _.sortBy(concatenated)
-    console.log(concatenated_sorted)
     return concatenated_sorted;
   
   },
