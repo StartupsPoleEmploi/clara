@@ -5,7 +5,6 @@
 //= require jquery/jquery_extension
 //= require custom/load_js
 //= require custom/js_define
-//= require custom/js_define_service
 //= require custom/js_valve
 //= require support/jasmine-jquery
 //= require support/jasmine-matchers

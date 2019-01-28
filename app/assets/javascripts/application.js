@@ -24,7 +24,6 @@
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
 //= require custom/js_define
-//= require custom/js_define_service
 //= require custom/js_valve
 //= require custom/js_fire
 //= require custom/load_js_per_page
