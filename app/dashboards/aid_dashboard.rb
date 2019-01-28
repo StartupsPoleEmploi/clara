@@ -50,7 +50,6 @@ class AidDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
-    :id,
     :need_filters,
     :filters,
     :ordre_affichage,
@@ -58,7 +57,6 @@ class AidDashboard < Administrate::BaseDashboard
     :slug,
     :rule,
     :contract_type,
-    :name,
     :archived_at,
     :short_description,
     :what,
