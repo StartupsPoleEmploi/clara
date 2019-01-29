@@ -329,7 +329,7 @@ describe Api::V1::ApiAidesController, type: :request do
               "filters"=>[{"slug"=>"filter-targeted"}],
               "custom_filters"=>[],
               "need_filters"=>[],
-              "contract_type"=>"n1"}]}
+              "contract_type"=>"ct_aide-adulte-et-spectacle"}]}
       )
     end
   end
@@ -465,7 +465,7 @@ describe Api::V1::ApiAidesController, type: :request do
               "filters"=>[{"slug"=>"filter-targeted"}], 
               "custom_filters"=>[], 
               "need_filters"=>[], 
-              "contract_type"=>"n1"
+              "contract_type"=>"ct_aide-adulte-ou-spectacle-filtre"
             }]
         }
       )
