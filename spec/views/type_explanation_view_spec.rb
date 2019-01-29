@@ -61,6 +61,22 @@ RSpec.describe "aide-a-la-definition-du-projet-professionnel" do
   exp_aid_msg: '2 aides'} 
 end
 
+RSpec.describe "aide-a-la-mobilite without aids" do 
+  it_should_behave_like "a contract type page", 
+  {number_of_aids:nil, 
+    slug: 'aide-a-la-mobilite',                         
+    exp_com: 0} 
+end
+
+RSpec.describe "aide-a-la-mobilite with 5 aids" do 
+  it_should_behave_like "a contract type page", 
+  {number_of_aids:5, 
+    slug: 'aide-a-la-mobilite',                         
+    exp_com: 1, 
+    exp_msg: 'mobilité',      
+    exp_aid_msg: '5 aides'} 
+end
+
 
  
 def configure_before_block(details)
