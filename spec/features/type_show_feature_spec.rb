@@ -7,19 +7,24 @@ feature 'A show type page' do
       aid1 = create(:aid, :aid_spectacle, name: "aid_spectacle_1")
       aid2 = create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
       aid1.contract_type = @contract_type
+      aid1.ordre_affichage = 22
       aid2.contract_type = @contract_type
+      aid2.ordre_affichage = 11
       aid1.save
       aid2.save
-      p '- - - - - - - - - - - - - - JsonModelsService.aids- - - - - - - - - - - - - - - -' 
-      ap JSON.parse(Aid.all.to_json)
-      p ''
+      # p '- - - - - - - - - - - - - - JsonModelsService.aids- - - - - - - - - - - - - - - -' 
+      # ap JSON.parse(Aid.all.to_json)
+      # p ''
       visit type_path(@contract_type.slug)
     end
     it "Should contain all elements" do
+      # save_and_open_page
       expect(page).to(have_css(".c-detail-title--amob-name", count:1), "Should have css of contract_type slug")
       expect(page).to(have_css(".c-detail-title-inside", count:1), "Should have title container for contract_type")
       expect(page).to(have_css(".c-detail-title-inside", text:"d3"), "Should have title of contract_type")
       expect(page).to(have_css(".c-result-aid", count: 2), "Should have 2 aids")
+      expect(page.first(".c-result-aid")).to(have_css(".c-result-aid__title", text:"aid_not_spectacle_1"))
+      # expect(first_aid).to(have_css("aid_not_spectacle_1"))
     end
 
   end
