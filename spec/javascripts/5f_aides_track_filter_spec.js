@@ -9,9 +9,26 @@ describe('aides_track_filter.js', function() {
       delete window.ga
     });
     it('Nominal : should track', function() {
-      spyOn(window, 'ga');
-      clara.aides_track_filter.please("my_filter")
-      expect(ga).toHaveBeenCalledWith('send', 'event', 'results', 'filter', 'my_filter');
+      var return_val = {};
+      spyOn(window, 'ga').and.callFake(function(a, b, c, d, e) {
+        return_val = {
+          a:a,
+          b:b,
+          c:c,
+          d:d,
+          e:e,
+        };
+        return 1001;
+      });
+      clara.aides_track_filter.please("my_filter");
+      expect(return_val).toEqual(
+        {
+          a: "send",
+          b: "event",
+          c: "results",
+          d: "filter",
+          e: "my_filter"
+        });
     });
   });
 
