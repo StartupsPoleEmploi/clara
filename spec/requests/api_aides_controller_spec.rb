@@ -190,7 +190,7 @@ describe Api::V1::ApiAidesController, type: :request do
             }],
             "custom_filters" => [],
             "need_filters" => [],
-            "contract_type" => "n1"
+            "contract_type" => "ct_aide-adulte-ou-spectacle-filtre"
           }],
         }
       )
