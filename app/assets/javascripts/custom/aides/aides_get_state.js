@@ -2,9 +2,9 @@ clara.js_define("aides_get_state", {
 
   please_if: _.stubFalse,
 
-  please: function(store_arg) {
+  please: function() {
     var key = clara.aides_state_key.please();
-    var local_store = store_arg || _.get(window, "store");
+    var local_store = _.get(window, "store");
     return local_store.get(key);
   }
 
