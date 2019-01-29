@@ -9,8 +9,9 @@ feature 'A show type page' do
       visit type_path(@contract_type.slug)
     end
     it "Should contain all elements" do
-      save_and_open_page
-      expect(page).to(have_css(".c-detail-title--amob-name", count:1), "Should have css of amob")
+      expect(page).to(have_css(".c-detail-title--amob-name", count:1), "Should have css of contract_type slug")
+      expect(page).to(have_css(".c-detail-title-inside", count:1), "Should have title container for contract_type")
+      expect(page).to(have_css(".c-detail-title-inside", text:"d3"), "Should have title of contract_type")
     end
 
   end
