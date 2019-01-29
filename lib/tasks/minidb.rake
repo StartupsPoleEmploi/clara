@@ -47,17 +47,11 @@ namespace :minidb do
       # Only a few filters from the few aids
       raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
       filters_id = raw_filters_id.flatten.uniq.sort
-      p '- - - - - - - - - - - - - - filters_id- - - - - - - - - - - - - - - -' 
-      pp filters_id
-      p ''
       Filter.where.not(id: filters_id).destroy_all
 
       # Only a few contract_types from the few aids
       raw_cts_id = activated_models.aids.map { |aid| aid["contract_type_id"] }
       cts_id = raw_cts_id.flatten.uniq.sort
-      p '- - - - - - - - - - - - - - cts_id- - - - - - - - - - - - - - - -' 
-      pp cts_id
-      p ''
       ContractType.where.not(id: cts_id).destroy_all
 
       # Only a few ZRR
