@@ -18,7 +18,7 @@ feature 'A show type page' do
       visit type_path(@contract_type.slug)
     end
     it "Should contain all elements" do
-      save_and_open_page
+      # save_and_open_page
       expect(page).to(have_css(".c-detail-title--aide-a-la-mobilite", count:1), "Should have css of contract_type slug")
       expect(page).to(have_css(".c-detail-title-inside", count:1), "Should have title container for contract_type")
       expect(page).to(have_css(".c-detail-title-inside", text:"d3"), "Should have title of contract_type")
@@ -27,6 +27,7 @@ feature 'A show type page' do
       expect(page.find_all(".c-result-aid")[1]).to(have_css(".c-result-aid__title", text:"aid_spectacle_1"), "Should display spectacle_1 first")
       expect(page).to(have_css(".c-detail-cta", count: 1), "Should have CTA displayed")
       expect(page).to(have_css(".c-type-explanation", count: 1), "Must have explanation block")
+      expect(page).to(have_css(".c-type-explanation .aid-nb-txt", count: 1, text: "2 aides"), "Must have explanation block with correct number of aids")
       # expect(page).to(have_css(".c-type-explanation .aid-nb-txt", text: "2 aides"), "Must have explanation block with correct number of aids")
     end
 
