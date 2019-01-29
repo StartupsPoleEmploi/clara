@@ -1,7 +1,6 @@
 //= require custom/aides/aides_track_filter.js
 describe('aides_track_filter.js', function() {
 
-
   describe('Nominal', function() {
     beforeEach(function(){
       _.set(window, "ga", _.noop)
