@@ -22,8 +22,6 @@ clara.js_define("aides", {
     *
     *
     **/
-    // var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
-    var $actual_filters = function() {return $('#o_all_filters .c-resultfiltering')};
 
     var eligies = ['eligibles', 'uncertains', 'ineligibles'];
     
