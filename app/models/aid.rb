@@ -24,7 +24,7 @@ class Aid < ApplicationRecord
   
   friendly_id :name, use: :slugged
   belongs_to :rule, optional: true
-  belongs_to :contract_type, optional: true
+  belongs_to :contract_type, optional: false
 
   validates :name, presence: true, uniqueness: true  
   validates :ordre_affichage, presence: true
@@ -34,7 +34,7 @@ class Aid < ApplicationRecord
   scope :activated,  -> { self.unarchived.linked_to_rule }
   
   def should_generate_new_friendly_id?
-    name_changed?
+    slug.blank?
   end
 
 end

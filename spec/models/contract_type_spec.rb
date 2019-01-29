@@ -65,43 +65,6 @@ describe ContractType, type: :model do
         expect(contract_type_2.valid?).to eq false
       end
     end
-    describe 'business_id' do
-      it 'is invalid with 2 same business_id' do
-        # given
-        contract_type_1 = create_contract_type_1
-        contract_type_2 = create_contract_type_2
-        # when
-        contract_type_2.business_id = contract_type_1.business_id 
-        # then
-        expect(contract_type_2.valid?).to eq false
-      end
-      it 'is valid with a business_id' do
-        # given
-        contract_type = create_contract_type_1
-        # when
-        contract_type.valid?
-        # then
-        expect(contract_type.errors[:business_id].length).to eq 0
-      end      
-      it 'is invalid without a business_id' do
-        # given
-        contract_type = create_contract_type_1
-        contract_type.business_id = nil
-        # when
-        contract_type.valid?
-        # then
-        expect(contract_type.errors[:business_id].length).not_to eq 0
-      end
-      it 'is invalid with a business_id that is not like a slug' do
-        # given
-        contract_type = create_contract_type_1
-        contract_type.business_id = 'Not a slug, obviously'
-        # when
-        contract_type.valid?
-        # then
-        expect(contract_type.errors[:business_id].length).not_to eq 0
-      end
-    end
 
   end
 

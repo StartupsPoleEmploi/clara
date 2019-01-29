@@ -107,7 +107,7 @@
                     Tout replier <span class="c-resultcaret"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg></span>
             #o_aids_per_contract
               - v.sort_and_order("flat_all_uncertain").each_with_index do |aids_per_contract, i|
-                .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
+                .c-resultcard.c-resultcard--orange{"data-cslug" => v.slug_for(aids_per_contract)}
                   .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                     %div{class:"o-layout__item u-3/4"}   
                       .o-flag.o-flag--flush.c-resultcontract
@@ -160,7 +160,7 @@
                 %div{:style => "clear: both;"}
               #o_aids_per_contract
                 - v.sort_and_order("flat_all_ineligible").each_with_index do |aids_per_contract, i|
-                  .c-resultcard.c-resultcard--green{"data-cslug" => v.slug_for(aids_per_contract)}
+                  .c-resultcard.c-resultcard--red{"data-cslug" => v.slug_for(aids_per_contract)}
                     .c-resultcard__inner.o-layout.o-layout--middle.o-layout--flush.u-padding-horizontal-tiny
                       %div{class:"o-layout__item u-3/4"}   
                         .o-flag.o-flag--flush.c-resultcontract

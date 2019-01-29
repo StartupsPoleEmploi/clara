@@ -113,7 +113,8 @@ describe ResultDefault do
       res = sut.sort_and_order("flat_all_eligible")
       expect(res).to eq(
         [
-          [{"id"=>6,
+          [
+            {"id"=>6,
             "name"=>"Aides aux bénéficiaires du RSA, ou adultes",
             "slug"=>"aides-aux-beneficiaires-du-rsa-ou-adultes",
             "short_description"=>"",
@@ -128,8 +129,9 @@ describe ResultDefault do
             "ordre_affichage"=>5,
             "contract_type_id"=>2,
             "filters"=>[{"id"=>1}, {"id"=>2}],
-            "eligibility"=>"eligible"},
-           ]
+            "eligibility"=>"eligible"
+            }
+          ]
         ]
       )   
     end
@@ -203,7 +205,7 @@ describe ResultDefault do
     "icon"=>"",
     "slug"=>"aide-simple",
     "category"=>"simple",
-    "business_id"=>"aide-simple"},
+    },
    {"id"=>2,
     "name"=>"Aide composite",
     "description"=>"Des aides consitituées de règles complexes",
@@ -211,7 +213,7 @@ describe ResultDefault do
     "icon"=>"",
     "slug"=>"aide-composite",
     "category"=>"composite",
-    "business_id"=>"aide-composite"}],
+    }],
  :flat_all_filter=>
   [{"id"=>1, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
    {"id"=>3, "name"=>"argent", "description"=>"Les aides liées à l'argent"},

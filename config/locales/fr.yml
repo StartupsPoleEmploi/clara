@@ -182,7 +182,7 @@ fr:
       not_a_number: n'est pas un nombre
       not_an_integer: doit être un nombre entier
       odd: doit être impair
-      required: doit exister
+      required: doit être renseigné(e)
       taken: n'est pas disponible
       too_long:
         one: est trop long (pas plus d'un caractère)
@@ -202,6 +202,9 @@ fr:
   helpers:
     select:
       prompt: Veuillez sélectionner
+    detail:
+      aid: "Détails d'une aide"
+
     submit:
       rule:
         create: "Créer cette règle"

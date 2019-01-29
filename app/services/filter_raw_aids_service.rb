@@ -12,7 +12,6 @@ class FilterRawAidsService
         result = {}
         result['aids'] = v.map{|i| {'id' => i['id'], 'name' => i['name'], 'ordre_affichage' => i['ordre_affichage'], 'short_description' => i['short_description'], 'slug' => i['slug']  }}
         result['contract_type_id'] = v[0]['contract_type_id']
-        result['contract_type_business_id'] = v[0]['contract_type_business_id']
         result['description'] = v[0]['contract_type_description']
         result['icon'] = v[0]['contract_type_icon']
         result['order'] = v[0]['contract_type_order']

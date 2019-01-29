@@ -2,93 +2,9 @@ clara.js_define("aides", {
 
   please: function() {
 
-    var MOBILE_MAX_WIDTH = 739;
-    var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
-    var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
-
-    function track_filter(filter_name) {
-      if (typeof ga === "function") {
-        ga('send', 'event', 'results', 'filter', filter_name);
-      }      
-    }
-
-    /**
-    *
-    *
-    *
-    *         INITIAL STATE 
-    *
-    *
-    *
-    *
-    **/
-    var $card = function(eligy) {return $('#' + eligy + ' .c-resultcard')};
-    var $aids_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid')};
-    var $aids_container_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaids')};
-    var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
-    var $actual_filters = function() {return $('#o_all_filters .c-resultfiltering')};
-
-    var eligies = ['eligibles', 'uncertains', 'ineligibles'];
-    
-    var collect_filters_name = function() {
-      return $actual_filters().map(function(){return $(this).data()["name"]}).get();
-    }
-
-    var initial_eligy = function(eligy) {
-      return _.map(
-        $card(eligy).datamap("cslug"), 
-        function(contract_name){
-          return {
-            name: contract_name, 
-            is_collapsed: true,
-            aids: _.map(
-              $aids_per_card(eligy, contract_name).datamap("aslug"), 
-              function(aid_name) {
-                return {
-                  name: aid_name,
-                  is_collapsed: false,
-                  filters: _.map(
-                    $filters_per_aid(eligy, contract_name, aid_name).datamap("name"),
-                    function(filter_name) {
-                      return {
-                        name: filter_name,
-                        is_collapsed: false,
-                      }
-                    }
-                  )
-                }
-              }
-            )
-          }
-        }
-      );
-    }
-
-    var initial_state = {
-      width: $( window ).width(),
-      eligibles_zone: {
-        eligibles: initial_eligy('eligibles')
-      },
-      uncertains_zone: {
-        uncertains: initial_eligy('uncertains')
-      },
-      ineligibles_zone: {
-        is_collapsed: true,
-        ineligibles: initial_eligy('ineligibles')
-      },
-      filters_zone: {
-        is_collapsed: true,
-        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
-      },
-      recap_zone: {
-        is_collapsed: true
-      }
-    };
-
-
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         _.each(state[ely + "_zone"][ely], function(contract){
           _.each(contract.aids, function(aid){
             callable_function(ely, contract, aid);
@@ -99,7 +15,7 @@ clara.js_define("aides", {
 
     var iterate_contract_types = function(callable_function, state) {
       if (!state) state = main_store.getState()
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
             callable_function(ely, contract);
         })
@@ -119,14 +35,14 @@ clara.js_define("aides", {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return clara.aides_default_state.please(initial_state);
+        return clara.aides_default_state.please();
       }
 
       // Works better than _.assign or Object.assign
       var newState = JSON.parse(JSON.stringify(state));
       
       if (action.type === 'INIT') {
-        if (newState.width > MOBILE_MAX_WIDTH) {
+        if (newState.width > clara.aides_constants["MOBILE_MAX_WIDTH"]) {
           newState.filters_zone.is_collapsed = false;
         }
       }
@@ -139,7 +55,7 @@ clara.js_define("aides", {
       else if (action.type === 'TOGGLE_FILTER') {
 
         // track filter with GA
-        if (action["value"] === true) track_filter(action["name"])
+        if (action["value"] === true) clara.aides_track_filter.please(action["name"])
 
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
@@ -226,7 +142,7 @@ clara.js_define("aides", {
     window.main_store = 
       Redux.createStore(
         main_reducer, 
-        clara.aides_default_state.please(initial_state)
+        clara.aides_default_state.please()
       );
 
 
@@ -260,15 +176,15 @@ clara.js_define("aides", {
     });
 
 
-    _.each(collect_filters_name(), function(filter_name){ 
+    _.each(clara.aides_collect_filters_name.please(), function(filter_name){ 
       $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
         var that = this; 
         main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: $(that).prop("checked")}) 
       });
     });
 
-    _.each(eligies, function(eligy_name) {
-      _.each($card(eligy_name).datamap("cslug"), function(contract_name){
+    _.each(clara.aides_constants["ELIGIES"], function(eligy_name) {
+      _.each(clara.aides_$card.please(eligy_name).datamap("cslug"), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
@@ -278,7 +194,7 @@ clara.js_define("aides", {
       });
     });
 
-    _.each(eligies, function(eligy_name) {
+    _.each(clara.aides_constants["ELIGIES"], function(eligy_name) {
       $('#' + eligy_name + ' .js-fold').click(function(){
         main_store.dispatch({type: 'FOLD_ELIGY', eligy_name: eligy_name});
       });
@@ -305,10 +221,10 @@ clara.js_define("aides", {
       var state = main_store.getState();
 
       // filters_zone : caret
-      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close);
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_OPEN"]) : $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_CLOSE"]);
 
       // recap_zone  : caret
-      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_close);
+      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_OPEN"]) : $('.js-recap-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_CLOSE"]);
 
       // filters_zone : repaint
       _.each(state.filters_zone.filters, function(f){
@@ -328,7 +244,7 @@ clara.js_define("aides", {
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
       // Collapse filters_zone : CSS. 
-      var is_discrete = (state.filters_zone.is_collapsed && state.width > MOBILE_MAX_WIDTH); 
+      var is_discrete = (state.filters_zone.is_collapsed && state.width > clara.aides_constants["MOBILE_MAX_WIDTH"]); 
       is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
       // Collapse recap_zone 
@@ -387,7 +303,7 @@ clara.js_define("aides", {
       });
 
 
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         var $el = $('#' + ely);
         var contracts = state[ely + "_zone"][ely];
 

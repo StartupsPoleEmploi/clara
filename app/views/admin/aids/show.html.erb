@@ -16,7 +16,7 @@ as well as a link to its edit page.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
 
-<% content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" } %>
+<% content_for(:title) { "#{t("helpers.detail.aid")}" } %>
 
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
@@ -34,18 +34,21 @@ as well as a link to its edit page.
 
 <section class="main-content__body">
   <dl>
-    <dt class="attribute-label">URL publique</dt>
-    <dd class="attribute-data"><%= link_to 'voir', detail_url(page.resource) %></dd>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-      <%= t(
-        "helpers.label.#{resource_name}.#{attribute.name}",
-        default: attribute.name.titleize,
-      ) %>
-      </dt>
+    <% page.attributes.each_with_index do |attribute, index_nb| %>
+      <% if index_nb == 1 %>
+        <dt class="attribute-label">URL publique</dt>
+        <dd class="attribute-data"><%= link_to 'voir', detail_url(page.resource) %></dd>
+      <% else %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) %>
+        </dt>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute %></dd>
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+            ><%= render_field attribute %></dd>
+      <% end %>
     <% end %>
   </dl>
 </section>

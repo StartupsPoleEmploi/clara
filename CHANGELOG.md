@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 18.16.0 (29/1/2019)
+-[#1119][ADMIN] BO : refonte de la page de détail d'une aide
+
+
 ## 18.15.0 (29/1/2019)
 -[#1120][ADMIN] BO : refonte de la page de détail d'une aide
 
