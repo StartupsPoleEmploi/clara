@@ -22,7 +22,6 @@ clara.js_define("aides", {
     *
     *
     **/
-    var $card = function(eligy) {return $('#' + eligy + ' .c-resultcard')};
     var $aids_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid')};
     var $aids_container_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaids')};
     var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
@@ -36,7 +35,7 @@ clara.js_define("aides", {
 
     var initial_eligy = function(eligy) {
       return _.map(
-        $card(eligy).datamap("cslug"), 
+        clara.aides_$card.please(eligy).datamap("cslug"), 
         function(contract_name){
           return {
             name: contract_name, 
@@ -268,7 +267,7 @@ clara.js_define("aides", {
     });
 
     _.each(eligies, function(eligy_name) {
-      _.each($card(eligy_name).datamap("cslug"), function(contract_name){
+      _.each(clara.aides_$card.please(eligy_name).datamap("cslug"), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
         });
