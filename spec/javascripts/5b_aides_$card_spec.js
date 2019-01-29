@@ -1,34 +1,37 @@
 //= require custom/aides/aides_$card.js
 describe('aides_$card.js', function() {
 
-  afterEach(function() {
-    $(".test-only").remove();
-  })
 
   describe('Nominal', function() {
-    beforeEach(function() {
-      $('body').append('\
-        <div class="test-only">\
-          <div id="eligible">\
-            <div class="c-resultcard">eligible resultcard content</div>\
-          </div>\
-          <div id="ineligible">\
-            <div class="c-resultcard">ineligible resultcard content</div>\
-          </div>\
-        </div>\
-      ');
+    beforeAll(function() { 
+      MagicLamp.load("aides");
     });
-    it('eligible : returns jquery elt .c-resultcard if found', function() {
-        $res = clara.aides_$card.please("eligible");
-        expect($res.prop('outerHTML')).toEqual('<div class="c-resultcard">eligible resultcard content</div>');
+    afterAll(function() { 
+      $(".magic-lamp").remove();
     });
-    it('ineligible : returns jquery elt .c-resultcard if found', function() {
-        $res = clara.aides_$card.please("ineligible");
-        expect($res.prop('outerHTML')).toEqual('<div class="c-resultcard">ineligible resultcard content</div>');
+    it('eligibles : returns many elements', function() {
+        $res = clara.aides_$card.please("eligibles");
+        expect($res.length).toBeGreaterThan(0);
     });
-    it('returns empty jquery elt if not found', function() {
-        $res = clara.aides_$card.please("unexisting");
-        expect($res.prop('outerHTML')).toEqual(undefined);
+    it('eligibles : each element is a c-resultcard', function() {
+        $first_res = clara.aides_$card.please("eligibles")[0];
+        expect($first_res).toHaveClass("c-resultcard");
+    });
+    it('eligibles : each element is a green c-resultcard', function() {
+        $first_res = clara.aides_$card.please("eligibles")[0];
+        expect($first_res).toHaveClass("c-resultcard c-resultcard--green");
+    });
+    it('ineligibles : each element is a red c-resultcard', function() {
+        $first_res = clara.aides_$card.please("ineligibles")[0];
+        expect($first_res).toHaveClass("c-resultcard c-resultcard--red");
+    });
+    it('uncertains : each element is an orange c-resultcard', function() {
+        $first_res = clara.aides_$card.please("uncertains")[0];
+        expect($first_res).toHaveClass("c-resultcard c-resultcard--orange");
+    });
+    it('anything goes wrong : return sth empty', function() {
+        $first_res = clara.aides_$card.please("unexisting");
+        expect($first_res.prop("outerHTML")).toEqual(undefined);
     });
   });
 
