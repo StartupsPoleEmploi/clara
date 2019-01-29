@@ -2,9 +2,6 @@ clara.js_define("aides", {
 
   please: function() {
 
-    var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
-    var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
-
     function track_filter(filter_name) {
       if (typeof ga === "function") {
         ga('send', 'event', 'results', 'filter', filter_name);
@@ -266,10 +263,10 @@ clara.js_define("aides", {
       var state = main_store.getState();
 
       // filters_zone : caret
-      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-filters-zone .c-mask-filter__caret').html(grey_caret_close);
+      state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_OPEN"]) : $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_CLOSE"]);
 
       // recap_zone  : caret
-      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_open) : $('.js-recap-zone .c-mask-filter__caret').html(grey_caret_close);
+      state.recap_zone.is_collapsed ? $('.js-recap-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_OPEN"]) : $('.js-recap-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_CLOSE"]);
 
       // filters_zone : repaint
       _.each(state.filters_zone.filters, function(f){
