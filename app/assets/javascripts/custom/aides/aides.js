@@ -2,7 +2,6 @@ clara.js_define("aides", {
 
   please: function() {
 
-    var MOBILE_MAX_WIDTH = 739;
     var grey_caret_open = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -1 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(135 8 8)"/></svg>'
     var grey_caret_close = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -6 16 16"><path fill-rule="evenodd" d="M13,5 L13,13 L11,13 L11,5 L3,5 L3,3 L13,3 L13,5 Z" transform="rotate(-45 8 8)"/></svg>'
 
@@ -88,7 +87,7 @@ clara.js_define("aides", {
       var newState = JSON.parse(JSON.stringify(state));
       
       if (action.type === 'INIT') {
-        if (newState.width > MOBILE_MAX_WIDTH) {
+        if (newState.width > clara.aides_constants["MOBILE_MAX_WIDTH"]) {
           newState.filters_zone.is_collapsed = false;
         }
       }
@@ -290,7 +289,7 @@ clara.js_define("aides", {
       state.filters_zone.is_collapsed ? $('.c-resultfilterings').addClass('u-hidden-visually') : $('.c-resultfilterings').removeClass('u-hidden-visually');
 
       // Collapse filters_zone : CSS. 
-      var is_discrete = (state.filters_zone.is_collapsed && state.width > MOBILE_MAX_WIDTH); 
+      var is_discrete = (state.filters_zone.is_collapsed && state.width > clara.aides_constants["MOBILE_MAX_WIDTH"]); 
       is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
       // Collapse recap_zone 
