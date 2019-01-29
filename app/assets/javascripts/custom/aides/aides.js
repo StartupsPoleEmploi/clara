@@ -2,12 +2,6 @@ clara.js_define("aides", {
 
   please: function() {
 
-    function track_filter(filter_name) {
-      if (typeof ga === "function") {
-        ga('send', 'event', 'results', 'filter', filter_name);
-      }      
-    }
-
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
       _.each(clara.aides_constants["ELIGIES"], function(ely){
@@ -61,7 +55,7 @@ clara.js_define("aides", {
       else if (action.type === 'TOGGLE_FILTER') {
 
         // track filter with GA
-        if (action["value"] === true) track_filter(action["name"])
+        if (action["value"] === true) clara.aides_track_filter.please(action["name"])
 
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
