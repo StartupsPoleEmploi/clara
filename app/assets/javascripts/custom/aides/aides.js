@@ -8,42 +8,6 @@ clara.js_define("aides", {
       }      
     }
 
-    /**
-    *
-    *
-    *
-    *         INITIAL STATE 
-    *
-    *
-    *
-    *
-    **/
-
-    var eligies = ['eligibles', 'uncertains', 'ineligibles'];
-    
-
-    var initial_state = {
-      width: $( window ).width(),
-      eligibles_zone: {
-        eligibles: clara.aides_initial_eligy.please('eligibles')
-      },
-      uncertains_zone: {
-        uncertains: clara.aides_initial_eligy.please('uncertains')
-      },
-      ineligibles_zone: {
-        is_collapsed: true,
-        ineligibles: clara.aides_initial_eligy.please('ineligibles')
-      },
-      filters_zone: {
-        is_collapsed: true,
-        filters: _.map(clara.aides_collect_filters_name.please(), function(e){return {name: e, is_checked: false, updated_at : 0}})
-      },
-      recap_zone: {
-        is_collapsed: true
-      }
-    };
-
-
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
       _.each(clara.aides_constants["ELIGIES"], function(ely){
@@ -77,7 +41,7 @@ clara.js_define("aides", {
     var main_reducer = function(state, action) {
       
       if (state === undefined) {
-        return clara.aides_default_state.please(initial_state);
+        return clara.aides_default_state.please();
       }
 
       // Works better than _.assign or Object.assign
@@ -184,7 +148,7 @@ clara.js_define("aides", {
     window.main_store = 
       Redux.createStore(
         main_reducer, 
-        clara.aides_default_state.please(initial_state)
+        clara.aides_default_state.please()
       );
 
 
