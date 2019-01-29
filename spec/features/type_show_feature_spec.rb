@@ -3,16 +3,8 @@ require 'rails_helper'
 feature 'A show type page' do
   context 'Nominal' do
     before do
-      @contract_type = create(:contract_type, :contract_type_amob)
-      aid1 = create(:aid, :aid_spectacle, name: "aid_spectacle_1")
-      aid2 = create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
-      aid1.contract_type = @contract_type
-      aid1.ordre_affichage = 22
-      aid2.contract_type = @contract_type
-      aid2.ordre_affichage = 11
-      aid1.save
-      aid2.save
-      visit type_path(@contract_type.slug)
+      url = _fill_db
+      visit type_path(url)
     end
     it "Should contain all elements" do
       expect(page).to(have_css(".c-detail-title--aide-a-la-mobilite", count:1), "Should have css of contract_type slug")
@@ -27,20 +19,27 @@ feature 'A show type page' do
     end
 
   end
-  # context 'All aids' do
-  #   seen = nil
-  #   before do
-  #     if !seen
-  #       @contract_type = create(:contract_type, :contract_type_amob)
-  #       create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: @contract_type, ordre_affichage: 12)
-  #       create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: @contract_type, ordre_affichage: 7)
-  #       visit aides_path
-  #       seen = Nokogiri::HTML(page.html)
-  #     end
-  #   end
-  #   it "Must NOT have explanation block" do
-  #     should_have seen, 0, ".c-type-explanation"
-  #   end
-  # end
+  context 'All aids' do
+    before do
+      _fill_db
+      visit aides_path
+    end
+    it "Must NOT have explanation block" do
+      save_and_open_page
+      expect(page).to(have_css(".c-type-explanation", count: 0), "Must NOT have explanation block")
+    end
+  end
+  def _fill_db
+      contract_type = create(:contract_type, :contract_type_amob)
+      aid1 = create(:aid, :aid_spectacle, name: "aid_spectacle_1")
+      aid2 = create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
+      aid1.contract_type = contract_type
+      aid1.ordre_affichage = 22
+      aid2.contract_type = contract_type
+      aid2.ordre_affichage = 11
+      aid1.save
+      aid2.save
+      contract_type.slug
+  end
 end
 
