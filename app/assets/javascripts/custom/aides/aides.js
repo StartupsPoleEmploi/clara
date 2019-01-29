@@ -41,7 +41,7 @@ clara.js_define("aides", {
             name: contract_name, 
             is_collapsed: true,
             aids: _.map(
-              $aids_per_card(eligy, contract_name).datamap("aslug"), 
+              clara.aides_$aids_per_card.please(eligy, contract_name).datamap("aslug"),
               function(aid_name) {
                 return {
                   name: aid_name,
