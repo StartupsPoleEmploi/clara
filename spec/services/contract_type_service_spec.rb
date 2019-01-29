@@ -9,7 +9,7 @@ describe ContractTypeService do
       # when
       output = ContractTypeService.new.slug_of_projet_pro      
       # then
-      expect(output).to eq "slug-of-projet-pro"
+      expect(output).to eq "not_found"
     end
   end
 

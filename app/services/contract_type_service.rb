@@ -9,8 +9,8 @@ class ContractTypeService
     ContractType.dispositifs.map{|e| e.attributes}
   end
 
-  def slug_of_projet_pro
-    generate_slug('aide-a-la-definition-du-projet-professionnel')
+  def slug_of_creation_reprise_entreprise
+    generate_slug('aide-a-la-creation-ou-reprise-d-entreprise')
   end
 
   def slug_of_amob
@@ -21,9 +21,10 @@ class ContractTypeService
     generate_slug('contrat-en-alternance')
   end
 
-  def slug_of_creation_reprise_entreprise
-    generate_slug('aide-a-la-creation-ou-reprise-d-entreprise')
+  def slug_of_projet_pro
+    generate_slug('aide-a-la-definition-du-projet-professionnel')
   end
+
 
 private 
 
