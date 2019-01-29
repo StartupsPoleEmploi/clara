@@ -21,13 +21,12 @@ feature 'admin' do
 
       # Create aids
       click_link 'Création aid'
-      aid_name = 'Agepi'
-      fill_in('Nom', with: aid_name)
+      fill_in('Nom', with: "Agepi")
       fill_in('Résumé', with: 'Petite description')
       fill_in('Description', with: 'La longue description de l\'aide')
 
       click_button 'Créer un(e) Aid'
-      expect(page).to have_selector('h1', text: "Détails #{aid_name}")
+      expect(page).to have_selector('.flash-error')
 
       # See filters
       click_link 'Filtres'
