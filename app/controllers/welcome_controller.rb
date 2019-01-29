@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
 
   def index
-    service = ContractTypeService.new
     clean_asker_params
     view_params = Rails.cache.fetch("view_data_for_welcome_page") {
       {
