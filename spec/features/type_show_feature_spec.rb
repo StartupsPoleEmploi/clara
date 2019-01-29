@@ -12,13 +12,9 @@ feature 'A show type page' do
       aid2.ordre_affichage = 11
       aid1.save
       aid2.save
-      # p '- - - - - - - - - - - - - - JsonModelsService.aids- - - - - - - - - - - - - - - -' 
-      # ap JSON.parse(Aid.all.to_json)
-      # p ''
       visit type_path(@contract_type.slug)
     end
     it "Should contain all elements" do
-      # save_and_open_page
       expect(page).to(have_css(".c-detail-title--aide-a-la-mobilite", count:1), "Should have css of contract_type slug")
       expect(page).to(have_css(".c-detail-title-inside", count:1), "Should have title container for contract_type")
       expect(page).to(have_css(".c-detail-title-inside", text:"d3"), "Should have title of contract_type")
@@ -28,7 +24,6 @@ feature 'A show type page' do
       expect(page).to(have_css(".c-detail-cta", count: 1), "Should have CTA displayed")
       expect(page).to(have_css(".c-type-explanation", count: 1), "Must have explanation block")
       expect(page).to(have_css(".c-type-explanation .aid-nb-txt", count: 1, text: "2 aides"), "Must have explanation block with correct number of aids")
-      # expect(page).to(have_css(".c-type-explanation .aid-nb-txt", text: "2 aides"), "Must have explanation block with correct number of aids")
     end
 
   end
