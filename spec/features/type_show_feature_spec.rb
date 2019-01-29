@@ -4,8 +4,15 @@ feature 'A show type page' do
   context 'Nominal' do
     before do
       @contract_type = create(:contract_type, :contract_type_amob)
-      create(:aid, :aid_spectacle, name: "aid_spectacle_1", contract_type: @contract_type, ordre_affichage: 12)
-      create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1", contract_type: @contract_type, ordre_affichage: 7)
+      aid1 = create(:aid, :aid_spectacle, name: "aid_spectacle_1")
+      aid2 = create(:aid, :aid_not_spectacle, name: "aid_not_spectacle_1")
+      aid1.contract_type = @contract_type
+      aid2.contract_type = @contract_type
+      aid1.save
+      aid2.save
+      p '- - - - - - - - - - - - - - JsonModelsService.aids- - - - - - - - - - - - - - - -' 
+      ap JSON.parse(Aid.all.to_json)
+      p ''
       visit type_path(@contract_type.slug)
     end
     it "Should contain all elements" do
