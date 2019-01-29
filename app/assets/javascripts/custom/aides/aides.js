@@ -46,7 +46,7 @@ clara.js_define("aides", {
 
     var iterate_through_aids = function(callable_function, state) {
       if (!state) state = main_store.getState()
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         _.each(state[ely + "_zone"][ely], function(contract){
           _.each(contract.aids, function(aid){
             callable_function(ely, contract, aid);
@@ -57,7 +57,7 @@ clara.js_define("aides", {
 
     var iterate_contract_types = function(callable_function, state) {
       if (!state) state = main_store.getState()
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
             callable_function(ely, contract);
         })
@@ -225,7 +225,7 @@ clara.js_define("aides", {
       });
     });
 
-    _.each(eligies, function(eligy_name) {
+    _.each(clara.aides_constants["ELIGIES"], function(eligy_name) {
       _.each(clara.aides_$card.please(eligy_name).datamap("cslug"), function(contract_name){
         $('#' + eligy_name + ' .c-resultcard[data-cslug="' + contract_name + '"]' + ' .js-open').click(function(){
           main_store.dispatch({type: 'OPEN_CONTRACT', eligy_name: eligy_name, contract_name: contract_name});
@@ -236,7 +236,7 @@ clara.js_define("aides", {
       });
     });
 
-    _.each(eligies, function(eligy_name) {
+    _.each(clara.aides_constants["ELIGIES"], function(eligy_name) {
       $('#' + eligy_name + ' .js-fold').click(function(){
         main_store.dispatch({type: 'FOLD_ELIGY', eligy_name: eligy_name});
       });
@@ -345,7 +345,7 @@ clara.js_define("aides", {
       });
 
 
-      _.each(eligies, function(ely){
+      _.each(clara.aides_constants["ELIGIES"], function(ely){
         var $el = $('#' + ely);
         var contracts = state[ely + "_zone"][ely];
 
