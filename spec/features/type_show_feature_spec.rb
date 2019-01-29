@@ -12,6 +12,7 @@ feature 'A show type page' do
       expect(page).to(have_css(".c-detail-title--amob-name", count:1), "Should have css of contract_type slug")
       expect(page).to(have_css(".c-detail-title-inside", count:1), "Should have title container for contract_type")
       expect(page).to(have_css(".c-detail-title-inside", text:"d3"), "Should have title of contract_type")
+      expect(page).to(have_css(".c-result-aid", count: 2), "Should have 2 aids")
     end
 
   end
