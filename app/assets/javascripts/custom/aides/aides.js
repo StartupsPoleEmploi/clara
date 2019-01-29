@@ -22,13 +22,11 @@ clara.js_define("aides", {
     *
     *
     **/
+    // var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
+    var $actual_filters = function() {return $('#o_all_filters .c-resultfiltering')};
 
     var eligies = ['eligibles', 'uncertains', 'ineligibles'];
     
-    var collect_filters_name = function() {
-      return clara.aides_$actual_filters.please().map(function(){return $(this).data()["name"]}).get();
-    }
-
     var initial_eligy = function(eligy) {
       return _.map(
         clara.aides_$card.please(eligy).datamap("cslug"), 
@@ -73,7 +71,7 @@ clara.js_define("aides", {
       },
       filters_zone: {
         is_collapsed: true,
-        filters: _.map(collect_filters_name(), function(e){return {name: e, is_checked: false, updated_at : 0}})
+        filters: _.map(clara.aides_collect_filters_name.please(), function(e){return {name: e, is_checked: false, updated_at : 0}})
       },
       recap_zone: {
         is_collapsed: true
@@ -255,7 +253,7 @@ clara.js_define("aides", {
     });
 
 
-    _.each(collect_filters_name(), function(filter_name){ 
+    _.each(clara.aides_collect_filters_name.please(), function(filter_name){ 
       $('.c-resultfiltering[data-name="' + filter_name + '"] input[type="checkbox"]').click(function(){
         var that = this; 
         main_store.dispatch({type: 'TOGGLE_FILTER', name: filter_name, value: $(that).prop("checked")}) 
