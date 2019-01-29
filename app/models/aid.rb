@@ -34,7 +34,7 @@ class Aid < ApplicationRecord
   scope :activated,  -> { self.unarchived.linked_to_rule }
   
   def should_generate_new_friendly_id?
-    false
+    slug.blank?
   end
 
 end
