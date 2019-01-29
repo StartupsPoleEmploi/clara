@@ -22,15 +22,6 @@ $.currentUrl = function() {
 }
 
 jQuery.fn.extend({
-  rawHtml: function() {
-    var s=this.prop("outerHTML");
-    var result = s.replace(/ +?/g, '');
-    // $(".unfoldedlabel a").text(s.replace(/ +?/g, ''));//or /\s+?/g
-    // return $(this).prop("outerHTML").text(function (index, oldText) {
-    //   return oldText.replace(/\s+/g, '');
-    // });
-    return result;
-  },
   datamap: function(dataext) {
     return this.map(function(){return $(this).data()[dataext]}).get();
   },

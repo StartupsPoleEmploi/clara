@@ -22,7 +22,6 @@ clara.js_define("aides", {
     *
     *
     **/
-    var $aids_container_per_card = function(eligy, contract_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaids')};
     var $filters_per_aid = function(eligy, contract_name, aid_name) {return $('#' + eligy + ' .c-resultcard[data-cslug="'+contract_name+'"]' + ' .c-resultaid[data-aslug="'+aid_name+'"] .c-resultfilter')};
     var $actual_filters = function() {return $('#o_all_filters .c-resultfiltering')};
 
