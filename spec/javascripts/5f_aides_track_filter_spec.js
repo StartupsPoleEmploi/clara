@@ -18,7 +18,6 @@ describe('aides_track_filter.js', function() {
           d:d,
           e:e,
         };
-        return 1001;
       });
       clara.aides_track_filter.please("my_filter");
       expect(return_val).toEqual(
