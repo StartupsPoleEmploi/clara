@@ -17,7 +17,7 @@ class ContractType < ApplicationRecord
   scope :dispositifs, -> { where(category: 'dispositif') }
 
   def should_generate_new_friendly_id?
-    name_changed?
+    false
   end
   
 end

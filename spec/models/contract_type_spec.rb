@@ -65,16 +65,6 @@ describe ContractType, type: :model do
         expect(contract_type_2.valid?).to eq false
       end
     end
-    describe 'business_id' do
-      it 'is valid with a business_id' do
-        # given
-        contract_type = create_contract_type_1
-        # when
-        contract_type.valid?
-        # then
-        expect(contract_type.errors[:business_id].length).to eq 0
-      end      
-    end
 
   end
 

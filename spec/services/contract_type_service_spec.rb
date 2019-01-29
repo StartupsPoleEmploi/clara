@@ -5,7 +5,7 @@ describe ContractTypeService do
   describe ".slug_of_projet_pro" do
     it "Returns slug of projet-pro" do
       # given
-      contract_type = create(:contract_type, :contract_type_1, business_id: 'projet-pro', name: 'slug-of-projet-pro', description: 'sth')
+      contract_type = create(:contract_type, :contract_type_1, name: 'slug-of-projet-pro', description: 'sth')
       # when
       output = ContractTypeService.new.slug_of_projet_pro      
       # then

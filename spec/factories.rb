@@ -293,20 +293,16 @@ FactoryBot.define do
     trait :contract_type_1 do 
       name 'n1'
       description 'd1'
-      business_id 'b1'
       category 'aide'
     end
     trait :contract_type_2 do 
       name 'n2'
       description 'd2'
-      business_id 'b2'
       category 'dispositif'
     end
     trait :contract_type_amob do 
       name 'amob-name'
       description 'd3'
-      slug 'amob-slug'
-      business_id 'amob'
     end
   end
 

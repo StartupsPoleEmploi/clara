@@ -12,7 +12,7 @@ class ResultLine < ViewObject
     suffix = "green"  if @clazz == "eligible"
     suffix = "orange" if @clazz == "uncertain"
     suffix = "red"    if @clazz == "ineligible"
-    "c-result-line--#{suffix} #{_safe_biz_id}"
+    "c-result-line--#{suffix}"
   end
 
   def hide_title?
@@ -21,11 +21,6 @@ class ResultLine < ViewObject
 
   def ordered_aids
     @aids.sort_by { |aid| aid[:ordre_affichage] }
-  end
-
-  def _safe_biz_id
-    res = "#{@contract[:business_id]}".parameterize
-    res
   end
 
 end

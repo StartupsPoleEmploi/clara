@@ -203,7 +203,7 @@ describe ResultDefault do
     "icon"=>"",
     "slug"=>"aide-simple",
     "category"=>"simple",
-    "business_id"=>"aide-simple"},
+    },
    {"id"=>2,
     "name"=>"Aide composite",
     "description"=>"Des aides consitituées de règles complexes",
@@ -211,7 +211,7 @@ describe ResultDefault do
     "icon"=>"",
     "slug"=>"aide-composite",
     "category"=>"composite",
-    "business_id"=>"aide-composite"}],
+    ],
  :flat_all_filter=>
   [{"id"=>1, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
    {"id"=>3, "name"=>"argent", "description"=>"Les aides liées à l'argent"},

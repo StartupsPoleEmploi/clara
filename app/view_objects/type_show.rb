@@ -15,7 +15,7 @@ class TypeShow < ViewObject
   end
 
   def clazz
-    "c-detail-title--#{@contract[:business_id]}"
+    "c-detail-title--#{@contract[:slug]}"
   end
 
   def has_line
