@@ -305,7 +305,7 @@ FactoryBot.define do
       category 'dispositif'
     end
     trait :contract_type_amob do 
-      name 'amob-name'
+      name "aide-a-la-mobilite"
       description 'd3'
     end
   end
