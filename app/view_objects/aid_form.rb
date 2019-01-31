@@ -3,7 +3,7 @@ class AidForm < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
-    @mandatory_list = ["name", "contract_type_id", "ordre_affichage"]
+    @mandatory_list = ["name", "contract_type", "ordre_affichage"]
     @errors_h = _init_errors_messages(@page)
     @attr_id = @page.resource.attributes["id"].to_s 
 
