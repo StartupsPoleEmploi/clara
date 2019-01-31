@@ -2,11 +2,13 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      plural: Pluriel
     models: 
       contract_type: Rubriques
     attributes:
       contract_type:
         <<: *labels
+        category: Catégorie
   helpers:
     label:
       contract_type:
