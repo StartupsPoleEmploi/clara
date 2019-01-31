@@ -11,7 +11,7 @@ class AidForm < ViewObject
 
   def additional_label(attribute)
     # "something"
-    t("help_for_attr.aid.limitations", default: nil) 
+    t("help_for_attr.aid.#{attr_name(attribute)}", default: nil) 
   end
 
   def hide_field?(attribute)
