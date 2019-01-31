@@ -17,7 +17,7 @@ class AidForm < ViewObject
     attribute.attribute.to_s
   end
 
-  def is_in_error(attribute)
+  def errored?(attribute)
     actual_attr = attribute.attribute
     @errors_h.key?(actual_attr) && @errors_h[actual_attr].size > 0
   end
