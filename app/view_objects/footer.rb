@@ -15,12 +15,8 @@ class Footer < ViewObject
     @the_request.respond_to?('path') && !@the_request.path.include?("/stats")
   end
 
-  def current_mode
-    'not_home'
-  end
-
   def link_to_all_aides
-    @context.link_to("Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides__#{current_mode}"})
+    @context.link_to("Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"})
   end
 
   def type_dispositifs
@@ -29,10 +25,6 @@ class Footer < ViewObject
 
   def display_title_aides
     @aides.size > 0
-  end
-
-  def content_css
-    "c-footer__content--aides_#{current_mode}"
   end
 
   def display_title_dispositifs
