@@ -11,7 +11,7 @@ fr:
       rule_slave_rule_ids: "Règles enfants"
       composition_type: "Combiner avec"
     models: 
-      rule: Règle
+      rule: Règles
     attributes:
       rule:
         <<: *labels
