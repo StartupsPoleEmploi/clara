@@ -9,6 +9,10 @@ class AidForm < ViewObject
 
   end
 
+  def additional_label(attribute)
+    "something"
+  end
+
   def hide_field?(attribute)
     attr_name(attribute) == "archived_at" && @attr_id.blank?
   end

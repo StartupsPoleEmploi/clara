@@ -17,6 +17,7 @@ By default, the input is a text field.
 <%- is_mandatory ||= false %>
 <%- help ||= nil %>
 <%- placeholder ||= nil %>
+<%- additional_label ||= nil %>
 
 
 <div class="field-unit__label">
@@ -28,6 +29,9 @@ By default, the input is a text field.
   <%= f.label label_text, for:"#{f.object.class.name.underscore}_#{field.attribute}", id: "label_#{field.attribute}" %>
   <% if is_mandatory %>
     <span class="field-unit__label-mandatory">*</span>
+  <% end %>
+  <% if additional_label %>
+    <label class="field-unit__label-additional">additional_label</label>
   <% end %>
 </div>
 <div class="field-unit__field">
