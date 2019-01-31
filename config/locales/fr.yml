@@ -1,8 +1,5 @@
 fr:
   labels:
-    rule:
-      new_simple_resource: "Créer règle simple"
-      new_composite_resource: "Créer règle composée"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'

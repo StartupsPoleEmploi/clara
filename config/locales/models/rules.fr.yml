@@ -1,4 +1,8 @@
 fr:
+  labels:
+    rule:
+      new_simple_resource: "Créer règle simple"
+      new_composite_resource: "Créer règle composée"
   activerecord:
     labels: &labels
       name: Nom
