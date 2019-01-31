@@ -32,7 +32,6 @@ and renders all form fields for a resource's editable attributes.
 
   <% page.attributes.each do |attribute| -%>
     <%- attr_name = attribute.attribute.to_s%>
-    <%- attr_name = attribute.attribute.to_s %>
     <%- is_errored = v.is_in_error(attribute.attribute) %>
     <%- is_mandatory = mandatory_list.include?(attr_name)%>
     <% unless attr_name == "archived_at" && attr_id.blank? -%>
