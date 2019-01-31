@@ -2,15 +2,6 @@ clara.js_define("aides", {
 
   please: function() {
 
-    var iterate_contract_types = function(callable_function, state) {
-      if (!state) state = main_store.getState()
-      _.each(clara.aides_constants["ELIGIES"], function(ely){
-        _.each(main_store.getState()[ely + "_zone"][ely], function(contract){
-            callable_function(ely, contract);
-        })
-      })
-    };
-
     /**
     *
     *
@@ -248,7 +239,7 @@ clara.js_define("aides", {
         filter.is_checked ? $el.removeClass('u-hidden') : $el.addClass('u-hidden');
       });
 
-      iterate_contract_types(function(ely, contract){
+      clara.aides_iterate_contract_types.please(function(ely, contract){
         // Collapse contract or not
         var $el = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"]');
         var $aids = $el.find('.c-resultaids');
