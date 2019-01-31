@@ -3,10 +3,10 @@ fr:
     labels: &labels
       name: Nom
       what: Description
-      how_much: Montant
+      how_much: "Contenu de l'aide"
       how_and_when: Comment faire la demande ? 
-      additionnal_conditions: Critères complémentaires
-      limitations: Réserves et dérogations
+      additionnal_conditions: "Conditions à remplir"
+      limitations: "Informations complémentaires"
       short_description: Résumé
     models: 
       aid: Aides

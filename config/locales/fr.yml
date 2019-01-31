@@ -1,21 +1,4 @@
 fr:
-  rule:
-    composition_type:
-      and_rule: "et"
-      or_rule: "ou"
-    operator_kind:
-      equal: "Égal à"
-      not_equal: "Pas égal à"
-      more_or_equal_than: "Supérieur ou égal à"
-      more_than: "Supérieur à"
-      less_or_equal_than: "Inférieur ou égal à"
-      less_than: "Inférieur à"
-      starts_with: "Commence par"
-      not_starts_with: "Ne commence pas par"
-      ends_with: "Fini par"
-      include: "Contient"
-      amongst: "Parmi"
-      not_amongst: "Pas parmi"
   views:
     pagination:
       first: "première page"
@@ -23,32 +6,11 @@ fr:
       previous: "page précédente"
       next: "page suivante"
       truncate: "..."
-  administrate:
-    form:
-      errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
-    actions:
-      new: "Nouveau"
-      show: "Détails"
-      back: "← Retour"
-      destroy: "🗑Supprimer"
-      edit: "✎ Modifier"
   labels:
     rule:
       new_simple_resource: "Créer règle simple"
       new_composite_resource: "Créer règle composée"
   activerecord:
-    models:
-      rule: "Règles"
-      variable: "Variables"
-      contract_type: "Types de contrats"
-      custom_filter: "Filtres personnalisés"
-      custom_parent_filter: "Filtres personnalisés parents"
-      rule_check: "Vérification des règles"
-      filter: "Filtres"
-      need_filter: "Besoins"
-      axle_filter: "Axes"
-      domain_filter: "Domaines"
-      user: "Utilisateurs"
     attributes:
       rule:
         name: "Nom"
@@ -62,59 +24,6 @@ fr:
         restrict_dependent_destroy:
           has_one: "Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record} dépendant(e) existe"
           has_many: "Vous ne pouvez pas supprimer l'enregistrement parce que les %{record} dépendants existent"
-  date:
-    abbr_day_names:
-    - dim
-    - lun
-    - mar
-    - mer
-    - jeu
-    - ven
-    - sam
-    abbr_month_names:
-    -
-    - jan.
-    - fév.
-    - mar.
-    - avr.
-    - mai
-    - juin
-    - juil.
-    - août
-    - sept.
-    - oct.
-    - nov.
-    - déc.
-    day_names:
-    - dimanche
-    - lundi
-    - mardi
-    - mercredi
-    - jeudi
-    - vendredi
-    - samedi
-    formats:
-      default: "%d/%m/%Y"
-      short: "%e %b"
-      long: "%e %B %Y"
-    month_names:
-    -
-    - janvier
-    - février
-    - mars
-    - avril
-    - mai
-    - juin
-    - juillet
-    - août
-    - septembre
-    - octobre
-    - novembre
-    - décembre
-    order:
-    - :day
-    - :month
-    - :year
   datetime:
     distance_in_words:
       about_x_hours:
