@@ -6,12 +6,5 @@ fr:
         restrict_dependent_destroy:
           has_one: "Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record} dépendant(e) existe"
           has_many: "Vous ne pouvez pas supprimer l'enregistrement parce que les %{record} dépendants existent"
-  helpers:
-    select:
-      prompt: Veuillez sélectionner
-    submit:
-      create: Créer un(e) %{model}
-      submit: Enregistrer ce(tte) %{model}
-      update: Modifier ce(tte) %{model}
 
 
