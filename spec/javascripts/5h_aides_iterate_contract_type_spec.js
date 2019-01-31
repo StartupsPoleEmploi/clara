@@ -4,7 +4,6 @@ describe('aides_iterate_contract_types.js', function() {
 
   beforeAll(function(){
     _.set(window, "main_store", {getState: _.wrap(MagicLamp.loadJSON("nominal_aides_state"))})
-    // _.set(window, "main_store", {getState: _.noop})
   });
   afterAll(function(){
     _.unset(window, "main_store")
