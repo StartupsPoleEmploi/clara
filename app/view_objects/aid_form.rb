@@ -8,14 +8,28 @@ class AidForm < ViewObject
     @page = locals[:page]
     @mandatory_list = ["name", "contract_type_id", "ordre_affichage"]
     @errors_h = _init_errors_messages(@page)
+    @attr_id = @page.resource.attributes["id"].to_s 
+
   end
 
-  def is_in_error(attrib)
-    @errors_h.key?(attrib) && @errors_h[attrib].size > 0
+  def hide_field?(attribute)
+    attr_name(attribute) == "archived_at" && @attr_id.blank?
   end
 
-  def error_message(attrib)
-    @errors_h[attrib][0]
+  def attr_name(attribute)
+    attribute.attribute.to_s
+  end
+
+  def is_in_error(attribute)
+    @errors_h.key?(attribute) && @errors_h[attribute].size > 0
+  end
+
+  def mandatory?(attr_name)
+    @mandatory_list.include?(attr_name)
+  end
+
+  def error_message(attribute)
+    @errors_h[attribute][0]
   end
 
   def _init_errors_messages(page)
