@@ -2,17 +2,6 @@ clara.js_define("aides", {
 
   please: function() {
 
-    var iterate_through_aids = function(callable_function, state) {
-      if (!state) state = main_store.getState()
-      _.each(clara.aides_constants["ELIGIES"], function(ely){
-        _.each(state[ely + "_zone"][ely], function(contract){
-          _.each(contract.aids, function(aid){
-            callable_function(ely, contract, aid);
-          })
-        })
-      })
-    };
-
     var iterate_contract_types = function(callable_function, state) {
       if (!state) state = main_store.getState()
       _.each(clara.aides_constants["ELIGIES"], function(ely){
@@ -60,7 +49,7 @@ clara.js_define("aides", {
         var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
         filter_changed.is_checked = action.value;
         if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
-        iterate_through_aids(function(ely, contract, aid){
+        clara.aides_iterate_through_aids.please(function(ely, contract, aid){
           var aid_filters_name = _.map(aid.filters, function(e) {return e.name});
           var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), function(e) {return e.name});
           var has_intersection = _.isNotEmpty(_.intersection(aid_filters_name, existing_filters_name));
@@ -289,7 +278,7 @@ clara.js_define("aides", {
         contract.is_collapsed ? $close.addClass('u-hidden-visually') : $close.removeClass('u-hidden-visually');
       });
 
-      iterate_through_aids(function(ely, contract, aid){
+      clara.aides_iterate_through_aids.please(function(ely, contract, aid){
         // Show aid or not
         var $aid = $('#' + ely + ' .c-resultcard[data-cslug="' + contract.name + '"] .c-resultaid[data-aslug="' + aid.name + '"]');
         aid.is_collapsed ? $aid.addClass('u-hidden-visually') : $aid.removeClass('u-hidden-visually');
