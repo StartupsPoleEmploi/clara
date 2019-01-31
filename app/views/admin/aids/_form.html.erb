@@ -31,13 +31,12 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <%- is_errored = v.is_in_error(attribute.attribute) %>
     <% unless v.hide_field?(attribute) -%>
-      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>">
+      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.is_in_error(attribute)%>">
         <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)) %>
-        <% if is_errored -%>
+        <% if v.is_in_error(attribute) -%>
           <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-            &nbsp;⚠ <%= v.error_message(attribute.attribute) %>
+            &nbsp;⚠ <%= v.error_message(attribute) %>
           </div>
         <% end %>
       </div>

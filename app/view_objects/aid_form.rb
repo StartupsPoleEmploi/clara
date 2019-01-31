@@ -21,7 +21,8 @@ class AidForm < ViewObject
   end
 
   def is_in_error(attribute)
-    @errors_h.key?(attribute) && @errors_h[attribute].size > 0
+    actual_attr = attribute.attribute
+    @errors_h.key?(actual_attr) && @errors_h[actual_attr].size > 0
   end
 
   def mandatory?(attr_name)
@@ -29,7 +30,8 @@ class AidForm < ViewObject
   end
 
   def error_message(attribute)
-    @errors_h[attribute][0]
+    actual_attr = attribute.attribute
+    @errors_h[actual_attr][0]
   end
 
   def _init_errors_messages(page)
