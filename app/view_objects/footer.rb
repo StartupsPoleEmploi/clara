@@ -16,7 +16,7 @@ class Footer < ViewObject
   end
 
   def current_mode
-    @the_request.path == root_path ? 'home' : 'not_home'
+    'not_home'
   end
 
   def link_to_all_aides
