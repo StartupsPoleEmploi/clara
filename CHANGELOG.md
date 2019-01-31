@@ -2,6 +2,10 @@
 
 
 
+## 18.18.0 (1/2/2019)
+-[#1125][ADMIN] BO : refonte de la page d'accueil des "contract types"
+
+
 ## 18.17.0 (31/1/2019)
 -[#1127][ADMIN] BO : refonte de la page de détail d'une aide, suite et fin
 
