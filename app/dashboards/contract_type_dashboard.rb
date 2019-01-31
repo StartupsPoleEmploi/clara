@@ -50,7 +50,6 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :plural,
-    :slug,
     :icon,
     :ordre_affichage,
     :description,

@@ -3,6 +3,7 @@ fr:
     labels: &labels
       name: Nom
       plural: Pluriel
+      icon: Icône
     models: 
       contract_type: Rubriques
     attributes:
