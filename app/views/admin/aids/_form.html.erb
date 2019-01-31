@@ -17,7 +17,7 @@ and renders all form fields for a resource's editable attributes.
 <%- errors_messages_h = page.resource.errors.messages %>
 <%- errors_messages_h.transform_keys!{ |key| key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key} %>
 <%- attr_id = page.resource.attributes["id"].to_s %>
-<%- mandatory_list = ["name", "contract_type_id", "ordre_affichage"] %>
+<%- mandatory_list = ["name", "contract_type", "ordre_affichage"] %>
 
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
@@ -35,8 +35,9 @@ and renders all form fields for a resource's editable attributes.
   <% page.attributes.each do |attribute| -%>
     <%- attr_name = attribute.attribute.to_s%>
     <%- is_errored = errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0 %>
-    <%- is_mandatory = mandatory_list.include?(attr_name)%>
     <%- attr_name = attribute.attribute.to_s %>
+    <%= attr_name%>
+    <%- is_mandatory = mandatory_list.include?(attr_name)%>
     <% unless attr_name == "archived_at" && attr_id.blank? -%>
       <div data-meh="<%=attribute.attribute%>" class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>">
         <%= render_field attribute, f: f, is_mandatory: is_mandatory %>
