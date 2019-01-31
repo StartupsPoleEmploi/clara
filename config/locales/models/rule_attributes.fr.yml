@@ -1,9 +1,0 @@
-fr:
-  activerecord:
-    attributes:
-      rule:
-        name: "Nom"
-        operator_kind: "Opérateur"
-        value_eligible: "Valeur"
-        rule_slave_rule_ids: "Règles enfants"
-        composition_type: "Combiner avec"
