@@ -2,18 +2,24 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
-      what: Description
-      how_much: "Contenu de l'aide"
-      how_and_when: Comment faire la demande ? 
-      additionnal_conditions: "Conditions à remplir"
-      limitations: "Informations complémentaires"
-      short_description: Résumé
+      variable: Variable
+      aids: Aides concernées
+      slave_rules: Règles enfants
+      value_eligible: Valeur
     models: 
-      aid: Aides
+      rule: Règle
     attributes:
-      aid:
+      rule:
         <<: *labels
   helpers:
     label:
-      aid:
+      rule:
         <<: *labels
+    submit:
+      rule:
+        create: "Créer cette règle"
+        update: "Mettre à jour cette règle"
+    creation:
+      rule:
+        new_simple_resource: Créer une règle simple
+        new_composite_resource: Créer une règle composée

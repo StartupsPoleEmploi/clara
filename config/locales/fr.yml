@@ -12,30 +12,9 @@ fr:
   helpers:
     select:
       prompt: Veuillez sélectionner
-    detail:
-      aid: "Détails d'une aide"
-
     submit:
-      rule:
-        create: "Créer cette règle"
-        update: "Mettre à jour cette règle"
       create: Créer un(e) %{model}
       submit: Enregistrer ce(tte) %{model}
       update: Modifier ce(tte) %{model}
-    label:
-      aid:
-        rule: Règle
-        need_filters: Besoins
-        filters: Filtres page résultat 
-        contract_type: Rubrique
-        last_update: Dernière mise à jour
-        archived_at: Date d'arrêt de diffusion sur le site
-      rule:
-        new_simple_resource: Créer une règle simple
-        new_composite_resource: Créer une règle composée
-        name: Nom
-        variable: Variable
-        aids: Aides concernées
-        slave_rules: Règles enfants
-        value_eligible: Valeur
+
 

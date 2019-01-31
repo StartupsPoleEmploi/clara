@@ -8,6 +8,12 @@ fr:
       additionnal_conditions: "Conditions à remplir"
       limitations: "Informations complémentaires"
       short_description: Résumé
+      rule: Règle
+      need_filters: Besoins
+      filters: Filtres page résultat 
+      contract_type: Rubrique
+      last_update: Dernière mise à jour
+      archived_at: Date d'arrêt de diffusion sur le site
     models: 
       aid: Aides
     attributes:
@@ -17,3 +23,5 @@ fr:
     label:
       aid:
         <<: *labels
+    detail:
+      aid: "Détails d'une aide"
