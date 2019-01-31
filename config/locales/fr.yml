@@ -3,14 +3,6 @@ fr:
     rule:
       new_simple_resource: "Créer règle simple"
       new_composite_resource: "Créer règle composée"
-  activerecord:
-    attributes:
-      rule:
-        name: "Nom"
-        operator_kind: "Opérateur"
-        value_eligible: "Valeur"
-        rule_slave_rule_ids: "Règles enfants"
-        composition_type: "Combiner avec"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'
@@ -46,9 +38,4 @@ fr:
         aids: Aides concernées
         slave_rules: Règles enfants
         value_eligible: Valeur
-  support:
-    array:
-      last_word_connector: " et "
-      two_words_connector: " et "
-      words_connector: ", "
 
