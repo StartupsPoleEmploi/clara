@@ -13,9 +13,7 @@ and renders all form fields for a resource's editable attributes.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
-<%- errors_messages_h = page.resource.errors.messages %>
-<%- errors_messages_h.transform_keys!{ |key| key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key} %>
-<%- attr_id = page.resource.attributes["id"].to_s %>
+<%- v = view_object(:aid_form, local_assigns) %>
 
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
@@ -31,14 +29,12 @@ and renders all form fields for a resource's editable attributes.
   <% end %>
 
   <% page.attributes.each do |attribute| -%>
-    <%- is_errored = errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0 %>
-    <%- attr_name = attribute.attribute.to_s %>
-    <% unless attr_name == "archived_at" && attr_id.blank? -%>
-      <div data-meh="<%=attribute.attribute%>" class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>">
-        <%= render_field attribute, f: f %>
-        <% if is_errored -%>
+    <% unless v.hide_field?(attribute) -%>
+      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+        <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
+        <% if v.errored?(attribute) -%>
           <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-            &nbsp;⚠ <%= errors_messages_h[attribute.attribute][0] %>
+            &nbsp;⚠ <%= v.error_message(attribute) %>
           </div>
         <% end %>
       </div>

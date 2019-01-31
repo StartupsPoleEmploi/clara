@@ -3,11 +3,17 @@ fr:
     labels: &labels
       name: Nom
       what: Description
-      how_much: Montant
+      how_much: "Contenu de l'aide"
       how_and_when: Comment faire la demande ? 
-      additionnal_conditions: Critères complémentaires
-      limitations: Réserves et dérogations
+      additionnal_conditions: "Conditions à remplir"
+      limitations: "Informations complémentaires"
       short_description: Résumé
+      rule: Règle
+      need_filters: Besoins
+      filters: Filtres page résultat 
+      contract_type: Rubrique
+      last_update: Dernière mise à jour
+      archived_at: Date d'arrêt de diffusion sur le site
     models: 
       aid: Aides
     attributes:
@@ -17,3 +23,9 @@ fr:
     label:
       aid:
         <<: *labels
+    detail:
+      aid: "Détails d'une aide"
+  help_for_attr:
+    aid:
+      additionnal_conditions: "indiquer dans ce champ les critères qui ne sont pas traités par le formulaire (exemple : nombre et âge des enfants, plafond de ressources, coefficient familial, ...)"
+      limitations: "(réserves, dérogations, liens utiles, commentaire, ...)"

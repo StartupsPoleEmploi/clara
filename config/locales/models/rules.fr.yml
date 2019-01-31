@@ -1,0 +1,46 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      variable: Variable
+      aids: Aides concernées
+      slave_rules: Règles enfants
+      value_eligible: Valeur
+      operator_kind: "Opérateur"
+      value_eligible: "Valeur"
+      rule_slave_rule_ids: "Règles enfants"
+      composition_type: "Combiner avec"
+    models: 
+      rule: Règles
+    attributes:
+      rule:
+        <<: *labels
+  helpers:
+    label:
+      rule:
+        <<: *labels
+    submit:
+      rule:
+        create: "Créer cette règle"
+        update: "Mettre à jour cette règle"
+    creation:
+      rule:
+        new_simple_resource: Créer une règle simple
+        new_composite_resource: Créer une règle composée
+  rule:
+    composition_type:
+      and_rule: "et"
+      or_rule: "ou"
+    operator_kind:
+      equal: "Égal à"
+      not_equal: "Pas égal à"
+      more_or_equal_than: "Supérieur ou égal à"
+      more_than: "Supérieur à"
+      less_or_equal_than: "Inférieur ou égal à"
+      less_than: "Inférieur à"
+      starts_with: "Commence par"
+      not_starts_with: "Ne commence pas par"
+      ends_with: "Fini par"
+      include: "Contient"
+      amongst: "Parmi"
+      not_amongst: "Pas parmi"

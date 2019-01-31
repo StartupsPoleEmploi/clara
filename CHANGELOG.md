@@ -2,6 +2,10 @@
 
 
 
+## 18.17.0 (31/1/2019)
+-[#1127][ADMIN] BO : refonte de la page de détail d'une aide, suite et fin
+
+
 ## 18.16.0 (29/1/2019)
 -[#1119][ADMIN] BO : refonte de la page de détail d'une aide
 

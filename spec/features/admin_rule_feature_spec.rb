@@ -10,20 +10,11 @@ feature 'admin rule' do
     find('.navigation__link[href="/admin/rules?locale=fr"]').click
 
     # The table is available
-    expect(page.all('.js-rule-table').count).to print_eq 1,
-      "Table of existing rules is displayed"
+    expect(page.all('.js-rule-table').count).to eq(1), "Table of existing rules is displayed"
 
-    expect(page.all('h1').first.text).to print_eq "Règles",
-      "Should have a main title \"Règles\""
+    expect(page.all('a[href="/admin/rules/new?locale=fr&rule_kind=simple"]').count).to eq(1), "You can create a simple rule"
 
-    expect(page.all('#search').count).to print_eq 1,
-      "Search field is printed"
-
-    expect(page.all('a[href="/admin/rules/new?locale=fr&rule_kind=simple"]').count).to print_eq 1,
-      "You can create a simple rule"
-
-    expect(page.all('a[href="/admin/rules/new?locale=fr&rule_kind=composite"]').count).to print_eq 1,
-      "You can create a complex rule"
+    expect(page.all('a[href="/admin/rules/new?locale=fr&rule_kind=composite"]').count).to eq(1), "You can create a complex rule"
 
   end  
 end
