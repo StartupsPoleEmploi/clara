@@ -2,7 +2,7 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  default_scope {includes(:contract_type).order(ordre_affichage: :asc, 'contract_types.ordre_affichage ASC')}
+  default_scope {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
 
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
