@@ -3,28 +3,18 @@ require 'rails_helper'
 feature 'Search for aids' do 
 
   context 'Nominal' do
-    before do
-      disable_http_service
+    before(:each) do
       create_nominal_schema
+    end
+    before(:each) do
       visit aides_path      
     end
-    after do
-      enable_http_service
-    end
-    it 'Has a search input' do
-      expect(page).to have_css('input#usearch_input')
-    end
-    it 'Displays total number of aids' do
-      expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara")
-    end
-    it 'Displays 5 aids per page' do
-      expect(page).to have_css(".c-result-aid",  count: 5)
-    end
-    it 'Displays a normal title' do
-      expect(page).to have_title "Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"
-    end
-    it 'Displays a pagination' do
-      expect(page).to have_css("nav.pagination")
+    it 'Has all needed elements' do
+      expect(page).to have_css('input#usearch_input'), "has an input search"
+      expect(page).to have_css(".c-result-all-subtitle",  text: "8 aides et mesures sont disponibles sur Clara"), "Displays total number of aids"
+      expect(page).to have_css(".c-result-aid",  count: 5), "Displays 5 aids per page"
+      expect(page).to have_title("Découvrez toutes les aides et mesures de retour à l'emploi | Clara – un service Pôle emploi"), "Displays a normal title"
+      expect(page).to have_css("nav.pagination"), "Displays a pagination"
     end
     it 'User can click to next page, it updates aids, but title stay the same' do
       #given

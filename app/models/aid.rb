@@ -32,7 +32,7 @@ class Aid < ApplicationRecord
   scope :unarchived, -> { where(archived_at: nil) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
   scope :activated,  -> { self.unarchived.linked_to_rule }
-  
+  scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
   def should_generate_new_friendly_id?
     slug.blank?
   end

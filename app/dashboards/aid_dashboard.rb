@@ -37,12 +37,12 @@ class AidDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :ordre_affichage,
-    :last_update,
     :contract_type,
+    :ordre_affichage,
     :need_filters,
     :custom_filters,
     :filters,
+    :last_update,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
