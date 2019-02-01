@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 18.23.0 (4/2/2019)
+-[#1129][ADMIN] BO : création rubriques
+
 
 ## 18.22.0 (4/2/2019)
 -[#1116][ADMIN] BO : aides
