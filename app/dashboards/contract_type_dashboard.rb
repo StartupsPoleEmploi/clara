@@ -47,10 +47,10 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :description,
+    :ordre_affichage,
     :plural,
     :icon,
-    :ordre_affichage,
-    :description,
   ].freeze
 
   # Overwrite this method to customize how zrrs are displayed
