@@ -74,6 +74,7 @@ class AidDashboard < Administrate::BaseDashboard
     :ordre_affichage,
     :short_description,
     :filters,
+    :custom_filters,
     :rule,
     :need_filters,
     :archived_at,
