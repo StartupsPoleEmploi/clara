@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Search for aids' do 
 
   context 'Nominal' do
-    before(:all) do
+    before(:each) do
       create_nominal_schema
     end
     before(:each) do

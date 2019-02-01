@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'A show type page' do
   context 'Nominal' do
-    before(:all) do
+    before(:each) do
       @url = _fill_db
     end
     it "Should contain all elements on type_path" do
