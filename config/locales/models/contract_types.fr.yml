@@ -17,6 +17,7 @@ fr:
       contract_type:
         <<: *labels
     contract_type:
+      creation: Créer une rubrique
       creation_title: Création d'une rubrique
     detail:
       contract_type: "Détails d'une rubrique"
@@ -24,6 +25,3 @@ fr:
       contract_type:
         create: "Créer cette rubrique"
         update: "Mettre à jour cette rubrique"
-    creation:
-      contract_type:
-        new: Créer une rubrique
