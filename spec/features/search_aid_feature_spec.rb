@@ -3,13 +3,11 @@ require 'rails_helper'
 feature 'Search for aids' do 
 
   context 'Nominal' do
-    before do
-      disable_http_service
+    before(:all) do
       create_nominal_schema
-      visit aides_path      
     end
-    after do
-      enable_http_service
+    before(:each) do
+      visit aides_path      
     end
     it 'Has all needed elements' do
       expect(page).to have_css('input#usearch_input'), "has an input search"
@@ -38,65 +36,65 @@ feature 'Search for aids' do
       expect(current_fullpath).to eq "/aides?usearch=more"      
       expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 1 sur 1 | Clara – un service Pôle emploi"
     end
-    # it 'User can search for something, the call is tracked if the user accepts' do
-    #   #given
-    #   _stub_sql_search
-    #   search_layer = _fake_track_search
-    #   allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(false)
-    #   #when
-    #   search_for_something_great
-    #   #then
-    #   expect(current_fullpath).to eq "/aides?usearch=more"      
-    #   expect(search_layer).to have_received(:call).with({user_search: "more"})
-    # end
-    # it 'User can search for something, the call is NOT tracked if the user does not accept' do
-    #   #given
-    #   _stub_sql_search
-    #   search_layer = _fake_track_search
-    #   allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(true)
-    #   #when
-    #   search_for_something_great
-    #   #then
-    #   expect(current_fullpath).to eq "/aides?usearch=more"      
-    #   expect(search_layer).not_to have_received(:call)
-    # end
-    # it 'Search can be accessed through URL' do
-    #   #given
-    #   expect(find("#usearch_input").value).to eq nil 
-    #   first_aid_before = first_displayed_aid
-    #   _stub_sql_search      
-    #   #when
-    #   visit aides_path + "?usearch=mobilite"
-    #   #then
-    #   expect(find("#usearch_input").value).to eq "mobilite" 
-    #   expect(first_aid_before).not_to eq first_displayed_aid
-    # end
-    # it 'Pagination can be accessed through URL' do
-    #   #given
-    #   expect(find(".page.current").text).to eq "1" 
-    #   #when
-    #   visit aides_path + "?page=2"
-    #   #then
-    #   expect(find(".page.current").text).to eq "2" 
-    # end
-    # it 'Pagination and search can be both accessed through URL, title is thus updated accordingly' do
-    #   #given
-    #   _stub_sql_search
-    #   #when
-    #   visit aides_path + "?page=2&usearch=mobilite"
-    #   #then
-    #   expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 2 sur 1 | Clara – un service Pôle emploi"
-    # end
-    # it 'Page number is resetted / disappear from URL / if user make a new search' do
-    #   #given
-    #   _stub_sql_search
-    #   visit aides_path + "?page=2&usearch=mobilite"
-    #   #when
-    #   search_for_something_great
-    #   #then
-    #   expect(find(".page.current").text).to eq "1"       
-    #   expect(current_fullpath).to eq "/aides?usearch=more"      
-    # end
+    it 'User can search for something, the call is tracked if the user accepts' do
+      #given
+      _stub_sql_search
+      search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(false)
+      #when
+      search_for_something_great
+      #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(search_layer).to have_received(:call).with({user_search: "more"})
+    end
+    it 'User can search for something, the call is NOT tracked if the user does not accept' do
+      #given
+      _stub_sql_search
+      search_layer = _fake_track_search
+      allow_any_instance_of(CookiePreference).to receive(:ga_disabled?).and_return(true)
+      #when
+      search_for_something_great
+      #then
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+      expect(search_layer).not_to have_received(:call)
+    end
+    it 'Search can be accessed through URL' do
+      #given
+      expect(find("#usearch_input").value).to eq nil 
+      first_aid_before = first_displayed_aid
+      _stub_sql_search      
+      #when
+      visit aides_path + "?usearch=mobilite"
+      #then
+      expect(find("#usearch_input").value).to eq "mobilite" 
+      expect(first_aid_before).not_to eq first_displayed_aid
+    end
+    it 'Pagination can be accessed through URL' do
+      #given
+      expect(find(".page.current").text).to eq "1" 
+      #when
+      visit aides_path + "?page=2"
+      #then
+      expect(find(".page.current").text).to eq "2" 
+    end
+    it 'Pagination and search can be both accessed through URL, title is thus updated accordingly' do
+      #given
+      _stub_sql_search
+      #when
+      visit aides_path + "?page=2&usearch=mobilite"
+      #then
+      expect(page).to have_title "Résultat de recherche – 2 aides et mesures sont disponibles - page 2 sur 1 | Clara – un service Pôle emploi"
+    end
+    it 'Page number is resetted / disappear from URL / if user make a new search' do
+      #given
+      _stub_sql_search
+      visit aides_path + "?page=2&usearch=mobilite"
+      #when
+      search_for_something_great
+      #then
+      expect(find(".page.current").text).to eq "1"       
+      expect(current_fullpath).to eq "/aides?usearch=more"      
+    end
   end
 
   def current_fullpath
