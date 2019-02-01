@@ -19,8 +19,6 @@ fr:
     contract_type:
       creation: Créer une rubrique
       creation_title: Création d'une rubrique
-    detail:
-      contract_type: "Détails d'une rubrique"
     submit:
       contract_type:
         create: "Créer cette rubrique"
