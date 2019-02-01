@@ -2,8 +2,10 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
-      plural: Pluriel
+      plural: Nom au pluriel
       icon: Icône
+      created_at: Créée le
+      updated_at: Mis à jour le
     models: 
       contract_type: Rubriques
     attributes:
