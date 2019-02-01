@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103118) do
+ActiveRecord::Schema.define(version: 2018_12_10_103119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103118) do
     t.text "how_and_when"
     t.text "limitations"
     t.bigint "rule_id"
-    t.integer "ordre_affichage", default: 0
+    t.integer "ordre_affichage"
     t.bigint "contract_type_id"
     t.datetime "archived_at"
     t.text "last_update"

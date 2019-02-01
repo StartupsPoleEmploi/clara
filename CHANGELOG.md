@@ -2,7 +2,11 @@
 
 
 
-## 18.19.0 (2/2/2019)
+## 18.20.0 (4/2/2019)
+-[#1130][ADMIN] BO : reliquats
+
+
+## 18.19.0 (1/2/2019)
 -[#1124][ADMIN] BO : refonte de la page de détail du contract type
 
 
