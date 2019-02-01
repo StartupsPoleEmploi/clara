@@ -27,6 +27,7 @@ fr:
     aid:
       detail: Voir les détails de l'aide
       creation: Créer une aide
+      creation_title: Création d'une aide
       update: Modification de l'aide
   help_for_attr:
     aid:

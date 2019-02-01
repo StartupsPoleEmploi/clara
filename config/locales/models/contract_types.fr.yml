@@ -16,12 +16,10 @@ fr:
     label:
       contract_type:
         <<: *labels
-    detail:
-      contract_type: "Détails d'une rubrique"
+    contract_type:
+      creation: Créer une rubrique
+      creation_title: Création d'une rubrique
     submit:
       contract_type:
         create: "Créer cette rubrique"
         update: "Mettre à jour cette rubrique"
-    creation:
-      contract_type:
-        new: Créer une rubrique
