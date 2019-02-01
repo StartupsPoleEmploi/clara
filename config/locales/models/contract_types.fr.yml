@@ -16,6 +16,8 @@ fr:
     label:
       contract_type:
         <<: *labels
+    contract_type:
+      creation_title: Création d'une rubrique
     detail:
       contract_type: "Détails d'une rubrique"
     submit:
