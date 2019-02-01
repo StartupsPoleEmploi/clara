@@ -2,6 +2,10 @@
 
 
 
+## 18.19.0 (2/2/2019)
+-[#1124][ADMIN] BO : refonte de la page de détail du contract type
+
+
 ## 18.18.0 (1/2/2019)
 -[#1125][ADMIN] BO : refonte de la page d'accueil des "contract types"
 
