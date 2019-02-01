@@ -2,8 +2,6 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  default_scope {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
-
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
   after_destroy { ExpireCacheJob.perform_later }
@@ -34,7 +32,7 @@ class Aid < ApplicationRecord
   scope :unarchived, -> { where(archived_at: nil) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
   scope :activated,  -> { self.unarchived.linked_to_rule }
-  
+  scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
   def should_generate_new_friendly_id?
     slug.blank?
   end

@@ -8,6 +8,8 @@ module Admin
       @asker = Asker.new
       super
     end
+
+    def 
     
     def find_filters 
       of_aids = find_filters_params["ids"].map { |e| e.to_i  }
@@ -24,6 +26,13 @@ module Admin
 
     def find_filters_params
       params.permit(:ids => []).to_h
+    end
+
+    def scoped_resource
+       p '- - - - - - - - - - - - - - resource_class- - - - - - - - - - - - - - - -' 
+       pp resource_class
+       p ''
+       resource_class.for_admin
     end
 
   end
