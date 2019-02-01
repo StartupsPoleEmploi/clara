@@ -29,9 +29,6 @@ module Admin
     end
 
     def scoped_resource
-       p '- - - - - - - - - - - - - - resource_class- - - - - - - - - - - - - - - -' 
-       pp resource_class
-       p ''
        resource_class.for_admin
     end
 
