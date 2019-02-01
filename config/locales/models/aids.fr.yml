@@ -24,10 +24,10 @@ fr:
     label:
       aid:
         <<: *labels
-    detail:
-      aid: "Détails d'une aide"
-    creation:
-      aid: Créer une aide
+    aid:
+      detail: Voir les détails de l'aide
+      creation: Créer une aide
+      update: Modification de l'aide
   help_for_attr:
     aid:
       additionnal_conditions: "indiquer dans ce champ les critères qui ne sont pas traités par le formulaire (exemple : nombre et âge des enfants, plafond de ressources, coefficient familial, ...)"
