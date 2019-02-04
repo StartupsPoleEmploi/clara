@@ -234,7 +234,7 @@ FactoryBot.define do
     sequence(:name) { |n| "Aide #{n}" }
     before :create do |aid|
       aid.ordre_affichage = 42
-      aid.contract_type = create(:contract_type, name: "ct_#{aid.name}", description: "d_#{aid.name}", category: "c_#{aid.name}")
+      aid.contract_type = create(:contract_type, name: "ct_#{aid.name}", description: "d_#{aid.name}", category: "c_#{aid.name}", ordre_affichage: 42)
     end
     trait :aid_spectacle do
       before :create do |aid|
@@ -298,15 +298,18 @@ FactoryBot.define do
       name 'n1'
       description 'd1'
       category 'aide'
+      ordre_affichage 1
     end
     trait :contract_type_2 do 
       name 'n2'
       description 'd2'
       category 'dispositif'
+      ordre_affichage 2
     end
     trait :contract_type_amob do 
       name "aide-a-la-mobilite"
       description 'd3'
+      ordre_affichage 3
     end
   end
 
