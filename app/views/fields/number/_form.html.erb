@@ -35,5 +35,5 @@ By default, the input is a text field.
   <% if help %>
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
-  <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
+  <%= f.number_field field.attribute, placeholder: t(placeholder, default: "") %>
 </div>
