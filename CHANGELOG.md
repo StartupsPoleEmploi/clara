@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.26.0 (5/2/2019)
+-[#1128][ADMIN] BO : api page
+
+
 ## 18.25.0 (5/2/2019)
 -[#1140][ADMIN] BO : nettoyage domaines
 
