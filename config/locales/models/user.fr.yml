@@ -1,0 +1,22 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+    models: 
+      user: Utilisateurs API
+    attributes:
+      user:
+        <<: *labels
+  helpers:
+    label:
+      user:
+        <<: *labels
+    user:
+      detail: Détails de l'utilisateur
+      modify: Modifier l'utilisateur
+      creation: Ajouter un nouvel utilisateur API
+      creation_title: Création d'un nouvel utilisateur API
+    submit:
+      user:
+        create: "Créer cet utilisateur"
+        update: "Mettre à jour cet utilisateur"
