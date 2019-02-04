@@ -15,6 +15,7 @@ class ContractType < ApplicationRecord
 
   scope :aides, -> { where(category: 'aide') }
   scope :dispositifs, -> { where(category: 'dispositif') }
+  scope :for_admin, -> {order(ordre_affichage: :asc)}
 
   def should_generate_new_friendly_id?
     slug.blank?
