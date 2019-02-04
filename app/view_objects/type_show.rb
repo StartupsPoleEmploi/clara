@@ -4,9 +4,6 @@ class TypeShow < ViewObject
     locals = hash_for(args)
     @contract = hash_for(locals[:contract])
     @aids = array_for(locals[:aids])
-    # p '- - - - - - - - - - - - - - @aids- - - - - - - - - - - - - - - -' 
-    # pp @aids
-    # p ''
   end
 
   def contract_type

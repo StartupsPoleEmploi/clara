@@ -40,9 +40,7 @@ class DomainFilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :description,
     :axle_filters,
-    # :slug,
   ].freeze
 
   # Overwrite this method to customize how domain filters are displayed
