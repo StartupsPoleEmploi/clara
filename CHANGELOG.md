@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.24.0 (5/2/2019)
+-[#1135][ADMIN] BO : création rubriques, reliquats
+
+
 ## 18.23.0 (4/2/2019)
 -[#1129][ADMIN] BO : création rubriques
 
