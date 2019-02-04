@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.25.0 (5/2/2019)
+-[#1140][ADMIN] BO : nettoyage domaines
+
+
 ## 18.24.0 (5/2/2019)
 -[#1135][ADMIN] BO : création rubriques, reliquats
 
