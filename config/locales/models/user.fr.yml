@@ -1,0 +1,24 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      password: Mot de passe
+      password_confirmation: Confirmation du mot de passe
+    models: 
+      user: Utilisateurs API
+    attributes:
+      user:
+        <<: *labels
+  helpers:
+    label:
+      user:
+        <<: *labels
+    user:
+      detail: Détails de l'utilisateur API
+      modify: Modifier l'utilisateur API
+      creation: Ajouter un nouvel utilisateur API
+      creation_title: Création d'un nouvel utilisateur API
+    submit:
+      user:
+        create: "Créer cet utilisateur API"
+        update: "Mettre à jour cet utilisateur API"
