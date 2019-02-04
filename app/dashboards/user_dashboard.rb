@@ -30,8 +30,6 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :email,
-    :password,
-    :password_confirmation,
     :created_at,
     :updated_at,
   ].freeze
