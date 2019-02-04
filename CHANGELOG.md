@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.27.0 (5/2/2019)
+-[#1144][ADMIN] BO : clean axles
+
+
 ## 18.26.0 (5/2/2019)
 -[#1128][ADMIN] BO : api page
 
