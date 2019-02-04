@@ -4,6 +4,7 @@ fr:
       name: Nom
       created_at: Créée le
       updated_at: Mis à jour le
+      axle_filters: axes rattachés au domaine
     models: 
       domain_filter: Domaines
     attributes:
