@@ -2,6 +2,8 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      password: Mot de passe
+      password_confirmation: Confirmation du mot de passe
     models: 
       user: Utilisateurs API
     attributes:
