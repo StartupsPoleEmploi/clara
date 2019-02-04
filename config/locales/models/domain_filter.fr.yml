@@ -1,0 +1,24 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      created_at: Créée le
+      updated_at: Mis à jour le
+      axle_filters: axes rattachés au domaine
+    models: 
+      domain_filter: Domaines
+    attributes:
+      domain_filter:
+        <<: *labels
+  helpers:
+    label:
+      domain_filter:
+        <<: *labels
+    domain_filter:
+      detail: Détails du domaine
+      creation: Créer un domaine
+      creation_title: Création d'un domaine
+    submit:
+      domain_filter:
+        create: "Créer ce domaine"
+        update: "Mettre à jour ce domaine"

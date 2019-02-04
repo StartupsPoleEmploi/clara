@@ -32,9 +32,6 @@ class AidCalculationService
   end
 
   def _every_aids_that_are(status)
-    # p '- - - - - - - - - - - - - - _all_aids- - - - - - - - - - - - - - - -' 
-    # pp _all_aids
-    # p ''
     _all_aids.select { |a| a["eligibility"] == status }.map { |e| e.select { |key, _| _wanted_keys.include? key }  }
   end
 
