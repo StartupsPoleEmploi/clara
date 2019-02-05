@@ -1,0 +1,25 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      created_at: Créée le
+      updated_at: Mis à jour le
+      aids: Aides
+    models: 
+      need_filter: Besoins
+    attributes:
+      need_filter:
+        <<: *labels
+  helpers:
+    label:
+      need_filter:
+        <<: *labels
+    need_filter:
+      detail: Détails du besoin
+      modify: Modifier le besoin
+      creation: Créer un besoin
+      creation_title: Création d'un besoin
+    submit:
+      need_filter:
+        create: "Créer ce besoin"
+        update: "Mettre à jour ce besoin"
