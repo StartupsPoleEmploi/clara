@@ -31,6 +31,8 @@ from the associated resource class's dashboard.
         <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
       <% elsif klass == "AxleFilter" %>
         <%= link_to name_and_id[:name], admin_axle_filter_path(name_and_id[:id]) %>
+      <% elsif klass == "NeedFilter" %>
+        <%= link_to name_and_id[:name], admin_need_filter_path(name_and_id[:id]) %>
       <% elsif klass == "Aid" %>
         <div>
           <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:slug]) %>
