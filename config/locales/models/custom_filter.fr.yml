@@ -2,6 +2,8 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      aids: Aides
+      custom_parent_filter: Filtre personnalisé parent
       created_at: Créée le
       updated_at: Mis à jour le
     models: 
