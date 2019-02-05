@@ -106,7 +106,7 @@
             console.log(e);
             options.errorOccured(e);
           },
-          timeout:2003
+          timeout:5003
         });
       }
     }
