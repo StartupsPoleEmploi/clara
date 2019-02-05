@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 18.30.0 (7/2/2019)
+-[#1085][TECH] Passage à Rails 5.2.2
+
+
 ## 18.29.0 (7/2/2019)
 -[#1146][ADMIN] BO : nettoyage filtres personnalisés
 -[#1148][ADMIN] BO : reliquat besoin
