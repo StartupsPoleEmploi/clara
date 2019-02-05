@@ -5,7 +5,7 @@ fr:
       variable: "Variables"
       contract_type: "Rubriques"
       custom_filter: "Filtres personnalisés"
-      custom_parent_filter: "Filtres personnalisés parents"
+      custom_parent_filter: "Catégories de filtres personnalisés"
       rule_check: "Vérification des règles"
       filter: "Filtres"
       need_filter: "Besoins"

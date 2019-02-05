@@ -4,8 +4,9 @@ fr:
       name: Nom
       created_at: Créée le
       updated_at: Mis à jour le
+      custom_filters: Filtres personnalisés
     models: 
-      custom_parent_filter: Catégories de filtress personnalisées
+      custom_parent_filter: Catégories de filtres personnalisés
     attributes:
       custom_parent_filter:
         <<: *labels
@@ -14,11 +15,11 @@ fr:
       custom_parent_filter:
         <<: *labels
     custom_parent_filter:
-      detail: Détails de la catégorie de filtres personnalisée
-      modify: Modifier la catégorie de filtres personnalisée
-      creation: Créer une catégorie de filtres personnalisée
-      creation_title: Création d'une catégorie de filtres personnalisée
+      detail: Détails de la catégorie de filtres personnalisé
+      modify: Modifier la catégorie de filtres personnalisé
+      creation: Créer une catégorie de filtre personnalisé
+      creation_title: Création d'une catégorie de filtre personnalisé
     submit:
       custom_parent_filter:
-        create: "Créer cette catégorie de filtres personnalisée"
-        update: "Mettre à jour cette catégorie de filtres personnalisée"
+        create: "Créer cette catégorie de filtre personnalisé"
+        update: "Mettre à jour cette catégorie de filtre personnalisé"
