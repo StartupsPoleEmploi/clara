@@ -1,0 +1,25 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      created_at: Créée le
+      updated_at: Mis à jour le
+      need_filters: Besoins
+    models: 
+      axle_filter: Axes
+    attributes:
+      axle_filter:
+        <<: *labels
+  helpers:
+    label:
+      axle_filter:
+        <<: *labels
+    axle_filter:
+      detail: Détails de l'axe
+      modify: Modifier l'axe
+      creation: Créer un axe
+      creation_title: Création d'un axe
+    submit:
+      axle_filter:
+        create: Créer cet axe
+        update: Mettre à jour cet axe

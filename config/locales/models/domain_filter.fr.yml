@@ -16,6 +16,7 @@ fr:
         <<: *labels
     domain_filter:
       detail: Détails du domaine
+      modify: Modifier le domaine
       creation: Créer un domaine
       creation_title: Création d'un domaine
     submit:

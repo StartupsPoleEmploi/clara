@@ -9,7 +9,7 @@ class AxleFilter < ApplicationRecord
   belongs_to :domain_filter
 
   def should_generate_new_friendly_id?
-    name_changed?
+    slug.blank?
   end
 
 end
