@@ -1,0 +1,24 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      created_at: Créée le
+      updated_at: Mis à jour le
+    models: 
+      custom_filter: Filtre personnalisés
+    attributes:
+      custom_filter:
+        <<: *labels
+  helpers:
+    label:
+      custom_filter:
+        <<: *labels
+    custom_filter:
+      detail: Détails du filtre personnalisé
+      modify: Modifier le filtre personnalisé
+      creation: Créer un filtre personnalisé
+      creation_title: Création d'un filtre personnalisé
+    submit:
+      custom_filter:
+        create: "Créer ce filtre personnalisé"
+        update: "Mettre à jour ce filtre personnalisé"
