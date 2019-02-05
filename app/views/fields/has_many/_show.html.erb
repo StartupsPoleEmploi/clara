@@ -26,22 +26,27 @@ from the associated resource class's dashboard.
   <% names_and_ids.each do |name_and_id| %>
     <span>
       <% if klass == "Tag" %>
-        <%= link_to name_and_id[:name], admin_tag_path(name_and_id[:id]) %>
+        <div>
+          <%= link_to name_and_id[:name], admin_tag_path(name_and_id[:id]) %>
+        </div>
       <% elsif klass == "Rule" %>
-        <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
+        <div>
+          <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
+        </div>
       <% elsif klass == "AxleFilter" %>
-        <%= link_to name_and_id[:name], admin_axle_filter_path(name_and_id[:id]) %>
+        <div>
+          <%= link_to name_and_id[:name], admin_axle_filter_path(name_and_id[:id]) %>
+        </div>
       <% elsif klass == "NeedFilter" %>
-        <%= link_to name_and_id[:name], admin_need_filter_path(name_and_id[:id]) %>
+        <div>
+          <%= link_to name_and_id[:name], admin_need_filter_path(name_and_id[:id]) %>
+        </div>
       <% elsif klass == "Aid" %>
         <div>
           <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:slug]) %>
         </div>
       <% end %>
     </span>
-    <% unless name_and_id[:name] == names_and_ids.last[:name] || klass == "Aid" %>
-      <span>,&nbsp;</span>
-    <% end %>
   <% end %>
 
 <% else %>

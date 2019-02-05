@@ -1,7 +1,12 @@
 # ARA Changelog
 
 
-## 18.28.0 (6/2/2019)
+## 18.29.0 (7/2/2019)
+-[#1146][ADMIN] BO : nettoyage filtres personnalisés
+-[#1148][ADMIN] BO : reliquat besoin
+
+
+## 18.28.0 (5/2/2019)
 -[#1145][ADMIN] BO : clean needs
 
 
@@ -17,7 +22,7 @@
 -[#1140][ADMIN] BO : nettoyage domaines
 
 
-## 18.24.0 (5/2/2019)
+## 18.24.0 (4/2/2019)
 -[#1135][ADMIN] BO : création rubriques, reliquats
 
 
