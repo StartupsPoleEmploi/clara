@@ -13,7 +13,7 @@ class CustomParentFilter < ApplicationRecord
   has_many :custom_filters
 
   def should_generate_new_friendly_id?
-    name_changed?
+    slug.blank?
   end
 
 end
