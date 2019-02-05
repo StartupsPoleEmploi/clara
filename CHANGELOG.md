@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.29.0 (6/2/2019)
+-[#1146][ADMIN] BO : nettoyage filtres personnalisés
+
+
 ## 18.28.0 (6/2/2019)
 -[#1145][ADMIN] BO : clean needs
 
