@@ -1,0 +1,25 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      created_at: Créée le
+      updated_at: Mis à jour le
+      custom_filters: Filtres personnalisés
+    models: 
+      custom_parent_filter: Catégories de filtres personnalisés
+    attributes:
+      custom_parent_filter:
+        <<: *labels
+  helpers:
+    label:
+      custom_parent_filter:
+        <<: *labels
+    custom_parent_filter:
+      detail: Détails de la catégorie de filtres personnalisé
+      modify: Modifier la catégorie de filtres personnalisé
+      creation: Créer une catégorie de filtre personnalisé
+      creation_title: Création d'une catégorie de filtre personnalisé
+    submit:
+      custom_parent_filter:
+        create: "Créer cette catégorie de filtre personnalisé"
+        update: "Mettre à jour cette catégorie de filtre personnalisé"
