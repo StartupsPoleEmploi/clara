@@ -1,4 +1,6 @@
-clara.load_js(function only_if(){return $("body").hasClasses("age_questions", "new")}, function() {
+clara.js_define("new_age_question", {
+
+  please: function() {
     //https://stackoverflow.com/a/24271309/2595513
     $('input#age').on('keydown keyup', function(e) {
       if (
@@ -10,4 +12,6 @@ clara.load_js(function only_if(){return $("body").hasClasses("age_questions", "n
         $(this).val(99);
       }
     });
+  },
+
 });

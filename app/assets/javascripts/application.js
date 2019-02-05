@@ -44,5 +44,5 @@
 //= require custom/allocation_questions
 //= require custom/grade_questions
 //= require custom/address_questions
-//= require custom/age_questions
+//= require custom/new_age_question
 //= require custom/other_questions
