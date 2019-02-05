@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.28.0 (6/2/2019)
+-[#1145][ADMIN] BO : clean needs
+
+
 ## 18.27.0 (5/2/2019)
 -[#1144][ADMIN] BO : clean axles
 
