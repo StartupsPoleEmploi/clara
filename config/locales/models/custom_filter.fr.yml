@@ -3,11 +3,11 @@ fr:
     labels: &labels
       name: Nom
       aids: Aides
-      custom_parent_filter: Filtre personnalisé parent
+      custom_parent_filter: Catégorie de filtre personnalisé
       created_at: Créée le
       updated_at: Mis à jour le
     models: 
-      custom_filter: Filtre personnalisés
+      custom_filter: Filtre personnalisé
     attributes:
       custom_filter:
         <<: *labels
