@@ -52,7 +52,7 @@ Rails.application.routes.draw do
       get 'get_stats'
       post 'post_stats'
       post 'post_stats_from_pe'
-      post 'post_advisors_stats'
+      post 'post_stats_advisors'
       get 'get_ref_data'
       post 'post_ref_data'
     end

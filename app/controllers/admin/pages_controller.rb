@@ -43,7 +43,7 @@ module Admin
       json_data = _csv_to_json(csv)
       _save_stat_of("ga_pe", json_data)      
     end
-    def post_advisors_stats
+    def post_stats_advisors
       csv = CSV.parse(_csv_data, {headers: true})
       csv.delete("Source URL")
       json_data = _csv_to_json(csv)
