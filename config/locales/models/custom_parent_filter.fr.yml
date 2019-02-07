@@ -4,7 +4,7 @@ fr:
       name: Nom
       created_at: Créée le
       updated_at: Mis à jour le
-      custom_filters: Filtres personnalisés
+      custom_filters: Filtres personnalisés rattachés
     models: 
       custom_parent_filter: Catégories de filtres personnalisés
     attributes:
