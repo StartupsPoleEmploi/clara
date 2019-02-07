@@ -1,6 +1,6 @@
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
-   Besoin
+   Besoins
   </h1>
 
 </header>
@@ -18,7 +18,16 @@
       class: "button",
     )%>
   </div>
-  <div class="nm-cell"></div>
+  <div class="nm-cell">
+    <%= link_to(
+      t(
+        "helpers.domain_filter.list",
+        name: "domain"
+      ),
+      admin_domain_filters_path,
+      class: "button",
+    )%>    
+  </div>
   <div class="nm-cell"></div>  
 </div>
 <div class="nm-line nm-line--2">
