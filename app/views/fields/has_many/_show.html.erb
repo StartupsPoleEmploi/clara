@@ -41,6 +41,10 @@ from the associated resource class's dashboard.
         <div>
           <%= link_to name_and_id[:name], admin_need_filter_path(name_and_id[:id]) %>
         </div>
+      <% elsif klass == "CustomFilter" %>
+        <div>
+          <%= link_to name_and_id[:name], admin_custom_filter_path(name_and_id[:id]) %>
+        </div>
       <% elsif klass == "Aid" %>
         <div>
           <%= link_to name_and_id[:name], admin_aid_path(name_and_id[:slug]) %>
