@@ -41,14 +41,16 @@ $nm-space:6rem;
 }
 
 .nm-cell--text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #7b808c;
   font-size: 0.8em;
   font-weight: 400;
   letter-spacing: 0.0357em;
   text-transform: uppercase;
+}
+
+.nm-cell--vertical {
+  display: flex;
+  align-items: center;
 }
 
 .nm-line--3 {
