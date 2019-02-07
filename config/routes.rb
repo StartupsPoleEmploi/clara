@@ -44,18 +44,16 @@ Rails.application.routes.draw do
     end
     get 'find_filters' => 'aids#find_filters'
     controller 'pages' do
-      get 'stats'
-      get 'rename'
-      get 'archive'
-      get 'loadrefdata'
-      get 'cache'
       get 'zrr'
-      post 'expire_json_objects'
-      post 'load_ref_data'
       post 'load_zrr'
+      get 'cache'
+      post 'expire_json_objects'
+      get 'stats'
       post 'load_stats'
       post 'load_stats_from_pe'
       post 'load_advisors_stats'
+      get 'loadrefdata'
+      post 'load_ref_data'
     end
     get 'status', to: 'status#index'
     resources :variables

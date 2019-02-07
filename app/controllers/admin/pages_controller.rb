@@ -4,21 +4,6 @@ require 'csv'
 module Admin
   class PagesController < Admin::ApplicationController
 
-    def need_menu
-    end
-
-    def stats
-    end
-
-    def rename
-    end
-
-    def archive
-    end
-
-    def cache
-    end
-
     # load zrr
     def zrr
     end
@@ -34,7 +19,9 @@ module Admin
       }
     end
 
-
+    # cache
+    def cache
+    end
     def expire_json_objects
       ExpireCache.call
       render json: {
@@ -42,37 +29,35 @@ module Admin
       }
     end
 
+    #stats
+    def stats
+    end
     def load_stats
       csv = CSV.parse(_get_csv_data, {headers: true})
       json_data = _csv_to_json(csv)
       _save_stat_of("ga", json_data)
     end
-
     def load_stats_from_pe
       csv = CSV.parse(_get_csv_data, {headers: true})
       csv.delete("Période")
       json_data = _csv_to_json(csv)
       _save_stat_of("ga_pe", json_data)      
     end
-
     def load_advisors_stats
       csv = CSV.parse(_get_csv_data, {headers: true})
       csv.delete("Source URL")
       json_data = _csv_to_json(csv)
       _save_stat_of("hj_ad", json_data)   
     end
-
     def _get_csv_data
       params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
     end
-
     def _save_stat_of(prop, value)
       Stat.create unless Stat.first
       s = Stat.first
       s[prop] = value
       s.save
     end
-
     def _csv_to_json(csv)
       csv_hash = csv.map(&:to_h)
       root_hash = {}
@@ -80,9 +65,9 @@ module Admin
       root_hash
     end
 
+    # refdata
     def loadrefdata
     end
-
     def load_ref_data
       Rails.application.load_seed
     end
