@@ -20,6 +20,7 @@ fr:
       modify: Modifier le filtre personnalisé
       creation: Créer un filtre personnalisé
       creation_title: Création d'un filtre personnalisé
+      creation_menu: Créer filtre
     submit:
       custom_filter:
         create: "Créer ce filtre personnalisé"
