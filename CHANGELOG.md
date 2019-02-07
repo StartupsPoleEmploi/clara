@@ -2,6 +2,10 @@
 
 
 
+## 18.32.0 (8/2/2019)
+-[#1150][ADMIN] BO : reliquats
+
+
 ## 18.31.0 (7/2/2019)
 -[#1141][ADMIN] BO : nettoyage filtres personnalisés parents
 
