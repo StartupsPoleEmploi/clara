@@ -1,0 +1,45 @@
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+   Filtres personnalisés et catégories
+  </h1>
+
+</header>
+<section class="main-content__body main-content__body--nm">
+
+<div class="nm-line nm-line--1">
+  <div class="nm-cell nm-cell--text nm-cell--vertical">AAA</div>
+  <div class="nm-cell nm-cell--vertical">
+    <%= link_to(
+      t(
+        "helpers.domain_filter.creation",
+        name: "domain"
+      ),
+      admin_domain_filters_path,
+      class: "button",
+    )%>
+  </div>
+  <div class="nm-cell">   
+  </div>
+  <div class="nm-cell"></div>  
+</div>
+<div class="nm-line nm-line--2">
+  <div class="nm-cell nm-cell--bordercontainer nm-cell--fixedheight">
+    <div class="nm-cell--border">&nbsp;</div>
+  </div>
+  <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical"><span>VVV</span></div>
+  <div class="nm-cell nm-cell--vertical">
+    <%= link_to(
+      t(
+        "helpers.axle_filter.creation",
+        name: "axle"
+      ),
+      admin_axle_filters_path,
+      class: "button",
+    )%>
+  </div>
+  <div class="nm-cell nm-cell--vertical"> 
+  </div>  
+</div>
+
+
+</section>
