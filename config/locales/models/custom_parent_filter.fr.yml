@@ -15,8 +15,8 @@ fr:
       custom_parent_filter:
         <<: *labels
     custom_parent_filter:
-      detail: Détails de la catégorie de filtres personnalisé
-      modify: Modifier la catégorie de filtres personnalisé
+      detail: Détails de la catégorie de filtre personnalisé
+      modify: Modifier la catégorie de filtre personnalisé
       creation: Créer une catégorie de filtre personnalisé
       creation_title: Création d'une catégorie de filtre personnalisé
     submit:
