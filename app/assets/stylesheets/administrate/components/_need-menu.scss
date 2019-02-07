@@ -23,7 +23,11 @@ $nm-space:6rem;
 }
 
 .nm-line--3 {
-  margin-left: $nm-space * 2.13;
+  margin-left: $nm-space * 2.26;
+}
+
+.nm-cell {
+  margin-right: .7rem;
 }
 
 .nm-cell.nm-cell--bordercontainer {

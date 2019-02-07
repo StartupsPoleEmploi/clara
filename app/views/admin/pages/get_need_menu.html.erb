@@ -8,7 +8,16 @@
 
 <div class="nm-line nm-line--1">
   <div class="nm-cell nm-cell--text nm-cell--vertical">Domaine</div>
-  <div class="nm-cell"></div>
+  <div class="nm-cell nm-cell--vertical">
+    <%= link_to(
+      t(
+        "helpers.domain_filter.creation",
+        name: "domain"
+      ),
+      new_admin_domain_filter_path,
+      class: "button",
+    )%>
+  </div>
   <div class="nm-cell"></div>
   <div class="nm-cell"></div>  
 </div>
@@ -34,7 +43,16 @@
     <div class="nm-cell--border">&nbsp;</div>
   </div>
   <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical"><span>Besoin</span></div>
-  <div class="nm-cell nm-cell--vertical"></div>
+  <div class="nm-cell nm-cell--vertical">
+    <%= link_to(
+      t(
+        "helpers.need_filter.creation",
+        name: "need"
+      ),
+      new_admin_need_filter_path,
+      class: "button",
+    )%>
+  </div>
   <div class="nm-cell"></div>  
 </div>
 
