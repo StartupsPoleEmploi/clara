@@ -19,6 +19,7 @@ fr:
       modify: Modifier la catégorie de filtre personnalisé
       creation: Créer une catégorie de filtre personnalisé
       creation_title: Création d'une catégorie de filtre personnalisé
+      creation_menu: Créer catégorie
     submit:
       custom_parent_filter:
         create: "Créer cette catégorie de filtre personnalisé"

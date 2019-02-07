@@ -1,20 +1,29 @@
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
-   Filtres personnalisés et catégories
+   Filtres personnalisés et leur catégorie
   </h1>
 
 </header>
 <section class="main-content__body main-content__body--nm">
 
 <div class="nm-line nm-line--1">
-  <div class="nm-cell nm-cell--text nm-cell--vertical">AAA</div>
+  <div class="nm-cell nm-cell--text nm-cell--vertical">
+    <div>
+      <div>
+        Catégorie de filtre personnalisé
+      </div>
+      <div class="nm-cell--smalltext">
+        Exemple : Public
+      </div>      
+    </div>
+  </div>
   <div class="nm-cell nm-cell--vertical">
     <%= link_to(
       t(
-        "helpers.domain_filter.creation",
-        name: "domain"
+        "helpers.custom_parent_filter.creation_menu",
+        name: "custom_parent_filter"
       ),
-      admin_domain_filters_path,
+      admin_custom_parent_filters_path,
       class: "button",
     )%>
   </div>
@@ -26,14 +35,23 @@
   <div class="nm-cell nm-cell--bordercontainer nm-cell--fixedheight">
     <div class="nm-cell--border">&nbsp;</div>
   </div>
-  <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical"><span>VVV</span></div>
+  <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical">
+    <div>
+      <div>
+        Filtre personnalisé
+      </div>
+      <div class="nm-cell--smalltext">
+        Exemple : Jeune
+      </div>      
+    </div>
+  </div>
   <div class="nm-cell nm-cell--vertical">
     <%= link_to(
       t(
-        "helpers.axle_filter.creation",
-        name: "axle"
+        "helpers.custom_filter.creation_menu",
+        name: "custom_filter"
       ),
-      admin_axle_filters_path,
+      admin_custom_filters_path,
       class: "button",
     )%>
   </div>
