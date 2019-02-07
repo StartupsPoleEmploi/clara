@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 18.33.0 (9/2/2019)
+-[#1139][ADMIN] BO : page tampon pour les filtres
+
 
 ## 18.32.0 (8/2/2019)
 -[#1150][ADMIN] BO : reliquats
