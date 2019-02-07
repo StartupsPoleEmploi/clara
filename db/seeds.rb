@@ -24,8 +24,8 @@ variable_list = [
 
 existing_variables = Variable.all.map(&:name)
 
-variable_list.each do |name_arg, type_arg, description_arg|
+variable_list.each do |name_arg, type_arg, elements_arg|
   unless existing_variables.include?(name_arg)
-    Variable.create!(name: name_arg, variable_type: type_arg, description: description_arg)
+    Variable.create!(name: name_arg, variable_type: type_arg, elements: description_arg)
   end
 end
