@@ -1,5 +1,9 @@
 // nm = need_menu
-$nm-space:3rem;
+$nm-space:6rem;
+
+.main-content__body--nm {
+  padding-top: 6rem;
+}
 
 .nm-line {
   display: flex;
@@ -10,12 +14,16 @@ $nm-space:3rem;
   }
 }
 
+.nm-line--1 {
+  margin-left: $nm-space/2;
+}
+
 .nm-line--2 {
   margin-left: $nm-space;
 }
 
 .nm-line--3 {
-  margin-left: $nm-space * 2.2;
+  margin-left: $nm-space * 2.13;
 }
 
 .nm-cell.nm-cell--bordercontainer {
@@ -23,7 +31,7 @@ $nm-space:3rem;
   width: $nm-space;
 }
 .nm-cell--fixedheight {
-  height: 5rem;
+  height: 8rem;
 }
 
 .nm-cell--border {
@@ -44,5 +52,5 @@ $nm-space:3rem;
 }
 
 .nm-line--3 {
-  margin-top: -2rem;
+  margin-top: -3rem;
 }

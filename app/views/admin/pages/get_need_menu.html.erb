@@ -16,8 +16,17 @@
   <div class="nm-cell nm-cell--bordercontainer nm-cell--fixedheight">
     <div class="nm-cell--border">&nbsp;</div>
   </div>
-  <div class="nm-cell nm-cell--text nm-cell--fixedheight"><span>Axe</span></div>
-  <div class="nm-cell"></div>
+  <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical"><span>Axe</span></div>
+  <div class="nm-cell nm-cell--vertical">
+    <%= link_to(
+      t(
+        "helpers.axle_filter.creation",
+        name: "axle"
+      ),
+      new_admin_axle_filter_path,
+      class: "button",
+    )%>
+  </div>
   <div class="nm-cell"></div>  
 </div>
 <div class="nm-line nm-line--3">
