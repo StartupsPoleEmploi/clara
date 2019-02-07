@@ -3,23 +3,18 @@
   width: 5rem;
 }
 .need-menu-box {
-         height: 100px;
-         width: 80px;
-         position: relative;
-         xborder-bottom: 2px solid #f51c40;
-         background: #3beadc;
-         }
-
-.need-menu-box:after {
-  content : "";
-  position: absolute;
-  left    : 0;
-  z-index: 100;
-  top  : 0;
-  width  : 3px;
-  height   : 50%;  /* or 100px */
-  background: #555;
+  height: 30px;
+  width: 80px;
+  background: #3beadc;
 }
+
+.need-menu-box-inside {
+  background: yellow;
+  height: 50%;
+  border-left: 3px solid grey;
+  border-bottom: 3px solid grey;
+}
+
 .need-menu-line {
   display: inline-block;
 }
