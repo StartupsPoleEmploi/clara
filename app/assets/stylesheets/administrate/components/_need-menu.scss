@@ -1,18 +1,29 @@
+$need-menu-space:3rem;
+
 .need-menu-line {
   display: flex;
+  > div {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .need-menu-line--2 {
-  margin-left: 3rem;
+  margin-left: $need-menu-space;
 }
 
 .need-menu-line--3 {
-  margin-left: 6rem;
+  margin-left: $need-menu-space * 2.6;
+}
+
+.need-menu-cell.need-menu-cell--bordercontainer {
+  padding: 0;
+  height: 50%;
+  width: $need-menu-space;
 }
 
 .need-menu-cell--border {
   border-left: 3px solid grey;
   border-bottom: 3px solid grey;
-  height: 50%;
-  width: 100%;
 }
