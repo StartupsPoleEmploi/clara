@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     end
     get 'find_filters' => 'aids#find_filters'
     controller 'pages' do
+      get 'get_need_menu'
       get 'zrr'
       post 'load_zrr'
       get 'cache'
