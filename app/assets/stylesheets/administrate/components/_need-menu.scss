@@ -1,20 +1,19 @@
-.need-menu-box {
-  background-color: black;
-  width: 5rem;
-}
-.need-menu-box {
-  height: 30px;
-  width: 80px;
-  background: transparent;
+.need-menu-line {
+  display: flex;
+  > div {
+    padding: 1rem;
+  }
 }
 
-.need-menu-box-inside {
-  background: transparent;
-  height: 50%;
+.need-menu-line--2 {
+  margin-left: 3rem;
+}
+
+.need-menu-line--3 {
+  margin-left: 6rem;
+}
+
+.need-menu-cell--border {
   border-left: 3px solid grey;
   border-bottom: 3px solid grey;
-}
-
-.need-menu-line {
-  display: inline-block;
 }
