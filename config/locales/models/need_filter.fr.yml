@@ -15,6 +15,7 @@ fr:
       need_filter:
         <<: *labels
     need_filter:
+      list: Lister les besoins
       detail: Détails du besoin
       modify: Modifier le besoin
       creation: Créer un besoin

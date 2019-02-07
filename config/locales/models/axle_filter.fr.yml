@@ -15,6 +15,7 @@ fr:
       axle_filter:
         <<: *labels
     axle_filter:
+      list: Lister les axes
       detail: Détails de l'axe
       modify: Modifier l'axe
       creation: Créer un axe

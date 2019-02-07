@@ -1,0 +1,57 @@
+// nm = need_menu
+$nm-space:6rem;
+
+.main-content__body--nm {
+  padding-top: 6rem;
+}
+
+.nm-line {
+  display: flex;
+}
+
+.nm-line--1 {
+  margin-left: $nm-space/2;
+}
+
+.nm-line--2 {
+  margin-left: $nm-space;
+}
+
+.nm-line--3 {
+  margin-left: $nm-space * 2.26;
+}
+
+.nm-cell {
+  margin-right: .7rem;
+}
+
+.nm-cell.nm-cell--bordercontainer {
+  padding: 0;
+  width: $nm-space;
+}
+.nm-cell--fixedheight {
+  height: 8rem;
+}
+
+.nm-cell--border {
+  border-left: 3px solid #7b808c;
+  border-bottom: 3px solid #7b808c;
+  height: 50%;
+}
+
+.nm-cell--text {
+  color: #7b808c;
+  font-size: 0.8em;
+  font-weight: 400;
+  letter-spacing: 0.0357em;
+  text-transform: uppercase;
+}
+
+.nm-cell--vertical {
+  display: flex;
+  align-items: center;
+}
+
+.nm-line--3 {
+  margin-top: -3rem;
+}

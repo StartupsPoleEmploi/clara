@@ -32,6 +32,12 @@ module Admin
       redirect_to signin_path unless current_user_email
     end
 
+    # Overrides this to change nav state
+    def nav_link_state(resource)
+      comparable = resource_name.to_s.pluralize
+      comparable == resource.to_s ? :active : :inactive
+    end
+
     protected
     def user_for_paper_trail
       current_user_email ? current_user_email : 'Inconnu'
