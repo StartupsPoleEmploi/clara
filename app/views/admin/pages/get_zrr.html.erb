@@ -1,6 +1,6 @@
 <div style="margin-top: 2rem;">
 copiez/collez les ZRR (au format CSV) dans le cadre puis cliquez sur "charger"
-<%= form_with url: admin_load_zrr_path, local:false, id: 'admin_load_zrr_form' do |form| %>
+<%= form_with url: admin_post_zrr_path, local:false, id: 'admin_post_zrr_form' do |form| %>
   <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "02004,55082,45098..." %>
   <%= form.submit 'Charger les ZRR'%>
 <% end %>
@@ -8,7 +8,7 @@ copiez/collez les ZRR (au format CSV) dans le cadre puis cliquez sur "charger"
 <script> 
   function defer1(method) { if (window.jQuery) { admin_load_zrr_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
   function admin_load_zrr_page() {
-    $("#admin_load_zrr_form").on("ajax:success", 
+    $("#admin_post_zrr_form").on("ajax:success", 
       function(event, data) { 
         console.log("load zrr is a success ! detail below : "); 
         console.log(data); 

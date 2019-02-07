@@ -1,14 +1,14 @@
 Vous pouvez rafraîchir les rules, contract_types et aids ici
-<%= form_with url: admin_expire_json_objects_path, local: false, id: 'admin_expire_json_objects_form' do |form| %>
+<%= form_with url: admin_post_cache_path, local: false, id: 'admin_post_cache_form' do |form| %>
   <%= form.submit 'Supprimer le cache de l\'accueil, rules, aides actives, contract_types et filtres' %>
 <% end %>
 <p>&nbsp;</p>
 <script> 
-  function defer2(method) { if (window.jQuery) { admin_expire_json_objects_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
-  function admin_expire_json_objects_callback() {
-    $("#admin_expire_json_objects_form").on("ajax:success", 
+  function defer2(method) { if (window.jQuery) { admin_post_cache_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_post_cache_callback() {
+    $("#admin_post_cache_form").on("ajax:success", 
       function(event, data) { 
-        console.log("admin_expire_json_objects success, detail below : "); 
+        console.log("admin_post_cache success, detail below : "); 
         console.log(event); 
         console.log(data); 
       });     
