@@ -24,6 +24,15 @@ $need-menu-space:3rem;
 }
 
 .need-menu-cell--border {
-  border-left: 3px solid grey;
-  border-bottom: 3px solid grey;
+  border-left: 3px solid #7b808c;
+  border-bottom: 3px solid #7b808c;
 }
+
+.need-menu-cell--text {
+  color: #7b808c;
+  font-size: 0.8em;
+  font-weight: 400;
+  letter-spacing: 0.0357em;
+  position: relative;
+  text-transform: uppercase;
+  }
