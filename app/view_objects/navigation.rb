@@ -6,7 +6,7 @@ class Navigation < ViewObject
   end
 
   def hide_resource?
-    excluded_list = ['pages', 'variables', 'status']
+    excluded_list = ["pages", "variables", "status", "need_filters", "axle_filters", "domain_filters"]
     excluded_list.include?(@resource_name)
   end
 
