@@ -2,6 +2,10 @@
 
 
 
+## 18.35.0 (8/2/2019)
+-[#1138][ADMIN] BO : page tampon pour les filtres persos
+
+
 ## 18.34.0 (8/2/2019)
 -[#1142][ADMIN] BO : page tampon pour les filtres persos
 

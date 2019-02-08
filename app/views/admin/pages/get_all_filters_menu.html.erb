@@ -1,0 +1,57 @@
+<% content_for(:title) do %>
+  <%= t("helpers.all_filters_menu.title", default: "") %>
+<% end %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+   <%= t("helpers.all_filters_menu.title", default: "") %>
+  </h1>
+
+</header>
+<section class="main-content__body main-content__body--nm">
+
+
+
+<dl>
+  <dt class="attribute-label">
+   <%= t("helpers.all_filters_menu.title_res", default: "") %>
+  </dt>
+  <dd class="attribute-data">
+    <%= link_to(
+      t(
+        "helpers.all_filters_menu.link",
+        name: "domain"
+      ),
+      admin_filters_path,
+      class: "button",
+    )%>
+  </dd>
+  <dt class="attribute-label">
+   <%= t("helpers.all_filters_menu.title_need", default: "") %>
+  </dt>
+  <dd class="attribute-data">
+    <%= link_to(
+      t(
+        "helpers.all_filters_menu.link",
+        name: "domain"
+      ),
+      admin_get_need_menu_path,
+      class: "button",
+    )%>
+  </dd>
+  <dt class="attribute-label">
+   <%= t("helpers.all_filters_menu.title_custom_filters", default: "") %>
+  </dt>
+  <dd class="attribute-data">
+    <%= link_to(
+      t(
+        "helpers.all_filters_menu.link",
+        name: "domain"
+      ),
+      admin_get_custom_filter_menu_path,
+      class: "button",
+    )%>
+  </dd>
+</dl>
+
+</section>

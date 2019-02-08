@@ -1,6 +1,9 @@
+<% content_for(:title) do %>
+   <%= t("helpers.custom_menu.title", default: "") %>
+<% end %>
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
-   Filtres personnalisés et leur catégorie
+   <%= t("helpers.custom_menu.title", default: "") %>
   </h1>
 
 </header>
@@ -10,10 +13,10 @@
   <div class="nm-cell nm-cell--text nm-cell--vertical">
     <div>
       <div>
-        Catégorie de filtre personnalisé
+        <%= t("helpers.custom_menu.category", default: "") %>
       </div>
       <div class="nm-cell--smalltext">
-        Exemple : Public
+        <%= t("helpers.custom_menu.category_ex", default: "") %>
       </div>      
     </div>
   </div>
@@ -38,10 +41,10 @@
   <div class="nm-cell nm-cell--text nm-cell--fixedheight nm-cell--vertical">
     <div>
       <div>
-        Filtre personnalisé
+        <%= t("helpers.custom_menu.filter", default: "") %>
       </div>
       <div class="nm-cell--smalltext">
-        Exemple : Jeune
+        <%= t("helpers.custom_menu.filter_ex", default: "") %>
       </div>      
     </div>
   </div>
