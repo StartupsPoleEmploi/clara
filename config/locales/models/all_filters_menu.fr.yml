@@ -2,3 +2,9 @@ fr:
   helpers:
     all_filters_menu:
       link: Voir / Créer / Modifier / Supprimer
+      title: Filtrages
+      title_res: Filtrages page de résultats
+      title_need: Besoins
+      title_custom_filters: Filtres personnalisés
+    need_filters_menu:
+      title: Besoins

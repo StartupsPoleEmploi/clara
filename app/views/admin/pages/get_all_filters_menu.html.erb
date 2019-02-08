@@ -1,10 +1,10 @@
 <% content_for(:title) do %>
-  <%= "Filtrages" %>
+  <%= t("helpers.all_filters_menu.title", default: "") %>
 <% end %>
 
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
-   Filtrages
+   <%= t("helpers.all_filters_menu.title", default: "") %>
   </h1>
 
 </header>
@@ -14,7 +14,7 @@
 
 <dl>
   <dt class="attribute-label">
-    Filtres pages de résultats
+   <%= t("helpers.all_filters_menu.title_res", default: "") %>
   </dt>
   <dd class="attribute-data">
     <%= link_to(
@@ -27,7 +27,7 @@
     )%>
   </dd>
   <dt class="attribute-label">
-    Besoins
+   <%= t("helpers.all_filters_menu.title_need", default: "") %>
   </dt>
   <dd class="attribute-data">
     <%= link_to(
@@ -40,7 +40,7 @@
     )%>
   </dd>
   <dt class="attribute-label">
-    Filtres personnalisés
+   <%= t("helpers.all_filters_menu.title_custom_filters", default: "") %>
   </dt>
   <dd class="attribute-data">
     <%= link_to(
