@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     end
     get 'find_filters' => 'aids#find_filters'
     controller 'pages' do
+      get 'get_all_filters_menu'
       get 'get_need_menu'
       get 'get_custom_filter_menu'
       get 'get_zrr'
