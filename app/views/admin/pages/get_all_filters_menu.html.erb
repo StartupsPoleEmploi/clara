@@ -1,6 +1,6 @@
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
-   Besoins
+   Filtrages
   </h1>
 
 </header>
@@ -9,80 +9,50 @@
 
 
 <dl>
-        <dt class="attribute-label">
-          
-        </dt>
-        <dd class="attribute-data">
-          
-        </dd>
-        <dt class="attribute-label">
-          
-        </dt>
-        <dd class="attribute-data">
-          
-        </dd>
-        <dt class="attribute-label">
-        
-        </dt>
-
-
-  </dl>
-
-
-
-
-
-
-<div class="nm-line nm-line--1">
-  <div class="nm-cell nm-cell--text nm-cell--vertical">Filtres pages de résultats</div>
-  <div class="nm-cell nm-cell--vertical">
+  <dt class="attribute-label">
+    Filtres pages de résultats
+  </dt>
+  <dd class="attribute-data">
     <%= link_to(
       t(
-        "helpers.domain_filter.creation",
+        "helpers.all_filters_menu.link",
         name: "domain"
       ),
-      admin_domain_filters_path,
+      admin_filters_path,
       class: "button",
     )%>
-  </div>
-  <div class="nm-cell">   
-  </div>
-  <div class="nm-cell"></div>  
-</div>
-
-<div class="nm-line nm-line--1">
-  <div class="nm-cell nm-cell--text nm-cell--vertical">Besoin</div>
-  <div class="nm-cell nm-cell--vertical">
+  </dd>
+  <dt class="attribute-label">
+    Besoins
+  </dt>
+  <dd class="attribute-data">
     <%= link_to(
       t(
-        "helpers.domain_filter.creation",
+        "helpers.all_filters_menu.link",
         name: "domain"
       ),
-      admin_domain_filters_path,
+      admin_get_need_menu_path,
       class: "button",
     )%>
-  </div>
-  <div class="nm-cell">   
-  </div>
-  <div class="nm-cell"></div>  
-</div>
-
-<div class="nm-line nm-line--1">
-  <div class="nm-cell nm-cell--text nm-cell--vertical">Filtres personnalisés</div>
-  <div class="nm-cell nm-cell--vertical">
+  </dd>
+  <dt class="attribute-label">
+    Filtres personnalisés
+  </dt>
+  <dd class="attribute-data">
     <%= link_to(
       t(
-        "helpers.domain_filter.creation",
+        "helpers.all_filters_menu.link",
         name: "domain"
       ),
-      admin_domain_filters_path,
+      admin_get_custom_filter_menu_path,
       class: "button",
     )%>
-  </div>
-  <div class="nm-cell">   
-  </div>
-  <div class="nm-cell"></div>  
-</div>
+  </dd>
+</dl>
+
+
+
+
 
 
 </section>
