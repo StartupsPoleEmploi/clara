@@ -2,8 +2,12 @@
 
 
 
+## 18.36.0 (8/2/2019)
+-[#1152][ADMIN] nettoyage des variables geo inutilisées
+
+
 ## 18.35.0 (8/2/2019)
--[#1138][ADMIN] BO : page tampon pour les filtres persos
+-[#1138][ADMIN] BO : page tampon pour l'ensemble des filtres
 
 
 ## 18.34.0 (8/2/2019)
