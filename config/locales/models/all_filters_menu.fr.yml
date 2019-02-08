@@ -10,3 +10,9 @@ fr:
       domain: Domaine
       axle: Axe
       need: Besoin
+    custom_menu:
+      title: Filtres personnalisés
+      category: Catégorie de filtre personnalisé
+      category_ex: "Exemple: Public"
+      filter: Filtre personnalisé
+      filter_ex: "Exemple: Jeune"
