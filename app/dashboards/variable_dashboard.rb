@@ -13,6 +13,7 @@ class VariableDashboard < Administrate::BaseDashboard
     name: Field::String,
     name_translation: Field::Text,
     description: Field::Text,
+    is_visible: Field::Boolean,
     elements: Field::Text,
     elements_translation: Field::Text,
     variable_type: EnumField,
@@ -30,6 +31,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name_translation,
     :variable_type,
     :description,
+    :is_visible,
     :elements,
     :elements_translation,
   ].freeze
@@ -40,6 +42,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :name,
     :name_translation,
     :description,
+    :is_visible,
     :elements,
     :elements_translation,
     :variable_type,
@@ -56,6 +59,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :elements,
     :elements_translation,
     :description,
+    :is_visible,
   ].freeze
 
   # Overwrite this method to customize how variables are displayed
