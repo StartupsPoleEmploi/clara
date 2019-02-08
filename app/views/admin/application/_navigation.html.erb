@@ -4,8 +4,17 @@
     <strong><%=current_user_email%></strong>
     <%= link_to 'Se déconnecter', signout_path  %>    
   </div>
-  <% Administrate::Namespace.new(namespace).resources.each do |resource| %>
+  <% Administrate::Namespace.new(namespace).resources.each_with_index do |resource, index| %>
     <%- v = view_object(:navigation, resource_name: resource.resource) %>
+
+    <% if index == 2 %>
+      <%= link_to(
+        "Filtrages",
+        admin_get_all_filters_menu_path,
+        class: v.filter_clazz(request)
+      ) %>      
+    <% end %>
+
     <% unless v.hide_resource? %>
       <%= link_to(
         display_resource_name(resource),
