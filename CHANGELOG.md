@@ -2,6 +2,10 @@
 
 
 
+## 18.37.0 (11/2/2019)
+-[#1149][ADMIN] dernière date MAJ
+
+
 ## 18.36.0 (8/2/2019)
 -[#1152][ADMIN] nettoyage des variables geo inutilisées
 
