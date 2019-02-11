@@ -246,7 +246,6 @@ aid_list = [
      limitations: "",
      ordre_affichage: 42,
      archived_at: Date.new(2018),
-     last_update: nil,
      contract_type: ContractType.find_by(slug: "appui-a-l-embauche"),
      rule: Rule.find_by(name: "r_CIVIS"),
   },
@@ -260,7 +259,6 @@ aid_list = [
      limitations: "<p>* La dur&eacute;e moyenne observ&eacute;e est de 17 mois.</p>\r\n\r\n<p>** L&#39;indemnit&eacute; est fix&eacute;e par d&eacute;cret et varie selon le pays d&#39;affectation.</p>\r\n\r\n<p>Voir toutes les opportunit&eacute;s sur le <a href=\"http://www.decouvrirlemonde.jeunes.gouv.fr/\" target=\"_blank\">portail gouvernemental pour la mobilit&eacute; des jeunes.</a></p>\r\n",
      ordre_affichage: 63,
      archived_at: nil,
-     last_update: "",
      contract_type: ContractType.find_by(slug: "emploi-international"),
      rule: Rule.find_by(name: "r_VI"),
   },
@@ -289,7 +287,6 @@ aid_list = [
      ordre_affichage: 64,
      contract_type: ContractType.find_by(slug: "emploi-international"),
      archived_at: nil,
-     last_update: "",
   },
 ]
 

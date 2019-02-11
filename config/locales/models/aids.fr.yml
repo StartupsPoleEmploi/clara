@@ -13,7 +13,7 @@ fr:
       need_filters: Besoins
       filters: Filtres page résultat 
       contract_type: Rubrique
-      last_update: Dernière mise à jour
+      updated_at: Dernière mise à jour
       archived_at: Date d'arrêt de diffusion sur le site
     models: 
       aid: Aides

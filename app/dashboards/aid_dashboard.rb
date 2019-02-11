@@ -10,7 +10,6 @@ class AidDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     name: Field::String,
     ordre_affichage: Field::Number,
-    last_update: Field::String,
     archived_at: Field::DateTime,
     slug: Field::String,
     rule: Field::BelongsTo,
@@ -26,7 +25,7 @@ class AidDashboard < Administrate::BaseDashboard
     how_and_when: Field::Ckeditor,
     limitations: Field::Ckeditor,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: AidLastUpdateField,
 
   }.freeze
 
@@ -42,7 +41,7 @@ class AidDashboard < Administrate::BaseDashboard
     :need_filters,
     :custom_filters,
     :filters,
-    :last_update,
+    :updated_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -52,7 +51,7 @@ class AidDashboard < Administrate::BaseDashboard
     :need_filters,
     :filters,
     :ordre_affichage,
-    :last_update,
+    :updated_at,
     :slug,
     :rule,
     :contract_type,
