@@ -7,6 +7,19 @@ module Admin
       super
     end
 
+    def new
+      # See https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
+      resource = resource_class.new
+      authorize_resource(resource)
+      p "*****************************************"
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }
+    end
+
+
+
+
     def save_simulation
       current_rule = Rule.find(params[:id])
       asker_params_cleaned = _asker_params.reject{|_, v| v.blank?}
