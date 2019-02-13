@@ -1,5 +1,7 @@
 class Rule < ApplicationRecord
-  include Prefixable, Operable
+  include Prefixable
+
+  enum operator_kind: ListOperatorKind.new.call
 
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }

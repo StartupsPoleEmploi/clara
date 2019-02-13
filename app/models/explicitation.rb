@@ -1,7 +1,8 @@
 class Explicitation < ApplicationRecord
   extend FriendlyId  
-  include Operable
 
+
+  enum operator_kind: ListOperatorKind.new.call
   friendly_id :name, use: :slugged
 
   belongs_to :variable, optional: false

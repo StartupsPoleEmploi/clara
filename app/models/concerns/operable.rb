@@ -2,7 +2,11 @@ module Operable
   extend ActiveSupport::Concern
 
   included do
-    enum operator_kind: {
+    enum operator_kind: all_operators
+  end
+
+  def all_operators
+    {
         equal: "equal", 
         not_equal: "not_equal", 
         more_than: "more_than", 

@@ -7,25 +7,36 @@ module Admin
       super
     end
 
-    def _all_expectations
+    def _all_explicitations
       JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind ], :include => {variable: {only:[:name]}}))
+    end
+
+    def _all_operator_kinds
+      ListOperatorKind.new.call
     end
 
     def new
       # See https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
       resource = resource_class.new
       authorize_resource(resource)
-      p "*****************************************"
+      gon.global_state = {
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds,        
+      }
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
-        explicitations: _all_expectations
       }
     end
 
     def edit
+      gon.global_state = {
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds,        
+      }
       render locals: {
         page: Administrate::Page::Form.new(dashboard, requested_resource),
-        explicitations: _all_expectations
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds
       }
     end
 
