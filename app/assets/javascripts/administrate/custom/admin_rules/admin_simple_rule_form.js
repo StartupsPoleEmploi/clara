@@ -32,10 +32,7 @@ clara.js_define("admin_simple_rule_form", {
     window.main_store = Redux.createStore(reducer, global_state);
 
     // SUBSCRIBER
-    var selected_variable_watcher = Redux.watch(main_store.getState, 'selected_variable')(function(newVal, oldVal, objectPath, stateCopy) {
-      console.log('Variable : %s changed from %s to %s', objectPath, oldVal, newVal)
-      console.log(stateCopy)
-    });
+    var watch = _.partial(Redux.watch, main_store.getState, _);
     var selected_operator_watcher = Redux.watch(main_store.getState, 'selected_operator')(function(newVal, oldVal, objectPath) {
       console.log('Operator : %s changed from %s to %s', objectPath, oldVal, newVal)
     });
@@ -43,7 +40,7 @@ clara.js_define("admin_simple_rule_form", {
       console.log('Value : %s changed from %s to %s', objectPath, oldVal, newVal)
     });
 
-    main_store.subscribe(selected_variable_watcher);
+    main_store.subscribe(watch('selected_variable')(clara.admin_rules_var_changed.please));
     main_store.subscribe(selected_operator_watcher);
     main_store.subscribe(selected_value_watcher);
 
@@ -71,6 +68,44 @@ clara.js_define("admin_simple_rule_form", {
   },
 
 
+  _set_value_type: function($original_input) {
+      var that = this;
+      var kind = $("select#rule_variable_id").find('option:selected').attr("data-kind");
+      var elements = $("select#rule_variable_id").find('option:selected').attr("data-elements");
+      var elements_translation = _.voidString($("select#rule_variable_id").find('option:selected').attr("data-elements-translation"));
+      var original_name = $("#rule_value_eligible").attr("name");
+      var original_value = $("#rule_value_eligible").val();
 
+      if (kind === "selectionnable") {
+        var actual_values = _.split(elements, ",");
+        var translated_values = elements_translation === "" ? actual_values : _.split(elements_translation, ",");
+        var $new_select = that._populate_options("rule_value_eligible", actual_values, translated_values, original_name, original_value);
+        $("#rule_value_eligible").replaceWith($new_select);
+      } else if (kind === "integer") {
+        $("#rule_value_eligible").replaceWith($original_input);
+        $("#rule_value_eligible").attr("type", "number");
+        if (_.includes($("#rule_operator_kind").val(), "amongst")) {
+          $("#rule_value_eligible").attr("type", "text");
+        }
+      } else if (kind === "string") {
+        $("#rule_value_eligible").replaceWith($original_input);
+        $("#rule_value_eligible").attr("type", "text");
+        if (_.includes($("#rule_operator_kind").val(), "amongst")) {
+          $("#rule_value_eligible").attr("placeholder", "Example : value1;value2");
+        }
+      }
+  },
+
+  _populate_options: function(select_id, options_en, options, original_name, original_value) {
+    var $result = $("<select id='" + select_id + "' name='" + original_name + "'></select>");
+    $result.append('<option value=""></option>');
+    _.each(options, function(opt, i){
+      var opt_en = options_en[i];
+      $result.append("<option value=\"" + opt_en + "\">" + opt + "</option>");
+    });
+    clara.zu_clean_select.please({for_select: $result});
+    $result.find('option[value="' + original_value + '"]').attr("selected", "selected");
+    return $result;
+  }
 
 });
