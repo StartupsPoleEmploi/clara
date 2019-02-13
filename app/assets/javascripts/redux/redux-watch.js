@@ -34,9 +34,10 @@ Redux.watch =
         return function () {
           var newValue = getValue(getState(), objectPath)
           if (!compare(currentValue, newValue)) {
+            var stateCopy = JSON.parse(JSON.stringify(getState()))
             var oldValue = currentValue
             currentValue = newValue
-            fn(newValue, oldValue, objectPath)
+            fn(newValue, oldValue, objectPath, stateCopy)
           }
         }
       }

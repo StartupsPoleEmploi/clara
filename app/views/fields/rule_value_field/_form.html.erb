@@ -20,4 +20,5 @@
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
   <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
+  <select id="rule_value_eligible_selectible" style="display: none"></select>
 </div>

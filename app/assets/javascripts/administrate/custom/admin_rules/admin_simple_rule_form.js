@@ -32,8 +32,9 @@ clara.js_define("admin_simple_rule_form", {
     window.main_store = Redux.createStore(reducer, global_state);
 
     // SUBSCRIBER
-    var selected_variable_watcher = Redux.watch(main_store.getState, 'selected_variable')(function(newVal, oldVal, objectPath) {
+    var selected_variable_watcher = Redux.watch(main_store.getState, 'selected_variable')(function(newVal, oldVal, objectPath, stateCopy) {
       console.log('Variable : %s changed from %s to %s', objectPath, oldVal, newVal)
+      console.log(stateCopy)
     });
     var selected_operator_watcher = Redux.watch(main_store.getState, 'selected_operator')(function(newVal, oldVal, objectPath) {
       console.log('Operator : %s changed from %s to %s', objectPath, oldVal, newVal)
@@ -58,12 +59,12 @@ clara.js_define("admin_simple_rule_form", {
     });
 
     $('#rule_value_eligible').on('input', function() {
-      var value = null;
-      if ($(this).find("option:selected").length) {
-        value = $(this).find("option:selected").attr("value")
-      } else {
-        value = $(this).val()
-      }
+      var value = $(this).val();
+      main_store.dispatch({type: 'VALUE_CHANGED', value: value});
+    });
+
+    $('#rule_value_eligible_selectible').on('input', function() {
+      var value = $(this).find("option:selected").attr("value");
       main_store.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 
