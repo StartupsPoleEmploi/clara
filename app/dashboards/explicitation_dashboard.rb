@@ -26,11 +26,10 @@ class ExplicitationDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :id,
-    :name,
-    :slug,
     :variable,
     :operator_kind,
     :value_eligible,
+    :template,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -52,7 +51,6 @@ class ExplicitationDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :slug,
     :variable,
     :operator_kind,
     :value_eligible,
