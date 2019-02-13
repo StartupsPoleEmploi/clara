@@ -2,8 +2,8 @@ clara.js_define("admin_simple_rule_form", {
 
   dress: function(){
     var that = this;
-
-    var global_state = gon.global_state
+  
+    var global_state = gon.global_state;
 
     global_state["selected_variable"] = $("select#rule_variable_id").find('option:selected').attr("data-name");
     global_state["selected_operator"] = $("select#rule_operator_kind").find('option:selected').attr("value");
@@ -11,8 +11,9 @@ clara.js_define("admin_simple_rule_form", {
 
     // REDUCER
     var reducer = function(state, action) { 
-      console.log("action!")
-      console.log(action)
+
+      console.log("action!! " + action.type + " " + action.value);
+
       // Deep copy of previous state to avoid side-effects
       var newState = _.cloneDeep(state);
 
@@ -28,22 +29,38 @@ clara.js_define("admin_simple_rule_form", {
     // SUBSCRIBER
     var selected_variable_watcher = Redux.watch(main_store.getState, 'selected_variable')(function(newVal, oldVal, objectPath) {
       console.log('Variable : %s changed from %s to %s', objectPath, oldVal, newVal)
-    })
+    });
     var selected_operator_watcher = Redux.watch(main_store.getState, 'selected_operator')(function(newVal, oldVal, objectPath) {
       console.log('Operator : %s changed from %s to %s', objectPath, oldVal, newVal)
-    })ez
+    });
     var selected_value_watcher = Redux.watch(main_store.getState, 'selected_value')(function(newVal, oldVal, objectPath) {
       console.log('Value : %s changed from %s to %s', objectPath, oldVal, newVal)
-    })
+    });
 
     main_store.subscribe(selected_variable_watcher);
-    main_store.subscribe(selected_variable_watcher);
-    main_store.subscribe(selected_variable_watcher);
+    main_store.subscribe(selected_operator_watcher);
+    main_store.subscribe(selected_value_watcher);
 
     // DISPATCHERS
-    $(".clickable").click(function(e) {
-      var slug = $(this).attr("data-slug")
-      main_store.dispatch({type: 'TAB_CLICKED', with_slug: slug});
+
+    $('#rule_variable_id').on('input', function() {
+      var value = $(this).find("option:selected").attr("data-name");
+      main_store.dispatch({type: 'VARIABLE_CHANGED', value: value});
+    });
+
+    $('#rule_operator_kind').on('input', function() {
+      var value = $(this).find("option:selected").attr("value");
+      main_store.dispatch({type: 'OPERATOR_CHANGED', value: value});
+    });
+
+    $('#rule_value_eligible').on('input', function() {
+      var value = null;
+      if ($(this).find("option:selected")) {
+        value = $(this).find("option:selected").attr("value")
+      } else {
+        value = $(this).val()
+      }
+      main_store.dispatch({type: 'VALUE_CHANGED', value: value});
     });
   },
 
