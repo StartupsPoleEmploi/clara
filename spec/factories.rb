@@ -28,62 +28,62 @@ FactoryBot.define do
   factory :variable do 
     trait :age  do 
       name 'v_age'
-      variable_type :integer
+      variable_kind :integer
     end
 
     trait :spectacle do 
       name 'v_spectacle'
       elements 'oui,non'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :duree_d_inscription do 
       name "v_duree_d_inscription"
       elements "plus_d_un_an,moins_d_un_an,non_inscrit"
       elements_translation "plus d'un an,moins d'un an,non inscrit"
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :handicap do 
       name 'v_handicap'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :qpv do 
       name 'v_qpv'
       description 'oui,non'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :location_state do 
       name 'v_location_state'
-      variable_type :string
+      variable_kind :string
     end
 
     trait :zrr do 
       name 'v_zrr'
       description 'oui,non'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :categorie do 
       name 'v_category'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :allocation_type do 
       name 'v_allocation_type'
-      variable_type :selectionnable
+      variable_kind :selectionnable
     end
 
     trait :allocation_value_min do 
       name 'v_allocation_value_min'
-      variable_type :integer
+      variable_kind :integer
     end
 
     trait :location_citycode do 
       name 'v_location_citycode'
-      variable_type :string
+      variable_kind :string
     end
 
   end

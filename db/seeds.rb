@@ -1,34 +1,36 @@
 variable_list = [
-  ["v_age",                       true, :integer, ""],
-  ["v_allocation_type",           true, :selectionnable, "ARE_ASP,ASS_AER_APS_AS-FNE,RSA,RPS_RFPA_RFF_pensionretraite,AAH,pas_indemnise"],
-  ["v_allocation_value_min",      true, :integer, ""],
-  ["v_category",                  true, :selectionnable, "cat_12345,autres_cat"],
-  ["v_diplome",                   true, :selectionnable, "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5"],
-  ["v_duree_d_inscription",       true, :selectionnable, "plus_d_un_an,moins_d_un_an,non_inscrit"],
-  ["v_harki",                     true, :selectionnable, "oui,non"],
-  ["v_protection_internationale", true, :selectionnable, "oui,non"],
-  ["v_handicap",                  true, :selectionnable, "oui,non"],
-  ["v_spectacle",                 true, :selectionnable, "oui,non"],
-  ["v_cadre",                     true, :selectionnable, "oui,non"],
-  ["v_location_city",             false, :string, ""],
-  ["v_location_citycode",         true, :string, ""],
-  ["v_location_country",          false, :string, ""],
-  ["v_location_label",            false, :string, ""],
-  ["v_location_route",            false, :string, ""],
-  ["v_location_state",            true, :string, ""],
-  ["v_location_street_number",    false, :string, ""],
-  ["v_location_zipcode",          true, :string, ""],
-  ["v_zrr",                       true, :selectionnable, "oui,non"],
-  ["v_qpv",                       true, :selectionnable, "oui,non"],
+  {name: "v_age", variable_kind: "integer", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_duree_d_inscription", variable_kind: "selectionnable", description: nil, elements: "plus_d_un_an,moins_d_un_an,non_inscrit", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_category", variable_kind: "selectionnable", description: nil, elements: "cat_12345,autres_cat", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_diplome", variable_kind: "selectionnable", description: nil, elements: "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_allocation_value_min", variable_kind: "integer", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_qpv", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_handicap", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_autres", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_protection_internationale", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_detenu", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_harki", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_city", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_citycode", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_country", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_route", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_state", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_zipcode", variable_kind: "string", description: nil, elements: nil, name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_spectacle", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_allocation_type", variable_kind: "selectionnable", description: nil, elements: "ARE_ASP,ASS_AER_APS_AS-FNE,RSA,RPS_RFPA_RFF_pensionretraite,AAH,pas_indemnise", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_zrr", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_cadre", variable_kind: "selectionnable", description: nil, elements: "oui,non", name_translation: nil, elements_translation: nil, is_visible: true},
+  {name: "v_location_label", variable_kind: "string", description: "", elements: "", name_translation: "", elements_translation: "", is_visible: false},
+  {name: "v_location_street_number", variable_kind: "string", description: "", elements: "", name_translation: "", elements_translation: "", is_visible: false},
 ]
 
 existing_variables = Variable.all.map(&:name)
 
 named_variables = Variable.all.group_by(&:name).transform_values{|e| e[0]}
 
-variable_list.each do |name_arg, visibility_arg, type_arg, elements_arg|
-  unless named_variables.keys.include?(name_arg)
-    Variable.create!(name: name_arg, is_visible: visibility_arg, variable_type: type_arg, elements: description_arg)
+variable_list.each do |variable_attr|
+  unless named_variables.keys.include?(variable_attr[:name])
+    Variable.create!(variable_attr)
   end
 end
 

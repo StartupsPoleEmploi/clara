@@ -67,6 +67,8 @@ namespace :minidb do
       test_user_id = User.find_by(email: "foo@bar.com").id
       User.where.not(id: test_user_id).destroy_all
 
+      # No need to keep who did what
+      PaperTrail::Version.destroy_all
 
     else
       p "Recreate a minidatabase is for development mode only"

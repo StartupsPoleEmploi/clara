@@ -213,7 +213,7 @@ describe RuletreeService do
     end
     context 'with a String' do
       let(:asker) { create :asker, v_allocation_type: 'ASS_AER_APS_AS-FNE'}
-      let(:variable) { create :variable, variable_type: :string, name: 'v_allocation_type'}
+      let(:variable) { create :variable, variable_kind: :string, name: 'v_allocation_type'}
       context 'equal a String, "eligible"' do
         let(:rule) { create :rule,  kind: "simple",operator_kind: :equal, value_eligible: 'ASS_AER_APS_AS-FNE', variable: variable }
         context 'ASS_AER_APS_AS-FNE equal ASS_AER_APS_AS-FNE' do

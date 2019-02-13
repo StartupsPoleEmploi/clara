@@ -39,7 +39,7 @@ class RuletreeService
     variable = @all_variables.detect { |e| e["id"] == rule["variable_id"] }
     if c && variable && c.has_key?(variable["name"]) && c[variable["name"]].present?
       criterion_value = c[variable["name"]]
-      rule_type = variable["variable_type"]
+      rule_type = variable["variable_kind"]
       return "ineligible" if !type_is_accurate(criterion_value, rule_type)
       return "ineligible" if criterion_value == "not_applicable"
       return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)

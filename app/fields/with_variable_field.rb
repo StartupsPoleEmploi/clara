@@ -11,7 +11,7 @@ class WithVariableField < Administrate::Field::Associative
 
   def associated_resource_options
     res = [nil] + candidate_resources.map do |resource|
-      [display_candidate_resource(resource), resource.send(primary_key), {"data-kind" => resource.send(:variable_type), "data-elements" => resource.send(:elements), "data-elements-translation" => resource.send(:elements_translation), "data-visible" => resource.send(:is_visible)}]
+      [display_candidate_resource(resource), resource.send(primary_key), {"data-kind" => resource.send(:variable_kind), "data-elements" => resource.send(:elements), "data-elements-translation" => resource.send(:elements_translation), "data-visible" => resource.send(:is_visible)}]
     end
     res
   end

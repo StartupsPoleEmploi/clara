@@ -29,9 +29,9 @@ describe RuleCheckService do
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'error'
     end
-    it 'Return error if rule.variable.variable_type does not exists' do
+    it 'Return error if rule.variable.variable_kind does not exists' do
       v  = build(:variable, :handicap)
-      v.variable_type = nil
+      v.variable_kind = nil
       rule_under_test = build(:rule, :be_handicaped, variable: v)
       result = RuleCheckService.new.check_type(rule_under_test)
       expect(result).to eq 'error'
