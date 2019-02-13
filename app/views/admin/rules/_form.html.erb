@@ -14,6 +14,9 @@ and renders all form fields for a resource's editable attributes.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
+<%- v = view_object(:rule_form_vo, local_assigns) %>
+
+
 <%- rule_kind_param = request.query_parameters["rule_kind"]%>
 <%- kind = rule_kind_param ? rule_kind_param :  page.resource.try(:kind)  %>
 
@@ -34,45 +37,50 @@ and renders all form fields for a resource's editable attributes.
 
 <div class="grid-flex">
   <div class="grid-col">
-<%= form_for([namespace, page.resource], html: { class: "form", "data-kind" => "#{kind}" }) do |f| %>
-  <% if page.resource.errors.any? %>
-    <div id="error_explanation">
-      <h2  class="flash-error">
-        <%= t(
-          "administrate.form.errors",
-          pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
-          resource_name: display_resource_name(page.resource_name)
-        ) %>
-      </h2>
+    <%= form_for([namespace, page.resource], html: { class: "form", "data-kind" => "#{kind}" }) do |f| %>
+      <% if page.resource.errors.any? %>
+        <div id="error_explanation">
+          <h2  class="flash-error">
+            <%= t(
+              "administrate.form.errors",
+              pluralized_errors: pluralize(page.resource.errors.count, t("administrate.form.error")),
+              resource_name: display_resource_name(page.resource_name)
+            ) %>
+          </h2>
 
-    </div>
-  <% end %>
+        </div>
+      <% end %>
 
-  <% page.attributes.each do |attribute| -%>
-    <%- attr_name = attribute.attribute.to_s%>
-    <%- is_excluded = exclusion_list.include?(attr_name)%>
-    <%- is_mandatory = mandatory_list.include?(attr_name)%>
-    <%- is_errored = errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0%>
+      <% page.attributes.each do |attribute| -%>
+        <%- attr_name = attribute.attribute.to_s%>
+        <%- is_excluded = exclusion_list.include?(attr_name)%>
+        <%- is_mandatory = mandatory_list.include?(attr_name)%>
+        <%- is_errored = errors_messages_h.key?(attribute.attribute) && errors_messages_h[attribute.attribute].size > 0%>
 
-    <% unless is_excluded %>
-      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>">
-        <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
-        <% if is_errored -%>
-          <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-            &nbsp;⚠ <%= errors_messages_h[attribute.attribute][0] %>
+        <% unless is_excluded %>
+          <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=is_errored%>">
+            <%= render_field attribute, f: f, predefined_value: kind, is_mandatory: is_mandatory, placeholder: placeholder_h[attr_name] %>
+            <% if is_errored -%>
+              <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                &nbsp;⚠ <%= errors_messages_h[attribute.attribute][0] %>
+              </div>
+            <% end %>
           </div>
         <% end %>
-      </div>
-    <% end %>
-  <% end %>
+      <% end %>
 
-  <div class="form-actions">
-    <%= f.submit %>
-  </div>
-<% end %>    
+      <div class="form-actions">
+        <%= f.submit %>
+      </div>
+    <% end %>    
   </div>
   <div class="grid-col">
-    <%= explicitations %>
+    <section id="explicitation">
+      <h2>Explication de la règle</h2>
+      <div class="expl-text">
+        (Veuillez renseigner une variable, l'explication apparaîtra ici)
+      </div>
+    </section>
   </div>
 </div>
 
