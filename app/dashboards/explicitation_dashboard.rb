@@ -11,7 +11,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     slug: Field::String,
-    operator_kind: Field::String.with_options(searchable: false),
+    operator_kind: EnumField,
     template: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
