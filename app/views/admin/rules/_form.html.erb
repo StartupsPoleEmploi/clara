@@ -32,6 +32,8 @@ and renders all form fields for a resource's editable attributes.
 <%- errors_messages_h.transform_keys!{ |key| key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key} %>
 
 
+<div class="grid-flex">
+  <div class="grid-col">
 <%= form_for([namespace, page.resource], html: { class: "form", "data-kind" => "#{kind}" }) do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
@@ -67,4 +69,11 @@ and renders all form fields for a resource's editable attributes.
   <div class="form-actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %>    
+  </div>
+  <div class="grid-col">
+    <%= explicitations %>
+  </div>
+</div>
+
+

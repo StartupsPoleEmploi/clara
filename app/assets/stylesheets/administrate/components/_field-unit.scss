@@ -16,11 +16,17 @@
     display: inline;
   }
 }
+.grid-flex .field-unit__label {
+  width: calc(25% - 1rem);
+}
 
 .field-unit__field {
   float: left;
   margin-left: 2rem;
   width: 45%;
+}
+.grid-flex .field-unit__field {
+  width: 65%;
 }
 
 .field-unit__field input, textarea, .selectize-input, select {

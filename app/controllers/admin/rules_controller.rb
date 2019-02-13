@@ -7,6 +7,10 @@ module Admin
       super
     end
 
+    def _all_expectations
+      JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind ], :include => {variable: {only:[:name]}}))
+    end
+
     def new
       # See https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
       resource = resource_class.new
@@ -14,11 +18,16 @@ module Admin
       p "*****************************************"
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
+        explicitations: _all_expectations
       }
     end
 
-
-
+    def edit
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, requested_resource),
+        explicitations: _all_expectations
+      }
+    end
 
     def save_simulation
       current_rule = Rule.find(params[:id])
