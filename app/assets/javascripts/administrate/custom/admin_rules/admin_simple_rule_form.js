@@ -18,7 +18,12 @@ clara.js_define("admin_simple_rule_form", {
       // Deep copy of previous state to avoid side-effects
       var newState = _.cloneDeep(state);
 
-      if (action.type === '') {
+      if (action.type === 'VARIABLE_CHANGED') {
+        newState["selected_variable"] = action.value
+      } else if (action.type === 'VARIABLE_OPERATOR') {
+        newState["selected_operator"] = action.value
+      } else if (action.type === 'VARIABLE_VALUE') {
+        newState["selected_value"] = action.value
       }
 
       return newState;
