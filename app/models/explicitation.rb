@@ -1,5 +1,6 @@
 class Explicitation < ApplicationRecord
   extend FriendlyId  
+  include Operable
 
   friendly_id :name, use: :slugged
 
