@@ -34,7 +34,7 @@ clara.js_define("admin_rules_var_val", {
     $("#rule_value_eligible").val("");
   },
 
-  _input_is_select: function() {
+  _input_is_select: function(innerHTML) {
     $("#rule_value_eligible_selectible").css('display','block');
     $("#rule_value_eligible").css('display','none');
   },
