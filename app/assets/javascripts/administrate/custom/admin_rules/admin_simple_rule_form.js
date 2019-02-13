@@ -43,6 +43,7 @@ clara.js_define("admin_simple_rule_form", {
     main_store.subscribe(watch('selected_variable')(clara.admin_rules_var_changed.please));
     main_store.subscribe(selected_operator_watcher);
     main_store.subscribe(selected_value_watcher);
+    main_store.subscribe(clara.admin_rules_any_changed.please);
 
     // DISPATCHERS
     $('#rule_variable_id').on('input', function() {
