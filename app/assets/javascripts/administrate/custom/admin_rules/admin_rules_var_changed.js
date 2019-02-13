@@ -12,7 +12,6 @@ clara.js_define("admin_rules_var_changed", {
     var currentType = currentVar.variable_kind
     if (currentType === "integer") {
       that._input_is_number()
-      $("#rule_value_eligible").attr("type", "number");
     } else if (currentType === "selectionnable") {
       that._input_is_select()
       var innerHtml = that._populate_with(currentVar.elements.split(","))
