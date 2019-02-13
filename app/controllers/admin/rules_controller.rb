@@ -15,6 +15,10 @@ module Admin
       ListOperatorKind.new.call
     end
 
+    def _all_variables
+      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation ]))
+    end
+
     def new
       # See https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
       resource = resource_class.new
@@ -22,6 +26,7 @@ module Admin
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
+        variables: _all_variables,        
       }
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
@@ -32,11 +37,13 @@ module Admin
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
+        variables: _all_variables,        
       }
+      p '- - - - - - - - - - - - - - requested_resource- - - - - - - - - - - - - - - -' 
+      pp requested_resource
+      p ''
       render locals: {
         page: Administrate::Page::Form.new(dashboard, requested_resource),
-        explicitations: _all_explicitations,
-        operator_kinds: _all_operator_kinds
       }
     end
 

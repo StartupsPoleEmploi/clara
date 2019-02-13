@@ -7,9 +7,6 @@ class WithVariableFieldViewObject < ViewObject
 
   def all_allowed_options
     input = @field.associated_resource_options.compact
-    p '- - - - - - - - - - - - - - input- - - - - - - - - - - - - - - -' 
-    pp input
-    p ''
     # element is
     # ["v_location_label",
     #  21,
