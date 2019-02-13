@@ -162,47 +162,41 @@ variable_list = [
     is_visible: false},
 ]
 
-existing_variables = Variable.all.map(&:name)
-
+# First time creation
 named_variables = Variable.all.group_by(&:name).transform_values{|e| e[0]}
 
-variable_list.each do |variable_attr|
-  unless named_variables.keys.include?(variable_attr[:name])
-    Variable.create!(variable_attr)
+variable_list.each do |v_attributes|
+  v_name = v_attributes[:name]
+  unless named_variables.keys.include?(v_name)
+    named_variables[v_name] = Variable.create!(v_attributes)
   end
 end
 
-
 explicitation_list = [
-  ["e_age_more_than", 
-      named_variables["v_age"], 
+  ["v_age", 
       :more_than, 
       nil, 
       "Être âgé de XX ans ou plus"],
-  ["e_age_equal", 
-      named_variables["v_age"], 
+  ["v_age", 
       :equal, 
       nil, 
       "Être âgé de XX ans"],
-  ["e_allocation_type_equal_ass", 
-      named_variables["v_allocation_type"], 
+  ["v_allocation_type", 
       :equal, 
       "ASS_AER_APS_AS-FNE", 
       "Être bénéficiaire de l'ASS, l'AER, l'APS, ou l'AS-FNE"],
-  ["e_allocation_type_equal_pas_indemnise", 
-    named_variables["v_allocation_type"],  
+  ["v_allocation_type",
     :equal, 
     "pas_indemnise", 
     "Ne recevoir aucune allocation"],
 ]
-existing_explicitations = Explicitation.all.map(&:name)
 
-explicitation_list.each do |name_arg,   
-  variable_arg, operator_kind_arg, value_eligible_arg, template_arg|
-  unless existing_explicitations.include?(name_arg)
+explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible_arg, template_arg|
+  name = "e_" + variable_name_arg + "_" + operator_kind_arg.to_s + "_" + value_eligible_arg.to_s
+  unless Explicitation.find_by(name: name)
     Explicitation.create!(
-      name: "e_"+ variable_arg.name + "_" + operator_kind_arg, 
-      variable: variable_arg, 
+      name: name,
+      variable: named_variables[variable_name_arg], 
       operator_kind: operator_kind_arg, 
       value_eligible: value_eligible_arg, 
       template: template_arg
