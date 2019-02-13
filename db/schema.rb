@@ -127,10 +127,13 @@ ActiveRecord::Schema.define(version: 2018_12_10_103124) do
   create_table "explicitations", force: :cascade do |t|
     t.string "name"
     t.string "slug"
-    t.string "operator_kind"
     t.text "template"
+    t.bigint "variable_id"
+    t.string "operator_kind"
+    t.string "value_eligible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["variable_id"], name: "index_explicitations_on_variable_id"
   end
 
   create_table "filters", force: :cascade do |t|
@@ -236,6 +239,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103124) do
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
+  add_foreign_key "explicitations", "variables"
   add_foreign_key "need_filters", "axle_filters"
   add_foreign_key "rules", "variables"
 end

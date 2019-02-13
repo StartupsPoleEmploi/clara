@@ -11,6 +11,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     slug: Field::String,
+    variable: WithVariableField,
     operator_kind: EnumField,
     template: Field::Text,
     created_at: Field::DateTime,
@@ -26,6 +27,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :slug,
+    :variable,
     :operator_kind,
   ].freeze
 
@@ -35,6 +37,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :slug,
+    :variable,
     :operator_kind,
     :template,
     :created_at,
@@ -47,6 +50,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :slug,
+    :variable,
     :operator_kind,
     :template,
   ].freeze
