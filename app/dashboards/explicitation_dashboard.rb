@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class RuleDashboard < Administrate::BaseDashboard
+class ExplicitationDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,19 +8,13 @@ class RuleDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    kind:             HiddenField,
-    slave_rules:      Field::HasMany.with_options(class_name: "Rule"),
-    variable:         WithVariableField,
-    aids:             Field::HasMany,
-    id:               Field::Number,
-    name:             Field::String,
-    description:      Field::Text,
-    value_eligible:   RuleValueField,
-    value_ineligible: Field::String,
-    operator_kind:    EnumField,
-    composition_type: EnumField,
-    created_at:       Field::DateTime,
-    updated_at:       Field::DateTime,
+    id: Field::Number,
+    name: Field::String,
+    slug: Field::String,
+    operator_kind: Field::String.with_options(searchable: false),
+    template: Field::Text,
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -29,26 +23,22 @@ class RuleDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :name,
-    :variable,
-    :aids,
+    :slug,
+    :operator_kind,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
-    :kind,
-    :slave_rules,
-    :variable,
     :name,
-    :description,
-    :value_eligible,
+    :slug,
     :operator_kind,
-    :composition_type,
+    :template,
     :created_at,
     :updated_at,
-    :aids,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -56,21 +46,15 @@ class RuleDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :kind,
-    :description,
-    :variable,
+    :slug,
     :operator_kind,
-    :value_eligible,
-    :value_ineligible,
-    :slave_rules,
-    :composition_type,
-    :aids,
+    :template,
   ].freeze
 
-  # Overwrite this method to customize how rules are displayed
+  # Overwrite this method to customize how explicitations are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(rule)
-    "#{rule.name}"
-  end
+  # def display_resource(explicitation)
+  #   "Explicitation ##{explicitation.id}"
+  # end
 end
