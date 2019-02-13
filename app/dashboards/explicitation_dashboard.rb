@@ -13,6 +13,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     slug: Field::String,
     variable: WithVariableField,
     operator_kind: EnumField,
+    value_eligible: Field::String,
     template: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -29,6 +30,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     :slug,
     :variable,
     :operator_kind,
+    :value_eligible,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -39,6 +41,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     :slug,
     :variable,
     :operator_kind,
+    :value_eligible,
     :template,
     :created_at,
     :updated_at,
@@ -52,6 +55,7 @@ class ExplicitationDashboard < Administrate::BaseDashboard
     :slug,
     :variable,
     :operator_kind,
+    :value_eligible,
     :template,
   ].freeze
 
