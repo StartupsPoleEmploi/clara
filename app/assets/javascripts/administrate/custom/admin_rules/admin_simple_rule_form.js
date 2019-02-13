@@ -13,8 +13,8 @@ clara.js_define("admin_simple_rule_form", {
     var selected = $select.val();
 
     my_options.sort(function(a,b) {
-      var aa = _.deburr(a.text);
-      var bb = _.deburr(b.text);
+      var aa = $(a).attr("data-name");
+      var bb = $(b).attr("data-name");
       if (aa > bb) return 1;
       if (aa < bb) return -1;
       return 0;
