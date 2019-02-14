@@ -2,6 +2,10 @@
 
 
 
+## 18.39.0 (14/2/2019)
+-[#1114][ADMIN] éviter les suggestions google
+
+
 ## 18.38.0 (13/2/2019)
 -[#1151][ADMIN] explication d'une règle simple "en clair"
 
