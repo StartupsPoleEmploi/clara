@@ -42,7 +42,8 @@ clara.js_define("admin_simple_rule_form", {
     //   console.log('Value : %s changed from %s to %s', objectPath, oldVal, newVal)
     // });
 
-    main_store.subscribe(watch('selected_variable')(clara.admin_rules_var_changed.please));
+    // main_store.subscribe(watch('selected_variable')(clara.admin_rules_var_changed.please));
+    main_store.subscribe(clara.admin_rules_var_changed.please);
     // main_store.subscribe(selected_operator_watcher);
     // main_store.subscribe(selected_value_watcher);
     main_store.subscribe(clara.admin_rules_expl_changed.please);
