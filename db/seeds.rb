@@ -196,7 +196,7 @@ explicitation_list = [
       "Être bénéficiaire de l'ASS, l'AER, l'APS, ou l'AS-FNE"],
   ["v_allocation_type", 
       :equal, 
-      "radio_RPS_RFPA_RFF_pensionretraite", 
+      "RPS_RFPA_RFF_pensionretraite", 
       "Être bénéficiaire du RPS, du RFPA, du RFF, ou percevoir une pension de retraite"],
   ["v_allocation_type", 
       :equal, 
