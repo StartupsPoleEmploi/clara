@@ -370,6 +370,14 @@ explicitation_list = [
       :equal, 
       "non", 
       "Ne pas être harki ou descendant de harki"],
+  ["v_protection_internationale", 
+      :equal, 
+      "oui", 
+      "Être bénéficiaire d'une protection internationale"],
+  ["v_protection_internationale", 
+      :equal, 
+      "non", 
+      "Ne pas être bénéficiaire d'une protection internationale"],
 ]
 
 explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible_arg, template_arg|

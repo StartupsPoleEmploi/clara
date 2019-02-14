@@ -7,7 +7,6 @@ clara.js_define("admin_rules_update_operator", {
     var s = main_store.getState();
     // 1 - Remove all options
     $("#rule_operator_kind").find("option").attr("disabled", "disabled")
-    $("#rule_operator_kind").find("option[value='']").removeAttr("disabled")
 
     if (!_.isEmpty(s.selected_variable)) {
       var auth_expls = _.filter(s.explicitations, function(expl) {
@@ -27,6 +26,12 @@ clara.js_define("admin_rules_update_operator", {
     // 3 - Select the one of the model
     $("#rule_operator_kind").val(s["selected_operator"]);
 
+    var all_opt_lentgh = $("#rule_operator_kind").find('option').length;
+    var disabled_opt_lentgh = $("#rule_operator_kind").find('option[disabled="disabled"]').length;
+    var actually_displayed_opts_length = all_opt_lentgh - disabled_opt_lentgh;
+    if (actually_displayed_opts_length > 1) {
+      $("#rule_operator_kind").find("option[value='']").removeAttr("disabled")
+    }
   },
 
 
