@@ -34,19 +34,8 @@ clara.js_define("admin_simple_rule_form", {
     window.main_store = Redux.createStore(reducer, global_state);
 
     // SUBSCRIBER
-    // var watch = _.partial(Redux.watch, main_store.getState, _);
-    // var selected_operator_watcher = watch('selected_operator')(function(newVal, oldVal, objectPath) {
-    //   console.log('Operator : %s changed from %s to %s', objectPath, oldVal, newVal)
-    // });
-    // var selected_value_watcher = watch('selected_value')(function(newVal, oldVal, objectPath) {
-    //   console.log('Value : %s changed from %s to %s', objectPath, oldVal, newVal)
-    // });
-
-    // main_store.subscribe(watch('selected_variable')(clara.admin_rules_var_changed.please));
     main_store.subscribe(clara.admin_rules_update_value.please);
     main_store.subscribe(clara.admin_rules_update_operator.please);
-    // main_store.subscribe(selected_operator_watcher);
-    // main_store.subscribe(selected_value_watcher);
     main_store.subscribe(clara.admin_rules_expl_changed.please);
 
     // DISPATCHERS
