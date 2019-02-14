@@ -7,6 +7,7 @@ clara.js_define("admin_rules_var_changed", {
     var that = clara.admin_rules_var_changed;
     var s = main_store.getState();
     that._update_value(s);
+    that._update_operator(s);
   },
 
   _update_value: function(s) {
@@ -26,8 +27,8 @@ clara.js_define("admin_rules_var_changed", {
     }
   },
 
-  _update_operator: function() {
-
+  _update_operator: function(s) {
+    $("#rule_operator_kind").val('');
   },
 
 
