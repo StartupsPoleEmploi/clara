@@ -1,6 +1,16 @@
 module Admin
   class RulesController < Admin::ApplicationController
 
+    before_action :set_global_state, only: [:new, :edit, :create, :update]
+
+    def set_global_state
+      gon.global_state = {
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds,        
+        variables: _all_variables,        
+      }
+    end
+
     def show 
       @asker = Asker.new
       @custom_rule_checks = Rule.find(params[:id]).custom_rule_checks
@@ -23,28 +33,48 @@ module Admin
       # See https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
       resource = resource_class.new
       authorize_resource(resource)
-      gon.global_state = {
-        explicitations: _all_explicitations,
-        operator_kinds: _all_operator_kinds,        
-        variables: _all_variables,        
-      }
+
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
       }
     end
 
     def edit
-      gon.global_state = {
-        explicitations: _all_explicitations,
-        operator_kinds: _all_operator_kinds,        
-        variables: _all_variables,        
-      }
       p '- - - - - - - - - - - - - - requested_resource- - - - - - - - - - - - - - - -' 
       pp requested_resource
       p ''
       render locals: {
         page: Administrate::Page::Form.new(dashboard, requested_resource),
       }
+    end
+
+    def create
+      resource = resource_class.new(resource_params)
+      authorize_resource(resource)
+
+      if resource.save
+        redirect_to(
+          [namespace, resource],
+          notice: translate_with_resource("create.success"),
+        )
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource),
+        }
+      end
+    end
+
+    def update
+      if requested_resource.update(resource_params)
+        redirect_to(
+          [namespace, requested_resource],
+          notice: translate_with_resource("update.success"),
+        )
+      else
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, requested_resource), 
+        }
+      end
     end
 
     def save_simulation
