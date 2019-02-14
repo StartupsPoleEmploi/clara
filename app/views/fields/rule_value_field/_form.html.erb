@@ -20,13 +20,20 @@
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
   <% if field.resource && field.resource.variable && field.resource.variable.elements %>
-    <select id="rule_value_eligible_selectible" data-foo="<%= field.inspect %>">
+    <%- elts = field.resource.variable.elements.split(",") %>
+    <% if field.resource.variable.elements_translation %>
+      <%- elts_tr = field.resource.variable.elements_translation.split(",") %>
+    <% else %>
+      <%- elts_tr = elts %>
+    <% end %>
+    <select id="rule_value_eligible_selectible" data-foo="<%= field.resource.variable.inspect %>">
       <option value></option>
-      <% field.resource.variable.elements.split(",").each do |element| %>
-        <% if element == field.resource.value_eligible %>
-          <option value="<%=element%>" selected="selected"><%=element%></option>
+      <% elts.each_with_index do |elt, i| %>
+        <%- elt_tr = elts_tr[i]%>
+        <% if elt == field.resource.value_eligible %>
+          <option value="<%=elt%>" selected="selected"><%=elt_tr%></option>
         <% else %>
-          <option value="<%=element%>"><%=element%></option>
+          <option value="<%=elt%>"><%=elt_tr%></option>
         <% end %>
       <% end %>
     </select>
