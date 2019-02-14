@@ -4,8 +4,6 @@ clara.js_define("admin_rules_var_changed", {
   please_if: _.stubFalse,
 
   please: function() {
-    console.log("hey i changed!")
-    // console.log('Variable : %s changed from %s to %s', objectPath, oldVal, newVal)
     var s = main_store.getState();
     var currentVar = _.find(s.variables, function(e){return e.name == s["selected_variable"]})
     if (currentVar) {
