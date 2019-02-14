@@ -5,12 +5,13 @@ clara.js_define("admin_rules_expl_changed", {
 
   please: function() {
     var s = main_store.getState()
+    var is_not_empty = function(e){return !_.isEmpty(_.trim(e))}
     var all_selected = 
       _.every(
         [s.selected_operator, 
         s.selected_variable, 
         s.selected_value],
-        function(e){return !_.isEmpty(_.trim(e))}
+        is_not_empty
       );
     if (all_selected) {
       var found_value =
