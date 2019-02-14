@@ -7,7 +7,7 @@ clara.js_define("admin_simple_rule_form", {
 
     global_state["selected_variable"] = $("select#rule_variable_id").find('option:selected').attr("data-name");
     global_state["selected_operator"] = $("select#rule_operator_kind").find('option:selected').attr("value");
-    global_state["selected_value"] = $("#rule_value_eligible").val();
+    global_state["selected_value"] = $("#rule_value_eligible").val() || $("#rule_value_eligible_selectible").val();
 
     // REDUCER
     var reducer = function(state, action) { 
@@ -71,7 +71,7 @@ clara.js_define("admin_simple_rule_form", {
     // INIT HACK!!! make the store think that variable has change
     // clara.admin_rules_var_changed.please(global_state["selected_variable"], global_state["selected_variable"], "variables", _.cloneDeep(main_store.getState()), $('#rule_value_eligible').val())
 
-    // main_store.dispatch({type: 'INIT'});
+    main_store.dispatch({type: 'INIT'});
   },
 
 
