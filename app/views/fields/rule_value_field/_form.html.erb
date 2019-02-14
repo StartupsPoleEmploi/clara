@@ -19,7 +19,7 @@
   <% if help %>
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
-  <% if field.resource && field.resource.variable && field.resource.variable.elements %>
+  <% if field.resource && field.resource.variable && !field.resource.variable.elements.blank? %>
     <%- elts = field.resource.variable.elements.split(",") %>
     <% if field.resource.variable.elements_translation %>
       <%- elts_tr = field.resource.variable.elements_translation.split(",") %>
