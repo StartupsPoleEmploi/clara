@@ -268,7 +268,7 @@ explicitation_list = [
       "Avoir le Bac"],
   ["v_diplome", 
       :equal, 
-      "niveau_4", 
+      "niveau_5", 
       "Avoir un CAP / BEP"],
   ["v_diplome", 
       :equal, 
