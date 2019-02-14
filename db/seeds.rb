@@ -173,6 +173,18 @@ variable_list.each do |v_attributes|
 end
 
 explicitation_list = [
+  ["v_duree_d_inscription", 
+      :equal, 
+      "non_inscrit", 
+      "Ne pas être inscrit à Pôle Emploi"],
+  ["v_duree_d_inscription", 
+      :equal, 
+      "moins_d_un_an", 
+      "Être inscrit depuis moins d'un an à Pôle Emploi"],
+  ["v_duree_d_inscription", 
+      :equal, 
+      "plus_d_un_an", 
+      "Être inscrit depuis plus d'un an à Pôle Emploi"],
   ["v_age", 
       :more_than, 
       nil, 
