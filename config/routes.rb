@@ -58,6 +58,8 @@ Rails.application.routes.draw do
       post 'post_stats_advisors'
       get 'get_ref_data'
       post 'post_ref_data'
+      get 'get_transfer_descr'
+      post 'post_transfer_descr'
     end
     get 'status', to: 'status#index'
     resources :variables
