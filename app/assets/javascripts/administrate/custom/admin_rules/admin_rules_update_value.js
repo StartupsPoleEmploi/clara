@@ -16,7 +16,7 @@ clara.js_define("admin_rules_update_value", {
         that._input_is_text(s.selected_value)
       } else if (currentType === "selectionnable") {
         that._input_is_select()
-        var innerHtml = that._populate_with(currentVar.elements.split(","))
+        var innerHtml = that._populate_with(currentVar.elements, currentVar.elements_translation)
         that._replace_input_select_content(innerHtml, s.selected_value)
       }      
     } else {
@@ -24,10 +24,14 @@ clara.js_define("admin_rules_update_value", {
     }
   },
 
-  _populate_with: function(values) {
+  _populate_with: function(elements, elements_tr) {
     var res = "<option value></option>"
-    _.each(values, function(value) {
-      res += '<option value="' + value + '">' + value + '</option>'
+    _.each(elements.split(","), function(elt, i) {
+      var elt_tr = elt;
+      if(elements_tr) {
+        elt_tr = elements_tr.split(",")[i];
+      }
+      res += '<option value="' + elt + '">' + elt_tr + '</option>'
     })
     return res;
   },
