@@ -12,9 +12,9 @@ clara.js_define("admin_rules_var_changed", {
       var currentType = currentVar.variable_kind
       console.log(currentType)
       if (currentType === "integer") {
-        clara.admin_rules_var_val._input_is_number()
+        clara.admin_rules_var_val._input_is_number(s["selected_value"])
       } else if (currentType === "string") {
-        clara.admin_rules_var_val._input_is_text()
+        clara.admin_rules_var_val._input_is_text(s["selected_value"])
       } else if (currentType === "selectionnable") {
         clara.admin_rules_var_val._input_is_select()
         var innerHtml = clara.admin_rules_var_val._populate_with(currentVar.elements.split(","), s["selected_value"])

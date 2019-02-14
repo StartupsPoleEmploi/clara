@@ -40,9 +40,9 @@ module Admin
     end
 
     def edit
-      p '- - - - - - - - - - - - - - requested_resource- - - - - - - - - - - - - - - -' 
-      pp requested_resource
-      p ''
+      # p '- - - - - - - - - - - - - - requested_resource- - - - - - - - - - - - - - - -' 
+      # pp requested_resource
+      # p ''
       render locals: {
         page: Administrate::Page::Form.new(dashboard, requested_resource),
       }

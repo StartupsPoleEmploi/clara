@@ -19,6 +19,19 @@
   <% if help %>
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
-  <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
-  <select id="rule_value_eligible_selectible" style="display: none"></select>
+  <% if field.resource.variable.elements %>
+    <select id="rule_value_eligible_selectible" data-foo="<%= field.inspect %>">
+      <option value></option>
+      <% field.resource.variable.elements.split(",").each do |element| %>
+        <% if element == field.resource.value_eligible %>
+          <option value="<%=element%>" selected="selected"><%=element%></option>
+        <% else %>
+          <option value="<%=element%>"><%=element%></option>
+        <% end %>
+      <% end %>
+    </select>
+  <% else %>
+    <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
+  <% end %>
+
 </div>
