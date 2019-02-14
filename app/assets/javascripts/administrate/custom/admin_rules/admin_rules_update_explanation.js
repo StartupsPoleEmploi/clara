@@ -1,10 +1,10 @@
 
-clara.js_define("admin_rules_expl_changed", {
+clara.js_define("admin_rules_update_explanation", {
 
   please_if: _.stubFalse,
 
   please: function() {
-    var that = clara.admin_rules_expl_changed;
+    var that = clara.admin_rules_update_explanation;
     var s = main_store.getState()
     var is_not_empty = function(e){return !_.isEmpty(_.trim(e))}
 
