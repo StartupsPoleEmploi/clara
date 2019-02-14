@@ -19,7 +19,7 @@
   <% if help %>
     <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
-  <% if field.resource.variable.elements %>
+  <% if field.resource && field.resource.variable && field.resource.variable.elements %>
     <select id="rule_value_eligible_selectible" data-foo="<%= field.inspect %>">
       <option value></option>
       <% field.resource.variable.elements.split(",").each do |element| %>
