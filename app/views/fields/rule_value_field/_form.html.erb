@@ -30,8 +30,10 @@
         <% end %>
       <% end %>
     </select>
+     <input id="rule_value_eligible" style="display: none"></select>
   <% else %>
     <%= f.text_field field.attribute, placeholder: t(placeholder, default: "") %>
+     <select id="rule_value_eligible_selectible" style="display: none"></select>
   <% end %>
 
 </div>
