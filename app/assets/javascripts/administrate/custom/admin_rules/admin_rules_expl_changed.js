@@ -36,6 +36,9 @@ clara.js_define("admin_rules_expl_changed", {
         });
       console.log("found_value is ")
       console.log(found_value)
+      if (found_value) {
+        $(".expl-text").html(found_value.template)
+      }
     }
   },
 
