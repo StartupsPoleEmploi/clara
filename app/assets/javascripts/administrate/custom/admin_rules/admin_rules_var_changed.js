@@ -5,12 +5,12 @@ clara.js_define("admin_rules_var_changed", {
 
   please: function() {
     var that = clara.admin_rules_var_changed;
-    var s = main_store.getState();
-    that._update_value(s);
-    that._update_operator(s);
+    that._update_value();
+    that._update_operator();
   },
 
-  _update_value: function(s) {
+  _update_value: function() {
+    var s = main_store.getState();
     var currentVar = _.find(s.variables, function(e){return e.name == s["selected_variable"]})
     if (currentVar) {
       var currentType = currentVar.variable_kind
@@ -27,8 +27,9 @@ clara.js_define("admin_rules_var_changed", {
     }
   },
 
-  _update_operator: function(s) {
-    $("#rule_operator_kind").val('');
+  _update_operator: function() {
+    var s = main_store.getState();
+    $("#rule_operator_kind").val(s["selected_operator"]);
   },
 
 
