@@ -7,6 +7,7 @@ clara.js_define("admin_rules_update_operator", {
     var s = main_store.getState();
     // 1 - Remove all options
     $("#rule_operator_kind").find("option").attr("disabled", "disabled")
+    $("#rule_operator_kind").find("option[value='']").removeAttr("disabled")
 
     if (!_.isEmpty(s.selected_variable)) {
       var auth_expls = _.filter(s.explicitations, function(expl) {

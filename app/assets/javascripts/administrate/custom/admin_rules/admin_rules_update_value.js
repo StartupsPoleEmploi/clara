@@ -19,6 +19,8 @@ clara.js_define("admin_rules_update_value", {
         var innerHtml = that._populate_with(currentVar.elements.split(","))
         that._replace_input_select_content(innerHtml, s.selected_value)
       }      
+    } else {
+      that._input_is_text(s.selected_value)
     }
   },
 
@@ -36,6 +38,7 @@ clara.js_define("admin_rules_update_value", {
   },
 
   _input_is_text: function(initial_value) {
+    var that = clara.admin_rules_update_value;
     that._input_is_number()
     $("#rule_value_eligible").attr("type", "text");
     $("#rule_value_eligible").val(initial_value);
