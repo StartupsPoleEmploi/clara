@@ -1,5 +1,4 @@
 //= require redux/redux
-//= require redux/redux-watch
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require custom/js_define
