@@ -11,8 +11,9 @@ clara.js_define("admin_rules_var_val", {
     return res;
   },
 
-  _replace_input_select_content: function(with_html) {
+  _replace_input_select_content: function(with_html, initial_value) {
     $('#rule_value_eligible_selectible').html(with_html)
+    $("#rule_value_eligible_selectible").val(initial_value)
   },
 
   _input_is_text: function(initial_value) {
@@ -30,10 +31,9 @@ clara.js_define("admin_rules_var_val", {
     $("#rule_value_eligible").val(initial_value);
   },
 
-  _input_is_select: function(initial_value) {
+  _input_is_select: function() {
     $("#rule_value_eligible_selectible").css('display','block');
     $("#rule_value_eligible_selectible").attr("name", "rule[value_eligible]");
-    $("#rule_value_eligible_selectible").val(initial_value)
     $("#rule_value_eligible").css('display','none');
     $("#rule_value_eligible").removeAttr("name", "rule[value_eligible]");
   },
