@@ -362,6 +362,14 @@ explicitation_list = [
       :equal, 
       "non", 
       "Ne pas être cadre et/ou en recherche d'un poste d'encadrement"],
+  ["v_harki", 
+      :equal, 
+      "oui", 
+      "Être harki ou descendant de harki"],
+  ["v_harki", 
+      :equal, 
+      "non", 
+      "Ne pas être harki ou descendant de harki"],
 ]
 
 explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible_arg, template_arg|

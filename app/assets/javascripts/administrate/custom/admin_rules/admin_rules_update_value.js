@@ -9,7 +9,6 @@ clara.js_define("admin_rules_update_value", {
     var currentVar = _.find(s.variables, function(e){return e.name == s["selected_variable"]})
     if (currentVar) {
       var currentType = currentVar.variable_kind
-      console.log(currentType)
       if (currentType === "integer") {
         that._input_is_number(s.selected_value)
       } else if (currentType === "string") {

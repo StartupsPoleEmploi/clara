@@ -12,8 +12,6 @@ clara.js_define("admin_simple_rule_form", {
     // REDUCER
     var reducer = function(state, action) { 
 
-      console.log("action!! " + action.type + " " + action.value);
-
       // Deep copy of previous state to avoid side-effects
       var newState = _.cloneDeep(state);
 
