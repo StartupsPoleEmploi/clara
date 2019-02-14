@@ -18,7 +18,7 @@ module Admin
     end
 
     def _all_explicitations
-      JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind ], :include => {variable: {only:[:name]}}))
+      JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
     end
 
     def _all_operator_kinds
