@@ -1,28 +1,14 @@
 class Rule < ApplicationRecord
   include Prefixable
 
+  enum operator_kind: ListOperatorKind.new.call
+
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
   after_destroy { ExpireCacheJob.perform_later }
   after_create  { ExpireCacheJob.perform_later }
 
   has_paper_trail ignore: [:updated_at]
-
-  # operator_type is deprecated, and will be removed as soon as possible
-  enum operator_type: [:eq, :not_equal, :more_than, :less_than, :more_or_equal_than, :less_or_equal_than, :starts_with, :amongst, :not_amongst], _suffix: true
-
-  enum operator_kind: {
-    equal: "equal", 
-    not_equal: "not_equal", 
-    more_than: "more_than", 
-    less_than: "less_than", 
-    more_or_equal_than: "more_or_equal_than", 
-    less_or_equal_than: "less_or_equal_than", 
-    starts_with: "starts_with", 
-    not_starts_with: "not_starts_with", 
-    amongst: "amongst", 
-    not_amongst: "not_amongst"
-  }
 
   enum composition_type: [:and_rule, :or_rule]
 

@@ -2,6 +2,10 @@
 
 
 
+## 18.38.0 (13/2/2019)
+-[#1151][ADMIN] explication d'une règle simple "en clair"
+
+
 ## 18.37.0 (11/2/2019)
 -[#1149][ADMIN] dernière date MAJ
 

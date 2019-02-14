@@ -7861,10 +7861,10 @@ setTimeout(function () {
     if (devtools) {
       devtools.emit('init', Vue$3);
     } else if ("development" !== 'production' && isChrome) {
-      console[console.info ? 'info' : 'log'](
-        'Download the Vue Devtools extension for a better development experience:\n' +
-        'https://github.com/vuejs/vue-devtools'
-      );
+      // console[console.info ? 'info' : 'log'](
+      //   'Download the Vue Devtools extension for a better development experience:\n' +
+      //   'https://github.com/vuejs/vue-devtools'
+      // );
     }
   }
   if (false && "development" !== 'production' &&

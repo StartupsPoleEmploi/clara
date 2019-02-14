@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103122) do
+ActiveRecord::Schema.define(version: 2018_12_10_103126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -124,6 +124,18 @@ ActiveRecord::Schema.define(version: 2018_12_10_103122) do
     t.index ["slug"], name: "index_domain_filters_on_slug", unique: true
   end
 
+  create_table "explicitations", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.text "template"
+    t.bigint "variable_id"
+    t.string "operator_kind"
+    t.string "value_eligible"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["variable_id"], name: "index_explicitations_on_variable_id"
+  end
+
   create_table "filters", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -166,7 +178,6 @@ ActiveRecord::Schema.define(version: 2018_12_10_103122) do
   create_table "rules", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "value_eligible"
-    t.integer "operator_type"
     t.integer "composition_type"
     t.integer "variable_id"
     t.datetime "created_at", null: false
@@ -195,7 +206,6 @@ ActiveRecord::Schema.define(version: 2018_12_10_103122) do
 
   create_table "variables", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "variable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
@@ -203,6 +213,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103122) do
     t.text "name_translation"
     t.text "elements_translation"
     t.boolean "is_visible", default: true
+    t.string "variable_kind"
   end
 
   create_table "versions", force: :cascade do |t|
@@ -228,6 +239,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103122) do
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
+  add_foreign_key "explicitations", "variables"
   add_foreign_key "need_filters", "axle_filters"
   add_foreign_key "rules", "variables"
 end

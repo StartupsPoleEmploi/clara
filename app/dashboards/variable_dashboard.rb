@@ -16,7 +16,7 @@ class VariableDashboard < Administrate::BaseDashboard
     is_visible: Field::Boolean,
     elements: Field::Text,
     elements_translation: Field::Text,
-    variable_type: EnumField,
+    variable_kind: EnumField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -29,7 +29,7 @@ class VariableDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :name_translation,
-    :variable_type,
+    :variable_kind,
     :description,
     :is_visible,
     :elements,
@@ -45,7 +45,7 @@ class VariableDashboard < Administrate::BaseDashboard
     :is_visible,
     :elements,
     :elements_translation,
-    :variable_type,
+    :variable_kind,
     :created_at,
     :updated_at,
   ].freeze
@@ -55,7 +55,7 @@ class VariableDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name_translation,
-    :variable_type,
+    :variable_kind,
     :elements,
     :elements_translation,
     :description,

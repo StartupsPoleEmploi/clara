@@ -15,8 +15,10 @@ class WithVariableFieldViewObject < ViewObject
     #   "data-elements-translation"=>"",
     #   "data-visible"=>false}
     # ]
-    input
-      .select {|element| element[2]["data-visible"] == true} 
-      .map {|element| element[2].delete("data-visible");element}
+    res = input
+      .select {|e| e[2]["data-visible"] == true} 
+      .map {|e| e[2].delete("data-visible");e}
+      .sort_by {|e| e[0]}
+    res
   end
 end
