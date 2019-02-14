@@ -5,7 +5,7 @@ clara.js_define("admin_rules_update_operator", {
 
   please: function() {
     var s = main_store.getState();
-    // 1 - Display only what is properly translated
+    // 1 - Remove all options
     $("#rule_operator_kind").find("option").attr("disabled", "disabled")
 
     if (!_.isEmpty(s.selected_variable)) {
@@ -14,6 +14,7 @@ clara.js_define("admin_rules_update_operator", {
       });
       var auth_ops = _.uniqBy(_.map(auth_expls, function(e){return e.operator_kind}));
 
+      // 2 - Display only options that are tied to explanations, if apply
       _.each(auth_ops, function(auth_op){
         $("#rule_operator_kind").find('option[value="' + auth_op + '"]').removeAttr("disabled")
       });
@@ -22,7 +23,7 @@ clara.js_define("admin_rules_update_operator", {
       $("#rule_operator_kind").find("option").removeAttr("disabled")
     }
 
-    // 2 - Select the one of the model
+    // 3 - Select the one of the model
     $("#rule_operator_kind").val(s["selected_operator"]);
 
   },
