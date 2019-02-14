@@ -2,6 +2,10 @@
 
 
 
+## 18.40.0 (14/2/2019)
+-[#1154][ADMIN] réinitialisation incomplète du formulaire de création de règle simple en cas d'erreur
+
+
 ## 18.39.0 (14/2/2019)
 -[#1114][ADMIN] éviter les suggestions google
 
