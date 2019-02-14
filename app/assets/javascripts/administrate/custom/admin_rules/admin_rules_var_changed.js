@@ -4,7 +4,12 @@ clara.js_define("admin_rules_var_changed", {
   please_if: _.stubFalse,
 
   please: function() {
+    var that = clara.admin_rules_var_changed;
     var s = main_store.getState();
+    that._update_value(s);
+  },
+
+  _update_value: function(s) {
     var currentVar = _.find(s.variables, function(e){return e.name == s["selected_variable"]})
     if (currentVar) {
       var currentType = currentVar.variable_kind
@@ -21,7 +26,9 @@ clara.js_define("admin_rules_var_changed", {
     }
   },
 
+  _update_operator: function() {
 
+  },
 
 
  });
