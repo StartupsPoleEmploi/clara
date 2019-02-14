@@ -27,8 +27,9 @@ clara.js_define("admin_rules_expl_changed", {
           }  
           return res;
         });
+        var text_to_display = found_value.template.replace("XX", s.selected_value)
       if (found_value) {
-        $(".expl-text").html(found_value.template)
+        $(".expl-text").html(text_to_display)
       }
     }
   },
