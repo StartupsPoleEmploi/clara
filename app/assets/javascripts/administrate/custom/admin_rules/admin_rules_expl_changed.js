@@ -4,6 +4,7 @@ clara.js_define("admin_rules_expl_changed", {
   please_if: _.stubFalse,
 
   please: function() {
+    var that = this;
     var s = main_store.getState()
     var is_not_empty = function(e){return !_.isEmpty(_.trim(e))}
     var all_selected = 
@@ -35,7 +36,9 @@ clara.js_define("admin_rules_expl_changed", {
     }
   },
 
-
+  _find_expl: function() {
+    
+  }
 
 
  });
