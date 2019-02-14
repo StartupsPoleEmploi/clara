@@ -37,7 +37,7 @@ and renders all form fields for a resource's editable attributes.
 
 <div class="grid-flex">
   <div class="grid-col">
-    <%= form_for([namespace, page.resource], html: { class: "form", "data-kind" => "#{kind}" }) do |f| %>
+    <%= form_for([namespace, page.resource], html: { autocomplete: "off", class: "form", "data-kind" => "#{kind}" }) do |f| %>
       <% if page.resource.errors.any? %>
         <div id="error_explanation">
           <h2  class="flash-error">
