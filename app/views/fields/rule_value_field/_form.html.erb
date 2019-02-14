@@ -26,7 +26,7 @@
     <% else %>
       <%- elts_tr = elts %>
     <% end %>
-    <select id="rule_value_eligible_selectible" data-foo="<%= field.resource.variable.inspect %>">
+    <select id="rule_value_eligible_selectible">
       <option value></option>
       <% elts.each_with_index do |elt, i| %>
         <%- elt_tr = elts_tr[i]%>
