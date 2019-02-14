@@ -23,7 +23,11 @@ clara.js_define("admin_rules_expl_changed", {
       }
     } else if (only_var_and_op_selected) {
         $(".expl-text").html("(Veuillez renseigner une valeur, l'explication apparaîtra ici)");
-    }
+    } else if (only_var_selected) {
+        $(".expl-text").html("(Veuillez renseigner un opérateur et une valeur, l'explication apparaîtra ici)");
+    } else {
+        $(".expl-text").html("(Veuillez renseigner une variable, un opérateur et une valeur, l'explication apparaîtra ici)");
+      }
   },
 
   _look_for_explicitation: function(s) {
