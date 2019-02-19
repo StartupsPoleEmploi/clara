@@ -10,7 +10,7 @@ Teaspoon.configure do |config|
 
   # Paths that will be appended to the Rails assets paths
   # Note: Relative to `config.root`.
-  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets"]
+  # config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets", "test/javascripts", "test/javascripts/stylesheets"]
 
   # Fixtures are rendered through a controller, which allows using HAML, RABL/JBuilder, etc. Files in these paths will
   # be rendered as fixtures.
@@ -45,7 +45,7 @@ Teaspoon.configure do |config|
 
     # You can include your own stylesheets if you want to change how Teaspoon looks.
     # Note: Spec related CSS can and should be loaded using fixtures.
-    #suite.stylesheets = ["teaspoon"]
+    suite.stylesheets = ["teaspoon", "custom_teaspoon"]
 
     # This suites spec helper, which can require additional support files. This file is loaded before any of your test
     # files are loaded.

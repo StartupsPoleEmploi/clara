@@ -99,7 +99,7 @@ module Admin
       Variable.find_by(name: "v_zrr").update(variable_kind: "selectionnable")
       Variable.find_by(name: "v_cadre").update(variable_kind: "selectionnable")
       Variable.find_by(name: "v_age").update(variable_kind: "integer")
-      Variable.find_by(name: "v_duree_d_inscription").update(variable_kind: "integer")
+      Variable.find_by(name: "v_duree_d_inscription").update(variable_kind: "selectionnable")
     end
 
 

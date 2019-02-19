@@ -1,0 +1,10 @@
+#teaspoon-report h1 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#teaspoon-report #teaspoon-report-all li {
+    font-size: 13px;
+    font-weight: 200;
+}
