@@ -2,6 +2,10 @@
 
 
 
+## 18.41.0 (25/2/2019)
+-[#1156][TECH] css personnalisée de Teaspoon
+
+
 ## 18.40.0 (14/2/2019)
 -[#1154][ADMIN] réinitialisation incomplète du formulaire de création de règle simple en cas d'erreur
 

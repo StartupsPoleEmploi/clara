@@ -1,5 +1,6 @@
 //= require_tree ../../app/assets/javascripts/custom
 //= require_tree ../../app/assets/javascripts/custom/aides
+//= require_tree ../../app/assets/javascripts/administrate/custom
 describe("Internal libs", function() {
 
   function _test_presence(prop) {
