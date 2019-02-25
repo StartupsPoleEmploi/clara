@@ -2,6 +2,10 @@
 
 
 
+## 18.42.0 (25/2/2019)
+-[#1155][SEO] ajustements
+
+
 ## 18.41.0 (25/2/2019)
 -[#1156][TECH] css personnalisée de Teaspoon
 
