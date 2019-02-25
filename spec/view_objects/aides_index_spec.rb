@@ -67,7 +67,7 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
-      expect(res).to eq("Résultat de recherche – 14 aides et mesures sont disponibles - page 2 sur 3")
+      expect(res).to eq("Résultat de recherche – 14 aides et mesures sont disponibles - page 2 sur 1")
     end
 
     it 'Title includes page 2/2 if page param is 2 and total_nb of page is 10' do
@@ -78,7 +78,7 @@ describe AidesIndex do
       #when
       res = sut.title
       #then
-      expect(res).to eq("Résultat de recherche – 10 aides et mesures sont disponibles - page 2 sur 2")
+      expect(res).to eq("Résultat de recherche – 10 aides et mesures sont disponibles - page 2 sur 1")
     end
 
     it 'Title includes page 1/1 if page param is 1 and total_nb of page is 1' do
