@@ -9,6 +9,7 @@ class AidDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     name: Field::String,
+    source: Field::String,
     ordre_affichage: Field::Number,
     archived_at: Field::DateTime,
     slug: Field::String,
