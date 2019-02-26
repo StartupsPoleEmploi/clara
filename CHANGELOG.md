@@ -1,9 +1,15 @@
 # ARA Changelog
 
 
+## 18.43.0 (25/2/2019)
+-[#1160][FEATURE] ajout d'un champ source pour les aides
+
+
+## 18.42.1 (26/2/2019)
+-[#1155][SEO] ajustements
+
 
 ## 18.42.0 (25/2/2019)
--[#1155][SEO] ajustements
 -[#1084][TECH] passage à Ruby 2.6.0
 
 
