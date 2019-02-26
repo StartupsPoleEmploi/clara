@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 18.43.0 (25/2/2019)
+## 18.44.0 (26/2/2019)
+-[#1159][ADMIN] contenu caché
+
+
+## 18.43.0 (26/2/2019)
 -[#1160][FEATURE] ajout d'un champ source pour les aides
 
 
