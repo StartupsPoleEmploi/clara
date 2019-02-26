@@ -8,8 +8,6 @@ module TabTitleHelper
     def calculate_title(raw_title_data)
       title_data =  ""
       title_data =  CGI.unescapeHTML(raw_title_data) if raw_title_data.is_a?(String)
-      p '- - - - - -**************calculate_title************- - - - - - - - -' 
-      p title_data
       if !title_data.blank?
         if @current_path == "root_path"
           return title_data
