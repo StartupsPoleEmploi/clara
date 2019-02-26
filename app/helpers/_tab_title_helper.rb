@@ -2,20 +2,20 @@ module TabTitleHelper
   class TitleCalculator  
 
     def initialize(the_request_object)
-      @request_service = RequestPathService.get_instance(the_request_object)
+      @current_path = GetCurrentPathService.call(a_request: the_request_object)
     end
 
-    def calculate_title(title_data)
+    def calculate_title(raw_title_data)
+      title_data =  ""
+      title_data =  CGI.unescapeHTML(raw_title_data) if raw_title_data.is_a?(String)
       if !title_data.blank?
-        if @request_service.root_path?
+        if @current_path == "root_path"
           return title_data
-        elsif @request_service.type_path?
+        elsif @current_path == "type_path"
           return "Découvrez les aides de type #{title_data}" + default_title
-        elsif @request_service.detail_path?
-          return "Présentation de l'aide #{title_data}" + default_title
-        elsif @request_service.aides_path?
-          return title_data + default_title
-        elsif @request_service.question_path?
+        elsif @current_path == "detail_path"
+          return "Aide | " + title_data + default_title
+        elsif @current_path == "aides_path"
           return title_data + default_title
         else
           return title_data + default_title
@@ -26,7 +26,7 @@ module TabTitleHelper
 
     def calculate_description(description_data)
       res = ""
-      if @request_service.root_path?
+      if @current_path == "root_path"
         res = "Découvrez les aides et mesures qui vont accélérer votre reprise d'emploi"
       else
         res = description_data
@@ -35,7 +35,7 @@ module TabTitleHelper
     end
 
     def result_page?
-      @request_service.aides_path?
+      @current_path == "aides_path"
     end
 
     def default_title
