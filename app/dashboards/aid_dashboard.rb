@@ -12,6 +12,7 @@ class AidDashboard < Administrate::BaseDashboard
     ordre_affichage: Field::Number,
     archived_at: Field::DateTime,
     slug: Field::String,
+    source: Field::String,
     rule: Field::BelongsTo,
     contract_type: Field::BelongsTo,
     need_filters: Field::HasMany,
@@ -48,6 +49,7 @@ class AidDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :name,
+    :source,
     :need_filters,
     :filters,
     :ordre_affichage,
@@ -69,6 +71,7 @@ class AidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :source,
     :contract_type,
     :ordre_affichage,
     :short_description,
