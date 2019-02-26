@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.45.0 (28/2/2019)
+-[#1082][ADMIN] liste type ordre alpha
+
+
 ## 18.44.0 (26/2/2019)
 -[#1159][ADMIN] contenu caché
 
