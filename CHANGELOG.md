@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 18.47.0 (29/2/2019)
+-[#1158][ADMIN][DESIGN] modif UX
+
 
 ## 18.46.0 (28/2/2019)
 -[#1161][ADMIN] ajustement administration
