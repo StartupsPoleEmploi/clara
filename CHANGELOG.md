@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 18.46.0 (28/2/2019)
+-[#1161][ADMIN] ajustement administration
+
+
 ## 18.45.0 (28/2/2019)
 -[#1082][ADMIN] liste type ordre alpha
 
