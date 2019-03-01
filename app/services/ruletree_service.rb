@@ -117,9 +117,9 @@ class RuletreeService
       when 'less_than'
         typed_criterion_value < typed_rule_value
       when 'amongst'
-        typed_rule_value.split(",").include?(typed_criterion_value)
+        typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
       when 'not_amongst'
-        !typed_rule_value.split(",").include?(typed_criterion_value)
+        !typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')

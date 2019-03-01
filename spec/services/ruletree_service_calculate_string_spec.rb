@@ -75,7 +75,7 @@ describe RuletreeService do
       expect(res).to eq(false)
     end
 
-    it 'calculates string, amongst, nominal' do
+    it 'calculates string, amongst, nominal, true' do
       #given
       operator_kind = "amongst"
       rule_h = build(:rule, operator_kind: operator_kind).attributes
@@ -87,6 +87,20 @@ describe RuletreeService do
       res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
+    end
+
+    it 'calculates string, amongst, nominal, false' do
+      #given
+      operator_kind = "amongst"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
+      criterion_value = "42"
+      rule_value = "11,22,33"
+      rule_type = "string"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      #then
+      expect(res).to eq(false)
     end
 
     it 'Unknown operator' do
