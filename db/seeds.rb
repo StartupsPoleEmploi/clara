@@ -23,7 +23,7 @@ variable_list = [
   {name: "v_diplome",                   
     variable_kind: "selectionnable", 
     description: nil, 
-    elements: "niveau_1,niveau_2,niveau_3,niveau_4,niveau_5,niveau_infra_5",
+    elements: "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1",
     name_translation: "diplôme", 
     elements_translation: "bac +4 et +, bac +3, bac +1 et +2 (BTS/DUT), Bac, CAP/BEP, aucun diplôme", 
     is_visible: true},
