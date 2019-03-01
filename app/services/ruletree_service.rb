@@ -40,9 +40,10 @@ class RuletreeService
     if c && variable && c.has_key?(variable["name"]) && c[variable["name"]].present?
       criterion_value = c[variable["name"]]
       rule_type = variable["variable_kind"]
+      elements = variable["elements"]
       return "ineligible" if !type_is_accurate(criterion_value, rule_type)
       return "ineligible" if criterion_value == "not_applicable"
-      return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type)
+      return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type, elements)
       return "ineligible"
     end
     return result
@@ -63,16 +64,79 @@ class RuletreeService
   def calculate_default_value
     "uncertain"
   end
-  def calculate_is_eligible(rule, criterion_value, rule_type)
-    calculate(rule, criterion_value, rule["value_eligible"], rule_type)
+  def calculate_is_eligible(rule, criterion_value, rule_type, elements)
+    calculate(rule, criterion_value, rule["value_eligible"], rule_type, elements)
   end
 
-  def calculate(rule, criterion_value, rule_value, rule_type)
+  def calculate(rule, criterion_value, rule_value, rule_type, elements)
+    # p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    # pp rule
+    # p ''
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    # pp rule_type
+    # p ''
+    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
+    # pp elements
+    # p ''
+    allowed_types = ['integer', 'string', 'selectionnable']
+    allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
+    op = rule["operator_kind"]
+    return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op)
+    case rule_type
+      when 'integer'
+        calculate_for_integer(criterion_value, rule_value, op)
+      when 'string'
+        calculate_for_string(criterion_value, rule_value, op)
+      when 'selectionnable'
+        calculate_for_selectionnable(criterion_value, rule_value, op, elements)
+      else
+        false
+    end
+  end
 
-    typed_criterion_value = force_type_of(criterion_value, rule_type)
-    typed_rule_value = force_type_of(rule_value, rule_type)
+  def calculate_for_integer(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_i
+    typed_rule_value = rule_value.to_i
+    case operator_kind
+      when 'equal'
+        typed_criterion_value == typed_rule_value
+      when 'not_equal'
+        typed_criterion_value != typed_rule_value
+      when 'more_than'
+        typed_criterion_value > typed_rule_value
+      when 'more_or_equal_than'
+        typed_criterion_value >= typed_rule_value
+      when 'less_or_equal_than'
+        typed_criterion_value <= typed_rule_value
+      when 'less_than'
+        typed_criterion_value < typed_rule_value
+      when 'amongst'
+        typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+      when 'not_amongst'
+        !typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+      when 'starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a.starts_with?(b)
+      when 'not_starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        !a.starts_with?(b)
+      else
+        false
+    end
+  end
 
-    case rule["operator_kind"]
+  def calculate_for_string(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_s
+    typed_rule_value = rule_value.to_s
+    case operator_kind
       when 'equal'
         typed_criterion_value == typed_rule_value
       when 'not_equal'
@@ -102,17 +166,27 @@ class RuletreeService
     end
   end
 
-  def force_type_of(the_value, the_type)
-    case the_type
-      when 'integer'
-        the_value.to_i
-      when 'string'
-        the_value.to_s
+  def calculate_for_selectionnable(criterion_value, rule_value, operator_kind, elements)
+    indexof_criterion_value = elements.split(",").index(criterion_value)
+    indexof_rule_value = elements.split(",").index(rule_value)
+    indexof_rule_value ||= -1
+    indexof_criterion_value ||= -1
+    case operator_kind
+      when 'equal'
+        indexof_criterion_value == indexof_rule_value
+      when 'not_equal'
+        indexof_criterion_value != indexof_rule_value
+      when 'more_than'
+        indexof_criterion_value > indexof_rule_value
+      when 'more_or_equal_than'
+        indexof_criterion_value >= indexof_rule_value
+      when 'less_than'
+        indexof_criterion_value < indexof_rule_value
+      when 'less_or_equal_than'
+        indexof_criterion_value <= indexof_rule_value
       else
-        the_value
+        false
     end
   end
-
-
 
 end

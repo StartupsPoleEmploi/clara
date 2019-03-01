@@ -13,7 +13,6 @@ class AidDashboard < Administrate::BaseDashboard
     ordre_affichage: Field::Number,
     archived_at: Field::DateTime,
     slug: Field::String,
-    source: Field::String,
     rule: Field::BelongsTo,
     contract_type: Field::BelongsTo,
     need_filters: Field::HasMany,

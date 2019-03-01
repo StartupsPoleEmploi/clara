@@ -54,6 +54,8 @@ clara.js_define("admin_rules_update_value", {
     $("#rule_value_eligible").attr("name", "rule[value_eligible]");
     $("#rule_value_eligible").attr("type", "number");
     $("#rule_value_eligible").val(initial_value);
+    $("#rule_value_eligible").attr("min", "0");
+    $("#rule_value_eligible").attr("oninput", "validity.valid||(value='');");
   },
 
   _input_is_select: function() {
