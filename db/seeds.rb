@@ -25,7 +25,7 @@ variable_list = [
     description: nil, 
     elements: "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1",
     name_translation: "diplôme", 
-    elements_translation: "bac +4 et +, bac +3, bac +1 et +2 (BTS/DUT), Bac, CAP/BEP, aucun diplôme", 
+    elements_translation: "aucun diplôme,CAP/BEP,Bac,bac +1 et +2 (BTS/DUT),bac +3,bac +4 et +", 
     is_visible: true},
   {name: "v_allocation_value_min",      
     variable_kind: "integer", 

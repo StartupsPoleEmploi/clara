@@ -169,6 +169,8 @@ class RuletreeService
   def calculate_for_selectionnable(criterion_value, rule_value, operator_kind, elements)
     indexof_criterion_value = elements.split(",").index(criterion_value)
     indexof_rule_value = elements.split(",").index(rule_value)
+    indexof_rule_value ||= -1
+    indexof_criterion_value ||= -1
     case operator_kind
       when 'equal'
         indexof_criterion_value == indexof_rule_value
