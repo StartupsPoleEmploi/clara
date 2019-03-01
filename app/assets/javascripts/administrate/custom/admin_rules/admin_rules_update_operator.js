@@ -29,8 +29,11 @@ clara.js_define("admin_rules_update_operator", {
     var all_opt_lentgh = $("#rule_operator_kind").find('option').length;
     var disabled_opt_lentgh = $("#rule_operator_kind").find('option[disabled="disabled"]').length;
     var actually_displayed_opts_length = all_opt_lentgh - disabled_opt_lentgh;
+    console.log(actually_displayed_opts_length)
     if (actually_displayed_opts_length > 1) {
       $("#rule_operator_kind").find("option[value='']").removeAttr("disabled")
+      // $("#rule_operator_kind").replaceWith('<input placeholder="" type="text" name="rule[name]" id="rule_name">')
+      
     }
   },
 
