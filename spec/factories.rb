@@ -52,12 +52,13 @@ FactoryBot.define do
 
     trait :handicap do 
       name 'v_handicap'
+      elements 'oui,non'
       variable_kind :selectionnable
     end
 
     trait :qpv do 
       name 'v_qpv'
-      description 'oui,non'
+      elements 'oui,non'
       variable_kind :selectionnable
     end
 
@@ -68,7 +69,7 @@ FactoryBot.define do
 
     trait :zrr do 
       name 'v_zrr'
-      description 'oui,non'
+      elements 'oui,non'
       variable_kind :selectionnable
     end
 
