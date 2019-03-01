@@ -18,7 +18,7 @@ clara.js_define("admin_simple_rule_form", {
       if (action.type === 'VARIABLE_CHANGED') {
         newState["selected_variable"] = action.value
         newState["selected_value"] = ""
-        newState["selected_operator"] = ""
+        newState["selected_operator"] = clara.admin_rules_concerned_operator.please(newState, action.value)
       } else if (action.type === 'OPERATOR_CHANGED') {
         newState["selected_operator"] = action.value
       } else if (action.type === 'VALUE_CHANGED') {
