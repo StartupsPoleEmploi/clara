@@ -23,7 +23,7 @@ describe RuletreeService do
       operator_kind = "equal"
       rule_h = build(:rule, operator_kind: operator_kind).attributes
       criterion_value = "niveau_4"
-      rule_value = "niveau_4"
+      rule_value = "niveau_5"
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
