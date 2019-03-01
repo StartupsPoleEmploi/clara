@@ -175,4 +175,43 @@ describe RuletreeService do
       expect(res).to eq(false)
     end
   end
+  it 'Selectionnable, less_or_equal_than, false' do
+    #given
+    operator_kind = "less_or_equal_than"
+    rule_h = build(:rule, operator_kind: operator_kind).attributes
+    criterion_value = "niveau_4"
+    rule_value = "niveau_5"
+    rule_type = "selectionnable"
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    #then
+    expect(res).to eq(false)
+  end
+  it 'Selectionnable, less_or_equal_than, true' do
+    #given
+    operator_kind = "less_or_equal_than"
+    rule_h = build(:rule, operator_kind: operator_kind).attributes
+    criterion_value = "niveau_infra_5"
+    rule_value = "niveau_5"
+    rule_type = "selectionnable"
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    #then
+    expect(res).to eq(true)
+  end
+  it 'Selectionnable, less_or_equal_than, true (because eq)' do
+    #given
+    operator_kind = "less_or_equal_than"
+    rule_h = build(:rule, operator_kind: operator_kind).attributes
+    criterion_value = "niveau_5"
+    rule_value = "niveau_5"
+    rule_type = "selectionnable"
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    #then
+    expect(res).to eq(true)
+  end
 end
