@@ -69,21 +69,21 @@ class RuletreeService
   end
 
   def calculate(rule, criterion_value, rule_value, rule_type, elements)
-    p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
-    pp rule
-    p ''
-    p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    pp criterion_value
-    p ''
-    p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    pp rule_value
-    p ''
-    p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
-    pp rule_type
-    p ''
-    p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
-    pp elements
-    p ''
+    # p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    # pp rule
+    # p ''
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    # pp rule_type
+    # p ''
+    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
+    # pp elements
+    # p ''
     allowed_types = ['integer', 'string', 'selectionnable']
     allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
     op = rule["operator_kind"]
@@ -176,6 +176,8 @@ class RuletreeService
         indexof_criterion_value != indexof_rule_value
       when 'more_than'
         indexof_criterion_value > indexof_rule_value
+      when 'more_or_equal_than'
+        indexof_criterion_value >= indexof_rule_value
       else
         false
     end
