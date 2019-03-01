@@ -31,6 +31,12 @@ FactoryBot.define do
       variable_kind :integer
     end
 
+    trait :diplome do 
+      name 'v_diplome'
+      elements 'niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1'
+      variable_kind :selectionnable
+    end
+
     trait :spectacle do 
       name 'v_spectacle'
       elements 'oui,non'

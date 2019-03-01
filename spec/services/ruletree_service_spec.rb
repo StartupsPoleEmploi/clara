@@ -135,6 +135,18 @@ describe RuletreeService do
         end
       end
     end
+    context 'with a Selectionnable' do
+      let(:asker) { create :asker, v_diplome: 'niveau_4'}
+      let(:variable) { create :variable, :diplome}
+      context 'more_or_equal_than Bac, yes' do
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_4', variable: variable }
+        context 'Bac is more_or_equal_than Bac' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'more_or_equal_than Bac, no'
+      context 'more_or_equal_than Bac, limit'
+    end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}

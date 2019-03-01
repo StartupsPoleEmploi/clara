@@ -68,6 +68,18 @@ class RuletreeService
   end
 
   def calculate(rule, criterion_value, rule_value, rule_type)
+    p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    pp rule
+    p ''
+    p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    pp criterion_value
+    p ''
+    p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    pp rule_value
+    p ''
+    p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    pp rule_type
+    p ''
 
     typed_criterion_value = force_type_of(criterion_value, rule_type)
     typed_rule_value = force_type_of(rule_value, rule_type)
