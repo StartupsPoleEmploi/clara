@@ -68,23 +68,36 @@ class RuletreeService
   end
 
   def calculate(rule, criterion_value, rule_value, rule_type)
-    p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
-    pp rule
-    p ''
-    p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    pp criterion_value
-    p ''
-    p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    pp rule_value
-    p ''
-    p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
-    pp rule_type
-    p ''
+    # p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    # pp rule
+    # p ''
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    # pp rule_type
+    # p ''
 
-    typed_criterion_value = force_type_of(criterion_value, rule_type)
-    typed_rule_value = force_type_of(rule_value, rule_type)
+    op = rule["operator_kind"]
+    case rule_type
+      when 'integer'
+        calculate_for_integer(criterion_value, rule_value, op)
+      when 'string'
+        calculate_for_string(criterion_value, rule_value, op)
+      when 'selectionnable'
+        calculate_for_selectionnable(criterion_value, rule_value, op)
+      else
+        false
+    end
+  end
 
-    case rule["operator_kind"]
+  def calculate_for_integer(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_i
+    typed_rule_value = rule_value.to_i
+    case operator_kind
       when 'equal'
         typed_criterion_value == typed_rule_value
       when 'not_equal'
@@ -114,17 +127,70 @@ class RuletreeService
     end
   end
 
-  def force_type_of(the_value, the_type)
-    case the_type
-      when 'integer'
-        the_value.to_i
-      when 'string'
-        the_value.to_s
+  def calculate_for_string(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_s
+    typed_rule_value = rule_value.to_s
+    case operator_kind
+      when 'equal'
+        typed_criterion_value == typed_rule_value
+      when 'not_equal'
+        typed_criterion_value != typed_rule_value
+      when 'more_than'
+        typed_criterion_value > typed_rule_value
+      when 'more_or_equal_than'
+        typed_criterion_value >= typed_rule_value
+      when 'less_or_equal_than'
+        typed_criterion_value <= typed_rule_value
+      when 'less_than'
+        typed_criterion_value < typed_rule_value
+      when 'amongst'
+        typed_rule_value.split(",").include?(typed_criterion_value)
+      when 'not_amongst'
+        !typed_rule_value.split(",").include?(typed_criterion_value)
+      when 'starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a.starts_with?(b)
+      when 'not_starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        !a.starts_with?(b)
       else
-        the_value
+        false
     end
   end
 
-
+  def calculate_for_selectionnable(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_s
+    typed_rule_value = rule_value.to_s
+    case operator_kind
+      when 'equal'
+        typed_criterion_value == typed_rule_value
+      when 'not_equal'
+        typed_criterion_value != typed_rule_value
+      when 'more_than'
+        typed_criterion_value > typed_rule_value
+      when 'more_or_equal_than'
+        typed_criterion_value >= typed_rule_value
+      when 'less_or_equal_than'
+        typed_criterion_value <= typed_rule_value
+      when 'less_than'
+        typed_criterion_value < typed_rule_value
+      when 'amongst'
+        typed_rule_value.split(",").include?(typed_criterion_value)
+      when 'not_amongst'
+        !typed_rule_value.split(",").include?(typed_criterion_value)
+      when 'starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a.starts_with?(b)
+      when 'not_starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        !a.starts_with?(b)
+      else
+        false
+    end
+  end
 
 end

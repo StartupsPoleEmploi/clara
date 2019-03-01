@@ -135,18 +135,24 @@ describe RuletreeService do
         end
       end
     end
-    context 'with a Selectionnable' do
-      let(:asker) { create :asker, v_diplome: 'niveau_4'}
-      let(:variable) { create :variable, :diplome}
-      context 'more_or_equal_than Bac, yes' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_4', variable: variable }
-        context 'Bac is more_or_equal_than Bac' do
-          it { expect(subject).to eq "eligible" }
-        end
-      end
-      context 'more_or_equal_than Bac, no'
-      context 'more_or_equal_than Bac, limit'
-    end
+    # context 'with a Selectionnable' do
+    #   let(:asker) { create :asker, v_diplome: 'niveau_4'}
+    #   let(:variable) { create :variable, :diplome}
+    #   context 'more_or_equal_than Bac, yes' do
+    #     let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_1', variable: variable }
+    #     context 'Bac +5 is more_or_equal_than Bac' do
+    #       it { expect(subject).to eq "eligible" }
+    #     end
+    #   end
+    #   context 'more_or_equal_than Bac, no' do
+    #     let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_5', variable: variable }
+    #     context 'CAP is NOT more_or_equal_than Bac' do
+    #       it { expect(subject).to eq "ineligible" }
+    #     end
+    #   end
+    #   context 'more_or_equal_than Bac, no'
+    #   context 'more_or_equal_than Bac, limit'
+    # end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
       let(:variable) { create :variable, :age}
@@ -393,33 +399,6 @@ describe RuletreeService do
         let(:asker) { create :asker, :spectacle, :ado, v_handicap: 'false' }
         it { expect(subject).to eq "ineligible" }
       end
-    end
-  end
-
-  describe '.force_type_of' do
-    it 'forces an integer' do
-      #given
-      sut = RuletreeService.new
-      #when
-      res = sut.send :force_type_of, '18', 'integer'
-      #then
-      expect(res).to eq(18)
-    end
-    it 'forces an string' do
-      #given
-      sut = RuletreeService.new
-      #when
-      res = sut.send :force_type_of, 18, 'string'
-      #then
-      expect(res).to eq("18")
-    end
-    it 'cannot force anything else' do
-      #given
-      sut = RuletreeService.new
-      #when
-      res = sut.send :force_type_of, "18", 'unexisting_type'
-      #then
-      expect(res).to eq("18")
     end
   end
 
