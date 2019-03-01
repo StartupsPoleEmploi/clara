@@ -68,18 +68,18 @@ class RuletreeService
   end
 
   def calculate(rule, criterion_value, rule_value, rule_type)
-    # p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
-    # pp rule
-    # p ''
-    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    # pp criterion_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    # pp rule_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
-    # pp rule_type
-    # p ''
+    p '- - - - - - - - - - - - - - rule- - - - - - - - - - - - - - - -' 
+    pp rule
+    p ''
+    p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    pp criterion_value
+    p ''
+    p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    pp rule_value
+    p ''
+    p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    pp rule_type
+    p ''
     allowed_types = ['integer', 'string', 'selectionnable']
     allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
     op = rule["operator_kind"]
