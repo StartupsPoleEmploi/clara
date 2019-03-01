@@ -41,20 +41,24 @@ describe RuletreeService do
     context 'with a Selectionnable' do
       let(:asker) { create :asker, v_diplome: 'niveau_4'}
       let(:variable) { create :variable, :diplome}
-      context 'more_or_equal_than Bac, yes' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_1', variable: variable }
-        context 'Bac +5 is more_or_equal_than Bac' do
+      context 'I have Bac : more_or_equal_than nothing, yes' do
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_infra_5', variable: variable }
+        context 'Bac is better than nothing' do
           it { expect(subject).to eq "eligible" }
         end
       end
-      context 'more_or_equal_than Bac, no' do
-        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_5', variable: variable }
-        context 'CAP is NOT more_or_equal_than Bac' do
+      context 'I have Bac : more_or_equal_than Bac, yes' do
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_4', variable: variable }
+        context 'Bac is as good as Bac' do
+          it { expect(subject).to eq "eligible" }
+        end
+      end
+      context 'I have Bac : more_or_equal_than Master, no' do
+        let(:rule) { create :rule, kind: "simple", operator_kind: :more_or_equal_than, value_eligible: 'niveau_1', variable: variable }
+        context 'Bac is not as good as Bac+5' do
           it { expect(subject).to eq "ineligible" }
         end
       end
-      context 'more_or_equal_than Bac, no'
-      context 'more_or_equal_than Bac, limit'
     end
     context 'with an Integer' do
       let(:asker) { create :asker, v_age: '19'}
