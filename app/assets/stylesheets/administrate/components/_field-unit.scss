@@ -82,3 +82,12 @@ h2.flash-error {
     width: calc(25% - 1rem);
   }
 }
+
+.disabled-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 2px;
+  padding-left: 8px;
+  border-color: white;
+  background-color: white;
+}
