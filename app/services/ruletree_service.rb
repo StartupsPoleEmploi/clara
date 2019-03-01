@@ -168,6 +168,8 @@ class RuletreeService
     case operator_kind
       when 'equal'
         typed_criterion_value == typed_rule_value
+      when 'not_equal'
+        typed_criterion_value != typed_rule_value
       else
         false
     end
