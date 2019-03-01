@@ -178,6 +178,10 @@ class RuletreeService
         indexof_criterion_value > indexof_rule_value
       when 'more_or_equal_than'
         indexof_criterion_value >= indexof_rule_value
+      when 'less_than'
+        indexof_criterion_value < indexof_rule_value
+      when 'less_or_equal_than'
+        indexof_criterion_value <= indexof_rule_value
       else
         false
     end
