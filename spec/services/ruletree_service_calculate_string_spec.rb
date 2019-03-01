@@ -14,7 +14,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -28,7 +28,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -42,7 +42,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -56,7 +56,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -70,7 +70,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -84,7 +84,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -99,7 +99,7 @@ describe RuletreeService do
       rule_type = "string"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type
+      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
