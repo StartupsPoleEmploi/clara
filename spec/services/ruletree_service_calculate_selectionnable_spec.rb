@@ -5,11 +5,11 @@ describe RuletreeService do
 
   describe '.calculate' do
 
-    it 'calculates selectionnable, starts_with, same string' do
+    it 'Selectionnable, equal, same string => TRUE' do
       #given
-      operator_kind = "more_or_equal_than"
+      operator_kind = "equal"
       rule_h = build(:rule, operator_kind: operator_kind).attributes
-      criterion_value = "niveau_1"
+      criterion_value = "niveau_4"
       rule_value = "niveau_4"
       rule_type = "selectionnable"
       sut = RuletreeService.new
