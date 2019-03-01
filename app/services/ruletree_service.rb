@@ -80,8 +80,10 @@ class RuletreeService
     # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
     # pp rule_type
     # p ''
-
+    allowed_types = ['integer', 'string', 'selectionnable']
+    allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
     op = rule["operator_kind"]
+    return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op)
     case rule_type
       when 'integer'
         calculate_for_integer(criterion_value, rule_value, op)
@@ -161,36 +163,7 @@ class RuletreeService
   end
 
   def calculate_for_selectionnable(criterion_value, rule_value, operator_kind)
-    typed_criterion_value = criterion_value.to_s
-    typed_rule_value = rule_value.to_s
-    case operator_kind
-      when 'equal'
-        typed_criterion_value == typed_rule_value
-      when 'not_equal'
-        typed_criterion_value != typed_rule_value
-      when 'more_than'
-        typed_criterion_value > typed_rule_value
-      when 'more_or_equal_than'
-        typed_criterion_value >= typed_rule_value
-      when 'less_or_equal_than'
-        typed_criterion_value <= typed_rule_value
-      when 'less_than'
-        typed_criterion_value < typed_rule_value
-      when 'amongst'
-        typed_rule_value.split(",").include?(typed_criterion_value)
-      when 'not_amongst'
-        !typed_rule_value.split(",").include?(typed_criterion_value)
-      when 'starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        a.starts_with?(b)
-      when 'not_starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        !a.starts_with?(b)
-      else
-        false
-    end
+    false
   end
 
 end
