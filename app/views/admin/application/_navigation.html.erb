@@ -11,7 +11,7 @@
       <%= link_to(
         "Rubriques",
         admin_contract_types_path,
-        class: v.filter_clazz(request)
+        class: "navigation__link navigation__link--#{nav_link_state('contract_types')}"
       ) %>      
     <% end %>
 
@@ -19,21 +19,21 @@
       <%= link_to(
         "Aides",
         admin_aids_path,
-        class: v.filter_clazz(request)
+        class: "navigation__link navigation__link--#{nav_link_state('aids')}"
       ) %>      
     <% end %>
 
     <% if index == 2 %>
       <%= link_to(
-        "Rules",
+        "Règles",
         admin_rules_path,
-        class: v.filter_clazz(request)
+        class: "navigation__link navigation__link--#{nav_link_state('rules')}"
       ) %>      
     <% end %>
 
     <% if index == 3 %>
       <%= link_to(
-        "Filtrages",
+        "Filtres",
         admin_get_all_filters_menu_path,
         class: v.filter_clazz(request)
       ) %>      

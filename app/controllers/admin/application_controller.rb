@@ -35,6 +35,12 @@ module Admin
     # Overrides this to change nav state
     def nav_link_state(resource)
       comparable = resource_name.to_s.pluralize
+      p '- - - - - - - - - - - - - - comparable- - - - - - - - - - - - - - - -' 
+      pp comparable
+      p ''
+      p '- - - - - - - - - - - - - - resource.to_s- - - - - - - - - - - - - - - -' 
+      pp resource.to_s
+      p ''
       comparable == resource.to_s ? :active : :inactive
     end
 

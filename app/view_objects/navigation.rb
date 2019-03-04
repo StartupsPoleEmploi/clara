@@ -10,6 +10,18 @@ class Navigation < ViewObject
     excluded_list.include?(@resource_name)
   end
 
+  def regular_clazz(req)
+    current_path = GetCurrentPathService.call(a_request: req)
+    # p '- - - - - - - - - - - - - - current_path- - - - - - - - - - - - - - - -' 
+    # pp current_path
+    # p ''
+    # p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+    # pp @resource_name
+    # p ''
+    state = "inactive"
+    "navigation__link navigation__link--#{state}"
+  end
+
   def filter_clazz(req)
     current_path = GetCurrentPathService.call(a_request: req)
     actives_pathes = [
