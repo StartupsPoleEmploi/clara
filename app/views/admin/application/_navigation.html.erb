@@ -1,29 +1,31 @@
+<%- v = view_object(:navigation) %>
 
 <nav class="navigation" role="navigation">
   <div class="medium-bottom-margin">
     <strong><%=current_user_email%></strong>
     <%= link_to 'Se déconnecter', signout_path  %>    
   </div>
-  <% Administrate::Namespace.new(namespace).resources.each_with_index do |resource, index| %>
-    <%- v = view_object(:navigation, resource_name: resource.resource) %>
 
-    <% if index == 2 %>
-      <%= link_to(
-        "Filtrages",
-        admin_get_all_filters_menu_path,
-        class: v.filter_clazz(request)
-      ) %>      
-    <% end %>
-
-    <% unless v.hide_resource? %>
-      <%= link_to(
-        display_resource_name(resource),
-        [namespace, resource_index_route_key(resource)],
-        class: "navigation__link navigation__link--#{nav_link_state(resource)}"
-      ) %>
-    <% end %>
-
-  <% end %>
+  <%= link_to(
+    "Rubriques",
+    admin_contract_types_path,
+    class: "navigation__link navigation__link--#{nav_link_state('contract_types')}"
+  ) %>      
+  <%= link_to(
+    "Aides",
+    admin_aids_path,
+    class: "navigation__link navigation__link--#{nav_link_state('aids')}"
+  ) %>      
+  <%= link_to(
+    "Règles",
+    admin_rules_path,
+    class: "navigation__link navigation__link--#{nav_link_state('rules')}"
+  ) %>      
+  <%= link_to(
+    "Filtres",
+    admin_get_all_filters_menu_path,
+    class: v.filter_clazz(request)
+  ) %>      
   
   <%= link_to("Administration", admin_get_hidden_admin_path) %> 
   

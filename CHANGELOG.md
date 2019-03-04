@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.48.0 (29/2/2019)
+-[#1126][ADMIN] modification de l'ordre de la navigation
+
+
 ## 18.47.0 (29/2/2019)
 -[#1158][ADMIN][DESIGN] modif UX
 
