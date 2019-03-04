@@ -4,7 +4,7 @@
   .c-situation{"class" => "u-hide-until@tablet"}
     %h4.c-situation-title.u-padding-small.u-display-flex.c-mask-filter.js-recap-zone.is-discrete
       %span.c-mask-filter__text
-        Récapitulatif de situation      
+        Récapitulatif de ma situation      
       %span.c-mask-filter__caret.u-margin-left-auto
         &nbsp;&or;
 
@@ -54,7 +54,7 @@
                 %span Modifier
         .c-situation__data-list
           .c-situation__data-line
-            %span.c-situation__data-prop Durée d'inscription :
+            %span.c-situation__data-prop Inscrit depuis :
             %span.c-situation__data-val.c-situation--inscription 
               =v.duree_d_inscription
           - if v.category != 'indisponible'

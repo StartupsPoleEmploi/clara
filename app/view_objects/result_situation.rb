@@ -87,7 +87,7 @@ class ResultSituation < ViewObject
   end
   
   def location_label
-    @asker[:v_location_label].blank? ? "indisponible" : @asker[:v_location_label]
+    @asker[:v_location_label].blank? ? "Non renseignée" : @asker[:v_location_label]
   end
 
   def zrr

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.50.0 (4/3/2019)
+-[#1023][FEATURETTE] résultats : changement de vocabulaire
+
+
 ## 18.49.0 (4/3/2019)
 -[#1162][ADMIN] admin: elargir le champ "source"
 
