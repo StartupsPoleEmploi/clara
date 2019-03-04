@@ -1,7 +1,11 @@
 # ARA Changelog
 
 
-## 18.48.0 (29/2/2019)
+## 18.49.0 (4/3/2019)
+-[#1162][ADMIN] admin: elargir le champ "source"
+
+
+## 18.48.0 (1/3/2019)
 -[#1126][ADMIN] modification de l'ordre de la navigation
 
 
