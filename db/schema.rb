@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103127) do
+ActiveRecord::Schema.define(version: 2018_12_10_103128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103127) do
     t.string "value_ineligible"
     t.string "kind"
     t.string "operator_kind"
+    t.string "status"
     t.index ["variable_id"], name: "index_rules_on_variable_id"
   end
 

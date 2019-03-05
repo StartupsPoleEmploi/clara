@@ -14,6 +14,7 @@ class RuleDashboard < Administrate::BaseDashboard
     aids:             Field::HasMany,
     id:               Field::Number,
     name:             Field::String,
+    status:             Field::String,
     description:      Field::Text,
     value_eligible:   RuleValueField,
     value_ineligible: Field::String,
@@ -30,6 +31,7 @@ class RuleDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
+    :status,
     :variable,
     :aids,
   ].freeze
@@ -38,10 +40,11 @@ class RuleDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :name,
+    :status,
     :kind,
     :slave_rules,
     :variable,
-    :name,
     :description,
     :value_eligible,
     :operator_kind,
