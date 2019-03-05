@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: filters
+#
+#  id          :integer(8)      not null, primary key
+#  name        :text
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  description :string
+#  slug        :string
+#
+
 class Filter < ApplicationRecord
   extend FriendlyId
 

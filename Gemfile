@@ -95,6 +95,6 @@ group :development do
   gem "rack-livereload"
   gem "rb-fsevent", require: false
   gem "letter_opener_web", "~> 1.0"
-  gem "annotate"
+  gem "annotate", "2.4.0"
 end
 

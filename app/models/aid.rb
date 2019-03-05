@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: aids
+#
+#  id                     :integer(4)      not null, primary key
+#  name                   :string
+#  what                   :text
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  slug                   :string
+#  short_description      :string
+#  how_much               :text
+#  additionnal_conditions :text
+#  how_and_when           :text
+#  limitations            :text
+#  rule_id                :integer(8)
+#  ordre_affichage        :integer(4)
+#  contract_type_id       :integer(8)
+#  archived_at            :datetime
+#  source                 :text
+#
+
 class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch

@@ -1,3 +1,16 @@
+# create_table "rules", id: :serial, force: :cascade do |t|
+#   t.string "name"
+#   t.string "value_eligible"
+#   t.integer "composition_type"
+#   t.integer "variable_id"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.text "description"
+#   t.string "value_ineligible"
+#   t.string "kind"
+#   t.string "operator_kind"
+#   t.index ["variable_id"], name: "index_rules_on_variable_id"
+# end
 class Rule < ApplicationRecord
   include Prefixable
 
