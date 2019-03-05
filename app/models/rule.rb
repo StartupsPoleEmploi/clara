@@ -49,6 +49,14 @@ class Rule < ApplicationRecord
       res[:status] = "nok"
       res[:reason] = "simulation missing"
     end
+    if has_eligible_simulation && !has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "ineligible missing"
+    end
+    if !has_eligible_simulation && has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "eligible missing"
+    end
     return res
   end
 

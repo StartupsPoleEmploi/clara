@@ -36,15 +36,18 @@ describe Rule, type: :model do
       expect(sut).to eq({status: "nok", reason: "simulation missing"})
     end
     it 'is not properly tested when "eligible" case is missing' do
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "eligible_missing")
+      crc_ineligible = create(:custom_rule_check, name: "crc2",  result: "ineligible")
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "eligible_missing", custom_rule_checks: [crc_ineligible])
       sut = complex_rule.tested
       expect(sut).to eq({status: "nok", reason: "eligible missing"})
     end
     it 'is not properly tested when "ineligible" case is missing' do
-      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "ineligible_missing")
+      crc_eligible = create(:custom_rule_check, name: "crc2",  result: "eligible")
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "ineligible_missing", custom_rule_checks: [crc_eligible])
       sut = complex_rule.tested
       expect(sut).to eq({status: "nok", reason: "ineligible missing"})
     end
+
   end
 
   def _nb_of_errors_for(rule)
