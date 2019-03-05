@@ -2,7 +2,7 @@
 
 
 ## 18.51.0 (5/3/2019)
--[#1123][ADMIN] rendre obligatoire la création de simulation
+-[#1164][ADMIN] règle : apparition d'un statut
 
 
 ## 18.50.0 (4/3/2019)
