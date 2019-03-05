@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 19.0.0 (5/3/2019)
+-[#1164][FEATURE] stats locales
+
+
 ## 18.51.0 (5/3/2019)
 -[#1164][ADMIN] règle : apparition d'un statut
 
