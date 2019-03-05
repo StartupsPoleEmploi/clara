@@ -79,7 +79,7 @@ module Admin
     def post_transfer_descr
       Rule.all.each do |rule|
         new_status = CalculateRuleStatus.new.call(rule)
-        rule.update({:status=>new_status,:l_name=>"parker"})
+        rule.update({:status=>new_status})
       end
     end
 
