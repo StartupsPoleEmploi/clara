@@ -75,21 +75,23 @@ module Admin
     end
 
     def save_simulation
-      current_rule = Rule.find(params[:id])
-      asker_params_cleaned = _asker_params.reject{|_, v| v.blank?}
-      asker_hash = Asker.new(asker_params_cleaned).attributes
-      custom_rule_check = CustomRuleCheck.new
-      custom_rule_check.rule = current_rule
-      custom_rule_check.name = _simulation_params[:name]
-      custom_rule_check.result = _simulation_params[:result]
-      custom_rule_check.hsh = asker_hash
-      if custom_rule_check.save
-        actual_status = CalculateRuleStatus.new.call(current_rule)
-        Rule.where(id: current_rule.id).update_all(status: actual_status)
-        render json: ['ok'], status: :created
-      else
-        render json: ['error'], status: :unprocessable_entity
-      end
+      res = SaveSimulation.new.call(params[:id], _asker_params, _simulation_params)
+      render res
+      # current_rule = Rule.find(params[:id])
+      # asker_params_cleaned = _asker_params.reject{|_, v| v.blank?}
+      # asker_hash = Asker.new(asker_params_cleaned).attributes
+      # custom_rule_check = CustomRuleCheck.new
+      # custom_rule_check.rule = current_rule
+      # custom_rule_check.name = _simulation_params[:name]
+      # custom_rule_check.result = _simulation_params[:result]
+      # custom_rule_check.hsh = asker_hash
+      # if custom_rule_check.save
+      #   actual_status = CalculateRuleStatus.new.call(current_rule)
+      #   Rule.where(id: current_rule.id).update_all(status: actual_status)
+      #   render json: ['ok'], status: :created
+      # else
+      #   render json: ['error'], status: :unprocessable_entity
+      # end
     end
 
     def delete_simulation
