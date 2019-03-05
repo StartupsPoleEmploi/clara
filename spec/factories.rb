@@ -117,7 +117,7 @@ FactoryBot.define do
     trait :be_an_adult do
       name 'be_an_adult' 
       kind 'simple' 
-      status "missing_simulation"
+      # status "missing_simulation"
       association :variable, :age
       operator_kind :more_than
       value_eligible '18'

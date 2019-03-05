@@ -1,5 +1,6 @@
 # create_table "rules", id: :serial, force: :cascade do |t|
 #   t.string "name"
+#   t.string "status"
 #   t.string "value_eligible"
 #   t.integer "composition_type"
 #   t.integer "variable_id"

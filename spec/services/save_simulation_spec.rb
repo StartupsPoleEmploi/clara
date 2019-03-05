@@ -5,14 +5,14 @@ describe SaveSimulation do
   describe '.call' do
     it 'ok' do
       r = create(:rule, :be_an_adult)
-      expect(r.status).to eq("missing_simulation")
+      expect(r.status).to eq(nil)
       res = SaveSimulation.new.call(r.id.to_s, _asker_params, _simulation_params)
-      expect(res).to eq("blabla")
+      expect(res).to eq({:json=>["ok"], :status=>:created})
       # expect(r.status).to eq("missing_eligible")
     end
 
     def _simulation_params
-      {"result"=>"ineligible", "name"=>"aah"}
+      {result: "ineligible", name: "aah"}
     end
 
     def _asker_params
