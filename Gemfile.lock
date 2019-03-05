@@ -476,7 +476,7 @@ DEPENDENCIES
   active_type
   administrate (~> 0.10.0)
   administrate-field-ckeditor (~> 0.0.8)
-  annotate (= 2.4.0)
+  annotate
   autoprefixer-rails
   awesome_print
   bcrypt (~> 3.1.7)

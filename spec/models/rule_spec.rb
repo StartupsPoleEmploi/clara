@@ -25,6 +25,7 @@ describe Rule, type: :model do
   describe ".tested" do
     it 'is properly tested when "ineligible" and "eligible" cases are tested' do
       complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "to_be_tested")
+      crc = create(:custom_rule_check)
       sut = complex_rule.tested
       expect(sut).to eq({status: "ok"})
     end
