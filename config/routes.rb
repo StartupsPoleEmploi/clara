@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :custom_filters
     resources :custom_parent_filters
     resources :aids
+    resources :registers
     resources :rules do 
       get 'resolve', on: :member
       post 'save_simulation', on: :member
