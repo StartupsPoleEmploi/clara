@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103128) do
+ActiveRecord::Schema.define(version: 2018_12_10_103129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -168,6 +168,15 @@ ActiveRecord::Schema.define(version: 2018_12_10_103128) do
     t.boolean "confidentiality", default: true
     t.index ["axle_filter_id"], name: "index_need_filters_on_axle_filter_id"
     t.index ["slug"], name: "index_need_filters_on_slug", unique: true
+  end
+
+  create_table "registers", force: :cascade do |t|
+    t.string "url"
+    t.string "geo"
+    t.string "moment"
+    t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rule_checks", force: :cascade do |t|
