@@ -84,9 +84,6 @@ module Admin
       current_rule = c.rule
       c.destroy
       actual_status = CalculateRuleStatus.new.call(current_rule)
-      p '- - - - - - - - - - - - - - actual_status- - - - - - - - - - - - - - - -' 
-      pp actual_status
-      p ''
       Rule.where(id: current_rule.id).update_all(status: actual_status)
       # current_rule.status = CalculateRuleStatus.new.call(current_rule)
       # current_rule.save
