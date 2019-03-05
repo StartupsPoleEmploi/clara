@@ -22,6 +22,29 @@ describe Rule, type: :model do
     Rule.find_by(name: name) != nil
   end
 
+  describe ".tested" do
+    it 'is properly tested when "ineligible" and "eligible" cases are tested' do
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "to_be_tested")
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "ok"})
+    end
+    it 'is not properly tested when not simulated' do
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "not_simulated")
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "simulation missing"})
+    end
+    it 'is not properly tested when "eligible" case is missing' do
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "eligible_missing")
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "eligible missing"})
+    end
+    it 'is not properly tested when "ineligible" case is missing' do
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "ineligible_missing")
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "ineligible missing"})
+    end
+  end
+
   def _nb_of_errors_for(rule)
     rule.errors.messages.size
   end

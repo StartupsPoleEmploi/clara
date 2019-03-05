@@ -24,4 +24,8 @@ class Rule < ApplicationRecord
   validates :name, uniqueness: true
   validates_with RuleValidator
 
+  def tested
+
+  end
+
 end
