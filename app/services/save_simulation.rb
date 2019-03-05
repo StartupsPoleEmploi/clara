@@ -3,6 +3,9 @@ class SaveSimulation
   def call(given_id, asker_params, simulation_params)
     res = {}
     current_rule = Rule.find(given_id)
+    p '- - - - - - - - - - - - - - current_rule- - - - - - - - - - - - - - - -' 
+    pp current_rule
+    p ''
     asker_params_cleaned = asker_params.reject{|_, v| v.blank?}
     asker_hash = Asker.new(asker_params_cleaned).attributes
     custom_rule_check = CustomRuleCheck.new

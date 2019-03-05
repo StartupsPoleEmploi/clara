@@ -3,12 +3,16 @@ require 'rails_helper'
 describe SaveSimulation do
 
   describe '.call' do
-    it 'ok' do
+    it 'Nominal : render json "ok" and modify status of underlying rule' do
+      # given
       r = create(:rule, :be_an_adult)
       expect(r.status).to eq(nil)
-      res = SaveSimulation.new.call(r.id.to_s, _asker_params, _simulation_params)
+      # when
+      res = SaveSimulation.new.call(r.id, _asker_params, _simulation_params)
+      # then
       expect(res).to eq({:json=>["ok"], :status=>:created})
-      # expect(r.status).to eq("missing_eligible")
+      new_status = Rule.find(r.id).attributes["status"]
+      expect(new_status).to eq("missing_eligible")
     end
 
     def _simulation_params
