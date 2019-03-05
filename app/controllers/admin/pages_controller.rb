@@ -77,29 +77,10 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      Variable.find_by(name: "v_location_city").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_route").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_label").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_street_number").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_country").update(variable_kind: "string")
-      Variable.find_by(name: "v_category").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_diplome").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_allocation_value_min").update(variable_kind: "integer")
-      Variable.find_by(name: "v_qpv").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_handicap").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_autres").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_protection_internationale").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_detenu").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_harki").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_location_citycode").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_state").update(variable_kind: "string")
-      Variable.find_by(name: "v_location_zipcode").update(variable_kind: "string")
-      Variable.find_by(name: "v_spectacle").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_allocation_type").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_zrr").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_cadre").update(variable_kind: "selectionnable")
-      Variable.find_by(name: "v_age").update(variable_kind: "integer")
-      Variable.find_by(name: "v_duree_d_inscription").update(variable_kind: "selectionnable")
+      Rule.all.each do |rule|
+        new_status = CalculateRuleStatus.new.call(rule)
+        rule.update({:status=>new_status,:l_name=>"parker"})
+      end
     end
 
 
