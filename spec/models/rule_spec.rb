@@ -22,6 +22,34 @@ describe Rule, type: :model do
     Rule.find_by(name: name) != nil
   end
 
+  describe ".tested" do
+    it 'is properly tested when "ineligible" and "eligible" cases are tested' do
+      crc_eligible = create(:custom_rule_check, name: "crc1", result: "eligible")
+      crc_ineligible = create(:custom_rule_check, name: "crc2",  result: "ineligible")
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "to_be_tested", custom_rule_checks: [crc_eligible, crc_ineligible])
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "ok"})
+    end
+    it 'is not properly tested when not simulated' do
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "not_simulated")
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "simulation missing"})
+    end
+    it 'is not properly tested when "eligible" case is missing' do
+      crc_ineligible = create(:custom_rule_check, name: "crc2",  result: "ineligible")
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "eligible_missing", custom_rule_checks: [crc_ineligible])
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "eligible missing"})
+    end
+    it 'is not properly tested when "ineligible" case is missing' do
+      crc_eligible = create(:custom_rule_check, name: "crc2",  result: "eligible")
+      complex_rule = create(:rule, :be_an_adult_or_a_spectacles, name: "ineligible_missing", custom_rule_checks: [crc_eligible])
+      sut = complex_rule.tested
+      expect(sut).to eq({status: "nok", reason: "ineligible missing"})
+    end
+
+  end
+
   def _nb_of_errors_for(rule)
     rule.errors.messages.size
   end

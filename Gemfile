@@ -25,7 +25,6 @@ gem "friendly_id", "~> 5.1.0"
 gem "loofah", ">= 2.2.3"
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "annotate", "2.4.0"
 gem "autoprefixer-rails"
 gem "active_type"
 gem "bulk_insert"
@@ -96,5 +95,6 @@ group :development do
   gem "rack-livereload"
   gem "rb-fsevent", require: false
   gem "letter_opener_web", "~> 1.0"
+  gem "annotate", "2.4.0"
 end
 

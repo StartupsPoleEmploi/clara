@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: custom_parent_filters
+#
+#  id          :integer(8)      not null, primary key
+#  name        :string
+#  description :text
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  slug        :string
+#
+
 class CustomParentFilter < ApplicationRecord 
   extend FriendlyId
 

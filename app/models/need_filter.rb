@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: need_filters
+#
+#  id              :integer(8)      not null, primary key
+#  name            :string
+#  description     :text
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  slug            :string
+#  axle_filter_id  :integer(8)
+#  confidentiality :boolean         default("true")
+#
+
 class NeedFilter < ApplicationRecord 
   extend FriendlyId
 

@@ -187,7 +187,7 @@ describe ResultSituation do
     end
     it 'Should return "indisponible" in the worst scenario' do
       sut = ResultSituation.new(nil, nil)
-      expect(sut.location_label).to eq("indisponible")
+      expect(sut.location_label).to eq("Non renseignée")
     end
   end
 end

@@ -1,3 +1,17 @@
+# create_table "rules", id: :serial, force: :cascade do |t|
+#   t.string "name"
+#   t.string "status"
+#   t.string "value_eligible"
+#   t.integer "composition_type"
+#   t.integer "variable_id"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.text "description"
+#   t.string "value_ineligible"
+#   t.string "kind"
+#   t.string "operator_kind"
+#   t.index ["variable_id"], name: "index_rules_on_variable_id"
+# end
 class Rule < ApplicationRecord
   include Prefixable
 
@@ -23,5 +37,28 @@ class Rule < ApplicationRecord
 
   validates :name, uniqueness: true
   validates_with RuleValidator
+
+  def tested
+    res = {}
+    all_crc = custom_rule_checks.map{|e| e.attributes}
+    has_eligible_simulation = all_crc.any? { |e| e["result"] == "eligible"  }
+    has_ineligible_simulation = all_crc.any? { |e| e["result"] == "ineligible"  }
+    if has_eligible_simulation && has_ineligible_simulation
+      res[:status] = "ok"
+    end
+    if !has_eligible_simulation && !has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "simulation missing"
+    end
+    if has_eligible_simulation && !has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "ineligible missing"
+    end
+    if !has_eligible_simulation && has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "eligible missing"
+    end
+    return res
+  end
 
 end

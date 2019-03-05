@@ -75,24 +75,16 @@ module Admin
     end
 
     def save_simulation
-      current_rule = Rule.find(params[:id])
-      asker_params_cleaned = _asker_params.reject{|_, v| v.blank?}
-      asker_hash = Asker.new(asker_params_cleaned).attributes
-      custom_rule_check = CustomRuleCheck.new
-      custom_rule_check.rule = current_rule
-      custom_rule_check.name = _simulation_params[:name]
-      custom_rule_check.result = _simulation_params[:result]
-      custom_rule_check.hsh = asker_hash
-      if custom_rule_check.save
-        render json: ['ok'], status: :created
-      else
-        render json: ['error'], status: :unprocessable_entity
-      end
+      res = SaveSimulation.new.call(params[:id], _asker_params, _simulation_params)
+      render res
     end
 
     def delete_simulation
       c = CustomRuleCheck.find(params[:id])
+      current_rule = c.rule
       c.destroy
+      actual_status = CalculateRuleStatus.new.call(current_rule)
+      Rule.where(id: current_rule.id).update_all(status: actual_status)
       head :no_content
     end
 
@@ -105,13 +97,32 @@ module Admin
 
     def _asker_params(stubbed_params=nil)
       internal_params = stubbed_params == nil ? params : stubbed_params
-      internal_params.require(:asker).permit(:v_handicap, :v_spectacle, :v_diplome, :v_cadre,
-        :v_category, :v_duree_d_inscription, :v_allocation_value_min, :v_allocation_type,
-        :v_location_label, :v_qpv, :v_zrr, :v_age, :v_location_city, :v_location_citycode, :v_location_country, :v_location_label, :v_location_route, :v_location_state, :v_location_street_number, :v_location_zipcode)
+      internal_params.require(:asker).permit(
+        :v_handicap, 
+        :v_spectacle, 
+        :v_diplome, 
+        :v_cadre,
+        :v_category, 
+        :v_duree_d_inscription, 
+        :v_allocation_value_min, 
+        :v_allocation_type,
+        :v_location_label, 
+        :v_qpv, 
+        :v_zrr, 
+        :v_age, 
+        :v_location_city, 
+        :v_location_citycode, 
+        :v_location_country, 
+        :v_location_label, 
+        :v_location_route, 
+        :v_location_state, 
+        :v_location_street_number, 
+        :v_location_zipcode
+      ).to_h
     end
 
     def _simulation_params
-      params.require(:simulation).permit(:result, :name)
+      params.require(:simulation).permit(:result, :name).to_h
     end
 
   end

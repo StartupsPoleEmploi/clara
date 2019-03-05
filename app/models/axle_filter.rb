@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: axle_filters
+#
+#  id               :integer(8)      not null, primary key
+#  name             :string
+#  description      :text
+#  created_at       :datetime        not null
+#  updated_at       :datetime        not null
+#  slug             :string
+#  domain_filter_id :integer(8)
+#
+
 class AxleFilter < ApplicationRecord 
   extend FriendlyId
 

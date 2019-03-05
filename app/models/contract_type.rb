@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: contract_types
+#
+#  id              :integer(8)      not null, primary key
+#  name            :string
+#  description     :text
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  ordre_affichage :integer(4)
+#  icon            :string
+#  slug            :string
+#  category        :string
+#  plural          :string
+#
+
 class ContractType < ApplicationRecord 
   extend FriendlyId
 
