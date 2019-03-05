@@ -49,6 +49,7 @@ gem "oj"
 # Admin
 gem "paper_trail", "~> 9.0.0"
 gem "administrate"
+
 gem "administrate-field-ckeditor", "~> 0.0.8"
 gem "omniauth-google-oauth2", "~> 0.5"
 
