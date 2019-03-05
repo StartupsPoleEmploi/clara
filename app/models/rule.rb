@@ -25,7 +25,9 @@ class Rule < ApplicationRecord
   validates_with RuleValidator
 
   def tested
-
+    {
+      status: "ok"
+    }
   end
 
 end
