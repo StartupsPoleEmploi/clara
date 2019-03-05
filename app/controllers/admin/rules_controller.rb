@@ -85,8 +85,6 @@ module Admin
       c.destroy
       actual_status = CalculateRuleStatus.new.call(current_rule)
       Rule.where(id: current_rule.id).update_all(status: actual_status)
-      # current_rule.status = CalculateRuleStatus.new.call(current_rule)
-      # current_rule.save
       head :no_content
     end
 

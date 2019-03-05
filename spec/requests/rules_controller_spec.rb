@@ -21,8 +21,8 @@ describe Admin::RulesController, type: :request do
   end
   describe "DELETE delete_simulation" do
     it "Can be successful" do
-      adult_rule = create(:rule, :be_an_adult)
       custom_rule_check = create(:custom_rule_check, name: 'any')
+      adult_rule = create(:rule, :be_an_adult, custom_rule_checks: [custom_rule_check])
       delete delete_simulation_admin_rule_path(id: custom_rule_check.id)
       expect(response.status).to eq(204)
     end
