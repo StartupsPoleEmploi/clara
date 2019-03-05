@@ -48,7 +48,7 @@ gem "oj"
 
 # Admin
 gem "paper_trail", "~> 9.0.0"
-gem "administrate", "~> 0.10.0"
+gem "administrate"
 gem "administrate-field-ckeditor", "~> 0.0.8"
 gem "omniauth-google-oauth2", "~> 0.5"
 
@@ -62,6 +62,7 @@ gem "knock"
 gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
 gem "i18n-js"
+gem "administrate_exportable"
 
 group :development, :test do
   gem "byebug", platform: :mri
