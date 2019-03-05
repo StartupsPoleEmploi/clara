@@ -1,0 +1,3 @@
+class Register < ApplicationRecord
+
+end
