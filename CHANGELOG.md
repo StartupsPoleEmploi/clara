@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 18.52.0 (7/3/2019)
+-[#1118][ADMIN] simulateur de règle simple
+
+
 ## 18.51.0 (5/3/2019)
 -[#1164][ADMIN] règle : apparition d'un statut
 
