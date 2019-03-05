@@ -84,6 +84,8 @@ module Admin
       custom_rule_check.result = _simulation_params[:result]
       custom_rule_check.hsh = asker_hash
       if custom_rule_check.save
+        actual_status = CalculateRuleStatus.new.call(current_rule)
+        Rule.where(id: current_rule.id).update_all(status: actual_status)
         render json: ['ok'], status: :created
       else
         render json: ['error'], status: :unprocessable_entity
@@ -92,7 +94,15 @@ module Admin
 
     def delete_simulation
       c = CustomRuleCheck.find(params[:id])
+      current_rule = c.rule
       c.destroy
+      actual_status = CalculateRuleStatus.new.call(current_rule)
+      p '- - - - - - - - - - - - - - actual_status- - - - - - - - - - - - - - - -' 
+      pp actual_status
+      p ''
+      Rule.where(id: current_rule.id).update_all(status: actual_status)
+      # current_rule.status = CalculateRuleStatus.new.call(current_rule)
+      # current_rule.save
       head :no_content
     end
 

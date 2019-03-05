@@ -23,7 +23,8 @@ var CSimulatorTableRow = Vue.component('c-simulator-table-row', {
           authenticity_token: window._token
         },
         success:function(data){
-          that.$root.remove_crc(that.id);
+          // that.$root.remove_crc(that.id);
+          window.location.reload();
         }
       });
     }
