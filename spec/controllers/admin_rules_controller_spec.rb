@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe Admin::RulesController do
   describe 'Params' do
-    it 'Params returns a ActionController::Parameters' do
+    it 'Params returns a Hash' do
       stubbed_params = ActionController::Parameters.new({asker: {v_handicap:"oui"}})
       res = Admin::RulesController.new._asker_params(stubbed_params)
-      expect(res.is_a?(ActionController::Parameters)).to eq true
+      expect(res.is_a?(Hash)).to eq true
     end
     it 'Params of simulation should fullfil all hash values' do
       full_asker = RandomAskerService.new.full.attributes
