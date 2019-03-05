@@ -38,9 +38,18 @@ class Rule < ApplicationRecord
   validates_with RuleValidator
 
   def tested
-    {
-      status: "ok"
-    }
+    res = {}
+    all_crc = custom_rule_checks.map{|e| e.attributes}
+    has_eligible_simulation = all_crc.any? { |e| e["result"] == "eligible"  }
+    has_ineligible_simulation = all_crc.any? { |e| e["result"] == "ineligible"  }
+    if has_eligible_simulation && has_ineligible_simulation
+      res[:status] = "ok"
+    end
+    if !has_eligible_simulation && !has_ineligible_simulation
+      res[:status] = "nok"
+      res[:reason] = "simulation missing"
+    end
+    return res
   end
 
 end
