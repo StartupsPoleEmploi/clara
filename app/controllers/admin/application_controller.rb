@@ -32,11 +32,6 @@ module Admin
       redirect_to signin_path unless current_user_email
     end
 
-    # HACK : this is the administrate 0.10.0 version
-    def sanitized_order_params
-      params.permit(:search, :id, :order, :page, :per_page, :direction, :orders)
-    end
-
     # Overrides this to change nav state
     def nav_link_state(resource)
       comparable = resource_name.to_s.pluralize
