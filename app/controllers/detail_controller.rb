@@ -13,7 +13,7 @@ class DetailController < ApplicationController
         @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
       end
       @loaded = DetailService.new(@aid).hashified_eligibility_and_rules(@asker)
-      RecordRegister.new.call(session, @asker)
+      RecordRegister.new.call(session, @asker, params[:id])
     else
       @loaded = DetailService.new(@aid).hashified_aid
     end
