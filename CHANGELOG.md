@@ -2,6 +2,10 @@
 
 
 
+## 19.0.1 (6/3/2019)
+-[#1168][BUG] omniauth bug
+
+
 ## 19.0.0 (5/3/2019)
 -[#1164][FEATURE] stats locales
 
