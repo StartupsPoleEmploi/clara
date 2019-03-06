@@ -282,7 +282,7 @@ GEM
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
-    omniauth-google-oauth2 (0.5.4)
+    omniauth-google-oauth2 (0.5.3)
       jwt (>= 1.5)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.5)
@@ -511,7 +511,7 @@ DEPENDENCIES
   mina-puma!
   newrelic_rpm
   oj
-  omniauth-google-oauth2 (~> 0.5)
+  omniauth-google-oauth2 (= 0.5.3)
   paper_trail (~> 9.0.0)
   pg (~> 0.18)
   pg_search
