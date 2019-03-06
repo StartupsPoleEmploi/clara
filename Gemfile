@@ -52,6 +52,8 @@ gem "administrate"
 
 gem "administrate-field-ckeditor", "~> 0.0.8"
 gem "omniauth-google-oauth2", "0.5.3"
+gem "omniauth", "1.8.1"
+gem "omniauth-oauth2", "1.5.0"
 
 gem "mina", require: false
 gem "mina-puma", require: false,  github: 'bdavidxyz/mina-puma'
