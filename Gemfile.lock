@@ -511,9 +511,7 @@ DEPENDENCIES
   mina-puma!
   newrelic_rpm
   oj
-  omniauth (= 1.8.1)
-  omniauth-google-oauth2 (= 0.5.3)
-  omniauth-oauth2 (= 1.5.0)
+  omniauth-google-oauth2
   paper_trail (~> 9.0.0)
   pg (~> 0.18)
   pg_search
