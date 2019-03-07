@@ -1,10 +1,6 @@
 <%- v = view_object(:navigation) %>
 
 <nav class="navigation" role="navigation">
-  <div class="medium-bottom-margin">
-    <strong><%=current_user_email%></strong>
-    <%= link_to 'Se déconnecter', signout_path  %>    
-  </div>
 
   <%= link_to(
     "Rubriques",
