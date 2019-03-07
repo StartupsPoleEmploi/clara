@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      post 'user_token'     => 'user_token#create'
+      post 'api_user_token' => 'api_user_token#create'
+      # post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
       get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
