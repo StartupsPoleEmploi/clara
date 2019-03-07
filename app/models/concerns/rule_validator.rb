@@ -19,6 +19,7 @@ class RuleValidator < ActiveModel::Validator
     attr_h = JSON.parse(record.to_json(:include => {slave_rules: {only:[:id, :name]}}))
     attributes_whitelist = ["name", 
                               "kind", 
+                              "simulated", 
                               "description", 
                               "slave_rules", 
                               "composition_type", 
@@ -80,6 +81,7 @@ class RuleValidator < ActiveModel::Validator
     attr_h = JSON.parse(record.to_json(:include => {slave_rules: {only:[:id, :name]}}))
     attributes_whitelist = ["name", 
                               "kind", 
+                              "simulated", 
                               "description", 
                               "variable_id", 
                               "operator_kind", 
