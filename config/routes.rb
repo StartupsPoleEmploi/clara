@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :explicitations
+    resources :api_users
     resources :users
     resources :domain_filters
     resources :axle_filters
