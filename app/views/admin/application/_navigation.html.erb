@@ -2,6 +2,9 @@
 
 <nav class="navigation" role="navigation">
 
+  Signed in as: <%= current_user.email %>
+  <%= button_to 'Sign out', sign_out_path, method: :delete %>
+
 
   <%= link_to(
     "Rubriques",
