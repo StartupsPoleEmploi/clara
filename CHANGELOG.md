@@ -2,6 +2,10 @@
 
 
 
+## 19.2.0 (8/3/2019)
+-[#1175][FEATURE] fonction "forget password" 
+
+
 ## 19.1.0 (7/3/2019)
 -[#1173][TECH] refondre l'authentification
 
