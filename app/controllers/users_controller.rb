@@ -1,18 +1,17 @@
 class UsersController < Clearance::UsersController
+
+  http_basic_authenticate_with name: ENV["ARA_ADMIN_NAME"], password: ENV["ARA_ADMIN_PASSWORD"]
+
   before_action :redirect_signed_in_users, only: [:create, :new]
   skip_before_action :require_login, only: [:create, :new], raise: false
   skip_before_action :authorize, only: [:create, :new], raise: false
 
   def new
-    p '- - - - - - - - - - - - - - UsersController#new- - - - - - - - - - - - - - - -' 
-    p ''
     @user = user_from_params
     render template: "users/new"
   end
 
   def create
-    p '- - - - - - - - - - - - - - UsersController#create- - - - - - - - - - - - - - - -' 
-    p ''
     @user = user_from_params
 
     if @user.save

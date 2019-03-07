@@ -14,11 +14,11 @@ fr:
       user:
         <<: *labels
     user:
-      detail: Détails de l'utilisateur API
-      modify: Modifier l'utilisateur API
-      creation: Ajouter un nouvel utilisateur API
-      creation_title: Création d'un nouvel utilisateur API
+      detail: Détails de l'administrateur
+      modify: Modifier l'administrateur
+      creation: Ajouter un nouvel administrateur
+      creation_title: Création d'un nouvel administrateur
     submit:
       user:
-        create: "Créer cet utilisateur API"
-        update: "Mettre à jour cet utilisateur API"
+        create: "Créer cet administrateur"
+        update: "Mettre à jour cet administrateur"
