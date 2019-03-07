@@ -43,7 +43,7 @@ module Admin
 
     protected
     def user_for_paper_trail
-      current_user_email ? current_user_email : 'Inconnu'
+      current_user.email ? current_user.email : 'Inconnu'
     end
 
     private
