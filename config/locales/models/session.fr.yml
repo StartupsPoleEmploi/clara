@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    labels: &labels
+    models: 
+      session: Session
+    attributes:
+      session:
+        <<: *labels
+  helpers:
+    label:
+      session:
+        <<: *labels
+    session:
+      creation: Ajouter une nouvelle session
+    submit:
+      session:
+        create: "Se connecter à l'admin"
