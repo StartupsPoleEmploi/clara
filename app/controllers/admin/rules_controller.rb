@@ -84,7 +84,7 @@ module Admin
       current_rule = c.rule
       c.destroy
       actual_status = CalculateRuleSimulated.new.call(current_rule)
-      Rule.where(id: current_rule.id).update_all(status: actual_status)
+      Rule.where(id: current_rule.id).update_all(simulated: actual_status)
       head :no_content
     end
 
