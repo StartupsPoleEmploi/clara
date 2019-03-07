@@ -1,6 +1,6 @@
 require 'active_support/deprecation'
 
-class Clearance::PasswordsController < Clearance::BaseController
+class PasswordsController < Clearance::PasswordsController
   if respond_to?(:before_action)
     skip_before_action :require_login,
       only: [:create, :edit, :new, :update],
@@ -20,8 +20,6 @@ class Clearance::PasswordsController < Clearance::BaseController
   end
 
   def create
-    p '- - - - - - - - - - - - - - :Passwords#create- - - - - - - - - - - - - - - -' 
-    p ''
     if user = find_user_for_create
       user.forgot_password!
       deliver_email(user)
@@ -30,8 +28,6 @@ class Clearance::PasswordsController < Clearance::BaseController
   end
 
   def edit
-    p '- - - - - - - - - - - - - - :Passwords#edit- - - - - - - - - - - - - - - -' 
-    p ''
     @user = find_user_for_edit
 
     if params[:token]
@@ -47,8 +43,6 @@ class Clearance::PasswordsController < Clearance::BaseController
   end
 
   def update
-    p '- - - - - - - - - - - - - - update- - - - - - - - - - - - - - - -' 
-    p ''
     @user = find_user_for_update
 
     if @user.update_password password_reset_params
