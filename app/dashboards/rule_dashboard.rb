@@ -14,7 +14,7 @@ class RuleDashboard < Administrate::BaseDashboard
     aids:             Field::HasMany,
     id:               Field::Number,
     name:             Field::String,
-    status:             Field::String,
+    simulated:        Field::String,
     description:      Field::Text,
     value_eligible:   RuleValueField,
     value_ineligible: Field::String,
@@ -31,7 +31,7 @@ class RuleDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :status,
+    :simulated,
     :variable,
     :aids,
   ].freeze
@@ -41,7 +41,7 @@ class RuleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :id,
     :name,
-    :status,
+    :simulated,
     :kind,
     :slave_rules,
     :variable,

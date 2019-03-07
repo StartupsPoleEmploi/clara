@@ -83,7 +83,7 @@ module Admin
       c = CustomRuleCheck.find(params[:id])
       current_rule = c.rule
       c.destroy
-      actual_status = CalculateRuleStatus.new.call(current_rule)
+      actual_status = CalculateRuleSimulated.new.call(current_rule)
       Rule.where(id: current_rule.id).update_all(status: actual_status)
       head :no_content
     end

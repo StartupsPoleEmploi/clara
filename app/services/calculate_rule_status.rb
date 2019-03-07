@@ -1,4 +1,4 @@
-class CalculateRuleStatus
+class CalculateRuleSimulated
 
   def call(rule)
     res = ""
