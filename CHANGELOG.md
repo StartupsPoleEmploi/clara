@@ -2,6 +2,10 @@
 
 
 
+## 19.1.1 (7/3/2019)
+-[#1171][BUG] une aide éligible en simu ne l'est pas en front
+
+
 ## 19.1.0 (7/3/2019)
 -[#1173][TECH] refondre l'authentification
 
