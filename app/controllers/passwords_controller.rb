@@ -1,23 +1,14 @@
 require 'active_support/deprecation'
 
 class PasswordsController < Clearance::PasswordsController
-  if respond_to?(:before_action)
-    skip_before_action :require_login,
-      only: [:create, :edit, :new, :update],
-      raise: false
-    skip_before_action :authorize,
-      only: [:create, :edit, :new, :update],
-      raise: false
-    before_action :ensure_existing_user, only: [:edit, :update]
-  else
-    skip_before_filter :require_login,
-      only: [:create, :edit, :new, :update],
-      raise: false
-    skip_before_filter :authorize,
-      only: [:create, :edit, :new, :update],
-      raise: false
-    before_filter :ensure_existing_user, only: [:edit, :update]
-  end
+
+  skip_before_action :require_login,
+    only: [:create, :edit, :new, :update],
+    raise: false
+  skip_before_action :authorize,
+    only: [:create, :edit, :new, :update],
+    raise: false
+  before_action :ensure_existing_user, only: [:edit, :update]
 
   def create
     if user = find_user_for_create

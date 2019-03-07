@@ -1,13 +1,7 @@
 class UsersController < Clearance::UsersController
-  if respond_to?(:before_action)
-    before_action :redirect_signed_in_users, only: [:create, :new]
-    skip_before_action :require_login, only: [:create, :new], raise: false
-    skip_before_action :authorize, only: [:create, :new], raise: false
-  else
-    before_filter :redirect_signed_in_users, only: [:create, :new]
-    skip_before_filter :require_login, only: [:create, :new], raise: false
-    skip_before_filter :authorize, only: [:create, :new], raise: false
-  end
+  before_action :redirect_signed_in_users, only: [:create, :new]
+  skip_before_action :require_login, only: [:create, :new], raise: false
+  skip_before_action :authorize, only: [:create, :new], raise: false
 
   def new
     p '- - - - - - - - - - - - - - UsersController#new- - - - - - - - - - - - - - - -' 

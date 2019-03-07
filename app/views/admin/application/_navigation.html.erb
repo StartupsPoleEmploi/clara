@@ -2,9 +2,10 @@
 
 <nav class="navigation" role="navigation">
 
-  Signed in as: <%= current_user.email %>
-  <%= button_to 'Sign out', sign_out_path, method: :delete %>
-
+  <div class="medium-bottom-margin">
+    <strong><%=current_user.email%></strong>
+    <div><%= link_to 'Se déconnecter', sign_out_path  %></div>
+  </div>
 
   <%= link_to(
     "Rubriques",
