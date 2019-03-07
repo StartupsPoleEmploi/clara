@@ -2,8 +2,12 @@
 
 <nav class="navigation" role="navigation">
   <div class="medium-bottom-margin">
-    <strong><%=current_user_email%></strong>
-    <%= link_to 'Se déconnecter', signout_path  %>    
+    <% if signed_in? %>
+      Signed in as: <%= current_user.email %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+    <% end %>
   </div>
 
   <%= link_to(

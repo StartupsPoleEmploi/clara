@@ -6,15 +6,13 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+      include Clearance::Controller
+    before_action :require_login
     before_action :set_locale
-    before_action :authenticate_admin
+    # before_action :authenticate_admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
     
-    # http_basic_authenticate_with(
-    #   name: ENV.fetch("ARA_ADMIN_NAME"),
-    #   password: ENV.fetch("ARA_ADMIN_PASSWORD")
-    # )
     def set_locale
       I18n.locale = extract_locale || I18n.default_locale
     end
