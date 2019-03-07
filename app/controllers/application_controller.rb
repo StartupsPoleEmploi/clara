@@ -2,6 +2,7 @@ require 'yaml'
 require 'asker'
 
 class ApplicationController < ActionController::Base
+  include Clearance::Controller
   protect_from_forgery with: :exception
 
   # back button that works, see http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html

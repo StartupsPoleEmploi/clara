@@ -77,16 +77,16 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      all_statuses = {} 
+      simuls = {} 
       Rule.all.each do |rule|
-        new_status = CalculateRuleStatus.new.call(rule)
-        all_statuses[new_status] = [] if all_statuses[new_status] == nil
-        all_statuses[new_status] << rule.id
+        new_simulated = CalculateRuleSimulated.new.call(rule)
+        simuls[new_simulated] = [] if simuls[new_simulated] == nil
+        simuls[new_simulated] << rule.id
       end
-      Rule.where(id: all_statuses["ok"]).update_all(status: "ok")
-      Rule.where(id: all_statuses["missing_simulation"]).update_all(status: "missing_simulation")
-      Rule.where(id: all_statuses["missing_eligible"]).update_all(status: "missing_eligible")
-      Rule.where(id: all_statuses["missing_ineligible"]).update_all(status: "missing_ineligible")
+      Rule.where(id: simuls["ok"]).update_all(simulated: "ok")
+      Rule.where(id: simuls["missing_simulation"]).update_all(simulated: "missing_simulation")
+      Rule.where(id: simuls["missing_eligible"]).update_all(simulated: "missing_eligible")
+      Rule.where(id: simuls["missing_ineligible"]).update_all(simulated: "missing_ineligible")
       render json: {
         status: "ok"
       }

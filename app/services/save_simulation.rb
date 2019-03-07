@@ -12,8 +12,8 @@ class SaveSimulation
     custom_rule_check.hsh = asker_hash
     creation_of_crc_worked = custom_rule_check.save
     if creation_of_crc_worked
-      actual_status = CalculateRuleStatus.new.call(current_rule)
-      Rule.where(id: current_rule.id).update_all(status: actual_status)
+      actual_status = CalculateRuleSimulated.new.call(current_rule)
+      Rule.where(id: current_rule.id).update_all(simulated: actual_status)
       res[:json] = ["ok"]
       res[:status] = :created
     else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_103129) do
+ActiveRecord::Schema.define(version: 2019_03_07_100359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2018_12_10_103129) do
   create_table "aids_need_filters", id: false, force: :cascade do |t|
     t.bigint "need_filter_id", null: false
     t.bigint "aid_id", null: false
+  end
+
+  create_table "api_users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_api_users_on_email"
   end
 
   create_table "axle_filters", force: :cascade do |t|
@@ -196,7 +204,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_103129) do
     t.string "value_ineligible"
     t.string "kind"
     t.string "operator_kind"
-    t.string "status"
+    t.string "simulated"
     t.index ["variable_id"], name: "index_rules_on_variable_id"
   end
 
@@ -209,10 +217,14 @@ ActiveRecord::Schema.define(version: 2018_12_10_103129) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128, null: false
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128, null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   create_table "variables", id: :serial, force: :cascade do |t|

@@ -17,7 +17,7 @@ FactoryBot.define do
   factory :stat do
   end
 
-  factory :user do
+  factory :api_user do
     trait :fake do
       email "foo@bar.com"
       password "secret"

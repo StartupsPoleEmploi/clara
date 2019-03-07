@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class UserDashboard < Administrate::BaseDashboard
+class ApiUserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,12 +9,11 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    email: Field::String,
+    password: Field::String,
+    password_confirmation: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    email: Field::String,
-    encrypted_password: Field::String,
-    confirmation_token: Field::String,
-    remember_token: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,9 +22,6 @@ class UserDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :id,
-    :created_at,
-    :updated_at,
     :email,
   ].freeze
 
@@ -33,9 +29,9 @@ class UserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :id,
+    :email,
     :created_at,
     :updated_at,
-    :email,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -43,9 +39,8 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :email,
-    :encrypted_password,
-    :confirmation_token,
-    :remember_token,
+    :password,
+    :password_confirmation,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

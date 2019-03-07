@@ -51,7 +51,7 @@ gem "paper_trail", "~> 9.0.0"
 gem "administrate"
 
 gem "administrate-field-ckeditor", "~> 0.0.8"
-gem "omniauth-google-oauth2"
+# gem "omniauth-google-oauth2"
 
 gem "mina", require: false
 gem "mina-puma", require: false,  github: 'bdavidxyz/mina-puma'
@@ -64,6 +64,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
 gem "i18n-js"
 gem "administrate_exportable"
+gem "clearance"
 
 group :development, :test do
   gem "byebug", platform: :mri

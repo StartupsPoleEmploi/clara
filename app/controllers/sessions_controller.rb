@@ -1,53 +1,52 @@
-class SessionsController < ApplicationController
-
-  def new
-    redirect_to(session[:user_email] ? admin_root_path : google_oauth_path)
-  end
+class SessionsController < Clearance::SessionsController
+  
+  before_action :redirect_signed_in_users, only: [:new]
+  skip_before_action :require_login,
+    only: [:create, :new, :destroy],
+    raise: false
+  skip_before_action :authorize,
+    only: [:create, :new, :destroy],
+    raise: false
 
   def create
-    token = extract_token_from(request)
-    email = extract_email_from(request)
-    if ENV['ARA_AUTH_ADMIN_USERS'] && ENV['ARA_AUTH_ADMIN_USERS'].split(',').include?(email)
-      reset_session
-      session[:user_email] = email
-      session[:user_token] = token
-      flash[:success] = "Bienvenue #{email} !"
-      my_redirect_to admin_root_path
-    else
-      flash[:error] = 'Erreur d\'authentification'
-      redirect_to root_path
+    @user = authenticate(params)
+
+    sign_in(@user) do |status|
+      if status.success?
+        redirect_back_or url_after_create
+      else
+        flash.now.notice = status.failure_message
+        render template: "sessions/new", status: :unauthorized
+      end
     end
   end
 
   def destroy
-    reset_session
-    flash[:notice] = 'Au revoir !'
-    redirect_to root_url
+    sign_out
+    redirect_to url_after_destroy
   end
 
-  def failure
-    redirect_to root_url, error: 'Erreur d\'authentification : #{params[:message].humanize}'
+  def new
+    render template: "sessions/new"
   end
 
   private
-  def extract_token_from(the_request)
-    res = ""
-    begin
-      res = the_request.env["omniauth.auth"]["credentials"]["token"]
-    rescue Exception => e
-      res = ""
+
+  def redirect_signed_in_users
+    if signed_in?
+      redirect_to url_for_signed_in_users
     end
-    res
   end
 
-  def extract_email_from(the_request)
-    is_valid = 
-    !!the_request && 
-      the_request.respond_to?(:env) && 
-      the_request.env["omniauth.auth"].is_a?(Hash) && 
-      the_request.env["omniauth.auth"]["info"].is_a?(Hash)
-
-     is_valid ? the_request.env["omniauth.auth"]["info"]["email"] : ""
+  def url_after_create
+    Clearance.configuration.redirect_url
   end
 
+  def url_after_destroy
+    sign_in_url
+  end
+
+  def url_for_signed_in_users
+    url_after_create
+  end
 end

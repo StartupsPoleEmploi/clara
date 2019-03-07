@@ -1,9 +1,10 @@
 <%- v = view_object(:navigation) %>
 
 <nav class="navigation" role="navigation">
+
   <div class="medium-bottom-margin">
-    <strong><%=current_user_email%></strong>
-    <%= link_to 'Se déconnecter', signout_path  %>    
+    <strong><%=current_user.email%></strong>
+    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete  %></div>
   </div>
 
   <%= link_to(

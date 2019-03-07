@@ -21,6 +21,11 @@ module Mae
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
+    # config.to_prepare do
+    #   Clearance::PasswordsController.layout "admin/application.html.erb"
+    #   Clearance::SessionsController.layout "admin/application.html.erb"
+    #   Clearance::UsersController.layout "admin/application.html.erb"
+    # end
   end
 end
 

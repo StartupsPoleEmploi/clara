@@ -6,8 +6,11 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include Clearance::Controller
+    before_action :require_login
+    
     before_action :set_locale
-    before_action :authenticate_admin
+    # before_action :authenticate_admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
     
@@ -27,10 +30,10 @@ module Admin
       )
     end
 
-    def authenticate_admin
-      return if ENV['ARA_SKIP_ADMIN_AUTH']
-      redirect_to signin_path unless current_user_email
-    end
+    # def authenticate_admin
+    #   return if ENV['ARA_SKIP_ADMIN_AUTH']
+    #   redirect_to signin_path unless current_user_email
+    # end
 
     # Overrides this to change nav state
     def nav_link_state(resource)
@@ -40,7 +43,7 @@ module Admin
 
     protected
     def user_for_paper_trail
-      current_user_email ? current_user_email : 'Inconnu'
+      current_user.email ? current_user.email : 'Inconnu'
     end
 
     private

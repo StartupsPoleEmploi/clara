@@ -809,7 +809,7 @@
         }
       }
     },
-    "/user_token":
+    "/api_user_token":
     {
       "post":
       {
@@ -818,7 +818,7 @@
         ],
         "summary": "Ask to authenticate",
         "description": "",
-        "operationId": "user_token",
+        "operationId": "api_user_token",
         "consumes": [
           "application/json"
         ],

@@ -1,10 +1,23 @@
 Rails.application.routes.draw do
 
+  resources :passwords, controller: "passwords", only: [:create, :new]
+  resource :session, controller: "sessions", only: [:create]
+
+  resources :users, controller: "users", only: [:create] do
+    resource :password,
+      controller: "passwords",
+      only: [:create, :edit, :update]
+  end
+
+  get "/sign_in" => "sessions#new", as: "sign_in"
+  delete "/sign_out" => "sessions#destroy", as: "sign_out"
+  get "/sign_up" => "users#new", as: "sign_up"
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
   namespace :api do
     namespace :v1 do
-      post 'user_token'     => 'user_token#create'
+      post 'api_user_token' => 'api_user_token#create'
+      # post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
       get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
@@ -30,6 +43,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :explicitations
+    resources :api_users
     resources :users
     resources :domain_filters
     resources :axle_filters
@@ -72,12 +86,12 @@ Rails.application.routes.draw do
     root to: "aids#index"
   end
 
-  get '/auth/:provider/callback' => 'sessions#create'
-  get '/signin' => 'sessions#new', :as => :signin
-  get '/signout' => 'sessions#destroy', :as => :signout
-  get '/auth/failure' => 'sessions#failure'
+  # get '/auth/:provider/callback' => 'sessions#create'
+  # get '/signin' => 'sessions#new', :as => :signin
+  # get '/signout' => 'sessions#destroy', :as => :signout
+  # get '/auth/failure' => 'sessions#failure'
 
-  get '/auth/google_oauth2', as: :google_oauth
+  # get '/auth/google_oauth2', as: :google_oauth
 
   # a route to check exception are propertly sent
   resources :divide_by_zero,         only: [:index]
