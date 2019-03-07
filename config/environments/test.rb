@@ -58,5 +58,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   PaperTrail.enabled = false
 
-  OmniAuth.config.test_mode = true
+  # OmniAuth.config.test_mode = true
 end

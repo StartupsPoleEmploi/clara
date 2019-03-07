@@ -7,7 +7,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :set_locale
-    before_action :authenticate_admin
+    # before_action :authenticate_admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
     
@@ -27,10 +27,10 @@ module Admin
       )
     end
 
-    def authenticate_admin
-      return if ENV['ARA_SKIP_ADMIN_AUTH']
-      redirect_to signin_path unless current_user_email
-    end
+    # def authenticate_admin
+    #   return if ENV['ARA_SKIP_ADMIN_AUTH']
+    #   redirect_to signin_path unless current_user_email
+    # end
 
     # Overrides this to change nav state
     def nav_link_state(resource)
