@@ -6,6 +6,9 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    include Clearance::Controller
+    before_action :require_login
+    
     before_action :set_locale
     # before_action :authenticate_admin
     before_action :set_paper_trail_whodunnit 
