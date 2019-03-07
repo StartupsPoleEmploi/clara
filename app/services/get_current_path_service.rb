@@ -4,7 +4,7 @@ class GetCurrentPathService < ClaraService
   is_callable
 
   def call
-
+    res = ""
     # Stolen from http://hackingoff.com/blog/generate-rails-sitemap-from-routes/
     routes = Rails.application.routes.routes.map do |route|
       {
@@ -15,13 +15,17 @@ class GetCurrentPathService < ClaraService
       }
     end
 
-    current = Rails.application.routes.recognize_path(@a_request.env['PATH_INFO'])
+    begin
+      current = Rails.application.routes.recognize_path(@a_request.env['PATH_INFO'])
 
-    choice = routes.find do |route|
-      route[:controller] == current[:controller] && route[:action] == current[:action]
+      choice = routes.find do |route|
+        route[:controller] == current[:controller] && route[:action] == current[:action]
+      end
+
+      res = choice[:alias] + "_path"
+    rescue Exception
+      res = "not_found"
     end
-
-    choice[:alias] + "_path"
   end
 
 end
