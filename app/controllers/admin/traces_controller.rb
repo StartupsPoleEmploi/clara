@@ -20,7 +20,7 @@ module Admin
     # for more information
     
     def valid_action?(name, resource = resource_class)
-      %w[edit destroy].exclude?(name.to_s) && super
+      %w[new edit destroy].exclude?(name.to_s) && super
     end
   end
 end

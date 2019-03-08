@@ -25,6 +25,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :id,
     :tracing,
     :url,
+    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
