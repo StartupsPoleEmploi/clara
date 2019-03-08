@@ -15,6 +15,12 @@ class RecordRegister
     end
   end
   
+  def _aids_tracings
+    all_tracings = Rails.cache.fetch("all_tracings") do
+      Tracing.all.map { |t| t.slice(:id, :rule_id) }
+    end
+  end
+
   def _scan_tracings(asker)
     res = {}
     all_tracings = Rails.cache.fetch("all_tracings") do
