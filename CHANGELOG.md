@@ -2,6 +2,10 @@
 
 
 
+## 19.3.1 (11/3/2019)
+-[#1177b][FEATURE] stats locales améliorées, corrections
+
+
 ## 19.3.0 (11/3/2019)
 -[#1177][FEATURE] stats locales améliorées
 

@@ -12,6 +12,7 @@ class TraceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     url: Field::String,
     user: Field::String,
+    geo: Field::String,
     created_at: Field::DateTime,
     # updated_at: Field::DateTime,
   }.freeze
@@ -25,6 +26,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :id,
     :tracing,
     :user,
+    :geo,
     :url,
     :created_at,
   ].freeze
@@ -36,6 +38,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :id,
     :url,
     :user,
+    :geo,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,6 +50,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :tracing,
     :url,
     :user,
+    :geo,
   ].freeze
 
   # Overwrite this method to customize how traces are displayed
