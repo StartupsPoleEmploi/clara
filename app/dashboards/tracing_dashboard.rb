@@ -58,7 +58,7 @@ class TracingDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how tracings are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(tracing)
-  #   "Tracing ##{tracing.id}"
-  # end
+  def display_resource(tracing)
+    "#{tracing.name}"
+  end
 end

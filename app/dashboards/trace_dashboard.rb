@@ -26,7 +26,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :tracing,
     :id,
     :url,
-    :geo,
+    # :geo,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,7 +35,7 @@ class TraceDashboard < Administrate::BaseDashboard
     :tracing,
     :id,
     :url,
-    :geo,
+    # :geo,
     :user,
     :created_at,
     :updated_at,
@@ -47,14 +47,14 @@ class TraceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :tracing,
     :url,
-    :geo,
+    # :geo,
     :user,
   ].freeze
 
   # Overwrite this method to customize how traces are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(trace)
-  #   "Trace ##{trace.id}"
-  # end
+  def display_resource(trace)
+    "Trace ##{trace.id}"
+  end
 end
