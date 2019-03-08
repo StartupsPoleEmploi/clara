@@ -11,6 +11,7 @@ class TracingDashboard < Administrate::BaseDashboard
     traces: Field::HasMany,
     aids:   Field::HasMany,
     rule: Field::BelongsTo,
+    all_aids: Field::Boolean,
     id: Field::Number,
     description: Field::Text,
     name: Field::String,
@@ -24,9 +25,10 @@ class TracingDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    # :traces,
+    :id,
     :rule,
     :aids,
+    :all_aids,
     :id,
     :description,
   ].freeze
@@ -36,6 +38,7 @@ class TracingDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     # :traces,
     :aids,
+    :all_aids,
     :rule,
     :id,
     :description,
@@ -53,6 +56,7 @@ class TracingDashboard < Administrate::BaseDashboard
     :description,
     :rule,
     :aids,
+    :all_aids,
   ].freeze
 
   # Overwrite this method to customize how tracings are displayed

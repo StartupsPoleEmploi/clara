@@ -3,30 +3,41 @@ class RecordRegister
   def call(session, asker, url)
     city_key = asker.v_location_citycode
     unless CookiePreference.new(current_session: session).ga_disabled?
-      scans = _scan_tracings(asker)
-      eligible_scans = scans.select { |s| s[:eligy] == "eligible"  }
-      eligible_scans.each do |e|
+      tracings = ActivatedModelsService.instance.tracings
+      aid_filtered_tracings = _scan_tracings_aids(asker, tracings, url)
+      aid_and_rule_filtered_tracings = _scan_tracings_rules(asker, aid_filtered_tracings)
+      aid_and_rule_filtered_tracings.each do |e|
         t = Trace.new
         t.user = session.id.to_s
         t.url = url
-        t.tracing_id = s[:tracing_id]
+        t.tracing_id = e[:tracing_id]
         t.save
       end
     end
   end
   
-  def _aids_tracings
-    all_tracings = Rails.cache.fetch("all_tracings") do
-      Tracing.all.map { |t| t.slice(:id, :rule_id) }
+  def _scan_tracings_aids(asker, tracings, url)
+    tracings.select do |h|
+      res = false
+      if h["all_aids"]
+        res = true
+      else
+        detection = h["aids"].detect do |aid|
+          aid["slug"] == url
+        end
+        res = !!detection
+      end
+      res 
     end
   end
 
-  def _scan_tracings(asker)
-    res = {}
-    all_tracings = Rails.cache.fetch("all_tracings") do
-      Tracing.all.map { |t| t.slice(:id, :rule_id) }
-    end
-    res = all_tracings.map do |h|
+  def _scan_tracings_rules(asker, tracings)
+    calculated_tracings = _calc_tracings_eligibility(asker, tracings)
+    calculated_tracings.select { |s| s[:eligy] == "eligible"  }
+  end
+
+  def _calc_tracings_eligibility(asker, tracings)
+    tracings.map do |h|
       {
         tracing_id: h["id"],
         eligy: RuletreeService.resolve(h["rule_id"], asker.attributes),

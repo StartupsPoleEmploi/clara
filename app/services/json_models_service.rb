@@ -1,7 +1,13 @@
 class JsonModelsService
 
   def self.tracings
-    JSON.parse(Tracing.all.to_json(:only => [ :id, :rule_id ], :include => {aids: {only:[:slug]}}))
+    res = []
+    begin
+      res = JSON.parse(Tracing.all.to_json(:only => [ :id, :rule_id, :all_aids ], :include => {aids: {only:[:slug]}}))
+    rescue => e
+      res = []
+    end
+    res
   end
 
   def self.rules

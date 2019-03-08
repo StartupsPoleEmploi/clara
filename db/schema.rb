@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
   create_table "tracings", force: :cascade do |t|
     t.text "description"
     t.string "name"
+    t.boolean "all_aids"
     t.bigint "rule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
