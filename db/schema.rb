@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_100359) do
+ActiveRecord::Schema.define(version: 2019_03_08_084543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_100359) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_api_users_on_email"
   end
 
   create_table "axle_filters", force: :cascade do |t|
@@ -164,6 +163,25 @@ ActiveRecord::Schema.define(version: 2019_03_07_100359) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  end
+
+  create_table "monitorizations", force: :cascade do |t|
+    t.bigint "monitor_id"
+    t.bigint "aid_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aid_id"], name: "index_monitorizations_on_aid_id"
+    t.index ["monitor_id"], name: "index_monitorizations_on_monitor_id"
+  end
+
+  create_table "monitors", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rule_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rule_id"], name: "index_monitors_on_rule_id"
   end
 
   create_table "need_filters", force: :cascade do |t|
