@@ -2,8 +2,13 @@
 
 
 
+## 19.3.0 (9/3/2019)
+-[#1177][FEATURE] stats locales améliorées
+
+
 ## 19.2.1 (8/3/2019)
 -[#1175b][FEATURE] fonction "forget password" 
+
 
 ## 19.2.0 (8/3/2019)
 -[#1175][FEATURE] fonction "forget password" 
