@@ -21,14 +21,15 @@ namespace :minidb do
       # Only a few aids
       Aid.where.not(
         slug:[
+          "accompagnement-global",
           "garantie-jeunes",
-          "service-militaire-volontaire-smv",
-          "vsi-volontariat-de-solidarite-internationale",
-          "volontariat-associatif",
-          "autres-frais-derogatoires",
+          # "service-militaire-volontaire-smv",
+          # "vsi-volontariat-de-solidarite-internationale",
+          # "volontariat-associatif",
+          # "autres-frais-derogatoires",
           "erasmus",
-          "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
-          "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
+          # "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+          # "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
           "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
@@ -63,8 +64,12 @@ namespace :minidb do
       Zrr.destroy_all
       Zrr.new(value: zrr_list.join(",")).save
 
+      # Only test apiuser
+      test_apiuser_id = ApiUser.find_by(email: "foo@bar.com").id
+      ApiUser.where.not(id: test_apiuser_id).destroy_all
+
       # Only test user
-      test_user_id = User.find_by(email: "foo@bar.com").id
+      test_user_id = User.find_by(email: "bdavidxyz@gmail.com").id
       User.where.not(id: test_user_id).destroy_all
 
       # No need to keep who did what

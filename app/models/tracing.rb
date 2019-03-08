@@ -4,7 +4,7 @@ class Tracing < ApplicationRecord
   
   has_many :traces
 
-  belongs_to :rule, optional: true
+  belongs_to :rule, optional: false
 
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
