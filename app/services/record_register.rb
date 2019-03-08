@@ -10,6 +10,7 @@ class RecordRegister
         t = Trace.new
         t.user = session.id.to_s
         t.url = url
+        t.geo = city_key.to_s
         t.tracing_id = e[:tracing_id]
         t.save
       end

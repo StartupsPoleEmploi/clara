@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_125521) do
+ActiveRecord::Schema.define(version: 2019_03_08_170360) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -177,15 +177,6 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
     t.index ["slug"], name: "index_need_filters_on_slug", unique: true
   end
 
-  create_table "registers", force: :cascade do |t|
-    t.string "url"
-    t.string "geo"
-    t.string "moment"
-    t.string "user"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rule_checks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -221,6 +212,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
     t.bigint "tracing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "geo"
     t.index ["tracing_id"], name: "index_traces_on_tracing_id"
   end
 

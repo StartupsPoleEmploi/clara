@@ -1,3 +1,0 @@
-class Register < ApplicationRecord
-
-end
