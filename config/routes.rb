@@ -78,6 +78,8 @@ Rails.application.routes.draw do
       post 'post_ref_data'
       get 'get_transfer_descr'
       post 'post_transfer_descr'
+      get 'get_delete_trace'
+      post 'post_delete_trace'
       get 'get_hidden_admin'
     end
     get 'status', to: 'status#index'

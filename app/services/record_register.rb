@@ -5,7 +5,13 @@ class RecordRegister
     unless CookiePreference.new(current_session: session).ga_disabled?
       tracings = ActivatedModelsService.instance.tracings
       aid_filtered_tracings = _scan_tracings_aids(asker, tracings, url)
+      p '- - - - - - - - - - - - - - aid_filtered_tracings- - - - - - - - - - - - - - - -' 
+      pp aid_filtered_tracings
+      p ''
       aid_and_rule_filtered_tracings = _scan_tracings_rules(asker, aid_filtered_tracings)
+      p '- - - - - - - - - - - - - - aid_and_rule_filtered_tracings- - - - - - - - - - - - - - - -' 
+      pp aid_and_rule_filtered_tracings
+      p ''
       aid_and_rule_filtered_tracings.each do |e|
         t = Trace.new
         t.user = session.id.to_s
@@ -40,7 +46,7 @@ class RecordRegister
     tracings.map do |h|
       {
         tracing_id: h["id"],
-        eligy: RuletreeService.resolve(h["rule_id"], asker.attributes),
+        eligy: RuletreeService.new.resolve(h["rule_id"], asker.attributes),
       }
     end
   end

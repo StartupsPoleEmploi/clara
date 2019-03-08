@@ -11,10 +11,9 @@ class TraceDashboard < Administrate::BaseDashboard
     tracing: Field::BelongsTo,
     id: Field::Number,
     url: Field::String,
-    geo: Field::String,
     user: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    # updated_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,8 +22,8 @@ class TraceDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :tracing,
     :id,
+    :tracing,
     :url,
   ].freeze
 
