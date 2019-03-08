@@ -5,7 +5,7 @@ fr:
       password: Mot de passe
       password_confirmation: Confirmation du mot de passe
     models: 
-      user: Utilisateurs API
+      user: Administrateur
     attributes:
       user:
         <<: *labels

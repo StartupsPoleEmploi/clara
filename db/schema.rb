@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_100359) do
+ActiveRecord::Schema.define(version: 2019_03_08_125521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_100359) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_api_users_on_email"
   end
 
   create_table "axle_filters", force: :cascade do |t|
@@ -214,6 +213,35 @@ ActiveRecord::Schema.define(version: 2019_03_07_100359) do
     t.datetime "updated_at", null: false
     t.jsonb "ga_pe", default: "{}"
     t.jsonb "hj_ad", default: "{}"
+  end
+
+  create_table "traces", force: :cascade do |t|
+    t.string "url"
+    t.string "user"
+    t.bigint "tracing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tracing_id"], name: "index_traces_on_tracing_id"
+  end
+
+  create_table "tracings", force: :cascade do |t|
+    t.text "description"
+    t.string "name"
+    t.boolean "all_aids"
+    t.bigint "rule_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rule_id"], name: "index_tracings_on_rule_id"
+  end
+
+  create_table "tracizations", force: :cascade do |t|
+    t.bigint "tracing_id"
+    t.bigint "aid_id"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aid_id"], name: "index_tracizations_on_aid_id"
+    t.index ["tracing_id"], name: "index_tracizations_on_tracing_id"
   end
 
   create_table "users", force: :cascade do |t|

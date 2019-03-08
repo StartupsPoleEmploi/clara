@@ -9,6 +9,10 @@ class ActivatedModelsService
     @cached_activated_models =  Oj.load(File.read(Rails.root.join('public','activated_models.txt'))) 
   end
 
+  def tracings
+    !Rails.env.test? ? @cached_activated_models["all_tracings"] : JsonModelsService.tracings
+  end
+
   def rules
     !Rails.env.test? ? @cached_activated_models["all_rules"] : JsonModelsService.rules
   end

@@ -4,6 +4,12 @@ require 'csv'
 module Admin
   class PagesController < Admin::ApplicationController
 
+    def get_delete_trace
+    end
+    def post_delete_trace
+      Trace.destroy_all
+    end
+
     # load zrr
     def get_zrr
     end
