@@ -24,6 +24,7 @@ class TraceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :id,
     :tracing,
+    :user,
     :url,
     :created_at,
   ].freeze
