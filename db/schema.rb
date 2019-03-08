@@ -217,7 +217,6 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
 
   create_table "traces", force: :cascade do |t|
     t.string "url"
-    t.string "geo"
     t.string "user"
     t.bigint "tracing_id"
     t.datetime "created_at", null: false
