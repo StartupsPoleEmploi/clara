@@ -46,7 +46,9 @@ Rails.application.routes.draw do
     resources :api_users
     resources :users
     resources :tracings
-    resources :traces
+    resources :traces do
+      get :export, on: :collection
+    end
     resources :domain_filters
     resources :axle_filters
     resources :need_filters

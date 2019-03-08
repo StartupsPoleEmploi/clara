@@ -235,13 +235,13 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
   end
 
   create_table "tracizations", force: :cascade do |t|
-    t.bigint "monitor_id"
+    t.bigint "tracing_id"
     t.bigint "aid_id"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["aid_id"], name: "index_tracizations_on_aid_id"
-    t.index ["monitor_id"], name: "index_tracizations_on_monitor_id"
+    t.index ["tracing_id"], name: "index_tracizations_on_tracing_id"
   end
 
   create_table "users", force: :cascade do |t|
