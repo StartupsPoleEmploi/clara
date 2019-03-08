@@ -1,17 +1,6 @@
 require 'securerandom'
 
 FactoryBot.define do
-  factory :trace do
-    url { "MyString" }
-    geo { "MyString" }
-  end
-  factory :tracization do
-    description { "MyText" }
-  end
-  factory :tracing do
-    description { "MyText" }
-    name { "MyString" }
-  end
 
   factory :filter do
   end
