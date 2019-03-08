@@ -37,8 +37,8 @@ class Aid < ApplicationRecord
                     :dmetaphone => {},
                   }
 
-  has_many :monitorizations
-  has_many :monitors, through: :monitorizations
+  has_many :tracizations
+  has_many :tracings, through: :tracizations
 
   has_and_belongs_to_many :filters
   has_and_belongs_to_many :need_filters

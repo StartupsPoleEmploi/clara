@@ -1,0 +1,2 @@
+class Tracization < ApplicationRecord
+end
