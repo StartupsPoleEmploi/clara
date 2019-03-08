@@ -1,7 +1,7 @@
 class Tracing < ApplicationRecord
 
-  validates :name, uniqueness: true
-  
+  validates :name, presence: true, uniqueness: true
+
   has_many :tracizations
   has_many :aids, through: :tracizations
   
