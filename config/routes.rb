@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     resources :explicitations
     resources :api_users
     resources :users
+    resources :tracings
+    resources :traces
     resources :domain_filters
     resources :axle_filters
     resources :need_filters

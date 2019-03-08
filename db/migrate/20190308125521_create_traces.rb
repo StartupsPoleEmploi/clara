@@ -4,7 +4,7 @@ class CreateTraces < ActiveRecord::Migration[5.2]
       t.string :url
       t.string :geo
       t.string :user
-      t.belongs_to :trace
+      t.belongs_to :tracing
       t.timestamps
     end
   end

@@ -219,10 +219,10 @@ ActiveRecord::Schema.define(version: 2019_03_08_125521) do
     t.string "url"
     t.string "geo"
     t.string "user"
-    t.bigint "trace_id"
+    t.bigint "tracing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trace_id"], name: "index_traces_on_trace_id"
+    t.index ["tracing_id"], name: "index_traces_on_tracing_id"
   end
 
   create_table "tracings", force: :cascade do |t|
