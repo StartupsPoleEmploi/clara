@@ -26,7 +26,6 @@ class TraceDashboard < Administrate::BaseDashboard
     :tracing,
     :id,
     :url,
-    # :geo,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,7 +34,6 @@ class TraceDashboard < Administrate::BaseDashboard
     :tracing,
     :id,
     :url,
-    # :geo,
     :user,
     :created_at,
     :updated_at,
@@ -47,7 +45,6 @@ class TraceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :tracing,
     :url,
-    # :geo,
     :user,
   ].freeze
 
