@@ -2,6 +2,10 @@
 
 
 
+## 19.4.0 (11/3/2019)
+-[#1174][ADMIN] ajout lien vers la liste d'utilisateurs
+
+
 ## 19.3.1 (11/3/2019)
 -[#1177b][FEATURE] stats locales améliorées, corrections
 
