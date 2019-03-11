@@ -2,6 +2,10 @@
 
 
 
+## 19.4.1 (11/3/2019)
+-[#1176][FEATURETTE] traduction controle
+
+
 ## 19.4.0 (11/3/2019)
 -[#1174][ADMIN] ajout lien vers la liste d'utilisateurs
 
