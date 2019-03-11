@@ -15,4 +15,6 @@ By default, the attribute is rendered as a truncated string.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/String
 %>
 
-<%= field.truncate %>
+<%- actual_v = field.resource.class.to_s.downcase + '.' + field.attribute.to_s + '.' + field.data.to_s %>
+<%- transl = t(actual_v, default: field.truncate.to_s) %>
+<%= transl %>

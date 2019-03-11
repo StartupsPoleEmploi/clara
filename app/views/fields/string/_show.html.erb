@@ -18,4 +18,4 @@ By default, the attribute is rendered as an unformatted string.
 <%- actual_v = field.resource.class.to_s.downcase + '.' + field.attribute.to_s + '.' + field.data.to_s %>
 <%- transl = t(actual_v, default: field.data.to_s) %>
 
-<span class="preserve-whzzzespace" data-klazz="<%= transl %>" data-tee="<%= t("rule.simulated.missing_eligible") %>" data-foo="<%=field.inspect%>"><%= transl %></span>
+<span><%= transl %></span>
