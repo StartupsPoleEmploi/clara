@@ -10,6 +10,7 @@ fr:
       value_eligible: "Valeur"
       rule_slave_rule_ids: "Règles enfants"
       composition_type: "Combiner avec"
+      simulated: "Contrôle"
     models: 
       rule: Règles
     attributes:
