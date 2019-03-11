@@ -1,0 +1,33 @@
+.c-accessibility-h1 {
+  @include inuit-font-size(26px);
+  // height: 65px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-top: 2rem;
+}
+
+.c-accessibility-h2 {
+  @include inuit-font-size(18px);
+  line-height: 2.22;
+  height: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.22;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.c-accessibility-p {
+  @include inuit-font-size(16px);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #333333;
+}
