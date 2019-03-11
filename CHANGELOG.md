@@ -2,6 +2,10 @@
 
 
 
+## 19.5.0 (11/3/2019)
+-[#1076][DESIGN] maquette accessibilité
+
+
 ## 19.4.1 (11/3/2019)
 -[#1176][FEATURETTE] traduction controle
 
