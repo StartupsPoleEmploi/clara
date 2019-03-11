@@ -28,6 +28,9 @@ class WelcomeController < ApplicationController
   def terms
   end
 
+  def accessibility
+  end
+
   private
   def clean_asker_params
     session.delete :asker

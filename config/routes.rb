@@ -131,6 +131,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   post 'welcome/start_wizard'
 
+  get 'accessibilite', to: 'welcome#accessibility'
+
   get 'errors/not_found'
   get 'errors/internal_server_error'
   get 'sitemap.xml', :to => 'sitemap#index', :as => 'main_sitemap'
