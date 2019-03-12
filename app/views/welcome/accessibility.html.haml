@@ -50,7 +50,7 @@
       Vous pouvez nous aider à améliorer l’accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez.
 
     %div
-      = link_to 'Contactez-nous !', contact_index_path, class: 'c-detail-ay'
+      = link_to 'Contactez-nous !', contact_index_path(im_from: "a11y"), class: 'c-detail-ay'
 
     %div.u-margin-top-large.u-margin-bottom-small
       %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--a11y c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour
