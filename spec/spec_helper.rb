@@ -1,9 +1,11 @@
 require 'webmock/rspec'
 require 'simplecov'
 
+# Coverage
 SimpleCov.start do
   add_filter "/spec/"
 end
+Rails.application.eager_load!
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

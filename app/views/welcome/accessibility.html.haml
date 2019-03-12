@@ -1,0 +1,56 @@
+- title_data 'Accessibilité'
+- description_data 'Cette page contient des informations relatives à l\'accessibilité du site.'
+
+%main#main{role: "main"}
+  .u-useful-width.u-margin-constraint.u-margin-top
+    %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--a11y c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour
+
+    %h1.c-accessibility-h1
+      Accessibilité
+
+    %h2.c-accessibility-h2 Introduction :
+
+    %p 
+      L’article 47 de la loi n° 2005-102 du 11 février 2005 pour l’égalité des droits et des chances, la participation et la citoyenneté des personnes handicapées fait de l’accessibilité une exigence pour tous les services de communication publique en ligne de l’État, les collectivités territoriales et les établissements publics qui en dépendent. 
+    %p 
+      Il stipule que les informations diffusées par ces services doivent être accessibles à tous. 
+    %p 
+      Le référentiel général d’accessibilité pour les administrations (RGAA) rendra progressivement accessible l’ensemble des informations fournies par ces services.
+    %p 
+      %span
+        Le site Clara est en cours d’optimisation afin de le rendre conforme au 
+      %span
+        %a{"aria-label" => "Site du Référentiel d'accessibilité RGAA v3 (Ouverture dans une nouvelle fenêtre)", :target => "blank", :href => "http://references.modernisation.gouv.fr/referentiel/", :title => "Site du Référentiel d'accessibilité RGAA v3 (Ouverture dans une nouvelle fenêtre)"} RGAA v3.
+      %span
+        La déclaration de conformité sera publiée ultérieurement.
+
+
+    %h2.c-accessibility-h2 Nos engagements :
+
+
+    %p 
+      Audit de mise en conformité (en cours) pour nous aider à détecter les potentiels oublis d'accessibilité
+      %ul
+        %li
+          Déclaration d'accessibilité (en cours) pour expliquer en toute transparence notre démarche
+        %li
+          Mise à jour de cette page pour vous tenir informé de notre progression
+
+
+    %p 
+      Nos équipes ont ainsi travaillé sur les contrastes de couleur, la présentation et la structure de l’information ou la clarté des formulaires.
+    %p 
+      Des améliorations vont être apportées régulièrement. 
+
+    %h2.c-accessibility-h2 Améliorations et contact :
+
+    %p 
+      L'équipe Clara reste à votre écoute et entière disposition, si vous souhaitez nous signaler le moindre défaut de conception. 
+    %p
+      Vous pouvez nous aider à améliorer l’accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez.
+
+    %div
+      = link_to 'Contactez-nous !', contact_index_path, class: 'c-detail-ay'
+
+    %div.u-margin-top-large.u-margin-bottom-small
+      %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--a11y c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour

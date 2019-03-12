@@ -1,0 +1,60 @@
+.c-accessibility-h1 {
+  @include inuit-font-size(26px);
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-top: 2rem;
+}
+
+.c-accessibility-h2 {
+  @include inuit-font-size(18px);
+  line-height: 2.22;
+  height: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.22;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.c-accessibility-p {
+  @include inuit-font-size(16px);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #333333;
+}
+
+a.c-detail-ay {
+  border-radius: 20px;
+  border: solid 1px #057dbc;
+  background-color: #057dbc;  
+  padding: space(4) space(9) space(4) space(9);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  @include inuit-font-size(14px);
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+a.c-btn--a11y, .c-btn--a11y {
+  font-size: 16px; // HACK
+  padding: space(4) space(5);
+  color:#057dbc;
+  border-color:#057dbc;
+  text-decoration: none;
+  svg path {
+    fill: #057dbc;
+  }
+}
