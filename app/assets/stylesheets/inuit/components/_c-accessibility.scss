@@ -31,3 +31,32 @@
   letter-spacing: normal;
   color: #333333;
 }
+
+a.c-detail-ay {
+  // height: 40px;
+  border-radius: 20px;
+  border: solid 1px #057dbc;
+  background-color: #057dbc;  
+  padding: space(4) space(9) space(4) space(9);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  @include inuit-font-size(14px);
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+a.c-btn--a11y, .c-btn--a11y {
+  font-size: 16px; // HACK
+  padding: space(4) space(6);
+  color:#057dbc;
+  border-color:#057dbc;
+  text-decoration: none;
+  svg path {
+    fill: #057dbc;
+  }
+}

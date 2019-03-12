@@ -2,11 +2,11 @@
 - description_data 'Cette page contient des informations relatives à l\'accessibilité du site.'
 
 %main#main{role: "main"}
-  .u-useful-width.u-margin-constraint
+  .u-useful-width.u-margin-constraint.u-margin-top
     %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--small c-btn--result c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour
-  
+
     %h1.c-accessibility-h1
-      Gestion de vos préférences sur les cookies
+      Accessibilité
 
     %h2.c-accessibility-h2 Introduction :
 
@@ -44,4 +44,8 @@
     %p
       Vous pouvez nous aider à améliorer l’accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez.
 
-    %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--small c-btn--result c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour
+    %div
+      = link_to 'Contactez-nous !', contact_index_path, class: 'c-detail-ay'
+
+    %div.u-margin-top-large.u-margin-bottom-small
+      %a{href: "#{request.referer}", "aria-label" => "Retour à la page précédente", "class" => "c-btn c-btn--a11y c-confidentiality-back u-margin-top-small"} <strong><</strong> Retour
