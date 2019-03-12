@@ -92,7 +92,7 @@
                 #askfor.c-contact-radiobuttonlist{class: "#{errors['askfor'] ? cerr : ''}"}
                   = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["a11y","Améliorations accessibilité numérique"],["autre","Autre"]],:first,:last do |rdb|
                     %div
-                      = rdb.radio_button(checked: rdb.value == "a11y" && request.referer.split("/").last == "accessibilite") + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
+                      = rdb.radio_button(checked: rdb.value == "a11y" && request.try(:referer).try(:split, "/").try(:last) == "accessibilite") + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
 
                 - if errors["askfor"]
                   %label.c-contact-smalllabel.c-contact-validation=errors["askfor"][0]
