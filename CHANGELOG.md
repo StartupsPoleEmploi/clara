@@ -1,12 +1,15 @@
 # ARA Changelog
 
 
+## 19.6.0 (14/3/2019)
+-[#1170][ADMIN] simplifier le simulateur
+
 
 ## 19.5.1 (12/3/2019)
 -[#1076b][BUG] maquette accessibilité 2
 
 
-## 19.5.0 (12/3/2019)
+## 19.5.0 (11/3/2019)
 -[#1076][DESIGN] maquette accessibilité
 
 
