@@ -90,7 +90,7 @@
               .c-contact-field.c-contact-field--askfor
                 %label.c-contact-label Catégorie de la demande
                 #askfor.c-contact-radiobuttonlist{class: "#{errors['askfor'] ? cerr : ''}"}
-                  = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["autre","Autre"]],:first,:last do |rdb|
+                  = f.collection_radio_buttons :askfor, [["signaler","Signaler un lien cassé"],["modifier", "Apporter une information pour modifier un contenu"],["referencer","Référencer une nouvelle aide"],["a11y","Améliorations accessibilité numérique"],["autre","Autre"]],:first,:last do |rdb|
                     %div
                       = rdb.radio_button + rdb.label(class: 'c-contact-radiolabel u-margin-left-tiny')
                 - if errors["askfor"]
