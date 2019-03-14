@@ -13,7 +13,6 @@
 //= require jquery_ujs
 //= require selectize
 //= require moment
-//= require vuejs/vue
 //= require datetime_picker
 //= require_tree .
 

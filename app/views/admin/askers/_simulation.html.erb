@@ -1,0 +1,68 @@
+<%- v = view_object(:simulation, {page: page}) %>
+<%- rule_id = page.resource.id %>
+
+<header class='main-content__header'>
+  <h2 class='main-content__page-title'>
+    Simulation 
+  </h2>
+</header>
+<section style="clear:both">
+
+  <div class="simulator" id="simulator">
+
+    <div class="simulator-left">
+
+      <% v.displayed_variables.each do |variable| %>
+        <div class="simulator-field">
+          <div class="simulator-field__left">
+            <label for="<%=variable.html_id%>"><%=variable.displayed_label%></label>
+          </div> 
+          <div class="simulator-field__right">
+            <input type="text" name="<%=variable.form_name%>" id="<%=variable.html_id%>">
+          </div>
+        </div>
+      <% end %>
+
+      <div class="simulation-actions">
+        <div class="c-simulator-result">
+          <div class="eligibility-nothing"></div>
+        </div>
+        <div class="c-simulator-submit">
+          <input type="submit" name="commit" value="Simuler" id="btn_simulate" data-url="<%=resolve_admin_rule_path(rule_id)%>">
+        </div>
+      </div> 
+      <div class="c-simulator-registration" data-url="<%=save_simulation_admin_rule_path(rule_id)%>">
+        <div class="simulation-save">
+          <input type="text" class="simulation-save__name" id="name_for_saving">
+          <button class="simulation-save__action" id="btn-save">💾</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="simulator-right">
+      <div class="simulation-past">
+        <div class="c-simulator-table">
+          <table id="simulation-table" class="simulation-table">
+            <tr>
+              <th>nom simulation</th>
+              <th>eligible?</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <% crcs.each do |crc| %>
+              <tr class="simulator-table-row" data-h="<%=crc.hsh.compact.to_json%>">
+                <td class="simulation-table-name"><%=crc.name%></td>
+                <td class="simulation-table-result"><%=crc.result%></td>
+                <td><button class="simulation-table-replay">↺</button></td>
+                <td><button class="simulation-table-delete" data-url="<%=delete_simulation_admin_rule_path(crc.id)%>">X</button></td>
+              </tr>
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+</section>
