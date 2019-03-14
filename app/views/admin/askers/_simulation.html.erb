@@ -45,7 +45,7 @@
               <th></th>
             </tr>
             <% crcs.each do |crc| %>
-              <tr class="simulator-table-row">
+              <tr class="simulator-table-row" data-h="<%=crc.hsh.compact.to_json%>">
                 <td class="simulation-table-name"><%=crc.name%></td>
                 <td class="simulation-table-result"><%=crc.result%></td>
                 <td><button class="simulation-table-replay">↺</button></td>
