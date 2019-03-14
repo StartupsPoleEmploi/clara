@@ -6,6 +6,8 @@ class Simulation < ViewObject
   end
 
   def displayed_variables
+    # ap @page.resource[:id]
+    ap FindChildRules.new.call(@page.resource[:id])
     variable_1 = OpenStruct.new(
       html_id: "v_handicap", 
       displayed_label: "le handicap",
