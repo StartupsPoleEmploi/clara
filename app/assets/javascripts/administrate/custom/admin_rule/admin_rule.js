@@ -36,7 +36,7 @@ clara.js_define("admin_rule", {
     // SUBSCRIBER
     // main_store.subscribe(clara.admin_rules_update_value.please);
     // main_store.subscribe(clara.admin_rules_update_operator.please);
-    // main_store.subscribe(clara.admin_rules_update_explanation.please);
+    main_store.subscribe(clara.admin_rule_update_result.please);
 
     // DISPATCHERS
     $('#btn_simulate').on('click', function(e) {
