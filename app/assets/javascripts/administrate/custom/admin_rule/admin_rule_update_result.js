@@ -6,7 +6,7 @@ clara.js_define("admin_rule_update_result", {
   please: function() {
     s = main_store.getState();
     if (s.is_registerable) {
-      $(".c-simulator-registration").html('<div class="simulation-save"><input type="text" class="simulation-save__name"> <button class="simulation-save__action">💾</button></div>')
+      $(".c-simulator-registration").html('<div class="simulation-save"><input type="text" class="simulation-save__name"> <button class="simulation-save__action" id="btn-save">💾</button></div>')
       if (s.current_simulation.result == "uncertain") {
         $(".c-simulator-result").html('<div class="eligibility-uncertain eligibility-sth"> &#9888; Le résultat est incertain</div>')
       } else if (s.current_simulation.result == "eligible") {
