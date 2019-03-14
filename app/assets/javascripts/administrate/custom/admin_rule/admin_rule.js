@@ -19,10 +19,11 @@ clara.js_define("admin_rule", {
       var newState = _.cloneDeep(state);
 
       if (action.type === 'SIMULATION_SUBMITTED') {
-        newState["blabla"] = ""
+        newState.current_simulation.result = action.value.result;
+        newState.current_simulation.params = action.value.params;
       } else if (action.type === 'ANYTHING ELSE') {
       }
-
+      console.log(newState)
       return newState;
     };
 
@@ -49,12 +50,16 @@ clara.js_define("admin_rule", {
         dataType:'json',
         data: mydata,
         success: function (res) {
-          that.$root.simulation_result.val = res;
-          that.$root.is_registerable = true;
+          console.log(res)
+          action_value = {
+            result: res,
+            params: mydata.asker
+          };
+          main_store.dispatch({type: 'SIMULATION_SUBMITTED', value:action_value });
+
         }
       });
 
-      // main_store.dispatch({type: 'VARIABLE_CHANGED', value: value});
     });
 
   }
