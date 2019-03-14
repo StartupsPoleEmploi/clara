@@ -40,8 +40,10 @@ clara.js_define("admin_rule", {
 
     // DISPATCHERS
     $('#btn_simulate').on('click', function(e) {
+
       var that = this;
       var mydata = clara.admin_rule_ajax_resolve.please()
+
       $.ajax({
         url: $(that).attr("data-url"),
         type:'GET',
@@ -54,7 +56,6 @@ clara.js_define("admin_rule", {
             params: mydata.asker
           };
           main_store.dispatch({type: 'SIMULATION_SUBMITTED', value:action_value });
-
         }
       });
     });
