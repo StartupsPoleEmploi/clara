@@ -2,6 +2,10 @@
 
 
 
+## 19.5.2 (14/3/2019)
+-[#1184][DESIGN] corrections
+
+
 ## 19.5.1 (12/3/2019)
 -[#1076b][BUG] maquette accessibilité 2
 
