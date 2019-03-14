@@ -57,9 +57,6 @@ clara.js_define("admin_simple_rule_form", {
       main_store.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 
-    // INIT HACK!!! make the store think that variable has change
-    // clara.admin_rules_var_changed.please(global_state["selected_variable"], global_state["selected_variable"], "variables", _.cloneDeep(main_store.getState()), $('#rule_value_eligible').val())
-
     main_store.dispatch({type: 'INIT'});
   },
 
