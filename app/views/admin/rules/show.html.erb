@@ -15,7 +15,6 @@ as well as a link to its edit page.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
-
 <% content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" } %>
 
 <header class="main-content__header" role="banner">
@@ -48,6 +47,6 @@ as well as a link to its edit page.
   </dl>
 
 </section>
-<%= render partial: 'admin/askers/form', locals: { asker: @asker, url: resolve_admin_rule_path } %>
+<%= render partial: 'admin/askers/simulation', locals: { asker: @asker, page: page } %>
 <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
 

@@ -1,0 +1,32 @@
+<%- v = view_object(:simulation, {page: page}) %>
+
+<header class='main-content__header'>
+  <h2 class='main-content__page-title'>
+    Simulation
+  </h2>
+</header>
+<section style="clear:both">
+
+  <div class="simulator" id="simulator">
+
+    <div class="simulator-left">
+      <% v.displayed_variables.each do |variable| %>
+        <div class="simulator-field">
+          <div class="simulator-field__left">
+            <label for="<%=variable.html_id%>"><%=variable.displayed_label%></label>
+          </div> 
+          <div class="simulator-field__right">
+            <input type="text" name="<%=variable.form_name%>" id="<%=variable.html_id%>">
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="simulator-right">
+      <div class="simulation-past">
+      </div>
+    </div>
+
+  </div>
+
+</section>
