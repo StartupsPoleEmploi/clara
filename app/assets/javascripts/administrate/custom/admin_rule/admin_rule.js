@@ -30,6 +30,7 @@ clara.js_define("admin_rule", {
         newState.is_registerable = false;
       } else if (action.type === 'INPUT_CHANGED') {
         newState.is_registerable = false;
+        newState.current_simulation.params[action.value.name] = action.value.value;
       }
       console.log(newState)
       return newState;
@@ -52,7 +53,7 @@ clara.js_define("admin_rule", {
     $replay.on('click', function(e){clara.admin_rule_replay.please(e, main_store)})
     $remove.on('click', function(e){clara.admin_rule_remove.please(e, main_store)})
     $save.on('click', function(e){clara.admin_rule_save.please(e, main_store)})
-    $inputs.on('change', function(e){clara.admin_rule_input_changed.please(e, main_store)})
+    $inputs.on('keypress', function(e){clara.admin_rule_input_changed.please(e, main_store)})
 
     main_store.dispatch({type: 'INIT' })
   }
