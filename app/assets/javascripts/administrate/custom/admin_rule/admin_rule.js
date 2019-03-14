@@ -24,7 +24,10 @@ clara.js_define("admin_rule", {
         newState.current_simulation.result = action.value.result;
         newState.current_simulation.params = action.value.params;
         newState.is_registerable = true;
-      } else if (action.type === 'ANYTHING ELSE') {
+      } else if (action.type === 'REPLAY') {
+        console.log("REPLAY")
+        console.log(action)
+        newState.current_simulation.params = action.value;
       }
       console.log(newState)
       return newState;
@@ -39,8 +42,10 @@ clara.js_define("admin_rule", {
     main_store.subscribe(clara.admin_rule_update_result.please);
 
     // DISPATCHERS
-    $('#btn_simulate').on('click', clara.admin_rule_ajax_resolve.please);
-
+    var $replay = $(".simulator-table-row .simulation-table-replay");
+    var $simulate = $("#btn_simulate");
+    $simulate.on('click', function(){clara.admin_rule_ajax_resolve.please(main_store)});
+    $replay.on('click', function(e){clara.admin_rule_replay.please(e, main_store)})
   }
 
 });
