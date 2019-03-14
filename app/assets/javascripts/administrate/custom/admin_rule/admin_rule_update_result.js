@@ -4,8 +4,9 @@ clara.js_define("admin_rule_update_result", {
   please_if: _.stubFalse,
 
   please: function(s) {
+    $(".c-simulator-registration").hide()
     if (s.is_registerable) {
-      $(".c-simulator-registration").html('<div class="simulation-save"><input type="text" class="simulation-save__name"> <button class="simulation-save__action" id="btn-save">💾</button></div>')
+      $(".c-simulator-registration").show()
       if (s.current_simulation.result == "uncertain") {
         $(".c-simulator-result").html('<div class="eligibility-uncertain eligibility-sth"> &#9888; Le résultat est incertain</div>')
       } else if (s.current_simulation.result == "eligible") {
@@ -15,7 +16,6 @@ clara.js_define("admin_rule_update_result", {
       }
     } else {
       $(".c-simulator-result").html('<div class="eligibility-nothing"></div>')
-      $(".c-simulator-registration").html('')
     }
   },
 
