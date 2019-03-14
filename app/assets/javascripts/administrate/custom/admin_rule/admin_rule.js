@@ -6,7 +6,9 @@ clara.js_define("admin_rule", {
     console.log("ok triggereed");
 
     var global_state = {
+      is_registerable: false,
       current_simulation: {
+        name: "",
         params: {},
         result: "",
       },
@@ -21,6 +23,7 @@ clara.js_define("admin_rule", {
       if (action.type === 'SIMULATION_SUBMITTED') {
         newState.current_simulation.result = action.value.result;
         newState.current_simulation.params = action.value.params;
+        newState.is_registerable = true;
       } else if (action.type === 'ANYTHING ELSE') {
       }
       console.log(newState)
@@ -36,14 +39,9 @@ clara.js_define("admin_rule", {
     // main_store.subscribe(clara.admin_rules_update_explanation.please);
 
     // DISPATCHERS
-    $('#btn_simulate').on('click', function() {
+    $('#btn_simulate').on('click', function(e) {
       var that = this;
-      var mydata = {
-        asker: {
-          v_age: 55,
-        },
-        authenticity_token: window._token
-      };
+      var mydata = clara.admin_rule_ajax_resolve.please()
       $.ajax({
         url: $(that).attr("data-url"),
         type:'GET',
@@ -59,7 +57,6 @@ clara.js_define("admin_rule", {
 
         }
       });
-
     });
 
   }
