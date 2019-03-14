@@ -36,6 +36,25 @@
 
     <div class="simulator-right">
       <div class="simulation-past">
+        <div class="c-simulator-table">
+          <table id="simulation-table" class="simulation-table">
+            <tr>
+              <th>nom simulation</th>
+              <th>eligible?</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <% crcs.each do |crc| %>
+              <tr class="simulator-table-row">
+                <td class="simulation-table-name"><%=crc.name%></td>
+                <td class="simulation-table-result"><%=crc.result%></td>
+                <td><button class="simulation-table-replay">↺</button></td>
+                <td><button class="simulation-table-delete">X</button></td>
+              </tr>
+            <% end %>
+
+          </table>
+        </div>
       </div>
     </div>
 
