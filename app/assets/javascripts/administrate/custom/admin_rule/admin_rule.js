@@ -3,8 +3,6 @@
 clara.js_define("admin_rule", {
 
   please: function() {
-    console.log("ok triggereed");
-
     var global_state = {
       is_registerable: false,
       current_simulation: {
@@ -32,7 +30,6 @@ clara.js_define("admin_rule", {
         newState.is_registerable = false;
         newState.current_simulation.params[action.value.name] = action.value.value;
       }
-      console.log(newState)
       return newState;
     };
 

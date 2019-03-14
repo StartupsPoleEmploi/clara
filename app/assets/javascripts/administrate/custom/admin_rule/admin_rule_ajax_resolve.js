@@ -20,7 +20,6 @@ clara.js_define("admin_rule_ajax_resolve", {
         dataType:'json',
         data: mydata,
         success: function (res) {
-          console.log(res)
           action_value = {
             result: res,
             params: mydata.asker
