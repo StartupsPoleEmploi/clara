@@ -49,7 +49,7 @@
                 <td class="simulation-table-name"><%=crc.name%></td>
                 <td class="simulation-table-result"><%=crc.result%></td>
                 <td><button class="simulation-table-replay">↺</button></td>
-                <td><button class="simulation-table-delete">X</button></td>
+                <td><button class="simulation-table-delete" data-url="<%=delete_simulation_admin_rule_path(crc.id)%>">X</button></td>
               </tr>
             <% end %>
 

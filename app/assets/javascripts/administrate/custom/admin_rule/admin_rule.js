@@ -45,8 +45,11 @@ clara.js_define("admin_rule", {
     // DISPATCHERS
     var $replay = $(".simulator-table-row .simulation-table-replay");
     var $simulate = $("#btn_simulate");
+    var $remove = $(".simulation-table-delete");
+
     $simulate.on('click', function(){clara.admin_rule_ajax_resolve.please(main_store)});
     $replay.on('click', function(e){clara.admin_rule_replay.please(e, main_store)})
+    $remove.on('click', function(e){clara.admin_rule_remove.please(e, main_store)})
   }
 
 });
