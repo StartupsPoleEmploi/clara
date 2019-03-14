@@ -39,26 +39,7 @@ clara.js_define("admin_rule", {
     main_store.subscribe(clara.admin_rule_update_result.please);
 
     // DISPATCHERS
-    $('#btn_simulate').on('click', function(e) {
-
-      var that = this;
-      var mydata = clara.admin_rule_ajax_resolve.please()
-
-      $.ajax({
-        url: $(that).attr("data-url"),
-        type:'GET',
-        dataType:'json',
-        data: mydata,
-        success: function (res) {
-          console.log(res)
-          action_value = {
-            result: res,
-            params: mydata.asker
-          };
-          main_store.dispatch({type: 'SIMULATION_SUBMITTED', value:action_value });
-        }
-      });
-    });
+    $('#btn_simulate').on('click', clara.admin_rule_ajax_resolve.please);
 
   }
 
