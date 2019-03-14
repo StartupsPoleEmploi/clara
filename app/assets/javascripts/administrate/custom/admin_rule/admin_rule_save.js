@@ -4,6 +4,7 @@ clara.js_define("admin_rule_save", {
   please_if: _.stubFalse,
 
   please: function(evt, store) {
+    console.log("goooooo")
     var state = store.getState();
     var simul = state.current_simulation;
 
