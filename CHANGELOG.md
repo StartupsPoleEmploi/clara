@@ -2,6 +2,10 @@
 
 
 
+## 19.7.0 (15/3/2019)
+-[#1187][SEO] ajout gtag
+
+
 ## 19.6.0 (14/3/2019)
 -[#1170][ADMIN] simplifier le simulateur
 
