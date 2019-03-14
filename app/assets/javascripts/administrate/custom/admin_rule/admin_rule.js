@@ -25,9 +25,11 @@ clara.js_define("admin_rule", {
         newState.current_simulation.params = action.value.params;
         newState.is_registerable = true;
       } else if (action.type === 'REPLAY') {
-        console.log("REPLAY")
-        console.log(action)
         newState.current_simulation.params = action.value;
+        newState.current_simulation.result = "";
+        newState.is_registerable = false;
+      } else if (action.type === 'INPUT_CHANGED') {
+        newState.is_registerable = false;
       }
       console.log(newState)
       return newState;
@@ -37,8 +39,6 @@ clara.js_define("admin_rule", {
     window.main_store = Redux.createStore(reducer, global_state);
 
     // SUBSCRIBER
-    // main_store.subscribe(clara.admin_rules_update_value.please);
-    // main_store.subscribe(clara.admin_rules_update_operator.please);
     main_store.subscribe(function(){clara.admin_rule_update_result.please(main_store.getState())});
     main_store.subscribe(function(){clara.admin_rule_update_params.please(main_store.getState())});
 
@@ -47,11 +47,12 @@ clara.js_define("admin_rule", {
     var $simulate = $("#btn_simulate");
     var $remove = $(".simulation-table-delete");
     var $save = $("#btn-save");
-
+    var $inputs = $( "input[name^='asker']" );
     $simulate.on('click', function(){clara.admin_rule_ajax_resolve.please(main_store)});
     $replay.on('click', function(e){clara.admin_rule_replay.please(e, main_store)})
     $remove.on('click', function(e){clara.admin_rule_remove.please(e, main_store)})
     $save.on('click', function(e){clara.admin_rule_save.please(e, main_store)})
+    $inputs.on('change', function(e){clara.admin_rule_input_changed.please(e, main_store)})
 
     main_store.dispatch({type: 'INIT' })
   }

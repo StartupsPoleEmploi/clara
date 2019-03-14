@@ -4,7 +4,6 @@ clara.js_define("admin_rule_save", {
   please_if: _.stubFalse,
 
   please: function(evt, store) {
-    console.log("goooooo")
     var state = store.getState();
     var simul = state.current_simulation;
 
@@ -17,7 +16,7 @@ clara.js_define("admin_rule_save", {
       data:{
         simulation: {
           result: simul.result,
-          name: simul.name
+          name: $("#name_for_saving").val() // HACK here, passing through the state loop
         },
         asker: simul.params,
         authenticity_token: window._token
