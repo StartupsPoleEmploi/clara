@@ -39,7 +39,7 @@ clara.js_define("admin_rule", {
     // SUBSCRIBER
     // main_store.subscribe(clara.admin_rules_update_value.please);
     // main_store.subscribe(clara.admin_rules_update_operator.please);
-    main_store.subscribe(function(){clara.admin_rule_update_result.please(main_store)});
+    main_store.subscribe(function(){clara.admin_rule_update_result.please(main_store.getState())});
 
     // DISPATCHERS
     var $replay = $(".simulator-table-row .simulation-table-replay");
