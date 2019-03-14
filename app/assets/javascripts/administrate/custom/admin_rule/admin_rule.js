@@ -38,17 +38,13 @@ clara.js_define("admin_rule", {
     $('#btn_simulate').on('click', function() {
 
       $.ajax({
-        url: that.save_simulation_url,
-        type:'POST',
+        url: that.url,
+        type:'GET',
         dataType:'json',
-        data:{
-          simulation: {
-            result: "eligible",
-            name: "blabla"
-          },
-        },
-        success:function(data){
-          window.location.reload();
+        data: mydata,
+        success: function (res) {
+          that.$root.simulation_result.val = res;
+          that.$root.is_registerable = true;
         }
       });
 
