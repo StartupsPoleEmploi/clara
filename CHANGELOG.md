@@ -2,6 +2,10 @@
 
 
 
+## 19.6.0 (14/3/2019)
+-[#1170][ADMIN] simplifier le simulateur
+
+
 ## 19.5.2 (14/3/2019)
 -[#1184][DESIGN] corrections
 
