@@ -36,9 +36,15 @@ clara.js_define("admin_rule", {
 
     // DISPATCHERS
     $('#btn_simulate').on('click', function() {
-
+      var that = this;
+      var mydata = {
+        asker: {
+          age: 55,
+        },
+        authenticity_token: window._token
+      };
       $.ajax({
-        url: that.url,
+        url: $(that).attr("data-url"),
         type:'GET',
         dataType:'json',
         data: mydata,

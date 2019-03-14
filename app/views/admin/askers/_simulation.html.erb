@@ -2,7 +2,7 @@
 
 <header class='main-content__header'>
   <h2 class='main-content__page-title'>
-    Simulation
+    Simulation 
   </h2>
 </header>
 <section style="clear:both">
@@ -25,7 +25,7 @@
           <div class="eligibility-nothing"></div>
         </div>
         <div class="c-simulator-submit">
-          <input type="submit" name="commit" value="Simuler" id="btn_simulate" data-url="<%=save_simulation_admin_rule_path%>">
+          <input type="submit" name="commit" value="Simuler" id="btn_simulate" data-url="<%=resolve_admin_rule_path(page.resource.id)%>">
         </div>
       </div> 
     </div>
@@ -36,5 +36,5 @@
     </div>
 
   </div>
-
+<%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 </section>
