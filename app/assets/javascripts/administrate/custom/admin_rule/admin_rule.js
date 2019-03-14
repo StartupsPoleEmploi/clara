@@ -39,7 +39,7 @@ clara.js_define("admin_rule", {
       var that = this;
       var mydata = {
         asker: {
-          age: 55,
+          v_age: 55,
         },
         authenticity_token: window._token
       };

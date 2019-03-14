@@ -91,6 +91,9 @@ module Admin
     def resolve
       asker_params_cleaned = _asker_params.reject{|_, v| v.blank?}
       @asker = Asker.new(asker_params_cleaned)
+      p '- - - - - - - - - - - - - - @asker- - - - - - - - - - - - - - - -' 
+      pp @asker
+      p ''
       @rule = Rule.find(params[:id])
       render json: (RuletreeService.new.resolve(@rule.id, @asker.attributes)).to_json
     end
