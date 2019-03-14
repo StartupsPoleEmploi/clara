@@ -1,4 +1,5 @@
 <%- v = view_object(:simulation, {page: page}) %>
+<%- rule_id = page.resource.id %>
 
 <header class='main-content__header'>
   <h2 class='main-content__page-title'>
@@ -27,10 +28,10 @@
           <div class="eligibility-nothing"></div>
         </div>
         <div class="c-simulator-submit">
-          <input type="submit" name="commit" value="Simuler" id="btn_simulate" data-url="<%=resolve_admin_rule_path(page.resource.id)%>">
+          <input type="submit" name="commit" value="Simuler" id="btn_simulate" data-url="<%=resolve_admin_rule_path(rule_id)%>">
         </div>
       </div> 
-      <div class="c-simulator-registration">
+      <div class="c-simulator-registration" data-url="<%=save_simulation_admin_rule_path(rule_id)%>">
       </div>
     </div>
 
