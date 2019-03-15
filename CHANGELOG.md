@@ -2,6 +2,10 @@
 
 
 
+## 19.9.0 (18/3/2019)
+-[#1190][BUG] manque d'indication si crc devenu incohérent
+
+
 ## 19.8.0 (15/3/2019)
 -[#1181][ADMIN] contrôle de règle
 
