@@ -1,6 +1,9 @@
 class FindChildRules
 
   def call(rule_id)
+    p '- - - - - - - - - - - - - - rule_id- - - - - - - - - - - - - - - -' 
+    pp rule_id
+    p ''
     res = []
     
 
