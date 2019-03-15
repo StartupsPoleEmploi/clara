@@ -6,7 +6,7 @@ describe SaveSimulation do
     it 'Nominal : render json "ok" and modify status of underlying rule' do
       # given
       r = create(:rule, :be_an_adult)
-      expect(r.simulated).to eq(nil)
+      expect(r.simulated).to eq("missing_simulation")
       # when
       res = SaveSimulation.new.call(r.id, _asker_params, _simulation_params)
       # then
