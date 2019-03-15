@@ -23,7 +23,6 @@ clara.js_define("admin_rules", {
       $(red).closest(".js-table-row").addClass("is-red");
     })
 
-    console.log(red_array);
   }
 
 });
