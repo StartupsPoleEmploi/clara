@@ -15,6 +15,11 @@
 class Rule < ApplicationRecord
   include Prefixable
 
+  before_save :default_values
+  def default_values
+    self.simulated ||= 'missing_simulation'
+  end
+
   enum operator_kind: ListOperatorKind.new.call
 
   after_save    { ExpireCacheJob.perform_later }
