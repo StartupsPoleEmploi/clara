@@ -15,5 +15,14 @@ class Simulation < ViewObject
       )
     end
   end
+
+  def hide_all?
+    rule_id = @page.resource[:id]
+    activated_models = ActivatedModelsService.instance
+    all_rules = activated_models.rules
+    found = all_rules.find{|r| rule_id == r["id"]}
+    rule_not_yet_in_cache = !found
+    rule_not_yet_in_cache
+  end
   
 end
