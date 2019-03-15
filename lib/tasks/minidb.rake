@@ -21,8 +21,8 @@ namespace :minidb do
       # Only a few aids
       Aid.where.not(
         slug:[
-          "accompagnement-global",
-          "garantie-jeunes",
+          # "accompagnement-global",
+          # "garantie-jeunes",
           # "service-militaire-volontaire-smv",
           # "vsi-volontariat-de-solidarite-internationale",
           # "volontariat-associatif",
@@ -30,7 +30,7 @@ namespace :minidb do
           "erasmus",
           # "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
           # "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
-          "autres-aides-nationales-pour-la-mobilite",
+          # "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
 
