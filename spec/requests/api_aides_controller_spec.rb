@@ -24,12 +24,6 @@ describe Api::V1::ApiAidesController, type: :request do
   #       track_layer = spy('HttpService')
   #       TrackApiCallService.set_instance(track_layer)
   #       get '/api/v1/filters', {headers: authenticated_header} 
-  #       p '- - - - - - - - - - - - - - authenticated_header- - - - - - - - - - - - - - - -' 
-  #       pp authenticated_header
-  #       p ''
-  #       p '- - - - - - - - - - - - - - response.body- - - - - - - - - - - - - - - -' 
-  #       pp response.body
-  #       p ''
   #       json_returned = JSON.parse(response.body)
   #       response_returned = response
   #     end
@@ -69,9 +63,6 @@ describe Api::V1::ApiAidesController, type: :request do
   #       track_layer = spy('HttpService')
   #       TrackApiCallService.set_instance(track_layer)
   #       get '/api/v1/aids/detail/aide-adulte-ou-spectacle', {headers: authenticated_header} 
-  #       p '- - - - - - - - - - - - - - response.body- - - - - - - - - - - - - - - -' 
-  #       pp response.body
-  #       p ''
   #       json_returned = JSON.parse(response.body)
   #       response_returned = response
   #     end

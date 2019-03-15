@@ -73,6 +73,14 @@ to display a collection of resources in an HTML table.
           </td>
         <% end %>
 
+        <% if valid_action? :show, collection_presenter.resource_name %>
+          <td class="cell-action cell-action--control"><%= link_to(
+            t("administrate.actions.control"),
+            admin_rule_path(resource.id),
+            class: "action-control",
+          ) if show_action? :show, resource%></td>
+        <% end %>
+
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td class="cell-action cell-action--edit"><%= link_to(
             t("administrate.actions.edit"),
