@@ -8,8 +8,10 @@ feature 'CookieSpec' do
     expect(page).to have_selector("#hj-script", visible: false)
   end
 
-  scenario 'When visiting the home page, 3 analytics scripts are included by default' do
+  scenario 'When visiting the home page, 5 analytics scripts are included by default' do
     visit root_path
+    expect(page).to have_selector("#ga-gtag-src", visible: false)
+    expect(page).to have_selector("#ga-gtag-exec", visible: false)
     expect(page).to have_selector("#ga-script", visible: false)
     expect(page).to have_selector("#ga-create-script", visible: false)
     expect(page).to have_selector("#ga-frompe", visible: false)
@@ -51,6 +53,8 @@ feature 'CookieSpec' do
 
     # Given
     visit root_path
+    expect(page).to have_selector("#ga-gtag-src", visible: false)
+    expect(page).to have_selector("#ga-gtag-exec", visible: false)
     expect(page).to have_selector("#ga-script", visible: false)
     expect(page).to have_selector("#ga-create-script", visible: false)
     expect(page).to have_selector("#ga-frompe", visible: false)
@@ -62,6 +66,8 @@ feature 'CookieSpec' do
 
     #Then
     visit root_path
+    expect(page).not_to have_selector("#ga-gtag-src", visible: false)
+    expect(page).not_to have_selector("#ga-gtag-exec", visible: false)
     expect(page).not_to have_selector("#ga-script", visible: false)
     expect(page).not_to have_selector("#ga-create-script", visible: false)
     expect(page).not_to have_selector("#ga-frompe", visible: false)
