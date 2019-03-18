@@ -25,4 +25,22 @@ class Simulation < ViewObject
     rule_not_yet_in_cache
   end
   
+  def controlled_rule_checks
+    res = []
+    rule_resolver = RuletreeService.new
+    current_rule = ActivatedModelsService.instance.rules.detect{|one_rule| one_rule["id"] == rule_id}
+    rule = Rule.find(@page.resource[:id])
+    rule.custom_rule_checks.each do |c|
+      local_result = rule_resolver.resolve(rule.id, c.hsh)  
+      is_errored = local_result.to_s == c.result.to_s ? false : true
+      res << OpenStruct.new(
+        id: c.id, 
+        name: c.name,
+        result: c.result,
+        is_errored: is_errored,
+      )
+    end
+    res
+  end
+
 end

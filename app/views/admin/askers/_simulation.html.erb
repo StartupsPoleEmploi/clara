@@ -50,7 +50,7 @@
                 <th></th>
                 <th></th>
               </tr>
-              <% crcs.each do |crc| %>
+              <% controlled_rule_checks.each do |crc| %>
                 <tr class="simulator-table-row" data-h="<%=crc.hsh.compact.to_json%>">
                   <td class="simulation-table-name"><%=crc.name%></td>
                   <td class="simulation-table-result"><%=crc.result%></td>
