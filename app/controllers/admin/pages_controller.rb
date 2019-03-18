@@ -89,6 +89,7 @@ module Admin
         simuls[new_simulated] = [] if simuls[new_simulated] == nil
         simuls[new_simulated] << rule.id
       end
+      Rule.where(id: simuls["errored_simulation"]).update_all(simulated: "errored_simulation")
       Rule.where(id: simuls["ok"]).update_all(simulated: "ok")
       Rule.where(id: simuls["missing_simulation"]).update_all(simulated: "missing_simulation")
       Rule.where(id: simuls["missing_eligible"]).update_all(simulated: "missing_eligible")
