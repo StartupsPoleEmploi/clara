@@ -33,6 +33,7 @@ fr:
       and_rule: "et"
       or_rule: "ou"
     simulated:
+      errored_simulation: "erroné"
       missing_eligible: "nok eligible"
       missing_ineligible: "nok ineligible"
       missing_simulation: "non effectué"
