@@ -1,15 +1,24 @@
 .c-fse-logo {
   width: 90px;
-  margin: 0 10px 0 30px;
+  margin: 0;
+  @include mq($from: tablet) {
+    margin: 0 10px 0 30px;
+  }
 }
 
 .c-fse-logo-pe {
-  margin: 0 10px 0 0;
+  margin: 0;
+  @include mq($from: tablet) {
+    margin: 0 10px 0 0;
+  }
   width: 70px;
 }
 
 .c-fse-logo-ue {
-  margin: 0 10px 0 0;
+  margin: 0;
+  @include mq($from: tablet) {
+    margin: 0 10px 0 0;
+  }
   width: 80px;
 }
 
@@ -28,5 +37,25 @@
   width: 130px;
   @include mq($from: wide) {
     width: 190px;
+  }
+}
+
+.c-fse-line {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+  width: 60%;
+  margin-top: 20px;
+  @include mq($from: desktop) {
+    margin-top: 0;
+    width: 100%;
+    margin-left: 24px;
+    margin-right: 0;
+  }
+}
+
+.c-fse-linecont {
+  @include mq($until: tablet) {
+    padding-left: 5px;
   }
 }
