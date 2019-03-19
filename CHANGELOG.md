@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 19.10.0 (19/3/2019)
+-[#886][DESIGN] logo FSE en responsive
+
 
 ## 19.9.0 (18/3/2019)
 -[#1190][BUG] manque d'indication si crc devenu incohérent

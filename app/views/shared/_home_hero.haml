@@ -16,10 +16,10 @@
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "Des gens entrain d'utiliser Clara", data: { "src" => image_path("home-hero.svg") }) 
-      .o-layout{:class => "u-hide u-show@desktop"}
+      .o-layout{:class => "c-fse"}
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-        .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
-          %ul.o-line
+        .o-layout__item{:class => "u-1/1 u-1/2@desktop c-fse-linecont"}
+          %ul.o-line.c-fse-line
             %li.o-line__item
               .c-fse-logo
                 %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
