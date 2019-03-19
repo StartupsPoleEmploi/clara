@@ -1,5 +1,10 @@
-.c-logozone
-  %a.c-logozone--clara{href: root_path}
-    = image_tag("logo-clara.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
-  %a.c-logozone--pe{href: "https://www.pole-emploi.fr/"}
-    = image_tag("logo-pe.svg", alt: "Pôle Emploi")
+- display_search ||= false
+.c-logozone.o-line
+  .o-line__item
+    %a.c-logozone--clara{href: root_path}
+      = image_tag("logo-clara.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
+    %a.c-logozone--pe{href: "https://www.pole-emploi.fr/"}
+      = image_tag("logo-pe.svg", alt: "Pôle Emploi")
+  - if display_search
+    .o-line__item
+      display search
