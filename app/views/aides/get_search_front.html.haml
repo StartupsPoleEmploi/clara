@@ -7,28 +7,28 @@
 .c-result-front.u-useful-width.u-margin-constraint
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
-      .c-result-all__leftblock
+      .c-result-front__leftblock
         - if total_nb == 0
-          %h2.c-result-all-subtitle
+          %h2.c-result-front-subtitle
             La recherche n'a retourné aucun résultat
         - elsif usearch && total_nb == 1
-          %h2.c-result-all-subtitle
-            Une seule aide ou mesure est disponible pour cette recherche  
+          %h2.c-result-front-subtitle
+            Une seule aide ou mesure est disponible pour la recherche #{usearch}
+          .c-result-front-subtitle__number
+            1 résultat trouvé
         - elsif usearch && total_nb > 1
-          %h2.c-result-all-subtitle
-            #{total_nb} aides ou mesures sont disponibles pour cette recherche  
+          %h2.c-result-front-subtitle
+            Résultat de la recherche : <span class="c-result-front__actualsearch">#{usearch}</span>
+          .c-result-front-subtitle__number
+            #{total_nb} résultats trouvés
         - else
-          %h2.c-result-all-subtitle
+          %h2.c-result-front-subtitle
             #{total_nb} aides et mesures sont disponibles sur Clara
         - if aids.size > 0
-          = render 'shared/result_line', {hide_title: true, aids: aids}
+          = render 'shared/result_line_front', {aids: aids, usearch: usearch}
 
         - unless local_assigns["skip_pagination"]
           = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
-
-    .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
-      .c-result-all__rightblock{:class => "u-hide u-show@desktop"}
-        = render 'shared/detail_void'
       
   .c-result-all__separator{:class => "u-show u-hide@desktop"}
   %a.c-btn.c-btn--small.c-btn--result{href: "/"}
