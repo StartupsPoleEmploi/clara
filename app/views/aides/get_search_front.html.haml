@@ -15,14 +15,14 @@
             La recherche n'a retourné aucun résultat
         - elsif usearch && total_nb == 1
           %h1.c-result-front-subtitle
-            Une seule aide ou mesure est disponible pour la recherche #{usearch}
+            Résultat de la recherche : <span class="c-result-front__actualsearch"><mark>#{usearch}</mark></span>
           .c-result-front-subtitle__number
-            1 résultat trouvé
+            1 élément trouvé
         - elsif usearch && total_nb > 1
           %h1.c-result-front-subtitle
-            Résultat de la recherche : <span class="c-result-front__actualsearch">#{usearch}</span>
+            Résultat de la recherche : <span class="c-result-front__actualsearch"><mark>#{usearch}</mark></span>
           .c-result-front-subtitle__number
-            #{total_nb} résultats trouvés
+            #{total_nb} éléments trouvés
         - else
           %h1.c-result-front-subtitle
             #{total_nb} aides et mesures sont disponibles sur Clara

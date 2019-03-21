@@ -108,6 +108,13 @@ input.c-search-front-submit {
   }
 }
 
+.c-result-front-subtitle {  
+  mark {
+    background-color: inherit;
+    color:#057dbc;
+  }
+}
+
 .c-result-line-front__name {
   a {
     font-weight: 500;
