@@ -465,7 +465,7 @@ explicitation_list = [
   ["v_location_citycode", 
       :not_starts_with, 
       nil, 
-      "Avoir un code ville qui ne commence par XX"],
+      "Avoir un code ville qui ne commence pas par XX"],
   ["v_location_citycode", 
       :amongst, 
       nil, 
