@@ -19,9 +19,6 @@ class AidesController < ApplicationController
 
   def get_search_front
       aids_h, total_nb = _aides_index_search
-      p '- - - - - - - - - - - - - - aids_h- - - - - - - - - - - - - - - -' 
-      pp aids_h
-      p ''
       hydrate_view({
         "aids" => aids_h,
         "total_nb" => total_nb,
@@ -44,17 +41,8 @@ class AidesController < ApplicationController
   def _aides_index_search
     extractor = ExtractParam.new(params)
     usearch = extractor.call(:usearch)
-    p '- - - - - - - - - - - - - - usearch- - - - - - - - - - - - - - - -' 
-    pp usearch
-    p ''
     page_nb_str = extractor.call(:page)
-    p '- - - - - - - - - - - - - - page_nb_str- - - - - - - - - - - - - - - -' 
-    pp page_nb_str
-    p ''
     page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
-    p '- - - - - - - - - - - - - - page_nb- - - - - - - - - - - - - - - -' 
-    pp page_nb
-    p ''
 
     aids = nil
     if usearch
