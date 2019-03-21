@@ -9,7 +9,7 @@
     .o-line__item{"class" => "u-hide u-show@tablet"}
       = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
         = form.text_field :plain_text_search, value: "", id: "usearch_input", :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
-        = form.hidden_field :page_nb, value: "page", id: "page_nb_input", :class => "c-search-pagenb"
-        = form.hidden_field :previous_search, value: "usearch", id: "previous_search", :class => "c-search-previous-search"
+        = form.hidden_field :page_nb, value: "page", id: "page_nb_input", :class => "c-search-front-pagenb"
+        = form.hidden_field :previous_search, value: "usearch", id: "previous_search", :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit"
     

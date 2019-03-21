@@ -20,6 +20,17 @@ class AidesController < ApplicationController
   def get_search_front
   end
   def post_search_front
+    previous_search = params.extract!(:previous_search).permit(:previous_search).to_h[:previous_search]
+    current_search = params.extract!(:plain_text_search).permit(:plain_text_search).to_h[:plain_text_search]
+    redirection = params.extract!(:redirection).permit(:redirection).to_h[:redirection]
+    page_nb = params.extract!(:page_nb).permit(:page_nb).to_h[:page_nb]
+    redirect_h = {action: "get_search_front"}
+    redirect_h[:usearch] = current_search unless current_search.blank?
+    if previous_search != current_search
+      page_nb = nil
+    end
+    redirect_h[:page] = page_nb unless page_nb.blank?
+    redirect_to redirect_h
   end
 
   def _aides_index_search

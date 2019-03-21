@@ -4,5 +4,5 @@
       .o-layout
         .o-layout__item{:class => "u1/1"}
           .c-qh__logo
-            = render 'shared/logozone'
+            = render 'shared/logozone', {display_search: request.path == get_search_front_path}
           .c-qh__cta
