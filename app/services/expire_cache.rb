@@ -1,7 +1,5 @@
 # deprecated
-class ExpireCache < ClaraService
-
-  is_callable
+class ExpireCache
 
   def call
     Rails.cache.clear

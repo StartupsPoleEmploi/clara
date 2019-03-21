@@ -3,6 +3,6 @@ class ExpireCacheJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    ExpireCache.call
+    ExpireCache.new.call
   end
 end
