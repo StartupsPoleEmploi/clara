@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+## 19.11.0 (21/3/2019)
+-[#970][DESIGN] champ de recherche sur la home
+-[#971][DESIGN] page de résultats page de recherches
+
+
 ## 19.10.0 (19/3/2019)
 -[#886][DESIGN] logo FSE en responsive
 

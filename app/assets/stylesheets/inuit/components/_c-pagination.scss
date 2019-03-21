@@ -3,7 +3,6 @@ nav.pagination {
   display: flex;
   justify-content: center;
   margin-top: space(6);
-  margin-bottom: space(6);
   flex-wrap: wrap;
   .next, .prev, .last, .first, .page {
     a {

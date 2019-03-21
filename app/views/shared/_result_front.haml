@@ -6,13 +6,6 @@
 
   %h1.c-result-all-title Toutes nos aides
 
-  = form_with url: aides_search_for_aids_path, id: "search_form", :class => "c-search-form" do |form|
-    = form.text_field :plain_text_search, value: usearch, :class => "c-search-usearch", :placeholder => "Rechercher une aide"
-    = form.hidden_field :page_nb, value: page, :class => "c-search-pagenb"
-    = form.hidden_field :previous_search, value: usearch, :class => "c-search-previous-search"
-    = form.submit '', :class => "c-search-form-submit"
-
-
   .o-layout
     .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
       .c-result-all__leftblock

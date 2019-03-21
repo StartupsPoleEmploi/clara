@@ -1,0 +1,37 @@
+- aids = local_assigns["aids"]
+- total_nb = local_assigns["total_nb"]
+- usearch = request.query_parameters["usearch"]
+- page = request.query_parameters["page"]
+
+= render "shared/breadcrumb"
+
+%main#main.c-results-index{role: 'main'}
+.c-result-front.u-useful-width.u-margin-constraint
+  .o-layout
+    .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+      .c-result-front__leftblock
+        - if total_nb == 0
+          %h1.c-result-front-subtitle
+            La recherche n'a retourné aucun résultat
+        - elsif usearch && total_nb == 1
+          %h1.c-result-front-subtitle
+            Résultat de la recherche : <span class="c-result-front__actualsearch"><mark>#{usearch}</mark></span>
+          .c-result-front-subtitle__number
+            1 élément trouvé
+        - elsif usearch && total_nb > 1
+          %h1.c-result-front-subtitle
+            Résultat de la recherche : <span class="c-result-front__actualsearch"><mark>#{usearch}</mark></span>
+          .c-result-front-subtitle__number
+            #{total_nb} éléments trouvés
+        - else
+          %h1.c-result-front-subtitle
+            #{total_nb} aides et mesures sont disponibles sur Clara
+        - if aids.size > 0
+          = render 'shared/result_line_front', {aids: aids, usearch: usearch}
+
+        - unless local_assigns["skip_pagination"]
+          = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
+      
+  .c-result-all__separator{:class => "u-show u-hide@desktop"}
+  %a.c-btn.c-btn--small.c-btn--result{href: "/"}
+    <strong><</strong> Retour

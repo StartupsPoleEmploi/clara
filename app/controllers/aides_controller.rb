@@ -17,15 +17,37 @@ class AidesController < ApplicationController
     end
   end
 
+  def get_search_front
+      aids_h, total_nb = _aides_index_search
+      hydrate_view({
+        "aids" => aids_h,
+        "total_nb" => total_nb,
+      })
+  end
+  def post_search_front
+    extractor = ExtractParam.new(params)
+    previous_search = extractor.call(:previous_search)
+    current_search = extractor.call(:plain_text_search)
+    page_nb = extractor.call(:page_nb)
+    redirect_h = {action: "get_search_front"}
+    redirect_h[:usearch] = current_search unless current_search.blank?
+    if previous_search != current_search
+      page_nb = nil
+    end
+    redirect_h[:page] = page_nb unless page_nb.blank?
+    redirect_to redirect_h
+  end
+
   def _aides_index_search
-    usearch = params.extract!(:usearch).permit(:usearch).to_h[:usearch]
-    page_nb_str = params.extract!(:page).permit(:page).to_h[:page]
+    extractor = ExtractParam.new(params)
+    usearch = extractor.call(:usearch)
+    page_nb_str = extractor.call(:page)
     page_nb = page_nb_str.blank? ? 1 : page_nb_str.to_i
 
     aids = nil
     if usearch
       aids = Aid.roughly_spelled_like(usearch).activated
-      unless CookiePreference.new(current_session: session).ga_disabled?
+      unless CookiePreference.new(session).ga_disabled?
         TrackSearch.call(user_search: usearch)
       end
     else
@@ -38,9 +60,10 @@ class AidesController < ApplicationController
   end
 
   def search_for_aids
-    previous_search = params.extract!(:previous_search).permit(:previous_search).to_h[:previous_search]
-    current_search = params.extract!(:plain_text_search).permit(:plain_text_search).to_h[:plain_text_search]
-    page_nb = params.extract!(:page_nb).permit(:page_nb).to_h[:page_nb]
+    extractor = ExtractParam.new(params)
+    previous_search = extractor.call(:previous_search)
+    current_search = extractor.call(:plain_text_search)
+    page_nb = extractor.call(:page_nb)
     redirect_h = {action: "index"}
     redirect_h[:usearch] = current_search unless current_search.blank?
     if previous_search != current_search

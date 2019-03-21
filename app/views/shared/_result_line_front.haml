@@ -1,0 +1,9 @@
+.c-result-line-front{class: "#{aids.size <= 20 ? 'has-no-nav' : 'has-nav'}"}
+  - aids.each_with_index do |aid, i|      
+    .c-result-line-front-item{class: "#{aids.size == 1 ? 'is-first is-last' : i == 0 ? 'is-first' : i == aids.size - 1 ? 'is-last' : ''}"}
+      .c-result-line-front__name
+        = link_to(detail_path(aid["slug"])) do
+          = highlight(aid["name"], usearch)
+      .c-result-line-front__description
+        = highlight(aid["short_description"], usearch)
+

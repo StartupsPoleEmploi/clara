@@ -2,7 +2,7 @@ class RecordRegister
 
   def call(session, asker, url)
     city_key = asker.v_location_citycode
-    unless CookiePreference.new(current_session: session).ga_disabled?
+    unless CookiePreference.new(session).ga_disabled?
       tracings = ActivatedModelsService.instance.tracings
       aid_filtered_tracings = _scan_tracings_aids(asker, tracings, url)
       aid_and_rule_filtered_tracings = _scan_tracings_rules(asker, aid_filtered_tracings)

@@ -115,7 +115,6 @@ Rails.application.routes.draw do
   resources :confidentiality,       only: [:index]
   
   
-  # resources :aides, only: [:show, :index] 
   resources :aides, only: [:index] do
     collection do
       resources :type, only: [:show]
@@ -123,6 +122,8 @@ Rails.application.routes.draw do
     end
   end
   post 'aides/search_for_aids'
+  get 'get_search_front', to: 'aides#get_search_front'
+  post 'post_search_front', to: 'aides#post_search_front'
 
   resources :req,       only: [:index]
   resources :reqip,    only: [:index]

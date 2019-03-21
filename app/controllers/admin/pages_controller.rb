@@ -29,7 +29,7 @@ module Admin
     def get_cache
     end
     def post_cache
-      ExpireCache.call
+      ExpireCache.new.call
       render json: {
         status: "ok"
       }

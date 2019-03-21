@@ -12,7 +12,7 @@ describe SaveSimulation do
       # then
       expect(res).to eq({:json=>["ok"], :status=>:created})
       new_status = Rule.find(r.id).attributes["simulated"]
-      expect(new_status).to eq("missing_eligible")
+      expect(new_status).to eq("errored_simulation")
     end
 
     def _simulation_params
