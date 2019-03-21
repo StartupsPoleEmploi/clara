@@ -11,6 +11,10 @@ class Breadcrumb < ViewObject
     return RoutesList.asked_questions.keys.include?(@current_path)
   end
 
+  def display_search?
+    @current_path == "get_search_front_path"
+  end
+
   def display_results?
     @current_path == "aides_path" && @context.params[:for_id]
   end

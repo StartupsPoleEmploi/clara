@@ -113,3 +113,13 @@ input.c-search-front-submit {
     font-weight: 500;
   }
 }
+
+h1.c-result-front-subtitle {
+  @include inuit-font-size(26px);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+}

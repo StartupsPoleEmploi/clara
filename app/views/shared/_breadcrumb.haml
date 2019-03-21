@@ -11,6 +11,8 @@
         &nbsp;/&nbsp;
         - if v.display_form?
           %a.c-breadcrumb-current.c-breadcrumb-current--question{ :href => ""} Formulaire
+        - elsif v.display_search?
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats de la recherche
         - elsif v.display_results?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats
         - elsif v.display_confidentiality?
