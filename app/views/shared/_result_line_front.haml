@@ -3,6 +3,7 @@
     - aids.each_with_index do |aid, i|      
       .c-result-line-front-item{class: "#{i == 0 ? 'is-first' : i == aids.size - 1 ? 'is-last' : ''}"}
         .c-result-line-front__name
-          = aid["name"]
+          = link_to(detail_path(aid["slug"])) do
+            = highlight(aid["name"], usearch)
         .c-result-line-front__description
-          = aid["short_description"]
+          = highlight(aid["short_description"], usearch)
