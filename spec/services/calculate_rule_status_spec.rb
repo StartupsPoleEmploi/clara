@@ -27,6 +27,12 @@ describe CalculateRuleSimulated do
       sut = CalculateRuleSimulated.new.call(rule)
       expect(sut).to eq("missing_ineligible")
     end    
+    it 'errored_simulation' do
+      crc_wrong = create(:custom_rule_check, name: "crc1", result: "eligible", hsh:{})
+      rule = create(:rule, :be_an_adult_or_a_spectacles, name: "wrong", custom_rule_checks: [crc_wrong])
+      sut = CalculateRuleSimulated.new.call(rule)
+      expect(sut).to eq("errored_simulation")
+    end    
     it 'wrong input' do
       sut = CalculateRuleSimulated.new.call(42)
       expect(sut).to eq("")
