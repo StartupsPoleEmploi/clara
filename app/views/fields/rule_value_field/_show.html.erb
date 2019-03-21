@@ -1,1 +1,1 @@
-<%= GetRuleValueTranslation.new(variable_id: field.resource.send(:variable_id), key_value: field.data).call %>
+<%= GetRuleValueTranslation.new(field.resource.send(:variable_id), field.data).call %>
