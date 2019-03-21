@@ -4,8 +4,8 @@ describe CalculateRuleSimulated do
 
   describe '.call' do
     it 'ok' do
-      crc_eligible = create(:custom_rule_check, name: "crc1", result: "eligible")
-      crc_ineligible = create(:custom_rule_check, name: "crc2",  result: "ineligible")
+      crc_eligible = create(:custom_rule_check, name: "crc1", result: "eligible", hsh:{v_spectacle: 'oui'})
+      crc_ineligible = create(:custom_rule_check, name: "crc2",  result: "ineligible", hsh:{v_spectacle: 'non', v_age: '17'})
       rule = create(:rule, :be_an_adult_or_a_spectacles, name: "to_be_tested", custom_rule_checks: [crc_eligible, crc_ineligible])
       sut = CalculateRuleSimulated.new.call(rule)
       expect(sut).to eq("ok")
