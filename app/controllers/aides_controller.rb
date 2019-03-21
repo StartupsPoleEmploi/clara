@@ -48,13 +48,13 @@ class AidesController < ApplicationController
     if usearch
       aids = Aid.roughly_spelled_like(usearch).activated
       unless CookiePreference.new(session).ga_disabled?
-        TrackSearch.call(user_search: usearch)
+        TrackSearch.new.call(usearch)
       end
     else
       aids = Aid.all.activated
     end
     
-    @aids = aids.page(page_nb).per(GetPaginationSearchNumberService.call)
+    @aids = aids.page(page_nb).per(GetPaginationSearchNumberService.new.call)
     @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
     return @h_aids, aids.size
   end
@@ -88,7 +88,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_if_necessary
-    @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
+    @asker = HydrateAddress.new.call(@asker.attributes)
   end
 
   def create_results_from_asker

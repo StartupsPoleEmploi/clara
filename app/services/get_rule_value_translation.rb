@@ -1,6 +1,9 @@
-class GetRuleValueTranslation < ClaraService
-  initialize_with_keywords :variable_id, :key_value
-  is_callable
+class GetRuleValueTranslation
+
+  def initialize(variable_id, key_value)
+    @variable_id = variable_id
+    @key_value = key_value
+  end
 
   def call
     result = @key_value.to_s

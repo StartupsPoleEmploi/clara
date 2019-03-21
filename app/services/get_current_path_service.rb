@@ -1,7 +1,8 @@
-class GetCurrentPathService < ClaraService
-  initialize_with_keywords :a_request
+class GetCurrentPathService
 
-  is_callable
+  def initialize(a_request)
+    @a_request = a_request
+  end
 
   def call
     res = ""

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.11.1 (21/3/2019)
+-[#1169][FEATURETTE] vocabulaire (et suppression SmartInit)
+
+
 ## 19.11.0 (21/3/2019)
 -[#970][DESIGN] champ de recherche sur la home
 -[#971][DESIGN] page de résultats page de recherches

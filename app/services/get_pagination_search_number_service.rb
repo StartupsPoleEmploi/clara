@@ -1,6 +1,4 @@
-class GetPaginationSearchNumberService < ClaraService
-
-  is_callable
+class GetPaginationSearchNumberService
 
   # Number of items per page
   def call

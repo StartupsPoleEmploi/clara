@@ -5,7 +5,7 @@ class Navigation < ViewObject
   end
 
   def filter_clazz(req)
-    current_path = GetCurrentPathService.call(a_request: req)
+    current_path = GetCurrentPathService.new(req).call
     actives_pathes = [
       "admin_get_all_filters_menu_path", 
       "admin_get_custom_filter_menu_path", 
