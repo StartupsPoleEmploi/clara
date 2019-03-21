@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
   end
 
   def accept_all_cookies
-    CookiePreference.new(current_session: session).accept_all_cookies
+    CookiePreference.new(session).accept_all_cookies
   end
 
   def terms
