@@ -40,8 +40,7 @@ describe HydrateAddress do
   end
 
   def _fake_is_zrr
-    is_zrr = class_double("IsZrr").as_stubbed_const
-    allow(is_zrr).to receive(:call).and_return("oui")
+    allow_any_instance_of(IsZrr).to receive(:call).and_return('oui')
   end
 
   def _fake_get_zip_city_region
