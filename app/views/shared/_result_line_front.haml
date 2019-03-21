@@ -1,7 +1,7 @@
 .c-result-line-front
   .is-visible.c-result-line__aids
-    - aids.each do |aid|      
-      .c-result-line-front-item
+    - aids.each_with_index do |aid, i|      
+      .c-result-line-front-item{class: "#{i == 0 ? 'is-first' : i == aids.size - 1 ? 'is-last' : ''}"}
         .c-result-line-front__name
           = aid["name"]
         .c-result-line-front__description
