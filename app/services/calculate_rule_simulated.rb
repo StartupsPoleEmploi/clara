@@ -25,11 +25,11 @@ class CalculateRuleSimulated
     rule_resolver = RuletreeService.new
     rule.custom_rule_checks.any? do |c|
       local_result = rule_resolver.resolve(rule.id, c.hsh)  
-      p '- - - - - - - - - - - - - - c- - - - - - - - - - - - - - - -' 
-      ap c
-      ap local_result.to_s
-      ap c.result.to_s
-      p ''
+      # p '- - - - - - - - - - - - - - c- - - - - - - - - - - - - - - -' 
+      # ap c
+      # ap local_result.to_s
+      # ap c.result.to_s
+      # p ''
       local_result.to_s != c.result.to_s
     end
   end
