@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.11.2 (21/3/2019)
+-[#1169b][BUG] bug lié à dernières modifs
+
+
 ## 19.11.1 (21/3/2019)
 -[#1169][FEATURETTE] vocabulaire (et suppression SmartInit)
 
