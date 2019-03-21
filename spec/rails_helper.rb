@@ -51,15 +51,6 @@ def enable_http_service
 end
 
 
-def qpv_and_zrr_both_ok
-  qpv_layer = instance_double("QpvService")
-  zrr_layer = instance_double("ZrrService")
-  allow(qpv_layer).to receive(:setDetailedQPV).and_return("")
-  allow(qpv_layer).to receive(:isDetailedQPV).and_return("en_qpv")
-  allow(zrr_layer).to receive(:isZRR).and_return("en_zrr")
-  QpvService.set_instance(qpv_layer)
-end
-
 def enable_qpv_zrr_service
   QpvService.set_instance(nil)
 end
