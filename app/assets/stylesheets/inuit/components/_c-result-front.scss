@@ -84,6 +84,9 @@ input.c-search-front-submit {
 .c-result-line-front {
   border-radius: 4px;
   border: 1px solid #BDBDBD;
+  &.has-no-nav {
+    margin-bottom: space(3);
+  }
 }
 
 .c-result-line-front-item {
