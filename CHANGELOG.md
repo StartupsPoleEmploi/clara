@@ -2,7 +2,7 @@
 
 
 ## 19.11.1 (21/3/2019)
--[#1169][FEATURETTE] vocabulaire
+-[#1169][FEATURETTE] vocabulaire (et suppression SmartInit)
 
 
 ## 19.11.0 (21/3/2019)
