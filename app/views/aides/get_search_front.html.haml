@@ -1,2 +1,35 @@
+- aids = local_assigns["aids"]
+- total_nb = local_assigns["total_nb"]
+- usearch = request.query_parameters["usearch"]
+- page = request.query_parameters["page"]
+
 %main#main.c-results-index{role: 'main'}
-  search      
+.c-result-front.u-useful-width.u-margin-constraint
+  .o-layout
+    .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+      .c-result-all__leftblock
+        - if total_nb == 0
+          %h2.c-result-all-subtitle
+            La recherche n'a retourné aucun résultat
+        - elsif usearch && total_nb == 1
+          %h2.c-result-all-subtitle
+            Une seule aide ou mesure est disponible pour cette recherche  
+        - elsif usearch && total_nb > 1
+          %h2.c-result-all-subtitle
+            #{total_nb} aides ou mesures sont disponibles pour cette recherche  
+        - else
+          %h2.c-result-all-subtitle
+            #{total_nb} aides et mesures sont disponibles sur Clara
+        - if aids.size > 0
+          = render 'shared/result_line', {hide_title: true, aids: aids}
+
+        - unless local_assigns["skip_pagination"]
+          = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
+
+    .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
+      .c-result-all__rightblock{:class => "u-hide u-show@desktop"}
+        = render 'shared/detail_void'
+      
+  .c-result-all__separator{:class => "u-show u-hide@desktop"}
+  %a.c-btn.c-btn--small.c-btn--result{href: "/"}
+    <strong><</strong> Retour

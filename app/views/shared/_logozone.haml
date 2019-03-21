@@ -1,4 +1,6 @@
 - display_search ||= false
+- page = request.query_parameters["page"]
+- usearch = request.query_parameters["usearch"]
 .c-logozone.o-line
   .o-line__item
     %a.c-logozone--clara{href: root_path}
@@ -8,8 +10,8 @@
   - if display_search
     .o-line__item{"class" => "u-hide u-show@tablet"}
       = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
-        = form.text_field :plain_text_search, value: "", id: "usearch_input", :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
-        = form.hidden_field :page_nb, value: "page", id: "page_nb_input", :class => "c-search-front-pagenb"
-        = form.hidden_field :previous_search, value: "usearch", id: "previous_search", :class => "c-search-front-previous-search"
+        = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
+        = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
+        = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit"
     
