@@ -35,7 +35,7 @@ clara.js_define("admin_rules_update_explanation", {
       var res = false;
       if (expl.variable_name === s.selected_variable) {
         if (expl.operator_kind === s.selected_operator) {
-          if (expl.value_eligible === null) {
+          if (_.isEmpty(expl.value_eligible)) {
             res = true;
           } else if (expl.value_eligible === s.selected_value) {
             res = true;
