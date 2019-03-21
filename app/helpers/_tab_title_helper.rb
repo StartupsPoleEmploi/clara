@@ -2,7 +2,7 @@ module TabTitleHelper
   class TitleCalculator  
 
     def initialize(the_request_object)
-      @current_path = GetCurrentPathService.call(a_request: the_request_object)
+      @current_path = GetCurrentPathService.new(the_request_object).call
     end
 
     def calculate_title(raw_title_data)
