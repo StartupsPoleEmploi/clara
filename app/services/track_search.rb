@@ -1,12 +1,10 @@
 require 'uri'
 require 'securerandom'
 
-class TrackSearch < ClaraService
-  initialize_with_keywords :user_search
-  is_callable
+class TrackSearch
   
-  def call
-    if @user_search.is_a?(String) && !@user_search.blank?
+  def call(user_search)
+    if user_search.is_a?(String) && !user_search.blank?
       uri = URI.parse(EnvService.get_instance.ara_google_analytics_collect)
       params = {
                 "v" => "1",
@@ -15,7 +13,7 @@ class TrackSearch < ClaraService
                  "t" => "event",
                  "ec" => "aids",
                  "ea" => "search",
-                 "el" => @user_search,
+                 "el" => user_search,
                }
       HttpService.get_instance.post_form(uri, params)
     else

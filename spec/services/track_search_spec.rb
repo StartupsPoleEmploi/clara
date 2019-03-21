@@ -7,7 +7,7 @@ describe TrackSearch do
       # given
       _setup_test_with(:ga_receive => "aid")
       # when
-      res = TrackSearch.call(user_search: "aid")
+      res = TrackSearch.new.call("aid")
       # then
       expect(res).to eq("test is ok")   
 
@@ -16,7 +16,7 @@ describe TrackSearch do
       # given
       _setup_test_with(:ga_receive => "help")
       # when
-      res = TrackSearch.call(user_search: "help")
+      res = TrackSearch.new.call("help")
       # then
       expect(res).to eq("test is ok")   
  
@@ -27,7 +27,7 @@ describe TrackSearch do
       # given
       _setup_test_with(:ga_receive => "aid social")
       # when
-      res = TrackSearch.call(user_search: "aid social")
+      res = TrackSearch.new.call("aid social")
       # then   
       expect(res).to eq("test is ok")
     end
@@ -35,7 +35,7 @@ describe TrackSearch do
       # given
       _setup_test_with(:ga_receive => "help aid active")
       # when
-      res = TrackSearch.call(user_search: "help aid active")
+      res = TrackSearch.new.call("help aid active")
       # then   
       expect(res).to eq("test is ok")
     end
@@ -44,14 +44,14 @@ describe TrackSearch do
     it 'With keywords " " (blank String)' do
       # given
       # when
-      res = TrackSearch.call(user_search: "  ")
+      res = TrackSearch.new.call("  ")
       # then   
       expect(res).to eq("not called")  
     end
     it 'With keywords Date (wrong type)' do
       # given
       # when
-      res = TrackSearch.call(user_search: Date.new)
+      res = TrackSearch.new.call(Date.new)
       # then   
       expect(res).to eq("not called")  
     end
@@ -59,8 +59,7 @@ describe TrackSearch do
   describe 'Service can be stubbed' do
     it 'Stub is possible' do
       # given
-      search_layer = class_double("TrackSearch").as_stubbed_const
-      allow(search_layer).to receive(:call).with({user_search: "any"}).and_return("ok for stubbing")
+      allow_any_instance_of(TrackSearch).to receive(:call).with("any").and_return("ok for stubbing")
       # when
       res = _call_me
       # then 
@@ -96,7 +95,7 @@ describe TrackSearch do
   end
 
   def _call_me
-    TrackSearch.call({user_search: "any"})
+    TrackSearch.new.call("any")
   end
 
 end
