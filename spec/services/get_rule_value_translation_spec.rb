@@ -6,14 +6,14 @@ describe GetRuleValueTranslation do
     it 'Returns empty string by default' do
       #given
       #when
-      result = GetRuleValueTranslation.call(variable_id: nil, key_value: nil)
+      result = GetRuleValueTranslation.new(nil, nil).call
       #then
       expect(result).to eq ""
     end
     it 'Returns string version of key_value if variable_id is missing' do
       #given
       #when
-      result = GetRuleValueTranslation.call(variable_id: nil, key_value: 123)
+      result = GetRuleValueTranslation.new(nil, 123).call
       #then
       expect(result).to eq "123"
     end
@@ -21,10 +21,7 @@ describe GetRuleValueTranslation do
       #given
       rule = build(:rule, :old_inscription)
       #when
-      result = GetRuleValueTranslation.call(
-        variable_id: rule.variable_id, 
-        key_value: 'moins_d_un_an'
-      )
+      result = GetRuleValueTranslation.new(rule.variable_id, 'moins_d_un_an').call
       #then
       expect(result).to eq "moins d'un an"
     end
@@ -32,10 +29,7 @@ describe GetRuleValueTranslation do
       #given
       rule = build(:rule, :old_inscription)
       #when
-      result = GetRuleValueTranslation.call(
-        variable_id: rule.variable_id, 
-        key_value: 'plus_d_un_an'
-      )
+      result = GetRuleValueTranslation.new(rule.variable_id, 'plus_d_un_an').call
       #then
       expect(result).to eq "plus d'un an"
     end
@@ -43,10 +37,7 @@ describe GetRuleValueTranslation do
       #given
       rule = build(:rule, :be_paris)
       #when
-      result = GetRuleValueTranslation.call(
-        variable_id: rule.variable_id, 
-        key_value: "75056"
-      )
+      result = GetRuleValueTranslation.new(rule.variable_id, "75056").call
       #then
       expect(result).to eq "75056"
     end
@@ -54,10 +45,7 @@ describe GetRuleValueTranslation do
       #given
       rule = build(:rule, :be_paris)
       #when
-      result = GetRuleValueTranslation.call(
-        variable_id: rule.variable_id, 
-        key_value: "75001"
-      )
+      result = GetRuleValueTranslation.new(rule.variable_id, "75001").call
       #then
       expect(result).to eq "75001"
     end
@@ -65,10 +53,7 @@ describe GetRuleValueTranslation do
       #given
       rule = build(:rule, :be_an_adult_and_a_spectacles)
       #when
-      result = GetRuleValueTranslation.call(
-        variable_id: rule.variable_id, # nil actually 
-        key_value: ""
-      )
+      result = GetRuleValueTranslation.new(rule.variable_id, "").call
       #then
       expect(result).to eq ""
     end

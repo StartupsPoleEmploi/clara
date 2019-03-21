@@ -19,8 +19,8 @@ class AidesIndex < ViewObject
       else
         page_nb = @request.query_parameters["page"].blank? ? "1" : @request.query_parameters["page"]
         total_nb = @total_nb
-        divided = total_nb.to_f / GetPaginationSearchNumberService.call.to_f
-        divided_floor = (total_nb / GetPaginationSearchNumberService.call).floor
+        divided = total_nb.to_f / GetPaginationSearchNumberService.new.call.to_f
+        divided_floor = (total_nb / GetPaginationSearchNumberService.new.call).floor
         max_page = divided_floor == divided ? divided_floor : divided_floor + 1
         "Résultat de recherche – #{total_nb} aides et mesures sont disponibles - page #{page_nb} sur #{max_page}"        
       end
