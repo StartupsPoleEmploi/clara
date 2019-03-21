@@ -10,7 +10,7 @@ class DetailController < ApplicationController
         @asker = Asker.new(existing[:asker])
       else
         @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
-        @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
+        @asker = HydrateAddress.new.call(@asker.attributes)
       end
       @loaded = DetailService.new(@aid).hashified_eligibility_and_rules(@asker)
       RecordRegister.new.call(session, @asker, params[:id])

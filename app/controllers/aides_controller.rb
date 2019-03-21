@@ -88,7 +88,7 @@ class AidesController < ApplicationController
   end
 
   def augment_asker_if_necessary
-    @asker = HydrateAddress.call(asker_attributes: @asker.attributes)
+    @asker = HydrateAddress.new.call(@asker.attributes)
   end
 
   def create_results_from_asker
