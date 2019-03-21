@@ -45,8 +45,7 @@ describe HydrateAddress do
   end
 
   def _fake_get_zip_city_region
-    get_zip_city_region = class_double("GetZipCityRegion").as_stubbed_const
-    allow(get_zip_city_region).to receive(:call).and_return( ['59440', 'Avesnelles', 'Hauts-de-France (Nord-Pas-de-Calais)'])
+    allow_any_instance_of(GetZipCityRegion).to receive(:call).and_return(['59440', 'Avesnelles', 'Hauts-de-France (Nord-Pas-de-Calais)'])
   end
 
 end

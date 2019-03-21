@@ -2,13 +2,12 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-class GetZipCityRegion < ClaraService
-  initialize_with_keywords :citycode
-  is_callable
+class GetZipCityRegion
 
-  def call
-    if (@citycode && @citycode.is_a?(String) && !@citycode.blank?)
-      escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "rue&citycode=" + @citycode) 
+
+  def call(citycode)
+    if (citycode && citycode.is_a?(String) && !citycode.blank?)
+      escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "rue&citycode=" + citycode) 
       uri = URI.parse(escaped_address)
       response = HttpService.get_instance.get(uri)
       if !response.blank? && response.include?("timeout")
