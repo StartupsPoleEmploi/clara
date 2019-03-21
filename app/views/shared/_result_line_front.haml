@@ -1,7 +1,8 @@
 .c-result-line-front
   .is-visible.c-result-line__aids
     - aids.each do |aid|      
-      .c-result-line-front__name
-        = aid["name"]
-      .c-result-line-front__description
-        = aid["short_description"]
+      .c-result-line-front-item
+        .c-result-line-front__name
+          = aid["name"]
+        .c-result-line-front__description
+          = aid["short_description"]
