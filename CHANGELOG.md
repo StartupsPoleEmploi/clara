@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.11.3 (21/3/2019)
+-[#1195][BUG] corrections traces & région
+
+
 ## 19.11.2 (21/3/2019)
 -[#1169b][BUG] bug lié à dernières modifs
 
