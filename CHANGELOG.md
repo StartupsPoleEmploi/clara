@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.11.5 (22/3/2019)
+-[#1196b][BUG]
+
+
 ## 19.11.4 (22/3/2019)
 -[#1196][FEATURETTE] amélioration du temps de chargement du code postal 
 
