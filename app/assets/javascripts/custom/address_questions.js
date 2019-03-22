@@ -105,7 +105,7 @@ clara.load_js(function only_if(){return $("body").hasClasses("address_questions"
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-     // PING Api first (hack) in order to awake it
+    // PING Api first (hack) in order to awake it
     $.ajax({url: _.get(window, 'clara.env.ARA_URL_BAN') + "amiens", type:'GET'});
 
     /* Init
@@ -115,11 +115,6 @@ clara.load_js(function only_if(){return $("body").hasClasses("address_questions"
       $(clara.search1.search_selector).prop("type", "number");
     }
     $(clara.search1.search_selector).focus();
-
-    /* Autocomplete
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    clara.a11y.autocomplete(clara.search1);
-
 
     /* Autocomplete
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
