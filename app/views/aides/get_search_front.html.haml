@@ -32,6 +32,11 @@
         - unless local_assigns["skip_pagination"]
           = paginate @aids, params: {usearch: request.query_parameters["usearch"]}
       
+
+    .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
+      .c-result-front__rightblock{:class => "u-hide u-show@desktop"}
+        = render 'shared/detail_void'
+        
   .c-result-all__separator{:class => "u-show u-hide@desktop"}
   %a.c-btn.c-btn--small.c-btn--result{href: "/"}
     <strong><</strong> Retour
