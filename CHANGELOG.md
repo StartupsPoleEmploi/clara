@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.12.0 (22/3/2019)
+-[#1194][FEATURE] CTA après recherche
+
+
 ## 19.11.5 (22/3/2019)
 -[#1196b][BUG]
 
