@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.13.0 (25/3/2019)
+-[#1200][BUG] search tracing
+
+
 ## 19.12.0 (22/3/2019)
 -[#1194][FEATURE] CTA après recherche
 
