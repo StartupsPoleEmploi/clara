@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.12.1 (25/3/2019)
+-[#1199][TECH] Remonter la couverture de tests
+
+
 ## 19.12.0 (22/3/2019)
 -[#1194][FEATURE] CTA après recherche
 
