@@ -22,5 +22,10 @@ module Admin
     def valid_action?(name, resource = resource_class)
       %w[new edit destroy].exclude?(name.to_s) && super
     end
+
+    def show_search_bar?
+      false
+    end
+
   end
 end

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.13.1 (25/3/2019)
+-[#1200b][BUG] search tracing, correction
+
+
 ## 19.13.0 (25/3/2019)
 -[#1200][BUG] search tracing
 
