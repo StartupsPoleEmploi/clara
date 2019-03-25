@@ -1,5 +1,5 @@
 major = ENV["MAJOR_VERSION"] || 19
-minor = ENV["MINOR_VERSION"] || 12
+minor = ENV["MINOR_VERSION"] || 13
 build = ENV["BUILD_VERSION"] || 0
 
 
