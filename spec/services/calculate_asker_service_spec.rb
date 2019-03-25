@@ -6,6 +6,7 @@ describe CalculateAskerService do
     it 'Should calculate zrr' do
       # given
       asker = Asker.new
+      asker.v_location_citycode = "20245"
       asker.v_zrr = IsZrr.new.call("20245")
       # when
       CalculateAskerService.new(asker).calculate_zrr!
