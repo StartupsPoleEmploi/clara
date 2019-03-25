@@ -5,6 +5,7 @@ describe CalculateAskerService do
   describe '.calculate_zrr' do
     it 'Should calculate zrr' do
       # given
+      calculate_service = instance_double('CalculateAskerService')
       asker = Asker.new
       asker.v_location_citycode = "20245"
       asker.v_zrr = IsZrr.new.call("20245")
