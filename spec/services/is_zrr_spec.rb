@@ -1,11 +1,14 @@
 require 'rails_helper'
 
-describe CalculateAskerService do
+describe IsZrr do
 
   describe '.call' do
 
-    it "should say if this is a zrr" do
-
+    it "should return nul if there are not 5 digits" do
+      #given
+      #when
+      #then
+      expect(res).to eq(nil)
     end
 
   end
