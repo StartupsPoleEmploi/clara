@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.13.2 (26/3/2019)
+-[#1201][BUG] bug des stats
+
+
 ## 19.13.1 (25/3/2019)
 -[#1200b][BUG] search tracing, correction
 

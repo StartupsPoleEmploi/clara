@@ -61,8 +61,13 @@ _.set(window, 'clara.draw_stats_index', function() {
       {
         height: 300,
         low: 0,
-        showArea: true
-      }
+        showArea: true,
+        axisX: {
+          labelInterpolationFnc: function skipLabels(value, index) {
+            return index % 5  === 0 ? value : null;
+          }
+        }
+      },
     );
 
 });
