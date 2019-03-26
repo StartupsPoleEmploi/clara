@@ -166,6 +166,7 @@ describe AddressService do
       #then
       expect(address.state).to eq("state")
     end
+  end
 
   describe '.reset' do
     it 'Returns nil for v_location_label asker' do
@@ -240,8 +241,6 @@ describe AddressService do
       #then
       expect(asker.v_location_state).to eq(nil)
     end
-  end
-
   end
 
 end
