@@ -169,7 +169,12 @@ describe AddressService do
 
   describe '.reset' do
     it 'Returns nil for label asker' do
-      
+      #given
+      asker = Asker.new
+      asker.v_location_label = "label"
+      #when
+      #then
+      expect(asker.v_location_label).to eq(nil)
     end
   end
 
