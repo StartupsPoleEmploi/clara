@@ -6,9 +6,11 @@ describe AgeService do
     it 'Returns a new age form with age_type filled from given asker' do
       #given
       asker = Asker.new
+      asker.v_age = '16'
       #when
+      result = AgeService.new.new_and_download(asker)
       #then
-      expect(asker.v_age).to eq('age')
+      expect(result.number_of_years).to eq('16')
     end
   end
 
