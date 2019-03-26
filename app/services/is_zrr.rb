@@ -12,7 +12,7 @@ class IsZrr
     zrrs = Rails.cache.fetch("zrrs") do
       Zrr.first ? Zrr.first.value  : ""
     end
-    zrrs && zrrs.include?(citycode) ? "oui" : "non"
+    zrrs && zrrs.include?(str_val) ? "oui" : "non"
   end
   
 end

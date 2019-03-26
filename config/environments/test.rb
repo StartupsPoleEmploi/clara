@@ -20,6 +20,8 @@ Rails.application.configure do
   # See https://stackoverflow.com/a/22656798/2595513
   config.eager_load = false
 
+  config.cache_store = :null_store
+
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
