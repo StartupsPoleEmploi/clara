@@ -49,6 +49,8 @@ _.set(window, 'clara.draw_stats_index', function() {
       return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"].match(/\d/g).join(""))}))
     });
 
+
+
     var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
 
 
@@ -61,8 +63,13 @@ _.set(window, 'clara.draw_stats_index', function() {
       {
         height: 300,
         low: 0,
-        showArea: true
-      }
+        showArea: true,
+        axisX: {
+          labelInterpolationFnc: function skipLabels(value, index) {
+            return index % 5  === 0 ? value : null;
+          }
+        }
+      },
     );
 
 });
