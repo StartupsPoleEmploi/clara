@@ -85,10 +85,13 @@ describe AddressService do
     end
   end
 
-#  describe '.download' do
-#    it 'Returns address_type from given asker' do
-#
-#    end
-#  end
+  describe '.download' do
+    it 'Returns address_type from given asker' do
+      #given
+      #when
+      #then
+      expect(address.label).to eq("label")
+    end
+  end
 
 end
