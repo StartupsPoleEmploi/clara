@@ -88,7 +88,11 @@ describe AddressService do
   describe '.download' do
     it 'Returns address_type from given asker' do
       #given
+      asker = Asker.new
+      address = AddressForm.new
+      asker.v_location_label = "label"
       #when
+      AddressService.new.download(address, asker)
       #then
       expect(address.label).to eq("label")
     end
