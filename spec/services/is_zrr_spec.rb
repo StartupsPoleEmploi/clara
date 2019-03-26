@@ -16,6 +16,7 @@ describe IsZrr do
       #given
       #when
       #then
+      expect(res).to eq("oui")
     end
   end
 
