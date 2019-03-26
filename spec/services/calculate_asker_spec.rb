@@ -8,10 +8,11 @@ describe CalculateAskerService do
       #given
       asker = Asker.new
       expect(asker.v_zrr).to eq(nil)
+      allow_any_instance_of(IsZrr).to receive(:call).and_return("trucmuche")
       #when
+      CalculateAskerService.new(asker).calculate_zrr!
       #then
-      # res = CalculateAskerService.new(Asker.new).calculate_zrr!
-      # expect(res).to eq("blabla")      
+      expect(asker.v_zrr).not_to eq(nil)
     end
 
   end
