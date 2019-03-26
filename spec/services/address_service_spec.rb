@@ -168,7 +168,7 @@ describe AddressService do
     end
 
   describe '.reset' do
-    it 'Returns nil for label asker' do
+    it 'Returns nil for v_location_label asker' do
       #given
       asker = Asker.new
       asker.v_location_label = "label"
@@ -176,6 +176,69 @@ describe AddressService do
       AddressService.new.reset(asker)
       #then
       expect(asker.v_location_label).to eq(nil)
+    end
+    it 'Returns nil for v_location_route asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_route = "route"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_route).to eq(nil)
+    end
+    it 'Returns nil for v_location_city asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_city = "city"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_city).to eq(nil)
+    end
+    it 'Returns nil for v_location_country asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_country = "country"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_country).to eq(nil)
+    end
+    it 'Returns nil for v_location_zipcode asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_zipcode = "zipcode"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_zipcode).to eq(nil)
+    end
+    it 'Returns nil for v_location_citycode asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_citycode = "citycode"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_citycode).to eq(nil)
+    end
+    it 'Returns nil for v_location_street_number asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_street_number = "street_number"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_street_number).to eq(nil)
+    end
+    it 'Returns nil for v_location_state asker' do
+      #given
+      asker = Asker.new
+      asker.v_location_state = "state"
+      #when
+      AddressService.new.reset(asker)
+      #then
+      expect(asker.v_location_state).to eq(nil)
     end
   end
 
