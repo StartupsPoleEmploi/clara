@@ -1,11 +1,15 @@
 require 'rails_helper'
 
-describe AgeService do
+describe AddressService do
 
   describe '.upload' do
     it 'should inject address_type into asker' do
       #given
+      asker = Asker.new
+      address = AddressForm.new
+      address.label = 'location_label' 
       #when
+      AddressService.new.upload(address, asker)
       #then
       expect(asker.v_location_label).to eq("location_label")
     end
