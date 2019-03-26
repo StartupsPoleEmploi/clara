@@ -15,6 +15,7 @@ describe IsZrr do
     it  "should return 'oui' if this is a zrr" do
       #given
       #when
+      res = IsZrr.new.call("59606")
       #then
       expect(res).to eq("oui")
     end
