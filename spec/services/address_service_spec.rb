@@ -2,14 +2,19 @@ require 'rails_helper'
 
 describe AgeService do
 
-  describe '.new_and_download' do
-    it 'Returns address_type from given asker' do
-
+  describe '.upload' do
+    it 'should inject address_type into asker' do
+      #given
+      #when
+      #then
+      expect(asker.v_location_label).to eq("location_label")
     end
   end
 
-#  describe '.upload' do
-#    it 'should inject age_type into asker' do
+#  describe '.download' do
+#    it 'Returns address_type from given asker' do
+#
 #    end
 #  end
+
 end
