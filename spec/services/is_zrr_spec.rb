@@ -17,14 +17,13 @@ describe IsZrr do
       citycode = "59606"
       allow_any_instance_of(IsZrr).to receive(:call).with("59606").and_return("oui")
       allow(Rails.cache).to receive(:fetch).with("zrrs").and_return(true)
-      expect(Rails.cache.exist?('zrrs')).to be(false)
-      Rails.cache.write('zrrs')
+      Rails.cache.write('zrrs', 'test')
       #when
       res = IsZrr.new.call(citycode)
       #then
       expect(Rails.cache.exist?('zrrs')).to be(true)
       #expect(res.include?(citycode)).to eq(true)
-      #expect(res).to eq("oui")
+      expect(res).to eq("oui")
     end
 
   end
