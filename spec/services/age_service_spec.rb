@@ -22,8 +22,12 @@ describe AgeService do
     end
   end
 
-#  describe '.upload' do
-#    it 'should inject allocation_type into asker' do
-#    end
-#  end
+  describe '.upload' do
+    it 'should inject age_type into asker' do
+      #given
+      #when
+      #then
+      expect(asker.v_age).to eq('age_type')
+    end
+  end
 end
