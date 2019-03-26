@@ -49,8 +49,6 @@ _.set(window, 'clara.draw_stats_index', function() {
       return _.sum(_.map(v, function(m) {return _.toNumber(m["Sessions"].match(/\d/g).join(""))}))
     });
 
-
-
     var nice_keys = _.map(_.keys(grouped_board), function(e){var splitted = _.split(e, " "); return splitted[1] + " " + splitted[2] + " " + splitted[3];})
 
 
