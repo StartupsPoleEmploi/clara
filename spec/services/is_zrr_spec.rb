@@ -4,7 +4,7 @@ describe IsZrr do
 
   describe '.call' do
 
-    it "should return nul if there are not 5 digits" do
+    it "should return nil if there are not 5 digits" do
       #given
       #when
       res = IsZrr.new.call("")
@@ -12,6 +12,11 @@ describe IsZrr do
       expect(res).to eq(nil)
     end
 
+    it  "should return 'oui' if this is a zrr" do
+      #given
+      #when
+      #then
+    end
   end
 
 end
