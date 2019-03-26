@@ -14,9 +14,13 @@ describe IsZrr do
 
     it  "should return 'oui' if this is a zrr" do
       #given
+      citycode = "59606"
+      allow_any_instance_of(IsZrr).to receive(:call).with("59606").and_return("oui")
+      allow(Rails.cache).to receive(:fetch).with("zrrs").and_return(true)
       #when
-      res = IsZrr.new.call("59606")
+      res = IsZrr.new.call(citycode)
       #then
+      expect(res.include?(citycode)).to eq(true)
       expect(res).to eq("oui")
     end
   end
