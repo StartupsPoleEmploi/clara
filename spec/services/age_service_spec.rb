@@ -25,7 +25,11 @@ describe AgeService do
   describe '.upload' do
     it 'should inject age_type into asker' do
       #given
+      asker = Asker.new
+      age = AgeForm.new
+      age.number_of_years = 'age_type' 
       #when
+      AgeService.new.upload(age, asker)
       #then
       expect(asker.v_age).to eq('age_type')
     end
