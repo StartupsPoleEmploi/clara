@@ -173,6 +173,7 @@ describe AddressService do
       asker = Asker.new
       asker.v_location_label = "label"
       #when
+      AddressService.new.reset(asker)
       #then
       expect(asker.v_location_label).to eq(nil)
     end
