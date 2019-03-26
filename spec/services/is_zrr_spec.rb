@@ -26,6 +26,20 @@ describe IsZrr do
       expect(res).to eq("oui")
     end
 
+    it  "should return 'non' if this is not a zrr" do
+      #given
+      citycode = "59606"
+      allow_any_instance_of(IsZrr).to receive(:call).with("59606").and_return("non")
+      allow(Rails.cache).to receive(:fetch).with("zrrs").and_return(" ")
+      Rails.cache.write('zrrs', 'test')
+      #when
+      res = IsZrr.new.call(citycode)
+      all_zrr = Rails.cache.fetch("zrrs")
+      #then
+      expect(all_zrr.include?(citycode)).to eq(false)
+      expect(res).to eq("non")
+    end
+
   end
 
 end
