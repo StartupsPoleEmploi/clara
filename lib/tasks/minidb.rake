@@ -24,13 +24,13 @@ namespace :minidb do
           # "accompagnement-global",
           # "garantie-jeunes",
           # "service-militaire-volontaire-smv",
-          # "vsi-volontariat-de-solidarite-internationale",
+          "vsi-volontariat-de-solidarite-internationale",
           # "volontariat-associatif",
           # "autres-frais-derogatoires",
           "erasmus",
-          # "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+          "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
           # "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
-          # "autres-aides-nationales-pour-la-mobilite",
+          "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
 
@@ -69,8 +69,33 @@ namespace :minidb do
       ApiUser.where.not(id: test_apiuser_id).destroy_all
 
       # Only test user
-      test_user_id = User.find_by(email: "bdavidxyz@gmail.com").id
-      User.where.not(id: test_user_id).destroy_all
+      User.destroy_all
+      User.new(email:"foo@bar.com", password: "foo").save
+
+      Stat.destroy_all
+      Stat.new(
+       ga:
+        {"json_data"=>
+          [{"Sessions"=>"12", "Index des jours"=>"01/01/2018"},
+           {"Sessions"=>"249", "Index des jours"=>"02/01/2018"},
+           {"Sessions"=>"578", "Index des jours"=>"03/01/2018"}]},
+       ga_pe:
+        {"json_data"=>
+          [{"Segment"=>"Tous les utilisateurs", "Sessions"=>"12", "Index des jours"=>"01/01/2018"},
+           {"Segment"=>"Conseillers PE", "Sessions"=>"0", "Index des jours"=>"01/01/2018"}]},
+       hj_ad:
+        {"json_data"=>
+          [{"OS"=>"Windows 7",
+            "User"=>"551c6f46",
+            "Device"=>"desktop",
+            "Number"=>"1",
+            "Browser"=>"Chrome 65.0.3325",
+            "Country"=>"France",
+            "Date Submitted"=>"2018-04-23 12:59:47",
+            "A quelle fréquence utilisez-vous Clara ?"=>"1 à 2 fois par jour",
+            "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
+             "+ de 15 minutes"}]}
+      ).save
 
       # No need to keep who did what
       PaperTrail::Version.destroy_all
@@ -79,5 +104,38 @@ namespace :minidb do
       p "Recreate a minidatabase is for development mode only"
     end
   end
+
+
+  desc "Dumps the database to db/mylocaldb.dumped"
+  task :dump => :environment do
+    cmd = nil
+    with_config do |app, host, db, user|
+      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara > #{Rails.root}/db/mylocaldb.dumped"
+    end
+    puts cmd
+    exec cmd
+  end
+
+  desc "Restores the database dump at db/mylocaldb.dumped"
+  task :restore => :environment do
+    cmd = nil
+    with_config do |app, host, db, user|
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara #{Rails.root}/db/mylocaldb.dumped"
+    end
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    puts cmd
+    exec cmd
+  end
+
+  private
+
+  def with_config
+    yield Rails.application.class.parent_name.underscore,
+      ActiveRecord::Base.connection_config[:host],
+      ActiveRecord::Base.connection_config[:database],
+      ActiveRecord::Base.connection_config[:username]
+  end
+
 
 end

@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.15.0 (28/3/2019)
+-[#1203][TECH] refaire une mini-base locale pour le dev
+
+
 ## 19.14.0 (28/3/2019)
 -[#1202][TECH] bootsnap
 
