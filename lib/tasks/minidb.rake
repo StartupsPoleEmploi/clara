@@ -72,6 +72,31 @@ namespace :minidb do
       User.destroy_all
       User.new(email:"foo@bar.com", password: "foo").save
 
+      Stat.destroy_all
+      Stat.new(
+       ga:
+        {"json_data"=>
+          [{"Sessions"=>"12", "Index des jours"=>"01/01/2018"},
+           {"Sessions"=>"249", "Index des jours"=>"02/01/2018"},
+           {"Sessions"=>"578", "Index des jours"=>"03/01/2018"}]},
+       ga_pe:
+        {"json_data"=>
+          [{"Segment"=>"Tous les utilisateurs", "Sessions"=>"12", "Index des jours"=>"01/01/2018"},
+           {"Segment"=>"Conseillers PE", "Sessions"=>"0", "Index des jours"=>"01/01/2018"}]},
+       hj_ad:
+        {"json_data"=>
+          [{"OS"=>"Windows 7",
+            "User"=>"551c6f46",
+            "Device"=>"desktop",
+            "Number"=>"1",
+            "Browser"=>"Chrome 65.0.3325",
+            "Country"=>"France",
+            "Date Submitted"=>"2018-04-23 12:59:47",
+            "A quelle fréquence utilisez-vous Clara ?"=>"1 à 2 fois par jour",
+            "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
+             "+ de 15 minutes"}]}
+      ).save
+
       # No need to keep who did what
       PaperTrail::Version.destroy_all
 
