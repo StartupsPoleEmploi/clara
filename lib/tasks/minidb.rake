@@ -24,13 +24,13 @@ namespace :minidb do
           # "accompagnement-global",
           # "garantie-jeunes",
           # "service-militaire-volontaire-smv",
-          # "vsi-volontariat-de-solidarite-internationale",
+          "vsi-volontariat-de-solidarite-internationale",
           # "volontariat-associatif",
           # "autres-frais-derogatoires",
           "erasmus",
-          # "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+          "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
           # "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
-          # "autres-aides-nationales-pour-la-mobilite",
+          "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
 
@@ -69,8 +69,8 @@ namespace :minidb do
       ApiUser.where.not(id: test_apiuser_id).destroy_all
 
       # Only test user
-      test_user_id = User.find_by(email: "bdavidxyz@gmail.com").id
-      User.where.not(id: test_user_id).destroy_all
+      User.destroy_all
+      User.new(email:"foo@bar.com", password: "foo").save
 
       # No need to keep who did what
       PaperTrail::Version.destroy_all
@@ -79,5 +79,38 @@ namespace :minidb do
       p "Recreate a minidatabase is for development mode only"
     end
   end
+
+
+  desc "Dumps the database to db/mylocaldb.dumped"
+  task :dump => :environment do
+    cmd = nil
+    with_config do |app, host, db, user|
+      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara > #{Rails.root}/db/mylocaldb.dumped"
+    end
+    puts cmd
+    exec cmd
+  end
+
+  desc "Restores the database dump at db/mylocaldb.dumped"
+  task :restore => :environment do
+    cmd = nil
+    with_config do |app, host, db, user|
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara #{Rails.root}/db/mylocaldb.dumped"
+    end
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    puts cmd
+    exec cmd
+  end
+
+  private
+
+  def with_config
+    yield Rails.application.class.parent_name.underscore,
+      ActiveRecord::Base.connection_config[:host],
+      ActiveRecord::Base.connection_config[:database],
+      ActiveRecord::Base.connection_config[:username]
+  end
+
 
 end
