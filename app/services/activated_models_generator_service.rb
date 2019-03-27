@@ -1,5 +1,9 @@
 class ActivatedModelsGeneratorService
 
+  def initialize
+      ap "initializing --------------activated_models.txt--------------------"
+  end
+
   def regenerate
     activated_models = {}
     activated_models["all_activated_aids"]        = JsonModelsService.aids

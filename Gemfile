@@ -65,6 +65,7 @@ gem "google-api-client"
 gem "i18n-js"
 gem "administrate_exportable"
 gem "clearance"
+gem "bootsnap"
 
 group :development, :test do
   gem "byebug", platform: :mri

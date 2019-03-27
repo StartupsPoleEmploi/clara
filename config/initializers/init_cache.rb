@@ -1,1 +1,1 @@
-ActivatedModelsGeneratorService.new.regenerate unless Rails.env.test?
+# Do nothing

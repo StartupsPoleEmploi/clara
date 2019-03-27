@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.14.0 (28/3/2019)
+-[#1202][TECH] bootsnap
+
+
 ## 19.13.2 (26/3/2019)
 -[#1201][BUG] bug des stats
 
