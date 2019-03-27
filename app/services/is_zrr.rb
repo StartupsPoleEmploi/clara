@@ -10,9 +10,15 @@ class IsZrr
     has_5_digits = !!str_val.match(five_digits_only)
     return nil unless has_5_digits
     zrrs = Rails.cache.fetch("zrrs") do
-      Zrr.first ? Zrr.first.value  : ""
+      res = ""
+      if Zrr.first
+        res = Zrr.first.value 
+      else
+        res = ""
+      end
+      res  
     end
-    zrrs && zrrs.include?(citycode) ? "oui" : "non"
+    zrrs && zrrs.include?(str_val) ? "oui" : "non"
   end
   
 end

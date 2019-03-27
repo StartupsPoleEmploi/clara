@@ -21,11 +21,14 @@ module Mae
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
-    # config.to_prepare do
-    #   Clearance::PasswordsController.layout "admin/application.html.erb"
-    #   Clearance::SessionsController.layout "admin/application.html.erb"
-    #   Clearance::UsersController.layout "admin/application.html.erb"
-    # end
+
+    # See https://stackoverflow.com/a/44441168/2595513
+    if defined?(Rails::Server)
+      config.after_initialize do
+        ActivatedModelsGeneratorService.new.regenerate unless Rails.env.test?
+      end
+    end
+
   end
 end
 
