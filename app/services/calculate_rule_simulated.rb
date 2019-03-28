@@ -6,6 +6,12 @@ class CalculateRuleSimulated
       all_crc = rule.custom_rule_checks.map{|e| e.attributes}
       has_eligible_simulation = all_crc.any? { |e| e["result"] == "eligible"  }
       has_ineligible_simulation = all_crc.any? { |e| e["result"] == "ineligible"  }
+      print '--------------- has_eligible_simulation ------------------'
+      print has_eligible_simulation
+      print '------------ has_ineligible_simulation --------------'
+      print has_ineligible_simulation
+      print '---------------- all_crc ------------------'
+      print all_crc
       if has_errored_simulation(rule)
         res = "errored_simulation"
       elsif has_eligible_simulation && has_ineligible_simulation
@@ -18,6 +24,8 @@ class CalculateRuleSimulated
         res = "missing_eligible"
       end
     end
+    print '-----------------call res ----------------'
+    print res
     return res
   end
 
