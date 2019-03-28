@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 19.15.1 (28/3/2019)
+-[#1094][TECH] no stat no bug
+
+
 ## 19.15.0 (28/3/2019)
 -[#1203][TECH] refaire une mini-base locale pour le dev
 
