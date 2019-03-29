@@ -2,6 +2,10 @@
 
 
 
+## 19.16.3 (29/3/2019)
+-[#1206d][TECH] re-activer l'init du cache au démarrage
+
+
 ## 19.16.2 (29/3/2019)
 -[#1206c][TECH] re-ignorer le activated_models.txt
 

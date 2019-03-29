@@ -22,13 +22,6 @@ module Mae
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
 
-    # See https://stackoverflow.com/a/44441168/2595513
-    if defined?(Rails::Server)
-      config.after_initialize do
-        ActivatedModelsGeneratorService.new.regenerate unless Rails.env.test?
-      end
-    end
-
   end
 end
 
