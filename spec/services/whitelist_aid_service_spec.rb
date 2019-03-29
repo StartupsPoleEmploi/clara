@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe WhitelistAidService do
   describe '.for_aid_in_list' do
-    let!(:contract_type){create(:contract_type, :contract_type_1)}
     let!(:custom_parent_filter){create(:custom_parent_filter, name: "parent a")}
     let!(:aid_hash) {
           {"id"=>26,
@@ -11,7 +10,6 @@ describe WhitelistAidService do
            "short_description"=>
             "Mission rémunérée qui permet d'avoir une première expérience à l'international",
            "ordre_affichage"=>63,
-           "contract_type_id"=>contract_type.id,
            "filters"=>[{"id"=>7, "slug"=>"travailler-a-l-international"}],
            "custom_filters"=>[{"id"=>5, "slug"=>"zen_3", "custom_parent_filter_id"=>custom_parent_filter.id}],
            "need_filters"=>[{"id"=>1, "slug"=>"gerer-un-probleme-d-alcool"}],
