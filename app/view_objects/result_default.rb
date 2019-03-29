@@ -22,10 +22,6 @@ class ResultDefault < ViewObject
     "#{str_title}"
   end
 
-  def descr_for(aids_per_contract)
-    @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["description"]
-  end
-
   def slug_for(aids_per_contract)
     @contract_types.detect{|e| e["id"] == aids_per_contract[0]["contract_type_id"]}["slug"]
   end
