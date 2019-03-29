@@ -38,7 +38,7 @@ ara
 # Ignore precompiled assets
 /public/assets/*
 # Ignore temp file
-/public/activated_models.txt
+# /public/activated_models.txt
 
 coverage
 
