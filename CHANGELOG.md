@@ -2,7 +2,11 @@
 
 
 
-## 19.16.0 (28/3/2019)
+## 19.16.1 (29/3/2019)
+-[#1206b][BUG] contracttype bug
+
+
+## 19.16.0 (29/3/2019)
 -[#1206][FEATURE] remove description of contracttype
 
 
