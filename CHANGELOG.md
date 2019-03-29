@@ -2,6 +2,10 @@
 
 
 
+## 19.16.2 (29/3/2019)
+-[#1206c][TECH] re-ignorer le activated_models.txt
+
+
 ## 19.16.1 (29/3/2019)
 -[#1206b][TECH] remettre activated_models.txt par défaut
 
