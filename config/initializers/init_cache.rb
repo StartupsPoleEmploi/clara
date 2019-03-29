@@ -1,1 +1,1 @@
-# Do nothing
+#Do nothing, previously ActivatedModelsGeneratorService.new.regenerate
