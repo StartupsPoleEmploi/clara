@@ -37,7 +37,7 @@ class JsonModelsService
   end
 
   def self.contracts
-    JSON.parse(ContractType.all.to_json(:only => [ :id, :slug, :description, :name  ]))
+    JSON.parse(ContractType.all.to_json(:only => [ :id, :slug, :name  ]))
   end
 
   def self.variables

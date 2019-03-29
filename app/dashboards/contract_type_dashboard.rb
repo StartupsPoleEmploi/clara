@@ -15,7 +15,6 @@ class ContractTypeDashboard < Administrate::BaseDashboard
     category: Field::String,
     icon: Field::String,
     ordre_affichage: Field::Number,
-    description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -28,7 +27,6 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :ordre_affichage,
-    :description,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -37,7 +35,6 @@ class ContractTypeDashboard < Administrate::BaseDashboard
     :name,
     :plural,
     :ordre_affichage,
-    :description,
     :created_at,
     :updated_at,
   ].freeze
@@ -47,7 +44,6 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :description,
     :ordre_affichage,
     :plural,
     :icon,
