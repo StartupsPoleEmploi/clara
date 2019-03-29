@@ -7,6 +7,7 @@ describe CookiePreference do
       #given
       #when
       #then
+      expect(:cookie).to eq({"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"})
     end
   end
 end
