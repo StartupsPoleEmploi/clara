@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.17.1 (1/4/2019)
+-[#1198b][FEATURETTE] forcer la saisie du nom de la règle correctement, avec majuscule
+
+
 ## 19.17.0 (1/4/2019)
 -[#1198][FEATURE] forcer la saisie du nom de la règle correctement
 
