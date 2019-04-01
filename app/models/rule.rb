@@ -40,7 +40,7 @@ class Rule < ApplicationRecord
   has_many :custom_rule_checks, dependent: :delete_all
 
 
-  validates :name, uniqueness: true, format: { with: /\A[a-z0-9]+\z/, message: "Seules les lettres minuscules sans accent, le tiret bas,  et les chiffres sont autorisés" }
+  validates :name, uniqueness: true, format: { with: /\A[a-z_0-9]+\z/, message: "Seules les lettres minuscules sans accent, le tiret bas,  et les chiffres sont autorisés" }
   validates_with RuleValidator
 
   def tested
