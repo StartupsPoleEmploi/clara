@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 19.17.0 (1/4/2019)
+-[#1198][FEATURE] forcer la saisie du nom de la règle correctement
+
 
 ## 19.16.3 (29/3/2019)
 -[#1206d][TECH] re-activer l'init du cache au démarrage
