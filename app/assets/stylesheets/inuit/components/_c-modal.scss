@@ -1,0 +1,25 @@
+dialog {
+  display: block;
+}
+.modal {
+  position: fixed;
+  left: 25%;
+  right: auto;
+  top: 25%;
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid red; 
+  background: #fff;
+  z-index: 667;
+  padding: 2em;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  opacity: .6;
+  z-index: 666;
+}
