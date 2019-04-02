@@ -15,7 +15,22 @@
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit c-loop"
     .o-line__item{"class" => "u-hide@tablet"}
-      %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_id", "data-modal-title"=>"Here another title", "data-modal-close-text"=>"Close it", "data-modal-close-title"=>"Close this window, really"}
+      %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_id"}
       #modal_id.u-display-none
-        blabla    
+        .c-logozone.o-line
+          .o-line__item
+            %a.c-logozone--clara{href: root_path}
+              = image_tag("logo-clara.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
+            %a.c-logozone--pe{href: "https://www.pole-emploi.fr/"}
+              = image_tag("logo-pe.svg", alt: "Pôle Emploi")
+          - if display_search
+            .o-line__item{"class" => "u-hide u-show@tablet"}
+              = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
+                = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
+                = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
+                = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
+                = form.submit '', :class => "c-search-front-submit c-loop"
+            .o-line__item{"class" => "u-hide@tablet"}
+              %button#js-modal-close.modal-close{"data-content-back-id" => "modal_id", "data-focus-back" => "label_modal_1", :title => "undefined", :type => "button"}
+                %span.modal-close__text Close
       

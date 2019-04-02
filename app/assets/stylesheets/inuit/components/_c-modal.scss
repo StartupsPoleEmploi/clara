@@ -3,15 +3,13 @@ dialog {
 }
 .modal {
   position: fixed;
-  left: 25%;
   right: auto;
-  top: 25%;
-  width: 50%;
+  top: 0%;
+  border: none;
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid red; 
   background: #fff;
   z-index: 667;
-  padding: 2em;
 }
 .modal-overlay {
   position: fixed;
