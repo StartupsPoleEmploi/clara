@@ -13,8 +13,16 @@
 
 /* Hero section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.c-newhomehero {
+.c-newhome {
   background-color: #E2EAF5;
+  @include mq($until: mobile) {
+    h1 {
+      font-size: $inuit-font-size-h4;
+    }
+    h2 {
+      font-size: $inuit-font-size-h5;
+    }
+  }
 }
 
 .c-newhomehero__title {
@@ -118,7 +126,7 @@ input.c-main-cta {
   white-space: nowrap;
   border-radius: space(8);
   background-color: #358ED7;
-  padding: space(6) space(8) space(6) space(8);
+  padding: space(4) space(8) space(4) space(8);
   cursor: pointer;
   color: white;
   text-decoration: none;
@@ -286,8 +294,10 @@ h2.c-newhomenumber__title {
 }
 
 h2.c-newhomerecall__content {
-  @include inuit-font-size(40px, 1.5);
+  // @include inuit-font-size(40px, 1.5);
   font-weight: 400;
+  margin-left: space(3);
+  margin-right: space(3);
 }
 
 .c-newhomerecall__content {
