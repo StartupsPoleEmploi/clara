@@ -146,6 +146,10 @@ h1.c-result-front-subtitle {
 
 .c-search-front-modal {
   background-color: #fafafa;
+  padding-left: space(6);
+  padding-top: space(7);
+  padding-bottom: space(7);
+  padding-right: space(6);
 }
 
 .c-search-front-usearch-modal {
@@ -167,5 +171,5 @@ h1.c-result-front-subtitle {
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
-  @include inuit-font-size(18px);
+  @include inuit-font-size(16px);
 }

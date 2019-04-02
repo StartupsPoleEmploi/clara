@@ -32,8 +32,9 @@
               = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
               = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
               %div
-                %label{for: "u-search-modal"} Chercher un contenu ou une aide
+                %label{for: "u-search-modal"} 
+                  %strong Chercher un contenu ou une aide
               %div
-                = form.text_field :plain_text_search, value: usearch, :id => "u-search-modal", :class => "c-search-front-usearch-modal", :placeholder => "Rechercher une aide"
-              %div
+                = form.text_field :plain_text_search, value: usearch, :id => "u-search-modal", :class => "c-search-front-usearch-modal"
+              %div.u-margin-vertical-small
                 = form.submit 'Je recherche', :class => "c-search-front-submit-modal"

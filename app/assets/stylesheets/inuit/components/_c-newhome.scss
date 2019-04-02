@@ -132,8 +132,9 @@ input.c-main-cta {
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
-  @include inuit-font-size(18px);
+  @include inuit-font-size(16px);
   @include mq($from: tablet) {
+    @include inuit-font-size(18px);
     padding: space(6) space(12) space(6) space(12);
   }
 }
