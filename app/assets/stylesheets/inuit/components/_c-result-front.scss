@@ -173,3 +173,7 @@ h1.c-result-front-subtitle {
   font-weight: bold;
   @include inuit-font-size(16px);
 }
+
+.c-label-search-modal {
+  @include inuit-font-size(18px);
+}
