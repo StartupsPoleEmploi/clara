@@ -17,7 +17,7 @@
     .o-line__item{"class" => "u-hide@tablet"}
       %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_search"}
       #modal_search.u-display-none
-        .c-logozone.o-line
+        .c-logozone.o-line.c-logozone--modal
           .o-line__item
             %a.c-logozone--clara{href: root_path}
               = image_tag("logo-clara.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
@@ -28,8 +28,12 @@
               %button.u-padding-right#js-modal-close.modal-close.u-nobutton.c-modal-closer{"data-content-back-id" => "modal_search", "data-focus-back" => "label_modal_1", :title => "undefined", :type => "button"}
         .o-line
           .o-line__item
-            = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
-              = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
+            = form_with url: post_search_front_path, id: "search_front_modal", :class => "c-search-front-modal" do |form|
               = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
               = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
-              = form.submit '', :class => "c-search-front-submit c-loop"
+              %div
+                %label{for: "u-search-modal"} Chercher un contenu ou une aide
+              %div
+                = form.text_field :plain_text_search, value: usearch, :id => "u-search-modal", :class => "c-search-front-usearch-modal", :placeholder => "Rechercher une aide"
+              %div
+                = form.submit 'Je recherche', :class => "c-search-front-submit-modal"

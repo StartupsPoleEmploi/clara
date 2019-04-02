@@ -143,3 +143,29 @@ h1.c-result-front-subtitle {
   letter-spacing: normal;
   color: #333333;
 }
+
+.c-search-front-modal {
+  background-color: #fafafa;
+}
+
+.c-search-front-usearch-modal {
+  width: 345px;
+  height: 40px;
+  border-radius: 4px;
+  border: solid 1px #e3e3e3;
+  background-color: #efefef;
+}
+
+.c-search-front-submit-modal {
+  border: 0;
+  white-space: nowrap;
+  border-radius: space(8);
+  background-color: #358ED7;
+  padding: space(4) space(8) space(4) space(8);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  @include inuit-font-size(18px);
+}
