@@ -2,6 +2,15 @@
 }
 
 
+/* Navbar
+––––––––––––––––––––––––––––––––––––––––––––––––––*/
+.c-navbar {
+  position: fixed;
+  width: 100%;
+  background-color: #E2EAF5;
+}
+
+
 /* Hero section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomehero {
@@ -16,6 +25,7 @@
 
 .c-newhomehero__header {
   padding-top: space(4);
+  padding-bottom: space(3);
   margin: 0 space(1) 0 space(1); 
 }
 
@@ -50,6 +60,8 @@
 
 .c-newhomehero__content {
   margin-left: 0;
+  padding-top: space(12);
+  padding-bottom: space(9);
   a {
     margin: space(5) 0 0 0; 
   }

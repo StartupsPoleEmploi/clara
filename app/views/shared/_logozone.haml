@@ -13,7 +13,7 @@
         = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
         = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
-        = form.submit '', :class => "c-search-front-submit"
+        = form.submit '', :class => "c-search-front-submit c-loop"
     .o-line__item{"class" => "u-hide@tablet"}
-      %button.c-search-front-submit
+      %button.c-search-front-submit.c-loop
     
