@@ -16,10 +16,11 @@
 //= require jquery/jquery
 //= require jquery/jquery_extension
 //= require jquery/jquery-cache-image
+//= require jquery/jquery-accessible-simple-tooltip-aria
+//= require jquery/jquery-accessible-modal-window-aria
 //= require fontfaceobserver/fontfaceobserver
 //= require redux/redux
 //= require storejs/store.legacy
-//= require jquery-accessible-simple-tooltip-aria
 //= require a11y-autocomplete/namespacing
 //= require a11y-autocomplete/accessibility-helpers
 //= require a11y-autocomplete/accessible_autocomplete
