@@ -11,5 +11,13 @@ describe CookiePreference do
       #then
       expect(cookie_preference).to eq({"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"})
     end
+  describe 'cookie_preference_already_defined?' do
+    it 'Return true if cookie is different from nil' do
+      #given
+      #when
+      #then
+    end    
+  end
+
   end
 end
