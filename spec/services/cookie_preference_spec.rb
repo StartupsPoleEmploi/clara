@@ -15,12 +15,21 @@ describe CookiePreference do
     it 'Return true if cookie is different from nil' do
       #given
       res = false
-      session = {"my" => "hash"}
+      session = {"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"}
       #when
       res = CookiePreference.new(session).cookie_preference_already_defined?
       #then
       expect(res).to eq(true)
-    end    
+    end   
+    it 'Return false if cookie is nil' do
+      #given
+      res = true
+      session = nil
+      #when
+      res = CookiePreference.new(session).cookie_preference_already_defined?
+      #then
+      expect(res).to eq(false)
+    end   
   end
 
   end
