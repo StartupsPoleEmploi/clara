@@ -9,6 +9,9 @@ class CookiePreference
 
   def cookie_preference_already_defined?
     print "***************** COOKIE *************************"
+    print "***************** COOKIE *************************"
+    print "***************** COOKIE *************************"
+    print "***************** COOKIE *************************"
     res = @s[:cookie] != nil
     print res
     res

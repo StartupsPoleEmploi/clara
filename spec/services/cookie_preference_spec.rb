@@ -11,15 +11,13 @@ describe CookiePreference do
       #then
       expect(cookie_preference).to eq({"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"})
     end
-  describe 'cookie_preference_already_defined?' do
+  describe '.cookie_preference_already_defined?' do
     it 'Return true if cookie is different from nil' do
       #given
       res = false
       session = {"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"}
       #when
       res = CookiePreference.new(session).cookie_preference_already_defined?
-      print "---------------- res -------------"
-      print res
       #then
       expect(res).to eq(true)
     end   
@@ -33,6 +31,12 @@ describe CookiePreference do
     #   expect(res).to eq(false)
     # end   
 
+  describe '.ga_disabled?'
+    it 'Returns true if ga is disabled' do
+      #given
+      #when
+      #then
+    end
   end
 
   end
