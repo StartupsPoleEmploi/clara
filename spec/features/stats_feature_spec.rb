@@ -74,7 +74,7 @@ feature 'Stats' do
   end
 
   scenario 'Visit index, if anything is badly configured' do 
-    the_stat.ga["json_data"] = "blabla"
+    the_stat.ga["json_data"] = "azerty"
     the_stat.save
     visit stats_index_path
     expect(find('.c-stats-totalview__number').text).to eq "0"

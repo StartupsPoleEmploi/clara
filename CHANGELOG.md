@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.18.0 (4/4/2019)
+-[#1193][FEATURE] recherche responsive HP
+
+
 ## 19.17.1 (1/4/2019)
 -[#1198b][FEATURETTE] forcer la saisie du nom de la règle correctement, avec majuscule
 
