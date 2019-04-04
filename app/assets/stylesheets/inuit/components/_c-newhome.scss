@@ -122,7 +122,14 @@
   @include mq($from: desktop) {
     text-align: left;
   }  
+  cursor: pointer;
 }
+
+.c-seevideobold {
+  // display: flex;
+  // align-items: center;
+}
+
 // .c-seevideo {
 //   margin-left: -10px; // hack for img
 // }
