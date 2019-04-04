@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.19.0 (4/4/2019)
+-[#1193][FEATURE] recherche responsive HP
+
+
 ## 19.18.0 (4/4/2019)
 -[#1193][FEATURE] recherche responsive HP
 
