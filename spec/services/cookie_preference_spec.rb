@@ -16,6 +16,7 @@ describe CookiePreference do
       #given
       #when
       #then
+      expect(res).to eq(true)
     end    
   end
 
