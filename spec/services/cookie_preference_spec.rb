@@ -36,6 +36,7 @@ describe CookiePreference do
       #given
       res = false
       #when
+      res = CookiePreference.new(session).ga_disabled?
       #then
       expect(res).to eq(true)
     end
