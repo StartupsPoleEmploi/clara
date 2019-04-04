@@ -7,6 +7,7 @@ describe CookiePreference do
       #given
       request.cookies['foo'] = 'bar'
       get :accept_all_cookies
+
       
       #when
       #then
