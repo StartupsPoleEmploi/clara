@@ -31,3 +31,95 @@ dialog {
   width: 24px;
   height: 24px;
 }
+
+.button-play{
+  cursor: pointer;
+  display:block;
+  position:relative;
+  text-align:center;
+  border:2px solid black;
+  box-shadow:0 4px 6px -3px rgba(black, .3), inset 0 3px 4px -2px rgba(black, .25);
+  position:relative;
+  text-align:center;
+  width:25px;
+  height:25px;
+  border-radius:50%; 
+  transition: all .2s cubic-bezier(0.68, -0.55, 0.465, 1.55) .2s, border-width .4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
+  @include mq($from: desktop) {
+    text-align:left;
+  }
+
+  &:before{
+    cursor: pointer;
+    display:block;
+    position:relative;
+    text-align:center;
+    content:"";
+    bottom:20%;
+    left:95%;
+    width:0;
+    height:0;
+    border:25px solid transparent;
+    border-width:7px 0px 7px 11px;
+    border-radius:0;
+    border-left-color:black;
+    transform:translate(-13px, 50%);
+    @include mq($from: desktop) {
+      text-align:left;
+    }
+  }
+}
+
+.play {
+  width: 26px;
+  text-align:right;
+  @include mq($from: mobile) {
+    text-align:left;
+  }
+}
+
+.video {
+  font-size: 16px;
+  text-align:center;
+  cursor: pointer;
+  @include mq($from: tablet) {
+    text-align:left;
+  }
+}
+
+.time {
+  font-size: 12px;
+  font-weight: normal;
+  text-align:center;
+  cursor: pointer;
+  @include mq($from: tablet) {
+    text-align:left;
+  }
+}
+
+iframe {  
+  display: block;
+  margin-top: space(8);
+  left: 0;
+  top:0 ; 
+  position: absolute;
+
+  @include mq($from: mobile) {
+    height: 97%;
+    width: 100%;
+    text-align:center;
+  }
+  
+  @include mq($from: tablet) {
+    height: 92%;
+    width: 100%;
+    text-align:center;
+  }
+
+  @include mq($from: desktop) {
+    height: 405px;
+    width: 100%;
+    text-align:center;
+    bottom: 1%;
+  }
+}

@@ -116,6 +116,18 @@
   }  
 }
 
+.c-newhomehero__video {
+  // text-align: center;
+  // @include mq($from: desktop) {
+  //   text-align: right;
+  // }  
+}
+
+.c-newhomehero__video .o-media__img {
+  margin-right: space(3);
+  margin-top: 10px; // vertical-align hack
+}
+
 .c-newhomehero__content-description > div {
   display: inline;
   @include mq($from: mobile) {
