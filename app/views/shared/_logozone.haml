@@ -15,7 +15,7 @@
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit c-loop"
     .o-line__item{"class" => "u-hide@tablet"}
-      %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_search"}
+      %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_search", "data-modal-prefix-class" => "search"}
       #modal_search.u-display-none
         .c-logozone.o-line.c-logozone--modal
           .o-line__item
