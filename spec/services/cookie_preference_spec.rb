@@ -34,8 +34,10 @@ describe CookiePreference do
   describe '.ga_disabled?'
     it 'Returns true if ga is disabled' do
       #given
+      res = false
       #when
       #then
+      expect(res).to eq(true)
     end
   end
 
