@@ -7,7 +7,7 @@ describe CookiePreference do
       #given
       #when
       #then
-      expect(CookiePreference.new(session).accept_all_cookies).to eq({"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"})
+      expect(CookiePreference.new(session[:cookie]).accept_all_cookies).to eq({"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"})
     end
   end
 end
