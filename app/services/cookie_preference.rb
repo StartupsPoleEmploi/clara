@@ -8,7 +8,10 @@ class CookiePreference
   end    
 
   def cookie_preference_already_defined?
-    @s[:cookie] != nil
+    print "***************** COOKIE *************************"
+    res = @s[:cookie] != nil
+    print res
+    res
   end
 
   def ga_disabled?
