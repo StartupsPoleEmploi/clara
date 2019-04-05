@@ -8,6 +8,7 @@ describe DisplayAskerService do
       asker = Asker.new
       asker = { 'v_handicap' => 'non', 'v_spectacle' => 'oui', "v_cadre" => 'non'}
       #when
+      asker = DisplayAskerService.new.go
       #then
       expect(asker.attritubes).to eq({:v_handicap => "non", :v_spectacle => "oui", :v_cadre => 'non'})
     end
