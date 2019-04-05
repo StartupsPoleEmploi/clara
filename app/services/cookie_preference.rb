@@ -8,13 +8,7 @@ class CookiePreference
   end    
 
   def cookie_preference_already_defined?
-    print "***************** COOKIE *************************"
-    print "***************** COOKIE *************************"
-    print "***************** COOKIE *************************"
-    print "***************** COOKIE *************************"
-    res = @s[:cookie] != nil
-    print res
-    res
+    @s[:cookie] != nil
   end
 
   def ga_disabled?
@@ -22,7 +16,16 @@ class CookiePreference
   end
 
   def hj_disabled?
-    @s[:cookie] && @s[:cookie]["hotjar"] && @s[:cookie]["hotjar"] == "forbid_navigation"
+    print "***************** COOKIE *************************"
+    print "***************** COOKIE *************************"
+    print @s[:cookie]
+    print "***************** COOKIE HJ*************************"
+    print "***************** COOKIE HJ*************************"
+    print @s[:cookie]["hotjar"]
+    res = @s[:cookie] && @s[:cookie]["hotjar"] && @s[:cookie]["hotjar"] == "forbid_navigation"
+    print "***************** RES*************************"
+    print "***************** RES*************************"
+    res
   end
 
   def accept_all_cookies
