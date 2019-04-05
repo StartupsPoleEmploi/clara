@@ -23,8 +23,9 @@ class CookiePreference
     print "***************** COOKIE HJ*************************"
     print @s[:cookie]["hotjar"]
     res = @s[:cookie] && @s[:cookie]["hotjar"] && @s[:cookie]["hotjar"] == "forbid_navigation"
-    print "***************** RES*************************"
-    print "***************** RES*************************"
+    #print "***************** RES*************************"
+    #print "***************** RES*************************"
+    #print res
     res
   end
 
