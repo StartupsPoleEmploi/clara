@@ -94,7 +94,6 @@ jQuery(document).ready(function($) {
 
         $($modal_overlay).insertAfter($('#js-modal'));
 
-        console.log($modal_focus_id);
         if ($modal_focus_id !== '') {
             $('#' + $modal_focus_id).focus();
         } else {
