@@ -94,6 +94,7 @@ jQuery(document).ready(function($) {
 
         $($modal_overlay).insertAfter($('#js-modal'));
 
+        console.log($modal_focus_id);
         if ($modal_focus_id !== '') {
             $('#' + $modal_focus_id).focus();
         } else {
@@ -119,8 +120,8 @@ jQuery(document).ready(function($) {
             $page.removeAttr('aria-hidden');
 
             var delay = $js_modal.css("animation-duration");
-            //alert(delay);
             if (delay != '0s') {
+                console.log(delay);
                 var timeout = parseFloat(delay.replace('s', '')) * 1000;
                 timeout++;
 
