@@ -68,8 +68,10 @@ describe CookiePreference do
   describe '.hj_disabled?' do
     it 'Retuns true if hj is disabled' do
      #given
+     res = false
      #when
-     #then 
+     #then
+     expect(res).to eq(true) 
     end
   end
 end
