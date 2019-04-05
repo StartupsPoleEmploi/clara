@@ -57,9 +57,11 @@ describe CookiePreference do
     it  'Return the cookie preference' do
       #given
       session = {"my" => "session"}
+      preference = {"analytics" => "authorize_statistic","hotjar" => "authorize_navigation"}
       #when
+      session = CookiePreference.new(session).set_preference(preference) 
       #then
-      expect(session).to eq(preferencere)
+      expect(session).to eq(preference)
     end
   end
 end
