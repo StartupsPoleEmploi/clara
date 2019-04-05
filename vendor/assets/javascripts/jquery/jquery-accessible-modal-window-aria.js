@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 
     })
     // close button and esc key
-    $body.on('click', '#js-modal-close', function() {
+    $body.on('click', '.js-modal-close', function() {
             var $this = $(this),
                 $focus_back = '#' + $this.attr('data-focus-back'),
                 $content_back_id = $this.attr('data-content-back-id'),
@@ -119,7 +119,6 @@ jQuery(document).ready(function($) {
             $page.removeAttr('aria-hidden');
 
             var delay = $js_modal.css("animation-duration");
-            //alert(delay);
             if (delay != '0s') {
                 var timeout = parseFloat(delay.replace('s', '')) * 1000;
                 timeout++;
