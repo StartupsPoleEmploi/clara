@@ -2,7 +2,7 @@ dialog {
   display: block;
 }
 
-.modal {
+.search-modal {
   position: fixed;
   right: auto;
   top: 0%;
@@ -14,7 +14,7 @@ dialog {
   padding: 0;
 }
 
-.modal-overlay {
+.search-modal-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -30,4 +30,104 @@ dialog {
   background-size: cover;
   width: 24px;
   height: 24px;
+}
+
+.video-modal {
+  position: fixed;
+  right: auto;
+  top: 15%;
+  margin: 0 auto;
+  border: none; 
+  background: #fff;
+  z-index: 667;
+  padding: 0;
+  left: 10%;
+  width: 80%;
+  border-radius: 10px;
+  @include mq($from: desktop) {
+    left: 25%;
+    width: 50%;
+  }
+}
+
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  opacity: .6;
+  z-index: 666;
+}
+
+
+
+.c-video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.c-video-container iframe,  
+.c-video-container object,  
+.c-video-container embed {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 100%;
+}
+
+.c-video-close-line {
+  text-align: right;
+  &.is-bottom {
+    border-top: 1px solid #f5f5f5;
+    margin-top: 1rem;
+  }
+}
+
+
+.c-video-btn-close {
+   border: none;
+   color: #2e88c7;
+   padding: 12px 16px;
+   padding-right: 21px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ 
+.c-video-btn-close:after {
+   content: url("data:image/svg+xml,%3Csvg width='12' height='12' version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' xmlns:xlink='http://www.w3.org/1999/xlink' enable-background='new 0 0 64 64'%3E%3Cg%3E%3Cpath fill='%232e88c7' d='M28.941,31.786L0.613,60.114c-0.787,0.787-0.787,2.062,0,2.849c0.393,0.394,0.909,0.59,1.424,0.59 c0.516,0,1.031-0.196,1.424-0.59l28.541-28.541l28.541,28.541c0.394,0.394,0.909,0.59,1.424,0.59c0.515,0,1.031-0.196,1.424-0.59 c0.787-0.787,0.787-2.062,0-2.849L35.064,31.786L63.41,3.438c0.787-0.787,0.787-2.062,0-2.849c-0.787-0.786-2.062-0.786-2.848,0 L32.003,29.15L3.441,0.59c-0.787-0.786-2.061-0.786-2.848,0c-0.787,0.787-0.787,2.062,0,2.849L28.941,31.786z'/%3E%3C/g%3E%3C/svg%3E%0A");
+   width: 20px;
+   float: right;
+   margin-top: 1px;
+}
+
+.c-btn.c-btn--result.is-modal-video {
+  padding: space(3) space(4);
+  margin-right: 27px;
+}
+
+.c-seevideo {
+  text-align: center;
+}
+
+.c-seevideo {
+  margin-top: 21px;
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }  
+  cursor: pointer;
+}
+
+.c-seevideotext {
+  vertical-align: middle;
+}
+
+.c-seevideocont {
+  text-align: center;
 }

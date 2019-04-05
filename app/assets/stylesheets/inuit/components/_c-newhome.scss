@@ -116,6 +116,7 @@
   }  
 }
 
+
 .c-newhomehero__content-description > div {
   display: inline;
   @include mq($from: mobile) {
@@ -136,7 +137,11 @@ input.c-main-cta {
   display: inline-block;
   font-weight: bold;
   @include inuit-font-size(16px);
-  @include mq($from: tablet) {
+  @include mq($from: desktop) {
+    @include inuit-font-size(18px);
+    padding: space(5) space(10) space(5) space(10);
+  }
+  @include mq($from: wide) {
     @include inuit-font-size(18px);
     padding: space(6) space(12) space(6) space(12);
   }
