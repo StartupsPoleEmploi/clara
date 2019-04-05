@@ -35,7 +35,7 @@ describe CookiePreference do
     it 'Returns true if ga is disabled' do
       #given
       res = false
-      session = {"analytics" => "authorize_statistic"}
+      session = {"analytics" => "forbid_statistic"}
       #when
       res = CookiePreference.new(session).ga_disabled?
       #then
@@ -43,5 +43,16 @@ describe CookiePreference do
     end
   end
 
+  describe '.ga_disabled?'
+    it 'Returns false if ga is disabled' do
+      #given
+      res = true
+      session = {"analytics" => "authorize_statistic"}
+      #when
+      res = CookiePreference.new(session).ga_disabled?
+      #then
+      expect(res).to eq(false)
+    end
+  end
   end
 end
