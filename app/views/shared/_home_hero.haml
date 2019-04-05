@@ -28,11 +28,14 @@
                   %small
                     Durée 1 : 30 min
               #modal_video.u-display-none
-                
-                %a#aw{href:""}
-                  altwech
-                %button.u-padding-right#js-modal-close.video-modal-close{"data-content-back-id" => "modal_video", :type => "button"}
+                %a#aw{href:nil}
+                  awful
+                %div
+                  Fermer
+                  %button.u-nobutton.u-padding-right#js-modal-close.video-modal-close.c-modal-closer{"data-content-back-id" => "modal_video", :type => "button"}
 
+                .video-container
+                  <iframe width="720" height="405" src="https://www.youtube.com/embed/8IDnLjfAt5U?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 

@@ -2,31 +2,6 @@ dialog {
   display: block;
 }
 
-
-.video-modal {
-  position: fixed;
-  left: 25%;
-  right: auto;
-  top: 25%;
-  width: 50%;
-  margin: 0 auto;
-  border: 1px solid red; 
-  background: #fff;
-  z-index: 667;
-  padding: 2em;
-}
-
-.video-modal-overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #000;
-  opacity: .6;
-  z-index: 666;
-}
-
 .search-modal {
   position: fixed;
   right: auto;
@@ -57,94 +32,50 @@ dialog {
   height: 24px;
 }
 
-.button-play{
-  cursor: pointer;
-  display:block;
-  position:relative;
-  text-align:center;
-  border:2px solid black;
-  box-shadow:0 4px 6px -3px rgba(black, .3), inset 0 3px 4px -2px rgba(black, .25);
-  position:relative;
-  text-align:center;
-  width:25px;
-  height:25px;
-  border-radius:50%; 
-  transition: all .2s cubic-bezier(0.68, -0.55, 0.465, 1.55) .2s, border-width .4s cubic-bezier(0.68, -0.55, 0.465, 1.55);
+.video-modal {
+  position: fixed;
+  right: auto;
+  top: 15%;
+  margin: 0 auto;
+  border: none; 
+  background: #fff;
+  z-index: 667;
+  padding: 2em;
+  left: 10%;
+  width: 80%;
+  border-radius: 10px;
   @include mq($from: desktop) {
-    text-align:left;
-  }
-
-  &:before{
-    cursor: pointer;
-    display:block;
-    position:relative;
-    text-align:center;
-    content:"";
-    bottom:20%;
-    left:95%;
-    width:0;
-    height:0;
-    border:25px solid transparent;
-    border-width:7px 0px 7px 11px;
-    border-radius:0;
-    border-left-color:black;
-    transform:translate(-13px, 50%);
-    @include mq($from: desktop) {
-      text-align:left;
-    }
+    left: 25%;
+    width: 50%;
   }
 }
 
-.play {
-  width: 26px;
-  text-align:right;
-  @include mq($from: mobile) {
-    text-align:left;
-  }
-}
-
-.video {
-  font-size: 16px;
-  text-align:center;
-  cursor: pointer;
-  @include mq($from: tablet) {
-    text-align:left;
-  }
-}
-
-.time {
-  font-size: 12px;
-  font-weight: normal;
-  text-align:center;
-  cursor: pointer;
-  @include mq($from: tablet) {
-    text-align:left;
-  }
-}
-
-iframe {  
-  display: block;
-  margin-top: space(8);
+.video-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  top:0 ; 
+  background: #000;
+  opacity: .6;
+  z-index: 666;
+}
+
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
   position: absolute;
-
-  @include mq($from: mobile) {
-    height: 97%;
-    width: 100%;
-    text-align:center;
-  }
-  
-  @include mq($from: tablet) {
-    height: 92%;
-    width: 100%;
-    text-align:center;
-  }
-
-  @include mq($from: desktop) {
-    height: 405px;
-    width: 100%;
-    text-align:center;
-    bottom: 1%;
-  }
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
