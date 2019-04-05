@@ -6,7 +6,7 @@ describe DisplayAskerService do
     it 'Returns asker attritubes' do
       #given
       asker = Asker.new
-      asker = { 'v_handicap' => 'non', 'v_spectacle' => 'oui', "v_cadre" => 'non'}
+      asker.attributes = { 'v_handicap' => 'non', 'v_spectacle' => 'oui', "v_cadre" => 'non'}
       #when
       asker = DisplayAskerService.new(asker).go
       #then
