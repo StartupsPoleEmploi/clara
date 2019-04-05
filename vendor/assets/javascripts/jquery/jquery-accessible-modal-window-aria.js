@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 
     })
     // close button and esc key
-    $body.on('click', '#js-modal-close', function() {
+    $body.on('click', '.js-modal-close', function() {
             var $this = $(this),
                 $focus_back = '#' + $this.attr('data-focus-back'),
                 $content_back_id = $this.attr('data-content-back-id'),
