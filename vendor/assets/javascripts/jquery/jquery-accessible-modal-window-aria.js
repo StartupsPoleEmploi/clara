@@ -120,7 +120,6 @@ jQuery(document).ready(function($) {
 
             var delay = $js_modal.css("animation-duration");
             if (delay != '0s') {
-                console.log(delay);
                 var timeout = parseFloat(delay.replace('s', '')) * 1000;
                 timeout++;
 
