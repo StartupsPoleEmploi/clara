@@ -56,8 +56,10 @@ describe CookiePreference do
   describe '.set_preference' do
     it  'Return the cookie preference' do
       #given
+      session = {"my" => "session"}
       #when
       #then
+      expect(session).to eq(preferencere)
     end
   end
 end
