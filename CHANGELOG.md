@@ -1,8 +1,12 @@
 # ARA Changelog
 
 
+## 19.19.1 (4/4/2019)
+-[#780b][FEATURE] video HP
+
+
 ## 19.19.0 (4/4/2019)
--[#1193][FEATURE] video HP
+-[#780][FEATURE] video HP
 
 
 ## 19.18.0 (4/4/2019)
