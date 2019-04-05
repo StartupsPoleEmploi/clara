@@ -69,7 +69,9 @@ describe CookiePreference do
     it 'Retuns true if hj is disabled' do
      #given
      res = false
+     session = {"hotjar" => "forbid_navigation"}
      #when
+     res = CookiePreference.new(session).hj_disabled?
      #then
      expect(res).to eq(true) 
     end
