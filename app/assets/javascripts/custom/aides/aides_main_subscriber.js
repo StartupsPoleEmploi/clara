@@ -113,7 +113,15 @@ clara.js_define("aides_main_subscriber", {
     // Nothing interesting was found for the user
     var nb_of_eligibles = _.sumBy(state.eligibles_zone.eligibles, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
     var nb_of_uncertains = _.sumBy(state.uncertains_zone.uncertains, function(contract){return _.count(contract.aids, function(aid){return !aid.is_collapsed;})})  
-    nb_of_eligibles + nb_of_uncertains === 0  ? $('#nothing').removeClass('u-hidden') : $('#nothing').addClass('u-hidden');
+    var has_no_positive_result = nb_of_eligibles + nb_of_uncertains === 0;
+      
+    if (has_no_positive_result) {
+      $('#nothing').removeClass('u-hidden');
+      $('#ineligibles').addClass('u-hidden');
+    } else {
+      $('#nothing').addClass('u-hidden');
+      $('#ineligibles').removeClass('u-hidden');
+    }
 
   }
 
