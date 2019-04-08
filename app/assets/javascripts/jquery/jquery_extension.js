@@ -21,7 +21,31 @@ $.currentUrl = function() {
   return window.location.href;
 }
 
+$.extend({
+    // See https://stackoverflow.com/a/20469901/2595513
+    replaceTag: function (currentElem, newTagObj, keepProps) {
+        var $currentElem = $(currentElem);
+        var i, $newTag = $(newTagObj).clone();
+        if (keepProps) {
+            newTag = $newTag[0];
+            newTag.className = currentElem.className;
+            $.extend(newTag.classList, currentElem.classList);
+            $.extend(newTag.attributes, currentElem.attributes);
+        }
+        $currentElem.wrapAll($newTag);
+        $currentElem.contents().unwrap();
+        return this;
+    }
+});
+
+
 jQuery.fn.extend({
+  // See https://stackoverflow.com/a/20469901/2595513
+  replaceTag: function (newTagObj, keepProps) {
+    return this.each(function() {
+        jQuery.replaceTag(this, newTagObj, keepProps);
+    });
+  },
   datamap: function(dataext) {
     return this.map(function(){return $(this).data()[dataext]}).get();
   },
