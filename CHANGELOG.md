@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.21.0 (10/4/2019)
+-[#1191][FEATURE] Calibrage du moteur de recherche
+
+
 ## 19.20.0 (9/4/2019)
 -[#1236][FEATURE] Ne pas afficher les aides "inéligibles" si les filtres sont activés
 
