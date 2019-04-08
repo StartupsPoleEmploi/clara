@@ -60,7 +60,7 @@ fieldset.c-resultfilterings {
 }
 
 small.c-result-youcan {
-  font-size: 1rem;
+  @include inuit-font-size(20px);
 }
 .c-result-youcan {
   // mimic h3
