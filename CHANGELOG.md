@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.19.2 (8/4/2019)
+-[#1199][TECH] couverture test
+
+
 ## 19.19.1 (5/4/2019)
 -[#780b][FEATURE] video HP
 
