@@ -33,7 +33,7 @@ class Aid < ApplicationRecord
   pg_search_scope :roughly_spelled_like,
                   :against => %i(name short_description what how_much additionnal_conditions how_and_when limitations),
                   :using => {
-                    :tsearch => {},
+                    :tsearch => {prefix: true},
                     :dmetaphone => {},
                   }
 
