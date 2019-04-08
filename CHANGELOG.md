@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.20.0 (9/4/2019)
+-[#1236][FEATURE] Ne pas afficher les aides "inéligibles" si les filtres sont activés
+
+
 ## 19.19.2 (8/4/2019)
 -[#1199][TECH] couverture test
 
