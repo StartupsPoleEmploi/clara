@@ -22,26 +22,26 @@ $.currentUrl = function() {
 }
 
 $.extend({
+    // See https://stackoverflow.com/a/20469901/2595513
     replaceTag: function (currentElem, newTagObj, keepProps) {
         var $currentElem = $(currentElem);
         var i, $newTag = $(newTagObj).clone();
-        if (keepProps) {//{{{
+        if (keepProps) {
             newTag = $newTag[0];
             newTag.className = currentElem.className;
             $.extend(newTag.classList, currentElem.classList);
             $.extend(newTag.attributes, currentElem.attributes);
-        }//}}}
+        }
         $currentElem.wrapAll($newTag);
         $currentElem.contents().unwrap();
-        // return node; (Error spotted by Frank van Luijn)
-        return this; // Suggested by ColeLawrence
+        return this;
     }
 });
 
 
 jQuery.fn.extend({
+  // See https://stackoverflow.com/a/20469901/2595513
   replaceTag: function (newTagObj, keepProps) {
-    // "return" suggested by ColeLawrence
     return this.each(function() {
         jQuery.replaceTag(this, newTagObj, keepProps);
     });
