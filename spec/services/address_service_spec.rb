@@ -49,4 +49,34 @@ describe AddressService do
       expect(asker.attributes.compact).to eq({})
     end
   end
+  describe '.download' do
+    it 'should download' do
+      #given
+      asker = Asker.new
+      address = AddressForm.new
+      asker = Asker.new(
+        v_location_city: "cit",
+        v_location_citycode: "cityc",
+        v_location_country: "cou",
+        v_location_label: "lab",
+        v_location_route: "rou",
+        v_location_state: "sta",
+        v_location_street_number: "street_n",
+        v_location_zipcode: "zip"
+      )
+      #when
+      AddressService.new.download(address, asker)
+      #then
+      expect(address.attributes.symbolize_keys).to eq(
+        city: "cit",
+        citycode: "cityc",
+        country: "cou",
+        label: "lab",
+        route: "rou",
+        state: "sta",
+        street_number: "street_n",
+        zipcode: "zip"
+      )
+    end
+  end
 end
