@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.23.0 (10/4/2019)
+-[#1178][DESIGN] traductions d'écrans
+
+
 ## 19.22.0 (10/4/2019)
 -[#1205][FEATURE] Récap responsif
 
