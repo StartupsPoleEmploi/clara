@@ -2,10 +2,12 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      created_at: Créé le
+      updated_at: Mis à jour le
       password: Mot de passe
       password_confirmation: Confirmation du mot de passe
     models: 
-      user: Administrateur
+      user: Administrateurs
     attributes:
       user:
         <<: *labels

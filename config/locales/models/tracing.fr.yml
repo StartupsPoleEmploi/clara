@@ -1,0 +1,27 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      rule: Règle
+      aids: Aides
+      all_aids: Toutes les aides ?
+      created_at: Créé le
+      updated_at: Mis à jour le
+    models: 
+      tracing: Suivi d'activité
+    attributes:
+      tracing:
+        <<: *labels
+  helpers:
+    label:
+      tracing:
+        <<: *labels
+    tracing:
+      detail: Détails du suivi
+      modify: Modifier le suivi
+      creation: Création d'un suivi d'activité
+      creation_title: Création d'un suivi d'activité
+    submit:
+      tracing:
+        create: "Créer ce suivi"
+        update: "Mettre à jour ce suivi"
