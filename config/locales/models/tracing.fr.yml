@@ -17,10 +17,10 @@ fr:
       tracing:
         <<: *labels
     tracing:
-      detail: Détails de l'administrateur
-      modify: Modifier l'administrateur
-      creation: Ajouter un nouvel administrateur
-      creation_title: Création d'un nouvel administrateur
+      detail: Détails du suivi
+      modify: Modifier le suivi
+      creation: Ajouter un nouveau suivi
+      creation_title: Création d'un nouveau suivi
     submit:
       tracing:
         create: "Créer ce suivi"
