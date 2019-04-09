@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.22.0 (10/4/2019)
+-[#1205][FEATURE] Récap responsif
+
+
 ## 19.21.0 (10/4/2019)
 -[#1191][FEATURE] Calibrage du moteur de recherche
 
