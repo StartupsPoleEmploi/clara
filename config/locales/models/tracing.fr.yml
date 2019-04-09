@@ -19,8 +19,8 @@ fr:
     tracing:
       detail: Détails du suivi
       modify: Modifier le suivi
-      creation: Ajouter un nouveau suivi
-      creation_title: Création d'un nouveau suivi
+      creation: Création d'un suivi d'activité
+      creation_title: Création d'un suivi d'activité
     submit:
       tracing:
         create: "Créer ce suivi"
