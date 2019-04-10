@@ -14,7 +14,13 @@
     <%= link_to "Mot de passe oublié ?", new_password_path %>
   </div>
 
-  <div class="submit-field u-margin-top c-login-connect">
+  <div class="c-login-remember u-margin-top ">
+    <%= form.check_box :remember_me %>
+    <%= form.label :remember_me, " Se souvenir de moi" %>
+  </div>
+
+
+  <div class="submit-field c-login-connect">
     <%= form.submit "Se connecter" %>
   </div>
 
