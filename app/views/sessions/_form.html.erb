@@ -14,11 +14,11 @@
     <%= form.submit "Se connecter" %>
   </div>
 
-  <hr class="u-margin-top">
+  <hr class="u-margin-top u-margin-bottom-small">
 
-  <div>Nouveau sur le back-office</div>
+  <div class="">Nouveau sur le back-office</div>
 
-  <div class="other-links u-margin-top-small c-login-create">
+  <div class="other-links u-margin-vertical-small c-login-create">
     <% if Clearance.configuration.allow_sign_up? %>
       <%= link_to "Créer un compte", sign_up_path %>
     <% end %>

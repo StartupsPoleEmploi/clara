@@ -11,7 +11,7 @@
 
 .c-login-card {
   background-color: #fff;
-  padding: space(8);
+  padding: space(6) space(8);
   border-radius: 4px;
 }
 
@@ -36,22 +36,23 @@
     cursor: pointer;
     color: white;
     text-decoration: none;
-    display: inline-block;
-    // font-weight: bold;
     font-size: 1rem;
     line-height: 1.5;
+    display: block;
+    width: 100%;
 }
 .c-login-create a {
     border: 0;
     white-space: nowrap;
     border-radius: 4px;
-    background-color: grey;
     padding: 9px 36px 9px 36px;
     cursor: pointer;
     color: white;
     text-decoration: none;
-    display: inline-block;
-    // font-weight: bold;
     font-size: 1rem;
     line-height: 1.5;
+    color: #898a8c;
+    background-color: #f3f3f3;
+    border: 1px solid #898a8c;
+
 }
