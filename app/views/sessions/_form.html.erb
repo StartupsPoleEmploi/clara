@@ -4,19 +4,23 @@
     <%= form.text_field :email, type: 'email' %>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
+  <div class="password-field u-margin-top-small">
+    <%= form.label :password, "Mot de passe" %>
     <%= form.password_field :password %>
+    <%= link_to "Mot de passe oublié ?", new_password_path %>
   </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
+  <div class="submit-field u-margin-top c-login-connect">
+    <%= form.submit "Se connecter" %>
   </div>
 
-  <div class="other-links">
+  <hr class="u-margin-top">
+
+  <div>Nouveau sur le back-office</div>
+
+  <div class="other-links u-margin-top-small c-login-create">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
+      <%= link_to "Créer un compte", sign_up_path %>
     <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
   </div>
 <% end %>

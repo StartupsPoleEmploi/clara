@@ -11,16 +11,47 @@
 
 .c-login-card {
   background-color: #fff;
+  padding: space(8);
+  border-radius: 4px;
 }
 
 .c-login input {
-    display: block;
-    padding: .375rem .75rem;
+  display: block;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.c-login-connect input {
+    border: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+    background-color: #358ED7;
+    padding: 9px 36px 9px 36px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    // font-weight: bold;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.c-login-create a {
+    border: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+    background-color: grey;
+    padding: 9px 36px 9px 36px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    // font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.5;
 }
