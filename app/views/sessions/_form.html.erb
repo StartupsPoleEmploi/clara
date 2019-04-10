@@ -6,7 +6,10 @@
 
   <div class="password-field u-margin-top-small">
     <%= form.label :password, "Mot de passe" %>
-    <%= form.password_field :password %>
+    <div class="password-field-input">
+      <%= form.password_field :password %>
+      <input type="submit" name="commit" value="" class="c-eye" data-disable-with="">      
+    </div>
     <%= link_to "Mot de passe oublié ?", new_password_path %>
   </div>
 

@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -7620,6 +7620,43 @@
   }
 
   /**
+   * Checks if `string` ends with the given target string.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category String
+   * @param {string} [string=''] The string to inspect.
+   * @param {string} [target] The string to search for.
+   * @param {number} [position=string.length] The position to search up to.
+   * @returns {boolean} Returns `true` if `string` ends with `target`,
+   *  else `false`.
+   * @example
+   *
+   * _.endsWith('abc', 'c');
+   * // => true
+   *
+   * _.endsWith('abc', 'b');
+   * // => false
+   *
+   * _.endsWith('abc', 'b', 2);
+   * // => true
+   */
+  function endsWith(string, target, position) {
+    string = toString(string);
+    target = baseToString(target);
+
+    var length = string.length;
+    position = position === undefined
+      ? length
+      : baseClamp(toInteger(position), 0, length);
+
+    var end = position;
+    position -= target.length;
+    return position >= 0 && string.slice(position, end) == target;
+  }
+
+  /**
    * Splits `string` by `separator`.
    *
    * **Note:** This method is based on
@@ -8096,6 +8133,7 @@
   lodash.cloneDeep = cloneDeep;
   lodash.deburr = deburr;
   lodash.defaultTo = defaultTo;
+  lodash.endsWith = endsWith;
   lodash.eq = eq;
   lodash.every = every;
   lodash.find = find;
