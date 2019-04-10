@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 20.0.0 (11/4/2019)
+-[#1248][DESIGN] page de connexion : voir le mdp
+
+
 ## 19.24.0 (11/4/2019)
 -[#1214][DESIGN] page de connexion au BO
 
