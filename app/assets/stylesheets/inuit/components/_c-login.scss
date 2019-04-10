@@ -16,7 +16,6 @@
 }
 
 .c-login input {
-  display: block;
   padding: .375rem .75rem;
   font-size: 1rem;
   line-height: 1.5;
@@ -25,6 +24,15 @@
   border: 1px solid #ced4da;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.c-login input, .c-login a {
+  display: block;
+  width: 100%;
+}
+
+.c-login a {
+  text-align: center;
 }
 
 .c-login-connect input {
@@ -54,5 +62,8 @@
     color: #898a8c;
     background-color: #f3f3f3;
     border: 1px solid #898a8c;
+}
 
+.new_user input {
+  width: 100%;
 }
