@@ -2,7 +2,7 @@
 
 
 ## 20.0.0 (11/4/2019)
--[#1249][DESIGN] page de connexion : voir le mdp
+-[#1249][DESIGN] page de connexion : reliquats
 
 
 ## 19.24.0 (11/4/2019)
