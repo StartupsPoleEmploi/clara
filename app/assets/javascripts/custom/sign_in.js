@@ -6,6 +6,8 @@ clara.js_define("sign_in", {
 
   please: function() {    
 
+    $("#session_email").click();
+
     $(window).bind("capsOn", function(event) {
         if ($("#session_password:focus").length > 0) {
             $("#capsWarning").show();

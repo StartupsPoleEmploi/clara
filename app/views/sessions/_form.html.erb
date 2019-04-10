@@ -1,7 +1,7 @@
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+    <%= form.text_field :email, type: 'email', autofocus: true %>
   </div>
 
   <div class="password-field u-margin-top-small">
