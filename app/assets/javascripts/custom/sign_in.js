@@ -1,12 +1,11 @@
 clara.js_define("sign_in", {
 
   please_if: function () {
-    return _.endsWith($.currentUrl().split('?')[0], "/session") || _.endsWith($.currentUrl().split('?')[0], "/sign_in")
+    var url_path = $.currentUrl().split('?')[0];
+    return _.endsWith(url_path, "/session") || _.endsWith(url_path, "/sign_in")
   },
 
   please: function() {    
-
-    $("#session_email").click();
 
     $(window).bind("capsOn", function(event) {
         if ($("#session_password:focus").length > 0) {
