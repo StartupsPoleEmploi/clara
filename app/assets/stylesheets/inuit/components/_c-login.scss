@@ -67,3 +67,10 @@
 .new_user input {
   width: 100%;
 }
+
+.c-flash-error {
+  background-color: #d73535;
+  color: #fff;
+  padding: space(3);
+  border-radius: 4px;
+}
