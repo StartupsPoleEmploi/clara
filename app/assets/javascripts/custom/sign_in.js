@@ -1,17 +1,18 @@
 clara.js_define("sign_in", {
 
   please_if: function () {
-    return _.endsWith($.currentUrl(), "/session") || _.endsWith($.currentUrl(), "/sign_in")
+    return _.endsWith($.currentUrl().split('?')[0], "/session") || _.endsWith($.currentUrl().split('?')[0], "/sign_in")
   },
 
   please: function() {    
 
+    // $("#capsWarning").hide()
+
     // function capLock(e){
     //   var kc = e.keyCode ? e.keyCode : e.which;
     //   var sk = e.shiftKey ? e.shiftKey : kc === 16;
-    //   var visibility = ((kc >= 65 && kc <= 90) && !sk) || 
-    //       ((kc >= 97 && kc <= 122) && sk) ? 'block' : 'none';
-    //   document.getElementById('divMayus').style.display = visibility
+    //   var visibility = ((kc >= 65 && kc <= 90) && !sk) || ((kc >= 97 && kc <= 122) && sk)
+    //   visibility ? $("#capsWarning").show() : $("#capsWarning").hide()
     // }
 
     // $("#session_password").on("keypress", function (evt) {
