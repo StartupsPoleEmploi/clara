@@ -6,20 +6,6 @@ clara.js_define("sign_in", {
 
   please: function() {    
 
-    // $("#capsWarning").hide()
-
-    // function capLock(e){
-    //   var kc = e.keyCode ? e.keyCode : e.which;
-    //   var sk = e.shiftKey ? e.shiftKey : kc === 16;
-    //   var visibility = ((kc >= 65 && kc <= 90) && !sk) || ((kc >= 97 && kc <= 122) && sk)
-    //   visibility ? $("#capsWarning").show() : $("#capsWarning").hide()
-    // }
-
-    // $("#session_password").on("keypress", function (evt) {
-    //   capLock(evt);
-    // });
-
-    
     $(window).bind("capsOn", function(event) {
         if ($("#session_password:focus").length > 0) {
             $("#capsWarning").show();
