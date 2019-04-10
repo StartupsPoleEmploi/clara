@@ -1,0 +1,18 @@
+<div id="clearance" class="password-reset c-login">
+  <div class="c-login-card u-margin-top u-margin-bottom">
+    <h1>Nouveau mot de passe</h1>
+
+    <%= form_for :password_reset,
+          url: user_password_path(@user, token: @user.confirmation_token),
+          html: { method: :put } do |form| %>
+      <div class="password-field">
+        <%= form.label :password, "Nouveau mot de passe" %>
+        <%= form.password_field :password, "class" => "u-1/1" %>
+      </div>
+
+      <div class="submit-field u-margin-top-small c-login-connect">
+        <%= form.submit "Enregistrer", "class" => "u-1/1" %>
+      </div>
+    <% end %>
+  </div>
+</div>

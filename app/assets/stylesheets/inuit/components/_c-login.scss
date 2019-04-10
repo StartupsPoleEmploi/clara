@@ -1,0 +1,69 @@
+.c-login {
+  display: flex;
+  justify-content: center;
+}
+
+
+.c-login h1 {
+  font-size: $inuit-font-size-h4;
+}
+
+
+.c-login-card {
+  background-color: #fff;
+  padding: space(6) space(8);
+  border-radius: 4px;
+}
+
+.c-login input {
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.c-login input, .c-login a {
+  display: block;
+  width: 100%;
+}
+
+.c-login a {
+  text-align: center;
+}
+
+.c-login-connect input {
+    border: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+    background-color: #358ED7;
+    padding: 9px 36px 9px 36px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: block;
+    width: 100%;
+}
+.c-login-create a {
+    border: 0;
+    white-space: nowrap;
+    border-radius: 4px;
+    padding: 9px 36px 9px 36px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #898a8c;
+    background-color: #f3f3f3;
+    border: 1px solid #898a8c;
+}
+
+.new_user input {
+  width: 100%;
+}

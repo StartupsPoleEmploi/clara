@@ -1,6 +1,10 @@
 # ARA Changelog
 
 
+## 19.24.0 (11/4/2019)
+-[#1214][DESIGN] page de connexion au BO
+
+
 ## 19.23.0 (10/4/2019)
 -[#1178][DESIGN] traductions d'écrans
 
@@ -9,7 +13,7 @@
 -[#1205][FEATURE] Récap responsif
 
 
-## 19.21.0 (10/4/2019)
+## 19.21.0 (9/4/2019)
 -[#1191][FEATURE] Calibrage du moteur de recherche
 
 

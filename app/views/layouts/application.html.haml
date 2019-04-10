@@ -30,8 +30,9 @@
     = javascript_include_tag 'application', 'async' => Rails.env.production?, 'defer' => Rails.env.production?
                 
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
-    .c-turbolinks-transition.u-hidden
-      .c-loader
+    #flash
+    - flash.each do |key, value|
+      %div{:id => "flash_#{key}"}= h value
     .c-body__wrapper
       .c-body__content
         = render 'shared/header'
