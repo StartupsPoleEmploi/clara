@@ -117,8 +117,6 @@
 }
 
 .c-flexeqal {
-  min-width: 48%;
-  margin-left: space(2);
-}
-.c-flexeqal + .c-flexeqal {
+  flex: 1 1 0;
+  margin:5px;
 }
