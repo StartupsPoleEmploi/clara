@@ -2,6 +2,10 @@
 
 
 
+## 20.2.0 (11/4/2019)
+-[#1222][DESIGN][ADMIN] navigation à gauche
+
+
 ## 20.1.0 (11/4/2019)
 -[#1251][DESIGN] mdp oublié
 
