@@ -3,7 +3,16 @@ class Navigation < ViewObject
   def after_init(args)
     locals = hash_for(args)
   end
-
+  
+  def admin_clazz(req)
+    res = ""
+    current_path = GetCurrentPathService.new(req).call
+    p '- - - - - - - - - - - - - - current_path- - - - - - - - - - - - - - - -' 
+    pp current_path
+    p ''
+    res
+  end
+  
   def filter_clazz(req)
     current_path = GetCurrentPathService.new(req).call
     actives_pathes = [

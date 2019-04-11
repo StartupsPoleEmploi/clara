@@ -21,13 +21,20 @@ $_navigation-link-padding: 0.6em;
     margin-bottom: $small-spacing;
   }
 
-  &:hover {
-    background-color: mix($black, $base-background-color, 5%);
-    border-radius: $base-border-radius;
-    color: $base-font-color;
-  }
+  // &:hover {
+  //   background-color: mix($black, $base-background-color, 5%);
+  //   border-radius: $base-border-radius;
+  //   color: $base-font-color;
+  // }
 }
 
 .navigation__link--active {
   font-weight: $bold-font-weight;
+  background-color: #eaebeb;
+  border-radius: 4px;
+}
+
+nav.navigation a {
+  text-decoration: none;
+  color:#293f54;
 }
