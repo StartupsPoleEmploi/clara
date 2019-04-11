@@ -5,14 +5,14 @@ class Navigation < ViewObject
   end
   
   def admin_clazz(req)
-    res = ""
+    state = "inactive"
     current_path = GetCurrentPathService.new(req).call
-    p '- - - - - - - - - - - - - - current_path- - - - - - - - - - - - - - - -' 
-    pp current_path
-    p ''
-    res
+    if current_path == "admin_get_hidden_admin_path"
+      state = "active"
+    end
+    "navigation__link navigation__link--#{state}"
   end
-  
+
   def filter_clazz(req)
     current_path = GetCurrentPathService.new(req).call
     actives_pathes = [
