@@ -26,7 +26,6 @@ class TranslateAskerService
     res[:diploma]                  = diploma_from_french(api_asker.v_diplome)
     res[:category]                 = category_from_french(api_asker.v_category)
     res[:inscription_period]       = inscription_period_from_french(api_asker.v_duree_d_inscription)
-    res[:zrr]                      = api_asker.v_zrr
     res[:allocation_type]          = allocation_type_from_french(api_asker.v_allocation_type)
     res[:monthly_allocation_value] = integer_from_french(api_asker.v_allocation_value_min)
     res[:age]                      = integer_from_french(api_asker.v_age)
