@@ -1,3 +1,19 @@
+$.paramUpdate = function(url, param) {
+
+  var regExp = new RegExp(param.key + '=([a-z0-9\-\_]+)(?:&)?'),
+      existsMatch = url.match(regExp);
+
+  if (!existsMatch) {
+      return url + '&' + param.key + '=' + param.value
+  }
+
+  var paramToUpdate = existsMatch[0],
+      valueToReplace = existsMatch[1],
+      updatedParam = paramToUpdate.replace(valueToReplace, param.value);
+
+  return url.replace(paramToUpdate, updatedParam);
+}
+
 $.currentAppPath = function() {
   return $('body').attr("data-path");
 }
