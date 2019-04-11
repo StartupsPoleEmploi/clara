@@ -61,7 +61,6 @@
     line-height: 1.5;
     color: #898a8c;
     background-color: #f3f3f3;
-    border: 1px solid #898a8c;
 }
 
 .new_user input {
@@ -108,4 +107,15 @@
   width: inherit;
   display: inline;
   transform: none;
+}
+
+.c-login-nextprev {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin-top: space(6);
+}
+
+.c-flexeqal {
+  flex: 1 1 0;
+  margin:5px;
 }

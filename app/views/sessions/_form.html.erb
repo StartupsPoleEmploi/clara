@@ -11,7 +11,7 @@
       <%= form.password_field :password %>
       <input type="submit" name="commit" value="" class="c-eye" data-disable-with="">      
     </div>
-    <%= link_to "Mot de passe oublié ?", new_password_path %>
+    <%= link_to "Mot de passe oublié ?", new_password_path(:email => ""), id: "forgot_link" %>
   </div>
 
   <div class="c-login-remember u-margin-top ">

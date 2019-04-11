@@ -1,6 +1,11 @@
 # ARA Changelog
 
 
+
+## 20.1.0 (11/4/2019)
+-[#1251][DESIGN] mdp oublié
+
+
 ## 20.0.0 (11/4/2019)
 -[#1250][DESIGN] page de connexion : reliquats
 
