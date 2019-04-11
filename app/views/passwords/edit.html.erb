@@ -2,8 +2,15 @@
   <div class="c-login-card u-margin-top u-margin-bottom">
     <h1>Nouveau mot de passe</h1>
 
-    <p>Entrez un nouveau mot de passe suffisamment fort.</p>
+    <p>Entrez un nouveau mot de passe avec au moins :</p>
 
+    <ul>
+      <li>8 caractères</li>
+      <li>1 chiffre</li>
+      <li>1 lettre majuscule</li>
+      <li>1 lettre minuscule</li>
+      <li>1 caractère spécial</li>
+    </ul>
     <% flash.each do |key, value| %>
       <div id="flash_<%= key %>" class="c-flash-error u-margin-bottom-small">
         <%= h "✖ #{value}" %>
