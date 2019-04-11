@@ -30,11 +30,6 @@ module Admin
       )
     end
 
-    # def authenticate_admin
-    #   return if ENV['ARA_SKIP_ADMIN_AUTH']
-    #   redirect_to signin_path unless current_user_email
-    # end
-
     # Overrides this to change nav state
     def nav_link_state(resource)
       comparable = resource_name.to_s.pluralize

@@ -28,6 +28,10 @@
     class: v.filter_clazz(request)
   ) %>      
   
-  <%= link_to("Administration", admin_get_hidden_admin_path) %> 
+  <%= link_to(
+    "Administration", 
+    admin_get_hidden_admin_path,
+    class: v.admin_clazz(request)
+    ) %> 
   
 </nav>

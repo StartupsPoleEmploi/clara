@@ -3,6 +3,26 @@ class Navigation < ViewObject
   def after_init(args)
     locals = hash_for(args)
   end
+  
+  def admin_clazz(req)
+    current_path = GetCurrentPathService.new(req).call
+    actives_pathes = [
+      "admin_get_hidden_admin_path", 
+      "admin_get_cache_path", 
+      "admin_get_zrr_path", 
+      "admin_explicitations_path", 
+      "admin_variables_path", 
+      "admin_get_stats_path", 
+      "admin_rule_checks_path", 
+      "admin_api_users_path", 
+      "admin_users_path", 
+      "admin_tracings_path", 
+      "admin_traces_path", 
+    ]
+    state = "inactive"
+    state = "active" if actives_pathes.include?(current_path)
+    "navigation__link navigation__link--#{state}"
+  end
 
   def filter_clazz(req)
     current_path = GetCurrentPathService.new(req).call
