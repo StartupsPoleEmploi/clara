@@ -3,6 +3,13 @@
   <div class="c-login-card u-margin-top u-margin-bottom">
     <h1>Se connecter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
 
+    <% flash.each do |key, value| %>
+      <div id="flash_<%= key %>" class="c-flash-error u-margin-bottom-small">
+        <%= h "✖ #{value}" %>
+      </div>
+    <% end %>
+
+
     <%= render partial: '/sessions/form' %>    
   </div>  
 </section>

@@ -1,16 +1,26 @@
 <%= form_for :session, url: session_path do |form| %>
   <div class="text-field">
     <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+    <%= form.text_field :email, type: 'email', autofocus: true %>
   </div>
 
   <div class="password-field u-margin-top-small">
     <%= form.label :password, "Mot de passe" %>
-    <%= form.password_field :password %>
+    <div id="capsWarning">⚠ La touche majuscule est activée</div>
+    <div class="password-field-input">
+      <%= form.password_field :password %>
+      <input type="submit" name="commit" value="" class="c-eye" data-disable-with="">      
+    </div>
     <%= link_to "Mot de passe oublié ?", new_password_path %>
   </div>
 
-  <div class="submit-field u-margin-top c-login-connect">
+  <div class="c-login-remember u-margin-top ">
+    <%= form.check_box :remember_me %>
+    <%= form.label :remember_me, " Se souvenir de moi" %>
+  </div>
+
+
+  <div class="submit-field c-login-connect">
     <%= form.submit "Se connecter" %>
   </div>
 

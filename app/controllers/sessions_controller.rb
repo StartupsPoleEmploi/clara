@@ -9,6 +9,9 @@ class SessionsController < Clearance::SessionsController
     raise: false
 
   def create
+
+    set_remember_me
+
     @user = authenticate(params)
 
     sign_in(@user) do |status|
@@ -31,6 +34,14 @@ class SessionsController < Clearance::SessionsController
   end
 
   private
+
+  def set_remember_me
+    if params["session"]["remember_me"] == "1"
+      cookies.permanent[:remember_me] = true
+    elsif params["session"]["remember_me"] == "0"
+      cookies.delete(:remember_me)
+    end
+  end
 
   def redirect_signed_in_users
     if signed_in?
