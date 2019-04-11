@@ -2,13 +2,14 @@
   <div class="c-login-card u-margin-top u-margin-bottom">
     <h1>Nouveau mot de passe</h1>
 
+    <p>Entrez un nouveau mot de passe suffisamment fort.</p>
 
     <% flash.each do |key, value| %>
       <div id="flash_<%= key %>" class="c-flash-error u-margin-bottom-small">
         <%= h "✖ #{value}" %>
       </div>
     <% end %>
-    
+
     <%= form_for :password_reset,
           url: user_password_path(@user, token: @user.confirmation_token),
           html: { method: :put } do |form| %>

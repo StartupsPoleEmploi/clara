@@ -16,7 +16,7 @@ fr:
     failure_after_update: Le mot de passe ne peut être vide.
     failure_when_forbidden: Please double check the URL or try submitting
       the form again.
-    failure_when_not_signed_in: Merci de se connecter avant de continuer.
+    failure_when_not_signed_in: Merci de vous connecter avant de continuer.
   helpers:
     label:
       password:
