@@ -14,14 +14,16 @@
         <%= form.label :email, "Votre adresse e-mail" %>
         <%= form.text_field :email, type: 'email', "class" => "u-1/1", value: "#{params[:email]}" %>
       </div>
-      <div class="submit-field c-login-connect u-margin-vertical">
-        <%= form.submit "Réinitialiser mon mot de passe" %>
+      <div class="submit-field c-login-connect c-login-nextprev">
+        <div class="c-login-create c-flexeqal">
+          <%= link_to "Annuler", sign_in_path %>
+        </div>
+        <div class="c-flexeqal">
+          <%= form.submit "Suivant" %>
+        </div>
       </div>
     <% end %>
 
-    <div class="other-links u-margin-vertical-small">
-      <%= link_to "Retour à la connexion", sign_in_path %>
-    </div>
 
   </div>  
 </div>
