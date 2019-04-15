@@ -31,4 +31,8 @@ class Footer < ViewObject
     @dispositifs.size > 0
   end
 
+  # def display_contract_type
+  #   ContractType.find
+  # end
+  
 end
