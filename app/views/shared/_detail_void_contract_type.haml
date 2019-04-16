@@ -9,8 +9,9 @@
 
   .c-detail-void__line
     = link_to 'Je commence', QuestionManager.new.getNextPath, class: 'c-detail-cta'
-
-  %strong Nos aides par rubriques
+.c-detail-void{:class => "u-margin-top-small u-margin-top-none@desktop"}
   .c-detail-void__line
+    %strong Nos aides par rubriques
     - v.links_to_all_contract_types.each do |ct|
-      =ct[:link]
+      %li
+        =ct[:link]
