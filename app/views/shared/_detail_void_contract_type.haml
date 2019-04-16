@@ -11,5 +11,6 @@
     = link_to 'Je commence', QuestionManager.new.getNextPath, class: 'c-detail-cta'
 
   %strong Nos aides par rubriques
-  - v.links_to_all_contract_types.each do |ct|
-    =ct[:link]
+  .c-detail-void__line
+    - v.links_to_all_contract_types.each do |ct|
+      =ct[:link]
