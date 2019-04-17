@@ -6,8 +6,6 @@ class ResultLine < ViewObject
     @aids =  array_of_hash_for(locals[:aids])
     @contract = hash_for(locals[:contract])
     @hide_title = boolean_for(locals[:hide_title])
-    puts "@contract[:name]"
-    puts @contract[:name]
   end
   
   def clazz
