@@ -29,6 +29,8 @@ class TypeExplanation < ViewObject
       "<div>Vous pouvez vérifier votre éligibilité à <strong><span class='aid-nb-txt'>#{number_of_aids} aides</span> à l'alternance.</strong></div>".html_safe
     when "aide-a-la-definition-du-projet-professionnel"
       "<div>Vous pouvez vérifier votre éligibilité à <strong><span class='aid-nb-txt'>#{number_of_aids} aides</span> à la définition du projet professionnel.</strong></div>".html_safe
+    when "emploi-international"
+      "<div>Vous pouvez vérifier votre éligibilité à <strong><span class='aid-nb-txt'>#{number_of_aids} aides</span> à l'emploi international.</strong></div>".html_safe    
     else 
       ""
     end

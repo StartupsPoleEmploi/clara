@@ -3,6 +3,7 @@
 - title_data v.title_of_tab
 - description_data(v.contract_type[:description].to_s.html_safe)
 
+
 = render 'shared/breadcrumb', {where: 'detail'}
 
 %main#main.c-type-show{role: "main"}
@@ -12,6 +13,7 @@
 
   .c-detail-show2.u-useful-width.u-margin-constraint
     .o-layout
+      = ap(v).html_safe
       .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
         - if v.has_line
           = render 'shared/result_line', local_assigns
