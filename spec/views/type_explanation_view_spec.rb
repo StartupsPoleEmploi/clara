@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'spec_helper'
+# require 'rails_helper'
+# require 'spec_helper'
 
 # RSpec.shared_examples "a contract type page" do |details|
 #   context "Nominal" do

@@ -15,12 +15,8 @@ class TypeExplanation < ViewObject
     @number_of_aids
   end
 
-  def title_of_tab
-    "#{@contract[:name]}"
-  end
-
   def full_text
-    "<div>Vous pouvez vérifier votre éligibilité à <strong><span class='aid-nb-txt'>#{number_of_aids} aides</span> pour : #{@name.downcase}.</strong></div>".html_safe
+    "<div>Vous pouvez vérifier votre éligibilité à <span class='aid-nb-txt'><strong>#{number_of_aids} aides</strong> pour :<strong> #{@name.downcase}.</strong></span></div>".html_safe
   end
 
 end
