@@ -3,7 +3,7 @@
 .c-result-line{"class" => v.clazz}
   .is-visible.c-result-line__aids
   - if !v.hide_title?
-    = render 'shared/type_explanation', {number_of_aids: local_assigns[:aids].size, slug: local_assigns[:contract]["slug"] }
+    = render 'shared/type_explanation', {number_of_aids: local_assigns[:aids].size, slug: local_assigns[:contract]["slug"], name: local_assigns[:contract]["name"]}
   - v.ordered_aids.each_with_index do |aid, i|
     = render 'shared/result_aid', {aid: aid, the_index: i, for_id: request.query_parameters[:for_id].to_s}
       

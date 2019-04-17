@@ -4,7 +4,9 @@ class TypeExplanation < ViewObject
     locals = hash_for(args)
     @number_of_aids = integer_for(locals[:number_of_aids])
     @slug = string_for(locals[:slug])
-    @contract = hash_for(locals[:contract])
+    @name = string_for(locals[:name])
+    puts "@contract"
+    puts @name
   end
 
   def has_text
