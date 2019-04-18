@@ -10,10 +10,6 @@ class TypeShow < ViewObject
     @contract
   end
 
-  def title
-    @contract[:description]
-  end
-
   def clazz
     "c-detail-title--#{@contract[:slug]}"
   end
