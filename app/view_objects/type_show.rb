@@ -22,7 +22,7 @@ class TypeShow < ViewObject
     FilterRawAidsService.new(@aids).go[0]
   end
 
-  def title_of_tab
+  def title
     "#{@contract[:name]}"
   end
 
