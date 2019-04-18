@@ -4,6 +4,8 @@ class TypeShow < ViewObject
     locals = hash_for(args)
     @contract = hash_for(locals[:contract])
     @aids = array_for(locals[:aids])
+    puts "@contract"
+    puts @contract
   end
 
   def contract_type
@@ -28,8 +30,8 @@ class TypeShow < ViewObject
 
   def title_of_tab
     puts "@slug"
-    puts @slug
-    case @slug
+    puts @contract[:slug]
+    case @contract[:slug]
     when "aide-a-la-creation-ou-reprise-d-entreprise"
       res =  "à la création ou reprise d'entreprise"
     when "aide-a-la-mobilite"
