@@ -27,6 +27,8 @@ class TypeShow < ViewObject
   end
 
   def title_of_tab
+    puts "@slug"
+    puts @slug
     case @slug
     when "aide-a-la-creation-ou-reprise-d-entreprise"
       res =  "à la création ou reprise d'entreprise"
