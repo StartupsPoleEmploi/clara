@@ -77,7 +77,7 @@ RSpec.describe "aide à la mobilité with 5 aids" do
   it_should_behave_like "a contract type page", 
   {number_of_aids:5, 
     name: 'Aide à la mobilité',                         
-    name: 'aide-a-la-mobilite',                         
+    slug: 'aide-a-la-mobilite',                         
     exp_com: 1, 
     exp_msg: 'mobilité',      
     exp_aid_msg: '5 aides'} 
