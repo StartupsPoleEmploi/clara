@@ -28,7 +28,8 @@ end
 RSpec.describe "aide-a-la-creation-ou-reprise-d-entreprise" do
  it_should_behave_like "a contract type page", 
  {number_of_aids:2, 
-  name: 'aide-a-la-creation-ou-reprise-d-entreprise',                   
+  slug: 'aide-a-la-creation-ou-reprise-d-entreprise',   
+  name:  "la création ou reprise d'entreprise",               
   exp_com: 1, 
   exp_msg: 'entreprise', 
   exp_aid_msg: '2 aides'} 
@@ -37,16 +38,18 @@ end
 RSpec.describe "aide à la mobilité" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:2, 
-    name: 'Aide à la mobilité',                         
+    name: 'Aide à la mobilité',
+    slug: "aide-a-la-mobilite",                         
     exp_com: 1, 
-    exp_msg: 'mobilité',      
+    exp_msg: 'aide à la mobilité',      
     exp_aid_msg: '2 aides'} 
 end
 
 RSpec.describe "contrat-en-alternance" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:2, 
-    name: 'contrat-en-alternance',                         
+    name: "A l'alternance",                         
+    slug: 'contrat-en-alternance',                         
     exp_com: 1, 
     exp_msg: 'alternance',      
     exp_aid_msg: '2 aides'} 
@@ -55,7 +58,8 @@ end
 RSpec.describe "aide-a-la-definition-du-projet-professionnel" do
  it_should_behave_like "a contract type page", 
  {number_of_aids:2, 
-  name: 'aide-a-la-definition-du-projet-professionnel',                   
+  name: "A la définition du projet professionnel",                   
+  slug: 'aide-a-la-definition-du-projet-professionnel',                   
   exp_com: 1, 
   exp_msg: 'professionnel', 
   exp_aid_msg: '2 aides'} 
@@ -65,6 +69,7 @@ RSpec.describe "aide à la mobilité without aids" do
   it_should_behave_like "a contract type page", 
   {number_of_aids:nil, 
     name: 'Aide à la mobilité',                         
+    slug: 'aide-a-la-mobilite',                         
     exp_com: 0} 
 end
 
@@ -72,6 +77,7 @@ RSpec.describe "aide à la mobilité with 5 aids" do
   it_should_behave_like "a contract type page", 
   {number_of_aids:5, 
     name: 'Aide à la mobilité',                         
+    name: 'aide-a-la-mobilite',                         
     exp_com: 1, 
     exp_msg: 'mobilité',      
     exp_aid_msg: '5 aides'} 
