@@ -28,16 +28,16 @@ end
 RSpec.describe "aide-a-la-creation-ou-reprise-d-entreprise" do
  it_should_behave_like "a contract type page", 
  {number_of_aids:2, 
-  slug: 'aide-a-la-creation-ou-reprise-d-entreprise',                   
+  name: 'aide-a-la-creation-ou-reprise-d-entreprise',                   
   exp_com: 1, 
   exp_msg: 'entreprise', 
   exp_aid_msg: '2 aides'} 
 end
 
-RSpec.describe "aide-a-la-mobilite" do 
+RSpec.describe "aide à la mobilité" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:2, 
-    slug: 'aide-a-la-mobilite',                         
+    name: 'Aide à la mobilité',                         
     exp_com: 1, 
     exp_msg: 'mobilité',      
     exp_aid_msg: '2 aides'} 
@@ -46,7 +46,7 @@ end
 RSpec.describe "contrat-en-alternance" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:2, 
-    slug: 'contrat-en-alternance',                         
+    name: 'contrat-en-alternance',                         
     exp_com: 1, 
     exp_msg: 'alternance',      
     exp_aid_msg: '2 aides'} 
@@ -55,23 +55,23 @@ end
 RSpec.describe "aide-a-la-definition-du-projet-professionnel" do
  it_should_behave_like "a contract type page", 
  {number_of_aids:2, 
-  slug: 'aide-a-la-definition-du-projet-professionnel',                   
+  name: 'aide-a-la-definition-du-projet-professionnel',                   
   exp_com: 1, 
   exp_msg: 'professionnel', 
   exp_aid_msg: '2 aides'} 
 end
 
-RSpec.describe "aide-a-la-mobilite without aids" do 
+RSpec.describe "aide à la mobilité without aids" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:nil, 
-    slug: 'aide-a-la-mobilite',                         
+    name: 'Aide à la mobilité',                         
     exp_com: 0} 
 end
 
-RSpec.describe "aide-a-la-mobilite with 5 aids" do 
+RSpec.describe "aide à la mobilité with 5 aids" do 
   it_should_behave_like "a contract type page", 
   {number_of_aids:5, 
-    slug: 'aide-a-la-mobilite',                         
+    name: 'Aide à la mobilité',                         
     exp_com: 1, 
     exp_msg: 'mobilité',      
     exp_aid_msg: '5 aides'} 
