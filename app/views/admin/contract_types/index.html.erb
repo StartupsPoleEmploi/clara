@@ -10,10 +10,10 @@
     <div>Une  rubrique contient plusieurs aides qui ont la même thématique.</div>
     <div>Cela permet d'organiser le contenu et de rendre la lecture plus facile pour l'utilisateur.</div>    
   </div>
+</header>
 
-  <div class="c-ct-subheader">
-
-    <div>
+<header class="c-ct-subheader">
+      <div>
       <%=resources.size%> rubriques disponibles 
     </div>
 
@@ -36,13 +36,10 @@
         [:new, namespace, page.resource_path],
         class: "button",
       ) if valid_action?(:new) && show_action?(:new, new_resource) %>
-    </div>    
-
-  </div>
-
+    </div> 
 </header>
 
-<section class="main-content__body main-content__body--flush">
+<section class="main-content__body main-content__body--flush c-ct-body">
   <%= render(
     "collection",
     collection_presenter: page,
