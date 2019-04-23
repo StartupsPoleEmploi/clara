@@ -6,13 +6,6 @@ class TypeShow < ViewObject
     @aids = array_for(locals[:aids])
   end
 
-  def slugs
-    @aid_cre = "aide-a-la-creation-ou-reprise-d-entreprise"
-    @aid_al = "contrat-en-alternance" 
-    @aid_dpp = "aide-a-la-definition-du-projet-professionnel"
-    @aid_mob = "aide-a-la-mobilite"
-  end
-
   def contract_type
     @contract
   end
@@ -33,8 +26,24 @@ class TypeShow < ViewObject
     "#{@contract[:name]}"
   end
 
+  def aid_cre
+    @aid_cre = "aide-a-la-creation-ou-reprise-d-entreprise"
+  end
+
+  def aid_al
+    @aid_al = "contrat-en-alternance" 
+  end
+
+  def aid_dpp
+    @aid_dpp = "aide-a-la-definition-du-projet-professionnel"
+  end
+
+  def aid_mob
+    @aid_mob = "aide-a-la-mobilite"
+  end
+
   def other_title_tab
-    if @contract[:slug] != @aid_cre && @contract[:slug] != @aid_al && @contract[:slug] != @aid_dpp && @contract[:slug] != @aid_mob && !@contract[:name].blank?
+    if @contract[:slug] != aide_cre && @contract[:slug] != aide_al && @contract[:slug] != aid_dpp && @contract[:slug] != aid_mob && !@contract[:name].blank?
       "#{@contract[:name]}"
     else
       ""
@@ -43,13 +52,13 @@ class TypeShow < ViewObject
 
   def title_of_tab
     case @contract[:slug]
-    when "aide-a-la-creation-ou-reprise-d-entreprise"
+    when aid_cre
       "à la création ou reprise d'entreprise"
-    when "aide-a-la-mobilite"
+    when aid_mob
       "à la mobilité, au déplacement, garde d'enfant"
-    when "contrat-en-alternance"
+    when aid_al
       "à l'alternance"
-    when "aide-a-la-definition-du-projet-professionnel"    
+    when aid_dpp    
       "à l'orientation, la reconversion professionnelle"
     else
       other_title_tab
