@@ -5,4 +5,9 @@
 
 .c-ct-subheader {
   display: flex;
+  flex-direction: row;
+}
+
+.c-ct-subheader--pushright {
+  margin-left: auto;
 }

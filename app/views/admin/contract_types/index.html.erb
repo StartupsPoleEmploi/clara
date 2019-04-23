@@ -12,15 +12,20 @@
   </div>
 
   <div class="c-ct-subheader">
+
     <div>
-        
+      <%=resources.size%> rubriques disponibles 
     </div>
 
-    <%= render(
-      "search",
-      search_term: search_term,
-      resource_name: display_resource_name(page.resource_name)
-    ) %>
+    <div class="c-ct-subheader--pushright">
+      <% if show_search_bar && resources.size <= 20 %>
+        <%= render(
+          "search",
+          search_term: search_term,
+          resource_name: display_resource_name(page.resource_name)
+        ) %>
+      <% end %>      
+    </div>
 
     <div>
       <%= link_to(
@@ -32,6 +37,7 @@
         class: "button",
       ) if valid_action?(:new) && show_action?(:new, new_resource) %>
     </div>    
+
   </div>
 
 </header>
