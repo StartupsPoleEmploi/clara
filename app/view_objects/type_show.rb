@@ -27,7 +27,18 @@ class TypeShow < ViewObject
   end
 
   def title
-    "#{@contract[:name]}"
+    case @contract[:slug]
+    when @aid_cre
+      "Aides à la création ou reprise d'entreprise"
+    when @aid_mob
+      "Aides à la mobilité, au déplacement, garde d'enfant"
+    when @aid_al
+      "Alternance"
+    when @aid_dpp    
+      "Aides à l'orientation, la reconversion professionnelle"
+    else
+      other_title_tab
+    end
   end
 
   def other_title_tab
