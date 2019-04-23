@@ -43,7 +43,8 @@ class TypeShow < ViewObject
   end
 
   def other_title_tab
-    if @contract[:slug] != aide_cre && @contract[:slug] != aide_al && @contract[:slug] != aid_dpp && @contract[:slug] != aid_mob && !@contract[:name].blank?
+    slugs = [aid_cre, aid_al, aid_dpp, aid_mob]
+    if !slugs.include?(@contract[:slug]) && !@contract[:name].blank?
       "#{@contract[:name]}"
     else
       ""
