@@ -6,9 +6,9 @@
 .c-result-aid.js-possible-name{"class" => v.css_addendum(the_index)}
   .c-result-aid__text
     %h2.c-result-aid__title
-      =v.name
+      =link_to v.name, v.link_to_detailed_aid
     .c-result-aid__subtitle
-      =v.short_description
+      =link_to v.short_description, v.link_to_detailed_aid
   .c-result-aid__cta
     %a{"href" => v.link_to_detailed_aid}
       %span 

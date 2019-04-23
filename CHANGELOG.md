@@ -1,6 +1,9 @@
 # ARA Changelog
 
 
+## 20.3.0 (15/4/2019)
+-[#1235][SEO] rubriques dans le footer
+
 
 ## 20.2.0 (11/4/2019)
 -[#1222][DESIGN][ADMIN] navigation à gauche

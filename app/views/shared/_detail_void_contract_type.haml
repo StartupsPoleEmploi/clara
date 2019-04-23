@@ -1,0 +1,17 @@
+- v = view_object(:detail_void_contract_type, local_assigns)
+
+.c-detail-void{:class => "u-margin-top-small u-margin-top-none@desktop"}
+  %strong.c-detail-void__lines
+    .c-detail-void__line Vérifiez votre éligibilité
+    .c-detail-void__line aux aides et mesures
+    .c-detail-void__line qui accélèrent
+    .c-detail-void__line.c-detail-void__line--light votre retour à l'emploi
+
+  .c-detail-void__line
+    = link_to 'Je commence', QuestionManager.new.getNextPath, class: 'c-detail-cta'
+.c-detail-void{:class => "u-margin-top-small u-margin-top-none@desktop"}
+  .c-detail-void__line
+    %strong Nos aides par rubriques
+    - v.links_to_all_contract_types.each do |ct|
+      %li
+        =ct[:link]

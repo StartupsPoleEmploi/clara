@@ -10,10 +10,6 @@ class TypeShow < ViewObject
     @contract
   end
 
-  def title
-    @contract[:description]
-  end
-
   def clazz
     "c-detail-title--#{@contract[:slug]}"
   end
@@ -26,7 +22,7 @@ class TypeShow < ViewObject
     FilterRawAidsService.new(@aids).go[0]
   end
 
-  def title_of_tab
+  def title
     "#{@contract[:name]}"
   end
 

@@ -1,15 +1,15 @@
 - @loaded ||= {}
 - v = view_object(:type_show, local_assigns)
-- title_data v.title_of_tab
+- title_data v.title
 - description_data(v.contract_type[:description].to_s.html_safe)
+
 
 = render 'shared/breadcrumb', {where: 'detail'}
 
 %main#main.c-type-show{role: "main"}
-
   %h1.c-detail-title{"class" => v.clazz}
     %span.c-detail-title-inside.u-useful-width.u-margin-constraint
-      =v.title
+      = v.title
 
   .c-detail-show2.u-useful-width.u-margin-constraint
     .o-layout
@@ -17,4 +17,4 @@
         - if v.has_line
           = render 'shared/result_line', local_assigns
       .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
-        = render 'shared/detail_void'
+        = render 'shared/detail_void_contract_type', local_assigns
