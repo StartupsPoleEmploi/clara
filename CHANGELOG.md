@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.5.1 (23/4/2019)
+-[#1212b][SEO] Modifications de nom de rubrique sur les 4 pages de la HP
+
+
 ## 20.5.0 (23/4/2019)
 -[#1215][ADMIN] liste rubriques
 
