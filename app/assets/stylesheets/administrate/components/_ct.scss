@@ -1,0 +1,24 @@
+.main-content__header.c-ct-header {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #e5edf8;
+}
+
+.c-ct-subheader {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  padding-top: 2rem;
+}
+
+.c-ct-subheader--pushright {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.main-content__body.c-ct-body {
+  padding-top: 0.5rem
+}
+

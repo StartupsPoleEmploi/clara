@@ -25,7 +25,6 @@ class ContractType < ApplicationRecord
   SLUG_FORMAT = /([[:lower:]]|[0-9]+-?[[:lower:]])(-[[:lower:]0-9]+|[[:lower:]0-9])*/
 
   friendly_id :name, use: :slugged
-  validates :description, presence: true, uniqueness: true
   validates :name, presence: true, uniqueness: true
   validates :ordre_affichage, presence: true, numericality: { only_integer: true }
 
