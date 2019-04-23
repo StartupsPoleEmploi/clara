@@ -73,6 +73,14 @@ to display a collection of resources in an HTML table.
           </td>
         <% end %>
 
+        <% if valid_action? :show, collection_presenter.resource_name %>
+          <td><%= link_to(
+            "&#x1f441; Consulter".html_safe ,
+            polymorphic_path([namespace, resource]),
+            class: "action-edit") %>
+          </td>
+        <% end %>
+
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.edit"),
@@ -90,6 +98,7 @@ to display a collection of resources in an HTML table.
             data: { confirm: t("administrate.actions.confirm") }
           ) if show_action? :destroy, resource %></td>
         <% end %>
+
       </tr>
     <% end %>
   </tbody>
