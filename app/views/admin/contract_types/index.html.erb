@@ -2,29 +2,38 @@
   <%= display_resource_name(page.resource_name) %>
 <% end %>
 
-<header class="main-content__header" role="banner">
-  <h1 class="main-content__page-title" id="page-title">
-    <%= content_for(:title) %>
-  </h1>
+<header class="main-content__header c-ct-header" role="banner">
+  <div>
+    <h1 class="main-content__page-title" id="page-title">
+      <%= content_for(:title) %>
+    </h1>
+    <div>Une  rubrique contient plusieurs aides qui ont la même thématique.</div>
+    <div>Cela permet d'organiser le contenu et de rendre la lecture plus facile pour l'utilisateur.</div>    
+  </div>
 
-  <% if show_search_bar && resources.size >= 20 %>
+  <div class="c-ct-subheader">
+    <div>
+        
+    </div>
+
     <%= render(
       "search",
       search_term: search_term,
       resource_name: display_resource_name(page.resource_name)
     ) %>
-  <% end %>
 
-  <div>
-    <%= link_to(
-      t(
-        "helpers.contract_type.creation",
-        name: page.resource_name.titleize.downcase
-      ),
-      [:new, namespace, page.resource_path],
-      class: "button",
-    ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+    <div>
+      <%= link_to(
+        t(
+          "helpers.contract_type.creation",
+          name: page.resource_name.titleize.downcase
+        ),
+        [:new, namespace, page.resource_path],
+        class: "button",
+      ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+    </div>    
   </div>
+
 </header>
 
 <section class="main-content__body main-content__body--flush">
