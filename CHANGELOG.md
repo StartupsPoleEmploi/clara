@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.6.0 (25/4/2019)
+-[#1217][ADMIN] Bandeau d'affichage
+
+
 ## 20.5.2 (23/4/2019)
 -[#1212c][SEO] Modifications de nom de rubrique sur les 4 pages de la HP, corrections couleurs
 
