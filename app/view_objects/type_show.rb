@@ -27,7 +27,7 @@ class TypeShow < ViewObject
   end
 
   def other_title_tab
-    if @contract[:slug] != "aide-a-la-creation-ou-reprise-d-entreprise" && @contract[:slug] != "contrat-en-alternance" && @contract[:slug] != "à l'orientation, la reconversion professionnelle" && !@contract[:name].blank?
+    if @contract[:slug] != "aide-a-la-creation-ou-reprise-d-entreprise" && @contract[:slug] != "contrat-en-alternance" && @contract[:slug] != "aide-a-la-definition-du-projet-professionnel" && @contract[:slug] != "aide-a-la-mobilite" && !@contract[:name].blank?
       "#{@contract[:name]}"
     else
       ""

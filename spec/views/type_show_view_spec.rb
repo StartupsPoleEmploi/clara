@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'spec_helper'
 
-# describe 'type/show' do 
+ describe 'type/show' do 
 
 #   shared_examples "a show type view" do |details|
 #     sut = nil
@@ -40,4 +40,4 @@ require 'spec_helper'
 #   end
 
 
-# end
+end
