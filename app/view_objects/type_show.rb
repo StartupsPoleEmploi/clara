@@ -6,6 +6,13 @@ class TypeShow < ViewObject
     @aids = array_for(locals[:aids])
   end
 
+  def slugs
+    @aid_cre = "aide-a-la-creation-ou-reprise-d-entreprise"
+    @aid_al = "contrat-en-alternance" 
+    @aid_dpp = "aide-a-la-definition-du-projet-professionnel"
+    @aid_mob = "aide-a-la-mobilite"
+  end
+
   def contract_type
     @contract
   end
@@ -27,7 +34,7 @@ class TypeShow < ViewObject
   end
 
   def other_title_tab
-    if @contract[:slug] != "aide-a-la-creation-ou-reprise-d-entreprise" && @contract[:slug] != "contrat-en-alternance" && @contract[:slug] != "aide-a-la-definition-du-projet-professionnel" && @contract[:slug] != "aide-a-la-mobilite" && !@contract[:name].blank?
+    if @contract[:slug] != @aid_cre && @contract[:slug] != @aid_al && @contract[:slug] != @aid_dpp && @contract[:slug] != @aid_mob && !@contract[:name].blank?
       "#{@contract[:name]}"
     else
       ""
