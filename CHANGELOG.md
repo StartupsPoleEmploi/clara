@@ -1,4 +1,9 @@
-# ARA Changelog
+# CLARA Changelog
+
+
+
+## 20.4.0 (18/4/2019)
+-[#1212][SEO] Ajouter un titre sur les 4 pages de la HP
 
 
 ## 20.3.0 (15/4/2019)
