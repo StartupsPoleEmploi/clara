@@ -11,12 +11,16 @@
       
         .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.first
-            %strong Navigation sur Clara : 
-            %br
-            = v.link_to_all_aides
-            - v.links_to_all_contract_types.each do |ct|
-              =ct[:link]
-
+          %tr
+            %td{:colspan => "2"}
+              %strong Navigation sur Clara : 
+              = v.link_to_all_aides
+          -v.links_to_all_contract_types.each_slice(2) do |row|  
+            %tr
+              -row.each do |ct|
+              %td 
+                =ct[:link]
+        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
         .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.u-text--center
             .c-footer-cgu
