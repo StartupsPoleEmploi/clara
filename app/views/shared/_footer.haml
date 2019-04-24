@@ -11,6 +11,12 @@
       
         .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
           .c-footer__content.first
+            = v.link_to_all_aides
+            - v.links_to_all_contract_types.each do |ct|
+              =ct[:link]
+
+        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
+          .c-footer__content.third
             .c-footer-cgu
               = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
               = link_to "Nous contacter", contact_index_path
@@ -18,13 +24,7 @@
               = link_to "Cookies et politique de confidentialité", confidentiality_index_path
               = link_to "Accessibilité", accessibilite_path
 
-        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
-          .c-footer__content.second
-            = v.link_to_all_aides
-            %strong Nos aides par rubriques
-            - v.links_to_all_contract_types.each do |ct|
-              =ct[:link]
 
-        .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
-          .c-footer__content.third
-            = render 'shared/footer_motherhome'
+      .o-layout__item{:class=>"u-1/1 u-1/3@tablet"}
+        .c-footer__content.third
+          = render 'shared/footer_motherhome'
