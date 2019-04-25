@@ -7,6 +7,7 @@
 //= require custom/load_js_per_page
 //= require custom/load_js
 //= require jquery
+//= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery_extension
 //= require a11y-autocomplete/namespacing
 //= require i18n/translations

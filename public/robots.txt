@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /*_questions
 Disallow: /conditions-generales-d-utilisation
+Sitemap: https://clara.pole-emploi.fr/sitemap.xml
