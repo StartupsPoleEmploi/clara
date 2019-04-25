@@ -5,7 +5,8 @@ clara.js_define("admin_flash", {
     },
 
     please: function() {
-      console.log("admin flash!!!")
+      console.log("admin flash!!!");
+      $(".js-tooltip").click();
     },
 
 });
