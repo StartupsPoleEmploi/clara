@@ -34,6 +34,9 @@ a.c-link-to-all-aides {
   a {
     font-weight: bold;
   }
+  @include mq($until: tablet) {    
+   padding-top: space(6);
+   }
 }
 
 .c-footer-motherhome {
@@ -41,3 +44,6 @@ a.c-link-to-all-aides {
   flex-direction: column;
 }
 
+.c-footer-test {
+  padding: 0px
+}
