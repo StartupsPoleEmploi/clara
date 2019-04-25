@@ -12,16 +12,12 @@ This partial renders flash messages on every page.
 %>
 
 <% if flash.any? %>
-  <div class="flashes hidden">
-
+  <div class="flashes">
+    <button class="js-tooltip hidden" data-tooltip-content-id="tooltip_flash"></button>
+    <div id="tooltip_flash" class="hidden">
+        <% flash.each do |key, value| -%>
+          <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
+        <% end -%>
+    </div>    
   </div>
-  <button class="js-tooltip hidden"
-data-tooltip-content-id="tooltip_flash">
-  Show me another dialog tooltip window
-</button>
-<div id="tooltip_flash" class="hidden">
-    <% flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
-    <% end -%>
-</div>
 <% end %>
