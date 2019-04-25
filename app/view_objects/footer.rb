@@ -32,8 +32,7 @@ class Footer < ViewObject
   end
 
   def links_to_all_contract_types
-    ContractType.all.map do |c|
-    {
+    ContractType.all.map do |c| {
       name: c.name,
       link: @context.link_to(c.name, type_path(c.slug), {"class" => "c-link-to-ct"})
     }
@@ -49,12 +48,21 @@ class Footer < ViewObject
     @array2 = [] 
     links_to_all_contract_types.each_with_index do |ct, n|
       if n < 4
-        puts "@array1 = ct[:link]"
-        puts @array1 = ct[:link]
+        @array1.push(ct[:link])
+      end
       if n > 4
-        puts "@array2 = ct[:link]"
-        puts @array2 = ct[:link]
+        @array2.push(ct[:link])
+      end    
     end
   end
 
+  def array1
+    puts "@array1"
+    puts @array1
+    @array1
+  end 
+
+  def array2
+    @array2
+  end
 end

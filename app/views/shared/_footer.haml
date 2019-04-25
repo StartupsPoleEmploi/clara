@@ -13,15 +13,16 @@
             %strong Navigation sur Clara :
             %br 
             = v.link_to_all_aides
+            - v.splitted_array_of_contract
             .o-layout
-              - v.links_to_all_contract_types.each_with_index do |ct, n|  
-                - if v.number_of_contract_types > 3
-                  .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-                    - if n < 3
-                      =ct[:link] 
-                  .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-                    - if n > 3
-                      =ct[:link] 
+              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
+                - v.array1.each do |ct|  
+                  %li
+                    =ct
+              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
+                - v.array2.each do |ct|      
+                  %li
+                    =ct 
 
         .o-layout__item{:class=>"u-1/4@desktop u-1/2@tablet"}
           .c-footer__content
