@@ -2,9 +2,9 @@
   background-color: #152E3A;  
   color: white;
   margin-top: $inuit-global-spacing-unit-small;
-  a {
-    color: white;
-    text-decoration: none;
+  a:link, a:visited, a:hover, a:active {
+    text-decoration:underline;
+    color: white; 
   }
 }
 
@@ -16,7 +16,6 @@
 
 a.c-link-to-all-aides {
   color: white;
-  font-weight: bold;
 }
 
 .c-footer__content {

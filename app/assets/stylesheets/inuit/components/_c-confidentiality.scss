@@ -22,6 +22,9 @@
       vertical-align: top;
     }
   }
+  a:link, a:visited, a:hover, a:active {
+    text-decoration:underline; 
+  }
 }
 
 h1.c-confidentiality-title {
