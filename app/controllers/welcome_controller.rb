@@ -36,4 +36,10 @@ class WelcomeController < ApplicationController
     session.delete :asker
   end
 
+
+
+  
+
+
+
 end
