@@ -12,10 +12,8 @@ This partial renders flash messages on every page.
 %>
 
 <% if flash.any? %>
-  <div class="flashes">
-    <% flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
-    <% end -%>
+  <div class="flashes hidden">
+
   </div>
   <button class="js-tooltip"
 data-tooltip-content-id="tooltip_id_2nd_example"
@@ -24,5 +22,9 @@ data-tooltip-content-id="tooltip_id_2nd_example"
  data-tooltip-close-title="Close it, really">
   Show me another dialog tooltip window
 </button>
-<div id="tooltip_id_2nd_example" class="hidden">Woot, you can take the content of a hidden <code>div</code>.</div>
+<div id="tooltip_id_2nd_example" class="hidden">
+    <% flash.each do |key, value| -%>
+      <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
+    <% end -%>
+</div>
 <% end %>
