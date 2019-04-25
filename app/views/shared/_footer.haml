@@ -16,11 +16,11 @@
             - v.splitted_array_of_contract
             .o-layout
               .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-                - v.array1.each do |ct|  
+                - v.first_part_of_contract_type.each do |ct|  
                   %li
                     =ct
               .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
-                - v.array2.each do |ct|      
+                - v.second_part_of_contract_type.each do |ct|      
                   %li
                     =ct 
 

@@ -47,20 +47,20 @@ class Footer < ViewObject
     @array1 = []
     @array2 = [] 
     links_to_all_contract_types.each_with_index do |ct, n|
-      if n < 4
+      if n < links_to_all_contract_types.size/2
         @array1.push(ct[:link])
       end
-      if n >= 4
+      if n >= links_to_all_contract_types.size/2
         @array2.push(ct[:link])
       end    
     end
   end
 
-  def array1
+  def first_part_of_contract_type
     @array1
   end 
 
-  def array2
+  def second_part_of_contract_type
     @array2
   end
 end
