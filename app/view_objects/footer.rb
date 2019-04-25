@@ -54,11 +54,13 @@ class Footer < ViewObject
         @array2.push(ct[:link])
       end    
     end
+      puts "array1.size"
+      puts array1.size
+      puts "array2.size"
+      puts array2.size
   end
 
   def array1
-    puts "@array1"
-    puts @array1
     @array1
   end 
 
