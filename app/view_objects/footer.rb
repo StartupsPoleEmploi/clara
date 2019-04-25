@@ -5,6 +5,7 @@ class Footer < ViewObject
     @aides = array_for(locals[:aides])
     @dispositifs = array_for(locals[:dispositifs])
     @the_request = locals[:the_request]
+    splitted_array_of_contract
   end
 
   def type_aides
@@ -32,18 +33,18 @@ class Footer < ViewObject
   end
 
   def links_to_all_contract_types 
-    ActivatedModelsService.instance.contracts.map do |c| { 
-      name: c["name"], 
-      link: @context.link_to(c["name"], type_path(c["slug"]), {"class" => "c-link-to-ct"})  
-    } 
+    Rails.cache.fetch("footer_links", expires_in: 1.hour) do
+      ActivatedModelsService.instance.contracts.map do |c| 
+        { 
+          name: c["name"], 
+          link: @context.link_to(c["name"], type_path(c["slug"]), {"class" => "c-link-to-ct"})  
+        } 
+      end
     end 
   end 
 
-   def number_of_contract_types 
-    links_to_all_contract_types.size  
-  end 
 
-   def splitted_array_of_contract 
+  def splitted_array_of_contract 
     @array1 = []  
     @array2 = []  
     links_to_all_contract_types.each_with_index do |ct, n|  
