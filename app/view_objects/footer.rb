@@ -50,14 +50,10 @@ class Footer < ViewObject
       if n < 4
         @array1.push(ct[:link])
       end
-      if n > 4
+      if n >= 4
         @array2.push(ct[:link])
       end    
     end
-      puts "array1.size"
-      puts array1.size
-      puts "array2.size"
-      puts array2.size
   end
 
   def array1
