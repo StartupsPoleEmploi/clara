@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     clean_asker_params
-    view_params = Rails.cache.fetch("view_data_for_welcome_page") {
+    view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
       {
         nb_of_active_aids:  Aid.activated.count,
         type_aides:         ContractType.aides.map{|e| e.attributes},
@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
         slug_of_alternance: ContractType.find_by(slug: "contrat-en-alternance"),
         slug_of_project:    ContractType.find_by(slug: "aide-a-la-definition-du-projet-professionnel"),        
       }
-    }
+    end
     hydrate_view(view_params)
   end
 
@@ -35,5 +35,11 @@ class WelcomeController < ApplicationController
   def clean_asker_params
     session.delete :asker
   end
+
+
+
+  
+
+
 
 end

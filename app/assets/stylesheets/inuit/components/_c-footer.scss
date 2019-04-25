@@ -2,9 +2,13 @@
   background-color: #152E3A;  
   color: white;
   margin-top: $inuit-global-spacing-unit-small;
-  a {
-    color: white;
-    text-decoration: none;
+  a:link, a:visited,  a:active {
+    text-decoration:underline;
+    color: white; 
+  }
+  a:hover {
+    text-decoration:none;
+    color: white; 
   }
 }
 
@@ -16,7 +20,6 @@
 
 a.c-link-to-all-aides {
   color: white;
-  font-weight: bold;
 }
 
 .c-footer__content {
@@ -34,6 +37,9 @@ a.c-link-to-all-aides {
   a {
     font-weight: bold;
   }
+  @include mq($until: tablet) {    
+   padding-top: space(6);
+   }
 }
 
 .c-footer-motherhome {

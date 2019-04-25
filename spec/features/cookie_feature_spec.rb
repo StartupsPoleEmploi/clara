@@ -40,7 +40,7 @@ feature 'CookieSpec' do
     find("#forbid_navigation").click
     find("#submit-cookie-preference").click
     visit root_path
-    click_link "RGPD"
+    visit edit_cooky_path("preference")
     #then
     expect(find("#forbid_statistic")).to be_checked
     expect(find("#forbid_navigation")).to be_checked
