@@ -44,4 +44,17 @@ class Footer < ViewObject
     links_to_all_contract_types.size
   end
 
+  def splitted_array_of_contract
+    @array1 = []
+    @array2 = [] 
+    links_to_all_contract_types.each_with_index do |ct, n|
+      if n < 4
+        puts "@array1 = ct[:link]"
+        puts @array1 = ct[:link]
+      if n > 4
+        puts "@array2 = ct[:link]"
+        puts @array2 = ct[:link]
+    end
+  end
+
 end
