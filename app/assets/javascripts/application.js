@@ -16,7 +16,6 @@
 //= require jquery/jquery
 //= require jquery/jquery_extension
 //= require jquery/jquery-cache-image
-//= require jquery/jquery-accessible-simple-tooltip-aria
 //= require jquery/jquery-accessible-modal-window-aria
 //= require jquery/jquery-capslockstate
 //= require fontfaceobserver/fontfaceobserver

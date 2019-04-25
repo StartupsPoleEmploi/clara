@@ -13,8 +13,11 @@ This partial renders flash messages on every page.
 
 <% if flash.any? %>
   <div class="flashes">
-    <% flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
-    <% end -%>
+    <button class="js-tooltip hidden" data-tooltip-content-id="tooltip_flash"></button>
+    <div id="tooltip_flash" class="hidden">
+        <% flash.each do |key, value| -%>
+          <div class="flash flash-<%= key %>"><%= value.html_safe %></div>
+        <% end -%>
+    </div>    
   </div>
 <% end %>
