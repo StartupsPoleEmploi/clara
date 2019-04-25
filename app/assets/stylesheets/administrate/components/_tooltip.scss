@@ -5,4 +5,27 @@ dialog.tooltip {
   left: 0;
   bottom: 0;
   right: 0;
+  padding: 0;
+  border-radius: 1rem;
+}
+
+
+.tooltip__wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.tooltip__wrapper .flash {
+  background-color: transparent;
+  color: white;
+  margin-bottom: 0;
+}
+
+.tooltip__wrapper button {
+  background-color: transparent;
+  padding: 0.35em 0.75em;
+  color: #9dc4f7;
 }

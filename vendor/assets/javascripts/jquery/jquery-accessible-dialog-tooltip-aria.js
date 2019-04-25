@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
                 $tooltip_content_id = typeof options.tooltipContentId !== 'undefined' ? '#' + options.tooltipContentId : '',
                 $tooltip_content_back_id = typeof options.tooltipContentId !== 'undefined' ? options.tooltipContentId : '',
                 $tooltip_title = options.tooltipTitle || '',
-                $tooltip_close_text = options.tooltipCloseText || 'Close',
+                $tooltip_close_text = options.tooltipCloseText || 'Fermer X',
                 $tooltip_close_title = options.tooltipCloseTitle || options.tooltipCloseText,
                 $tooltip_close_img = options.tooltipCloseImg || '',
                 $tooltip_starter_id = $this.attr('id'),
