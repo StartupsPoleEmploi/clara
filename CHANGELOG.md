@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.6.1 (25/4/2019)
+-[#1252][SEO] Modifications footer
+
+
 ## 20.6.0 (25/4/2019)
 -[#1217][ADMIN] Bandeau d'affichage
 
