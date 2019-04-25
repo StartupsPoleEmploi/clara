@@ -10,18 +10,17 @@
       .o-layout
         .o-layout__item{:class=>"u-3/4@desktop u-1/2@tablet"}
           .c-footer__content
-            %table
-              %tr
-                %td{:colspan => "2"}
-                %tr
-                  %strong Navigation sur Clara :
-              %br 
-              = v.link_to_all_aides
-              - v.links_to_all_contract_types.each_slice(2) do |row|  
-                %tr
-                  - row.each do |ct|
-                    %td 
-                      =ct[:link] 
+            %strong Navigation sur Clara :
+            
+            %br 
+            = v.link_to_all_aides
+            - v.links_to_all_contract_types.each do |ct|  
+              - if v.number_of_contract_types > 4
+                .o-layout
+                  .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
+                    =ct[:link] 
+                  .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
+                    =ct[:link] 
 
         .o-layout__item{:class=>"u-1/4@desktop u-1/2@tablet"}
           .c-footer__content

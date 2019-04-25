@@ -37,9 +37,11 @@ class Footer < ViewObject
       name: c.name,
       link: @context.link_to(c.name, type_path(c.slug), {"class" => "c-link-to-ct"})
     }
-
     end
   end
 
-  
+  def number_of_contract_types
+    links_to_all_contract_types.size
+  end
+
 end
