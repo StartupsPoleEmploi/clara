@@ -5,7 +5,7 @@ class Footer < ViewObject
     @aides = array_for(locals[:aides])
     @dispositifs = array_for(locals[:dispositifs])
     @the_request = locals[:the_request]
-    splitted_array_of_contract
+    init_splitted_array_of_contract
   end
 
   def type_aides
@@ -44,7 +44,7 @@ class Footer < ViewObject
   end 
 
 
-  def splitted_array_of_contract 
+  def init_splitted_array_of_contract 
     @array1 = []  
     @array2 = []  
     links_to_all_contract_types.each_with_index do |ct, n|  
