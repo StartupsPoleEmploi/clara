@@ -12,6 +12,6 @@
 .c-detail-void{:class => "u-margin-top-small u-margin-top-none@desktop"}
   .c-detail-void__line
     %strong Nos aides par rubriques
-    - v.links_to_all_contract_types.each do |ct|
+    - v.list_of_contract_without_current.each do |ct|
       %li
         =ct[:link]
