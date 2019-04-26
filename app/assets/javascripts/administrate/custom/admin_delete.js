@@ -26,6 +26,11 @@ clara.js_define("admin_delete", {
         $(link).attr("id", "label_modal_1");
         $("#js-modal-close").attr("data-focus-back", "label_modal_1");
 
+        // inject contract name
+        console.log($(link).parent().parent().find(".cell-data--string"));
+        var contract_name = $(link).parent().parent().find(".cell-data--string").text().trim();
+        $(".c-deletion-name").text(contract_name);
+
         // if user confims, then go delete the item
         $("button.c-deletion-confirm").on("click", function(){confirmed(link)});
       }
