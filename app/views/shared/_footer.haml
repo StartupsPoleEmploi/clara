@@ -16,11 +16,11 @@
               .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
                 = v.link_to_all_aides
                 - v.first_part_of_contract_type.each do |ct|  
-                  %li
+                  %li.c-li-ct
                     =ct
               .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
                 - v.second_part_of_contract_type.each do |ct|      
-                  %li
+                  %li.c-li-ct
                     =ct 
 
         .o-layout__item{:class=>"u-1/4@desktop u-1/2@tablet"}
