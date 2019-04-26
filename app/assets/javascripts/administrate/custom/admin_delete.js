@@ -1,7 +1,7 @@
 clara.js_define("admin_delete", {
 
     please_if: function() {
-      return $("a[data-confirm]").length > 0;
+      return $("body").attr("data-path") === "admin_contract_types_path" && $("a[data-confirm]").length > 0;
     },
 
     please: function() {
