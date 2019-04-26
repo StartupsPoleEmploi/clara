@@ -1,0 +1,32 @@
+dialog {
+  display: block;
+}
+
+.deletion-modal {
+  position: fixed;
+  right: auto;
+  top: 15%;
+  margin: 0 auto;
+  border: none; 
+  background: #fff;
+  z-index: 667;
+  padding: 0;
+  left: 10%;
+  width: 80%;
+  border-radius: 10px;
+  // @include mq($from: desktop) {
+  //   left: 25%;
+  //   width: 50%;
+  // }
+}
+
+.deletion-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  opacity: .6;
+  z-index: 666;
+}

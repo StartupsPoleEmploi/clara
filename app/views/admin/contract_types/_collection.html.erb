@@ -90,7 +90,7 @@ to display a collection of resources in an HTML table.
             [namespace, resource],
             class: "text-color-red",
             method: :delete,
-            data: { title: 'Suppression d\'un item', confirm: t("administrate.actions.confirm") }
+            data: { title: 'Suppression d\'un item', confirm: "Êtes-vous sûr de votre choix ? Une fois confirmé, cette opération est définitive.", ok: "Confirmer" }
           ) if show_action? :destroy, resource %></td>
         <% end %>
 
@@ -98,3 +98,32 @@ to display a collection of resources in an HTML table.
     <% end %>
   </tbody>
 </table>
+<div>
+  <div class="c-seedeletioncont">
+    <button class="u-nobutton c-deletion js-modal" data-modal-content-id="modal_deletion" data-modal-focus-id="js-modal-close" data-modal-prefix-class="deletion" id="label_modal_2" aria-haspopup="dialog">
+      <div class="c-seedeletionbold">
+        <span class="c-seedeletiontext">
+          <strong>
+            Voir la vidéo
+          </strong>
+        </span>
+      </div>
+    </button>
+  </div>
+  <div class="hidden" id="modal_deletion">
+    <div class="c-deletion-container">
+      Cette rubrique va être définitivement supprimée de la liste.
+    </div>
+    <div class="c-deletion-container">
+      Êtes-vous sûr de votre choix ? Une fois confirmée, cette opération est définitive
+    </div>
+    <div class="c-deletion-close-line is-bottom">
+      <button class="c-btn c-btn--result is-modal-deletion u-margin-vertical js-modal-close">
+        Annuler
+      </button>
+      <button class="c-btn c-btn--result is-modal-deletion u-margin-vertical js-modal-close">
+        Supprimer
+      </button>
+    </div>
+  </div>
+</div>
