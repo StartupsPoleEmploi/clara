@@ -27,7 +27,6 @@ clara.js_define("admin_delete", {
         $("#js-modal-close").attr("data-focus-back", "label_modal_1");
 
         // inject contract name
-        console.log($(link).parent().parent().find(".cell-data--string"));
         var contract_name = $(link).parent().parent().find(".cell-data--string").text().trim();
         $(".c-deletion-name").text(contract_name);
 
