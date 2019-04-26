@@ -90,7 +90,7 @@ to display a collection of resources in an HTML table.
             [namespace, resource],
             class: "text-color-red",
             method: :delete,
-            data: { title: 'Suppression d\'un item', confirm: "Êtes-vous sûr de votre choix ? Une fois confirmé, cette opération est définitive.", ok: "Confirmer" }
+            data: { confirm: "truc" }
           ) if show_action? :destroy, resource %></td>
         <% end %>
 
@@ -99,12 +99,12 @@ to display a collection of resources in an HTML table.
   </tbody>
 </table>
 <div>
-  <div class="c-seedeletioncont">
+  <div class="c-seedeletioncont hidden">
     <button class="u-nobutton c-deletion js-modal" data-modal-content-id="modal_deletion" data-modal-focus-id="js-modal-close" data-modal-prefix-class="deletion" id="label_modal_2" aria-haspopup="dialog">
       <div class="c-seedeletionbold">
         <span class="c-seedeletiontext">
           <strong>
-            Voir la vidéo
+            Confirmer la suppression
           </strong>
         </span>
       </div>
@@ -121,8 +121,8 @@ to display a collection of resources in an HTML table.
       <button class="c-btn c-btn--result is-modal-deletion u-margin-vertical js-modal-close">
         Annuler
       </button>
-      <button class="c-btn c-btn--result is-modal-deletion u-margin-vertical js-modal-close">
-        Supprimer
+      <button class="c-deletion-confirm c-btn c-btn--result is-modal-deletion u-margin-vertical js-modal-close">
+        Confirmer
       </button>
     </div>
   </div>

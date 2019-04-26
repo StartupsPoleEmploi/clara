@@ -6,22 +6,30 @@ clara.js_define("admin_delete", {
 
     please: function() {
 
+
       $.rails.allowAction = function(link) {
-        if (!link.attr('data-confirm')) { return true; }
-        const result = link.attr('data-modal-result');
-        if (result) {
-          link.removeAttr('data-modal-result');
-          return result === 'true';
-        } else {
-          $.rails.showConfirmDialog(link);
-          return false;
+        if (!link.attr('data-confirm')) { 
+          return true; 
         }
+        showConfirmDialog(link); // look bellow for implementations
+        return false; // always stops the action since code runs asynchronously
       };
 
-      $.rails.showConfirmDialog = function(link) {
-        console.log("hey");
-        console.log(link);
+      var showConfirmDialog = function(link) {
+        console.log("heyehey");
+        $("button.c-deletion").click();
+        $("button.c-deletion-confirm").on("click", function(){confirmed(link)});
       }
-    }
+
+
+      var confirmed = function(link) {
+        link.removeAttr('data-confirm');
+        return link.trigger('click.rails');
+      };
+
+      // $('a[data-confirm]').on('click', function() {$.rails.confirmed(link)} );
+
+  }
+
 });
 
