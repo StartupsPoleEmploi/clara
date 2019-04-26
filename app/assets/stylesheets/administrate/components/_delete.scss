@@ -30,3 +30,11 @@ dialog {
   opacity: .6;
   z-index: 666;
 }
+
+.deletion-modal-close {
+  display: none;
+}
+
+.deletion-modal__content {
+  padding: 3rem;
+}

@@ -16,7 +16,6 @@ clara.js_define("admin_delete", {
       };
 
       var showConfirmDialog = function(link) {
-        console.log("heyehey");
         $("button.c-deletion").click();
         $("button.c-deletion-confirm").on("click", function(){confirmed(link)});
       }
@@ -27,7 +26,6 @@ clara.js_define("admin_delete", {
         return link.trigger('click.rails');
       };
 
-      // $('a[data-confirm]').on('click', function() {$.rails.confirmed(link)} );
 
   }
 
