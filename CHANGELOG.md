@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.6.2 (26/4/2019)
+-[#1258][SEO] Font du footer
+
+
 ## 20.6.1 (25/4/2019)
 -[#1252][SEO] Modifications footer
 

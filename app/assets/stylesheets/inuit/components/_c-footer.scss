@@ -31,15 +31,19 @@ a.c-link-to-all-aides {
   font-weight: bold;
 }
 
+.c-li-ct {
+  margin-top: space(2);
+}
+
 .c-footer-cgu {
   display: flex;
   flex-direction: column;
   a {
-    font-weight: bold;
+    margin-top: space(2);
   }
   @include mq($until: tablet) {    
-   padding-top: space(6);
-   }
+    padding-top: space(6);
+  }
 }
 
 .c-footer-motherhome {
