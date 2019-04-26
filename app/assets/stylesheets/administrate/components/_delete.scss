@@ -11,13 +11,9 @@ dialog {
   background: #fff;
   z-index: 667;
   padding: 0;
-  left: 10%;
-  width: 80%;
   border-radius: 10px;
-  // @include mq($from: desktop) {
-  //   left: 25%;
-  //   width: 50%;
-  // }
+  left: 25%;
+  width: 50%;
 }
 
 .deletion-modal-overlay {
