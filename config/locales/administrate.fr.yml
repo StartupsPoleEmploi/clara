@@ -1,0 +1,31 @@
+---
+fr:
+  administrate:
+    actions:
+      new: "Nouveau"
+      show: "Détails"
+      back: "← Retour"
+      destroy: "🗑Supprimer"
+      edit: "✎ Modifier"
+      control: "✓ Contrôler"
+      confirm: Êtes-vous sûr ?
+      edit_resource: Modifier %{name}
+      show_resource: Détails %{name}
+      new_resource: Création %{name}
+    controller:
+      create:
+        success: "Création effectuée avec succès."
+      destroy:
+        success: "Suppression effectuée avec succès."
+      update:
+        success: "Mise à jour effectuée."
+    fields:
+      has_many:
+        more: "%{count} sur %{total_count}"
+        none: Aucun
+    form:
+      error: erreur
+      errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
+    search:
+      clear: Effacer la recherche
+      label: Chercher %{resource}
