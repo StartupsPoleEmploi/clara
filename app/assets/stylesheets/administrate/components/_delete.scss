@@ -44,3 +44,16 @@ dialog {
 #js-del-confirm {
   border: 2px solid #1976d2;
 }
+
+.deletion-modal__content .c-deletion-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.deletion-modal__content .c-deletion-lastline {
+  margin-bottom: 1.4rem;
+}
+
+.deletion-modal__content .c-deletion-confirm {
+  margin-left: 1rem;
+}

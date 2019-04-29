@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.7.1 (26/4/2019)
+-[#1260][ADMIN] Popup de suppression, design
+
+
 ## 20.7.0 (26/4/2019)
 -[#1257][ADMIN] Popup de suppression
 
