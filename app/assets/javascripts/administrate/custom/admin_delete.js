@@ -22,7 +22,7 @@ clara.js_define("admin_delete", {
 
         // setup backfocus
         var id = (new Date()).getTime();
-        $("#label_modal_1").attr("id", "label_modal_1_" + id)
+        $("#label_modal_1").attr("id", "label_modal_1_" + id);
         $(link).attr("id", "label_modal_1");
         $("#js-modal-close").attr("data-focus-back", "label_modal_1");
 

@@ -90,7 +90,7 @@ to display a collection of resources in an HTML table.
             [namespace, resource],
             class: "text-color-red",
             method: :delete,
-            data: { confirm: "yes" }
+            data: { confirm: t("administrate.actions.confirm") }
           ) if show_action? :destroy, resource %></td>
         <% end %>
 
