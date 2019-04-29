@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.7.0 (26/4/2019)
+-[#1257][ADMIN] Popup de suppression
+
+
 ## 20.6.2 (26/4/2019)
 -[#1258][SEO] Font du footer
 

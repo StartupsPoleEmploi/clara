@@ -98,3 +98,29 @@ to display a collection of resources in an HTML table.
     <% end %>
   </tbody>
 </table>
+<div>
+  <div class="c-seedeletioncont hidden">
+    <button class="u-nobutton c-deletion js-modal" data-modal-content-id="modal_deletion" data-modal-focus-id="js-modal-close2" data-modal-prefix-class="deletion" id="label_modal_2" aria-haspopup="dialog">
+      Confirmer la suppression
+    </button>
+  </div>
+  <div class="hidden" id="modal_deletion">
+    <div class="c-deletion-container medium-bottom-margin">
+      <strong>Suppression d'une rubrique</strong>
+    </div>
+    <div class="c-deletion-container medium-bottom-margin">
+      La rubrique "<span class="c-deletion-name">en question</span>" va être définitivement supprimée de la liste.
+    </div>
+    <div class="c-deletion-container medium-bottom-margin">
+      Êtes vous sûr•e de votre choix ? Une fois confirmée, cette opération est définitive.
+    </div>
+    <div class="c-deletion-close-line is-bottom">
+      <button class="c-btn c-btn--result is-modal-deletion js-modal-close" id="js-modal-close2">
+        Annuler
+      </button>
+      <button class="c-deletion-confirm c-btn c-btn--result is-modal-deletion js-modal-close" id="js-del-confirm">
+        Confirmer
+      </button>
+    </div>
+  </div>
+</div>
