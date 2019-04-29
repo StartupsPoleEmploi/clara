@@ -1,7 +1,12 @@
 # CLARA Changelog
 
 
-## 20.7.1 (26/4/2019)
+
+## 20.8.0 (29/4/2019)
+-[#1256][ADMIN] Reliquats bandeau confirmation
+
+
+## 20.7.1 (29/4/2019)
 -[#1260][ADMIN] Popup de suppression, design
 
 
