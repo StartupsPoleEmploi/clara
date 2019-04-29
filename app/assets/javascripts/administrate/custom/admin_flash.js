@@ -6,6 +6,15 @@ clara.js_define("admin_flash", {
 
     please: function() {
       $(".js-tooltip").click();
+      
+      setTimeout(
+        function(){
+          console.log("closing now");
+          $("#js-tooltip-close").click();
+        }, 
+        4000
+      );
+
     },
 
 });
