@@ -32,6 +32,23 @@ as well as a link to its edit page.
   </div>
 </header>
 
+<div class="js-tabs">
+  <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs">
+   <li class="js-tablist__item">
+    <a href="#id_first" id="label_id_first" class="js-tablist__link">1st tab</a>
+   </li>
+   <li class="js-tablist__item">
+    <a href="#id_second" id="label_id_second" class="js-tablist__link">2nd tab</a>
+   </li>
+  </ul>
+ <div id="id_first" class="js-tabcontent">
+   here the content of 1st tab
+ </div>
+ <div id="id_second" class="js-tabcontent">
+   here the content of 2nd tab
+ </div>
+</div>
+
 <section class="main-content__body">
   <dl>
     <% page.attributes.each_with_index do |attribute, index_nb| %>
