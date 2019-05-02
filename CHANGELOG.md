@@ -3,7 +3,7 @@
 
 
 ## 20.9.0 (2/5/2019)
--[#1223][ADMIN] Système de tab pour le détail d'une aide
+-[#1263][ADMIN] Système de tab pour le détail d'une aide
 
 
 ## 20.8.0 (29/4/2019)
