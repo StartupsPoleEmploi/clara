@@ -32,24 +32,59 @@ as well as a link to its edit page.
   </div>
 </header>
 
-<section class="main-content__body">
-  <dl>
-    <% page.attributes.each_with_index do |attribute, index_nb| %>
-      <% if index_nb == 1 %>
-        <dt class="attribute-label">URL publique</dt>
-        <dd class="attribute-data"><%= link_to 'voir', detail_url(page.resource) %></dd>
-      <% else %>
-        <dt class="attribute-label" id="<%= attribute.name %>">
-        <%= t(
-          "helpers.label.#{resource_name}.#{attribute.name}",
-          default: attribute.name.titleize,
-        ) %>
-        </dt>
 
-        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-            ><%= render_field attribute %></dd>
+<section class="main-content__body">
+  <div class="js-tabs">
+    <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs">
+     <li class="js-tablist__item">
+      <a href="#tab_1" id="label_tab_1" class="js-tablist__link">Informations générales</a>
+     </li>
+     <li class="js-tablist__item">
+      <a href="#tab_2" id="label_tab_2" class="js-tablist__link">Contenu</a>
+     </li>
+     <li class="js-tablist__item">
+      <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Historique des modifications</a>
+     </li>
+    </ul>
+   <div id="tab_1" class="js-tabcontent">
+    <dl class="c-tabbed-dl">
+      <% page.attributes.each_with_index do |attribute, index_nb| %>
+        <% if index_nb == 2 %>
+          <dt class="attribute-label">URL publique</dt>
+          <dd class="attribute-data"><%= link_to 'voir', detail_url(page.resource) %></dd>
+        <% elsif index_nb < 11 %>
+          <dt class="attribute-label" id="<%= attribute.name %>">
+          <%= t(
+            "helpers.label.#{resource_name}.#{attribute.name}",
+            default: attribute.name.titleize,
+          ) %>
+          </dt>
+
+          <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+              ><%= render_field attribute %></dd>
+        <% end %>
       <% end %>
-    <% end %>
-  </dl>
+    </dl>
+   </div>
+   <div id="tab_2" class="js-tabcontent">
+    <dl class="c-tabbed-dl">
+      <% page.attributes.each_with_index do |attribute, index_nb| %>
+        <% if index_nb > 10 %>
+          <dt class="attribute-label" id="<%= attribute.name %>">
+          <%= t(
+            "helpers.label.#{resource_name}.#{attribute.name}",
+            default: attribute.name.titleize,
+          ) %>
+          </dt>
+
+          <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+              ><%= render_field attribute %></dd>
+        <% end %>
+      <% end %>
+    </dl>
+   </div>
+   <div id="tab_3" class="js-tabcontent">
+      <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+   </div>
+  </div>
 </section>
-<%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
