@@ -25,7 +25,7 @@ fr:
       aid:
         <<: *labels
     aid:
-      detail: Voir les détails de l'aide
+      detail: Détails d'une aide
       creation: Créer une aide
       creation_title: Création d'une aide
       update: Modification de l'aide

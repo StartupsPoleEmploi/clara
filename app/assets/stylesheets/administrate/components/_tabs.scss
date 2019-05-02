@@ -1,0 +1,42 @@
+.invisible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.example-tabs-tabs__list {
+  margin: 0;
+  padding: 0;
+}
+
+.example-tabs-tabs__item {
+  display: inline-block;
+}
+
+.example-tabs-tabs__link {
+  display: inline-block;
+  padding: 1em  2em;
+  background: #f2f2f2;
+  cursor: pointer;
+  color: #148297;
+}
+
+[aria-selected="true"].example-tabs-tabs__link {
+  color: #000;
+}
+
+.example-tabs-tabs__content {
+  background: #f2f2f2;
+  padding: 1em;
+}
+
+[aria-hidden="true"].example-tabs-tabs__content {
+  display: none;
+}
+
+.js-tabcontent[aria-hidden=true] { display: none; }
