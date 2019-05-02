@@ -26,12 +26,11 @@
   border-top: 2px solid black;
   border-left: 2px solid black;
   border-right: 2px solid black;
-  padding-bottom: 0.8em;
 }
 
 [aria-selected="true"].example-tabs-tabs__link {
   color: #000;
-  padding-bottom: 1em;
+  background-color: white;
 }
 
 // .example-tabs-tabs__content {
@@ -47,7 +46,7 @@
 
 .example-tabs-tabs__content {
   border: 2px solid black;
-  margin-top: -.15rem;
+  margin-top: -.12rem;
 }
 
  .c-tabbed-dl {
