@@ -21,22 +21,39 @@
 .example-tabs-tabs__link {
   display: inline-block;
   padding: 1em  2em;
-  background: #f2f2f2;
   cursor: pointer;
-  color: #148297;
+  color: #1976d2;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding-bottom: 0.8em;
 }
 
 [aria-selected="true"].example-tabs-tabs__link {
   color: #000;
+  padding-bottom: 1em;
 }
 
-.example-tabs-tabs__content {
-  background: #f2f2f2;
-  padding: 1em;
-}
+// .example-tabs-tabs__content {
+//   background: #f2f2f2;
+//   padding: 1em;
+// }
 
 [aria-hidden="true"].example-tabs-tabs__content {
   display: none;
 }
 
 .js-tabcontent[aria-hidden=true] { display: none; }
+
+.example-tabs-tabs__content {
+  border: 2px solid black;
+  margin-top: -.15rem;
+}
+
+ .c-tabbed-dl {
+    height: 100vh;
+    margin-top: 0;
+    padding-top: 1rem;
+    // border: 2px solid black;
+    // margin-top: -.15rem;
+ }

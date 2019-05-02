@@ -47,7 +47,7 @@ as well as a link to its edit page.
      </li>
     </ul>
    <div id="tab_1" class="js-tabcontent">
-    <dl>
+    <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
         <% if index_nb == 2 %>
           <dt class="attribute-label">URL publique</dt>
@@ -67,7 +67,7 @@ as well as a link to its edit page.
     </dl>
    </div>
    <div id="tab_2" class="js-tabcontent">
-    <dl>
+    <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
         <% if index_nb > 10 %>
           <dt class="attribute-label" id="<%= attribute.name %>">
