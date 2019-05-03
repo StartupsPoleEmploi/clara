@@ -1,13 +1,13 @@
-.invisible {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
+// .invisible {
+//   border: 0;
+//   clip: rect(0 0 0 0);
+//   height: 1px;
+//   margin: -1px;
+//   overflow: hidden;
+//   padding: 0;
+//   position: absolute;
+//   width: 1px;
+// }
 
 .example-tabs-tabs__list {
   margin: 0;
@@ -20,7 +20,7 @@
 
 .example-tabs-tabs__link {
   display: inline-block;
-  padding: 1em  2em;
+  padding: .5em 2em;
   cursor: pointer;
   color: #1976d2;
   border-top: 2px solid black;
@@ -47,7 +47,7 @@
 .c-tabbed-dl {
   height: 100vh;
   margin-top: 0;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 .c-tabbed-dl .attribute-label {
