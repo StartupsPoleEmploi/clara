@@ -14,4 +14,12 @@
 
 .c-rules-subheader form .search__input {
   border-color: #666;
+  border-radius: 4px;
+}
+
+.c-rule-link-simple a {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  padding: .65rem 1rem;
 }
