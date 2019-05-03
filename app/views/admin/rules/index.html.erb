@@ -18,16 +18,6 @@
     ) %>
   <% end %>
   <div>
-    <%= link_to(
-      t(
-        "helpers.creation.rule.new_simple_resource",
-        name: page.resource_name.titleize.downcase
-      ),
-      new_admin_rule_path(rule_kind: "simple"),
-      class: "button",
-    ) %>
-  </div>
-  <div class="small-left-margin">
      <%= link_to(
        t(
          "helpers.creation.rule.new_composite_resource",
@@ -36,6 +26,16 @@
        new_admin_rule_path(rule_kind: "composite"),
        class: "button",
      ) %>
+  </div>
+  <div class="small-left-margin">
+    <%= link_to(
+      t(
+        "helpers.creation.rule.new_simple_resource",
+        name: page.resource_name.titleize.downcase
+      ),
+      new_admin_rule_path(rule_kind: "simple"),
+      class: "button",
+    ) %>
   </div>
 </header>
 <section class="main-content__body main-content__body--flush">
