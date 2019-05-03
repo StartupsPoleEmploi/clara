@@ -10,10 +10,11 @@ fr:
       short_description: Résumé
       custom_filters: Filtres personnalisés
       rule: Règle
-      need_filters: Besoins
-      filters: Filtres page résultat 
+      need_filters: Filtres par besoins
+      filters: Filtres sur la page de résultat 
       contract_type: Rubrique
-      updated_at: Dernière mise à jour
+      slug: Url simplifiée
+      updated_at: Dernière modification
       archived_at: Date d'arrêt de diffusion sur le site
     models: 
       aid: Aides
@@ -25,7 +26,7 @@ fr:
       aid:
         <<: *labels
     aid:
-      detail: Détails d'une aide
+      detail: Détails de l'aide
       creation: Créer une aide
       creation_title: Création d'une aide
       update: Modification de l'aide

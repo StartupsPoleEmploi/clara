@@ -16,26 +16,35 @@ as well as a link to its edit page.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
 
-<% content_for(:title) { "#{t("helpers.aid.detail")}" } %>
+<% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(45)}" } %>
 
-<header class="main-content__header" role="banner">
+<header class="main-content__header c-aid-detail-header" role="banner">
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
+</header>
 
+<header class="c-aid-detail-subheader">
+  <div class="c-aid-detail-action">
+    <form>
+      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back()">
+    </form>
+  </div>
   <div>
     <%= link_to(
       "#{t("administrate.actions.edit")}",
       [:edit, namespace, page.resource],
-      class: "button",
+      class: "button c-aid-detail-action",
     ) if valid_action? :edit %>
+  </div>
+  <div>
+    <%= link_to '👁 Visionner en ligne&nbsp;'.html_safe, detail_url(page.resource), class: "button c-aid-preview c-aid-detail-action", target: "blank" %>
   </div>
 </header>
 
-
-<section class="main-content__body">
+<section class="main-content__body c-aid-detail-body">
   <div class="js-tabs">
-    <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs">
+    <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs" data-tabs-generated-hx-class="focusable_tab_title">
      <li class="js-tablist__item">
       <a href="#tab_1" id="label_tab_1" class="js-tablist__link">Informations générales</a>
      </li>
@@ -49,10 +58,7 @@ as well as a link to its edit page.
    <div id="tab_1" class="js-tabcontent">
     <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb == 2 %>
-          <dt class="attribute-label">URL publique</dt>
-          <dd class="attribute-data"><%= link_to 'voir', detail_url(page.resource) %></dd>
-        <% elsif index_nb < 11 %>
+        <% if index_nb < 11 %>
           <dt class="attribute-label" id="<%= attribute.name %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",

@@ -2,6 +2,10 @@
 
 
 
+## 20.10.0 (3/5/2019)
+-[#1223][ADMIN] Nettoyage détail d'une aide
+
+
 ## 20.9.0 (2/5/2019)
 -[#1263][ADMIN] Système de tab pour le détail d'une aide
 
