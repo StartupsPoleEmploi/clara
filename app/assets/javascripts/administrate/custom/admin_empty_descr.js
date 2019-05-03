@@ -1,4 +1,4 @@
-clara.js_define("admin_flash", {
+clara.js_define("admin_empty_descr", {
 
     please_if: function() {
       return $("dd.attribute-data").length > 0;
