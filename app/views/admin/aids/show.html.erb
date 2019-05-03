@@ -18,7 +18,7 @@ as well as a link to its edit page.
 
 <% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(45)}" } %>
 
-<header data-foo="<%= page.resource.name %>" class="main-content__header c-aid-detail-header" role="banner">
+<header class="main-content__header c-aid-detail-header" role="banner">
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
