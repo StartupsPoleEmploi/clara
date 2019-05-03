@@ -44,8 +44,12 @@
   margin-top: -.12rem;
 }
 
- .c-tabbed-dl {
+.c-tabbed-dl {
   height: 100vh;
   margin-top: 0;
   padding-top: 1rem;
- }
+}
+
+.c-tabbed-dl .attribute-label {
+  text-transform: lowercase;
+}
