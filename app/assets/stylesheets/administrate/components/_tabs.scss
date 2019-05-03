@@ -53,3 +53,10 @@
 .c-tabbed-dl .attribute-label {
   text-transform: lowercase;
 }
+
+.focusable_tab_title {
+  display: inline-block;
+  padding: 2rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid lightgray;
+}
