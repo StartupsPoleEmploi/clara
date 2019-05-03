@@ -25,7 +25,7 @@ as well as a link to its edit page.
 </header>
 
 <header class="c-ct-subheader">
-  <div>
+  <div class="c-aid-detail-action">
     <form>
       <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back()">
     </form>
@@ -34,8 +34,11 @@ as well as a link to its edit page.
     <%= link_to(
       "#{t("administrate.actions.edit")}",
       [:edit, namespace, page.resource],
-      class: "button",
+      class: "button c-aid-detail-action",
     ) if valid_action? :edit %>
+  </div>
+  <div class="button">
+    <%= link_to '👁 Voir&nbsp;&nbsp;'.html_safe, detail_url(page.resource), class: "c-aid-preview c-aid-detail-action" %>
   </div>
 </header>
 
