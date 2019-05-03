@@ -21,9 +21,6 @@ class Simulation < ViewObject
     all_rules = activated_models.rules
     found = all_rules.find{|r| @rule_id == r["id"]}
     rule_not_yet_in_cache = !found
-    p '- - - - - - - - - - - - - - rule_not_yet_in_cache- - - - - - - - - - - - - - - -' 
-    pp rule_not_yet_in_cache
-    p ''
     rule_not_yet_in_cache
   end
   
