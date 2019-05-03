@@ -1,37 +1,15 @@
-<%#
-# Index
-
-This view is the template for the index page.
-It is responsible for rendering the search bar, header and pagination.
-It renders the `_table` partial to display details about the resources.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Collection][1].
-  Contains helper methods to help display a table,
-  and knows which attributes should be displayed in the resource's table.
-- `resources`:
-  An instance of `ActiveRecord::Relation` containing the resources
-  that match the user's search criteria.
-  By default, these resources are passed to the table partial to be displayed.
-- `search_term`:
-  A string containing the term the user has searched for, if any.
-- `show_search_bar`:
-  A boolean that determines if the search bar should be shown.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
-%>
-
 <% content_for(:title) do %>
-  <%= display_resource_name(page.resource_name) %>
+  Liste des règles
 <% end %>
 
-<header class="main-content__header" role="banner">
+<header class="main-content__header c-rules-header" role="banner">
   <h1 class="main-content__page-title" id="page-title">
     <%= content_for(:title) %>
   </h1>
 
+</header>
+
+<header class="c-rules-subheader">
   <% if show_search_bar %>
     <%= render(
       "search",
@@ -39,7 +17,6 @@ It renders the `_table` partial to display details about the resources.
       resource_name: display_resource_name(page.resource_name)
     ) %>
   <% end %>
-
   <div>
     <%= link_to(
       t(
@@ -50,8 +27,7 @@ It renders the `_table` partial to display details about the resources.
       class: "button",
     ) %>
   </div>
-
-   <div class="small-left-margin">
+  <div class="small-left-margin">
      <%= link_to(
        t(
          "helpers.creation.rule.new_composite_resource",
@@ -62,7 +38,6 @@ It renders the `_table` partial to display details about the resources.
      ) %>
   </div>
 </header>
-
 <section class="main-content__body main-content__body--flush">
   <%= render(
     "collection",
