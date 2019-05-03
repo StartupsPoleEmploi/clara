@@ -28,4 +28,4 @@ fr:
       errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
     search:
       clear: Effacer la recherche
-      label: Chercher %{resource}
+      label: Rechercher %{resource}
