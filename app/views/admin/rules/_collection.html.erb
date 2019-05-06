@@ -46,10 +46,7 @@ to display a collection of resources in an HTML table.
           <% end %>
         </th>
       <% end %>
-      <% [valid_action?(:edit, collection_presenter.resource_name),
-          valid_action?(:destroy, collection_presenter.resource_name)].count(true).times do %>
-        <th scope="col"></th>
-      <% end %>
+      <th scope="col" colspan="4" style="text-align: center">Actions</th>
     </tr>
   </thead>
 

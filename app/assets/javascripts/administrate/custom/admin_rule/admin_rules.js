@@ -2,10 +2,17 @@ clara.js_define("admin_rules", {
 
   please: function() {
     
-    console.log("hey ")
-    console.log(_.isEmpty($.urlParam("search")))
+    // console.log("hey " + $.urlParam("search").replace(/\+/g, ""))
+    // console.log(_.isBlank($.urlParam("search").replace(/\+/g, "")))
 
-    
+    if (_.isString($.urlParam("search"))) {
+      var search_terms = $.urlParam("search").replace(/\+/g, "");
+      if (_.isEmpty(search_terms)) {
+
+      } else {
+        
+      }
+    }
     
     var red_array = []
     var errored_simulations = $("[data-val]").filter(function( index ) {
