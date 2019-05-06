@@ -41,9 +41,15 @@
 </header>
 
 <header class="c-rules-subheader">
-  <h2>
-    <%=ActivatedModelsService.instance.rules.size%> règles disponibles 
+  <h2 class="c-rules-subheader-title">
+      <span>
+        <%=ActivatedModelsService.instance.rules.size%> règles disponibles
+      </span> 
   </h2>  
+  <span class="c-rules-warning">
+    <span class="c-red-control"> • </span>
+    <span><small class="c-red-control-smalltxt">Contrôle manquant ou non effectué en partie</small></span>        
+  </span>
 </header>
 
 <section class="main-content__body main-content__body--flush">

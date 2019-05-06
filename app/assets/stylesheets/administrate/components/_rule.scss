@@ -7,6 +7,21 @@
   padding-top: 1.5rem;
 }
 
+.c-rules-subheader-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.c-rules-warning {
+  background-color: #eeeeee;
+  padding: .2rem;
+  border-radius: 4px;
+}
+
+.c-red-control-smalltxt {
+  vertical-align: text-top;
+}
+
 .c-rules-subheader form.search {
   margin-left: 0;
   margin-right: auto;
@@ -39,4 +54,8 @@
   text-align:center;
   border-radius:16px;
   background:#ea9999;
+}
+
+body[data-path="admin_rules_path"] .main-content__body {
+  padding-top: 0;
 }

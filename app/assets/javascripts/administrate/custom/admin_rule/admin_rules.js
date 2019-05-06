@@ -34,13 +34,25 @@ clara.js_define("admin_rules", {
 
     var red_array = _.concat(errored_simulations, missing_simulations, missing_eligibles, missing_ineligibles);
 
-    console.log(red_array);
-
-
-
     _.each(red_array, function(red){
       $(red).prepend("<span class='c-red-control'> • </span>");
     })
+
+    // left-align red circle explanation
+
+    var targeted_left_position = $($("span[data-key^='rule.simulated']")[0]).position().left;
+
+    var get_actual_left_position = function() {
+      return $(".c-red-control").position().left;
+    }
+
+
+    var offset = 0;
+    while (offset < 300 && get_actual_left_position() < targeted_left_position) {
+      offset += 1;
+      $(".c-rules-warning").css("margin-left", offset + "px");
+    }
+
 
   }
 
