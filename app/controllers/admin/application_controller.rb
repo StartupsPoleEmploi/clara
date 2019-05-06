@@ -14,6 +14,14 @@ module Admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
     
+
+    def index
+      search_term = params[:search].to_s.strip
+      resources = Administrate::Search.new(scoped_resource,
+                                           dashboard_class,
+                                           search_term).run
+      super
+    end
  
     def set_locale
       I18n.locale = extract_locale || I18n.default_locale

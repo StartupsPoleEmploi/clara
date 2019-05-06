@@ -11,6 +11,15 @@ module Admin
       }
     end
 
+    def index
+      search_term = params[:search].to_s.strip
+      resources = Administrate::Search.new(scoped_resource,
+                                           dashboard_class,
+                                           search_term).run
+      @actual_search_size = resources.size
+      super
+    end
+
     def show 
       @asker = Asker.new
       @custom_rule_checks = Rule.find(params[:id]).custom_rule_checks

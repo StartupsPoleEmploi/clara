@@ -5,9 +5,9 @@ fr:
       new: "Nouveau"
       show: "Détails"
       back: "← Retour"
-      destroy: "🗑Supprimer"
-      edit: "✎ Modifier"
-      control: "✓ Contrôler"
+      destroy: "Supprimer"
+      edit: "Modifier"
+      control: "Contrôler"
       confirm: Êtes-vous sûr ?
       edit_resource: Modifier %{name}
       show_resource: Détails %{name}
@@ -28,4 +28,4 @@ fr:
       errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
     search:
       clear: Effacer la recherche
-      label: Chercher %{resource}
+      label: Rechercher %{resource}

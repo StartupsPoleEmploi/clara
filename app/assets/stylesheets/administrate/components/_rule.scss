@@ -1,0 +1,62 @@
+.c-rules-subheader {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  padding-top: 1.5rem;
+}
+
+.c-rules-subheader-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.c-rules-warning {
+  background-color: #eeeeee;
+  padding: .2rem;
+  border-radius: 4px;
+  // margin-left: 5rem;
+}
+
+.c-red-control-smalltxt {
+  vertical-align: text-top;
+}
+
+.c-rules-subheader form.search {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.c-rules-subheader form .search__input {
+  border-color: #666;
+  border-radius: 4px;
+}
+
+.c-rule-link-simple a {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  padding: .65rem 1rem;
+}
+
+.main-content__header.c-rules-header {
+  border: none;
+  padding-bottom: 0;
+}
+
+.c-red-control {
+  color: #ea9999;
+  font-weight: bold;
+  display:inline-block;
+  height:16px;
+  width:16px;
+  line-height:16px;
+  text-align:center;
+  border-radius:16px;
+  background:#ea9999;
+}
+
+body[data-path="admin_rules_path"] .main-content__body {
+  padding-top: 0;
+}

@@ -2,6 +2,10 @@
 
 
 
+## 20.11.0 (6/5/2019)
+-[#1226][ADMIN] Liste règles
+
+
 ## 20.10.0 (3/5/2019)
 -[#1223][ADMIN] Nettoyage détail d'une aide
 
