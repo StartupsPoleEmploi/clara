@@ -1,0 +1,55 @@
+.aidview-modal {
+  position: fixed;
+  right: auto;
+  top: 15%;
+  margin: 0 auto;
+  border: none; 
+  background: #fff;
+  z-index: 667;
+  padding: 0;
+  border-radius: 4px;
+  left: 25%;
+  width: 50%;
+}
+
+.aidview-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  opacity: .6;
+  z-index: 666;
+}
+
+.aidview-modal-close {
+  display: none;
+}
+
+.aidview-modal__content {
+  padding: 3rem;
+}
+
+#js-modal-close2 {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+#js-del-confirm {
+  border: 2px solid #1976d2;
+}
+
+.aidview-modal__content .c-aidview-title {
+  font-size: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.aidview-modal__content .c-aidview-lastline {
+  margin-bottom: 1.4rem;
+}
+
+.aidview-modal__content .c-aidview-confirm {
+  margin-left: 1rem;
+}
