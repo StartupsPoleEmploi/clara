@@ -43,7 +43,6 @@ clara.js_define("admin_rules", {
       var no_name = _.isBlank(names_str);
       var names_ary = names_str.split(",")
       var number_of_aids = _.count(names_ary, _.isNotEmpty);
-      console.log(number_of_aids);
       var html_str = "";
       if (number_of_aids === 0) {
         $title.html("Aucune aide concernée")
