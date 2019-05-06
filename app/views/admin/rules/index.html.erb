@@ -1,5 +1,5 @@
 <% content_for(:title) do %>
-  Liste des règles
+  Liste des règles 
 <% end %>
 
 <header class="main-content__header c-rules-header" role="banner">
@@ -42,9 +42,9 @@
 
 <header class="c-rules-subheader">
   <h2 class="c-rules-subheader-title">
-      <span>
-        <%=ActivatedModelsService.instance.rules.size%> règles disponibles
-      </span> 
+    <span><%= @actual_search_size %></span>
+    <span><%= @actual_search_size > 1 ? "règles " : "règle " %></span>
+    <span><%= @actual_search_size > 1 ? "disponibles " : "disponible " %></span>
   </h2>  
   <span class="c-rules-warning">
     <span class="c-red-control"> • </span>
@@ -59,7 +59,8 @@
     collection_field_name: resource_name,
     page: page,
     resources: resources,
-    table_title: "page-title"
+    table_title: "page-title",
+    actual_search_size: @actual_search_size
   ) %>
 
   <%= paginate resources %>

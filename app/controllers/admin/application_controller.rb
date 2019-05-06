@@ -14,6 +14,35 @@ module Admin
     before_action :set_paper_trail_whodunnit 
     helper_method :current_user_email
     
+
+    def index
+      search_term = params[:search].to_s.strip
+      resources = Administrate::Search.new(scoped_resource,
+                                           dashboard_class,
+                                           search_term).run
+      p '- - - - - - - - - - - - - - resources- - - - - - - - - - - - - - - -' 
+      pp resources.size
+      p ''
+      super
+      # search_term = params[:search].to_s.strip
+      # resources = Administrate::Search.new(scoped_resource,
+      #                                      dashboard_class,
+      #                                      search_term).run
+      # resources = apply_collection_includes(resources)
+      # resources = order.apply(resources)
+      # p '- - - - - - - - - - - - - - resources- - - - - - - - - - - - - - - -' 
+      # pp resources.size
+      # p ''
+      # resources = resources.page(params[:page]).per(records_per_page)
+      # page = Administrate::Page::Collection.new(dashboard, order: order)
+
+      # render locals: {
+      #   resources: resources,
+      #   search_term: search_term,
+      #   page: page,
+      #   show_search_bar: show_search_bar?,
+      # }
+    end
  
     def set_locale
       I18n.locale = extract_locale || I18n.default_locale
