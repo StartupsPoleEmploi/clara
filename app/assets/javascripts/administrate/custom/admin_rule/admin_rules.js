@@ -2,7 +2,10 @@ clara.js_define("admin_rules", {
 
   please: function() {
     
-    console.log("hey " + (new Date()).toString())
+    console.log("hey ")
+    console.log(_.isEmpty($.urlParam("search")))
+
+    
     
     var red_array = []
     var errored_simulations = $("[data-val]").filter(function( index ) {

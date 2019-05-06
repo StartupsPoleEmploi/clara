@@ -76,6 +76,18 @@ _.mixin({
       }
     });
 
+  },
+
+  isBlank: function(value) {
+    if (_.isNumber(value)) {
+      return value.toString() === "0" || value.toString() === "NaN";
+    } else if (_.isString(value)) {
+      return !_.trim(value);
+    } else if (!_.isArray(value) && _.isObject(value) && !_.isPlainObject(value)) {
+      return false;
+    } else {
+      return _.isEmpty(value);
+    }
   }
 
 });
