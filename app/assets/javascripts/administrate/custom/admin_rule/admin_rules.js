@@ -40,7 +40,6 @@ clara.js_define("admin_rules", {
       var $title = $(".c-aidview-title strong");
       var link = event.target
       var names_str = $(this).attr("data-names");
-      var no_name = _.isBlank(names_str);
       var names_ary = names_str.split(",")
       var number_of_aids = _.count(names_ary, _.isNotEmpty);
       var html_str = "";
