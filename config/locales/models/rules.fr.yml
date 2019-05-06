@@ -34,10 +34,10 @@ fr:
       or_rule: "ou"
     simulated:
       ok: "effectué"
-      errored_simulation: "erroné"
-      missing_eligible: "nok eligible"
-      missing_ineligible: "nok ineligible"
-      missing_simulation: "non effectué"
+      errored_simulation: " erroné"
+      missing_eligible: " nok eligible"
+      missing_ineligible: " nok ineligible"
+      missing_simulation: " non effectué"
     operator_kind:
       equal: "Égal à"
       not_equal: "Pas égal à"

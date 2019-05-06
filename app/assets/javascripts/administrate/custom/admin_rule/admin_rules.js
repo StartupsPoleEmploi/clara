@@ -5,11 +5,13 @@ clara.js_define("admin_rules", {
     // console.log("hey " + $.urlParam("search").replace(/\+/g, ""))
     // console.log(_.isBlank($.urlParam("search").replace(/\+/g, "")))
 
+    // there is a search
     if (_.isString($.urlParam("search"))) {
       var search_terms = $.urlParam("search").replace(/\+/g, "");
+      // but search has no terms
       if (_.isEmpty(search_terms)) {
 
-      } else {
+      } else { // search occured with some words
         
       }
     }
@@ -32,8 +34,12 @@ clara.js_define("admin_rules", {
 
     var red_array = _.concat(errored_simulations, missing_simulations, missing_eligibles, missing_ineligibles);
 
+    console.log(red_array);
+
+
+
     _.each(red_array, function(red){
-      $(red).closest(".js-table-row").addClass("is-red");
+      $(red).prepend("<span class='c-red-control'> • </span>");
     })
 
   }
