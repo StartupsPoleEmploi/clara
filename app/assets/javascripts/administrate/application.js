@@ -17,6 +17,7 @@
 //= require jquery_ujs
 //= require selectize
 //= require moment
+//= require moment/moment-locale-fr
 //= require datetime_picker
 //= require_tree .
 
