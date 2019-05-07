@@ -22,13 +22,6 @@ button.js-accordion__header {
   color: white;
 }
 
-.js-accordion__header[aria-selected="true"]:after {
-  // content: " (selected)";
-}
-.js-accordion__header[aria-selected="false"]:after {
-  // content: " (unselected)";
-}
-
 .js-accordion.accordion {
   margin: 0 3rem;
   margin-bottom: 1rem;
