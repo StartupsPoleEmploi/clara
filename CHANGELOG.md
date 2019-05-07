@@ -2,6 +2,10 @@
 
 
 
+## 20.13.0 (8/5/2019)
+-[#1216][ADMIN] Création rubrique
+
+
 ## 20.12.0 (7/5/2019)
 -[#1224][ADMIN] Modifier aide
 
