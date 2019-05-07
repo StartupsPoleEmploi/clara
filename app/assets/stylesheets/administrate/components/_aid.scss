@@ -24,6 +24,7 @@ a.c-aid-preview {
 
 .main-content__body.c-aid-detail-body {
   padding-top: 1.5rem;
+  // padding-left: 0;
 }
 
 .focusable_tab_title {
@@ -62,4 +63,8 @@ body[data-path="edit_admin_aid_path"] {
     margin-bottom: .3rem;
     width: auto;
   }
+}
+
+.main-content__body.c-aid-edit-body {
+  padding-left: 0;
 }
