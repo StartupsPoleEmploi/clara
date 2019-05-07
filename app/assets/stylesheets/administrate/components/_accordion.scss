@@ -17,9 +17,32 @@ button.js-accordion__header {
   content: "+ ";
 }
 
+.js-accordion__header[aria-selected="true"] {
+  background-color: green;
+  color: white;
+}
+
 .js-accordion__header[aria-selected="true"]:after {
-  content: " (selected)";
+  // content: " (selected)";
 }
 .js-accordion__header[aria-selected="false"]:after {
-  content: " (unselected)";
+  // content: " (unselected)";
+}
+
+.js-accordion.accordion {
+  margin: 0 3rem;
+  margin-bottom: 1rem;
+}
+
+button.js-accordion__header {
+  background-color: white;
+  color: #666;
+  border: 1px solid black;
+  width: 100%;
+  text-align: left;
+  border-radius: 0;
+}
+button.js-accordion__header:hover {
+  background-color: grey;
+
 }
