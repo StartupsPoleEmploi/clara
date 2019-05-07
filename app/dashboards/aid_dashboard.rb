@@ -70,13 +70,13 @@ class AidDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
-    :source,
     :contract_type,
     :ordre_affichage,
+    :rule,
+    :source,
     :short_description,
     :filters,
     :custom_filters,
-    :rule,
     :need_filters,
     :archived_at,
     :what,
