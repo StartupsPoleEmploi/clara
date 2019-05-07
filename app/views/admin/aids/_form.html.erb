@@ -13,20 +13,86 @@
     </div>
   <% end %>
 
-  <% page.attributes.each do |attribute| -%>
-    <% unless v.hide_field?(attribute) -%>
-      <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
-        <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
-        <% if v.errored?(attribute) -%>
-          <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-            &nbsp;⚠ <%= v.error_message(attribute) %>
-          </div>
+
+
+<section class="main-content__body c-aid-edit-body">
+  <div class="js-tabs" data-tabs-disable-fragment="true">
+    <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs" data-tabs-generated-hx-class="focusable_tab_title">
+      <li class="js-tablist__item">
+        <a href="#tab_1" id="label_tab_1" class="js-tablist__link">Informations générales</a>
+      </li>
+      <li class="js-tablist__item">
+        <a href="#tab_2" id="label_tab_2" class="js-tablist__link">Contenu de l'aide</a>
+      </li>
+      <li class="js-tablist__item">
+        <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Paramètres avancés</a>
+      </li>
+    </ul>
+   <div id="tab_1" class="js-tabcontent">
+      <% page.attributes.each_with_index do |attribute, index_nb| %>
+        <% if index_nb < 4 %>
+          <% unless v.hide_field?(attribute) %>
+            <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+              <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
+              <% if v.errored?(attribute) -%>
+                <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                  &nbsp;⚠ <%= v.error_message(attribute) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+   </div>
+   <div id="tab_2" class="js-tabcontent">
+      <div id="accordion_0" class="js-accordion">
+        <% page.attributes.each_with_index do |attribute, index_nb| %>
+          <% if index_nb > 9 %>
+            <% unless v.hide_field?(attribute) %>
+
+              <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
+                <% if v.errored?(attribute) -%>
+                  <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                    &nbsp;⚠ <%= v.error_message(attribute) %>
+                  </div>
+                <% end %>
+              </div>
+
+            <% end %>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
-  <% end -%>
+   </div>
+   <div id="tab_3" class="js-tabcontent">
+      <% page.attributes.each_with_index do |attribute, index_nb| %>
+        <% if index_nb < 10 && index_nb > 4 %>
+          <% unless v.hide_field?(attribute) %>
+            <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+              <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
+              <% if v.errored?(attribute) -%>
+                <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                  &nbsp;⚠ <%= v.error_message(attribute) %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+   </div>
+ </div>
+</section>
 
-  <div class="form-actions">
-    <%= f.submit %>
+
+<div class="c-aid-detail-subfooter">
+  <div class="c-aid-detail-action">
+    <form>
+      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+    </form>
   </div>
+  <div>
+    <%= f.submit "Enregistrer", id: "modify-aid" %>
+  </div>
+</div>
 <% end %>
+

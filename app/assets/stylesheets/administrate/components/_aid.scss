@@ -26,3 +26,44 @@ a.c-aid-preview {
   padding-top: 1.5rem;
 }
 
+.focusable_tab_title {
+  margin-bottom: 1.5rem;
+}
+
+.selectize-control.multi .selectize-input:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 37%;
+    right: 15px;
+    margin-top: -3px;
+    width: 5px;
+    height: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #808080 #808080 transparent transparent;
+    transform: rotate(135deg);
+}
+
+.selectize-control.multi .selectize-input.dropdown-active:after {
+    top: 63%;
+    border-width: 3px;
+    border-color: transparent transparent #808080 #808080;
+}
+
+body[data-path="edit_admin_aid_path"] {
+  .field-unit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field-unit__label {
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: .3rem;
+    width: auto;
+  }
+}
+
+.main-content__body.c-aid-edit-body {
+  padding-left: 0;
+}

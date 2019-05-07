@@ -1,0 +1,40 @@
+.js-accordion__panel[aria-hidden=true] {
+  display: none;
+}
+
+.js-accordion__panel[role="tabpanel"] .js-accordion__header {
+  display: none;
+}
+
+button.js-accordion__header {
+  display: block !important;
+}
+
+.js-accordion__header[aria-expanded="true"]:before {
+  content: "- ";
+}
+.js-accordion__header[aria-expanded="false"]:before {
+  content: "+ ";
+}
+
+.js-accordion__header[aria-selected="true"] {
+  background-color: green;
+  color: white;
+}
+
+.js-accordion.accordion {
+  margin: 0 3rem;
+  margin-bottom: 1rem;
+}
+
+button.js-accordion__header {
+  background-color: white;
+  color: #666;
+  border: 1px solid black;
+  width: 100%;
+  text-align: left;
+  border-radius: 0;
+}
+button.js-accordion__header:hover {
+  background-color: grey;
+}

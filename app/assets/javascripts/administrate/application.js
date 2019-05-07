@@ -10,6 +10,7 @@
 //= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery-accessible-modal-delete-window-aria
 //= require jquery/jquery-accessible-tabs-aria
+//= require jquery/jquery-accessible-accordion-aria
 //= require jquery/jquery-please-wait
 //= require jquery/jquery_extension
 //= require a11y-autocomplete/namespacing
@@ -17,6 +18,7 @@
 //= require jquery_ujs
 //= require selectize
 //= require moment
+//= require moment/moment-locale-fr
 //= require datetime_picker
 //= require_tree .
 
