@@ -45,20 +45,24 @@
       <% end %>
    </div>
    <div id="tab_2" class="js-tabcontent">
-      <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb > 9 %>
-          <% unless v.hide_field?(attribute) %>
-            <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
-              <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
-              <% if v.errored?(attribute) -%>
-                <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-                  &nbsp;⚠ <%= v.error_message(attribute) %>
-                </div>
-              <% end %>
-            </div>
+      <div id="accordion_0" class="js-accordion">
+        <% page.attributes.each_with_index do |attribute, index_nb| %>
+          <% if index_nb > 9 %>
+            <% unless v.hide_field?(attribute) %>
+
+              <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
+                <% if v.errored?(attribute) -%>
+                  <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                    &nbsp;⚠ <%= v.error_message(attribute) %>
+                  </div>
+                <% end %>
+              </div>
+
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
    </div>
    <div id="tab_3" class="js-tabcontent">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
