@@ -1,16 +1,20 @@
 <% content_for(:title) { t("helpers.aid.update", name: page.page_title) } %>
 
 <header class="main-content__header" role="banner">
-  <h1 class="main-content__page-title">
+  <h1 class="main-content__page-title c-aid-detail-header">
     <%= content_for(:title) %> : <%= page.resource.name.truncate(27) %>
   </h1>
+</header>
 
+
+<header class="c-aid-detail-subheader">
+  <div class="c-aid-detail-action">
+    <form>
+      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+    </form>
+  </div>
   <div>
-    <%= link_to(
-      t("helpers.aid.detail", name: page.page_title),
-      [namespace, page.resource],
-      class: "button",
-    ) if valid_action?(:show) && show_action?(:show, page.resource) %>
+    <button type="button" class="c-aid-record">Enregistrer</button>
   </div>
 </header>
 

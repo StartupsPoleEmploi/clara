@@ -80,9 +80,15 @@
 </section>
 
 
-
-  <div class="form-actions">
-    <%= f.submit %>
+<header class="c-aid-detail-subfooter">
+  <div class="c-aid-detail-action">
+    <form>
+      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+    </form>
   </div>
+  <div>
+    <%= f.submit "Enregistrer" %>
+  </div>
+</header>
 <% end %>
 
