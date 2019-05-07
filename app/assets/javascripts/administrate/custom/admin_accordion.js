@@ -6,7 +6,7 @@ clara.js_define("admin_accordion", {
 
     please: function() {
       $(".field-unit").addClass("js-accordion__panel");
-      $(".field-unit__label").addClass("js-accordion__header");
+      $(".field-unit__label label[for]").addClass("js-accordion__header");
       $('.js-accordion').accordion();
     }
 
