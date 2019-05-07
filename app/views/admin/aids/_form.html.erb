@@ -80,15 +80,15 @@
 </section>
 
 
-<header class="c-aid-detail-subfooter">
+<div class="c-aid-detail-subfooter">
   <div class="c-aid-detail-action">
     <form>
       <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
     </form>
   </div>
   <div>
-    <%= f.submit "Enregistrer" %>
+    <%= f.submit "Enregistrer", id: "modify-aid" %>
   </div>
-</header>
+</div>
 <% end %>
 
