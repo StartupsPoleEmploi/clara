@@ -11,6 +11,7 @@ class ContractTypeDashboard < Administrate::BaseDashboard
     id: Field::Number,
     name: Field::String,
     plural: Field::String,
+    aids: Field::HasMany,
     slug: Field::String,
     category: Field::String,
     icon: Field::String,
@@ -45,10 +46,11 @@ class ContractTypeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :name,
     :ordre_affichage,
+    :name,
     :plural,
     :icon,
+    :aids,
   ].freeze
 
   # Overwrite this method to customize how zrrs are displayed

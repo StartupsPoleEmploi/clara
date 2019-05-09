@@ -31,3 +31,60 @@
   padding-top: 0.5rem
 }
 
+form#new_contract_type {
+  
+  padding-top: 1rem;
+
+  .field-unit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field-unit__label {
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: .3rem;
+    width: auto;
+  }
+  .field-unit--number {
+    width: 25%;
+  }
+}
+
+.c-ct-create-subfooter {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  padding-top: 1rem;  
+}
+
+.field-unit-svg-container {
+  display: flex;
+  margin-left: 2rem;
+}
+
+.field-unit-svg-preview {
+  width: 10%;
+}
+
+.field-unit.c-ct-change-icon {
+  width: 51.5%;
+}
+
+form#new_contract_type .field-unit.c-ct-change-icon {
+  .field-unit__label, .field-unit__field {
+    margin-left: 0;
+  }
+}
+
+.field-unit-svg-preview__img {
+  svg {
+    max-width: 48px;
+    max-height: 48px;
+  }
+}
+
+.field-unit-svg-preview {
+  margin-right: 1rem;
+}
