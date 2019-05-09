@@ -31,3 +31,15 @@
   padding-top: 0.5rem
 }
 
+form#new_contract_type {
+  .field-unit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field-unit__label {
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: .3rem;
+    width: auto;
+  }
+}
