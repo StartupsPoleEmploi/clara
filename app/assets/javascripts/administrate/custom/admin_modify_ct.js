@@ -7,6 +7,12 @@ clara.js_define("admin_modify_ct", {
 
     please: function() {
       var that = this;
+
+
+      $(".c-ct-record").click(function (event) {
+        $("#create-ct").click();
+      });
+
       var $str_icon = $("#contract_type_icon").parent().parent();
       $str_icon.addClass("hidden");
       $str_icon.after(that.constants.tpl_icon_file);
@@ -50,14 +56,15 @@ clara.js_define("admin_modify_ct", {
     },
 
     constants: {
-      tpl_icon_file: '<div class="field-unit field-unit--svg-file-field field-unit--errored-false">' +
-              '<div class="field-unit__label">' +
-                  '<label for="contract_type_icon_file">Icône</label>' +
-              '</div>' +
-              '<div class="field-unit__field">' +
-                 '<input accept=".svg" type="file" id="contract_type_icon_file">' +
-              '</div>' +
-          '</div>'
+      tpl_icon_file: 
+        '<div class="field-unit field-unit--svg-file-field">' +
+          '<div class="field-unit__label">' +
+              '<label for="contract_type_icon_file">Icône</label>' +
+          '</div>' +
+          '<div class="field-unit__field">' +
+             '<input accept=".svg" type="file" id="contract_type_icon_file">' +
+          '</div>' +
+        '</div>'
     },
 });
 
