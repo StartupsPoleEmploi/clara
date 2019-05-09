@@ -63,14 +63,26 @@ clara.js_define("admin_modify_ct", {
 
     constants: {
       tpl_icon_file: 
-        '<div class="field-unit field-unit--svg-file-field">' +
-          '<div class="field-unit__label">' +
-              '<label for="contract_type_icon_file">Icône</label>' +
+        '<div class="field-unit-svg-container">' +
+          '<div class="field-unit-svg-preview">' +
+            '<div class="field-unit-svg-preview__title">' +
+              '<strong>' +
+                'Icône choisie' +
+              '</strong>' +
+            '</div>' +
+            '<div class="field-unit-svg-preview__img">' +
+              'Img' +
+            '</div>' +
           '</div>' +
-          '<div class="field-unit__field">' +
-             '<input accept=".svg" type="file" id="contract_type_icon_file">' +
+          '<div class="field-unit field-unit--svg-file-field c-ct-change-icon">' +
+            '<div class="field-unit__label">' +
+                '<label for="contract_type_icon_file">Changer icône</label>' +
+            '</div>' +
+            '<div class="field-unit__field">' +
+               '<input accept=".svg" type="file" id="contract_type_icon_file">' +
+            '</div>' +
           '</div>' +
-        '</div>'
+        '</div>' 
     },
 });
 
