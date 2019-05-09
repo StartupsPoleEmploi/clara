@@ -55,7 +55,7 @@ clara.js_define("admin_modify_ct", {
                   '<label for="contract_type_icon_file">Icône</label>' +
               '</div>' +
               '<div class="field-unit__field">' +
-                 '<input accept=".svg" type="file" name="contract_type[icon]" id="contract_type_icon_file">' +
+                 '<input accept=".svg" type="file" id="contract_type_icon_file">' +
               '</div>' +
           '</div>'
     },
