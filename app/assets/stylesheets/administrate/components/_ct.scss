@@ -32,6 +32,9 @@
 }
 
 form#new_contract_type {
+  
+  padding-top: 1rem;
+
   .field-unit {
     flex-direction: column;
     align-items: flex-start;
@@ -45,4 +48,13 @@ form#new_contract_type {
   .field-unit--number {
     width: 15%;
   }
+}
+
+.c-ct-create-subfooter {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  padding-top: 1rem;  
 }

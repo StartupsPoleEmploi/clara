@@ -26,11 +26,20 @@ to do the heavy lifting.
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
+</header>
 
+<header class="c-aid-detail-subheader">
+  <div class="c-aid-detail-action">
+    <form>
+      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+    </form>
+  </div>
   <div>
-    <%= link_to t("administrate.actions.back"), :back, class: "button" %>
+    <button type="button" class="c-ct-record">Créer cette rubrique</button>
   </div>
 </header>
+
+
 
 <section class="main-content__body">
   <%= render "form", page: page %>

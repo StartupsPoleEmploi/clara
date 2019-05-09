@@ -8,7 +8,7 @@ clara.js_define("admin_modify_ct", {
     please: function() {
       var that = this;
       var $str_icon = $("#contract_type_icon").parent().parent();
-      // $str_icon.addClass("hidden");
+      $str_icon.addClass("hidden");
       $str_icon.after(that.constants.tpl_icon_file);
 
       $('input#contract_type_icon_file').change(function(){
