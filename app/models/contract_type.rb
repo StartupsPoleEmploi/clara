@@ -28,6 +28,8 @@ class ContractType < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :ordre_affichage, presence: true, numericality: { only_integer: true }
 
+  has_many :aids
+
   scope :aides, -> { where(category: 'aide') }
   scope :dispositifs, -> { where(category: 'dispositif') }
   scope :for_admin, -> {order(ordre_affichage: :asc)}
