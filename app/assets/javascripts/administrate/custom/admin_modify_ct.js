@@ -8,11 +8,17 @@ clara.js_define("admin_modify_ct", {
     please: function() {
       var that = this;
 
-
+      // multiple buttons for submit
       $(".c-ct-record").click(function (event) {
         $("#create-ct").click();
       });
 
+      $('#contract_type_name').on('input', function(event) {
+        $("#contract_type_plural").val($('#contract_type_name').val() + "s")
+      });
+
+
+      // hide the str input, and show the file input
       var $str_icon = $("#contract_type_icon").parent().parent();
       $str_icon.addClass("hidden");
       $str_icon.after(that.constants.tpl_icon_file);
