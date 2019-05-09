@@ -14,7 +14,7 @@ class ContractTypeDashboard < Administrate::BaseDashboard
     aids: Field::HasMany,
     slug: Field::String,
     category: Field::String,
-    icon: SvgFileField,
+    icon: Field::String,
     ordre_affichage: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
