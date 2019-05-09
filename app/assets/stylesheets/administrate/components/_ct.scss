@@ -65,9 +65,16 @@ form#new_contract_type {
 }
 
 .field-unit-svg-preview {
-  width: 20%;
+  width: 10%;
 }
 
 .field-unit.c-ct-change-icon {
   width: 51.5%;
+}
+
+.field-unit-svg-preview__img {
+  svg {
+    max-width: 48px;
+    max-height: 48px;
+  }
 }
