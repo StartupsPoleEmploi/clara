@@ -1,8 +1,8 @@
 fr:
   activerecord:
     labels: &labels
-      name: Nom
-      plural: Nom au pluriel
+      name: Nom de la rubrique
+      plural: Nom de la rubrique, au pluriel
       icon: Icône
       aids: Aides
       created_at: Créée le
