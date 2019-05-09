@@ -19,9 +19,12 @@ clara.js_define("admin_modify_ct", {
       
       setTimeout(function(e){
         if (!_.isBlank($('#contract_type_icon').val())){
+          // $(".field-unit-svg-preview").show();
           $(".field-unit-svg-preview__img").html($('#contract_type_icon').val());
+        } else {
+          // $(".field-unit-svg-preview").hide();
         }
-      }, 100)
+      }, 200)
 
       // hide the str input, and show the file input
       var $str_icon = $("#contract_type_icon").parent().parent();
@@ -65,6 +68,8 @@ clara.js_define("admin_modify_ct", {
     receivedText: function() {
       var actual_svg_text = fr.result;
       $('#contract_type_icon').val(actual_svg_text);
+      // $(".field-unit-svg-preview").show();
+
       $(".field-unit-svg-preview__img").html(actual_svg_text);
       // if you want to reset the input file, uncomment below
       // document.getElementById("contract_type_icon_file").value = "";
@@ -76,16 +81,16 @@ clara.js_define("admin_modify_ct", {
           '<div class="field-unit-svg-preview">' +
             '<div class="field-unit-svg-preview__title">' +
               '<strong>' +
-                'Icône choisie' +
+                'Icône actuelle' +
               '</strong>' +
             '</div>' +
             '<div class="field-unit-svg-preview__img">' +
-              'Aucune image' +
+              'Aucune' +
             '</div>' +
           '</div>' +
           '<div class="field-unit field-unit--svg-file-field c-ct-change-icon">' +
             '<div class="field-unit__label">' +
-                '<label for="contract_type_icon_file">Changer icône</label>' +
+                '<label for="contract_type_icon_file">Changer l\'icône</label>' +
             '</div>' +
             '<div class="field-unit__field">' +
                '<input accept=".svg" type="file" id="contract_type_icon_file">' +
