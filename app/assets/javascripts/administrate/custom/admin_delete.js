@@ -11,9 +11,6 @@ clara.js_define("admin_delete", {
         if (!link.attr('data-confirm')) { 
           return true; 
         }
-        console.log("link.attr('data-aidsize')");
-        console.log(link.attr('data-aidsize'));
-        console.log("");
         if (link.attr('data-aidsize') === "0") {
           showConfirmDialog(link); // look bellow for implementations
         } else {
