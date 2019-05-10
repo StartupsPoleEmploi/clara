@@ -2,6 +2,10 @@
 
 
 
+## 20.14.0 (16/5/2019)
+-[#1219][FEATURE][ADMIN] Modifier rubrique
+
+
 ## 20.13.1 (9/5/2019)
 -[#1267][BUG] Suppression rubrique
 
