@@ -12,9 +12,9 @@ clara.js_define("admin_delete", {
           return true; 
         }
         if (link.attr('data-aidsize') === "0") {
-          showConfirmDialog(link); // look bellow for implementations
+          showConfirmDialog(link); // look below for implementations
         } else {
-          showRefuseDialog(link); // look bellow for implementations
+          showRefuseDialog(link); // look below for implementations
         }
         return false; // always stops the action since code runs asynchronously
       };
