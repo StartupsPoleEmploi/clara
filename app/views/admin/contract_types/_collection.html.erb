@@ -87,7 +87,10 @@ to display a collection of resources in an HTML table.
             [namespace, resource],
             class: "text-color-red",
             method: :delete,
-            data: { confirm: t("administrate.actions.confirm") }
+            data: { 
+              confirm: t("administrate.actions.confirm") ,
+              aidsize: resource.aids.size
+            }
           ) if show_action? :destroy, resource %></td>
         <% end %>
 
@@ -105,7 +108,7 @@ to display a collection of resources in an HTML table.
     <div class="c-deletion-title medium-bottom-margin">
       <strong>Suppression d'une rubrique</strong>
     </div>
-    <div class="medium-bottom-margin">
+    <div class="c-deletion-firstline medium-bottom-margin">
       La rubrique "<span class="c-deletion-name">en question</span>" va être définitivement supprimée de la liste.
     </div>
     <div class="c-deletion-lastline medium-bottom-margin">
