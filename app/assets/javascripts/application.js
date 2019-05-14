@@ -38,8 +38,6 @@
 //= require custom/contact
 //= require custom/google_analytics_push
 //= require custom/print
-//= require custom/stats_index
-//= require custom/stats_time
 //= require custom/inscription_questions
 //= require custom/category_questions
 //= require custom/allocation_questions
