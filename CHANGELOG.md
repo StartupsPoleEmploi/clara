@@ -2,6 +2,10 @@
 
 
 
+## 20.14.0 (14/5/2019)
+-[#1275][FEATURE] Nouvelle URL stats
+
+
 ## 20.13.1 (9/5/2019)
 -[#1267][BUG] Suppression rubrique
 
