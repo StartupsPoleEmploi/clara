@@ -3,7 +3,7 @@
   %head
     - unless ga_disabled?
       = javascript_include_tag "", async: true, src: "https://www.googletagmanager.com/gtag/js?id=#{ENV['ARA_GOOGLE_GTAG_ID']}", id: "ga-gtag-src"
-      = javascript_tag "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);};gtag('js', new Date());gtag('config', '#{ENV["ARA_GOOGLE_GTAG_ID"]}');", id: "ga-gtag-exec"
+      = javascript_tag "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);};gtag('js', new Date());gtag('config', '#{ENV["ARA_GOOGLE_GTAG_ID"]}', { 'optimize_id': '#{ENV["ARA_GOOGLE_OPTIMIZE_ID"]}'});", id: "ga-gtag-exec"
 
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
 
