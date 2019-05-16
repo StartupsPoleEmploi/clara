@@ -2,7 +2,9 @@ clara.js_define("admin_modify_ct", {
 
 
     please_if: function() {
-      return $("form#new_contract_type").length > 0;
+      var edit_path = "body[data-path='edit_admin_contract_type_path']"
+      var creation_path = "body[data-path='new_admin_contract_type_path']"
+      return $(edit_path).isExisting() || $(creation_path).isExisting();
     },
 
     please: function() {

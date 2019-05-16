@@ -19,6 +19,10 @@ _.mixin({
     return _.defaultTo(_.countBy.apply(_, arguments)[true], 0);
   },
 
+  isNotBlank: function() {
+    return _.negate(_.isBlank).apply(_, arguments)
+  },
+
   isBlank: function(value) {
     if (_.isNumber(value)) {
       return value.toString() === "0" || value.toString() === "NaN";

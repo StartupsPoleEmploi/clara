@@ -2,6 +2,10 @@
 
 
 
+## 20.17.0 (16/5/2019)
+-[#1219][ADMIN] Modify contract type
+
+
 ## 20.16.0 (16/5/2019)
 -[#1277][FEATURE] OPTIMIZE
 
