@@ -19,7 +19,6 @@ module ApplicationHelper
     urls.split(",").include?(the_request.remote_ip)
   end
 
-
   def empty_image
     "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
   end
