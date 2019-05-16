@@ -98,4 +98,9 @@ body[data-path="new_admin_contract_type_path"] form {
   border: 2px solid black;
   padding: .65rem 1.8rem;
   margin-right: .5rem;
+  &:hover {
+    background-color: grey;
+    color: #fff;
+  };
 }
+
