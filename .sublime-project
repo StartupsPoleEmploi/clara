@@ -1,8 +1,7 @@
 {
-    "settings":
-    {
-        "tab_size": 8,
-        "word_wrap": false
-
-    }
+  "settings":
+  {
+    "tab_size": 2,
+    "word_wrap": false
+  }
 }
