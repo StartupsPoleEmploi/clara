@@ -9,6 +9,7 @@ clara.js_define("admin_modify_ct", {
 
     please: function() {
       var that = this;
+      var edit_path = "body[data-path='edit_admin_contract_type_path']"
 
       // multiple buttons for submit
       $(".c-ct-record").click(function (event) {
@@ -37,6 +38,14 @@ clara.js_define("admin_modify_ct", {
          var svg_text = that.handleFileSelect();
          that.receivedText();         
       });
+
+      // backbutton in footer of modify action cannot be statically coded
+      var $back_footer_btn = $(edit_path + " .c-aid-detail-action");
+
+      $back_footer_btn.addClass("c-ct-cancel");
+      $back_footer_btn.removeClass("c-aid-detail-action");
+      var $back_footer_input = $(edit_path + " .c-ct-cancel input");
+      $back_footer_input.val("Annuler");
 
     },
 

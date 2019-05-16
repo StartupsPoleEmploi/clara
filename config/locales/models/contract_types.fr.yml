@@ -23,4 +23,4 @@ fr:
     submit:
       contract_type:
         create: "Créer cette rubrique"
-        update: "Mettre à jour cette rubrique"
+        update: "Enregistrer"
