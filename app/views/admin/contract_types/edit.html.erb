@@ -21,13 +21,16 @@ It displays a header, and renders the `_form` partial to do the heavy lifting.
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
+</header>
 
+<header class="c-aid-detail-subheader">
+  <div class="c-ct-cancel">
+    <form>
+      <input type="button" value="&nbsp;&nbsp;Annuler&nbsp;&nbsp;" onclick="history.back();">
+    </form>
+  </div>
   <div>
-    <%= link_to(
-      t("administrate.actions.show_resource", name: page.page_title),
-      [namespace, page.resource],
-      class: "button",
-    ) if valid_action?(:show) && show_action?(:show, page.resource) %>
+    <button type="button" class="c-ct-update">Enregistrer</button>
   </div>
 </header>
 

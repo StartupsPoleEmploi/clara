@@ -31,7 +31,8 @@
   padding-top: 0.5rem
 }
 
-form#new_contract_type {
+body[data-path="new_admin_contract_type_path"] form.form, 
+body[data-path="edit_admin_contract_type_path"] form.form {
   
   padding-top: 1rem;
 
@@ -72,9 +73,11 @@ form#new_contract_type {
   width: 51.5%;
 }
 
-form#new_contract_type .field-unit.c-ct-change-icon {
-  .field-unit__label, .field-unit__field {
-    margin-left: 0;
+body[data-path="new_admin_contract_type_path"] form {
+  .field-unit.c-ct-change-icon {
+    .field-unit__label, .field-unit__field {
+      margin-left: 0;
+    }    
   }
 }
 
@@ -88,3 +91,16 @@ form#new_contract_type .field-unit.c-ct-change-icon {
 .field-unit-svg-preview {
   margin-right: 1rem;
 }
+
+.c-ct-cancel input {  
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+  padding: .65rem 1.8rem;
+  margin-right: .5rem;
+  &:hover {
+    background-color: grey;
+    color: #fff;
+  };
+}
+
