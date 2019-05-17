@@ -4,12 +4,12 @@ clara.js_define("admin_modify_ct", {
     please_if: function() {
       var edit_path = "body[data-path='edit_admin_contract_type_path']"
       var creation_path = "body[data-path='new_admin_contract_type_path']"
-      return $(edit_path).isExisting() || $(creation_path).isExisting();
+      return $(edit_path).exists() || $(creation_path).exists();
     },
 
     please: function() {
       var that = this;
-      var edit_path = "body[data-path='edit_admin_contract_type_path']"
+      var edit_path = "body[data-path='edit_admin_contract_type_path']";
 
       // multiple buttons for submit
       $(".c-ct-record").click(function (event) {

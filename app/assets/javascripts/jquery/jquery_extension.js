@@ -65,7 +65,7 @@ jQuery.fn.extend({
   datamap: function(dataext) {
     return this.map(function(){return $(this).data()[dataext]}).get();
   },
-  isExisting: function() {
+  exists: function() {
     return this.length > 0;
   },
   hasClasses: function() {
