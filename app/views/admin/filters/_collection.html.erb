@@ -25,35 +25,29 @@
           <% end %>
         </th>
       <% end %>
-      <% [valid_action?(:edit, collection_presenter.resource_name),
-          valid_action?(:destroy, collection_presenter.resource_name)].count(true).times do %>
-        <th scope="col"></th>
-      <% end %>
+      <th scope="col" colspan="3" style="text-align: center">Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% resources.each do |resource| %>
-      <tr class="js-table-row"
-          tabindex="0"
-          <% if valid_action? :show, collection_presenter.resource_name %>
-            <%= %(role=link data-url=#{polymorphic_path([namespace, resource])}) %>
-          <% end %>
-          >
+      <tr>
         <% collection_presenter.attributes_for(resource).each do |attribute| %>
           <td class="cell-data cell-data--<%= attribute.html_class %>">
-            <% if show_action? :show, resource -%>
-              <a href="<%= polymorphic_path([namespace, resource]) -%>"
-                 class="action-show"
-                 >
-                <%= render_field attribute %>
-              </a>
-            <% end -%>
+            <%= render_field attribute %>
+          </td>
+        <% end %>
+
+        <% if valid_action? :show, collection_presenter.resource_name %>
+          <td><%= link_to(
+            "Consulter".html_safe ,
+            polymorphic_path([namespace, resource]),
+            class: "action-edit") %>
           </td>
         <% end %>
 
         <% if valid_action? :edit, collection_presenter.resource_name %>
-          <td><%= link_to(
+          <td class="cell-action cell-action--edit"><%= link_to(
             t("administrate.actions.edit"),
             [:edit, namespace, resource],
             class: "action-edit",
@@ -61,7 +55,7 @@
         <% end %>
 
         <% if valid_action? :destroy, collection_presenter.resource_name %>
-          <td><%= link_to(
+          <td class="cell-action cell-action--destroy"><%= link_to(
             t("administrate.actions.destroy"),
             [namespace, resource],
             class: "text-color-red",
