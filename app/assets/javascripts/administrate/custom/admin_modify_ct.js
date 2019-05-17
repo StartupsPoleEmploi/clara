@@ -47,6 +47,11 @@ clara.js_define("admin_modify_ct", {
       var $back_footer_input = $(edit_path + " .c-ct-cancel input");
       $back_footer_input.val("Annuler");
 
+      // trigger on click
+      $(".c-ct-update").click(function(event){
+        $("#create-ct").click();
+      });
+
     },
 
     handleFileSelect: function() {     
