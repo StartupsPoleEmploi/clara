@@ -1,0 +1,48 @@
+<% content_for(:title) do %>
+  Filtres de la page de résultats
+<% end %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title" id="page-title">
+    <%= content_for(:title) %>
+  </h1>
+</header>
+
+<header class="c-rules-subheader">
+
+  <% if show_search_bar && ActivatedModelsService.instance.filters.size >= 20 %>
+    <%= render(
+      "search",
+      search_term: search_term,
+      resource_name: "un filtre"
+    ) %>
+  <% end %>
+  <div>
+    <%= link_to(
+      "Créer un filtre",
+      [:new, namespace, page.resource_path],
+      class: "button",
+    ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+  </div>
+</header>
+
+<header class="c-rules-subheader">
+  <h2 class="c-rules-subheader-title">
+    <span><%= @actual_search_size %></span>
+    <span><%= @actual_search_size > 1 ? "filtres " : "filtre " %></span>
+    <span><%= @actual_search_size > 1 ? "disponibles " : "disponible " %></span>
+  </h2>  
+</header>
+
+<section class="main-content__body main-content__body--flush">
+  <%= render(
+    "collection",
+    collection_presenter: page,
+    collection_field_name: resource_name,
+    page: page,
+    resources: resources,
+    table_title: "page-title"
+  ) %>
+
+  <%= paginate resources %>
+</section>

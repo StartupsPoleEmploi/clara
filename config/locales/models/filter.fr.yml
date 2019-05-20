@@ -1,0 +1,22 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+    models: 
+      filter: Filtres
+    attributes:
+      filter:
+        <<: *labels
+  helpers:
+    label:
+      filter:
+        <<: *labels
+    filter:
+      detail: Détails
+      modify: Modifier
+      creation: Ajouter
+      creation_title: Création
+    submit:
+      filter:
+        create: "Créer ce filtre"
+        update: "Mettre à jour ce filtre"

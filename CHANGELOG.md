@@ -2,6 +2,10 @@
 
 
 
+## 20.18.0 (16/5/2019)
+-[#1232][ADMIN] Page filtres résultats
+
+
 ## 20.17.0 (16/5/2019)
 -[#1219][ADMIN] Modify contract type
 
