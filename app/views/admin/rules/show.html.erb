@@ -1,23 +1,26 @@
-<% content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" } %>
+<% content_for(:title) { "Détails" } %>
 
 <header class="main-content__header c-aid-detail-header" role="banner">
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
 </header>
+<header class="main-content__header c-aid-detail-header" role="banner">
+  <p><%= page.resource.description %></p>
+</header>
 <header class="c-aid-detail-subheader">
   <div>
     <%= link_to(
         t("administrate.actions.destroy"),
         [namespace, page.resource],
-        class: "button",
+        class: "button is-white",
         method: :delete,
         data: { confirm: t("administrate.actions.confirm") }
       ) if show_action? :destroy, page.resource %>
   </div>
   <div class="small-left-margin">
     <%= link_to(
-      "#{t("administrate.actions.edit")} #{page.page_title}",
+      "Modifier",
       [:edit, namespace, page.resource],
       class: "button",
     ) if valid_action? :edit %>
@@ -26,7 +29,7 @@
     <%= link_to(
       "Tester",
       [:edit, namespace, page.resource],
-      class: "button",
+      class: "button is-white",
     ) if valid_action? :edit %>
   </div>
 </header>
