@@ -10,7 +10,7 @@
 
 <header class="c-rules-subheader">
 
-  <% if show_search_bar && @actual_search_size >= 20 %>
+  <% if show_search_bar && ActivatedModelsService.instance.filters.size >= 20 %>
     <%= render(
       "search",
       search_term: search_term,
