@@ -10,7 +10,7 @@
 
 <header class="c-rules-subheader">
 
-  <% if show_search_bar %>
+  <% if show_search_bar && @actual_search_size >= 20 %>
     <%= render(
       "search",
       search_term: search_term,
@@ -24,6 +24,14 @@
       class: "button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>
+</header>
+
+<header class="c-rules-subheader">
+  <h2 class="c-rules-subheader-title">
+    <span><%= @actual_search_size %></span>
+    <span><%= @actual_search_size > 1 ? "filtres " : "filtre " %></span>
+    <span><%= @actual_search_size > 1 ? "disponibles " : "disponible " %></span>
+  </h2>  
 </header>
 
 <section class="main-content__body main-content__body--flush">
