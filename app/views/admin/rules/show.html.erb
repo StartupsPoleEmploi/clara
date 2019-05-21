@@ -34,7 +34,7 @@
   </div>
 </header>
 
-<section class="main-content__body">
+<section class="main-content__body c-detail-tab">
 
   <h2 class="focusable_tab_title" tabindex="0">Informations générales</h2>
   <dl class="c-tabbed-dl">
@@ -69,10 +69,13 @@
       <% end %>
     <% end %>
   </dl>
-  
+  <h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
+  <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
 </section>
+
+<section class="main-content__body c-simulation-tab">
+  
 <%= render partial: 'admin/askers/simulation', locals: { asker: @asker, page: page, crcs: @custom_rule_checks } %>
 
-<h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
-<%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+</section>
 
