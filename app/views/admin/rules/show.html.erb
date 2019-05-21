@@ -35,21 +35,44 @@
 </header>
 
 <section class="main-content__body">
-  <dl>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-      <%= t(
-        "helpers.label.#{resource_name}.#{attribute.name}",
-        default: attribute.name.titleize,
-      ) %>
-      </dt>
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute %></dd>
+  <h2 class="focusable_tab_title" tabindex="0">Informations générales</h2>
+  <dl class="c-tabbed-dl">
+    <% page.attributes.each_with_index do |attribute, idx| %>
+      <% if idx <= 5 %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) %>
+        </dt>
+
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+            ><%= render_field attribute %></dd>        
+      <% end %>
     <% end %>
   </dl>
 
+  <h2 class="focusable_tab_title" tabindex="0">Paramètres avancés</h2>
+  <dl class="c-tabbed-dl">
+    <% page.attributes.each_with_index do |attribute, idx| %>
+      <% if idx > 5 %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) %>
+        </dt>
+
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+            ><%= render_field attribute %></dd>
+      <% end %>
+    <% end %>
+  </dl>
+  
 </section>
 <%= render partial: 'admin/askers/simulation', locals: { asker: @asker, page: page, crcs: @custom_rule_checks } %>
+
+<h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
 <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
 
