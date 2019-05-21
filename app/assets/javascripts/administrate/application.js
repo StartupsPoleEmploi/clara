@@ -9,7 +9,6 @@
 //= require jquery
 //= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery-accessible-modal-delete-window-aria
-//= require jquery/jquery-accessible-hide-show-aria
 //= require jquery/jquery-accessible-tabs-aria
 //= require jquery/jquery-accessible-accordion-aria
 //= require jquery/jquery-please-wait
