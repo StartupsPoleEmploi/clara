@@ -4,6 +4,7 @@ fr:
       name: Nom
       variable: Variable
       aids: Aides concernées
+      kind: Style de règle
       slave_rules: Règles enfants
       value_eligible: Valeur
       operator_kind: "Opérateur"
@@ -11,6 +12,8 @@ fr:
       rule_slave_rule_ids: "Règles enfants"
       composition_type: "Combiner avec"
       simulated: "Contrôle"
+      created_at: "Créé le"
+      updated_at: "Mis à jour le"
     models: 
       rule: Règles
     attributes:

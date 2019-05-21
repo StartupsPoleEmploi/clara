@@ -1,61 +1,88 @@
-<%#
-# Show
-
-This view is the template for the show page.
-It renders the attributes of a resource,
-as well as a link to its edit page.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Show][1].
-  Contains methods for accessing the resource to be displayed on the page,
-  as well as helpers for describing how each attribute of the resource
-  should be displayed.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
-%>
 <% content_for(:title) { "#{t("administrate.actions.show")} #{page.page_title}" } %>
 
-<header class="main-content__header" role="banner">
+<header class="main-content__header c-aid-detail-header" role="banner">
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
-
-  <div>
+</header>
+<header class="main-content__header c-aid-detail-header" role="banner">
+  <p><%= page.resource.description %></p>
+</header>
+<header class="c-aid-detail-subheader">
+  <div class="js-detail-button">
     <%= link_to(
         t("administrate.actions.destroy"),
         [namespace, page.resource],
-        class: "button is-red",
+        class: "button is-white",
         method: :delete,
         data: { confirm: t("administrate.actions.confirm") }
       ) if show_action? :destroy, page.resource %>
   </div>
-  <div class="small-left-margin">
+  <div class="small-left-margin js-detail-button">
     <%= link_to(
-      "#{t("administrate.actions.edit")} #{page.page_title}",
+      "Modifier",
       [:edit, namespace, page.resource],
       class: "button",
     ) if valid_action? :edit %>
   </div>
+  <div class="small-left-margin js-detail-button">
+    <%= link_to(
+      "Tester",
+      request.original_url + "?rule_check_title=true",
+      class: "button is-white",
+    ) if valid_action? :edit %>
+  </div>
+  <div class="js-simulation-button hidden">
+    <%= link_to(
+      "← Revenir au détail",
+      request.original_url.split('?').first,
+      class: "button is-white",
+    ) if valid_action? :edit %>
+  </div>
 </header>
 
-<section class="main-content__body">
-  <dl>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-      <%= t(
-        "helpers.label.#{resource_name}.#{attribute.name}",
-        default: attribute.name.titleize,
-      ) %>
-      </dt>
+<section class="main-content__body c-detail-tab">
 
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute %></dd>
+  <h2 class="focusable_tab_title" tabindex="0">Informations générales</h2>
+  <dl class="c-tabbed-dl">
+    <% page.attributes.each_with_index do |attribute, idx| %>
+      <% if idx <= 6 %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) %>
+        </dt>
+
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+            ><%= render_field attribute %></dd>        
+      <% end %>
     <% end %>
   </dl>
 
+  <h2 class="focusable_tab_title" tabindex="0">Paramètres avancés</h2>
+  <dl class="c-tabbed-dl">
+    <% page.attributes.each_with_index do |attribute, idx| %>
+      <% if idx > 6 %>
+        <dt class="attribute-label" id="<%= attribute.name %>">
+        <%= t(
+          "helpers.label.#{resource_name}.#{attribute.name}",
+          default: attribute.name.titleize,
+        ) %>
+        </dt>
+
+        <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+            ><%= render_field attribute %></dd>
+      <% end %>
+    <% end %>
+  </dl>
+  <h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
+  <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
 </section>
+
+<section class="main-content__body c-simulation-tab">
+  
 <%= render partial: 'admin/askers/simulation', locals: { asker: @asker, page: page, crcs: @custom_rule_checks } %>
-<%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+
+</section>
 

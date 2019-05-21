@@ -39,19 +39,18 @@ class RuleDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
     :name,
+    :description,
     :simulated,
     :kind,
-    :slave_rules,
-    :variable,
-    :description,
-    :value_eligible,
-    :operator_kind,
-    :composition_type,
+    :aids,
     :created_at,
     :updated_at,
-    :aids,
+    :slave_rules,
+    :composition_type,
+    :variable,
+    :operator_kind,
+    :value_eligible,
   ].freeze
 
   # FORM_ATTRIBUTES

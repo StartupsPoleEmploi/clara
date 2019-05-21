@@ -4,6 +4,7 @@ clara.js_define("admin_rule", {
 
   please: function() {
     var global_state = {
+      is_controlling: _.isNotBlank($.urlParam("rule_check_title")),
       is_registerable: false,
       current_simulation: {
         name: "",
@@ -39,6 +40,7 @@ clara.js_define("admin_rule", {
     // SUBSCRIBER
     main_store.subscribe(function(){clara.admin_rule_update_result.please(main_store.getState())});
     main_store.subscribe(function(){clara.admin_rule_update_params.please(main_store.getState())});
+    main_store.subscribe(function(){clara.admin_rule_update_tab.please(main_store.getState())});
 
     // DISPATCHERS
     var $replay = $(".simulator-table-row .simulation-table-replay");
@@ -46,6 +48,7 @@ clara.js_define("admin_rule", {
     var $remove = $(".simulation-table-delete");
     var $save = $("#btn-save");
     var $inputs = $( "input[name^='asker']" );
+
     $simulate.on('click', function(){clara.admin_rule_ajax_resolve.please(main_store)});
     $replay.on('click', function(e){clara.admin_rule_replay.please(e, main_store)})
     $remove.on('click', function(e){clara.admin_rule_remove.please(e, main_store)})
@@ -55,6 +58,9 @@ clara.js_define("admin_rule", {
     $inputs.on('keyup', function(e){if(e.keyCode == 46 || e.keyCode == 8) {clara.admin_rule_input_changed.please(e, main_store)}})
 
     main_store.dispatch({type: 'INIT' })
+
+
+
   }
 
 });
