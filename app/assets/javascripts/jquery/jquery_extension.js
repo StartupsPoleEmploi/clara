@@ -38,20 +38,20 @@ $.currentUrl = function() {
 }
 
 $.extend({
-    // See https://stackoverflow.com/a/20469901/2595513
-    replaceTag: function (currentElem, newTagObj, keepProps) {
-        var $currentElem = $(currentElem);
-        var i, $newTag = $(newTagObj).clone();
-        if (keepProps) {
-            newTag = $newTag[0];
-            newTag.className = currentElem.className;
-            $.extend(newTag.classList, currentElem.classList);
-            $.extend(newTag.attributes, currentElem.attributes);
-        }
-        $currentElem.wrapAll($newTag);
-        $currentElem.contents().unwrap();
-        return this;
+  // See https://stackoverflow.com/a/20469901/2595513
+  replaceTag: function (currentElem, newTagObj, keepProps) {
+    var $currentElem = $(currentElem);
+    var i, $newTag = $(newTagObj).clone();
+    if (keepProps) {
+        newTag = $newTag[0];
+        newTag.className = currentElem.className;
+        $.extend(newTag.classList, currentElem.classList);
+        $.extend(newTag.attributes, currentElem.attributes);
     }
+    $currentElem.wrapAll($newTag);
+    $currentElem.contents().unwrap();
+    return this;
+  }
 });
 
 
