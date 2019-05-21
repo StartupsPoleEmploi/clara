@@ -46,7 +46,7 @@
   <h2 class="focusable_tab_title" tabindex="0">Informations générales</h2>
   <dl class="c-tabbed-dl">
     <% page.attributes.each_with_index do |attribute, idx| %>
-      <% if idx <= 5 %>
+      <% if idx <= 6 %>
         <dt class="attribute-label" id="<%= attribute.name %>">
         <%= t(
           "helpers.label.#{resource_name}.#{attribute.name}",
@@ -63,7 +63,7 @@
   <h2 class="focusable_tab_title" tabindex="0">Paramètres avancés</h2>
   <dl class="c-tabbed-dl">
     <% page.attributes.each_with_index do |attribute, idx| %>
-      <% if idx > 5 %>
+      <% if idx > 6 %>
         <dt class="attribute-label" id="<%= attribute.name %>">
         <%= t(
           "helpers.label.#{resource_name}.#{attribute.name}",
