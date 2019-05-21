@@ -4,7 +4,7 @@ fr:
       name: Nom
       variable: Variable
       aids: Aides concernées
-      kind: composition_type
+      kind: type
       slave_rules: Règles enfants
       value_eligible: Valeur
       operator_kind: "Opérateur"
