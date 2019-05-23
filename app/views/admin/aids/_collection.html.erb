@@ -25,10 +25,7 @@
           <% end %>
         </th>
       <% end %>
-      <% [valid_action?(:edit, collection_presenter.resource_name),
-          valid_action?(:destroy, collection_presenter.resource_name)].count(true).times do %>
-        <th scope="col"></th>
-      <% end %>
+      <th scope="col" colspan="4" style="text-align: center">Actions</th>
     </tr>
   </thead>
 
@@ -52,6 +49,14 @@
           </td>
         <% end %>
 
+
+        <% if valid_action? :show, collection_presenter.resource_name %>
+          <td><%= link_to(
+            "Consulter".html_safe ,
+            polymorphic_path([namespace, resource]),
+            class: "action-edit") %>
+          </td>
+        <% end %>
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.edit"),
