@@ -30,6 +30,14 @@
   </div>
 </header>
 
+<header class="c-rules-subheader">
+  <h2 class="c-rules-subheader-title">
+    <span><%= @actual_search_size %></span>
+    <span><%= @actual_search_size > 1 ? "aides " : "aide " %></span>
+    <span><%= @actual_search_size > 1 ? "disponibles " : "disponible " %></span>
+  </h2>  
+</header>
+
 <section class="main-content__body main-content__body--flush">
   <%= render(
     "collection",
