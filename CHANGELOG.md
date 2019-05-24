@@ -2,6 +2,10 @@
 
 
 
+## 20.22.0 (24/5/2019)
+-[#1279][ADMIN] Extraction aides 2
+
+
 ## 20.21.0 (23/5/2019)
 -[#1278][ADMIN] Extraction aides
 

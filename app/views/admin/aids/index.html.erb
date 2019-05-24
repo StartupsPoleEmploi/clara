@@ -6,9 +6,6 @@
   <h1 class="main-content__page-title" id="page-title">
     <%= content_for(:title) %>
   </h1>
-  <div>
-    <a class="button" href="/admin/aids/export.csv?locale=fr">Extraction CSV</a>
-  </div>
 </header>
 
 
@@ -30,6 +27,9 @@
       [:new, namespace, page.resource_path],
       class: "button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+  </div>
+  <div>
+    <a class="button is-white small-left-margin" href="/admin/aids/export.csv?locale=fr">Extraction toutes les aides</a>  
   </div>
 </header>
 
