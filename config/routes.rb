@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'api_user_token' => 'api_user_token#create'
-      # post 'user_token'     => 'user_token#create'
       get 'filters'  => 'api_aides#filters'
       get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
@@ -55,7 +54,9 @@ Rails.application.routes.draw do
     resources :filters
     resources :custom_filters
     resources :custom_parent_filters
-    resources :aids
+    resources :aids do
+      get :export, on: :collection
+    end
     resources :rules do 
       get 'resolve', on: :member
       post 'save_simulation', on: :member
@@ -88,13 +89,6 @@ Rails.application.routes.draw do
     resources :rule_checks
     root to: "aids#index"
   end
-
-  # get '/auth/:provider/callback' => 'sessions#create'
-  # get '/signin' => 'sessions#new', :as => :signin
-  # get '/signout' => 'sessions#destroy', :as => :signout
-  # get '/auth/failure' => 'sessions#failure'
-
-  # get '/auth/google_oauth2', as: :google_oauth
 
   # a route to check exception are propertly sent
   resources :divide_by_zero,         only: [:index]
