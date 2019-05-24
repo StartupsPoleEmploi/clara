@@ -1,5 +1,6 @@
 module Admin
   class AidsController < Admin::ApplicationController
+    include AdministrateExportable::Exporter
     
     def find_resource(param)
       Aid.find_by!(slug: param)
