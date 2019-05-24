@@ -54,7 +54,7 @@ gem "administrate-field-ckeditor", "~> 0.0.8"
 # gem "omniauth-google-oauth2"
 
 gem "mina", require: false
-gem "mina-puma", require: false,  github: 'bdavidxyz/mina-puma'
+gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma'
 gem "mina-multistage", require: false
 gem "climate_control"
 gem "fuubar"
@@ -63,7 +63,7 @@ gem "knock"
 gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
 gem "i18n-js"
-gem "administrate_exportable"
+gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
 
