@@ -18,10 +18,30 @@ class RuleTreeServiceAdultTest < ActiveSupport::TestCase
     assert_equal("eligible", res)
   end
 
+  test ".evaluate should return 'eligible' when criteria is present and satisfied - limit case" do
+    #given
+    r = _adult_rule_h
+    c = {v_age: "18"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+
   test ".evaluate should return 'ineligible' when criteria is present but not satisfied" do
     #given
     r = _adult_rule_h
     c = {v_age: "17"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+
+  test ".evaluate should return 'ineligible' when criteria is present but has a wrong type" do
+    #given
+    r = _adult_rule_h
+    c = {v_age: "wrong_type"}
     #when
     res = RuletreeService.new(nil, _variables).evaluate(r, c)
     #then
