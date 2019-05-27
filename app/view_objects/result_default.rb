@@ -7,7 +7,7 @@ class ResultDefault < ViewObject
   end
 
   def displayed_filters
-    @filters.reject{|e| e["ordre_affichage"] == nil}
+    @filters.reject{|e| e["ordre_affichage"] == nil}.sort_by { |e| e["ordre_affichage"] }
   end
 
   def sort_and_order(prop)
