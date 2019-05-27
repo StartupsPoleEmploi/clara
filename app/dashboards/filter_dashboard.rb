@@ -9,6 +9,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    ordre_affichage: Field::Number,
     name: Field::String,
     slug: Field::String,
     description: Field::String,
@@ -29,7 +30,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :id,
+    :ordre_affichage,
     :aids,
     :name,
     :slug,
@@ -41,6 +42,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :ordre_affichage,
     :slug,
     :aids,
     :description,
