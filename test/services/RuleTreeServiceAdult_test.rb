@@ -10,10 +10,11 @@ class RuleTreeServiceAdultTest < ActiveSupport::TestCase
   
   test ".evaluate should return 'eligible' when criteria is present and satisfied" do
     #given
-    rule = Rule.new(name: "adult", kind: "simple", variable: Variable.new(name: "age", variable_kind: :integer), operator_kind: :more_than, value_eligible: "18")
-    criterion_h = {v_age: "34"}
+    # rule = Rule.new(name: "adult", kind: "simple", variable: Variable.new(name: "age", variable_kind: :integer), operator_kind: :more_than, value_eligible: "18")
+    r = _adult_rule_h
+    c = {v_age: "34"}
     #when
-    res = RuletreeService.new(nil, _variables).evaluate(rule, criterion_h)
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
     #then
     assert_equal("eligible", res)
   end
