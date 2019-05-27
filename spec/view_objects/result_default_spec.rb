@@ -229,9 +229,9 @@ describe ResultDefault do
     "category"=>"composite",
     }],
  :flat_all_filter=>
-  [{"id"=>1, "ordre_affichage" => 1, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
-   {"id"=>3, "ordre_affichage" => 2, "name"=>"argent", "description"=>"Les aides liées à l'argent"},
-   {"id"=>2, "ordre_affichage" => 3,
+  [{"id"=>1, "ordre_affichage" => 13, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
+   {"id"=>2, "ordre_affichage" => 2, "name"=>"argent", "description"=>"Les aides liées à l'argent"},
+   {"id"=>3, "ordre_affichage" => 38,
     "name"=>"zône prioritaire",
     "description"=>
      "Je cherche une aide car je suis en zone prioritaire d'habitation"},

@@ -7,10 +7,7 @@ class ResultDefault < ViewObject
   end
 
   def displayed_filters
-    p '- - - - - - - - - - - - - - @filters- - - - - - - - - - - - - - - -' 
-    pp @filters
-    p ''
-    @filters
+    @filters.reject{|e| e["ordre_affichage"] == nil}
   end
 
   def sort_and_order(prop)
