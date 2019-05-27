@@ -65,10 +65,10 @@ class RuletreeService
     "uncertain"
   end
   def calculate_is_eligible(rule, criterion_value, rule_type, elements)
-    calculate(rule["operator_kind"], criterion_value, rule["value_eligible"], rule_type, elements)
+    calculate(criterion_value, rule["operator_kind"], rule["value_eligible"], rule_type, elements)
   end
 
-  def calculate(op_kind, criterion_value, rule_value, rule_type, elements)
+  def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
     # p '- - - - - - - - - - - - - - op_kind- - - - - - - - - - - - - - - -' 
     # pp op_kind
     # p ''
