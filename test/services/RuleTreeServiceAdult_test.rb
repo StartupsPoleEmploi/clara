@@ -2,11 +2,6 @@ require "test_helper"
 
 class RuleTreeServiceAdultTest < ActiveSupport::TestCase
 
-  def setup
-  end
-
-  def teardown
-  end
   
   test ".evaluate should return 'eligible' when criteria is present and satisfied" do
     #given
