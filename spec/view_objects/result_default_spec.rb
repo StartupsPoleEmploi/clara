@@ -138,6 +138,34 @@ describe ResultDefault do
 
   end
 
+
+  describe ".displayed_filters" do
+    it "renders filters that has ordre_affichage" do
+      # given
+      init_filters = nominal_data[:flat_all_filter]
+      expect(init_filters.size).to eq(5)
+      # when
+      displayed_filters = ResultDefault.new(nil, nominal_data).displayed_filters
+      # then
+      expect(displayed_filters.size).to eq(4)
+    end
+
+    it "order filters according to ordre_affichage" do
+      # given
+      init_filters = nominal_data[:flat_all_filter]
+      expect(ordre_affichage_of(init_filters)).not_to be_a_growing_suite
+      # when
+      displayed_filters = ResultDefault.new(nil, nominal_data).displayed_filters
+      # then
+      expect(ordre_affichage_of(displayed_filters)).to be_a_growing_suite
+    end
+
+    def ordre_affichage_of(stuff)
+      stuff.map { |e| e["ordre_affichage"] }
+    end
+
+  end
+
   def nominal_data
     {:flat_all_eligible=>
   [{"id"=>4,
@@ -215,15 +243,18 @@ describe ResultDefault do
     "category"=>"composite",
     }],
  :flat_all_filter=>
-  [{"id"=>1, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
-   {"id"=>3, "name"=>"argent", "description"=>"Les aides liées à l'argent"},
-   {"id"=>2,
+  [{"id"=>1, "ordre_affichage" => 13, "name"=>"adulte", "description"=>"Ne concerne que les adultes"},
+   {"id"=>2, "ordre_affichage" => 2, "name"=>"argent", "description"=>"Les aides liées à l'argent"},
+   {"id"=>3, "ordre_affichage" => 38,
     "name"=>"zône prioritaire",
     "description"=>
      "Je cherche une aide car je suis en zone prioritaire d'habitation"},
-   {"id"=>4,
+   {"id"=>4, "ordre_affichage" => 4,
     "name"=>"special",
-    "description"=>"Filtre marqué \"spécial\"..."}],
+    "description"=>"Filtre marqué \"spécial\"..."},
+   {"id"=>5,
+    "name"=>"sansordreaffichage",
+    "description"=>"Na pas l'ordre d'affichage"}],
  :asker=>
   {"v_handicap"=>"oui",
    "v_spectacle"=>"non",

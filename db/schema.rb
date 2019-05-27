@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_102403) do
+ActiveRecord::Schema.define(version: 2019_05_27_084549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_102403) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.string "slug"
+    t.integer "ordre_affichage"
     t.index ["slug"], name: "index_filters_on_slug", unique: true
   end
 

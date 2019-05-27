@@ -6,6 +6,10 @@ class ResultDefault < ViewObject
     @filters = @all_data["flat_all_filter"]
   end
 
+  def displayed_filters
+    @filters.reject{|e| e["ordre_affichage"] == nil}.sort_by { |e| e["ordre_affichage"] }
+  end
+
   def sort_and_order(prop)
     res = 
     (@all_data[prop] || {})
