@@ -2,6 +2,10 @@
 
 
 
+## 20.23.0 (27/5/2019)
+-[#1204][ADMIN] Ordonnancer les filtres de la page de résultats
+
+
 ## 20.22.0 (24/5/2019)
 -[#1279][ADMIN] Extraction aides 2
 
