@@ -10,13 +10,42 @@ class RuleTreeServiceAdultTest < ActiveSupport::TestCase
   
   test ".evaluate should return 'eligible' when criteria is present and satisfied" do
     #given
-    # rule = Rule.new(name: "adult", kind: "simple", variable: Variable.new(name: "age", variable_kind: :integer), operator_kind: :more_than, value_eligible: "18")
     r = _adult_rule_h
     c = {v_age: "34"}
     #when
     res = RuletreeService.new(nil, _variables).evaluate(r, c)
     #then
     assert_equal("eligible", res)
+  end
+
+  test ".evaluate should return 'ineligible' when criteria is present but not satisfied" do
+    #given
+    r = _adult_rule_h
+    c = {v_age: "17"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+
+  test ".evaluate should return 'uncertain' when criterion hash is empty" do
+    #given
+    r = _adult_rule_h
+    c = {}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
+  test ".evaluate should return 'uncertain' when criteria is not here" do
+    #given
+    r = _adult_rule_h
+    c = {v_foo: "bar"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("uncertain", res)
   end
 
   def _adult_rule_h
