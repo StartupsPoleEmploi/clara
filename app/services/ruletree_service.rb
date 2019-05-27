@@ -65,21 +65,35 @@ class RuletreeService
     "uncertain"
   end
   def calculate_is_eligible(rule, criterion_value, rule_type, elements)
-    calculate(rule, criterion_value, rule["value_eligible"], rule_type, elements)
+    calculate(rule["operator_kind"], criterion_value, rule["value_eligible"], rule_type, elements)
   end
 
-  def calculate(rule, criterion_value, rule_value, rule_type, elements)
+  def calculate(op_kind, criterion_value, rule_value, rule_type, elements)
+    # p '- - - - - - - - - - - - - - op_kind- - - - - - - - - - - - - - - -' 
+    # pp op_kind
+    # p ''
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    # pp rule_type
+    # p ''
+    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
+    # pp elements
+    # p ''
     allowed_types = ['integer', 'string', 'selectionnable']
     allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
-    op = rule["operator_kind"]
-    return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op)
+    return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op_kind)
     case rule_type
       when 'integer'
-        calculate_for_integer(criterion_value, rule_value, op)
+        calculate_for_integer(criterion_value, rule_value, op_kind)
       when 'string'
-        calculate_for_string(criterion_value, rule_value, op)
+        calculate_for_string(criterion_value, rule_value, op_kind)
       when 'selectionnable'
-        calculate_for_selectionnable(criterion_value, rule_value, op, elements)
+        calculate_for_selectionnable(criterion_value, rule_value, op_kind, elements)
       else
         false
     end
