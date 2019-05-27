@@ -1,8 +1,8 @@
 class RuletreeService
 
-  def initialize
-    @all_rules = ActivatedModelsService.instance.rules
-    @all_variables = ActivatedModelsService.instance.variables
+  def initialize(stubbed_rules=nil, stubbed_variables=nil)
+    @all_rules = stubbed_rules || ActivatedModelsService.instance.rules
+    @all_variables = stubbed_variables || ActivatedModelsService.instance.variables
   end
 
   def resolve(rule_id, criterion_hash = {}) 
