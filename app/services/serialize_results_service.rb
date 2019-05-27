@@ -21,7 +21,7 @@ class SerializeResultsService
      # Deliberately NOT using ActivatedModelsService.instance.contracts, too much data are missing to display icons, description, etc
      flat_all_contract: JSON.parse(Rails.cache.fetch("contract_types") {ContractType.all.to_json}),
      # Deliberately NOT using ActivatedModelsService.instance.filters, too much data are missing also
-     flat_all_filter: JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :description ])}),
+     flat_all_filter: JSON.parse(Rails.cache.fetch("filters") {Filter.all.to_json(:only => [ :id, :slug, :name, :ordre_affichage, :description ])}),
      asker: asker.attributes
     }
     res

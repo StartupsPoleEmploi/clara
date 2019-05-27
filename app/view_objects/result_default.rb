@@ -6,6 +6,13 @@ class ResultDefault < ViewObject
     @filters = @all_data["flat_all_filter"]
   end
 
+  def displayed_filters
+    p '- - - - - - - - - - - - - - @filters- - - - - - - - - - - - - - - -' 
+    pp @filters
+    p ''
+    @filters
+  end
+
   def sort_and_order(prop)
     res = 
     (@all_data[prop] || {})

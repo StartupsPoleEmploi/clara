@@ -21,7 +21,7 @@ class JsonModelsService
   end
 
   def self.filters
-    JSON.parse(Filter.all.to_json(:only => [ :id, :slug ]))
+    JSON.parse(Filter.all.to_json(:only => [ :id, :slug, :ordre_affichage ]))
   end
 
   def self.need_filters
