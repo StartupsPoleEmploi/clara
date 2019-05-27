@@ -26,6 +26,18 @@ RSpec.configure do |config|
 end
 
 
+RSpec::Matchers.define :be_a_growing_suite do |expected|
+
+  match do |actual|
+    is_ascending = lambda do |ary| 
+      yes = true
+      ary.reduce { |l, r| break unless yes &= (l[0] <= r[0]); l }
+      yes
+    end
+    actual.is_a?(Array) && actual.all? { |e| e.is_a?(Numeric)  } && is_ascending.call(actual)
+  end
+end
+
 RSpec::Matchers.define :print_eq do |expected, msg|
   match do |actual|
     res = actual == expected

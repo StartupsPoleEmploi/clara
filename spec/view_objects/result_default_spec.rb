@@ -142,12 +142,26 @@ describe ResultDefault do
   describe ".displayed_filters" do
     it "renders filters that has ordre_affichage" do
       # given
-      normal_data = nominal_data
-      expect(normal_data[:flat_all_filter].size).to eq(5)
+      init_filters = nominal_data[:flat_all_filter]
+      expect(init_filters.size).to eq(5)
       # when
-      res = ResultDefault.new(nil, normal_data).displayed_filters
+      displayed_filters = ResultDefault.new(nil, nominal_data).displayed_filters
       # then
-      expect(res.size).to eq(4)
+      expect(displayed_filters.size).to eq(4)
+    end
+
+    it "order filters according to ordre_affichage" do
+      # given
+      init_filters = nominal_data[:flat_all_filter]
+      expect(ordre_affichage_of(init_filters)).not_to be_a_growing_suite
+      # when
+      displayed_filters = ResultDefault.new(nil, nominal_data).displayed_filters
+      # then
+      expect(ordre_affichage_of(displayed_filters)).to be_a_growing_suite
+    end
+
+    def ordre_affichage_of(stuff)
+      stuff.map { |e| e["ordre_affichage"] }
     end
 
   end
