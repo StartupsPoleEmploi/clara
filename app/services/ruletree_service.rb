@@ -6,6 +6,12 @@ class RuletreeService
   end
 
   def resolve(rule_id, criterion_hash = {}) 
+    p '- - - - - - - - - - - - - - rule_id- - - - - - - - - - - - - - - -' 
+    pp rule_id
+    p ''
+    p '- - - - - - - - - - - - - - criterion_hash- - - - - - - - - - - - - - - -' 
+    pp criterion_hash
+    p ''
     result = calculate_default_value
     current_rule = @all_rules.detect{|one_rule| one_rule["id"] == rule_id}
     return result unless current_rule.is_a?(Hash) && current_rule["slave_rules"]
