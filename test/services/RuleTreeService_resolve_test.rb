@@ -5,7 +5,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
 
   test ".resolve can return 'eligible' for a string" do
     #given
-    c = _criterion_h
+    c = _empty_criterion_h
     c["v_location_citycode"] = "62193"
     r = rule_named("r_pas_de_calais")
     #when
@@ -16,7 +16,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
 
   test ".resolve can return 'ineligible' for a string" do
     #given
-    c = _criterion_h
+    c = _empty_criterion_h
     c["v_location_citycode"] = "44220"
     r = rule_named("r_pas_de_calais")
     #when
@@ -25,11 +25,21 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     assert_equal("ineligible", res)
   end
 
+  test ".resolve can return 'uncertain' for a string" do
+    #given
+    c = _empty_criterion_h
+    r = rule_named("r_pas_de_calais")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
   def rule_named(name)
     _rules.find { |r| r["name"] == name  }["id"]
   end
 
-  def _criterion_h
+  def _empty_criterion_h
     {"v_handicap"=>nil,
      "v_spectacle"=>nil,
      "v_cadre"=>nil,
