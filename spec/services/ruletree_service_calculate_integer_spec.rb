@@ -16,7 +16,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -30,7 +30,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -44,7 +44,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -58,7 +58,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -72,7 +72,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -86,7 +86,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -100,7 +100,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -114,7 +114,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -128,7 +128,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -143,7 +143,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -157,7 +157,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -171,7 +171,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -185,7 +185,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -199,7 +199,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -213,7 +213,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -227,7 +227,20 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
+      #then
+      expect(res).to eq(false)
+    end
+    it 'calculates integer, not_amongst, nominal, false' do
+      #given
+      operator_kind = "not_amongst"
+      rule_h = build(:rule, operator_kind: operator_kind).attributes
+      criterion_value = "42"
+      rule_value = "1,99,42,657"
+      rule_type = "integer"
+      sut = RuletreeService.new
+      #when
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end
@@ -240,7 +253,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(true)
     end
@@ -253,7 +266,7 @@ describe RuletreeService do
       rule_type = "integer"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, ""
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, ""
       #then
       expect(res).to eq(false)
     end

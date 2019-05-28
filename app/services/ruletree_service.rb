@@ -1,8 +1,8 @@
 class RuletreeService
 
-  def initialize
-    @all_rules = ActivatedModelsService.instance.rules
-    @all_variables = ActivatedModelsService.instance.variables
+  def initialize(stubbed_rules=nil, stubbed_variables=nil)
+    @all_rules = stubbed_rules || ActivatedModelsService.instance.rules
+    @all_variables = stubbed_variables || ActivatedModelsService.instance.variables
   end
 
   def resolve(rule_id, criterion_hash = {}) 
@@ -41,17 +41,15 @@ class RuletreeService
       criterion_value = c[variable["name"]]
       rule_type = variable["variable_kind"]
       elements = variable["elements"]
-      return "ineligible" if !type_is_accurate(criterion_value, rule_type)
-      return "ineligible" if criterion_value == "not_applicable"
-      return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type, elements)
-      return "ineligible"
+      if !type_is_accurate(criterion_value, rule_type)
+        result = "ineligible" 
+      elsif calculate_is_eligible(rule, criterion_value, rule_type, elements)
+        result = "eligible"
+      else
+        result = "ineligible"
+      end
     end
     return result
-  end
-
-  def _stub_all_rules(rules)
-    @all_rules = rules
-    self
   end
 
   private
@@ -65,21 +63,17 @@ class RuletreeService
     "uncertain"
   end
   def calculate_is_eligible(rule, criterion_value, rule_type, elements)
-    calculate(rule, criterion_value, rule["value_eligible"], rule_type, elements)
+    calculate(criterion_value, rule["operator_kind"], rule["value_eligible"], rule_type, elements)
   end
 
-  def calculate(rule, criterion_value, rule_value, rule_type, elements)
-    allowed_types = ['integer', 'string', 'selectionnable']
-    allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
-    op = rule["operator_kind"]
-    return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op)
+  def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
     case rule_type
       when 'integer'
-        calculate_for_integer(criterion_value, rule_value, op)
+        calculate_for_integer(criterion_value, rule_value, op_kind)
       when 'string'
-        calculate_for_string(criterion_value, rule_value, op)
+        calculate_for_string(criterion_value, rule_value, op_kind)
       when 'selectionnable'
-        calculate_for_selectionnable(criterion_value, rule_value, op, elements)
+        calculate_for_selectionnable(criterion_value, rule_value, op_kind, elements)
       else
         false
     end
@@ -88,6 +82,7 @@ class RuletreeService
   def calculate_for_integer(criterion_value, rule_value, operator_kind)
     typed_criterion_value = criterion_value.to_i
     typed_rule_value = rule_value.to_i
+    typed_list = rule_value.to_s.split(",")
     case operator_kind
       when 'equal'
         typed_criterion_value == typed_rule_value
@@ -102,9 +97,9 @@ class RuletreeService
       when 'less_than'
         typed_criterion_value < typed_rule_value
       when 'amongst'
-        typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+        typed_list.include?(typed_criterion_value.to_s)
       when 'not_amongst'
-        !typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+        !typed_list.include?(typed_criterion_value.to_s)
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')

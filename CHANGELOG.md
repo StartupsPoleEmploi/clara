@@ -2,8 +2,12 @@
 
 
 
+## 20.24.0 (28/5/2019)
+-[#1280][ADMIN] Liste des aides avec date d'archivage
+
+
 ## 20.23.0 (27/5/2019)
--[#1204][ADMIN] Ordonnancer les filtres de la page de résultats
+-[#1204] Ordonnancer les filtres de la page de résultats
 
 
 ## 20.22.0 (24/5/2019)

@@ -5,7 +5,7 @@ describe RuletreeService do
 
   describe ".resolve" do
     before do
-      RuletreeService.new._stub_all_rules([rule.to_json(:include => [:slave_rules])])
+      RuletreeService.new([rule.to_json(:include => [:slave_rules])], nil)
     end
     subject { RuletreeService.new.resolve(rule.id, asker.attributes) }
     context 'with a List of String' do

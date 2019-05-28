@@ -14,7 +14,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -27,7 +27,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -40,7 +40,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -53,7 +53,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -66,7 +66,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -79,7 +79,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -92,7 +92,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -105,7 +105,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -118,7 +118,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -131,7 +131,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -144,7 +144,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -157,7 +157,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(true)
     end
@@ -170,7 +170,7 @@ describe RuletreeService do
       rule_type = "selectionnable"
       sut = RuletreeService.new
       #when
-      res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+      res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
       #then
       expect(res).to eq(false)
     end
@@ -184,7 +184,7 @@ describe RuletreeService do
     rule_type = "selectionnable"
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
     #then
     expect(res).to eq(false)
   end
@@ -197,7 +197,7 @@ describe RuletreeService do
     rule_type = "selectionnable"
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
     #then
     expect(res).to eq(true)
   end
@@ -210,7 +210,7 @@ describe RuletreeService do
     rule_type = "selectionnable"
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, rule_h, criterion_value, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    res = sut.send :calculate, criterion_value, operator_kind, rule_value, rule_type, "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
     #then
     expect(res).to eq(true)
   end
