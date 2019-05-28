@@ -66,5 +66,13 @@ body[data-path="edit_admin_aid_path"] {
 
 .main-content__body.c-aid-edit-body {
   padding-left: 0;
+  display: flex;
 }
 
+.c-aid-edit-body__child.left-panel {
+  width: 50%;
+}
+
+.c-aid-edit-body__child.right-panel {
+  width: 50%;
+}
