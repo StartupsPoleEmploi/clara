@@ -5,18 +5,12 @@ class IsZrr
     five_digits_only = /\A\d{5}\z/
     has_5_digits = !!str_val.match(five_digits_only)
     return nil unless has_5_digits
-    zrrs = Rails.cache.fetch("zrrs") do
-      res = ""
+    zrrs = ""
+    Rails.cache.fetch("zrrs") do
       if Zrr.first
-        res = Zrr.first.value 
-      else
-        res = ""
+        zrrs = Zrr.first.value 
       end
-      res  
     end
-    p '- - - - - - - - - - - - - - zrrs- - - - - - - - - - - - - - - -' 
-    pp zrrs
-    p ''
     zrrs && zrrs.include?(str_val) ? "oui" : "non"
   end
   
