@@ -6,12 +6,6 @@ class RuletreeService
   end
 
   def resolve(rule_id, criterion_hash = {}) 
-    # p '- - - - - - - - - - - - - - rule_id- - - - - - - - - - - - - - - -' 
-    # pp rule_id
-    # p ''
-    # p '- - - - - - - - - - - - - - criterion_hash- - - - - - - - - - - - - - - -' 
-    # pp criterion_hash
-    # p ''
     result = calculate_default_value
     current_rule = @all_rules.detect{|one_rule| one_rule["id"] == rule_id}
     return result unless current_rule.is_a?(Hash) && current_rule["slave_rules"]
@@ -73,21 +67,6 @@ class RuletreeService
   end
 
   def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
-    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    # pp criterion_value
-    # p ''
-    # p '- - - - - - - - - - - - - - op_kind- - - - - - - - - - - - - - - -' 
-    # pp op_kind
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    # pp rule_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
-    # pp rule_type
-    # p ''
-    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
-    # pp elements
-    # p ''
     case rule_type
       when 'integer'
         calculate_for_integer(criterion_value, rule_value, op_kind)
@@ -101,15 +80,6 @@ class RuletreeService
   end
 
   def calculate_for_integer(criterion_value, rule_value, operator_kind)
-    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    # pp criterion_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    # pp rule_value
-    # p ''
-    # p '- - - - - - - - - - - - - - operator_kind- - - - - - - - - - - - - - - -' 
-    # pp operator_kind
-    # p ''
     typed_criterion_value = criterion_value.to_i
     typed_rule_value = rule_value.to_i
     typed_list = rule_value.to_s.split(",")
@@ -177,18 +147,6 @@ class RuletreeService
   end
 
   def calculate_for_selectionnable(criterion_value, rule_value, operator_kind, elements)
-    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    # pp criterion_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    # pp rule_value
-    # p ''
-    # p '- - - - - - - - - - - - - - operator_kind- - - - - - - - - - - - - - - -' 
-    # pp operator_kind
-    # p ''
-    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
-    # pp elements
-    # p ''
     indexof_criterion_value = elements.split(",").index(criterion_value)
     indexof_rule_value = elements.split(",").index(rule_value)
     indexof_rule_value ||= -1
