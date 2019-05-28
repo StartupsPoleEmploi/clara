@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceAdultTest < ActiveSupport::TestCase
+class RuleTreeServiceEvaluateTest < ActiveSupport::TestCase
 
   
   test ".evaluate should return 'eligible' when criteria is present and satisfied" do

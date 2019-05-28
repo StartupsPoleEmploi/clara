@@ -1,40 +1,40 @@
 require "test_helper"
 
-class RuleTreeServiceIntegerEqTest < ActiveSupport::TestCase
+class RuleTreeServiceStringEqTest < ActiveSupport::TestCase
 
   
-  test ".calculate integer, 34, equal, 18 => false" do
+  test ".calculate string, 34, equal, 18 => false" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "34", "equal", "18", "integer", ""
+    res = sut.send :calculate, "34", "equal", "18", "string", ""
     #then
     assert_equal(false, res)
   end
 
-  test ".calculate integer, 99, equal, 18 => false" do
+  test ".calculate string, 99, equal, 18 => false" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "99", "equal", "18", "integer", ""
+    res = sut.send :calculate, "99", "equal", "18", "string", ""
     #then
     assert_equal(false, res)
   end
 
-  test ".calculate integer, 18, equal, 18 => true" do
+  test ".calculate string, 18, equal, 18 => true" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "18", "equal", "18", "integer", ""
+    res = sut.send :calculate, "18", "equal", "18", "string", ""
     #then
     assert_equal(true, res)
   end
 
-  test ".calculate integer, 99, equal, 99 => true" do
+  test ".calculate string, 99, equal, 99 => true" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "99", "equal", "99", "integer", ""
+    res = sut.send :calculate, "99", "equal", "99", "string", ""
     #then
     assert_equal(true, res)
   end
