@@ -88,23 +88,16 @@ class RuletreeService
     # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
     # pp elements
     # p ''
-    res = false
-    allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
-    if allowed_operators.include?(op_kind)
-      case rule_type
-        when 'integer'
-          res = calculate_for_integer(criterion_value, rule_value, op_kind)
-        when 'string'
-          res = calculate_for_string(criterion_value, rule_value, op_kind)
-        when 'selectionnable'
-          res = calculate_for_selectionnable(criterion_value, rule_value, op_kind, elements)
-        else
-          res = false
-      end
-    else
-      res = false
+    case rule_type
+      when 'integer'
+        calculate_for_integer(criterion_value, rule_value, op_kind)
+      when 'string'
+        calculate_for_string(criterion_value, rule_value, op_kind)
+      when 'selectionnable'
+        calculate_for_selectionnable(criterion_value, rule_value, op_kind, elements)
+      else
+        false
     end
-    res
   end
 
   def calculate_for_integer(criterion_value, rule_value, operator_kind)
