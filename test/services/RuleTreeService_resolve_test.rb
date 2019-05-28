@@ -7,11 +7,22 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #given
     c = _criterion_h
     c["v_location_citycode"] = "62193"
-    
+    r = rule_named("r_pas_de_calais")
     #when
-    res = RuletreeService.new(_rules, _variables).resolve(rule_named("r_pas_de_calais"), c)
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
     #then
     assert_equal("eligible", res)
+  end
+
+  test ".resolve can return 'ineligible' for a string" do
+    #given
+    c = _criterion_h
+    c["v_location_citycode"] = "44220"
+    r = rule_named("r_pas_de_calais")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
   end
 
   def rule_named(name)
