@@ -100,8 +100,18 @@ class RuletreeService
   end
 
   def calculate_for_integer(criterion_value, rule_value, operator_kind)
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - operator_kind- - - - - - - - - - - - - - - -' 
+    # pp operator_kind
+    # p ''
     typed_criterion_value = criterion_value.to_i
     typed_rule_value = rule_value.to_i
+    typed_list = rule_value.to_s.split(",")
     case operator_kind
       when 'equal'
         typed_criterion_value == typed_rule_value
@@ -116,9 +126,9 @@ class RuletreeService
       when 'less_than'
         typed_criterion_value < typed_rule_value
       when 'amongst'
-        typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+        typed_list.include?(typed_criterion_value.to_s)
       when 'not_amongst'
-        !typed_rule_value.to_s.split(",").include?(typed_criterion_value.to_s)
+        !typed_list.include?(typed_criterion_value.to_s)
       when 'starts_with'
         a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
