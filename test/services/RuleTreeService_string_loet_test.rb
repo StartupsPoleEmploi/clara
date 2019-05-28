@@ -30,11 +30,11 @@ class RuleTreeServiceStringLoetTest < ActiveSupport::TestCase
     assert_equal(true, res)
   end
 
-  test ".calculate string, 3, less_or_equal_than, 18 => true" do
+  test ".calculate string, 0, less_or_equal_than, 18 => true" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "3", "less_or_equal_than", "18", "string", ""
+    res = sut.send :calculate, "0", "less_or_equal_than", "18", "string", ""
     #then
     assert_equal(true, res)
   end
