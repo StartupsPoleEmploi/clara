@@ -9,9 +9,6 @@ class IsZrr
       res = ""
       if Zrr.first
         res = Zrr.first.value 
-        p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-        pp res
-        p ''
       else
         res = ""
       end

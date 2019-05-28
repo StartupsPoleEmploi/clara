@@ -6,7 +6,7 @@ class IsZrrCallTest < ActiveSupport::TestCase
   test ".call nominal" do
     #given
     f = mock('object')
-    f.expects(:fetch).with("zrrs").yields{return "44220"}
+    f.expects(:fetch).with("zrrs").yields.returns("44220")
     Rails.expects(:cache).returns(f)
     v = mock('object')
     v.expects(:value).returns("44220,43000")
