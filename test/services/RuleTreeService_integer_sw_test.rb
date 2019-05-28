@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceIntegerMtTest < ActiveSupport::TestCase
+class RuleTreeServiceIntegerSwTest < ActiveSupport::TestCase
 
   
   test ".calculate integer, 34, starts_with, 3 => true" do
