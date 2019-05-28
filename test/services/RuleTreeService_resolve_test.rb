@@ -16,7 +16,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
   test ".resolve can return 'ineligible' for a string" do
     #given
     c = _empty_criterion_h
-    c["v_location_citycode"] = "44220"
+    c["v_location_citycode"] = "59350"
     r = rule_named("r_pas_de_calais")
     #when
     res = RuletreeService.new(_rules, _variables).resolve(r, c)
@@ -120,6 +120,71 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #given
     c = _empty_criterion_h
     r = rule_named("r_age_sup_18_et_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
+
+  test ".resolve can return 'eligible' for an OR rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_location_citycode"] = "62193"
+    r = rule_named("r_nord_pas_de_calais")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+  test ".resolve can return 'ineligible' for an OR rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_location_citycode"] = "44220"
+    r = rule_named("r_nord_pas_de_calais")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+  test ".resolve can return 'uncertain' for an OR rule" do
+    #given
+    c = _empty_criterion_h
+    r = rule_named("r_nord_pas_de_calais")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
+
+  test ".resolve can return 'eligible' for an DEEP_AND rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_location_citycode"] = "59350"
+    c["v_age"] = "29"
+    r = rule_named("r_deep")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+  test ".resolve can return 'ineligible' for an DEEP_AND rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_location_citycode"] = "59350"
+    c["v_age"] = "34"
+    r = rule_named("r_deep")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+  test ".resolve can return 'uncertain' for an DEEP_AND rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_age"] = "23"
+    r = rule_named("r_deep")
     #when
     res = RuletreeService.new(_rules, _variables).resolve(r, c)
     #then
@@ -259,7 +324,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
       # Deep rule
       {
         "id" => 333,
-        "name" => "r_npcd_and_18_32",
+        "name" => "r_deep",
         "composition_type" => "and_rule",
         "slave_rules" => [
           {
