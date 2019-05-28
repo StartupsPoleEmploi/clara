@@ -20,6 +20,10 @@
   width: calc(25% - 1rem);
 }
 
+.c-aid-edit-body__child .field-unit__field {
+  width: 80%;
+}
+
 .field-unit__field {
   float: left;
   margin-left: 2rem;
