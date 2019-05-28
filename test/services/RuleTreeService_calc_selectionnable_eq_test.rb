@@ -39,5 +39,14 @@ class RuleTreeServiceCalcSelectionnableEqTest < ActiveSupport::TestCase
     assert_equal(true, res)
   end
 
+  test ".calculate selectionnable, niveau_infra_5, unexisting, niveau_infra_5 => false" do
+    #given
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, "niveau_infra_5", "unexisting", "niveau_infra_5", "selectionnable", "niveau_infra_5,niveau_5,niveau_4,niveau_3,niveau_2,niveau_1"
+    #then
+    assert_equal(false, res)
+  end
+
 
 end
