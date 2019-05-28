@@ -1,7 +1,3 @@
-require 'uri'
-require 'net/http'
-require 'json'
-
 class IsZrr
 
   def call(citycode)
@@ -13,11 +9,17 @@ class IsZrr
       res = ""
       if Zrr.first
         res = Zrr.first.value 
+        p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
+        pp res
+        p ''
       else
         res = ""
       end
       res  
     end
+    p '- - - - - - - - - - - - - - zrrs- - - - - - - - - - - - - - - -' 
+    pp zrrs
+    p ''
     zrrs && zrrs.include?(str_val) ? "oui" : "non"
   end
   
