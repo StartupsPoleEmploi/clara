@@ -3,7 +3,7 @@ require "test_helper"
 class RuleTreeServiceEvaluateTest < ActiveSupport::TestCase
 
   
-  test ".evaluate should return 'eligible' when criteria is present and satisfied" do
+  test ".evaluate should return 'eligible' when criteria is present and satisfied, integer" do
     #given
     r = _adult_rule_h
     c = {v_age: "34"}
@@ -11,6 +11,26 @@ class RuleTreeServiceEvaluateTest < ActiveSupport::TestCase
     res = RuletreeService.new(nil, _variables).evaluate(r, c)
     #then
     assert_equal("eligible", res)
+  end
+
+  test ".evaluate should return 'eligible' when criteria is present and satisfied, selectionnable" do
+    #given
+    r = _other_cat_h
+    c = {v_category: "autres_cat"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+
+  test ".evaluate should return ineligible for unexisting value" do
+    #given
+    r = _other_cat_h
+    c = {v_category: "unexisting"}
+    #when
+    res = RuletreeService.new(nil, _variables).evaluate(r, c)
+    #then
+    assert_equal("ineligible", res)
   end
 
   test ".evaluate should return 'eligible' when criteria is present and satisfied - limit case" do
@@ -63,6 +83,8 @@ class RuleTreeServiceEvaluateTest < ActiveSupport::TestCase
     assert_equal("uncertain", res)
   end
 
+
+
   def _adult_rule_h
     {"id"=>195,
       "name"=>"r_adult",
@@ -72,13 +94,33 @@ class RuleTreeServiceEvaluateTest < ActiveSupport::TestCase
       "slave_rules"=>[]}
   end
 
+  def _other_cat_h
+    {
+      "id" => 7,
+      "name" => "r_categorie_autre_que_12345",
+      "value_eligible" => "autres_cat",
+      "variable_id" => 6,
+      "operator_kind" => "equal",
+      "slave_rules" => []
+    }
+  end
+
   def _variables
-     [{"id"=>23,
+     [
+      {"id"=>23,
         "name"=>"v_age",
         "description"=>"",
         "elements"=>"",
         "name_translation"=>"âge",
         "elements_translation"=>"",
-        "variable_kind"=>"integer"}]
+        "variable_kind"=>"integer"},
+      {"id" => 6,
+        "name" => "v_category",
+        "description" => "",
+        "elements" => "cat_12345,autres_cat",
+        "name_translation" => "categorie",
+        "elements_translation" => "1 a 5, autres categories",
+        "variable_kind" => "selectionnable"}
+      ]
   end
 end

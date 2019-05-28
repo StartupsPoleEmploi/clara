@@ -49,8 +49,6 @@ class RuletreeService
       elements = variable["elements"]
       if !type_is_accurate(criterion_value, rule_type)
         result = "ineligible" 
-      elsif criterion_value == "not_applicable"
-        result = "ineligible"
       elsif calculate_is_eligible(rule, criterion_value, rule_type, elements)
         result = "eligible"
       else
@@ -58,11 +56,6 @@ class RuletreeService
       end
     end
     return result
-  end
-
-  def _stub_all_rules(rules)
-    @all_rules = rules
-    self
   end
 
   private
