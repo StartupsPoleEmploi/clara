@@ -35,6 +35,39 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     assert_equal("uncertain", res)
   end
 
+
+  test ".resolve can return 'eligible' for a integer" do
+    #given
+    c = _empty_criterion_h
+    c["v_age"] = "25"
+    r = rule_named("r_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+
+  test ".resolve can return 'ineligible' for a integer" do
+    #given
+    c = _empty_criterion_h
+    c["v_age"] = "42"
+    r = rule_named("r_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+
+  test ".resolve can return 'uncertain' for a integer" do
+    #given
+    c = _empty_criterion_h
+    r = rule_named("r_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
   def rule_named(name)
     _rules.find { |r| r["name"] == name  }["id"]
   end
