@@ -88,6 +88,7 @@ group :test do
   gem "rack_session_access"
   gem "webmock"
   gem "coffee-rails"
+  gem "mocha"
 end
 
 group :development do
