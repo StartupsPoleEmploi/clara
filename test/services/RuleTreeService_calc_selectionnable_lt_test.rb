@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceSelectionnableLtTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcSelectionnableLtTest < ActiveSupport::TestCase
 
 
   test ".calculate selectionnable, niveau_4, less_than, niveau_5 => false" do

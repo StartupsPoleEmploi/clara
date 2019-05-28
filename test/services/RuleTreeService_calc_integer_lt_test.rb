@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceIntegerLtTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcIntegerLtTest < ActiveSupport::TestCase
   
   test ".calculate integer, 34, less_than, 18 => false" do
     #given

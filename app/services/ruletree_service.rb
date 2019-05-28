@@ -41,10 +41,15 @@ class RuletreeService
       criterion_value = c[variable["name"]]
       rule_type = variable["variable_kind"]
       elements = variable["elements"]
-      return "ineligible" if !type_is_accurate(criterion_value, rule_type)
-      return "ineligible" if criterion_value == "not_applicable"
-      return "eligible" if calculate_is_eligible(rule, criterion_value, rule_type, elements)
-      return "ineligible"
+      if !type_is_accurate(criterion_value, rule_type)
+        result = "ineligible" 
+      elsif criterion_value == "not_applicable"
+        result = "ineligible"
+      elsif calculate_is_eligible(rule, criterion_value, rule_type, elements)
+        result = "eligible"
+      else
+        result = "ineligible"
+      end
     end
     return result
   end

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceStringAmTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcStringAmTest < ActiveSupport::TestCase
   
 
   test ".calculate string, 11, amongst, 11,22,33 => true" do

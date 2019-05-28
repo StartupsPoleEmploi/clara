@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceStringSwTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcStringSwTest < ActiveSupport::TestCase
 
   
   test ".calculate string, 34, starts_with, 3 => true" do

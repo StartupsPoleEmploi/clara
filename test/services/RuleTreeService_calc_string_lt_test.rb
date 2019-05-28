@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceStringLtTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcStringLtTest < ActiveSupport::TestCase
   
   test ".calculate string, 34, less_than, 18 => false" do
     #given

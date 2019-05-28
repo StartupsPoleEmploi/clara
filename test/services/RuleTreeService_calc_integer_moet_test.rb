@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceIntegerMoetTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcIntegerMoetTest < ActiveSupport::TestCase
 
 
 

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceIntegerNamTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcIntegerNamTest < ActiveSupport::TestCase
   
 
   test ".calculate integer, 11, not_amongst, 11,22,33 => false" do

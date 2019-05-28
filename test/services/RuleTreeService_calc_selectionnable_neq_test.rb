@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceSelectionnableNeqTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcSelectionnableNeqTest < ActiveSupport::TestCase
 
 
   test ".calculate selectionnable, niveau_4, not_equal, niveau_5 => true" do
