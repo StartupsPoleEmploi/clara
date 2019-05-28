@@ -68,6 +68,39 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     assert_equal("uncertain", res)
   end
 
+
+  test ".resolve can return 'eligible' for a selectionnable" do
+    #given
+    c = _empty_criterion_h
+    c["v_detenu"] = "oui"
+    r = rule_named("r_detenu")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+
+  test ".resolve can return 'ineligible' for a selectionnable" do
+    #given
+    c = _empty_criterion_h
+    c["v_detenu"] = "non"
+    r = rule_named("r_detenu")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+
+  test ".resolve can return 'uncertain' for a selectionnable" do
+    #given
+    c = _empty_criterion_h
+    r = rule_named("r_detenu")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
   def rule_named(name)
     _rules.find { |r| r["name"] == name  }["id"]
   end
