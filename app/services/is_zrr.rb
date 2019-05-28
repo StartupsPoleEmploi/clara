@@ -11,7 +11,7 @@ class IsZrr
         zrrs = Zrr.first.value 
       end
     end
-    zrrs && zrrs.include?(str_val) ? "oui" : "non"
+    zrrs.include?(str_val) ? "oui" : "non"
   end
   
 end
