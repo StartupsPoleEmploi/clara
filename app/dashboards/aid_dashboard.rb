@@ -43,6 +43,7 @@ class AidDashboard < Administrate::BaseDashboard
     :custom_filters,
     :filters,
     :updated_at,
+    :archived_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
