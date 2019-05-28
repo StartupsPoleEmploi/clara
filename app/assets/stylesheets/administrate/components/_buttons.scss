@@ -46,6 +46,11 @@ input[type="submit"],
   background-color: red;
 }
 
+.button.is-discrete {
+  background-color: transparent;
+  color: $action-color
+}
+
 .button.is-white {
   color: black;
   background-color: white;

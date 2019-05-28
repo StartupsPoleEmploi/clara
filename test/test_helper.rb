@@ -4,6 +4,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start do
   add_filter %r{^/test/}
+  track_files '{app/services,app/view_objects}/*.rb'
 end
 
 require_relative '../config/environment'
