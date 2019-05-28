@@ -3,7 +3,7 @@ require "test_helper"
 class TrackSearchCallTest < ActiveSupport::TestCase
   
 
-  test ".call integer, 11, amongst, 11,22,33 => true" do
+  test ".call nominal" do
     #given
     ENV.expects(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").returns("ccc")
     ENV.expects(:[]).with("ARA_GOOGLE_ANALYTICS_ID").returns("iii")
@@ -26,6 +26,22 @@ class TrackSearchCallTest < ActiveSupport::TestCase
 
     #then
     assert_equal("call_ok", res)
+  end
+
+  test "tracking not called when search is not a string" do
+    #given
+    #when
+    res = TrackSearch.new.call(42)
+    #then
+    assert_equal("not called", res)
+  end
+
+  test "tracking not called when search is an empty string" do
+    #given
+    #when
+    res = TrackSearch.new.call("")
+    #then
+    assert_equal("not called", res)
   end
 
 end
