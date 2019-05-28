@@ -158,7 +158,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
   end
 
 
-  test ".resolve can return 'eligible' for an DEEP_AND rule" do
+  test ".resolve can return 'eligible' for a DEEP_AND rule" do
     #given
     c = _empty_criterion_h
     c["v_location_citycode"] = "59350"
@@ -169,7 +169,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("eligible", res)
   end
-  test ".resolve can return 'ineligible' for an DEEP_AND rule" do
+  test ".resolve can return 'ineligible' for a DEEP_AND rule" do
     #given
     c = _empty_criterion_h
     c["v_location_citycode"] = "59350"
@@ -180,7 +180,7 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("ineligible", res)
   end
-  test ".resolve can return 'uncertain' for an DEEP_AND rule" do
+  test ".resolve can return 'uncertain' for a DEEP_AND rule" do
     #given
     c = _empty_criterion_h
     c["v_age"] = "23"
