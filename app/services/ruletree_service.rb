@@ -69,21 +69,21 @@ class RuletreeService
   end
 
   def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
-    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
-    # pp criterion_value
-    # p ''
-    # p '- - - - - - - - - - - - - - op_kind- - - - - - - - - - - - - - - -' 
-    # pp op_kind
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
-    # pp rule_value
-    # p ''
-    # p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
-    # pp rule_type
-    # p ''
-    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
-    # pp elements
-    # p ''
+    p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    pp criterion_value
+    p ''
+    p '- - - - - - - - - - - - - - op_kind- - - - - - - - - - - - - - - -' 
+    pp op_kind
+    p ''
+    p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    pp rule_value
+    p ''
+    p '- - - - - - - - - - - - - - rule_type- - - - - - - - - - - - - - - -' 
+    pp rule_type
+    p ''
+    p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
+    pp elements
+    p ''
     allowed_types = ['integer', 'string', 'selectionnable']
     allowed_operators = ['equal', 'not_equal', 'more_than', 'more_or_equal_than', 'less_than', 'less_or_equal_than', 'amongst', 'not_amongst', 'starts_with', 'not_starts_with']
     return false unless allowed_types.include?(rule_type) && allowed_operators.include?(op_kind)
@@ -176,6 +176,18 @@ class RuletreeService
   end
 
   def calculate_for_selectionnable(criterion_value, rule_value, operator_kind, elements)
+    # p '- - - - - - - - - - - - - - criterion_value- - - - - - - - - - - - - - - -' 
+    # pp criterion_value
+    # p ''
+    # p '- - - - - - - - - - - - - - rule_value- - - - - - - - - - - - - - - -' 
+    # pp rule_value
+    # p ''
+    # p '- - - - - - - - - - - - - - operator_kind- - - - - - - - - - - - - - - -' 
+    # pp operator_kind
+    # p ''
+    # p '- - - - - - - - - - - - - - elements- - - - - - - - - - - - - - - -' 
+    # pp elements
+    # p ''
     indexof_criterion_value = elements.split(",").index(criterion_value)
     indexof_rule_value = elements.split(",").index(rule_value)
     indexof_rule_value ||= -1
