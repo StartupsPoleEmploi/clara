@@ -5,7 +5,6 @@ require 'simplecov'
 SimpleCov.start do
   add_filter %r{^/test/}
 end
-Rails.application.eager_load!
 
 require_relative '../config/environment'
 require 'rails/test_help'

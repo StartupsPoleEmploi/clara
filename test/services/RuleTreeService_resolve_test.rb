@@ -13,7 +13,6 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("eligible", res)
   end
-
   test ".resolve can return 'ineligible' for a string" do
     #given
     c = _empty_criterion_h
@@ -24,7 +23,6 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("ineligible", res)
   end
-
   test ".resolve can return 'uncertain' for a string" do
     #given
     c = _empty_criterion_h
@@ -39,14 +37,13 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
   test ".resolve can return 'eligible' for a integer" do
     #given
     c = _empty_criterion_h
-    c["v_age"] = "25"
+    c["v_age"] = "17"
     r = rule_named("r_age_inf_32")
     #when
     res = RuletreeService.new(_rules, _variables).resolve(r, c)
     #then
     assert_equal("eligible", res)
   end
-
   test ".resolve can return 'ineligible' for a integer" do
     #given
     c = _empty_criterion_h
@@ -57,7 +54,6 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("ineligible", res)
   end
-
   test ".resolve can return 'uncertain' for a integer" do
     #given
     c = _empty_criterion_h
@@ -79,7 +75,6 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("eligible", res)
   end
-
   test ".resolve can return 'ineligible' for a selectionnable" do
     #given
     c = _empty_criterion_h
@@ -90,11 +85,41 @@ class RuleTreeServiceResolveTest < ActiveSupport::TestCase
     #then
     assert_equal("ineligible", res)
   end
-
   test ".resolve can return 'uncertain' for a selectionnable" do
     #given
     c = _empty_criterion_h
     r = rule_named("r_detenu")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("uncertain", res)
+  end
+
+
+  test ".resolve can return 'eligible' for an AND rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_age"] = "25"
+    r = rule_named("r_age_sup_18_et_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("eligible", res)
+  end
+  test ".resolve can return 'ineligible' for an AND rule" do
+    #given
+    c = _empty_criterion_h
+    c["v_age"] = "17"
+    r = rule_named("r_age_sup_18_et_age_inf_32")
+    #when
+    res = RuletreeService.new(_rules, _variables).resolve(r, c)
+    #then
+    assert_equal("ineligible", res)
+  end
+  test ".resolve can return 'uncertain' for an AND rule" do
+    #given
+    c = _empty_criterion_h
+    r = rule_named("r_age_sup_18_et_age_inf_32")
     #when
     res = RuletreeService.new(_rules, _variables).resolve(r, c)
     #then
