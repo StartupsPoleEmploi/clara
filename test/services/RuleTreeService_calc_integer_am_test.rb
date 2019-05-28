@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RuleTreeServiceCalIntegerAmTest < ActiveSupport::TestCase
+class RuleTreeServiceCalcIntegerAmTest < ActiveSupport::TestCase
   
 
   test ".calculate integer, 11, amongst, 11,22,33 => true" do
