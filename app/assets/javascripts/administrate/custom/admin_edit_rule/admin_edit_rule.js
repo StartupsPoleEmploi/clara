@@ -47,6 +47,8 @@ clara.js_define("edit_admin_aid", {
         newState.limitations = action.value
       } else if (action.type === 'WHAT_CHANGED') {
         newState.what = action.value
+      } else if (action.type === 'TITLE_CHANGED') {
+        newState.title = action.value
       }
       return newState;
     };
@@ -54,17 +56,37 @@ clara.js_define("edit_admin_aid", {
     // STORE
     window.main_store = Redux.createStore(reducer, global_state);
 
+    // DISPATCHERS
+    editor_additionnal_conditions.on('change', function(){
+      main_store.dispatch({type: 'ADDITIONNAL_CONDITIONS_CHANGED', value: editor_additionnal_conditions.getData() })
+    });
+    editor_how_and_when.on('change', function(){
+      main_store.dispatch({type: 'HOW_AND_WHEN_CHANGED', value: editor_how_and_when.getData() })
+    });
+    editor_how_much.on('change', function(){
+      main_store.dispatch({type: 'HOW_MUCH_CHANGED', value: editor_how_much.getData() })
+    });
+    editor_limitations.on('change', function(){
+      main_store.dispatch({type: 'LIMITATIONS_CHANGED', value: editor_limitations.getData() })
+    });
+    editor_what.on('change', function(){
+      main_store.dispatch({type: 'WHAT_CHANGED', value: editor_what.getData() })
+    });
+
+    $("#aid_name").on('keypress', function () {
+      main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
+    });
+    $("#aid_name").on('keyup', function(e){if(e.keyCode == 46 || e.keyCode == 8) {
+      main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
+    }});
+
+
+
     // SUBSCRIBER
     main_store.subscribe(function(){
       var state = _.cloneDeep(main_store.getState());
     });
 
-    // DISPATCHERS
-    var $simulate = $("#btn_simulate");
-
-    $simulate.on('click', function(){
-
-    });
 
     main_store.dispatch({type: 'INIT' })
   }
