@@ -1,7 +1,7 @@
 clara.js_define("edit_admin_aid", {
 
   please_if: function() {
-    return $(".c-detail-title").exists();
+    return $(".js-aid-edition").exists();
   },
 
   please: function() {
