@@ -73,13 +73,9 @@ clara.js_define("edit_admin_aid", {
     editor_what.on('change', function(){
       main_store.dispatch({type: 'WHAT_CHANGED', value: editor_what.getData() })
     });
-
-    $("#aid_name").on('keypress', function () {
+    $("#aid_name").on('keyup', function(e){
       main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
     });
-    $("#aid_name").on('keyup', function(e){if(e.keyCode == 46 || e.keyCode == 8) {
-      main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
-    }});
 
 
 
