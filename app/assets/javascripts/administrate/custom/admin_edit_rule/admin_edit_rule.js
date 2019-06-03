@@ -36,27 +36,36 @@ clara.js_define("admin_edit_rule", {
     window.main_store = Redux.createStore(reducer, global_state);
 
     // DISPATCHERS
-    editor_additionnal_conditions.on('change', function(){
-      main_store.dispatch({type: 'ADDITIONNAL_CONDITIONS_CHANGED', value: editor_additionnal_conditions.getData() })
+    clara.admin_edit_rule_dispatcher.please(main_store, {
+      editor_additionnal_conditions: editor_additionnal_conditions,
+      editor_how_and_when: editor_how_and_when,
+      editor_how_much: editor_how_much,
+      editor_limitations: editor_limitations,
+      editor_what: editor_what,
+      $aid_name: $("#aid_name"),
+      $aid_contract_type_id: $("#aid_contract_type_id"),
     });
-    editor_how_and_when.on('change', function(){
-      main_store.dispatch({type: 'HOW_AND_WHEN_CHANGED', value: editor_how_and_when.getData() })
-    });
-    editor_how_much.on('change', function(){
-      main_store.dispatch({type: 'HOW_MUCH_CHANGED', value: editor_how_much.getData() })
-    });
-    editor_limitations.on('change', function(){
-      main_store.dispatch({type: 'LIMITATIONS_CHANGED', value: editor_limitations.getData() })
-    });
-    editor_what.on('change', function(){
-      main_store.dispatch({type: 'WHAT_CHANGED', value: editor_what.getData() })
-    });
-    $("#aid_name").on('keyup', function(e){
-      main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
-    });
-    $("#aid_contract_type_id").on('change', function(e){
-      main_store.dispatch({type: 'CONTRACT_CHANGED', value: $("#aid_contract_type_id :selected").text() })
-    });
+    // editor_additionnal_conditions.on('change', function(){
+    //   main_store.dispatch({type: 'ADDITIONNAL_CONDITIONS_CHANGED', value: editor_additionnal_conditions.getData() })
+    // });
+    // editor_how_and_when.on('change', function(){
+    //   main_store.dispatch({type: 'HOW_AND_WHEN_CHANGED', value: editor_how_and_when.getData() })
+    // });
+    // editor_how_much.on('change', function(){
+    //   main_store.dispatch({type: 'HOW_MUCH_CHANGED', value: editor_how_much.getData() })
+    // });
+    // editor_limitations.on('change', function(){
+    //   main_store.dispatch({type: 'LIMITATIONS_CHANGED', value: editor_limitations.getData() })
+    // });
+    // editor_what.on('change', function(){
+    //   main_store.dispatch({type: 'WHAT_CHANGED', value: editor_what.getData() })
+    // });
+    // $("#aid_name").on('keyup', function(e){
+    //   main_store.dispatch({type: 'TITLE_CHANGED', value: $("#aid_name").val() })
+    // });
+    // $("#aid_contract_type_id").on('change', function(e){
+    //   main_store.dispatch({type: 'CONTRACT_CHANGED', value: $("#aid_contract_type_id :selected").text() })
+    // });
 
 
 
