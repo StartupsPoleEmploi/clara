@@ -27,6 +27,7 @@ clara.js_define("edit_admin_aid", {
       how_much: editor_how_much.getData(),
       limitations: editor_limitations.getData(),
       what: editor_what.getData(),
+      contract: $("#aid_contract_type_id :selected").text(),
     };
     
     // REDUCER
@@ -91,6 +92,7 @@ clara.js_define("edit_admin_aid", {
       $(".js-how-much").html(state.how_much);
       $(".js-limitations").html(state.limitations);
       $(".js-what").html(state.what);
+      $(".js-contract").html(state.contract);
     });
 
 
