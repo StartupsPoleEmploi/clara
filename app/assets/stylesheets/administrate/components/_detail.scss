@@ -74,3 +74,22 @@ h2.c-detail-item__title {
   height: 64px;
   background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
 }
+
+.c-detail-item-remark {
+  padding: 9px;
+  margin: 9px;
+  background-color: white;
+  border-radius: 1.2px;
+  background-color: #f0f7fc;
+  border: 1px solid #80b9db;
+  display: flex;
+}
+
+.c-detail-item-remark__content {
+  padding-left: 1rem;
+}
+
+.c-detail-item-remark__svg {
+  max-width: 35px;
+  min-width: 35px;
+}
