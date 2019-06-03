@@ -3,8 +3,13 @@ describe('admin_edit_rule_dispatcher.js', function() {
 
   describe('.please', function() {
 
-    function create_obs_for(name) {
-
+    function create_obs(name) {
+      var obs = { };
+      obs["editor_" + name] = {
+          on: function(evt, func){func()},
+          getData: function(){return 42}
+        };
+      return obs;
     }
 
     function create_store() {
@@ -15,14 +20,8 @@ describe('admin_edit_rule_dispatcher.js', function() {
 
     it('Dispatch ADDITIONAL_CONDITION_CHANGED if additionnal_conditions changed', function() {
       // given
-      var obs = {
-        editor_what: {
-          on: function(evt, func){func()},
-          getData: function(){return 42}
-        }
-      };
+      var obs = create_obs("what")
       var store = create_store();
-
       spyOn(store, 'dispatch');
       // when
       clara.admin_edit_rule_dispatcher.please(store, obs);
