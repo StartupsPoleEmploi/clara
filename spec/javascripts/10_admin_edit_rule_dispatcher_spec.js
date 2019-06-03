@@ -3,6 +3,25 @@ describe("admin_edit_rule_dispatcher.js", function() {
 
   describe(".please", function() {
 
+
+    it("Dispatch WHAT_CHANGED if what changed", function() {
+      // given
+      var store = create_store(); spyOn(store, "dispatch");
+      // when
+      clara.admin_edit_rule_dispatcher.please(store, {editor_what:create_ckeditor("what")});
+      // then
+      expect(store.dispatch).toHaveBeenCalledWith({ type: "WHAT_CHANGED", value: "data_of_what" });
+    });
+
+    it("Dispatch ADDITIONNAL_CONDITIONS_CHANGED if additionnal_conditions changed", function() {
+      // given
+      var store = create_store(); spyOn(store, "dispatch");
+      // when
+      clara.admin_edit_rule_dispatcher.please(store, {editor_additionnal_conditions: create_ckeditor("additionnal_conditions")});
+      // then
+      expect(store.dispatch).toHaveBeenCalledWith({ type: "ADDITIONNAL_CONDITIONS_CHANGED", value: "data_of_additionnal_conditions" });
+    });
+
     function create_ckeditor(name) {
       return {
         on: function(evt, func){
@@ -21,27 +40,6 @@ describe("admin_edit_rule_dispatcher.js", function() {
         dispatch: function(arg1, arg2){}
       }
     }
-
-
-    it("Dispatch WHAT_CHANGED if what changed", function() {
-      // given
-      var fake_ckeditor = create_ckeditor("what"); spyOn(fake_ckeditor, "on").and.callThrough();
-      var store = create_store(); spyOn(store, "dispatch");
-      // when
-      clara.admin_edit_rule_dispatcher.please(store, {editor_what:fake_ckeditor});
-      // then
-      expect(store.dispatch).toHaveBeenCalledWith({ type: "WHAT_CHANGED", value: "data_of_what" });
-    });
-
-    it("Dispatch ADDITIONNAL_CONDITIONS_CHANGED if additionnal_conditions changed", function() {
-      // given
-      var fake_ckeditor = create_ckeditor("additionnal_conditions"); spyOn(fake_ckeditor, "on").and.callThrough();
-      var store = create_store(); spyOn(store, "dispatch");
-      // when
-      clara.admin_edit_rule_dispatcher.please(store, {editor_additionnal_conditions:fake_ckeditor});
-      // then
-      expect(store.dispatch).toHaveBeenCalledWith({ type: "ADDITIONNAL_CONDITIONS_CHANGED", value: "data_of_additionnal_conditions" });
-    });
 
 });
 });
