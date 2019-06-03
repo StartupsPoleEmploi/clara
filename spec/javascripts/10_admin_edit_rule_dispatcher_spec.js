@@ -47,7 +47,30 @@ describe("admin_edit_rule_dispatcher.js", function() {
           { type: "CONTRACT_CHANGED", value: "Aide à la mobilité" }
         );
       });      
-    })
+    });
+
+    describe("title change", function() {
+      beforeEach(function() { 
+        $('body').append('\
+          <input type="text" value="Bon de transport" name="aid[name]" id="aid_name">\
+        ');
+      });
+      afterEach(function() {
+        $("#aid_name").remove();
+      })
+      it("Dispatch TITLE_CHANGED if titled changed", function() {
+        // given
+        var $aid_name = $("#aid_name")
+        var store = create_store(); spyOn(store, "dispatch");
+        // when
+        sut().please(store, {$aid_name: $aid_name});
+        $aid_name.trigger('keyup');
+        // then
+        expect(store.dispatch).toHaveBeenCalledWith(
+          { type: "TITLE_CHANGED", value: "Bon de transport" }
+        );
+      });      
+    });
 
     function sut() {
       return clara.admin_edit_rule_dispatcher;
