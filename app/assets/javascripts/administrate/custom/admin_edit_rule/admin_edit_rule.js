@@ -35,10 +35,18 @@ clara.js_define("edit_admin_aid", {
       // Deep copy of previous state to avoid side-effects
       var newState = _.cloneDeep(state);
 
-      if (action.type === 'SIMULATION_SUBMITTED') {
-        newState.is_registerable = true;
-      } else if (action.type === 'REPLAY') {
-      } else if (action.type === 'INPUT_CHANGED') {
+      if (action.type === 'INIT') {
+        // do nothing
+      } else if (action.type === 'ADDITIONNAL_CONDITIONS_CHANGED') {
+        newState.additionnal_conditions = action.value
+      } else if (action.type === 'HOW_AND_WHEN_CHANGED') {
+        newState.how_and_when = action.value
+      } else if (action.type === 'HOW_MUCH_CHANGED') {
+        newState.how_much = action.value
+      } else if (action.type === 'LIMITATIONS_CHANGED') {
+        newState.limitations = action.value
+      } else if (action.type === 'WHAT_CHANGED') {
+        newState.what = action.value
       }
       return newState;
     };
