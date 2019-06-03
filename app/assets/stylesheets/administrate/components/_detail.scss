@@ -52,6 +52,7 @@ h2.c-detail-item__title {
   text-align: center;
   font-size: 1.3rem;
   line-height: 1.1;
+  margin-top: .2rem;
   @media screen and (max-width: 64em)  {
     // mimic h2 font-size
     font-size: 1.75rem;
@@ -96,4 +97,10 @@ h2.c-detail-item__title {
 .c-detail-wip {
   text-align: center;
   color: grey;
+  margin-top: .3rem;
+}
+
+.c-detail-contract {
+  padding-left: 18px;
+  margin-top: .3rem;
 }
