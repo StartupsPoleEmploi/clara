@@ -85,6 +85,12 @@ clara.js_define("edit_admin_aid", {
     // SUBSCRIBER
     main_store.subscribe(function(){
       var state = _.cloneDeep(main_store.getState());
+      $(".js-title").html(state.title);
+      $(".js-additionnal-conditions").html(state.additionnal_conditions);
+      $(".js-how-and-when").html(state.how_and_when);
+      $(".js-how-much").html(state.how_much);
+      $(".js-limitations").html(state.limitations);
+      $(".js-what").html(state.what);
     });
 
 
