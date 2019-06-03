@@ -11,15 +11,15 @@ button.js-accordion__header {
 }
 
 .js-accordion__header[aria-expanded="true"]:before {
-  content: "- ";
+  content: "∧ ";
 }
 .js-accordion__header[aria-expanded="false"]:before {
-  content: "+ ";
+  content: "∨ ";
 }
 
 .js-accordion__header[aria-selected="true"] {
-  background-color: green;
-  color: white;
+  background-color: #f0f7fb;
+  color: #659aca;
 }
 
 .js-accordion.accordion {
@@ -30,11 +30,12 @@ button.js-accordion__header {
 button.js-accordion__header {
   background-color: white;
   color: #666;
-  border: 1px solid black;
+  border: 1px solid #659aca;
   width: 100%;
   text-align: left;
   border-radius: 0;
 }
 button.js-accordion__header:hover {
-  background-color: grey;
+  background-color: #f0f7fb;
+  color: #659aca;
 }
