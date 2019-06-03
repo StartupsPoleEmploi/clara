@@ -38,3 +38,39 @@ h2.c-detail-item__title {
 .right-panel {
   background-color: #fafafa;
 }
+
+.c-detail-title-inside {
+  background-image: image_url("backgroundrepeat.png");
+  background-size: 240px 240px;
+  background-repeat: repeat-x;  
+  height: 100%;
+  width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  @media screen and (max-width: 64em)  {
+    // mimic h2 font-size
+    font-size: 1.75rem;
+    // mimic h2 line-height
+    line-height: 1.2857142857;
+    justify-content: inherit;
+    text-align: inherit;
+    padding-left: 6rem;
+  } 
+}
+
+.c-detail-title {
+  // mimic h2 font-size
+  font-size: 1.75rem;
+  // mimic h2 line-height
+  line-height: 1.2857142857;
+
+  color: white;
+  height: 64px;
+  background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
+}
