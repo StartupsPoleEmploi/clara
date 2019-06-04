@@ -1,21 +1,3 @@
-<%#
-# New
-
-This view is the template for the "new resource" page.
-It displays a header, and then renders the `_form` partial
-to do the heavy lifting.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Form][1].
-  Contains helper methods to help display a form,
-  and knows which attributes should be displayed in the resource's form.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
-%>
-
-
 <%- title_simple = t("helpers.creation.rule.new_simple_resource", name: display_resource_name(page.resource_name).titleize) %>
 <%- title_composite = t("helpers.creation.rule.new_composite_resource", name: display_resource_name(page.resource_name).titleize) %>
 <%- kind = page.resource.try(:kind) || params[:rule_kind] %>
@@ -31,7 +13,7 @@ to do the heavy lifting.
   </h1>
 
   <div>
-    <%= link_to t("administrate.actions.back"), :back, class: "button" %>
+    <%= link_to "← Retour", admin_rules_path, class: "button" %>
   </div>
 </header>
 
