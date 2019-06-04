@@ -2,6 +2,10 @@
 
 
 
+## 20.25.1 (4/6/2019)
+-[#1281][ADMIN] Bug bouton retour
+
+
 ## 20.25.0 (3/6/2019)
 -[#1252][ADMIN] Prévisualisation
 
