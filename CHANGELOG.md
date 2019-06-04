@@ -2,6 +2,10 @@
 
 
 
+## 20.25.0 (3/6/2019)
+-[#1252][ADMIN] Prévisualisation
+
+
 ## 20.24.0 (28/5/2019)
 -[#1280][ADMIN] Liste des aides avec date d'archivage
 

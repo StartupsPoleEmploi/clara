@@ -51,7 +51,7 @@ a.c-aid-preview {
     border-color: transparent transparent #808080 #808080;
 }
 
-body[data-path="edit_admin_aid_path"] {
+.c-aid-edit-body {
   .field-unit {
     flex-direction: column;
     align-items: flex-start;
@@ -62,8 +62,27 @@ body[data-path="edit_admin_aid_path"] {
     margin-bottom: .3rem;
     width: auto;
   }
+  .field-unit--ckeditor .field-unit__field {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 .main-content__body.c-aid-edit-body {
   padding-left: 0;
+  display: flex;
 }
+
+.c-aid-edit-body__child.left-panel {
+  width: 50%;
+  height: 35rem;
+  overflow: auto;
+}
+
+.c-aid-edit-body__child.right-panel {
+  width: 50%;
+  margin-left: 1rem;
+  height: 35rem;
+  overflow: auto;
+}
+

@@ -4,10 +4,14 @@ ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start do
   add_filter %r{^/test/}
+  track_files '{app/services,app/view_objects}/*.rb'
 end
 
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'mocha/minitest'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

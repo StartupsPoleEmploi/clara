@@ -1,0 +1,114 @@
+.c-detail-item {
+  background-color: white;
+  border-radius: 1.2px;
+  padding: 9px;
+  margin: 9px;
+}
+
+.c-detail-item + .c-detail-item {
+  margin-top: space(4);
+}
+
+h2.c-detail-item__title {
+  margin-bottom: space(3);
+  // mimic h3
+  font-size: 1.5rem;
+  // mimic h3
+  line-height: 1.25;
+}
+
+
+.c-detail-item__text {
+  font-size: 12px;
+}
+
+.c-detail-item-remark__content {
+  font-size: 12px;
+}
+.c-detail-list {
+  margin-right: space(5);
+  a {
+    color: blue;
+  }
+  a:hover {
+    color: darkblue;
+  }
+}
+
+// "md" value of gridlex vars
+@media screen and (max-width: 64em)  {
+  .c-detail-list {
+    margin-left: space(3);
+    margin-right: space(3);
+  } 
+}
+
+.right-panel {
+  background-color: #fafafa;
+}
+
+.c-detail-title-inside {
+  background-image: image_url("backgroundrepeat.png");
+  background-size: 240px 240px;
+  background-repeat: repeat-x;  
+  height: 100%;
+  width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 18px;
+  text-align: center;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  margin-top: .2rem;
+  @media screen and (max-width: 64em)  {
+    // mimic h2 font-size
+    font-size: 1.75rem;
+    // mimic h2 line-height
+    line-height: 1.2857142857;
+    justify-content: inherit;
+    text-align: inherit;
+    padding-left: 6rem;
+  } 
+}
+
+.c-detail-title {
+  // mimic h2 font-size
+  font-size: 1.75rem;
+  // mimic h2 line-height
+  line-height: 1.2857142857;
+
+  color: white;
+  height: 64px;
+  background: linear-gradient(270.07deg, #00C1B6 -15.61%, #136EB5 100.96%);
+}
+
+.c-detail-item-remark {
+  padding: 9px;
+  margin: 9px;
+  background-color: white;
+  border-radius: 1.2px;
+  background-color: #f0f7fc;
+  border: 1px solid #80b9db;
+  display: flex;
+}
+
+.c-detail-item-remark__content {
+  padding-left: 1rem;
+}
+
+.c-detail-item-remark__svg {
+  max-width: 35px;
+  min-width: 35px;
+}
+
+.c-detail-wip {
+  text-align: center;
+  color: grey;
+  margin-top: .3rem;
+}
+
+.c-detail-contract {
+  padding-left: 18px;
+  margin-top: .3rem;
+}

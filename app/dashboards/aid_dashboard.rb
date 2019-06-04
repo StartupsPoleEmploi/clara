@@ -81,8 +81,8 @@ class AidDashboard < Administrate::BaseDashboard
     :need_filters,
     :archived_at,
     :what,
-    :how_much,
     :additionnal_conditions,
+    :how_much,
     :how_and_when,
     :limitations,
   ].freeze
