@@ -4,8 +4,8 @@ clara.js_define("admin_edit_rule", {
     return $(".js-aid-edition").exists();
   },
 
-  please: function() {
-
+  
+  please: /* istanbul ignore next */ function () {
     // QuickNDirty jQuery
     $("#aid_archived_at").attr("placeholder", "JJ/MM/AAAA");
     $(".c-aid-record").click(function(event){
