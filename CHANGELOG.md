@@ -2,6 +2,10 @@
 
 
 
+## 20.26.0 (6/6/2019)
+-[#1225][ADMIN] Nettoyage CKEditor
+
+
 ## 20.25.1 (4/6/2019)
 -[#1281][ADMIN] Bug bouton retour
 

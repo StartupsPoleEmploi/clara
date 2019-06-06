@@ -12,6 +12,11 @@ clara.js_define("admin_edit_rule", {
       $("#modify-aid").click();
     });
 
+    //Clean CKEDitor
+    setTimeout(function() {
+      clara.admin_edit_rule_clean_ckeditor.please();
+    },1000);
+
     // Redux
     var observables = {      
       editor_additionnal_conditions: CKEDITOR.instances['aid_additionnal_conditions'],

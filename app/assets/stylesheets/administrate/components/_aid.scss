@@ -86,3 +86,11 @@ a.c-aid-preview {
   overflow: auto;
 }
 
+.cke_toolbar_separator + .cke_toolbar_separator {
+  display: none;
+}
+
+div.cke_dialog_tabs {
+  margin-left: 2rem;
+}
+
