@@ -60,8 +60,10 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         var $protocol_gdparent = $protocol.parent().parent()
         $protocol_gdparent.css("padding-left", "0")
         $protocol_gdparent.parent().closest("td").css("padding-left", "0")
+        $("option[value='http://']").parent().css("width", "100px !important")
         $("option[value='ftp://']").remove();
         $("option[value='news://']").remove();
+        $("option:contains('<other>')").remove();
 
         var $disp_txt = $("label:contains('Display Text')");
         $disp_txt.text("Texte affiché")
@@ -100,7 +102,13 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $(".cke_dialog_ui_button:contains('Cancel')").text("Annuler").append("&nbsp;").prepend("&nbsp;")
 
         // change title
-
+        var $at = $("label:contains('Advisory Title')");
+        var $td_at = $at.closest("td");
+        $td_at.next("td").css("visibility", "collapse");
+        $td_at.closest("tr").parent().closest("tr").nextAll("tr").css("visibility", "collapse");
+        $td_at.closest("table").parent().closest("table").parent().closest("table").find("tr").first().css("visibility", "collapse");
+        $at.text("Titre (Balise \"title\" HTML)")
+        $at.parent().find("input").css("width", "250px")
 
       });
 
