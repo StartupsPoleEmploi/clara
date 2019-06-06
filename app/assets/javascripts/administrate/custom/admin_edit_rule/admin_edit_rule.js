@@ -14,44 +14,7 @@ clara.js_define("admin_edit_rule", {
 
     //Clean CKEDitor
     setTimeout(function() {
-      $(".cke_button__removeformat").remove();
-      $(".cke_button__italic").remove();
-      $(".cke_button__underline").remove();
-      $(".cke_button__strike").remove();
-      $(".cke_button__subscript").remove();
-      $(".cke_button__superscript").remove();
-
-      $(".cke_combo__styles").parent().remove(); // Styles, format, font
-      
-      // $(".cke_button__numberedlist_icon").parent().remove();
-      // $(".cke_button__justifyleft").parent().parent().remove();
-      $(".cke_button__creatediv").remove();
-      $(".cke_button__blockquote").remove();
-      $(".cke_button__numberedlist").remove();
-      $(".cke_button__outdent").remove();
-      $(".cke_button__indent").remove();
-      $(".cke_button__justifycenter").remove();
-      $(".cke_button__justifyright").remove();
-      $(".cke_button__justifyblock").remove();
-      $(".cke_button__unlink").remove();
-      $(".cke_button__anchor").remove();
-
-      $(".cke_button__image_icon").parent().parent().remove();
-      $(".cke_button__source").parent().parent().remove();
-      $(".cke_button__bgcolor").parent().parent().remove();
-      $(".cke_button__paste").parent().parent().remove();
-
-
-      $(".cke_button__bold").each(function(e){
-        var $to_move = $(this).parent().parent();
-        var $cke_toolbar = $to_move.parent().parent();
-        var $link_button = $cke_toolbar.find(".cke_button__link").parent().parent();
-        $to_move.appendTo($link_button);
-      })
-
-      // var $b = $(".cke_button__bold").parent().parent()
-      // var $l = $(".cke_button__link").parent().parent()
-      // $b.appendTo($l);
+      clara.admin_edit_rule_clean_ckeditor.please();
     },1000);
 
     // Redux
