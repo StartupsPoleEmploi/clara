@@ -12,6 +12,36 @@ clara.js_define("admin_edit_rule", {
       $("#modify-aid").click();
     });
 
+    //Clean CKEDitor
+    setTimeout(function() {
+      $(".cke_button__removeformat").remove();
+      $(".cke_button__italic").remove();
+      $(".cke_button__underline").remove();
+      $(".cke_button__strike").remove();
+      $(".cke_button__subscript").remove();
+      $(".cke_button__superscript").remove();
+
+      $(".cke_combo__styles").parent().remove(); // Styles, format, font
+      
+      // $(".cke_button__numberedlist_icon").parent().remove();
+      // $(".cke_button__justifyleft").parent().parent().remove();
+      $(".cke_button__creatediv").remove();
+      $(".cke_button__blockquote").remove();
+      $(".cke_button__numberedlist").remove();
+      $(".cke_button__outdent").remove();
+      $(".cke_button__indent").remove();
+      $(".cke_button__justifycenter").remove();
+      $(".cke_button__justifyright").remove();
+      $(".cke_button__justifyblock").remove();
+      $(".cke_button__unlink").remove();
+      $(".cke_button__anchor").remove();
+
+      $(".cke_button__image_icon").parent().parent().remove();
+      $(".cke_button__source").parent().parent().remove();
+      $(".cke_button__bgcolor").parent().parent().remove();
+      $(".cke_button__paste").parent().parent().remove();
+    },1000);
+
     // Redux
     var observables = {      
       editor_additionnal_conditions: CKEDITOR.instances['aid_additionnal_conditions'],
