@@ -53,12 +53,18 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $("a.cke_dialog_tab[title='Upload']").remove();
         $("a[title='Browse Server']").parent().parent().remove();
         
-        var $protocol = $("label:contains('Protocol')").parent()
-        var $protocol_parent = $protocol.parent()
-        $protocol_parent.css("padding-left", "0")
-        $protocol_parent.parent().closest("td").css("padding-left", "0")
+        var $protocol = $("label:contains('Protocol')")
+        $protocol.text("Protocole")
+        var $protocol_gdparent = $protocol.parent().parent()
+        $protocol_gdparent.css("padding-left", "0")
+        $protocol_gdparent.parent().closest("td").css("padding-left", "0")
+        $("option[value='ftp://']").remove();
+        $("option[value='news://']").remove();
 
-        var $td_txt_lnk = $("label:contains('Display Text')").parent().parent();
+        var $disp_txt = $("label:contains('Display Text')");
+        $disp_txt.text("Texte affiché")
+        var $td_txt_lnk = $disp_txt.parent().parent();
+        $td_txt_lnk.find("input").css("width", "250px");
         var $div_lnk_typ = $("label:contains('Link Type')").parent();
         $div_lnk_typ.appendTo($td_txt_lnk);
         $td_txt_lnk.css("display", "flex");
