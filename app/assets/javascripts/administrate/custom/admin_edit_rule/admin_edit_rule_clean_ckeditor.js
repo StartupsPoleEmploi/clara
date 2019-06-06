@@ -73,8 +73,21 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $div_lnk_typ.css("visibility", "hidden");
 
         $("label:contains('Target')").text("Ouverture de fenêtre");
+        var $target_select = $("option[value='_blank']").parent();
+        $target_select.css("width", "250px !important")
 
-
+        $target_select.find("option").each(function(e){
+          var $that = $(this);
+          var val = $that.attr("value");
+          console.log(val)
+          if (val === "_blank") {
+            $that.text("Nouvelle fenêtre (_blank)")
+          } else if (val === "_self") {
+            $that.text("Même fenêtre (_self)")
+          } else {
+            $that.remove();
+          }
+        });
       });
 
   }
