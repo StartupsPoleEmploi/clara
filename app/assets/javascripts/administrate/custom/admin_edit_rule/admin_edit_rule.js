@@ -40,6 +40,18 @@ clara.js_define("admin_edit_rule", {
       $(".cke_button__source").parent().parent().remove();
       $(".cke_button__bgcolor").parent().parent().remove();
       $(".cke_button__paste").parent().parent().remove();
+
+
+      $(".cke_button__bold").each(function(e){
+        var $to_move = $(this).parent().parent();
+        var $cke_toolbar = $to_move.parent().parent();
+        var $link_button = $cke_toolbar.find(".cke_button__link").parent().parent();
+        $to_move.appendTo($link_button);
+      })
+
+      // var $b = $(".cke_button__bold").parent().parent()
+      // var $l = $(".cke_button__link").parent().parent()
+      // $b.appendTo($l);
     },1000);
 
     // Redux
