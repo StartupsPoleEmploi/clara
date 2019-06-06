@@ -52,6 +52,7 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         var $focused = $(':focus');
         if ($focused.hasClass("cke_specialchar")) {
           $(".cke_dialog_title").text("Caractères spéciaux");
+          $("a[title='#']").focus()
         } else {
           $(".cke_dialog_title").text("Lien");
         }
@@ -131,7 +132,6 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $c.insertAfter($lasttr)
         var $lb = $("a[title='Bullet']").last()
         $lb.replaceWith($("a[title='%']"))
-        // $("a[title='#']").focus()
 
       });
 
