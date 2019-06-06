@@ -50,6 +50,11 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $("a.cke_dialog_tab[title='Upload']").remove();
         $("a[title='Browse Server']").parent().parent().remove();
 
+        var $td_txt_lnk = $("label:contains('Display Text')").parent().parent();
+        var $div_lnk_typ = $("label:contains('Link Type')").parent();
+        $div_lnk_typ.appendTo($td_txt_lnk);
+        $td_txt_lnk.css("display", "flex");
+        $div_lnk_typ.hide();
       });
 
   }
