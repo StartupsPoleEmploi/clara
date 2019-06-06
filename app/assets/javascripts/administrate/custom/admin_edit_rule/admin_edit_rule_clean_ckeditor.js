@@ -52,6 +52,11 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $(".cke_dialog_title").text("Lien");
         $("a.cke_dialog_tab[title='Upload']").remove();
         $("a[title='Browse Server']").parent().parent().remove();
+        
+        var $protocol = $("label:contains('Protocol')").parent()
+        var $protocol_parent = $protocol.parent()
+        $protocol_parent.css("padding-left", "0")
+        $protocol_parent.parent().closest("td").css("padding-left", "0")
 
         var $td_txt_lnk = $("label:contains('Display Text')").parent().parent();
         var $div_lnk_typ = $("label:contains('Link Type')").parent();
