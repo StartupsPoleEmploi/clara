@@ -49,9 +49,12 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $("a.cke_dialog_tab[title='Link Info']").text("Affichage");
         $("a.cke_dialog_tab[title='Target']").text("Fenêtre");
         $("a.cke_dialog_tab[title='Advanced']").text("Avancé");
-        // if ($(".cke_dialog_tab").exists()) {
-        //   $(".cke_dialog_title").text("Lien");
-        // }
+        var $focused = $(':focus');
+        if ($focused.hasClass("cke_specialchar")) {
+          $(".cke_dialog_title").text("Caractères spéciaux");
+        } else {
+          $(".cke_dialog_title").text("Lien");
+        }
         $("a.cke_dialog_tab[title='Upload']").remove();
         $("a[title='Browse Server']").parent().parent().remove();
         
@@ -109,6 +112,26 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $td_at.closest("table").parent().closest("table").parent().closest("table").find("tr").first().css("visibility", "collapse");
         $at.text("Titre (Balise \"title\" HTML)")
         $at.parent().find("input").css("width", "250px")
+
+        // special chars
+        $(".cke_specialchar").each(function(e){
+          var $this = $(this);
+          if ($this.text().indexOf("•") < 0 && $this.text().indexOf("#") < 0 && $this.text().indexOf("€") < 0 && $this.text().indexOf("%") < 0) {
+            $this.remove()
+          }
+        })
+        $(".cke_dark_background").each(function (e) {
+          var $this = $(this);
+          if (_.isBlank($this.text())) {
+            $this.remove();
+          }
+        })
+        var $c = $("a[title='Bullet']").closest("tr").clone()
+        var $lasttr = $("a[title='Bullet']").closest("tr")
+        $c.insertAfter($lasttr)
+        var $lb = $("a[title='Bullet']").last()
+        $lb.replaceWith($("a[title='%']"))
+        // $("a[title='#']").focus()
 
       });
 
