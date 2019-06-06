@@ -47,9 +47,11 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
 
       $(document).on('focusin.modal', function (e) {
         $("a.cke_dialog_tab[title='Link Info']").text("Affichage");
-        $("a.cke_dialog_tab[title='Target']").text("Cible");
+        $("a.cke_dialog_tab[title='Target']").text("Fenêtre");
         $("a.cke_dialog_tab[title='Advanced']").text("Avancé");
-        $(".cke_dialog_title").text("Lien");
+        // if ($(".cke_dialog_tab").exists()) {
+        //   $(".cke_dialog_title").text("Lien");
+        // }
         $("a.cke_dialog_tab[title='Upload']").remove();
         $("a[title='Browse Server']").parent().parent().remove();
         
@@ -69,6 +71,10 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $div_lnk_typ.appendTo($td_txt_lnk);
         $td_txt_lnk.css("display", "flex");
         $div_lnk_typ.css("visibility", "hidden");
+
+        $("label:contains('Target')").text("Ouverture de fenêtre");
+
+
       });
 
   }
