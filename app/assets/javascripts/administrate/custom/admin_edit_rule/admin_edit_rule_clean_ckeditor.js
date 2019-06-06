@@ -79,7 +79,6 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
         $target_select.find("option").each(function(e){
           var $that = $(this);
           var val = $that.attr("value");
-          console.log(val)
           if (val === "_blank") {
             $that.text("Nouvelle fenêtre (_blank)")
           } else if (val === "_self") {
@@ -88,6 +87,21 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
             $that.remove();
           }
         });
+
+        // remove empty rows
+        $("table").find("tr").each(function(){
+          var $this = $(this);
+          if (_.isBlank($this.text())) {
+            $this.remove();
+          }
+        });
+
+        // change buttons
+        $(".cke_dialog_ui_button:contains('Cancel')").text("Annuler").append("&nbsp;").prepend("&nbsp;")
+
+        // change title
+
+
       });
 
   }
