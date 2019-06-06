@@ -2,6 +2,10 @@
 
 
 
+## 20.27.0 (7/6/2019)
+-[#1269][ADMIN] Reliquats modifications aides
+
+
 ## 20.26.0 (6/6/2019)
 -[#1225][ADMIN] Nettoyage CKEditor
 
