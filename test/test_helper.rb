@@ -1,5 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 
+require 'rspec/mocks/minitest_integration'
+
 # Coverage, may slow down suite
 require 'simplecov'
 SimpleCov.start do
