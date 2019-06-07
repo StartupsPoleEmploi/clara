@@ -33,45 +33,20 @@ class IsZrrCallTest < ActiveSupport::TestCase
     res = IsZrr.new.call(44220)
     assert_equal("non", res)
   end
-
-  # test ".call, didn't found a ZRR amongst existing => non" do
-  #   #given
-  #   f = mock('object');f.expects(:fetch).with("zrrs").yields
-  #   Rails.expects(:cache).returns(f)
-  #   v = mock('object');v.expects(:value).returns("69320,55320")
-  #   Zrr.expects(:first).returns(v)
-  #   Zrr.expects(:first).returns(v)
-  #   #when
-  #   res = IsZrr.new.call("44220")
-  #   #then
-  #   assert_equal("non", res)
-  # end
-
-  # test ".call, ZRR wasnt setupped => non" do
-  #   #given
-  #   f = mock('object');f.expects(:fetch).with("zrrs").yields
-  #   Rails.expects(:cache).returns(f)
-  #   Zrr.expects(:first).returns(nil)
-  #   #when
-  #   res = IsZrr.new.call("44220")
-  #   #then
-  #   assert_equal("non", res)
-  # end
-
-  # test ".call, do not have 5 digits => nil" do
-  #   #given
-  #   #when
-  #   res = IsZrr.new.call(893)
-  #   #then
-  #   assert_nil(res)
-  # end
-
-  # test ".call, wrong type => nil" do
-  #   #given
-  #   #when
-  #   res = IsZrr.new.call([])
-  #   #then
-  #   assert_nil(res)
-  # end
+  test "Call without 5 digit is not allowed" do
+    #given
+    is_zrr = IsZrr.new
+    #when
+    #then
+    assert_nil(is_zrr.call(nil))
+    assert_nil(is_zrr.call(1234))
+    assert_nil(is_zrr.call(12345.0))
+    assert_nil(is_zrr.call([1,2,3,4]))
+    assert_nil(is_zrr.call({}))
+    assert_nil(is_zrr.call(""))
+    assert_nil(is_zrr.call("5"))
+    assert_nil(is_zrr.call("1234"))
+    assert_nil(is_zrr.call("abcde"))
+  end
 
 end
