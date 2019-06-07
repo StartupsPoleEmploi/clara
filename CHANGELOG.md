@@ -2,6 +2,10 @@
 
 
 
+## 20.27.0 (7/6/2019)
+-[#902][UX] Mention facultative plus visible
+
+
 ## 20.26.1 (7/6/2019)
 -[#1225][ADMIN] Bug liste à puce en prévisualisation
 
