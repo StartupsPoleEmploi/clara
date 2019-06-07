@@ -2,6 +2,10 @@
 
 
 
+## 20.26.1 (7/6/2019)
+-[#1225][ADMIN] Nettoyage CKEditor
+
+
 ## 20.26.0 (6/6/2019)
 -[#1225][ADMIN] Nettoyage CKEditor
 
