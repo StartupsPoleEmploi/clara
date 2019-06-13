@@ -18,8 +18,9 @@ button.js-accordion__header {
 }
 
 .js-accordion__header[aria-selected="true"] {
-  background-color: #f0f7fb;
-  color: #659aca;
+  background-color: #f0f7fc;
+  color: #136eb5;
+  font-weight: 700;
 }
 
 .js-accordion.accordion {
@@ -30,12 +31,13 @@ button.js-accordion__header {
 button.js-accordion__header {
   background-color: white;
   color: #666;
-  border: 1px solid #659aca;
+  border: 1px solid #136eb5;
   width: 100%;
   text-align: left;
   border-radius: 0;
+  font-weight: 400;
 }
 button.js-accordion__header:hover {
-  background-color: #f0f7fb;
-  color: #659aca;
+  background-color: #f0f7fc;
+  color: #136eb5;
 }
