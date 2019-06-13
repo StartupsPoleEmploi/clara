@@ -41,3 +41,16 @@ button.js-accordion__header:hover {
   background-color: #f0f7fc;
   color: #136eb5;
 }
+
+.accordion__panel {
+  border: 1px solid #bad8ec;
+  padding: .2rem;
+}
+
+.field-unit.accordion__panel {
+  margin-bottom: 0;
+}
+
+.c-aid-edit-body .accordion__panel .field-unit__label {
+  margin-left: 0;
+}
