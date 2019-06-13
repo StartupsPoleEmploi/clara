@@ -2,7 +2,11 @@
 
 
 
-## 20.28.0 (12/6/2019)
+## 20.29.0 (14/6/2019)
+-[#1269][ADMIN] Reliquats liste aides
+
+
+## 20.28.0 (13/6/2019)
 -[#1255][ADMIN] Reliquats liste rubriques
 
 
