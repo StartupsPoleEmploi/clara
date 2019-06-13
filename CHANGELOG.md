@@ -2,6 +2,10 @@
 
 
 
+## 20.28.0 (12/6/2019)
+-[#1255][ADMIN] Reliquats liste rubriques
+
+
 ## 20.27.1 (7/6/2019)
 -[#902b][UX] Mention facultative plus visible
 

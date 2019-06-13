@@ -17,5 +17,5 @@ as a localized date & time string.
 %>
 
 <% if field.data %>
-  <%= field.datetime.split(" ").take(3).join(" ") %>
+  <%= ((I18n.t :abbr_month_names, :scope => :date)[field.data.month]) + " " +  field.data.year.to_s %>
 <% end %>
