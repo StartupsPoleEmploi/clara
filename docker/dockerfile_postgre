@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 RUN apt-get update; \
-    apt-get -y install postgresql postgresql-contrib
+    apt-get -y install postgresql-9.5 postgresql-contrib-9.5
 
 
 RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr

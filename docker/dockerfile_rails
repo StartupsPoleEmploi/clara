@@ -38,4 +38,13 @@ RUN mkdir /usr/local/rbenv/plugins \
 # install Rails
 RUN gem install rails -v ${RAILS_VERSION}
 
-
+# Run app
+# EXPOSE 8080
+# ADD ./.. /home/app/
+# RUN useradd -m -s /bin/bash app
+# WORKDIR /home/app
+# RUN bundle install
+# RUN ln -sf /config/database.yml $HOME/config/database.yml
+# RUN ln -sf $HOME/log /log
+# RUN echo '#!/bin/bash \n bundle exec rake db:migrate; RAILS_ENV=production bundle exec puma -S /var/www/ara/shared/tmp/sockets/puma.state  -C "unix:///var/www/ara/shared/tmp/sockets/puma.sock"  --pidfile /var/www/ara/shared/tmp/pids/puma.pid start' > /home/app/startup.sh; \
+#     chmod +x /home/app/startup.sh

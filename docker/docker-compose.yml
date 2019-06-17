@@ -20,4 +20,4 @@ services:
     restart: always
     build:
       context: .
-      dockerfile: dockerfile_postgre
+      dockerfile: dockerfile_postgre_9_5_17
