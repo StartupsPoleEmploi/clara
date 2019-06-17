@@ -1,0 +1,11 @@
+FROM ubuntu:16.04
+
+RUN apt-get update; \
+    apt-get -y install postgresql postgresql-contrib
+
+
+RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr
+
+CMD chown -R postgres /var/lib/postgresql; \
+    service postgresql start; \
+    sleep infinity

@@ -1,0 +1,23 @@
+version: "3"
+services:
+  nginx: 
+    hostname: nginx
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_nginx
+    ports:
+      - "80:80"
+
+  rails: 
+    hostname: rails
+    build:
+      context: .
+      dockerfile: dockerfile_rails
+
+  postgre: 
+    hostname: postgre
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_postgre
