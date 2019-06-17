@@ -14,10 +14,12 @@ services:
     build:
       context: .
       dockerfile: dockerfile_rails
+    volumes:
+      - "./..:/home/app:ro"
 
   postgre: 
     hostname: postgre
     restart: always
     build:
       context: .
-      dockerfile: dockerfile_postgre_9_5_17
+      dockerfile: dockerfile_postgre
