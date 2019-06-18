@@ -12,23 +12,25 @@ services:
     build:
       context: .
       dockerfile: dockerfile_rails
+    user: root
     volumes:
-      # - '../../clara/docker/gemfiles:/home/clara'
       # Git repository of the application
       - '../../clara:/var/git/ara.git'
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
-      # Need to connect itself to ssh to deploy app locally
-      # - '../../clara/docker/.ssh:/root/.ssh'
     links:
       - db
     command: >
       sh -c "cd /var/git/ara.git &&
              bundle install &&
              service ssh restart &&
+             ssh-keygen -t rsa -f ~/.ssh/id_rsa && 
+             cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && 
+             chmod og-wx ~/.ssh/authorized_keys && 
              echo 'My app launched !!!' &&
              sleep infinity"
 
+# bundle exec mina production2 setup && 
 # See https://stackoverflow.com/a/16651742/2595513
   
   db:
