@@ -1,25 +1,34 @@
-version: "3"
+version: "2.3"
 services:
-  nginx: 
-    hostname: nginx
-    restart: always
-    build:
-      context: .
-      dockerfile: dockerfile_nginx
-    ports:
-      - "80:80"
+  # nginx: 
+  #   restart: always
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile_nginx
+  #   ports:
+  #     - "80:80"
 
   rails: 
-    hostname: rails
     build:
       context: .
       dockerfile: dockerfile_rails
     volumes:
-      - "./..:/home/app:ro"
+      - '../../clara:/home/clara'
+    links:
+      - db
+    command: >
+      sh -c "cd /home/clara &&
+             gem install pg -v '0.21.0' --source 'https://rubygems.org/'
+             bundle install && 
+             bundle exec mina -v"
+  
+  db:
+    image: postgres:9.5.17
+    ports:
+      - "5432:5432"
 
-  postgre: 
-    hostname: postgre
-    restart: always
-    build:
-      context: .
-      dockerfile: dockerfile_postgre
+  # postgre: 
+  #   restart: always
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile_postgre

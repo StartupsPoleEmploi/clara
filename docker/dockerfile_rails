@@ -38,7 +38,17 @@ RUN mkdir /usr/local/rbenv/plugins \
 # install Rails
 RUN gem install rails -v ${RAILS_VERSION}
 
-RUN bundle exec mina -v
+# wait...
+CMD sleep infinity
+
+
+# RUN mkdir /home/app
+# WORKDIR /home/app
+
+# RUN pwd
+# RUN ls /home
+# RUN pwd
+# RUN bundle exec mina -v
 # Run app
 # EXPOSE 8080
 # ADD ./.. /home/app/
