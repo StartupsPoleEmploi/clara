@@ -8,19 +8,23 @@ services:
   #   ports:
   #     - "80:80"
 
-  rails: 
+  myapp: 
     build:
       context: .
       dockerfile: dockerfile_rails
     volumes:
-      - '../../clara:/home/clara'
+      - '../../clara:/var/git/ara.git'
     links:
       - db
     command: >
-      sh -c "cd /home/clara &&
-             gem install pg -v '0.21.0' --source 'https://rubygems.org/'
-             bundle install && 
-             bundle exec mina -v"
+      sh -c "cd /var/git/ara.git &&
+             gem install rake && 
+             gem install mina && 
+             gem install mina-multistage && 
+             gem install mina-puma && 
+             mina --version &&
+             echo 'Hello world'
+             mina production2 setup"
   
   db:
     image: postgres:9.5.17

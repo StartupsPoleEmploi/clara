@@ -4,7 +4,6 @@ FROM ubuntu:16.04
 ENV RBENV_ROOT=/usr/local/rbenv
 ENV PATH=$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV RUBY_VERSION=2.6.0
-ENV RAILS_VERSION=5.2.2.1
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -36,7 +35,16 @@ RUN mkdir /usr/local/rbenv/plugins \
     && rbenv rehash
 
 # install Rails
-RUN gem install rails -v ${RAILS_VERSION}
+# RUN gem install rails -v ${RAILS_VERSION}
+
+# Utilities
+RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr ssh
+
+# for postgres
+RUN apt-get install -y libpq-dev
+
+# for nokogiri
+RUN apt-get install -y libxml2-dev libxslt1-dev
 
 # wait...
 CMD sleep infinity
