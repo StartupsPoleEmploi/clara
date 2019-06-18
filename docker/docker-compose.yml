@@ -14,17 +14,22 @@ services:
       dockerfile: dockerfile_rails
     volumes:
       - '../../clara:/var/git/ara.git'
+      - '../../clara/.env:/home/clara/.env'
     links:
       - db
     command: >
       sh -c "cd /var/git/ara.git &&
-             gem install rake && 
-             gem install mina && 
-             gem install mina-multistage && 
-             gem install mina-puma && 
-             mina --version &&
-             echo 'Hello world'
-             mina production2 setup"
+             bundle install &&
+             echo 'My app launched !!!' &&
+             sleep infinity"
+# sh -c "cd /var/git/ara.git &&
+#        gem install rake && 
+#        gem install mina && 
+#        gem install mina-multistage && 
+#        gem install mina-puma && 
+#        mina --version &&
+#        echo 'Hello world'
+#        mina production2 setup"
   
   db:
     image: postgres:9.5.17
