@@ -19,7 +19,7 @@ services:
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
       # Need to connect itself to ssh to deploy app locally
-      - '../../clara/docker/.ssh:/root/.ssh'
+      # - '../../clara/docker/.ssh:/root/.ssh'
     links:
       - db
     command: >
