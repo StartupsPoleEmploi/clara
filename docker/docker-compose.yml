@@ -20,24 +20,14 @@ services:
     command: >
       sh -c "cd /var/git/ara.git &&
              bundle install &&
+             service ssh restart &&
              echo 'My app launched !!!' &&
              sleep infinity"
-# sh -c "cd /var/git/ara.git &&
-#        gem install rake && 
-#        gem install mina && 
-#        gem install mina-multistage && 
-#        gem install mina-puma && 
-#        mina --version &&
-#        echo 'Hello world'
-#        mina production2 setup"
+
+# See https://stackoverflow.com/a/16651742/2595513
   
   db:
     image: postgres:9.5.17
     ports:
       - "5432:5432"
 
-  # postgre: 
-  #   restart: always
-  #   build:
-  #     context: .
-  #     dockerfile: dockerfile_postgre

@@ -46,11 +46,15 @@ RUN apt-get install -y libpq-dev
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
-RUN mkdir /home/clara
+
+RUN mkdir -p /home/clara
 WORKDIR /home/clara
+
 RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
 RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
 RUN bundle install
+
+RUN echo "root:root" | chpasswd
 
 # wait...
 CMD sleep infinity
