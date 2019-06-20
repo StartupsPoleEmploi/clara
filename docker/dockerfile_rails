@@ -72,7 +72,6 @@ RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemf
 RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
 RUN bundle install
 
-
 # wait...
 CMD sleep infinity
 

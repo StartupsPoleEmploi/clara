@@ -19,7 +19,7 @@ services:
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
     links:
-      - dbd
+      - db3
     command: >
       sh -c "cd /var/git/ara.git &&
              bundle install &&
@@ -39,7 +39,7 @@ services:
   #     dockerfile: dockerfile_postgre
   #   ports:
   #     - "5432:5432"
-  dbd:
+  db3:
     image: postgres:9.5.17
     ports:
       - "5432:5432"
