@@ -18,6 +18,11 @@ services:
       - '../../clara:/var/git/ara.git'
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
+    environment:
+      - RAILS_ENV=production
+      - ARA_DATABASE_HOST=db3
+    ports:
+      - "3000:3000"
     links:
       - db3
     command: >
