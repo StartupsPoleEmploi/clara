@@ -19,7 +19,7 @@ services:
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
     links:
-      - db
+      - dbd
     command: >
       sh -c "cd /var/git/ara.git &&
              bundle install &&
@@ -33,8 +33,22 @@ services:
 # bundle exec mina production2 setup && 
 # See https://stackoverflow.com/a/16651742/2595513
   
-  db:
+  # db:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile_postgre
+  #   ports:
+  #     - "5432:5432"
+  dbd:
     image: postgres:9.5.17
     ports:
       - "5432:5432"
+    volumes:
+      - "./database/etc/postgresql/9.5/main/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf"
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    # command: >
+    #   sh -c "psql --version &&
+    #          sleep infinity"
+
 
