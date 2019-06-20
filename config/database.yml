@@ -83,5 +83,5 @@ production:
   url: <%= ENV['DATABASE_URL'] %>
   database: <%= ENV['ARA_DATABASE_NAME'] %>
   username: <%= ENV['ARA_DATABASE_USER'] %>
-  host: localhost
+  host: <%= ENV['ARA_DATABASE_HOST'] || "localhost" %>
   password: <%= ENV['ARA_DATABASE_PASSWORD'] %>

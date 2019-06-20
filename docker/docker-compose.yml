@@ -24,7 +24,7 @@ services:
       sh -c "cd /var/git/ara.git &&
              bundle install &&
              service ssh restart &&
-             ssh-keygen -t rsa -f ~/.ssh/id_rsa && 
+             yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N '' && 
              cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && 
              chmod og-wx ~/.ssh/authorized_keys && 
              echo 'My app launched !!!' &&

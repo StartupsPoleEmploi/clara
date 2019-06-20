@@ -5,6 +5,7 @@ ENV RBENV_ROOT=/usr/local/rbenv
 ENV PATH=$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV RUBY_VERSION=2.6.0
 
+# Prerequisites
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake curl git zlib1g-dev \
@@ -15,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxslt-dev groff zip \
     pkg-config ca-certificates \
     && apt-get clean
+
 
 # Install rbenv
 RUN git clone https://github.com/rbenv/rbenv.git /usr/local/rbenv \
@@ -37,23 +39,38 @@ RUN mkdir /usr/local/rbenv/plugins \
 # install Rails
 # RUN gem install rails -v ${RAILS_VERSION}
 
+# executable JS is required
+RUN cd ~\
+    && curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh\
+    && bash nodesource_setup.sh\
+    && apt install nodejs\
+    && nodejs -v
+
 # Utilities
 RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr ssh openssh-server
+
+# See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
+RUN apt-get install -y tzdata
 
 # for postgres
 RUN apt-get install -y libpq-dev
 
+
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
+# See https://medium.com/magnetis-backstage/how-to-cache-bundle-install-with-docker-7bed453a5800
+# ADD ./../Gemfile* /tmp/
+# WORKDIR /tmp
+# RUN bundle install
 
 RUN echo "root:root" | chpasswd
 RUN mkdir -p /home/clara
 WORKDIR /home/clara
 
-# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
-# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
-# RUN bundle install
+RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
+RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
+RUN bundle install
 
 
 # wait...
