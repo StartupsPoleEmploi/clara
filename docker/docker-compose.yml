@@ -22,8 +22,6 @@ services:
       - '../../clara/docker/.ssh:/root/.ssh'
     environment:
       - RAILS_ENV=production
-      - ARA_DATABASE_HOST=db3
-      - ARA_DISABLE_SSL=no
     ports:
       - "3000:3000"
     links:
