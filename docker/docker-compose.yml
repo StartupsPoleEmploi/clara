@@ -1,0 +1,62 @@
+version: "2.3"
+services:
+  # nginx: 
+  #   restart: always
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile_nginx
+  #   ports:
+  #     - "80:80"
+
+  myapp: 
+    build:
+      context: .
+      dockerfile: dockerfile_rails
+    user: root
+    volumes:
+      # Git repository of the application
+      - '../../clara:/var/git/ara.git'
+      # Environment variables
+      - '../../clara/.env:/home/clara/.env'
+      # Ssh config
+      - '../../clara/docker/.ssh:/root/.ssh'
+    environment:
+      - RAILS_ENV=production
+      - ARA_DATABASE_HOST=db3
+      - ARA_DISABLE_SSL=no
+    ports:
+      - "3000:3000"
+    links:
+      - db3
+    command: >
+      sh -c "cd /var/git/ara.git &&
+             bundle install &&
+             service ssh restart &&
+             yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N '' && 
+             cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && 
+             chmod og-wx ~/.ssh/authorized_keys && 
+             echo 'My app launched !!!' &&
+             sleep infinity"
+
+# bundle exec mina production2 setup && 
+# See https://stackoverflow.com/a/16651742/2595513
+  
+  # db:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile_postgre
+  #   ports:
+  #     - "5432:5432"
+  db3:
+    image: postgres:9.5.17
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./database/etc/postgresql/9.5/main/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf"
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    # command: >
+    #   sh -c "psql --version &&
+    #          sleep infinity"
+
+

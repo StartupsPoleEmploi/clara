@@ -1,0 +1,2 @@
+CREATE USER ara WITH SUPERUSER;
+CREATE DATABASE ara_production OWNER ara;
