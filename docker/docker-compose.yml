@@ -18,6 +18,8 @@ services:
       - '../../clara:/var/git/ara.git'
       # Environment variables
       - '../../clara/.env:/home/clara/.env'
+      # Ssh config
+      - '../../clara/docker/.ssh:/root/.ssh'
     environment:
       - RAILS_ENV=production
       - ARA_DATABASE_HOST=db3
