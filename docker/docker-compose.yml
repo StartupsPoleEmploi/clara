@@ -1,14 +1,20 @@
 version: "2.3"
 services:
 
+
+
   reverseproxy: 
     image: nginx:1.10.3
     container_name: production_nginx
     volumes:
-      - '../docker/reverseproxy/etc/nginx/sites-enabled:/etc/nginx/sites-enabled'
+      - '../docker/reverseproxy/default.conf:/etc/nginx/conf.d/default.conf'
     ports:
       - 80:80
       - 443:443
+    environment:
+      - ARA_NGINX_IP=localhost
+    depends_on:
+      - myapp
 
   myapp: 
     build:
@@ -26,7 +32,7 @@ services:
       - RAILS_ENV=production
     ports:
       - "3000:3000"
-    links:
+    depends_on:
       - db3
     command: >
       sh -c "cd /var/git/ara.git &&
@@ -37,6 +43,8 @@ services:
              chmod og-wx ~/.ssh/authorized_keys && 
              echo 'My app launched !!!' &&
              sleep infinity"
+
+
 
   db3:
     image: postgres:9.5.17
