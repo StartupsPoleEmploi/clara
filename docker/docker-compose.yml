@@ -1,15 +1,15 @@
 version: "2.3"
+
 services:
 
-  volumes:
-    datavolume: {}
 
   reverseproxy: 
     image: nginx:1.10.3
     container_name: production_nginx
     volumes:
       - '../docker/reverseproxy/default.conf:/etc/nginx/conf.d/default.conf'
-      - datavolume:/var/www/ara/current
+    # volumes_from:
+    #   - myapp
     ports:
       - 80:80
       - 443:443
@@ -30,8 +30,7 @@ services:
       - '../../clara/.env:/home/clara/.env'
       # Ssh config
       - '../../clara/docker/.ssh:/root/.ssh'
-      # Current deployed app
-      - datavolume:/var/www/ara/current
+      # - '../../clara/docker/myapp:/var/www/ara/current'
     environment:
       - RAILS_ENV=production
     ports:
