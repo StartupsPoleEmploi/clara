@@ -31,7 +31,7 @@ services:
       - '../../clara/.env:/home/clara/.env'
       # Ssh config
       - '../../clara/docker/.ssh:/root/.ssh'
-      # - '../../clara/docker/myapp:/var/www/ara/current/public'
+      - '../../clara/docker/myapp:/var/www/ara'
     environment:
       - RAILS_ENV=production
     ports:
