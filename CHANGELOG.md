@@ -2,6 +2,10 @@
 
 
 
+## 20.30.2 (25/6/2019)
+-[#1295c][TECH] Docker en prod 2
+
+
 ## 20.30.1 (21/6/2019)
 -[#1295b][TECH] Docker en prod
 
