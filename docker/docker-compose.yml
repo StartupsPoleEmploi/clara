@@ -1,5 +1,7 @@
 version: "2.3"
 
+volumes:
+  shared:
 
 services:
 
@@ -8,7 +10,7 @@ services:
     container_name: clara_nginx
     volumes:
       - '../docker/reverseproxy/default.conf:/etc/nginx/conf.d/default.conf'
-      - '../../clara/docker/myapp:/var/www/ara'
+      - 'shared:/var/www/ara'
     ports:
       - 80:80
       - 443:443
@@ -24,7 +26,7 @@ services:
     volumes:
       - '../../clara:/var/git/ara.git'
       - '../../clara/.env:/home/clara/.env'
-      - '../../clara/docker/myapp:/var/www/ara'
+      - 'shared:/var/www/ara'
     ports:
       - "3000:3000"
     depends_on:
