@@ -74,7 +74,9 @@ RUN echo "yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''" >> ./allow_local_tun
 RUN echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 
-RUN echo "cd /var/git/ara.git" > ./deploy.sh
+RUN echo "#!bin/bash" > ./deploy.sh
+RUN echo "" >> ./deploy.sh
+RUN echo "cd /var/git/ara.git" >> ./deploy.sh
 RUN echo "bundle exec mina production2 setup" >> ./deploy.sh
 RUN echo "bundle exec mina production2 deploy" >> ./deploy.sh
 

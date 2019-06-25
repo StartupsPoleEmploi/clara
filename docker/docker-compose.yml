@@ -18,6 +18,7 @@ services:
     depends_on:
       - myapp
 
+
   myapp: 
     container_name: clara_app
     build:
@@ -37,6 +38,7 @@ services:
              cd /var/git/ara.git && bundle install --without development test undefined &&
              echo 'My app launched !!!' && sleep infinity"
 
+
   db3:
     container_name: clara_db
     image: postgres:9.5.17
@@ -45,5 +47,6 @@ services:
     volumes:
       - "./db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf"
       - ../docker/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - '../../clara/latest.dump:/home/dumped/latest.dump'
       - vol_data:/var/lib/postgresql/data
     restart: always
