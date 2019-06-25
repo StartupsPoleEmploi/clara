@@ -6,7 +6,7 @@ volumes:
 
 services:
 
-  reverseproxy: 
+  srv_nginx: 
     image: nginx:1.10.3
     container_name: clara_nginx
     volumes:
@@ -16,10 +16,10 @@ services:
       - 80:80
       - 443:443
     depends_on:
-      - myapp
+      - srv_app
 
 
-  myapp: 
+  srv_app: 
     container_name: clara_app
     build:
       context: .
@@ -32,14 +32,14 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db3
+      - srv_db
     command: >
-      sh -c "chmod u+x ./deploy.sh && chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
+      sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
              cd /var/git/ara.git && bundle install --without development test undefined &&
              echo 'My app launched !!!' && sleep infinity"
 
 
-  db3:
+  srv_db:
     container_name: clara_db
     image: postgres:9.5.17
     ports:
