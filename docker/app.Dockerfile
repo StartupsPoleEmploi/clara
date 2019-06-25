@@ -62,9 +62,6 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 RUN mkdir /root/.ssh/
 RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
-# will be able to install deployment gems only
-RUN gem install bundle-only
-
 RUN echo "root:root" | chpasswd
 RUN mkdir -p /home/clara
 WORKDIR /home/clara
@@ -73,12 +70,6 @@ RUN echo "service ssh restart" > ./allow_local_tunnel.sh
 RUN echo "yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''" >> ./allow_local_tunnel.sh
 RUN echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
-
-RUN echo "#!bin/bash" > ./deploy.sh
-RUN echo "" >> ./deploy.sh
-RUN echo "cd /var/git/ara.git" >> ./deploy.sh
-RUN echo "bundle exec mina production2 setup" >> ./deploy.sh
-RUN echo "bundle exec mina production2 deploy" >> ./deploy.sh
 
 # Pre-load deployment gems
 RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
