@@ -55,22 +55,28 @@ RUN apt-get install -y tzdata
 # for postgres
 RUN apt-get install -y libpq-dev
 
-
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
+
+# For local tunneling
+RUN mkdir /root/.ssh/
+RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
 # See https://medium.com/magnetis-backstage/how-to-cache-bundle-install-with-docker-7bed453a5800
 # ADD ./../Gemfile* /tmp/
 # WORKDIR /tmp
 # RUN bundle install
 
+# will be able to install deployment gems only
+RUN gem install bundle-only
+
 RUN echo "root:root" | chpasswd
 RUN mkdir -p /home/clara
 WORKDIR /home/clara
 
-RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
-RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
-RUN bundle install
+# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
+# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
+# RUN bundle install
 
 # wait...
 CMD sleep infinity

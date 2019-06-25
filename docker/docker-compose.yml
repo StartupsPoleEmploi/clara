@@ -1,54 +1,38 @@
 version: "2.3"
 
 
-# volumes:
-#   datavolume: {}
-
-
 services:
-
 
   reverseproxy: 
     image: nginx:1.10.3
-    container_name: production_nginx
+    container_name: clara_nginx
     volumes:
       - '../docker/reverseproxy/default.conf:/etc/nginx/conf.d/default.conf'
-      # - datavolume:/var/www/ara
       - '../../clara/docker/myapp:/var/www/ara'
-    # volumes_from:
-    #   - myapp
     ports:
       - 80:80
       - 443:443
-    environment:
-      - ARA_NGINX_IP=localhost
     depends_on:
       - myapp
 
   myapp: 
+    container_name: clara_app
     build:
       context: .
-      dockerfile: dockerfile_rails
+      dockerfile: app.Dockerfile
     user: root
     volumes:
-      # Git repository of the application
       - '../../clara:/var/git/ara.git'
-      # Environment variables
       - '../../clara/.env:/home/clara/.env'
-      # Ssh config
-      - '../../clara/docker/.ssh:/root/.ssh'
-      # Deployed app
-      # - datavolume:/var/www/ara
+      # - '../../clara/docker/.ssh:/root/.ssh'
       - '../../clara/docker/myapp:/var/www/ara'
-    environment:
-      - RAILS_ENV=production
     ports:
       - "3000:3000"
     depends_on:
       - db3
     command: >
       sh -c "cd /var/git/ara.git &&
-             bundle install &&
+             bundle install --without development test undefined &&
              service ssh restart &&
              yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N '' && 
              cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && 
@@ -56,9 +40,8 @@ services:
              echo 'My app launched !!!' &&
              sleep infinity"
 
-
-
   db3:
+    container_name: clara_db
     image: postgres:9.5.17
     ports:
       - "5432:5432"
@@ -66,6 +49,3 @@ services:
       - "./database/etc/postgresql/9.5/main/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf"
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
-
-
-
