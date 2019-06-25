@@ -62,11 +62,6 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 RUN mkdir /root/.ssh/
 RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
-# See https://medium.com/magnetis-backstage/how-to-cache-bundle-install-with-docker-7bed453a5800
-# ADD ./../Gemfile* /tmp/
-# WORKDIR /tmp
-# RUN bundle install
-
 # will be able to install deployment gems only
 RUN gem install bundle-only
 
@@ -74,28 +69,16 @@ RUN echo "root:root" | chpasswd
 RUN mkdir -p /home/clara
 WORKDIR /home/clara
 
-# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
-# RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
-# RUN bundle install
+RUN echo "service ssh restart" > ./allow_local_tunnel.sh
+RUN echo "yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''" >> ./allow_local_tunnel.sh
+RUN echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
+RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
+
+# Pre-load deployment gems
+RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile -o Gemfile
+RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.29.0/Gemfile.lock -o Gemfile.lock
+RUN bundle install --without development test undefined 
 
 # wait...
 CMD sleep infinity
 
-
-# RUN mkdir /home/app
-# WORKDIR /home/app
-
-# RUN pwd
-# RUN ls /home
-# RUN pwd
-# RUN bundle exec mina -v
-# Run app
-# EXPOSE 8080
-# ADD ./.. /home/app/
-# RUN useradd -m -s /bin/bash app
-# WORKDIR /home/app
-# RUN bundle install
-# RUN ln -sf /config/database.yml $HOME/config/database.yml
-# RUN ln -sf $HOME/log /log
-# RUN echo '#!/bin/bash \n bundle exec rake db:migrate; RAILS_ENV=production bundle exec puma -S /var/www/ara/shared/tmp/sockets/puma.state  -C "unix:///var/www/ara/shared/tmp/sockets/puma.sock"  --pidfile /var/www/ara/shared/tmp/pids/puma.pid start' > /home/app/startup.sh; \
-#     chmod +x /home/app/startup.sh

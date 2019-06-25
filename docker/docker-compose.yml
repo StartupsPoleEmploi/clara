@@ -24,21 +24,15 @@ services:
     volumes:
       - '../../clara:/var/git/ara.git'
       - '../../clara/.env:/home/clara/.env'
-      # - '../../clara/docker/.ssh:/root/.ssh'
       - '../../clara/docker/myapp:/var/www/ara'
     ports:
       - "3000:3000"
     depends_on:
       - db3
     command: >
-      sh -c "cd /var/git/ara.git &&
-             bundle install --without development test undefined &&
-             service ssh restart &&
-             yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N '' && 
-             cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys && 
-             chmod og-wx ~/.ssh/authorized_keys && 
-             echo 'My app launched !!!' &&
-             sleep infinity"
+      sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
+             cd /var/git/ara.git && bundle install --without development test undefined &&
+             echo 'My app launched !!!' && sleep infinity"
 
   db3:
     container_name: clara_db
