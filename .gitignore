@@ -42,4 +42,4 @@ ara
 
 coverage
 
-/config/deploy/*
+# /config/deploy/*
