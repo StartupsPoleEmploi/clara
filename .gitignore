@@ -43,4 +43,4 @@ ara
 coverage
 
 /config/deploy/*
-/docker/myapp/
+/docker/deployed/
