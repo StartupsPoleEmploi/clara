@@ -1,9 +1,0 @@
-FROM ubuntu:16.04
-
-RUN apt-get update; \
-    apt-get -y install nginx
-
-RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr
-
-CMD service nginx start && \
-    sleep infinity
