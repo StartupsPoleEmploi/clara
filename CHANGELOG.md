@@ -2,6 +2,14 @@
 
 
 
+## 20.30.7 (27/6/2019)
+-[#1295h][TECH] Docker final de recette
+
+
+## 20.30.6 (27/6/2019)
+-[#1295g][TECH] Docker de recette, gemfile sans groupe undefined
+
+
 ## 20.30.5 (27/6/2019)
 -[#1295f][TECH] Docker de recette, bug 1
 
