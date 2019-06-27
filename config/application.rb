@@ -7,7 +7,7 @@ Bundler.require(*Rails.groups)
 module Mae
   class Application < Rails::Application
     config.public_file_server.enabled = true
-    config.assets.precompile += Ckeditor.assets
+    # config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )
     config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)

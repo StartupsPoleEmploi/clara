@@ -2,6 +2,10 @@
 
 
 
+## 20.30.5 (27/6/2019)
+-[#1295f][TECH] Docker de recette, bug 1
+
+
 ## 20.30.4 (27/6/2019)
 -[#1295e][TECH] Docker de recette
 
