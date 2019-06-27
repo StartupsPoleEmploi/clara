@@ -7,65 +7,64 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "5.2.2.1", group: "undefined"
-gem "puma", "~> 3.0", group: "undefined"
-gem "uglifier", ">= 1.3.0", group: "undefined"
-gem "jbuilder", "~> 2.5", group: "undefined"
-gem "rack-attack", group: "undefined"
-gem "mailjet", group: "undefined"
-gem "kaminari", group: "undefined"
-gem "pg_search", group: "undefined"
-gem "rack", ">= 2.0.6", group: "undefined"
+gem "rails", "5.2.2.1"
+gem "puma", "~> 3.0"
+gem "uglifier", ">= 1.3.0"
+gem "jbuilder", "~> 2.5"
+gem "rack-attack"
+gem "mailjet"
+gem "kaminari"
+gem "pg_search"
+gem "rack", ">= 2.0.6"
 
-gem "haml", "~> 5", group: "undefined"
-gem "haml-rails", group: "undefined"
-gem "sass-rails", "~> 5.0", group: "undefined"
-gem "pg", "~> 0.18", group: "undefined"
-gem "friendly_id", "~> 5.1.0", group: "undefined"
-gem "loofah", ">= 2.2.3", group: "undefined"
+gem "haml", "~> 5"
+gem "haml-rails"
+gem "sass-rails", "~> 5.0"
+gem "pg", "~> 0.18"
+gem "friendly_id", "~> 5.1.0"
+gem "loofah", ">= 2.2.3"
 
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby], group: "undefined"
-gem "autoprefixer-rails", group: "undefined"
-gem "active_type", group: "undefined"
-gem "bulk_insert", group: "undefined"
-gem "gon", group: "undefined"
-gem "whenever", require: false, group: "undefined"
-gem "rails-html-sanitizer", ">= 1.0.4" # explicitly to avoid vulnerability issue, group: "undefined"
-gem "rubyzip", "~> 1.2.2" # explicitly to avoid vulnerability issue, group: "undefined"
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "autoprefixer-rails"
+gem "active_type"
+gem "bulk_insert"
+gem "gon"
+gem "whenever", require: false
+gem "rails-html-sanitizer", ">= 1.0.4" # explicitly to avoid vulnerability issue
+gem "rubyzip", "~> 1.2.2" # explicitly to avoid vulnerability issue
 
-gem "clipboard" # debug purpose only, group: "undefined"
-gem "actionpack-page_caching", group: "undefined"
-gem "awesome_print", group: "undefined"
-gem "seed_dump", group: "undefined"
+gem "clipboard" # debug purpose only
+gem "actionpack-page_caching"
+gem "awesome_print"
+gem "seed_dump"
 
 ## Devops
-gem "newrelic_rpm", group: "undefined"
-gem "sentry-raven", group: "undefined"
-gem "ruby-prof", group: "undefined"
-gem "oj", group: "undefined"
-gem "bundle-only", group: "undefined"
+gem "newrelic_rpm"
+gem "sentry-raven"
+gem "ruby-prof"
+gem "oj"
+gem "bundle-only"
 
 
 # Admin
-gem "paper_trail", "~> 9.0.0", group: "undefined"
-gem "administrate", group: "undefined"
+gem "paper_trail", "~> 9.0.0"
+gem "administrate"
 
-gem "administrate-field-ckeditor", "~> 0.0.8", group: "undefined"
-# gem "omniauth-google-oauth2", group: "undefined"
+gem "administrate-field-ckeditor", "~> 0.0.8"
 
 gem "mina", require: false, group: "deployment"
 gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma', group: "deployment"
 gem "mina-multistage", require: false, group: "deployment"
-gem "climate_control", group: "undefined"
-gem "fuubar", group: "undefined"
-gem "dotenv-rails", group: "undefined"
-gem "knock", group: "undefined"
-gem "bcrypt", "~> 3.1.7", group: "undefined"
-gem "google-api-client", group: "undefined"
-gem "i18n-js", group: "undefined"
-gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable', group: "undefined"
-gem "clearance", group: "undefined"
-gem "bootsnap", group: "undefined"
+gem "climate_control"
+gem "fuubar"
+gem "dotenv-rails"
+gem "knock"
+gem "bcrypt", "~> 3.1.7"
+gem "google-api-client"
+gem "i18n-js"
+gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
+gem "clearance"
+gem "bootsnap"
 
 group :development, :test do
   gem "byebug", platform: :mri
