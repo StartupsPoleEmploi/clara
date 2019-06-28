@@ -2,6 +2,10 @@
 
 
 
+## 20.31.0 (28/6/2019)
+-[#1296][FEATURE] écriture inclusive
+
+
 ## 20.30.7 (27/6/2019)
 -[#1295h][TECH] Docker final de recette
 
