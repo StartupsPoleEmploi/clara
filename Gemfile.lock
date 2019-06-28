@@ -100,8 +100,6 @@ GEM
     builder (3.2.3)
     bulk_insert (1.7.0)
       activerecord (>= 3.2.0)
-    bundle-only (0.2.0)
-      bundler (~> 1.11)
     byebug (11.0.0)
     capybara (3.14.0)
       addressable
@@ -487,7 +485,6 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   bulk_insert
-  bundle-only
   byebug
   capybara
   clearance

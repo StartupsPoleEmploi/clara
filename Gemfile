@@ -43,7 +43,6 @@ gem "newrelic_rpm"
 gem "sentry-raven"
 gem "ruby-prof"
 gem "oj"
-gem "bundle-only"
 
 
 # Admin
