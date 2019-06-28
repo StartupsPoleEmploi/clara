@@ -8,7 +8,7 @@ feature 'inscription question' do
     # when
     visit new_inscription_question_path
     # then
-    expect(find('.c-question-title').text).to eq "Depuis combien de temps êtes-vous inscrit(e) à Pôle emploi ?"
+    expect(find('.c-question-title').text).to eq "Depuis combien de temps êtes-vous inscrit•e à Pôle emploi ?"
   end
 
   scenario 'User can go back to previous question' do 
