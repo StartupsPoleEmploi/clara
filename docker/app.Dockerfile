@@ -1,21 +1,11 @@
 # See https://stackoverflow.com/a/47642594/2595513
 FROM ruby:2.6.0
 
-ENV RBENV_ROOT=/usr/local/rbenv
-ENV PATH=$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV RUBY_VERSION=2.6.0
 
 # Utilities
 RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server
-
-
-# Install rbenv
-RUN git clone https://github.com/rbenv/rbenv.git /usr/local/rbenv \
-    && echo '# rbenv setup' > /etc/profile.d/rbenv.sh \
-    && echo 'export RBENV_ROOT=/usr/local/rbenv' >> /etc/profile.d/rbenv.sh \
-    && echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
-    && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh \
-    && chmod +x /etc/profile.d/rbenv.sh
 
 # executable JS is required
 RUN cd ~\
