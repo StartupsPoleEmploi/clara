@@ -1,8 +1,6 @@
-# See https://stackoverflow.com/a/47642594/2595513
 FROM ruby:2.6.0
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV RUBY_VERSION=2.6.0
 
 # Utilities
 RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server
