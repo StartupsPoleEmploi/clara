@@ -1,8 +1,4 @@
-require 'mina/rbenv'
 require 'mina/puma'
-
-
-set :rbenv_path, "/usr/local/rbenv"
 
 set :rails_env, 'production'
 
@@ -26,12 +22,6 @@ set :puma_pid, '/var/www/ara/shared/tmp/pids/puma.pid'
 set :puma_state, '/var/www/ara/shared/tmp/sockets/puma.state'
 set :pumactl_socket, '/var/www/ara/shared/tmp/sockets/pumactl.sock'
 set :puma_port, 3000
-
-task :environment do
-  # Can be called many times
-  puts 'setting env for production'
-  invoke :'rbenv:load'
-end
 
 task :deploy do
 

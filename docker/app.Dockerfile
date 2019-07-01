@@ -1,43 +1,9 @@
-# See https://stackoverflow.com/a/47642594/2595513
-FROM ubuntu:16.04
+FROM ruby:2.6.0
 
-ENV RBENV_ROOT=/usr/local/rbenv
-ENV PATH=$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV RUBY_VERSION=2.6.0
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# Prerequisites
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    cmake curl git zlib1g-dev \
-    libssl-dev libreadline-dev \
-    libyaml-dev libxml2-dev \
-    libxslt-dev libsqlite3-dev \
-    python-dev libxml2-dev \
-    libxslt-dev groff zip \
-    pkg-config ca-certificates \
-    && apt-get clean
-
-
-# Install rbenv
-RUN git clone https://github.com/rbenv/rbenv.git /usr/local/rbenv \
-    && echo '# rbenv setup' > /etc/profile.d/rbenv.sh \
-    && echo 'export RBENV_ROOT=/usr/local/rbenv' >> /etc/profile.d/rbenv.sh \
-    && echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> /etc/profile.d/rbenv.sh \
-    && echo 'eval "$(rbenv init -)"' >> /etc/profile.d/rbenv.sh \
-    && chmod +x /etc/profile.d/rbenv.sh
-
-
-# install ruby-build
-RUN mkdir /usr/local/rbenv/plugins \
-    && git clone https://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-build \
-    && /usr/local/rbenv/plugins/ruby-build/install.sh \
-    && rbenv install ${RUBY_VERSION} \
-    && rbenv global ${RUBY_VERSION} \
-    && gem install bundler \
-    && rbenv rehash
-
-# install Rails
-# RUN gem install rails -v ${RAILS_VERSION}
+# Utilities
+RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server
 
 # executable JS is required
 RUN cd ~\
@@ -45,9 +11,6 @@ RUN cd ~\
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
-
-# Utilities
-RUN apt-get -y install sudo vim telnet iputils-ping language-pack-fr ssh openssh-server
 
 # See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
 RUN apt-get install -y tzdata
