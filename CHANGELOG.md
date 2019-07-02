@@ -2,6 +2,10 @@
 
 
 
+## 20.31.2 (2/7/2019)
+-[#1295j][FEATURE] docker par dossier
+
+
 ## 20.31.1 (1/7/2019)
 -[#1295i][FEATURE] docker simplifié
 
