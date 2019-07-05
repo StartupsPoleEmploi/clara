@@ -2,7 +2,11 @@
 
 
 
-## 20.31.2 (5/7/2019)
+## 20.31.4 (5/7/2019)
+-[#1295l][FEATURE] docker, orchestration
+
+
+## 20.31.3 (5/7/2019)
 -[#1295k][FEATURE] docker, dossier privé
 
 
