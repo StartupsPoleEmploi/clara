@@ -2,6 +2,10 @@
 
 
 
+## 20.31.2 (5/7/2019)
+-[#1295k][FEATURE] docker, dossier privé
+
+
 ## 20.31.2 (2/7/2019)
 -[#1295j][FEATURE] docker par dossier
 
