@@ -40,6 +40,9 @@ ara
 # Ignore temp file
 /public/activated_models.txt
 
+# Everything private remains private
+/private/*
+
 coverage
 
 # /config/deploy/*
