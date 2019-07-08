@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 20.33.0 (9/7/2019)
+-[#1300][FEATURE] ux banner
+
+
 ## 20.32.0 (8/7/2019)
--[#1297][FEATURE] bug empty contract
+-[#1297][BUG] bug empty contract
 
 
 ## 20.31.2 (5/7/2019)
