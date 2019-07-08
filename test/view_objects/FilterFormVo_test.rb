@@ -57,6 +57,24 @@ class FilterFormVoTest < ActiveSupport::TestCase
     assert_equal(false, res)
   end
 
+  test ".errored? returns true if field is errored" do
+    #given
+    sut = FilterFormVo.new(nil, {page: errored_page})
+    #when
+    res = sut.errored?(name_attr)
+    #then
+    assert_equal(true, res)
+  end
+
+  test ".errored? returns false if field is NOT errored" do
+    #given
+    sut = FilterFormVo.new(nil, {page: errored_page})
+    #when
+    res = sut.errored?(ordre_affichage_attr)
+    #then
+    assert_equal(false, res)
+  end
+
   def nominal_page
     Marshal.load(serialized_nominal_page_object)
   end
