@@ -35,7 +35,7 @@ services:
       - srv_db
     command: >
       sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
-             cd /var/git/ara.git && bundle install --without development test &&
+             cd /var/git/ara.git && bundle install --without development test undefined &&
              echo 'My app launched !!!' && sleep infinity"
 
 
@@ -47,6 +47,6 @@ services:
     volumes:
       - './db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
       - './db/init.sql:/docker-entrypoint-initdb.d/init.sql'
-      - '../private/latest.dump:/home/dumped/latest.dump'
+      - '../latest.dump:/home/dumped/latest.dump'
       - vol_data:/var/lib/postgresql/data
     restart: always
