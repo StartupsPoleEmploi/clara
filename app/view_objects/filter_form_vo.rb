@@ -1,19 +1,11 @@
-class ContractForm < ViewObject
+class FilterFormVo < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
-    @mandatory_list = ["name", "description", "ordre_affichage"]
-    @errors_h = _init_errors_messages(@page)
+    @mandatory_list = ["name", "description"]
+    @errors_h = _init_errors_messages
     @attr_id = @page.resource.attributes["id"].to_s 
-  end
-
-  def additional_label(attribute)
-    ""
-  end
-
-  def hide_field?(attribute)
-    false
   end
 
   def attr_name(attribute)
@@ -25,8 +17,8 @@ class ContractForm < ViewObject
     @errors_h.key?(actual_attr) && @errors_h[actual_attr].size > 0
   end
 
-  def mandatory?(attr_name)
-    @mandatory_list.include?(attr_name)
+  def mandatory?(attribute)
+    @mandatory_list.include?(attr_name(attribute))
   end
 
   def error_message(attribute)
@@ -34,8 +26,8 @@ class ContractForm < ViewObject
     @errors_h[actual_attr][0]
   end
 
-  def _init_errors_messages(page)
-    res_h = page.resource.errors.messages
+  def _init_errors_messages
+    res_h = @page.resource.errors.messages
     res_h.transform_keys! do |key|
       key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
     end

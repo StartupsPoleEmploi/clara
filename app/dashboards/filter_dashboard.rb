@@ -43,7 +43,6 @@ class FilterDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :name,
     :ordre_affichage,
-    :slug,
     :aids,
     :description,
   ].freeze
