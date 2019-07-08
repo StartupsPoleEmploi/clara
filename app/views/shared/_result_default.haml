@@ -19,9 +19,9 @@
               %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
               #o_all_filters
                 - v.displayed_filters.each_with_index do |a_filter, i|
-                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}", "data-name" => "#{a_filter['name']}"}
+                  .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}", "data-name" => "#{a_filter['slug']}"}
                     %input{:id => "check_#{i}", :type => "checkbox"}/
-                    %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["description"]
+                    %label.u-margin-left-small{"for" => "check_#{i}"}=a_filter["name"]
 
         = render 'shared/result_situation', asker
 
@@ -83,7 +83,7 @@
                             %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["slug"]}=one_filter["name"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
                             %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
         
@@ -129,7 +129,7 @@
                             %p.u-margin-bottom-none=aid["short_description"]
                             %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                               - v.filters_of(aid).each do |one_filter|
-                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                                %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["slug"]}=one_filter["name"]
                           %div{class:"o-layout__item u-1/4 u-text--right"}
                             %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
         
@@ -180,7 +180,7 @@
                               %p.u-margin-bottom-none=aid["short_description"]
                               %ul.o-list-inline.c-resultfilters.u-margin-bottom-none
                                 - v.filters_of(aid).each do |one_filter|
-                                  %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["name"]}=one_filter["description"]
+                                  %li.o-list-inline__item.c-resultfilter.u-margin-top-tiny{"data-name" => one_filter["slug"]}=one_filter["name"]
 
                             %div{class:"o-layout__item u-1/4 u-text--right"}
                               %a.c-btn.c-btn--primary.c-btn--aid{class:"u-padding-vertical-tiny@desktop u-padding-horizontal@desktop", href:"#{v.link_to_aid_detail(aid)}"}  En savoir plus
