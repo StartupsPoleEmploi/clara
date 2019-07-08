@@ -19,7 +19,7 @@ class DetailItemViewObject < ViewObject
 
 
   def actual_content
-    @html_content.html_safe
+    @html_content.to_s.html_safe
   end
 
 end
