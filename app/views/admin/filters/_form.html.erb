@@ -15,7 +15,7 @@
 
   <% page.attributes.each do |attribute| -%>
     <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
-      <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)) %>
+      <%= render_field attribute, f: f, is_mandatory: v.mandatory?(attribute) %>
       <% if v.errored?(attribute) -%>
         <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
           &nbsp;⚠ <%= v.error_message(attribute) %>

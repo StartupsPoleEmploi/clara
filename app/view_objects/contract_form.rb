@@ -6,7 +6,6 @@ class ContractForm < ViewObject
     @mandatory_list = ["name", "description", "ordre_affichage"]
     @errors_h = _init_errors_messages(@page)
     @attr_id = @page.resource.attributes["id"].to_s 
-
   end
 
   def additional_label(attribute)
