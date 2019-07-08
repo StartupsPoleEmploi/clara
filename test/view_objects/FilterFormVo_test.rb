@@ -48,6 +48,15 @@ class FilterFormVoTest < ActiveSupport::TestCase
     assert_equal(true, res)
   end
 
+  test ".mandatory? returns false if field is not mandatory" do
+    #given
+    sut = FilterFormVo.new(nil, {page: nominal_page})
+    #when
+    res = sut.mandatory?(ordre_affichage_attr)
+    #then
+    assert_equal(false, res)
+  end
+
   def nominal_page
     Marshal.load(serialized_nominal_page_object)
   end
