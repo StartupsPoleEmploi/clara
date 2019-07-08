@@ -9,9 +9,6 @@ class DetailItemViewObject < ViewObject
     n = Nokogiri::HTML(@html_content)
     nbsp = Nokogiri::HTML("&nbsp;").text
     n.css('*').each do |node|
-      # p '- - - - - - - - - - - - - - node- - - - - - - - - - - - - - - -' 
-      # pp node
-      # p ''
       txt_without_nbsp =  node.inner_text.gsub(nbsp, "")
       not_displayed = node[:style].to_s.include?("display: none;")
       node.remove if txt_without_nbsp == ''
