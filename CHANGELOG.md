@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 20.32.0 (8/7/2019)
+-[#1297][FEATURE] bug empty contract
+
 
 ## 20.31.2 (5/7/2019)
 -[#1295k][FEATURE] docker, dossier privé
