@@ -1,4 +1,4 @@
-class FilterForm < ViewObject
+class FilterFormVo < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
@@ -6,7 +6,7 @@ class FilterForm < ViewObject
     @mandatory_list = ["name", "description"]
     @errors_h = _init_errors_messages(@page)
     @attr_id = @page.resource.attributes["id"].to_s 
-
+    ap Marshal.dump(@page)
   end
 
   def hide_field?(attribute)
