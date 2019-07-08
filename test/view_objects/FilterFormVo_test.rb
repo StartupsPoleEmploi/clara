@@ -75,6 +75,15 @@ class FilterFormVoTest < ActiveSupport::TestCase
     assert_equal(false, res)
   end
 
+  test ".error_message should be relevant" do
+    #given
+    sut = FilterFormVo.new(nil, {page: errored_page})
+    #when
+    res = sut.error_message(name_attr)
+    #then
+    assert_equal("doit être renseigné(e)", res)
+  end
+
   def nominal_page
     Marshal.load(serialized_nominal_page_object)
   end
