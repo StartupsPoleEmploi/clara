@@ -1,0 +1,19 @@
+.form-actions.is-filters {
+  margin-left: 0;
+}
+
+
+.c-aid-filters-action {
+  margin-right: .5rem;
+}
+
+.c-aid-filters-subheader {
+  display: flex;
+  flex-direction: row;
+  padding-right: 2rem;
+  padding-bottom: 0;
+  padding-top: 1.5rem;
+  &.is-last {
+    padding-top: 0;
+  }
+}
