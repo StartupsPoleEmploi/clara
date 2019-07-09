@@ -30,17 +30,11 @@ class JsonModelsService
 
   def self.custom_filters
     res = JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug, :custom_parent_filter_id ]))
-    p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-    pp res
-    p ''
     res
   end
 
   def self.custom_parent_filters
     res = JSON.parse(CustomParentFilter.all.to_json(:only => [ :id, :slug ]))
-    p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-    pp res
-    p ''
     res
   end
 
