@@ -149,6 +149,21 @@ class ResultSituationTest < ActiveSupport::TestCase
     assert_equal("indisponible", sut.handicap)
   end
 
+  test '.cadre Should respond "oui" when given String is "oui"' do
+    sut = ResultSituation.new(nil, {v_cadre: 'oui'})
+    assert_equal("oui", sut.cadre)
+  end
+  test '.cadre Should respond "non" when given data is sth else than "true"' do
+    sut = ResultSituation.new(nil, {v_cadre: 'rerere'})
+    assert_equal("non", sut.cadre)
+    sut = ResultSituation.new(nil, {v_cadre: Date.new})
+    assert_equal("non", sut.cadre)
+  end
+  test '.cadre Should return "indisponible" when data is not available' do
+    sut = ResultSituation.new(nil, nil)
+    assert_equal("indisponible", sut.cadre)
+  end
+
 
   test '.spectacle Should respond "oui" when given String is "oui"' do
     sut = ResultSituation.new(nil, {v_spectacle: 'oui'})
