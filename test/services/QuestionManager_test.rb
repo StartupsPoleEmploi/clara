@@ -111,4 +111,14 @@ class QuestionManagerTest < ActiveSupport::TestCase
     assert_equal("/other_questions/new", res)
   end
 
+  test ".getNextPath go from other to results" do
+    #given
+    referer = 'other'
+    form = 'the_id'
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/aides?for_id=the_id", res)
+  end
+
 end
