@@ -71,4 +71,44 @@ class QuestionManagerTest < ActiveSupport::TestCase
     assert_equal("/are_questions/new", res)
   end
 
+  test ".getNextPath go from A.R.E to age" do
+    #given
+    referer = 'are'
+    form = Struct.new(:type).new('')
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/age_questions/new", res)
+  end
+
+  test ".getNextPath go from age to grade" do
+    #given
+    referer = 'age'
+    form = Struct.new(:type).new('')
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/grade_questions/new", res)
+  end
+
+  test ".getNextPath go from grade to address" do
+    #given
+    referer = 'grade'
+    form = Struct.new(:type).new('')
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/address_questions/new", res)
+  end
+
+  test ".getNextPath go from address to other" do
+    #given
+    referer = 'address'
+    form = Struct.new(:value).new('')
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/other_questions/new", res)
+  end
+
 end
