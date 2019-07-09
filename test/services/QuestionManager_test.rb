@@ -158,4 +158,69 @@ class QuestionManagerTest < ActiveSupport::TestCase
     assert_equal("/are_questions/new", res)    
   end
 
+  test ".getPreviousPath go from age back to allocation, if asker has are that is not an integer" do
+    #given
+    referer = 'age'
+    asker = Asker.new(v_allocation_value_min: "verybadinput")
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, asker)
+    #then
+    assert_equal("/allocation_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from age back to allocation, if asker has no ARE" do
+    #given
+    referer = 'age'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/allocation_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from ARE back to allocation" do
+    #given
+    referer = 'are'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/allocation_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from allocation back to category" do
+    #given
+    referer = 'allocation'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/category_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from allocation back to inscription page, if category is not applicable" do
+    #given
+    referer = 'allocation'
+    asker = Asker.new(v_category: 'not_applicable')
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, asker)
+    #then
+    assert_equal("/inscription_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from category back to inscription" do
+    #given
+    referer = 'category'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/inscription_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from inscription back to index page" do
+    #given
+    referer = 'inscription'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/", res)    
+  end
+
 end

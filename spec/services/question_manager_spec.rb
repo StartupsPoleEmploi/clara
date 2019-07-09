@@ -116,11 +116,6 @@ feature QuestionManager do
       it { expect(subject).to eq new_allocation_question_path }
     end
 
-    context 'go from age back to allocation' do
-      let(:referer) { 'age' }
-      it { expect(subject).to eq new_allocation_question_path }
-    end
-
     context 'go from A.R.E back to allocation page' do
       let(:referer) { 'are' }
       it { expect(subject).to eq new_allocation_question_path }
