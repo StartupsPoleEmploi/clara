@@ -3,8 +3,7 @@ class ApiUser < ApplicationRecord
   has_secure_password
 
 
-  # See https://stackoverflow.com/questions/5781593/rails-devise-how-do-i-memcache-devises-database-requests-for-the-user-object
-  
+  # See https://stackoverflow.com/questions/5781593/rails-devise-how-do-i-memcache-devises-database-requests-for-the-user-object  
   after_save :invalidate_cache
 
 
