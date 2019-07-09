@@ -2,7 +2,6 @@ require "test_helper"
 
 class QuestionManagerTest < ActiveSupport::TestCase
   
-
   test ".getNextPath empty args, go to inscription screen by default" do
     #given
     #when
@@ -119,6 +118,44 @@ class QuestionManagerTest < ActiveSupport::TestCase
     res = QuestionManager.new.getNextPath(referer, form)
     #then
     assert_equal("/aides?for_id=the_id", res)
+  end
+
+
+  test ".getPreviousPath go from other back to address page" do
+    #given
+    referer = 'other'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/address_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from address back to grade page" do
+    #given
+    referer = 'address'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/grade_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from grade back to age page" do
+    #given
+    referer = 'grade'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/age_questions/new", res)    
+  end
+
+  test ".getPreviousPath go from age back to A.R.E, if asker has are" do
+    #given
+    referer = 'age'
+    asker = Asker.new(v_allocation_value_min: "320")
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, asker)
+    #then
+    assert_equal("/are_questions/new", res)    
   end
 
 end
