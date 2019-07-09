@@ -83,5 +83,13 @@ feature 'age question' do
     # then
     expect(current_path).not_to eq new_age_question_path
   end
+
+  scenario 'Should have a meta viewport' do 
+    # given
+    visit new_age_question_path
+    #when
+    # then
+    expect(page).to have_css 'meta[name="viewport"][content="width=device-width, initial-scale=1.0"]', :visible => false
+  end
   
 end

@@ -71,6 +71,7 @@ feature 'HomeSpec' do
   end
 
   scenario 'Should have a meta viewport' do
-    expect(page).to have_css 'meta[name="viewport"]["width=device-width, initial-scale=1.0"]', :visible => false
+    visit root_path
+    expect(page).to have_css 'meta[name="viewport"][content="width=device-width, initial-scale=1.0"]', :visible => false
   end
 end
