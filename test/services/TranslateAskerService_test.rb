@@ -30,14 +30,13 @@ class TranslateAskerServiceTest < ActiveSupport::TestCase
     assert_equal("33", res[:age])
     assert_equal("RPS_RFPA_RFF_PENSION", res[:allocation_type])
     assert_equal("434", res[:monthly_allocation_value])
-    # assert_equal("non", res.v_cadre)
-    # assert_equal("cat_12345", res.v_category)
-    # assert_equal("niveau_4", res.v_diplome)
-    # assert_equal("moins_d_un_an", res.v_duree_d_inscription)
-    # assert_equal("oui", res.v_handicap)
-    # assert_equal("02004", res.v_location_citycode)
-    # assert_equal("oui", res.v_spectacle)
-    # assert_nil(res.v_zrr)
+    assert_equal("false", res[:executive])
+    assert_equal("categories_12345", res[:category])
+    assert_equal("level_4", res[:diploma])
+    assert_equal("less_than_a_year", res[:inscription_period])
+    assert_equal("true", res[:disabled])
+    assert_equal("02004", res[:location_citycode])
+    assert_equal("true", res[:spectacle])
   end
 
   def realistic_api_asker
