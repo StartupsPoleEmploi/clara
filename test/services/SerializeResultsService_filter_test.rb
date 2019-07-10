@@ -2,6 +2,14 @@ require "test_helper"
 
 class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
   
+  def setup
+    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
+    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
+    allow(JsonModelsService).to receive(:need_filters).and_return(realistic_need_filters)
+    allow(JsonModelsService).to receive(:filters).and_return(realistic_filters)
+  end
+
+
   #
   # NO FILTER
   #
@@ -37,11 +45,6 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
   end
   test '_.filter Is able to filter according to simple filter only, simplest scenario' do
     #given
-    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
-    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
-    allow(JsonModelsService).to receive(:need_filters).and_return(realistic_need_filters)
-    allow(JsonModelsService).to receive(:filters).and_return(realistic_filters)
-
     elies = []
             .push(ely_factory(42, [se_divertir], []))
             .push(ely_factory(43, [], []))
@@ -60,7 +63,6 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
             .push(ely_factory(43, [], []))
     simple_filters = "se-divertir,se-divertir"
     need_filters, custom_filters, custom_parent_filters = nil
-
     #when
     res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
     #then
