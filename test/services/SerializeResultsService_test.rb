@@ -19,8 +19,53 @@ class SerializeResultsServiceTest < ActiveSupport::TestCase
     #when
     res = sut._extract_custom_childrens("parent-a")
     #then
-    assert_equal("children-1,children-2,children-3",res)
+    assert_equal("children-1,children-2", res)
   end
+  
+  test "._extract_custom_childrens Should return empty String if wrong input is given" do
+    #given
+    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
+    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
+    #when
+    res = sut._extract_custom_childrens(Date.new)
+    #then
+    assert_equal("",res)
+  end
+  
+  test "._extract_custom_childrens Should throw error if parent do not exists" do
+    #given
+    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
+    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
+    #then
+    assert_raises NoMethodError do
+      #when
+      sut._extract_custom_childrens("inexisting")
+    end
+  end
+
+  #
+  # NO FILTER
+  #
+  test 'Do not affect elies if no filter is required' do
+    #given
+    elies = []
+            .push(ely_factory(42, [], [], []))
+            .push(ely_factory(43, [], [], []))
+    simple_filters = nil
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
+    #when
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    #then
+    assert_equal(2, res.size)
+    assert_equal(42, res[0]["id"])
+    assert_equal(43, res[1]["id"])
+  end
+
+
+
+
   
   def realistic_custom_parent_filters
     [
