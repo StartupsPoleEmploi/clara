@@ -78,4 +78,30 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     ]
   end
 
+  def contract_types
+    [{
+      "id" => 3,
+      "name" => "Emploi international",
+      "slug" => "emploi-international"
+    }]
+  end
+
+  def aids
+    [{
+      "id" => 34,
+      "name" => "Volontariat de solidarité internationale (VSI)",
+      "slug" => "vsi-volontariat-de-solidarite-internationale",
+      "short_description" => "Missions effectuées en dehors de l'espace économique européen et au sein d'associations agréées",
+      "rule_id" => 61,
+      "ordre_affichage" => 64,
+      "contract_type_id" => 3,
+      "filters" => [{
+        "id" => 7,
+        "slug" => "travailler-a-l-international"
+      }],
+      "custom_filters" => [],
+      "need_filters" => []
+    }]
+  end
+
 end
