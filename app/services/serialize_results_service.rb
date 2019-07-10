@@ -28,24 +28,24 @@ class SerializeResultsService
   end
 
   def api_eligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
-    p '- - - - - - - - - - - - - - asker- - - - - - - - - - - - - - - -' 
-    pp asker
-    p ''
-    p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
-    pp filters
-    p ''
-    p '- - - - - - - - - - - - - - need_filters- - - - - - - - - - - - - - - -' 
-    pp need_filters
-    p ''
-    p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
-    pp custom_filters
-    p ''
-    p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
-    pp custom_parent_filters
-    p ''
-    p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
-    pp custom_parent_filters
-    p ''
+    # p '- - - - - - - - - - - - - - asker- - - - - - - - - - - - - - - -' 
+    # pp asker
+    # p ''
+    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
+    # pp filters
+    # p ''
+    # p '- - - - - - - - - - - - - - need_filters- - - - - - - - - - - - - - - -' 
+    # pp need_filters
+    # p ''
+    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_filters
+    # p ''
+    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_parent_filters
+    # p ''
+    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_parent_filters
+    # p ''
     calculator = AidCalculationService.get_instance(asker)
     _whitelist(_filter(calculator.every_eligible, filters, need_filters, custom_filters, custom_parent_filters))
   end

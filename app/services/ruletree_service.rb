@@ -2,7 +2,13 @@ class RuletreeService
 
   def initialize(stubbed_rules=nil, stubbed_variables=nil)
     @all_rules = stubbed_rules || ActivatedModelsService.instance.rules
+    p '- - - - - - - - - - - - - - @all_rules- - - - - - - - - - - - - - - -' 
+    pp @all_rules
+    p ''
     @all_variables = stubbed_variables || ActivatedModelsService.instance.variables
+    p '- - - - - - - - - - - - - - @all_variables- - - - - - - - - - - - - - - -' 
+    pp @all_variables
+    p ''
   end
 
   def resolve(rule_id, criterion_hash = {}) 

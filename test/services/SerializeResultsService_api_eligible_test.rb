@@ -2,6 +2,17 @@ require "test_helper"
 
 class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
   
+  def setup
+    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(custom_parent_filters)
+    allow(JsonModelsService).to receive(:custom_filters).and_return(custom_filters)
+    allow(JsonModelsService).to receive(:need_filters).and_return(need_filters)
+    allow(JsonModelsService).to receive(:filters).and_return(filters)
+    allow(JsonModelsService).to receive(:rules).and_return(rules)
+    allow(JsonModelsService).to receive(:aids).and_return(aids)
+    allow(JsonModelsService).to receive(:contracts).and_return(contracts)
+    allow(JsonModelsService).to receive(:variables).and_return(variables)
+  end
+
   test '_.api_eligible' do
     #given
     #when
@@ -78,7 +89,18 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     ]
   end
 
-  def contract_types
+  def rules
+    [{
+      "id" => 61,
+      "name" => "r_age_sup_18",
+      "value_eligible" => "17",
+      "variable_id" => 1,
+      "operator_kind" => "more_than",
+      "slave_rules" => []
+    }]
+  end
+
+  def contracts
     [{
       "id" => 3,
       "name" => "Emploi international",
@@ -101,6 +123,18 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
       }],
       "custom_filters" => [],
       "need_filters" => []
+    }]
+  end
+
+  def variables
+    [{
+      "id" => 1,
+      "name" => "v_age",
+      "description" => "",
+      "elements" => "",
+      "name_translation" => "âge",
+      "elements_translation" => "",
+      "variable_kind" => "integer"
     }]
   end
 
