@@ -13,12 +13,16 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     allow(JsonModelsService).to receive(:variables).and_return(variables)
   end
 
-  test '_.api_eligible' do
+  test '_.api_eligible, only one filter' do
     #given
     #when
-    res = SerializeResultsService.get_instance.api_eligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
+    res = SerializeResultsService.get_instance.api_eligible(asker, filters, "", "", "")
     #then
-    assert_equal([], res)
+    assert_equal([vsi], res)
+  end
+
+  def vsi
+    {"name"=>"Volontariat de solidarité internationale (VSI)", "slug"=>"vsi-volontariat-de-solidarite-internationale", "short_description"=>"Missions effectuées en dehors de l'espace économique européen et au sein d'associations agréées", "filters"=>[{"id"=>7, "slug"=>"travailler-a-l-international"}], "custom_filters"=>[], "need_filters"=>[], "contract_type"=>"emploi-international"}
   end
 
   def filters
