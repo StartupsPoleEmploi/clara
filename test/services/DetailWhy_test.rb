@@ -89,6 +89,36 @@ class DetailWhyTest < ActiveSupport::TestCase
     assert_equal('plural-all', sut.uncertain_sentence)
   end
 
+  test ".eligible_sentence returns empty string if ability is not eligible" do
+    local_args = nominal_args
+    local_args[:ability] = "wronginput"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal("", sut.eligible_sentence)
+  end
+
+  test ".eligible_sentence  returns 'single-amongst' if there is only one eligible root_rule amongst many" do
+    local_args = nominal_args
+    local_args[:ability] = "eligible"
+    local_args[:root_rules] = [
+      {:status => "eligible", :name => "r_age_sup_16_et_age_inf_26", :description => "a"},
+      {:status => "uncertain", :name => "r_ass_ou_rsa_ou_aah", :description => "b"},
+    ]
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal('single-amongst', sut.eligible_sentence)
+  end
+
+  test ".eligible_sentence  returns 'plural' if there is many eligible root_rule, but not all" do
+    local_args = nominal_args
+    local_args[:ability] = "eligible"
+    local_args[:root_rules] = [
+      {:status => "eligible", :name => "r_age_sup_16_et_age_inf_26", :description => "a"},
+      {:status => "eligible", :name => "r_ass_ou_rsa_ou_aah", :description => "b"},
+      {:status => "uncertain", :name => "r_age_sup_26_et_inscrit", :description => "c"},
+    ]
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal('plural', sut.eligible_sentence)
+  end
+
   def nominal_args
     {
       :ability => "eligible", 
