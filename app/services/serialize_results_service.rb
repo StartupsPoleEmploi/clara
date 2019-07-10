@@ -77,7 +77,19 @@ class SerializeResultsService
           p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
           pp a
           p ''
-          a.find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+          b=a.find do |active_filter| 
+            # p '- - - - - - - - - - - - - - ely_filter- - - - - - - - - - - - - - - -' 
+            # pp ely_filter
+            # p ''
+            # p '- - - - - - - - - - - - - - active_filter- - - - - - - - - - - - - - - -' 
+            # pp active_filter
+            # p ''
+            active_filter["id"] == ely_filter["id"]
+          end
+          p '- - - - - - - - - - - - - - b- - - - - - - - - - - - - - - -' 
+          pp b
+          p ''
+          b["slug"]
         end
         intersection_array = current_filter_array & filters_array
         !intersection_array.empty?
@@ -87,6 +99,21 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, need_filters, custom_filters, custom_parent_filters)
+    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
+    # pp elies
+    # p ''
+    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
+    # pp filters
+    # p ''
+    # p '- - - - - - - - - - - - - - need_filters- - - - - - - - - - - - - - - -' 
+    # pp need_filters
+    # p ''
+    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_filters
+    # p ''
+    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
+    # pp custom_parent_filters
+    # p ''
     regular_elies              = _find_elies("filters", filters, elies)
     need_elies                 = _find_elies("need_filters", need_filters, elies)
     custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)

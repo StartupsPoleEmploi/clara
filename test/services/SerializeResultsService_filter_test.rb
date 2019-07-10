@@ -28,25 +28,30 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
             .push(ely_factory(42, [], []))
             .push(ely_factory(43, [], []))
     simple_filters = "se-divertir"
-    need_filters, custom_filters, custom_parent_filters = nil
+    
     #when
     res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
     #then
     assert_equal(0, res.size)
   end
-  # test '_.filter Is able to filter according to simple filter only, simplest scenario' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "se-divertir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+  test '_.filter Is able to filter according to simple filter only, simplest scenario' do
+    #given
+    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
+    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
+    allow(JsonModelsService).to receive(:need_filters).and_return(realistic_need_filters)
+    allow(JsonModelsService).to receive(:filters).and_return(realistic_filters)
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
+    elies = []
+            .push(ely_factory(42, [se_divertir], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-divertir"
+    need_filters, custom_filters, custom_parent_filters = nil
+    #when
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    #then
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
   # test '_.filter Is able to resist to doubled filter' do
   #   elies = []
   #           .push(ely_factory(42, [se_divertir], []))
@@ -128,25 +133,39 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
   #   assert_equal(44,res[1]["id"])
   # end
 
+  def se_divertir
+    Filter.new(realistic_filters.find{|e| e["slug"] == "se-divertir"})
+  end
+
+  def realistic_filters
+    [
+      {"id"=>1, "slug"=>"se-divertir", "name" => "se divertir"}, 
+      {"id"=>2, "slug"=>"se-deplacer", "name" => "se deplacer"}, 
+      {"id"=>3, "slug"=>"se-mouvoir", "name" => "se mouvoir"}, 
+    ]
+  end
+
+  def realistic_need_filters
+    [
+      {"id"=>1, "slug"=>"addiction", "name" => "addiction"}, 
+      {"id"=>2, "slug"=>"argent", "name" => "argent"}, 
+    ]
+  end
 
   
   def realistic_custom_parent_filters
     [
-      {"id"=>1, "slug"=>"parent-a"}, 
-      {"id"=>2, "slug"=>"parent-b"}
+      {"id"=>1, "slug"=>"custom-parent-filter-a", "name" => "custom parent filter a"}, 
+      {"id"=>2, "slug"=>"custom-parent-filter-b", "name" => "custom parent filter b"}, 
     ]
   end
 
   def realistic_custom_filters
     [
-      {"id"=>1, "slug"=>"children-1", "custom_parent_filter_id"=>1},
-      {"id"=>2, "slug"=>"children-2", "custom_parent_filter_id"=>1},
-      {"id"=>3, "slug"=>"children-3", "custom_parent_filter_id"=>2}
+      {"id"=>1, "slug"=>"custom-filter-1", "custom_parent_filter_id"=>1, "name" => "custom filter 1"},
+      {"id"=>2, "slug"=>"custom-filter-2", "custom_parent_filter_id"=>1, "name" => "custom filter 2"},
+      {"id"=>3, "slug"=>"custom-filter-3", "custom_parent_filter_id"=>2, "name" => "custom filter 3"}
     ]
-  end
-
-  def hash_for(a_filter)
-    {"id"=>a_filter.id, "slug"=>a_filter.slug}
   end
 
   def ely_factory(an_id, simple_filters, need_filters=[], custom_filters=[])
