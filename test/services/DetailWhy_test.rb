@@ -40,6 +40,13 @@ class DetailWhyTest < ActiveSupport::TestCase
     assert_equal([], sut.root_rules)
   end
 
+  test ".uncertain_sentence returns empty string if ability is not uncertain" do
+    local_args = nominal_args
+    local_args[:ability] = "eligible"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal("", sut.uncertain_sentence)
+  end
+
   def nominal_args
     {
       :ability => "eligible", 
