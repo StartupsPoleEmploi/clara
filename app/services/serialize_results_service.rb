@@ -70,13 +70,13 @@ class SerializeResultsService
       resulting_elies += all_elies.select do |ely|
         ely[property] = [] if ely[property] == nil
         current_filter_array = ely[property].map do |ely_filter|
-          p '- - - - - - - - - - - - - - property- - - - - - - - - - - - - - - -' 
-          pp property
-          p ''
+          # p '- - - - - - - - - - - - - - property- - - - - - - - - - - - - - - -' 
+          # pp property
+          # p ''
           a=active.public_send(property)
-          p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
-          pp a
-          p ''
+          # p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
+          # pp a
+          # p ''
           b=a.find do |active_filter| 
             # p '- - - - - - - - - - - - - - ely_filter- - - - - - - - - - - - - - - -' 
             # pp ely_filter
@@ -86,9 +86,9 @@ class SerializeResultsService
             # p ''
             active_filter["id"] == ely_filter["id"]
           end
-          p '- - - - - - - - - - - - - - b- - - - - - - - - - - - - - - -' 
-          pp b
-          p ''
+          # p '- - - - - - - - - - - - - - b- - - - - - - - - - - - - - - -' 
+          # pp b
+          # p ''
           b["slug"]
         end
         intersection_array = current_filter_array & filters_array
