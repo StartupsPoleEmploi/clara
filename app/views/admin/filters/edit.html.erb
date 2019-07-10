@@ -16,7 +16,7 @@
     <button type="button" class="c-filter-record is-top">Enregistrer</button>
   </div>
   <div>
-    <button type="button" class="c-filter-record small-left-margin">Consulter</button>
+    <%= link_to 'Consulter'.html_safe, admin_filter_path(page.resource), class: "button c-aid-preview c-aid-detail-action small-left-margin", target: "blank" %>
   </div>
 </header>
 
