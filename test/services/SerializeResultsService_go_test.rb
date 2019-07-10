@@ -11,7 +11,8 @@ class SerializeResultsServiceGoTest < ActiveSupport::TestCase
     res = SerializeResultsService.get_instance.go(asker)
     #then
     assert_equal(
-      {:flat_all_eligible=>"every_eligible", 
+      {
+        :flat_all_eligible=>"every_eligible", 
         :flat_all_uncertain=>"every_uncertain", 
         :flat_all_ineligible=>"every_ineligible", 
         :flat_all_contract=>[{"contract_types"=>42}], 
