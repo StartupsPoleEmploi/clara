@@ -2,6 +2,10 @@
 
 
 
+## 20.34.2 (10/7/2019)
+-[#1233b][FEATURE] ux admin filters, forgetten css
+
+
 ## 20.34.1 (10/7/2019)
 -[#1233b][FEATURE] ux admin filters, forgetten link
 

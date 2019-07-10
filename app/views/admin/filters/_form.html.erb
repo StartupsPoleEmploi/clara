@@ -34,9 +34,11 @@
       <div>
         <%= f.submit "Enregistrer", class:"c-filter-record is-bottom" %>
       </div>
-      <div>
-        <%= link_to 'Consulter'.html_safe, admin_filter_path(page.resource), class: "button c-aid-preview c-aid-detail-action small-left-margin", target: "blank" %>
-      </div>
+      <% if page.resource.id %>
+        <div>
+          <%= link_to 'Consulter'.html_safe, admin_filter_path(page.resource), class: "button c-aid-preview c-aid-detail-action small-left-margin", target: "blank" %>
+        </div>        
+      <% end %>
     </footer>
 
 
