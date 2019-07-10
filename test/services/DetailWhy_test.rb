@@ -12,6 +12,27 @@ class DetailWhyTest < ActiveSupport::TestCase
     assert_equal("eligible", sut.ability)
   end
 
+  test ".root_rules are sorted by eligible first if ability is eligible" do
+    local_args = nominal_args
+    local_args[:ability] = "eligible"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal("eligible", sut.root_rules[0][:status])
+  end
+
+  test ".root_rules are sorted by ineligible first if ability is ineligible" do
+    local_args = nominal_args
+    local_args[:ability] = "ineligible"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal("ineligible", sut.root_rules[0][:status])
+  end
+
+  test ".root_rules are sorted by uncertain first if ability is uncertain" do
+    local_args = nominal_args
+    local_args[:ability] = "uncertain"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal("uncertain", sut.root_rules[0][:status])
+  end
+
   def nominal_args
     {
       :ability => "eligible", 
