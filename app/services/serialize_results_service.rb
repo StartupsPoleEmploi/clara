@@ -28,24 +28,6 @@ class SerializeResultsService
   end
 
   def api_eligible(asker, filters, need_filters, custom_filters, custom_parent_filters)
-    # p '- - - - - - - - - - - - - - asker- - - - - - - - - - - - - - - -' 
-    # pp asker
-    # p ''
-    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
-    # pp filters
-    # p ''
-    # p '- - - - - - - - - - - - - - need_filters- - - - - - - - - - - - - - - -' 
-    # pp need_filters
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_filters
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_parent_filters
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_parent_filters
-    # p ''
     calculator = AidCalculationService.get_instance(asker)
     _whitelist(_filter(calculator.every_eligible, filters, need_filters, custom_filters, custom_parent_filters))
   end
@@ -88,25 +70,10 @@ class SerializeResultsService
       resulting_elies += all_elies.select do |ely|
         ely[property] = [] if ely[property] == nil
         current_filter_array = ely[property].map do |ely_filter|
-          # p '- - - - - - - - - - - - - - property- - - - - - - - - - - - - - - -' 
-          # pp property
-          # p ''
           a=active.public_send(property)
-          # p '- - - - - - - - - - - - - - a- - - - - - - - - - - - - - - -' 
-          # pp a
-          # p ''
           b=a.find do |active_filter| 
-            # p '- - - - - - - - - - - - - - ely_filter- - - - - - - - - - - - - - - -' 
-            # pp ely_filter
-            # p ''
-            # p '- - - - - - - - - - - - - - active_filter- - - - - - - - - - - - - - - -' 
-            # pp active_filter
-            # p ''
             active_filter["id"] == ely_filter["id"]
           end
-          # p '- - - - - - - - - - - - - - b- - - - - - - - - - - - - - - -' 
-          # pp b
-          # p ''
           b["slug"]
         end
         intersection_array = current_filter_array & filters_array
@@ -117,21 +84,6 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters, need_filters, custom_filters, custom_parent_filters)
-    # p '- - - - - - - - - - - - - - elies- - - - - - - - - - - - - - - -' 
-    # pp elies
-    # p ''
-    # p '- - - - - - - - - - - - - - filters- - - - - - - - - - - - - - - -' 
-    # pp filters
-    # p ''
-    # p '- - - - - - - - - - - - - - need_filters- - - - - - - - - - - - - - - -' 
-    # pp need_filters
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_filters
-    # p ''
-    # p '- - - - - - - - - - - - - - custom_parent_filters- - - - - - - - - - - - - - - -' 
-    # pp custom_parent_filters
-    # p ''
     regular_elies              = _find_elies("filters", filters, elies)
     need_elies                 = _find_elies("need_filters", need_filters, elies)
     custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)
