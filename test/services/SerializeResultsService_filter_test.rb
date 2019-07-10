@@ -53,19 +53,20 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
     assert_equal(1,res.size)
     assert_equal(42,res[0]["id"])
   end
-  # test '_.filter Is able to resist to doubled filter' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "se-divertir,se-divertir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+  test '_.filter Is able to resist to doubled filter' do
+    #given
+    elies = []
+            .push(ely_factory(42, [se_divertir], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-divertir,se-divertir"
+    need_filters, custom_filters, custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
+    #when
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    #then
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
   # test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters, last position' do
   #   elies = []
   #           .push(ely_factory(42, [se_divertir, se_deplacer], []))

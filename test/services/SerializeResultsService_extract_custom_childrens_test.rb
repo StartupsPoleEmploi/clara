@@ -2,10 +2,13 @@ require "test_helper"
 
 class SerializeResultsServiceExtractCustomChildrensTest < ActiveSupport::TestCase
   
-  test "._extract_custom_childrens Should convert a list of comma-separated parent's slug into a list of children slug" do
-    #given
+  def setup
     allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
     allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
+  end
+
+  test "._extract_custom_childrens Should convert a list of comma-separated parent's slug into a list of children slug" do
+    #given
     #when
     res = sut._extract_custom_childrens("parent-a,parent-b")
     #then
@@ -14,8 +17,6 @@ class SerializeResultsServiceExtractCustomChildrensTest < ActiveSupport::TestCas
   
   test "._extract_custom_childrens Should also work with one parent" do
     #given
-    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
-    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
     #when
     res = sut._extract_custom_childrens("parent-a")
     #then
@@ -24,8 +25,6 @@ class SerializeResultsServiceExtractCustomChildrensTest < ActiveSupport::TestCas
   
   test "._extract_custom_childrens Should return empty String if wrong input is given" do
     #given
-    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
-    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
     #when
     res = sut._extract_custom_childrens(Date.new)
     #then
@@ -34,8 +33,6 @@ class SerializeResultsServiceExtractCustomChildrensTest < ActiveSupport::TestCas
   
   test "._extract_custom_childrens Should throw error if parent do not exists" do
     #given
-    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(realistic_custom_parent_filters)
-    allow(JsonModelsService).to receive(:custom_filters).and_return(realistic_custom_filters)
     #then
     assert_raises NoMethodError do
       #when
