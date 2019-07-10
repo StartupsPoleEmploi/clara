@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "5.2.2.1"
+gem 'rails', github: 'rails/rails'
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
 gem "jbuilder", "~> 2.5"
@@ -61,7 +61,7 @@ gem "knock"
 gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
 gem "i18n-js"
-gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
+gem "administrate_exportable", github: 'maxdeval/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
 
