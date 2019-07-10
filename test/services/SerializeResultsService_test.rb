@@ -60,6 +60,21 @@ class SerializeResultsServiceTest < ActiveSupport::TestCase
     assert_equal(43, res[1]["id"])
   end
 
+  #
+  # SIMPLE FILTER
+  #
+  test '_.filter Removed all eligies if filter is required, but eligies are affected to any filter' do
+    elies = []
+            .push(ely_factory(42, [], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-divertir"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
+
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(0, res.size)
+  end
 
 
 
