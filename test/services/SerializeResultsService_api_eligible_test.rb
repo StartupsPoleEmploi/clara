@@ -13,12 +13,53 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     allow(JsonModelsService).to receive(:variables).and_return(variables)
   end
 
-  test '_.api_eligible' do
+  test '_.api_eligible, yes' do
     #given
+    above_18_asker = asker_without_age
+    above_18_asker.v_age = "38"
     #when
-    res = SerializeResultsService.get_instance.api_eligible(asker, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_eligible(above_18_asker, filters, "", "", "")
     #then
     assert_equal([vsi], res)
+  end
+  test '_.api_eligible, no' do
+    #given
+    #when
+    res = SerializeResultsService.get_instance.api_eligible(asker_without_age, filters, "", "", "")
+    #then
+    assert_equal([], res)
+  end
+  test '_.api_ineligible, yes' do
+    #given
+    under_18_asker = asker_without_age
+    under_18_asker.v_age = "16"
+    #when
+    res = SerializeResultsService.get_instance.api_ineligible(under_18_asker, filters, "", "", "")
+    #then
+    assert_equal([vsi], res)
+  end
+  test '_.api_ineligible, no' do
+    #given
+    #when
+    res = SerializeResultsService.get_instance.api_ineligible(asker_without_age, filters, "", "", "")
+    #then
+    assert_equal([], res)
+  end
+  test '_.api_uncertain, yes' do
+    #given
+    #when
+    res = SerializeResultsService.get_instance.api_uncertain(asker_without_age, filters, "", "", "")
+    #then
+    assert_equal([vsi], res)
+  end
+  test '_.api_uncertain, no' do
+    #given
+    above_18_asker = asker_without_age
+    above_18_asker.v_age = "38"
+    #when
+    res = SerializeResultsService.get_instance.api_uncertain(above_18_asker, filters, "", "", "")
+    #then
+    assert_equal([], res)
   end
 
   def vsi
@@ -29,9 +70,8 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     "travailler-a-l-international"
   end
 
-  def asker
+  def asker_without_age
     Asker.new({
-      v_age: "33", 
       v_allocation_type: "ARE_ASP", 
       v_allocation_value_min: "434", 
       v_cadre: "non", 
