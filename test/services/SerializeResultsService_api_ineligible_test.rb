@@ -13,10 +13,10 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     allow(JsonModelsService).to receive(:variables).and_return(variables)
   end
 
-  test '_.api_eligible' do
+  test '_.api_ineligible' do
     #given
     #when
-    res = SerializeResultsService.get_instance.api_eligible(asker, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_ineligible(asker, filters, "", "", "")
     #then
     assert_equal([vsi], res)
   end
@@ -31,7 +31,7 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
 
   def asker
     Asker.new({
-      v_age: "33", 
+      v_age: "17", 
       v_allocation_type: "ARE_ASP", 
       v_allocation_value_min: "434", 
       v_cadre: "non", 
