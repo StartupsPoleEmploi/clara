@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SerializeResultsServiceTest < ActiveSupport::TestCase
+class SerializeResultsServiceExtractCustomChildrensTest < ActiveSupport::TestCase
   
   test "._extract_custom_childrens Should convert a list of comma-separated parent's slug into a list of children slug" do
     #given
@@ -43,42 +43,6 @@ class SerializeResultsServiceTest < ActiveSupport::TestCase
     end
   end
 
-  #
-  # NO FILTER
-  #
-  test '_.filter Do not affect elies if no filter is required' do
-    #given
-    elies = []
-            .push(ely_factory(42, [], [], []))
-            .push(ely_factory(43, [], [], []))
-    simple_filters, need_filters, custom_filters, custom_parent_filters = nil
-    #when
-    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-    #then
-    assert_equal(2, res.size)
-    assert_equal(42, res[0]["id"])
-    assert_equal(43, res[1]["id"])
-  end
-
-  #
-  # SIMPLE FILTER
-  #
-  test '_.filter Removed all eligies if filter is required, but eligies are affected to any filter' do
-    elies = []
-            .push(ely_factory(42, [], []))
-            .push(ely_factory(43, [], []))
-    simple_filters = "se-divertir"
-    need_filters = nil
-    custom_filters = nil
-    custom_parent_filters = nil
-
-    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-    assert_equal(0, res.size)
-  end
-
-
-
-  
   def realistic_custom_parent_filters
     [
       {"id"=>1, "slug"=>"parent-a"}, 
@@ -92,24 +56,6 @@ class SerializeResultsServiceTest < ActiveSupport::TestCase
       {"id"=>2, "slug"=>"children-2", "custom_parent_filter_id"=>1},
       {"id"=>3, "slug"=>"children-3", "custom_parent_filter_id"=>2}
     ]
-  end
-
-  def hash_for(a_filter)
-    {"id"=>a_filter.id, "slug"=>a_filter.slug}
-  end
-
-  def ely_factory(an_id, simple_filters, need_filters=[], custom_filters=[])
-    {"id"=>an_id,
-      "name"                 => "Aide Number #{an_id}",
-      "slug"                 => "aide-number-#{an_id}",
-      "short_description"    => "aide générée automatiquement, numéro #{an_id}",
-      "ordre_affichage"      => [1,2,3,4].sample,
-      "contract_type_id"     => [1,2,3,4].sample,
-      "filters"              => simple_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "need_filters"         => need_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "custom_filters"       => custom_filters.map { |e| {"id"=>e.id, "slug"=>e.slug} },
-      "eligibility"          => ["eligible", "ineligible", "uncertain"].sample
-    }
   end
 
   # System under test
