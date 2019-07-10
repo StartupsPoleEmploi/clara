@@ -69,76 +69,84 @@ class SerializeResultsServiceFilterTest < ActiveSupport::TestCase
     assert_equal(1,res.size)
     assert_equal(42,res[0]["id"])
   end
-  # test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters, last position' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir, se_deplacer], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "se-mouvoir,se-divertir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+  test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters, last position' do
+    elies = []
+            .push(ely_factory(42, [se_divertir, se_deplacer], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-mouvoir,se-divertir"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
-  # test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters, first position' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir, se_deplacer], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "se-divertir,se-mouvoir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
+  test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters, first position' do
+    elies = []
+            .push(ely_factory(42, [se_divertir, se_deplacer], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-divertir,se-mouvoir"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
-  # test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters twice' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir, se_deplacer], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "se-divertir,se-deplacer"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
+  test '_.filter Is able to filter according to simple filter only, even when requiring multiple filters twice' do
+    elies = []
+            .push(ely_factory(42, [se_divertir, se_deplacer], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "se-divertir,se-deplacer"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
-  # test '_.filter Is able to filter according to simple filter only, even when requiring inexisting filter' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir, se_deplacer], []))
-  #           .push(ely_factory(43, [], []))
-  #   simple_filters = "inexisting,se-divertir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
+  test '_.filter Is able to filter according to simple filter only, even when requiring inexisting filter' do
+    elies = []
+            .push(ely_factory(42, [se_divertir, se_deplacer], []))
+            .push(ely_factory(43, [], []))
+    simple_filters = "inexisting,se-divertir"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(1,res.size)
-  #   assert_equal(42,res[0]["id"])
-  # end
-  # test '_.filter Is able to filter multiple eligies with simple filter' do
-  #   elies = []
-  #           .push(ely_factory(42, [se_divertir, se_deplacer], []))
-  #           .push(ely_factory(43, [], []))
-  #           .push(ely_factory(44, [se_divertir], []))
-  #   simple_filters = "inexisting,se-divertir"
-  #   need_filters = nil
-  #   custom_filters = nil
-  #   custom_parent_filters = nil
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(1,res.size)
+    assert_equal(42,res[0]["id"])
+  end
+  test '_.filter Is able to filter multiple eligies with simple filter' do
+    elies = []
+            .push(ely_factory(42, [se_divertir, se_deplacer], []))
+            .push(ely_factory(43, [], []))
+            .push(ely_factory(44, [se_divertir], []))
+    simple_filters = "inexisting,se-divertir"
+    need_filters = nil
+    custom_filters = nil
+    custom_parent_filters = nil
 
-  #   res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
-  #   assert_equal(2,res.size)
-  #   assert_equal(42,res[0]["id"])
-  #   assert_equal(44,res[1]["id"])
-  # end
+    res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
+    assert_equal(2,res.size)
+    assert_equal(42,res[0]["id"])
+    assert_equal(44,res[1]["id"])
+  end
 
   def se_divertir
     Filter.new(realistic_filters.find{|e| e["slug"] == "se-divertir"})
+  end
+
+  def se_deplacer
+    Filter.new(realistic_filters.find{|e| e["slug"] == "se-deplacer"})
+  end
+
+  def se_mouvoir
+    Filter.new(realistic_filters.find{|e| e["slug"] == "se-mouvoir"})
   end
 
   def realistic_filters
