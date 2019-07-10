@@ -33,6 +33,13 @@ class DetailWhyTest < ActiveSupport::TestCase
     assert_equal("uncertain", sut.root_rules[0][:status])
   end
 
+  test ".root_rules returns empty array if ability is not amongst eligible, ineligible, uncertain" do
+    local_args = nominal_args
+    local_args[:ability] = "wronginput"
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal([], sut.root_rules)
+  end
+
   def nominal_args
     {
       :ability => "eligible", 
