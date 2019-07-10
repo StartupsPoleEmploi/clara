@@ -50,7 +50,7 @@ class DetailWhyTest < ActiveSupport::TestCase
   test ".uncertain_sentence returns 'single-alone' if there is only one, lonely uncertain root_rule" do
     local_args = nominal_args
     local_args[:ability] = "uncertain"
-    local_args[:root_rules] = [{:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "Avoir entre 16 et 26 ans"}]
+    local_args[:root_rules] = [{:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "a"}]
     sut = DetailWhy.new(nil, local_args)
     assert_equal('single-alone', sut.uncertain_sentence)
   end
@@ -59,11 +59,34 @@ class DetailWhyTest < ActiveSupport::TestCase
     local_args = nominal_args
     local_args[:ability] = "uncertain"
     local_args[:root_rules] = [
-      {:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "Avoir entre 16 et 26 ans"},
-      {:status => "eligible", :name => "r_ass_ou_rsa_ou_aah", :description => "Etre indemnisé/e au titre du RSA, de l'ASS ou de l'AAH"},
+      {:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "a"},
+      {:status => "eligible", :name => "r_ass_ou_rsa_ou_aah", :description => "b"},
     ]
     sut = DetailWhy.new(nil, local_args)
     assert_equal('single-amongst', sut.uncertain_sentence)
+  end
+
+  test ".uncertain_sentence returns 'plural' if there is many uncertain root_rule, but not all" do
+    local_args = nominal_args
+    local_args[:ability] = "uncertain"
+    local_args[:root_rules] = [
+      {:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "a"},
+      {:status => "uncertain", :name => "r_ass_ou_rsa_ou_aah", :description => "b"},
+      {:status => "eligible", :name => "r_age_sup_26_et_inscrit", :description => "c"},
+    ]
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal('plural', sut.uncertain_sentence)
+  end
+
+  test ".uncertain_sentence returns 'plural-all' if all root_rule are uncertain (and more than 1)" do
+    local_args = nominal_args
+    local_args[:ability] = "uncertain"
+    local_args[:root_rules] = [
+      {:status => "uncertain", :name => "r_age_sup_16_et_age_inf_26", :description => "a"},
+      {:status => "uncertain", :name => "r_ass_ou_rsa_ou_aah", :description => "b"},
+    ]
+    sut = DetailWhy.new(nil, local_args)
+    assert_equal('plural-all', sut.uncertain_sentence)
   end
 
   def nominal_args
