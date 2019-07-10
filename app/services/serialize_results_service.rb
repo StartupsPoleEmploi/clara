@@ -70,7 +70,11 @@ class SerializeResultsService
       resulting_elies += all_elies.select do |ely|
         ely[property] = [] if ely[property] == nil
         current_filter_array = ely[property].map do |ely_filter|
-          active.public_send(property).find{|active_filter| active_filter["id"] == ely_filter["id"]}["slug"]
+          a=active.public_send(property)
+          b=a.find do |active_filter| 
+            active_filter["id"] == ely_filter["id"]
+          end
+          b["slug"]
         end
         intersection_array = current_filter_array & filters_array
         !intersection_array.empty?
@@ -81,7 +85,7 @@ class SerializeResultsService
 
   def _filter(elies, filters, need_filters, custom_filters, custom_parent_filters)
     regular_elies              = _find_elies("filters", filters, elies)
-    need_elies               = _find_elies("need_filters", need_filters, elies)
+    need_elies                 = _find_elies("need_filters", need_filters, elies)
     custom_filters_from_parent = _extract_custom_childrens(custom_parent_filters)
     custom_filters_called      = custom_filters.to_s + custom_filters_from_parent.to_s
     custom_elies               = _find_elies("custom_filters", custom_filters_called, elies)

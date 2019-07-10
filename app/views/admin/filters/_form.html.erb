@@ -24,7 +24,21 @@
     </div>
   <% end -%>
 
-  <div class="form-actions">
-    <%= f.submit %>
+  <div class="form-actions is-filters">
+    <footer class="c-aid-filters-subheader is-last">
+      <div class="c-aid-filters-action">
+        <form>
+          <input class="button is-discrete" type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+        </form>
+      </div>
+      <div>
+        <%= f.submit "Enregistrer", class:"c-filter-record is-bottom" %>
+      </div>
+      <div>
+        <button type="button" class="c-aid-record small-left-margin">Consulter</button>
+      </div>
+    </footer>
+
+
   </div>
 <% end %>

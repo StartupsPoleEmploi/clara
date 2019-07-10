@@ -2,6 +2,10 @@
 
 
 
+## 20.33.0 (10/7/2019)
+-[#1233][FEATURE] ux admin filters
+
+
 ## 20.33.0 (9/7/2019)
 -[#1300][FEATURE] ux banner
 

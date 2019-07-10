@@ -29,11 +29,13 @@ class JsonModelsService
   end
 
   def self.custom_filters
-    JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug, :custom_parent_filter_id ]))
+    res = JSON.parse(CustomFilter.all.to_json(:only => [ :id, :slug, :custom_parent_filter_id ]))
+    res
   end
 
   def self.custom_parent_filters
-    JSON.parse(CustomParentFilter.all.to_json(:only => [ :id, :slug ]))
+    res = JSON.parse(CustomParentFilter.all.to_json(:only => [ :id, :slug ]))
+    res
   end
 
   def self.contracts

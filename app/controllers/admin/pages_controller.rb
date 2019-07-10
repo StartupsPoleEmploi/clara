@@ -83,17 +83,10 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      simuls = {} 
-      Rule.all.each do |rule|
-        new_simulated = CalculateRuleSimulated.new.call(rule)
-        simuls[new_simulated] = [] if simuls[new_simulated] == nil
-        simuls[new_simulated] << rule.id
+      Filter.all.each do |filter|
+        filter.name = filter.description
+        filter.save
       end
-      Rule.where(id: simuls["errored_simulation"]).update_all(simulated: "errored_simulation")
-      Rule.where(id: simuls["ok"]).update_all(simulated: "ok")
-      Rule.where(id: simuls["missing_simulation"]).update_all(simulated: "missing_simulation")
-      Rule.where(id: simuls["missing_eligible"]).update_all(simulated: "missing_eligible")
-      Rule.where(id: simuls["missing_ineligible"]).update_all(simulated: "missing_ineligible")
       render json: {
         status: "ok"
       }

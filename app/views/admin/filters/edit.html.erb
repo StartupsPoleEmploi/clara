@@ -4,15 +4,22 @@
   <h1 class="main-content__page-title">
     <%= content_for(:title) %>
   </h1>
+</header>
 
+<header class="c-aid-filters-subheader js-filter-edition">
+  <div class="c-aid-filters-action">
+    <form>
+      <input class="button is-discrete" type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
+    </form>
+  </div>
   <div>
-    <%= link_to(
-      t("administrate.actions.show_resource", name: page.page_title),
-      [namespace, page.resource],
-      class: "button",
-    ) if valid_action?(:show) && show_action?(:show, page.resource) %>
+    <button type="button" class="c-filter-record is-top">Enregistrer</button>
+  </div>
+  <div>
+    <button type="button" class="c-filter-record small-left-margin">Consulter</button>
   </div>
 </header>
+
 
 <section class="main-content__body">
   <%= render "form", page: page %>

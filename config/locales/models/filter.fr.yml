@@ -2,6 +2,7 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      aids: Aides rattachées au filtre
     models: 
       filter: Filtres
     attributes:
