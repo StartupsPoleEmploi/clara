@@ -2,7 +2,11 @@
 
 
 
-## 20.33.0 (10/7/2019)
+## 20.34.1 (10/7/2019)
+-[#1233b][FEATURE] ux admin filters, forgetten link
+
+
+## 20.34.0 (10/7/2019)
 -[#1233][FEATURE] ux admin filters
 
 
