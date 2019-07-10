@@ -46,15 +46,12 @@ class SerializeResultsServiceTest < ActiveSupport::TestCase
   #
   # NO FILTER
   #
-  test 'Do not affect elies if no filter is required' do
+  test '_.filter Do not affect elies if no filter is required' do
     #given
     elies = []
             .push(ely_factory(42, [], [], []))
             .push(ely_factory(43, [], [], []))
-    simple_filters = nil
-    need_filters = nil
-    custom_filters = nil
-    custom_parent_filters = nil
+    simple_filters, need_filters, custom_filters, custom_parent_filters = nil
     #when
     res = sut._filter(elies, simple_filters, need_filters, custom_filters, custom_parent_filters)
     #then
