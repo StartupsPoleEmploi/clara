@@ -2,6 +2,10 @@
 
 
 
+## 20.35.0 (11/7/2019)
+-[#1301][FEATURE][ADMIN] réorganisation panneau superadmin
+
+
 ## 20.34.2 (10/7/2019)
 -[#1233b][FEATURE] ux admin filters, forgetten css
 
