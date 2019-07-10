@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 20.34.0 (10/7/2019)
+-[#1268][TECH] Rails 6
+
 
 ## 20.33.0 (9/7/2019)
 -[#1300][FEATURE] ux banner
