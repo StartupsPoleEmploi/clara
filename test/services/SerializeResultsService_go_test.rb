@@ -5,8 +5,8 @@ class SerializeResultsServiceGoTest < ActiveSupport::TestCase
   test '_.go' do
     #given
     allow(AidCalculationService).to receive(:get_instance).and_return(calculator)
-    allow(Rails.cache).to receive(:fetch).with("contract_types").and_return('{"contract_types":42}')
-    allow(Rails.cache).to receive(:fetch).with("filters").and_return('{"filters":42}')
+    allow(ContractType).to receive(:all).and_return([{"contract_types":42}])
+    allow(Filter).to receive(:all).and_return([{"filters":42}])
     #when
     res = SerializeResultsService.get_instance.go(asker)
     #then
@@ -14,8 +14,8 @@ class SerializeResultsServiceGoTest < ActiveSupport::TestCase
       {:flat_all_eligible=>"every_eligible", 
         :flat_all_uncertain=>"every_uncertain", 
         :flat_all_ineligible=>"every_ineligible", 
-        :flat_all_contract=>{"contract_types"=>42}, 
-        :flat_all_filter=>{"filters"=>42}, 
+        :flat_all_contract=>[{"contract_types"=>42}], 
+        :flat_all_filter=>[{}], 
         :asker=>{"v_handicap"=>"oui", "v_spectacle"=>"oui", "v_cadre"=>"non", "v_diplome"=>"niveau_4", "v_category"=>"cat_12345", "v_duree_d_inscription"=>"moins_d_un_an", "v_allocation_value_min"=>"434", "v_allocation_type"=>"RPS_RFPA_RFF_pensionretraite", "v_qpv"=>nil, "v_zrr"=>"oui", "v_age"=>"33", "v_location_label"=>nil, "v_location_route"=>nil, "v_location_city"=>nil, "v_location_country"=>nil, "v_location_zipcode"=>nil, "v_location_citycode"=>"02004", "v_location_street_number"=>nil, "v_location_state"=>nil}
       }, 
       res
