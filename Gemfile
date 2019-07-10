@@ -49,7 +49,7 @@ gem "oj"
 gem "paper_trail", "~> 9.0.0"
 gem "administrate"
 
-gem "administrate-field-ckeditor", "~> 0.0.8"
+gem "administrate-field-ckeditor", "~> 0.0.9", github: 'maxdeval/administrate-field-ckeditor'
 
 gem "mina", require: false, group: "deployment"
 gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma', group: "deployment"
