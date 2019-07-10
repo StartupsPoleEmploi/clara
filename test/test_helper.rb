@@ -6,6 +6,7 @@ require 'rspec/mocks/minitest_integration'
 require 'simplecov'
 SimpleCov.start do
   add_filter %r{^/test/}
+  add_filter "/models/"
   track_files '{app/services,app/view_objects}/*.rb'
 end
 
