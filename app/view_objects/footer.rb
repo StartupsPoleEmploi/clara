@@ -4,12 +4,6 @@ class Footer < ViewObject
     _init_splitted_array_of_contract
   end
 
-  def links_to_all_contract_types 
-    Rails.cache.fetch("footer_links", expires_in: 1.hour) do
-      ActivatedModelsService.instance.contracts
-    end 
-  end
-
   def first_part_of_contract_type  
     @array1 
   end   
@@ -20,12 +14,13 @@ class Footer < ViewObject
 
   def _init_splitted_array_of_contract 
     @array1 = []  
-    @array2 = []  
-    links_to_all_contract_types.each_with_index do |ct, indx|  
-      if indx < links_to_all_contract_types.size / 2 
+    @array2 = [] 
+    contracts =  ActivatedModelsService.instance.contracts
+    contracts.each_with_index do |ct, indx|  
+      if indx < contracts.size / 2 
         @array1.push(ct) 
       end 
-      if indx >= links_to_all_contract_types.size / 2  
+      if indx >= contracts.size / 2  
         @array2.push(ct) 
       end     
     end 
