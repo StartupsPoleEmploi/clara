@@ -2,6 +2,10 @@
 
 
 
+## 20.36.0 (12/7/2019)
+-[#1268][TECH][ADMIN] passage à Rails 5.2.3
+
+
 ## 20.35.0 (11/7/2019)
 -[#1301][FEATURE][ADMIN] réorganisation panneau superadmin
 
