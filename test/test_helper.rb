@@ -26,4 +26,8 @@ class ActiveSupport::TestCase
     array.reduce { |l, r| break unless yes &= (l[0] <= r[0]); l }
     yes
   end
+
+  def same_array?(a, b)
+    !a.difference(b).any?
+  end
 end

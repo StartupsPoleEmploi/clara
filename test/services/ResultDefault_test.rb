@@ -19,13 +19,93 @@ class ResultDefaultTest < ActiveSupport::TestCase
     args = nominal_args
     sut = ResultDefault.new(nil, args)
     filters = args['flat_all_filter']
-    filters_cleaned = filters.reject{|e| e["ordre_affichage"] == nil}
     order = Proc.new { |e| e['ordre_affichage']  }
+    filters_cleaned = filters.select(&order)
     #when
     res = sut.displayed_filters
     #then
-    assert_equal(false, ascending?(filters_cleaned.map(&order))
+    assert_equal(false, ascending?(filters_cleaned.map(&order)))
     assert_equal(true, ascending?(res.map(&order)))
+  end
+
+  test '.sort_and_order Cannot sort unexisting prop' do
+    sut = ResultDefault.new(nil, nominal_args)
+    res = sut.sort_and_order("unexisting_prop")
+    assert_equal([], res)
+  end
+
+  test '.sort_and_order Can sort "flat_all_eligible"' do
+    sut = ResultDefault.new(nil, nominal_args)
+    res = sut.sort_and_order("flat_all_eligible")
+    assert_not_equal([], res)
+  end
+
+  test '.sort_and_order Can sort "flat_all_ineligible"' do
+    sut = ResultDefault.new(nil, nominal_args)
+    res = sut.sort_and_order("flat_all_ineligible")
+    assert_not_equal([], res)
+  end
+
+  test '.sort_and_order Can sort "flat_all_uncertain"' do
+    sut = ResultDefault.new(nil, nominal_args)
+    res = sut.sort_and_order("flat_all_uncertain")
+    assert_not_equal([], res)
+  end
+
+  test '.sort_and_order group aids according to their contract_type' do
+    #given
+    args = nominal_args
+    sut = ResultDefault.new(nil, args)
+    eligibles = args['flat_all_eligible']
+    #when
+    res = sut.sort_and_order('flat_all_eligible')
+    #then
+    assert_equal(2, res.size, "The result is an array of array of size 2") # two arrays
+    assert_equal(3, res[0].size, "The 1st array contains 3 eligibles") # first has three eligibles
+    assert_equal(1, res[1].size, "The 2nd array contains 1 eligible") # first has one eligible
+    assert_equal(true, same_array?(res[0] + res[1], eligibles), "There are only hashes of eligibles")
+  end
+
+  test '.sort_and_order sort eligibles according to the ordre_affichage property' do
+    #given
+    args = nominal_args
+    sut = ResultDefault.new(nil, args)
+    eligibles = args['flat_all_eligible']
+    order = Proc.new { |e| e['ordre_affichage']  }
+    #when
+    res = sut.sort_and_order('flat_all_eligible')
+    #then
+    assert_equal(3, res[0].size, "The 1st array contains 3 eligibles") # first has three eligibles
+    assert_equal(true, ascending?(res[0].map(&order)))
+  end
+
+  test '.sort_and_order evict entries with empty contract_type_id' do
+    #given
+    args = nominal_args
+    args["flat_all_eligible"][0]["contract_type_id"] = nil
+    sut = ResultDefault.new(nil, args)
+    eligibles = args['flat_all_eligible']
+    order = Proc.new { |e| e['ordre_affichage']  }
+    #when
+    res = sut.sort_and_order('flat_all_eligible')
+    #then
+    assert_equal(4, eligibles.size)
+    assert_equal(3, res[0].size + res[1].size)
+  end
+
+  test '.title_for gives title of aids per contract' do
+    #given
+    args = nominal_args
+    sut = ResultDefault.new(nil, args)
+    #when
+    res = sut.title_for(aids_per_contract)
+    #then
+    assert_equal("Aide à la mobilité", res)
+  end
+
+
+  def aids_per_contract
+    aids_per_contract = nominal_args['flat_all_eligible'].group_by{ |e| e['contract_type_id'] }[1]
   end
 
   def nominal_args
@@ -47,7 +127,7 @@ class ResultDefaultTest < ActiveSupport::TestCase
         "short_description"=>
          "Le Parcours Emploi Compétences  (PEC) remplace les contrats aidés : il est destiné aux publics en difficulté d'insertion",
         "ordre_affichage"=>0,
-        "contract_type_id"=>5,
+        "contract_type_id"=>1,
         "filters"=>[{"id"=>8, "slug"=>"s-informer-sur-contrats-specifiques"}],
         "custom_filters"=>[],
         "need_filters"=>[],
@@ -69,7 +149,7 @@ class ResultDefaultTest < ActiveSupport::TestCase
         "short_description"=>
          "Dispositif permettant de suivre une formation supérieure sans avoir obtenu les diplômes requis pour y accéder ",
         "ordre_affichage"=>72,
-        "contract_type_id"=>8,
+        "contract_type_id"=>1,
         "filters"=>[{"id"=>10, "slug"=>"se-former-valoriser-ses-competences"}],
         "custom_filters"=>[],
         "need_filters"=>[],
