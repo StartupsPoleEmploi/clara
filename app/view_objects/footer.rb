@@ -6,12 +6,7 @@ class Footer < ViewObject
 
   def links_to_all_contract_types 
     Rails.cache.fetch("footer_links", expires_in: 1.hour) do
-      ActivatedModelsService.instance.contracts.map do |c| 
-        {
-          "name" => c["name"],
-          "slug" => c["slug"]
-        } 
-      end
+      ActivatedModelsService.instance.contracts
     end 
   end
 
