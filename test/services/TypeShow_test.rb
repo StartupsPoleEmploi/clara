@@ -31,13 +31,13 @@ class TypeShowTest < ActiveSupport::TestCase
     assert_equal(false, res)
   end
 
-  test ".title_of_tab Returns title of contract by default" do
+  test ".title_of_tab Returns name of contract by default" do
     sut = TypeShow.new(nil, nominal_args)
     res = sut.title_of_tab
     assert_equal("Appui à l'embauche", res)
   end
 
-  test ".title_of_tab Returns name of contract by default" do
+  test ".title_of_tab Returns Aides à la création for appropriate slug" do
     #given
     args = nominal_args
     args[:contract]["slug"] = 'aide-a-la-creation-ou-reprise-d-entreprise'
@@ -46,6 +46,39 @@ class TypeShowTest < ActiveSupport::TestCase
     res = sut.title_of_tab
     # then
     assert_equal("Aides à la création ou reprise d\'entreprise", res)
+  end
+
+  test ".title_of_tab Returns 'Aides à la mobilité, au déplacement, garde d\'enfant' for appropriate slug" do
+    #given
+    args = nominal_args
+    args[:contract]["slug"] = 'aide-a-la-mobilite'
+    sut = TypeShow.new(nil, args)
+    # when
+    res = sut.title_of_tab
+    # then
+    assert_equal("Aides à la mobilité, au déplacement, garde d\'enfant", res)
+  end
+
+  test ".title_of_tab Returns 'Aides à l\'alternance' for appropriate slug" do
+    #given
+    args = nominal_args
+    args[:contract]["slug"] = 'contrat-en-alternance'
+    sut = TypeShow.new(nil, args)
+    # when
+    res = sut.title_of_tab
+    # then
+    assert_equal("Aides à l\'alternance", res)
+  end
+
+  test ".title_of_tab Returns 'Aides à l\'orientation' for appropriate slug" do
+    #given
+    args = nominal_args
+    args[:contract]["slug"] = 'aide-a-la-definition-du-projet-professionnel'
+    sut = TypeShow.new(nil, args)
+    # when
+    res = sut.title_of_tab
+    # then
+    assert_equal("Aides à l\'orientation, la reconversion professionnelle", res)
   end
 
   test ".line Returns a filtered version" do
