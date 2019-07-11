@@ -1,7 +1,7 @@
 <h1>Outils d'administration</h1>
 
 <div class="grid-flex">
-  <div class="grid-col">
+  <div class="grid-col  c-superadmin-users">
     <h2>Utilisateurs</h2>
     <ul>
       <li>
@@ -12,51 +12,55 @@
       </li>
     </ul>
   </div>
-  <div class="grid-col">
+  <div class="grid-col c-superadmin-docs">
     <h2>Documentation</h2>
+    <ul>
+      <li>
+        <%=link_to "Explications des règles", admin_explicitations_path %>
+      </li>
+      <li>
+        <%=link_to "Liste des variables", admin_variables_path %>
+      </li>      
+      <li>
+        <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
+      </li>
+    </ul>
+
   </div>
 </div>
 <div class="grid-flex">
-  <div class="grid-col">
+  <div class="grid-col c-superadmin-stats">
     <h2>Statistiques</h2>
+    <ul>
+      <li>
+        <%=link_to "Voir les statistiques", stats_index_path %>
+      </li>
+      <li>
+        <%=link_to "Mettre à jour les statistiques", admin_get_stats_path %>
+      </li>
+      <li>
+        <%=link_to "Stratégies de suivi", admin_tracings_path %>
+      </li>
+      <li>
+        <%=link_to "Liste des suivis", admin_traces_path %>
+      </li>      
+    </ul>
   </div>
-  <div class="grid-col">
+  <div class="grid-col c-superadmin-actions">
     <h2>Actions</h2>
+    <ul>
+      <li>
+        <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
+      </li>
+      <li>
+        <%=link_to "Création de ZRR", admin_get_zrr_path %>
+      </li>
+      <li>
+        <%=link_to "Vérification des règles", admin_rule_checks_path %>
+      </li>
+    </ul>
   </div>
 </div>
 
 <div></div>
 
-<ul style="margin-left: 2rem;">
-  <li>
-    <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
-  </li>
-  <li>
-    <%=link_to "Création de ZRR", admin_get_zrr_path %>
-  </li>
-  <li>
-    <%=link_to "Explications des règles", admin_explicitations_path %>
-  </li>
-  <li>
-    <%=link_to "Liste des variables", admin_variables_path %>
-  </li>
-  <li>
-    <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
-  </li>
-  <li>
-    <%=link_to "Mettre à jour les statistiques", admin_get_stats_path %>
-  </li>
-  <li>
-    <%=link_to "Voir les statistiques", stats_index_path %>
-  </li>
-  <li>
-    <%=link_to "Vérification des règles", admin_rule_checks_path %>
-  </li>
-
-  <li>
-    <%=link_to "Stratégies de suivi", admin_tracings_path %>
-  </li>
-  <li>
-    <%=link_to "Liste des suivis", admin_traces_path %>
-  </li>
-</ul>
