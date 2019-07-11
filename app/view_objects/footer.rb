@@ -24,8 +24,6 @@ class Footer < ViewObject
   end
 
   def _init_splitted_array_of_contract 
-    p '- - - - - - - - - - - - - - _init_splitted_array_of_contract- - - - - - - - - - - - - - - -' 
-    p ''
     @array1 = []  
     @array2 = []  
     links_to_all_contract_types.each_with_index do |ct, indx|  
