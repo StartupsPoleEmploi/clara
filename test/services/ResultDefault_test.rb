@@ -2,14 +2,30 @@ require "test_helper"
 
 class ResultDefaultTest < ActiveSupport::TestCase
   
-  test '.displayed_filters reject empty filters, and sort them by ordre_affichage' do
+  test '.displayed_filters reject empty filters' do
     #given
-    sut = ResultDefault.new(nil, nominal_args)
+    args = nominal_args
+    sut = ResultDefault.new(nil, args)
+    filters = args['flat_all_filter']
     #when
     res = sut.displayed_filters
     #then
-    assert_equal(11, nominal_args['flat_all_filter'].size)
+    assert_equal(11, filters.size)
     assert_equal(10, res.size)
+  end
+
+  test '.displayed_filters sort them by ordre_affichage' do
+    #given
+    args = nominal_args
+    sut = ResultDefault.new(nil, args)
+    filters = args['flat_all_filter']
+    filters_cleaned = filters.reject{|e| e["ordre_affichage"] == nil}
+    order = Proc.new { |e| e['ordre_affichage']  }
+    #when
+    res = sut.displayed_filters
+    #then
+    assert_equal(false, ascending?(filters_cleaned.map(&order))
+    assert_equal(true, ascending?(res.map(&order)))
   end
 
   def nominal_args
