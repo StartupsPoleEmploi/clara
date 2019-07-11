@@ -12,7 +12,7 @@
           %br 
           .o-layout
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-              = v.link_to_all_aides
+              = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"}
               - v.first_part_of_contract_type.each do |ct|  
                 %li.c-li-ct
                   =ct

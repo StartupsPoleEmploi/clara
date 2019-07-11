@@ -2,16 +2,9 @@ class Footer < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    p '- - - - - - - - - - - - - - args- - - - - - - - - - - - - - - -' 
-    pp args
-    p ''
     @aides = array_for(locals[:aides])
     @dispositifs = array_for(locals[:dispositifs])
     _init_splitted_array_of_contract
-  end
-
-  def link_to_all_aides
-    @context.link_to("Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"})
   end
 
   def links_to_all_contract_types 
@@ -23,6 +16,14 @@ class Footer < ViewObject
         } 
       end
     end 
+  end
+
+  def first_part_of_contract_type  
+    @array1 
+  end   
+
+  def second_part_of_contract_type 
+    @array2 
   end
 
   def _init_splitted_array_of_contract 
@@ -38,12 +39,5 @@ class Footer < ViewObject
     end 
   end 
 
-  def first_part_of_contract_type  
-    @array1 
-  end   
-
-  def second_part_of_contract_type 
-    @array2 
-  end
 
 end
