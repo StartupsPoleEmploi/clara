@@ -1,66 +1,82 @@
-<h1>Outils d'administration</h1>
+<div class="c-superadmin">
+  
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title" id="page-title">
+      Outils d'administration
+  </h1>
+</header>
 
 <div class="grid-flex">
-  <div class="grid-col  c-superadmin-users">
-    <h2>Utilisateurs</h2>
-    <ul>
-      <li>
-        <%=link_to "Utilisateurs API", admin_api_users_path %>
-      </li>
-      <li>
-        <%=link_to "Utilisateurs Admin", admin_users_path %>
-      </li>
-    </ul>
+  <div class="grid-col">
+    <div class="c-superadminusers">
+      <h2>Utilisateurs</h2>
+      <ul>
+        <li>
+          <%=link_to "Utilisateurs API", admin_api_users_path %>
+        </li>
+        <li>
+          <%=link_to "Utilisateurs Admin", admin_users_path %>
+        </li>
+      </ul>
+      
+    </div>
   </div>
-  <div class="grid-col c-superadmin-docs">
-    <h2>Documentation</h2>
-    <ul>
-      <li>
-        <%=link_to "Explications des règles", admin_explicitations_path %>
-      </li>
-      <li>
-        <%=link_to "Liste des variables", admin_variables_path %>
-      </li>      
-      <li>
-        <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
-      </li>
-    </ul>
-
+  <div class="grid-col">
+    <div class="c-superadmin-docs">
+      <h2>Documentation</h2>
+      <ul>
+        <li>
+          <%=link_to "Explications des règles", admin_explicitations_path %>
+        </li>
+        <li>
+          <%=link_to "Liste des variables", admin_variables_path %>
+        </li>      
+        <li>
+          <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
+        </li>
+      </ul>
+    </div>
   </div>
+  <div class="grid-col"></div>
 </div>
 <div class="grid-flex">
-  <div class="grid-col c-superadmin-stats">
-    <h2>Statistiques</h2>
-    <ul>
-      <li>
-        <%=link_to "Voir les statistiques", stats_index_path %>
-      </li>
-      <li>
-        <%=link_to "Mettre à jour les statistiques", admin_get_stats_path %>
-      </li>
-      <li>
-        <%=link_to "Stratégies de suivi", admin_tracings_path %>
-      </li>
-      <li>
-        <%=link_to "Liste des suivis", admin_traces_path %>
-      </li>      
-    </ul>
+  <div class="grid-col">
+    <div class="c-superadmin-stats">
+      <h2>Statistiques</h2>
+      <ul>
+        <li>
+          <%=link_to "Voir les statistiques", stats_index_path %>
+        </li>
+        <li>
+          <%=link_to "Mettre à jour les statistiques", admin_get_stats_path %>
+        </li>
+        <li>
+          <%=link_to "Stratégies de suivi", admin_tracings_path %>
+        </li>
+        <li>
+          <%=link_to "Liste des suivis", admin_traces_path %>
+        </li>      
+      </ul>
+    </div>
   </div>
-  <div class="grid-col c-superadmin-actions">
-    <h2>Actions</h2>
-    <ul>
-      <li>
-        <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
-      </li>
-      <li>
-        <%=link_to "Création de ZRR", admin_get_zrr_path %>
-      </li>
-      <li>
-        <%=link_to "Vérification des règles", admin_rule_checks_path %>
-      </li>
-    </ul>
+  <div class="grid-col">
+    <div class="c-superadmin-actions">
+      <h2>Actions</h2>
+      <ul>
+        <li>
+          <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
+        </li>
+        <li>
+          <%=link_to "Création de ZRR", admin_get_zrr_path %>
+        </li>
+        <li>
+          <%=link_to "Vérification des règles", admin_rule_checks_path %>
+        </li>
+      </ul>      
+    </div>
   </div>
+  <div class="grid-col"></div>
+
+ </div>
+
 </div>
-
-<div></div>
-
