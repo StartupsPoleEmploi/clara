@@ -1,4 +1,32 @@
-Outils d'administration
+<h1>Outils d'administration</h1>
+
+<div class="grid-flex">
+  <div class="grid-col">
+    <h2>Utilisateurs</h2>
+    <ul>
+      <li>
+        <%=link_to "Utilisateurs API", admin_api_users_path %>
+      </li>
+      <li>
+        <%=link_to "Utilisateurs Admin", admin_users_path %>
+      </li>
+    </ul>
+  </div>
+  <div class="grid-col">
+    <h2>Documentation</h2>
+  </div>
+</div>
+<div class="grid-flex">
+  <div class="grid-col">
+    <h2>Statistiques</h2>
+  </div>
+  <div class="grid-col">
+    <h2>Actions</h2>
+  </div>
+</div>
+
+<div></div>
+
 <ul style="margin-left: 2rem;">
   <li>
     <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
@@ -24,12 +52,7 @@ Outils d'administration
   <li>
     <%=link_to "Vérification des règles", admin_rule_checks_path %>
   </li>
-  <li>
-    <%=link_to "Utilisateurs API", admin_api_users_path %>
-  </li>
-  <li>
-    <%=link_to "Utilisateurs Admin", admin_users_path %>
-  </li>
+
   <li>
     <%=link_to "Stratégies de suivi", admin_tracings_path %>
   </li>

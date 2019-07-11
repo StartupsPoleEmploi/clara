@@ -4,3 +4,10 @@
 .grid-col {
   flex: 1;
 }
+
+
+/* ungrid.css (97 bytes minified) */
+@media (min-width: 40em) {
+    .row { width: 100%; display: table; table-layout: fixed; }
+    .col { display: table-cell; }
+}
