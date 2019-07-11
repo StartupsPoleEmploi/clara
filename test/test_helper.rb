@@ -21,4 +21,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def ascending? (array)
+    yes = true
+    array.reduce { |l, r| break unless yes &= (l[0] <= r[0]); l }
+    yes
+  end
+
+  def same_array?(a, b)
+    !a.difference(b).any?
+  end
 end

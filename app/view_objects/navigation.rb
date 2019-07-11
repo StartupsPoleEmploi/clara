@@ -1,11 +1,7 @@
 class Navigation < ViewObject
-
-  def after_init(args)
-    locals = hash_for(args)
-  end
   
-  def admin_clazz(req)
-    current_path = GetCurrentPathService.new(req).call
+  def admin_clazz
+    current_path = GetCurrentPathService.new(@context.request).call
     actives_pathes = [
       "admin_get_hidden_admin_path", 
       "admin_get_cache_path", 
@@ -24,8 +20,8 @@ class Navigation < ViewObject
     "navigation__link navigation__link--#{state}"
   end
 
-  def filter_clazz(req)
-    current_path = GetCurrentPathService.new(req).call
+  def filter_clazz
+    current_path = GetCurrentPathService.new(@context.request).call
     actives_pathes = [
       "admin_get_all_filters_menu_path", 
       "admin_get_custom_filter_menu_path", 
