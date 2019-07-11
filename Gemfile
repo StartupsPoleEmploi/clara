@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', github: 'rails/rails'
+gem 'rails', '~> 6.0.0.rc1'
 gem "puma", "~> 3.0"
 gem "uglifier", ">= 1.3.0"
 gem "jbuilder", "~> 2.5"
@@ -49,7 +49,7 @@ gem "oj"
 gem "paper_trail", "~> 9.0.0"
 gem "administrate"
 
-gem "administrate-field-ckeditor", "~> 0.0.9", github: 'maxdeval/administrate-field-ckeditor'
+gem "administrate-field-ckeditor", "~> 0.0.9"
 
 gem "mina", require: false, group: "deployment"
 gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma', group: "deployment"
