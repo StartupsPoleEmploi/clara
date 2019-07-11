@@ -15,11 +15,11 @@
               = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"}
               - v.first_part_of_contract_type.each do |ct|  
                 %li.c-li-ct
-                  =ct
+                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-link-to-ct"}
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
               - v.second_part_of_contract_type.each do |ct|      
                 %li.c-li-ct
-                  =ct 
+                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-link-to-ct"} 
 
       .o-layout__item{:class=>"u-1/4@desktop u-1/2@tablet"}
         .c-footer__content
