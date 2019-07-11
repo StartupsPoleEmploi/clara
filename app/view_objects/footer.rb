@@ -2,8 +2,6 @@ class Footer < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
-    @aides = array_for(locals[:aides])
-    @dispositifs = array_for(locals[:dispositifs])
     _init_splitted_array_of_contract
   end
 
@@ -29,11 +27,11 @@ class Footer < ViewObject
   def _init_splitted_array_of_contract 
     @array1 = []  
     @array2 = []  
-    links_to_all_contract_types.each_with_index do |ct, n|  
-      if n < links_to_all_contract_types.size / 2 
+    links_to_all_contract_types.each_with_index do |ct, indx|  
+      if indx < links_to_all_contract_types.size / 2 
         @array1.push(ct[:link]) 
       end 
-      if n >= links_to_all_contract_types.size / 2  
+      if indx >= links_to_all_contract_types.size / 2  
         @array2.push(ct[:link]) 
       end     
     end 
