@@ -11,8 +11,6 @@ class RuleCheckService
       elsif rule.variable.variable_kind == 'selectionnable'
         array_of_possibilities = extract_descriptions(rule)
         state = 'ok' if array_of_possibilities.include?(rule.value_eligible)
-      else
-        state='error'
       end
     else
       state='n/a'
