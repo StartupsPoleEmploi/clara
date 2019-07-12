@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :explicitations
+    resources :conventions
     resources :api_users
     resources :users
     resources :tracings
