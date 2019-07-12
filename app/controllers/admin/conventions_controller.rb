@@ -10,6 +10,12 @@ module Admin
     #     per(10)
     # end
 
+    def convention_history
+      render json: {
+        status: "ok",
+      }
+    end
+
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
     #   Convention.find_by!(slug: param)
