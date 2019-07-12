@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+
+  srv_nginx: 
+    volumes:
+      - '../private/r7/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
+
+  srv_app: 
+    volumes:
+      - '../private/r7/.env:/home/clara/.env'

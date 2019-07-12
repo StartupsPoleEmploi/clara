@@ -6,7 +6,7 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
   please: function () {
       $(".cke_button__removeformat").remove();
       $(".cke_button__italic").remove();
-      $(".cke_button__underline").remove();
+      // $(".cke_button__underline").remove();
       $(".cke_button__strike").remove();
       $(".cke_button__subscript").remove();
       $(".cke_button__superscript").remove();

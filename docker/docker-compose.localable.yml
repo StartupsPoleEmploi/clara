@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+
+  srv_app: 
+    container_name: clara_app
+    volumes:
+      - '..:/home/clara'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - srv_db

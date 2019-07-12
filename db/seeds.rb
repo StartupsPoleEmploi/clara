@@ -542,3 +542,4 @@ explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible
 end
 
 
+Convention.first ? nil : Convention.create(name: "Charte éditoriale")

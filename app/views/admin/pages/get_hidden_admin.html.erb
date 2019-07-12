@@ -26,6 +26,9 @@
       <h2>Documentation</h2>
       <ul>
         <li>
+          <%=link_to "Charte éditoriale",  admin_convention_path(Convention.first) %>
+        </li>
+        <li>
           <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
         </li>
         <li>
@@ -35,7 +38,7 @@
           <%=link_to "Explications des règles", admin_explicitations_path %>
         </li>
         <li>
-          <%=link_to "Documentation API", "/apidocs" %>
+          <%=link_to "Documentation API", "/apidocs", target: "_blank" %>
         </li>
       </ul>
     </div>

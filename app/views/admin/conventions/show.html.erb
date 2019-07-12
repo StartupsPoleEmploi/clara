@@ -1,0 +1,34 @@
+<% content_for(:title) { t("administrate.actions.show_resource", name: page.page_title) } %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <button class="button js-history">
+      Voir l'historique
+    </button>
+    <%= link_to(
+      "Modifier",
+      [:edit, namespace, page.resource],
+      class: "button",
+    ) %>
+    <%= link_to(
+      "Outils d'admin",
+      admin_get_hidden_admin_path,
+      class: "button",
+    ) %>
+  </div>
+</header>
+
+<section class="main-content__body js-convention-details">
+    <% raw_content = page.attributes.find { |attrb| attrb.name == "content" }  %>
+    <%= raw raw_content.data%>
+</section>
+
+<section class="history">
+  <h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
+  <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>  
+</section>
+
