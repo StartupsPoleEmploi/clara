@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 20.36.1 (12/7/2019)
+-[#1065][BUG] meta viewport for mobile
+
 
 ## 20.36.0 (12/7/2019)
 -[#1268][TECH][ADMIN] passage à Rails 5.2.3

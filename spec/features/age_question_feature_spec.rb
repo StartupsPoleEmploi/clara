@@ -83,5 +83,5 @@ feature 'age question' do
     # then
     expect(current_path).not_to eq new_age_question_path
   end
-  
+
 end
