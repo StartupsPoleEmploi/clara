@@ -8,7 +8,7 @@
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %meta{:content => "initial-scale=1, maximum-scale=1", :name => "viewport"}
+    %meta{:content => "initial-scale=1, maximum-scale=1, user-scalable=yes", :name => "viewport"}
     %meta{:name => "turbolinks-cache-control", :content => "no-cache"}
     / Google search console SebSEO
     %meta{:content => "neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q", :name => "google-site-verification"}/
@@ -25,7 +25,6 @@
     / Google search console Mar
     %meta{:content => "0jDmSXtIkrU_nDcXoExkAHbG0TmRlGrx7LdJoX9ktWg", :name => "google-site-verification"}/
 
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
     = javascript_tag "window.clara = window.clara || {}; clara.hotjar_id = '#{ENV['ARA_HOTJAR_ID'].to_s}';clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID'].to_s}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json};"
     = csrf_meta_tags

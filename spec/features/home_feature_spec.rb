@@ -70,8 +70,4 @@ feature 'HomeSpec' do
     expect(page).to have_css 'meta[name="google-site-verification"]', count:7, :visible => false
   end
 
-  scenario 'Should have a meta viewport' do
-    visit root_path
-    expect(page).to have_css 'meta[name="viewport"][content="width=device-width, initial-scale=1.0"]', :visible => false
-  end
 end
