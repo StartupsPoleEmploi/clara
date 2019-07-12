@@ -47,3 +47,7 @@ as well as a link to its edit page.
     <% end %>
   </dl>
 </section>
+
+<h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
+<%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+
