@@ -4,7 +4,7 @@ services:
 
   srv_nginx: 
     volumes:
-      - '../private/prod/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
+      - '../private/r7/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
 
   srv_app: 
     volumes:
