@@ -11,7 +11,7 @@ clara.js_define("admin_convention", {
         $('section.history').hide();
         $('.js-convention-details').show();
         $('.js-history').text("Voir l'historique")
-        $('.main-content__page-title').text('Historique de la charte')
+        $('.main-content__page-title').text('Détails de la charte')
       } else {
         $('section.history').show();
         $('.js-convention-details').hide();
