@@ -31,13 +31,15 @@ services:
       - '../private/dev/.env:/home/clara/.env'
     depends_on:
       - srv_db
+    ports:
+      - 3000:3000
     command: >
       sh -c " bundle config --delete without &&
         bundle install &&
         echo 'My local machine launched !!!' && sleep infinity"
 # Then launch app with bin/rails s -p 3000 -b '0.0.0.0'
 
-      
+
   srv_db:
     container_name: clara_db
     image: postgres:9.5.17
