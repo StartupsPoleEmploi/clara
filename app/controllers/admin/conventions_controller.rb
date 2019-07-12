@@ -17,5 +17,9 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+    # disable 'new' and 'destroy' links
+    def valid_action?(name, resource = resource_class)
+      %w[new destroy].exclude?(name.to_s) && super
+    end
   end
 end

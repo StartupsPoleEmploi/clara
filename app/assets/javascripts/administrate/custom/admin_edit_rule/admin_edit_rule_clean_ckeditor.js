@@ -27,7 +27,7 @@ clara.js_define("admin_edit_rule_clean_ckeditor", {
 
       $(".cke_button__image_icon").parent().remove();
       $(".cke_button__flash").remove();
-      $(".cke_button__table").remove();
+      // $(".cke_button__table").remove();
       $(".cke_button__horizontalrule").remove();
 
       $(".cke_button__source").parent().parent().remove();

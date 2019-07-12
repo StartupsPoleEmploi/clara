@@ -1,0 +1,23 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      content: Contenu
+      created_at: "Créé le"
+      updated_at: "Mis à jour le"
+    models: 
+      convention: Charte
+    attributes:
+      convention:
+        <<: *labels
+  helpers:
+    label:
+      convention:
+        <<: *labels
+    submit:
+      convention:
+        create: "Créer cette charte"
+        update: "Mettre à jour cette charte"
+  convention:
+    operator_kind:
+      equal: "Égal à"
