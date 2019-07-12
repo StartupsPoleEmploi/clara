@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.37.0 (12/7/2019)
+-[#1301][ADMIN] charte editoriale
+
+
 ## 20.36.1 (12/7/2019)
 -[#1065][BUG] meta viewport for mobile
 
@@ -10,7 +14,7 @@
 
 
 ## 20.35.0 (11/7/2019)
--[#1301][FEATURE][ADMIN] réorganisation panneau superadmin
+-[#1303][FEATURE][ADMIN] réorganisation panneau superadmin
 
 
 ## 20.34.2 (10/7/2019)
