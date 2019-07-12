@@ -43,7 +43,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :explicitations
     resources :conventions
-    get 'convention_history' => 'conventions#convention_history'
     resources :api_users
     resources :users
     resources :tracings

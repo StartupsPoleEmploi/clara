@@ -6,6 +6,9 @@
   </h1>
 
   <div>
+    <button class="button js-history">
+      Voir l'historique
+    </button>
     <%= link_to(
       "Modifier",
       [:edit, namespace, page.resource],
@@ -19,7 +22,7 @@
   </div>
 </header>
 
-<section class="main-content__body">
+<section class="main-content__body js-convention-details">
   <dl>
     <% page.attributes.each do |attribute| %>
       <dt class="attribute-label" id="<%= attribute.name %>">
@@ -35,6 +38,8 @@
   </dl>
 </section>
 
-<h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
-<%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+<section class="history">
+  <h2 class="focusable_tab_title" tabindex="0">Historique des modifications</h2>
+  <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>  
+</section>
 
