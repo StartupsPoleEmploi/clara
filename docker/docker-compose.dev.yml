@@ -11,15 +11,19 @@ services:
     container_name: clara_nginx
     volumes:
       - 'vol_shared:/home/clara'
+      - '../private/dev/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
     ports:
       - 80:80
     depends_on:
       - srv_app
 
   srv_app: 
-    image: ruby:2.6.0
+    build:
+      context: .
+      dockerfile: ./app.Dockerfile
     container_name: clara_app
     user: root
+    working_dir: /home/clara
     volumes:
       - '..:/home/clara'
       - '../private/dev/.env:/home/clara/.env'
