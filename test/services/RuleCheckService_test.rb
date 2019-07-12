@@ -74,6 +74,13 @@ class RuleCheckServiceTest < ActiveSupport::TestCase
     assert_equal("error", all_compositions[1][:result])
   end
 
+  test '.extract_descriptions returns an an array when description has comma-separated values' do
+    rule = be_an_adult
+    rule.variable.elements = 'a,b,c'
+    sut = RuleCheckService.new.send :extract_descriptions, rule
+    assert_equal(['a', 'b', 'c'], sut)
+  end
+
   test '.extract_descriptions returns an empty array if anything wrong occurs' do
     sut = RuleCheckService.new.send :extract_descriptions, Date.new
     assert_equal([], sut)

@@ -5,8 +5,8 @@ class SerializeResultsServiceGoTest < ActiveSupport::TestCase
   test '_.go' do
     #given
     allow(AidCalculationService).to receive(:get_instance).and_return(calculator)
-    allow(ContractType).to receive(:all).and_return([{"contract_types"=>42}])
-    allow(Filter).to receive(:all).and_return([{"id"=>42}])
+    allow(ContractType).to receive(:all).and_return([{"contract_types":42}])
+    allow(Filter).to receive(:all).and_return([{"id":42}])
     #when
     res = SerializeResultsService.get_instance.go(asker)
     #then
