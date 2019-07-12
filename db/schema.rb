@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_084549) do
+ActiveRecord::Schema.define(version: 2019_05_27_084550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -90,6 +90,12 @@ ActiveRecord::Schema.define(version: 2019_05_27_084549) do
     t.string "category"
     t.string "plural"
     t.index ["slug"], name: "index_contract_types_on_slug", unique: true
+  end
+
+  create_table "conventions", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "custom_filters", force: :cascade do |t|
