@@ -1,52 +1,7 @@
 version: "2"
 
-volumes:
-  vol_shared:
-  vol_data:
-
 services:
 
-  srv_nginx: 
-    image: nginx:1.10.3
-    container_name: clara_nginx
-    volumes:
-      # - './nginx/default.conf:/etc/nginx/conf.d/default.conf'
-      - 'vol_shared:/var/www/ara'
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - srv_app
-
-
   srv_app: 
-    container_name: clara_app
-    build:
-      context: .
-      dockerfile: ./app.Dockerfile
-    user: root
     volumes:
-      - '..:/var/git/ara.git'
-      - '../.env:/home/clara/.env'
-      - 'vol_shared:/var/www/ara'
-    ports:
-      - "3000:3000"
-    depends_on:
-      - srv_db
-    command: >
-      sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
-             cd /var/git/ara.git && bundle install --without development test undefined &&
-             echo 'My app launched !!!' && sleep infinity"
-
-
-  srv_db:
-    container_name: clara_db
-    image: postgres:9.5.17
-    ports:
-      - "5432:5432"
-    volumes:
-      - './db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
-      - './db/init.sql:/docker-entrypoint-initdb.d/init.sql'
-      - '../latest.dump:/home/dumped/latest.dump'
-      - vol_data:/var/lib/postgresql/data
-    restart: always
+      - '../private/dev/.env:/home/clara/.env'
