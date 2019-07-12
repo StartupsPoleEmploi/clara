@@ -23,19 +23,8 @@
 </header>
 
 <section class="main-content__body js-convention-details">
-  <dl>
-    <% page.attributes.each do |attribute| %>
-      <dt class="attribute-label" id="<%= attribute.name %>">
-      <%= t(
-        "helpers.label.#{resource_name}.#{attribute.name}",
-        default: attribute.name.titleize,
-      ) %>
-      </dt>
-
-      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute, page: page %></dd>
-    <% end %>
-  </dl>
+    <% raw_content = page.attributes.find { |attrb| attrb.name == "content" }  %>
+    <%= raw raw_content.data%>
 </section>
 
 <section class="history">
