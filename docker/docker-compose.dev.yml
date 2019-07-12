@@ -40,7 +40,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - './db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
+      - '../private/dev/db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
       - './db/init.sql:/docker-entrypoint-initdb.d/init.sql'
       - '../private/latest.dump:/home/dumped/latest.dump'
       - vol_data:/var/lib/postgresql/data
