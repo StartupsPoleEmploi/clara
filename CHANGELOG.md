@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 20.36.1 (9/7/2019)
+## 20.36.1 (12/7/2019)
 -[#1065][BUG] meta viewport for mobile
 
 
