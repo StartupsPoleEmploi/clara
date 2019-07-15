@@ -28,6 +28,17 @@ clara.js_define("admin_geowhere", {
         };
         $('.c-geoselect--region').selectize(region_options);
       
+        var town_options = {        
+          placeholder: "",
+          options: [
+            {value: "nantes", name: "Nantes" },
+            {value: "rennes", name: "Rennes" },
+          ],
+          labelField: 'name',
+          searchField: ['name'],
+        };
+        $('.c-geoselect--town').selectize(town_options);
+      
     }
 
 });

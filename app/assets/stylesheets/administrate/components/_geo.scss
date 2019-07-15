@@ -4,6 +4,7 @@
 
 label.c-geolabel {
   display: inline;
+  font-weight: 400;
 }
 
 .c-geowhere-title {
@@ -23,4 +24,14 @@ label.c-geolabel {
 .c-geowhere-selection {
   width: 18rem;
   margin-right: 1rem;
+}
+
+.c-geoselect-label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.c-geowhere-selections {
+  margin-left: 3rem;
+  margin-top: .3rem;
 }
