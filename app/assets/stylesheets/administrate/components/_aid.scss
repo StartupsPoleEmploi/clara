@@ -99,3 +99,12 @@ div.cke_dialog_tabs {
   list-style-type: inherit;
   padding-left:40px
 }
+
+button.js-collapse {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #027cbb;
+  text-decoration-line: underline;
+  padding: 0.75em .5em;
+}

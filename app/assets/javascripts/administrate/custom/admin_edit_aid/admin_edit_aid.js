@@ -12,6 +12,15 @@ clara.js_define("admin_edit_aid", {
       $("#modify-aid").click();
     });
 
+    $(".js-collapse.is-fold").click(function (e) {
+      e.stopPropagation()
+      console.log("is-fold") 
+    })
+    $(".js-collapse.is-unfold").click(function (e) {
+      e.stopPropagation()
+      console.log("is-unfold") 
+    })
+
     //Clean CKEDitor
     setTimeout(function() {
       clara.admin_edit_aid_clean_ckeditor.please();
