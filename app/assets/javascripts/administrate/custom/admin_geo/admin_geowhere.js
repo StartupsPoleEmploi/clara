@@ -66,11 +66,6 @@ clara.js_define("admin_geowhere", {
                       name: town_postcode            
                     }
                   })
-                  console.log(rez);
-                    // callback([
-                    //   {value: "nantes", name: "Nantes" },
-                    //   {value: "rennes", name: "Rennes" },
-                    // ]);
                   callback(rez);
                 }
             });
