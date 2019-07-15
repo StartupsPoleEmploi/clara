@@ -16,3 +16,11 @@ label.c-geolabel {
     cursor: pointer;
   } 
 }
+
+.c-geowhere-selections {
+  display: flex;
+}
+.c-geowhere-selection {
+  width: 18rem;
+  margin-right: 1rem;
+}
