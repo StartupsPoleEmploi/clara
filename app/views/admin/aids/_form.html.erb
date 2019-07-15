@@ -47,6 +47,8 @@
         <% end %>
       </div>
       <div id="tab_2" class="js-tabcontent">
+        <button class="js-collapse is-fold" type="button"> Tout plier </button>
+        <button class="js-collapse is-unfold" type="button"> Tout déplier </button>
         <div id="accordion_0" class="js-accordion">
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if index_nb > 9 %>

@@ -6,70 +6,41 @@
 
 ### Prérequis
 
- - ruby 2.4.1, installé de préférence avec rbenv
- - postgre 9.5
- - git 2
-
-### Installation
-
-Clonez clara depuis GitHub, puis
-
 ```
-$ cd clara
-$ bundle install
-```
+~/workspace> docker --version
+Docker version 17.12.0-ce, build c97c6d6
 
-Récupérez le fichier d'environnement .env  auprès des administrateurs, puis
-
-```
-$ bin/rails db:setup
-```
+~/workspace> docker-compose --version
+docker-compose version 1.18.0, build 8dd22a9
 
 
-### Configuration de PG
+~/workspace> git clone git@github.com:StartupsPoleEmploi/clara.git
 
-Une fois Postgre installé, dans postgresql.conf, ajoutez les lignes suivantes :
+~/workspace> cd clara
 
-```
-shared_preload_libraries = 'pg_stat_statements'
-pg_stat_statements.track = all
-```
+~/workspace/clara> git clone git@git.beta.pole-emploi.fr:clara/private.git
 
-Dans le fichier pg_hba.conf, ajoutez les lignes suivantes :
+~/workspace/clara> rm -rf private/.git
 
-```
-local  all  ara trust
-host  all   ara 0.0.0.0/0  trust
-host  all   ara ::/0 trust
-```
+~/workspace/clara> gem install docker-sync
 
-### Lancer le site en local
-```
-$ bin/rails server
-```
-le site est disponible sous http://localhost:3000
+~/workspace/clara> cd docker 
 
-Dans un autre terminal, lancer
+~/workspace/clara/docker> docker-sync-stack start 
 
-```
-$ bundle exec guard -P livereload
-```
+Les machines docker (app, db, nginx) sont lancées, mais pas encore l'application
 
-Pour ne pas avoir besoin de rafraîchir manuellement le navigateur à chaque changement de code.
+Dans un autre onglet du terminal, 
 
-### Lancement des tests unitaires back
+~/workspace/clara/docker> docker-compose exec srv_app bash
 
-```
-$ bundle exec spring rspec
+root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
+
+L'application est visible sous http://localhost
+
 ```
 
 ### Lancement des tests unitaires front
-
-```
-$ bin/rails jasmine
-```
-
-Puis ouvrir / rafraîchir le navigateur sur localhost:8888
 
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 

@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule_clean_ckeditor", {
+clara.js_define("admin_edit_aid_clean_ckeditor", {
 
   please_if: _.stubFalse,
 

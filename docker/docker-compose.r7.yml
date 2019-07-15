@@ -9,3 +9,8 @@ services:
   srv_app: 
     volumes:
       - '../private/r7/.env:/home/clara/.env'
+
+  srv_db:
+    volumes:
+      - '../private/r7/db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
+      - '../private/r7/db/init.sql:/docker-entrypoint-initdb.d/init.sql'

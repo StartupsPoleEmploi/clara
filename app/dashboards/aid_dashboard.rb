@@ -19,7 +19,7 @@ class AidDashboard < Administrate::BaseDashboard
     need_filters: Field::HasMany.with_options(export: false),
     filters: Field::HasMany.with_options(export: false),
     custom_filters: Field::HasMany.with_options(export: false),
-    short_description: Field::String.with_options(export: false),
+    short_description: Field::Text.with_options(export: false),
     what: Field::Ckeditor.with_options(export: false),
     how_much: Field::Ckeditor.with_options(export: false), 
     additionnal_conditions: Field::Ckeditor.with_options(export: false),

@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule", {
+clara.js_define("admin_edit_aid", {
 
   please_if: function() {
     return $(".js-aid-edition").exists();
@@ -12,9 +12,30 @@ clara.js_define("admin_edit_rule", {
       $("#modify-aid").click();
     });
 
+    $(".js-collapse.is-fold").click(function (e) {
+      $(".js-accordion__header").each(function (e) {
+        var $bar = $(this);
+        if ($bar.attr("aria-expanded") === "true") {
+          $bar.click()
+        }
+      })
+      setTimeout(function () {$(".js-collapse.is-fold").focus()}, 100)
+    })
+
+
+    $(".js-collapse.is-unfold").click(function (e) {
+      $(".js-accordion__header").each(function (e) {
+        var $bar = $(this);
+        if ($bar.attr("aria-expanded") === "false") {
+          $bar.click()
+        }
+      })
+      setTimeout(function () {$(".js-collapse.is-unfold").focus()}, 100)
+    })
+
     //Clean CKEDitor
     setTimeout(function() {
-      clara.admin_edit_rule_clean_ckeditor.please();
+      clara.admin_edit_aid_clean_ckeditor.please();
     },1000);
 
     // Redux
@@ -28,21 +49,21 @@ clara.js_define("admin_edit_rule", {
       $aid_contract_type_id: $("#aid_contract_type_id"),
     }
     
-    var global_state = clara.admin_edit_rule_init.please(observables);
+    var global_state = clara.admin_edit_aid_init.please(observables);
 
     // REDUCER
-    var reducer = clara.admin_edit_rule_reducer.please;
+    var reducer = clara.admin_edit_aid_reducer.please;
 
     // STORE
     window.main_store = Redux.createStore(reducer, global_state);
 
     // DISPATCHERS
-    clara.admin_edit_rule_dispatcher.please(main_store, observables);
+    clara.admin_edit_aid_dispatcher.please(main_store, observables);
 
     // SUBSCRIBER
     main_store.subscribe(function(){
       var state = _.cloneDeep(main_store.getState());
-      clara.admin_edit_rule_subscriber.please(state);
+      clara.admin_edit_aid_subscriber.please(state);
     });
 
     main_store.dispatch({type: 'INIT' })

@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 20.38.0 (12/7/2019)
+-[#1287][ADMIN] reliquats modif d'une aide
+
+
 ## 20.37.0 (12/7/2019)
 -[#1301][ADMIN] charte editoriale
 

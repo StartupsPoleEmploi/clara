@@ -1,5 +1,5 @@
-//= require_tree ../../app/assets/javascripts/administrate/custom/admin_edit_rule
-describe("admin_edit_rule_dispatcher.js", function() {
+//= require_tree ../../app/assets/javascripts/administrate/custom/admin_edit_aid
+describe("admin_edit_aid_dispatcher.js", function() {
 
   describe(".please", function() {
 
@@ -100,7 +100,7 @@ describe("admin_edit_rule_dispatcher.js", function() {
     });
 
     function sut() {
-      return clara.admin_edit_rule_dispatcher;
+      return clara.admin_edit_aid_dispatcher;
     }
 
     function create_ckeditor(name) {
