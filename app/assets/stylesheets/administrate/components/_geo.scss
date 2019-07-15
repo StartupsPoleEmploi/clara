@@ -1,0 +1,18 @@
+.c-geowhere {
+  padding: 2rem;
+}
+
+label.c-geolabel {
+  display: inline;
+}
+
+.c-geowhere-title {
+  padding-bottom: 1rem;
+}
+
+.c-geowhere-line {
+  padding-bottom: .5rem;
+  input, label {
+    cursor: pointer;
+  } 
+}
