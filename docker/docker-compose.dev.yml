@@ -3,7 +3,8 @@ version: "2"
 volumes:
   vol_shared:
   vol_data:
-
+  app-sync:
+    external: true
 
 services:
 
@@ -19,7 +20,7 @@ services:
       - srv_app
     restart: always
 
-  srv_app: 
+  srv_app:
     build:
       context: .
       dockerfile: ./app.Dockerfile
@@ -29,6 +30,7 @@ services:
     volumes:
       - '..:/home/clara'
       - '../private/dev/.env:/home/clara/.env'
+      - 'app-sync:/home/clara:nocopy' # <-- the only change
     depends_on:
       - srv_db
     ports:
