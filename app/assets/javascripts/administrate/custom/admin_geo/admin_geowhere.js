@@ -117,10 +117,15 @@ clara.js_define("admin_geowhere", {
                     return e.properties.context
                   });
                   var rez = _.map(uniq_context, function(e){
-                    var displayed = e.properties.context
-                    return {
-                      value: _.slugify(displayed),
-                      name: displayed            
+                    if (e && e.properties && e.properties.context && e.properties.context.indexOf(",") > 0 && e.properties.context.indexOf("(") > 0) {
+                      var displayed = e.properties.context.split(",")[2].split("(")[0]
+                      console.log(displayed);
+                      return {
+                        value: _.slugify(displayed),
+                        name: displayed            
+                      }                      
+                    } else {
+                      return {value: "a", name:"a"}
                     }
                   })
                   callback(rez);
