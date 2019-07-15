@@ -1,7 +1,11 @@
 # CLARA Changelog
 
 
-## 20.38.0 (12/7/2019)
+## 21.0.0 (16/7/2019)
+-[#1185][ADMIN] separation critere geo
+
+
+## 20.38.0 (15/7/2019)
 -[#1287][ADMIN] reliquats modif d'une aide
 
 
