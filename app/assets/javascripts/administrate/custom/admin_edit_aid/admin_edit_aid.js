@@ -13,18 +13,18 @@ clara.js_define("admin_edit_aid", {
     });
 
     $(".js-collapse.is-fold").click(function (e) {
-      e.preventDefault()
+    })
 
-      if $(".js-accordion__header").each(function (e) {
+
+    $(".js-collapse.is-unfold").click(function (e) {
+      $(".js-accordion__header").each(function (e) {
         var $bar = $(this);
+        console.log($bar.attr("aria-expanded"));
         if ($bar.attr("aria-expanded") === "false") {
           $bar.click()
         }
       })
-
-    })
-    $(".js-collapse.is-unfold").click(function (e) {
-      e.preventDefault()
+      $bar.focus()
     })
 
     //Clean CKEDitor
