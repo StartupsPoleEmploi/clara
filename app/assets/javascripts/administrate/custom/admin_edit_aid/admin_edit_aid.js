@@ -14,7 +14,7 @@ clara.js_define("admin_edit_aid", {
 
     //Clean CKEDitor
     setTimeout(function() {
-      clara.admin_edit_rule_clean_ckeditor.please();
+      clara.admin_edit_aid_clean_ckeditor.please();
     },1000);
 
     // Redux
@@ -28,21 +28,21 @@ clara.js_define("admin_edit_aid", {
       $aid_contract_type_id: $("#aid_contract_type_id"),
     }
     
-    var global_state = clara.admin_edit_rule_init.please(observables);
+    var global_state = clara.admin_edit_aid_init.please(observables);
 
     // REDUCER
-    var reducer = clara.admin_edit_rule_reducer.please;
+    var reducer = clara.admin_edit_aid_reducer.please;
 
     // STORE
     window.main_store = Redux.createStore(reducer, global_state);
 
     // DISPATCHERS
-    clara.admin_edit_rule_dispatcher.please(main_store, observables);
+    clara.admin_edit_aid_dispatcher.please(main_store, observables);
 
     // SUBSCRIBER
     main_store.subscribe(function(){
       var state = _.cloneDeep(main_store.getState());
-      clara.admin_edit_rule_subscriber.please(state);
+      clara.admin_edit_aid_subscriber.please(state);
     });
 
     main_store.dispatch({type: 'INIT' })

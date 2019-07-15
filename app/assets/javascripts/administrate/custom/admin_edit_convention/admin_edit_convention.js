@@ -8,7 +8,7 @@ clara.js_define("admin_edit_convention", {
       
       //Clean CKEDitor
       setTimeout(function() {
-        clara.admin_edit_rule_clean_ckeditor.please();
+        clara.admin_edit_aid_clean_ckeditor.please();
       },1000);      
 
       // disable name change
