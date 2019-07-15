@@ -107,4 +107,9 @@ button.js-collapse {
   color: #027cbb;
   text-decoration-line: underline;
   padding: 0.75em .5em;
+  font-weight: 400;
+  &:hover {
+    color: #025d8c;
+    background-color: transparent;
+  }
 }
