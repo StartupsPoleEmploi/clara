@@ -7,35 +7,92 @@ clara.js_define("admin_geowhere", {
     please: function() {
 
         var department_options = {        
-          placeholder: "",
-          options: [
-            {value: "ain", name: "Ain" },
-            {value: "loire-atlantique", name: "Loire-Atlantique" },
-          ],
+          valueField: 'name',
           labelField: 'name',
-          searchField: ['name'],
+          searchField: 'name',
+          options: [],
+          create: false,
+          load: function(query, callback) {
+            if (!query.length) return callback();
+            $.get({
+                url: 'https://api-adresse.data.gouv.fr/search/',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                  q: query,
+                  type: "context"
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                  callback([]);
+                  var uniq_context = _.uniqBy(res.features, function(e) {
+                    return e.properties.context
+                  });
+                  var rez = _.map(uniq_context, function(e){
+                    var displayed = e.properties.context
+                    return {
+                      value: _.slugify(displayed),
+                      name: displayed            
+                    }
+                  })
+                  callback(rez);
+                }
+            });
+          }
         };
         $('.c-geoselect--department').selectize(department_options);
 
-        var region_options = {        
-          placeholder: "",
-          options: [
-            {value: "bretagne", name: "Bretagne" },
-            {value: "ara", name: "Auvergne-Rhone-Alpes" },
-          ],
-          labelField: 'name',
-          searchField: ['name'],
-        };
-        $('.c-geoselect--region').selectize(region_options);
+        // var region_options = {        
+        //   valueField: 'name',
+        //   labelField: 'name',
+        //   searchField: 'name',
+        //   options: [],
+        //   create: false,
+        //   load: function(query, callback) {
+        //     if (query && query.length && query.length > 3) {
+        //       console.log("kboom");
+        //       $.get({
+        //           url: 'https://api-adresse.data.gouv.fr/search/',
+        //           type: 'GET',
+        //           dataType: 'json',
+        //           data: {
+        //             q: query,
+        //             context: query,
+        //           },
+        //           error: function() {
+        //               callback();
+        //           },
+
+        //           success: function(res) {
+        //             // console.log(res);
+        //             var uniq_region = _.uniqBy(res.features, function(e) {
+        //               return e.properties.context.split(",")[2] //region
+        //             });
+        //             // console.log("uniq_region");
+        //             // console.log(uniq_region);
+        //             var rez = _.map(uniq_region, function(e){
+        //               var displayed = e.properties.context.split(",")[2]
+        //               return {
+        //                 id: _.slugify(displayed),
+        //                 value: _.slugify(displayed),
+        //                 name: displayed            
+        //               }
+        //             })
+        //             console.log(rez)
+        //             callback(rez);
+        //           }
+        //       });
+        //     } else {
+        //       console.log("kboom2");
+        //       callback();
+        //     }  
+        //   }
+        // };
+        // $('.c-geoselect--region').selectize(region_options);
       
-        var town_options = {        
-          // placeholder: "",
-          // // options: [
-          // //   {value: "nantes", name: "Nantes" },
-          // //   {value: "rennes", name: "Rennes" },
-          // // ],
-          // labelField: 'name',
-          // searchField: ['name'],
+        var region_options = {        
           valueField: 'name',
           labelField: 'name',
           searchField: 'name',
@@ -55,15 +112,55 @@ clara.js_define("admin_geowhere", {
                     callback();
                 },
                 success: function(res) {
-                  console.log(res);
+                  callback([]);
+                  var uniq_context = _.uniqBy(res.features, function(e) {
+                    return e.properties.context
+                  });
+                  var rez = _.map(uniq_context, function(e){
+                    var displayed = e.properties.context
+                    return {
+                      value: _.slugify(displayed),
+                      name: displayed            
+                    }
+                  })
+                  callback(rez);
+                }
+            });
+          }
+        };
+        $('.c-geoselect--region').selectize(region_options);
+
+
+
+        var town_options = {        
+          valueField: 'name',
+          labelField: 'name',
+          searchField: 'name',
+          options: [],
+          create: false,
+          load: function(query, callback) {
+            if (!query.length) return callback();
+            $.get({
+                url: 'https://api-adresse.data.gouv.fr/search/',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                  q: query,
+                  type: "municipality"
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                  callback([]);
                   var uniq_citycode = _.uniqBy(res.features, function(e) {
                     return e.properties.citycode
                   });
                   var rez = _.map(uniq_citycode, function(e){
-                    town_postcode = e.properties.label + " " + e.properties.postcode
+                    var displayed = e.properties.label + " " + e.properties.postcode
                     return {
-                      value: _.slugify(town_postcode),
-                      name: town_postcode            
+                      value: _.slugify(displayed),
+                      name: displayed            
                     }
                   })
                   callback(rez);
