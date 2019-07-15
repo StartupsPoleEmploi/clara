@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule_reducer", {
+clara.js_define("admin_edit_aid_reducer", {
 
   please_if: _.stubFalse,
 

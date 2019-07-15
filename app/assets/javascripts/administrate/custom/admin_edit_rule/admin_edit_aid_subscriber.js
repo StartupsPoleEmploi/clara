@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule_subscriber", {
+clara.js_define("admin_edit_aid_subscriber", {
 
   please_if: _.stubFalse,
 

@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule", {
+clara.js_define("admin_edit_aid", {
 
   please_if: function() {
     return $(".js-aid-edition").exists();

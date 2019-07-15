@@ -1,4 +1,4 @@
-clara.js_define("admin_edit_rule_dispatcher", {
+clara.js_define("admin_edit_aid_dispatcher", {
 
   please_if: _.stubFalse,
 
