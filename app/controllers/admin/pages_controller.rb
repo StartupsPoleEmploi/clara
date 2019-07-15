@@ -4,6 +4,15 @@ require 'csv'
 module Admin
   class PagesController < Admin::ApplicationController
 
+    # geo
+    def get_geo
+    end
+
+    def post_geo
+    end
+
+
+
     def get_delete_trace
     end
     def post_delete_trace
