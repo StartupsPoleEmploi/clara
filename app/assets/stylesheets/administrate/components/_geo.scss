@@ -1,0 +1,38 @@
+.c-geowhere {
+  padding: 2rem;
+}
+
+label.c-geolabel {
+  display: inline;
+  font-weight: 400;
+}
+
+.c-geowhere-title {
+  padding-bottom: 1rem;
+}
+
+.c-geowhere-line {
+  padding-bottom: .5rem;
+  input, label {
+    cursor: pointer;
+  } 
+}
+
+.c-geowhere-selections {
+  display: flex;
+}
+.c-geowhere-selection {
+  width: 18rem;
+  margin-right: 1rem;
+}
+
+.c-geoselect-label {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.c-geowhere-selections {
+  margin-left: 3rem;
+  margin-top: .3rem;
+}
+
