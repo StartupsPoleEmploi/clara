@@ -121,6 +121,36 @@ clara.js_define("admin_geowhere", {
         $('.c-geoselect--department').selectize(department_options);
 
 
+
+
+
+        var region_options = {        
+          valueField: 'name',
+          labelField: 'name',
+          searchField: 'name',
+          options: [
+            {value:"ARA", name:"Auvergne-Rhône-Alpes"},
+            {value:"BFC", name:"Bourgogne-Franche-Comté"},
+            {value:"BRE", name:"Bretagne"},
+            {value:"CVL", name:"Centre-Val de Loire"},
+            {value:"COR", name:"Corse"},
+            {value:"GES", name:"Grand Est"},
+            {value:"HDF", name:"Hauts-de-France"},
+            {value:"IDF", name:"Île-de-France"},
+            {value:"NOR", name:"Normandie"},
+            {value:"NAQ", name:"Nouvelle-Aquitaine"},
+            {value:"OCC", name:"Occitanie"},
+            {value:"PDL", name:"Pays de la Loire"},
+            {value:"PAC", name:"Provence-Alpes-Côte d'Azur"},
+          ],
+        };
+        $('.c-geoselect--region').selectize(region_options);
+
+
+
+
+
+
         var town_options = {        
           valueField: 'name',
           labelField: 'name',
@@ -159,6 +189,22 @@ clara.js_define("admin_geowhere", {
         };
         $('.c-geoselect--town').selectize(town_options);
 
+
+
+        $("input[type='radio']").on("click", function (e) {
+          console.log('e')
+          console.log(e.currentTarget.id)
+
+          var targeted = e && e.currentTarget && e.currentTarget.id ? e.currentTarget.id : ""
+
+          if (targeted === "tout_sauf") {
+            $(".c-geowhere-selection").show()
+          } else if (targeted === "rien_sauf") {
+            $(".c-geowhere-selection").show()
+          } else {
+            $(".c-geowhere-selection").hide()
+          }
+        });
 
       
     }
