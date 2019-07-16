@@ -196,10 +196,10 @@ clara.js_define("admin_geowhere", {
 
           if (targeted === "tout_sauf") {
             $(".c-geowhere-selection").show()
-            $($(".c-geowhere-selection").detach()).appendTo(".c-geowhere-line.is-tout_sauf");
+            $($(".c-geowhere-selections").detach()).appendTo(".c-geowhere-line.is-tout_sauf");
           } else if (targeted === "rien_sauf") {
             $(".c-geowhere-selection").show()
-            $($(".c-geowhere-selection").detach()).appendTo(".c-geowhere-line.is-rien_sauf");
+            $($(".c-geowhere-selections").detach()).appendTo(".c-geowhere-line.is-rien_sauf");
           } else {
             $(".c-geowhere-selection").hide()
           }
