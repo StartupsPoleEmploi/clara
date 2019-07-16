@@ -190,22 +190,25 @@ clara.js_define("admin_geowhere", {
         $('.c-geoselect--town').selectize(town_options);
 
 
-
-        $("input[type='radio']").on("click", function (e) {
-          console.log('e')
-          console.log(e.currentTarget.id)
+        var show_hide_function = function(e) {
 
           var targeted = e && e.currentTarget && e.currentTarget.id ? e.currentTarget.id : ""
 
           if (targeted === "tout_sauf") {
             $(".c-geowhere-selection").show()
+            $($(".c-geowhere-selection").detach()).appendTo(".c-geowhere-line.is-tout_sauf");
           } else if (targeted === "rien_sauf") {
             $(".c-geowhere-selection").show()
+            $($(".c-geowhere-selection").detach()).appendTo(".c-geowhere-line.is-rien_sauf");
           } else {
             $(".c-geowhere-selection").hide()
           }
-        });
+        };
 
+
+        $("input[type='radio']").on("click", show_hide_function);
+
+        show_hide_function(null);
       
     }
 
