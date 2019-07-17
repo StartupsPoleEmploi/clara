@@ -33,10 +33,8 @@ clara.js_define("aides_main_subscriber", {
     var is_discrete = (state.filters_zone.is_collapsed && state.width > clara.aides_constants["MOBILE_MAX_WIDTH"]); 
     is_discrete ? $('.js-filters-zone').addClass('is-discrete') : $('.js-filters-zone').removeClass('is-discrete');
 
-    // Collapse recap_zone 
-    state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
-
     // Collapse recap_zone : CSS. 
+    state.recap_zone.is_collapsed ? $('.c-situation__content').addClass('u-hidden-visually') : $('.c-situation__content').removeClass('u-hidden-visually');
     state.recap_zone.is_collapsed ? $('.js-recap-zone').addClass('is-discrete') : $('.js-recap-zone').removeClass('is-discrete');
 
     // Show bigtags or not

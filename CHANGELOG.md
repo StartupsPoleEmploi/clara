@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.2.0 (18/7/2019)
+-[#809][FEATURE] expansion filtre/recap modifiée
+
+
 ## 21.1.0 (17/7/2019)
 -[#1310][FEATURE] suppression terme ATA AFD
 
