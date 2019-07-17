@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.1.0 (17/7/2019)
+-[#1310][FEATURE] suppression terme ATA AFD
+
+
 ## 21.0.0 (16/7/2019)
 -[#1185][ADMIN] separation critere geo
 
