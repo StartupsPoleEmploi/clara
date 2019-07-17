@@ -30,7 +30,12 @@ and renders all form fields for a resource's editable attributes.
     </div>
   <% end %>
 
-  <% page.attributes.each do |attribute| -%>
+  <% page.attributes.each_with_index do |attribute, indx| -%>
+    <% if indx == 0 %>
+      <h3 class="c-section-title">Informations générales</h3>
+    <% elsif indx == 4 %>
+      <h3 class="c-section-title is-last">Paramètres avancés</h3>
+    <% end %>
     <% unless v.hide_field?(attribute) -%>    
       <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
         <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>

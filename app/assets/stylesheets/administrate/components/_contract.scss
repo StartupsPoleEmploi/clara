@@ -1,0 +1,14 @@
+.c-section-title {
+  display: inline-block;
+  padding: 0;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 1rem;
+  &.is-last {
+    margin-top: 1rem;
+  }
+}
+
+#edit_contract_type_1 {
+  // padding-top: 0;
+}

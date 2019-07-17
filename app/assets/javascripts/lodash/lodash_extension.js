@@ -34,7 +34,7 @@ _.mixin({
       return _.isEmpty(value);
     }
   },
-  slugify(str) {
+  slugify: function(str) {
     res = "";
     if(_.isString(str)) {
       str = str.replace(/^\s+|\s+$/g, ''); // trim
