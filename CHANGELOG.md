@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.3.0 (18/7/2019)
+-[#1289][FEATURE] expansion filtre/recap modifiée
+
+
 ## 21.2.0 (18/7/2019)
 -[#809][FEATURE] expansion filtre/recap modifiée
 

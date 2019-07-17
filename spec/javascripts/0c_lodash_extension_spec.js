@@ -4,6 +4,7 @@ describe("Lodash extension", function() {
     var ALL_FALSE = {e_0: false, e_1: false};
     var ALL_TRUE = {e_0: true, e_1: true};
     var ALL_MIX = {e_0: true, e_1: false};
+    
     it ("Should be defined", function() {
       expect(_.none).toBeDefined();
     });
