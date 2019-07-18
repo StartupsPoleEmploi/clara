@@ -72,6 +72,25 @@ button.c-apprule-button {
 }
 
 
+button.like-a-link {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #027cbb;
+  text-decoration-line: underline;
+  padding: 0.75em .5em;
+  font-weight: 400;
+  &:hover {
+    color: #025d8c;
+    background-color: transparent;
+  }
+}
+
+button.add-condition {
+  font-size: 14px;
+  padding: 0;
+}
+
 
 .c-geowhere {
   padding: 2rem;
