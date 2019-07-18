@@ -10,6 +10,29 @@
 }
 
 
+.c-section-title.is-first {
+  margin-top: 2rem;
+}
+
+
+.c-generalinfo  {
+  .field-unit {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field-unit__label {
+    text-align: left;
+    margin-left: 2rem;
+    margin-bottom: .3rem;
+    width: auto;
+    font-weight: 400;
+  }
+}
+
+
+
+
+
 
 
 .c-geowhere {

@@ -4,7 +4,7 @@
   </h1>
 </header>
 
-<h3 class="c-section-title">Informations générales</h3>
+<h3 class="c-section-title is-first">Informations générales</h3>
 <section class="c-generalinfo">
   <div class="field-unit field-unit--string field-unit--errored-false">
     <div class="field-unit__label">
@@ -12,7 +12,19 @@
       <span class="field-unit__label-mandatory">*</span>
     </div>
     <div class="field-unit__field">
-      <input placeholder="" type="text" name="contract_type[name]" id="contract_type_name">
+      <input placeholder="" type="text" name="rule[name]" id="rule_name">
+    </div>
+  </div>
+  <div class="field-unit field-unit--text field-unit--errored-false js-accordion__panel">
+    <div class="field-unit__label">
+      <label id="short_description" for="aid_short_description" class="js-accordion__header">
+        Description (optionnel)
+      </label>
+    </div>
+    <div class="field-unit__field">
+      <textarea placeholder="" name="rule[description]" id="rule_description">
+        
+      </textarea>
     </div>
   </div>
 </section>
