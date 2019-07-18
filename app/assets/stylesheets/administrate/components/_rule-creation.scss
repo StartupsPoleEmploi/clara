@@ -1,18 +1,12 @@
 .c-section-title {
-  padding: 0;
-  padding-bottom: .5rem;
+  padding: 0 0 .5rem 0;
+  margin: 2rem 0 1rem 2rem;
   border-bottom: 1px solid lightgray;
-  margin-bottom: 1rem;
-  margin-left: 2rem;
   &.is-last {
     margin-top: 1rem;
   }
 }
 
-
-.c-section-title.is-first {
-  margin-top: 2rem;
-}
 
 
 .c-generalinfo  {
