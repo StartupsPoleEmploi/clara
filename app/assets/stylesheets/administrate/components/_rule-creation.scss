@@ -13,7 +13,7 @@
   .field-unit {
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
   .field-unit__label {
     text-align: left;
@@ -36,6 +36,7 @@
 .c-geowhere {
   padding: 2rem;
   padding-top: 0;
+  margin-left: 2rem;
 }
 
 label.c-geolabel {
@@ -80,6 +81,9 @@ label.c-geolabel {
   min-height: 15px;
   border: 1px dashed #000;
   cursor: pointer;
+  &.is-first {
+    margin-left: 4rem;
+  }
 }
 .sortable .sortable {
   width: 75%;

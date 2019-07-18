@@ -11,7 +11,6 @@ clara.js_define("admin_rulecreation", {
           connectWith: 'ul.sortable',
           placeholder: 'placeholder',
           update: function (e) {
-            // console.log(e);
             var container = e.target;
             var deplaced = e.toElement;
             
