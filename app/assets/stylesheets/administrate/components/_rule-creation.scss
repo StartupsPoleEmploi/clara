@@ -1,3 +1,17 @@
+.c-section-title {
+  padding: 0;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+  &.is-last {
+    margin-top: 1rem;
+  }
+}
+
+
+
+
 .c-geowhere {
   padding: 2rem;
   padding-top: 0;
