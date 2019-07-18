@@ -1,0 +1,21 @@
+//= require administrate/reset/normalize
+
+//= require administrate/jqueryui/jqueryui
+
+//= require administrate/selectize/selectize
+//= require administrate/datetime_picker/datetime_picker
+
+//= require administrate/library/clearfix
+//= require administrate/library/data-label
+//= require administrate/library/variables
+
+//= require administrate/base/forms
+//= require administrate/base/layout
+//= require administrate/base/lists
+//= require administrate/base/tables
+//= require administrate/base/typography
+
+
+//= require_tree ../administrate/components
+//= require_tree ../administrate/utilities
+//= require_directory ../administrate/objects
