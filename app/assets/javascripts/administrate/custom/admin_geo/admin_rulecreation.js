@@ -8,6 +8,7 @@ clara.js_define("admin_rulecreation", {
 
 
         $('ul.sortable').sortable({
+          items: "li:not(.unsortable)",
           connectWith: 'ul.sortable',
           placeholder: 'placeholder',
           update: function (e) {
