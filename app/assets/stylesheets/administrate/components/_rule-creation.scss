@@ -100,11 +100,16 @@ label.c-geolabel {
 
 .c-comb {
   // font-weight: bold;
-  text-decoration: underline;
+  // text-decoration: underline;
+  font-style: italic;
 }
 
-.button.is-white.is-criteria {
-  border-radius: 0;
-  margin-top: .5rem;
-  margin-left: .6rem;
+// .button.is-white.is-criteria {
+//   border-radius: 0;
+//   margin-top: .5rem;
+//   margin-left: .6rem;
+// }
+
+a.is-criteria {
+  text-decoration: underline;
 }
