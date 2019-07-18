@@ -13,6 +13,7 @@
 //= require jquery/jquery-accessible-accordion-aria
 //= require jquery/jquery-please-wait
 //= require jquery/jquery_extension
+//= require jquery/jqueryui
 //= require a11y-autocomplete/namespacing
 //= require i18n/translations
 //= require jquery_ujs
