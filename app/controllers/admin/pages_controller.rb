@@ -5,9 +5,24 @@ module Admin
   class PagesController < Admin::ApplicationController
 
     def rule_creation
+      gon.global_state = {
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds,        
+        variables: _all_variables,        
+      }
     end
     def post_rule_creation
     end
+    def _all_explicitations
+      JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
+    end
+    def _all_operator_kinds
+      ListOperatorKind.new.call
+    end
+    def _all_variables
+      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation ]))
+    end
+
 
     # geo
     def get_geo

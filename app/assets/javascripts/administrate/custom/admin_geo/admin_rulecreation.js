@@ -6,6 +6,10 @@ clara.js_define("admin_rulecreation", {
 
     please: function() {
 
+        clara.admin_simple_rule_form.dress();
+
+
+
 
         $('ul.sortable').sortable({
           items: "li:not(.unsortable)",

@@ -9,7 +9,7 @@
 
 
 
-.c-generalinfo  {
+.c-generalinfo, .c-apprule  {
   .field-unit {
     flex-direction: column;
     align-items: flex-start;
@@ -27,9 +27,49 @@
   }
 }
 
+.c-apprule-inputs {
+  display: flex;
+  margin-left: 4rem;
+}
+.c-apprule  {
+  .field-unit, .field-unit__label {
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+}
 
+.field-unit2 {
+  display: flex;
+  flex-direction: column;
+  select {
+    width: 150px;
+    // height: 18px;
+  }
+  input {
+    height: 25px;
+    padding:0;
+    padding-left: 25px;
+  }
+  label {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
 
+.c-apprule-buttons {
+  margin-top: .25rem;
+  margin-left: 4rem;
+}
 
+button.c-apprule-button {
+  border-radius: 5px;
+  padding: 0.25em 1.5em;
+}
+
+.c-apprule-expl {
+  margin-top: .25rem;
+  margin-left: 4rem;
+}
 
 
 
