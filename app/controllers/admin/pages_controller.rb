@@ -4,6 +4,11 @@ require 'csv'
 module Admin
   class PagesController < Admin::ApplicationController
 
+    def rule_creation
+    end
+    def post_rule_creation
+    end
+
     # geo
     def get_geo
     end

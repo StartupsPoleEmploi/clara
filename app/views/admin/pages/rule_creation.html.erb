@@ -1,0 +1,54 @@
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title" id="page-title">
+      Création de règle
+  </h1>
+</header>
+
+<section class="c-geowhere">
+
+  <h2 class="c-geowhere-title">Lieu de résidence de la personne</h2>
+
+  <div class="c-geowhere-line">
+    <input type="radio" id="tout" name="drone" value="tout">
+    <label class="c-geolabel" for="tout">Toute la france</label>
+  </div>
+
+  <div class="c-geowhere-line">
+    <input type="radio" id="tout_sauf_domtom" name="drone" value="tout_sauf_domtom">
+    <label class="c-geolabel" for="tout_sauf_domtom">France métropolitaine (hors DOM/TOM)</label>
+  </div>
+
+  <div class="c-geowhere-line">
+    <input type="radio" id="domtom_seulement" name="drone" value="domtom_seulement">
+    <label class="c-geolabel" for="domtom_seulement">DOM/TOM seulement</label>
+  </div>
+
+  <div class="c-geowhere-line is-tout_sauf">
+    <input type="radio" id="tout_sauf" name="drone" value="tout_sauf">
+    <label class="c-geolabel" for="tout_sauf">Toute la France, à l'exception de critères géographiques suivants :</label>
+
+    <div class="c-geowhere-selections">
+      <div class="c-geowhere-selection">
+        <label for="select-region" class="c-geoselect-label">Région(s):</label>
+        <div class="c-geoselect c-geoselect--region" id="select-region"></div>
+      </div>
+
+      <div class="c-geowhere-selection">
+        <label for="select-department" class="c-geoselect-label">Département(s):</label>
+        <div class="c-geoselect c-geoselect--department" id="select-department"></div>
+      </div>
+
+      <div class="c-geowhere-selection">
+        <label for="select-town" class="c-geoselect-label">Ville(s):</label>
+        <div class="c-geoselect c-geoselect--town" id="select-town"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="c-geowhere-line is-rien_sauf">
+    <input type="radio" id="rien_sauf" name="drone" value="rien_sauf">
+    <label class="c-geolabel" for="rien_sauf">Uniquement les critères géographiques suivants :</label>
+  </div>
+
+</section>
