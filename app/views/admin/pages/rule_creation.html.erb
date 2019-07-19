@@ -33,10 +33,83 @@
 <h3 class="c-section-title is-first">Application de la règle</h3>
 <section class="c-apprule">
 
+  
 <div id="main-apprule">
   <ul class="sortable is-first">
     <li class="unsortable">
-      
+      <section class="varopval">
+        <div class="c-apprule-inputs">
+          <div class="field-unit2">
+            <div class="field-unit__label">
+              <label id="label_variable" for="rule_variable_id">Variable</label>
+            </div>
+            <div class="field-unit__field">
+              <select class="my-class" name="rule[variable_id]" id="rule_variable_id">
+                <option value=""></option>
+                <option data-name="v_category" value="6">catégorie</option>
+                <option data-name="v_diplome" value="8">diplôme</option>
+                <option data-name="v_duree_d_inscription" value="4">durée d'inscription</option>
+                <option data-name="v_protection_internationale" value="17">est bénéficiaire d'une protection internationale</option>
+                <option data-name="v_harki" value="15">est descendant de harki</option>
+                <option data-name="v_detenu" value="16">est détenu ou ancien détenu</option>
+                <option data-name="v_qpv" value="11">est en QPV</option>
+                <option data-name="v_zrr" value="12">est en ZRR</option>
+                <option data-name="v_handicap" value="3">est en situation de handicap</option>
+                <option data-name="v_spectacle" value="26">est intermittent du spectacle</option>
+                <option data-name="v_cadre" value="27">est un cadre</option>
+                <option data-name="v_location_citycode" value="19">geo : code INSEE de la ville</option>
+                <option data-name="v_location_zipcode" value="25">geo : code postal</option>
+                <option data-name="v_location_state" value="23">geo : région</option>
+                <option data-name="v_allocation_value_min" value="7">montant minimum d'allocation</option>
+                <option data-name="v_allocation_type" value="13">type d'allocation</option>
+                <option data-name="v_age" value="1">âge</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-unit2">
+            <div class="field-unit__label">
+              <label id="label_operator_kind" for="rule_operator_kind">Opérateur</label>
+            </div>
+            <div class="field-unit__field">
+              <select class="my-class" name="rule[operator_kind]" id="rule_operator_kind">
+                <option value=""></option>
+                <option value="equal">Égal à</option>
+                <option value="not_equal" disabled="disabled">Pas égal à</option>
+                <option value="more_than">Supérieur à</option>
+                <option value="less_than">Inférieur à</option>
+                <option value="more_or_equal_than">Supérieur ou égal à</option>
+                <option value="less_or_equal_than">Inférieur ou égal à</option>
+                <option value="starts_with" disabled="disabled">Commence par</option>
+                <option value="not_starts_with" disabled="disabled">Ne commence pas par</option>
+                <option value="amongst" disabled="disabled">Parmi</option>
+                <option value="not_amongst" disabled="disabled">Pas parmi</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-unit2">
+            <div class="field-unit__label">
+              <label for="rule_value_eligible" id="label_value_eligible">Valeur</label>
+            </div>
+            <div class="field-unit__field">
+              <input placeholder="" type="number" id="rule_value_eligible" min="0" oninput="validity.valid||(value='');" style="display: block;" name="rule[value_eligible]">
+              <select id="rule_value_eligible_selectible" style="display: none;">
+                <option value=""></option>
+                <option value="oui">oui</option>
+                <option value="non">non</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="c-apprule-expl">
+          <div class="expl-text">
+            (Veuillez renseigner une variable, un opérateur et une valeur, l'explication apparaîtra ici)
+          </div>
+        </div>
+        <div class="c-apprule-buttons">
+          <button class="c-apprule-button">Valider</button>
+          <button class="c-apprule-button">Annuler</button>
+        </div>
+      </section>
     </li>
   </ul>
 </div>
@@ -44,77 +117,6 @@
 
 
 
-<div class="c-apprule-inputs">
-  <div class="field-unit2">
-    <div class="field-unit__label">
-      <label id="label_variable" for="rule_variable_id">Variable</label>
-    </div>
-    <div class="field-unit__field">
-      <select class="my-class" name="rule[variable_id]" id="rule_variable_id">
-        <option value=""></option>
-        <option data-name="v_category" value="6">catégorie</option>
-        <option data-name="v_diplome" value="8">diplôme</option>
-        <option data-name="v_duree_d_inscription" value="4">durée d'inscription</option>
-        <option data-name="v_protection_internationale" value="17">est bénéficiaire d'une protection internationale</option>
-        <option data-name="v_harki" value="15">est descendant de harki</option>
-        <option data-name="v_detenu" value="16">est détenu ou ancien détenu</option>
-        <option data-name="v_qpv" value="11">est en QPV</option>
-        <option data-name="v_zrr" value="12">est en ZRR</option>
-        <option data-name="v_handicap" value="3">est en situation de handicap</option>
-        <option data-name="v_spectacle" value="26">est intermittent du spectacle</option>
-        <option data-name="v_cadre" value="27">est un cadre</option>
-        <option data-name="v_location_citycode" value="19">geo : code INSEE de la ville</option>
-        <option data-name="v_location_zipcode" value="25">geo : code postal</option>
-        <option data-name="v_location_state" value="23">geo : région</option>
-        <option data-name="v_allocation_value_min" value="7">montant minimum d'allocation</option>
-        <option data-name="v_allocation_type" value="13">type d'allocation</option>
-        <option data-name="v_age" value="1">âge</option>
-      </select>
-    </div>
-  </div>
-  <div class="field-unit2">
-    <div class="field-unit__label">
-      <label id="label_operator_kind" for="rule_operator_kind">Opérateur</label>
-    </div>
-    <div class="field-unit__field">
-      <select class="my-class" name="rule[operator_kind]" id="rule_operator_kind">
-        <option value=""></option>
-        <option value="equal">Égal à</option>
-        <option value="not_equal" disabled="disabled">Pas égal à</option>
-        <option value="more_than">Supérieur à</option>
-        <option value="less_than">Inférieur à</option>
-        <option value="more_or_equal_than">Supérieur ou égal à</option>
-        <option value="less_or_equal_than">Inférieur ou égal à</option>
-        <option value="starts_with" disabled="disabled">Commence par</option>
-        <option value="not_starts_with" disabled="disabled">Ne commence pas par</option>
-        <option value="amongst" disabled="disabled">Parmi</option>
-        <option value="not_amongst" disabled="disabled">Pas parmi</option>
-      </select>
-    </div>
-  </div>
-  <div class="field-unit2">
-    <div class="field-unit__label">
-      <label for="rule_value_eligible" id="label_value_eligible">Valeur</label>
-    </div>
-    <div class="field-unit__field">
-      <input placeholder="" type="number" id="rule_value_eligible" min="0" oninput="validity.valid||(value='');" style="display: block;" name="rule[value_eligible]">
-      <select id="rule_value_eligible_selectible" style="display: none;">
-        <option value=""></option>
-        <option value="oui">oui</option>
-        <option value="non">non</option>
-      </select>
-    </div>
-  </div>
-</div>
-<div class="c-apprule-expl">
-  <div class="expl-text">
-    (Veuillez renseigner une variable, un opérateur et une valeur, l'explication apparaîtra ici)
-  </div>
-</div>
-<div class="c-apprule-buttons">
-  <button class="c-apprule-button">Valider</button>
-  <button class="c-apprule-button">Annuler</button>
-</div>
 
 
 

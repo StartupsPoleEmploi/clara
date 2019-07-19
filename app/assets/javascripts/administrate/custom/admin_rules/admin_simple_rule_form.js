@@ -29,35 +29,35 @@ clara.js_define("admin_simple_rule_form", {
     };
 
     // STORE
-    window.main_store = Redux.createStore(reducer, global_state);
+    window.store_rule = Redux.createStore(reducer, global_state);
 
     // SUBSCRIBER
-    main_store.subscribe(clara.admin_rules_update_value.please);
-    main_store.subscribe(clara.admin_rules_update_operator.please);
-    main_store.subscribe(clara.admin_rules_update_explanation.please);
+    store_rule.subscribe(function(){clara.admin_rules_update_value.please(_.cloneDeep(store_rule.getState()))});
+    store_rule.subscribe(function(){clara.admin_rules_update_operator.please(_.cloneDeep(store_rule.getState()))});
+    store_rule.subscribe(function(){clara.admin_rules_update_explanation.please(_.cloneDeep(store_rule.getState()))});
 
     // DISPATCHERS
     $('#rule_variable_id').on('input', function() {
       var value = $(this).find("option:selected").attr("data-name");
-      main_store.dispatch({type: 'VARIABLE_CHANGED', value: value});
+      store_rule.dispatch({type: 'VARIABLE_CHANGED', value: value});
     });
 
     $('#rule_operator_kind').on('input', function() {
       var value = $(this).find("option:selected").attr("value");
-      main_store.dispatch({type: 'OPERATOR_CHANGED', value: value});
+      store_rule.dispatch({type: 'OPERATOR_CHANGED', value: value});
     });
 
     $('#rule_value_eligible').on('input', function() {
       var value = $(this).val();
-      main_store.dispatch({type: 'VALUE_CHANGED', value: value});
+      store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 
     $('#rule_value_eligible_selectible').on('input', function() {
       var value = $(this).find("option:selected").attr("value");
-      main_store.dispatch({type: 'VALUE_CHANGED', value: value});
+      store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 
-    main_store.dispatch({type: 'INIT'});
+    store_rule.dispatch({type: 'INIT'});
   },
 
 

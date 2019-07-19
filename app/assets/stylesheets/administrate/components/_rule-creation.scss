@@ -29,13 +29,28 @@
 
 .c-apprule-inputs {
   display: flex;
-  margin-left: 4rem;
+  // margin-left: 4rem;
 }
 .c-apprule  {
   .field-unit, .field-unit__label {
     margin-bottom: 0;
     margin-left: 0;
   }
+}
+
+.c-apprule-buttons {
+  margin-top: .25rem;
+  // margin-left: 4rem;
+}
+
+button.c-apprule-button {
+  border-radius: 5px;
+  padding: 0.25em 1.5em;
+}
+
+.c-apprule-expl {
+  margin-top: .25rem;
+  // margin-left: 4rem;
 }
 
 .field-unit2 {
@@ -56,20 +71,6 @@
   }
 }
 
-.c-apprule-buttons {
-  margin-top: .25rem;
-  margin-left: 4rem;
-}
-
-button.c-apprule-button {
-  border-radius: 5px;
-  padding: 0.25em 1.5em;
-}
-
-.c-apprule-expl {
-  margin-top: .25rem;
-  margin-left: 4rem;
-}
 
 
 button.like-a-link {

@@ -3,8 +3,8 @@ clara.js_define("admin_rules_update_operator", {
 
   please_if: _.stubFalse,
 
-  please: function() {
-    var s = main_store.getState();
+  please: function(state) {
+    var s = state;
     // 1 - Remove all options
     $("#rule_operator_kind").find("option").attr("disabled", "disabled")
     $("#rule_operator_kind").removeClass("disabled-select");
