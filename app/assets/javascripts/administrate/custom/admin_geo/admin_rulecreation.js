@@ -56,10 +56,10 @@ clara.js_define("admin_rulecreation", {
         };
 
         // STORE
-        window.trundle_store = Redux.createStore(reducer, trundle_state);
+        window.store_trundle = Redux.createStore(reducer, trundle_state);
 
         // SUBSCRIBER
-        trundle_store.subscribe(function(){
+        store_trundle.subscribe(function(){
 
         });
 
