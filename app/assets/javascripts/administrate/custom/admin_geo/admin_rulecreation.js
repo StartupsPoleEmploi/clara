@@ -55,14 +55,12 @@ clara.js_define("admin_rulecreation", {
 
           if (action.type === 'VALIDATED_RULE') {
             var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
-            // var new_box  = create_new_box();
-            // new_box.xvar = action.value_var
-            // new_box.xop  = action.value_op
-            // new_box.xval = action.value_val
-            // new_box.xtxt = action.value_txt
-            node_targeted["is_editing"] = false
-            node_targeted["is_new"] = false
-            // node_targeted.subboxes.push(new_box)
+            node_targeted.xvar = action.value_var
+            node_targeted.xop  = action.value_op
+            node_targeted.xval = action.value_val
+            node_targeted.xtxt = action.value_txt
+            node_targeted.is_editing = false
+            node_targeted.is_new = false
           } else if (action.type === 'ADD_CONDITION') {
             var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
             var new_box  = create_new_box();
