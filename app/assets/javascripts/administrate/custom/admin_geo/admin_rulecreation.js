@@ -40,8 +40,6 @@ clara.js_define("admin_rulecreation", {
         var create_new_box = function() {
           var res = _.cloneDeep(default_subbox);
           res["name"] = "box_" + new Date().getTime()
-          res["is_editing"] = true
-          res["is_new"] = true
           return res
         }
 
@@ -55,6 +53,14 @@ clara.js_define("admin_rulecreation", {
             console.log('I validated a rule with action')
             console.log(action)
             console.log('')
+            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            console.log(node_targeted)
+            var new_box  = create_new_box();
+            new_box.xvar = action.value_var
+            new_box.xop  = action.value_op
+            new_box.xval = action.value_val
+            console.log(new_box)
+            node_targeted.subboxes.push(new_box)
           } else if (action.type === 'OPERATOR_CHANGED') {
             newState["selected_operator"] = action.value
           } else if (action.type === 'VALUE_CHANGED') {

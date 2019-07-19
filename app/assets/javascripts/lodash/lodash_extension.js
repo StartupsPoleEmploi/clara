@@ -45,6 +45,18 @@ _.mixin({
     return memo;
   },
 
+  deepSearch: function(object, key, predicate) {
+    if (object.hasOwnProperty(key) && predicate(key, object[key]) === true) return object
+
+    for (var i = 0; i < _.keys(object).length; i++) {
+      if (typeof object[_.keys(object)[i]] === "object") {
+        var o = deepSearch(object[_.keys(object)[i]], key, predicate)
+        if (o != null) return o
+      }
+    }
+    return null
+  },
+
   isBlank: function(value) {
     if (_.isNumber(value)) {
       return value.toString() === "0" || value.toString() === "NaN";
