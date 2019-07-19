@@ -138,6 +138,7 @@ label.c-geolabel {
 .sortable {
   width: 500px;
   padding: 10px;
+  // padding-bottom: 0;
   margin: 10px;
   min-height: 15px;
   border: 1px dashed #000;
@@ -163,6 +164,27 @@ label.c-geolabel {
   // font-weight: bold;
   // text-decoration: underline;
   font-style: italic;
+}
+.combinator-container {
+  position: relative;
+}
+
+.combinator-tooltip {
+  position: absolute;
+  left: -250px;
+  top: 10px;
+}
+
+.combinator-tooltip__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.combinator-tooltip__close {
+  width: 20px;
+  padding: 0;
+  padding-bottom: 0.2rem;
+  align-self: flex-end;
 }
 
 // .button.is-white.is-criteria {

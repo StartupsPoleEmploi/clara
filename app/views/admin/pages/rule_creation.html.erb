@@ -36,7 +36,7 @@
 <div id="main-apprule">
   <ul class="sortable is-first">
     <li class="unsortable">
-      <button class="like-a-link add-condition">+ Ajouter une condition</button>
+      
     </li>
   </ul>
 </div>
@@ -135,33 +135,125 @@
 
 
 <ul class="sortable is-first" data-type="ET">
-  <li><span class="c-comb c-comb--and">ET <%= render 'shared/iconbar' %>
+  <li>
+    <span class="c-comb c-comb--and">
+
+      <button class="js-tooltip like-a-link add-condition"
+               data-tooltip-content-id="tooltip_id_block"
+               data-tooltip-title='Conditions "ET"'
+               data-tooltip-prefix-class="combinator"
+               data-tooltip-close-text="x"
+               data-tooltip-close-title="Ferme la fenêtre">
+        ET
+      </button>
+      <div id="tooltip_id_block" class="hidden">
+        <div>
+          <button class="like-a-link">Transformer en "OU"</button>
+        </div>
+        <div>
+          <button class="like-a-link">Ajouter une condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Ajouter une sous-condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Supprimer tout le bloc</button>
+        </div>
+        <div>
+          <button class="like-a-link">Fermer cette fenêtre</button>
+        </div>
+      </div>
+
+    </span>
+
     <ul class="sortable" data-type="OU">
-      <li><span class="c-comb c-comb--and">OU <%= render 'shared/iconbar' %>
-        <ul class="sortable">Avoir au moins 18 ans<%= render 'shared/iconbar' %></ul>
-      </li>
-      <li><span class="c-comb c-comb--and">OU <%= render 'shared/iconbar' %>
-        <ul class="sortable">
-          <div>Être titulaire de l'AAH<%= render 'shared/iconbar' %></div>
-        </ul>
-      </li>
-      <li><span class="c-comb c-comb--and">OU <%= render 'shared/iconbar' %>
+      <li><span class="c-comb c-comb--and">OU </span>
         <ul class="sortable">
           <li>
-            Être cadre<%= render 'shared/iconbar' %>
+            
+
+      <button class="js-tooltip like-a-link add-condition"
+               data-tooltip-content-id="tooltip_id_condition"
+               data-tooltip-title='Avoir au moins 18 ans'
+               data-tooltip-prefix-class="combinator"
+               data-tooltip-close-text="x"
+               data-tooltip-close-title="Ferme la fenêtre">
+        Avoir au moins 18 ans
+      </button>
+      <div id="tooltip_id_condition" class="hidden">
+        <div>
+          <button class="like-a-link">Editer cette condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Supprimer cette condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Ajouter une condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Ajouter une sous-condition</button>
+        </div>
+        <div>
+          <button class="like-a-link">Fermer cette fenêtre</button>
+        </div>
+      </div>
+
+
+
+
           </li>
           <li class="unsortable">
-            <a class="is-criteria">+ Ajouter une condition</a>
+            
           </li>
         </ul>
+      </li>
+      <li><span class="c-comb c-comb--and">OU </span>
+        <ul class="sortable">
+          <li>
+            Être titulaire de l'AAH
+          </li>
+          <li class="unsortable">
+            
+          </li>
+        </ul>
+      </li>
+      <li><span class="c-comb c-comb--and">OU </span>
+        <ul class="sortable">
+          <li>
+            Être cadre
+          </li>
+          <li class="unsortable">
+            
+          </li>
+        </ul>
+      </li>
+      <li class="unsortable">
+        
       </li>
     </ul>
   </li>
-  <li><span class="c-comb c-comb--and">ET <%= render 'shared/iconbar' %>
-    <ul class="sortable">avoir un diplôme bac +5 ou supérieur<%= render 'shared/iconbar' %></ul>
+  <li><span class="c-comb c-comb--and">ET </span>
+    <ul class="sortable">
+      <li>
+        avoir un diplôme bac +5 ou supérieur
+      </li>
+      <li class="unsortable">
+        
+      </li>
+    </ul>
   </li>
-  <li><span class="c-comb c-comb--and">ET <%= render 'shared/iconbar' %>
-    <ul class="sortable">Être inscrit depuis plus d'un an<%= render 'shared/iconbar' %></ul>
+  <li><span class="c-comb c-comb--and">ET </span>
+    <ul class="sortable">
+      <li>
+        Être inscrit depuis plus d'un an
+      </li>
+      <li class="unsortable">
+        
+      </li>
+    </ul>
+  </li>
+  <li class="unsortable">
+    
   </li>
 </ul>
 
