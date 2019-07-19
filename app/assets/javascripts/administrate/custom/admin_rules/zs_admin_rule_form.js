@@ -9,6 +9,7 @@ clara.js_define("zs_admin_rule_form", {
 
   please: function() {
     clara.admin_simple_rule_form.dress();
+    store_rule.dispatch({type: 'INIT'});
   }
 
 });

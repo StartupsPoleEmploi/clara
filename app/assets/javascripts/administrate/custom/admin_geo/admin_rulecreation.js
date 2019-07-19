@@ -59,6 +59,7 @@ clara.js_define("admin_rulecreation", {
         window.store_trundle = Redux.createStore(reducer, trundle_state);
 
         // SUBSCRIBER
+
         store_trundle.subscribe(function(){
 
         });
@@ -70,7 +71,9 @@ clara.js_define("admin_rulecreation", {
           // main_store.dispatch({type: 'VARIABLE_CHANGED', value: value});
         });
 
-
+        //START
+        store_rule.dispatch({type: 'INIT'});
+        store_trundle.dispatch({type: 'INIT'});
     
     }
 
