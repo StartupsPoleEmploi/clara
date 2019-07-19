@@ -7,7 +7,11 @@ clara.js_define("admin_trundle_subscriber", {
 
       var s = state
       var $root = $(".root_box")
+      
       var $varopval = $("section.varopval")
+      $varopval.hide();
+      $varopval.appendTo(".c-rulecreation")
+
       $root.empty()
       var walk_nodes = this.walk_nodes;
       $("#main-apprule-expl").empty();
@@ -48,10 +52,17 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name) {
-      var that = clara.admin_trundle_subscriber;
       console.log("painting " + node.name + " with parent " + parent_name)
+      var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
-      $(that.first_template(node.xtxt, node.name, parent_name)).appendTo($parent)
+
+      if (node.is_editing) {
+        $("section.varopval").appendTo($parent)
+        $("section.varopval").show()
+      } else {
+        $(that.first_template(node.xtxt, node.name, parent_name)).appendTo($parent)
+      }
+
     },
 
 
@@ -79,10 +90,10 @@ clara.js_define("admin_trundle_subscriber", {
                 <button class="like-a-link add-condition-or">OU une nouvelle condition</button>\
               </div>\
               <div>\
-                <button class="like-a-link add-condition-or">regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                <button class="like-a-link add-condition-andsub" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un ET</button>\
               </div>\
               <div>\
-                <button class="like-a-link add-condition-or">regrouper avec une nouvelle sous-condition, liée par un ET</button>\
+                <button class="like-a-link add-condition-orsub">regrouper avec une nouvelle sous-condition, liée par un OU</button>\
               </div>\
               <div>\
                 <button class="like-a-link edit-condition">Editer cette condition</button>\
