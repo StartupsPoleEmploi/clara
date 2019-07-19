@@ -26,16 +26,8 @@ clara.js_define("admin_rulecreation", {
           xvar: "",
           xtxt: "",
 
-          is_editing: false,
-          is_new: false
-        }
-
-
-        var trundle_state = {
-          name: "root_box",
-          subcombination: "",
-          subboxes: [],
-
+          is_editing: true,
+          is_new: true
         }
 
         var create_new_box = function() {
@@ -43,6 +35,14 @@ clara.js_define("admin_rulecreation", {
           res["name"] = "box_" + new Date().getTime()
           return res
         }
+
+        var trundle_state = {
+          name: "root_box",
+          subcombination: "",
+          subboxes: [create_new_box()],
+
+        }
+
 
         // REDUCER
         var reducer = function(state, action) { 
@@ -54,15 +54,15 @@ clara.js_define("admin_rulecreation", {
           var newState = _.cloneDeep(state);
 
           if (action.type === 'VALIDATED_RULE') {
-            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
-            var new_box  = create_new_box();
-            new_box.xvar = action.value_var
-            new_box.xop  = action.value_op
-            new_box.xval = action.value_val
-            new_box.xtxt = action.value_txt
-            new_box["is_editing"] = false
-            new_box["is_new"] = false
-            node_targeted.subboxes.push(new_box)
+            // var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            // var new_box  = create_new_box();
+            // new_box.xvar = action.value_var
+            // new_box.xop  = action.value_op
+            // new_box.xval = action.value_val
+            // new_box.xtxt = action.value_txt
+            // new_box["is_editing"] = false
+            // new_box["is_new"] = false
+            // node_targeted.subboxes.push(new_box)
           } else if (action.type === 'ADD_CONDITION') {
             var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
             var new_box  = create_new_box();
@@ -72,8 +72,8 @@ clara.js_define("admin_rulecreation", {
             new_box["is_editing"] = true
             new_box["is_new"] = true
             node_targeted.subboxes.push(new_box)
-            console.log('added condition')
-            console.log('')
+            // console.log('added condition')
+            // console.log('')
           }
 
           return newState;

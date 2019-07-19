@@ -57,7 +57,7 @@ button.c-apprule-button {
   display: flex;
   flex-direction: column;
   select {
-    width: 150px;
+    width: 120px;
     // height: 18px;
   }
   input {
@@ -88,7 +88,7 @@ button.like-a-link {
 }
 
 button.add-condition {
-  font-size: 14px;
+  font-size: 16px;
   padding: 0;
 }
 
@@ -148,7 +148,7 @@ label.c-geolabel {
   }
 }
 .sortable .sortable {
-  width: 75%;
+  width: 89%;
   margin-top: 0;
 }
 .sortable .placeholder {
@@ -195,4 +195,11 @@ a.is-criteria {
 #main-apprule-expl {
   margin-bottom: 5rem;
   margin-left: 4rem;
+}
+
+section.varopval {
+  border: 1px dashed #000;
+  padding: 1rem;
+  width: 89%;
+  margin-left: .7rem;
 }
