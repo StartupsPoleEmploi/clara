@@ -3,20 +3,22 @@ clara.js_define("admin_trundle_subscriber", {
     please_if: _.stubFalse,
 
     please: function(state) {
-      var s = state;
-      var $root = $(".root_box");
+      $(".root_box").empty();
+      $("#main-apprule-expl").empty();
       
+      clara.admin_trundle_subscriber.reset_varopval()
+      clara.admin_trundle_subscriber.walk_nodes(state);
+      
+    },
+
+
+    reset_varopval: function() {
       var $varopval = $("section.varopval");
       $varopval.attr("data-box", "")
       $varopval.hide();
-      $varopval.appendTo(".c-rulecreation");
-
-      $root.empty();
-      var walk_nodes = this.walk_nodes;
-      $("#main-apprule-expl").empty();
-      
-      walk_nodes(s);
+      $varopval.appendTo(".c-rulecreation");      
     },
+
 
     walk_nodes: function(obj) {
       var that = clara.admin_trundle_subscriber;
@@ -30,7 +32,7 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name) {
-      console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
+      // console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
 
@@ -39,7 +41,10 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
       } else {
-        $(that.first_template(node.xtxt, node.name, parent_name)).appendTo($parent)
+        // console.log('node.subcombination')
+        // console.log(node.subcombination)
+        // console.log(node)
+        $(that.first_template(node.xtxt, node.name, parent_name, node.subcombination)).appendTo($parent)
       }
 
     },
@@ -53,10 +58,11 @@ clara.js_define("admin_trundle_subscriber", {
                  </div>\
                 ',
 
-    first_template: function(title, name, parent_name) {
+    first_template: function(title, name, parent_name, combination) {
+      var combined_with = combination ? '<span class="c-comb c-comb--' + _.toLower(combination) + '">' + combination + ' </span>' : ''
+      console.log(combined_with);
       return '<ul class="unsortable ui-sortable ' + name + '" data-box="' + name + '">\
-                <li class="sortable ui-sortable-handle pos-relative">\
-                  <span class="c-comb c-comb--and">ET </span>\
+                <li class="sortable ui-sortable-handle pos-relative">' + combined_with + '\
                   <span class="combinator-container">\
                     <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_2">' +
                       title +

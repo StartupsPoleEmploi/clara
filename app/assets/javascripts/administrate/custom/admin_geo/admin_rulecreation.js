@@ -46,9 +46,9 @@ clara.js_define("admin_rulecreation", {
 
         // REDUCER
         var reducer = function(state, action) { 
-          console.log('trundle reducer reacted with')
-          console.log(action)
-          console.log('')
+          // console.log('trundle reducer reacted with')
+          // console.log(action)
+          // console.log('')
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
@@ -71,6 +71,12 @@ clara.js_define("admin_rulecreation", {
             new_box["is_new"] = true
             node_targeted.subcombination = action.combination
             node_targeted.subboxes.push(new_box)
+            console.log('action')
+            console.log(action)
+            console.log('')
+            console.log('node_targeted.subcombination')
+            console.log(node_targeted.subcombination)
+            console.log('')
           }
 
           return newState;
@@ -85,7 +91,7 @@ clara.js_define("admin_rulecreation", {
 
         // DISPATCHERS
         $('button.c-apprule-button.is-validation').on('click', function(e) {
-          console.log('is-validation clicked? yes')
+          // console.log('is-validation clicked? yes')
           var value_txt = $(".expl-text").text();
           var value_var = $("#rule_variable_id").find("option:selected").attr("data-name");
           var value_op = $("#rule_operator_kind").find("option:selected").val();
