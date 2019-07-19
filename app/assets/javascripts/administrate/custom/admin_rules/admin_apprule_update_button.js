@@ -4,7 +4,6 @@ clara.js_define("admin_apprule_update_button", {
   please_if: _.stubFalse,
 
   please: function(state) {
-    console.log('fire')
     var that = clara.admin_rules_update_explanation;
     var s = state
     var is_not_empty = function(e){return !_.isEmpty(_.trim(e))}
