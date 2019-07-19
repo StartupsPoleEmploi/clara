@@ -74,26 +74,25 @@ clara.js_define("admin_rulecreation", {
 
         // DISPATCHERS
         $('button.c-apprule-button.is-validation').on('click', function(e) {
-          console.log(e)
           var value_var = $("#rule_variable_id").find("option:selected").attr("data-name");
           var value_op = $("#rule_operator_kind").find("option:selected").val();
           var is_selection = $("#rule_value_eligible_selectible").is(":visible")
           var value_val_sel = $("#rule_value_eligible_selectible").find("option:selected").val();
           var value_val_inp = $("#rule_value_eligible").val();
           var value_val = is_selection ? value_val_sel : value_val_inp
-          // console.log($("#rule_variable_id").find("option:selected").attr("data-name"))
-          // var value = $(this).find("option:selected").attr("data-name");
+          var parent_box = $(this).closest("ul.sortable").attr("data-box")
           store_trundle.dispatch({
             type: 'VALIDATED_RULE', 
             value_var: value_var,
             value_op:  value_op,
             value_val: value_val,
+            parent_box: parent_box
           });
         });
 
         // //START
         store_rule.dispatch({type: 'INIT'});
-        // store_trundle.dispatch({type: 'INIT'});
+        store_trundle.dispatch({type: 'INIT'});
     
     }
 
