@@ -69,6 +69,7 @@ clara.js_define("admin_rulecreation", {
             new_box.xval = ""
             new_box["is_editing"] = true
             new_box["is_new"] = true
+            node_targeted.subcombination = action.combination
             node_targeted.subboxes.push(new_box)
           }
 
