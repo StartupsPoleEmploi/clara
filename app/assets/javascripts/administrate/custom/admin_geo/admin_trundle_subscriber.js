@@ -3,22 +3,20 @@ clara.js_define("admin_trundle_subscriber", {
     please_if: _.stubFalse,
 
     please: function(state) {
-      $(".root_box").empty();
-      $("#main-apprule-expl").empty();
+      var s = state;
+      var $root = $(".root_box");
       
-      clara.admin_trundle_subscriber.reset_varopval()
-      clara.admin_trundle_subscriber.walk_nodes(state);
-      
-    },
-
-
-    reset_varopval: function() {
       var $varopval = $("section.varopval");
       $varopval.attr("data-box", "")
       $varopval.hide();
-      $varopval.appendTo(".c-rulecreation");      
-    },
+      $varopval.appendTo(".c-rulecreation");
 
+      $root.empty();
+      var walk_nodes = this.walk_nodes;
+      $("#main-apprule-expl").empty();
+      
+      walk_nodes(s);
+    },
 
     walk_nodes: function(obj) {
       var that = clara.admin_trundle_subscriber;
@@ -32,7 +30,7 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name) {
-      // console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
+      console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
 
@@ -41,9 +39,8 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
       } else {
-        // console.log('node.subcombination')
-        // console.log(node.subcombination)
-        // console.log(node)
+        console.log('node.subcombination')
+        console.log(node.subcombination)
         $(that.first_template(node.xtxt, node.name, parent_name, node.subcombination)).appendTo($parent)
       }
 
