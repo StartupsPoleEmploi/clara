@@ -24,6 +24,7 @@ clara.js_define("admin_rulecreation", {
           xval: "",
           xop: "",
           xvar: "",
+          xtxt: "",
 
           is_editing: false,
           is_new: false
@@ -59,6 +60,7 @@ clara.js_define("admin_rulecreation", {
             new_box.xvar = action.value_var
             new_box.xop  = action.value_op
             new_box.xval = action.value_val
+            new_box.xtxt = action.value_txt
             // console.log(new_box)
             node_targeted.subboxes.push(new_box)
           } else if (action.type === 'OPERATOR_CHANGED') {
@@ -73,13 +75,12 @@ clara.js_define("admin_rulecreation", {
         window.store_trundle = Redux.createStore(reducer, trundle_state);
 
         // SUBSCRIBER
+        store_trundle.subscribe(function(){clara.admin_trundle_subscriber.please(_.cloneDeep(store_trundle.getState()))});
 
-        store_trundle.subscribe(function(){
-
-        });
 
         // DISPATCHERS
         $('button.c-apprule-button.is-validation').on('click', function(e) {
+          var value_txt = $(".expl-text").text();
           var value_var = $("#rule_variable_id").find("option:selected").attr("data-name");
           var value_op = $("#rule_operator_kind").find("option:selected").val();
           var is_selection = $("#rule_value_eligible_selectible").is(":visible")
@@ -89,6 +90,7 @@ clara.js_define("admin_rulecreation", {
           var parent_box = $(this).closest("ul.sortable").attr("data-box")
           store_trundle.dispatch({
             type: 'VALIDATED_RULE', 
+            value_txt: value_txt,
             value_var: value_var,
             value_op:  value_op,
             value_val: value_val,
