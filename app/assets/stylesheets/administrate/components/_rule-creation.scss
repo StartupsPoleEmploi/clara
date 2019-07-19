@@ -168,6 +168,7 @@ label.c-geolabel {
 }
 
 .combinator-tooltip {
+  z-index: 666;
   position: absolute;
   left: -250px;
   top: 10px;
@@ -188,4 +189,8 @@ label.c-geolabel {
 a.is-criteria {
   font-size: 14px;
   text-decoration: underline;
+}
+
+#main-apprule-expl {
+  margin-bottom: 5rem;
 }
