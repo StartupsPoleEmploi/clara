@@ -37,7 +37,7 @@ _.mixin({
         if (i === key) {
           memo.push(obj[i]);
         } else if ('[object Array]' === ts.call(obj[i]) || '[object Object]' === ts.call(obj[i])) {
-          findNested(obj[i], key, memo);
+          _.findNested(obj[i], key, memo);
         }
       }
     }

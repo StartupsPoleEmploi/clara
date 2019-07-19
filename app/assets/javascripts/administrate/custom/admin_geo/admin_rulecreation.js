@@ -64,7 +64,15 @@ clara.js_define("admin_rulecreation", {
             // console.log(new_box)
             node_targeted.subboxes.push(new_box)
           } else if (action.type === 'ADD_CONDITION') {
+            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            var new_box  = create_new_box();
+            new_box.xvar = ""
+            new_box.xop  = ""
+            new_box.xval = ""
+            new_box["is_editing"] = false
+            new_box["is_new"] = false
             console.log('added condition')
+            console.log('')
           }
 
           return newState;
