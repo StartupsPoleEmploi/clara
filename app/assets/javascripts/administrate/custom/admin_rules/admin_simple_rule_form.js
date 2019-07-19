@@ -11,6 +11,10 @@ clara.js_define("admin_simple_rule_form", {
 
     // REDUCER
     var reducer = function(state, action) { 
+      console.log('reducin....')
+      console.log(action)
+      console.log('')
+
 
       // Deep copy of previous state to avoid side-effects
       var newState = _.cloneDeep(state);
@@ -35,7 +39,6 @@ clara.js_define("admin_simple_rule_form", {
     store_rule.subscribe(function(){clara.admin_rules_update_value.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_operator.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_explanation.please(_.cloneDeep(store_rule.getState()))});
-    store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
     // DISPATCHERS
     $('#rule_variable_id').on('input', function() {
@@ -57,6 +60,7 @@ clara.js_define("admin_simple_rule_form", {
       var value = $(this).find("option:selected").attr("value");
       store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
     });
+
 
   },
 
