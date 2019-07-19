@@ -3,23 +3,19 @@ clara.js_define("admin_trundle_subscriber", {
     please_if: _.stubFalse,
 
     please: function(state) {
-
-
-      var s = state
-      var $root = $(".root_box")
+      var s = state;
+      var $root = $(".root_box");
       
-      var $varopval = $("section.varopval")
+      var $varopval = $("section.varopval");
+      $varopval.attr("data-box", "")
       $varopval.hide();
-      $varopval.appendTo(".c-rulecreation")
+      $varopval.appendTo(".c-rulecreation");
 
-      $root.empty()
+      $root.empty();
       var walk_nodes = this.walk_nodes;
       $("#main-apprule-expl").empty();
       
-      walk_nodes(s)
-
-
-
+      walk_nodes(s);
     },
 
     walk_nodes: function(obj) {
@@ -34,13 +30,14 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name) {
-      console.log("painting " + node.name + " with parent " + parent_name)
+      console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
+        $("section.varopval").attr("data-box", node.name)
       } else {
         $(that.first_template(node.xtxt, node.name, parent_name)).appendTo($parent)
       }
@@ -57,7 +54,7 @@ clara.js_define("admin_trundle_subscriber", {
                 ',
 
     first_template: function(title, name, parent_name) {
-      return '<ul class="unsortable ui-sortable ' + name + '">\
+      return '<ul class="unsortable ui-sortable ' + name + '" data-box="' + name + '">\
                 <li class="sortable ui-sortable-handle">\
                   <span class="combinator-container">\
                     <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_2">' +

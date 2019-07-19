@@ -54,14 +54,14 @@ clara.js_define("admin_rulecreation", {
           var newState = _.cloneDeep(state);
 
           if (action.type === 'VALIDATED_RULE') {
-            // var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
             // var new_box  = create_new_box();
             // new_box.xvar = action.value_var
             // new_box.xop  = action.value_op
             // new_box.xval = action.value_val
             // new_box.xtxt = action.value_txt
-            // new_box["is_editing"] = false
-            // new_box["is_new"] = false
+            node_targeted["is_editing"] = false
+            node_targeted["is_new"] = false
             // node_targeted.subboxes.push(new_box)
           } else if (action.type === 'ADD_CONDITION') {
             var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
@@ -96,14 +96,14 @@ clara.js_define("admin_rulecreation", {
           var value_val_sel = $("#rule_value_eligible_selectible").find("option:selected").val();
           var value_val_inp = $("#rule_value_eligible").val();
           var value_val = is_selection ? value_val_sel : value_val_inp
-          var parent_box = $(this).closest("ul.sortable").attr("data-box")
+          var box_name = $(this).closest("section").attr("data-box")
           store_trundle.dispatch({
             type: 'VALIDATED_RULE', 
             value_txt: value_txt,
             value_var: value_var,
             value_op:  value_op,
             value_val: value_val,
-            parent_box: parent_box
+            box_name: box_name
           });
         });
 

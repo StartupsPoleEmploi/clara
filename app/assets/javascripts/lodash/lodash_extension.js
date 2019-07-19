@@ -50,7 +50,7 @@ _.mixin({
 
     for (var i = 0; i < _.keys(object).length; i++) {
       if (typeof object[_.keys(object)[i]] === "object") {
-        var o = deepSearch(object[_.keys(object)[i]], key, predicate)
+        var o = _.deepSearch(object[_.keys(object)[i]], key, predicate)
         if (o != null) return o
       }
     }
