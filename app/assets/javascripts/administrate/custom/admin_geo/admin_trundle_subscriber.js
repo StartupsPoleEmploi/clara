@@ -8,7 +8,12 @@ clara.js_define("admin_trundle_subscriber", {
       
       var $varopval = $("section.varopval");
       $varopval.attr("data-box", "")
-      $varopval.hide();
+      // $varopval.hide();
+      
+      $("#rule_variable_id").val("")
+      $("#rule_operator_kind").val("")
+      $("#rule_value_eligible_selectible").val("")
+      $("#rule_value_eligible").val("")
       $varopval.appendTo(".c-rulecreation");
 
       $root.empty();
