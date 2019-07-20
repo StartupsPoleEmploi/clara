@@ -51,8 +51,6 @@ clara.js_define("admin_rulecreation", {
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
-          // newState["previous_state"] = _.cloneDeep(newState);
-
 
           var box_names = _.uniq(_.findNested(newState, "name"))
           var editable_box_names = _.difference(box_names, ["root_box"])
@@ -103,17 +101,10 @@ clara.js_define("admin_rulecreation", {
                 var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
                 edit_box.is_editing = false
               } 
-              // else {
-              //   var restored = newState["previous_state"]
-              //   newState = restored
-              // }
            }
 
-          // newState.previous_state.previous_state = undefined
-          
-          // if (has_at_least_one_box_registered) {
           clara.admin_rulecreation._remove_orphans(newState)
-          // }
+
           return newState;
         };
 
