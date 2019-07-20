@@ -60,7 +60,7 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").attr("data-box", node.name)
 
         $('button.js-tooltip').replaceWith('<div>' + $('button.js-tooltip').html() +'</div>')
-        $("#rule_variable_id").effect( "bounce", "slow" );
+        $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 1000 );
 
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination));
@@ -100,10 +100,10 @@ clara.js_define("admin_trundle_subscriber", {
                     <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>Lier les conditions de même niveau avec un ET</button>\
+                    <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>Changer tous les OU de même niveau en ET</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>Lier les conditions de même niveau avec un OU</button>\
+                    <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>Changer tous les ET de même niveau en OU</button>\
                   </div>\
                   <div>\
                     <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
