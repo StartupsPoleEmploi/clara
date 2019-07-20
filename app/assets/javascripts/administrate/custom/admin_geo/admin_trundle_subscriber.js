@@ -83,10 +83,13 @@ clara.js_define("admin_trundle_subscriber", {
                 </ul>\
                 <div id="tooltip_id_condition_' + node.name + '" class="hidden">\
                   <div>\
-                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
+                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>Créer une nouvelle condition, liée par un ET</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>OU une nouvelle condition</button>\
+                    <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>Créer une nouvelle condition, liée par un OU</button>\
+                  </div>\
+                  <div>\
+                    <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "' + node.name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un ET</button>\
                   </div>\
                   <div>\
                     <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
