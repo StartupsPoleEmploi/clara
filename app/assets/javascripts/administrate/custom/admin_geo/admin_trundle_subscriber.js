@@ -92,9 +92,15 @@ clara.js_define("admin_trundle_subscriber", {
 
     node_template: function(name, combination) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
-      return  "<span class='c-comb'>" + comb + "</span>" +
-              '<ul class="sortable ui-sortable '+name+'" data-box="'+name+'"></ul>'
-              
+
+      var tpl_str = "<span class='c-comb'><%= comb %></span>" +
+                     "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'></ul>"
+      
+      var templateFn = _.template(tpl_str);
+
+      var templateHTML = templateFn({ 'comb': comb, 'name': name });
+
+      return templateHTML; 
     },
 
     leaf_template: function(node, parent_name, combination) {
