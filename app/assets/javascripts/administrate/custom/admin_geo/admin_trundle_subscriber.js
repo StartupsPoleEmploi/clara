@@ -100,11 +100,24 @@ clara.js_define("admin_trundle_subscriber", {
                     "</span>";
 
       // var tpl_str = "<span class='c-comb pos-relative'>" +
-      //                   "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='<%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
+      //                   "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
       //                   "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
-      //                     "<div>" +
-      //                       "<button class='like-a-link add-condition-and' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>ET une nouvelle condition</button>" +
-      //                     "</div>" +
+      //                     "<% if (comb === 'ET') { %>" +
+      //                       "<div>" +
+      //                         "<button class='like-a-link add-condition-and' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>ET une nouvelle condition</button>" +
+      //                       "</div>" +
+      //                       "<div>" +
+      //                         "<button class='like-a-link change-condition-to-or' onclick='store_trundle.dispatch({ type: \"CHANGE_CONDITION\", combination: \"OR\", parent_box: \"<%= name %>\" });'>changer en OU toutes les conditions de même niveau</button>" +
+      //                       "</div>" +
+      //                     "<% } %>" +
+      //                     "<% if (comb === 'OU') { %>" +
+      //                       "<div>" +
+      //                         "<button class='like-a-link add-condition-or' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"OR\", parent_box: \"<%= name %>\" });'>OU une nouvelle condition</button>" +
+      //                       "</div>" +
+      //                       "<div>" +
+      //                         "<button class='like-a-link change-condition-to-and' onclick='store_trundle.dispatch({ type: \"CHANGE_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>changer en ET toutes les conditions de même niveau</button>" +
+      //                       "</div>" +
+      //                     "<% } %>" +
       //                   "</div>"
       //               "</span>";
       
