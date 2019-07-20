@@ -51,7 +51,6 @@ clara.js_define("admin_trundle_subscriber", {
         var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination))
         $leaf_tpl.appendTo($parent)
       }
-      console.log('')
     },
 
     node_template: function(name) {
