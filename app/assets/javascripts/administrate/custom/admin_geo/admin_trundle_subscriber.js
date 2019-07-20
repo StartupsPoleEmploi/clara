@@ -31,7 +31,7 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination) {
-      console.log("painting " + node.name + " with parent " + parent_name + " editing " + node.is_editing)
+      console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
 
@@ -46,16 +46,15 @@ clara.js_define("admin_trundle_subscriber", {
         $node_tpl.appendTo($parent)
       } else {
         console.log('painting leaf')
-        console.log(node.subcombination)
         var $leaf_tpl = $(that.leaf_template(node.xtxt, node.name, parent_name, parent_combination))
         $leaf_tpl.appendTo($parent)
       }
       console.log('')
     },
 
-    node_template: function(title, name, parent_name, combination) {
+    node_template: function(name) {
       return '\
-                <ul class="sortable ui-sortable'+name+'" data-box="'+name+'">\
+                <ul class="sortable ui-sortable '+name+'" data-box="'+name+'">\
                 </ul>\
               '
     },
@@ -75,7 +74,7 @@ clara.js_define("admin_trundle_subscriber", {
                     <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
                   </div>\
                 </div>\
               </li>\
