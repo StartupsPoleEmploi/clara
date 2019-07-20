@@ -93,8 +93,11 @@ clara.js_define("admin_trundle_subscriber", {
     node_template: function(name, combination) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
 
-      var tpl_str = "<span class='c-comb'><%= comb %></span>" +
-                     "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'></ul>"
+      var tpl_str = "<span class='c-comb'>" +
+                        "<%= comb %>" +
+                    "</span>" +
+                    "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'>"+
+                    "</ul>"
       
       var templateFn = _.template(tpl_str);
 
@@ -105,40 +108,47 @@ clara.js_define("admin_trundle_subscriber", {
 
     leaf_template: function(node, parent_name, combination) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
-      return '\
-              <li class="c-leaf ui-sortable-handle '+node.name+'" data-box="'+node.name+'" data-xvar="'+node.xvar+'" data-xop="'+node.xop+'" data-xval="'+node.xval+'">' +
-                "<span class='c-comb'>" + comb + "</span>" +
-                '<ul class="sortable ui-sortable pos-relative">\
-                  <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + node.name + '" data-tooltip-title="' + node.xtxt +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + node.name + '">' + node.xtxt + '</button>\
-                </ul>\
-                <div id="tooltip_id_condition_' + node.name + '" class="hidden">\
-                  <div>\
-                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>OU une nouvelle condition</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "' + node.name + '" });\'>Regrouper avec une nouvelle sous-condition, liée par un ET</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>Changer tous les OU de même niveau en ET</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>Changer tous les ET de même niveau en OU</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
-                  </div>\
-                  <div>\
-                    <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "' + node.name + '"  });\'>Supprimer cette condition</button>\
-                  </div>\
-                </div>\
-              </li>\
-              '
-    },
+      
+      var tpl_str = '\
+  <li class="c-leaf ui-sortable-handle <%= node_name %>" data-box="<%= node_name %>" data-xvar="<%= node_xvar %>" data-xop="<%= node_xop %>" data-xval="<%= node_xval %>">\
+    <span class="c-comb"><%= comb %></span>\
+    <ul class="sortable ui-sortable pos-relative">\
+      <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_<%= node_name %>" data-tooltip-title="<%= node_xtxt %>" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_<%= node_name %>"><%= node_xtxt %></button>\
+    </ul>\
+    <div id="tooltip_id_condition_<%= node_name %>" class="hidden">\
+      <div>\
+        <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>ET une nouvelle condition</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>OU une nouvelle condition</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un ET</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>Changer tous les OU de même niveau en ET</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>Changer tous les ET de même niveau en OU</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Editer cette condition</button>\
+      </div>\
+      <div>\
+        <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "<%= node_name %>"  });\'>Supprimer cette condition</button>\
+      </div>\
+    </div>\
+  </li>\
+  '
+
+      var templateFn = _.template(tpl_str);
+
+      var templateHTML = templateFn({ 'comb': comb, 'node_xvar': node.xvar, 'node_xop': node.xop, 'node_xval': node.xval, 'node_name': node.name, 'node_xtxt': node.xtxt, 'parent_name' : parent_name });
+
+      return templateHTML; 
+    }
 });
 
