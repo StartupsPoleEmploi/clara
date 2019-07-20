@@ -45,6 +45,7 @@ clara.js_define("admin_trundle_subscriber", {
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
 
       if (node.is_editing) {
+        
         $("#rule_variable_id").val(node.xvar)
         $("#rule_operator_kind").val(node.xop)
         $("#rule_value_eligible_selectible").val(node.xval)
@@ -57,6 +58,10 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").show()
         $( "<span class='c-comb c-comb--edition'>" + comb + "</span>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
+
+        $('button.js-tooltip').replaceWith('<div>' + $('button.js-tooltip').html() +'</div>')
+        $("#rule_variable_id").effect( "bounce", "slow" );
+
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination));
         $node_tpl.appendTo($parent)
@@ -93,6 +98,12 @@ clara.js_define("admin_trundle_subscriber", {
                   </div>\
                   <div>\
                     <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                  </div>\
+                  <div>\
+                    <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>Lier les conditions de même niveau avec un ET</button>\
+                  </div>\
+                  <div>\
+                    <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>Lier les conditions de même niveau avec un OU</button>\
                   </div>\
                   <div>\
                     <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
