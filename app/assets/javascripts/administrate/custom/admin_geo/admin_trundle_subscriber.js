@@ -38,9 +38,10 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination) {
-      // console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
+      console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
+      var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
 
       if (node.is_editing) {
         $("#rule_variable_id").val(node.xvar)
@@ -53,9 +54,10 @@ clara.js_define("admin_trundle_subscriber", {
 
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
+        $( "<span class='c-comb'>" + comb + "</span>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
       } else if (_.isNotBlank(node.subcombination)) {
-        var $node_tpl = $(that.node_template(node.name));
+        var $node_tpl = $(that.node_template(node.name, parent_combination));
         $node_tpl.appendTo($parent)
       } else {
         var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination))
@@ -63,18 +65,18 @@ clara.js_define("admin_trundle_subscriber", {
       }
     },
 
-    node_template: function(name) {
-      return '\
-                <ul class="sortable ui-sortable '+name+'" data-box="'+name+'">\
-                </ul>\
-              '
+    node_template: function(name, combination) {
+      var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
+      return  "<span class='c-comb'>" + comb + "</span>" +
+              '<ul class="sortable ui-sortable '+name+'" data-box="'+name+'"></ul>'
+              
     },
 
     leaf_template: function(node, parent_name, combination) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
       return '\
               <li class="ui-sortable-handle '+node.name+'" data-box="'+node.name+'" data-xvar="'+node.xvar+'" data-xop="'+node.xop+'" data-xval="'+node.xval+'">' +
-                comb +
+                "<span class='c-comb'>" + comb + "</span>" +
                 '<ul class="sortable ui-sortable pos-relative">\
                   <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + node.name + '" data-tooltip-title="' + node.xtxt +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + node.name + '">' + node.xtxt + '</button>\
                 </ul>\
