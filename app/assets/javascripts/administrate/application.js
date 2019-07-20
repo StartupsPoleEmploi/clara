@@ -7,7 +7,6 @@
 //= require custom/load_js_per_page
 //= require custom/load_js
 //= require jquery/jquery
-//= require jquery/jquery.appear
 //= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery-accessible-modal-delete-window-aria
 //= require jquery/jquery-accessible-tabs-aria
