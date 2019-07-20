@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -2880,6 +2880,33 @@
   }
 
   /**
+   * The base implementation of `_.pullAt` without support for individual
+   * indexes or capturing the removed elements.
+   *
+   * @private
+   * @param {Array} array The array to modify.
+   * @param {number[]} indexes The indexes of elements to remove.
+   * @returns {Array} Returns `array`.
+   */
+  function basePullAt(array, indexes) {
+    var length = array ? indexes.length : 0,
+        lastIndex = length - 1;
+
+    while (length--) {
+      var index = indexes[length];
+      if (length == lastIndex || index !== previous) {
+        var previous = index;
+        if (isIndex(index)) {
+          splice.call(array, index, 1);
+        } else {
+          baseUnset(array, index);
+        }
+      }
+    }
+    return array;
+  }
+
+  /**
    * The base implementation of `_.rest` which doesn't validate or coerce arguments.
    *
    * @private
@@ -5297,6 +5324,55 @@
   }
 
   /**
+   * Removes all elements from `array` that `predicate` returns truthy for
+   * and returns an array of the removed elements. The predicate is invoked
+   * with three arguments: (value, index, array).
+   *
+   * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
+   * to pull elements from an array by value.
+   *
+   * @static
+   * @memberOf _
+   * @since 2.0.0
+   * @category Array
+   * @param {Array} array The array to modify.
+   * @param {Function} [predicate=_.identity] The function invoked per iteration.
+   * @returns {Array} Returns the new array of removed elements.
+   * @example
+   *
+   * var array = [1, 2, 3, 4];
+   * var evens = _.remove(array, function(n) {
+   *   return n % 2 == 0;
+   * });
+   *
+   * console.log(array);
+   * // => [1, 3]
+   *
+   * console.log(evens);
+   * // => [2, 4]
+   */
+  function remove(array, predicate) {
+    var result = [];
+    if (!(array && array.length)) {
+      return result;
+    }
+    var index = -1,
+        indexes = [],
+        length = array.length;
+
+    predicate = getIteratee(predicate, 3);
+    while (++index < length) {
+      var value = array[index];
+      if (predicate(value, index, array)) {
+        result.push(value);
+        indexes.push(index);
+      }
+    }
+    basePullAt(array, indexes);
+    return result;
+  }
+
+  /**
    * Reverses `array` so that the first element becomes the last, the second
    * element becomes the second to last, and so on.
    *
@@ -5321,6 +5397,28 @@
    */
   function reverse(array) {
     return array == null ? array : nativeReverse.call(array);
+  }
+
+  /**
+   * Creates a duplicate-free version of an array, using
+   * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * for equality comparisons, in which only the first occurrence of each element
+   * is kept. The order of result values is determined by the order they occur
+   * in the array.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @returns {Array} Returns the new duplicate free array.
+   * @example
+   *
+   * _.uniq([2, 1, 2]);
+   * // => [2, 1]
+   */
+  function uniq(array) {
+    return (array && array.length) ? baseUniq(array) : [];
   }
 
   /**
@@ -8194,6 +8292,7 @@
   lodash.negate = negate;
   lodash.partial = partial;
   lodash.property = property;
+  lodash.remove = remove;
   lodash.reverse = reverse;
   lodash.set = set;
   lodash.sortBy = sortBy;
@@ -8202,6 +8301,7 @@
   lodash.throttle = throttle;
   lodash.thru = thru;
   lodash.toArray = toArray;
+  lodash.uniq = uniq;
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
   lodash.values = values;

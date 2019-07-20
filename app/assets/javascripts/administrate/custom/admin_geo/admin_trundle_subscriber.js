@@ -8,14 +8,15 @@ clara.js_define("admin_trundle_subscriber", {
       
       var $varopval = $("section.varopval");
       $varopval.attr("data-box", "")
+      $("#rule_variable_id").val("")
+      $("#rule_operator_kind").val("")
+      $("#rule_value_eligible_selectible").val("")
+      $("#rule_value_eligible").val("")
+      store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
+      // store_rule.dispatch({type: 'INIT'});
+      $(".expl-text").html("")
       // $varopval.hide();
       
-      // $("#rule_variable_id").val("")
-      // $("#rule_operator_kind").val("")
-      // $("#rule_value_eligible_selectible").val("")
-      // $("#rule_value_eligible").val("")
-      store_rule.dispatch({type: 'INIT'});
-      // $(".expl-text").html("")
 
       $varopval.appendTo(".c-rulecreation");
 
@@ -39,7 +40,7 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination) {
-      console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
+      // console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
 
@@ -48,7 +49,11 @@ clara.js_define("admin_trundle_subscriber", {
         $("#rule_operator_kind").val(node.xop)
         $("#rule_value_eligible_selectible").val(node.xval)
         $("#rule_value_eligible").val(node.xval)
-        store_rule.dispatch({type: 'INIT'});
+        store_rule.dispatch({type: 'VARIABLE_CHANGED', value: node.xvar});
+        store_rule.dispatch({type: 'OPERATOR_CHANGED', value: node.xop});
+        store_rule.dispatch({type: 'VALUE_CHANGED', value: node.xval});
+
+        // store_rule.dispatch({type: 'INIT'});
         // $(".expl-text").html(node.xtxt) //Non, sinon bug au début d'affichage
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
