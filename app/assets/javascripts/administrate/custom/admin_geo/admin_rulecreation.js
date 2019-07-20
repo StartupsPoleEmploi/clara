@@ -51,6 +51,7 @@ clara.js_define("admin_rulecreation", {
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
+          newState["previous_state"] = _.cloneDeep(newState);
 
           if (action.type === 'VALIDATED_RULE') {
             var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
@@ -92,6 +93,10 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'EDIT_CONDITION') {            
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               node_current.is_editing = true
+           } else if (action.type === 'CANCEL_EDITION') {            
+              var restored_state = _.cloneDeep(newState.previousState)
+              restored_state.previousState = undefined
+              newState = restored_state
            }
 
           return newState;
