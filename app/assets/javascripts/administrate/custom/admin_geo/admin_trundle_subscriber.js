@@ -12,6 +12,7 @@ clara.js_define("admin_trundle_subscriber", {
       $("#rule_operator_kind").val("")
       $("#rule_value_eligible_selectible").val("")
       $("#rule_value_eligible").val("")
+      $(".c-comb--edition").remove()
       store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
       $varopval.hide();
       
@@ -54,7 +55,7 @@ clara.js_define("admin_trundle_subscriber", {
 
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
-        $( "<span class='c-comb'>" + comb + "</span>" ).insertBefore( "section.varopval" );
+        $( "<span class='c-comb c-comb--edition'>" + comb + "</span>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination));
@@ -85,10 +86,13 @@ clara.js_define("admin_trundle_subscriber", {
                     <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
+                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                    <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
+                  </div>\
+                  <div>\
+                    <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "' + node.name + '"  });\'>Supprimer cette condition</button>\
                   </div>\
                 </div>\
               </li>\

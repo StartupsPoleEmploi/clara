@@ -54,7 +54,7 @@ clara.js_define("admin_rulecreation", {
 
           var box_names = _.uniq(_.findNested(newState, "name"))
           var editable_box_names = _.difference(box_names, ["root_box"])
-          var has_at_least_one_box_registered = _.size(editable_box_names) > 1
+          var is_void = _.size(editable_box_names) > 1
 
           if (action.type === 'VALIDATED_RULE') {
             var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
@@ -96,14 +96,24 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'EDIT_CONDITION') {            
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               node_current.is_editing = true
+           } else if (action.type === 'REMOVE_CONDITION') { 
+              // make it an orphan, it will be removed later           
+              var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
+              var new_default_box  = create_new_box();
+              new_default_box.is_editing = !is_void
+              _.assign(node_current, new_default_box);
            } else if (action.type === 'CANCEL_EDITION') {            
-              if (has_at_least_one_box_registered) {
+              if (is_void) {
                 var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
                 edit_box.is_editing = false
               } 
            }
 
           clara.admin_rulecreation._remove_orphans(newState)
+
+          if (is_void) {
+            newState.subboxes[0].subcombination = ""
+          }
 
           return newState;
         };
@@ -147,7 +157,7 @@ clara.js_define("admin_rulecreation", {
       var candidates = [];
       if (_.size(obj.subboxes) > 0) {
         _.each(obj.subboxes, function(subbox) {
-          if (_.isBlank(subbox.subcombination) && _.isBlank(subbox.xop) && subbox.is_editing !== true) {
+          if (_.isBlank(subbox.subboxes) && _.isBlank(subbox.xop) && subbox.is_editing !== true) {
             candidates.push ({array: obj.subboxes, val: subbox.name})
           }
           that._remove_orphans(subbox);
