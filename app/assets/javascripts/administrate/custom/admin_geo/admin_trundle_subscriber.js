@@ -71,9 +71,11 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     leaf_template: function(node, parent_name, combination) {
+      var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
       return '\
-              <li class="ui-sortable-handle '+node.name+'" data-box="'+node.name+'" data-xvar="'+node.xvar+'" data-xop="'+node.xop+'" data-xval="'+node.xval+'">\
-                <ul class="sortable ui-sortable pos-relative">\
+              <li class="ui-sortable-handle '+node.name+'" data-box="'+node.name+'" data-xvar="'+node.xvar+'" data-xop="'+node.xop+'" data-xval="'+node.xval+'">' +
+                comb +
+                '<ul class="sortable ui-sortable pos-relative">\
                   <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + node.name + '" data-tooltip-title="' + node.xtxt +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + node.name + '">' + node.xtxt + '</button>\
                 </ul>\
                 <div id="tooltip_id_condition_' + node.name + '" class="hidden">\
