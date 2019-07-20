@@ -111,8 +111,11 @@ clara.js_define("admin_rulecreation", {
 
           clara.admin_rulecreation._remove_orphans(newState)
 
+          console.log("is_void");
+          console.log(is_void);
+
           if (is_void) {
-            newState.subboxes[0].subcombination = ""
+            newState.subcombination = ""
           }
 
           return newState;
