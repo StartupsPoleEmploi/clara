@@ -36,15 +36,18 @@ clara.js_define("admin_trundle_subscriber", {
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
+        console.log('painting edition')
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
+      } else if (_.isNotBlank(node.subcombination)) {
+        console.log('painting node')
       } else {
-        console.log('node.subcombination')
+        console.log('painting leaf')
         console.log(node.subcombination)
-        $(that.first_template(node.xtxt, node.name, parent_name, parent_combination)).appendTo($parent)
+        $(that.leaf_template(node.xtxt, node.name, parent_name, parent_combination)).appendTo($parent)
       }
-
+      console.log('')
     },
 
 
@@ -56,11 +59,10 @@ clara.js_define("admin_trundle_subscriber", {
                  </div>\
                 ',
 
-    first_template: function(title, name, parent_name, combination) {
-      var french_combination = combination ? (combination === "AND" ? "ET" : "OU") : ""
-      var combined_with = combination ? '<span class="c-comb c-comb--' + combination.toLowerCase() + '">' + french_combination + ' </span>' : ''
-
-      console.log(combined_with);
+    leaf_template: function(title, name, parent_name, combination) {
+      // var french_combination = combination ? (combination === "AND" ? "ET" : "OU") : ""
+      // var combined_with = combination ? '<span class="c-comb c-comb--' + combination.toLowerCase() + '">' + french_combination + ' </span>' : ''
+      // console.log(combined_with);
       return '\
               <li class="ui-sortable-handle" style="">\
                 ET\
