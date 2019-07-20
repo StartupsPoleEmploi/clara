@@ -28,8 +28,6 @@ clara.js_define("admin_trundle_subscriber", {
         $("#main-apprule-expl").html(help_text)
         $(".first_expl.is-first").show("fade", {}, 1000)
         $(".first_expl.is-last").show("fade", {}, 1000)
-        // $( ".first_expl.is-first" ).toggle( "slide" , "up");
-        // $( ".first_expl.is-last" ).toggle( "slide" , "down");
       }
 
       walk_nodes(s);
