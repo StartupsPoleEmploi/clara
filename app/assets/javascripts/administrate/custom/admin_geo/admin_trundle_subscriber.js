@@ -90,23 +90,38 @@ clara.js_define("admin_trundle_subscriber", {
       }
     },
 
-    comb_template: function(combination) {
+    comb_template: function(combination, name) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
 
-      var tpl_str = "<span class='c-comb'>" +
+      var uid =  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
+
+      var tpl_str = "<span class='c-comb pos-relative'>" +
                         "<%= comb %>" +
                     "</span>";
+
+      // var tpl_str = "<span class='c-comb pos-relative'>" +
+      //                   "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='<%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
+      //                   "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
+      //                     "<div>" +
+      //                       "<button class='like-a-link add-condition-and' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>ET une nouvelle condition</button>" +
+      //                     "</div>" +
+      //                   "</div>"
+      //               "</span>";
       
+      if (comb === "") {
+        tpl_str = ""
+      }
+
       var templateFn = _.template(tpl_str);
 
-      var templateHTML = templateFn({ 'comb': comb});
+      var templateHTML = templateFn({ 'comb': comb, 'uid' : uid, 'name' : name});
 
       return templateHTML; 
     },
 
     node_template: function(name, combination) {
 
-      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination) +
+      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, name) +
                     "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'>"+
                     "</ul>"
       
@@ -121,7 +136,7 @@ clara.js_define("admin_trundle_subscriber", {
       
       var tpl_str = '\
   <li class="c-leaf ui-sortable-handle <%= node_name %>" data-box="<%= node_name %>" data-xvar="<%= node_xvar %>" data-xop="<%= node_xop %>" data-xval="<%= node_xval %>">' +
-    clara.admin_trundle_subscriber.comb_template(combination) +
+    clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
     '<ul class="sortable ui-sortable pos-relative">\
       <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_<%= node_name %>" data-tooltip-title="<%= node_xtxt %>" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_<%= node_name %>"><%= node_xtxt %></button>\
     </ul>\
