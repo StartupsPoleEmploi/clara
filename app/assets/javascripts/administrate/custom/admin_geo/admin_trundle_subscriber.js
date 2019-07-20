@@ -41,6 +41,9 @@ clara.js_define("admin_trundle_subscriber", {
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
+        console.log("node.xvar")
+        console.log(node.xvar)
+        console.log(node)
         $("#rule_variable_id").val(node.xvar)
         $("#rule_operator_kind").val(node.xop)
         $("#rule_value_eligible_selectible").val(node.xval)
