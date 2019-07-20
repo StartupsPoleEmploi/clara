@@ -13,8 +13,6 @@ clara.js_define("admin_trundle_subscriber", {
       $("#rule_value_eligible_selectible").val("")
       $("#rule_value_eligible").val("")
       store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
-      // store_rule.dispatch({type: 'INIT'});
-      $(".expl-text").html("")
       $varopval.hide();
       
 
