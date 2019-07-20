@@ -68,12 +68,7 @@ clara.js_define("admin_rulecreation", {
             new_box["is_editing"] = true
             node_parent.subcombination = action.combination
             node_parent.subboxes.push(new_box)
-            console.log('action')
-            console.log(action)
-            console.log('')
-            console.log('node_parent.subcombination')
-            console.log(node_parent.subcombination)
-            console.log('')
+
           } else if (action.type === 'ADD_SUBCONDITION') {
             
             var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
