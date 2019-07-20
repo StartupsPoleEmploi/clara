@@ -10,10 +10,13 @@ clara.js_define("admin_trundle_subscriber", {
       $varopval.attr("data-box", "")
       // $varopval.hide();
       
-      $("#rule_variable_id").val("")
-      $("#rule_operator_kind").val("")
-      $("#rule_value_eligible_selectible").val("")
-      $("#rule_value_eligible").val("")
+      // $("#rule_variable_id").val("")
+      // $("#rule_operator_kind").val("")
+      // $("#rule_value_eligible_selectible").val("")
+      // $("#rule_value_eligible").val("")
+      store_rule.dispatch({type: 'INIT'});
+      // $(".expl-text").html("")
+
       $varopval.appendTo(".c-rulecreation");
 
       $root.empty();
@@ -41,13 +44,12 @@ clara.js_define("admin_trundle_subscriber", {
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
-        console.log("node.xvar")
-        console.log(node.xvar)
-        console.log(node)
         $("#rule_variable_id").val(node.xvar)
         $("#rule_operator_kind").val(node.xop)
         $("#rule_value_eligible_selectible").val(node.xval)
         $("#rule_value_eligible").val(node.xval)
+        store_rule.dispatch({type: 'INIT'});
+        // $(".expl-text").html(node.xtxt) //Non, sinon bug au début d'affichage
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)

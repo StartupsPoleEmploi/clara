@@ -51,7 +51,7 @@ clara.js_define("admin_rulecreation", {
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
-          newState["previous_state"] = _.cloneDeep(newState);
+          // newState["previous_state"] = _.cloneDeep(newState);
 
           if (action.type === 'VALIDATED_RULE') {
             var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
@@ -94,9 +94,14 @@ clara.js_define("admin_rulecreation", {
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               node_current.is_editing = true
            } else if (action.type === 'CANCEL_EDITION') {            
-              var restored_state = _.cloneDeep(newState.previousState)
-              restored_state.previousState = undefined
-              newState = restored_state
+              var box_names = _.findNested(newState, "name")
+              var editable_box_names = _.difference(all_boxes_names, ["root_box"])
+              if (_.size(editable_box_names) === 1) {
+                store_rule.dispatch({type: 'INIT'});
+              } else {
+                var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
+                edit_box.is_editing = false
+              }
            }
 
           return newState;
@@ -130,7 +135,7 @@ clara.js_define("admin_rulecreation", {
           });
         });
 
-        // //START
+        //START
         store_rule.dispatch({type: 'INIT'});
         store_trundle.dispatch({type: 'INIT'});
     
