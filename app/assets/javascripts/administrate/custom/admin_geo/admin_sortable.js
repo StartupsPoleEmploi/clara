@@ -11,15 +11,17 @@ clara.js_define("admin_sortable", {
           update: function (e) {
             var container = e.target;
             var deplaced = e.toElement;
-            
-            var kind = container.getAttribute("data-type")
-            deplaced.closest("li").childNodes[0].nodeValue = kind;
+            console.log('updated')
+            // var kind = container.getAttribute("data-type")
+            // deplaced.closest("li").childNodes[0].nodeValue = kind;
           },
           start: function (e) {
-            var deplaced = e.toElement;
-            deplaced.closest("li").childNodes[0].nodeValue = "";
+            console.log('started')
+            // var deplaced = e.toElement;
+            // deplaced.closest("li").childNodes[0].nodeValue = "";
           },
           stop: function (e) {
+            console.log('stopped')
           },
         }).disableSelection();
 

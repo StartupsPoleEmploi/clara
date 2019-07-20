@@ -70,7 +70,6 @@ clara.js_define("admin_trundle_subscriber", {
       // console.log(combined_with);
       return '\
               <li class="ui-sortable-handle '+name+'" data-box="'+name+'">\
-                ET\
                 <ul class="sortable ui-sortable pos-relative">\
                   <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + name + '" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + name + '">' + title + '</button>\
                 </ul>\
