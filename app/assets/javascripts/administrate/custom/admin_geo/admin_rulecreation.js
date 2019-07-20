@@ -111,6 +111,9 @@ clara.js_define("admin_rulecreation", {
                 var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
                 edit_box.is_editing = false
               } 
+           } else if (action.type === 'CHANGE_CONDITION') {
+              var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+              node_parent.subcombination = action.combination
            }
 
           clara.admin_rulecreation._remove_orphans(newState)

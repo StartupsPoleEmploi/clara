@@ -145,6 +145,8 @@ label.c-geolabel {
   cursor: pointer;
   &.is-first {
     margin-left: 4rem;
+    border: none;
+    margin-bottom: 0;
   }
 }
 .sortable .sortable {
@@ -210,4 +212,8 @@ section.varopval {
 
 .combinator-tooltip__wrapper .like-a-link {
   padding: .5em .5em;
+}
+
+.first_expl {
+  margin-left: 2rem;
 }

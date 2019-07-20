@@ -3,6 +3,7 @@ clara.js_define("admin_trundle_subscriber", {
     please_if: _.stubFalse,
 
     please: function(state) {
+      var that = clara.admin_trundle_subscriber;
       var s = state;
       var $root = $(".root_box");
       
@@ -16,14 +17,30 @@ clara.js_define("admin_trundle_subscriber", {
       store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
       $varopval.hide();
       
-
       $varopval.appendTo(".c-rulecreation");
 
       $root.empty();
       var walk_nodes = this.walk_nodes;
       $("#main-apprule-expl").empty();
       
+      if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
+        var help_text = that.first_expl(s.subboxes[0].xtxt)
+        $("#main-apprule-expl").html(help_text)
+        $(".first_expl.is-first").show("fade", {}, 1000)
+        $(".first_expl.is-last").show("fade", {}, 1000)
+        // $( ".first_expl.is-first" ).toggle( "slide" , "up");
+        // $( ".first_expl.is-last" ).toggle( "slide" , "down");
+      }
+
       walk_nodes(s);
+
+    },
+    
+    first_expl: function(txt) {
+      return  '<div class="first_expl is-first" style= "display: none">\
+                    Si c\'est la seule condition, vous pouvez passer au critère géographique ci-dessous.\
+                 </div>\
+                 <div class="first_expl is-last" style= "display: none">Sinon, cliquez sur la condition \"' + txt + '\" ci-dessus.</div>'
     },
 
     walk_nodes: function(obj) {
