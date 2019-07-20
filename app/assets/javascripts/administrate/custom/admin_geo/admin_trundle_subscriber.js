@@ -41,6 +41,10 @@ clara.js_define("admin_trundle_subscriber", {
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
+        $("#rule_variable_id").val(node.xvar)
+        $("#rule_operator_kind").val(node.xop)
+        $("#rule_value_eligible_selectible").val(node.xval)
+        $("#rule_value_eligible").val(node.xval)
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
