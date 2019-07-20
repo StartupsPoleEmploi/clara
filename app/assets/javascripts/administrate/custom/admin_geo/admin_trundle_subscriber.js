@@ -15,7 +15,7 @@ clara.js_define("admin_trundle_subscriber", {
       store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
       // store_rule.dispatch({type: 'INIT'});
       $(".expl-text").html("")
-      // $varopval.hide();
+      $varopval.hide();
       
 
       $varopval.appendTo(".c-rulecreation");
@@ -53,8 +53,6 @@ clara.js_define("admin_trundle_subscriber", {
         store_rule.dispatch({type: 'OPERATOR_CHANGED', value: node.xop});
         store_rule.dispatch({type: 'VALUE_CHANGED', value: node.xval});
 
-        // store_rule.dispatch({type: 'INIT'});
-        // $(".expl-text").html(node.xtxt) //Non, sinon bug au début d'affichage
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
