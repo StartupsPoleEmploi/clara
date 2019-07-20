@@ -27,7 +27,6 @@ clara.js_define("admin_rulecreation", {
           xtxt: "",
 
           is_editing: true,
-          is_new: true
         }
 
         var create_new_box = function() {
@@ -54,29 +53,47 @@ clara.js_define("admin_rulecreation", {
           var newState = _.cloneDeep(state);
 
           if (action.type === 'VALIDATED_RULE') {
-            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
-            node_targeted.xvar = action.value_var
-            node_targeted.xop  = action.value_op
-            node_targeted.xval = action.value_val
-            node_targeted.xtxt = action.value_txt
-            node_targeted.is_editing = false
-            node_targeted.is_new = false
+            var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
+            node_current.xvar = action.value_var
+            node_current.xop  = action.value_op
+            node_current.xval = action.value_val
+            node_current.xtxt = action.value_txt
+            node_current.is_editing = false
           } else if (action.type === 'ADD_CONDITION') {
-            var node_targeted = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
             var new_box  = create_new_box();
             new_box.xvar = ""
             new_box.xop  = ""
             new_box.xval = ""
             new_box["is_editing"] = true
-            new_box["is_new"] = true
-            node_targeted.subcombination = action.combination
-            node_targeted.subboxes.push(new_box)
+            node_parent.subcombination = action.combination
+            node_parent.subboxes.push(new_box)
             console.log('action')
             console.log(action)
             console.log('')
-            console.log('node_targeted.subcombination')
-            console.log(node_targeted.subcombination)
+            console.log('node_parent.subcombination')
+            console.log(node_parent.subcombination)
             console.log('')
+          } else if (action.type === 'ADD_SUBCONDITION') {
+            
+            var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
+            var cloned = _.cloneDeep(node_current)
+            var new_combination_box  = create_new_box();
+            var new_editing_box  = create_new_box();
+            
+            new_combination_box.is_editing = false
+            new_editing_box.is_editing = true
+            
+            new_combination_box.name += "b"
+            new_editing_box.name += "a"
+
+            new_combination_box.subcombination = action.combination
+            
+            //current node is erased by the new combination box
+            _.assign(node_current, new_combination_box);
+            
+            new_combination_box.subboxes.push(cloned)
+            new_combination_box.subboxes.push(new_editing_box)
           }
 
           return newState;

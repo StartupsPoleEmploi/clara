@@ -68,10 +68,13 @@ clara.js_define("admin_trundle_subscriber", {
                   <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + name + '" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + name + '">' + title + '</button>\
                 </ul>\
                 <div id="tooltip_id_condition_' + name + '" class="hidden">\
-                    <div>\
-                      <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
-                    </div>\
+                  <div>\
+                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
                   </div>\
+                  <div>\
+                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", parent_box: "' + parent_name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                  </div>\
+                </div>\
               </li>\
               '
   },
