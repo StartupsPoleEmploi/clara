@@ -42,29 +42,30 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").attr("data-box", node.name)
       } else if (_.isNotBlank(node.subcombination)) {
         console.log('painting node')
+        var $node_tpl = $(that.node_template(node.name));
+        $node_tpl.appendTo($parent)
       } else {
         console.log('painting leaf')
         console.log(node.subcombination)
-        $(that.leaf_template(node.xtxt, node.name, parent_name, parent_combination)).appendTo($parent)
+        var $leaf_tpl = $(that.leaf_template(node.xtxt, node.name, parent_name, parent_combination))
+        $leaf_tpl.appendTo($parent)
       }
       console.log('')
     },
 
-
-    first_expl: '<div>\
-                    Si c\'est la seule règle, vous pouvez passer au critère géographique ci-dessous.\
-                 </div>\
-                 <div>\
-                   Sinon, cliquez sur la règle.\
-                 </div>\
-                ',
+    node_template: function(title, name, parent_name, combination) {
+      return '\
+                <ul class="sortable ui-sortable'+name+'" data-box="'+name+'">\
+                </ul>\
+              '
+    },
 
     leaf_template: function(title, name, parent_name, combination) {
       // var french_combination = combination ? (combination === "AND" ? "ET" : "OU") : ""
       // var combined_with = combination ? '<span class="c-comb c-comb--' + combination.toLowerCase() + '">' + french_combination + ' </span>' : ''
       // console.log(combined_with);
       return '\
-              <li class="ui-sortable-handle" style="">\
+              <li class="ui-sortable-handle '+name+'" data-box="'+name+'">\
                 ET\
                 <ul class="sortable ui-sortable pos-relative">\
                   <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + name + '" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + name + '">' + title + '</button>\
@@ -79,6 +80,6 @@ clara.js_define("admin_trundle_subscriber", {
                 </div>\
               </li>\
               '
-  },
+    },
 });
 
