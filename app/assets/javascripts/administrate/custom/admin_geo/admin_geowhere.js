@@ -6,6 +6,8 @@ clara.js_define("admin_geowhere", {
 
     please: function() {
 
+        $("input#tout").prop("checked", true);
+
         var department_options = {        
           valueField: 'name',
           labelField: 'name',

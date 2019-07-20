@@ -52,9 +52,13 @@ clara.js_define("admin_rulecreation", {
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
 
-          var box_names = _.uniq(_.findNested(newState, "name"))
-          var editable_box_names = _.difference(box_names, ["root_box"])
-          var is_void = _.size(editable_box_names) > 1
+          var initial_size = clara.admin_rulecreation._calculate_actual_boxes_size(newState)
+
+          initial_size
+
+          // var box_names = _.uniq(_.findNested(newState, "name"))
+          // var editable_box_names = _.difference(box_names, ["root_box"])
+          var is_initially_not_void = initial_size > 1
 
           if (action.type === 'VALIDATED_RULE') {
             var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
@@ -100,10 +104,10 @@ clara.js_define("admin_rulecreation", {
               // make it an orphan, it will be removed later           
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               var new_default_box  = create_new_box();
-              new_default_box.is_editing = !is_void
+              new_default_box.is_editing = !is_initially_not_void
               _.assign(node_current, new_default_box);
            } else if (action.type === 'CANCEL_EDITION') {            
-              if (is_void) {
+              if (is_initially_not_void) {
                 var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
                 edit_box.is_editing = false
               } 
@@ -111,10 +115,7 @@ clara.js_define("admin_rulecreation", {
 
           clara.admin_rulecreation._remove_orphans(newState)
 
-          console.log("is_void");
-          console.log(is_void);
-
-          if (is_void) {
+          if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
           }
 
@@ -153,6 +154,12 @@ clara.js_define("admin_rulecreation", {
         store_rule.dispatch({type: 'INIT'});
         store_trundle.dispatch({type: 'INIT'});
     
+    },
+
+    _calculate_actual_boxes_size: function (obj) {
+      var box_names = _.uniq(_.findNested(obj, "name"))
+      var editable_box_names = _.difference(box_names, ["root_box"])
+      return _.size(editable_box_names);
     },
 
     _remove_orphans: function(obj) {
