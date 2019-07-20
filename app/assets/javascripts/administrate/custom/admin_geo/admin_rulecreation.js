@@ -12,7 +12,7 @@ clara.js_define("admin_rulecreation", {
 
         
 
-        // clara.admin_sortable.please();
+        clara.admin_sortable.please();
 
 
         var default_subbox = {

@@ -119,21 +119,27 @@ clara.js_define("admin_trundle_subscriber", {
       <div>\
         <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>ET une nouvelle condition</button>\
       </div>\
-      <div>\
-        <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>OU une nouvelle condition</button>\
-      </div>\
+      <% if (comb === "OU" || comb === "") { %>\
+        <div>\
+          <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>OU une nouvelle condition</button>\
+        </div>\
+      <% } %>\
       <div>\
         <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un ET</button>\
       </div>\
       <div>\
         <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
       </div>\
-      <div>\
-        <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>Changer tous les OU de même niveau en ET</button>\
-      </div>\
-      <div>\
-        <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>Changer tous les ET de même niveau en OU</button>\
-      </div>\
+      <% if (comb === "OU") { %>\
+        <div>\
+          <button class="like-a-link change-condition-to-and" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>Changer tous les OU de même niveau en ET</button>\
+        </div>\
+      <% } %>\
+      <% if (comb === "ET") { %>\
+        <div>\
+          <button class="like-a-link change-condition-to-or" onclick=\'store_trundle.dispatch({ type: "CHANGE_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>Changer tous les ET de même niveau en OU</button>\
+        </div>\
+      <% } %>\
       <div>\
         <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Editer cette condition</button>\
       </div>\
