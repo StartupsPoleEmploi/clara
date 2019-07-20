@@ -94,7 +94,10 @@ clara.js_define("admin_rulecreation", {
             
             new_combination_box.subboxes.push(cloned)
             new_combination_box.subboxes.push(new_editing_box)
-          }
+           } else if (action.type === 'EDIT_CONDITION') {            
+              var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
+              node_current.is_editing = true
+           }
 
           return newState;
         };

@@ -41,17 +41,14 @@ clara.js_define("admin_trundle_subscriber", {
       var $parent = $("." + parent_name)
 
       if (node.is_editing) {
-        console.log('painting edition')
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
         $("section.varopval").attr("data-box", node.name)
       } else if (_.isNotBlank(node.subcombination)) {
-        console.log('painting node')
         var $node_tpl = $(that.node_template(node.name));
         $node_tpl.appendTo($parent)
       } else {
-        console.log('painting leaf')
-        var $leaf_tpl = $(that.leaf_template(node.xtxt, node.name, parent_name, parent_combination))
+        var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination))
         $leaf_tpl.appendTo($parent)
       }
       console.log('')
@@ -64,21 +61,21 @@ clara.js_define("admin_trundle_subscriber", {
               '
     },
 
-    leaf_template: function(title, name, parent_name, combination) {
-      // var french_combination = combination ? (combination === "AND" ? "ET" : "OU") : ""
-      // var combined_with = combination ? '<span class="c-comb c-comb--' + combination.toLowerCase() + '">' + french_combination + ' </span>' : ''
-      // console.log(combined_with);
+    leaf_template: function(node, parent_name, combination) {
       return '\
-              <li class="ui-sortable-handle '+name+'" data-box="'+name+'">\
+              <li class="ui-sortable-handle '+node.name+'" data-box="'+node.name+'" data-xvar="'+node.xvar+'" data-xop="'+node.xop+'" data-xval="'+node.xval+'">\
                 <ul class="sortable ui-sortable pos-relative">\
-                  <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + name + '" data-tooltip-title="' + title +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + name + '">' + title + '</button>\
+                  <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_' + node.name + '" data-tooltip-title="' + node.xtxt +'" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_' + node.name + '">' + node.xtxt + '</button>\
                 </ul>\
-                <div id="tooltip_id_condition_' + name + '" class="hidden">\
+                <div id="tooltip_id_condition_' + node.name + '" class="hidden">\
                   <div>\
                     <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "' + parent_name + '" });\'>ET une nouvelle condition</button>\
                   </div>\
                   <div>\
-                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+                    <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "' + node.name + '"  });\'>Editer cette condition</button>\
+                  </div>\
+                  <div>\
+                    <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "' + node.name + '" });\'>regrouper avec une nouvelle sous-condition, liée par un OU</button>\
                   </div>\
                 </div>\
               </li>\
