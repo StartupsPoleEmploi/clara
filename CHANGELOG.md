@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.4.1 (22/7/2019)
+-[#1253][FEATURE] désactivation temporaire du glissé-déposé dans la créa de règle
+
+
 ## 21.4.0 (19/7/2019)
 -[#1253][FEATURE] création règle imbriquées
 
