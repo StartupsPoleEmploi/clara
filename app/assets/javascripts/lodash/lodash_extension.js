@@ -23,6 +23,40 @@ _.mixin({
     return _.negate(_.isBlank).apply(_, arguments)
   },
 
+  // https://stackoverflow.com/a/15643382/2595513
+  findNested: function(obj, key, memo) {
+    var i,
+        proto = Object.prototype,
+        ts = proto.toString,
+        hasOwn = proto.hasOwnProperty.bind(obj);
+
+    if ('[object Array]' !== ts.call(memo)) memo = [];
+
+    for (i in obj) {
+      if (hasOwn(i)) {
+        if (i === key) {
+          memo.push(obj[i]);
+        } else if ('[object Array]' === ts.call(obj[i]) || '[object Object]' === ts.call(obj[i])) {
+          _.findNested(obj[i], key, memo);
+        }
+      }
+    }
+
+    return memo;
+  },
+
+  deepSearch: function(object, key, predicate) {
+    if (object.hasOwnProperty(key) && predicate(key, object[key]) === true) return object
+
+    for (var i = 0; i < _.keys(object).length; i++) {
+      if (typeof object[_.keys(object)[i]] === "object") {
+        var o = _.deepSearch(object[_.keys(object)[i]], key, predicate)
+        if (o != null) return o
+      }
+    }
+    return null
+  },
+
   isBlank: function(value) {
     if (_.isNumber(value)) {
       return value.toString() === "0" || value.toString() === "NaN";

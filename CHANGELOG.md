@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 21.4.0 (19/7/2019)
+-[#1253][FEATURE] création règle imbriquées
+
+
 ## 21.3.0 (18/7/2019)
--[#1289][FEATURE] expansion filtre/recap modifiée
+-[#1289][FEATURE] reliquat modif rubrique
 
 
 ## 21.2.0 (18/7/2019)

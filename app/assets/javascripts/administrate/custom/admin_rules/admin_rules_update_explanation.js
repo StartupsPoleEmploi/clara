@@ -3,9 +3,9 @@ clara.js_define("admin_rules_update_explanation", {
 
   please_if: _.stubFalse,
 
-  please: function() {
+  please: function(state) {
     var that = clara.admin_rules_update_explanation;
-    var s = main_store.getState()
+    var s = state
     var is_not_empty = function(e){return !_.isEmpty(_.trim(e))}
 
     var all_selected = 
@@ -19,7 +19,9 @@ clara.js_define("admin_rules_update_explanation", {
       var found_value = that._look_for_explicitation(s);
       if (found_value) {
         var text_to_display = found_value.template.replace("XX", s.selected_value)
+        $(".expl-text").hide()
         $(".expl-text").html(text_to_display)
+        $(".expl-text").show(200)
       }
     } else if (only_var_and_op_selected) {
         $(".expl-text").html("(Veuillez renseigner une valeur, l'explication apparaîtra ici)");

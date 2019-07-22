@@ -64,6 +64,8 @@ Rails.application.routes.draw do
       delete 'delete_simulation', on: :member
     end
     controller 'pages' do
+      get 'rule_creation'
+      post 'post_rule_creation'
       get 'get_geo'
       post 'post_geo'
       get 'get_all_filters_menu'

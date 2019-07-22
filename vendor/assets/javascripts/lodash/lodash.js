@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -88,6 +88,7 @@
       asyncTag = '[object AsyncFunction]',
       boolTag = '[object Boolean]',
       dateTag = '[object Date]',
+      domExcTag = '[object DOMException]',
       errorTag = '[object Error]',
       funcTag = '[object Function]',
       genTag = '[object GeneratorFunction]',
@@ -116,6 +117,20 @@
       uint16Tag = '[object Uint16Array]',
       uint32Tag = '[object Uint32Array]';
 
+  /** Used to match empty string literals in compiled template source. */
+  var reEmptyStringLeading = /\b__p \+= '';/g,
+      reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
+      reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
+
+  /** Used to match HTML entities and HTML characters. */
+  var reUnescapedHtml = /[&<>"']/g,
+      reHasUnescapedHtml = RegExp(reUnescapedHtml.source);
+
+  /** Used to match template delimiters. */
+  var reEscape = /<%-([\s\S]+?)%>/g,
+      reEvaluate = /<%([\s\S]+?)%>/g,
+      reInterpolate = /<%=([\s\S]+?)%>/g;
+
   /** Used to match property names within property paths. */
   var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
       reIsPlainProp = /^\w*$/,
@@ -138,6 +153,12 @@
   /** Used to match backslashes in property paths. */
   var reEscapeChar = /\\(\\)?/g;
 
+  /**
+   * Used to match
+   * [ES template delimiters](http://ecma-international.org/ecma-262/7.0/#sec-template-literal-lexical-components).
+   */
+  var reEsTemplate = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g;
+
   /** Used to match `RegExp` flags from their coerced string values. */
   var reFlags = /\w*$/;
 
@@ -158,6 +179,12 @@
 
   /** Used to match Latin Unicode letters (excluding mathematical operators). */
   var reLatin = /[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g;
+
+  /** Used to ensure capturing order of template delimiters. */
+  var reNoMatch = /($^)/;
+
+  /** Used to match unescaped characters in compiled string literals. */
+  var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
 
   /** Used to compose unicode character classes. */
   var rsAstralRange = '\\ud800-\\udfff',
@@ -195,6 +222,9 @@
 
   /** Used to detect strings with [zero-width joiners or code points from the astral planes](http://eev.ee/blog/2015/09/12/dark-corners-of-unicode/). */
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
+
+  /** Used to make template sourceURLs easier to identify. */
+  var templateCounter = -1;
 
   /** Used to identify `toStringTag` values of typed arrays. */
   var typedArrayTags = {};
@@ -284,6 +314,25 @@
     '\u0132': 'IJ', '\u0133': 'ij',
     '\u0152': 'Oe', '\u0153': 'oe',
     '\u0149': "'n", '\u017f': 's'
+  };
+
+  /** Used to map characters to HTML entities. */
+  var htmlEscapes = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  };
+
+  /** Used to escape characters for inclusion in compiled string literals. */
+  var stringEscapes = {
+    '\\': '\\',
+    "'": "'",
+    '\n': 'n',
+    '\r': 'r',
+    '\u2028': 'u2028',
+    '\u2029': 'u2029'
   };
 
   /** Built-in method references without a dependency on `root`. */
@@ -838,6 +887,26 @@
   var deburrLetter = basePropertyOf(deburredLetters);
 
   /**
+   * Used by `_.escape` to convert characters to HTML entities.
+   *
+   * @private
+   * @param {string} chr The matched character to escape.
+   * @returns {string} Returns the escaped character.
+   */
+  var escapeHtmlChar = basePropertyOf(htmlEscapes);
+
+  /**
+   * Used by `_.template` to escape characters for inclusion in compiled string literals.
+   *
+   * @private
+   * @param {string} chr The matched character to escape.
+   * @returns {string} Returns the escaped character.
+   */
+  function escapeStringChar(chr) {
+    return '\\' + stringEscapes[chr];
+  }
+
+  /**
    * Gets the value at `key` of `object`.
    *
    * @private
@@ -1296,6 +1365,67 @@
     this.__index__ = 0;
     this.__values__ = undefined;
   }
+
+  /**
+   * By default, the template delimiters used by lodash are like those in
+   * embedded Ruby (ERB) as well as ES2015 template strings. Change the
+   * following template settings to use alternative delimiters.
+   *
+   * @static
+   * @memberOf _
+   * @type {Object}
+   */
+  lodash.templateSettings = {
+
+    /**
+     * Used to detect `data` property values to be HTML-escaped.
+     *
+     * @memberOf _.templateSettings
+     * @type {RegExp}
+     */
+    'escape': reEscape,
+
+    /**
+     * Used to detect code to be evaluated.
+     *
+     * @memberOf _.templateSettings
+     * @type {RegExp}
+     */
+    'evaluate': reEvaluate,
+
+    /**
+     * Used to detect `data` property values to inject.
+     *
+     * @memberOf _.templateSettings
+     * @type {RegExp}
+     */
+    'interpolate': reInterpolate,
+
+    /**
+     * Used to reference the data object in the template text.
+     *
+     * @memberOf _.templateSettings
+     * @type {string}
+     */
+    'variable': '',
+
+    /**
+     * Used to import variables into the compiled template.
+     *
+     * @memberOf _.templateSettings
+     * @type {Object}
+     */
+    'imports': {
+
+      /**
+       * A reference to the `lodash` function.
+       *
+       * @memberOf _.templateSettings.imports
+       * @type {Function}
+       */
+      '_': lodash
+    }
+  };
 
   // Ensure wrappers are instances of `baseLodash`.
   lodash.prototype = baseLodash.prototype;
@@ -2180,6 +2310,62 @@
   }
 
   /**
+   * The base implementation of methods like `_.difference` without support
+   * for excluding multiple arrays or iteratee shorthands.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {Array} values The values to exclude.
+   * @param {Function} [iteratee] The iteratee invoked per element.
+   * @param {Function} [comparator] The comparator invoked per element.
+   * @returns {Array} Returns the new array of filtered values.
+   */
+  function baseDifference(array, values, iteratee, comparator) {
+    var index = -1,
+        includes = arrayIncludes,
+        isCommon = true,
+        length = array.length,
+        result = [],
+        valuesLength = values.length;
+
+    if (!length) {
+      return result;
+    }
+    if (iteratee) {
+      values = arrayMap(values, baseUnary(iteratee));
+    }
+    if (comparator) {
+      includes = arrayIncludesWith;
+      isCommon = false;
+    }
+    else if (values.length >= LARGE_ARRAY_SIZE) {
+      includes = cacheHas;
+      isCommon = false;
+      values = new SetCache(values);
+    }
+    outer:
+    while (++index < length) {
+      var value = array[index],
+          computed = iteratee == null ? value : iteratee(value);
+
+      value = (comparator || value !== 0) ? value : 0;
+      if (isCommon && computed === computed) {
+        var valuesIndex = valuesLength;
+        while (valuesIndex--) {
+          if (values[valuesIndex] === computed) {
+            continue outer;
+          }
+        }
+        result.push(value);
+      }
+      else if (!includes(values, computed, comparator)) {
+        result.push(value);
+      }
+    }
+    return result;
+  }
+
+  /**
    * The base implementation of `_.forEach` without support for iteratee shorthands.
    *
    * @private
@@ -2821,6 +3007,33 @@
     return function(object) {
       return baseGet(object, path);
     };
+  }
+
+  /**
+   * The base implementation of `_.pullAt` without support for individual
+   * indexes or capturing the removed elements.
+   *
+   * @private
+   * @param {Array} array The array to modify.
+   * @param {number[]} indexes The indexes of elements to remove.
+   * @returns {Array} Returns `array`.
+   */
+  function basePullAt(array, indexes) {
+    var length = array ? indexes.length : 0,
+        lastIndex = length - 1;
+
+    while (length--) {
+      var index = indexes[length];
+      if (length == lastIndex || index !== previous) {
+        var previous = index;
+        if (isIndex(index)) {
+          splice.call(array, index, 1);
+        } else {
+          baseUnset(array, index);
+        }
+      }
+    }
+    return array;
   }
 
   /**
@@ -3913,6 +4126,26 @@
     }
     var setter = data ? baseSetData : setData;
     return setWrapToString(setter(result, newData), func, bitmask);
+  }
+
+  /**
+   * Used by `_.defaults` to customize its `_.assignIn` use to assign properties
+   * of source objects to the destination object for all destination properties
+   * that resolve to `undefined`.
+   *
+   * @private
+   * @param {*} objValue The destination value.
+   * @param {*} srcValue The source value.
+   * @param {string} key The key of the property to assign.
+   * @param {Object} object The parent object of `objValue`.
+   * @returns {*} Returns the value to assign.
+   */
+  function customDefaultsAssignIn(objValue, srcValue, key, object) {
+    if (objValue === undefined ||
+        (eq(objValue, objectProto[key]) && !hasOwnProperty.call(object, key))) {
+      return srcValue;
+    }
+    return objValue;
   }
 
   /**
@@ -5105,6 +5338,33 @@
   }
 
   /**
+   * Creates an array of `array` values not included in the other given arrays
+   * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * for equality comparisons. The order and references of result values are
+   * determined by the first array.
+   *
+   * **Note:** Unlike `_.pullAll`, this method returns a new array.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @param {...Array} [values] The values to exclude.
+   * @returns {Array} Returns the new array of filtered values.
+   * @see _.without, _.xor
+   * @example
+   *
+   * _.difference([2, 1], [2, 3]);
+   * // => [1]
+   */
+  var difference = baseRest(function(array, values) {
+    return isArrayLikeObject(array)
+      ? baseDifference(array, baseFlatten(values, 1, isArrayLikeObject, true))
+      : [];
+  });
+
+  /**
    * This method is like `_.find` except that it returns the index of the first
    * element `predicate` returns truthy for instead of the element itself.
    *
@@ -5214,6 +5474,55 @@
   }
 
   /**
+   * Removes all elements from `array` that `predicate` returns truthy for
+   * and returns an array of the removed elements. The predicate is invoked
+   * with three arguments: (value, index, array).
+   *
+   * **Note:** Unlike `_.filter`, this method mutates `array`. Use `_.pull`
+   * to pull elements from an array by value.
+   *
+   * @static
+   * @memberOf _
+   * @since 2.0.0
+   * @category Array
+   * @param {Array} array The array to modify.
+   * @param {Function} [predicate=_.identity] The function invoked per iteration.
+   * @returns {Array} Returns the new array of removed elements.
+   * @example
+   *
+   * var array = [1, 2, 3, 4];
+   * var evens = _.remove(array, function(n) {
+   *   return n % 2 == 0;
+   * });
+   *
+   * console.log(array);
+   * // => [1, 3]
+   *
+   * console.log(evens);
+   * // => [2, 4]
+   */
+  function remove(array, predicate) {
+    var result = [];
+    if (!(array && array.length)) {
+      return result;
+    }
+    var index = -1,
+        indexes = [],
+        length = array.length;
+
+    predicate = getIteratee(predicate, 3);
+    while (++index < length) {
+      var value = array[index];
+      if (predicate(value, index, array)) {
+        result.push(value);
+        indexes.push(index);
+      }
+    }
+    basePullAt(array, indexes);
+    return result;
+  }
+
+  /**
    * Reverses `array` so that the first element becomes the last, the second
    * element becomes the second to last, and so on.
    *
@@ -5238,6 +5547,28 @@
    */
   function reverse(array) {
     return array == null ? array : nativeReverse.call(array);
+  }
+
+  /**
+   * Creates a duplicate-free version of an array, using
+   * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * for equality comparisons, in which only the first occurrence of each element
+   * is kept. The order of result values is determined by the order they occur
+   * in the array.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @returns {Array} Returns the new duplicate free array.
+   * @example
+   *
+   * _.uniq([2, 1, 2]);
+   * // => [2, 1]
+   */
+  function uniq(array) {
+    return (array && array.length) ? baseUniq(array) : [];
   }
 
   /**
@@ -6822,6 +7153,33 @@
   }
 
   /**
+   * Checks if `value` is an `Error`, `EvalError`, `RangeError`, `ReferenceError`,
+   * `SyntaxError`, `TypeError`, or `URIError` object.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an error object, else `false`.
+   * @example
+   *
+   * _.isError(new Error);
+   * // => true
+   *
+   * _.isError(Error);
+   * // => false
+   */
+  function isError(value) {
+    if (!isObjectLike(value)) {
+      return false;
+    }
+    var tag = baseGetTag(value);
+    return tag == errorTag || tag == domExcTag ||
+      (typeof value.message == 'string' && typeof value.name == 'string' && !isPlainObject(value));
+  }
+
+  /**
    * Checks if `value` is classified as a `Function` object.
    *
    * @static
@@ -7352,6 +7710,39 @@
   });
 
   /**
+   * This method is like `_.assignIn` except that it accepts `customizer`
+   * which is invoked to produce the assigned values. If `customizer` returns
+   * `undefined`, assignment is handled by the method instead. The `customizer`
+   * is invoked with five arguments: (objValue, srcValue, key, object, source).
+   *
+   * **Note:** This method mutates `object`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @alias extendWith
+   * @category Object
+   * @param {Object} object The destination object.
+   * @param {...Object} sources The source objects.
+   * @param {Function} [customizer] The function to customize assigned values.
+   * @returns {Object} Returns `object`.
+   * @see _.assignWith
+   * @example
+   *
+   * function customizer(objValue, srcValue) {
+   *   return _.isUndefined(objValue) ? srcValue : objValue;
+   * }
+   *
+   * var defaults = _.partialRight(_.assignInWith, customizer);
+   *
+   * defaults({ 'a': 1 }, { 'b': 2 }, { 'a': 3 });
+   * // => { 'a': 1, 'b': 2 }
+   */
+  var assignInWith = createAssigner(function(object, source, srcIndex, customizer) {
+    copyObject(source, keysIn(source), object, customizer);
+  });
+
+  /**
    * Gets the value at `path` of `object`. If the resolved value is
    * `undefined`, the `defaultValue` is returned in its place.
    *
@@ -7657,6 +8048,41 @@
   }
 
   /**
+   * Converts the characters "&", "<", ">", '"', and "'" in `string` to their
+   * corresponding HTML entities.
+   *
+   * **Note:** No other characters are escaped. To escape additional
+   * characters use a third-party library like [_he_](https://mths.be/he).
+   *
+   * Though the ">" character is escaped for symmetry, characters like
+   * ">" and "/" don't need escaping in HTML and have no special meaning
+   * unless they're part of a tag or unquoted attribute value. See
+   * [Mathias Bynens's article](https://mathiasbynens.be/notes/ambiguous-ampersands)
+   * (under "semi-related fun fact") for more details.
+   *
+   * When working with HTML you should always
+   * [quote attribute values](http://wonko.com/post/html-escaping) to reduce
+   * XSS vectors.
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category String
+   * @param {string} [string=''] The string to escape.
+   * @returns {string} Returns the escaped string.
+   * @example
+   *
+   * _.escape('fred, barney, & pebbles');
+   * // => 'fred, barney, &amp; pebbles'
+   */
+  function escape(string) {
+    string = toString(string);
+    return (string && reHasUnescapedHtml.test(string))
+      ? string.replace(reUnescapedHtml, escapeHtmlChar)
+      : string;
+  }
+
+  /**
    * Splits `string` by `separator`.
    *
    * **Note:** This method is based on
@@ -7730,6 +8156,218 @@
   }
 
   /**
+   * Creates a compiled template function that can interpolate data properties
+   * in "interpolate" delimiters, HTML-escape interpolated data properties in
+   * "escape" delimiters, and execute JavaScript in "evaluate" delimiters. Data
+   * properties may be accessed as free variables in the template. If a setting
+   * object is given, it takes precedence over `_.templateSettings` values.
+   *
+   * **Note:** In the development build `_.template` utilizes
+   * [sourceURLs](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl)
+   * for easier debugging.
+   *
+   * For more information on precompiling templates see
+   * [lodash's custom builds documentation](https://lodash.com/custom-builds).
+   *
+   * For more information on Chrome extension sandboxes see
+   * [Chrome's extensions documentation](https://developer.chrome.com/extensions/sandboxingEval).
+   *
+   * @static
+   * @since 0.1.0
+   * @memberOf _
+   * @category String
+   * @param {string} [string=''] The template string.
+   * @param {Object} [options={}] The options object.
+   * @param {RegExp} [options.escape=_.templateSettings.escape]
+   *  The HTML "escape" delimiter.
+   * @param {RegExp} [options.evaluate=_.templateSettings.evaluate]
+   *  The "evaluate" delimiter.
+   * @param {Object} [options.imports=_.templateSettings.imports]
+   *  An object to import into the template as free variables.
+   * @param {RegExp} [options.interpolate=_.templateSettings.interpolate]
+   *  The "interpolate" delimiter.
+   * @param {string} [options.sourceURL='lodash.templateSources[n]']
+   *  The sourceURL of the compiled template.
+   * @param {string} [options.variable='obj']
+   *  The data object variable name.
+   * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
+   * @returns {Function} Returns the compiled template function.
+   * @example
+   *
+   * // Use the "interpolate" delimiter to create a compiled template.
+   * var compiled = _.template('hello <%= user %>!');
+   * compiled({ 'user': 'fred' });
+   * // => 'hello fred!'
+   *
+   * // Use the HTML "escape" delimiter to escape data property values.
+   * var compiled = _.template('<b><%- value %></b>');
+   * compiled({ 'value': '<script>' });
+   * // => '<b>&lt;script&gt;</b>'
+   *
+   * // Use the "evaluate" delimiter to execute JavaScript and generate HTML.
+   * var compiled = _.template('<% _.forEach(users, function(user) { %><li><%- user %></li><% }); %>');
+   * compiled({ 'users': ['fred', 'barney'] });
+   * // => '<li>fred</li><li>barney</li>'
+   *
+   * // Use the internal `print` function in "evaluate" delimiters.
+   * var compiled = _.template('<% print("hello " + user); %>!');
+   * compiled({ 'user': 'barney' });
+   * // => 'hello barney!'
+   *
+   * // Use the ES template literal delimiter as an "interpolate" delimiter.
+   * // Disable support by replacing the "interpolate" delimiter.
+   * var compiled = _.template('hello ${ user }!');
+   * compiled({ 'user': 'pebbles' });
+   * // => 'hello pebbles!'
+   *
+   * // Use backslashes to treat delimiters as plain text.
+   * var compiled = _.template('<%= "\\<%- value %\\>" %>');
+   * compiled({ 'value': 'ignored' });
+   * // => '<%- value %>'
+   *
+   * // Use the `imports` option to import `jQuery` as `jq`.
+   * var text = '<% jq.each(users, function(user) { %><li><%- user %></li><% }); %>';
+   * var compiled = _.template(text, { 'imports': { 'jq': jQuery } });
+   * compiled({ 'users': ['fred', 'barney'] });
+   * // => '<li>fred</li><li>barney</li>'
+   *
+   * // Use the `sourceURL` option to specify a custom sourceURL for the template.
+   * var compiled = _.template('hello <%= user %>!', { 'sourceURL': '/basic/greeting.jst' });
+   * compiled(data);
+   * // => Find the source of "greeting.jst" under the Sources tab or Resources panel of the web inspector.
+   *
+   * // Use the `variable` option to ensure a with-statement isn't used in the compiled template.
+   * var compiled = _.template('hi <%= data.user %>!', { 'variable': 'data' });
+   * compiled.source;
+   * // => function(data) {
+   * //   var __t, __p = '';
+   * //   __p += 'hi ' + ((__t = ( data.user )) == null ? '' : __t) + '!';
+   * //   return __p;
+   * // }
+   *
+   * // Use custom template delimiters.
+   * _.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
+   * var compiled = _.template('hello {{ user }}!');
+   * compiled({ 'user': 'mustache' });
+   * // => 'hello mustache!'
+   *
+   * // Use the `source` property to inline compiled templates for meaningful
+   * // line numbers in error messages and stack traces.
+   * fs.writeFileSync(path.join(process.cwd(), 'jst.js'), '\
+   *   var JST = {\
+   *     "main": ' + _.template(mainText).source + '\
+   *   };\
+   * ');
+   */
+  function template(string, options, guard) {
+    // Based on John Resig's `tmpl` implementation
+    // (http://ejohn.org/blog/javascript-micro-templating/)
+    // and Laura Doktorova's doT.js (https://github.com/olado/doT).
+    var settings = lodash.templateSettings;
+
+    if (guard && isIterateeCall(string, options, guard)) {
+      options = undefined;
+    }
+    string = toString(string);
+    options = assignInWith({}, options, settings, customDefaultsAssignIn);
+
+    var imports = assignInWith({}, options.imports, settings.imports, customDefaultsAssignIn),
+        importsKeys = keys(imports),
+        importsValues = baseValues(imports, importsKeys);
+
+    var isEscaping,
+        isEvaluating,
+        index = 0,
+        interpolate = options.interpolate || reNoMatch,
+        source = "__p += '";
+
+    // Compile the regexp to match each delimiter.
+    var reDelimiters = RegExp(
+      (options.escape || reNoMatch).source + '|' +
+      interpolate.source + '|' +
+      (interpolate === reInterpolate ? reEsTemplate : reNoMatch).source + '|' +
+      (options.evaluate || reNoMatch).source + '|$'
+    , 'g');
+
+    // Use a sourceURL for easier debugging.
+    var sourceURL = '//# sourceURL=' +
+      ('sourceURL' in options
+        ? options.sourceURL
+        : ('lodash.templateSources[' + (++templateCounter) + ']')
+      ) + '\n';
+
+    string.replace(reDelimiters, function(match, escapeValue, interpolateValue, esTemplateValue, evaluateValue, offset) {
+      interpolateValue || (interpolateValue = esTemplateValue);
+
+      // Escape characters that can't be included in string literals.
+      source += string.slice(index, offset).replace(reUnescapedString, escapeStringChar);
+
+      // Replace delimiters with snippets.
+      if (escapeValue) {
+        isEscaping = true;
+        source += "' +\n__e(" + escapeValue + ") +\n'";
+      }
+      if (evaluateValue) {
+        isEvaluating = true;
+        source += "';\n" + evaluateValue + ";\n__p += '";
+      }
+      if (interpolateValue) {
+        source += "' +\n((__t = (" + interpolateValue + ")) == null ? '' : __t) +\n'";
+      }
+      index = offset + match.length;
+
+      // The JS engine embedded in Adobe products needs `match` returned in
+      // order to produce the correct `offset` value.
+      return match;
+    });
+
+    source += "';\n";
+
+    // If `variable` is not specified wrap a with-statement around the generated
+    // code to add the data object to the top of the scope chain.
+    var variable = options.variable;
+    if (!variable) {
+      source = 'with (obj) {\n' + source + '\n}\n';
+    }
+    // Cleanup code by stripping empty strings.
+    source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
+      .replace(reEmptyStringMiddle, '$1')
+      .replace(reEmptyStringTrailing, '$1;');
+
+    // Frame code as the function body.
+    source = 'function(' + (variable || 'obj') + ') {\n' +
+      (variable
+        ? ''
+        : 'obj || (obj = {});\n'
+      ) +
+      "var __t, __p = ''" +
+      (isEscaping
+         ? ', __e = _.escape'
+         : ''
+      ) +
+      (isEvaluating
+        ? ', __j = Array.prototype.join;\n' +
+          "function print() { __p += __j.call(arguments, '') }\n"
+        : ';\n'
+      ) +
+      source +
+      'return __p\n}';
+
+    var result = attempt(function() {
+      return Function(importsKeys, sourceURL + 'return ' + source)
+        .apply(undefined, importsValues);
+    });
+
+    // Provide the compiled function's source by its `toString` method or
+    // the `source` property as a convenience for inlining compiled templates.
+    result.source = source;
+    if (isError(result)) {
+      throw result;
+    }
+    return result;
+  }
+
+  /**
    * Removes leading and trailing whitespace or specified characters from `string`.
    *
    * @static
@@ -7768,6 +8406,36 @@
   }
 
   /*------------------------------------------------------------------------*/
+
+  /**
+   * Attempts to invoke `func`, returning either the result or the caught error
+   * object. Any additional arguments are provided to `func` when it's invoked.
+   *
+   * @static
+   * @memberOf _
+   * @since 3.0.0
+   * @category Util
+   * @param {Function} func The function to attempt.
+   * @param {...*} [args] The arguments to invoke `func` with.
+   * @returns {*} Returns the `func` result or error object.
+   * @example
+   *
+   * // Avoid throwing errors for invalid selectors.
+   * var elements = _.attempt(function(selector) {
+   *   return document.querySelectorAll(selector);
+   * }, '>_>');
+   *
+   * if (_.isError(elements)) {
+   *   elements = [];
+   * }
+   */
+  var attempt = baseRest(function(func, args) {
+    try {
+      return apply(func, undefined, args);
+    } catch (e) {
+      return isError(e) ? e : new Error(e);
+    }
+  });
 
   /**
    * Creates a function that returns `value`.
@@ -8092,11 +8760,13 @@
 
   // Add methods that return wrapped values in chain sequences.
   lodash.assign = assign;
+  lodash.assignInWith = assignInWith;
   lodash.chain = chain;
   lodash.concat = concat;
   lodash.constant = constant;
   lodash.countBy = countBy;
   lodash.debounce = debounce;
+  lodash.difference = difference;
   lodash.filter = filter;
   lodash.flatten = flatten;
   lodash.groupBy = groupBy;
@@ -8110,6 +8780,7 @@
   lodash.negate = negate;
   lodash.partial = partial;
   lodash.property = property;
+  lodash.remove = remove;
   lodash.reverse = reverse;
   lodash.set = set;
   lodash.sortBy = sortBy;
@@ -8118,11 +8789,15 @@
   lodash.throttle = throttle;
   lodash.thru = thru;
   lodash.toArray = toArray;
+  lodash.uniq = uniq;
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
   lodash.values = values;
   lodash.wrap = wrap;
   lodash.zipObject = zipObject;
+
+  // Add aliases.
+  lodash.extendWith = assignInWith;
 
   // Add methods to `lodash.prototype`.
   mixin(lodash, lodash);
@@ -8130,11 +8805,13 @@
   /*------------------------------------------------------------------------*/
 
   // Add methods that return unwrapped values in chain sequences.
+  lodash.attempt = attempt;
   lodash.cloneDeep = cloneDeep;
   lodash.deburr = deburr;
   lodash.defaultTo = defaultTo;
   lodash.endsWith = endsWith;
   lodash.eq = eq;
+  lodash.escape = escape;
   lodash.every = every;
   lodash.find = find;
   lodash.findIndex = findIndex;
@@ -8151,6 +8828,7 @@
   lodash.isBuffer = isBuffer;
   lodash.isEmpty = isEmpty;
   lodash.isEqual = isEqual;
+  lodash.isError = isError;
   lodash.isFunction = isFunction;
   lodash.isLength = isLength;
   lodash.isMap = isMap;
@@ -8174,6 +8852,7 @@
   lodash.startsWith = startsWith;
   lodash.sum = sum;
   lodash.sumBy = sumBy;
+  lodash.template = template;
   lodash.toFinite = toFinite;
   lodash.toInteger = toInteger;
   lodash.toNumber = toNumber;

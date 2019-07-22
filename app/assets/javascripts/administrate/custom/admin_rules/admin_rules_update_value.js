@@ -3,9 +3,9 @@ clara.js_define("admin_rules_update_value", {
 
   please_if: _.stubFalse,
 
-  please: function() {
+  please: function(state) {
     var that = clara.admin_rules_update_value;
-    var s = main_store.getState();
+    var s = state;
     var currentVar = _.find(s.variables, function(e){return e.name == s["selected_variable"]})
     if (currentVar) {
       var currentType = currentVar.variable_kind
