@@ -116,6 +116,7 @@ clara.js_define("admin_rulecreation", {
            }
 
           clara.admin_rulecreation._remove_orphans(newState)
+          clara.admin_rulecreation._add_missing_conditions(newState)
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
@@ -178,6 +179,23 @@ clara.js_define("admin_rulecreation", {
       _.each(candidates, function(candidate) {
         _.remove(candidate.array, function(e){return e.name === candidate.val})
       })
+
+    },
+
+    _add_missing_conditions: function(obj) {
+      var that = clara.admin_rulecreation;
+      if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
+        if (obj.subboxes[0].subcombination === "AND") {
+          obj.subcombination = "OR"
+        } else {
+          obj.subcombination = "AND"
+        }
+      }
+      if (_.size(obj.subboxes) > 0) {
+        _.each(obj.subboxes, function(subbox) {
+          that._add_missing_conditions(subbox);
+        })
+      }
 
     },
 
