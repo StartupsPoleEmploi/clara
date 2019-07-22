@@ -186,8 +186,6 @@ clara.js_define("admin_rulecreation", {
       var res = "<option value></option>"
       _.each(variables, function(variable) {
         var name = variable.name;
-        console.log(name);
-        console.log("name");
         var visibility = variable.is_visible
         var txt = variable.name_translation;
         if (_.startsWith(name, "v_location") || visibility !== true) {
