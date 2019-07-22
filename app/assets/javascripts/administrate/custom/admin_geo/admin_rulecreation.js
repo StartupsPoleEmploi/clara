@@ -6,7 +6,7 @@ clara.js_define("admin_rulecreation", {
 
     please: function() {
 
-
+        clara.admin_rulecreation._populate_vars(gon.global_state.variables);
         clara.admin_simple_rule_form.dress();
         store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
@@ -179,7 +179,26 @@ clara.js_define("admin_rulecreation", {
         _.remove(candidate.array, function(e){return e.name === candidate.val})
       })
 
-    }
+    },
+
+    _populate_vars: function(variables) {
+      $("#rule_variable_id").empty();
+      var res = "<option value></option>"
+      _.each(variables, function(variable) {
+        var name = variable.name;
+        console.log(name);
+        console.log("name");
+        var visibility = variable.is_visible
+        var txt = variable.name_translation;
+        if (_.startsWith(name, "v_location") || visibility !== true) {
+          res += ""
+        } else {
+          res += '<option data-name="' + name + '" value="' + name + '">' + txt + '</option>'
+        }
+      })
+      console.log(res)
+      $("#rule_variable_id").html(res)
+    },
 
 });
 

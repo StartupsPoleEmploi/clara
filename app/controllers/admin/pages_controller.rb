@@ -20,7 +20,7 @@ module Admin
       ListOperatorKind.new.call
     end
     def _all_variables
-      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation ]))
+      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation, :is_visible, :name_translation ]))
     end
 
 
