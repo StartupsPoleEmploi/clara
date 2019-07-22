@@ -115,11 +115,20 @@ clara.js_define("admin_rulecreation", {
               node_parent.subcombination = action.combination
            }
 
-          clara.admin_rulecreation._remove_orphans(newState)
+          clara.admin_rulecreation._remove_orphans_recursively(newState)
           clara.admin_rulecreation._add_missing_conditions(newState)
+
+          
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
+          }
+          if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 0) {
+            newState = {
+              name: "root_box",
+              subcombination: "",
+              subboxes: [create_new_box()],
+            }
           }
 
           return newState;
@@ -165,21 +174,37 @@ clara.js_define("admin_rulecreation", {
       return _.size(editable_box_names);
     },
 
-    _remove_orphans: function(obj) {
+    _remove_orphans_recursively: function(obj) {
       var that = clara.admin_rulecreation;
-      var candidates = [];
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          if (_.isBlank(subbox.subboxes) && _.isBlank(subbox.xop) && subbox.is_editing !== true) {
-            candidates.push ({array: obj.subboxes, val: subbox.name})
-          }
-          that._remove_orphans(subbox);
-        })
-      }
+
+      var candidates = []
+
+      that._find_candidates_for_deletion(obj, candidates)
+
+      var had_candidates = _.size(candidates) > 0
       _.each(candidates, function(candidate) {
-        _.remove(candidate.array, function(e){return e.name === candidate.val})
+        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
       })
 
+      if (had_candidates) {
+        that._remove_orphans_recursively(obj)
+      }
+
+    },
+
+    _find_candidates_for_deletion: function(obj, candidates) {
+      var that = clara.admin_rulecreation;
+      var no_edition_no_subbox_no_varopval = function(box) {
+        return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+      }
+      if (_.size(obj.subboxes) > 0) {
+        _.each(obj.subboxes, function(subbox) {
+          if (no_edition_no_subbox_no_varopval(subbox)) {
+            candidates.push({name_of_obj_to_delete: subbox.name, parent_array: obj.subboxes})
+          }
+          that._find_candidates_for_deletion(subbox, candidates);
+        })
+      }
     },
 
     _add_missing_conditions: function(obj) {
