@@ -196,7 +196,6 @@ clara.js_define("admin_rulecreation", {
           res += '<option data-name="' + name + '" value="' + name + '">' + txt + '</option>'
         }
       })
-      console.log(res)
       $("#rule_variable_id").html(res)
     },
 
