@@ -11,7 +11,7 @@ clara.js_define("admin_rulecreation", {
         store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
 
-        clara.admin_sortable.please();
+        // clara.admin_sortable.please();
 
 
         var default_subbox = {
