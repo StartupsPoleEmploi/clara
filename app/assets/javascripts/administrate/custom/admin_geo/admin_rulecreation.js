@@ -115,7 +115,7 @@ clara.js_define("admin_rulecreation", {
               node_parent.subcombination = action.combination
            }
 
-          clara.admin_rulecreation._remove_orphans2(newState)
+          clara.admin_rulecreation._remove_orphans_recursively(newState)
           clara.admin_rulecreation._add_missing_conditions(newState)
 
           
@@ -174,34 +174,12 @@ clara.js_define("admin_rulecreation", {
       return _.size(editable_box_names);
     },
 
-
-    _remove_orphans: function(obj) {
-      var that = clara.admin_rulecreation;
-      var candidates = [];
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          if (_.isBlank(subbox.subboxes) && _.isBlank(subbox.xop) && subbox.is_editing !== true) {
-            candidates.push ({array: obj.subboxes, val: subbox.name})
-          }
-          that._remove_orphans(subbox);
-        })
-      }
-      _.each(candidates, function(candidate) {
-        _.remove(candidate.array, function(e){return e.name === candidate.val})
-      })
-
-    },
-
-    _remove_orphans2: function(obj) {
+    _remove_orphans_recursively: function(obj) {
       var that = clara.admin_rulecreation;
 
       var candidates = []
 
       that._find_candidates_for_deletion(obj, candidates)
-
-      console.log("candidates")
-      console.log(candidates)
-      console.log("")
 
       var had_candidates = _.size(candidates) > 0
       _.each(candidates, function(candidate) {
@@ -209,31 +187,8 @@ clara.js_define("admin_rulecreation", {
       })
 
       if (had_candidates) {
-        that._remove_orphans2(obj)
+        that._remove_orphans_recursively(obj)
       }
-
-      // var no_edition_no_subbox_no_varopval = function(box) {
-      //   return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
-      // }
-
-      // var combination_but_no_subboxes = function (box) {
-      //   console.log(box)
-      //   console.log(_.size(box.subcombination))
-      //   console.log(_.size(box.subboxes))
-      //   console.log("")
-      //   return _.size(box.subcombination) > 0 && _.size(box.subboxes) === 0;
-      // }
-
-      // if (no_edition_no_subbox_no_varopval(obj) || combination_but_no_subboxes(obj)) {
-      //   candidates.push ({array: obj.subboxes, val: obj.name})
-      // }
-
-
-      // if (_.size(obj.subboxes) > 0) {
-      //   _.each(obj.subboxes, function(subbox) {
-      //     that._remove_orphans(subbox, candidates);
-      //   })
-      // }
 
     },
 
