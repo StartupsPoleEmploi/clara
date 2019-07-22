@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 21.4.5 (22/7/2019)
+-[#1313b][BUG] ET / OU cliquables : bug
+
+
 ## 21.4.4 (22/7/2019)
 -[#1314][BUG] suppression des blocs orphelins
 
