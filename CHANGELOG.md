@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.4.4 (22/7/2019)
+-[#1314][BUG] suppression des blocs orphelins
+
+
 ## 21.4.3 (22/7/2019)
 -[#1313][FEATURE] rendre les ET et OU cliquables
 
