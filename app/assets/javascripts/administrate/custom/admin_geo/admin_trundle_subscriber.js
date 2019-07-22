@@ -79,7 +79,7 @@ clara.js_define("admin_trundle_subscriber", {
           $buttonjstooltip.replaceWith('<div>' + $buttonjstooltip.html() +'</div>')
         })
 
-        // $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
+        $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination));

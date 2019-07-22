@@ -115,11 +115,20 @@ clara.js_define("admin_rulecreation", {
               node_parent.subcombination = action.combination
            }
 
-          clara.admin_rulecreation._remove_orphans(newState)
+          clara.admin_rulecreation._remove_orphans2(newState)
           clara.admin_rulecreation._add_missing_conditions(newState)
+
+          
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
+          }
+          if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 0) {
+            newState = {
+              name: "root_box",
+              subcombination: "",
+              subboxes: [create_new_box()],
+            }
           }
 
           return newState;
@@ -165,6 +174,7 @@ clara.js_define("admin_rulecreation", {
       return _.size(editable_box_names);
     },
 
+
     _remove_orphans: function(obj) {
       var that = clara.admin_rulecreation;
       var candidates = [];
@@ -180,6 +190,66 @@ clara.js_define("admin_rulecreation", {
         _.remove(candidate.array, function(e){return e.name === candidate.val})
       })
 
+    },
+
+    _remove_orphans2: function(obj) {
+      var that = clara.admin_rulecreation;
+
+      var candidates = []
+
+      that._find_candidates_for_deletion(obj, candidates)
+
+      console.log("candidates")
+      console.log(candidates)
+      console.log("")
+
+      var had_candidates = _.size(candidates) > 0
+      _.each(candidates, function(candidate) {
+        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
+      })
+
+      if (had_candidates) {
+        that._remove_orphans2(obj)
+      }
+
+      // var no_edition_no_subbox_no_varopval = function(box) {
+      //   return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+      // }
+
+      // var combination_but_no_subboxes = function (box) {
+      //   console.log(box)
+      //   console.log(_.size(box.subcombination))
+      //   console.log(_.size(box.subboxes))
+      //   console.log("")
+      //   return _.size(box.subcombination) > 0 && _.size(box.subboxes) === 0;
+      // }
+
+      // if (no_edition_no_subbox_no_varopval(obj) || combination_but_no_subboxes(obj)) {
+      //   candidates.push ({array: obj.subboxes, val: obj.name})
+      // }
+
+
+      // if (_.size(obj.subboxes) > 0) {
+      //   _.each(obj.subboxes, function(subbox) {
+      //     that._remove_orphans(subbox, candidates);
+      //   })
+      // }
+
+    },
+
+    _find_candidates_for_deletion: function(obj, candidates) {
+      var that = clara.admin_rulecreation;
+      var no_edition_no_subbox_no_varopval = function(box) {
+        return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+      }
+      if (_.size(obj.subboxes) > 0) {
+        _.each(obj.subboxes, function(subbox) {
+          if (no_edition_no_subbox_no_varopval(subbox)) {
+            candidates.push({name_of_obj_to_delete: subbox.name, parent_array: obj.subboxes})
+          }
+          that._find_candidates_for_deletion(subbox, candidates);
+        })
+      }
     },
 
     _add_missing_conditions: function(obj) {
