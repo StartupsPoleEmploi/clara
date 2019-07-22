@@ -43,7 +43,7 @@ class JsonModelsService
   end
 
   def self.variables
-    JSON.parse(Variable.all.to_json(:only => [ :id, :name, :name_translation, :elements_translation, :variable_kind, :description, :elements ]))
+    JSON.parse(Variable.all.to_json(:only => [ :id, :name, :name_translation, :elements_translation, :variable_kind, :description, :elements, :is_visible ]))
   end
 
 end
