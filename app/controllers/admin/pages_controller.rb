@@ -20,7 +20,7 @@ module Admin
       ListOperatorKind.new.call
     end
     def _all_variables
-      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation ]))
+      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation, :is_visible, :name_translation ]))
     end
 
 
@@ -76,10 +76,6 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      Filter.all.each do |filter|
-        filter.name = filter.description
-        filter.save
-      end
       render json: {
         status: "ok"
       }

@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 21.4.2 (22/7/2019)
+-[#1312][BUG] supprimer les variables inutiles
+
+
 ## 21.4.1 (22/7/2019)
--[#1253][FEATURE] désactivation temporaire du glissé-déposé dans la créa de règle
+-[#1253b][FEATURE] désactivation temporaire du glissé-déposé dans la créa de règle
 
 
 ## 21.4.0 (19/7/2019)
