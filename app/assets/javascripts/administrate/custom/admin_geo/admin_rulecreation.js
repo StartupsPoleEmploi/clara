@@ -68,6 +68,9 @@ clara.js_define("admin_rulecreation", {
             node_current.is_editing = false
           } else if (action.type === 'ADD_CONDITION') {
             var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
+            console.log("node_parent")
+            console.log(node_parent)
+            console.log("")
             var new_box  = create_new_box();
             new_box.xvar = ""
             new_box.xop  = ""

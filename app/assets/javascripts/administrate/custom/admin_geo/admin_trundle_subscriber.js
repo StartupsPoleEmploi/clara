@@ -82,7 +82,7 @@ clara.js_define("admin_trundle_subscriber", {
         $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
       } else if (_.isNotBlank(node.subcombination)) {
-        var $node_tpl = $(that.node_template(node.name, parent_combination));
+        var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name));
         $node_tpl.appendTo($parent)
       } else {
         var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination))
@@ -90,11 +90,14 @@ clara.js_define("admin_trundle_subscriber", {
       }
     },
 
-    comb_template: function(combination, name) {
+    comb_template: function(combination, name, parent_name) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
 
       var uid =  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
+      console.log("name")
+      console.log(name)
+      console.log("")
 
       var tpl_str = "<span class='c-comb pos-relative'>" +
                         "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
@@ -129,9 +132,9 @@ clara.js_define("admin_trundle_subscriber", {
       return templateHTML; 
     },
 
-    node_template: function(name, combination) {
+    node_template: function(name, combination, parent_name) {
 
-      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, name) +
+      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
                     "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'>"+
                     "</ul>"
       
