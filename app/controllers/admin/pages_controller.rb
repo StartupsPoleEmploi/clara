@@ -76,10 +76,6 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      Filter.all.each do |filter|
-        filter.name = filter.description
-        filter.save
-      end
       render json: {
         status: "ok"
       }
