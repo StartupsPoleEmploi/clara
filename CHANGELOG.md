@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.4.3 (22/7/2019)
+-[#1313][FEATURE] rendre les ET et OU cliquables
+
+
 ## 21.4.2 (22/7/2019)
 -[#1312][BUG] supprimer les variables inutiles
 
