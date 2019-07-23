@@ -11,7 +11,7 @@ clara.js_define("admin_rulecreation", {
         store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
 
-        // clara.admin_sortable.please();
+        clara.admin_sortable.please();
 
 
         var default_subbox = {
@@ -86,7 +86,8 @@ clara.js_define("admin_rulecreation", {
             new_combination_box.is_editing = false
             new_editing_box.is_editing = true
             
-            new_combination_box.name += "b"
+            new_combination_box.name = cloned.name
+            cloned.name = new_editing_box.name + "b"
             new_editing_box.name += "a"
 
             new_combination_box.subcombination = action.combination

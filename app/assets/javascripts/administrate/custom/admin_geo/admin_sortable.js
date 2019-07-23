@@ -9,9 +9,12 @@ clara.js_define("admin_sortable", {
           connectWith: 'ul.sortable',
           placeholder: 'placeholder',
           update: function (e) {
-            // var container = e.target;
-            // var deplaced = e.toElement;
+            var container = e.target;
+            var deplaced = e.toElement;
             console.log('updated')
+            console.log(container)
+            console.log(deplaced)
+            console.log('')
             // var kind = container.getAttribute("data-type")
             // deplaced.closest("li").childNodes[0].nodeValue = kind;
           },
