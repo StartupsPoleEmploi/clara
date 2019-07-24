@@ -24,6 +24,24 @@ clara.js_define("admin_sortable", {
             console.log(e)
             console.log("")
 
+
+            var current_tree = [];
+            clara.admin_rulecreation._parse(store_trundle.getState(), function(obj, parent){current_tree.push({obj:obj, parent: parent})});
+            console.log(current_tree)
+
+            var new_tree = $("*[data-box]").map(function(i,e){var that=this;return {name:$(that).data("box"), parent: $(that).parent().closest("*[data-box]").data("box")}}).toArray();
+            _.remove(new_tree, function(e){return _.isBlank(e.name)})
+            new_tree = _.map(new_tree, function(e){if (_.isBlank(e.parent) && e.name !== "root_box"){e.parent="root_box"};return e})
+
+            var simplified_tree = _.map(current_tree, function(e){return {name: e.obj.name, parent: e.parent ? e.parent.name : undefined}})
+
+            var element_who_changed_parent = _.find(new_tree, function(e,i){return e.parent !== simplified_tree[i].parent})
+            if (element_who_changed_parent) {
+
+            } else {
+              // var element_who_changed_position = 
+            }
+
             // console.log(deplaced)
             // console.log($leaf)
             // console.log($parent)

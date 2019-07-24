@@ -81,10 +81,8 @@ jQuery.fn.extend({
       }
     }
     return result;
-  }
-});
-
-$.fn.tree = function() {
+  },
+  tree: function() {
     var arr  = [],
         self = this;
 
@@ -106,3 +104,4 @@ $.fn.tree = function() {
 
     return arr;
 }
+});
