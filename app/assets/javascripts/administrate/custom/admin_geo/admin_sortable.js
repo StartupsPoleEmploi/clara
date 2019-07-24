@@ -59,6 +59,8 @@ clara.js_define("admin_sortable", {
                 console.log("just changed position, but not my parent");
               } else {
                 console.log("OMG!!! CHANGED PARENT !!!")
+                console.log(diff)
+                console.log("")
               }
               // var elt_guilty = null;
               // _.each(s_tree, function(e, i) {
