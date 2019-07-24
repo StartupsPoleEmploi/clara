@@ -208,6 +208,16 @@ clara.js_define("admin_rulecreation", {
       }
     },
 
+    _parse: function(obj, callback, _parent) {
+      var that = clara.admin_rulecreation;
+      callback(obj, _parent)
+      if (_.size(obj.subboxes) > 0) {
+        _.each(obj.subboxes, function(subbox) {
+          that._parse(subbox, callback, obj);
+        })
+      }
+    },
+
     _add_missing_conditions: function(obj) {
       var that = clara.admin_rulecreation;
       if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {

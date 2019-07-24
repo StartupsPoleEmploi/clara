@@ -9,14 +9,28 @@ clara.js_define("admin_sortable", {
           connectWith: 'ul.sortable',
           placeholder: 'placeholder',
           update: function (e) {
+            var id_of = function($elt){var res = $elt.attr("data-box").slice(4); return res === "_box" ? "root_box" : res}
             var container = e.target;
             var deplaced = e.toElement;
-            console.log('updated')
+
+            // var $leaf = $(deplaced).closest("li.c-leaf");
+            // var $parent = $leaf.closest("ul.sortable");
+
+            // deplaced_box_id = id_of($leaf)
+            // parent_box_id = id_of($parent)
+
             console.log(container)
             console.log(deplaced)
-            console.log('')
-            // var kind = container.getAttribute("data-type")
-            // deplaced.closest("li").childNodes[0].nodeValue = kind;
+            console.log(e)
+            console.log("")
+
+            // console.log(deplaced)
+            // console.log($leaf)
+            // console.log($parent)
+            // console.log(deplaced_box_id)
+            // console.log(parent_box_id)
+            // console.log('')
+
           },
           start: function (e) {
             // console.log('started')

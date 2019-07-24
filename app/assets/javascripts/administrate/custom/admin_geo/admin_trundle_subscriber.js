@@ -95,10 +95,6 @@ clara.js_define("admin_trundle_subscriber", {
 
       var uid =  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
-      console.log("name")
-      console.log(name)
-      console.log("")
-
       var tpl_str = "<span class='c-comb pos-relative'>" +
                         "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
                         "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
@@ -135,7 +131,7 @@ clara.js_define("admin_trundle_subscriber", {
     node_template: function(name, combination, parent_name) {
 
       var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
-                    "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'>"+
+                    "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>"+
                     "</ul>"
       
       var templateFn = _.template(tpl_str);
