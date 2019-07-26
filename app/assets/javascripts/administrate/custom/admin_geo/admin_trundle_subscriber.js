@@ -54,7 +54,6 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination) {
-      // console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
@@ -95,10 +94,6 @@ clara.js_define("admin_trundle_subscriber", {
 
       var uid =  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
-      console.log("name")
-      console.log(name)
-      console.log("")
-
       var tpl_str = "<span class='c-comb pos-relative'>" +
                         "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
                         "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
@@ -134,9 +129,13 @@ clara.js_define("admin_trundle_subscriber", {
 
     node_template: function(name, combination, parent_name) {
 
-      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
-                    "<ul class='sortable ui-sortable <%= name %> data-box='<%= name %>'>"+
-                    "</ul>"
+      var tpl_str = 
+
+      '<li class="c-leaf ui-sortable-handle"  >' +
+          clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
+          "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>" +
+          "</ul>" +
+      "</li>";
       
       var templateFn = _.template(tpl_str);
 
@@ -148,37 +147,37 @@ clara.js_define("admin_trundle_subscriber", {
     leaf_template: function(node, parent_name, combination) {
       
       var tpl_str = '\
-  <li class="c-leaf ui-sortable-handle <%= node_name %>" data-box="<%= node_name %>" data-xvar="<%= node_xvar %>" data-xop="<%= node_xop %>" data-xval="<%= node_xval %>">' +
-    clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
-    '<ul class="sortable ui-sortable pos-relative">\
-      <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_<%= node_name %>" data-tooltip-title="<%= node_xtxt %>" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_<%= node_name %>"><%= node_xtxt %></button>\
-    </ul>\
-    <div id="tooltip_id_condition_<%= node_name %>" class="hidden">\
-      <% if (combination === "AND" || combination === "") { %>\
-        <div>\
-          <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>ET une nouvelle condition</button>\
-        </div>\
-      <% } %>\
-      <% if (combination === "OR" || combination === "") { %>\
-        <div>\
-          <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>OU une nouvelle condition</button>\
-        </div>\
-      <% } %>\
-      <div>\
-        <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un ET</button>\
-      </div>\
-      <div>\
-        <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
-      </div>\
-      <div>\
-        <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Editer cette condition</button>\
-      </div>\
-      <div>\
-        <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "<%= node_name %>"  });\'>Supprimer cette condition</button>\
-      </div>\
-    </div>\
-  </li>\
-  '
+        <li class="c-leaf ui-sortable-handle <%= node_name %>" data-box="<%= node_name %>" data-xvar="<%= node_xvar %>" data-xop="<%= node_xop %>" data-xval="<%= node_xval %>">' +
+          clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
+          '<ul class="sortable ui-sortable pos-relative">\
+            <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_<%= node_name %>" data-tooltip-title="<%= node_xtxt %>" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_<%= node_name %>"><%= node_xtxt %></button>\
+          </ul>\
+          <div id="tooltip_id_condition_<%= node_name %>" class="hidden">\
+            <% if (combination === "AND" || combination === "") { %>\
+              <div>\
+                <button class="like-a-link add-condition-and" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "AND", parent_box: "<%= parent_name %>" });\'>ET une nouvelle condition</button>\
+              </div>\
+            <% } %>\
+            <% if (combination === "OR" || combination === "") { %>\
+              <div>\
+                <button class="like-a-link add-condition-or" onclick=\'store_trundle.dispatch({ type: "ADD_CONDITION", combination: "OR", parent_box: "<%= parent_name %>" });\'>OU une nouvelle condition</button>\
+              </div>\
+            <% } %>\
+            <div>\
+              <button class="like-a-link add-subcondition-et" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "AND", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un ET</button>\
+            </div>\
+            <div>\
+              <button class="like-a-link add-subcondition-or" onclick=\'store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: "OR", box_name: "<%= node_name %>" });\'>Regrouper avec une nouvelle sous-condition, liée par un OU</button>\
+            </div>\
+            <div>\
+              <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Editer cette condition</button>\
+            </div>\
+            <div>\
+              <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "<%= node_name %>"  });\'>Supprimer cette condition</button>\
+            </div>\
+          </div>\
+        </li>\
+        '
 
       var templateFn = _.template(tpl_str);
 

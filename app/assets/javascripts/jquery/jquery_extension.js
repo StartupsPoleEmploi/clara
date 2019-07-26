@@ -82,4 +82,5 @@ jQuery.fn.extend({
     }
     return result;
   }
+
 });

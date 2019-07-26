@@ -11,7 +11,7 @@ clara.js_define("admin_rulecreation", {
         store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
 
-        // clara.admin_sortable.please();
+        clara.admin_sortable.please();
 
 
         var default_subbox = {
@@ -44,9 +44,8 @@ clara.js_define("admin_rulecreation", {
 
         // REDUCER
         var reducer = function(state, action) { 
-          // console.log('trundle reducer reacted with')
-          // console.log(action)
-          // console.log('')
+          var that = clara.admin_rulecreation;
+
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
@@ -55,8 +54,6 @@ clara.js_define("admin_rulecreation", {
 
           initial_size
 
-          // var box_names = _.uniq(_.findNested(newState, "name"))
-          // var editable_box_names = _.difference(box_names, ["root_box"])
           var is_initially_not_void = initial_size > 1
 
           if (action.type === 'VALIDATED_RULE') {
@@ -86,7 +83,8 @@ clara.js_define("admin_rulecreation", {
             new_combination_box.is_editing = false
             new_editing_box.is_editing = true
             
-            new_combination_box.name += "b"
+            new_combination_box.name = cloned.name
+            cloned.name = new_editing_box.name + "b"
             new_editing_box.name += "a"
 
             new_combination_box.subcombination = action.combination
@@ -113,6 +111,25 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'CHANGE_CONDITION') {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
               node_parent.subcombination = action.combination
+           } else if (action.type === 'MOVED_POSITION') {
+              var node_searched = _.deepSearch(newState, "name", function(k, v){return v === action.value.parent})
+              node_searched.subboxes = _.sortBy(node_searched.subboxes, function(e){return _.findIndex(action.value.childs, function(g) {return g.name === e.name})})
+           } else if (action.type === 'MOVED_PARENT') {
+
+              // delete old node by making it an orphan
+              var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.value.box})
+              var clone = _.cloneDeep(node_current)
+              var new_default_box  = create_new_box();
+              new_default_box.is_editing = !is_initially_not_void
+              _.assign(node_current, new_default_box);
+
+              // find and insert new node
+              that._parse(newState, function(obj, parent){
+                if (obj.name === action.value.new_parent) {
+                  _.insertAt(obj.subboxes, action.value.new_position, clone)
+                }
+              })
+
            }
 
           clara.admin_rulecreation._remove_orphans_recursively(newState)
@@ -143,7 +160,6 @@ clara.js_define("admin_rulecreation", {
 
         // DISPATCHERS
         $('button.c-apprule-button.is-validation').on('click', function(e) {
-          // console.log('is-validation clicked? yes')
           var value_txt = $(".expl-text").text();
           var value_var = $("#rule_variable_id").find("option:selected").attr("data-name");
           var value_op = $("#rule_operator_kind").find("option:selected").val();
@@ -203,6 +219,16 @@ clara.js_define("admin_rulecreation", {
             candidates.push({name_of_obj_to_delete: subbox.name, parent_array: obj.subboxes})
           }
           that._find_candidates_for_deletion(subbox, candidates);
+        })
+      }
+    },
+
+    _parse: function(obj, callback, _parent, _indx) {
+      var that = clara.admin_rulecreation;
+      callback(obj, _parent, _indx)
+      if (_.size(obj.subboxes) > 0) {
+        _.each(obj.subboxes, function(subbox, indx) {
+          that._parse(subbox, callback, obj, indx);
         })
       }
     },

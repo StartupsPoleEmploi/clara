@@ -1,5 +1,17 @@
 _.mixin({
 
+  // See https://gist.github.com/Yimiprod/7ee176597fef230d1451
+  objDiff: function(object, base) {
+    function changes(object, base) {
+      return _.transform(object, function(result, value, key) {
+        if (!_.isEqual(value, base[key])) {
+          result[key] = (_.isObject(value) && _.isObject(base[key])) ? changes(value, base[key]) : value;
+        }
+      });
+    }
+    return changes(object, base);
+  },
+
   toPercentage: function(portion, total) {
     if (_.every(arguments, _.isNumber)) {
       return ((portion/total) * 100).toFixed(1) + '%'
@@ -83,6 +95,11 @@ _.mixin({
       res = str;
     }
     return res;
+  },
+  insertAt: function(array, index, item) {
+    if (_.isArray(array) && _.isInteger(index)) {
+      array.splice( index, 0, item );
+    }
   }
 
 });

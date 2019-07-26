@@ -2,6 +2,10 @@
 
 
 
+## 21.4.6 (23/7/2019)
+-[#1316][FEATURE] dragndrop
+
+
 ## 21.4.5 (22/7/2019)
 -[#1313b][BUG] ET / OU cliquables : bug
 

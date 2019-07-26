@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -5431,6 +5431,41 @@
   }
 
   /**
+   * Gets the index at which the first occurrence of `value` is found in `array`
+   * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+   * for equality comparisons. If `fromIndex` is negative, it's used as the
+   * offset from the end of `array`.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} [fromIndex=0] The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   * @example
+   *
+   * _.indexOf([1, 2, 1, 2], 2);
+   * // => 1
+   *
+   * // Search from the `fromIndex`.
+   * _.indexOf([1, 2, 1, 2], 2, 2);
+   * // => 3
+   */
+  function indexOf(array, value, fromIndex) {
+    var length = array == null ? 0 : array.length;
+    if (!length) {
+      return -1;
+    }
+    var index = fromIndex == null ? 0 : toInteger(fromIndex);
+    if (index < 0) {
+      index = nativeMax(length + index, 0);
+    }
+    return baseIndexOf(array, value, index);
+  }
+
+  /**
    * Creates an array of unique values that are included in all given arrays
    * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
    * for equality comparisons. The order and references of result values are
@@ -7207,6 +7242,36 @@
   }
 
   /**
+   * Checks if `value` is an integer.
+   *
+   * **Note:** This method is based on
+   * [`Number.isInteger`](https://mdn.io/Number/isInteger).
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an integer, else `false`.
+   * @example
+   *
+   * _.isInteger(3);
+   * // => true
+   *
+   * _.isInteger(Number.MIN_VALUE);
+   * // => false
+   *
+   * _.isInteger(Infinity);
+   * // => false
+   *
+   * _.isInteger('3');
+   * // => false
+   */
+  function isInteger(value) {
+    return typeof value == 'number' && value == toInteger(value);
+  }
+
+  /**
    * Checks if `value` is a valid array-like length.
    *
    * **Note:** This method is loosely based on
@@ -7922,6 +7987,59 @@
    */
   function set(object, path, value) {
     return object == null ? object : baseSet(object, path, value);
+  }
+
+  /**
+   * An alternative to `_.reduce`; this method transforms `object` to a new
+   * `accumulator` object which is the result of running each of its own
+   * enumerable string keyed properties thru `iteratee`, with each invocation
+   * potentially mutating the `accumulator` object. If `accumulator` is not
+   * provided, a new object with the same `[[Prototype]]` will be used. The
+   * iteratee is invoked with four arguments: (accumulator, value, key, object).
+   * Iteratee functions may exit iteration early by explicitly returning `false`.
+   *
+   * @static
+   * @memberOf _
+   * @since 1.3.0
+   * @category Object
+   * @param {Object} object The object to iterate over.
+   * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+   * @param {*} [accumulator] The custom accumulator value.
+   * @returns {*} Returns the accumulated value.
+   * @example
+   *
+   * _.transform([2, 3, 4], function(result, n) {
+   *   result.push(n *= n);
+   *   return n % 2 == 0;
+   * }, []);
+   * // => [4, 9]
+   *
+   * _.transform({ 'a': 1, 'b': 2, 'c': 1 }, function(result, value, key) {
+   *   (result[value] || (result[value] = [])).push(key);
+   * }, {});
+   * // => { '1': ['a', 'c'], '2': ['b'] }
+   */
+  function transform(object, iteratee, accumulator) {
+    var isArr = isArray(object),
+        isArrLike = isArr || isBuffer(object) || isTypedArray(object);
+
+    iteratee = getIteratee(iteratee, 4);
+    if (accumulator == null) {
+      var Ctor = object && object.constructor;
+      if (isArrLike) {
+        accumulator = isArr ? new Ctor : [];
+      }
+      else if (isObject(object)) {
+        accumulator = isFunction(Ctor) ? baseCreate(getPrototype(object)) : {};
+      }
+      else {
+        accumulator = {};
+      }
+    }
+    (isArrLike ? arrayEach : baseForOwn)(object, function(value, index, object) {
+      return iteratee(accumulator, value, index, object);
+    });
+    return accumulator;
   }
 
   /**
@@ -8789,6 +8907,7 @@
   lodash.throttle = throttle;
   lodash.thru = thru;
   lodash.toArray = toArray;
+  lodash.transform = transform;
   lodash.uniq = uniq;
   lodash.uniqBy = uniqBy;
   lodash.unset = unset;
@@ -8821,6 +8940,7 @@
   lodash.hasIn = hasIn;
   lodash.identity = identity;
   lodash.includes = includes;
+  lodash.indexOf = indexOf;
   lodash.isArguments = isArguments;
   lodash.isArray = isArray;
   lodash.isArrayLike = isArrayLike;
@@ -8830,6 +8950,7 @@
   lodash.isEqual = isEqual;
   lodash.isError = isError;
   lodash.isFunction = isFunction;
+  lodash.isInteger = isInteger;
   lodash.isLength = isLength;
   lodash.isMap = isMap;
   lodash.isNumber = isNumber;
