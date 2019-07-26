@@ -114,6 +114,16 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'CHANGE_CONDITION') {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
               node_parent.subcombination = action.combination
+           } else if (action.type === 'MOVED_POSITION') {
+              console.log("moved position with")
+              console.log(action.value)
+              var node_searched = _.deepSearch(newState, "name", function(k, v){return v === action.value.parent})
+              console.log(node_searched)
+              console.log(action.value.childs);
+              node_searched.subboxes = _.sortBy(node_searched.subboxes, function(e){console.log("");console.log(e.name);console.log(_.findIndex(action.value.childs, function(g) {return g.name === e.name}));return _.findIndex(action.value.childs, function(g) {return g.name === e.name})})
+           } else if (action.type === 'MOVED_PARENT') {
+              // var n_tree = action.value;
+
            }
 
           clara.admin_rulecreation._remove_orphans_recursively(newState)
@@ -208,12 +218,12 @@ clara.js_define("admin_rulecreation", {
       }
     },
 
-    _parse: function(obj, callback, _parent) {
+    _parse: function(obj, callback, _parent, _indx) {
       var that = clara.admin_rulecreation;
-      callback(obj, _parent)
+      callback(obj, _parent, _indx)
       if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          that._parse(subbox, callback, obj);
+        _.each(obj.subboxes, function(subbox, indx) {
+          that._parse(subbox, callback, obj, indx);
         })
       }
     },

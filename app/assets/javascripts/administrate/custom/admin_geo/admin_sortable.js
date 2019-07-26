@@ -12,7 +12,7 @@ clara.js_define("admin_sortable", {
             var id_of = function($elt){var res = $elt.attr("data-box").slice(4); return res === "_box" ? "root_box" : res}
             var container = e.target;
             var deplaced = e.toElement;
-
+            var result = {};
             // var $leaf = $(deplaced).closest("li.c-leaf");
             // var $parent = $leaf.closest("ul.sortable");
 
@@ -26,7 +26,7 @@ clara.js_define("admin_sortable", {
 
 
             var current_tree = [];
-            clara.admin_rulecreation._parse(store_trundle.getState(), function(obj, parent){current_tree.push({obj:obj, parent: parent})});
+            clara.admin_rulecreation._parse(store_trundle.getState(), function(obj, parent, indx){current_tree.push({obj:obj, parent: parent})});
             // console.log(current_tree)
 
             var n_tree = $("*[data-box]").map(function(i,e){var that=this;return {name:$(that).data("box"), parent: $(that).parent().closest("*[data-box]").data("box")}}).toArray();
@@ -48,20 +48,44 @@ clara.js_define("admin_sortable", {
             if (_.isEqual(n_tree, s_tree)) {
               console.log("nothing changed");
             } else {
-              var reduced_n_tree = _.reduce(n_tree, function(acc, val){acc[val.name] = val.parent; return acc;}, {})
-              var reduced_s_tree = _.reduce(s_tree, function(acc, val){acc[val.name] = val.parent; return acc;}, {})
+              console.log("changed");
+              // store_trundle.dispatch({
+              //   type: 'DRAGNDROP', 
+              //   value: n_tree,
+              // });
+              var rn_tree = _.reduce(n_tree, function(acc, val){acc[val.name] = val.parent; return acc;}, {})
+              var rs_tree = _.reduce(s_tree, function(acc, val){acc[val.name] = val.parent; return acc;}, {})
               
               console.log("reduced");
-              console.log(reduced_n_tree);
-              console.log(reduced_s_tree);
-              var diff = _.objDiff(reduced_n_tree, reduced_s_tree);
+              console.log(rn_tree);
+              console.log(rs_tree);
+              var diff = _.objDiff(rn_tree, rs_tree);
               if (_.isBlank(diff)) {
                 console.log("just changed position, but not my parent");
+                gn_tree = _.groupBy(n_tree, 'parent')
+                gs_tree = _.groupBy(s_tree, 'parent')
+                console.log("diffs")
+                var diffs = _.objDiff(gs_tree, gn_tree);
+                console.log(diffs)
+                var key_of_parent_that_changed = _.keys(diffs)[0]
+                console.log("key_of_parent_that_changed")
+                console.log(key_of_parent_that_changed)
+                result.parent = key_of_parent_that_changed;
+                result.childs = _.filter(n_tree, function(e){return e.parent === key_of_parent_that_changed});
+                store_trundle.dispatch({
+                  type: 'MOVED_POSITION', 
+                  value: result,
+                });
+
               } else {
                 console.log("OMG!!! CHANGED PARENT !!!")
                 console.log(diff)
                 console.log("")
               }
+
+
+
+
               // var elt_guilty = null;
               // _.each(s_tree, function(e, i) {
               //   var comp_with = _.find(n_tree, function(g){return g.name === e.name});
@@ -104,6 +128,8 @@ clara.js_define("admin_sortable", {
             // console.log(deplaced_box_id)
             // console.log(parent_box_id)
             // console.log('')
+
+            // return result;
 
           },
           start: function (e) {
