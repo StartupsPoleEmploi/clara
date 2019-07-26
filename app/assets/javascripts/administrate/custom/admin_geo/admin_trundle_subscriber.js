@@ -130,9 +130,13 @@ clara.js_define("admin_trundle_subscriber", {
 
     node_template: function(name, combination, parent_name) {
 
-      var tpl_str = clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
-                    "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>"+
-                    "</ul>"
+      var tpl_str = 
+
+      '<li class="c-leaf ui-sortable-handle"  >' +
+          clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
+          "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>" +
+          "</ul>" +
+      "</li>";
       
       var templateFn = _.template(tpl_str);
 
