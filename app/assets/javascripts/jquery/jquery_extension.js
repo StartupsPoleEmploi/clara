@@ -81,27 +81,6 @@ jQuery.fn.extend({
       }
     }
     return result;
-  },
-  tree: function() {
-    var arr  = [],
-        self = this;
+  }
 
-    (function runForrestRun(el, arr) {
-        var isEl = self.is(el),
-            children = [];
-
-        if (isEl)
-            arr.push({
-                "box" : el.data('box'), 
-                "children": children
-            });
-
-        el.children().each(function() {
-            runForrestRun($(this), isEl ? children : arr);
-        });
-
-    }(this.first(), arr));
-
-    return arr;
-}
 });
