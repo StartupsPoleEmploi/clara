@@ -44,6 +44,8 @@ clara.js_define("admin_rulecreation", {
 
         // REDUCER
         var reducer = function(state, action) { 
+          var that = clara.admin_rulecreation;
+
           // console.log('trundle reducer reacted with')
           // console.log(action)
           // console.log('')
@@ -124,6 +126,20 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'MOVED_PARENT') {
               console.log("moved parent with")
               console.log(action.value)
+
+              // delete old node by making it an orphan
+              var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.value.box})
+              var clone = _.cloneDeep(node_current)
+              var new_default_box  = create_new_box();
+              new_default_box.is_editing = !is_initially_not_void
+              _.assign(node_current, new_default_box);
+
+              // find and insert new node
+              that._parse(newState, function(obj, parent){
+                if (obj.name === action.value.new_parent) {
+                  _.insertAt(obj.subboxes, action.value.new_position, clone)
+                }
+              })
 
            }
 
