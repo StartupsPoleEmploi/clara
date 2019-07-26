@@ -46,9 +46,6 @@ clara.js_define("admin_rulecreation", {
         var reducer = function(state, action) { 
           var that = clara.admin_rulecreation;
 
-          // console.log('trundle reducer reacted with')
-          // console.log(action)
-          // console.log('')
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
@@ -57,8 +54,6 @@ clara.js_define("admin_rulecreation", {
 
           initial_size
 
-          // var box_names = _.uniq(_.findNested(newState, "name"))
-          // var editable_box_names = _.difference(box_names, ["root_box"])
           var is_initially_not_void = initial_size > 1
 
           if (action.type === 'VALIDATED_RULE') {
@@ -117,15 +112,9 @@ clara.js_define("admin_rulecreation", {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
               node_parent.subcombination = action.combination
            } else if (action.type === 'MOVED_POSITION') {
-              console.log("moved position with")
-              console.log(action.value)
               var node_searched = _.deepSearch(newState, "name", function(k, v){return v === action.value.parent})
-              console.log(node_searched)
-              console.log(action.value.childs);
-              node_searched.subboxes = _.sortBy(node_searched.subboxes, function(e){console.log("");console.log(e.name);console.log(_.findIndex(action.value.childs, function(g) {return g.name === e.name}));return _.findIndex(action.value.childs, function(g) {return g.name === e.name})})
+              node_searched.subboxes = _.sortBy(node_searched.subboxes, function(e){return _.findIndex(action.value.childs, function(g) {return g.name === e.name})})
            } else if (action.type === 'MOVED_PARENT') {
-              console.log("moved parent with")
-              console.log(action.value)
 
               // delete old node by making it an orphan
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.value.box})
@@ -171,7 +160,6 @@ clara.js_define("admin_rulecreation", {
 
         // DISPATCHERS
         $('button.c-apprule-button.is-validation').on('click', function(e) {
-          // console.log('is-validation clicked? yes')
           var value_txt = $(".expl-text").text();
           var value_var = $("#rule_variable_id").find("option:selected").attr("data-name");
           var value_op = $("#rule_operator_kind").find("option:selected").val();

@@ -54,7 +54,6 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination) {
-      // console.log("painting " + node.name + " with parent " + parent_name + " parent_combination " + parent_combination)
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
