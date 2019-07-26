@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -7242,6 +7242,36 @@
   }
 
   /**
+   * Checks if `value` is an integer.
+   *
+   * **Note:** This method is based on
+   * [`Number.isInteger`](https://mdn.io/Number/isInteger).
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category Lang
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if `value` is an integer, else `false`.
+   * @example
+   *
+   * _.isInteger(3);
+   * // => true
+   *
+   * _.isInteger(Number.MIN_VALUE);
+   * // => false
+   *
+   * _.isInteger(Infinity);
+   * // => false
+   *
+   * _.isInteger('3');
+   * // => false
+   */
+  function isInteger(value) {
+    return typeof value == 'number' && value == toInteger(value);
+  }
+
+  /**
    * Checks if `value` is a valid array-like length.
    *
    * **Note:** This method is loosely based on
@@ -8920,6 +8950,7 @@
   lodash.isEqual = isEqual;
   lodash.isError = isError;
   lodash.isFunction = isFunction;
+  lodash.isInteger = isInteger;
   lodash.isLength = isLength;
   lodash.isMap = isMap;
   lodash.isNumber = isNumber;

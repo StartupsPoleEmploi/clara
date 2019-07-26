@@ -81,6 +81,13 @@ clara.js_define("admin_sortable", {
                 console.log("OMG!!! CHANGED PARENT !!!")
                 console.log(diff)
                 console.log("")
+                result.box = _.keys(diff)[0]
+                result.new_parent = _.values(diff)[0]
+                result.new_position = _.findIndex(_.filter(n_tree, function(e){return e.parent === result.new_parent}), function(g){return g.name === result.box})
+                store_trundle.dispatch({
+                  type: 'MOVED_PARENT', 
+                  value: result,
+                });
               }
 
 

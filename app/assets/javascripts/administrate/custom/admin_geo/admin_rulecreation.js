@@ -122,7 +122,8 @@ clara.js_define("admin_rulecreation", {
               console.log(action.value.childs);
               node_searched.subboxes = _.sortBy(node_searched.subboxes, function(e){console.log("");console.log(e.name);console.log(_.findIndex(action.value.childs, function(g) {return g.name === e.name}));return _.findIndex(action.value.childs, function(g) {return g.name === e.name})})
            } else if (action.type === 'MOVED_PARENT') {
-              // var n_tree = action.value;
+              console.log("moved parent with")
+              console.log(action.value)
 
            }
 
