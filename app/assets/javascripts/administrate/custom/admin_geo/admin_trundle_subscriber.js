@@ -5,21 +5,11 @@ clara.js_define("admin_trundle_subscriber", {
     please: function(state) {
       var that = clara.admin_trundle_subscriber;
       var s = state;
-      var $root = $(".root_box");
-      
-      var $varopval = $("section.varopval");
-      $varopval.attr("data-box", "")
-      $("#rule_variable_id").val("")
-      $("#rule_operator_kind").val("")
-      $("#rule_value_eligible_selectible").val("")
-      $("#rule_value_eligible").val("")
-      $(".c-comb--edition").remove()
-      store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
-      $varopval.hide();
-      
-      $varopval.appendTo(".c-rulecreation");
 
-      $root.empty();
+      that._hide_varopval();
+
+      $(".root_box").empty();
+
       var walk_nodes = this.walk_nodes;
       $("#main-apprule-expl").empty();
       
@@ -34,6 +24,22 @@ clara.js_define("admin_trundle_subscriber", {
 
     },
     
+    _hide_varopval: function() {
+      var $varopval = $("section.varopval");
+      $varopval.attr("data-box", "")
+      $("#rule_variable_id").val("")
+      $("#rule_operator_kind").val("")
+      $("#rule_value_eligible_selectible").val("")
+      $("#rule_value_eligible").val("")
+      $(".c-comb--edition").remove()
+      store_rule.dispatch({type: 'VARIABLE_CHANGED', value: ""});
+      $varopval.hide();
+      
+      $varopval.appendTo(".c-rulecreation");
+    },
+    
+
+
     first_expl: function(txt) {
       return  '<div class="first_expl is-first" style= "display: none">\
                     Si c\'est la seule condition, vous pouvez passer au critère géographique ci-dessous.\
