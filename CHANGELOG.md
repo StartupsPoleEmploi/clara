@@ -2,6 +2,10 @@
 
 
 
+## 21.5.1 (30/7/2019)
+-[#1333][BUG] modification aide
+
+
 ## 21.5.0 (30/7/2019)
 -[#1332][FEATURE] ajouter des boutons ET/OU visibles
 
