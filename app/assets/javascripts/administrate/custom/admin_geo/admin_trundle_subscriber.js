@@ -195,7 +195,7 @@ clara.js_define("admin_trundle_subscriber", {
           </ul>\
           <div id="tooltip_id_condition_<%= node_name %>" class="hidden">\
             <div>\
-              <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Editer cette condition</button>\
+              <button class="like-a-link edit-condition" onclick=\'store_trundle.dispatch({ type: "EDIT_CONDITION", box_name: "<%= node_name %>"  });\'>Corriger cette condition</button>\
             </div>\
             <div>\
               <button class="like-a-link remove-condition" onclick=\'store_trundle.dispatch({ type: "REMOVE_CONDITION", box_name: "<%= node_name %>"  });\'>Supprimer cette condition</button>\
