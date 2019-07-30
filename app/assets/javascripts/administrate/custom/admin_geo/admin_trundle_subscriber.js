@@ -26,6 +26,8 @@ clara.js_define("admin_trundle_subscriber", {
     
     _setup_buttons: function(s) {
       if (!clara.admin_rulecreation._is_editing(s)) {
+
+        // 1 - add buttons
         var andor =             
             "<li class='unsortable'>" +
               "<button class='c-apprule-button js-and'>ET</button>" +
@@ -50,6 +52,14 @@ clara.js_define("admin_trundle_subscriber", {
             store_trundle.dispatch({ type: "ADD_CONDITION", combination: combination, parent_box });
           } 
         });
+
+
+      } else {
+        // disable all edition
+        $('button.js-tooltip').each(function(e,i) {
+          var $buttonjstooltip = $(this);
+          $buttonjstooltip.replaceWith('<div class="uneditable-condition">' + $buttonjstooltip.html() +'</div>')
+        })
       }
     },
 
@@ -83,14 +93,14 @@ clara.js_define("admin_trundle_subscriber", {
       var parent_name = obj.name;
       var parent_combination = obj.subcombination;
       if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          that.paint_node(subbox, parent_name, parent_combination);
+        _.each(obj.subboxes, function(subbox, indx) {
+          that.paint_node(subbox, parent_name, parent_combination, indx);
           that.walk_nodes(subbox);
         })
       }
     },
 
-    paint_node: function(node, parent_name, parent_combination) {
+    paint_node: function(node, parent_name, parent_combination, indx) {
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
@@ -107,31 +117,28 @@ clara.js_define("admin_trundle_subscriber", {
 
         $("section.varopval").appendTo($parent)
         $("section.varopval").show()
-        $( "<span class='c-comb c-comb--edition'>" + comb + "</span>" ).insertBefore( "section.varopval" );
+        $( "<div class='c-comb c-comb--edition'>" + comb + "</div>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
 
-        $('button.js-tooltip').each(function(e,i) {
-          var $buttonjstooltip = $(this);
-          $buttonjstooltip.replaceWith('<div>' + $buttonjstooltip.html() +'</div>')
-        })
+
 
         $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
       } else if (_.isNotBlank(node.subcombination)) {
-        var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name));
+        var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name, indx));
         $node_tpl.appendTo($parent)
       } else {
-        var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination))
+        var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination, indx))
         $leaf_tpl.appendTo($parent)
       }
     },
 
-    comb_template: function(combination, name, parent_name) {
+    comb_template: function(combination, name, indx) {
       var comb = combination === "AND" ? "ET" : combination === "OR" ? "OU" : "" 
 
       var uid =  Math.random().toString(36).substring(2) + new Date().getTime().toString(36);
 
-      var tpl_str = "<span class='c-comb pos-relative'>" +
+      var tpl_str = "<div class='c-comb pos-relative'>" +
                         "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
                         "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
                           "<% if (comb === 'ET') { %>" +
@@ -151,9 +158,9 @@ clara.js_define("admin_trundle_subscriber", {
                             "</div>" +
                           "<% } %>" +
                         "</div>"
-                    "</span>";
+                    "</div>";
       
-      if (comb === "") {
+      if (comb === "" || indx === 0) {
         tpl_str = ""
       }
 
@@ -164,12 +171,12 @@ clara.js_define("admin_trundle_subscriber", {
       return templateHTML; 
     },
 
-    node_template: function(name, combination, parent_name) {
+    node_template: function(name, combination, parent_name, indx) {
 
       var tpl_str = 
 
       '<li class="c-node ui-sortable-handle"  >' +
-          clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
+          clara.admin_trundle_subscriber.comb_template(combination, parent_name, indx) +
           "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>" +
             // "<li>" +
             //   "<button class='c-apprule-button'>ET une autre condition</button>" +
@@ -185,11 +192,11 @@ clara.js_define("admin_trundle_subscriber", {
       return templateHTML; 
     },
 
-    leaf_template: function(node, parent_name, combination) {
+    leaf_template: function(node, parent_name, combination, indx) {
       
       var tpl_str = '\
         <li class="c-leaf ui-sortable-handle <%= node_name %>" data-box="<%= node_name %>" data-xvar="<%= node_xvar %>" data-xop="<%= node_xop %>" data-xval="<%= node_xval %>">' +
-          clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
+          clara.admin_trundle_subscriber.comb_template(combination, parent_name, indx) +
           '<ul class="sortable ui-sortable pos-relative">\
             <button class="js-tooltip like-a-link add-condition" data-tooltip-content-id="tooltip_id_condition_<%= node_name %>" data-tooltip-title="<%= node_xtxt %>" data-tooltip-prefix-class="combinator" data-tooltip-close-text="x" data-tooltip-close-title="Ferme la fenêtre" id="label_tooltip_<%= node_name %>"><%= node_xtxt %></button>\
           </ul>\

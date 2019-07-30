@@ -90,6 +90,7 @@ button.like-a-link {
 button.add-condition {
   font-size: 16px;
   padding: 0;
+  margin-bottom: 12px;
 }
 
 
@@ -165,6 +166,11 @@ label.c-geolabel {
 .c-comb {
   font-style: italic;
 }
+
+.c-comb--edition {
+  margin-bottom: 12px;
+}
+
 .combinator-container {
   position: relative;
 }
