@@ -19,19 +19,19 @@ clara.js_define("admin_trundle_subscriber", {
       }
 
       that.walk_nodes(s);
-      that._setup_buttons(s);
-
+      that._post_paint(s);
 
     },
     
-    _setup_buttons: function(s) {
+    _post_paint: function(s) {
       if (!clara.admin_rulecreation._is_editing(s)) {
 
-        // 1 - add buttons
+        // add buttons
         var andor =             
             "<li class='unsortable'>" +
               "<button class='c-apprule-button js-and'>ET</button>" +
               "<button class='small-left-margin c-apprule-button js-or'>OU</button>" +
+              '&nbsp;<span class="c-drag-help"><svg width="15px" height="15px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 362.667 362.667" style="enable-background:new 0 0 362.667 362.667;" xml:space="preserve"> <g> <g> <path d="M298.667,42.667c-8.768,0-16.939,2.667-23.723,7.211c-5.845-16.597-21.696-28.544-40.277-28.544 c-8.768,0-16.939,2.667-23.723,7.211C205.099,11.947,189.248,0,170.667,0c-18.581,0-34.432,11.947-40.277,28.544 c-6.784-4.544-14.955-7.211-23.723-7.211C83.136,21.333,64,40.469,64,64v48.917l-20.8,20.779 c-14.101,14.123-21.867,32.853-21.867,52.8v32.32c0,19.947,7.765,38.699,21.867,52.821l42.688,42.667 c31.168,31.189,72.661,48.363,116.779,48.363c76.459,0,138.667-62.208,138.667-138.667V85.333 C341.333,61.803,322.197,42.667,298.667,42.667z M320,224c0,64.704-52.651,117.333-117.355,117.333 c-38.421,0-74.539-14.955-101.675-42.112l-42.688-42.667c-10.069-10.091-15.616-23.488-15.616-37.717v-32.32 c0-14.251,5.547-27.648,15.616-37.717L64,143.083V160c0,5.888,4.779,10.667,10.667,10.667S85.333,165.888,85.333,160v-42.645 c0-0.021,0-0.021,0-0.043V64c0-11.755,9.557-21.333,21.333-21.333S128,52.245,128,64v32c0,5.888,4.779,10.667,10.667,10.667 s10.667-4.779,10.667-10.667V42.667c0-11.755,9.557-21.333,21.333-21.333S192,30.912,192,42.667V96 c0,5.888,4.779,10.667,10.667,10.667s10.667-4.779,10.667-10.667V64c0-11.755,9.557-21.333,21.333-21.333S256,52.245,256,64v32 c0,5.888,4.779,10.667,10.667,10.667c5.888,0,10.667-4.779,10.667-10.667V85.333c0-11.755,9.557-21.333,21.333-21.333 S320,73.579,320,85.333V224z"/> </g> </g> </svg> glissez-déposez le bloc si nécessaire</span>'
             "</li>";
 
         $("ul.sortable").append(andor);
@@ -53,6 +53,13 @@ clara.js_define("admin_trundle_subscriber", {
           } 
         });
 
+        // no dragndrop help if only one box (or none)
+        if (clara.admin_rulecreation._calculate_actual_boxes_size(s) < 2) {
+          $(".c-drag-help").remove() 
+        } else  { // animate the others, the last one is not necessary
+          $(".c-drag-help").effect( "bounce", {times:4, distance: 40}, 800 );
+          $(".c-drag-help").last().remove() 
+        }
 
       } else {
         // disable all edition
@@ -60,7 +67,12 @@ clara.js_define("admin_trundle_subscriber", {
           var $buttonjstooltip = $(this);
           $buttonjstooltip.replaceWith('<div class="uneditable-condition">' + $buttonjstooltip.html() +'</div>')
         })
+        
+        // no dragndrop help
+        $(".c-drag-help").remove() 
       }
+
+
     },
 
     _hide_varopval: function() {
@@ -122,7 +134,7 @@ clara.js_define("admin_trundle_subscriber", {
 
 
 
-        $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
+        // $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name, indx));

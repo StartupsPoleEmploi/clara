@@ -2,6 +2,10 @@
 
 
 
+## 21.7.0 (30/7/2019)
+-[#1337][FEATURE] prévenir l'utilisateur au bon moment pour le glissé-déposé.
+
+
 ## 21.6.0 (30/7/2019)
 -[#1336][FEATURE] suppression premier ET premier OU
 
