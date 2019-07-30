@@ -27,7 +27,7 @@ clara.js_define("admin_trundle_subscriber", {
     _setup_buttons: function(s) {
       if (!clara.admin_rulecreation._is_editing(s)) {
         var andor =             
-            "<li>" +
+            "<li class='unsortable'>" +
               "<button class='c-apprule-button js-and'>ET</button>" +
               "<button class='small-left-margin c-apprule-button js-or'>OU</button>" +
             "</li>";

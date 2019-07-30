@@ -2,6 +2,10 @@
 
 
 
+## 21.5.2 (30/7/2019)
+-[#1334][BUG] ET/OU non dispo en glissé-déposé
+
+
 ## 21.5.1 (30/7/2019)
 -[#1333][BUG] modification aide
 
