@@ -10,7 +10,6 @@ clara.js_define("admin_trundle_subscriber", {
       $(".root_box").empty();
       $("#main-apprule-expl").empty();
 
-      var walk_nodes = this.walk_nodes;
       
       if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
         var help_text = that.first_expl(s.subboxes[0].xtxt)
@@ -19,8 +18,13 @@ clara.js_define("admin_trundle_subscriber", {
         $(".first_expl.is-last").show("fade", {}, 1000)
       }
 
-      walk_nodes(s);
+      that.walk_nodes(s);
+      that._setup_buttons(s);
 
+
+    },
+    
+    _setup_buttons: function(s) {
       if (!clara.admin_rulecreation._is_editing(s)) {
         var andor =             
             "<li>" +
@@ -38,28 +42,17 @@ clara.js_define("admin_trundle_subscriber", {
           var combination = is_or ? "OR" : "AND"
 
           if (is_subcondition) {
-            console.log("subcondition")            
-            console.log(is_or)
             var $id = $friend.attr("id")
             var box_name = $id.slice($id.indexOf("box_"))
             store_trundle.dispatch({ type: "ADD_SUBCONDITION", combination: combination, box_name: box_name });            
           } else { // is_condition
-            console.log("condition")
             var parent_box = $friend.parent().data("box")
             store_trundle.dispatch({ type: "ADD_CONDITION", combination: combination, parent_box });
           } 
-          // console.log("clicked")
-          // console.log(e)
-          // console.log($target)
-          // console.log($target.parent().prev())
-          // console.log("")
-
         });
-
       }
-
     },
-    
+
     _hide_varopval: function() {
       var $varopval = $("section.varopval");
       $varopval.attr("data-box", "")
