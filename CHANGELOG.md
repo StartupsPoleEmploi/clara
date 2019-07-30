@@ -2,6 +2,10 @@
 
 
 
+## 21.4.7 (30/7/2019)
+-[#1331][FEATURE] cursor grab
+
+
 ## 21.4.6 (23/7/2019)
 -[#1316][FEATURE] dragndrop
 
