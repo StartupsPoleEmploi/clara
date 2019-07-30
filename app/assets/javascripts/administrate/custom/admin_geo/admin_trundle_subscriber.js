@@ -26,6 +26,8 @@ clara.js_define("admin_trundle_subscriber", {
     
     _setup_buttons: function(s) {
       if (!clara.admin_rulecreation._is_editing(s)) {
+
+        // 1 - add buttons
         var andor =             
             "<li class='unsortable'>" +
               "<button class='c-apprule-button js-and'>ET</button>" +
@@ -50,6 +52,14 @@ clara.js_define("admin_trundle_subscriber", {
             store_trundle.dispatch({ type: "ADD_CONDITION", combination: combination, parent_box });
           } 
         });
+
+
+      } else {
+        // disable all edition
+        $('button.js-tooltip').each(function(e,i) {
+          var $buttonjstooltip = $(this);
+          $buttonjstooltip.replaceWith('<div class="uneditable-condition">' + $buttonjstooltip.html() +'</div>')
+        })
       }
     },
 
@@ -110,10 +120,7 @@ clara.js_define("admin_trundle_subscriber", {
         $( "<div class='c-comb c-comb--edition'>" + comb + "</div>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
 
-        $('button.js-tooltip').each(function(e,i) {
-          var $buttonjstooltip = $(this);
-          $buttonjstooltip.replaceWith('<div>' + $buttonjstooltip.html() +'</div>')
-        })
+
 
         $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
