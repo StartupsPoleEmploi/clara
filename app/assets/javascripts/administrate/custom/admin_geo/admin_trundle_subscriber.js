@@ -134,6 +134,10 @@ clara.js_define("admin_trundle_subscriber", {
       '<li class="c-leaf ui-sortable-handle"  >' +
           clara.admin_trundle_subscriber.comb_template(combination, parent_name) +
           "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>" +
+            "<li>" +
+              "<button class='c-apprule-button'>ET une autre condition</button>" +
+              "<button class='small-left-margin c-apprule-button'>OU une autre condition</button>" +
+            "</li>" +
           "</ul>" +
       "</li>";
       
