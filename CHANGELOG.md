@@ -2,8 +2,8 @@
 
 
 
-## 21.4.7 (29/7/2019)
--[#900][BUG] 5 chiffres seulement pour le code postal en front
+## 21.4.7 (30/7/2019)
+-[#1331][FEATURE] cursor grab
 
 
 ## 21.4.6 (23/7/2019)
