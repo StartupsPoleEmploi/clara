@@ -140,7 +140,7 @@ label.c-geolabel {
   width: 700px;
   padding: 10px;
   margin: 10px;
-  min-height: 15px;
+  min-height: 50px;
   border: 1px dashed #000;
   cursor: pointer;
   &.is-first {
@@ -155,7 +155,7 @@ label.c-geolabel {
 }
 .sortable .placeholder {
   width: 100%;
-  height: 20px;
+  height: 50px;
   background: rgba(0, 0, 0, 0.2);
 }
 .sortable li {

@@ -2,6 +2,10 @@
 
 
 
+## 21.5.3 (30/7/2019)
+-[#1335][FEATURETTE] éditer devient corriger
+
+
 ## 21.5.2 (30/7/2019)
 -[#1334][BUG] ET/OU non dispo en glissé-déposé
 
