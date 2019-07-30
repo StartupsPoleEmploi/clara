@@ -2,6 +2,10 @@
 
 
 
+## 21.5.0 (30/7/2019)
+-[#1332][FEATURE] ajouter des boutons ET/OU visibles
+
+
 ## 21.4.7 (30/7/2019)
 -[#1331][FEATURE] cursor grab
 
