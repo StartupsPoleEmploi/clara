@@ -13,7 +13,8 @@ clara.js_define("wrap_outbound_link", {
     $("a").filter(function() {
       return this.href === THE_URL;
     }).each(function() {
-      $(this).attr("onclick", "clara.track_outbound_link.please('" + THE_URL + "')");
+      var actual_target = $(this).attr('target');
+      $(this).attr("onclick", "clara.track_outbound_link.please('" + THE_URL + "', '" + actual_target + "');return false;");
     });
 
   }
