@@ -66,8 +66,6 @@ Rails.application.routes.draw do
     controller 'pages' do
       get 'rule_creation'
       post 'post_rule_creation'
-      get 'get_geo'
-      post 'post_geo'
       get 'get_all_filters_menu'
       get 'get_need_menu'
       get 'get_custom_filter_menu'

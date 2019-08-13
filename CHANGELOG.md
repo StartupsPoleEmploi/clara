@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 21.8.1 (13/8/2019)
+-[#1340][BUG] le bon CP n'apparaît pas en back
+
+
 ## 21.8.0 (13/8/2019)
 -[#1338][FEATURE] lien sortant
 

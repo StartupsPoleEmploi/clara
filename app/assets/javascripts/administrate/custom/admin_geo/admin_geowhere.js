@@ -178,7 +178,7 @@ clara.js_define("admin_geowhere", {
                     return e.properties.citycode
                   });
                   var rez = _.map(uniq_citycode, function(e){
-                    var displayed = e.properties.label + " " + e.properties.postcode
+                    var displayed = e.properties.label + " " + e.properties.postcode.substring(0,2);
                     return {
                       value: _.slugify(displayed),
                       name: displayed            
