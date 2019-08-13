@@ -173,17 +173,23 @@ clara.js_define("admin_geowhere", {
                     callback();
                 },
                 success: function(res) {
+                    console.log("res");
+                    console.log(res);
+                    console.log("");
                   callback([]);
                   var uniq_citycode = _.uniqBy(res.features, function(e) {
                     return e.properties.citycode
                   });
                   var rez = _.map(uniq_citycode, function(e){
-                    var displayed = e.properties.label + " " + e.properties.postcode
+                    var displayed = e.properties.label + " " + e.properties.postcode.substring(0,2);
                     return {
                       value: _.slugify(displayed),
                       name: displayed            
                     }
                   })
+                    console.log("rez");
+                    console.log(rez);
+                    console.log("");
                   callback(rez);
                 }
             });
