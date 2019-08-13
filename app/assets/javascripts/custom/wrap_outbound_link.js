@@ -14,7 +14,7 @@ clara.js_define("wrap_outbound_link", {
 
     $("a")
       .filter(function() {
-        return this.href === _THE_URL;
+        return this.href === that._THE_URL;
       })
       .each(function() {
         var actual_target = $(this).attr('target');
