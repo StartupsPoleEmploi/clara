@@ -173,9 +173,6 @@ clara.js_define("admin_geowhere", {
                     callback();
                 },
                 success: function(res) {
-                    console.log("res");
-                    console.log(res);
-                    console.log("");
                   callback([]);
                   var uniq_citycode = _.uniqBy(res.features, function(e) {
                     return e.properties.citycode
@@ -187,9 +184,6 @@ clara.js_define("admin_geowhere", {
                       name: displayed            
                     }
                   })
-                    console.log("rez");
-                    console.log(rez);
-                    console.log("");
                   callback(rez);
                 }
             });
