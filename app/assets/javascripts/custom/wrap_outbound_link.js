@@ -2,7 +2,7 @@ clara.js_define("wrap_outbound_link", {
 
   please_if: function() {
     return $("a").filter(function() {
-      return this.href==="https://candidat.pole-emploi.fr/prestations/servicescarte"
+      return this.href === "https://candidat.pole-emploi.fr/prestations/servicescarte"
     }).length > 0;
   },
 
