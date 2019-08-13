@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 21.8.0 (13/8/2019)
+-[#1338][FEATURE] lien sortant
+
 
 ## 21.7.0 (30/7/2019)
 -[#1337][FEATURE] prévenir l'utilisateur au bon moment pour le glissé-déposé.

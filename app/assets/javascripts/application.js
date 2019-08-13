@@ -46,3 +46,5 @@
 //= require custom/new_age_question
 //= require custom/other_questions
 //= require custom/sign_in
+//= require custom/wrap_outbound_link
+//= require custom/track_outbound_link
