@@ -18,7 +18,7 @@ clara.js_define("track_outbound_link", {
               "event_label": url,
               "transport_type": "balise",
               "event_callback": function(){
-                $('<a />',link_obj).get(0).click();
+                $('<a />', link_obj).get(0).click();
               }
             }
     );        
