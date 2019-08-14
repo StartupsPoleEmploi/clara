@@ -8,15 +8,14 @@ clara.js_define("admin_trundle_subscriber", {
 
       that._hide_varopval();
       $(".root_box").empty();
-      $("#main-apprule-expl").empty();
-
       
-      if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
-        var help_text = that.first_expl(s.subboxes[0].xtxt)
-        $("#main-apprule-expl").html(help_text)
-        $(".first_expl.is-first").show("fade", {}, 1000)
-        $(".first_expl.is-last").show("fade", {}, 1000)
-      }
+      // $("#main-apprule-expl").empty();      
+      // if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
+      //   var help_text = that.first_expl(s.subboxes[0].xtxt)
+      //   $("#main-apprule-expl").html(help_text)
+      //   $(".first_expl.is-first").show("fade", {}, 1000)
+      //   $(".first_expl.is-last").show("fade", {}, 1000)
+      // }
 
       that.walk_nodes(s);
       that._post_paint(s);

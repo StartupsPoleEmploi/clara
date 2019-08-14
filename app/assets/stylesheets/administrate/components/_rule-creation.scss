@@ -200,9 +200,12 @@ a.is-criteria {
   text-decoration: underline;
 }
 
+.c-apprule {
+  display: flex;
+}
+
 #main-apprule-expl {
   margin-bottom: 5rem;
-  margin-left: 4rem;
 }
 
 section.varopval {
