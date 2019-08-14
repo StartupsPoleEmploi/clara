@@ -11,17 +11,12 @@ clara.js_define("track_outbound_link", {
       link_obj["target"]  = "_blank"
     }
 
-    gtag("event", 
-          "clic", 
-            {
-              "event_category": "sortant",
-              "event_label": url,
-              "transport_type": "balise",
-              "event_callback": function(){
-                $('<a />', link_obj).get(0).click();
-              }
-            }
-    );        
+    ga('send', 'event', 'outbound', 'click', url, {
+     'transport': 'tag',
+     'hitCallback': function(){
+        $('<a />', link_obj).get(0).click();
+     }
+   });      
 
   },
 
