@@ -232,7 +232,7 @@ clara.js_define("admin_trundle_subscriber", {
 
     expl_node_template: function(name, combination, parent_name, indx, own_combination) {
 
-      var comb = own_combination === "AND" ? "Toutes les conditions suivantes : " : own_combination === "OR" ? "Au moins une des conditions suivantes : " : "" 
+      var comb = own_combination === "AND" ? "toutes les conditions suivantes : " : own_combination === "OR" ? "au moins une des conditions suivantes : " : "" 
 
       var add_comb = combination === "AND" ? "<strong>Et</strong> " : combination === "OR" ? "<strong>Soit</strong> " : ""  
 
@@ -271,7 +271,7 @@ clara.js_define("admin_trundle_subscriber", {
       
       var templateFn = _.template(tpl_str);
 
-      var templateHTML = templateFn({ 'combination': combination, 'node_xvar': node.xvar, 'node_xop': node.xop, 'node_xval': node.xval, 'node_name': node.name, 'node_xtxt': node.xtxt, 'parent_name' : parent_name });
+      var templateHTML = templateFn({ 'combination': combination, 'node_xvar': node.xvar, 'node_xop': node.xop, 'node_xval': node.xval, 'node_name': node.name, 'node_xtxt': _.lowerFirst(node.xtxt), 'parent_name' : parent_name });
 
       return templateHTML; 
     },
