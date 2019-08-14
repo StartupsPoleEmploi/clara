@@ -145,7 +145,7 @@ label.c-geolabel {
   border: 1px dashed #000;
   cursor: pointer;
   &.is-first {
-    margin-left: 4rem;
+    // margin-left: 4rem;
     border: none;
     margin-bottom: 0;
   }
@@ -206,6 +206,13 @@ a.is-criteria {
 
 #main-apprule-expl {
   margin-bottom: 5rem;
+  margin-left: -3rem; // I know, hack
+}
+#main-apprule-expl ul {
+  // list-style-type: disc;
+  // list-style-position: inside;
+  // margin: inherit;
+  // padding: inherit;
 }
 
 section.varopval {

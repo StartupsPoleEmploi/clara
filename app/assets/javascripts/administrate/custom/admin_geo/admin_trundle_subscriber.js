@@ -144,7 +144,7 @@ clara.js_define("admin_trundle_subscriber", {
         var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name, indx));
         $node_tpl.appendTo($parent)
 
-        var $expl_node_tpl = $(that.expl_node_template(node.name, parent_combination, expl_parent_name, indx));
+        var $expl_node_tpl = $(that.expl_node_template("c-parentexpl-" + node.name, parent_combination, expl_parent_name, indx, node.subcombination));
         $expl_node_tpl.appendTo($expl_parent)
       } else {
         var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination, indx))
@@ -164,17 +164,11 @@ clara.js_define("admin_trundle_subscriber", {
                         "<button class='js-tooltip like-a-link add-condition' data-tooltip-content-id='tooltip_id_comb_<%= uid %>' data-tooltip-title='Bloc <%= comb %>' data-tooltip-prefix-class='combinator' data-tooltip-close-text='x' data-tooltip-close-title='Ferme la fenêtre' id='label_tooltip_<%= uid %>'><%= comb %></button>" +
                         "<div id='tooltip_id_comb_<%= uid %>' class='hidden'>" +
                           "<% if (comb === 'ET') { %>" +
-                            // "<div>" +
-                            //   "<button class='like-a-link add-condition-and' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>ET une nouvelle condition</button>" +
-                            // "</div>" +
                             "<div>" +
                               "<button class='like-a-link change-condition-to-or' onclick='store_trundle.dispatch({ type: \"CHANGE_CONDITION\", combination: \"OR\", parent_box: \"<%= name %>\" });'>changer en OU toutes les conditions de même niveau</button>" +
                             "</div>" +
                           "<% } %>" +
                           "<% if (comb === 'OU') { %>" +
-                            // "<div>" +
-                            //   "<button class='like-a-link add-condition-or' onclick='store_trundle.dispatch({ type: \"ADD_CONDITION\", combination: \"OR\", parent_box: \"<%= name %>\" });'>OU une nouvelle condition</button>" +
-                            // "</div>" +
                             "<div>" +
                               "<button class='like-a-link change-condition-to-and' onclick='store_trundle.dispatch({ type: \"CHANGE_CONDITION\", combination: \"AND\", parent_box: \"<%= name %>\" });'>changer en ET toutes les conditions de même niveau</button>" +
                             "</div>" +
@@ -236,12 +230,20 @@ clara.js_define("admin_trundle_subscriber", {
       return templateHTML; 
     },
 
-    expl_node_template: function(name, combination, parent_name, indx) {
+    expl_node_template: function(name, combination, parent_name, indx, own_combination) {
+
+      var comb = own_combination === "AND" ? "Toutes les conditions suivantes : " : own_combination === "OR" ? "Au moins une des conditions suivantes : " : "" 
+
+      var add_comb = combination === "AND" ? "<strong>Et</strong> " : combination === "OR" ? "<strong>Soit</strong> " : ""  
+
+      if (combination === "AND" && indx === 0) {
+        add_comb = "<strong>D'abord, </strong> "
+      }
 
       var tpl_str = 
 
       '<li class="c-explnode"  >' +
-          "this is a node " + indx +
+          add_comb + comb + 
           "<ul class='<%= name %>' data-box='<%= name %>'>" +
           "</ul>" +
       "</li>";
@@ -255,10 +257,16 @@ clara.js_define("admin_trundle_subscriber", {
 
     expl_leaf_template: function(node, parent_name, combination, indx) {
 
+      var add_comb = combination === "AND" ? "<strong>Et</strong> " : combination === "OR" ? "<strong>Soit</strong> " : ""  
+
+      if (combination === "AND" && indx === 0) {
+        add_comb = "<strong>D'abord, </strong> "
+      }
+
       var tpl_str = 
 
       '<li class="c-explleaf"  >' +
-          "<%= node_xtxt %>" +
+          add_comb + "<%= node_xtxt %>" +
       "</li>";
       
       var templateFn = _.template(tpl_str);
