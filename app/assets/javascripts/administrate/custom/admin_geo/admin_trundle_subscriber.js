@@ -9,14 +9,7 @@ clara.js_define("admin_trundle_subscriber", {
       that._hide_varopval();
       $(".root_box").empty();
       $(".c-parentexpl-root_box").empty();
-
-      // $("#main-apprule-expl").empty();      
-      // if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
-      //   var help_text = that.first_expl(s.subboxes[0].xtxt)
-      //   $("#main-apprule-expl").html(help_text)
-      //   $(".first_expl.is-first").show("fade", {}, 1000)
-      //   $(".first_expl.is-last").show("fade", {}, 1000)
-      // }
+      $(".c-apprulexpl-main-condition").empty();
 
       that.walk_nodes(s);
       that._post_paint(s);
@@ -113,9 +106,6 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination, indx) {
-      console.log("parent_name");
-      console.log(parent_name);
-      console.log("");
       
       var expl_parent_name = "c-parentexpl-" + parent_name;
       var that = clara.admin_trundle_subscriber;

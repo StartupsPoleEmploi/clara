@@ -52,8 +52,6 @@ clara.js_define("admin_rulecreation", {
 
           var initial_size = clara.admin_rulecreation._calculate_actual_boxes_size(newState)
 
-          initial_size
-
           var is_initially_not_void = initial_size > 1
 
           if (action.type === 'VALIDATED_RULE') {
