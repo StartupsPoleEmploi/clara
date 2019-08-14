@@ -112,6 +112,9 @@ clara.js_define("admin_trundle_subscriber", {
     },
 
     paint_node: function(node, parent_name, parent_combination, indx) {
+      console.log("parent_name");
+      console.log(parent_name);
+      console.log("");
       var that = clara.admin_trundle_subscriber;
       var $parent = $("." + parent_name)
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
@@ -185,10 +188,6 @@ clara.js_define("admin_trundle_subscriber", {
       '<li class="c-node ui-sortable-handle"  >' +
           clara.admin_trundle_subscriber.comb_template(combination, parent_name, indx) +
           "<ul class='sortable ui-sortable <%= name %>' data-box='<%= name %>'>" +
-            // "<li>" +
-            //   "<button class='c-apprule-button'>ET une autre condition</button>" +
-            //   "<button class='small-left-margin c-apprule-button'>OU une autre condition</button>" +
-            // "</li>" +
           "</ul>" +
       "</li>";
       
