@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 21.8.2 (14/8/2019)
+-[#1338b][BUG] lien sortant avec GA
+
 
 ## 21.8.1 (13/8/2019)
 -[#1340][BUG] le bon CP n'apparaît pas en back
