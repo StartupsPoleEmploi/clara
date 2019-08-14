@@ -8,7 +8,7 @@ clara.js_define("admin_trundle_subscriber", {
 
       that._hide_varopval();
       $(".root_box").empty();
-      
+
       // $("#main-apprule-expl").empty();      
       // if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
       //   var help_text = that.first_expl(s.subboxes[0].xtxt)
@@ -130,10 +130,6 @@ clara.js_define("admin_trundle_subscriber", {
         $("section.varopval").show()
         $( "<div class='c-comb c-comb--edition'>" + comb + "</div>" ).insertBefore( "section.varopval" );
         $("section.varopval").attr("data-box", node.name)
-
-
-
-        // $("#rule_variable_id").effect( "bounce", {times:4, distance: 40}, 600 );
 
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name, indx));
