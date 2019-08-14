@@ -8,6 +8,7 @@ clara.js_define("admin_trundle_subscriber", {
 
       that._hide_varopval();
       $(".root_box").empty();
+      $(".c-parentexpl-root_box").empty();
 
       // $("#main-apprule-expl").empty();      
       // if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1 && s.subboxes[0].is_editing !== true) {
@@ -115,8 +116,13 @@ clara.js_define("admin_trundle_subscriber", {
       console.log("parent_name");
       console.log(parent_name);
       console.log("");
+      
+      var expl_parent_name = "c-parentexpl-" + parent_name;
       var that = clara.admin_trundle_subscriber;
+      
       var $parent = $("." + parent_name)
+      var $expl_parent = $("." + expl_parent_name)
+
       var comb = parent_combination === "AND" ? "ET" : parent_combination === "OR" ? "OU" : "" 
 
       if (node.is_editing) {
@@ -137,9 +143,15 @@ clara.js_define("admin_trundle_subscriber", {
       } else if (_.isNotBlank(node.subcombination)) {
         var $node_tpl = $(that.node_template(node.name, parent_combination, parent_name, indx));
         $node_tpl.appendTo($parent)
+
+        var $expl_node_tpl = $(that.expl_node_template(node.name, parent_combination, expl_parent_name, indx));
+        $expl_node_tpl.appendTo($expl_parent)
       } else {
         var $leaf_tpl = $(that.leaf_template(node, parent_name, parent_combination, indx))
         $leaf_tpl.appendTo($parent)
+
+        var $expl_leaf_tpl = $(that.expl_leaf_template(node, expl_parent_name, parent_combination, indx))
+        $expl_leaf_tpl.appendTo($expl_parent)
       }
     },
 
@@ -222,6 +234,39 @@ clara.js_define("admin_trundle_subscriber", {
       var templateHTML = templateFn({ 'combination': combination, 'node_xvar': node.xvar, 'node_xop': node.xop, 'node_xval': node.xval, 'node_name': node.name, 'node_xtxt': node.xtxt, 'parent_name' : parent_name });
 
       return templateHTML; 
-    }
+    },
+
+    expl_node_template: function(name, combination, parent_name, indx) {
+
+      var tpl_str = 
+
+      '<li class="c-explnode"  >' +
+          "this is a node " + indx +
+          "<ul class='<%= name %>' data-box='<%= name %>'>" +
+          "</ul>" +
+      "</li>";
+      
+      var templateFn = _.template(tpl_str);
+
+      var templateHTML = templateFn({ 'name': name });
+
+      return templateHTML; 
+    },
+
+    expl_leaf_template: function(node, parent_name, combination, indx) {
+
+      var tpl_str = 
+
+      '<li class="c-explleaf"  >' +
+          "<%= node_xtxt %>" +
+      "</li>";
+      
+      var templateFn = _.template(tpl_str);
+
+      var templateHTML = templateFn({ 'combination': combination, 'node_xvar': node.xvar, 'node_xop': node.xop, 'node_xval': node.xval, 'node_name': node.name, 'node_xtxt': node.xtxt, 'parent_name' : parent_name });
+
+      return templateHTML; 
+    },
+
 });
 
