@@ -208,17 +208,23 @@ clara.js_define("admin_rulecreation", {
 
     _find_candidates_for_deletion: function(obj, candidates) {
       var that = clara.admin_rulecreation;
-      var no_edition_no_subbox_no_varopval = function(box) {
-        return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
-      }
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          if (no_edition_no_subbox_no_varopval(subbox)) {
-            candidates.push({name_of_obj_to_delete: subbox.name, parent_array: obj.subboxes})
-          }
-          that._find_candidates_for_deletion(subbox, candidates);
-        })
-      }
+
+
+      that._parse(obj, function(obj, parent){
+        var no_edition_no_subbox_no_varopval = function(box) {
+          return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+        }
+        if (no_edition_no_subbox_no_varopval(obj)) {
+          candidates.push({name_of_obj_to_delete: obj.name, parent_array: parent.subboxes})
+        }
+      })
+
+
+      // if (_.size(obj.subboxes) > 0) {
+      //   _.each(obj.subboxes, function(subbox) {
+      //     that._find_candidates_for_deletion(subbox, candidates);
+      //   })
+      // }
     },
 
     _parse: function(obj, callback, _parent, _indx) {
