@@ -243,19 +243,15 @@ clara.js_define("admin_rulecreation", {
 
     _add_missing_conditions: function(obj) {
       var that = clara.admin_rulecreation;
-      if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
-        if (obj.subboxes[0].subcombination === "AND") {
-          obj.subcombination = "OR"
-        } else {
-          obj.subcombination = "AND"
+      that._parse(obj, function(obj){
+        if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
+          if (obj.subboxes[0].subcombination === "AND") {
+            obj.subcombination = "OR"
+          } else {
+            obj.subcombination = "AND"
+          }
         }
-      }
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          that._add_missing_conditions(subbox);
-        })
-      }
-
+      })
     },
 
     _populate_vars: function(variables) {
