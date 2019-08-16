@@ -29,7 +29,6 @@
 
 .c-apprule-inputs {
   display: flex;
-  // margin-left: 4rem;
 }
 .c-apprule  {
   .field-unit, .field-unit__label {
@@ -40,7 +39,6 @@
 
 .c-apprule-buttons {
   margin-top: .25rem;
-  // margin-left: 4rem;
 }
 
 button.c-apprule-button {
@@ -50,7 +48,6 @@ button.c-apprule-button {
 
 .c-apprule-expl {
   margin-top: .25rem;
-  // margin-left: 4rem;
 }
 
 .field-unit2 {
@@ -58,7 +55,6 @@ button.c-apprule-button {
   flex-direction: column;
   select {
     width: 120px;
-    // height: 18px;
   }
   input {
     height: 25px;
@@ -145,7 +141,6 @@ label.c-geolabel {
   border: 1px dashed #000;
   cursor: pointer;
   &.is-first {
-    // margin-left: 4rem;
     border: none;
     margin-bottom: 0;
   }
