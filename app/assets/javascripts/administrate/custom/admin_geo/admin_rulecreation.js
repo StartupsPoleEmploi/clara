@@ -219,12 +219,6 @@ clara.js_define("admin_rulecreation", {
         }
       })
 
-
-      // if (_.size(obj.subboxes) > 0) {
-      //   _.each(obj.subboxes, function(subbox) {
-      //     that._find_candidates_for_deletion(subbox, candidates);
-      //   })
-      // }
     },
 
     _parse: function(obj, callback, _parent, _indx) {
