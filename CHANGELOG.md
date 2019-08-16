@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 21.9.0 (14/8/2019)
+## 21.9.0 (16/8/2019)
 -[#1341][FEATURE] explication textuelle de la règle
 
 
