@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -3794,6 +3794,33 @@
       return fn.apply(isBind ? thisArg : this, arguments);
     }
     return wrapper;
+  }
+
+  /**
+   * Creates a function like `_.lowerFirst`.
+   *
+   * @private
+   * @param {string} methodName The name of the `String` case method to use.
+   * @returns {Function} Returns the new case function.
+   */
+  function createCaseFirst(methodName) {
+    return function(string) {
+      string = toString(string);
+
+      var strSymbols = hasUnicode(string)
+        ? stringToArray(string)
+        : undefined;
+
+      var chr = strSymbols
+        ? strSymbols[0]
+        : string.charAt(0);
+
+      var trailing = strSymbols
+        ? castSlice(strSymbols, 1).join('')
+        : string.slice(1);
+
+      return chr[methodName]() + trailing;
+    };
   }
 
   /**
@@ -8201,6 +8228,25 @@
   }
 
   /**
+   * Converts the first character of `string` to lower case.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.0.0
+   * @category String
+   * @param {string} [string=''] The string to convert.
+   * @returns {string} Returns the converted string.
+   * @example
+   *
+   * _.lowerFirst('Fred');
+   * // => 'fred'
+   *
+   * _.lowerFirst('FRED');
+   * // => 'fRED'
+   */
+  var lowerFirst = createCaseFirst('toLowerCase');
+
+  /**
    * Splits `string` by `separator`.
    *
    * **Note:** This method is based on
@@ -8963,6 +9009,7 @@
   lodash.isSymbol = isSymbol;
   lodash.isTypedArray = isTypedArray;
   lodash.last = last;
+  lodash.lowerFirst = lowerFirst;
   lodash.stubArray = stubArray;
   lodash.stubFalse = stubFalse;
   lodash.noop = noop;

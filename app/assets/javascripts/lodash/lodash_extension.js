@@ -100,6 +100,6 @@ _.mixin({
     if (_.isArray(array) && _.isInteger(index)) {
       array.splice( index, 0, item );
     }
-  }
+  },
 
 });

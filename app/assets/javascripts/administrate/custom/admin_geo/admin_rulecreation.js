@@ -52,8 +52,6 @@ clara.js_define("admin_rulecreation", {
 
           var initial_size = clara.admin_rulecreation._calculate_actual_boxes_size(newState)
 
-          initial_size
-
           var is_initially_not_void = initial_size > 1
 
           if (action.type === 'VALIDATED_RULE') {
@@ -210,17 +208,17 @@ clara.js_define("admin_rulecreation", {
 
     _find_candidates_for_deletion: function(obj, candidates) {
       var that = clara.admin_rulecreation;
-      var no_edition_no_subbox_no_varopval = function(box) {
-        return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
-      }
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          if (no_edition_no_subbox_no_varopval(subbox)) {
-            candidates.push({name_of_obj_to_delete: subbox.name, parent_array: obj.subboxes})
-          }
-          that._find_candidates_for_deletion(subbox, candidates);
-        })
-      }
+
+
+      that._parse(obj, function(obj, parent){
+        var no_edition_no_subbox_no_varopval = function(box) {
+          return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+        }
+        if (no_edition_no_subbox_no_varopval(obj)) {
+          candidates.push({name_of_obj_to_delete: obj.name, parent_array: parent.subboxes})
+        }
+      })
+
     },
 
     _parse: function(obj, callback, _parent, _indx) {
@@ -245,19 +243,15 @@ clara.js_define("admin_rulecreation", {
 
     _add_missing_conditions: function(obj) {
       var that = clara.admin_rulecreation;
-      if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
-        if (obj.subboxes[0].subcombination === "AND") {
-          obj.subcombination = "OR"
-        } else {
-          obj.subcombination = "AND"
+      that._parse(obj, function(obj){
+        if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
+          if (obj.subboxes[0].subcombination === "AND") {
+            obj.subcombination = "OR"
+          } else {
+            obj.subcombination = "AND"
+          }
         }
-      }
-      if (_.size(obj.subboxes) > 0) {
-        _.each(obj.subboxes, function(subbox) {
-          that._add_missing_conditions(subbox);
-        })
-      }
-
+      })
     },
 
     _populate_vars: function(variables) {

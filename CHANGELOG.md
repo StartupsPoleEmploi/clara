@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.9.0 (16/8/2019)
+-[#1341][FEATURE] explication textuelle de la règle
+
+
 ## 21.8.2 (14/8/2019)
 -[#1338b][BUG] lien sortant avec GA
 
