@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.9.3 (2/9/2019)
+-[#1342][BUG] accent lors de la recherche 
+
+
 ## 21.9.2 (2/9/2019)
 -[#1344b][TECH] nokogiri vulnerability
 
