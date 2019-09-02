@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.9.1 (16/8/2019)
+-[#1344][TECH] nokogiri vulnerability
+
+
 ## 21.9.0 (16/8/2019)
 -[#1341][FEATURE] explication textuelle de la règle
 
