@@ -1,7 +1,11 @@
 # CLARA Changelog
 
 
-## 21.9.1 (16/8/2019)
+## 21.9.2 (2/9/2019)
+-[#1344b][TECH] nokogiri vulnerability
+
+
+## 21.9.1 (2/9/2019)
 -[#1344][TECH] nokogiri vulnerability
 
 
