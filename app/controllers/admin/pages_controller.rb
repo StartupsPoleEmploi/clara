@@ -8,11 +8,6 @@ module Admin
 
       aid = Aid.find_by(slug: params[:aid])
 
-      p "---------------------------------"
-      ap aid
-      p "---------------------------------"
-
-
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
