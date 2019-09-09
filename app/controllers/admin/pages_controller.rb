@@ -5,10 +5,21 @@ module Admin
   class PagesController < Admin::ApplicationController
 
     def rule_creation
+
+      aid = Aid.find_by(slug: params[:aid])
+
+      p "---------------------------------"
+      ap aid
+      p "---------------------------------"
+
+
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
         variables: _all_variables,        
+      }
+      render locals: {
+        aid: aid.attributes.with_indifferent_access
       }
     end
     def post_rule_creation
