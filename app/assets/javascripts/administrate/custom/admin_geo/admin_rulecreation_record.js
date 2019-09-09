@@ -11,14 +11,16 @@ clara.js_define("admin_rulecreation_record", {
           url: $("#record_root_rule").data("url"),
           type: "POST",
           data: {
+            aid: $.urlParam("aid"),
             trundle: store_trundle.getState(),
           },
           success: function(resp){ 
-            
+
           }
         });
 
       })
     }
 });
+
 

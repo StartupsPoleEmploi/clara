@@ -14,7 +14,7 @@ module Admin
         variables: _all_variables,        
       }
       render locals: {
-        aid: aid.attributes.with_indifferent_access
+        aid: aid ? aid.attributes.with_indifferent_access : nil
       }
     end
     def post_rule_creation
