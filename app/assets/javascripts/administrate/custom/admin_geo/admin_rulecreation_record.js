@@ -6,16 +6,18 @@ clara.js_define("admin_rulecreation_record", {
 
     please: function() {
       $("#record_root_rule").on("click", function(e) {
-        console.log("clicked")
-        console.log(e)
 
         $.ajax({
-            url: $("#record_root_rule").data("url"),
-            type: "POST",
-            data: {a:42},
-            success: function(resp){ 
-            }
+          url: $("#record_root_rule").data("url"),
+          type: "POST",
+          data: {
+            trundle: store_trundle.getState(),
+          },
+          success: function(resp){ 
+            
+          }
         });
+
       })
     }
 });
