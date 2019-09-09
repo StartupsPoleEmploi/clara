@@ -18,7 +18,16 @@ module Admin
       }
     end
     def post_rule_creation
+      ap "--------------"
+      ap "post !!!!!!!!!!!!!"
+      url = admin_aid_path("zer")
+      flash[:notice] = "Mise à jour du champ d'application effectué."
+      flash.keep(:notice)
+      render js: "document.location = '#{url}'"
     end
+
+
+
     def _all_explicitations
       JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
     end
