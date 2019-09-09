@@ -20,7 +20,13 @@ module Admin
     def post_rule_creation
       ap "--------------"
       ap "post !!!!!!!!!!!!!"
-      url = admin_aid_path("zer")
+      aid_slug = params["aid"]
+      trundle = JSON.parse(params["trundle"])
+      url = admin_aid_path(aid_slug)
+      aid = Aid.find_by(slug: aid_slug)
+
+      CreateScopeForAid.new.call(scope: {trundle: trundle}, aid: aid)
+
       flash[:notice] = "Mise à jour du champ d'application effectué."
       flash.keep(:notice)
       render js: "document.location = '#{url}'"

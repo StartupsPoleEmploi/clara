@@ -12,7 +12,7 @@ clara.js_define("admin_rulecreation_record", {
           type: "POST",
           data: {
             aid: $.urlParam("aid"),
-            trundle: store_trundle.getState(),
+            trundle: JSON.stringify(store_trundle.getState()),
           },
           success: function(resp){ 
 
