@@ -21,7 +21,7 @@ module Admin
       ap "--------------"
       ap "post !!!!!!!!!!!!!"
       aid_slug = params["aid"]
-      trundle = JSON.parse(params["trundle"])
+      trundle = JSON.parse(params["trundle"], symbolize_names: true)
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)
 

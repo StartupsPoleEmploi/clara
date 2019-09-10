@@ -1,15 +1,14 @@
 class CreateScopeForAid
 
   def call(h)
-    trundle = h[:scope][:trundle].with_indifferent_access
+    trundle = h[:scope][:trundle]
     aid = h[:aid]
     ap trundle
     ap aid
+    root_rule = _create_rules(trundle)
   end
 
   def _create_rules(obj)
-
-    obj = obj.with_indifferent_access
 
     all_rules = []
 

@@ -29,6 +29,9 @@
         <li class="js-tablist__item">
           <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Paramètres</a>
         </li>
+        <li class="js-tablist__item">
+          <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
+        </li>
       </ul>
       <div id="tab_1" class="js-tabcontent">
         <% page.attributes.each_with_index do |attribute, index_nb| %>
@@ -83,6 +86,9 @@
             <% end %>
           <% end %>
         <% end %>
+      </div>
+      <div id="tab_4" class="js-tabcontent">
+        La règle s'applique si
       </div>
     </div>
   </div> 
