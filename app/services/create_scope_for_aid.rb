@@ -25,7 +25,9 @@ class CreateScopeForAid
       end
 
       activated = ActivatedModelsService.instance
-    # contract = activated.contracts.detect{ |contract| contract["slug"] ==  params[:id] }
+      variable_id = activated.variables.detect{ |var| var["name"] ==  obj[:xvar] }.try(:[], "id")
+      operator_kind = obj[:xop]
+      value_eligible = obj[:xval]
 
       if !!kind
         all_rules.push(
@@ -34,9 +36,9 @@ class CreateScopeForAid
             kind: kind,
             composition_type: composition_type,
             description: slave_rules_descr,
-            variable_id: nil,
-            operator_kind: nil,
-            value_eligible: nil,
+            variable_id: variable_id,
+            operator_kind: operator_kind,
+            value_eligible: value_eligible,
           )
         )
       end
@@ -53,6 +55,7 @@ class CreateScopeForAid
           end
         end
       end
+      one_rule.description = ""
     end
 
     all_rules
