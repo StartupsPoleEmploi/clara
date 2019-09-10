@@ -3,9 +3,11 @@ class CreateScopeForAid
   def call(h)
     trundle = h[:scope][:trundle]
     aid = h[:aid]
-    ap trundle
-    ap aid
-    root_rule = _create_rules(trundle)
+    created_rules = _create_rules(trundle)
+    root_rule = created_rules[0]
+    root_rule.save
+    aid.rule = root_rule
+    aid.save
   end
 
   def _create_rules(obj)

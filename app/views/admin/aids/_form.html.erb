@@ -29,9 +29,11 @@
         <li class="js-tablist__item">
           <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Paramètres</a>
         </li>
-        <li class="js-tablist__item">
-          <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
-        </li>
+        <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+          <li class="js-tablist__item">
+            <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
+          </li>
+        <% end %>
       </ul>
       <div id="tab_1" class="js-tabcontent">
         <% page.attributes.each_with_index do |attribute, index_nb| %>
@@ -87,9 +89,16 @@
           <% end %>
         <% end %>
       </div>
-      <div id="tab_4" class="js-tabcontent">
-        La règle s'applique si
-      </div>
+      <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+        <div id="tab_4" class="js-tabcontent">
+          <div class="big-left-margin">
+            Le DE sera éligible à cette aide si il rempli les conditions suivantes :
+          </div>
+          <div class="big-left-margin">
+            <%= link_to "Modifier le champ d'application de la règle",  %> 
+          </div>
+        </div>        
+      <% end %>
     </div>
   </div> 
 

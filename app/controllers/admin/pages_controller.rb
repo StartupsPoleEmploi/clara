@@ -18,8 +18,6 @@ module Admin
       }
     end
     def post_rule_creation
-      ap "--------------"
-      ap "post !!!!!!!!!!!!!"
       aid_slug = params["aid"]
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
       url = admin_aid_path(aid_slug)
