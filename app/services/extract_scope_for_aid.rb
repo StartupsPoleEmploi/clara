@@ -4,13 +4,14 @@ class ExtractScopeForAid
     res = {}
 
     if aid.is_a?(Aid) && aid.rule
-      res = _fill!(aid.rule, res)
+      res = _fill(aid.rule)
     end
 
     return res
   end
 
-  def _fill!(rule, h)
+  def _fill(rule)
+    h = {}
     h[:name] = rule.name
     if h[:name].include?("root_box")
       h[:name] = "root_box" 
@@ -18,15 +19,23 @@ class ExtractScopeForAid
       h[:name] = "box_" + h[:name].split("box_")[1]
     end
 
-    h[:subcombination] = rule.composition_type == :and_rule ? "AND" : rule.composition_type == :or_rule ? "OR" : ""
+    h[:subcombination] = rule.composition_type == "and_rule" ? "AND" : rule.composition_type == "or_rule" ? "OR" : ""
     h[:xvar] = rule.variable.try(:name)
     h[:xop] = rule.operator_kind
     h[:xval] = rule.value_eligible
-    h[:subboxes] = Array.new(rule.slave_rules.size, {})
+    h[:subboxes] = []
     h[:is_editing] = false
 
     rule.slave_rules.each_with_index do |subrule, i|
-      _fill!(subrule, h[:subboxes][i])
+      # sub_h = {}
+      # ap "***"
+      # ap subrule.name
+      # ap i
+      # ap h[:subboxes]
+      # # ap h[:subboxes][i]
+      # ap "***"
+      h[:subboxes].push(_fill(subrule))
+
     end
     h
   end
