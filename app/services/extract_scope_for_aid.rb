@@ -27,15 +27,7 @@ class ExtractScopeForAid
     h[:is_editing] = false
 
     rule.slave_rules.each_with_index do |subrule, i|
-      # sub_h = {}
-      # ap "***"
-      # ap subrule.name
-      # ap i
-      # ap h[:subboxes]
-      # # ap h[:subboxes][i]
-      # ap "***"
       h[:subboxes].push(_fill(subrule))
-
     end
     h
   end
