@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.10.0 (9/9/2019)
+-[#1345][TECH] enregistrer nouvelle règle créée
+
+
 ## 21.9.3 (2/9/2019)
 -[#1342][BUG] accent lors de la recherche 
 

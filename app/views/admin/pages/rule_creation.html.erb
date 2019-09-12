@@ -3,194 +3,192 @@
   <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" %>
 <% end %>
 
-<header class="main-content__header c-rulecreation" role="banner">
-  <h1 class="main-content__page-title" id="page-title">
-    Création de règle
-  </h1>
-  <section class="varopval unsortable ui-sortable" style="display: none;">
-    <div class="c-apprule-inputs">
-      <div class="field-unit2">
-        <div class="field-unit__label">
-          <label id="label_variable" for="rule_variable_id">Variable</label>
+<% unless local_assigns[:aid] %>
+  
+
+  <header class="main-content__header c-rulecreation" role="banner">
+    <h1 class="main-content__page-title" id="page-title">
+      L'aide n'existe pas
+    </h1>
+  </header>
+
+
+
+<% else %>
+
+
+
+  <header class="main-content__header c-rulecreation" role="banner">
+    <h1 class="main-content__page-title" id="page-title">
+      Champ d'application de l'aide <%= local_assigns[:aid][:name] %>
+    </h1>
+    <section class="varopval unsortable ui-sortable" style="display: none;">
+      <div class="c-apprule-inputs">
+        <div class="field-unit2">
+          <div class="field-unit__label">
+            <label id="label_variable" for="rule_variable_id">Variable</label>
+          </div>
+          <div class="field-unit__field">
+            <select class="my-class" name="rule[variable_id]" id="rule_variable_id">
+              <option value=""></option>
+              <option data-name="v_category" value="v_category">catégorie</option>
+              <option data-name="v_diplome" value="v_diplome">diplôme</option>
+              <option data-name="v_duree_d_inscription" value="v_duree_d_inscription">durée d'inscription</option>
+              <option data-name="v_protection_internationale" value="v_protection_internationale">est bénéficiaire d'une protection internationale</option>
+              <option data-name="v_harki" value="v_harki">est descendant de harki</option>
+              <option data-name="v_detenu" value="v_detenu">est détenu ou ancien détenu</option>
+              <option data-name="v_qpv" value="v_qpv">est en QPV</option>
+              <option data-name="v_zrr" value="v_zrr">est en ZRR</option>
+              <option data-name="v_handicap" value="v_handicap">est en situation de handicap</option>
+              <option data-name="v_spectacle" value="v_spectacle">est intermittent du spectacle</option>
+              <option data-name="v_cadre" value="v_cadre">est un cadre</option>
+              <option data-name="v_location_citycode" value="v_location_citycode">geo : code INSEE de la ville</option>
+              <option data-name="v_location_zipcode" value="v_location_zipcode">geo : code postal</option>
+              <option data-name="v_location_state" value="v_location_state">geo : région</option>
+              <option data-name="v_allocation_value_min" value="v_allocation_value_min">montant minimum d'allocation</option>
+              <option data-name="v_allocation_type" value="v_allocation_type">type d'allocation</option>
+              <option data-name="v_age" value="v_age">âge</option>
+            </select>
+          </div>
         </div>
-        <div class="field-unit__field">
-          <select class="my-class" name="rule[variable_id]" id="rule_variable_id">
-            <option value=""></option>
-            <option data-name="v_category" value="v_category">catégorie</option>
-            <option data-name="v_diplome" value="v_diplome">diplôme</option>
-            <option data-name="v_duree_d_inscription" value="v_duree_d_inscription">durée d'inscription</option>
-            <option data-name="v_protection_internationale" value="v_protection_internationale">est bénéficiaire d'une protection internationale</option>
-            <option data-name="v_harki" value="v_harki">est descendant de harki</option>
-            <option data-name="v_detenu" value="v_detenu">est détenu ou ancien détenu</option>
-            <option data-name="v_qpv" value="v_qpv">est en QPV</option>
-            <option data-name="v_zrr" value="v_zrr">est en ZRR</option>
-            <option data-name="v_handicap" value="v_handicap">est en situation de handicap</option>
-            <option data-name="v_spectacle" value="v_spectacle">est intermittent du spectacle</option>
-            <option data-name="v_cadre" value="v_cadre">est un cadre</option>
-            <option data-name="v_location_citycode" value="v_location_citycode">geo : code INSEE de la ville</option>
-            <option data-name="v_location_zipcode" value="v_location_zipcode">geo : code postal</option>
-            <option data-name="v_location_state" value="v_location_state">geo : région</option>
-            <option data-name="v_allocation_value_min" value="v_allocation_value_min">montant minimum d'allocation</option>
-            <option data-name="v_allocation_type" value="v_allocation_type">type d'allocation</option>
-            <option data-name="v_age" value="v_age">âge</option>
-          </select>
+        <div class="field-unit2 small-left-margin">
+          <div class="field-unit__label">
+            <label id="label_operator_kind" for="rule_operator_kind">Opérateur</label>
+          </div>
+          <div class="field-unit__field">
+            <select class="my-class" name="rule[operator_kind]" id="rule_operator_kind">
+              <option value=""></option>
+              <option value="equal">Égal à</option>
+              <option value="not_equal" disabled="disabled">Pas égal à</option>
+              <option value="more_than">Supérieur à</option>
+              <option value="less_than">Inférieur à</option>
+              <option value="more_or_equal_than">Supérieur ou égal à</option>
+              <option value="less_or_equal_than">Inférieur ou égal à</option>
+              <option value="starts_with" disabled="disabled">Commence par</option>
+              <option value="not_starts_with" disabled="disabled">Ne commence pas par</option>
+              <option value="amongst" disabled="disabled">Parmi</option>
+              <option value="not_amongst" disabled="disabled">Pas parmi</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-unit2 small-left-margin">
+          <div class="field-unit__label">
+            <label for="rule_value_eligible" id="label_value_eligible">Valeur</label>
+          </div>
+          <div class="field-unit__field">
+            <input placeholder="" type="number" id="rule_value_eligible" min="0" oninput="validity.valid||(value='');" style="display: block;" name="rule[value_eligible]">
+            <select id="rule_value_eligible_selectible" style="display: none;">
+              <option value=""></option>
+              <option value="oui">oui</option>
+              <option value="non">non</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="field-unit2 small-left-margin">
-        <div class="field-unit__label">
-          <label id="label_operator_kind" for="rule_operator_kind">Opérateur</label>
-        </div>
-        <div class="field-unit__field">
-          <select class="my-class" name="rule[operator_kind]" id="rule_operator_kind">
-            <option value=""></option>
-            <option value="equal">Égal à</option>
-            <option value="not_equal" disabled="disabled">Pas égal à</option>
-            <option value="more_than">Supérieur à</option>
-            <option value="less_than">Inférieur à</option>
-            <option value="more_or_equal_than">Supérieur ou égal à</option>
-            <option value="less_or_equal_than">Inférieur ou égal à</option>
-            <option value="starts_with" disabled="disabled">Commence par</option>
-            <option value="not_starts_with" disabled="disabled">Ne commence pas par</option>
-            <option value="amongst" disabled="disabled">Parmi</option>
-            <option value="not_amongst" disabled="disabled">Pas parmi</option>
-          </select>
+      <div class="c-apprule-expl">
+        <div class="expl-text">
+          (Veuillez renseigner une variable, un opérateur et une valeur, l'explication apparaîtra ici)
         </div>
       </div>
-      <div class="field-unit2 small-left-margin">
-        <div class="field-unit__label">
-          <label for="rule_value_eligible" id="label_value_eligible">Valeur</label>
-        </div>
-        <div class="field-unit__field">
-          <input placeholder="" type="number" id="rule_value_eligible" min="0" oninput="validity.valid||(value='');" style="display: block;" name="rule[value_eligible]">
-          <select id="rule_value_eligible_selectible" style="display: none;">
-            <option value=""></option>
-            <option value="oui">oui</option>
-            <option value="non">non</option>
-          </select>
-        </div>
+      <div class="c-apprule-buttons">
+        <button class="c-apprule-button is-validation" style="display: none;">Valider</button>
+        <button class="c-apprule-button" onclick="store_trundle.dispatch({type: 'CANCEL_EDITION'})">Annuler</button>
       </div>
-    </div>
-    <div class="c-apprule-expl">
-      <div class="expl-text">
-        (Veuillez renseigner une variable, un opérateur et une valeur, l'explication apparaîtra ici)
-      </div>
-    </div>
-    <div class="c-apprule-buttons">
-      <button class="c-apprule-button is-validation" style="display: none;">Valider</button>
-      <button class="c-apprule-button" onclick="store_trundle.dispatch({type: 'CANCEL_EDITION'})">Annuler</button>
-    </div>
-  </section>
-</header>
+    </section>
+  </header>
 
-<h3 class="c-section-title is-first">Informations générales</h3>
-<section class="c-generalinfo">
-  <div class="field-unit field-unit--string field-unit--errored-false">
-    <div class="field-unit__label">
-      <label for="contract_type_name" id="label_name">Nom de la règle</label>
-      <span class="field-unit__label-mandatory">*</span>
-    </div>
-    <div class="field-unit__field">
-      <input placeholder="" type="text" name="rule[name]" id="rule_name">
-    </div>
-    <small>En minuscule, sans espace ni caractère spécial</small>
-  </div>
-  <div class="field-unit field-unit--text field-unit--errored-false js-accordion__panel">
-    <div class="field-unit__label">
-      <label id="short_description" for="aid_short_description" class="js-accordion__header">
-        Description (optionnel)
-      </label>
-    </div>
-    <div class="field-unit__field">
-      <textarea placeholder="" name="rule[description]" id="rule_description">
-        
-      </textarea>
-    </div>
-  </div>
-</section>
+  <h3 class="c-section-title is-first">L'aide s'applique si :</h3>
+  <section class="c-apprule">
 
-<h3 class="c-section-title is-first">Application de la règle</h3>
-<section class="c-apprule">
-
-  <div id="main-apprule">
-    <ul class="sortable is-first ui-sortable root_box" data-box="root_box">
-      <li class="ui-sortable-handle " >
-      </li>
-    </ul>
-  </div>
-
-  <div id="main-apprule-expl">
-    <div class="c-apprulexpl-head">
-      <span class="c-apprulexpl-fixed">Le DE sera éligible si</span>
-      <span class="c-apprulexpl-main-condition">toutes les conditions suivantes sont réunies :</span>
-    </div>
-    <div>
-      <ul class="c-parentexpl-root_box">
-        
+    <div id="main-apprule">
+      <ul class="sortable is-first ui-sortable root_box" data-box="root_box">
+        <li class="ui-sortable-handle " >
+        </li>
       </ul>
     </div>
-  </div>
-</section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</section>
-
-<h3 class="c-section-title">Critère géographique</h3>
-<section class="c-geowhere">
-  <h2 class="c-geowhere-title">Lieu de résidence de la personne</h2>
-  <div class="c-geowhere-line">
-    <input type="radio" id="tout" name="drone" value="tout">
-    <label class="c-geolabel" for="tout">Toute la france</label>
-  </div>
-  <div class="c-geowhere-line">
-    <input type="radio" id="tout_sauf_domtom" name="drone" value="tout_sauf_domtom">
-    <label class="c-geolabel" for="tout_sauf_domtom">France métropolitaine (hors DOM/TOM)</label>
-  </div>
-  <div class="c-geowhere-line">
-    <input type="radio" id="domtom_seulement" name="drone" value="domtom_seulement">
-    <label class="c-geolabel" for="domtom_seulement">DOM/TOM seulement</label>
-  </div>
-  <div class="c-geowhere-line is-tout_sauf">
-    <input type="radio" id="tout_sauf" name="drone" value="tout_sauf">
-    <label class="c-geolabel" for="tout_sauf">Toute la France, à l'exception de critères géographiques suivants :</label>
-    <div class="c-geowhere-selections">
-      <div class="c-geowhere-selection">
-        <label for="select-region" class="c-geoselect-label">Région(s):</label>
-        <div class="c-geoselect c-geoselect--region" id="select-region"></div>
+    <div id="main-apprule-expl">
+      <div class="c-apprulexpl-head">
+        <span class="c-apprulexpl-fixed">Le DE sera éligible si</span>
+        <span class="c-apprulexpl-main-condition">toutes les conditions suivantes sont réunies :</span>
       </div>
-      <div class="c-geowhere-selection">
-        <label for="select-department" class="c-geoselect-label">Département(s):</label>
-        <div class="c-geoselect c-geoselect--department" id="select-department"></div>
-      </div>
-      <div class="c-geowhere-selection">
-        <label for="select-town" class="c-geoselect-label">Ville(s):</label>
-        <div class="c-geoselect c-geoselect--town" id="select-town"></div>
+      <div>
+        <ul class="c-parentexpl-root_box">
+          
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="c-geowhere-line is-rien_sauf">
-    <input type="radio" id="rien_sauf" name="drone" value="rien_sauf">
-    <label class="c-geolabel" for="rien_sauf">Uniquement les critères géographiques suivants :</label>
-  </div>
-</section>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+  <h3 class="c-section-title">Critère géographique</h3>
+  <section class="c-geowhere">
+    <h2 class="c-geowhere-title">Lieu de résidence de la personne</h2>
+    <div class="c-geowhere-line">
+      <input type="radio" id="tout" name="drone" value="tout">
+      <label class="c-geolabel" for="tout">Toute la france</label>
+    </div>
+    <div class="c-geowhere-line">
+      <input type="radio" id="tout_sauf_domtom" name="drone" value="tout_sauf_domtom">
+      <label class="c-geolabel" for="tout_sauf_domtom">France métropolitaine (hors DOM/TOM)</label>
+    </div>
+    <div class="c-geowhere-line">
+      <input type="radio" id="domtom_seulement" name="drone" value="domtom_seulement">
+      <label class="c-geolabel" for="domtom_seulement">DOM/TOM seulement</label>
+    </div>
+    <div class="c-geowhere-line is-tout_sauf">
+      <input type="radio" id="tout_sauf" name="drone" value="tout_sauf">
+      <label class="c-geolabel" for="tout_sauf">Toute la France, à l'exception de critères géographiques suivants :</label>
+      <div class="c-geowhere-selections">
+        <div class="c-geowhere-selection">
+          <label for="select-region" class="c-geoselect-label">Région(s):</label>
+          <div class="c-geoselect c-geoselect--region" id="select-region"></div>
+        </div>
+        <div class="c-geowhere-selection">
+          <label for="select-department" class="c-geoselect-label">Département(s):</label>
+          <div class="c-geoselect c-geoselect--department" id="select-department"></div>
+        </div>
+        <div class="c-geowhere-selection">
+          <label for="select-town" class="c-geoselect-label">Ville(s):</label>
+          <div class="c-geoselect c-geoselect--town" id="select-town"></div>
+        </div>
+      </div>
+    </div>
+    <div class="c-geowhere-line is-rien_sauf">
+      <input type="radio" id="rien_sauf" name="drone" value="rien_sauf">
+      <label class="c-geolabel" for="rien_sauf">Uniquement les critères géographiques suivants :</label>
+    </div>
+  </section>
+
+  <section>
+    
+    <button class="big-left-margin" id="record_root_rule" data-url="<%= admin_post_rule_creation_path %>">
+      Enregistrer
+    </button>
+  </section>
+
+<% end %>
 

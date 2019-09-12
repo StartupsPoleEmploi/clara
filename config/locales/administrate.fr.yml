@@ -25,7 +25,7 @@ fr:
         none: Aucun
     form:
       error: erreur
-      errors: "Une ou plusieurs erreurs ont empêché l'enregistrement"
+      errors: "Une ou plusieurs erreurs ont empêché de continuer"
     search:
       clear: Effacer la recherche
       label: Rechercher %{resource}

@@ -5,15 +5,37 @@ module Admin
   class PagesController < Admin::ApplicationController
 
     def rule_creation
+
+      aid = Aid.find_by(slug: params[:aid])
+
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
         variables: _all_variables,        
       }
+
+      gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      
+      render locals: {
+        aid: aid ? aid.attributes.with_indifferent_access : nil
+      }
     end
     def post_rule_creation
+      aid_slug = params["aid"]
+      trundle = JSON.parse(params["trundle"], symbolize_names: true)
+      url = admin_aid_path(aid_slug)
+      aid = Aid.find_by(slug: aid_slug)
+
+      CreateScopeForAid.new.call(scope: {trundle: trundle}, aid: aid)
+
+      flash[:notice] = "Mise à jour du champ d'application effectué."
+      flash.keep(:notice)
+      render js: "document.location = '#{url}'"
     end
-    def _all_explicitations
+
+
+
+    def _all_explicitations 
       JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
     end
     def _all_operator_kinds

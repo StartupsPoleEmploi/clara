@@ -22,11 +22,6 @@ class Rule < ApplicationRecord
 
   enum operator_kind: ListOperatorKind.new.call
 
-  after_save    { ExpireCacheJob.perform_later }
-  after_update  { ExpireCacheJob.perform_later }
-  after_destroy { ExpireCacheJob.perform_later }
-  after_create  { ExpireCacheJob.perform_later }
-
   has_paper_trail ignore: [:updated_at]
 
   enum composition_type: [:and_rule, :or_rule]
