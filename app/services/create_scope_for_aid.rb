@@ -24,10 +24,6 @@ class CreateScopeForAid
       all_valid.push(_is_simple_rule(obj) || _is_complex_rule(obj))
     end
     _parse(root_obj, is_valid)
-    p '- - - - - - - - - - - - - - all_valid- - - - - - - - - - - - - - - -' 
-    ap root_obj
-    ap all_valid
-    p ''
     all_valid.any?
   end
 
