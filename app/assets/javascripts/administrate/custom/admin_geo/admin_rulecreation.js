@@ -150,7 +150,18 @@ clara.js_define("admin_rulecreation", {
         };
 
         // STORE
-        window.store_trundle = Redux.createStore(reducer, trundle_state);
+        var get_default_state = function() {
+          var default_state = trundle_state;
+          if (_.isNotEmpty(_.get(window, "gon.initial_scope"))) {
+            if (_.isEmpty(gon.initial_scope.subcombination)) {
+              default_state.subboxes = [gon.initial_scope]
+            } else {
+              default_state = gon.initial_scope
+            }
+          }
+          return default_state;
+        }
+        window.store_trundle = Redux.createStore(reducer, get_default_state());
 
         // SUBSCRIBER
         store_trundle.subscribe(function(){clara.admin_trundle_subscriber.please(_.cloneDeep(store_trundle.getState()))});

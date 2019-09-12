@@ -58,7 +58,7 @@ _.mixin({
   },
 
   deepSearch: function(object, key, predicate) {
-    if (object.hasOwnProperty(key) && predicate(key, object[key]) === true) return object
+    if (object && object.hasOwnProperty(key) && predicate(key, object[key]) === true) return object
 
     for (var i = 0; i < _.keys(object).length; i++) {
       if (typeof object[_.keys(object)[i]] === "object") {

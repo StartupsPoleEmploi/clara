@@ -3,11 +3,32 @@ class CreateScopeForAid
   def call(h)
     trundle = h[:scope][:trundle]
     aid = h[:aid]
-    created_rules = _create_rules(trundle)
-    root_rule = created_rules[0]
-    root_rule.save
-    aid.rule = root_rule
-    aid.save
+
+    if _has_at_least_one_valid_rule(trundle)
+      ap "has at least one valid rule"
+      created_rules = _create_rules(trundle)
+      root_rule = created_rules[0]
+      root_rule.save
+      aid.rule = root_rule
+      aid.save
+    else
+      ap "no valid rule"
+    end
+
+
+  end
+
+  def _has_at_least_one_valid_rule(root_obj)
+    all_valid = []
+    is_valid = -> (obj, _p, _i) do 
+      all_valid.push(_is_simple_rule(obj) || _is_complex_rule(obj))
+    end
+    _parse(root_obj, is_valid)
+    p '- - - - - - - - - - - - - - all_valid- - - - - - - - - - - - - - - -' 
+    ap root_obj
+    ap all_valid
+    p ''
+    all_valid.any?
   end
 
   def _create_rules(obj)
@@ -29,6 +50,7 @@ class CreateScopeForAid
       variable_id = activated.variables.detect{ |var| var["name"] ==  obj[:xvar] }.try(:[], "id")
       operator_kind = obj[:xop]
       value_eligible = obj[:xval]
+      description = obj[:xtxt]
 
       if !!kind
         all_rules.push(
@@ -36,10 +58,11 @@ class CreateScopeForAid
             name: "r_#{uuid}_#{obj[:name]}",
             kind: kind,
             composition_type: composition_type,
-            description: slave_rules_descr,
+            description: description,
             variable_id: variable_id,
             operator_kind: operator_kind,
             value_eligible: value_eligible,
+            simulated: slave_rules_descr, # hack, simulated field is used as temp value
           )
         )
       end
@@ -48,15 +71,15 @@ class CreateScopeForAid
     _parse(obj, create_rule)
 
     all_rules.each do |one_rule|
-      if !one_rule.description.blank?
-        one_rule.description.split(",").each do |subrule_descr|
-          if subrule_descr.size > 1
-            actual_subrule = all_rules.detect { |e| e.name == subrule_descr }
+      if !one_rule.simulated.blank?
+        one_rule.simulated.split(",").each do |subrule_name|
+          if subrule_name.size > 1
+            actual_subrule = all_rules.detect { |e| e.name == subrule_name }
             one_rule.slave_rules.push(actual_subrule)
           end
         end
       end
-      one_rule.description = ""
+      one_rule.simulated = ""
     end
 
     all_rules

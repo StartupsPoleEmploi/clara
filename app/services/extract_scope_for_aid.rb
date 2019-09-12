@@ -7,6 +7,8 @@ class ExtractScopeForAid
       res = _fill(aid.rule)
     end
 
+
+
     return res
   end
 
@@ -23,6 +25,7 @@ class ExtractScopeForAid
     h[:xvar] = rule.variable.try(:name)
     h[:xop] = rule.operator_kind
     h[:xval] = rule.value_eligible
+    h[:xtxt] = rule.description
     h[:subboxes] = []
     h[:is_editing] = false
 

@@ -14,10 +14,8 @@ module Admin
         variables: _all_variables,        
       }
 
-      if aid.rule
-        
-      end
-
+      gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      
       render locals: {
         aid: aid ? aid.attributes.with_indifferent_access : nil
       }
