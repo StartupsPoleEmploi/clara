@@ -13,6 +13,11 @@ module Admin
         operator_kinds: _all_operator_kinds,        
         variables: _all_variables,        
       }
+
+      if aid.rule
+        
+      end
+
       render locals: {
         aid: aid ? aid.attributes.with_indifferent_access : nil
       }
