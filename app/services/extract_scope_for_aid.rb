@@ -12,8 +12,23 @@ class ExtractScopeForAid
 
   def _fill!(rule, h)
     h[:name] = rule.name
+    if h[:name].include?("root_box")
+      h[:name] = "root_box" 
+    else
+      h[:name] = "box_" + h[:name].split("box_")[1]
+    end
+
     h[:subcombination] = rule.composition_type == :and_rule ? "AND" : rule.composition_type == :or_rule ? "OR" : ""
-    h[:xvar]
+    h[:xvar] = rule.variable.try(:name)
+    h[:xop] = rule.operator_kind
+    h[:xval] = rule.value_eligible
+    h[:subboxes] = Array.new(rule.slave_rules.size, {})
+    h[:is_editing] = false
+
+    rule.slave_rules.each_with_index do |subrule, i|
+      _fill!(subrule, h[:subboxes][i])
+    end
+    h
   end
 
 end
