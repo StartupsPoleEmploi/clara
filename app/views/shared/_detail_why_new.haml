@@ -1,7 +1,6 @@
 - v = view_object(:detail_why_new, local_assigns)
 
 
-
 - if v.root_condition.present?
   .c-detail-why
     .c-detail-why__intro
@@ -58,5 +57,5 @@
           .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural
             Nous n'avons pas pu vérifier les #{v.number_of_uncertain_rules} premières conditions :
 
-      = render partial: 'shared/detail_condition_list.haml', locals: { conditions: v.root_rules }
+      = render partial: 'shared/detail_condition_list_new.haml', locals: { conditions: v.root_rules }
 

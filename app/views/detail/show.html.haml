@@ -19,14 +19,14 @@
     
     #c-detail-app
       .o-layout
-        .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+        .o-layout__item{:class => "u-1/1 u-3/5@desktop"}
           .c-detail-list
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Description',          html_content: aid[:what] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Conditions à remplir', html_content: aid[:additionnal_conditions] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Contenu de l\'aide',   html_content: aid[:how_much] }
             = render partial: 'shared/detail-item.haml',        locals: { description: 'Comment faire la demande ?',              html_content: aid[:how_and_when] }
             = render partial: 'shared/detail_item_remark.haml', locals: { content: aid[:limitations] }
-        .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
+        .o-layout__item{:class => "u-1/1 u-2/5@desktop"}
           - if has_active_user
             .c-detail-why-container
               - if is_new_aid
