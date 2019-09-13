@@ -48,3 +48,4 @@
 //= require custom/sign_in
 //= require custom/wrap_outbound_link
 //= require custom/track_outbound_link
+//= require custom/detail_why
