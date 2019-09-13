@@ -1,5 +1,8 @@
 - v = view_object(:detail_condition_list, local_assigns)
 
+= p local_assigns[:conditions].inspect
+
+
 - if v.has_conditions
   .c-detail-conditions-list
     - v.conditions.each do |condition|

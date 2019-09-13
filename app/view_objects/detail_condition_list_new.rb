@@ -4,6 +4,7 @@ class DetailConditionListNew < ViewObject
   def after_init(args)
     locals          = hash_for(args)
     @conditions     = array_for(locals[:conditions])
+    @rules = ActivatedModelsService.instance.rules
   end
 
   def conditions
@@ -12,6 +13,11 @@ class DetailConditionListNew < ViewObject
 
   def has_conditions
     @conditions.size > 0
+  end
+
+  def is_simple_condition(condition)
+    actual_rule = @rules.detect{ |r| r["name"] == condition[:name] }
+    actual_rule["slave_rules"].size == 0
   end
 
   def with_separator(condition)
