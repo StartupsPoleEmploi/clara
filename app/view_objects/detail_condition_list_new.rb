@@ -20,6 +20,11 @@ class DetailConditionListNew < ViewObject
     actual_rule["slave_rules"].size == 0
   end
 
+  def condition_root_rules(condition)
+    actual_rule = @rules.detect{ |r| r["name"] == condition[:name] }
+    actual_rule["slave_rules"]
+  end
+
   def with_separator(condition)
     return "c-detail-condition__separator" if condition == _last_uncertain_rule && !_has_only_uncertain_rules
     return ""

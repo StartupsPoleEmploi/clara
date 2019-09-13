@@ -12,7 +12,8 @@
               - if v.is_simple_condition(condition)
                 %span.c-detail-condition-text=condition[:description]
               - else
-                %span.c-detail-condition-text Est une condition multiple
+                .c-detail-condition__raw
+                  %span.c-detail-condition-text Est une condition multiple
 
           - if condition[:status] == "ineligible"
             .c-detail-condition__raw
@@ -21,7 +22,9 @@
               - if v.is_simple_condition(condition)
                 %span.c-detail-condition-text=condition[:description]
               - else
-                %span.c-detail-condition-text Est une condition multiple
+                .c-detail-condition__raw
+                  %span.c-detail-condition-text Est une condition multiple ine
+                = render partial: 'shared/detail_why_new.haml', locals: { ability: condition[:status], root_condition: condition, root_rules: v.condition_root_rules(condition) }
                 
           - if condition[:status] == "uncertain"
             .c-detail-condition__raw{:class => v.with_separator(condition)}
@@ -30,5 +33,6 @@
               - if v.is_simple_condition(condition)
                 %span.c-detail-condition-text=condition[:description]
               - else
-                %span.c-detail-condition-text Est une condition multiple
+                .c-detail-condition__raw
+                  %span.c-detail-condition-text Est une condition multiple
               

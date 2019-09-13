@@ -1,4 +1,5 @@
 - aid = @loaded[:aid]
+- h = @loaded[:h]
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
@@ -29,10 +30,7 @@
         .o-layout__item{:class => "u-1/1 u-2/5@desktop"}
           - if has_active_user
             .c-detail-why-container
-              - if is_new_aid
-                = render partial: 'shared/detail_why_new.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
-              - else
-                = render partial: 'shared/detail_why.haml', locals: { ability: @loaded[:is_eligible], root_condition: @loaded[:root_condition], root_rules: @loaded[:root_rules] }
+              = render partial: 'shared/detail_why.haml', locals: h
             .c-detail-warning
               %p.u-margin-bottom-none Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
           - else
