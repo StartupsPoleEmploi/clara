@@ -1,8 +1,6 @@
 - v = view_object(:detail_why, local_assigns)
 
-
-
-- if v.root_condition.present?
+- if v.rule.present?
   .c-detail-why
     .c-detail-why__intro
       %h3.u-margin-bottom-none
@@ -19,44 +17,7 @@
         .c-detail-why--endresult.c-detail-why--finally
           à cette aide 
 
-    .c-detail-why__explanation.u-margin-vertical-small
-      %strong.h5-like Critères d'éligibilité
-      
-      - if v.root_condition == "or"
-        .c-detail-haveto.c-detail-haveto--or
-          Il faut remplir <strong>au moins l'une</strong> des conditions ci-dessous.
-      - if v.root_condition == "and"
-        .c-detail-haveto.c-detail-haveto--and
-          Il faut remplir <strong>toutes</strong> les conditions ci-dessous.
-      - if v.root_condition == "one"
-        .c-detail-haveto.c-detail-haveto--one
-          Il faut remplir <strong>la</strong> condition ci-dessous.
-      
-      .c-detail-why__addendum
-        - if v.all_conditions
-          .c-detail-addendum.c-detail-addendum--all
-            (Vous remplissez toutes les conditions)
-        - if v.no_condition
-          .c-detail-addendum.c-detail-addendum--none
-            (Vous ne remplissez aucune condition)
-        - if v.eligible_sentence == "single-amongst"
-          .c-detail-addendum.c-detail-addendum--eligible-single-amongst
-            (Vous remplissez la première condition)
-        - if v.eligible_sentence == "plural"
-          .c-detail-addendum.c-detail-addendum--eligible-single-plural
-            (Vous remplissez les #{v.number_of_eligible_rules} premières conditions)
-        - if v.uncertain_sentence == "single-alone"
-          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-alone
-            Nous n'avons pas pu vérifier la condition suivante :
-        - if v.uncertain_sentence == "single-amongst"
-          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-single-amongst
-            Nous n'avons pas pu vérifier une des conditions suivantes :
-        - if v.uncertain_sentence == "plural-all"
-          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural-all
-            Nous n'avons pu vérifier aucune des conditions suivantes :
-        - if v.uncertain_sentence == "plural"
-          .c-detail-addendum.c-detail-addendum--uncertain.c-detail-addendum--uncertain-plural
-            Nous n'avons pas pu vérifier les #{v.number_of_uncertain_rules} premières conditions :
 
-      = render partial: 'shared/detail_condition_list.haml', locals: { conditions: v.root_rules }
+
+      = render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: local_assigns }
 

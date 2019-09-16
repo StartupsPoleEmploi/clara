@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 21.11.0 (13/9/2019)
+-[#1349][FEATURE] changer explication Front dans l'écran de détail
+
+
 ## 21.10.0 (9/9/2019)
--[#1345][TECH] enregistrer nouvelle règle créée
+-[#1345][FEATURE] enregistrer nouvelle règle créée
 
 
 ## 21.9.3 (2/9/2019)
