@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.12.0 (13/9/2019)
+-[#1350][FEATURE] faire marcher le critère géo
+
+
 ## 21.11.0 (13/9/2019)
 -[#1349][FEATURE] changer explication Front dans l'écran de détail
 
