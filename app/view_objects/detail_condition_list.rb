@@ -6,20 +6,20 @@ class DetailConditionList < ViewObject
   end
 
   def html_output
-    raw(_node_for(@ability_tree))
+    raw(_node_for(@ability_tree, {}))
   end
 
 
-  def _node_for(ability)
+  def _node_for(ability, parent_ability)
     res = ""
     res = 
-    _and_or(ability) +
+    _and_or(parent_ability) + _all_or_at_least(ability) +
     "<ul>" +
       ability[:slave_rules].map do |sub_ability|
         if sub_ability[:composition_type].blank?
-          "<li>" + sub_ability[:description] + "</li>"
+          "<li>" + _and_or(ability) + sub_ability[:description] + "</li>"
         else
-          "<li>" + _node_for(sub_ability) + "</li>"
+          "<li>" + _node_for(sub_ability, ability) + "</li>"
         end
       end.join +
     "</ul>"
@@ -27,12 +27,22 @@ class DetailConditionList < ViewObject
   end
 
 
-  def _and_or(ability)
+  def _all_or_at_least(ability)
     res = ""
     if ability[:composition_type] == "and_rule"
       res = "Toutes les conditions suivantes"
     elsif ability[:composition_type] == "or_rule"
       res = "Au moins une des conditions suivantes"
+    end
+    res
+  end
+
+  def _and_or(ability)
+    res = ""
+    if ability[:composition_type] == "and_rule"
+      res = "<strong>et </strong>"
+    elsif ability[:composition_type] == "or_rule"
+      res = "<strong>soit </strong>"
     end
     res
   end
