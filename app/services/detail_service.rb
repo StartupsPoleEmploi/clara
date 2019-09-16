@@ -26,14 +26,9 @@ class DetailService
 
     h = _build_h(@aid.rule.id, asker.attributes)
 
-    ap h
-
     return {
       aid: @aid, 
       ability_tree: h
-      # is_eligible: is_eligible, 
-      # root_condition: root_condition, 
-      # root_rules: root_rules
     }
   end
 
@@ -45,7 +40,6 @@ class DetailService
       description: actual_rule["description"],
       composition_type: actual_rule["composition_type"], 
       slave_rules: [],
-      # root_rules: actual_rule["slave_rules"]
     }
 
     actual_rule["slave_rules"].each do |r|
