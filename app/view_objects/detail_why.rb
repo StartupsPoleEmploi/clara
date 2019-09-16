@@ -2,9 +2,9 @@
 class DetailWhy < ViewObject
 
   def after_init(args)
-    @rule = hash_for(args)
-    @ability        = @rule[:ability]
-    @slave_rules    = @rule[:slave_rules]
+    @ability_tree = hash_for(args)
+    @ability        = @ability_tree[:ability]
+    @slave_rules    = @ability_tree[:slave_rules]
   end
 
   def ability
@@ -12,7 +12,7 @@ class DetailWhy < ViewObject
   end
 
   def rule
-    @rule
+    @ability_tree
   end
 
   def slave_rules

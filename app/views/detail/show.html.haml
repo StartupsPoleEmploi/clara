@@ -1,5 +1,5 @@
 - aid = @loaded[:aid]
-- h = @loaded[:h]
+- ability_tree = @loaded[:ability_tree]
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
@@ -30,7 +30,7 @@
         .o-layout__item{:class => "u-1/1 u-2/5@desktop"}
           - if has_active_user
             .c-detail-why-container
-              = render partial: 'shared/detail_why.haml', locals: h
+              = render partial: 'shared/detail_why.haml', locals: ability_tree
             .c-detail-warning
               %p.u-margin-bottom-none Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
           - else

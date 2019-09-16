@@ -30,7 +30,7 @@ class DetailService
 
     return {
       aid: @aid, 
-      h: h
+      ability_tree: h
       # is_eligible: is_eligible, 
       # root_condition: root_condition, 
       # root_rules: root_rules
