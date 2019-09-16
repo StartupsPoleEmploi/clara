@@ -1,6 +1,43 @@
 
 class DetailConditionList < ViewObject
 
+  def after_init(args)
+    @ability_tree = hash_for(args[:ability_tree])
+  end
+
+  def html_output
+    raw(_node_for(@ability_tree))
+  end
+
+
+  def _node_for(ability)
+    res = ""
+    res = 
+    _and_or(ability) +
+    "<ul>" +
+      ability[:slave_rules].map do |sub_ability|
+        if sub_ability[:composition_type].blank?
+          "<li>" + sub_ability[:description] + "</li>"
+        else
+          "<li>" + _node_for(sub_ability) + "</li>"
+        end
+      end.join +
+    "</ul>"
+    res
+  end
+
+
+  def _and_or(ability)
+    res = ""
+    if ability[:composition_type] == "and_rule"
+      res = "Toutes les conditions suivantes"
+    elsif ability[:composition_type] == "or_rule"
+      res = "Au moins une des conditions suivantes"
+    end
+    res
+  end
+
+
   # def after_init(args)
   #   locals     = hash_for(args)
   #   @rules     = array_for(locals[:rules])
