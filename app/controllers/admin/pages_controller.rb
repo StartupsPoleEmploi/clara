@@ -23,8 +23,20 @@ module Admin
     def post_rule_creation
       aid_slug = params["aid"]
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
+      geo_town = params["geo_town"]
+      geo_dep = params["geo_dep"]
+      geo_region = params["geo_region"]
+      # geo_dep = JSON.parse(params["geo_dep"], symbolize_names: true)
+      # geo_region = JSON.parse(params["geo_region"], symbolize_names: true)
+
+      ap geo_town
+      ap geo_dep
+      ap geo_region
+
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)
+
+      fail 'Stop here please'
 
       CreateScopeForAid.new.call(scope: {trundle: trundle}, aid: aid)
 

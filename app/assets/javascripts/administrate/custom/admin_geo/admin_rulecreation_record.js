@@ -5,6 +5,7 @@ clara.js_define("admin_rulecreation_record", {
     },
 
     please: function() {
+      var SEL = " .selectize-input [data-value]"
       $("#record_root_rule").on("click", function(e) {
 
         $.ajax({
@@ -13,8 +14,9 @@ clara.js_define("admin_rulecreation_record", {
           data: {
             aid: $.urlParam("aid"),
             trundle: JSON.stringify(store_trundle.getState()),
-            // geo: 
-            // description: $("#main-apprule-expl").text()
+            geo_town: $(".c-geoselect--town" + SEL).toArray().map(function(e){ return $(e).attr("data-value") }),
+            geo_dep: $(".c-geoselect--department" + SEL).toArray().map(function(e){ return $(e).attr("data-value") }),
+            geo_region: $(".c-geoselect--region" + SEL).toArray().map(function(e){ return $(e).attr("data-value") })
           },
           success: function(resp){ 
 
