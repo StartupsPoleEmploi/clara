@@ -1,8 +1,9 @@
 class CreateScopeForAid
 
   def call(h)
-    trundle = h[:scope][:trundle]
+    trundle = h[:trundle]
     aid = h[:aid]
+    geo = h[:geo]
 
     if _has_at_least_one_valid_rule(trundle)
       ap "has at least one valid rule"
@@ -74,8 +75,8 @@ class CreateScopeForAid
             one_rule.slave_rules.push(actual_subrule)
           end
         end
+        one_rule.simulated = nil
       end
-      one_rule.simulated = ""
     end
 
     all_rules

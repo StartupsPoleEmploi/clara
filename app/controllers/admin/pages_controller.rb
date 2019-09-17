@@ -38,7 +38,7 @@ module Admin
 
       fail 'Stop here please'
 
-      CreateScopeForAid.new.call(scope: {trundle: trundle}, aid: aid)
+      CreateScopeForAid.new.call(trundle: trundle, aid: aid, geo: {town: geo_town, dep: geo_dep, region: geo_region})
 
       flash[:notice] = "Mise à jour du champ d'application effectué."
       flash.keep(:notice)
