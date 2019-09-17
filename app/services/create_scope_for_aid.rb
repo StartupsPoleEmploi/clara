@@ -11,7 +11,10 @@ class CreateScopeForAid
       rules_no_geo = _create_rules_no_geo(trundle, uuid)
       root_rule_no_geo = rules_no_geo[0]
       ap geo
-      root_rule_with_geo = _create_geo(root_rule_no_geo, geo)
+      ap uuid
+      ap geo[:selection]
+      root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
+      ap root_rule_with_geo
       fail "ok stopped before to create ANY RULE"
       root_rule.save
       aid.rule = root_rule
@@ -23,8 +26,41 @@ class CreateScopeForAid
 
   end
 
-  def _create_geo(root_rule_no_geo, geo)
-    return root_rule_no_geo if geo == "tout"
+  def _create_geo(root_rule_no_geo, geo, uuid)
+    
+    res = root_rule_no_geo
+
+    selection = geo[:selection]
+    towns     = geo[:town]
+    deps      = geo[:dep]
+    regions   = geo[:region]
+    
+    return res if selection == "tout"
+    return res if (towns.size == 0 && deps.size == 0 && regions.size == 0)
+
+    geo_rules = []
+
+    if selection == "rien_sauf"
+      towns.each do |town|
+        geo_rules.push(CreateTownRule.new.call(town, uuid))
+      end
+      deps.each do |dep|
+        geo_rules.push(CreateDepartmentRule.new.call(dep, uuid))
+      end
+      regions.each do |region|
+        geo_rules.push(CreateRegionRule.new.call(region, uuid))
+      end
+      rule_geo = 
+        Rule.new(name: "r_#{uuid}_box_geo", kind: "composite", composition_type: "and_rule",
+                 slave_rules: geo_rules)
+
+      res = 
+        Rule.new(name: "r_#{uuid}_box_all", kind: "composite", composition_type: "and_rule",
+                 slave_rules: [root_rule_no_geo, rule_geo])
+    end  
+
+    return res
+
   end
 
   def _create_uuid
@@ -131,6 +167,25 @@ end
 ## !! delete every currently editing rule
 
 ## a first filter : composite (subcombination filled, and at least one subbox) or simple (xval, xop, xvar filled)
+
+
+# {
+#          :town => [
+#         [0] "91421",
+#         [1] "97613"
+#     ],
+#           :dep => [
+#         [0] "03",
+#         [1] "35",
+#         [2] "70"
+#     ],
+#        :region => [
+#         [0] "Bretagne",
+#         [1] "Centre-Val de Loire"
+#     ],
+#     :selection => "rien_sauf"
+# }
+
 
 # {
 #               "name" => "root_box",
