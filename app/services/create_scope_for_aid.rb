@@ -7,8 +7,12 @@ class CreateScopeForAid
 
     if _has_at_least_one_valid_rule(trundle)
       ap "has at least one valid rule"
-      created_rules = _create_rules(trundle)
-      root_rule = created_rules[0]
+      uuid = _create_uuid
+      rules_no_geo = _create_rules_no_geo(trundle, uuid)
+      root_rule_no_geo = rules_no_geo[0]
+      ap geo
+      root_rule_with_geo = _create_geo(root_rule_no_geo, geo)
+      fail "ok stopped before to create ANY RULE"
       root_rule.save
       aid.rule = root_rule
       aid.save
@@ -17,6 +21,14 @@ class CreateScopeForAid
     end
 
 
+  end
+
+  def _create_geo(root_rule_no_geo, geo)
+    return root_rule_no_geo if geo == "tout"
+  end
+
+  def _create_uuid
+    ('a'..'z').to_a.shuffle[0,16].join
   end
 
   def _has_at_least_one_valid_rule(root_obj)
@@ -28,11 +40,9 @@ class CreateScopeForAid
     all_valid.any?
   end
 
-  def _create_rules(obj)
+  def _create_rules_no_geo(obj, uuid)
 
     all_rules = []
-
-    uuid = ('a'..'z').to_a.shuffle[0,8].join
 
     create_rule = -> (obj, _p, _i) do 
       ap obj[:name]
