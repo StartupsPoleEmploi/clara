@@ -13,6 +13,7 @@ clara.js_define("admin_rulecreation_record", {
           data: {
             aid: $.urlParam("aid"),
             trundle: JSON.stringify(store_trundle.getState()),
+            // geo: 
             // description: $("#main-apprule-expl").text()
           },
           success: function(resp){ 

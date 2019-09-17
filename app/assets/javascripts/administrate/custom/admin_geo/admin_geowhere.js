@@ -154,7 +154,7 @@ clara.js_define("admin_geowhere", {
 
 
         var town_options = {        
-          valueField: 'name',
+          valueField: 'value',
           labelField: 'name',
           searchField: 'name',
           options: [],
@@ -178,11 +178,12 @@ clara.js_define("admin_geowhere", {
                     return e.properties.citycode
                   });
                   var rez = _.map(uniq_citycode, function(e){
-                    var displayed = e.properties.label + " " + e.properties.postcode.substring(0,2);
+                    var actual_name = e.properties.label + " " + e.properties.postcode.substring(0,2);
+                    var actual_value = e.properties.citycode;
                     return {
-                      value: _.slugify(displayed),
-                      name: displayed            
-                    }
+                      name: actual_name,
+                      value: actual_value
+                    };
                   })
                   callback(rez);
                 }
