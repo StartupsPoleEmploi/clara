@@ -30,44 +30,23 @@ class CreateScopeForAid
     regions   = geo[:region]
 
     return res if selection == "tout"
-    return res if (towns.blank? && deps.blank? && regions.blank?)
+    return res if (towns.blank? && deps.blank? && regions.blank?) && selection == "rien_sauf"
+    return res if (towns.blank? && deps.blank? && regions.blank?) && selection == "tout_sauf"
 
     geo_rules = []
-    if selection == "rien_sauf"
-      towns.try(:each) do |town|
-        r = CreateTownRule.new.call(town, uuid)
-        ap r.valid?
-        ap r.errors
-        geo_rules.push(r)
-      end
-      deps.try(:each) do |dep|
-        r = CreateDepartmentRule.new.call(dep, uuid)
-        ap r.valid?
-        ap r.errors
-        geo_rules.push(r)
-      end
-      regions.try(:each) do |region|
-        r = CreateRegionRule.new.call(region, uuid)
-        ap r.valid?
-        ap r.errors
-        geo_rules.push(r)
-      end
-  
-      rule_geo = nil
-      if geo_rules.size == 1
-        rule_geo = geo_rules[0]
-      else
-        rule_geo = 
-          Rule.new(name: "r_#{uuid}_box_geo", kind: "composite", composition_type: "and_rule",
-                   slave_rules: geo_rules)
-      end
+    rule_geo = nil
 
-      res = 
-        Rule.new(name: "r_#{uuid}_box_all", kind: "composite", composition_type: "and_rule",
-                 slave_rules: [root_rule_no_geo, rule_geo])
+
+    if selection == "rien_sauf"
+      rule_geo = CreateRienSauf.new.call(uuid, towns, deps, regions)
     end  
 
-    return res
+    Rule.new(
+      name: "r_#{uuid}_box_all", 
+      kind: "composite", 
+      composition_type: "and_rule",
+      slave_rules: [root_rule_no_geo, rule_geo]
+    )
 
   end
 
