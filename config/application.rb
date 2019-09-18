@@ -1,6 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
+require 'active_explorer'
 
 Bundler.require(*Rails.groups)
 
