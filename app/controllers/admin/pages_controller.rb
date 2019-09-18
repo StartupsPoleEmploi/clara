@@ -15,6 +15,7 @@ module Admin
       }
 
       gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      gon.initial_geo = ExtractGeoForAid.new.call(aid)
       
       render locals: {
         aid: aid ? aid.attributes.with_indifferent_access : nil
