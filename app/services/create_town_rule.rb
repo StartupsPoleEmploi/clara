@@ -1,6 +1,6 @@
 class CreateTownRule
 
-  def call(citycode, uuid, operator_kind="equal")
+  def call(citycode, uuid, operator_kind)
     activated = ActivatedModelsService.instance
     Rule.new(
       name: "r_#{uuid}_citycode_#{operator_kind}_#{citycode}_id_#{rand().to_s[2..-1]}",

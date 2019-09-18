@@ -1,6 +1,6 @@
 class CreateDepartmentRule
 
-  def call(dep_nb, uuid, operator_kind="equal")
+  def call(dep_nb, uuid, operator_kind)
     activated = ActivatedModelsService.instance
     Rule.new(
       name: "r_#{uuid}_department_#{operator_kind}_#{dep_nb}_id_#{rand().to_s[2..-1]}",

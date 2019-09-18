@@ -41,6 +41,8 @@ class CreateScopeForAid
       rule_geo = CreateRienSauf.new.call(uuid, towns, deps, regions)
     elsif selection == "tout_sauf"
       rule_geo = CreateToutSauf.new.call(uuid, towns, deps, regions)
+    elsif selection == "tout_sauf_domtom"
+      rule_geo = CreateToutSaufDOMTOM.new.call(uuid, towns, deps, regions)
     end  
 
     Rule.new(

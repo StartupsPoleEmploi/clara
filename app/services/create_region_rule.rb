@@ -1,6 +1,6 @@
 class CreateRegionRule
 
-  def call(region_name, uuid, operator_kind="starts_with")
+  def call(region_name, uuid, operator_kind)
     activated = ActivatedModelsService.instance
     Rule.new(
       name: "r_#{uuid}_region_#{operator_kind}_#{region_name.parameterize}_id_#{rand().to_s[2..-1]}",
