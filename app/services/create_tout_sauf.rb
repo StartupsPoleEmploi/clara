@@ -24,6 +24,8 @@ class CreateToutSauf
                  slave_rules: geo_rules)
     end
 
+    rule_geo
+    
   end
 
 end
