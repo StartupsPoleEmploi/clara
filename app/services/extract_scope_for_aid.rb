@@ -4,10 +4,13 @@ class ExtractScopeForAid
     res = {}
 
     if aid.is_a?(Aid) && aid.rule
-      res = _fill(aid.rule)
+      concerned_rule = aid.rule
+      # rule has a geo criteria
+      if (aid.rule.name.end_with?("_box_all")) 
+        concerned_rule = aid.rule.slave_rules.detect{|r| !r.name.end_with?("_box_geo")}
+      end
+      res = _fill(concerned_rule)
     end
-
-
 
     return res
   end

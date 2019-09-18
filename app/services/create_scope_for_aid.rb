@@ -33,16 +33,16 @@ class CreateScopeForAid
     return res if (towns.blank? && deps.blank? && regions.blank?) && selection == "rien_sauf"
     return res if (towns.blank? && deps.blank? && regions.blank?) && selection == "tout_sauf"
 
-    geo_rules = []
     rule_geo = nil
-
 
     if selection == "rien_sauf"
       rule_geo = CreateRienSauf.new.call(uuid, towns, deps, regions)
     elsif selection == "tout_sauf"
       rule_geo = CreateToutSauf.new.call(uuid, towns, deps, regions)
+    elsif selection == "domtom_seulement"
+      rule_geo = CreateRienSaufDomTom.new.call(uuid, towns, deps, regions)
     elsif selection == "tout_sauf_domtom"
-      rule_geo = CreateToutSaufDOMTOM.new.call(uuid, towns, deps, regions)
+      rule_geo = CreateToutSaufDomTom.new.call(uuid, towns, deps, regions)
     end  
 
     Rule.new(
