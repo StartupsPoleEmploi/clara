@@ -10,19 +10,8 @@ class CreateScopeForAid
       uuid = _create_uuid
       rules_no_geo = _create_rules_no_geo(trundle, uuid)
       root_rule_no_geo = rules_no_geo[0]
-      # ap geo
-      # ap uuid
-      # ap geo[:selection]
       root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
-      p '- - - - - - - - - - - - - - root_rule_with_geo- - - - - - - - - - - - - - - -' 
-      ex root_rule_with_geo
-      ap root_rule_with_geo.valid?
-      ap root_rule_with_geo.errors
-      p ''
-      # root_rule_with_geo.save
-      # fail "ok stopped before to create ANY AID"
-      # aid.rule = root_rule_with_geo
-      aid.rule = root_rule_no_geo
+      aid.rule = root_rule_with_geo
       aid.save
     else
       ap "no valid rule"
@@ -40,14 +29,10 @@ class CreateScopeForAid
     deps      = geo[:dep]
     regions   = geo[:region]
 
-    ap "goiinnnnnnnnnn creatgeo ----------------- " + selection
-    
     return res if selection == "tout"
     return res if (towns.blank? && deps.blank? && regions.blank?)
 
     geo_rules = []
-    ap "selecctionnnnnnnn ----------------- " + selection
-    p 'blablablablablablablablablablablablablablablablablablablablablablablablablabla' 
     if selection == "rien_sauf"
       towns.try(:each) do |town|
         r = CreateTownRule.new.call(town, uuid)
@@ -67,16 +52,15 @@ class CreateScopeForAid
         ap r.errors
         geo_rules.push(r)
       end
-      rule_geo = 
-        Rule.new(name: "r_#{uuid}_box_geo", kind: "composite", composition_type: "and_rule",
-                 slave_rules: geo_rules)
-
-      p 'qsdmlfkjqsdfmljkqsdfmlqdjksfmlqsdfjkqsmdlfjkqdsmlfjkqsdmlfjkqsdmlfjkdsqmlfkjqdsf' 
-      p '- - - - - - - - - - - - - - rule_geo.slave_rules- - - - - - - - - - - - - - - -' 
-      ap rule_geo
-      ap rule_geo.valid?
-      ap rule_geo.errors
-      p ''
+  
+      rule_geo = nil
+      if geo_rules.size == 1
+        rule_geo = geo_rules[0]
+      else
+        rule_geo = 
+          Rule.new(name: "r_#{uuid}_box_geo", kind: "composite", composition_type: "and_rule",
+                   slave_rules: geo_rules)
+      end
 
       res = 
         Rule.new(name: "r_#{uuid}_box_all", kind: "composite", composition_type: "and_rule",
