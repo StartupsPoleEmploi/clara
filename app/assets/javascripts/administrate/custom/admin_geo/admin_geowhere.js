@@ -6,10 +6,10 @@ clara.js_define("admin_geowhere", {
 
     please: function() {
 
-        $("input#tout").prop("checked", true);
+        $("input#" + gon.initial_geo.selection).prop("checked", true);
 
         var department_options = {        
-          valueField: 'name',
+          valueField: 'value',
           labelField: 'name',
           searchField: 'name',
           options: [
@@ -121,13 +121,16 @@ clara.js_define("admin_geowhere", {
                   ],
         };
         $('.c-geoselect--department').selectize(department_options);
-
-
-
-
+        // existing options when editing existing aid
+        var department_selectize = $('.c-geoselect--department')[0].selectize
+        var existing_departments = _.get(window, "gon.initial_geo.department")
+        var existing_codes = _.map(existing_departments, function(existing_department) {
+          return _.keys(existing_department)[0]
+        })
+        department_selectize.setValue(existing_codes)
 
         var region_options = {        
-          valueField: 'name',
+          valueField: 'value',
           labelField: 'name',
           searchField: 'name',
           options: [
@@ -146,20 +149,23 @@ clara.js_define("admin_geowhere", {
             {value:"PAC", name:"Provence-Alpes-Côte d'Azur"},
           ],
         };
+        // existing options when editing existing aid
         $('.c-geoselect--region').selectize(region_options);
-
-
-
-
+        var region_selectize = $('.c-geoselect--region')[0].selectize
+        var existing_regions = _.get(window, "gon.initial_geo.region")
+        var existing_codes = _.map(existing_regions, function(existing_region) {
+          return _.keys(existing_region)[0]
+        })
+        region_selectize.setValue(existing_codes)
 
 
         var town_options = {        
-          valueField: 'name',
+          valueField: 'value',
           labelField: 'name',
           searchField: 'name',
-          options: [],
           create: false,
           load: function(query, callback) {
+            var that = this;
             if (!query.length) return callback();
             $.get({
                 url: 'https://api-adresse.data.gouv.fr/search/',
@@ -178,11 +184,12 @@ clara.js_define("admin_geowhere", {
                     return e.properties.citycode
                   });
                   var rez = _.map(uniq_citycode, function(e){
-                    var displayed = e.properties.label + " " + e.properties.postcode.substring(0,2);
+                    var actual_name = e.properties.label + " " + e.properties.postcode.substring(0,2);
+                    var actual_value = e.properties.citycode;
                     return {
-                      value: _.slugify(displayed),
-                      name: displayed            
-                    }
+                      name: actual_name,
+                      value: actual_value
+                    };
                   })
                   callback(rez);
                 }
@@ -190,6 +197,19 @@ clara.js_define("admin_geowhere", {
           }
         };
         $('.c-geoselect--town').selectize(town_options);
+
+        // existing options when editing existing aid
+        var town_selectize = $('.c-geoselect--town')[0].selectize
+        var existing_towns = _.get(window, "gon.initial_geo.town")
+        var existing_citycodes = _.map(existing_towns, function(existing_town) {
+          return _.keys(existing_town)[0]
+        })
+        _.each(existing_towns, function(town) {
+          town_selectize.addOption({value: _.keys(town)[0], name: _.values(town)[0]})
+        });
+        town_selectize.setValue(existing_citycodes)
+
+
 
 
         var show_hide_function = function(e) {
@@ -210,8 +230,9 @@ clara.js_define("admin_geowhere", {
 
         $("input[type='radio']").on("click", show_hide_function);
 
-        show_hide_function(null);
+        show_hide_function({currentTarget:{id:gon.initial_geo.selection}});
       
+
     }
 
 });

@@ -15,6 +15,7 @@ module Admin
       }
 
       gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      gon.initial_geo = ExtractGeoForAid.new.call(aid)
       
       render locals: {
         aid: aid ? aid.attributes.with_indifferent_access : nil
@@ -22,11 +23,14 @@ module Admin
     end
     def post_rule_creation
       aid_slug = params["aid"]
+      # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
+      geo = JSON.parse(params["geo"], symbolize_names: true)
+      
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)
 
-      CreateScopeForAid.new.call(scope: {trundle: trundle}, aid: aid)
+      CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
       flash[:notice] = "Mise à jour du champ d'application effectué."
       flash.keep(:notice)

@@ -1,21 +1,75 @@
-class CreateScopeForAid
+class CreateScopeAndGeoForAid
 
   def call(h)
-    trundle = h[:scope][:trundle]
+    trundle = h[:trundle]
     aid = h[:aid]
+    geo = h[:geo]
 
     if _has_at_least_one_valid_rule(trundle)
       ap "has at least one valid rule"
-      created_rules = _create_rules(trundle)
-      root_rule = created_rules[0]
-      root_rule.save
-      aid.rule = root_rule
+      previous_rule      = aid.rule
+      uuid               = _create_uuid
+      rules_no_geo       = _create_rules_no_geo(trundle, uuid)
+      root_rule_no_geo   = rules_no_geo[0]
+      root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
+      aid.rule           = root_rule_with_geo
       aid.save
+      _recursively_remove([previous_rule]) if previous_rule
     else
       ap "no valid rule"
     end
 
+  end
 
+  def _recursively_remove(rules)
+    return "ok, done" if rules.blank?
+    rules_to_delete_next = []
+    rules.each do |rule|
+      rule.slave_rules.each do |slave_rule|
+        rules_to_delete_next.push(slave_rule)
+      end
+    end
+    
+    rules.each {|r| r.destroy}
+    _recursively_remove(rules_to_delete_next)
+  end
+
+  def _create_geo(root_rule_no_geo, geo, uuid)
+    
+    res = root_rule_no_geo
+
+    selection = geo[:selection]
+    towns     = geo[:town]
+    departments = geo[:department]
+    regions   = geo[:region]
+
+    return res if selection == "tout"
+    return res if (towns.blank? && departments.blank? && regions.blank?) && selection == "rien_sauf"
+    return res if (towns.blank? && departments.blank? && regions.blank?) && selection == "tout_sauf"
+
+    rule_geo = nil
+
+    if selection == "rien_sauf"
+      rule_geo = CreateRienSauf.new.call(uuid, towns, departments, regions)
+    elsif selection == "tout_sauf"
+      rule_geo = CreateToutSauf.new.call(uuid, towns, departments, regions)
+    elsif selection == "domtom_seulement"
+      rule_geo = CreateRienSaufDomTom.new.call(uuid)
+    elsif selection == "tout_sauf_domtom"
+      rule_geo = CreateToutSaufDomTom.new.call(uuid)
+    end  
+
+    Rule.new(
+      name: "r_#{uuid}_box_all", 
+      kind: "composite", 
+      composition_type: "and_rule",
+      slave_rules: [root_rule_no_geo, rule_geo]
+    )
+
+  end
+
+  def _create_uuid
+    ('a'..'z').to_a.shuffle[0,16].join
   end
 
   def _has_at_least_one_valid_rule(root_obj)
@@ -27,11 +81,9 @@ class CreateScopeForAid
     all_valid.any?
   end
 
-  def _create_rules(obj)
+  def _create_rules_no_geo(obj, uuid)
 
     all_rules = []
-
-    uuid = ('a'..'z').to_a.shuffle[0,8].join
 
     create_rule = -> (obj, _p, _i) do 
       ap obj[:name]
@@ -74,8 +126,8 @@ class CreateScopeForAid
             one_rule.slave_rules.push(actual_subrule)
           end
         end
+        one_rule.simulated = nil
       end
-      one_rule.simulated = ""
     end
 
     all_rules
@@ -120,6 +172,38 @@ end
 ## !! delete every currently editing rule
 
 ## a first filter : composite (subcombination filled, and at least one subbox) or simple (xval, xop, xvar filled)
+
+
+# {
+#      "selection" => "rien_sauf",
+#           "town" => {
+#         "0" => {
+#             "88383" => "Remiremont 88"
+#         },
+#         "1" => {
+#             "21577" => "Saint-Usage 21"
+#         }
+#     },
+#     "department" => {
+#         "val" => [
+#             [0] "01",
+#             [1] "04"
+#         ],
+#         "txt" => [
+#             [0] "01 Ain",
+#             [1] "04 Alpes-de-Haute-Provence"
+#         ]
+#     },
+#         "region" => {
+#         "val" => [
+#             [0] "BFC"
+#         ],
+#         "txt" => [
+#             [0] "Bourgogne-Franche-Comté"
+#         ]
+#     }
+# }
+
 
 # {
 #               "name" => "root_box",

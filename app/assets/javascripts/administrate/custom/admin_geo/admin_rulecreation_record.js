@@ -5,6 +5,16 @@ clara.js_define("admin_rulecreation_record", {
     },
 
     please: function() {
+      var SEL = " .selectize-input [data-value]";
+      var datavalf = function(selector) {
+        return $(selector + SEL).toArray().map(function(e){ return $(e).attr("data-value") })
+      }
+      var htmlf = function(selector) {
+        return $(selector + SEL).toArray().map(function(e){ return $(e).html() })
+      }
+      var objf = function(selector) {
+        return $(selector + SEL).toArray().map(function(e){ var res = {}; res[$(e).attr("data-value")] = $(e).html();return res; })
+      }
       $("#record_root_rule").on("click", function(e) {
 
         $.ajax({
@@ -13,7 +23,12 @@ clara.js_define("admin_rulecreation_record", {
           data: {
             aid: $.urlParam("aid"),
             trundle: JSON.stringify(store_trundle.getState()),
-            // description: $("#main-apprule-expl").text()
+            geo: JSON.stringify({
+              selection: $('.c-geowhere input[type=radio]:checked').attr("id"),
+              town: objf(".c-geoselect--town"),
+              department: objf(".c-geoselect--department"),
+              region: objf(".c-geoselect--region"),
+            })
           },
           success: function(resp){ 
 

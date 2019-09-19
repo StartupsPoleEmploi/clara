@@ -149,6 +149,41 @@ clara.js_define("admin_rulecreation", {
           return newState;
         };
 
+// EXAMPLE of gon.initial_state
+
+// {
+//   "name": "root_box",
+//   "subcombination": "OR",
+//   "xvar": null,
+//   "xop": null,
+//   "xval": null,
+//   "xtxt": null,
+//   "subboxes": [
+//     {
+//       "name": "box_1568817526246",
+//       "subcombination": "",
+//       "xvar": "v_allocation_type",
+//       "xop": "not_equal",
+//       "xval": "ASS_AER_APS_AS-FNE",
+//       "xtxt": "Ne pas être bénéficiaire de l'ASS, l'AER, l'APS, ou l'AS-FNE",
+//       "subboxes": [],
+//       "is_editing": false
+//     },
+//     {
+//       "name": "box_1568817534323",
+//       "subcombination": "",
+//       "xvar": "v_cadre",
+//       "xop": "equal",
+//       "xval": "non",
+//       "xtxt": "Ne pas être cadre et/ou en recherche d'un poste d'encadrement",
+//       "subboxes": [],
+//       "is_editing": false
+//     }
+//   ],
+//   "is_editing": false
+// }
+
+
         // STORE
         var get_default_state = function() {
           var default_state = trundle_state;
