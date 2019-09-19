@@ -7,17 +7,31 @@ class CreateScopeAndGeoForAid
 
     if _has_at_least_one_valid_rule(trundle)
       ap "has at least one valid rule"
-      uuid = _create_uuid
-      rules_no_geo = _create_rules_no_geo(trundle, uuid)
-      root_rule_no_geo = rules_no_geo[0]
+      previous_rule      = aid.rule
+      uuid               = _create_uuid
+      rules_no_geo       = _create_rules_no_geo(trundle, uuid)
+      root_rule_no_geo   = rules_no_geo[0]
       root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
-      aid.rule = root_rule_with_geo
+      aid.rule           = root_rule_with_geo
       aid.save
+      _recursively_remove([previous_rule])
     else
       ap "no valid rule"
     end
 
+  end
 
+  def _recursively_remove(rules)
+    return "ok, done" if rules.blank?
+    rules_to_delete_next = []
+    rules.each do |rule|
+      rule.slave_rules.each do |slave_rule|
+        rules_to_delete_next.push(slave_rule)
+      end
+    end
+    
+    rules.each {|r| r.destroy}
+    _recursively_remove(rules_to_delete_next)
   end
 
   def _create_geo(root_rule_no_geo, geo, uuid)
