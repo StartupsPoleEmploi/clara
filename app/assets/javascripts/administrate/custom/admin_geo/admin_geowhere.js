@@ -123,9 +123,6 @@ clara.js_define("admin_geowhere", {
         $('.c-geoselect--department').selectize(department_options);
 
 
-
-
-
         var region_options = {        
           valueField: 'value',
           labelField: 'name',
@@ -148,19 +145,16 @@ clara.js_define("admin_geowhere", {
         };
         $('.c-geoselect--region').selectize(region_options);
 
-
-
-
-
-
         var town_options = {        
           valueField: 'value',
           labelField: 'name',
           searchField: 'name',
-          options: [{value: "01234", name: "blabla"}],
-          items: ['blabla'],
+          // options: options,
+          // items: items,
+          // preload: true,
           create: false,
           load: function(query, callback) {
+            var that = this;
             console.log('enetering load func')
             if (!query.length) return callback();
             $.get({
