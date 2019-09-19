@@ -1,4 +1,4 @@
-class CreateScopeForAid
+class CreateScopeAndGeoForAid
 
   def call(h)
     trundle = h[:trundle]

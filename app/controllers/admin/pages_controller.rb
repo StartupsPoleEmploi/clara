@@ -30,7 +30,7 @@ module Admin
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)
 
-      CreateScopeForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+      CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
       flash[:notice] = "Mise à jour du champ d'application effectué."
       flash.keep(:notice)
