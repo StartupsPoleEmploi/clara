@@ -205,6 +205,18 @@ clara.js_define("admin_geowhere", {
 
         show_hide_function({currentTarget:{id:gon.initial_geo.selection}});
       
+
+        // prefill inputs with values
+        _.each(_.get(window, "gon.initial_geo.town"), function(town) {
+          $(".c-geoselect--town  .selectize-input").prepend("<div class='item' data-value='" + _.keys(town)[0] + "'>" + _.values(town)[0] + "</div>")
+        });
+        _.each(_.get(window, "gon.initial_geo.department"), function(department) {
+          $(".c-geoselect--department  .selectize-input").prepend("<div class='item' data-value='" + _.keys(department)[0] + "'>" + _.values(department)[0] + "</div>")
+        });
+        _.each(_.get(window, "gon.initial_geo.region"), function(region) {
+          $(".c-geoselect--region  .selectize-input").prepend("<div class='item' data-value='" + _.keys(region)[0] + "'>" + _.values(region)[0] + "</div>")
+        });
+
     }
 
 });
