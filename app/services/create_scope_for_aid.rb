@@ -40,9 +40,9 @@ class CreateScopeForAid
     elsif selection == "tout_sauf"
       rule_geo = CreateToutSauf.new.call(uuid, towns, deps, regions)
     elsif selection == "domtom_seulement"
-      rule_geo = CreateRienSaufDomTom.new.call(uuid, towns, deps, regions)
+      rule_geo = CreateRienSaufDomTom.new.call(uuid)
     elsif selection == "tout_sauf_domtom"
-      rule_geo = CreateToutSaufDomTom.new.call(uuid, towns, deps, regions)
+      rule_geo = CreateToutSaufDomTom.new.call(uuid)
     end  
 
     Rule.new(
@@ -161,20 +161,33 @@ end
 
 
 # {
-#          :town => [
-#         [0] "91421",
-#         [1] "97613"
-#     ],
-#           :dep => [
-#         [0] "03",
-#         [1] "35",
-#         [2] "70"
-#     ],
-#        :region => [
-#         [0] "Bretagne",
-#         [1] "Centre-Val de Loire"
-#     ],
-#     :selection => "rien_sauf"
+#      "selection" => "rien_sauf",
+#           "town" => {
+#         "0" => {
+#             "88383" => "Remiremont 88"
+#         },
+#         "1" => {
+#             "21577" => "Saint-Usage 21"
+#         }
+#     },
+#     "department" => {
+#         "val" => [
+#             [0] "01",
+#             [1] "04"
+#         ],
+#         "txt" => [
+#             [0] "01 Ain",
+#             [1] "04 Alpes-de-Haute-Provence"
+#         ]
+#     },
+#         "region" => {
+#         "val" => [
+#             [0] "BFC"
+#         ],
+#         "txt" => [
+#             [0] "Bourgogne-Franche-Comté"
+#         ]
+#     }
 # }
 
 
