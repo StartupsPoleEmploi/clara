@@ -2,8 +2,7 @@ class CreateDepartmentRule
 
   def call(department, uuid, operator_kind)
     dep_nb = department.keys[0]
-    dep_txt = department.values[0]
-    dep_name = dep_txt[3..dep_txt.size]
+    dep_name = department.values[0]
     prefix = operator_kind.include?("not") ? "Ne pas résider" : "Résider"
     activated = ActivatedModelsService.instance
     Rule.new(
