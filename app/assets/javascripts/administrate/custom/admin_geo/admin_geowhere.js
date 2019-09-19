@@ -149,7 +149,15 @@ clara.js_define("admin_geowhere", {
             {value:"PAC", name:"Provence-Alpes-Côte d'Azur"},
           ],
         };
+        // existing options when editing existing aid
         $('.c-geoselect--region').selectize(region_options);
+        var region_selectize = $('.c-geoselect--region')[0].selectize
+        var existing_regions = _.get(window, "gon.initial_geo.region")
+        var existing_codes = _.map(existing_regions, function(existing_region) {
+          return _.keys(existing_region)[0]
+        })
+        region_selectize.setValue(existing_codes)
+
 
         var town_options = {        
           valueField: 'value',
