@@ -49,9 +49,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_explorer (0.0.9)
-      activerecord (>= 4.0.13)
-      ruby-graphviz (~> 1.2)
     active_type (1.2.1)
       activerecord (>= 3.2)
     activejob (5.2.3)
@@ -427,7 +424,6 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
-    ruby-graphviz (1.2.4)
     ruby-prof (0.18.0)
     ruby-progressbar (1.10.1)
     ruby_parser (3.13.1)
@@ -519,7 +515,6 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
-  active_explorer
   active_type
   administrate
   administrate-field-ckeditor (~> 0.0.8)
