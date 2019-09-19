@@ -127,7 +127,7 @@ clara.js_define("admin_geowhere", {
 
 
         var region_options = {        
-          valueField: 'name',
+          valueField: 'value',
           labelField: 'name',
           searchField: 'name',
           options: [
