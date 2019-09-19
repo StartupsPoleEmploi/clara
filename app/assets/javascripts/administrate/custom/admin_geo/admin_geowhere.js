@@ -121,7 +121,13 @@ clara.js_define("admin_geowhere", {
                   ],
         };
         $('.c-geoselect--department').selectize(department_options);
-
+        // existing options when editing existing aid
+        var department_selectize = $('.c-geoselect--department')[0].selectize
+        var existing_departments = _.get(window, "gon.initial_geo.department")
+        var existing_codes = _.map(existing_departments, function(existing_department) {
+          return _.keys(existing_department)[0]
+        })
+        department_selectize.setValue(existing_codes)
 
         var region_options = {        
           valueField: 'value',
