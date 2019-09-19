@@ -24,10 +24,10 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  # after_save    { ExpireCacheJob.perform_later }
-  # after_update  { ExpireCacheJob.perform_later }
-  # after_destroy { ExpireCacheJob.perform_later }
-  # after_create  { ExpireCacheJob.perform_later }
+  after_save    { ExpireCacheJob.perform_later }
+  after_update  { ExpireCacheJob.perform_later }
+  after_destroy { ExpireCacheJob.perform_later }
+  after_create  { ExpireCacheJob.perform_later }
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,

@@ -7,7 +7,7 @@ class CreateRienSauf
       geo_rules.push(r)
     end
     departments.try(:each) do |dep|
-      r = CreateDepartmentRule.new.call(dep, uuid, "equal")
+      r = CreateDepartmentRule.new.call(dep, uuid, "starts_with")
       geo_rules.push(r)
     end
     regions.try(:each) do |region|

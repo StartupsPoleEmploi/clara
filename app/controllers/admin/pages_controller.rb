@@ -27,8 +27,6 @@ module Admin
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
-      ap geo
-
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)
 

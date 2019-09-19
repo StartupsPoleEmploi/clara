@@ -6,6 +6,13 @@ class ExtractGeoForAid
     if aid.is_a?(Aid) && aid.rule && aid.rule.name.end_with?("_box_all")
       concerned_rule = aid.rule.slave_rules.detect{|r| r.name.end_with?("_box_geo")}
       res = _fill(JSON.parse(concerned_rule.slave_rules.to_json))
+    else
+      res = {
+        selection: "tout",
+        town: [],
+        department: [],
+        region: [],
+      }.with_indifferent_access
     end
 
     return res
@@ -82,7 +89,6 @@ class ExtractGeoForAid
       _adjust_region!(h)
     end
 
-    ap h
     h
 
   end
@@ -103,7 +109,7 @@ class ExtractGeoForAid
     return false unless h[:region].blank?
     return false if h[:department].blank?
 
-    h[:department].sort == ["971", "972", "973", "974", "975", "976"]
+    h[:department].map{|e| e.keys[0]}.sort == ["971", "972", "973", "974", "975", "976"]
   end
 
 end

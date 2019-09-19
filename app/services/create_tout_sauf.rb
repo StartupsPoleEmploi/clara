@@ -7,7 +7,7 @@ class CreateToutSauf
       geo_rules.push(r)
     end
     deps.try(:each) do |dep|
-      r = CreateDepartmentRule.new.call(dep, uuid, "not_equal")
+      r = CreateDepartmentRule.new.call(dep, uuid, "not_starts_with")
       geo_rules.push(r)
     end
     regions.try(:each) do |region|
