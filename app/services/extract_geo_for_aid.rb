@@ -7,8 +7,8 @@ class ExtractGeoForAid
       concerned_rule = nil
       if aid.rule.name.end_with?("_box_all")
         concerned_rule = aid.rule.slave_rules.detect{|r| r.name.end_with?("_box_geo")}
+        res = _fill(JSON.parse(concerned_rule.slave_rules.to_json))
       end  
-      res = _fill(JSON.parse(concerned_rule.slave_rules.to_json))
     end
 
     return res
