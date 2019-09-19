@@ -11,7 +11,7 @@ class CreateDepartmentRule
       kind: "simple",
       variable_id: activated.variables.detect{ |v| v["name"] ==  "v_location_citycode" }.try(:[], "id"),
       operator_kind: operator_kind,
-      description: "#{prefix} dans le département #{dep_name}"
+      description: "#{prefix} dans le département #{dep_name}",
       value_eligible: dep_nb
     )
   end

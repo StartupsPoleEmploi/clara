@@ -10,7 +10,7 @@ class CreateTownRule
       kind: "simple",
       variable_id: activated.variables.detect{ |v| v["name"] ==  "v_location_citycode" }.try(:[], "id"),
       operator_kind: operator_kind,
-      description: "#{prefix} à #{cityname}"
+      description: "#{prefix} à #{cityname}",
       value_eligible: citycode
     )
   end

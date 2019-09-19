@@ -23,12 +23,11 @@ module Admin
     end
     def post_rule_creation
       aid_slug = params["aid"]
+      # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
-      geo = params["geo"].permit!
+      geo = JSON.parse(params["geo"], symbolize_names: true)
       
       ap geo
-
-      fail "Just... fail"
 
       url = admin_aid_path(aid_slug)
       aid = Aid.find_by(slug: aid_slug)

@@ -6,7 +6,7 @@ clara.js_define("admin_geowhere", {
 
     please: function() {
 
-        $("input#tout").prop("checked", true);
+        $("input#" + gon.initial_geo.selection).prop("checked", true);
 
         var department_options = {        
           valueField: 'value',
@@ -211,7 +211,7 @@ clara.js_define("admin_geowhere", {
 
         $("input[type='radio']").on("click", show_hide_function);
 
-        show_hide_function(null);
+        show_hide_function({currentTarget:{id:gon.initial_geo.selection}});
       
     }
 

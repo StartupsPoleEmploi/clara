@@ -1,12 +1,12 @@
 class CreateRienSauf
 
-  def call(uuid, towns, deps, regions)
+  def call(uuid, towns, departments, regions)
     geo_rules = []
     towns.try(:each) do |town|
       r = CreateTownRule.new.call(town, uuid, "equal")
       geo_rules.push(r)
     end
-    deps.try(:each) do |dep|
+    departments.try(:each) do |dep|
       r = CreateDepartmentRule.new.call(dep, uuid, "equal")
       geo_rules.push(r)
     end
