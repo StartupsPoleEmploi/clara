@@ -149,13 +149,9 @@ clara.js_define("admin_geowhere", {
           valueField: 'value',
           labelField: 'name',
           searchField: 'name',
-          // options: options,
-          // items: items,
-          // preload: true,
           create: false,
           load: function(query, callback) {
             var that = this;
-            console.log('enetering load func')
             if (!query.length) return callback();
             $.get({
                 url: 'https://api-adresse.data.gouv.fr/search/',
