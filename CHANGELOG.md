@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.12.1 (13/9/2019)
+-[#1350b][FEATURE] faire marcher le critère géo
+
+
 ## 21.12.0 (13/9/2019)
 -[#1350][FEATURE] faire marcher le critère géo
 
