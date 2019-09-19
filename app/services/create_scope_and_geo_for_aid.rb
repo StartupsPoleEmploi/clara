@@ -14,7 +14,7 @@ class CreateScopeAndGeoForAid
       root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
       aid.rule           = root_rule_with_geo
       aid.save
-      _recursively_remove([previous_rule])
+      _recursively_remove([previous_rule]) if previous_rule
     else
       ap "no valid rule"
     end
