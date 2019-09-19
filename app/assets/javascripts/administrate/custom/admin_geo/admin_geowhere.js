@@ -184,6 +184,19 @@ clara.js_define("admin_geowhere", {
         };
         $('.c-geoselect--town').selectize(town_options);
 
+        // existing options when editing existing aid
+        var town_selectize = $('.c-geoselect--town')[0].selectize
+        var existing_towns = _.get(window, "gon.initial_geo.town")
+        var existing_citycodes = _.map(existing_towns, function(existing_town) {
+          return _.keys(existing_town)[0]
+        })
+        _.each(existing_towns, function(town) {
+          town_selectize.addOption({value: _.keys(town)[0], name: _.values(town)[0]})
+        });
+        town_selectize.setValue(existing_citycodes)
+
+
+
 
         var show_hide_function = function(e) {
 
@@ -207,15 +220,15 @@ clara.js_define("admin_geowhere", {
       
 
         // prefill inputs with values
-        _.each(_.get(window, "gon.initial_geo.town"), function(town) {
-          $(".c-geoselect--town  .selectize-input").prepend("<div class='item' data-value='" + _.keys(town)[0] + "'>" + _.values(town)[0] + "</div>")
-        });
-        _.each(_.get(window, "gon.initial_geo.department"), function(department) {
-          $(".c-geoselect--department  .selectize-input").prepend("<div class='item' data-value='" + _.keys(department)[0] + "'>" + _.values(department)[0] + "</div>")
-        });
-        _.each(_.get(window, "gon.initial_geo.region"), function(region) {
-          $(".c-geoselect--region  .selectize-input").prepend("<div class='item' data-value='" + _.keys(region)[0] + "'>" + _.values(region)[0] + "</div>")
-        });
+        // _.each(_.get(window, "gon.initial_geo.town"), function(town) {
+        //   $(".c-geoselect--town  .selectize-input").prepend("<div class='item' data-value='" + _.keys(town)[0] + "'>" + _.values(town)[0] + "</div>")
+        // });
+        // _.each(_.get(window, "gon.initial_geo.department"), function(department) {
+        //   $(".c-geoselect--department  .selectize-input").prepend("<div class='item' data-value='" + _.keys(department)[0] + "'>" + _.values(department)[0] + "</div>")
+        // });
+        // _.each(_.get(window, "gon.initial_geo.region"), function(region) {
+        //   $(".c-geoselect--region  .selectize-input").prepend("<div class='item' data-value='" + _.keys(region)[0] + "'>" + _.values(region)[0] + "</div>")
+        // });
 
     }
 
