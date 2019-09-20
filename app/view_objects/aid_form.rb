@@ -27,8 +27,12 @@ class AidForm < ViewObject
   end
 
   def ability_tree
+    res = {}
     root_rule_id = @page.resource.attributes["rule_id"]
-    _build_h(root_rule_id)
+    if root_rule_id
+      res = _build_h(root_rule_id)
+    end
+    res
   end
 
   def additional_label(attribute)
