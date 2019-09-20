@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.13.0 (20/9/2019)
+-[#1354][FEATURE] consulter une aide avec le champ d'application
+
+
 ## 21.12.2 (19/9/2019)
 -[#1350c][FEATURE] faire marcher le critère géo
 
