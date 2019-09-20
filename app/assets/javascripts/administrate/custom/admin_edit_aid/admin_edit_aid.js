@@ -6,6 +6,26 @@ clara.js_define("admin_edit_aid", {
 
   
   please: /* istanbul ignore next */ function () {
+    
+
+    var selected_rule = $("#aid_rule_id").children("option:selected").html();
+
+    if (_.isNotBlank(selected_rule)) {
+      if (!_.includes(selected_rule, "_box_")) {
+        var warning_msg = "⚠️⚠️⚠️ Attention cette aide a été créée de l'ancienne façon, si vous cliquez sur modifier et que vous enregistrez ensuite le champ d'application, les anciennes règles seront supprimées définitivement"
+        $(".c-modify-appfield").html(warning_msg)
+      } else {
+        $("#aid_rule_id").parent().parent().hide();
+      }
+    } else {
+        var help_msg = "Il n'existe pas encore de conditions pour cette aide."
+        $(".c-modify-appfield").html(help_msg)
+    }
+
+    if ($("body").attr("data-path") === "new_admin_aid_path") {
+        $("#aid_rule_id").parent().parent().hide();
+    }
+
     // QuickNDirty jQuery
     $("#aid_archived_at").attr("placeholder", "JJ/MM/AAAA");
     $(".c-aid-record").click(function(event){

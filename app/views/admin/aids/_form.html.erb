@@ -91,8 +91,10 @@
       </div>
       <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
         <div id="tab_4" class="js-tabcontent">
-          <div class="big-left-margin">
-            Le DE sera éligible à cette aide si il rempli les conditions suivantes :
+          <div class="big-left-margin c-modify-appfield">
+            <div class="c-modify-appfield__ability-tree">
+              <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v.ability_tree } %>
+            </div>
           </div>
           <div class="big-left-margin">
             <%= link_to "Modifier ces conditions ", admin_rule_creation_path(aid: page.resource.slug), {class: "button medium-bottom-margin medium-top-margin"}  %> 

@@ -15,6 +15,7 @@ as well as a link to its edit page.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
+<%- v = view_object(:aid_form, local_assigns) %>
 
 <% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(45)}" } %>
 
@@ -54,6 +55,9 @@ as well as a link to its edit page.
      <li class="js-tablist__item">
       <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Historique des modifications</a>
      </li>
+     <li class="js-tablist__item">
+      <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
+     </li>
     </ul>
    <div id="tab_1" class="js-tabcontent">
     <dl class="c-tabbed-dl">
@@ -91,6 +95,11 @@ as well as a link to its edit page.
    </div>
    <div id="tab_3" class="js-tabcontent">
       <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
+   </div>
+   <div id="tab_4" class="js-tabcontent">
+      <div class="big-left-margin c-display-appfield">
+          <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v.ability_tree } %>
+      </div>
    </div>
   </div>
 </section>
