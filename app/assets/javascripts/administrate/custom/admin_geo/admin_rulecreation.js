@@ -13,6 +13,7 @@ clara.js_define("admin_rulecreation", {
 
         clara.admin_sortable.please();
 
+        var state_history = []
 
         var default_subbox = {
           name: "box",
@@ -101,10 +102,12 @@ clara.js_define("admin_rulecreation", {
               new_default_box.is_editing = !is_initially_not_void
               _.assign(node_current, new_default_box);
            } else if (action.type === 'CANCEL_EDITION') {            
-              if (is_initially_not_void) {
-                var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
-                edit_box.is_editing = false
-              } 
+              // if (is_initially_not_void) {
+              //   var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
+              //   edit_box.is_editing = false
+              // } 
+              var ante_previous_state =  state_history.length - 2;
+              newState = _.cloneDeep(state_history[ante_previous_state]) 
               // newState = _.cloneDeep(window.previous_state)
            } else if (action.type === 'CHANGE_CONDITION') {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
@@ -130,10 +133,10 @@ clara.js_define("admin_rulecreation", {
 
            }
 
-          clara.admin_rulecreation._remove_orphans_recursively(newState)
-          clara.admin_rulecreation._add_missing_conditions(newState)
+          // clara.admin_rulecreation._remove_orphans_recursively(newState)
+          // clara.admin_rulecreation._add_missing_conditions(newState)
 
-          
+            
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
@@ -146,7 +149,8 @@ clara.js_define("admin_rulecreation", {
             }
           }
 
-          window.previous_state = newState
+          state_history.push(newState)
+          // window.previous_state = newState
 
 
           return newState;
