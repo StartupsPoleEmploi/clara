@@ -14,11 +14,17 @@ class CreateScopeAndGeoForAid
       root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
       aid.rule           = root_rule_with_geo
       aid.save
-      _recursively_remove([previous_rule]) if previous_rule
+      if previous_rule && _is_automatically_generated_rule(previous_rule)
+        _recursively_remove([previous_rule])
+      end
     else
       ap "no valid rule"
     end
 
+  end
+
+  def _is_automatically_generated_rule(previous_rule)
+    previous_rule.name.include?("_box")
   end
 
   def _recursively_remove(rules)
