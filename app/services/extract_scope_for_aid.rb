@@ -3,7 +3,7 @@ class ExtractScopeForAid
   def call(aid)
     res = {}
 
-    if aid.is_a?(Aid) && aid.rule
+    if aid.is_a?(Aid) && aid.rule && aid.rule.name.include?("_box")
       concerned_rule = aid.rule
       # rule has a geo criteria
       if (aid.rule.name.end_with?("_box_all")) 

@@ -4,8 +4,13 @@ class ExtractGeoForAid
     res = {}
 
     if aid.is_a?(Aid) && aid.rule && aid.rule.name.end_with?("_box_all")
-      concerned_rule = aid.rule.slave_rules.detect{|r| r.name.end_with?("_box_geo")}
-      res = _fill(JSON.parse(concerned_rule.slave_rules.to_json))
+      multi_geo_rule = aid.rule.slave_rules.detect{|r| r.name.end_with?("_box_geo")}
+      if multi_geo_rule
+        res = _fill(JSON.parse(multi_geo_rule.slave_rules.to_json))
+      else
+        simple_geo_rule = aid.rule.slave_rules.detect{|r| r.name.include?("_citycode_") || r.name.include?("_department_") || r.name.include?("_region_") }
+        res = _fill_simple(simple_geo_rule)
+      end
     else
       res = {
         selection: "tout",
@@ -48,8 +53,34 @@ class ExtractGeoForAid
     ]
   end
 
+  def _fill_simple(rule)
+    res = {
+        selection: "tout",
+        town: [],
+        department: [],
+        region: [],
+    }.with_indifferent_access
+
+    extracted_key = rule["name"].split("_")[2]
+    key = "town" if extracted_key == "citycode"
+    a = rule["name"].split("_")[-3]
+    b = _extract_name(key, rule)
+    h = {}
+    h[a] = b
+    res[key].push(h)
+
+    if rule.name.include?("_not_")
+      res[:selection] = "tout_sauf"
+    else
+      res[:selection] = "rien_sauf"
+    end
+
+    _adjust_region!(res)
+
+    return res.with_indifferent_access
+  end
+
   def _fill(rules)
-    ap rules
     
     h = {
         selection: "tout",

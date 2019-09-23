@@ -26,7 +26,7 @@ class DetailConditionList < ViewObject
     "<ol>" +
       ability[:slave_rules].map.with_index do |sub_ability, indx|
         if sub_ability[:composition_type].blank?
-          "<li>" + _and_or(ability, indx) + _eligibility(sub_ability) + sub_ability[:description] + "</li>"
+          "<li>" + _and_or(ability, indx).to_s  + _eligibility(sub_ability).to_s + sub_ability[:description].to_s  + "</li>"
         else
           "<li>" + _node_for(sub_ability, ability, indx) +  "</li>"
         end
