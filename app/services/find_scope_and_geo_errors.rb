@@ -6,18 +6,11 @@ class FindScopeAndGeoErrors
     editions = _deep_find(:is_editing, trundle, [])
     has_complex_geo = sel == "rien_sauf" || sel == "tout_sauf"
     
-    ap geo
-    ap editions
-    ap editions.any?
-    ap has_complex_geo && geo[:town].blank? && geo[:department].blank? && geo[:region].blank?
-
     if has_complex_geo && geo[:town].blank? && geo[:department].blank? && geo[:region].blank?
       res = "Veuillez renseigner un critère géographique"
     elsif editions.any?
       res = "Veuillez terminer l'édition d'une condition avant de valider le champ d'application"
     end
-
-    # fail "bah ah ah"
 
     res
   end
