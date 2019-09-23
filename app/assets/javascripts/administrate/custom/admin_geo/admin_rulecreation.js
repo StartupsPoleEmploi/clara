@@ -95,7 +95,7 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'EDIT_CONDITION') {            
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               node_current.is_editing = true
-           } else if (action.type === 'indow.state_hisCONDITION') { 
+           } else if (action.type === 'REMOVE_CONDITION') { 
               // make it an orphan, it will be removed later           
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               var new_default_box  = create_new_box();
