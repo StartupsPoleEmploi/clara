@@ -13,6 +13,7 @@ clara.js_define("admin_rulecreation", {
 
         clara.admin_sortable.please();
 
+        var state_history = []
 
         var default_subbox = {
           name: "box",
@@ -45,7 +46,6 @@ clara.js_define("admin_rulecreation", {
         // REDUCER
         var reducer = function(state, action) { 
           var that = clara.admin_rulecreation;
-
 
           // Deep copy of previous state to avoid side-effects
           var newState = _.cloneDeep(state);
@@ -102,10 +102,8 @@ clara.js_define("admin_rulecreation", {
               new_default_box.is_editing = !is_initially_not_void
               _.assign(node_current, new_default_box);
            } else if (action.type === 'CANCEL_EDITION') {            
-              if (is_initially_not_void) {
-                var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
-                edit_box.is_editing = false
-              } 
+              var ante_previous_state =  state_history.length - 2;
+              newState = _.cloneDeep(state_history[ante_previous_state]) 
            } else if (action.type === 'CHANGE_CONDITION') {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
               node_parent.subcombination = action.combination
@@ -130,10 +128,6 @@ clara.js_define("admin_rulecreation", {
 
            }
 
-          clara.admin_rulecreation._remove_orphans_recursively(newState)
-          clara.admin_rulecreation._add_missing_conditions(newState)
-
-          
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
@@ -146,43 +140,10 @@ clara.js_define("admin_rulecreation", {
             }
           }
 
+          state_history.push(newState)
+
           return newState;
         };
-
-// EXAMPLE of gon.initial_state
-
-// {
-//   "name": "root_box",
-//   "subcombination": "OR",
-//   "xvar": null,
-//   "xop": null,
-//   "xval": null,
-//   "xtxt": null,
-//   "subboxes": [
-//     {
-//       "name": "box_1568817526246",
-//       "subcombination": "",
-//       "xvar": "v_allocation_type",
-//       "xop": "not_equal",
-//       "xval": "ASS_AER_APS_AS-FNE",
-//       "xtxt": "Ne pas être bénéficiaire de l'ASS, l'AER, l'APS, ou l'AS-FNE",
-//       "subboxes": [],
-//       "is_editing": false
-//     },
-//     {
-//       "name": "box_1568817534323",
-//       "subcombination": "",
-//       "xvar": "v_cadre",
-//       "xop": "equal",
-//       "xval": "non",
-//       "xtxt": "Ne pas être cadre et/ou en recherche d'un poste d'encadrement",
-//       "subboxes": [],
-//       "is_editing": false
-//     }
-//   ],
-//   "is_editing": false
-// }
-
 
         // STORE
         var get_default_state = function() {
@@ -234,39 +195,6 @@ clara.js_define("admin_rulecreation", {
       return _.size(editable_box_names);
     },
 
-    _remove_orphans_recursively: function(obj) {
-      var that = clara.admin_rulecreation;
-
-      var candidates = []
-
-      that._find_candidates_for_deletion(obj, candidates)
-
-      var had_candidates = _.size(candidates) > 0
-      _.each(candidates, function(candidate) {
-        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
-      })
-
-      if (had_candidates) {
-        that._remove_orphans_recursively(obj)
-      }
-
-    },
-
-    _find_candidates_for_deletion: function(obj, candidates) {
-      var that = clara.admin_rulecreation;
-
-
-      that._parse(obj, function(obj, parent){
-        var no_edition_no_subbox_no_varopval = function(box) {
-          return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
-        }
-        if (no_edition_no_subbox_no_varopval(obj)) {
-          candidates.push({name_of_obj_to_delete: obj.name, parent_array: parent.subboxes})
-        }
-      })
-
-    },
-
     _parse: function(obj, callback, _parent, _indx) {
       var that = clara.admin_rulecreation;
       callback(obj, _parent, _indx)
@@ -287,19 +215,6 @@ clara.js_define("admin_rulecreation", {
       return result;
     },
 
-    _add_missing_conditions: function(obj) {
-      var that = clara.admin_rulecreation;
-      that._parse(obj, function(obj){
-        if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
-          if (obj.subboxes[0].subcombination === "AND") {
-            obj.subcombination = "OR"
-          } else {
-            obj.subcombination = "AND"
-          }
-        }
-      })
-    },
-
     _populate_vars: function(variables) {
       $("#rule_variable_id").empty();
       var res = "<option value></option>"
@@ -318,3 +233,38 @@ clara.js_define("admin_rulecreation", {
 
 });
 
+
+
+// EXAMPLE of gon.initial_state
+
+// {
+//   "name": "root_box",
+//   "subcombination": "OR",
+//   "xvar": null,
+//   "xop": null,
+//   "xval": null,
+//   "xtxt": null,
+//   "subboxes": [
+//     {
+//       "name": "box_1568817526246",
+//       "subcombination": "",
+//       "xvar": "v_allocation_type",
+//       "xop": "not_equal",
+//       "xval": "ASS_AER_APS_AS-FNE",
+//       "xtxt": "Ne pas être bénéficiaire de l'ASS, l'AER, l'APS, ou l'AS-FNE",
+//       "subboxes": [],
+//       "is_editing": false
+//     },
+//     {
+//       "name": "box_1568817534323",
+//       "subcombination": "",
+//       "xvar": "v_cadre",
+//       "xop": "equal",
+//       "xval": "non",
+//       "xtxt": "Ne pas être cadre et/ou en recherche d'un poste d'encadrement",
+//       "subboxes": [],
+//       "is_editing": false
+//     }
+//   ],
+//   "is_editing": false
+// }
