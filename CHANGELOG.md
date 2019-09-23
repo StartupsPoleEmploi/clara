@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.13.3 (23/9/2019)
+-[#1358][BUG] possibilité de réinitialiser une aide existante avec le champ d'application
+
+
 ## 21.13.2 (23/9/2019)
 -[#1357][BUG] warning intempestif
 
