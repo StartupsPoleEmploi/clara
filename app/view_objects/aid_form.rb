@@ -11,6 +11,7 @@ class AidForm < ViewObject
 
 
   def _build_h(rule_id)
+
     actual_rule = @rules.detect{|r| r["id"] == rule_id}
     res = {
       name: actual_rule["name"],
@@ -30,7 +31,11 @@ class AidForm < ViewObject
     res = {}
     root_rule_id = @page.resource.attributes["rule_id"]
     if root_rule_id
-      res = _build_h(root_rule_id)
+      begin
+        res = _build_h(root_rule_id)
+      rescue StandardError
+        res = {}
+      end
     end
     res
   end

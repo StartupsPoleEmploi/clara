@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.13.1 (23/9/2019)
+-[#1356][BUG] rafraîchissement du cache après création
+
+
 ## 21.13.0 (20/9/2019)
 -[#1354][FEATURE] consulter une aide avec le champ d'application
 
