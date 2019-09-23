@@ -15,7 +15,7 @@ class DetailConditionList < ViewObject
         res = "il faut réunir " + _node_for(@ability_tree, {}, 0, true)
       end
     else
-      res = "Le champ d'application n'est pas encore visible. Il le sera d'ici quelques instants."
+      res = "Le champ d'application n'existe pas, ou n'est pas encore visible. Si vous venez de le créer, il apparaîtra d'ici quelques instants."
     end
     raw(res)
   end
