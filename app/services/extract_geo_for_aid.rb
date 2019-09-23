@@ -62,13 +62,11 @@ class ExtractGeoForAid
     }.with_indifferent_access
 
     key = rule["name"].split("_")[2]
-    ap key
     key = "town" if key == "citycode"
     a = rule["name"].split("_")[-3]
     b = _extract_name(key, rule)
     h = {}
     h[a] = b
-    ap key
     res[key].push(h)
 
     if rule.name.include?("_not_")
