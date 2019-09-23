@@ -11,7 +11,7 @@ clara.js_define("admin_edit_aid", {
     var selected_rule = $("#aid_rule_id").children("option:selected").html();
 
     if (_.isNotBlank(selected_rule)) {
-      if (!_.includes(selected_rule, "_box_")) {
+      if (!_.includes(selected_rule, "_box")) {
         var warning_msg = "⚠️⚠️⚠️ Attention cette aide a été créée de l'ancienne façon, si vous cliquez sur modifier et que vous enregistrez ensuite le champ d'application, les anciennes règles seront supprimées définitivement"
         $(".c-modify-appfield").html(warning_msg)
       } else {
