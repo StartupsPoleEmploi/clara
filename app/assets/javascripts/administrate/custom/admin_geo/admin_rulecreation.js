@@ -95,20 +95,15 @@ clara.js_define("admin_rulecreation", {
            } else if (action.type === 'EDIT_CONDITION') {            
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               node_current.is_editing = true
-           } else if (action.type === 'REMOVE_CONDITION') { 
+           } else if (action.type === 'indow.state_hisCONDITION') { 
               // make it an orphan, it will be removed later           
               var node_current = _.deepSearch(newState, "name", function(k, v){return v === action.box_name})
               var new_default_box  = create_new_box();
               new_default_box.is_editing = !is_initially_not_void
               _.assign(node_current, new_default_box);
            } else if (action.type === 'CANCEL_EDITION') {            
-              // if (is_initially_not_void) {
-              //   var edit_box = _.deepSearch(newState, "is_editing", function(k ,v) {return v === true});
-              //   edit_box.is_editing = false
-              // } 
               var ante_previous_state =  state_history.length - 2;
               newState = _.cloneDeep(state_history[ante_previous_state]) 
-              // newState = _.cloneDeep(window.previous_state)
            } else if (action.type === 'CHANGE_CONDITION') {
               var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
               node_parent.subcombination = action.combination
@@ -133,10 +128,6 @@ clara.js_define("admin_rulecreation", {
 
            }
 
-          // clara.admin_rulecreation._remove_orphans_recursively(newState)
-          // clara.admin_rulecreation._add_missing_conditions(newState)
-
-            
 
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
@@ -150,8 +141,6 @@ clara.js_define("admin_rulecreation", {
           }
 
           state_history.push(newState)
-          // window.previous_state = newState
-
 
           return newState;
         };
@@ -204,56 +193,6 @@ clara.js_define("admin_rulecreation", {
       var box_names = _.uniq(_.findNested(obj, "name"))
       var editable_box_names = _.difference(box_names, ["root_box"])
       return _.size(editable_box_names);
-    },
-
-    _remove_grandchilds_recursively: function(obj) {
-      var that = clara.admin_rulecreation;
-
-      var candidates = []
-
-      that._find_candidates_for_deletion(obj, candidates)
-
-      var had_candidates = _.size(candidates) > 0
-      _.each(candidates, function(candidate) {
-        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
-      })
-
-      if (had_candidates) {
-        that._remove_orphans_recursively(obj)
-      }
-
-    },
-
-    _remove_orphans_recursively: function(obj) {
-      var that = clara.admin_rulecreation;
-
-      var candidates = []
-
-      that._find_candidates_for_deletion(obj, candidates)
-
-      var had_candidates = _.size(candidates) > 0
-      _.each(candidates, function(candidate) {
-        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
-      })
-
-      if (had_candidates) {
-        that._remove_orphans_recursively(obj)
-      }
-
-    },
-
-    _find_candidates_for_deletion: function(obj, candidates) {
-      var that = clara.admin_rulecreation;
-
-      that._parse(obj, function(obj, parent){
-        var no_edition_no_subbox_no_varopval = function(box) {
-          return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
-        }
-        if (no_edition_no_subbox_no_varopval(obj)) {
-          candidates.push({name_of_obj_to_delete: obj.name, parent_array: parent.subboxes})
-        }
-      })
-
     },
 
     _parse: function(obj, callback, _parent, _indx) {
