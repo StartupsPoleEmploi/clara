@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.13.4 (23/9/2019)
+-[#1347][BUG] imbrication infinie 
+
+
 ## 21.13.3 (23/9/2019)
 -[#1358][BUG] possibilité de réinitialiser une aide existante avec le champ d'application
 
