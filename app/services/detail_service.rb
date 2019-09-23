@@ -24,11 +24,11 @@ class DetailService
       root_rule = status.merge(root_rule)
     end
 
-    h= {}
+    h = {}
     begin
       h = _build_h(@aid.rule.id, asker.attributes)
     rescue StandardError
-      h= {}
+      h = {}
     end
     
     return {
