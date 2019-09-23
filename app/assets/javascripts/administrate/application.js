@@ -6,7 +6,6 @@
 //= require custom/js_fire
 //= require custom/load_js_per_page
 //= require custom/load_js
-//= require gqueue/gqueue
 //= require jquery/jquery
 //= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery-accessible-modal-delete-window-aria
