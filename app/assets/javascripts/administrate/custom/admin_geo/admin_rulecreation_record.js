@@ -33,9 +33,12 @@ clara.js_define("admin_rulecreation_record", {
           success: function(resp){ 
 
           },
-          error: function(resp){ 
+          error: function(e){ 
             console.log('error !')
-            console.log(resp)
+            console.log(e)
+            $(".flash-error").remove()
+            $("<h2 class='flash-error'>" + e.responseText + "</h2>").insertAfter(".c-rulecreation");
+            window.scrollTo(0, 0); 
           },
         });
 
