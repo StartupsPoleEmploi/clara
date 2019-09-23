@@ -32,7 +32,11 @@ clara.js_define("admin_rulecreation_record", {
           },
           success: function(resp){ 
 
-          }
+          },
+          error: function(resp){ 
+            console.log('error !')
+            console.log(resp)
+          },
         });
 
       })

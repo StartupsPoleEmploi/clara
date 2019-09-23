@@ -27,16 +27,22 @@ module Admin
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
-      url = admin_aid_path(aid_slug)
-      aid = Aid.find_by(slug: aid_slug)
+      error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
 
-      CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+      if error_message.blank?
+        url = admin_aid_path(aid_slug)
+        aid = Aid.find_by(slug: aid_slug)
 
-      flash[:notice] = "Mise à jour du champ d'application effectué."
-      flash.keep(:notice)
-      render js: "document.location = '#{url}'"
+        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+
+        flash[:notice] = "Mise à jour du champ d'application effectué."
+        flash.keep(:notice)
+        render js: "document.location = '#{url}'"        
+      else
+        render :json => error_message, :status => 422
+      end
+
     end
-
 
 
     def _all_explicitations 
