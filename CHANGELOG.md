@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.13.2 (23/9/2019)
+-[#1357][BUG] warning intempestif
+
+
 ## 21.13.1 (23/9/2019)
 -[#1356][BUG] rafraîchissement du cache après création
 
