@@ -215,19 +215,6 @@ clara.js_define("admin_rulecreation", {
       return result;
     },
 
-    _add_missing_conditions: function(obj) {
-      var that = clara.admin_rulecreation;
-      that._parse(obj, function(obj){
-        if (_.isBlank(obj.subcombination) && _.isNotBlank(obj.subboxes)) {
-          if (obj.subboxes[0].subcombination === "AND") {
-            obj.subcombination = "OR"
-          } else {
-            obj.subcombination = "AND"
-          }
-        }
-      })
-    },
-
     _populate_vars: function(variables) {
       $("#rule_variable_id").empty();
       var res = "<option value></option>"
