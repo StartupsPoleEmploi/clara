@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst,min"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -2394,35 +2394,6 @@
   }
 
   /**
-   * The base implementation of methods like `_.max` and `_.min` which accepts a
-   * `comparator` to determine the extremum value.
-   *
-   * @private
-   * @param {Array} array The array to iterate over.
-   * @param {Function} iteratee The iteratee invoked per iteration.
-   * @param {Function} comparator The comparator used to compare values.
-   * @returns {*} Returns the extremum value.
-   */
-  function baseExtremum(array, iteratee, comparator) {
-    var index = -1,
-        length = array.length;
-
-    while (++index < length) {
-      var value = array[index],
-          current = iteratee(value);
-
-      if (current != null && (computed === undefined
-            ? (current === current && !isSymbol(current))
-            : comparator(current, computed)
-          )) {
-        var computed = current,
-            result = value;
-      }
-    }
-    return result;
-  }
-
-  /**
    * The base implementation of `_.filter` without support for iteratee shorthands.
    *
    * @private
@@ -2943,19 +2914,6 @@
       }
     }
     return result;
-  }
-
-  /**
-   * The base implementation of `_.lt` which doesn't coerce arguments.
-   *
-   * @private
-   * @param {*} value The value to compare.
-   * @param {*} other The other value to compare.
-   * @returns {boolean} Returns `true` if `value` is less than `other`,
-   *  else `false`.
-   */
-  function baseLt(value, other) {
-    return value < other;
   }
 
   /**
@@ -8914,30 +8872,6 @@
   /*------------------------------------------------------------------------*/
 
   /**
-   * Computes the minimum value of `array`. If `array` is empty or falsey,
-   * `undefined` is returned.
-   *
-   * @static
-   * @since 0.1.0
-   * @memberOf _
-   * @category Math
-   * @param {Array} array The array to iterate over.
-   * @returns {*} Returns the minimum value.
-   * @example
-   *
-   * _.min([4, 2, 8, 6]);
-   * // => 2
-   *
-   * _.min([]);
-   * // => undefined
-   */
-  function min(array) {
-    return (array && array.length)
-      ? baseExtremum(array, identity, baseLt)
-      : undefined;
-  }
-
-  /**
    * Computes the sum of the values in `array`.
    *
    * @static
@@ -9076,7 +9010,6 @@
   lodash.isTypedArray = isTypedArray;
   lodash.last = last;
   lodash.lowerFirst = lowerFirst;
-  lodash.min = min;
   lodash.stubArray = stubArray;
   lodash.stubFalse = stubFalse;
   lodash.noop = noop;
