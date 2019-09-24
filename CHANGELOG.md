@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.14.0 (23/9/2019)
+-[#1351][FEATURE] renforcer la validation du champ d'application
+
+
 ## 21.13.4 (23/9/2019)
 -[#1347][BUG] imbrication infinie 
 

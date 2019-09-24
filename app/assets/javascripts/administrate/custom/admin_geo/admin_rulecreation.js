@@ -11,8 +11,6 @@ clara.js_define("admin_rulecreation", {
         store_rule.subscribe(function(){clara.admin_apprule_update_button.please(_.cloneDeep(store_rule.getState()))});
 
 
-        clara.admin_sortable.please();
-
         var state_history = []
 
         var default_subbox = {
@@ -129,6 +127,8 @@ clara.js_define("admin_rulecreation", {
            }
 
 
+          clara.admin_rulecreation._remove_orphans_recursively(newState)
+
           if (clara.admin_rulecreation._calculate_actual_boxes_size(newState) === 1) {
             newState.subcombination = ""
           }
@@ -193,6 +193,39 @@ clara.js_define("admin_rulecreation", {
       var box_names = _.uniq(_.findNested(obj, "name"))
       var editable_box_names = _.difference(box_names, ["root_box"])
       return _.size(editable_box_names);
+    },
+
+    _remove_orphans_recursively: function(obj) {
+      var that = clara.admin_rulecreation;
+
+      var candidates = []
+
+      that._find_candidates_for_deletion(obj, candidates)
+
+      var had_candidates = _.size(candidates) > 0
+      _.each(candidates, function(candidate) {
+        _.remove(candidate.parent_array, function(e){return e.name === candidate.name_of_obj_to_delete})
+      })
+
+      if (had_candidates) {
+        that._remove_orphans_recursively(obj)
+      }
+
+    },
+
+    _find_candidates_for_deletion: function(obj, candidates) {
+      var that = clara.admin_rulecreation;
+
+
+      that._parse(obj, function(obj, parent){
+        var no_edition_no_subbox_no_varopval = function(box) {
+          return _.isBlank(box.subboxes) && _.isBlank(box.xop) && box.is_editing !== true
+        }
+        if (no_edition_no_subbox_no_varopval(obj)) {
+          candidates.push({name_of_obj_to_delete: obj.name, parent_array: parent.subboxes})
+        }
+      })
+
     },
 
     _parse: function(obj, callback, _parent, _indx) {
