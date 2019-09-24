@@ -7,9 +7,9 @@ class FindScopeAndGeoErrors
     has_complex_geo = sel == "rien_sauf" || sel == "tout_sauf"
     
     if has_complex_geo && geo[:town].blank? && geo[:department].blank? && geo[:region].blank?
-      res = "Veuillez renseigner un critère géographique"
+      res = "Vous n'avez sélectionné aucun critère géographique"
     elsif editions.any?
-      res = "Veuillez terminer l'édition d'une condition avant de valider le champ d'application"
+      res = "Vous avez commencé à renseigner une condition, merci de terminer votre action ou de l'annuler"
     end
 
     res
