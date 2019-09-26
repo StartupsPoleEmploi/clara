@@ -18,6 +18,7 @@
 //= require jquery/jquery-cache-image
 //= require jquery/jquery-accessible-modal-window-aria
 //= require jquery/jquery-capslockstate
+//= require jquery/jquery-accessible-hide-show-aria.js
 //= require fontfaceobserver/fontfaceobserver
 //= require redux/redux
 //= require storejs/store.legacy
@@ -38,6 +39,7 @@
 //= require custom/contact
 //= require custom/google_analytics_push
 //= require custom/print
+//= require custom/expand_tree
 //= require custom/inscription_questions
 //= require custom/category_questions
 //= require custom/allocation_questions
