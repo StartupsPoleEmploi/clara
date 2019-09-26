@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.15.0 (26/9/2019)
+-[#1362][FEATURE] cacher l'arbre
+
+
 ## 21.14.0 (23/9/2019)
 -[#1351][FEATURE] renforcer la validation du champ d'application
 
