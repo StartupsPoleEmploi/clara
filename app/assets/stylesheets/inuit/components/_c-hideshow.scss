@@ -9,11 +9,4 @@
   font-size: inherit;
   color: inherit;
 }
-/* optional */
-.expandmore__symbol:before {
-  content : '+ ';
-}
-.expandmore__button[aria-expanded=true] > .expandmore__symbol:before,
-.expandmore__button[data-expanded=true] > .expandmore__symbol:before {
-  content : '− ';
-}
+

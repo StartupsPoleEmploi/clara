@@ -31,7 +31,7 @@
           - if has_active_user
             .c-detail-why-container
               = render partial: 'shared/detail_why.haml', locals: ability_tree
-            .c-detail-warning.u-margin-top-small
+            .c-detail-warning.u-margin-top
               %p.u-margin-bottom-none Simulation non contractuelle tenant compte des éléments déclarés et appréciés le #{Time.now.strftime("%d/%m/%Y")}
           - else
             = render partial: 'shared/detail_void.haml'
