@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 21.16.0 (26/9/2019)
+-[#1363][FEATURE] correction bouton arbre
+
+
 ## 21.15.0 (26/9/2019)
 -[#1362][FEATURE] cacher l'arbre
 

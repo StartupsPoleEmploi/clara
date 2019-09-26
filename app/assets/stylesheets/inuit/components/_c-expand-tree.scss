@@ -1,9 +1,10 @@
-.c-expand-tree.c-button {
-  padding: 0;
+.c-expand-tree.c-button, .c-expand-tree.c-button:hover {
+  border-radius: 40px;
   button {
     border: none;
     cursor: pointer;
     font-size: 19px;
+    background-color: #358ED7;
   }
-  margin: 1rem 0;
+  background-color: #358ED7;
 }
