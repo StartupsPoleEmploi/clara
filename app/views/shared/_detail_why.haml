@@ -3,7 +3,7 @@
 - if v.rule.present?
   .c-detail-why
     .c-detail-why__intro
-      %h3.u-margin-bottom-none
+      %h3.u-margin-bottom-small
         - if v.ability == "eligible"
           .c-detail-why--endresult.c-detail-why--eligible
             Vous êtes éligible
@@ -18,8 +18,7 @@
           à cette aide 
 
 
-      %h2.js-expandmore Lorem dolor si amet
-      .js-to_expand
-        here the hidden content
+      %h3.c-expand-tree.c-button.js-expandmore Voir l'explication
+      .js-to_expand.u-margin-top-small
         = render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: local_assigns }
 

@@ -18,6 +18,7 @@
 //= require jquery/jquery-cache-image
 //= require jquery/jquery-accessible-modal-window-aria
 //= require jquery/jquery-capslockstate
+//= require jquery/jquery-accessible-hide-show-aria.js
 //= require fontfaceobserver/fontfaceobserver
 //= require redux/redux
 //= require storejs/store.legacy
