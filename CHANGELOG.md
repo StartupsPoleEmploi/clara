@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.0.0 (27/9/2019)
+-[#1364][FEATURE] changement nom des onglets
+
+
 ## 21.16.0 (26/9/2019)
 -[#1363][FEATURE] correction bouton arbre
 
