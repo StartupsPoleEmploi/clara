@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.0 (27/9/2019)
+-[#1367][FEATURE] Intégrer création du champ d'application directement à l'étape 4 
+
+
 ## 22.1.0 (27/9/2019)
 -[#1366][FEATURE] suppression du bandeau d'aide lors de la création de l'aide
 
