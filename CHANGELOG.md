@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.1.0 (27/9/2019)
+-[#1366][FEATURE] suppression du bandeau d'aide lors de la création de l'aide
+
+
 ## 22.0.0 (27/9/2019)
 -[#1364][FEATURE] changement nom des onglets
 
