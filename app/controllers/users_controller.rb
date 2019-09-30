@@ -27,6 +27,11 @@ class UsersController < Clearance::UsersController
 
   private
 
+
+  def redirect_signed_in_users
+    false
+  end
+
   def url_after_create
     Clearance.configuration.redirect_url
   end
