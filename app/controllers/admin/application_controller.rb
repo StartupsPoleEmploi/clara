@@ -16,6 +16,11 @@ module Admin
 
     before_action :set_cache_headers
 
+    def require_superadmin
+      unless current_user.role === "superadmin" 
+        raise SecurityError, "Not Allowed"
+      end
+    end
 
     def set_cache_headers
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
