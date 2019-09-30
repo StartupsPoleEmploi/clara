@@ -7,11 +7,13 @@
     <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete  %></div>
   </div>
 
-  <%= link_to(
-    "Rubriques",
-    admin_contract_types_path,
-    class: "navigation__link navigation__link--#{nav_link_state('contract_types')}"
-  ) %>      
+  <% if current_user.role === "superadmin" %>
+    <%= link_to(
+      "Rubriques",
+      admin_contract_types_path,
+      class: "navigation__link navigation__link--#{nav_link_state('contract_types')}"
+    ) %>      
+  <% end %>
   <%= link_to(
     "Aides",
     admin_aids_path,
