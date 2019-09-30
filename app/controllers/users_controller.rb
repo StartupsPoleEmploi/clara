@@ -29,7 +29,7 @@ class UsersController < Clearance::UsersController
 
 
   def redirect_signed_in_users
-    # do not remove, or /sign_up URL won't show up
+    false
   end
 
   def url_after_create
