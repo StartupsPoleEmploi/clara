@@ -17,6 +17,15 @@ module Admin
 
     before_action :require_superadmin
 
+    def update
+      if requested_resource.update(resource_params)
+        redirect_to admin_root_path
+      else
+        render :edit, locals: {
+          page: Administrate::Page::Form.new(dashboard, requested_resource),
+        }
+      end
+    end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
