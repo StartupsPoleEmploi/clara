@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.3 (30/9/2019)
+-[#1370][BUG] sign_up non visible
+
+
 ## 22.2.2 (30/9/2019)
 -[#1369][BUG] interdire l'accès à need_filters et explicitations si on n'est pas superadmin
 

@@ -27,6 +27,11 @@ class UsersController < Clearance::UsersController
 
   private
 
+
+  def redirect_signed_in_users
+    # do not remove, or /sign_up URL won't show up
+  end
+
   def url_after_create
     Clearance.configuration.redirect_url
   end
