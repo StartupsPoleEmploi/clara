@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.1 (30/9/2019)
+-[#1368b][FEATURE] ouverture Superadmin possible
+
+
 ## 22.2.0 (30/9/2019)
 -[#1368][FEATURE] Superadmin
 
