@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.2 (30/9/2019)
+-[#1369][BUG] interdire l'accès à need_filters et explicitations si on n'est pas superadmin
+
+
 ## 22.2.1 (30/9/2019)
 -[#1368b][FEATURE] ouverture Superadmin possible
 
