@@ -73,7 +73,7 @@ class AidDashboard < Administrate::BaseDashboard
     :name,
     :contract_type,
     :ordre_affichage,
-    # :rule,
+    :rule,
     :source,
     :short_description,
     :filters,
