@@ -1,10 +1,16 @@
 class UsersController < Clearance::UsersController
 
-  http_basic_authenticate_with name: ENV["ARA_ADMIN_NAME"], password: ENV["ARA_ADMIN_PASSWORD"]
+  # before_action :redirect_signed_in_users, only: [:create, :new]
+    before_action :require_login, only: [:create, :new], raise: false
+    before_action :superadmin_only, only: [:create, :new]
+  # skip_before_action :authorize, only: [:create, :new], raise: false
 
-  before_action :redirect_signed_in_users, only: [:create, :new]
-  skip_before_action :require_login, only: [:create, :new], raise: false
-  skip_before_action :authorize, only: [:create, :new], raise: false
+  def superadmin_only
+    @user = user_from_params
+    unless @user.role === "superadmin" 
+      raise SecurityError, "Not Allowed"
+    end
+  end
 
   def new
     @user = user_from_params
@@ -22,6 +28,7 @@ class UsersController < Clearance::UsersController
     end
   end
 
+
   private
 
   def avoid_sign_in
@@ -33,9 +40,9 @@ class UsersController < Clearance::UsersController
   end
 
   def redirect_signed_in_users
-    if signed_in?
-      redirect_to Clearance.configuration.redirect_url
-    end
+    # if signed_in?
+    #   redirect_to Clearance.configuration.redirect_url
+    # end
   end
 
   def url_after_create

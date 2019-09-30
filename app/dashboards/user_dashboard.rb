@@ -11,7 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    role: Field::String,
+    role: EnumField,
     email: Field::String,
     encrypted_password: Field::String,
     confirmation_token: Field::String,
