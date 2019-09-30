@@ -1,6 +1,7 @@
 module Admin
   class RulesController < Admin::ApplicationController
 
+    before_action :require_superadmin
     before_action :set_global_state, only: [:new, :edit, :create, :update]
 
     def set_global_state

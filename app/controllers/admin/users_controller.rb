@@ -15,10 +15,13 @@ module Admin
     #   User.find_by!(slug: param)
     # end
 
+    before_action :require_superadmin
+
+
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
     def valid_action?(name, resource = resource_class)
-      %w[new edit].exclude?(name.to_s) && super
+      %w[new].exclude?(name.to_s) && super
     end
   end
 end

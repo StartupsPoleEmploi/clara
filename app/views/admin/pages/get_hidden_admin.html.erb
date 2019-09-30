@@ -10,37 +10,61 @@
   <div class="grid-col">
     <div class="c-superadmin-card c-superadmin-users">
       <h2>Utilisateurs</h2>
-      <ul>
-        <li>
-          <%=link_to "Utilisateurs Admin", admin_users_path %>
-        </li>
-        <li>
-          <%=link_to "Utilisateurs API", admin_api_users_path %>
-        </li>
-      </ul>
+      <% if current_user.role === "superadmin" %>
+        <ul>
+          <li>
+            <%=link_to "Utilisateurs Admin", admin_users_path %>
+          </li>
+          <li>
+            <%=link_to "Utilisateurs API", admin_api_users_path %>
+          </li>
+          <li>
+            <%=link_to "Créer un nouvel administrateur", sign_up_path %>
+          </li>
+        </ul>
+      <% else %>
+        <div>
+          <i>Cette partie est reservée aux administrateurs</i>
+        </div>
+      <% end %>
       
     </div>
   </div>
   <div class="grid-col">
     <div class="c-superadmin-card c-superadmin-docs">
       <h2>Documentation</h2>
-      <ul>
-        <li>
-          <%=link_to "Charte éditoriale",  admin_convention_path(Convention.first) %>
-        </li>
-        <li>
-          <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
-        </li>
-        <li>
-          <%=link_to "Liste des variables", admin_variables_path %>
-        </li>      
-        <li>
-          <%=link_to "Explications des règles", admin_explicitations_path %>
-        </li>
-        <li>
-          <%=link_to "Documentation API", "/apidocs", target: "_blank" %>
-        </li>
-      </ul>
+      <% if current_user.role === "superadmin" %>
+        <ul>
+          <li>
+            <%=link_to "Charte éditoriale",  admin_convention_path(Convention.first) %>
+          </li>
+          <li>
+            <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
+          </li>
+          <li>
+            <%=link_to "Liste des variables", admin_variables_path %>
+          </li>      
+          <li>
+            <%=link_to "Explications des règles", admin_explicitations_path %>
+          </li>
+          <li>
+            <%=link_to "Documentation API", "/apidocs", target: "_blank" %>
+          </li>
+        </ul>
+      <% else %>
+        <ul>
+          <li>
+            <%=link_to "Charte éditoriale",  admin_convention_path(Convention.first) %>
+          </li>
+          <li>
+            <%=link_to "Extraction des aides au format CSV", "/admin/aids/export.csv?locale=fr" %>
+          </li>
+          <li>
+            <%=link_to "Documentation API", "/apidocs", target: "_blank" %>
+          </li>
+        </ul>
+      <% end %>
+
     </div>
   </div>
   <div class="grid-col"></div>
@@ -49,33 +73,50 @@
   <div class="grid-col">
     <div class="c-superadmin-card c-superadmin-stats">
       <h2>Statistiques</h2>
-      <ul>
-        <li>
-          <%=link_to "Voir les statistiques", stats_index_path %>
-        </li>
-        <li>
-          <%=link_to "Stratégies de suivi", admin_tracings_path %>
-        </li>
-        <li>
-          <%=link_to "Liste des suivis", admin_traces_path %>
-        </li>      
-      </ul>
+      <% if current_user.role === "superadmin" %>
+        <ul>
+          <li>
+            <%=link_to "Voir les statistiques", stats_index_path %>
+          </li>
+          <li>
+            <%=link_to "Stratégies de suivi", admin_tracings_path %>
+          </li>
+          <li>
+            <%=link_to "Liste des suivis", admin_traces_path %>
+          </li>      
+        </ul>
+      <% else %>
+        <ul>
+          <li>
+            <%=link_to "Voir les statistiques", stats_index_path %>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
   <div class="grid-col">
     <div class="c-superadmin-card c-superadmin-actions">
       <h2>Actions</h2>
-      <ul>
-        <li>
-          <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
-        </li>
-        <li>
-          <%=link_to "Vérification des règles", admin_rule_checks_path %>
-        </li>
-        <li>
-          <%=link_to "Création de ZRR", admin_get_zrr_path %>
-        </li>
-      </ul>      
+      <% if current_user.role === "superadmin" %>
+        <ul>
+          <li>
+            <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
+          </li>
+          <li>
+            <%=link_to "Vérification des règles", admin_rule_checks_path %>
+          </li>
+          <li>
+            <%=link_to "Création de ZRR", admin_get_zrr_path %>
+          </li>
+        </ul>      
+      <% else %>
+        <ul>
+          <li>
+            <%=link_to "Vidage manuel du cache", admin_get_cache_path %>
+          </li>
+        </ul>      
+      <% end %>
+
     </div>
   </div>
   <div class="grid-col"></div>

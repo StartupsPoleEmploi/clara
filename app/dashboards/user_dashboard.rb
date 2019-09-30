@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    role: EnumField,
     email: Field::String,
     encrypted_password: Field::String,
     confirmation_token: Field::String,
@@ -26,6 +27,7 @@ class UserDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :email,
+    :role,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class UserDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :email,
+    :role,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -42,9 +45,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :email,
-    :encrypted_password,
-    :confirmation_token,
-    :remember_token,
+    :role,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

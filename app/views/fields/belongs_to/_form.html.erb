@@ -29,7 +29,7 @@ that displays all possible records to associate with.
   <% end %>
 </div>
 <div class="field-unit__field">
-  <%= f.select field.permitted_attribute, {}, {include_blank: true}, {class: 'my-class'} do %>
+  <%= f.select field.permitted_attribute, {}, {include_blank: true} do %>
     <%= options_for_select(field.associated_resource_options.compact, field.selected_option) %>
   <% end %>
 </div>

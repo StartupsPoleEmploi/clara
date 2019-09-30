@@ -1,10 +1,14 @@
 class UsersController < Clearance::UsersController
 
-  http_basic_authenticate_with name: ENV["ARA_ADMIN_NAME"], password: ENV["ARA_ADMIN_PASSWORD"]
+  before_action :require_login, only: [:create, :new], raise: false
+  before_action :require_superadmin, only: [:create, :new], raise: false
 
-  before_action :redirect_signed_in_users, only: [:create, :new]
-  skip_before_action :require_login, only: [:create, :new], raise: false
-  skip_before_action :authorize, only: [:create, :new], raise: false
+
+  def require_superadmin
+    unless current_user.role === "superadmin" 
+      raise SecurityError, "Not Allowed"
+    end
+  end
 
   def new
     @user = user_from_params
@@ -13,7 +17,6 @@ class UsersController < Clearance::UsersController
 
   def create
     @user = user_from_params
-
     if @user.save
       sign_in @user
       redirect_back_or url_after_create
@@ -23,20 +26,6 @@ class UsersController < Clearance::UsersController
   end
 
   private
-
-  def avoid_sign_in
-    warn "[DEPRECATION] Clearance's `avoid_sign_in` before_filter is " +
-      "deprecated. Use `redirect_signed_in_users` instead. " +
-      "Be sure to update any instances of `skip_before_filter :avoid_sign_in`" +
-      " or `skip_before_action :avoid_sign_in` as well"
-    redirect_signed_in_users
-  end
-
-  def redirect_signed_in_users
-    if signed_in?
-      redirect_to Clearance.configuration.redirect_url
-    end
-  end
 
   def url_after_create
     Clearance.configuration.redirect_url

@@ -56,7 +56,7 @@ class AidDashboard < Administrate::BaseDashboard
     :ordre_affichage,
     :updated_at,
     :slug,
-    :rule,
+    # :rule,
     :contract_type,
     :archived_at,
     :what,

@@ -1,6 +1,9 @@
 module Admin
   class FiltersController < Admin::ApplicationController
 
+    before_action :require_superadmin
+    
+
     def index
       search_term = params[:search].to_s.strip
       resources = Administrate::Search.new(scoped_resource,

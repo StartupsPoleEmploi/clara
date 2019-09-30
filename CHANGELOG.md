@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.0 (30/9/2019)
+-[#1368][FEATURE] Superadmin
+
+
 ## 22.1.0 (27/9/2019)
 -[#1366][FEATURE] suppression du bandeau d'aide lors de la création de l'aide
 

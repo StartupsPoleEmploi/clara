@@ -62,7 +62,7 @@ as well as a link to its edit page.
    <div id="tab_1" class="js-tabcontent">
     <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb < 11 %>
+        <% if index_nb < 9 %>
           <dt class="attribute-label" id="<%= attribute.name %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",
@@ -79,7 +79,7 @@ as well as a link to its edit page.
    <div id="tab_2" class="js-tabcontent">
     <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb > 10 %>
+        <% if index_nb > 8 %>
           <dt class="attribute-label" id="<%= attribute.name %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",
