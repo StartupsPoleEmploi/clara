@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.3.0 (1/10/2019)
+-[#1367][FEATURE] étape 4
+
+
 ## 22.2.3 (30/9/2019)
 -[#1370][BUG] sign_up non visible
 
