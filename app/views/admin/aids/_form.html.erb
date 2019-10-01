@@ -1,4 +1,5 @@
 <%- v = view_object(:aid_form, local_assigns) %>
+<%- current_path = GetCurrentPathService.new(request).call %>
 
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
@@ -29,7 +30,7 @@
         <li class="js-tablist__item">
           <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Paramètres</a>
         </li>
-        <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+        <% if current_path == "edit_admin_aid_path" || current_path == "new_admin_aid_path" %>
           <li class="js-tablist__item">
             <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
           </li>
@@ -89,7 +90,7 @@
           <% end %>
         <% end %>
       </div>
-      <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+      <% if current_path == "edit_admin_aid_path" %>
         <div id="tab_4" class="js-tabcontent">
           <div class="big-left-margin c-modify-appfield">
             <div class="c-modify-appfield__ability-tree">
@@ -98,6 +99,20 @@
           </div>
           <div class="big-left-margin">
             <%= link_to "Modifier ces conditions ", admin_rule_creation_path(aid: page.resource.slug), {class: "button medium-bottom-margin medium-top-margin"}  %> 
+          </div>
+        </div>        
+      <% end %>
+      <% if current_path == "new_admin_aid_path" %>
+        <div id="tab_4" class="js-tabcontent">
+          <div class="big-left-margin c-modify-appfield">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="big-left-margin">
           </div>
         </div>        
       <% end %>
