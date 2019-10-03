@@ -15,9 +15,9 @@
   padding: .5em .5em;
   cursor: pointer;
   color: $action-color;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 1px solid #e4e8f0;
+  border-left: 1px solid #e4e8f0;
+  border-right: 1px solid #e4e8f0;
 }
 
 [aria-selected="true"].example-tabs-tabs__link {
@@ -32,7 +32,7 @@
 .js-tabcontent[aria-hidden=true] { display: none; }
 
 .example-tabs-tabs__content {
-  border: 2px solid black;
+  border: 1px solid #e4e8f0;
   margin-top: -.12rem;
 }
 
@@ -48,4 +48,8 @@
   padding-bottom: .5rem;
   border-bottom: 1px solid lightgray;
   margin-bottom: 1.5rem;
+}
+
+.field-unit__field input, textarea, .selectize-input, select {
+  border-width: 1px;
 }
