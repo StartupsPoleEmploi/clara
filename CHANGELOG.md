@@ -1,7 +1,11 @@
 # CLARA Changelog
 
 
-## 22.2.3 (30/9/2019)
+## 22.2.4 (4/10/2019)
+-[#1381][BUG] ajouter un T à rempli
+
+
+## 22.2.3 (1/10/2019)
 -[#1370][BUG] sign_up non visible
 
 
