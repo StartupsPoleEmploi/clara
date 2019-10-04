@@ -20,7 +20,8 @@ module Admin
       authorize_resource(resource)
 
       if resource.save
-        redirect_to admin_rule_creation_path(aid: resource.slug)
+        redirect_to new_admin_aid_path(stage: 2)
+        # redirect_to admin_rule_creation_path(aid: resource.slug)
       else
         render :new, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
