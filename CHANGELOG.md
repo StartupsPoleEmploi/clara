@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.2.5 (4/10/2019)
+-[#1379][BUG] pouvoir réinitialiser le champ d'application
+
+
 ## 22.2.4 (4/10/2019)
 -[#1381][BUG] ajouter un T à rempli
 
