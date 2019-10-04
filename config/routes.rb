@@ -69,6 +69,8 @@ Rails.application.routes.draw do
       get 'get_all_filters_menu'
       get 'get_need_menu'
       get 'get_custom_filter_menu'
+      get 'get_reinit'
+      post 'post_reinit'
       get 'get_zrr'
       post 'post_zrr'
       get 'get_cache'

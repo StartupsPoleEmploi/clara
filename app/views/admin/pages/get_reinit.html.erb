@@ -1,0 +1,24 @@
+
+<div style="margin-top: 2rem;padding:2rem;">
+Vous pouvez ici réinitialiser le champ d'application d'une aide en entrant son slug ici :
+<%= form_with url: admin_post_reinit_path, local:false, id: 'admin_post_reinit_form' do |form| %>
+  <%= form.text_area :slug_data, cols: 20, rows: 1, placeholder: "mon-aide-buguee", id: "user_input" %>
+  <%= form.submit 'réinitialiser le champ d\'application de cette aide'%>
+<% end %>
+<div id="result" style="margin-top: 2rem"></div>
+</div>
+<script> 
+  function defer1(method) { if (window.jQuery) { admin_load_reinit_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
+  function admin_load_reinit_page() {
+    $("#admin_post_reinit_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("load reinit is a success ! detail below : "); 
+        console.log(data); 
+        console.log(event); 
+        $("#result").html(data.message)
+        $("#user_input").val("")
+      });     
+  }
+  defer1();
+</script>
+

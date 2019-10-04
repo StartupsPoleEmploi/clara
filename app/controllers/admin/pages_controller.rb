@@ -62,6 +62,28 @@ module Admin
       Trace.destroy_all
     end
 
+    # load reinit
+    def get_reinit
+    end
+    def post_reinit
+      slug = _slug_data
+      a = Aid.find_by(slug: slug)
+      if a
+        a.rule = nil
+        a.save
+        message = "👍👍👍Le champ d'application de l'aide \"#{a.name}\" a été réinitialisé" 
+      else
+        message = "⚠️⚠️⚠️échec : aucune aide pour le slug #{slug}" 
+      end
+      render json: {
+        message: message,
+        status: "ok"
+      }
+    end
+    def _slug_data
+      params.extract!(:slug_data).permit(:slug_data).to_h["slug_data"]
+    end
+
     # load zrr
     def get_zrr
     end
@@ -76,6 +98,10 @@ module Admin
         status: "ok"
       }
     end
+    def _csv_data
+      params.extract!(:csv_data).permit(:csv_data).to_h["csv_data"]
+    end
+
 
     # cache
     def get_cache
