@@ -1,6 +1,6 @@
-class RehydrateAsker
+class HydrateAsker
 
-  def call!(asker_attributes)
+  def call(asker_attributes)
     unless _valid_args(asker_attributes)
       raise ArgumentError.new("Arguments must be attributes of an Asker")
     end

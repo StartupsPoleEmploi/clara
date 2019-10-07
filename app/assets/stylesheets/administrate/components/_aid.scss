@@ -110,6 +110,7 @@ button.js-collapse {
   }
 }
 
+// Hack waiting for value "non_inscrit" to be definetly removed
 select option[value=non_inscrit] {
   display: none;
 }
