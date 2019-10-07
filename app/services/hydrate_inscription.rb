@@ -5,7 +5,7 @@ class HydrateInscription
     if a.v_duree_d_inscription != "non_inscrit"
       a.v_inscrit = "oui"
     else
-      a.v_inscrit = "non"
+      a.v_inscrit = "en_recherche"
     end
     a
   end
