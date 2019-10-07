@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.4.0 (7/10/2019)
+-[#1383][FEATURE] créer le champ calculé "est inscrit à Pôle Emploi"
+
+
 ## 22.3.0 (7/10/2019)
 -[#1385][TYPO] Le DE => La personne
 
