@@ -66,11 +66,11 @@ clara.js_define("admin_trundle_subscriber", {
 
       // main expl update
       if (clara.admin_rulecreation._calculate_actual_boxes_size(s) === 1) {
-        $(".c-apprulexpl-main-condition").append("il remplit <strong>la</strong> condition suivante :")
+        $(".c-apprulexpl-main-condition").append("elle remplit <strong>la</strong> condition suivante :")
       } else if (s.subcombination === "AND") {
-        $(".c-apprulexpl-main-condition").append("il remplit <strong>toutes</strong> les conditions suivantes :")
+        $(".c-apprulexpl-main-condition").append("elle remplit <strong>toutes</strong> les conditions suivantes :")
       } else if (s.subcombination === "OR") {
-        $(".c-apprulexpl-main-condition").append("il remplit <strong>au moins une</strong> des conditions suivantes :")
+        $(".c-apprulexpl-main-condition").append("elle remplit <strong>au moins une</strong> des conditions suivantes :")
       }
 
 
