@@ -153,6 +153,13 @@ variable_list = [
     name_translation: "geo : numéro de voie", 
     elements_translation: "",
     is_visible: false},
+  {name: "v_inscrit",       
+    variable_kind: "selectionnable", 
+    description: nil, 
+    elements: "oui,en_recherche",
+    name_translation: "est inscrit à Pôle Emploi", 
+    elements_translation: "oui,en recherche", 
+    is_visible: true},
 ]
 
 # First time creation
@@ -526,6 +533,14 @@ explicitation_list = [
       :equal, 
       "non", 
       "Ne pas être bénéficiaire d'une protection internationale"],
+  ["v_inscrit", 
+      :equal, 
+      "oui", 
+      "Être inscrit à Pôle Emploi"],
+  ["v_inscrit", 
+      :equal, 
+      "en_recherche", 
+      "À la recherche d'un emploi sans être inscrit à Pôle Emploi"],
 ]
 
 explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible_arg, template_arg|

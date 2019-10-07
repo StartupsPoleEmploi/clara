@@ -3,7 +3,6 @@ class DetailConditionList < ViewObject
 
   def after_init(args)
     @ability_tree = hash_for(args[:ability_tree])
-    ap @ability_tree
   end
 
   def html_output

@@ -6,7 +6,6 @@ class CreateScopeAndGeoForAid
     geo = h[:geo]
 
     if _has_at_least_one_valid_rule(trundle)
-      ap "has at least one valid rule"
       previous_rule      = aid.rule
       uuid               = _create_uuid
       rules_no_geo       = _create_rules_no_geo(trundle, uuid)

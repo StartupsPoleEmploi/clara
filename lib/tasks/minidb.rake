@@ -70,7 +70,7 @@ namespace :minidb do
 
       # Only test user
       User.destroy_all
-      User.new(email:"foo@bar.com", password: "foo").save
+      User.new(email:"foo@bar.com", password: "foo", role: "superadmin").save
 
       Stat.destroy_all
       Stat.new(
