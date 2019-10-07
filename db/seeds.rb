@@ -540,7 +540,7 @@ explicitation_list = [
   ["v_inscrit", 
       :equal, 
       "en_recherche", 
-      "À la recherche d'un emploi sans forcément être inscrit"],
+      "À la recherche d'un emploi sans être inscrit à Pôle Emploi"],
 ]
 
 explicitation_list.each do |variable_name_arg, operator_kind_arg, value_eligible_arg, template_arg|
