@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.3.0 (7/10/2019)
+-[#1385][TYPO] Le DE => La personne
+
+
 ## 22.2.6 (4/10/2019)
 -[#1377][BUG] date arrêt diffusion
 
