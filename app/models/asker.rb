@@ -6,6 +6,7 @@ class Asker < ActiveType::Object
   attribute :v_diplome,                   :string
   attribute :v_category,                  :string
   attribute :v_duree_d_inscription,       :string
+  attribute :v_inscrit,                   :string
   attribute :v_allocation_value_min,      :string
   attribute :v_allocation_type,           :string
   attribute :v_qpv,                       :string
