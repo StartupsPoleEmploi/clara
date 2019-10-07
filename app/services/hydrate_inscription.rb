@@ -1,13 +1,13 @@
 class HydrateInscription
 
   def call(asker_attributes)
-    h = asker_attributes.with_indifferent_access
-    if h[:v_duree_d_inscription] != "non_inscrit"
-      h[:v_inscrit] = "oui"
+    a = Asker.new(asker_attributes)
+    if a.v_duree_d_inscription != "non_inscrit"
+      a.v_inscrit = "oui"
     else
-      h[:v_inscrit] = "non"
+      a.v_inscrit = "non"
     end
-    h
+    a
   end
 
 end
