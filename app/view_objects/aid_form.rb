@@ -47,8 +47,11 @@ class AidForm < ViewObject
     actual_translation    
   end
 
-  def hide_field?(attribute)
-    attr_name(attribute) == "archived_at" && @attr_id.blank?
+  def hide_field?(attribute, role="")
+    cond1 = attr_name(attribute) == "archived_at" && @attr_id.blank?
+    cond2 = attr_name(attribute) == "custom_filters" && role != "superadmin"
+    cond3 = attr_name(attribute) == "need_filters" && role != "superadmin"
+    cond1 || cond2 || cond3
   end
 
   def attr_name(attribute)
@@ -75,6 +78,9 @@ class AidForm < ViewObject
       key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
     end
     res_h
+  end
+
+  def can_add_special_filter(attr)
   end
 
 end

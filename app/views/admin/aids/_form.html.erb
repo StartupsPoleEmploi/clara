@@ -75,8 +75,8 @@
       </div>
       <div id="tab_3" class="js-tabcontent">
         <% page.attributes.each_with_index do |attribute, index_nb| %>
-          <% if index_nb < 10 && index_nb > 4 %>
-            <% unless v.hide_field?(attribute) %>
+          <% if index_nb < 9 && index_nb > 4 %>
+            <% unless v.hide_field?(attribute, current_user.role) %>
               <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
                 <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
                 <% if v.errored?(attribute) -%>
