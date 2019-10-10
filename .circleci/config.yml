@@ -41,7 +41,7 @@ jobs:
           command: bin/rails test
 
       # Needs coverage
-      - run: npm install -g istanbul
+      - run: sudo npm install -g istanbul
 
       - run:
           name: run JS test
