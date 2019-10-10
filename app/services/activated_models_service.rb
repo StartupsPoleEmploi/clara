@@ -2,7 +2,7 @@ class ActivatedModelsService
   include Singleton
 
   def initialize
-    regenerate
+    regenerate unless Rails.env.test?
   end
 
   def regenerate
