@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.5.0 (10/10/2019)
+-[#1391][TECH] ajout de cypress
+
+
 ## 22.4.0 (7/10/2019)
 -[#1383][FEATURE] créer le champ calculé "est inscrit à Pôle Emploi"
 
