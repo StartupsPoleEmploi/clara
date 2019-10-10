@@ -3,6 +3,15 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.0-node-browsers
+        environment:
+          PGHOST: localhost
+          PGUSER: ara
+          RAILS_ENV: test
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: ara
+          POSTGRES_DB: ara_test
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
       - setup_remote_docker: 
