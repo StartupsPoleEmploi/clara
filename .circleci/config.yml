@@ -39,3 +39,7 @@ jobs:
       - run:
           name: run ruby test
           command: bin/rails test
+
+      - run:
+          name: run JS test
+          command: bundle exec teaspoon
