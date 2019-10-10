@@ -40,6 +40,9 @@ jobs:
           name: run ruby test
           command: bin/rails test
 
+      # Needs coverage
+      - run: npm install -g istanbul
+
       - run:
           name: run JS test
           command: bundle exec teaspoon
