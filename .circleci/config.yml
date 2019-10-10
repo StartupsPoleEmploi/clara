@@ -1,12 +1,32 @@
- version: 2
- jobs:
-   build:
-     working_directory: ~/clara
-     docker:
-       - image: circleci/ruby:2.6.0-node-browsers
-       environment:
-         RAILS_ENV: test
-     steps:
-       - checkout
-       - run: echo "A first hello"
-       - run: bin/rails test
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.0-node-browsers
+    steps:
+      - checkout
+      - setup_remote_docker: 
+         docker_layer_caching: true 
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: clara-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: gem install bundler -v 1.16.1 && bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: clara-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+      
+      # - run:
+      #     name: run ruby install
+      #     command: gem install bundler -v 1.16.1 && bundle install --jobs=4 --retry=3 --path vendor/bundle
+      
+      - run:
+          name: run ruby test
+          command: bin/rails test
