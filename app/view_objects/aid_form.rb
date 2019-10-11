@@ -80,7 +80,4 @@ class AidForm < ViewObject
     res_h
   end
 
-  def can_add_special_filter(attr)
-  end
-
 end
