@@ -4,7 +4,7 @@
 
   <div class="medium-bottom-margin">
     <strong><%=current_user.email%></strong>
-    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete  %></div>
+    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete, class: "js-sign-out"  %></div>
   </div>
 
   <% if current_user.role === "superadmin" %>
