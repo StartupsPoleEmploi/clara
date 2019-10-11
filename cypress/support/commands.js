@@ -24,8 +24,6 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 Cypress.Commands.add('connect_as_simple_admin', () => { 
-    cy.visit('/conditions-generales-d-utilisation')
-    cy.clearCookies()
     cy.visit('/sign_in')
     cy.get('#session_email')
       .type('admin@clara.com').should('have.value', 'admin@clara.com')
@@ -50,8 +48,6 @@ Cypress.Commands.add('stage_3_has_few_fields', () => {
     cy.get('#tab_3 .field-unit .field-unit__label label').last().should('have.text', "Filtres sur la page de résultat")
  });
 Cypress.Commands.add('connect_as_super_admin', () => { 
-    cy.visit('/conditions-generales-d-utilisation')
-    cy.clearCookies()
     cy.visit('/sign_in')
     cy.get('#session_email')
       .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
