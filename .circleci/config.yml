@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.0-node-browsers
+      - image: circleci/ruby:2.6.0-node-browsers-legacy
         environment:
           PGHOST: localhost
           PGUSER: ara
@@ -40,24 +40,7 @@ jobs:
           name: run ruby test
           command: bin/rails test
 
-      - restore_cache:
-          key: v1-phantomjs-2.1.1-{{arch}}    
-            
-      - run:
-          name: Install phantomjs
-          command: |
-            if ! [ $(which phantomjs) ]; then                
-              sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
-            fi
-                  
-            sudo chmod ugo+x /usr/local/bin/phantomjs
-            sudo npm install -g istanbul
-
-      - save_cache:
-          key: v1-phantomjs-2.1.1-{{arch}}
-          paths:            
-            - /usr/local/bin/phantomjs
-
+      - run: sudo npm install -g istanbul
 
       - run:
           name: run JS test
