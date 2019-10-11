@@ -22,10 +22,10 @@
     <%= link_to(
       t(
         "helpers.aid.creation",
-        name: page.resource_name.titleize.downcase
+        name: page.resource_name.titleize.downcase,
       ),
       [:new, namespace, page.resource_path],
-      class: "button",
+      class: "button js-create-new-aid-button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>
   <div>

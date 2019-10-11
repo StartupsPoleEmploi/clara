@@ -41,7 +41,7 @@ jobs:
           command: bin/rails test
 
       - restore_cache:
-          key: v1-phantomjs-2.1.1    
+          key: v1-phantomjs-2.1.1-{{arch}}    
             
       - run:
           name: Install phantomjs
@@ -54,7 +54,7 @@ jobs:
             sudo npm install -g istanbul
 
       - save_cache:
-          key: v1-phantomjs-2.1.1
+          key: v1-phantomjs-2.1.1-{{arch}}
           paths:            
             - /usr/local/bin/phantomjs
 
