@@ -44,9 +44,10 @@ class SessionsController < Clearance::SessionsController
   end
 
   def redirect_signed_in_users
-    if signed_in?
-      redirect_to url_for_signed_in_users
-    end
+    false
+    # if signed_in?
+    #   redirect_to url_for_signed_in_users
+    # end
   end
 
   def url_after_create

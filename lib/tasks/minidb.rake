@@ -70,7 +70,8 @@ namespace :minidb do
 
       # Only test user
       User.destroy_all
-      User.new(email:"foo@bar.com", password: "foo", role: "superadmin").save
+      User.new(email:"superadmin@clara.com", password: "foo", role: "superadmin").save
+      User.new(email:"admin@clara.com", password: "foo", role: "admin").save
 
       Stat.destroy_all
       Stat.new(
@@ -110,7 +111,7 @@ namespace :minidb do
   task :dump => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara > #{Rails.root}/db/mylocaldb.dumped"
+      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara_dev > #{Rails.root}/db/mylocaldb.dump"
     end
     puts cmd
     exec cmd
@@ -120,7 +121,7 @@ namespace :minidb do
   task :restore => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara #{Rails.root}/db/mylocaldb.dumped"
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/db/mylocaldb.dump"
     end
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke

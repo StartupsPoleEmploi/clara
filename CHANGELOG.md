@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.6.0 (10/10/2019)
+-[#1374][FEATURE] faire le ménage des filtres inutilisés
+
+
 ## 22.5.0 (10/10/2019)
 -[#1391][TECH] ajout de cypress
 

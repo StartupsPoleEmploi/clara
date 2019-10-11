@@ -4,7 +4,7 @@ Rails.application.configure do
  
   config.middleware.use RackSessionAccess::Middleware
 
-  config.assets.compile = false
+  config.assets.compile = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.cache_store = :null_store
