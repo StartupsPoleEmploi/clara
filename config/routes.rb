@@ -58,6 +58,9 @@ Rails.application.routes.draw do
     resources :aids do
       get :export, on: :collection
     end
+    namespace :aid_creation do
+      get "new_aid_stage_1"
+    end
     resources :rules do 
       get 'resolve', on: :member
       post 'save_simulation', on: :member

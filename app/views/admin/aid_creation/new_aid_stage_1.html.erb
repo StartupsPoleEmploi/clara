@@ -1,0 +1,21 @@
+<%- v = view_object(:new_aid_one, local_assigns) %>
+
+
+<section class="c-newaid">
+  <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2aids" %>
+  <h1 class="c-newaid-title">Créer une aide</h1>
+  <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+
+    <% page.attributes.each_with_index do |attribute, index_nb| %>
+      <% if v.show_field?(attribute) %>
+        <div class="field-unit field-unit--<%= attribute.html_class %>">
+          <%= render_field attribute, f: f %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <% end %>
+</section>
+
+
+

@@ -1,7 +1,7 @@
 module Admin
   class AidsController < Admin::ApplicationController
     include AdministrateExportable::Exporter
-    
+
 
     def valid_action?(name, resource = resource_class)
       if current_user.role != "superadmin"

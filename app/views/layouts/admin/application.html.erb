@@ -22,6 +22,7 @@ By default, it renders:
   <title>
     <%= content_for(:title) %> - Clara
   </title>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto', media: 'all' %>
   <%= render "stylesheet" %>
   <%= csrf_meta_tags %>
 </head>

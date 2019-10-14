@@ -1,0 +1,49 @@
+.c-newaid {
+  padding: 16px;
+}
+
+.c-newaid-back2aids {
+  width: 151px;
+  height: 27px;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.5;
+  letter-spacing: normal;
+  color: #057dbc;
+  margin-bottom: 13px;
+}
+
+.c-newaid-title {
+  width: 273px;
+  height: 32px;
+  font-size: 27px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+}
+
+.c-newaid {
+  .field-unit {
+    align-items: initial;
+    display: initial;
+    margin-bottom: initial;
+    position: initial;
+    width: initial;
+  }
+  .field-unit__label {
+    float: initial;
+    margin-left: initial;
+    text-align: initial;
+    width: initial;
+  }
+  .field-unit__field {
+    float: initial;
+    margin-left: initial;
+    width: 45%;
+  }
+}
