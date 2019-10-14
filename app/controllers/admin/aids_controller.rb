@@ -2,6 +2,15 @@ module Admin
   class AidsController < Admin::ApplicationController
     include AdministrateExportable::Exporter
     
+
+    def valid_action?(name, resource = resource_class)
+      if current_user.role != "superadmin"
+        %w[destroy].exclude?(name.to_s) && super
+      else
+        true
+      end
+    end
+
     def find_resource(param)
       Aid.find_by!(slug: param)
     end
