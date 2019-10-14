@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.7.0 (14/10/2019)
+-[#1393][FEATURE] un simple admin ne peut pas supprimer une aide
+
+
 ## 22.6.0 (10/10/2019)
 -[#1374][FEATURE] faire le ménage des filtres inutilisés
 
