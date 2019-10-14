@@ -8,27 +8,49 @@
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 45%">
       <div class="c-newaid-stages">
-        <div class="c-newaid-stage c-newaid-stage--active">Étape 1</div>
-        <div class="c-newaid-stage c-newaid-stage--inactive">Étape 2</div>
-        <div class="c-newaid-stage c-newaid-stage--inactive">Étape 3</div>
-        <div class="c-newaid-stage c-newaid-stage--inactive">Étape 4</div>
-        <div class="c-newaid-stage c-newaid-stage--inactive">Étape 5</div>
+        <div class="c-newaid-stage c-newaid-stage--active">
+          <div class="c-newaid-stageinside">
+            Étape 1
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 2
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 3
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 4
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 5
+          </div>
+        </div>
       </div>
 
-      <div class="c-newaid-subtitle"><strong>Étape 1</strong> : informations générales</div>
+      <div class="c-newaid-belowstages">
+        <div class="c-newaid-subtitle"><strong>Étape 1</strong> : informations générales</div>
 
 
-      <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+        <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
 
-        <% page.attributes.each_with_index do |attribute, index_nb| %>
-          <% if v.show_field?(attribute) %>
-            <div class="field-unit field-unit--<%= attribute.html_class %>">
-              <%= render_field attribute, f: f %>
-            </div>
+          <% page.attributes.each_with_index do |attribute, index_nb| %>
+            <% if v.show_field?(attribute) %>
+              <div class="field-unit field-unit--<%= attribute.html_class %>">
+                <%= render_field attribute, f: f %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
 
-      <% end %>      
+        <% end %>              
+      </div>
     </div>    
     <div class="simple-col">
       <%= render "aid_preview" %>    

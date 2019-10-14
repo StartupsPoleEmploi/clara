@@ -21,6 +21,7 @@
   letter-spacing: normal;
   color: #333333;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .c-newaid {
@@ -91,6 +92,9 @@
   padding-left: 0;
 }
 
+.c-newaid-stageinside {
+  padding: .3rem .9rem;
+}
 
 .c-newaid-stage--active {  
   font-family: Roboto;
@@ -102,6 +106,11 @@
   letter-spacing: normal;
   text-align: center;
   color: #1b1b1b;
+  border-radius: 2px;
+  border: solid 1px #e4e8f0;
+  z-index: 12;
+  background-color: white;
+  border-bottom: none;
 }
 
 .c-newaid-stage--inactive {  
@@ -117,7 +126,6 @@
 }
 
 .c-newaid-stages {
-  padding: 1rem 0;
 }
 
 .main-content {
@@ -133,5 +141,13 @@
 }
 
 .c-newaid-leftpanel {
+  // padding: 1rem;
+}
+
+.c-newaid-belowstages {
   padding: 1rem;
+  border-radius: 2px;
+  border: solid 1px #e4e8f0;
+  margin-top: -.1rem;
+  margin-right: 1rem;
 }
