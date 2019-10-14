@@ -40,10 +40,42 @@
     margin-left: initial;
     text-align: initial;
     width: initial;
+    label {
+      width: 109px;
+      height: 21px;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #333333;
+    }
   }
   .field-unit__field {
     float: initial;
     margin-left: initial;
     width: 45%;
   }
+  .field-unit__field input, textarea, .selectize-input, select {
+    width: 386px;
+    height: 39px;
+    border-radius: 4px;
+    border: solid 1px #dddbda;
+    background-color: #ffffff;
+  }
+}
+
+.c-newaid-subtitle {
+  width: 299px;
+  height: 40px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.9444444444444444;
+  letter-spacing: normal;
+  color: #1b1b1b;
 }
