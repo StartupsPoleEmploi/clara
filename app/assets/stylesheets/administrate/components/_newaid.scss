@@ -87,7 +87,8 @@
 }
 
 .c-newaid-stage {
-  padding: 0 1rem;
+  padding: 0 .5rem;
+  padding-left: 0;
 }
 
 
@@ -104,8 +105,6 @@
 }
 
 .c-newaid-stage--inactive {  
-  width: 100px;
-  height: 40px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -119,4 +118,20 @@
 
 .c-newaid-stages {
   padding: 1rem 0;
+}
+
+.main-content {
+  box-shadow: 0 0 5px 0 rgba(232, 232, 232, 0.53);
+  background-color: #ffffff;
+}
+
+.navigation {
+  // box-shadow: 1px -25px 10px 0 #d9e4ec;
+  background-color: #ffffff;
+  padding-left:1rem;
+  margin-right: 2rem;
+}
+
+.c-newaid-leftpanel {
+  padding: 1rem;
 }
