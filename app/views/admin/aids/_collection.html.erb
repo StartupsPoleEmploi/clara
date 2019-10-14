@@ -65,7 +65,7 @@
           <td><%= link_to(
             t("administrate.actions.destroy"),
             [namespace, resource],
-            class: "text-color-red",
+            class: "text-color-red js-delete-aid",
             method: :delete,
             data: { confirm: t("administrate.actions.confirm") }
           ) if show_action? :destroy, resource %></td>
