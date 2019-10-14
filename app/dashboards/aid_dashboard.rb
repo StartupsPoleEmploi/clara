@@ -93,5 +93,5 @@ class AidDashboard < Administrate::BaseDashboard
   def display_resource(aid)
     aid.name
   end
-  
+
 end

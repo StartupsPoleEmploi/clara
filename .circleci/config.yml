@@ -31,11 +31,11 @@ jobs:
         key: clara-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-      
-      # - run:
-      #     name: run ruby install
-      #     command: gem install bundler -v 1.16.1 && bundle install --jobs=4 --retry=3 --path vendor/bundle
-      
+            
+      - run:
+          name: run db migrations
+          command: bin/rails db:migrate RAILS_ENV=test
+
       - run:
           name: run ruby test
           command: bin/rails test
