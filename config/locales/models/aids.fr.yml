@@ -1,7 +1,7 @@
 fr:
   activerecord:
     labels: &labels
-      name: Nom
+      name: Nom de l'aide
       what: Description
       how_much: "Contenu de l'aide"
       how_and_when: Comment faire la demande ? 
