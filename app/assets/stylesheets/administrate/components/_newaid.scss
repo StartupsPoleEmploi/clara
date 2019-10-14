@@ -28,6 +28,10 @@
 }
 
 .c-newaid {
+  .c-aid-edit-body__child {
+    border-radius: 2px;
+    background-color: #f6f6f6;
+  }
   .field-unit {
     align-items: initial;
     display: initial;
@@ -56,10 +60,9 @@
   .field-unit__field {
     float: initial;
     margin-left: initial;
-    width: 45%;
+    width: 80%;
   }
   .field-unit__field input, textarea, .selectize-input, select {
-    width: 386px;
     height: 39px;
     border-radius: 4px;
     border: solid 1px #dddbda;

@@ -4,3 +4,8 @@
 .grid-col {
   flex: 1;
 }
+
+@media (min-width: 30em) {
+    .simple-row { width: 100%; display: table; table-layout: fixed; }
+    .simple-col { display: table-cell; }
+}
