@@ -22,11 +22,13 @@ docker-compose version 1.18.0, build 8dd22a9
 
 ~/workspace/clara> rm -rf private/.git
 
-~/workspace/clara> gem install docker-sync
-
 ~/workspace/clara> cd docker 
 
-~/workspace/clara/docker> docker-sync-stack start 
+~/workspace/clara/docker> chmod +x ./scripts/restore_db_dev.sh && ./scripts/restore_db_dev.sh
+
+Désormais la base de données est remplie avec les dernières données issues de la prod.
+
+~/workspace/clara/docker> docker-compose -f docker-compose.dev.yml up --build -d
 
 Les machines docker (app, db, nginx) sont lancées, mais pas encore l'application
 
@@ -39,8 +41,6 @@ root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
 L'application est visible sous http://localhost
 
 ```
-
-### Lancement des tests unitaires front
 
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
