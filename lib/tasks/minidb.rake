@@ -58,8 +58,8 @@ namespace :minidb do
       # Only a few ZRR
       zrr_list = [
         "02004", # Agnicourt
-        "49490", # Noyant-Villages
-        "71520", # StPierreleVieux
+        "49228", # Noyant-Villages
+        "71469", # StPierreleVieux
       ]
       Zrr.destroy_all
       Zrr.new(value: zrr_list.join(",")).save
