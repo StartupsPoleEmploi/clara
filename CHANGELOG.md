@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.9.0 (15/10/2019)
+-[#1395][TECH] préparation de la restauration de la DB
+
+
 ## 22.8.1 (15/10/2019)
 -[#1394b][FEATURE] ajouts texte pour date archivage égale à celle du jour
 
