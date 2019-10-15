@@ -84,7 +84,7 @@ namespace :minidb do
   end
 
 
-  desc "Dumps the database to db/local.dump"
+  desc "Dumps the database to db/local.dump !"
   task :dump => :environment do
     cmd = nil
     with_config do |app, host, db, user|
