@@ -2,11 +2,11 @@
 
 
 ## 22.9.1 (16/10/2019)
--[#1397][TECH] préparation de la restauration de la DB
-
+-[#1397][TECH] bug coup de pouce
+ 
 
 ## 22.9.0 (15/10/2019)
--[#1395][TECH] préparation de la restauration de la DB
+-[#1395][TECH] préparation accueil nouvel arrivant
 
 
 ## 22.8.1 (15/10/2019)
