@@ -84,11 +84,11 @@ namespace :minidb do
   end
 
 
-  desc "Dumps the database to db/mylocaldb.dumped"
+  desc "Dumps the database to db/r7.dumped"
   task :dump => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara_dev > #{Rails.root}/db/mylocaldb.dump"
+      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara_dev > #{Rails.root}/db/r7.dumped"
     end
     puts cmd
     exec cmd
