@@ -41,8 +41,8 @@ describe("Pour un super-admin", function() {
       }
       const monthes = {"January" : "janvier","February" : "février","March" : "mars","April" : "avril","May" : "mai","June" : "juin","July" : "juillet","August" : "août","September" : "septembre","October" : "octobre","November" : "novembre","December" : "décembre",}
       let expected_date = getDate() + " 00h 00min 00s"
-      let fr_month = monthes[expected_date.split(" ")[1]]
       let array_monthes = expected_date.split(" ")
+      let fr_month = monthes[array_monthes[1]]
       array_monthes[1] = fr_month
       let fr_date = array_monthes.join(" ")
 
