@@ -94,11 +94,11 @@ namespace :minidb do
     exec cmd
   end
 
-  desc "Restores the database dump at db/mylocaldb.dumped"
+  desc "Restores the database dump from db/mylocaldb.dumped"
   task :restore => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/db/mylocaldb.dump"
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/db/r7.dumped"
     end
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke
