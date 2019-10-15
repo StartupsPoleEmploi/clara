@@ -5,7 +5,7 @@ $(function () {
     locale: 'fr'
   });
 
-  $(".datetimepicker").each(function(e) {
+  $(".datetimepicker").each(function() {
     var $e = $(this);
     if (_.isNotBlank($e.attr("data-frvalue"))) {
       $e.val($e.attr("data-frvalue"));
