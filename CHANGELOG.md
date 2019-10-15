@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.8.0 (15/10/2019)
+-[#1394][FEATURE] date archivage par défaut égale à la date du jour
+
+
 ## 22.7.0 (14/10/2019)
 -[#1393][FEATURE] un simple admin ne peut pas supprimer une aide
 
