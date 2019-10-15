@@ -185,6 +185,8 @@ clara.js_define("admin_rulecreation", {
 
         //START
         store_rule.dispatch({type: 'INIT'});
+        // hack : ensure root_rule has correct name
+        store_trundle.getState()["name"] = "root_box"
         store_trundle.dispatch({type: 'INIT'});
     
     },

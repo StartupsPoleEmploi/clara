@@ -5,9 +5,17 @@ class ExtractScopeForAid
 
     if aid.is_a?(Aid) && aid.rule && aid.rule.name.include?("_box")
       concerned_rule = aid.rule
-      # rule has a geo criteria
+      # if rule has a geo criteria
       if (aid.rule.name.end_with?("_box_all")) 
-        concerned_rule = aid.rule.slave_rules.detect{|r| !r.name.end_with?("_box_geo")}
+        multi_geo_rule = aid.rule.slave_rules.detect{|r| r.name.end_with?("_box_geo")}
+        if multi_geo_rule
+          ap "multi!"
+          concerned_rule = aid.rule.slave_rules.detect{|r| r.id != multi_geo_rule.id}
+        else
+          ap "simple!"
+          simple_geo_rule = aid.rule.slave_rules.detect{|r| r.name.include?("_citycode_") || r.name.include?("_department_") || r.name.include?("_region_") }
+          concerned_rule = aid.rule.slave_rules.detect{|r| r.id != simple_geo_rule.id}
+        end
       end
       res = _fill(concerned_rule)
     end
@@ -18,6 +26,9 @@ class ExtractScopeForAid
   def _fill(rule)
     h = {}
     h[:name] = rule.name
+    ap "----------------debug----------------"
+    ap h[:name]
+    ap h[:name].split("box_")[1]
     if h[:name].include?("root_box")
       h[:name] = "root_box" 
     else
