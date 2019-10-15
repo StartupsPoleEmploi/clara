@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.9.1 (16/10/2019)
+-[#1397][TECH] préparation de la restauration de la DB
+
+
 ## 22.9.0 (15/10/2019)
 -[#1395][TECH] préparation de la restauration de la DB
 
