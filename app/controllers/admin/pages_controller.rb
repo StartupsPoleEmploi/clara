@@ -39,7 +39,6 @@ module Admin
         CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
         msg = "Mise à jour du champ d'application effectué."
-        ap aid.inspect
         if is_new_aid
           msg += " L'aide sera publiée sur le site après relecture par l'équipe de modération."
         end
