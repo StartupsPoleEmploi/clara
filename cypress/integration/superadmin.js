@@ -52,6 +52,10 @@ describe("Pour un super-admin", function() {
       cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
       cy.get('a.js-delete-aid[href="/admin/aids/my-new-aid?locale=fr"]').click()
     })
+    it("L'aide n'apparaît plus dans la liste", function() {
+      cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
+      cy.get('a.js-delete-aid[href="/admin/aids/my-new-aid?locale=fr"]').should('not.exist')
+    })
   })
   describe("À la modification d'aide", function() {
     before(function() {
