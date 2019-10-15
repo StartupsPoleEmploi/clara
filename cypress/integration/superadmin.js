@@ -37,7 +37,7 @@ describe("Pour un super-admin", function() {
     it("L'aide est créée avec une date d'archivage égale à la date du jour", function() {
       cy.visit('/admin/aids/my-new-aid')
       const getDate = dateTime => {
-        return Cypress.moment(dateTime).format('DD MMMM YYYY') // 06 Février
+        return Cypress.moment(dateTime).format('DD MMMM YYYY') // 06 February 2019
       }
       const monthes = {"January" : "janvier","February" : "février","March" : "mars","April" : "avril","May" : "mai","June" : "juin","July" : "juillet","August" : "août","September" : "septembre","October" : "octobre","November" : "novembre","December" : "décembre",}
       let expected_date = getDate() + " 00h 00min 00s"
@@ -50,7 +50,6 @@ describe("Pour un super-admin", function() {
     })
     it("On peut supprimer l'aide créée", function() {
       cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
-      // <a class="text-color-red js-delete-aid" data-confirm="Êtes-vous sûr ?" rel="nofollow" data-method="delete" href="/admin/aids/zaerazer?locale=fr">Supprimer</a>
       cy.get('a.js-delete-aid[href="/admin/aids/my-new-aid?locale=fr"]').click()
     })
   })
