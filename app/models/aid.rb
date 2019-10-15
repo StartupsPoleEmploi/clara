@@ -24,6 +24,10 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
+  after_initialize do |me|
+    me.archived_at ||= Date.today if new_record?
+  end
+
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
   after_destroy { ExpireCacheJob.perform_later }
