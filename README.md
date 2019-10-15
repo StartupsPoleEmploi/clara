@@ -42,8 +42,6 @@ L'application est visible sous http://localhost
 
 ```
 
-### Lancement des tests unitaires front
-
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
 Ce statut nous permet d'être soutenu gratuitement. Nous les en remercions.
