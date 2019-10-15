@@ -29,13 +29,20 @@ module Admin
       
       error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
 
+
       if error_message.blank?
         url = admin_aid_path(aid_slug)
         aid = Aid.find_by(slug: aid_slug)
 
+        is_new_aid = aid.updated_at == aid.created_at
+        
         CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
-        flash[:notice] = "Mise à jour du champ d'application effectué."
+        msg = "Mise à jour du champ d'application effectué."
+        if is_new_aid
+          msg += " L'aide sera publiée sur le site après relecture par l'équipe de modération."
+        end
+        flash[:notice] = msg
         flash.keep(:notice)
         render js: "document.location = '#{url}'"        
       else

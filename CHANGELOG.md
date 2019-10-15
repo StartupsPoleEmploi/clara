@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.8.1 (15/10/2019)
+-[#1394b][FEATURE] ajouts texte pour date archivage égale à celle du jour
+
+
 ## 22.8.0 (15/10/2019)
 -[#1394][FEATURE] date archivage par défaut égale à la date du jour
 
