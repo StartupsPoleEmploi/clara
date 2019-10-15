@@ -48,6 +48,13 @@ describe("Pour un super-admin", function() {
 
       cy.get('dt#archived_at').nextAll().eq(0).contains(fr_date)
     })
+    it("En modification, la date du jour est inscrite par défaut", function() {
+      cy.visit('/admin/aids/my-new-aid/edit')
+      const getDateOfToday = dateTime => {
+        return Cypress.moment(dateTime).format('DD/MM/YYYY') // 06 February 2019
+      }
+      cy.get('input#aid_archived_at').should('have.value', getDateOfToday())
+    })
     it("On peut supprimer l'aide créée", function() {
       cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
       cy.get('a.js-delete-aid[href="/admin/aids/my-new-aid?locale=fr"]').click()
