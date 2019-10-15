@@ -17,12 +17,12 @@ By default, the input is a text field that is augmented with [DateTimePicker].
 %>
 
 <%- choice = field.resource.try(field.attribute) %>
-<%- val = choice ? choice.strftime("%d-%m-%Y").split(" ")[0] : "" %>
+<%- frvalue = choice ? choice.strftime("%d/%m/%Y").split(" ")[0] : "" %>
 
 
 <div class="field-unit__label">
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.text_field field.attribute, class: "datetimepicker" , data: { type: 'datetime', value: val }  %>
+  <%= f.text_field field.attribute, class: "datetimepicker" , data: { type: 'datetime', frvalue: frvalue }  %>
 </div>
