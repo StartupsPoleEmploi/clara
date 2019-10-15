@@ -135,9 +135,11 @@
 
 .navigation {
   // box-shadow: 1px -25px 10px 0 #d9e4ec;
-  background-color: #ffffff;
+  // background-color: #ffffff;
   padding-left:1rem;
   margin-right: 2rem;
+  box-shadow: 1px -25px 10px 0 #d9e4ec;
+  background-color: #ffffff;
 }
 
 .c-newaid-leftpanel {
@@ -150,4 +152,12 @@
   border: solid 1px #e4e8f0;
   margin-top: -.1rem;
   margin-right: 1rem;
+}
+
+.c-newaid-actions {
+  margin-top: 1rem;
+}
+
+.c-newaid-actionrecord {
+  margin-left: 1rem;
 }
