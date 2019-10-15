@@ -21,15 +21,9 @@ namespace :minidb do
       # Only a few aids
       Aid.where.not(
         slug:[
-          # "accompagnement-global",
-          # "garantie-jeunes",
-          # "service-militaire-volontaire-smv",
           "vsi-volontariat-de-solidarite-internationale",
-          # "volontariat-associatif",
-          # "autres-frais-derogatoires",
           "erasmus",
           "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
-          # "aide-aux-depenses-de-sante-des-artistes-et-technicien-ne-s-du-spectacle",
           "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
@@ -58,8 +52,8 @@ namespace :minidb do
       # Only a few ZRR
       zrr_list = [
         "02004", # Agnicourt
-        "49490", # Noyant-Villages
-        "71520", # StPierreleVieux
+        "49228", # Noyant-Villages
+        "71469", # StPierreleVieux
       ]
       Zrr.destroy_all
       Zrr.new(value: zrr_list.join(",")).save
@@ -74,29 +68,6 @@ namespace :minidb do
       User.new(email:"admin@clara.com", password: "foo", role: "admin").save
 
       Stat.destroy_all
-      Stat.new(
-       ga:
-        {"json_data"=>
-          [{"Sessions"=>"12", "Index des jours"=>"01/01/2018"},
-           {"Sessions"=>"249", "Index des jours"=>"02/01/2018"},
-           {"Sessions"=>"578", "Index des jours"=>"03/01/2018"}]},
-       ga_pe:
-        {"json_data"=>
-          [{"Segment"=>"Tous les utilisateurs", "Sessions"=>"12", "Index des jours"=>"01/01/2018"},
-           {"Segment"=>"Conseillers PE", "Sessions"=>"0", "Index des jours"=>"01/01/2018"}]},
-       hj_ad:
-        {"json_data"=>
-          [{"OS"=>"Windows 7",
-            "User"=>"551c6f46",
-            "Device"=>"desktop",
-            "Number"=>"1",
-            "Browser"=>"Chrome 65.0.3325",
-            "Country"=>"France",
-            "Date Submitted"=>"2018-04-23 12:59:47",
-            "A quelle fréquence utilisez-vous Clara ?"=>"1 à 2 fois par jour",
-            "Chers collègues conseiller(è)s Pôle emploi, aidez-nous à améliorer Clara ! Combien de temps pensez-vous gagner ou avoir gagné en utilisant ce service aujourd'hui ?"=>
-             "+ de 15 minutes"}]}
-      ).save
 
       # No need to keep who did what
       PaperTrail::Version.destroy_all
@@ -107,21 +78,21 @@ namespace :minidb do
   end
 
 
-  desc "Dumps the database to db/mylocaldb.dumped"
+  desc "Dumps the database to db/local.dump !"
   task :dump => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara_dev > #{Rails.root}/db/mylocaldb.dump"
+      cmd = "pg_dump --verbose --clean --no-acl --no-owner -h localhost --format=c ara_dev > #{Rails.root}/db/local.dump"
     end
     puts cmd
     exec cmd
   end
 
-  desc "Restores the database dump at db/mylocaldb.dumped"
+  desc "Restores the database dump from db/local.dump"
   task :restore => :environment do
     cmd = nil
     with_config do |app, host, db, user|
-      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/db/mylocaldb.dump"
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/db/local.dump"
     end
     Rake::Task["db:drop"].invoke
     Rake::Task["db:create"].invoke
