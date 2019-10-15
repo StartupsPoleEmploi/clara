@@ -47,10 +47,11 @@ class AidForm < ViewObject
     actual_translation    
   end
 
-  def hide_field?(attribute, role="")
-    cond1 = attr_name(attribute) == "archived_at" && @attr_id.blank?
-    cond2 = attr_name(attribute) == "custom_filters" && role != "superadmin"
-    cond3 = attr_name(attribute) == "need_filters" && role != "superadmin"
+  def hide_field?(attribute, role = "", path = "")
+    a = attr_name(attribute)
+    cond1 = a == "archived_at" && (role != "superadmin" || (role == "superadmin" && path != "edit_admin_aid_path"))
+    cond2 = a == "custom_filters" && role != "superadmin"
+    cond3 = a == "need_filters" && role != "superadmin"
     cond1 || cond2 || cond3
   end
 

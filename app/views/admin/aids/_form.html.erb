@@ -1,4 +1,5 @@
 <%- v = view_object(:aid_form, local_assigns) %>
+<%- str_path = GetCurrentPathService.new(request).call %>
 
 <%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
   <% if page.resource.errors.any? %>
@@ -29,7 +30,7 @@
         <li class="js-tablist__item">
           <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Paramètres</a>
         </li>
-        <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+        <% if str_path == "edit_admin_aid_path" %>
           <li class="js-tablist__item">
             <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
           </li>
@@ -75,8 +76,8 @@
       </div>
       <div id="tab_3" class="js-tabcontent">
         <% page.attributes.each_with_index do |attribute, index_nb| %>
-          <% if index_nb < 9 && index_nb > 4 %>
-            <% unless v.hide_field?(attribute, current_user.role) %>
+          <% if index_nb < 10 && index_nb > 4 %>
+            <% unless v.hide_field?(attribute, current_user.role, str_path) %>
               <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
                 <%= render_field attribute, f: f, is_mandatory: v.mandatory?(v.attr_name(attribute)), additional_label: v.additional_label(attribute) %>
                 <% if v.errored?(attribute) -%>
@@ -89,7 +90,7 @@
           <% end %>
         <% end %>
       </div>
-      <% if  GetCurrentPathService.new(request).call == "edit_admin_aid_path" %>
+      <% if str_path == "edit_admin_aid_path" %>
         <div id="tab_4" class="js-tabcontent">
           <div class="big-left-margin c-modify-appfield">
             <div class="c-modify-appfield__ability-tree">
