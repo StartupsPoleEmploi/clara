@@ -8,6 +8,8 @@ module Admin
 
       aid = Aid.find_by(slug: params[:aid])
 
+      is_new_aid = IsNewAid.new.call(aid)
+
       gon.global_state = {
         explicitations: _all_explicitations,
         operator_kinds: _all_operator_kinds,        
@@ -16,9 +18,10 @@ module Admin
 
       gon.initial_scope = ExtractScopeForAid.new.call(aid)
       gon.initial_geo = ExtractGeoForAid.new.call(aid)
-      
+
       render locals: {
-        aid: aid ? aid.attributes.with_indifferent_access : nil
+        aid: aid ? aid.attributes.with_indifferent_access : nil,
+        is_new_aid: is_new_aid
       }
     end
     def post_rule_creation
@@ -34,7 +37,7 @@ module Admin
         url = admin_aid_path(aid_slug)
         aid = Aid.find_by(slug: aid_slug)
 
-        is_new_aid = aid.updated_at == aid.created_at
+        is_new_aid = IsNewAid.new.call(aid)
         
         CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 

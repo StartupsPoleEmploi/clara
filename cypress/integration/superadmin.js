@@ -7,6 +7,7 @@ describe("Pour un super-admin", function() {
   after(function() {
     cy.disconnect_from_admin()
   })
+
   describe("Quand on liste les aides", function() {
     before(function() {
       cy.visit('/admin/aids')
@@ -15,6 +16,7 @@ describe("Pour un super-admin", function() {
       cy.get('a.js-delete-aid').should('exist') 
     })
   })
+  
   describe("À la création d'aide", function() {
     before(function() {
       cy.visit('/admin/aids/new')
@@ -64,6 +66,7 @@ describe("Pour un super-admin", function() {
       cy.get('a.js-delete-aid[href="/admin/aids/my-new-aid?locale=fr"]').should('not.exist')
     })
   })
+  
   describe("À la modification d'aide", function() {
     before(function() {
       cy.visit('/admin/aids/erasmus/edit')

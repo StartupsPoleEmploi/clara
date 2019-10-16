@@ -188,8 +188,28 @@
   <section>
     
     <button class="big-left-margin" id="record_root_rule" data-url="<%= admin_post_rule_creation_path %>">
-      Enregistrer
+      <% if local_assigns[:is_new_aid] %>
+        Enregistrer pour relecture
+      <% else %>
+        Enregistrer les modifications
+      <% end %>
     </button>
+    
+    <% if local_assigns[:is_new_aid] %>
+
+      <div class="c-aid-detail-subfooter-text">
+        <div>
+          Lorsque vous enregistrez pour relecture, l'aide créée sera relue par un administrateur avant sa publication. Assurez-vous que : 
+          <ul>
+            <li>1) le contenu des champs remplis est pertinent</li>
+            <li>2) le contenu est accessible et sans faute d'orthographe ni de grammaire</li>
+            <li>3) le champ d'application est le bon.  Pour plus d'infos <a href="/admin/conventions/1">cliquez ici</a></li>
+          </ul>  
+        </div>
+      </div>
+
+    <% end %>
+
   </section>
 
 <% end %>
