@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.9.2 (16/10/2019)
+-[#1384][DESIGN] correction page a11y
+ 
+
 ## 22.9.1 (16/10/2019)
 -[#1397][TECH] bug coup de pouce
  

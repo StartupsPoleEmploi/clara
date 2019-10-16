@@ -40,6 +40,14 @@ root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
 
 L'application est visible sous http://localhost
 
+Pour arrêter docker
+
+~/workspace/clara/docker> docker stop $(docker ps -aq)
+
+Pour redémarrer de zéro
+
+~/workspace/clara/docker> docker container prune
+
 ```
 
 ### Outils 
