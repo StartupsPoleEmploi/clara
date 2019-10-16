@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.10.0 (16/10/2019)
+-[#1396][FEATURE] explications avant validation
+ 
+
 ## 22.9.2 (16/10/2019)
 -[#1384][DESIGN] correction page a11y
  
