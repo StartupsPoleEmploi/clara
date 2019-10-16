@@ -8,14 +8,14 @@ describe("Pour un super-admin", function() {
     cy.disconnect_from_admin()
   })
 
-  // describe("Quand on liste les aides", function() {
-  //   before(function() {
-  //     cy.visit('/admin/aids')
-  //   })
-  //   it("Il est possible de supprimer une aide", function() {
-  //     cy.get('a.js-delete-aid').should('exist') 
-  //   })
-  // })
+  describe("Quand on liste les aides", function() {
+    before(function() {
+      cy.visit('/admin/aids')
+    })
+    it("Il est possible de supprimer une aide", function() {
+      cy.get('a.js-delete-aid').should('exist') 
+    })
+  })
   
   describe("À la création d'aide", function() {
     before(function() {
