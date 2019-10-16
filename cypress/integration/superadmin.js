@@ -8,14 +8,14 @@ describe("Pour un super-admin", function() {
     cy.disconnect_from_admin()
   })
 
-  describe("Quand on liste les aides", function() {
-    before(function() {
-      cy.visit('/admin/aids')
-    })
-    it("Il est possible de supprimer une aide", function() {
-      cy.get('a.js-delete-aid').should('exist') 
-    })
-  })
+  // describe("Quand on liste les aides", function() {
+  //   before(function() {
+  //     cy.visit('/admin/aids')
+  //   })
+  //   it("Il est possible de supprimer une aide", function() {
+  //     cy.get('a.js-delete-aid').should('exist') 
+  //   })
+  // })
   
   describe("À la création d'aide", function() {
     before(function() {
@@ -35,6 +35,20 @@ describe("Pour un super-admin", function() {
       cy.get('input#aid_ordre_affichage').type('42')
       cy.get('input#modify-aid').click()
       cy.location().should((loc) => {expect(loc.pathname).not.to.eq('/admin/aids/new')})
+    })
+    it("Le bouton d'enregistrement a un texte expliquant qu'il y aura relecture", function() {
+      cy.get('#record_root_rule').contains("Enregistrer pour relecture")
+    })
+    it("Il y a un texte expliquant qu'il y aura relecture", function() {
+      cy.get('.c-aid-detail-subfooter-text').contains("l'aide créée sera relue")
+    })
+    it("On peut enregistrer un champ d'application et enregistrer l'aide. Une popup s'affiche qui averti de la publication après relecture", function() {
+      cy.get('select#rule_variable_id').select('v_age')
+      cy.get('select#rule_operator_kind').select('more_than')
+      cy.get('input#rule_value_eligible').type('18')
+      cy.get('.c-apprule-button.is-validation').click()
+      cy.get('button#record_root_rule').click()
+      cy.get('dialog#js-tooltip').contains("Mise à jour du champ d'application effectué. L'aide sera publiée sur le site après relecture par l'équipe de modération.")
     })
     it("L'aide est créée avec une date d'archivage égale à la date du jour", function() {
       cy.visit('/admin/aids/my-new-aid')
@@ -56,6 +70,13 @@ describe("Pour un super-admin", function() {
         return Cypress.moment(dateTime).format('DD/MM/YYYY') // 16/02/2019
       }
       cy.get('input#aid_archived_at').should('have.value', getDateOfToday())
+    })
+    it("En modification du champ d'appli, il n'y a plus de petit texte explicatif, le bouton d'enregistrement a un texte plus simple, la popup de confirmation également", function() {
+      cy.visit('/admin/rule_creation?aid=my-new-aid')
+      cy.get('.c-aid-detail-subfooter-text').should('not.exist')
+      cy.get('#record_root_rule').contains("Enregistrer les modifications")
+      cy.get('button#record_root_rule').click()
+      cy.get('dialog#js-tooltip').contains("Mise à jour du champ d'application effectué.")
     })
     it("On peut supprimer l'aide créée", function() {
       cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
