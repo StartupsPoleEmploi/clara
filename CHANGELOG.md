@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.11.0 (17/10/2019)
+-[#1367][FEATURE] champ d'application lors de l'étape 4.
+
+
 ## 22.10.0 (16/10/2019)
 -[#1396][FEATURE] explications avant validation
  
