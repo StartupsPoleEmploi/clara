@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.11.0 (17/10/2019)
+-[#1398][FEATURE] refaire un README correct
+
+
 ## 22.10.0 (16/10/2019)
 -[#1396][FEATURE] explications avant validation
  
