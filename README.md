@@ -24,13 +24,13 @@ docker-compose version 1.18.0, build 8dd22a9
 
 ~/workspace/clara> cd docker 
 
-~/workspace/clara/docker> chmod +x ./scripts/restore_db_dev.sh && ./scripts/restore_db_dev.sh
-
-Désormais la base de données est remplie avec les dernières données issues de la prod.
-
 ~/workspace/clara/docker> docker-compose -f docker-compose.dev.yml up --build -d
 
 Les machines docker (app, db, nginx) sont lancées, mais pas encore l'application
+
+~/workspace/clara/docker> chmod +x ./scripts/restore_db_dev.sh && ./scripts/restore_db_dev.sh
+
+Désormais la base de données est remplie avec les dernières données issues de la prod.
 
 Dans un autre onglet du terminal, 
 
