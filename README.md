@@ -14,11 +14,13 @@ Docker version 17.12.0-ce, build c97c6d6
 docker-compose version 1.18.0, build 8dd22a9
 
 
-~/workspace> git clone git@github.com:StartupsPoleEmploi/clara.git
+~/workspace> git clone https://github.com/StartupsPoleEmploi/clara.git
 
 ~/workspace> cd clara
 
-~/workspace/clara> git clone ssh://git@git.beta.pole-emploi.fr:23/clara/private.git
+ensuite, le user/mdp sera demandé pour un accès à gitlab pole emploi
+
+~/workspace/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
 
 ~/workspace/clara> rm -rf private/.git
 
