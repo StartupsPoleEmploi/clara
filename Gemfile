@@ -103,7 +103,5 @@ group :development do
   gem "rb-fsevent", require: false
   gem "letter_opener_web", "~> 1.0"
   gem "annotate", "2.4.0"
-  gem "docker-sync"
-  # gem "active_explorer"
 end
 
