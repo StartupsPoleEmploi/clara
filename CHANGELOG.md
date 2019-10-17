@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.12.0 (17/10/2019)
+-[#1398][FEATURE] refaire un README correct
+
+
 ## 22.11.0 (17/10/2019)
 -[#1367][FEATURE] champ d'application lors de l'étape 4.
 
