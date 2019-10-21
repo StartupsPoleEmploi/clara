@@ -3,7 +3,7 @@ FROM ruby:2.6.0
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
-RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server
+RUN apt-get update && apt-get install -y --no-install-recommends curl wget git sudo vim telnet iputils-ping ssh openssh-server
 
 # executable JS is required
 RUN cd ~\
@@ -11,6 +11,11 @@ RUN cd ~\
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
+
+# For Yarn
+RUN wget https://github.com/yarnpkg/yarn/releases/download/v1.19.1/yarn_1.19.1_all.deb\
+    && dpkg -i yarn_1.19.1_all.deb
+
 
 # See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
 RUN apt-get install -y tzdata
