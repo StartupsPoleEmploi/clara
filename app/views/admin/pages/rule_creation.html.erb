@@ -1,6 +1,7 @@
 <% content_for :javascript_includes do %>
   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" %>
   <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" %>
+  <%= javascript_pack_tag 'hello_vue' %>
 <% end %>
 
 <%= render "flashes" -%>
@@ -18,9 +19,17 @@
 
 <% else %>
 
+<%= javascript_pack_tag 'application' %>
+<%= javascript_pack_tag 'hello_vue' %>
 
+  <div id="hello">
+    <p>{{ message }}</p>
+    <app></app>
+  </div>
 
-  <header class="main-content__header c-rulecreation" role="banner">
+  <%
+=begin%>
+ <header class="main-content__header c-rulecreation" role="banner">
     <h1 class="main-content__page-title" id="page-title">
       Champ d'application de l'aide <%= local_assigns[:aid][:name] %>
     </h1>
@@ -187,7 +196,9 @@
 
     <% end %>
 
-  </section>
+  </section> 
+<%
+=end%>
 
 <% end %>
 
