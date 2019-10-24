@@ -21,3 +21,16 @@ jobs:
 
       - run: echo "hello world" # run the `echo` command
 
+      - run:
+          name: run db migrations
+          command: bin/rails db:migrate RAILS_ENV=test
+
+      - run:
+          name: run ruby test
+          command: bin/rails test
+
+      - run: sudo npm install -g istanbul
+
+      - run:
+          name: run JS test
+          command: bundle exec teaspoon
