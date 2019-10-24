@@ -1,15 +1,17 @@
 # CLARA Changelog
 
+
+## 22.11.4 (24/10/2019)
+-[#1401][BUG] refaire marcher l'intégration continue
+
+
 ## 22.11.3 (24/10/2019)
 -[#810][BUG] Aligner à gauche, Logo et fil d'ariane sur page de résultats
 
 
-## 22.11.3 (24/10/2019)
--[#1401][BUG] refaire marcher l'intégration continue
-
-
 ## 22.11.2 (24/10/2019)
 -[#1399][BUG] bug 500 à la création de règle sur la recette
+
 
 ## 22.11.1 (17/10/2019)
 -[#1398b]
