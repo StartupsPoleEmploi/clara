@@ -17,6 +17,10 @@
 -[#1399][BUG] bug 500 à la création de règle sur la recette
 
 
+## 22.12.0 (17/10/2019)
+-[#1367][FEATURE] champ d'application lors de l'étape 4.
+
+
 ## 22.11.1 (17/10/2019)
 -[#1398b]
 
