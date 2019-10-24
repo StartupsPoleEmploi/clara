@@ -22,7 +22,7 @@ jobs:
       # Restore Cached Dependencies
       - type: cache-restore
         name: Restore bundle cache
-        key: clara-{{ checksum "Gemfile.lock" }}
+        key: clara-42
 
       # Bundle install dependencies
       - run: gem install bundler -v 1.16.1 && bundle install --path vendor/bundle
@@ -30,9 +30,9 @@ jobs:
       # Cache Dependencies
       - type: cache-save
         name: Store bundle cache
-        key: clara-{{ checksum "Gemfile.lock" }}
+        key: clara-42
         paths:
           - vendor/bundle
-      
+
       - run: echo "hello world" # run the `echo` command
 
