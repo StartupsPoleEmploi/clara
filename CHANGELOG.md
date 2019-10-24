@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.11.4 (24/10/2019)
+-[#810][TU] is_new_aid
+
 ## 22.11.3 (24/10/2019)
 -[#810][BUG] Aligner à gauche, Logo et fil d'ariane sur page de résultats
 
