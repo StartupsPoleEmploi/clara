@@ -16,9 +16,19 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
 
-      # Bundle install dependencies
-      - run: gem install bundler -v 1.16.1 && bundle install --path vendor/bundle
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}
+            - gem-cache-v1
 
+      - run: bundle install --path vendor/bundle
+
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+            
       - run:
           name: run db migrations
           command: bin/rails db:migrate RAILS_ENV=test
