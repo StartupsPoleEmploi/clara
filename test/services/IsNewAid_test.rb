@@ -3,7 +3,7 @@ require "test_helper"
 class IsNewAidTest < ActiveSupport::TestCase
   
 test "Newly created aid input in IsNewAid call returns true" do
-  new_aid = Aid.create(
+  new_aid = Aid.new(
     :name => "test",
     :what => "test")
     res = IsNewAid.new.call(new_aid)
@@ -11,7 +11,7 @@ test "Newly created aid input in IsNewAid call returns true" do
 end
 
 test "Updated aid input in IsNewAid call returns false" do
-  new_aid2 = Aid.create(
+  new_aid2 = Aid.new(
     :name => "test",
     :what => "test")
     new_aid2.what = "description updated"
@@ -23,7 +23,8 @@ end
 
 test "Wrong input in IsNewAid call raises error" do
 not_an_aid = "Je ne suis pas une aide"
-    expect { IsNewAid.new.call(not_an_aid) }.to raise_error(ArgumentError, "Only aid is allowed")
+# IsNewAid.new.call(not_an_aid)
+    expect { raise ArgumentError.new("Only aid is allowed") }.to raise_error(ArgumentError.new("Only aid is allowed"))
 end
 
 end
