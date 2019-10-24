@@ -8,11 +8,11 @@ jobs:
           PGHOST: localhost
           PGUSER: ara
           RAILS_ENV: test
-      # - image: postgres:9.5
-      #   environment:
-      #     POSTGRES_USER: ara
-      #     POSTGRES_DB: ara_test
-      #     POSTGRES_PASSWORD: ""
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: ara
+          POSTGRES_DB: ara_test
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout # check out the code in the project directory
 
