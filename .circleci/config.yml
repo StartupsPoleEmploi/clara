@@ -15,5 +15,24 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout # check out the code in the project directory
+
+      - setup_remote_docker: 
+         docker_layer_caching: true 
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: clara-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: gem install bundler -v 1.16.1 && bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: clara-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+      
       - run: echo "hello world" # run the `echo` command
 
