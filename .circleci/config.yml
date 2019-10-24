@@ -19,8 +19,6 @@ jobs:
       # Bundle install dependencies
       - run: gem install bundler -v 1.16.1 && bundle install --path vendor/bundle
 
-      - run: echo "hello world" # run the `echo` command
-
       - run:
           name: run db migrations
           command: bin/rails db:migrate RAILS_ENV=test
