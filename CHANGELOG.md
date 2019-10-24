@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.11.2 (24/10/2019)
+-[#1399][BUG] bug 500 à la création de règle sur la recette
+
+
 ## 22.11.1 (17/10/2019)
 -[#1398b]
 

@@ -72,6 +72,13 @@ namespace :minidb do
       # No need to keep who did what
       PaperTrail::Version.destroy_all
 
+      # Remove statistics stuffs
+      Trace.destroy_all
+
+      # Remove pg_stats (5000 lines only for stats we don't need)
+      ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
+
+
     else
       p "Recreate a minidatabase is for development mode only"
     end
