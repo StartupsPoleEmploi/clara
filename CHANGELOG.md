@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.11.6 (24/10/2019)
+-[#1402][TU] Test is_new_aid
 
 ## 22.11.5 (24/10/2019)
 -[#1401][BUG] refaire marcher l'intégration continue
