@@ -21,6 +21,13 @@ main.main-content {
   background-color: #ffffff
 }
 
+.c-topbar__connect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
 .c-topbar__logo {
   display: flex;
   align-items: center;

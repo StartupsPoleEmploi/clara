@@ -2,7 +2,7 @@
 
 
 ## 22.12.0 (25/10/2019)
--[#1367][FEATURE] champ d'application lors de l'étape 4.
+-[#1403][DESIGN] refonte graphique du BO
 
 
 ## 22.11.6 (24/10/2019)
