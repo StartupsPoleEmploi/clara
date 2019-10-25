@@ -15,12 +15,12 @@ end
 
 test "Updated aid input in IsNewAid call returns false" do
   #given
-  new_aid2 = Aid.new(
+  modified_aid = Aid.new(
     :name => "test",
     :what => "test")
-  new_aid2.updated_at = Date.new
+  modified_aid.updated_at = Date.new
   #when
-  res = IsNewAid.new.call(new_aid2)
+  res = IsNewAid.new.call(modified_aid)
   #then
   assert_equal(false, res)
 end
