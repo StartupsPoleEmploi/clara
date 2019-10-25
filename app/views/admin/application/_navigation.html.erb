@@ -1,11 +1,18 @@
 <%- v = view_object(:navigation) %>
 
+<div class="medium-bottom-margin c-topbar">
+  <div class="c-topbar__logo">
+    <strong><%=current_user.email%></strong>
+    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete, class: "js-sign-out"  %></div>    
+  </div>
+  <div class="c-topbar__connect">
+    <strong><%=current_user.email%></strong>
+    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete, class: "js-sign-out"  %></div>    
+  </div>
+</div>
+
 <nav class="navigation" role="navigation">
 
-  <div class="medium-bottom-margin">
-    <strong><%=current_user.email%></strong>
-    <div><%= link_to 'Se déconnecter', sign_out_path, method: :delete, class: "js-sign-out"  %></div>
-  </div>
 
   <% if current_user.role === "superadmin" %>
     <%= link_to(

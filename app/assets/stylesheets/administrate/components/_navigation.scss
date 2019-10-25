@@ -29,7 +29,8 @@ $_navigation-link-padding: 0.6em;
 
 .navigation__link--active {
   font-weight: $bold-font-weight;
-  background-color: rgba(41,63,84,0.2);
+  // background-color: rgba(41,63,84,0.2);
+  background-color: #057dbc;
   border-radius: 4px;
   opacity: 1;
 }
@@ -37,4 +38,8 @@ $_navigation-link-padding: 0.6em;
 nav.navigation a {
   text-decoration: none;
   color:#293f54;
+}
+
+nav.navigation a.navigation__link--active {
+  color:white;
 }

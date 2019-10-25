@@ -1,0 +1,24 @@
+nav.navigation {
+  padding-top: 4rem;
+  margin-left: -1.4rem;
+}
+
+main.main-content {
+  margin-top: 4rem;
+}
+
+.c-topbar {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  margin-right: 3rem;
+  width: 100%;
+  box-shadow: 0 15px 35px 0 rgba(37, 41, 82, 0.06), 0 5px 15px 0 rgba(0, 0, 0, 0.03);
+  background-color: #ffffff
+}
+
+.c-topbar__connect {
+  margin-left: auto;
+}
