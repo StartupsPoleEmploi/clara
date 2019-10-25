@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 22.12.1 (25/10/2019)
+-[#1405][BUG] Corrige affichage de la pagination des pages liste
+
 ## 22.12.0 (25/10/2019)
 -[#1403][DESIGN] refonte graphique du BO
 
