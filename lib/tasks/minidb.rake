@@ -27,6 +27,7 @@ namespace :minidb do
           "autres-aides-nationales-pour-la-mobilite",
         ]).destroy_all
 
+      # Trace.left_outer_joins(:tracing).destroy_all
 
       # Only a few rules from the few aids
       root_rules_id = activated_models.aids.map { |aid| aid["rule_id"] }
@@ -73,7 +74,7 @@ namespace :minidb do
       PaperTrail::Version.destroy_all
 
       # Remove statistics stuffs
-      Trace.destroy_all
+      #Trace.destroy_all
 
       # Remove pg_stats (5000 lines only for stats we don't need)
       ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
