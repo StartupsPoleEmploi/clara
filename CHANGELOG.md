@@ -1,13 +1,21 @@
 # CLARA Changelog
 
+
+## 22.12.0 (25/10/2019)
+-[#1403][DESIGN] refonte graphique du BO
+
+
 ## 22.11.6 (24/10/2019)
 -[#1402][TU] Test is_new_aid
+
 
 ## 22.11.5 (24/10/2019)
 -[#1401][BUG] refaire marcher l'intégration continue
 
+
 ## 22.11.4 (24/10/2019)
 -[#1402][TU] is_new_aid
+
 
 ## 22.11.3 (24/10/2019)
 -[#810][BUG] Aligner à gauche, Logo et fil d'ariane sur page de résultats

@@ -1,0 +1,164 @@
+.c-newaid {
+  padding: 16px;
+  box-shadow: 0 0 5px 0 rgba(232, 232, 232, 0.53);
+}
+
+.c-newaid-back2aids {
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.5;
+  letter-spacing: normal;
+  color: #057dbc;
+}
+
+.c-newaid-title {
+  font-size: 27px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.c-newaid {
+  .c-detail-item {
+    padding-bottom: 2rem;
+  }
+  .c-aid-edit-body__child {
+    border-radius: 2px;
+    background-color: #f6f6f6;
+  }
+  .field-unit {
+    align-items: initial;
+    display: initial;
+    margin-bottom: initial;
+    position: initial;
+    width: initial;
+  }
+  .field-unit__label {
+    float: initial;
+    margin-left: initial;
+    text-align: initial;
+    width: initial;
+    label {
+      width: 109px;
+      height: 21px;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: #333333;
+    }
+  }
+  .field-unit__field {
+    float: initial;
+    margin-left: initial;
+    width: 80%;
+  }
+  .field-unit__field input, textarea, .selectize-input, select {
+    height: 39px;
+    border-radius: 4px;
+    border: solid 1px #dddbda;
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+  }
+}
+
+.c-newaid-subtitle {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.9444444444444444;
+  letter-spacing: normal;
+  color: #1b1b1b;
+  margin-bottom: 1.5rem;
+}
+
+.c-newaid-stages {
+  display: flex;
+}
+
+.c-newaid-stage {
+  padding: 0 .5rem;
+  padding-left: 0;
+}
+
+.c-newaid-stageinside {
+  padding: .3rem .9rem;
+}
+
+.c-newaid-stage--active {  
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.1875;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1b1b1b;
+  border-radius: 2px;
+  border: solid 1px #e4e8f0;
+  z-index: 12;
+  background-color: white;
+  border-bottom: none;
+}
+
+.c-newaid-stage--inactive {  
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.1875;
+  letter-spacing: normal;
+  text-align: center;
+  color: #8e9093;
+}
+
+.c-newaid-stages {
+}
+
+.main-content {
+  box-shadow: 0 0 5px 0 rgba(232, 232, 232, 0.53);
+  background-color: #ffffff;
+}
+
+.navigation {
+  // box-shadow: 1px -25px 10px 0 #d9e4ec;
+  // background-color: #ffffff;
+  padding-left:1rem;
+  margin-right: 2rem;
+  box-shadow: 1px -25px 10px 0 #d9e4ec;
+  background-color: #ffffff;
+}
+
+.c-newaid-leftpanel {
+  // padding: 1rem;
+}
+
+.c-newaid-belowstages {
+  padding: 1rem;
+  border-radius: 2px;
+  border: solid 1px #e4e8f0;
+  margin-top: -.1rem;
+  margin-right: 1rem;
+}
+
+.c-newaid-actions {
+  margin-top: 1rem;
+}
+
+.c-newaid-actionrecord {
+  margin-left: 1rem;
+}

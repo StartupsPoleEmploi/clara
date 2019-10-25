@@ -12,6 +12,10 @@ By default, it renders:
 - Links to stylesheets and JavaScripts
 %>
 
+<%- title = content_for(:title) %>
+<%- suffix = "Administration de Clara" %>
+<%- actual_title = title.to_s.strip.blank? ? suffix :  "#{title} - #{suffix}" %>
+
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
 <head>
@@ -20,8 +24,9 @@ By default, it renders:
   <meta name="ROBOTS" content="NOODP">
   <meta name="viewport" content="initial-scale=1">
   <title>
-    <%= content_for(:title) %> - Clara
+    <%= actual_title %>
   </title>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Roboto', media: 'all' %>
   <%= render "stylesheet" %>
   <%= csrf_meta_tags %>
 </head>
