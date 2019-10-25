@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.11.7 (24/10/2019)
+-[#1400][BUG] Rendre cohérent trace et tracing en r7
+
 ## 22.11.6 (24/10/2019)
 -[#1402][TU] Test is_new_aid
 
