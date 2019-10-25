@@ -2,10 +2,10 @@ class Tracing < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  has_many :tracizations
-  has_many :aids, through: :tracizations
+  has_many :tracizations, dependent: :destroy
+  has_many :aids, through: :tracizations, dependent: :destroy
   
-  has_many :traces
+  has_many :traces, dependent: :destroy
 
   belongs_to :rule, optional: false
 

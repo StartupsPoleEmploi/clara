@@ -42,8 +42,8 @@ class Aid < ApplicationRecord
                     :dmetaphone => {},
                   }
 
-  has_many :tracizations
-  has_many :tracings, through: :tracizations
+  has_many :tracizations, dependent: :destroy
+  has_many :tracings, through: :tracizations, dependent: :destroy
 
   has_and_belongs_to_many :filters
   has_and_belongs_to_many :need_filters
