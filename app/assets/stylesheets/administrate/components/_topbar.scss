@@ -1,6 +1,8 @@
 nav.navigation {
   padding-top: 4rem;
   margin-left: -1.4rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 main.main-content {
@@ -12,11 +14,25 @@ main.main-content {
   position: absolute;
   top: 0;
   left: 0;
-  height: 60px;
+  height: 68px;
   margin-right: 3rem;
   width: 100%;
   box-shadow: 0 15px 35px 0 rgba(37, 41, 82, 0.06), 0 5px 15px 0 rgba(0, 0, 0, 0.03);
   background-color: #ffffff
+}
+
+.c-topbar__logo {
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+.c-topbar__logotxt {
+  margin-left: 1rem;
+}
+
+svg.c-topbar__logotxt path {
+  margin-left: 1rem;
 }
 
 .c-topbar__connect {
