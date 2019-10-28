@@ -100,7 +100,6 @@
 ## 22.12.3 (29/10/2019)
 -[#1398c][BSR] mise à jour du README.md
 
-
 ## 22.13.0 (28/10/2019)
 -[#1409][FEATURE] Refonte étape 1
 
