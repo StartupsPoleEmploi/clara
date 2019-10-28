@@ -101,6 +101,10 @@
 -[#1398c][BSR] mise à jour du README.md
 
 
+## 22.13.0 (28/10/2019)
+-[#1409][FEATURE] Refonte étape 1
+
+
 ## 22.12.2 (28/10/2019)
 -[#1400][BUG] Suppression de toutes les traces en recette
 
