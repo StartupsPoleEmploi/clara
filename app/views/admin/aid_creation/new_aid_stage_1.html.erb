@@ -44,7 +44,7 @@
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if v.show_field?(attribute) %>
               <div class="field-unit field-unit--<%= attribute.html_class %>">
-                <%= render_field attribute, f: f %>
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute) %>
               </div>
             <% end %>
           <% end %>

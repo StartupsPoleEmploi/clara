@@ -14,4 +14,9 @@ class NewAidOne < ViewObject
     ["name", "contract_type", "ordre_affichage", "source"].include?(name)
   end
 
+  def mandatory_field?(attribute)
+    name = attr_name(attribute)
+    ["name", "contract_type", "ordre_affichage"].include?(name)
+  end
+
 end
