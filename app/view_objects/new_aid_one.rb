@@ -11,7 +11,6 @@ class NewAidOne < ViewObject
 
   def show_field?(attribute)
     name = attr_name(attribute)
-    ap name
     ["name", "contract_type", "ordre_affichage", "source"].include?(name)
   end
 
