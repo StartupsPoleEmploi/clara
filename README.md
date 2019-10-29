@@ -101,12 +101,12 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 
 ```
 ssh identifiant@adresse_recette
-$> cd /var/www/ara.git/private
+$> cd /var/git/ara.git/private
 $> git pull origin master
-$> cd /var/www/ara.git
+$> cd /var/git/ara.git
 $> git pull origin master
-$> cd /var/www/ara.git/docker
-$> sudo chmod +x ./scripts/restore_db.sh && ./scripts/restore_db.sh
+$> cd /var/git/ara.git/docker
+$> sudo chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
 $> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
 ```
 
