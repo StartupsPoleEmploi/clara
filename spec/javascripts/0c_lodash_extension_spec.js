@@ -80,15 +80,24 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.count).toBeDefined();
     });
+        it("Should count values", function () {
+      expect(_.count([true, true, false, true])).toEqual(3);
+    });
   });
   describe("_.isNotBlank", function () {
     it("Should be defined", function () {
       expect(_.isNotBlank).toBeDefined();
     });
+        it("Should be true", function () {
+      expect(_.isNotBlank("notblank")).toEqual(true);
+    });
   });
   describe("_.findNested", function () {
     it("Should be defined", function () {
       expect(_.findNested).toBeDefined();
+    });
+        it("Should return nested properties", function () {
+      expect(_.findNested({'aa': 1, 'bb': 2, 'cc': {'d':{'x':9}}, dd:{'d':{'y':9}}}, 'd')).toEqual([{x: 9}, {y: 9}]);
     });
   });
   describe("_.deepSearch", function () {
@@ -99,6 +108,9 @@ describe("Lodash extension", function () {
   describe("_.insertAt", function () {
     it("Should be defined", function () {
       expect(_.insertAt).toBeDefined();
+    });
+        it("Should insert a value in an array at the right index", function () {
+      expect(_.insertAt([1,2,4],2,3)).toEqual(undefined);
     });
   });
 
