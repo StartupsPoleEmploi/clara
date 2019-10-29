@@ -99,8 +99,20 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 
 #### Déployer en recette
 
+
+
+
 ```
 ssh identifiant@adresse_recette
+
+(optionnel, redémarrer d'un état neuf)
+
+$> docker stop $(docker ps -aq)
+$> docker container prune
+$> cd /var/git/ara.git/docker
+$> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up -d
+
+
 $> cd /var/git/ara.git/private
 $> git pull origin master
 $> cd /var/git/ara.git
