@@ -107,10 +107,11 @@ ssh identifiant@adresse_recette
 
 (optionnel, redémarrer d'un état neuf)
 
-$> docker stop $(docker ps -aq)
-$> docker container prune
 $> cd /var/git/ara.git/docker
+$> git pull origin master
+$> docker-compose down -v
 $> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up -d
+$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
 
 (optionnel, mettre les bonnes personnes dans le groupe git)
 
