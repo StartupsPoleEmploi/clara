@@ -97,6 +97,12 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ```
 
 
+#### Déployer en recette
+
+```
+```
+
+
 
 
 ### Outils 
