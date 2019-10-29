@@ -12,7 +12,14 @@ Docker version 17.12.0-ce, build c97c6d6
 
 ~/workspace> docker-compose --version
 docker-compose version 1.18.0, build 8dd22a9
+```
 
+
+### Installation
+
+#### Liste de commandes pour installer Clara
+
+```
 
 ~/workspace> git clone https://github.com/StartupsPoleEmploi/clara.git
 
@@ -38,19 +45,59 @@ Dans un autre onglet du terminal,
 
 ~/workspace/clara/docker> docker-compose exec srv_app bash
 
-root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
-
-L'application est visible sous http://localhost
-
-Pour arrêter docker
-
-~/workspace/clara/docker> docker stop $(docker ps -aq)
-
-Pour redémarrer de zéro
-
-~/workspace/clara/docker> docker container prune
+root@b883dc7f48d5:/home/clara# bundle install
+```
+#### Pour arrêter Docker
 
 ```
+~/workspace/clara/docker> docker stop $(docker ps -aq)
+```
+
+#### Pour redémarrer de zéro
+
+```
+~/workspace/clara/docker> docker container prune
+```
+
+
+
+#### Problèmes possibles d'installation
+
+ - Si Postgre est déjà installé sur votre machine, le service postgre doit être arrêté
+ - Vous devez être connecté en tant que root pour faire marcher Docker
+
+### Commandes utiles au quotidien
+
+#### Lancer l'application
+
+```
+root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
+```
+
+L'application est visible sous http://localhost ou http://localhost:3000
+
+
+
+#### Lancer les tests front
+
+```
+root@b883dc7f48d5:/home/clara# npm install -g istanbul
+root@b883dc7f48d5:/home/clara# bundle exec teaspoon
+```
+
+Vous pouvez aussi vous connecter sous http://localhost:3000/teaspoon/default
+
+
+#### Lancer les tests de recette
+
+```
+root@b883dc7f48d5:/home/clara# bin/rails minidb:recreate
+root@b883dc7f48d5:/home/clara# npm install cypress --save-dev
+root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
+```
+
+
+
 
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
