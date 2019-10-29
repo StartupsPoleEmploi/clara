@@ -2,6 +2,10 @@
 
 
 
+## 22.12.3 (29/10/2019)
+-[#1398c][BSR] mise à jour du README.md
+
+
 ## 22.12.2 (28/10/2019)
 -[#1400][BUG] Suppression de toutes les traces en recette
 
