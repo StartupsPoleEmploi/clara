@@ -5,7 +5,7 @@ set :rbenv_path, "$HOME/.rbenv"
 
 set :rails_env, 'production'
 
-set :domain, '192.168.4.111'
+set :domain, '192.168.4.122'
 set :user, 'dboureau'
 set :application_name, 'ara'
 set :deploy_to, "/var/www/ara"
@@ -28,7 +28,7 @@ set :puma_port, 3000
 
 task :environment do
   # Can be called many times
-  puts 'setting env for production'
+  puts 'setting env for r7'
   invoke :'rbenv:load'
 end
 
@@ -38,7 +38,7 @@ task :deploy do
   # See https://github.com/mina-deploy/mina/issues/316
   if @just_once_deploy != true
     deploy do
-      comment "Deploying ARA to PREPRODUCTION"
+      comment "Deploying ARA to R7"
       command %{pwd}
       invoke :'git:clone'
       invoke :'deploy:link_shared_paths'
