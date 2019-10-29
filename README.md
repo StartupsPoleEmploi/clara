@@ -97,7 +97,20 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ```
 
 
+#### Déployer en recette
 
+```
+ssh identifiant@adresse_recette
+$> cd /var/www/ara.git/private
+$> git pull origin master
+$> cd /var/www/ara.git
+$> git pull origin master
+$> cd /var/www/ara.git/docker
+$> sudo chmod +x ./scripts/restore_db.sh && ./scripts/restore_db.sh
+$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
+```
+
+L'application est visible sous https://clara.beta.pole-emploi.fr/
 
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
