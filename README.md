@@ -112,6 +112,14 @@ $> docker container prune
 $> cd /var/git/ara.git/docker
 $> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up -d
 
+(optionnel, mettre les bonnes personnes dans le groupe git)
+
+$> cd /var/git/ara.git/
+groupadd git
+chgrp -R git .git
+chgrp -R git ./
+usermod -aG git $(whoami)
+
 
 $> cd /var/git/ara.git/private
 $> git pull origin master
