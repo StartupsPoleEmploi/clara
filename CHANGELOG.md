@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 22.13.16 (30/10/2019)
+-[#1410q][TECH] r7 docker 
+
 
 ## 22.13.15 (30/10/2019)
 -[#1410p][TECH] r7 docker, restore nginx
