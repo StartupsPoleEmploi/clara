@@ -80,18 +80,78 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.count).toBeDefined();
     });
-        it("Should count values", function () {
-      expect(_.count([true, true, false, true])).toEqual(3);
+    it("Should return 0 if wrong params given", function () {
+      expect(_.count(new Date())).toEqual(0);
+      expect(_.count([42, 12, 0, 5])).toEqual(0);
     });
+    it("Should return number of truthy predicated in a collection", function () {
+      expect(_.count([1,2,3,4,5,6], function(e) {return e % 2 === 0})).toEqual(3);
+    });
+    it("Should return number of truthy predicated in a collection (exemple 2)", function () {
+      expect(_.count(["a", "ab", "k"], function(e) {return e.indexOf("a") >= 0 })).toEqual(2);
+    });
+
   });
+
   describe("_.isNotBlank", function () {
     it("Should be defined", function () {
       expect(_.isNotBlank).toBeDefined();
     });
-        it("Should be true", function () {
-      expect(_.isNotBlank("notblank")).toEqual(true);
+    it("_.isNotBlank(undefined) is false", function () {
+      expect(_.isNotBlank(undefined)).toEqual(false);
+    });
+    it("_.isNotBlank(null) is false", function () {
+      expect(_.isNotBlank(null)).toEqual(false);
+    });
+    it("_.isNotBlank() is false", function () {
+      expect(_.isNotBlank()).toEqual(false);
+    });
+    it("_.isNotBlank(NaN) is false", function () {
+      expect(_.isNotBlank(NaN)).toEqual(false);
+    });
+    it("_.isNotBlank('') is false", function () {
+      expect(_.isNotBlank('')).toEqual(false);
+    });
+    it("_.isNotBlank('  ') is false", function () {
+      expect(_.isNotBlank('  ')).toEqual(false);
+    });
+    it("_.isNotBlank('a') is true", function () {
+      expect(_.isNotBlank('a')).toEqual(true);
+    });
+    it("_.isNotBlank(' a ') is true", function () {
+      expect(_.isNotBlank(' a ')).toEqual(true);
+    });
+    it("_.isNotBlank(-1) is true", function () {
+      expect(_.isNotBlank(-1)).toEqual(true);
+    });
+    it("_.isNotBlank(0) is false", function () {
+      expect(_.isNotBlank(0)).toEqual(false);
+    });
+    it("_.isNotBlank(4.2) is true", function () {
+      expect(_.isNotBlank(4.2)).toEqual(true);
+    });
+    it("_.isNotBlank({}) is false", function () {
+      expect(_.isNotBlank({})).toEqual(false);
+    });
+    it("_.isNotBlank([]) is false", function () {
+      expect(_.isNotBlank([])).toEqual(false);
+    });
+    it("_.isNotBlank({a:2}) is true", function () {
+      expect(_.isNotBlank({ a: 2 })).toEqual(true);
+    });
+    it("_.isNotBlank([43,88]) is true", function () {
+      expect(_.isNotBlank([43, 88])).toEqual(true);
+    });
+    it("_.isNotBlank(/^/) is true", function () {
+      expect(_.isNotBlank(/^/)).toEqual(true);
+    });
+    it("_.isNotBlank(new Date()) is true", function () {
+      expect(_.isNotBlank(new Date())).toEqual(true);
     });
   });
+
+
+
   describe("_.findNested", function () {
     it("Should be defined", function () {
       expect(_.findNested).toBeDefined();
