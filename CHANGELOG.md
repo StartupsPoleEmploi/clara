@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.14.0 (30/10/2019)
+-[#1407][TESTS] Tester les services JS
+
 ## 22.13.22 (30/10/2019)
 -[#1410x][TECH] r7 docker terminée, docs utf8
 
@@ -88,7 +91,6 @@
 ## 22.13.0 (29/10/2019)
 -[#1410][TECH] r7 docker
 
-
 ## 22.12.3 (29/10/2019)
 -[#1398c][BSR] mise à jour du README.md
 
@@ -99,7 +101,6 @@
 
 ## 22.12.1 (28/10/2019)
 -[#1405][BUG] Corrige affichage de la pagination des pages liste
-
 
 ## 22.12.0 (25/10/2019)
 -[#1403][DESIGN] refonte graphique du BO
