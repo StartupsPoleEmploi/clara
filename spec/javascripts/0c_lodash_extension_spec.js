@@ -116,6 +116,13 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.deepSearch).toBeDefined();
     });
+    it("Should find containing object that match predicate", function () {
+      expect(_.deepSearch({a: 42, b: {a: 44}}, 'a', function(k, v){return v === 44})).toEqual({a: 44});
+    });
+    it("Should find containing object that match predicate", function () {
+      var obj = {a: 42, b: {a: 44}}
+      expect(_.deepSearch(obj, 'a', function(k, v){return v === 42})).toEqual(obj);
+    });
   });
   describe("_.insertAt", function () {
     it("Should be defined", function () {
