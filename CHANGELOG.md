@@ -1,5 +1,56 @@
 # CLARA Changelog
 
+## 22.13.22 (30/10/2019)
+-[#1410x][TECH] r7 docker terminée, docs utf8
+
+## 22.13.21 (30/10/2019)
+-[#1410w][TECH] r7 docker terminée, script unique
+
+## 22.13.20 (30/10/2019)
+-[#1410v][TECH] r7 docker terminée, meilleure doc 
+
+## 22.13.19 (30/10/2019)
+-[#1410u][TECH] r7 docker terminée !
+
+
+## 22.13.18 (30/10/2019)
+-[#1410s][TECH] r7 docker 
+
+
+## 22.13.17 (30/10/2019)
+-[#1410r][TECH] r7 docker 
+
+
+## 22.13.16 (30/10/2019)
+-[#1410q][TECH] r7 docker 
+
+
+## 22.13.15 (30/10/2019)
+-[#1410p][TECH] r7 docker, restore nginx
+
+
+## 22.13.14 (30/10/2019)
+-[#1410o][TECH] r7 docker 
+
+
+## 22.13.13 (30/10/2019)
+-[#1410n][TECH] r7 docker 
+
+
+## 22.13.12 (30/10/2019)
+-[#1410m][TECH] r7 docker 
+
+
+## 22.13.11 (30/10/2019)
+-[#1410l][TECH] r7 docker 
+
+
+## 22.13.10 (29/10/2019)
+-[#1410k][TECH] r7 docker 
+
+
+## 22.13.9 (29/10/2019)
+-[#1410j][TECH] r7 docker 
 
 
 ## 22.13.8 (29/10/2019)

@@ -99,37 +99,45 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 
 #### Déployer en recette
 
+##### Installer Clara sur une nouvelle recette
 
 
+```
+~/home> sudo git clone https://github.com/StartupsPoleEmploi/clara.git
+~/home> cd clara
+~/home/clara> groupadd git
+~/home/clara> chgrp -R git .git
+~/home/clara> chgrp -R git ./
+~/home/clara> usermod -aG git $(whoami)
+~/home/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
+~/home/clara> rm -rf private/.git
+~/home/clara> cd docker 
+~/home/clara/docker> docker-compose -f docker-compose.r7.yml up --build -d
+~/home/clara/docker> chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
+```
+
+##### Déployer une nouvelle version
 
 ```
 ssh identifiant@adresse_recette
 
-(optionnel, redémarrer d'un état neuf)
-
-$> cd /var/git/ara.git/docker
-$> git pull origin master
-$> docker-compose down -v
-$> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up -d
-$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
-
-(optionnel, mettre les bonnes personnes dans le groupe git)
-
-$> cd /var/git/ara.git/
-groupadd git
-chgrp -R git .git
-chgrp -R git ./
-usermod -aG git $(whoami)
-
-
-$> cd /var/git/ara.git/private
-$> git pull origin master
-$> cd /var/git/ara.git
-$> git pull origin master
-$> cd /var/git/ara.git/docker
-$> sudo chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
-$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
+~/$> cd /home/clara/docker
+~/home/clara/docker$> docker-compose exec srv_app bash
+root@inside_docker:~$> cd /var/git/ara.git
+root@inside_docker:/var/git/ara.git$> git pull origin master
+root@inside_docker:/var/git/ara.git$> bundle install
+root@inside_docker:/var/git/ara.git$> export RUBYOPT="-KU -E utf-8:utf-8"
+root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
+root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy  
 ```
+
+##### Commandes utiles
+
+```
+docker-compose down -v
+```
+
+##### URL
 
 L'application est visible sous https://clara.beta.pole-emploi.fr/
 
