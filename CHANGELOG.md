@@ -1,16 +1,21 @@
 # CLARA Changelog
 
+
 ## 22.14.0 (30/10/2019)
 -[#1407][TESTS] Tester les services JS
+
 
 ## 22.13.22 (30/10/2019)
 -[#1410x][TECH] r7 docker terminée, docs utf8
 
+
 ## 22.13.21 (30/10/2019)
 -[#1410w][TECH] r7 docker terminée, script unique
 
+
 ## 22.13.20 (30/10/2019)
 -[#1410v][TECH] r7 docker terminée, meilleure doc 
+
 
 ## 22.13.19 (30/10/2019)
 -[#1410u][TECH] r7 docker terminée !
