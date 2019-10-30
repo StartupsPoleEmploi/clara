@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.13.18 (30/10/2019)
+-[#1410s][TECH] r7 docker 
+
+
 ## 22.13.17 (30/10/2019)
 -[#1410r][TECH] r7 docker 
 
