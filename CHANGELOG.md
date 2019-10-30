@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.13.21 (30/10/2019)
+-[#1410w][TECH] r7 docker terminée, script unique
 
 ## 22.13.20 (30/10/2019)
 -[#1410v][TECH] r7 docker terminée, meilleure doc 
