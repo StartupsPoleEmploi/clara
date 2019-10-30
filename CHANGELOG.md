@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.13.22 (30/10/2019)
+-[#1410x][TECH] r7 docker terminée, docs utf8
+
 ## 22.13.21 (30/10/2019)
 -[#1410w][TECH] r7 docker terminée, script unique
 
