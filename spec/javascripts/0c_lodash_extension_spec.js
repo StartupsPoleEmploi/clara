@@ -123,6 +123,14 @@ describe("Lodash extension", function () {
       var obj = {a: 42, b: {a: 44}}
       expect(_.deepSearch(obj, 'a', function(k, v){return v === 42})).toEqual(obj);
     });
+    it("Should return null if not found because of predicate", function () {
+      var obj = {a: 42, b: {a: 44}}
+      expect(_.deepSearch(obj, 'a', function(k, v){return v === "foo"})).toEqual(null);
+    });
+    it("Should return null if not found because of unexisting property", function () {
+      var obj = {a: 42, b: {a: 44}}
+      expect(_.deepSearch(obj, 'unexisting', function(k, v){return v === 42})).toEqual(null);
+    });
   });
   describe("_.insertAt", function () {
     it("Should be defined", function () {
