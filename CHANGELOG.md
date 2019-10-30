@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.14.0 (30/10/2019)
+-[#1407][TESTS] Tester les services JS
+
 ## 22.13.22 (30/10/2019)
 -[#1410x][TECH] r7 docker terminée, docs utf8
 
