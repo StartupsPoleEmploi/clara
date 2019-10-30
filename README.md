@@ -121,12 +121,13 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ```
 ssh identifiant@adresse_recette
 
-~/home/clara$> docker exec clara_app bash
-root@inside_docker:~$> cd /var/git/ara.git/docker
-root@inside_docker:/var/git/ara.git/docker$> git pull origin master
-root@inside_docker:/var/git/ara.git/docker$> bundle install
-root@inside_docker:/var/git/ara.git/docker$> bundle exec mina production2 setup 
-root@inside_docker:/var/git/ara.git/docker$> bundle exec mina production2 deploy  
+~/$> cd /home/clara/docker
+~/home/clara/docker$> docker-compose exec srv_app bash
+root@inside_docker:~$> cd /var/git/ara.git
+root@inside_docker:/var/git/ara.git$> git pull origin master
+root@inside_docker:/var/git/ara.git$> bundle install
+root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
+root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy  
 ```
 
 ##### Commandes utiles
