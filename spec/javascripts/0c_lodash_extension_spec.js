@@ -156,8 +156,20 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.findNested).toBeDefined();
     });
-        it("Should return nested properties", function () {
-      expect(_.findNested({'aa': 1, 'bb': 2, 'cc': {'d':{'x':9}}, dd:{'d':{'y':9}}}, 'd')).toEqual([{x: 9}, {y: 9}]);
+    it("Should return nested properties, if there is multiple found, return them in array", function () {
+      expect(
+        _.findNested(
+          { 'aa': 1, 
+            'bb': 2, 
+            'cc': {'d':{'x':9}}, 
+            dd:{'d':{'y':9}}},
+        'd')).toEqual([{x: 9}, {y: 9}]);
+    });
+    it("Should return nested properties, if one found, return one element in array", function () {
+      expect(_.findNested({a: {b:2}}, 'b')).toEqual([2]);
+    });
+    it("Should return an empty array if problem", function () {
+      expect(_.findNested()).toEqual([]);
     });
   });
   describe("_.deepSearch", function () {
