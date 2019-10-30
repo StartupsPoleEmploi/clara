@@ -1,22 +1,22 @@
 version: "2.2"
 
 volumes:
-  # vol_shared:
+  vol_shared:
   vol_data:
 
 services:
 
-  # srv_nginx: 
-  #   image: nginx:1.10.3
-  #   container_name: clara_nginx
-  #   volumes:
-  #     - 'vol_shared:/var/www/ara'
-  #   ports:
-  #     - 80:80
-  #     - 443:443
-  #   depends_on:
-  #     - srv_app
-  #   restart: always
+  srv_nginx: 
+    image: nginx:1.10.3
+    container_name: clara_nginx
+    volumes:
+      - 'vol_shared:/var/www/ara'
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - srv_app
+    restart: always
 
   srv_app: 
     container_name: clara_app
@@ -27,7 +27,7 @@ services:
     volumes:
       - '..:/var/git/ara.git'
       - '../.env:/home/clara/.env'
-      # - 'vol_shared:/var/www/ara'
+      - 'vol_shared:/var/www/ara'
     ports:
       - "3000:3000"
     depends_on:
