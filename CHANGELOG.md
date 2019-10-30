@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.14.1 (30/10/2019)
+-[#1407b][TESTS] Tester les services JS, insertAt
+
 ## 22.14.0 (30/10/2019)
 -[#1407][TESTS] Tester les services JS
 
