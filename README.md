@@ -108,6 +108,7 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ~/home/clara> groupadd git
 ~/home/clara> chgrp -R git .git
 ~/home/clara> chgrp -R git ./
+~/home/clara> usermod -aG git $(whoami)
 ~/home/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
 ~/home/clara> rm -rf private/.git
 ~/home/clara> cd docker 
