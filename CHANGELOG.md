@@ -9,7 +9,6 @@
 ## 22.13.20 (30/10/2019)
 -[#1410v][TECH] r7 docker terminée, meilleure doc 
 
-
 ## 22.13.19 (30/10/2019)
 -[#1410u][TECH] r7 docker terminée !
 

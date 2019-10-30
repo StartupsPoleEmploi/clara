@@ -126,6 +126,7 @@ ssh identifiant@adresse_recette
 root@inside_docker:~$> cd /var/git/ara.git
 root@inside_docker:/var/git/ara.git$> git pull origin master
 root@inside_docker:/var/git/ara.git$> bundle install
+root@inside_docker:/var/git/ara.git$> export RUBYOPT="-KU -E utf-8:utf-8"
 root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
 root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy  
 ```
