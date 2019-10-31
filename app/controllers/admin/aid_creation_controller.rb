@@ -32,8 +32,6 @@ module Admin
         resource = Aid.new(new_attributes)
       end
 
-      ap resource
-
       if resource.save
         if slug.blank?
           redirect_to(
