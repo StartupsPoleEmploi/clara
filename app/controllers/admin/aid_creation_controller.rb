@@ -44,7 +44,6 @@ module Admin
           )
         end
       else
-        ap resource
         render :new_aid_stage_1, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
         }
