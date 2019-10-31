@@ -4,6 +4,8 @@ describe("jQuery extension", function() {
     $(document.body).addClass("aaa")
     $(document.body).addClass("bbb")
     $(document.body).addClass("ccc")
+    $(document.body).attr('attr_1', 'value_1');
+    $(document.body).attr('attr_2');
   });
   afterEach(function(){
     $(document.body).removeClass("aaa")
@@ -41,6 +43,16 @@ describe("jQuery extension", function() {
     it("Should return false if empty String is given", function() {
       expect($('body').hasClasses(" ")).toEqual(false)
     });
+  });
+
+  describe('$.hasAttribute', function() {
+    it("Should return true if given element has the given attribute", function() {
+      expect($('body').hasAttribute("attr_1")).toEqual(true)
+    });
+    it("Should return false if given element has not the given attribute", function() {
+      expect($('body').hasAttribute("attr_3")).toEqual(false)
+    });
+
   });
 
 
