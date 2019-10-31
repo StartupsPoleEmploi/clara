@@ -41,7 +41,7 @@
 
         <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
 
-          <%= hidden_field(:already_exist, :value, :value => !!params[:slug]) %>
+          <%= hidden_field(:slug, :value, :value => params[:slug] || page.attributes) %>
 
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if v.show_field?(attribute) %>
