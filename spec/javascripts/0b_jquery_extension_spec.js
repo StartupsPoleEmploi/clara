@@ -52,8 +52,5 @@ describe("jQuery extension", function() {
     it("Should return false if given element has not the given attribute", function() {
       expect($('body').hasAttribute("attr_3")).toEqual(false)
     });
-
   });
-
-
 });
