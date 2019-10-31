@@ -50,6 +50,19 @@ describe("Étape 1", function() {
       cy.get('.field-unit--errored-false input#aid_ordre_affichage')  .should('have.length', 1)
       cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
     })
+    it("si on renseigne un nom existant, il reste en erreur", function() {
+      // Given
+      cy.get('#aid_name').type('erasmus +')
+      // When
+      cy.get('button.c-newaid-actionrecord').click()
+      // Then
+      cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
+      cy.get('.field-unit--errored-false select#aid_contract_type_id').should('have.length', 1)
+      cy.get('.field-unit--errored-false input#aid_ordre_affichage')  .should('have.length', 1)
+      cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
+      
+      cy.get('.field-unit-error-msg--string').eq(0).contains("n'est pas disponible")
+    })
   })
   
 
