@@ -25,9 +25,6 @@ module Admin
     def create_stage_1
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage)
       slug = params.require(:slug).permit(:value).to_h[:value]
-      p '- - - - - - - - - - - - - - is_already_existing- - - - - - - - - - - - - - - -' 
-      pp slug
-      p ''
       if !slug.blank?
         resource = Aid.find_by(slug: slug)
         resource.assign_attributes(new_attributes)
