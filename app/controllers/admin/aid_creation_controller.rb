@@ -7,7 +7,7 @@ module Admin
     end
 
     def new_aid_stage_1
-      resource = Aid.new
+      resource = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
       authorize_resource(resource)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
