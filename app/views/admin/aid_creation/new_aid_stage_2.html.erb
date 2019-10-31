@@ -1,8 +1,8 @@
-<%- v = view_object(:new_aid_one, local_assigns) %>
+<%- v = view_object(:new_aid_two, local_assigns) %>
 
 
 <section class="c-newaid">
-  <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2aids" %>
+  <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2aids" %>
   <h1 class="c-newaid-title">Créer une aide</h1>
 
   <section class="c-newaid-panels simple-row">
@@ -39,15 +39,25 @@
         <div class="c-newaid-subtitle"><strong>Étape 2</strong> : contenu</div>
 
 
-        <%= form_with(url: "/admin/aid_creation/create_stage_2", html: { class: "form" }) do |f| %>
+        <%= form_for([namespace, page.resource], url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
 
-          formulaire étape 2
-          <%= f.submit "Enregistrer", id: "submit-step-2" %>
-        <% end %>              
+          <% page.attributes.each_with_index do |attribute, index_nb| %>
+            <% if v.show_field?(attribute) %>
+              <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
+                <% if v.errored?(attribute) -%>
+                  <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                    &nbsp;⚠ <%= v.error_message(attribute) %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>             
       </div>
       
       <div class="c-newaid-actions">
-        <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2aids" %>
+        <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2aids" %>
         <button class="c-newbutton c-newaid-actionrecord"> Enregistrer </button>
       </div>
 

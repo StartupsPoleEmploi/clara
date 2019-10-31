@@ -1,4 +1,4 @@
-class NewAidOne < ViewObject
+class NewAidTwo < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
@@ -12,13 +12,12 @@ class NewAidOne < ViewObject
 
   def show_field?(attribute)
     name = attr_name(attribute)
-    ap name
-    ["name", "contract_type", "ordre_affichage", "source"].include?(name)
+    [ "what", "additionnal_conditions", "how_much", "how_and_when", "limitations" ].include?(name)
   end
 
   def mandatory_field?(attribute)
     name = attr_name(attribute)
-    ["name", "contract_type", "ordre_affichage"].include?(name)
+    ["what"].include?(name)
   end
 
   def error_message(attribute)
