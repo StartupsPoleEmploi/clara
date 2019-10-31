@@ -63,6 +63,24 @@ describe("Étape 1", function() {
       
       cy.get('.field-unit-error-msg--string').eq(0).contains("n'est pas disponible")
     })
+    it("le nom se mets à jour en temps réel dans l'aperçu", function() {
+      cy.get('.js-title').eq(0).contains('erasmus +')
+
+      cy.get('#aid_name').clear()
+      cy.get('.js-title').should('have.text', '')
+
+      cy.get('#aid_name').type('erasmus42')
+      cy.get('.js-title').should('have.text', 'erasmus42')
+    })
+    it("le contract_type se mets à jour en temps réel dans l'aperçu", function() {
+      cy.get('.js-contract').contains('Aide à la mobilité')
+
+      cy.get('#aid_contract_type_id').select("")
+      cy.get('.js-contract').should('have.text', '')
+
+      cy.get('#aid_contract_type_id').select("1")
+      cy.get('.js-contract').contains('Aide à la mobilité')
+    })
   })
   
 
