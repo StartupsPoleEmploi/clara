@@ -3,6 +3,10 @@
   box-shadow: 0 0 5px 0 rgba(232, 232, 232, 0.53);
 }
 
+// .c-newaid form .field-unit {
+//   margin-bottom: 2rem;
+// }
+
 .c-newaid-back2aids {
   font-size: 14px;
   font-weight: normal;
@@ -68,7 +72,9 @@
     border-radius: 4px;
     border: solid 1px #dddbda;
     background-color: #ffffff;
-    margin-bottom: 2rem;
+  }
+  .field-unit__label{
+    margin-top: 2rem;
   }
 }
 
