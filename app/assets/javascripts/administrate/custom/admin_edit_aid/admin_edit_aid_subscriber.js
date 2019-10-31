@@ -3,7 +3,7 @@ clara.js_define("admin_edit_aid_subscriber", {
   please_if: _.stubFalse,
 
   please: function(state) {
-    if (state.title) {
+    if (_.isString(state.title)) {
       $(".js-title").html(state.title);
     }
     if (state.additionnal_conditions) {
@@ -21,7 +21,7 @@ clara.js_define("admin_edit_aid_subscriber", {
     if (state.what) {
       $(".js-what").html(state.what);
     }
-    if (state.contract) {
+    if (_.isString(state.contract)) {
       $(".js-contract").html(state.contract);
     }
   }
