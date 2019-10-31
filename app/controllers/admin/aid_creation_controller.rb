@@ -14,10 +14,17 @@ module Admin
       }      
     end
 
+    def new_aid_stage_2
+      resource = Aid.find_by(slug: params[:slug])
+      authorize_resource(resource)
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }      
+    end
+
     # from https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
     def create_aid_stage_1
-      resource = resource_class.new(resource_params)
-      authorize_resource(resource)
+      resource = Aid.new(resource_params)
 
       if resource.save
         redirect_to(

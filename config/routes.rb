@@ -61,6 +61,7 @@ Rails.application.routes.draw do
     namespace :aid_creation do
       get "new_aid_stage_1"
       post "create_stage_1"
+      get "new_aid_stage_2"
     end
     resources :rules do 
       get 'resolve', on: :member

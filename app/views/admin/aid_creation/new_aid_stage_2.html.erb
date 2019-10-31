@@ -1,0 +1,62 @@
+<%- v = view_object(:new_aid_one, local_assigns) %>
+
+
+<section class="c-newaid">
+  <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2aids" %>
+  <h1 class="c-newaid-title">Créer une aide</h1>
+
+  <section class="c-newaid-panels simple-row">
+    <div class="simple-col c-newaid-leftpanel" style="width: 45%">
+      <div class="c-newaid-stages">
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 1
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--active">
+          <div class="c-newaid-stageinside">
+            Étape 2
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 3
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 4
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 5
+          </div>
+        </div>
+      </div>
+
+      <div class="c-newaid-belowstages">
+        <div class="c-newaid-subtitle"><strong>Étape 2</strong> : contenu</div>
+
+
+        <%= form_with(url: "/admin/aid_creation/create_stage_2", html: { class: "form" }) do |f| %>
+
+          formulaire étape 2
+          <%= f.submit "Enregistrer", id: "submit-step-2" %>
+        <% end %>              
+      </div>
+      
+      <div class="c-newaid-actions">
+        <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2aids" %>
+        <button class="c-newbutton c-newaid-actionrecord"> Enregistrer </button>
+      </div>
+
+    </div>    
+    <div class="simple-col">
+      <%= render "aid_preview" %>    
+    </div>
+  </section>
+</section>
+
+
+
