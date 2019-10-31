@@ -36,11 +36,12 @@ module Admin
         if slug.blank?
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
-            notice: "L'aide a bien été enregistrée. Vous pouvez continuer."
+            notice: "L'aide a bien été enregistrée en tant que brouillon."
           )
         else
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            notice: "Les modifications ont bien été enregistrées."
           )
         end
       else
