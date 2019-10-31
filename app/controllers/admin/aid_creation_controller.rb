@@ -28,20 +28,28 @@ module Admin
       p '- - - - - - - - - - - - - - is_already_existing- - - - - - - - - - - - - - - -' 
       pp slug
       p ''
-      if slug
+      if !slug.blank?
         resource = Aid.find_by(slug: slug)
         resource.assign_attributes(new_attributes)
       else
         resource = Aid.new(new_attributes)
       end
 
+      ap resource
 
       if resource.save
-        redirect_to(
-          admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
-          notice: "L'aide a bien été enregistrée comme brouillon. Vous pouvez maintenant renseigner le contenu ou reprendre l'édition plus tard. ",
-        )
+        if slug.blank?
+          redirect_to(
+            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            notice: "L'aide a bien été enregistrée comme brouillon. Vous pouvez maintenant renseigner le contenu ou reprendre l'édition plus tard. ",
+          )
+        else
+          redirect_to(
+            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+          )
+        end
       else
+        ap resource
         render :new_aid_stage_1, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
         }
