@@ -40,6 +40,7 @@ describe("Étape 1", function() {
   })
   it("si on renseigne l'ordre d'affichage en plus, on a 1 champs en erreur", function() {
     // Given
+    cy.get('#aid_ordre_affichage').clear()
     cy.get('#aid_ordre_affichage').type('42')
     // When
     cy.get('button.c-newaid-actionrecord').click()
@@ -117,6 +118,42 @@ describe("Étape 1", function() {
     cy.get('input#aid_ordre_affichage').invoke('val').should('contain', '42')
     cy.get('textarea#aid_source').invoke('val').should('contain', 'du texte')
 
+  })
+  it("on peut faire une modification puis à nouveau valider", function() {
+
+    cy.get('#aid_ordre_affichage').clear()
+    cy.get('#aid_ordre_affichage').type('43')
+
+    cy.get('button.c-newaid-actionrecord').click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
+
+  })
+
+  it("on peut à nouveau revenir, le champ a bien été modifié", function() {
+
+    cy.get('.c-newaid-back2').eq(0).click()
+
+    cy.get('input#aid_ordre_affichage').invoke('val').should('contain', '43')
+
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
+
+
+  })
+
+  it("par contre si on mets un nom existant, c'est refusé", function() {
+
+    // Given
+    cy.get('#aid_name').clear()
+    cy.get('#aid_name').type('erasmus +')
+    // When
+    cy.get('button.c-newaid-actionrecord').click()
+    // Then
+    cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
+    cy.get('.field-unit--errored-false select#aid_contract_type_id').should('have.length', 1)
+    cy.get('.field-unit--errored-false input#aid_ordre_affichage')  .should('have.length', 1)
+    cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
+    
+    cy.get('.field-unit-error-msg--string').eq(0).contains("n'est pas disponible")
   })
 
 
