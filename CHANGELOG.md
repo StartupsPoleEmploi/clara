@@ -1,22 +1,33 @@
 # CLARA Changelog
 
+
+## 22.15.0 (31/10/2019)
+-[#1409][FEATURE] Refonte étape 1
+
+
 ## 22.14.2 (31/10/2019)
 -[#1407c][TESTS] Tester les services JS, insertAt suite et fin
+
 
 ## 22.14.1 (30/10/2019)
 -[#1407b][TESTS] Tester les services JS, insertAt
 
+
 ## 22.14.0 (30/10/2019)
 -[#1407][TESTS] Tester les services JS
+
 
 ## 22.13.22 (30/10/2019)
 -[#1410x][TECH] r7 docker terminée, docs utf8
 
+
 ## 22.13.21 (30/10/2019)
 -[#1410w][TECH] r7 docker terminée, script unique
 
+
 ## 22.13.20 (30/10/2019)
 -[#1410v][TECH] r7 docker terminée, meilleure doc 
+
 
 ## 22.13.19 (30/10/2019)
 -[#1410u][TECH] r7 docker terminée !
@@ -99,9 +110,6 @@
 
 ## 22.12.3 (29/10/2019)
 -[#1398c][BSR] mise à jour du README.md
-
-## 22.13.0 (28/10/2019)
--[#1409][FEATURE] Refonte étape 1
 
 
 ## 22.12.2 (28/10/2019)
