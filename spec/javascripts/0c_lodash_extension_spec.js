@@ -196,7 +196,7 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.insertAt).toBeDefined();
     });
-        it("Should insert a value in an array at the right index", function () {
+        it("Should insert a value in an array at the given index", function () {
           array_test = [1,2,4]
           _.insertAt(array_test,2,3)
       expect(array_test).toEqual([ 1, 2, 3, 4 ]);
