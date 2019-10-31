@@ -1,5 +1,11 @@
-clara.load_js(function only_if(){return $("input.c-field").hasAttribute("autofocus")}, function() {
+clara.js_define("autofocus_firefox", {
 
-  $( "input:visible:first" ).focus(); // for focus on firefox
-  
+  please_if: function() {
+    return $("input.c-field").hasAttribute("autofocus");
+  },
+
+  please: function() {
+    $( "input:visible:first" ).focus();
+  }
+
 });
