@@ -22,17 +22,16 @@ module Admin
       }      
     end
 
-    # from https://github.com/thoughtbot/administrate/blob/master/app/controllers/administrate/application_controller.rb
-    def create_aid_stage_1
-      resource = Aid.new(resource_params)
+    def create_stage_1
+      resource = Aid.new(params.require(:aid).permit)
 
       if resource.save
         redirect_to(
-          [namespace, resource],
+          admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
           notice: translate_with_resource("create.success"),
         )
       else
-        render :new, locals: {
+        render :new_aid_stage_1, locals: {
           page: Administrate::Page::Form.new(dashboard, resource),
         }
       end     
