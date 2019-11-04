@@ -36,10 +36,14 @@
       </div>
 
       <div class="c-newaid-belowstages">
-        <%= form_for([namespace, page.resource], url: admin_aid_creation_create_stage_2_path, html: { class: "form" }) do |f| %>
+        <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_2_path, html: { class: "form" }) do |f| %>
           <h2 class="c-newaid-subtitle">Contenu de l'aide</h2>
           <input placeholder="" type="hidden" name="aid[name]" id="aid_name" value="<%= page.resource.name %>">
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
+
+          <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+
+
           <div id="accordion_0" class="js-accordion">
               <% page.attributes.each_with_index do |attribute, index_nb| %>
                 <% if v.show_field?(attribute) %>
@@ -54,7 +58,7 @@
                 <% end %>
               <% end %>
           </div>
-
+          <%= f.submit "Enregistrer", id: "submit-current-step" %>
         <% end %>                     
       </div>
       

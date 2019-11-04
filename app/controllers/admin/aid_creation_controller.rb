@@ -23,6 +23,16 @@ module Admin
     end
 
     def create_stage_2
+      slug = params.require(:slug).permit(:value).to_h[:value]
+      resource = Aid.find_by(slug: slug)
+      old_attributes = resource.attributes.with_indifferent_access
+      new_attributes = params.require(:aid).permit(:what, :additionnal_conditions, :how_much, :how_and_when, :limitations).to_h
+      all_attributes = old_attributes.merge(new_attributes)
+      resource.assign_attributes(new_attributes)
+      redirect_to(
+        admin_aid_creation_new_aid_stage_3_path(slug: resource.slug),
+        notice: "Le contenu a été mis à jour"
+      )
       fail
     end
 
