@@ -1,4 +1,4 @@
-clara.js_define("admin_step_1", {
+clara.js_define("admin_submit_step", {
 
     please_if: function() {
       return $("#submit-current-step").exists();
