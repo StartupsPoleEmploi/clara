@@ -23,6 +23,7 @@ module Admin
     end
 
     def create_stage_2
+      fail
     end
 
     def new_aid_stage_3
