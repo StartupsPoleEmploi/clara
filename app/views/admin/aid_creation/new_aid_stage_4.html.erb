@@ -19,7 +19,11 @@
 
 <% else %>
 
-<%= javascript_pack_tag 'application' %>
+<%
+=begin%>
+ <%= javascript_pack_tag 'application' %> 
+<%
+=end%>
 <%= javascript_pack_tag 'hello_vue' %>
 
   <div id="hello">
