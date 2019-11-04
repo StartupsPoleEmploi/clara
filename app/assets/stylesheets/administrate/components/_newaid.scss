@@ -82,6 +82,7 @@
   line-height: 1.94;
   letter-spacing: normal;
   color: #1b1b1b;
+  margin-bottom: 1rem;
 }
 
 .c-newaid-stages {
@@ -167,7 +168,7 @@
   display: none;
 }
 
-.c-newaid .field-unit--ckeditor .field-unit__field {
+.c-newaid--stage2 .field-unit--ckeditor .field-unit__field {
   width: 100%;
   margin-left: 0;
 }
