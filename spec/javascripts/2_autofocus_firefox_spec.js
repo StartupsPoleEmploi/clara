@@ -13,10 +13,10 @@ describe('autofocus_firefox.js', function () {
     expect($('input.without_autofocus').is(":focus")).toEqual(false)
   });
   it("Input with autofocus attribute should have with_autofocus class", function () {
-    expect($("input.c-field").attr("autofocus", "autofocus").hasClasses("with_autofocus").toEqual(true)
+    expect($("input.c-field").attr("autofocus").hasClasses("with_autofocus").toEqual(true)
   });
   it("Should focus on input with autofocus", function () {
-    expect($("input.c-field").attr("autofocus", "autofocus").is(":focus")).toEqual(true)
+    expect($("input.c-field").attr("autofocus").is(":focus")).toEqual(true)
   });
   it("Should focus on input with autofocus", function () {
     expect($("input.with_autofocus").is(":focus")).toEqual(true)
