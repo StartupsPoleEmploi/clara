@@ -3,7 +3,6 @@ clara.js_define("admin_edit_aid_init", {
   please_if: _.stubFalse,
 
   please: function(o) {
-    console.log(o)
 
     return {
         title:                  o.$aid_name.val(),
