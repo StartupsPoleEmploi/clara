@@ -83,7 +83,7 @@ jQuery.fn.extend({
     return result;
   },
   hasAttribute: function (name) {
-    return $(this).attr(name) !== undefined || null;
+    return $(this).attr(name) !== undefined;
   }
 
 

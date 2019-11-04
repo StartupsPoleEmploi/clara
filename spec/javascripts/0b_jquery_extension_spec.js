@@ -5,7 +5,7 @@ describe("jQuery extension", function () {
     $(document.body).addClass("bbb")
     $(document.body).addClass("ccc")
     $(document.body).attr('non_empty_attr', 'value_1');
-    $(document.body).attr('attribute_without_value');
+    $(document.body).attr('attribute_without_value', '');
     $(document.body).append("<div></div>");
   });
   afterEach(function () {
@@ -59,8 +59,8 @@ describe("jQuery extension", function () {
     it("Should return false if given element has no attribute", function () {
       expect($('div').hasAttribute("non_existing_attribute")).toEqual(false)
     });
-    it("Should return true if no attribute value is input", function () {
-      expect($('div').hasAttribute("")).toEqual(true)
+    it("Should return false if no attribute value is input", function () {
+      expect($('div').hasAttribute("")).toEqual(false)
     });
   });
 });
