@@ -4,14 +4,18 @@ describe("jQuery extension", function () {
     $(document.body).addClass("aaa")
     $(document.body).addClass("bbb")
     $(document.body).addClass("ccc")
-    $(document.body).attr('non_empty_attr', 'value_1');
-    $(document.body).attr('attribute_without_value', '');
     $(document.body).append("<div></div>");
+    $('div').attr('non_empty_attr', 'value_1');
+    $('div').attr('attribute_without_value', '');
+    $(document.body).append("<button></button>");
   });
   afterEach(function () {
     $(document.body).removeClass("aaa")
     $(document.body).removeClass("bbb")
     $(document.body).removeClass("ccc")
+    $('div').remove()
+    $('button').remove()
+
   });
   describe('$.hasClasses', function () {
     it("Should return true if given element has all classes", function () {
@@ -48,19 +52,19 @@ describe("jQuery extension", function () {
 
   describe('$.hasAttribute', function () {
     it("Should return true if given element has the given attribute with a value", function () {
-      expect($('body').hasAttribute("non_empty_attr")).toEqual(true)
+      expect($('div').hasAttribute("non_empty_attr")).toEqual(true)
     });
     it("Should return true if given element has the given attribute without value", function () {
-      expect($('body').hasAttribute("attribute_without_value")).toEqual(true)
+      expect($('div').hasAttribute("attribute_without_value")).toEqual(true)
     });
     it("Should return false if given element has not the given attribute", function () {
-      expect($('body').hasAttribute("non_existing_attribute")).toEqual(false)
+      expect($('div').hasAttribute("non_existing_attribute")).toEqual(false)
     });
     it("Should return false if given element has no attribute", function () {
       expect($('div').hasAttribute("non_existing_attribute")).toEqual(false)
     });
     it("Should return false if no attribute value is input", function () {
-      expect($('div').hasAttribute("")).toEqual(false)
+      expect($('button').hasAttribute("")).toEqual(false)
     });
   });
 });
