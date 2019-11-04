@@ -5,7 +5,7 @@
 -[#1409][FEATURE] Refonte étape 1
 
 ## 22.14.3 (31/10/2019)
--[#1407c][BUG] Corrige le focus dans Firefox pour les champs valeurs numériques
+-[#1408][BUG] Corrige le focus dans Firefox pour les champs valeurs numériques
 
 ## 22.14.2 (31/10/2019)
 -[#1407c][TESTS] Tester les services JS, insertAt suite et fin
