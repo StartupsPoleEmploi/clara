@@ -6,6 +6,9 @@ describe('autofocus_firefox.js', function () {
     $("input:last").addClass("with_autofocus c-field")
     $("input.with_autofocus").attr('autofocus', 'autofocus');
   });
+  afterEach(function () {
+    $("form").remove()
+  };
   it('Needs clara.autofocus_firefox to be defined', function () {
     expect(clara.autofocus_firefox).toBeDefined();
   });
