@@ -13,6 +13,9 @@ describe('autofocus_firefox.js', function () {
     expect($('input.without_autofocus').is(":focus")).toEqual(false)
   });
   it("Should focus on input with autofocus", function () {
-    expect($("input:visible:first").is(":focus"))
+    expect($("input.c-field").attr("autofocus", "autofocus").is(":focus")).toEqual(true)
+  });
+  it("Should focus on input with autofocus", function () {
+    expect($("input.with_autofocus").is(":focus")).toEqual(true)
   });
 });
