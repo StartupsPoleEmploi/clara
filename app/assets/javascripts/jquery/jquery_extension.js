@@ -1,24 +1,24 @@
-$.paramUpdate = function(url, param) {
+$.paramUpdate = function (url, param) {
 
   var regExp = new RegExp(param.key + '=([a-z0-9\-\_]+)(?:&)?'),
-      existsMatch = url.match(regExp);
+    existsMatch = url.match(regExp);
 
   if (!existsMatch) {
-      return url + '&' + param.key + '=' + param.value
+    return url + '&' + param.key + '=' + param.value
   }
 
   var paramToUpdate = existsMatch[0],
-      valueToReplace = existsMatch[1],
-      updatedParam = paramToUpdate.replace(valueToReplace, param.value);
+    valueToReplace = existsMatch[1],
+    updatedParam = paramToUpdate.replace(valueToReplace, param.value);
 
   return url.replace(paramToUpdate, updatedParam);
 }
 
-$.currentAppPath = function() {
+$.currentAppPath = function () {
   return $('body').attr("data-path");
 }
 
-$.urlParam = function(name) {
+$.urlParam = function (name) {
   var result = null;
   var candidates_array = new RegExp('[\?&]' + name + '=([^&#]*)').exec($.currentUrl());
   if ($.isArray(candidates_array) && candidates_array.length > 1) {
@@ -33,7 +33,7 @@ $.urlParam = function(name) {
   return result;
 };
 
-$.currentUrl = function() {
+$.currentUrl = function () {
   return window.location.href;
 }
 
@@ -43,10 +43,10 @@ $.extend({
     var $currentElem = $(currentElem);
     var i, $newTag = $(newTagObj).clone();
     if (keepProps) {
-        newTag = $newTag[0];
-        newTag.className = currentElem.className;
-        $.extend(newTag.classList, currentElem.classList);
-        $.extend(newTag.attributes, currentElem.attributes);
+      newTag = $newTag[0];
+      newTag.className = currentElem.className;
+      $.extend(newTag.classList, currentElem.classList);
+      $.extend(newTag.attributes, currentElem.attributes);
     }
     $currentElem.wrapAll($newTag);
     $currentElem.contents().unwrap();
@@ -58,21 +58,21 @@ $.extend({
 jQuery.fn.extend({
   // See https://stackoverflow.com/a/20469901/2595513
   replaceTag: function (newTagObj, keepProps) {
-    return this.each(function() {
-        jQuery.replaceTag(this, newTagObj, keepProps);
+    return this.each(function () {
+      jQuery.replaceTag(this, newTagObj, keepProps);
     });
   },
-  datamap: function(dataext) {
-    return this.map(function(){return $(this).data()[dataext]}).get();
+  datamap: function (dataext) {
+    return this.map(function () { return $(this).data()[dataext] }).get();
   },
-  exists: function() {
+  exists: function () {
     return this.length > 0;
   },
-  hasClasses: function() {
+  hasClasses: function () {
     var result = false;
     var args = Array.prototype.slice.call(arguments);
     for (var i = args.length - 1; i >= 0; i--) {
-      var clazz = "" +  args[i]; // force clazz to be a String
+      var clazz = "" + args[i]; // force clazz to be a String
       if ($(this).hasClass(clazz)) {
         result = true;
       } else {
@@ -82,9 +82,9 @@ jQuery.fn.extend({
     }
     return result;
   },
-  hasAttribute: function(name) {  
-    return $(this).attr(name) !== undefined;
- }
+  hasAttribute: function (name) {
+    return $(this).attr(name) !== undefined || null;
+  }
 
 
 });
