@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 ## 22.16.0 (04/11/2019)
-[FEATURE] Intégration de VueJS au projet en vue d'améliorer la création de règles dans le BO
+-[FEATURE] Intégration de VueJS au projet en vue d'améliorer la création de règles dans le BO
 
 ## 22.15.0 (31/10/2019)
 -[#1409][FEATURE] Refonte étape 1
