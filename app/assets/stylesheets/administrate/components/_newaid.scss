@@ -35,7 +35,6 @@
   }
   .field-unit {
     align-items: initial;
-    display: initial;
     margin-bottom: initial;
     position: initial;
     width: initial;
@@ -167,4 +166,9 @@
 
 #submit-step-1 {
   display: none;
+}
+
+.c-newaid .field-unit--ckeditor .field-unit__field {
+  width: 100%;
+  margin-left: 0;
 }

@@ -36,27 +36,27 @@
       </div>
 
       <div class="c-newaid-belowstages">
-        <div class="c-newaid-subtitle"><strong>Étape 2</strong> : contenu</div>
-        <button class="js-collapse is-fold" type="button"> Tout plier </button>
-        <button class="js-collapse is-unfold" type="button"> Tout déplier </button>
+        <%= form_for([namespace, page.resource], url: admin_aid_creation_create_stage_2_path, html: { class: "form" }) do |f| %>
+          <div class="c-newaid-subtitle"><strong>Étape 2</strong> : contenu</div>
+          <button class="js-collapse is-fold" type="button"> Tout plier </button>
+          <button class="js-collapse is-unfold" type="button"> Tout déplier </button>
 
-        <div id="accordion_0" class="js-accordion">
-          <%= form_for([namespace, page.resource], url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
-            <% page.attributes.each_with_index do |attribute, index_nb| %>
-              <% if v.show_field?(attribute) %>
-                <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
-                  <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
-                  <% if v.errored?(attribute) -%>
-                    <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-                      &nbsp;⚠ <%= v.error_message(attribute) %>
-                    </div>
-                  <% end %>
-                </div>
+          <div id="accordion_0" class="js-accordion">
+              <% page.attributes.each_with_index do |attribute, index_nb| %>
+                <% if v.show_field?(attribute) %>
+                  <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                    <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
+                    <% if v.errored?(attribute) -%>
+                      <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                        &nbsp;⚠ <%= v.error_message(attribute) %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-          <% end %>                     
-        </div>
-        
+          </div>
+
+        <% end %>                     
       </div>
       
       <div class="c-newaid-actions">
