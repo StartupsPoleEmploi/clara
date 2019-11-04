@@ -33,10 +33,13 @@ module Admin
         admin_aid_creation_new_aid_stage_3_path(slug: resource.slug),
         notice: "Le contenu a été mis à jour"
       )
-      fail
     end
 
     def new_aid_stage_3
+      resource = Aid.find_by(slug: params[:slug])
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }      
     end
 
     def create_stage_1

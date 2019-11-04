@@ -1,4 +1,4 @@
-<%- v = view_object(:new_aid_two, local_assigns) %>
+<%- v = view_object(:new_aid_three, local_assigns) %>
 
 
 <section class="c-newaid c-newaid--stage3">
@@ -13,12 +13,12 @@
             Étape 1
           </div>
         </div>
-        <div class="c-newaid-stage c-newaid-stage--active">
+        <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
             Étape 2
           </div>
         </div>
-        <div class="c-newaid-stage c-newaid-stage--inactive">
+        <div class="c-newaid-stage c-newaid-stage--active">
           <div class="c-newaid-stageinside">
             Étape 3
           </div>
@@ -46,7 +46,6 @@
 
     </div>    
     <div class="simple-col">
-      <%= render "aid_preview" %>    
     </div>
   </section>
 </section>
