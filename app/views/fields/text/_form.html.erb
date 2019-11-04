@@ -15,6 +15,8 @@ This partial renders a textarea element for a text attribute.
 %>
 
 <%- is_mandatory ||= false %>
+<%- is_optional ||= false %>
+
 <%- help ||= nil %>
 <%- placeholder ||= nil %>
 
@@ -22,6 +24,9 @@ This partial renders a textarea element for a text attribute.
   <%= f.label field.attribute, id: "#{field.attribute}" %>
   <% if is_mandatory %>
     <span class="field-unit__label-mandatory">*</span>
+  <% end %>
+  <% if is_optional %>
+    <span class="field-unit__label-optional">* Optionnel</span>
   <% end %>
 </div>
 <div class="field-unit__field">
