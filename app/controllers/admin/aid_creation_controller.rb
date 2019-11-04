@@ -22,6 +22,12 @@ module Admin
       }      
     end
 
+    def create_stage_2
+    end
+
+    def new_aid_stage_3
+    end
+
     def create_stage_1
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
       slug = params.require(:slug).permit(:value).to_h[:value]
