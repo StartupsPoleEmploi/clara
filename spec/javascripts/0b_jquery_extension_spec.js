@@ -1,22 +1,5 @@
 describe("jQuery extension", function () {
 
-  // beforeEach(function () {
-  //   $(document.body).addClass("aaa")
-  //   $(document.body).addClass("bbb")
-  //   $(document.body).addClass("ccc")
-  //   $(document.body).append("<div></div>");
-  //   $('div').attr('non_empty_attr', 'value_1');
-  //   $('div').attr('attribute_without_value', '');
-  //   $(document.body).append("<button></button>");
-  // });
-  // afterEach(function () {
-  //   $(document.body).removeClass("aaa")
-  //   $(document.body).removeClass("bbb")
-  //   $(document.body).removeClass("ccc")
-  //   $('div').remove()
-  //   $('button').remove()
-
-  // });
   describe('$.hasClasses', function () {
     beforeEach(function () {
       $(document.body).append('\
