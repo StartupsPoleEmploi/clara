@@ -6,6 +6,7 @@ clara.js_define("autofocus_firefox", {
 
   please: function () {
     $("input.c-field").attr("autofocus", "autofocus").focus();
+    console.log($(":focus"))
   }
 
 });
