@@ -1,4 +1,4 @@
-clara.js_define("autofocus_firefox", {
+clara.js_define("autofocus_forced", {
 
   please_if: function () {
     return $('[autofocus]').length > 0

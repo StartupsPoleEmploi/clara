@@ -1,6 +1,6 @@
-//= require custom/autofocus_firefox
+//= require custom/autofocus_forced
 
-describe('autofocus_firefox.js', function () {
+describe('autofocus_forced.js', function () {
 
   afterEach(function () {
     $('#tested_div').remove()
@@ -15,7 +15,7 @@ describe('autofocus_firefox.js', function () {
          </form>'
       )
       //when
-      res = clara.autofocus_firefox.please_if()
+      res = clara.autofocus_forced.please_if()
       //then
       expect(res).toEqual(true)
     });
@@ -31,7 +31,7 @@ describe('autofocus_firefox.js', function () {
   });
 
   describe('.please', function() {
-    it('DO NOT give focus to a DOM element WITHOUT autofocus_firefox triggered', function() {
+    it('DO NOT give focus to a DOM element WITHOUT autofocus_forced triggered', function() {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -51,7 +51,7 @@ describe('autofocus_firefox.js', function () {
          </form>'
       )
       //when
-      res = clara.autofocus_firefox.please()
+      res = clara.autofocus_forced.please()
       //then
       expect($(":focus").length).toEqual(0)
     });
@@ -63,7 +63,7 @@ describe('autofocus_firefox.js', function () {
          </form>'
       )
       //when
-      res = clara.autofocus_firefox.please()
+      res = clara.autofocus_forced.please()
       //then
       expect($('#simple-div').get(0)).toBe(document.activeElement);
     });
@@ -80,7 +80,7 @@ describe('autofocus_firefox.js', function () {
          </form>'
       )
       //when
-      res = clara.autofocus_firefox.please()
+      res = clara.autofocus_forced.please()
       //then
       expect($('#simple-div').get(0)).not.toBe(document.activeElement);
     });
@@ -94,7 +94,7 @@ describe('autofocus_firefox.js', function () {
          </form>'
       )
       //when
-      res = clara.autofocus_firefox.please()
+      res = clara.autofocus_forced.please()
       //then
       expect($('#first-div').get(0)).toBe(document.activeElement);
     });
