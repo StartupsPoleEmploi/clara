@@ -19,26 +19,15 @@ describe('autofocus_firefox.js', function () {
       //then
       expect(res).toEqual(true)
     });
-    it('returns true if there is a deeply nested DOM element with the "autofocus" attribute', function() {
-      //given
-      //when
-      //then
-    });
-    it('returns true if there is a multiple DOM elements with the "autofocus" attribute', function() {
-      //given
-      //when
-      //then
-    });
-    it('returns false if there is no DOM element with the autofocus attribute (example 1)', function() {
-      //given
-      //when
-      //then
-    });
-    it('returns false if there is no DOM element with the autofocus attribute (example 2)', function() {
-      //given
-      //when
-      //then
-    });
+
+    it('returns true if there is a deeply nested DOM element with the "autofocus" attribute');
+    
+    it('returns true if there is a multiple DOM elements with the "autofocus" attribute');
+    
+    it('returns false if there is no DOM element with the autofocus attribute (example 1)');
+    
+    it('returns false if there is no DOM element with the autofocus attribute (example 2)');
+
   });
 
   describe('.please', function() {
