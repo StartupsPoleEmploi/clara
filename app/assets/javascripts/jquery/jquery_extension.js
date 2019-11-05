@@ -83,7 +83,23 @@ jQuery.fn.extend({
     return result;
   },
   hasAttribute: function (name) {
-    return $(this).attr(name) !== undefined;
+    
+
+    var res = false;
+
+    if (typeof name === "string") {
+      var attr = $(this).attr(name);
+
+      // See https://css-tricks.com/snippets/jquery/make-an-jquery-hasattr/#article-header-id-0
+      // For some browsers, `attr` is undefined; for others, `attr` is false. Check for both.
+      if (typeof attr !== typeof undefined && attr !== false) {
+        res = true;
+      }
+
+    }
+
+    return res;
+
   }
 
 

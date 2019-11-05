@@ -8,7 +8,7 @@ describe('autofocus_firefox.js', function () {
   });
   afterEach(function () {
     $("form").remove()
-  };
+  });
   it('Needs clara.autofocus_firefox to be defined', function () {
     expect(clara.autofocus_firefox).toBeDefined();
   });
@@ -16,7 +16,7 @@ describe('autofocus_firefox.js', function () {
     expect($('input.without_autofocus').is(":focus")).toEqual(false)
   });
   it("Input with autofocus attribute should have with_autofocus class", function () {
-    expect($("input.c-field").attr("autofocus").hasClasses("with_autofocus").toEqual(true)
+    expect($("input.c-field").attr("autofocus").hasClasses("with_autofocus")).toEqual(true)
   });
   it("Should focus on input with autofocus", function () {
     expect($("input.c-field").attr("autofocus").is(":focus")).toEqual(true)
