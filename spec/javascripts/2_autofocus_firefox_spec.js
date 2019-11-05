@@ -79,12 +79,11 @@ describe('autofocus_firefox.js', function () {
       expect($(":focus").length).toEqual(1)
       expect($($(":focus")[0]).attr('id')).toEqual("simple-div")
     });
-    it('Gives focus to a DOM element with autofocus attribute=\"\"', function() {
-      // COMPLETE HERE
-    });
-    it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"', function() {
-      // COMPLETE HERE
-    });
+
+    it('Gives focus to a DOM element with autofocus attribute=\"\"');
+    
+    it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"');
+    
     it('DO NOT give focus to a DOM element that is not focusable (a DIV is not focusable)', function() {
       //given
       $(document.body).append(
