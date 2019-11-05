@@ -1,12 +1,16 @@
 clara.js_define("autofocus_firefox", {
 
   please_if: function () {
-    return $("input.c-field").hasAttribute("autofocus");
+    console.log("hey")
+    // return $("input").hasAttribute("autofocus");
+    return true;
   },
 
   please: function () {
-    $("input.c-field").attr("autofocus", "autofocus").focus();
-    console.log($(":focus"))
+    console.log("triggered")
+    $("input").focus();
+    // $("input.c-field").attr("autofocus", "autofocus").focus();
+    // console.log($(":focus"))
   }
 
 });

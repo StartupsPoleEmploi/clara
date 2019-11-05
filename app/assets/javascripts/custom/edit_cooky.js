@@ -1,6 +1,7 @@
 clara.js_define("edit_cooky", {
 
     please: function() {
+      console.log("helllo")
       var that = this;
       $("input:radio:first").focus();
       that.setup_authorize_all_callbacks();

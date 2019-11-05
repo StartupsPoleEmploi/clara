@@ -51,12 +51,65 @@ describe('autofocus_firefox.js', function () {
     expect(clara.autofocus_firefox).toBeDefined();
   });
   describe("For an empty form", function () {
+    // given
     beforeEach(function () {
-      $(document.body).append('\
-        <form id="tested_div"> \
-        </form>')
+      $("body").append('<form id="tested_div"></form>')
     })
-    it('Should not give focus', function () {
+    it('Should NOT give focus', function () {
+      // when
+      clara.autofocus_firefox.please()
+      // then
+      expect($(":focus").length).toEqual(0)
+    });
+  });
+  describe("For a form with an input with autofocus alone", function () {
+    beforeEach(function () {
+      // given
+      $("body").append('<form id="tested_div"><input id="unassigned" autofocus></form>')
+    });
+    it('Should give focus', function () {
+      // when
+      clara.autofocus_firefox.please()
+      // then
+      expect($(":focus").length).toEqual(1)
+      expect($($(":focus")[0]).attr('id')).toEqual("unassigned")
+    });
+  });
+  describe("For a form with an input with autofocus=\"\"", function () {
+    beforeEach(function () {
+      // given
+      $("body").append('<form id="tested_div"><input id="empty" autofocus=""></form>')
+    });
+    it('Should give focus', function () {
+      // when
+      clara.autofocus_firefox.please()
+      // then
+      expect($(":focus").length).toEqual(1)
+      expect($($(":focus")[0]).attr('id')).toEqual("empty")
+    });
+  });
+  describe("For a form with an input with autofocus=\"autofocus\"", function () {
+    beforeEach(function () {
+      // given
+      $("body").append('<form id="tested_div"><input id="assigned" autofocus="autofocus"></form>')
+    });
+    it('Should give focus', function () {
+      // when
+      clara.autofocus_firefox.please()
+      // then
+      expect($(":focus").length).toEqual(1)
+      expect($($(":focus")[0]).attr('id')).toEqual("assigned")
+    });
+  });
+  describe("For a form with an input with autofocus=\"wrong\"", function () {
+    beforeEach(function () {
+      // given
+      $("body").append('<form id="tested_div"><input id="wrong" autofocus="wrong"></form>')
+    });
+    it('Should NOT give focus', function () {
+      // when
+      clara.autofocus_firefox.please()
+      // then
       expect($(":focus").length).toEqual(0)
     });
   });
