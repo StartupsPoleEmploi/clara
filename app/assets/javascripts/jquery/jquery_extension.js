@@ -93,10 +93,6 @@ jQuery.fn.extend({
       }
     }
     return res;
-  },
-  booleanAttributeTrue: function (name) {
-    var actual_name = $(this).attr(name)
-    return $(this).hasAttribute(name) && (actual_name === name || actual_name === "")
   }
 
 

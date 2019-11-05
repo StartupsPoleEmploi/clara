@@ -46,7 +46,7 @@ describe('autofocus_firefox.js', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
-           <div id="simple-div">\
+           <input id="simple-div">\
          </form>'
       )
       //when
@@ -58,7 +58,7 @@ describe('autofocus_firefox.js', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
-           <div id="simple-div">\
+           <input id="simple-div">\
          </form>'
       )
       //when
@@ -70,7 +70,7 @@ describe('autofocus_firefox.js', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
-           <div id="simple-div" autofocus>\
+           <input id="simple-div" autofocus>\
          </form>'
       )
       //when
@@ -79,13 +79,31 @@ describe('autofocus_firefox.js', function () {
       expect($(":focus").length).toEqual(1)
       expect($($(":focus")[0]).attr('id')).toEqual("simple-div")
     });
+    it('Gives focus to a DOM element with autofocus attribute=\"\"', function() {
+      // COMPLETE HERE
+    });
+    it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"', function() {
+      // COMPLETE HERE
+    });
+    it('DO NOT give focus to a DOM element that is not focusable (a DIV is not focusable)', function() {
+      //given
+      $(document.body).append(
+        '<form id="tested_div">\
+           <div id="simple-div" autofocus>\
+         </form>'
+      )
+      //when
+      res = clara.autofocus_firefox.please()
+      //then
+      expect($(":focus").length).toEqual(0)
+    });
     it('Gives focus to FIRST dom element with autofocus attribute', function() {
       //given
       $(document.body).append(
         '<form id="tested_div">\
-           <div id="first-div" autofocus>\
-           <div id="second-div" autofocus>\
-           <div id="third-div" autofocus>\
+           <input id="first-div" autofocus>\
+           <input id="second-div" autofocus>\
+           <input id="third-div" autofocus>\
          </form>'
       )
       //when
