@@ -41,7 +41,7 @@ describe('autofocus_firefox.js', function () {
       //when
       // NOT CALLED DELIBERATELY
       //then
-      expect($(":focus").length).toEqual(0)
+      expect($('#simple-div').get(0)).not.toBe(document.activeElement);
     });
     it('DO NOT give focus to a DOM element WITHOUT autofocus attribute', function() {
       //given
@@ -65,8 +65,7 @@ describe('autofocus_firefox.js', function () {
       //when
       res = clara.autofocus_firefox.please()
       //then
-      expect($(":focus").length).toEqual(1)
-      expect($($(":focus")[0]).attr('id')).toEqual("simple-div")
+      expect($('#simple-div').get(0)).toBe(document.activeElement);
     });
 
     it('Gives focus to a DOM element with autofocus attribute=\"\"');
@@ -83,7 +82,7 @@ describe('autofocus_firefox.js', function () {
       //when
       res = clara.autofocus_firefox.please()
       //then
-      expect($(":focus").length).toEqual(0)
+      expect($('#simple-div').get(0)).not.toBe(document.activeElement);
     });
     it('Gives focus to FIRST dom element with autofocus attribute', function() {
       //given
@@ -97,8 +96,7 @@ describe('autofocus_firefox.js', function () {
       //when
       res = clara.autofocus_firefox.please()
       //then
-      expect($(":focus").length).toEqual(1)
-      expect($($(":focus")[0]).attr('id')).toEqual("first-div")
+      expect($('#first-div').get(0)).toBe(document.activeElement);
     });
   });
 
