@@ -196,17 +196,25 @@ describe("Lodash extension", function () {
     it("Should be defined", function () {
       expect(_.insertAt).toBeDefined();
     });
-        it("Should insert a value in an array at the given index", function () {
-          array_test = [1,2,4]
-          _.insertAt(array_test,2,3)
+    it("Should insert a value in an array at the given index", function () {
+      //given
+      var array_test = [1,2,4]
+      // when
+      _.insertAt(array_test, 2, 3)
+      // then
       expect(array_test).toEqual([ 1, 2, 3, 4 ]);
     });
-        it("Should do nothing if no array is given", function () {
-      expect(_.insertAt(2,3)).toEqual(undefined);
+    it("Should do nothing if no array is given", function () {
+      //given
+      var empty_arg = null
+      // when
+      _.insertAt(empty_arg, 2, 3)
+      // then
+      expect(empty_arg).toEqual(null);
     });
-        it("Should insert an item in an empty array", function () {
-          empty_array = []
-          _.insertAt(empty_array, 12, "copacabana")
+    it("Should insert an item in an empty array", function () {
+      var empty_array = []
+      _.insertAt(empty_array, 12, "copacabana")
       expect(empty_array).toEqual(["copacabana"]);
     });
   });
