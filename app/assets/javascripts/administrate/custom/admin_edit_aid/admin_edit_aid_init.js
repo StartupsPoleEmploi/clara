@@ -3,7 +3,6 @@ clara.js_define("admin_edit_aid_init", {
   please_if: _.stubFalse,
 
   please: function(o) {
-    console.log(o)
 
     return {
         title:                  o.$aid_name.val(),
@@ -12,7 +11,7 @@ clara.js_define("admin_edit_aid_init", {
         how_much:               o && o.editor_how_much ? o.editor_how_much.getData() : null,
         limitations:            o && o.editor_limitations ? o.editor_limitations.getData() : null,
         what:                   o && o.editor_what ? o.editor_what.getData() : null,
-        contract:               o.$aid_contract_type_id.find("option:selected").text()
+        contract:               o.$aid_contract_type_id.find("option:selected").text() || o.$aid_contract_type_id.val()
       }
   }
 

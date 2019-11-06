@@ -1,12 +1,15 @@
 # CLARA Changelog
 
 
+## 22.16.0 (6/11/2019)
+-[#1411][FEATURE] Refonte étape 2
 
-## 22.15.2 (06/11/2019)
+
+## 22.15.2 (6/11/2019)
 -[#1419][SECURITY] Fix de sécurité automatique
 
 
-## 22.15.1 (04/11/2019)
+## 22.15.1 (4/11/2019)
 -[#1408][BUG] Corrige le focus dans Firefox pour les champs valeurs numériques
 
 

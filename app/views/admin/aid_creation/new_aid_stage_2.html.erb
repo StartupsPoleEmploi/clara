@@ -1,7 +1,7 @@
 <%- v = view_object(:new_aid_two, local_assigns) %>
 
 
-<section class="c-newaid">
+<section class="c-newaid c-newaid--stage2">
   <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2" %>
   <h1 class="c-newaid-title">Créer une aide</h1>
 
@@ -36,16 +36,30 @@
       </div>
 
       <div class="c-newaid-belowstages">
-        <div class="c-newaid-subtitle"><strong>Étape 2</strong> : contenu</div>
+        <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_2_path, html: { class: "form" }) do |f| %>
+          <h2 class="c-newaid-subtitle">Contenu de l'aide</h2>
+          <input placeholder="" type="hidden" name="aid[name]" id="aid_name" value="<%= page.resource.name %>">
+          <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
+
+          <%= hidden_field(:slug, :value, value: page.resource.slug) %>
 
 
-        <%= form_for([namespace, page.resource], url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
-
-
-
-        <% end %>             
-
-        
+          <div id="accordion_0" class="js-accordion">
+              <% page.attributes.each_with_index do |attribute, index_nb| %>
+                <% if v.show_field?(attribute) %>
+                  <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                    <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
+                    <% if v.errored?(attribute) -%>
+                      <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                        &nbsp;⚠ <%= v.error_message(attribute) %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+          <%= f.submit "Enregistrer", id: "submit-current-step" %>
+        <% end %>                     
       </div>
       
       <div class="c-newaid-actions">

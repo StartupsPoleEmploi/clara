@@ -1,7 +1,7 @@
 <%- v = view_object(:new_aid_one, local_assigns) %>
 
 
-<section class="c-newaid">
+<section class="c-newaid c-newaid--stage1">
   <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2" %>
   <h1 class="c-newaid-title">Créer une aide</h1>
 
@@ -56,7 +56,7 @@
             <% end %>
           <% end %>
 
-          <%= f.submit "Enregistrer", id: "submit-step-1" %>
+          <%= f.submit "Enregistrer", id: "submit-current-step" %>
         <% end %>              
       </div>
       
