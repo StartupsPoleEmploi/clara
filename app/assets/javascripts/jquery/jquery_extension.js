@@ -38,6 +38,8 @@ $.currentUrl = function () {
 }
 
 
+// jQuery-scoped replaceTag
+// See https://stackoverflow.com/a/20469901/2595513
 $.replaceTag = function (currentElem, newTagObj, keepProps) {
   var $currentElem = $(currentElem);
   var i, $newTag = $(newTagObj).clone();
@@ -52,14 +54,10 @@ $.replaceTag = function (currentElem, newTagObj, keepProps) {
   return this;
 }
 
-$.extend({
-  // See https://stackoverflow.com/a/20469901/2595513
-  
-});
-
 
 jQuery.fn.extend({
   // See https://stackoverflow.com/a/20469901/2595513
+  // element-based replaceTag, not as same above
   replaceTag: function (newTagObj, keepProps) {
     return this.each(function () {
       jQuery.replaceTag(this, newTagObj, keepProps);
