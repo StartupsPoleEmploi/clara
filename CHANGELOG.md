@@ -2,6 +2,10 @@
 
 
 
+## 22.15.2 (06/11/2019)
+-[#1419][SECURITY] Fix de sécurité automatique
+
+
 ## 22.15.1 (04/11/2019)
 -[#1408][BUG] Corrige le focus dans Firefox pour les champs valeurs numériques
 
