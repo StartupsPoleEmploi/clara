@@ -99,6 +99,19 @@ describe("jQuery extension", function () {
   }
   )
 
+  describe("$.urlParam", function () {
+    it("Should null when ---", function () {
+      //given
+      window.location.href = "http://clara.com";
+      //when
+      var name = ""
+      res = $.urlParam(name)
+      //then
+      expect(res).toEqual(null)
+    });
+
+  }
+
   describe('$.hasClasses', function () {
     beforeEach(function () {
       $(document.body).append('\
