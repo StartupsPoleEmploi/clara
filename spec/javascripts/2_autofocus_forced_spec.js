@@ -138,9 +138,35 @@ describe('autofocus_forced.js', function () {
       expect($('#simple-div').get(0)).toBe(document.activeElement);
     });
 
-    it('Gives focus to a DOM element with autofocus attribute=\"\"');
+    it('Gives focus to a DOM element with autofocus attribute=\"\"', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <form action="action_test" method="post">\
+              <textarea name="txtarea_test" autofocus=""></textarea>\
+          </form>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(true)
+    });
 
-    it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"');
+    it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <form action="action_test" method="post">\
+              <input type="checkbox" autofocus="autofocus">\
+          </form>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(true)
+    });
 
     it('DO NOT give focus to a DOM element that is not focusable (a DIV is not focusable)', function () {
       //given
