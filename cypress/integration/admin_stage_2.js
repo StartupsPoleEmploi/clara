@@ -38,6 +38,7 @@ describe("Étape 2", function() {
 
     // First must be expanded
     cy.get('#accordion_0-0_tab').should('have.attr', 'aria-expanded', 'true')
+    
   })
 
   it("on peut renseigner une description, elle se mets à jour en temps réel", function() {

@@ -57,7 +57,7 @@ clara.js_define("admin_edit_aid", {
     //Clean CKEDitor
     setTimeout(function() {
       clara.admin_edit_aid_clean_ckeditor.please();
-    }, 1500);
+    }, 250);
 
     // Redux
     var observables = {      
