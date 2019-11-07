@@ -23,10 +23,10 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
-Cypress.Commands.add('connect_as_contributor', () => { 
+Cypress.Commands.add('connect_as_contributeurr', () => { 
     cy.visit('/sign_in')
     cy.get('#session_email')
-      .type('contributor@clara.com').should('have.value', 'contributor@clara.com')
+      .type('contributeurr@clara.com').should('have.value', 'contributeurr@clara.com')
     cy.get('#session_password')
       .type('foo').should('have.value', 'foo')
     cy.get('.c-login-connect input').click()
