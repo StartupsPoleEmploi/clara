@@ -31,9 +31,13 @@ describe('autofocus_forced.js', function () {
                           <div id="simple-div" autofocus>\
                       </form>\
                   </div>\
-              </article>\
-          </section>\
-        </div>'
+                  <div>\
+                    <form>\
+                      <input type="checkbox">\
+                    </form>\
+              </article >\
+          </section >\
+        </div >'
       )
       //when
       res = clara.autofocus_forced.please_if()
