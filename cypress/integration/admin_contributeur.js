@@ -29,11 +29,18 @@ describe("Pour un contributeur", function() {
     it("Ne pas montrer la date d'archivage", function() {
       cy.get('input[name="aid[archived_at]"]').should('not.exist')
     })
+    it("Pouvoir créer une aide", function() {
+      cy.get('input#aid_name').type('Ma nouvelle aide')
+      cy.get('select#aid_contract_type_id').select('Aide à la mobilité')
+      cy.get('input#aid_ordre_affichage').type('42')
+      cy.get('input#modify-aid').click()
+      cy.location().should((loc) => {expect(loc.pathname).not.to.eq('/admin/aids/new')})
+    })
   })
   
   describe("À la modification d'aide", function() {
     before(function() {
-      cy.visit('/admin/aids/erasmus/edit')
+      cy.visit('/admin/aids/ma-nouvelle-aide/edit')
     })
     it("Ne montrer que le filtre \"Page de résultats\"", function() {
       cy.get('#label_filters').should('exist')  // Filtres page de résultat
