@@ -77,8 +77,27 @@ describe('autofocus_forced.js', function () {
       expect(res).toEqual(false)
     });
 
-    it('returns false if there is no DOM element with the autofocus attribute (example 2)');
-
+    it('returns false if there is no DOM element with the autofocus attribute (example 2)', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <div class="autofocus">\
+              <ul id="autofocus">\
+                  <li class="autofocus"></li>\
+                  <li class="autofocus"></li>\
+                  <li class="autofocus"></li>\
+              </ul>\
+              <form action="autofocus">\
+                  <input type="color" name="autofocus" id="autofocus">\
+              </form>\
+          </div>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(false)
+    });
   });
 
   describe('.please', function () {
