@@ -39,10 +39,24 @@ describe('autofocus_forced.js', function () {
       res = clara.autofocus_forced.please_if()
       //then
       expect(res).toEqual(true)
-    
-    );
+    });
 
-    it('returns true if there is a multiple DOM elements with the "autofocus" attribute');
+    it('returns true if there is a multiple DOM elements with the "autofocus" attribute', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <form action="action_test" method="post">\
+              <input type="button" value="button_test" autofocus>\
+              <textarea name="txtarea_test" autofocus=""></textarea>\
+              <input type="checkbox" autofocus="autofocus">\
+          </form>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(true)
+    });
 
 
 
