@@ -8,19 +8,20 @@ describe("jQuery extension", function () {
       //given
       var url = "i.am.a.naked/url"
       //when
-      var param = "test_param=42"
-      $.paramUpdate(url, param);
+      var param = { key: "test_param", value: 42 }
+      url = $.paramUpdate(url, param);
       //then
-      expect(url).toEqual("i.am.a.naked/url?test_param=42")
+      expect(url).toEqual("i.am.a.naked/url&test_param=42")
     });
 
     it("Should change the existing parameter with integer value of the URL", function () {
       //given
-      var url = "i.have?parameter=1"
+      var url = "i.have&int_param=1"
       //when
-      $.paramUpdate(url, 10);
+      var param = { key: "int_param", value: 10 }
+      url = $.paramUpdate(url, param);
       //then
-      expect(url).toEqual("i.have?parameter=10")
+      expect(url).toEqual("i.have&int_param=10")
     });
   }
   )
