@@ -12,7 +12,7 @@ clara.js_define("admin_edit_aid", {
 
     if (_.isNotBlank(selected_rule)) {
       if (!_.includes(selected_rule, "_box")) {
-        var warning_msg = "⚠️⚠️⚠️ Attention cette aide a été créée de l'ancienne façon, si vous cliquez sur modifier et que vous enregistrez ensuite le champ d'application, les anciennes règles seront supprimées définitivement"
+        var warning_msg = "⚠ Attention cette aide a été créée de l'ancienne façon, si vous cliquez sur modifier et que vous enregistrez ensuite le champ d'application, les anciennes règles seront supprimées définitivement"
         $(".c-modify-appfield").html(warning_msg)
         $("#aid_rule_id").parent().parent().hide();
       } else {
@@ -57,7 +57,7 @@ clara.js_define("admin_edit_aid", {
     //Clean CKEDitor
     setTimeout(function() {
       clara.admin_edit_aid_clean_ckeditor.please();
-    }, 250);
+    }, 1000);
 
     // Redux
     var observables = {      
