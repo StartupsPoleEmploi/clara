@@ -64,8 +64,9 @@ namespace :minidb do
 
       # Only test user
       User.destroy_all
-      User.new(email:"superadmin@clara.com", password: "foo", role: "superadmin").save
-      User.new(email:"admin@clara.com", password: "foo", role: "admin").save
+      User.new(email:"superadmin@clara.com", password: "bar", role: "superadmin").save
+      User.new(email:"contributeur@clara.com", password: "foo", role: "contributeur").save
+      User.new(email:"relecteur@clara.com", password: "foo", role: "relecteur").save
 
       Stat.destroy_all
 
