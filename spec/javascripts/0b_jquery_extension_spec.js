@@ -66,6 +66,36 @@ describe("jQuery extension", function () {
       expect(url).toEqual("i.have&test_param=test_value&non_existant_param=[object Object]")
     });
 
+    it("Should change parameter value even if url contains only parameter", function () {
+      //given
+      var url = "&alone_param=alone_value"
+      //when
+      var param = { key: "alone_param", value: "new_value" }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("&alone_param=new_value")
+    });
+
+    it("Should add parameter even if url is blank", function () {
+      //given
+      var url = ""
+      //when
+      var param = { key: "new_param", value: "param_value" }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("&new_param=param_value")
+    });
+
+    it("Should add parameter as even if url is blank and parameter is a blank string", function () {
+      //given
+      var url = ""
+      //when
+      var param = ""
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("&undefined=undefined")
+    });
+
   }
   )
 
