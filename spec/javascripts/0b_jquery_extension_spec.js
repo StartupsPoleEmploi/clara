@@ -4,14 +4,23 @@ describe("jQuery extension", function () {
 
 
 
-    it("Should return", function () {
+    it("Should add parameters to a naked  URL", function () {
       //given
-      url = ""
-      window.location.replace(url)
+      url = "i.am.a.naked/url"
       //when
-      param = ""
+      param = "test_param=42"
+      $.paramUpdate(url, param)
       //then
-      //expect($().paramUpdate(url, param)).toEqual(true)
+      expect(url.toEqual("i.am.a.naked/url?test_param=42"))
+    });
+
+    it("Should change the existing parameter with integer value of the URL", function () {
+      //given
+      url = "i.have?parameter=1"
+      //when
+      $.paramUpdate(url, 10)
+      //then
+      expect(url.toEqual("i.have?parameter=10"))
     });
   }
   )
