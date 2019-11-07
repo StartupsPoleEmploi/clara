@@ -26,7 +26,7 @@ clara.js_define("admin_stage_2", {
         }
 
 
-      }, 500)
+      }, 1200)
     }
 
 });
