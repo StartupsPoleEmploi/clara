@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.17.1 (7/11/2019)
+-[#1425c][FEATURE] 
+
+
 ## 22.17.0 (7/11/2019)
 -[#1425][FEATURE] Quand on arrive sur l'étape 2, description est dépliée par défaut
 
