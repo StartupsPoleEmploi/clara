@@ -1,7 +1,7 @@
 describe("Étape 1", function() {
 
   before(function() {
-    cy.connect_as_simple_admin()
+    cy.connect_as_contributor()
   })
 
 // after(function() {

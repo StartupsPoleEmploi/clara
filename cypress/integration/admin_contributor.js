@@ -1,7 +1,7 @@
-describe("Pour un simple-admin", function() {
+describe("Pour un contributeur", function() {
 
   before(function() {
-    cy.connect_as_simple_admin()
+    cy.connect_as_contributor()
   })
 
   after(function() {
