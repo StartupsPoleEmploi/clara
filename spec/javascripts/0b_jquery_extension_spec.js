@@ -118,7 +118,17 @@ describe("jQuery extension", function () {
       //then
       expect(res).toEqual("")
     });
+    it("Should return parameter value when url parameter has a value", function () {
+      //given
+      window.location.href = "http://clara.com&empty_param=filled_value";
+      //when
+      var name = ""
+      res = $.urlParam(name)
+      //then
+      expect(res).toEqual("filled_value")
+    });
   }
+}
 
   describe('$.hasClasses', function () {
     beforeEach(function () {
@@ -161,9 +171,9 @@ describe("jQuery extension", function () {
     });
   });
 
-  describe('$.hasAttribute', function () {
-    beforeEach(function () {
-      $(document.body).append('\
+describe('$.hasAttribute', function () {
+  beforeEach(function () {
+    $(document.body).append('\
         <div id="tested_div" \
              class="aaa" \
              attr-with-value="true" \
@@ -171,49 +181,49 @@ describe("jQuery extension", function () {
              attr-without-assignment \
              data-thing="foo" \
        ></div>')
-    });
-    afterEach(function () {
-      $('#tested_div').remove()
-    });
-
-    it("Should return true if given element has an id", function () {
-      expect($('#tested_div').hasAttribute("id")).toEqual(true)
-    });
-    it("Should return true if given element has a class", function () {
-      expect($('#tested_div').hasAttribute("class")).toEqual(true)
-    });
-    it("Should return true for a custom attribute (data-*)", function () {
-      expect($("#tested_div").hasAttribute("data-thing")).toEqual(true)
-    });
-    it("Should return true if given element has the given attribute with a value", function () {
-      expect($('#tested_div').hasAttribute("attr-with-value")).toEqual(true)
-    });
-    it("Should return true if given element has the given attribute without value", function () {
-      expect($("#tested_div").hasAttribute("attr-without-value")).toEqual(true)
-    });
-    it("Should return true if given element has the given attribute without assignment", function () {
-      expect($("#tested_div").hasAttribute("attr-without-assignment")).toEqual(true)
-    });
-    it("Should return false if given element has no attribute (example 1)", function () {
-      expect($("#tested_div").hasAttribute("unexisting")).toEqual(false)
-    });
-    it("Should return false if given element has no attribute (example 2)", function () {
-      expect($("#tested_div").hasAttribute("not-existing")).toEqual(false)
-    });
-    it("Should return false if given element has wrong type (regex)", function () {
-      expect($("#tested_div").hasAttribute(/^/)).toEqual(false)
-    });
-    it("Should return false if given element has wrong type (array)", function () {
-      expect($("#tested_div").hasAttribute([])).toEqual(false)
-    });
-    it("Should return false if no element given", function () {
-      expect($("#tested_div").hasAttribute()).toEqual(false)
-    });
-    it("Should return false if null element given", function () {
-      expect($("#tested_div").hasAttribute(null)).toEqual(false)
-    });
-    it("Should return false if DOM element do not exists", function () {
-      expect($("#unexisting_element").hasAttribute("id")).toEqual(false)
-    });
   });
+  afterEach(function () {
+    $('#tested_div').remove()
+  });
+
+  it("Should return true if given element has an id", function () {
+    expect($('#tested_div').hasAttribute("id")).toEqual(true)
+  });
+  it("Should return true if given element has a class", function () {
+    expect($('#tested_div').hasAttribute("class")).toEqual(true)
+  });
+  it("Should return true for a custom attribute (data-*)", function () {
+    expect($("#tested_div").hasAttribute("data-thing")).toEqual(true)
+  });
+  it("Should return true if given element has the given attribute with a value", function () {
+    expect($('#tested_div').hasAttribute("attr-with-value")).toEqual(true)
+  });
+  it("Should return true if given element has the given attribute without value", function () {
+    expect($("#tested_div").hasAttribute("attr-without-value")).toEqual(true)
+  });
+  it("Should return true if given element has the given attribute without assignment", function () {
+    expect($("#tested_div").hasAttribute("attr-without-assignment")).toEqual(true)
+  });
+  it("Should return false if given element has no attribute (example 1)", function () {
+    expect($("#tested_div").hasAttribute("unexisting")).toEqual(false)
+  });
+  it("Should return false if given element has no attribute (example 2)", function () {
+    expect($("#tested_div").hasAttribute("not-existing")).toEqual(false)
+  });
+  it("Should return false if given element has wrong type (regex)", function () {
+    expect($("#tested_div").hasAttribute(/^/)).toEqual(false)
+  });
+  it("Should return false if given element has wrong type (array)", function () {
+    expect($("#tested_div").hasAttribute([])).toEqual(false)
+  });
+  it("Should return false if no element given", function () {
+    expect($("#tested_div").hasAttribute()).toEqual(false)
+  });
+  it("Should return false if null element given", function () {
+    expect($("#tested_div").hasAttribute(null)).toEqual(false)
+  });
+  it("Should return false if DOM element do not exists", function () {
+    expect($("#unexisting_element").hasAttribute("id")).toEqual(false)
+  });
+});
 });
