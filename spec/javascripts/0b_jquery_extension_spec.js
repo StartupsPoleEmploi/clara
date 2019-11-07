@@ -6,21 +6,21 @@ describe("jQuery extension", function () {
 
     it("Should add parameters to a naked  URL", function () {
       //given
-      url = "i.am.a.naked/url"
+      var url = "i.am.a.naked/url"
       //when
-      param = "test_param=42"
-      $.paramUpdate(url, param)
+      var param = "test_param=42"
+      $.paramUpdate(url, param);
       //then
-      expect(url.toEqual("i.am.a.naked/url?test_param=42"))
+      expect(url).toEqual("i.am.a.naked/url?test_param=42")
     });
 
     it("Should change the existing parameter with integer value of the URL", function () {
       //given
-      url = "i.have?parameter=1"
+      var url = "i.have?parameter=1"
       //when
-      $.paramUpdate(url, 10)
+      $.paramUpdate(url, 10);
       //then
-      expect(url.toEqual("i.have?parameter=10"))
+      expect(url).toEqual("i.have?parameter=10")
     });
   }
   )
