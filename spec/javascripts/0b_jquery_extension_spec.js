@@ -105,7 +105,7 @@ describe("jQuery extension", function () {
       window.location.href = "http://clara.com";
       //when
       var name = ""
-      res = $.urlParam(name)
+      var res = $.urlParam(name)
       //then
       expect(res).toEqual(null)
     });
@@ -114,7 +114,7 @@ describe("jQuery extension", function () {
       window.location.href = "http://clara.com&empty_param";
       //when
       var name = ""
-      res = $.urlParam(name)
+      var res = $.urlParam(name)
       //then
       expect(res).toEqual("")
     });
@@ -123,9 +123,27 @@ describe("jQuery extension", function () {
       window.location.href = "http://clara.com&empty_param=filled_value";
       //when
       var name = ""
-      res = $.urlParam(name)
+      var res = $.urlParam(name)
       //then
       expect(res).toEqual("filled_value")
+    });
+    it("Should return ---- when url parameter has a value", function () {
+      //given
+      window.location.href = "http://clara.com&named_parameter=param_value";
+      //when
+      var name = "named_parameter"
+      var res = $.urlParam(name)
+      //then
+      expect(res).toEqual("param_value")
+    });
+    it("Should not return url parameter value when name given is different", function () {
+      //given
+      window.location.href = "http://clara.com&other_parameter=other_value";
+      //when
+      var name = "named_parameter"
+      var res = $.urlParam(name)
+      //then
+      expect(res).not.toEqual("other_value")
     });
   }
 }
