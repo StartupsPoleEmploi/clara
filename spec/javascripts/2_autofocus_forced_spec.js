@@ -60,7 +60,22 @@ describe('autofocus_forced.js', function () {
 
 
 
-    it('returns false if there is no DOM element with the autofocus attribute (example 1)');
+    it('returns false if there is no DOM element with the autofocus attribute (example 1)', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <form action="action_test" method="post">\
+              <input type="button" value="button_test">\
+              <textarea name="txtarea_test"></textarea>\
+              <input type="checkbox">\
+          </form>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(false)
+    });
 
     it('returns false if there is no DOM element with the autofocus attribute (example 2)');
 
