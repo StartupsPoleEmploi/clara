@@ -44,6 +44,27 @@ describe("jQuery extension", function () {
       expect(url).toEqual("i.have&another_param=another_value&non_existant_param=test_value")
     });
 
+    it("Should set value to '[object Object]' if given parameter value is an object ", function () {
+      //given
+      var url = "i.have&test_param=test_value"
+      //when
+      var test_object = { key: "nested_key", value: "nested_value" }
+      var param = { key: "non_existant_param", value: test_object }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("i.have&test_param=test_value&non_existant_param=[object Object]")
+    });
+
+    it("Should set value to '[object Object]' if given parameter value is an object ", function () {
+      //given
+      var url = "i.have&test_param=test_value"
+      //when
+      var test_object = { key: "nested_key", value: "nested_value" }
+      var param = { key: "non_existant_param", value: test_object }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("i.have&test_param=test_value&non_existant_param=[object Object]")
+    });
 
   }
   )
