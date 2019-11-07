@@ -2,7 +2,7 @@
 
 
 ## 22.17.0 (7/11/2019)
--[#1425][FEATURE] Quand on arrive sur l'étape 2, description est déplié par défaut
+-[#1425][FEATURE] Quand on arrive sur l'étape 2, description est dépliée par défaut
 
 
 ## 22.16.0 (6/11/2019)
