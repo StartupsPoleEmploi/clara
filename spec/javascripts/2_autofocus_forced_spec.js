@@ -6,8 +6,8 @@ describe('autofocus_forced.js', function () {
     $('#tested_div').remove()
   });
 
-  describe('.please_if', function() {
-    it('returns true if there is a DOM element with the "autofocus" attribute', function() {
+  describe('.please_if', function () {
+    it('returns true if there is a DOM element with the "autofocus" attribute', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -20,18 +20,40 @@ describe('autofocus_forced.js', function () {
       expect(res).toEqual(true)
     });
 
-    it('returns true if there is a deeply nested DOM element with the "autofocus" attribute');
+    it('returns true if there is a deeply nested DOM element with the "autofocus" attribute', function () {
+      //given
+      $(document.body).append(
+        '<div id="tested_div">\
+          <section>\
+              <article>\
+                  <div>\
+                      <form>\
+                          <div id="simple-div" autofocus>\
+                      </form>\
+                  </div>\
+              </article>\
+          </section>\
+        </div>'
+      )
+      //when
+      res = clara.autofocus_forced.please_if()
+      //then
+      expect(res).toEqual(true)
     
+    );
+
     it('returns true if there is a multiple DOM elements with the "autofocus" attribute');
-    
+
+
+
     it('returns false if there is no DOM element with the autofocus attribute (example 1)');
-    
+
     it('returns false if there is no DOM element with the autofocus attribute (example 2)');
 
   });
 
-  describe('.please', function() {
-    it('DO NOT give focus to a DOM element WITHOUT autofocus_forced triggered', function() {
+  describe('.please', function () {
+    it('DO NOT give focus to a DOM element WITHOUT autofocus_forced triggered', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -43,7 +65,7 @@ describe('autofocus_forced.js', function () {
       //then
       expect($('#simple-div').get(0)).not.toBe(document.activeElement);
     });
-    it('DO NOT give focus to a DOM element WITHOUT autofocus attribute', function() {
+    it('DO NOT give focus to a DOM element WITHOUT autofocus attribute', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -55,7 +77,7 @@ describe('autofocus_forced.js', function () {
       //then
       expect($(":focus").length).toEqual(0)
     });
-    it('Gives focus to a DOM element with autofocus attribute', function() {
+    it('Gives focus to a DOM element with autofocus attribute', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -69,10 +91,10 @@ describe('autofocus_forced.js', function () {
     });
 
     it('Gives focus to a DOM element with autofocus attribute=\"\"');
-    
+
     it('Gives focus to a DOM element with autofocus attribute=\"autofocus\"');
-    
-    it('DO NOT give focus to a DOM element that is not focusable (a DIV is not focusable)', function() {
+
+    it('DO NOT give focus to a DOM element that is not focusable (a DIV is not focusable)', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
@@ -84,7 +106,7 @@ describe('autofocus_forced.js', function () {
       //then
       expect($('#simple-div').get(0)).not.toBe(document.activeElement);
     });
-    it('Gives focus to FIRST dom element with autofocus attribute', function() {
+    it('Gives focus to FIRST dom element with autofocus attribute', function () {
       //given
       $(document.body).append(
         '<form id="tested_div">\
