@@ -23,6 +23,28 @@ describe("jQuery extension", function () {
       //then
       expect(url).toEqual("i.have&int_param=10")
     });
+
+    it("Should change the existing parameter value with 'undefined' if no value is set", function () {
+      //given
+      var url = "i.have&int_param=1"
+      //when
+      var param = { key: "int_param" }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("i.have&int_param=undefined")
+    });
+
+    it("Should add a new parameter in url if no corresponding param exist in original url", function () {
+      //given
+      var url = "i.have&another_param=another_value"
+      //when
+      var param = { key: "non_existant_param", value: "test_value" }
+      url = $.paramUpdate(url, param);
+      //then
+      expect(url).toEqual("i.have&another_param=another_value&non_existant_param=test_value")
+    });
+
+
   }
   )
 
