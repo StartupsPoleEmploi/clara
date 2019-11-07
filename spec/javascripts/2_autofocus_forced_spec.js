@@ -52,7 +52,13 @@ describe('autofocus_forced.js', function () {
           <form action="action_test" method="post">\
               <input type="button" value="button_test" autofocus>\
               <textarea name="txtarea_test" autofocus=""></textarea>\
+              <input type="color">\
               <input type="checkbox" autofocus="autofocus">\
+          </form>\
+          <form action="action_test_2" method="post">\
+            <input type="password" value="button_test" autofocus>\
+            <input type="number">\
+            <input type="button" autofocus="choucroute">\
           </form>\
         </div>'
       )
