@@ -1,5 +1,21 @@
 describe("jQuery extension", function () {
 
+  describe("$.paramUpdate", function () {
+
+
+
+    it("Should return", function () {
+      //given
+      url = ""
+      window.location.replace(url)
+      //when
+      param = ""
+      //then
+      //expect($().paramUpdate(url, param)).toEqual(true)
+    });
+  }
+  )
+
   describe('$.hasClasses', function () {
     beforeEach(function () {
       $(document.body).append('\
