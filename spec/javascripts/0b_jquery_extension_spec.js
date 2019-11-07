@@ -100,7 +100,7 @@ describe("jQuery extension", function () {
   )
 
   describe("$.urlParam", function () {
-    it("Should null when ---", function () {
+    it("Should return null when url contains no parameter", function () {
       //given
       window.location.href = "http://clara.com";
       //when
@@ -109,7 +109,15 @@ describe("jQuery extension", function () {
       //then
       expect(res).toEqual(null)
     });
-
+    it("Should return blank string when url parameter has no value", function () {
+      //given
+      window.location.href = "http://clara.com&empty_param";
+      //when
+      var name = ""
+      res = $.urlParam(name)
+      //then
+      expect(res).toEqual("")
+    });
   }
 
   describe('$.hasClasses', function () {
