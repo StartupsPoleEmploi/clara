@@ -1,6 +1,6 @@
 # CLARA Changelog
 
-## 22.16.1 (7/11/2019)
+## 22.17.1 (7/11/2019)
 -[#1418][TESTS] 6 tests restants pour autofocus_forced.js
 
 ## 22.17.1 (7/11/2019)
