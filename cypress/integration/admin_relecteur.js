@@ -1,7 +1,7 @@
-describe("Pour un contributeur", function() {
+describe("Pour un relecteur", function() {
 
   before(function() {
-    cy.connect_as_contributeur1()
+    cy.connect_as_relecteur1()
   })
 
   after(function() {
@@ -14,8 +14,8 @@ describe("Pour un contributeur", function() {
     before(function() {
       cy.visit('/admin/aids')
     })
-    it("Il est impossible de supprimer une aide", function() {
-      cy.get('a.js-delete-aid').should('not.exist') 
+    it("Il est possible de supprimer une aide", function() {
+      cy.get('a.js-delete-aid').should('exist') 
     })
   })
   
@@ -34,7 +34,7 @@ describe("Pour un contributeur", function() {
   })
 
   describe("Possibilité d'effectivement créer une aide", function() {
-    it("Un contributeur peut créer une aide", function() {
+    it("Un relecteur peut créer une aide", function() {
       cy.create_old_aid("Ma nouvelle aide")
     })
   })
@@ -50,7 +50,7 @@ describe("Pour un contributeur", function() {
 
   describe("À la modification d'une aide créé par un autre contributeur", function() {
     before(function() {
-      cy.connect_as_contributeur2()
+      cy.connect_as_contributeur1()
       cy.visit('/admin/aids/ma-nouvelle-aide/edit')
     })
     it("Montrer la date d'archivage", function() {

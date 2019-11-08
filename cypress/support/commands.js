@@ -44,6 +44,17 @@ Cypress.Commands.add('connect_as_contributeur1', () => {
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
 });
 
+Cypress.Commands.add('connect_as_relecteur1', () => { 
+  cy.visit('/sign_in')
+  cy.get('#session_email')
+    .type('relecteur1@clara.com').should('have.value', 'relecteur1@clara.com')
+  cy.get('#session_password')
+    .type('relecteur1').should('have.value', 'relecteur1')
+  cy.get('.c-login-connect input').click()
+  cy.location('pathname').should('include', '/admin')
+  cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
+});
+
 Cypress.Commands.add('connect_as_contributeur2', () => { 
   cy.visit('/sign_in')
   cy.get('#session_email')
