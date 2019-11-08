@@ -23,34 +23,49 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
 Cypress.Commands.add('create_old_aid', (aid_name) => { 
-    cy.visit('/admin/aids/new')
-    cy.get('input#aid_name').type(aid_name)
-    cy.get('select#aid_contract_type_id').select('Aide à la mobilité')
-    cy.get('input#aid_ordre_affichage').type('42')
-    cy.get('input#modify-aid').click()
-    cy.location().should((loc) => {expect(loc.pathname).not.to.eq('/admin/aids/new')})
- });
+  cy.visit('/admin/aids/new')
+  cy.get('input#aid_name').type(aid_name)
+  cy.get('select#aid_contract_type_id').select('Aide à la mobilité')
+  cy.get('input#aid_ordre_affichage').type('42')
+  cy.get('input#modify-aid').click()
+  cy.location().should((loc) => {expect(loc.pathname).not.to.eq('/admin/aids/new')})
+});
+
 Cypress.Commands.add('connect_as_contributeur1', () => { 
-    cy.visit('/sign_in')
-    cy.get('#session_email')
-      .type('contributeur1@clara.com').should('have.value', 'contributeur1@clara.com')
-    cy.get('#session_password')
-      .type('contributeur1').should('have.value', 'contributeur1')
-    cy.get('.c-login-connect input').click()
-    cy.location('pathname').should('include', '/admin')
-    cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
- });
+  cy.visit('/sign_in')
+  cy.get('#session_email')
+    .type('contributeur1@clara.com').should('have.value', 'contributeur1@clara.com')
+  cy.get('#session_password')
+    .type('contributeur1').should('have.value', 'contributeur1')
+  cy.get('.c-login-connect input').click()
+  cy.location('pathname').should('include', '/admin')
+  cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
+});
+
+Cypress.Commands.add('connect_as_contributeur2', () => { 
+  cy.visit('/sign_in')
+  cy.get('#session_email')
+    .type('contributeur2@clara.com').should('have.value', 'contributeur2@clara.com')
+  cy.get('#session_password')
+    .type('contributeur2').should('have.value', 'contributeur2')
+  cy.get('.c-login-connect input').click()
+  cy.location('pathname').should('include', '/admin')
+  cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
+});
+
 Cypress.Commands.add('connect_as_superadmin', () => { 
-    cy.visit('/sign_in')
-    cy.get('#session_email')
-      .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
-    cy.get('#session_password')
-      .type('bar').should('have.value', 'bar')
-    cy.get('.c-login-connect input').click()
-    cy.location('pathname').should('include', '/admin')
-    cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
- });
+  cy.visit('/sign_in')
+  cy.get('#session_email')
+    .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
+  cy.get('#session_password')
+    .type('bar').should('have.value', 'bar')
+  cy.get('.c-login-connect input').click()
+  cy.location('pathname').should('include', '/admin')
+  cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
+});
+
 Cypress.Commands.add('disconnect_from_admin', () => { 
-    cy.get('.js-sign-out').click()
- });
+  cy.get('.js-sign-out').click()
+});
