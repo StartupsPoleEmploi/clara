@@ -58,5 +58,9 @@ describe("Pour un relecteur", function() {
     })
   })
 
+  // manque les cas de tests suivants : un relecteur peut voir les administrateurs BO (sans les modifier/supprimer etc)
+  // manque les cas de tests suivants : un relecteur peut voir les administrateurs API (sans les modifier/supprimer etc)
+  // manque les cas de tests suivants : un relecteur peut créer un contributeur
+
 })
 
