@@ -7,8 +7,8 @@ describe("jQuery extension", function () {
     it("Should add parameters to a naked  URL", function () {
       //given
       var url = "i.am.a.naked/url"
-      //when
       var param = { key: "test_param", value: 42 }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.am.a.naked/url&test_param=42")
@@ -17,8 +17,8 @@ describe("jQuery extension", function () {
     it("Should change the existing parameter with integer value of the URL", function () {
       //given
       var url = "i.have&int_param=1"
-      //when
       var param = { key: "int_param", value: 10 }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.have&int_param=10")
@@ -27,8 +27,8 @@ describe("jQuery extension", function () {
     it("Should change the existing parameter value with 'undefined' if no value is set", function () {
       //given
       var url = "i.have&int_param=1"
-      //when
       var param = { key: "int_param" }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.have&int_param=undefined")
@@ -37,8 +37,8 @@ describe("jQuery extension", function () {
     it("Should add a new parameter in url if no corresponding param exist in original url", function () {
       //given
       var url = "i.have&another_param=another_value"
-      //when
       var param = { key: "non_existant_param", value: "test_value" }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.have&another_param=another_value&non_existant_param=test_value")
@@ -47,9 +47,9 @@ describe("jQuery extension", function () {
     it("Should set value to '[object Object]' if given parameter value is an object ", function () {
       //given
       var url = "i.have&test_param=test_value"
-      //when
       var test_object = { key: "nested_key", value: "nested_value" }
       var param = { key: "non_existant_param", value: test_object }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.have&test_param=test_value&non_existant_param=[object Object]")
@@ -58,9 +58,9 @@ describe("jQuery extension", function () {
     it("Should set value to '[object Object]' if given parameter value is an object ", function () {
       //given
       var url = "i.have&test_param=test_value"
-      //when
       var test_object = { key: "nested_key", value: "nested_value" }
       var param = { key: "non_existant_param", value: test_object }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("i.have&test_param=test_value&non_existant_param=[object Object]")
@@ -69,8 +69,8 @@ describe("jQuery extension", function () {
     it("Should change parameter value even if url contains only parameter", function () {
       //given
       var url = "&alone_param=alone_value"
-      //when
       var param = { key: "alone_param", value: "new_value" }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("&alone_param=new_value")
@@ -79,8 +79,8 @@ describe("jQuery extension", function () {
     it("Should add parameter even if url is blank", function () {
       //given
       var url = ""
-      //when
       var param = { key: "new_param", value: "param_value" }
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("&new_param=param_value")
@@ -89,8 +89,8 @@ describe("jQuery extension", function () {
     it("Should add parameter as even if url is blank and parameter is a blank string", function () {
       //given
       var url = ""
-      //when
       var param = ""
+      //when
       url = $.paramUpdate(url, param);
       //then
       expect(url).toEqual("&undefined=undefined")
@@ -103,8 +103,8 @@ describe("jQuery extension", function () {
     it("Should return null when url contains no parameter", function () {
       //given
       window.location.href = "http://clara.com";
-      //when
       var name = ""
+      //when
       var res = $.urlParam(name)
       //then
       expect(res).toEqual(null)
@@ -112,17 +112,17 @@ describe("jQuery extension", function () {
     it("Should return blank string when url parameter has no value", function () {
       //given
       window.location.href = "http://clara.com?empty_param";
-      //when
       var name = ""
+      //when
       var res = $.urlParam(name)
       //then
       expect(res).toEqual("")
     });
     it("Should return parameter value when url parameter has a value", function () {
       //given
-      window.location.href = "http://clara.com?empty_param=filled_value";
-      //when
+      window.location.href = "http://clara.com?filled_param=filled_value";
       var name = ""
+      //when
       var res = $.urlParam(name)
       //then
       expect(res).toEqual("filled_value")
@@ -130,26 +130,29 @@ describe("jQuery extension", function () {
     it("Should return url parameter value when name given corresponds", function () {
       //given
       window.location.href = "http://clara.com?named_parameter=param_value";
+      var name = "named_parameter"
       //when
-      var name_1 = "named_parameter"
-      var example_1 = $.urlParam(name_1)
-      var name_2 = "other_parameter"
-      var example_2 = $.urlParam(name_2)
+      var example_1 = $.urlParam(name)
       //then
       expect(example_1).toEqual("param_value")
+    });
+    it("Should return url parameter value when name given is different", function () {
+      //given
+      window.location.href = "http://clara.com?named_parameter=param_value";
+      var name = "other_parameter"
+      //when
+      var example_2 = $.urlParam(name)
+      //then
       expect(example_2).not.toEqual("param_value")
     });
     it("Should return url parameter value when name given corresponds among several parameters", function () {
       //given
       window.location.href = "http://clara.com?named_parameter=param_value&other_parameter=other_value";
+      var name = "named_parameter"
       //when
-      var name_1 = "named_parameter"
-      var example_1 = $.urlParam(name_1)
-      var name_2 = "other_parameter"
-      var example_2 = $.urlParam(name_2)
+      var res = $.urlParam(name)
       //then
-      expect(example_1).toEqual("param_value")
-      expect(example_2).not.toEqual("param_value")
+      expect(res).toEqual("param_value")
     });
   },
 
