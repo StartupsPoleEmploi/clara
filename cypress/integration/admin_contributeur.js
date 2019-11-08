@@ -11,14 +11,14 @@ describe("Pour un contributeur", function() {
     cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide?locale=fr"]').click()
   })
 
-  // describe("Quand on liste les aides", function() {
-  //   before(function() {
-  //     cy.visit('/admin/aids')
-  //   })
-  //   it("Il est impossible de supprimer une aide", function() {
-  //     cy.get('a.js-delete-aid').should('not.exist') 
-  //   })
-  // })
+  describe("Quand on liste les aides", function() {
+    before(function() {
+      cy.visit('/admin/aids')
+    })
+    it("Il est impossible de supprimer une aide", function() {
+      cy.get('a.js-delete-aid').should('not.exist') 
+    })
+  })
   
   describe("Affichages au moment de créer une aide", function() {
     before(function() {
@@ -44,11 +44,6 @@ describe("Pour un contributeur", function() {
     before(function() {
       cy.visit('/admin/aids/ma-nouvelle-aide/edit')
     })
-    it("Ne montrer que le filtre \"Page de résultats\"", function() {
-      cy.get('#label_need_filters').should('not.exist') 
-      cy.get('#label_custom_filters').should('not.exist') 
-      cy.get('#label_filters').should('exist')  // Filtres page de résultat
-    })
     it("Ne pas montrer la date d'archivage", function() {
       cy.get('input[name="aid[archived_at]"]').should('not.exist')
     })
@@ -58,11 +53,6 @@ describe("Pour un contributeur", function() {
     before(function() {
       cy.connect_as_contributeur2()
       cy.visit('/admin/aids/ma-nouvelle-aide/edit')
-    })
-    it("Ne montrer que le filtre \"Page de résultats\"", function() {
-      cy.get('#label_need_filters').should('not.exist') 
-      cy.get('#label_custom_filters').should('not.exist') 
-      cy.get('#label_filters').should('exist')  // Filtres page de résultat
     })
     it("Montrer la date d'archivage", function() {
       cy.get('input[name="aid[archived_at]"]').should('exist')

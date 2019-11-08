@@ -4,7 +4,7 @@ module Admin
 
 
     def valid_action?(name, resource = resource_class)
-      if current_user.role != "superadmin"
+      if current_user.role != "superadmin" && current_user.role != "relecteur"
         %w[destroy].exclude?(name.to_s) && super
       else
         true
