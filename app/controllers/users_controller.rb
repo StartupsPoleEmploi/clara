@@ -1,11 +1,11 @@
 class UsersController < Clearance::UsersController
 
   before_action :require_login, only: [:create, :new], raise: false
-  before_action :require_superadmin, only: [:create, :new], raise: false
+  before_action :require_superadmin_or_relecteur, only: [:create, :new], raise: false
 
 
-  def require_superadmin
-    unless current_user.role === "superadmin" 
+  def require_superadmin_or_relecteur
+    unless current_user.role == "superadmin" || current_user.role == "relecteur" 
       raise SecurityError, "Not Allowed"
     end
   end
@@ -18,7 +18,6 @@ class UsersController < Clearance::UsersController
   def create
     @user = user_from_params
     if @user.save
-      sign_in @user
       redirect_back_or url_after_create
     else
       render template: "users/new"
@@ -33,7 +32,7 @@ class UsersController < Clearance::UsersController
   end
 
   def url_after_create
-    Clearance.configuration.redirect_url
+    "/admin/users?user[direction]=desc&user[order]=created_at"
   end
 
   def user_from_params

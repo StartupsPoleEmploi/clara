@@ -1,13 +1,14 @@
+<%- a_new = params[:text] == "contributeur" ? "nouveau contributeur" : "nouvel administrateur" %>
 <section id="clearance" class="sign-up c-login u-margin-bottom-large">
    
   <div class="c-login-card u-margin-top u-margin-bottom">
 
-    <h1>Créer un nouvel administrateur</h1>
+    <h1>Créer un <%= a_new  %></h1>
 
     <%= form_for @user do |form| %>
       <%= render partial: '/users/form', object: form %>
       <div class="submit-field u-margin-top c-login-connect">
-        <%= form.submit %>
+        <%= form.submit "Créer ce #{a_new}" %>
       </div>
     <% end %>    
 

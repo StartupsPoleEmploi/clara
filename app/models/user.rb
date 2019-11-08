@@ -2,7 +2,8 @@ class User < ApplicationRecord
   include Clearance::User
 
     enum role: {
-      admin: "admin", 
+      contributeur: "contributeur", 
+      relecteur: "relecteur", 
       superadmin: "superadmin", 
     }
   

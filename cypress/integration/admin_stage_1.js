@@ -1,12 +1,9 @@
 describe("Étape 1", function() {
 
   before(function() {
-    cy.connect_as_simple_admin()
+    cy.connect_as_contributeur1()
   })
 
-// after(function() {
-//   cy.disconnect_from_admin()
-// })
 
   before(function() {
     cy.visit('/admin/aid_creation/new_aid_stage_1')

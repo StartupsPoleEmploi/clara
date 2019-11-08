@@ -47,11 +47,20 @@ class AidForm < ViewObject
     actual_translation    
   end
 
-  def hide_field?(attribute, role = "", path = "")
+  def hide_field?(attribute, role = "", path = "", email = "")
     a = attr_name(attribute)
-    cond1 = a == "archived_at" && (role != "superadmin" || (role == "superadmin" && path != "edit_admin_aid_path"))
-    cond2 = a == "custom_filters" && role != "superadmin"
-    cond3 = a == "need_filters" && role != "superadmin"
+    cond1, cond2, cond3 = false
+    if a == "archived_at"
+      current_aid =  @page.resource
+      self_created = current_aid.try(:versions).try(:first).try(:whodunnit) == email
+      cond1 = path != "edit_admin_aid_path" || (role != "superadmin" && self_created)
+    end
+    if a == "custom_filters"
+      cond2 = role != "superadmin"
+    end 
+    if a == "need_filters"
+      cond3 = role != "superadmin"
+    end 
     cond1 || cond2 || cond3
   end
 

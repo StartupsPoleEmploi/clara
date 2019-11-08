@@ -13,77 +13,74 @@ namespace :minidb do
   end
 
   task :recreate => :environment do
-    if Rails.env.development?
-      p "Recreating a minidatabase from production data"
-      activated_models = ActivatedModelsService.instance
-      all_rules = activated_models.rules
+    p "Recreating a minidatabase from production data"
+    activated_models = ActivatedModelsService.instance
+    all_rules = activated_models.rules
 
-      # Only a few aids
-      Aid.where.not(
-        slug:[
-          "vsi-volontariat-de-solidarite-internationale",
-          "erasmus",
-          "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
-          "autres-aides-nationales-pour-la-mobilite",
-        ]).destroy_all
-
-
-      # Only a few rules from the few aids
-      root_rules_id = activated_models.aids.map { |aid| aid["rule_id"] }
-      array_of_searched_rules = []
-      root_rules_id.each do |root_rule_id|
-        fill_rules_array(root_rule_id, array_of_searched_rules, all_rules)
-      end
-      p array_of_searched_rules
-      ActiveRecord::Base.connection.disable_referential_integrity do
-        Rule.where.not(id: array_of_searched_rules).destroy_all
-      end
-
-      # Only a few filters from the few aids
-      raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
-      filters_id = raw_filters_id.flatten.uniq.sort
-      Filter.where.not(id: filters_id).destroy_all
-
-      # Only a few contract_types from the few aids
-      raw_cts_id = activated_models.aids.map { |aid| aid["contract_type_id"] }
-      cts_id = raw_cts_id.flatten.uniq.sort
-      ContractType.where.not(id: cts_id).destroy_all
-
-      # Only a few ZRR
-      zrr_list = [
-        "02004", # Agnicourt
-        "49228", # Noyant-Villages
-        "71469", # StPierreleVieux
-      ]
-      Zrr.destroy_all
-      Zrr.new(value: zrr_list.join(",")).save
-
-      # Only test apiuser
-      test_apiuser_id = ApiUser.find_by(email: "foo@bar.com").id
-      ApiUser.where.not(id: test_apiuser_id).destroy_all
-
-      # Only test user
-      User.destroy_all
-      User.new(email:"superadmin@clara.com", password: "foo", role: "superadmin").save
-      User.new(email:"admin@clara.com", password: "foo", role: "admin").save
-
-      Stat.destroy_all
-
-      # No need to keep who did what
-      PaperTrail::Version.destroy_all
-
-      # Remove statistics stuffs
-      Trace.destroy_all
-      Tracing.destroy_all
-      Tracization.destroy_all
-
-      # Remove pg_stats (5000 lines only for stats we don't need)
-      ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
+    # Only a few aids
+    Aid.where.not(
+      slug:[
+        "vsi-volontariat-de-solidarite-internationale",
+        "erasmus",
+        "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+        "autres-aides-nationales-pour-la-mobilite",
+      ]).destroy_all
 
 
-    else
-      p "Recreate a minidatabase is for development mode only"
+    # Only a few rules from the few aids
+    root_rules_id = activated_models.aids.map { |aid| aid["rule_id"] }
+    array_of_searched_rules = []
+    root_rules_id.each do |root_rule_id|
+      fill_rules_array(root_rule_id, array_of_searched_rules, all_rules)
     end
+    p array_of_searched_rules
+    ActiveRecord::Base.connection.disable_referential_integrity do
+      Rule.where.not(id: array_of_searched_rules).destroy_all
+    end
+
+    # Only a few filters from the few aids
+    raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
+    filters_id = raw_filters_id.flatten.uniq.sort
+    Filter.where.not(id: filters_id).destroy_all
+
+    # Only a few contract_types from the few aids
+    raw_cts_id = activated_models.aids.map { |aid| aid["contract_type_id"] }
+    cts_id = raw_cts_id.flatten.uniq.sort
+    ContractType.where.not(id: cts_id).destroy_all
+
+    # Only a few ZRR
+    zrr_list = [
+      "02004", # Agnicourt
+      "49228", # Noyant-Villages
+      "71469", # StPierreleVieux
+    ]
+    Zrr.destroy_all
+    Zrr.new(value: zrr_list.join(",")).save
+
+    # Only test apiuser
+    test_apiuser_id = ApiUser.find_by(email: "foo@bar.com").id
+    ApiUser.where.not(id: test_apiuser_id).destroy_all
+
+    # Only test user
+    User.destroy_all
+    User.new(email:"superadmin@clara.com", password: "bar", role: "superadmin").save
+    User.new(email:"contributeur1@clara.com", password: "contributeur1", role: "contributeur").save
+    User.new(email:"contributeur2@clara.com", password: "contributeur2", role: "contributeur").save
+    User.new(email:"relecteur1@clara.com", password: "relecteur1", role: "relecteur").save
+    User.new(email:"relecteur2@clara.com", password: "relecteur2", role: "relecteur").save
+
+    Stat.destroy_all
+
+    # No need to keep who did what
+    PaperTrail::Version.destroy_all
+
+    # Remove statistics stuffs
+    Trace.destroy_all
+    Tracing.destroy_all
+    Tracization.destroy_all
+
+    # Remove pg_stats (5000 lines only for stats we don't need)
+    ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
   end
 
 

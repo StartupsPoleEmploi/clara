@@ -22,6 +22,12 @@ module Admin
       end
     end
 
+    def require_superadmin_or_relecteur
+      unless current_user.role == "superadmin" || current_user.role == "relecteur" 
+        raise SecurityError, "Not Allowed"
+      end
+    end
+
     def set_cache_headers
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"
