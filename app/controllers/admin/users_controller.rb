@@ -15,7 +15,16 @@ module Admin
     #   User.find_by!(slug: param)
     # end
 
-    before_action :require_superadmin
+    before_action :require_superadmin_or_relecteur
+
+
+    def valid_action?(name, resource = resource_class)
+      if current_user.role != "superadmin"
+        %w[edit destroy new].exclude?(name.to_s) && super
+      else
+        %w[new].exclude?(name.to_s) && super
+      end
+    end
 
     def update
       if requested_resource.update(resource_params)
@@ -27,10 +36,5 @@ module Admin
       end
     end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
-    def valid_action?(name, resource = resource_class)
-      %w[new].exclude?(name.to_s) && super
-    end
   end
 end
