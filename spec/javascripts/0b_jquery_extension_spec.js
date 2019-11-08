@@ -111,7 +111,7 @@ describe("jQuery extension", function () {
     });
     it("Should return blank string when url parameter has no value", function () {
       //given
-      window.location.href = "http://clara.com&empty_param";
+      window.location.href = "http://clara.com?empty_param";
       //when
       var name = ""
       var res = $.urlParam(name)
@@ -120,30 +120,25 @@ describe("jQuery extension", function () {
     });
     it("Should return parameter value when url parameter has a value", function () {
       //given
-      window.location.href = "http://clara.com&empty_param=filled_value";
+      window.location.href = "http://clara.com?empty_param=filled_value";
       //when
       var name = ""
       var res = $.urlParam(name)
       //then
       expect(res).toEqual("filled_value")
     });
-    it("Should return ---- when url parameter has a value", function () {
+    it("Should return url parameter value when name given corresponds", function () {
       //given
-      window.location.href = "http://clara.com&named_parameter=param_value";
+      window.location.href = "http://clara.com?named_parameter=param_value";
       //when
-      var name = "named_parameter"
-      var res = $.urlParam(name)
+      var name_1 = "named_parameter"
+      var example_1 = $.urlParam(name_1)
+      var name_2 = "other_parameter"
+      var example_2 = $.urlParam(name_2)
       //then
-      expect(res).toEqual("param_value")
-    });
-    it("Should not return url parameter value when name given is different", function () {
-      //given
-      window.location.href = "http://clara.com&other_parameter=other_value";
-      //when
-      var name = "named_parameter"
-      var res = $.urlParam(name)
-      //then
-      expect(res).not.toEqual("other_value")
+      expect(example_1).toEqual("param_value")
+      expect(example_2).not.toEqual("param_value")
+
     });
   },
 
