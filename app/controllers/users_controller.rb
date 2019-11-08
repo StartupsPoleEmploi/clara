@@ -1,11 +1,11 @@
 class UsersController < Clearance::UsersController
 
   before_action :require_login, only: [:create, :new], raise: false
-  before_action :require_superadmin, only: [:create, :new], raise: false
+  before_action :require_superadmin_or_relecteur, only: [:create, :new], raise: false
 
 
-  def require_superadmin
-    unless current_user.role === "superadmin" 
+  def require_superadmin_or_relecteur
+    unless current_user.role === "superadmin" || current_user.role === "relecteur" 
       raise SecurityError, "Not Allowed"
     end
   end

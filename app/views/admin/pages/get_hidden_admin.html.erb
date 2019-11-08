@@ -10,17 +10,21 @@
   <div class="grid-col">
     <div class="c-superadmin-card c-superadmin-users">
       <h2>Utilisateurs</h2>
-      <% if current_user.role === "superadmin" %>
+      <% if current_user.role === "superadmin" || current_user.role === "relecteur" %>
         <ul>
-          <li>
-            <%=link_to "Utilisateurs Admin", admin_users_path %>
-          </li>
-          <li>
-            <%=link_to "Utilisateurs API", admin_api_users_path %>
-          </li>
-          <li>
-            <%=link_to "Créer un nouvel administrateur", sign_up_path %>
-          </li>
+          <% if current_user.role === "superadmin" || current_user.role === "relecteur" %>
+            <li>
+              <%=link_to "Utilisateurs Admin", admin_users_path %>
+            </li>
+            <li>
+              <%=link_to "Utilisateurs API", admin_api_users_path %>
+            </li>
+          <% end %>
+          <% if current_user.role === "superadmin" %>
+            <li>
+              <%=link_to "Créer un nouvel administrateur", sign_up_path %>
+            </li>
+          <% end %>
         </ul>
       <% else %>
         <div>
