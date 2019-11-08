@@ -138,7 +138,18 @@ describe("jQuery extension", function () {
       //then
       expect(example_1).toEqual("param_value")
       expect(example_2).not.toEqual("param_value")
-
+    });
+    it("Should return url parameter value when name given corresponds among several parameters", function () {
+      //given
+      window.location.href = "http://clara.com?named_parameter=param_value&other_parameter=other_value";
+      //when
+      var name_1 = "named_parameter"
+      var example_1 = $.urlParam(name_1)
+      var name_2 = "other_parameter"
+      var example_2 = $.urlParam(name_2)
+      //then
+      expect(example_1).toEqual("param_value")
+      expect(example_2).not.toEqual("param_value")
     });
   },
 
