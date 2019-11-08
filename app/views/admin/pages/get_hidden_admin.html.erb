@@ -27,7 +27,7 @@
           <% end %>
           <% if current_user.role === "relecteur" %>
             <li>
-              <%=link_to "Créer un nouveau contributeur", sign_up_path %>
+              <%=link_to "Créer un nouveau contributeur", sign_up_path(text: "contributeur") %>
             </li>
           <% end %>
         </ul>
