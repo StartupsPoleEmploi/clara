@@ -14,6 +14,35 @@ module Admin
       }      
     end
 
+    def create_stage_1
+      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
+      slug = params.require(:slug).permit(:value).to_h[:value]
+      if !slug.blank?
+        resource = Aid.find_by(slug: slug)
+        resource.assign_attributes(new_attributes)
+      else
+        resource = Aid.new(new_attributes)
+      end
+
+      if resource.save
+        if slug.blank?
+          redirect_to(
+            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            notice: "L'aide a bien été enregistrée en tant que brouillon."
+          )
+        else
+          redirect_to(
+            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            notice: "Les modifications ont bien été enregistrées."
+          )
+        end
+      else
+        render :new_aid_stage_1, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource),
+        }
+      end     
+    end
+
     def new_aid_stage_2
       resource = Aid.find_by(slug: params[:slug])
       authorize_resource(resource)
@@ -73,34 +102,6 @@ module Admin
       }      
     end
 
-    def create_stage_1
-      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
-      slug = params.require(:slug).permit(:value).to_h[:value]
-      if !slug.blank?
-        resource = Aid.find_by(slug: slug)
-        resource.assign_attributes(new_attributes)
-      else
-        resource = Aid.new(new_attributes)
-      end
-
-      if resource.save
-        if slug.blank?
-          redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
-            notice: "L'aide a bien été enregistrée en tant que brouillon."
-          )
-        else
-          redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
-            notice: "Les modifications ont bien été enregistrées."
-          )
-        end
-      else
-        render :new_aid_stage_1, locals: {
-          page: Administrate::Page::Form.new(dashboard, resource),
-        }
-      end     
-    end
 
   end
 end
