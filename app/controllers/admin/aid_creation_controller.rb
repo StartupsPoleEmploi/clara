@@ -38,6 +38,29 @@ module Admin
 
     def new_aid_stage_3
       resource = Aid.find_by(slug: params[:slug])
+      ct = resource.contract_type
+      contract_type = ct.attributes.with_indifferent_access
+      aids_of_contract_type = ct.aids.map { |e| e.attributes.with_indifferent_access  }
+
+      gon.locals = {
+        contract_type: contract_type,
+        aids_of_contract_type: aids_of_contract_type        
+      }
+
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+        contract_type: contract_type,
+        aids_of_contract_type: aids_of_contract_type
+      }      
+    end
+
+
+    def create_stage_3
+    end
+
+    def new_aid_stage_4
+      resource = Aid.find_by(slug: params[:slug])
+      authorize_resource(resource)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
       }      
