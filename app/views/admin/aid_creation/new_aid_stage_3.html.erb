@@ -93,11 +93,11 @@
   <div class="c-resultaids">
 
     <% v.aids.each_with_index do |aid, index_nb| %>
-      <div class="c-resultaid" data-aslug="parcours-emploi-competences">
+      <div class="c-resultaid">
         <div class="o-layout o-layout--middle o-layout--flush">
           <div class="o-layout__item u-3/4">
             <h3 class="c-resultaid__smalltitle"><%= aid[:name] %> </h3>
-            <p class="u-margin-bottom-none c-resultaid__smalltxt"><%= aid[:short_description] %></p>
+            <p class="u-margin-bottom-none c-resultaid__smalltxt c-resultaid__smalltxt--<%= aid[:slug] %>"><%= aid[:short_description] %></p>
           </div>
           <div class="o-layout__item u-1/4 u-text--right">
             <div class="c-btn c-btn--aid c-btn--primary u-padding-horizontal@desktop u-padding-vertical-tiny@desktop">En savoir plus</div>

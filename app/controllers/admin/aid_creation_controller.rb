@@ -56,6 +56,7 @@ module Admin
 
 
     def create_stage_3
+      fail
     end
 
     def new_aid_stage_4
