@@ -86,7 +86,7 @@ module Admin
       filters = Filter.where(id: filters_ids)
       aid = Aid.find_by(slug: slug)
       aid.filters = filters
-      aid[:short_description] = new_attributes[:short_description]
+      aid.short_description = new_attributes[:short_description]
       aid.save
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
