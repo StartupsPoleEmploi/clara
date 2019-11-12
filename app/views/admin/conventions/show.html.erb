@@ -9,11 +9,13 @@
     <button class="button js-history">
       Voir l'historique
     </button>
+    <% if current_user.role === "superadmin" || current_user.role === "relecteur" %>
     <%= link_to(
       "Modifier",
       [:edit, namespace, page.resource],
       class: "button",
     ) %>
+    <% end %>
     <%= link_to(
       "Outils d'admin",
       admin_get_hidden_admin_path,
