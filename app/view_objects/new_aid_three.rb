@@ -55,4 +55,8 @@ class NewAidThree < ViewObject
     @aids.size
   end
 
+  def aids
+    @aids
+  end
+
 end
