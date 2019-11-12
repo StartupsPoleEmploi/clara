@@ -1,13 +1,17 @@
 # CLARA Changelog
 
-## 22.18.2 (8/11/2019)
+
+## 22.18.2 (12/11/2019)
 -[#1415][TESTS] Tests pour $.paramUpdate
+
 
 ## 22.18.1 (8/11/2019)
 -[#1422b]
 
+
 ## 22.18.0 (8/11/2019)
 -[#1422][FEATURE] Création des profils contributeurs/relecteurs etc
+
 
 ## 22.17.2 (7/11/2019)
 -[#1418][TESTS] 6 tests restants pour autofocus_forced.js
