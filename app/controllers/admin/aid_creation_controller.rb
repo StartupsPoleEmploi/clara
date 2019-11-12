@@ -42,11 +42,6 @@ module Admin
       contract_type = ct.attributes.with_indifferent_access
       aids_of_contract_type = ct.aids.map { |e| e.attributes.with_indifferent_access  }
 
-      gon.locals = {
-        contract_type: contract_type,
-        aids_of_contract_type: aids_of_contract_type        
-      }
-
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
         contract_type: contract_type,
