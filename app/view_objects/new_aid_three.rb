@@ -12,12 +12,11 @@ class NewAidThree < ViewObject
 
   def show_field?(attribute)
     name = attr_name(attribute)
-    [ "what", "additionnal_conditions", "how_much", "how_and_when", "limitations" ].include?(name)
+    [ "short_description", "filters" ].include?(name)
   end
 
   def mandatory_field?(attribute)
-    name = attr_name(attribute)
-    ["what"].include?(name)
+    false
   end
 
   def error_message(attribute)
