@@ -2,7 +2,7 @@
 
 
 ## 22.18.2 (12/11/2019)
--[#1415][TESTS] Tests pour $.paramUpdate
+-[#1414][TESTS] Tests pour $.urlParam
 
 
 ## 22.18.1 (8/11/2019)
