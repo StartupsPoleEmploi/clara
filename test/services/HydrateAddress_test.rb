@@ -48,7 +48,7 @@ class HydrateAddressnTest < ActiveSupport::TestCase
   test ".call should return unchanged Asker instance if v_location_citycode.blank?" do
     #given
     asker_attributes_hash = self.asker_attributes_test
-    asker_attributes_hash.v_location_citycode = nil
+    asker_attributes_hash["v_location_citycode"] = nil
     asker_test = Asker.new(asker_attributes_hash)
     #when
     result = HydrateInscription.new.call(asker_attributes_hash)
@@ -58,7 +58,7 @@ class HydrateAddressnTest < ActiveSupport::TestCase
   test ".call should return unchanged Asker instance if v_location_zipcode.present?" do
     #given
     asker_attributes_hash = self.asker_attributes_test
-    asker_attributes_hash.v_location_zipcode = 25454
+    asker_attributes_hash["v_location_zipcode"] = 25454
     asker_test = Asker.new(asker_attributes_hash)
     #when
     result = HydrateInscription.new.call(asker_attributes_hash)
@@ -68,7 +68,7 @@ class HydrateAddressnTest < ActiveSupport::TestCase
   test ".call should return Asker instance with new v_zrr value " do
     #given
     asker_attributes_hash = self.asker_attributes_test
-    zrr_test = IsZrr.new.call(asker_attributes_hash.v_location_citycode)
+    zrr_test = IsZrr.new.call(asker_attributes_hash["v_location_citycode"])
     #when
     result = HydrateInscription.new.call(asker_attributes_hash)
     #then
