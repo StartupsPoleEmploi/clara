@@ -8,8 +8,6 @@ $.urlParam = function (name) {
   if ($.isArray(candidates_array) && candidates_array.length > 1) {
     if (typeof candidates_array[1] === "string") {
       result = decodeURIComponent(candidates_array[1]); // param present and filled
-    } else {
-      result = ""; // param present but empty
     }
   } else {
     result = null; // param not present
