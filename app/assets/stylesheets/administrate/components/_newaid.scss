@@ -73,6 +73,11 @@
   }
 }
 
+
+.c-newaid.c-newaid--stage3 .selectize-input {
+  height: initial; 
+}
+
 .c-newaid-subtitle {
   font-family: Roboto;
   font-size: 18px;
@@ -136,17 +141,12 @@
 }
 
 .navigation {
-  // box-shadow: 1px -25px 10px 0 #d9e4ec;
-  // background-color: #ffffff;
   padding-left:1rem;
   margin-right: 2rem;
   box-shadow: 1px -25px 10px 0 #d9e4ec;
   background-color: #ffffff;
 }
 
-.c-newaid-leftpanel {
-  // padding: 1rem;
-}
 
 .c-newaid-belowstages {
   padding: 1rem;
@@ -175,4 +175,18 @@
 
 .c-newaid.c-newaid--stage1 .field-unit {
     display: initial;
+}
+.c-newaid.c-newaid--stage3 .field-unit {
+    display: initial;
+}
+#aid_short_description {
+  height: 100px;
+}
+
+.c-newaid.c-newaid--stage3 .c-btn--aid {
+  background-color: lightgrey;
+}
+
+.c-newaid.c-newaid--stage3 .c-btn {
+  cursor: default;
 }

@@ -1,10 +1,8 @@
-class NewAidThree < ViewObject
+class NewAidFour < ViewObject
 
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
-    @ct = locals[:contract_type]
-    @aids = locals[:aids_of_contract_type]
     @errors_h = _init_errors_messages(@page)
   end
 
@@ -14,11 +12,12 @@ class NewAidThree < ViewObject
 
   def show_field?(attribute)
     name = attr_name(attribute)
-    [ "short_description", "filters" ].include?(name)
+    [ "what" ].include?(name)
   end
 
   def mandatory_field?(attribute)
-    false
+    name = attr_name(attribute)
+    ["what"].include?(name)
   end
 
   def error_message(attribute)
@@ -37,26 +36,6 @@ class NewAidThree < ViewObject
       key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
     end
     res_h
-  end
-
-  def svg
-    @ct[:icon]
-  end
-
-  def contract_type_name
-    res = @ct[:name]
-    if @aids.size > 1
-      res = @ct[:plural]
-    end
-    res
-  end
-
-  def number_of_aids
-    @aids.size
-  end
-
-  def aids
-    @aids
   end
 
 end

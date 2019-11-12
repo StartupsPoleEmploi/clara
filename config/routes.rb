@@ -59,11 +59,13 @@ Rails.application.routes.draw do
       get :export, on: :collection
     end
     namespace :aid_creation do
-      get "new_aid_stage_1"
+      get  "new_aid_stage_1"
       post "create_stage_1"
-      get "new_aid_stage_2"
+      get  "new_aid_stage_2"
       post "create_stage_2"
-      get "new_aid_stage_3"
+      get  "new_aid_stage_3"
+      post "create_stage_3"
+      get "new_aid_stage_4"
     end
     resources :rules do 
       get 'resolve', on: :member

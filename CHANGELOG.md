@@ -3,6 +3,10 @@
 ## 22.18.3 (12/11/2019)
 -[#1416][TESTS] Tests pour hydrate_inscription.rb
 
+## 22.19.0 (12/11/2019)
+-[#1423] Étape 3
+
+
 ## 22.18.2 (12/11/2019)
 -[#1414][TESTS] Tests pour $.urlParam
 
