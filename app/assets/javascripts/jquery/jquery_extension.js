@@ -1,19 +1,3 @@
-$.paramUpdate = function (url, param) {
-
-  var regExp = new RegExp(param.key + '=([a-z0-9\-\_]+)(?:&)?'),
-    existsMatch = url.match(regExp);
-
-  if (!existsMatch) {
-    return url + '&' + param.key + '=' + param.value
-  }
-
-  var paramToUpdate = existsMatch[0],
-    valueToReplace = existsMatch[1],
-    updatedParam = paramToUpdate.replace(valueToReplace, param.value);
-
-  return url.replace(paramToUpdate, updatedParam);
-}
-
 $.currentAppPath = function () {
   return $('body').attr("data-path");
 }
@@ -24,8 +8,6 @@ $.urlParam = function (name) {
   if ($.isArray(candidates_array) && candidates_array.length > 1) {
     if (typeof candidates_array[1] === "string") {
       result = decodeURIComponent(candidates_array[1]); // param present and filled
-    } else {
-      result = ""; // param present but empty
     }
   } else {
     result = null; // param not present
@@ -82,18 +64,6 @@ jQuery.fn.extend({
       }
     }
     return result;
-  },
-  hasAttribute: function (name) {
-    var res = false;
-    if (typeof name === "string") {
-      var attr = $(this).attr(name);
-      // See https://css-tricks.com/snippets/jquery/make-an-jquery-hasattr/#article-header-id-0
-      // For some browsers, `attr` is undefined; for others, `attr` is false. Check for both.
-      if (typeof attr !== typeof undefined && attr !== false) {
-        res = true;
-      }
-    }
-    return res;
   }
 
 

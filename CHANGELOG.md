@@ -1,10 +1,10 @@
 # CLARA Changelog
 
-## 22.18.3 (8/11/2019)
+## 22.18.3 (12/11/2019)
 -[#1417][TESTS] Tests pour hydrate_address.rb
 
-## 22.18.2 (8/11/2019)
--[#1422b]
+## 22.18.2 (12/11/2019)
+-[#1414][TESTS] Tests pour $.urlParam
 
 ## 22.18.1 (8/11/2019)
 -[#1422b]
@@ -23,7 +23,6 @@
 
 ## 22.17.0 (7/11/2019)
 -[#1425][FEATURE] Quand on arrive sur l'étape 2, description est dépliée par défaut
-
 
 ## 22.16.0 (6/11/2019)
 -[#1411][FEATURE] Refonte étape 2
