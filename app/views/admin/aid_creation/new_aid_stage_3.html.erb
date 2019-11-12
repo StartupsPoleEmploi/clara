@@ -37,7 +37,7 @@
 
       <div class="c-newaid-belowstages">
         <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_3_path, html: { class: "form" }) do |f| %>
-          <h2 class="c-newaid-subtitle">Contenu de l'aide</h2>
+          <h2 class="c-newaid-subtitle">Page de résultats</h2>
           <input placeholder="" type="hidden" name="aid[name]" id="aid_name" value="<%= page.resource.name %>">
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
 

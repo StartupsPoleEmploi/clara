@@ -56,7 +56,18 @@ module Admin
 
 
     def create_stage_3
-      fail
+      slug = params.require(:slug).permit(:value).to_h[:value]
+      new_attributes = params.require(:aid).permit(:short_description, filter_ids: []).to_h
+      filters_ids = new_attributes[:filter_ids].reject { |f| f.blank? }.map { |f| f.to_i }
+      filters = Filter.where(id: filters_ids)
+      aid = Aid.find_by(slug: slug)
+      aid.filters = filters
+      aid[:short_description] = new_attributes[:short_description]
+      aid.save
+      redirect_to(
+        admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
+        notice: "Le contenu a été mis à jour"
+      )
     end
 
     def new_aid_stage_4
