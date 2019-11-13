@@ -68,4 +68,8 @@ class Aid < ApplicationRecord
     slug.blank?
   end
 
+  def status
+    "Brouillon"
+  end
+
 end

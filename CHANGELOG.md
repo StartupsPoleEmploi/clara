@@ -1,6 +1,7 @@
 # CLARA Changelog
 
 
+
 ## 22.20.0 (13/11/2019)
 -[#1421] Créer un statut Brouillon, En attente de relecture et Publiée
 
