@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.19.1 (13/11/2019)
+-[#1412] Tests parcours visiteur
 
 
 ## 22.20.0 (13/11/2019)
