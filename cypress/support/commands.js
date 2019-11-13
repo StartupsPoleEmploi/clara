@@ -82,26 +82,26 @@ Cypress.Commands.add('disconnect_from_admin', () => {
 });
 
 Cypress.Commands.add('make_a_random_choice', () => {
-  if (cy.get('input[type="radio"]').size() > 0) {
+  if (cy.get('input[type="radio"]').its('length') > 0) {
     cy.check_random_radio_button()
   }
-  else if (cy.get('input[name="age_form[number_of_years]"]').size() > 0) {
+  else if (cy.get('input[name="age_form[number_of_years]"]').its('length') > 0) {
     cy.enter_random_age()
   }
-  else if (cy.get('input[name="address_form[label]"]').size() > 0) {
+  else if (cy.get('input[name="address_form[label]"]').its('length') > 0) {
     cy.enter_random_post_code()
   }
-  else if (cy.get('input[type="checkbox"]').size() > 0) {
+  else if (cy.get('input[type="checkbox"]').its('length') > 0) {
     cy.check_random_checkbox()
   }
 });
 
 Cypress.Commands.add('check_random_radio_button', () => {
-  var random_radio_box = Math.floor(Math.random() * cy.get('input[type="radio"]').size());
+  var random_radio_box = Math.floor(Math.random() * cy.get('input[type="radio"]').its('length') - 1);
   cy.get('input[type="radio"]').eq(random_radio_box).check()
 });
 Cypress.Commands.add('check_random_checkbox', () => {
-  var random_checkbox = Math.floor(Math.random() * cy.get('input[type="checkbox"]').size());
+  var random_checkbox = Math.floor(Math.random() * cy.get('input[type="checkbox"]').its('length') - 1);
   cy.get('input[type="radio"]').eq(random_checkbox).check()
 });
 Cypress.Commands.add('enter_random_age', () => {

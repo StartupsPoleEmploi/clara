@@ -36,10 +36,13 @@ describe("Pour un visiteur", function () {
             cy.get('input[type="radio"]').should('exist')
         })
         it("Repondre aux questions au hasard", function () {
-            while (cy.get('input[value="Continuer"]').size() > 0) {
+            while (cy.get('input[value="Continuer"]').its('length') > 0) {
                 cy.make_random_choice()
                 cy.Submit_wizard_choice()
+                cy.wait(500)
             }
+            cy.wait(500)
+            cy.wait(500)
             cy.location('pathname').should('include', '/aides?for_id')
         })
     })
