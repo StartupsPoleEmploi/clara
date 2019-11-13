@@ -37,10 +37,64 @@
 
       <div class="c-newaid-belowstages">
         <div class="c-newaid-subtitle">Champ d'application</div>
-          <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
 
-            <%= f.submit "Enregistrer", id: "submit-current-step" %>
-          <% end %>              
+
+
+  <h3 class="c-section-title is-first">L'aide s'applique si :</h3>
+  <section class="c-apprule">
+
+    <div id="main-apprule">
+      <ul class="sortable is-first ui-sortable root_box" data-box="root_box">
+        <li class="ui-sortable-handle " >
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <h3 class="c-section-title">Critère géographique</h3>
+  <section class="c-geowhere">
+    <h2 class="c-geowhere-title">Lieu de résidence de la personne</h2>
+    <div class="c-geowhere-line">
+      <input type="radio" id="tout" name="drone" value="tout">
+      <label class="c-geolabel" for="tout">Toute la france</label>
+    </div>
+    <div class="c-geowhere-line">
+      <input type="radio" id="tout_sauf_domtom" name="drone" value="tout_sauf_domtom">
+      <label class="c-geolabel" for="tout_sauf_domtom">France métropolitaine (hors DOM/TOM)</label>
+    </div>
+    <div class="c-geowhere-line">
+      <input type="radio" id="domtom_seulement" name="drone" value="domtom_seulement">
+      <label class="c-geolabel" for="domtom_seulement">DOM/TOM seulement</label>
+    </div>
+    <div class="c-geowhere-line is-tout_sauf">
+      <input type="radio" id="tout_sauf" name="drone" value="tout_sauf">
+      <label class="c-geolabel" for="tout_sauf">Toute la France, à l'exception de critères géographiques suivants :</label>
+      <div class="c-geowhere-selections">
+        <div class="c-geowhere-selection">
+          <label for="select-region" class="c-geoselect-label">Région(s):</label>
+          <div class="c-geoselect c-geoselect--region" id="select-region"></div>
+        </div>
+        <div class="c-geowhere-selection">
+          <label for="select-department" class="c-geoselect-label">Département(s):</label>
+          <div class="c-geoselect c-geoselect--department" id="select-department"></div>
+        </div>
+        <div class="c-geowhere-selection">
+          <label for="select-town" class="c-geoselect-label">Ville(s):</label>
+          <div class="c-geoselect c-geoselect--town" id="select-town"></div>
+        </div>
+      </div>
+    </div>
+    <div class="c-geowhere-line is-rien_sauf">
+      <input type="radio" id="rien_sauf" name="drone" value="rien_sauf">
+      <label class="c-geolabel" for="rien_sauf">Uniquement les critères géographiques suivants :</label>
+    </div>
+  </section>     
+
+
+
+
       </div>
       
       <div class="c-newaid-actions">
@@ -49,7 +103,17 @@
 
     </div>    
     <div class="simple-col">
-      <%= render "aid_preview" %>    
+      <div id="main-apprule-expl">
+        <div class="c-apprulexpl-head">
+          <span class="c-apprulexpl-fixed">La personne sera éligible si</span>
+          <span class="c-apprulexpl-main-condition">toutes les conditions suivantes sont réunies :</span>
+        </div>
+        <div>
+          <ul class="c-parentexpl-root_box">
+            
+          </ul>
+        </div>
+      </div>   
     </div>
   </section>
 </section>
