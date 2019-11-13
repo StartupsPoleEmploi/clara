@@ -35,7 +35,13 @@ describe("Pour un visiteur", function () {
         it("Montrer des boutons radios", function () {
             cy.get('input[type="radio"]').should('exist')
         })
+        it("Repondre aux questions au hasard", function () {
+            while (cy.get('input[value="Continuer"]').size() > 0) {
+                cy.make_random_choice()
+                cy.Submit_wizard_choice()
+            }
+            cy.location('pathname').should('include', '/aides?for_id')
+        })
     })
-
 })
 
