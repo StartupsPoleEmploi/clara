@@ -95,10 +95,14 @@ module Admin
     end
 
     def new_aid_stage_4
-      resource = Aid.find_by(slug: params[:slug])
-      authorize_resource(resource)
+      aid = Aid.find_by(slug: params[:slug])
+      authorize_resource(aid)
+
+      gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      gon.initial_geo = ExtractGeoForAid.new.call(aid)
+
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
+        page: Administrate::Page::Form.new(dashboard, aid),
       }      
     end
 
