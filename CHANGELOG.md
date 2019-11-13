@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.19.1 (13/11/2019)
+-[#1428][BUG] Role Contributeur ne peut modifier la charte éditoriale
 
 
 ## 22.20.0 (13/11/2019)
@@ -9,11 +11,8 @@
 ## 22.19.0 (12/11/2019)
 -[#1423][FEATURE] Étape 3
 
-
 ## 22.18.3 (12/11/2019)
 -[#1416][TESTS] Tests pour hydrate_inscription.rb
-
-
 
 ## 22.18.2 (12/11/2019)
 -[#1414][TESTS] Tests pour $.urlParam
