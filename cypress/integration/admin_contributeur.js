@@ -64,7 +64,13 @@ describe("Pour un contributeur", function () {
       cy.visit('/admin/conventions/1?locale=fr')
     })
     it("Omettre le bouton modifier", function () {
-      cy.get('button.button.edit').should('not.exist')
+      cy.get('header > div > a.button').should('have.attr', 'href').and('not.include', 'edit')
+    })
+    it("Omettre le bouton créer", function () {
+      cy.get('header > div > a.button').should('have.attr', 'href').and('not.include', 'new')
+    })
+    it("Omettre le bouton supprimer", function () {
+      cy.get('header > div > a.button').should('have.attr', 'href').and('not.include', 'delete')
     })
   })
 
