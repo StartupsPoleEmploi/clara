@@ -10,7 +10,9 @@ class FindScopeAndGeoErrorsToo
     no_geo = sel == "tout"
     no_box = _no_box(trundle)
 
-    if !no_geo && no_box 
+    if no_geo && no_box 
+      res = "Étape non renseignée."
+    elsif !no_geo && no_box 
       res = "Il n'est pas possible d'indiquer un critère géographique seulement."
     elsif has_complex_geo && geo[:town].blank? && geo[:department].blank? && geo[:region].blank?
       res = "Il faut à minima renseigner une ville, ou un département, ou une région pour cette sélection géographique."

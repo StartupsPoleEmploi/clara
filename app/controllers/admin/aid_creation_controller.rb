@@ -120,14 +120,15 @@ module Admin
       
       error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
 
+      is_void = error_message == "Étape non renseignée."
 
-      if error_message.blank?
+      if (error_message.blank? || is_void)
         url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug)
         aid = Aid.find_by(slug: aid_slug)
         
-        CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
-        msg = "Mise à jour du champ d'application effectué."
+        msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
         flash.keep(:notice)
         render js: "document.location = '#{url}'"        
