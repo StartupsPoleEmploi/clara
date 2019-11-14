@@ -53,11 +53,6 @@ clara.js_define("admin_trundle_subscriber", {
         }
 
       } else {
-        // disable all edition
-        // $('button.js-tooltip').each(function(e,i) {
-        //   var $buttonjstooltip = $(this);
-        //   $buttonjstooltip.replaceWith('<div class="uneditable-condition">' + $buttonjstooltip.html() +'</div>')
-        // })
         
         // no dragndrop help
         $(".c-drag-help").remove() 
