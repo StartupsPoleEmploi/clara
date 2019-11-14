@@ -5,12 +5,16 @@ clara.js_define("admin_stage_3", {
     },
 
     please: function() {
-      var slug = $.urlParam("slug")
-      var $txt = $(".c-resultaid__smalltxt--" + slug)
-      $("#aid_short_description").on("change keyup paste", function(e) {
-        var new_textarea_value = $(this).val();
+      var txt_update = function() {
+        var slug = $.urlParam("slug")
+        var $txt = $(".c-resultaid__smalltxt--" + slug)
+        var new_textarea_value = $("#aid_short_description").val();
         $txt.text(new_textarea_value)
-      });
+      }
+
+      $("#aid_short_description").on("change keyup paste", txt_update);
+      
+      txt_update();
     }
 
 });

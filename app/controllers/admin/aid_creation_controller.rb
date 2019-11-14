@@ -76,7 +76,8 @@ module Admin
       render locals: {
         page: Administrate::Page::Form.new(dashboard, resource),
         contract_type: contract_type,
-        aids_of_contract_type: aids_of_contract_type
+        aids_of_contract_type: aids_of_contract_type,
+        aid_attributes: resource.attributes.with_indifferent_access
       }      
     end
 
