@@ -1,22 +1,75 @@
 describe("Pour un visiteur", function () {
 
 
-    describe("Quand on arrive sur la page principale", function () {
-        before(function () {
-            cy.visit('/')
-        })
-        it("On peut démarrer le formulaire", function () {
-            // given
-            // visit home
-            // when
-            cy.get('.c-main-cta').click()
-            // then
-            // cy.location('pathname').should('include', '/aides?for_id')
-            // cy.location().should((loc) => {expect(loc.pathname).not.to.eq('/')})
-            cy.location().should((loc) => {expect(loc.pathname).contains('question')})
+  it("Quand on arrive sur la page principale, on peut démarrer le formulaire", function () {
+    // given
+    cy.visit('/')
+    // when
+    cy.get('.c-main-cta').click()
+    // then
+    cy.location().should((loc) => {expect(loc.pathname).contains('question')})
+  })
+
+  describe("Quand on arrive sur la question inscription", function () {
+
+    it("Aucun radiobutton coché", function () {
+      // given
+      // when
+      cy.visit('/inscription_questions/new')
+      // then
+      // aucun radiobutton coché
+    })
+
+    it("focus sur le premier radiobutton ", function () {
+      // given
+      // when
+      cy.visit('/inscription_questions/new')
+      // then
+      // focus sur le premier radiobutton
+    })
 
 
-        })
+    it("Quand on arrive sur la question inscription, ", function () {
+      // given
+      // when
+      cy.visit('/inscription_questions/new')
+      // then
+      // pas d'erreur .c-error-in-form length === 0
+    })
+
+    it("Quand on arrive sur la question inscription, ", function () {
+      // given
+      // when
+      cy.visit('/inscription_questions/new')
+      // then
+      // pas d'erreur .c-error-in-form length === 0
+    })
+
+    it("Cas nominal : on coche une case et on valide, ", function () {
+      // given
+      cy.visit('/inscription_questions/new')
+      // coche une case
+      // when
+      // on valide
+      // then
+      // l'URL a changé
+    })
+
+    it("On peut revenir à l'écran précédent", function () {
+      // given
+      cy.visit('/inscription_questions/new')
+      // when
+      // on clique sur le bouton revenir
+      // then
+      // on revient à la home
+    })
+
+  })
+
+  
+
+
+
         // it("Il existe un champ de recherche d'aide", function () {
         //     cy.get('input[placeholder*="Rechercher"]').should('exist')
         // })
@@ -38,7 +91,6 @@ describe("Pour un visiteur", function () {
         // it("Il existe un bouton pour accepter les cookies", function () {
         //     cy.get('input.c-cookies-button').should('exist')
         // })
-    })
 
     // describe("Affichage du formulaire", function () {
     //     before(function () {
