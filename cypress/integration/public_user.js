@@ -37,12 +37,12 @@ describe("Pour un visiteur", function () {
       // pas d'erreur .c-error-in-form length === 0
     })
 
-    it("Quand on arrive sur la question inscription, ", function () {
+    it("Erreur si on ne coche rien ", function () {
       // given
       // when
       cy.visit('/inscription_questions/new')
       // then
-      // pas d'erreur .c-error-in-form length === 0
+      // erreur .c-error-in-form length > 0
     })
 
     it("Cas nominal : on coche une case et on valide, ", function () {
