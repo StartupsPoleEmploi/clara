@@ -7,15 +7,17 @@ module Admin
     end
 
     def new_aid_stage_1
-      resource = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
-      authorize_resource(resource)
+      aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
+      authorize_aid(aid)
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
-      }      
+        page: Administrate::Page::Form.new(dashboard, aid)
+      }
     end
 
     def create_stage_1
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
+      new_order = new_attributes[:ordre_affichage] || 99 
+      new_attributes[:ordre_affichage] = new_order
       slug = params.require(:slug).permit(:value).to_h[:value]
       if !slug.blank?
         resource = Aid.find_by(slug: slug)
