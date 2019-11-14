@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.21.0 (15/11/2019)
+-[#1436][FEATURE] Refonte étape 3
+
+
 ## 22.20.1 (14/11/2019)
 -[#1428][BUG] Role Contributeur ne peut modifier la charte éditoriale
 
