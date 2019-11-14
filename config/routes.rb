@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       get  "new_aid_stage_3"
       post "create_stage_3"
       get "new_aid_stage_4"
+      post "create_stage_4"
     end
     resources :rules do 
       get 'resolve', on: :member
