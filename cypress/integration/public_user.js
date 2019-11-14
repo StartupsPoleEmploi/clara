@@ -12,56 +12,46 @@ describe("Pour un visiteur", function () {
 
   describe("Quand on arrive sur la question inscription", function () {
 
+        before(function () {
+            cy.visit('/inscription_questions/new')
+        })
+
     it("Aucun radiobutton coché", function () {
-      // given
-      // when
-      cy.visit('/inscription_questions/new')
-      // then
+        cy.get('input[type="radio"]').should('not.be.checked')
       // aucun radiobutton coché
     })
 
     it("focus sur le premier radiobutton ", function () {
-      // given
-      // when
-      cy.visit('/inscription_questions/new')
-      // then
-      // focus sur le premier radiobutton
+        cy.get('input[type="radio"]').first().should('have.focus')
     })
 
-
-    it("Quand on arrive sur la question inscription, ", function () {
-      // given
-      // when
-      cy.visit('/inscription_questions/new')
-      // then
-      // pas d'erreur .c-error-in-form length === 0
+    it("Absence d'erreur lorqu'on arrive sur la page", function () {
+        cy.get('.c-label.is-error').should('not.exist')
+      // Absence d'erreur
     })
 
     it("Erreur si on ne coche rien ", function () {
-      // given
       // when
-      cy.visit('/inscription_questions/new')
+      cy.get('input[value="Continuer"]').click()
       // then
-      // erreur .c-error-in-form length > 0
+      cy.get('.c-label.is-error').should('exist')
     })
 
     it("Cas nominal : on coche une case et on valide, ", function () {
       // given
       cy.visit('/inscription_questions/new')
-      // coche une case
+      cy.get('input[type="radio"]').first().check()
       // when
-      // on valide
+      cy.get('input[value="Continuer"]').click()
       // then
-      // l'URL a changé
+      cy.location('pathname').should('not.contain', 'inscription_questions')
     })
 
     it("On peut revenir à l'écran précédent", function () {
-      // given
-      cy.visit('/inscription_questions/new')
       // when
-      // on clique sur le bouton revenir
+      cy.get('input[value="Revenir"]').click()
       // then
-      // on revient à la home
+      cy.location('pathname').should('contain', 'inscription_questions')
     })
 
   })
