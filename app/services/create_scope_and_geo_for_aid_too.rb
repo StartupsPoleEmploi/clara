@@ -1,4 +1,5 @@
-class CreateScopeAndGeoForAid
+# HACK : please rename once new aid creation is released
+class CreateScopeAndGeoForAidToo
 
   def call(h)
     trundle = h[:trundle]
@@ -17,7 +18,8 @@ class CreateScopeAndGeoForAid
         _recursively_remove([previous_rule])
       end
     else
-      ap "no valid rule"
+      aid.rule           = nil
+      aid.save
     end
 
   end
