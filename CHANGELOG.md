@@ -1,6 +1,7 @@
 # CLARA Changelog
 
-## 22.19.1 (13/11/2019)
+
+## 22.20.1 (14/11/2019)
 -[#1412] Tests parcours visiteur
 
 
@@ -16,9 +17,9 @@
 -[#1416][TESTS] Tests pour hydrate_inscription.rb
 
 
-
 ## 22.18.2 (12/11/2019)
 -[#1414][TESTS] Tests pour $.urlParam
+
 
 ## 22.18.1 (8/11/2019)
 -[#1422b]
@@ -26,6 +27,7 @@
 
 ## 22.18.0 (8/11/2019)
 -[#1422][FEATURE] Création des profils contributeurs/relecteurs etc
+
 
 ## 22.17.2 (7/11/2019)
 -[#1418][TESTS] 6 tests restants pour autofocus_forced.js
@@ -37,6 +39,7 @@
 
 ## 22.17.0 (7/11/2019)
 -[#1425][FEATURE] Quand on arrive sur l'étape 2, description est dépliée par défaut
+
 
 ## 22.16.0 (6/11/2019)
 -[#1411][FEATURE] Refonte étape 2
