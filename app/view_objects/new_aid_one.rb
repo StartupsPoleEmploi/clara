@@ -10,10 +10,17 @@ class NewAidOne < ViewObject
     attribute.attribute.to_s
   end
 
-  def show_field?(attribute)
+  def show_field?(attribute, role)
     name = attr_name(attribute)
-    ["name", "contract_type", "ordre_affichage", "source"].include?(name)
+    res = false
+    if role == "superadmin"
+     res = ["name", "contract_type", "ordre_affichage", "source"].include?(name)
+    elsif role == "contributeur" || role == "relecteur"
+     res = ["name", "contract_type", "source"].include?(name)
+    end
+    res
   end
+
 
   def mandatory_field?(attribute)
     name = attr_name(attribute)
