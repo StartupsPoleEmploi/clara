@@ -126,7 +126,7 @@ module Admin
         url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug)
         aid = Aid.find_by(slug: aid_slug)
         
-        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+        CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
