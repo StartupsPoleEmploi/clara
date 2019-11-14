@@ -1,7 +1,7 @@
-describe("Quand on arrive sur la question adresse", function () {
+describe("Quand on arrive sur la question âge", function () {
 
     before(function () {
-        cy.visit('/address_questions/new')
+        cy.visit('/age_questions/new')
     })
 
 it("Champ nombre vide", function () {
@@ -17,29 +17,28 @@ it("Absence d'erreur lorqu'on arrive sur la page", function () {
   // Absence d'erreur
 })
 
-it("Pas d'erreur si on ne remplit rien ", function () {
+it("Erreur si on ne remplit rien ", function () {
   // when
   cy.get('input[value="Continuer"]').click()
   // then
-  cy.get('.c-label.is-error').should('not.exist')
+  cy.get('.c-label.is-error').should('exist')
 })
 
-it("Cas nominal : on renseigne un code postal, on sélectionne une ville et on valide, ", function () {
+it("Cas nominal : on renseigne un age et on valide, ", function () {
     // given
-    cy.visit('/address_questions/new')
-    cy.get('input[type="number"]').first().type("44200")
-    cy.get('li.autocomplete-item').first().click()
+    cy.visit('/age_questions/new')
+    cy.get('input[type="number"]').first().type("44")
     // when
     cy.get('input[value="Continuer"]').click()
     // then
-    cy.location('pathname').should('not.contain', 'address_questions')
+    cy.location('pathname').should('not.contain', 'age_questions')
   })
 
   it("On peut revenir à l'écran précédent", function () {
     // when
     cy.get('input[value="Revenir"]').click()
     // then
-    cy.location('pathname').should('contain', 'address_questions')
+    cy.location('pathname').should('contain', 'age_questions')
   })
 
 })
