@@ -56,8 +56,13 @@ describe("Pour un visiteur", function () {
 
   })
 
-  
+  describe("Quand on arrive sur la question inscription", function () {
 
+    before(function () {
+        cy.visit('/category_questions/new')
+    })
+
+})
 
 
         // it("Il existe un champ de recherche d'aide", function () {
