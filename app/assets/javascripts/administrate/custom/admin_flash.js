@@ -5,6 +5,7 @@ clara.js_define("admin_flash", {
     },
 
     please: function() {
+      
       $(".js-tooltip").click();
       
       setTimeout(
