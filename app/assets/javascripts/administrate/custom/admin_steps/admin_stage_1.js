@@ -5,7 +5,6 @@ clara.js_define("admin_stage_1", {
     },
 
     please: function() {
-      $("#aid_ordre_affichage").val(99);
     }
 
 });
