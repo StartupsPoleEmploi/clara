@@ -21,7 +21,7 @@ clara.js_define("admin_rulecreation_record", {
           url: $("#record_root_rule").data("url"),
           type: "POST",
           data: {
-            aid: $.urlParam("aid"),
+            aid: $.urlParam("aid") || $.urlParam("slug"),
             trundle: JSON.stringify(store_trundle.getState()),
             geo: JSON.stringify({
               selection: $('.c-geowhere input[type=radio]:checked').attr("id"),
