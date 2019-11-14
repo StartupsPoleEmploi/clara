@@ -1,24 +1,22 @@
-class CreateScopeAndGeoForAid
+class CreateScopeAndGeoForAidToo
 
   def call(h)
     trundle = h[:trundle]
     aid = h[:aid]
     geo = h[:geo]
 
+    previous_rule      = aid.rule
+    uuid               = _create_uuid
+    root_rule_no_geo = nil
     if _has_at_least_one_valid_rule(trundle)
-      previous_rule      = aid.rule
-      uuid               = _create_uuid
       rules_no_geo       = _create_rules_no_geo(trundle, uuid)
       root_rule_no_geo   = rules_no_geo[0]
-      root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
-      aid.rule           = root_rule_with_geo
-      aid.save
-      if previous_rule && _is_automatically_generated_rule(previous_rule)
-        _recursively_remove([previous_rule])
-      end
-    else
-      aid.rule           = nil
-      aid.save
+    end
+    root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
+    aid.rule           = root_rule_with_geo
+    aid.save
+    if previous_rule && _is_automatically_generated_rule(previous_rule)
+      _recursively_remove([previous_rule])
     end
 
   end
