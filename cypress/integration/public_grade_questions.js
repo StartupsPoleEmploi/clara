@@ -1,4 +1,4 @@
-describe("Quand on arrive sur la question allocation", function () {
+describe("Quand on arrive sur la question grade", function () {
 
     before(function () {
         cy.visit('/grade_questions/new')
