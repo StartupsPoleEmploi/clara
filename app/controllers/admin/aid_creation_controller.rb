@@ -113,20 +113,19 @@ module Admin
     end
 
     def create_stage_4
-      ap params.inspect
       aid_slug = params["aid"]
       # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
-      error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
+      error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
 
 
       if error_message.blank?
-        url = admin_aid_path(aid_slug)
+        url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug)
         aid = Aid.find_by(slug: aid_slug)
         
-        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+        CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
         msg = "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
@@ -135,6 +134,14 @@ module Admin
       else
         render :json => error_message, :status => 422
       end
+    end
+
+    def new_aid_stage_5
+      aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
+      authorize_resource(aid)
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, aid),
+      }      
     end
 
     def _all_explicitations 

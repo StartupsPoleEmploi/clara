@@ -35,7 +35,7 @@ clara.js_define("admin_rulecreation_record", {
           },
           error: function(e){ 
             $(".flash-error").remove()
-            $("<h2 class='flash-error'>" + e.responseText + "</h2>").insertAfter(".c-rulecreation");
+            $("<h2 class='flash-error'>" + e.responseText + "</h2>").insertAfter(".c-errorafter");
             window.scrollTo(0, 0); 
           },
         });

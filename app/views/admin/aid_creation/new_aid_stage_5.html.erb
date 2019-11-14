@@ -1,0 +1,52 @@
+<%- v = view_object(:new_aid_three, local_assigns) %>
+
+
+<section class="c-newaid c-newaid--stage5">
+  <%= link_to "‹ Retour à l'étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]), class: "c-newaid-back2" %>
+  <h1 class="c-newaid-title">Créer une aide</h1>
+
+  <section class="c-newaid-panels simple-row">
+    <div class="simple-col c-newaid-leftpanel" style="width: 45%">
+      <div class="c-newaid-stages">
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 1
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 2
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 3
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            Étape 4
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--active">
+          <div class="c-newaid-stageinside">
+            Étape 5
+          </div>
+        </div>
+      </div>
+
+      <div class="c-newaid-belowstages">
+                     
+      </div>
+      <div class="c-newaid-actions">
+        <%= link_to "‹ Retour à l'étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]), class: "c-newaid-back2" %>
+      </div>
+
+    </div>    
+    <div class="simple-col">
+      
+    </div><!-- simple-col -->
+
+
+  </section>
+</section>
