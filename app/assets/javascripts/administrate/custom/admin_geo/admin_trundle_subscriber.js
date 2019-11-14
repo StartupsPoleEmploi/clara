@@ -49,7 +49,6 @@ clara.js_define("admin_trundle_subscriber", {
         if (clara.admin_rulecreation._calculate_actual_boxes_size(s) < 2) {
           $(".c-drag-help").remove() 
         } else  { // animate the others, the last one is not necessary
-          $(".c-drag-help").effect( "bounce", {times:4, distance: 40}, 800 );
           $(".c-drag-help").last().remove() 
         }
 

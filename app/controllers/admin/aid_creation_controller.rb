@@ -95,11 +95,64 @@ module Admin
     end
 
     def new_aid_stage_4
-      resource = Aid.find_by(slug: params[:slug])
-      authorize_resource(resource)
+      aid = Aid.find_by(slug: params[:slug])
+      authorize_resource(aid)
+
+      gon.global_state = {
+        explicitations: _all_explicitations,
+        operator_kinds: _all_operator_kinds,        
+        variables: _all_variables,        
+      }
+
+      gon.initial_scope = ExtractScopeForAid.new.call(aid)
+      gon.initial_geo = ExtractGeoForAid.new.call(aid)
+
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
+        page: Administrate::Page::Form.new(dashboard, aid),
       }      
+    end
+
+    def create_stage_4
+      aid_slug = params["aid"]
+      # Need to parse JSON in order to preserve arrays as correct arrays
+      trundle = JSON.parse(params["trundle"], symbolize_names: true)
+      geo = JSON.parse(params["geo"], symbolize_names: true)
+      
+      error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
+
+      is_void = error_message == "Étape non renseignée."
+
+      if (error_message.blank? || is_void)
+        url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug)
+        aid = Aid.find_by(slug: aid_slug)
+        
+        CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+
+        msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
+        flash[:notice] = msg
+        flash.keep(:notice)
+        render js: "document.location = '#{url}'"        
+      else
+        render :json => error_message, :status => 422
+      end
+    end
+
+    def new_aid_stage_5
+      aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
+      authorize_resource(aid)
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, aid),
+      }      
+    end
+
+    def _all_explicitations 
+      JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
+    end
+    def _all_operator_kinds
+      ListOperatorKind.new.call
+    end
+    def _all_variables
+      JSON.parse(Variable.all.to_json(:only => [ :id, :name, :variable_kind, :elements, :elements_translation, :is_visible, :name_translation ]))
     end
 
   end

@@ -190,3 +190,27 @@
 .c-newaid.c-newaid--stage3 .c-btn {
   cursor: default;
 }
+
+
+.c-newaid.c-newaid--stage4 .field-unit__field input, .c-newaid textarea, .c-newaid .selectize-input, .c-newaid select {
+  height: initial;
+}
+
+.c-newaid--stage4 #main-apprule-expl {
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.c-newaid--stage4 .root_box {
+  margin-top: 0;
+  padding-top: 0;
+}
+.c-newaid.c-newaid--stage4 .field-unit__label {
+  margin-top: 0;
+}
+.c-newaid.c-newaid--stage4 {
+  .field-unit__label {
+    label {
+      font-size: 14px;
+    }
+  }
+}
