@@ -6,7 +6,6 @@ describe("Quand on arrive sur la question autres", function () {
 
     it("Aucun checkbox coché", function () {
         cy.get('input[type="checkbox"]').should('not.be.checked')
-      // aucun radiobutton coché
     })
 
 it("focus sur le premier checkbox", function () {
