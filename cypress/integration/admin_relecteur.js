@@ -109,17 +109,10 @@ describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer
 describe("peut créer un contributeur", function () {
   before(function () {
     cy.connect_as_relecteur1()
-    cy.create_a_user('new_contributeur@clara.com', 'password')
+    cy.create_a_user('new_contributeur2@clara.com', 'password')
   })
   it("Montrer l'email du collaborateur créé'", function () {
-    cy.get('span[data-key*="user.email.new_contributeur@clara.com"]').should('exist')
+    cy.get('span[data-key*="user.email.new_contributeur2@clara.com"]').should('exist')
+    cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
   })
 })
-
-
-  // manque les cas de tests suivants : un relecteur peut voir les administrateurs BO (sans les modifier/supprimer etc)
-  // manque les cas de tests suivants : un relecteur peut voir les administrateurs API (sans les modifier/supprimer etc)
-  // manque les cas de tests suivants : accès à la charte éditoriale pour contributeur, relecteur, superadmin
-
-//})
-
