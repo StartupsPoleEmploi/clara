@@ -1,31 +1,31 @@
 describe("Quand on arrive sur la question catégorie", function () {
 
-    before(function () {
-        cy.visit('/category_questions/new')
-    })
+  before(function () {
+    cy.visit('/category_questions/new')
+  })
 
-it("Aucun radiobutton coché", function () {
+  it("Aucun radiobutton coché", function () {
     cy.get('input[type="radio"]').should('not.be.checked')
-  // aucun radiobutton coché
-})
+    // aucun radiobutton coché
+  })
 
-it("focus sur le premier radiobutton ", function () {
+  it("focus sur le premier radiobutton ", function () {
     cy.get('input[type="radio"]').first().should('have.focus')
-})
+  })
 
-it("Absence d'erreur lorqu'on arrive sur la page", function () {
+  it("Absence d'erreur lorqu'on arrive sur la page", function () {
     cy.get('.c-label.is-error').should('not.exist')
-  // Absence d'erreur
-})
+    // Absence d'erreur
+  })
 
-it("Erreur si on ne coche rien ", function () {
-  // when
-  cy.get('input[value="Continuer"]').click()
-  // then
-  cy.get('.c-label.is-error').should('exist')
-})
+  it("Erreur si on ne coche rien ", function () {
+    // when
+    cy.get('input[value="Continuer"]').click()
+    // then
+    cy.get('.c-label.is-error').should('exist')
+  })
 
-it("Cas nominal : on coche une case et on valide, ", function () {
+  it("Cas nominal : on coche une case et on valide, ", function () {
     // given
     cy.visit('/category_questions/new')
     cy.get('input[type="radio"]').first().check()
@@ -36,10 +36,12 @@ it("Cas nominal : on coche une case et on valide, ", function () {
   })
 
   it("On peut revenir à l'écran précédent", function () {
+    // given
+    cy.visit('/category_questions/new')
     // when
     cy.get('input[value="Revenir"]').click()
     // then
-    cy.location('pathname').should('contain', 'category_questions')
+    cy.location('pathname').should('not.contain', 'category_questions')
   })
 
 })
