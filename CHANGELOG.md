@@ -1,6 +1,7 @@
 # CLARA Changelog
 
-
+## 22.21.2 (15/11/2019)
+-[#1420][TECH] test cypress admin_stage_2.js
 
 ## 22.21.1 (15/11/2019)
 -[#1412][TECH] test parcours utilisateur
