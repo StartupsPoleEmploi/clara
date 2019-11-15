@@ -4,7 +4,7 @@ class NewAidThree < ViewObject
     locals = hash_for(args)
     @page = locals[:page]
     @ct = locals[:contract_type]
-    @aids = locals[:aids_of_contract_type]
+    @aid_attributes = locals[:aid_attributes]
     @errors_h = _init_errors_messages(@page)
   end
 
@@ -43,20 +43,16 @@ class NewAidThree < ViewObject
     @ct[:icon]
   end
 
+  def aid_name
+    @aid_attributes[:name]
+  end
+
+  def aid_slug
+    @aid_attributes[:slug]
+  end
+
   def contract_type_name
-    res = @ct[:name]
-    if @aids.size > 1
-      res = @ct[:plural]
-    end
-    res
-  end
-
-  def number_of_aids
-    @aids.size
-  end
-
-  def aids
-    @aids
+    @ct[:name]
   end
 
 end
