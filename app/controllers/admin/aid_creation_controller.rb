@@ -143,6 +143,7 @@ module Admin
       authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
+        filters_size: aid.filters.size
       }      
     end
 

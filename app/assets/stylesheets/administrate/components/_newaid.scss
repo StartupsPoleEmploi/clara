@@ -231,3 +231,33 @@
   letter-spacing: 0.42px;
   color: #545454;
 }
+
+.c-newaid-stage5expl {
+  display: flex;
+  border-radius: 4px;
+  padding: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.c-newaid-stage5expl.is-ok-true {
+  color: #2b542c;
+  background-color: #dff0d8;
+}
+
+.c-newaid-stage5expl.is-ok-false {
+  color: #843534;
+  background-color: #ebcccc;
+}
+.c-newaid-stage5expl__img {
+  display: flex;
+  margin-right: 1rem;
+}
+
+.c-newaid-stage5title {
+  opacity: 0.7;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 2.19;
+  color: #1b1b1b;
+  margin-left: .6rem;
+}
