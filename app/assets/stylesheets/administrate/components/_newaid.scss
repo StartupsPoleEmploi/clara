@@ -187,7 +187,8 @@
 }
 
 .c-newaid.c-newaid--stage3 .c-btn--aid {
-  background-color: lightgrey;
+  background-color: #057dbc;
+  opacity: 0.5;
 }
 
 .c-newaid.c-newaid--stage3 .c-btn {
@@ -221,4 +222,12 @@
 .c-newaid-greyzone {
   padding: .5rem;
   background-color: #f6f6f6;
+  border-radius: 2px;
+
+}
+
+.c-newaid-willdisplay {
+  font-size: 14px;
+  letter-spacing: 0.42px;
+  color: #545454;
 }
