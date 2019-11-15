@@ -21,26 +21,19 @@ class NewAidFive < ViewObject
     if stage_2_ok?
       "Toutes les <strong>informations obligatoires</strong> ont été <strong>saisies</strong>"
     else
-      "blabla"
+      missing_parts = _stage_2_missing_keys.map { |e| stage_2_translation(e)  }.join("</strong>, <strong>")
+      "Des parties <strong>obligatoires</strong> sont manquantes : <strong>#{missing_parts}</strong>"
     end
   end
 
-  def stage_2_translation
+  def stage_2_translation(key)
       {
         what: "Description",
         how_much: "Contenu de l'aide",
-        how_and_when: "Comment faire la demande ?",
+        how_and_when: "Comment faire la demande",
         additionnal_conditions: "Conditions à remplir",
         limitations: "Informations complémentaires"
-      }
-  end
-
-  def _number_of_stage_2_missing
-    [ @aid[:additionnal_conditions].blank?,
-      @aid[:how_and_when].blank?,
-      @aid[:how_much].blank?,
-      @aid[:limitations].blank?,
-      @aid[:what].blank?].count{|e| e }
+      }[key]
   end
 
   def _stage_2_missing_keys
