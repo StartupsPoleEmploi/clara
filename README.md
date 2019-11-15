@@ -141,6 +141,23 @@ docker-compose down -v
 
 L'application est visible sous https://clara.beta.pole-emploi.fr/
 
+### Ecriture d'un test
+
+#### Structure
+
+Il faut obligatoirement 
+
+- zéro à plusieurs given 
+- un et un seul when
+- un à plusieurs then
+
+Ca doit apparaître en clair avec un commentaire pour séparer les secti∏ons. // given // when // then
+
+#### Déterminisme
+
+Un test doit toujours faire la même chose, de manière prédictive. Par conséquent, il n'est pas possible de tester une fonction aléatoire (lancé de dé par ex.). Il n'est pas possible non plus de parcourir des branches au hasard.
+
+
 ### Outils 
 Clara est un projet Open Source sous licence AGPL 3.0. 
 Ce statut nous permet d'être soutenu gratuitement. Nous les en remercions.

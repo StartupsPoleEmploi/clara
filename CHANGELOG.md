@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 22.21.1 (15/11/2019)
+-[#1412][TECH] test parcours utilisateur
+
+
 ## 22.21.0 (15/11/2019)
 -[#1436][FEATURE] Refonte étape 3
 
