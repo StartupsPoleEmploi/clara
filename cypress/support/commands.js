@@ -81,13 +81,12 @@ Cypress.Commands.add('disconnect_from_admin', () => {
   cy.get('.js-sign-out').click()
 });
 
-Cypress.Commands.add('create_a_contributeur', () => {
+Cypress.Commands.add('create_a_user', (email, password) => {
   cy.visit('/sign_up?locale=fr&text=contributeur')
   cy.get('#user_email')
-    .type('new_contributeur@clara.com').should('have.value', 'new_contributeur@clara.com')
+    .type(email).should('have.value', email)
   cy.get('#user_password')
-    .type('new_contributeur').should('have.value', 'new_contributeur')
+    .type(password).should('have.value', password)
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', 'admin/users')
-  cy.get('span[data-key*="user.email.new_contributeur@clara.com"]').should('exist')
 });
