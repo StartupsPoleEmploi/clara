@@ -62,7 +62,14 @@ class NewAidFive < ViewObject
   end
 
   def stage_4_ok?
-    false
+    !@aid[:rule_id].blank?
   end
 
+  def stage_4_comment
+    if stage_4_ok?
+      "Le <strong>champ d'application</strong> a été <strong>correctement renseigné.</strong>"
+    else
+      "Le <strong>champ d'application</strong> n'a pas été renseigné, il est <strong>obligatoire.</strong>"
+    end
+  end
 end
