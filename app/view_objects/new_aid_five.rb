@@ -14,15 +14,25 @@ class NewAidFive < ViewObject
   end
 
   def stage_2_ok?
-    _number_of_stage_2_missing == 0
+    _stage_2_missing_keys.empty?
   end
 
   def stage_2_comment
     if stage_2_ok?
       "Toutes les <strong>informations obligatoires</strong> ont été <strong>saisies</strong>"
     else
-      "Les parties suivantes <strong>sont manquantes : </strong>"
+      "blabla"
     end
+  end
+
+  def stage_2_translation
+      {
+        what: "Description",
+        how_much: "Contenu de l'aide",
+        how_and_when: "Comment faire la demande ?",
+        additionnal_conditions: "Conditions à remplir",
+        limitations: "Informations complémentaires"
+      }
   end
 
   def _number_of_stage_2_missing
@@ -31,6 +41,14 @@ class NewAidFive < ViewObject
       @aid[:how_much].blank?,
       @aid[:limitations].blank?,
       @aid[:what].blank?].count{|e| e }
+  end
+
+  def _stage_2_missing_keys
+    [:additionnal_conditions,
+    :how_and_when,
+    :how_much,
+    :limitations,
+    :what].reduce([]) { |memo, k| memo.push(k) if @aid[k].blank?; memo}
   end
 
   def stage_3_ok?
