@@ -46,18 +46,23 @@
         <% else %>
           <%= raw ko_svg %>
         <% end %>
+        <div><%= raw v.stage_1_comment %></div>
+        
         <div>Étape 2 : Contenu</div>
         <% if v.stage_2_ok? %>
           <%= raw ok_svg %>
         <% else %>
           <%= raw ko_svg %>
         <% end %>
+        <div><%= raw v.stage_2_comment %></div>
+
         <div>Étape 3 : Page de résultat</div>
         <% if v.stage_3_ok? %>
           <%= raw ok_svg %>
         <% else %>
           <%= raw ko_svg %>
         <% end %>
+        
         <div>Étape 4 : Champ d'application</div>
         <% if v.stage_4_ok? %>
           <%= raw ok_svg %>

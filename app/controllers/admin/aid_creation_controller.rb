@@ -143,6 +143,10 @@ module Admin
       authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
+        stage_1: {
+          status: "ok",
+          comment: "Toutes les  <strong>informations obligatoires</strong> ont été <strong>saisies</strong>"
+        }
       }      
     end
 
