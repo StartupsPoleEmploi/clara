@@ -74,11 +74,48 @@ describe("Pour un relecteur", function () {
     })
   })
 })
+describe("peut voir les administrateurs BO (sans pouvoir les modifier/supprimer)", function () {
+  before(function () {
+    cy.connect_as_relecteur1()
+    cy.visit('/admin/users?locale=fr')
+  })
+  it("Montrer l'email d'un utilisateur'", function () {
+    cy.get('span[data-key*="user.email"]').should('exist')
+  })
+  it("Omettre le lien Modifier", function () {
+    cy.get('a[href*="edit"]').should('not.exist')
+  })
+  it("Omettre le lien Supprimer", function () {
+    cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
+  })
+})
 
-  // manque les cas de tests suivants : un relecteur peut voir les administrateurs BO (sans les modifier/supprimer etc)
-  // manque les cas de tests suivants : un relecteur peut voir les administrateurs API (sans les modifier/supprimer etc)
-  // manque les cas de tests suivants : un relecteur peut créer un contributeur
-  // manque les cas de tests suivants : accès à la charte éditoriale pour contributeur, relecteur, superadmin
+describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer)", function () {
+  before(function () {
+    cy.connect_as_relecteur1()
+    cy.visit('/admin/api_users?locale=fr')
+  })
+  it("Montrer l'email d'un utilisateur'", function () {
+    cy.get('span[data-key*="user.email"]').should('exist')
+  })
+  it("Omettre le lien Modifier", function () {
+    cy.get('a[href*="edit"]').should('not.exist')
+  })
+  it("Omettre le lien Supprimer", function () {
+    cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
+  })
+})
 
-//})
-
+describe("peut créer un contributeur", function () {
+  before(function () {
+    cy.connect_as_relecteur1()
+    cy.create_a_user('new_contributeur@clara.com', 'password')
+  })
+  after(function () {
+    cy.delete_a_user('new_contributeur@clara.com')
+  })
+  it("Montrer l'email du collaborateur créé'", function () {
+    cy.get('tr').contains('new_contributeur@clara.com').should('exist')
+    cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
+  })
+})

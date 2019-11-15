@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.21.2 (15/11/2019)
+-[#1427][TESTS] Tests manquants pour admin_relecteur.js
 
 
 ## 22.21.1 (15/11/2019)
