@@ -1,4 +1,6 @@
 <%- v = view_object(:new_aid_five, local_assigns) %>
+<%- ok_svg = "<svg>ok</svg>" %>
+<%- ko_svg = "<svg>ko</svg>") %>
 
 
 <section class="c-newaid c-newaid--stage5">
@@ -36,7 +38,16 @@
       </div>
 
       <div class="c-newaid-belowstages">
-                     
+        <div class="c-newaid-subtitle">Demander la relecture</div>
+
+        <div>Étape 1 : informations générales</div>
+        <% if v.stage_1_ok? %>
+        <% else %>
+        <% end %>
+        <div>Étape 2 : Contenu</div>
+        <div>Étape 3 : Page de résultat</div>
+        <div>Étape 4 : Champ d'application</div>
+
       </div>
       <div class="c-newaid-actions">
         <%= link_to "‹ Retour à l'étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]), class: "c-newaid-back2" %>

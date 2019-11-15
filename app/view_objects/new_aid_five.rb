@@ -6,4 +6,7 @@ class NewAidFive < ViewObject
   end
 
 
+  def stage_1_ok?
+  end
+
 end

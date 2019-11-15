@@ -4,6 +4,10 @@
 -[#1427][TESTS] Tests manquants pour admin_relecteur.js
 
 
+## 22.22.0 (15/11/2019)
+-[#1445][FEATURE] demander la relecture
+
+
 ## 22.21.1 (15/11/2019)
 -[#1412][TECH] test parcours utilisateur
 
