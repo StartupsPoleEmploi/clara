@@ -50,16 +50,12 @@ class NewAidFive < ViewObject
   end
 
   def stage_3_comment
-    ap "@aid[:filters]---------"
-    ap @aid
-    ap @filters_size
-    ap @aid[:filters]
     if @aid[:short_description] && @filters_size == 0
       "Le <strong>résumé</strong> a été renseigné, mais pas le/les filtre(s). Ces champs ne sont pas obligatoires."
     elsif !@aid[:short_description] && @filters_size > 0
       "Le/les <strong>filtres</strong> ont été renseignés, mais pas le résumé. Ces champs ne sont pas obligatoires."
     elsif @aid[:short_description] && @filters_size > 0
-      "Le <strong>résumé</strong> et le/les <strong>filtre(s)</strong> ont été renseignés"
+      "Le <strong>résumé</strong> et le/les <strong>filtre(s)</strong> ont été renseignés."
     elsif !@aid[:short_description] && @filters_size == 0
       "Ni le <strong>résumé</strong>, ni les <strong>filtres</strong> n'ont été renseignés, mais ils ne sont pas obligatoires."
     end
