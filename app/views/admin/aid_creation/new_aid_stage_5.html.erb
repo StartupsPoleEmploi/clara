@@ -69,11 +69,18 @@
         </div>
 
         <div>Étape 3 : Page de résultat</div>
-        <% if v.stage_3_ok? %>
-          <%= raw ok_svg %>
-        <% else %>
-          <%= raw ko_svg %>
-        <% end %>
+        <div class="c-newaid-stage5expl is-ok-<%= v.stage_3_ok? %>">
+          <div class="c-newaid-stage5expl__img">
+            <% if v.stage_3_ok? %>
+              <%= raw ok_svg %>
+            <% else %>
+              <%= raw ko_svg %>
+            <% end %>
+          </div>
+          <div class="c-newaid-stage5expl__txt">
+            <%= raw v.stage_3_comment %>
+          </div>          
+        </div>
         
         <div>Étape 4 : Champ d'application</div>
         <% if v.stage_4_ok? %>
