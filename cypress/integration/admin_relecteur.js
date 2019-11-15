@@ -115,7 +115,7 @@ describe("peut créer un contributeur", function () {
     cy.delete_a_user('new_contributeur@clara.com')
   })
   it("Montrer l'email du collaborateur créé'", function () {
-    cy.get('span[data-key*="user.email.new_contributeur2@clara.com"]').should('exist')
+    cy.get('tr').contains('new_contributeur@clara.com').should('exist')
     cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
   })
 })
