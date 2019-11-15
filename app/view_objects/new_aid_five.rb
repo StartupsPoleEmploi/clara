@@ -18,9 +18,11 @@ class NewAidFive < ViewObject
   end
 
   def stage_2_comment
-    @aid[:what]
-    ap "@aid[:how_and_when]--------------------"
-    ap @aid[:how_and_when]
+    if stage_2_ok?
+      "Toutes les <strong>informations obligatoires</strong> ont été <strong>saisies</strong>"
+    else
+      "Les parties suivantes <strong>sont manquantes : </strong>"
+    end
   end
 
   def _number_of_stage_2_missing
