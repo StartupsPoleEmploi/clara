@@ -1,11 +1,12 @@
 describe("Quand on arrive sur la question de montant de l'allocation", function () {
 
   before(function () {
+    cy.visit('/')
     cy.visit('/are_questions/new')
   })
 
   it("Champ nombre vide", function () {
-    cy.get('input[type="number"]').should('be.empty')
+    cy.get('input[type="number"]').should('have.value', '')
   })
 
   it("focus sur le champ nombre", function () {
@@ -26,6 +27,7 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
   it("Cas nominal : on renseigne un montant et on valide, ", function () {
     // given
     cy.visit('/are_questions/new')
+    cy.get('input[type="number"]').first().clear()
     cy.get('input[type="number"]').first().type("823")
     // when
     cy.get('input[value="Continuer"]').click()
@@ -35,11 +37,19 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
 
   it("On peut revenir à l'écran précédent", function () {
     // given
-    cy.visit('/age_questions/new')
+    cy.visit('/are_questions/new')
     // when
     cy.get('input[value="Revenir"]').click()
     // then
     cy.location('pathname').should('not.contain', 'are_questions')
+  })
+
+  it("Si on revient à la question du montant, la valeur est pré-remplie", function () {
+    // given
+    // when
+    cy.visit('/are_questions/new')
+    // then
+    cy.get('input[type="number"]').first().should('have.value', '823')
   })
 
 })
