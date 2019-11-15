@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.22.4 (18/11/2019)
+-[#1417][TESTS] Tests pour hydrate_address.rb
+
 
 ## 22.22.3 (18/11/2019)
 -[#1451b][TECH] docker de R7 : sudo chmod
