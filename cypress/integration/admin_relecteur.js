@@ -109,7 +109,10 @@ describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer
 describe("peut créer un contributeur", function () {
   before(function () {
     cy.connect_as_relecteur1()
-    cy.create_a_user('new_contributeur2@clara.com', 'password')
+    cy.create_a_user('new_contributeur@clara.com', 'password')
+  })
+  after(function () {
+    cy.delete_a_user('new_contributeur@clara.com')
   })
   it("Montrer l'email du collaborateur créé'", function () {
     cy.get('span[data-key*="user.email.new_contributeur2@clara.com"]').should('exist')
