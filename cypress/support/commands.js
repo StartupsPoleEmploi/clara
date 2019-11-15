@@ -90,3 +90,10 @@ Cypress.Commands.add('create_a_user', (email, password) => {
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', 'admin/users')
 });
+
+Cypress.Commands.add('delete_a_user', (email) => {
+  cy.connect_as_superadmin()
+  cy.visit('/admin/users?locale=fr')
+  cy.get('tr').contains(email).get('a').contains('Supprimer').click()
+  cy.location('pathname').should('include', 'admin/users')
+});
