@@ -7,6 +7,7 @@ class NewAidFive < ViewObject
 
 
   def stage_1_ok?
+    false
   end
 
 end

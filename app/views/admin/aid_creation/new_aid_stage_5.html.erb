@@ -1,6 +1,6 @@
 <%- v = view_object(:new_aid_five, local_assigns) %>
 <%- ok_svg = "<svg>ok</svg>" %>
-<%- ko_svg = "<svg>ko</svg>") %>
+<%- ko_svg = "<svg>ko</svg>" %>
 
 
 <section class="c-newaid c-newaid--stage5">
@@ -42,7 +42,9 @@
 
         <div>Étape 1 : informations générales</div>
         <% if v.stage_1_ok? %>
+          <%= raw ok_svg %>
         <% else %>
+          <%= raw ko_svg %>
         <% end %>
         <div>Étape 2 : Contenu</div>
         <div>Étape 3 : Page de résultat</div>
