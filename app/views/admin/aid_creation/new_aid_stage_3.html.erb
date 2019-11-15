@@ -66,46 +66,48 @@
 
     </div>    
     <div class="simple-col">
-      <div>
-        sur la page de résultat, l'aide s'affichera comme ceci :
-      </div>
-
-
-      <div class="c-resultcard c-resultcard--green">
-        <div class="c-resultcard__inner o-layout o-layout--middle o-layout--flush u-padding-horizontal-tiny">
-          <div class="o-layout__item u-3/4">
-            <div class="o-flag o-flag--flush c-resultcontract">
-              <div class="o-flag__img u-hide-until@wide">
-                <%= raw v.svg %>
-              </div>
-              <div class="o-flag__body">
-                <h2 class="c-resultcontract-title">
-                  <span class="c-resultcontract-title__number"> 1 </span>
-                  <span class="c-resultcontract-title__text"><%= v.contract_type_name %></span>
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div aria-hidden="true" class="o-layout__item u-1/4 u-text--right">
-          </div>
+      <div class="c-newaid-greyzone">
+        <div>
+          L’aide s'affichera comme ceci sur la page de résultats :
         </div>
 
-        <div class="c-resultaids">
 
-          <div class="c-resultaid">
-            <div class="o-layout o-layout--middle o-layout--flush">
-              <div class="o-layout__item u-3/4">
-                <h3 class="c-resultaid__smalltitle"><%= v.aid_name %> </h3>
-                <p class="u-margin-bottom-none c-resultaid__smalltxt c-resultaid__smalltxt--<%= v.aid_slug %>"></p>
-              </div>
-              <div class="o-layout__item u-1/4 u-text--right">
-                <div class="c-btn c-btn--aid c-btn--primary u-padding-horizontal@desktop u-padding-vertical-tiny@desktop">En savoir plus</div>
+        <div class="c-resultcard c-resultcard--green">
+          <div class="c-resultcard__inner o-layout o-layout--middle o-layout--flush u-padding-horizontal-tiny">
+            <div class="o-layout__item u-3/4">
+              <div class="o-flag o-flag--flush c-resultcontract">
+                <div class="o-flag__img u-hide-until@wide">
+                  <%= raw v.svg %>
+                </div>
+                <div class="o-flag__body">
+                  <h2 class="c-resultcontract-title">
+                    <span class="c-resultcontract-title__number"> 1 </span>
+                    <span class="c-resultcontract-title__text"><%= v.contract_type_name %></span>
+                  </h2>
+                </div>
               </div>
             </div>
+            <div aria-hidden="true" class="o-layout__item u-1/4 u-text--right">
+            </div>
           </div>
-       
-        </div> <!-- c-resultaids -->
-      </div><!-- c-resultcard -->
+
+          <div class="c-resultaids">
+
+            <div class="c-resultaid">
+              <div class="o-layout o-layout--middle o-layout--flush">
+                <div class="o-layout__item u-3/4">
+                  <h3 class="c-resultaid__smalltitle"><%= v.aid_name %> </h3>
+                  <p class="u-margin-bottom-none c-resultaid__smalltxt c-resultaid__smalltxt--<%= v.aid_slug %>"></p>
+                </div>
+                <div class="o-layout__item u-1/4 u-text--right">
+                  <div class="c-btn c-btn--aid c-btn--primary u-padding-horizontal@desktop u-padding-vertical-tiny@desktop">En savoir plus</div>
+                </div>
+              </div>
+            </div>
+         
+          </div> <!-- c-resultaids -->
+        </div><!-- c-resultcard -->
+      </div><!-- c-greyzone -->
     </div><!-- simple-col -->
 
 
