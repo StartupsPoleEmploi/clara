@@ -143,8 +143,30 @@ module Admin
       authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
-        filters_size: aid.filters.size
+        filters_size: aid.filters.size,
+        whodunnit: aid.versions[0][:whodunnit]
       }      
+    end
+
+    def create_stage_5
+      slug = params.require(:slug).permit(:value).to_h[:value]
+      archive_asked = params.require(:archive_asked).permit(:value).to_h[:value] == "true"
+      aid = Aid.find_by(slug: slug)
+
+      notice_message = ""
+      if archive_asked
+        aid.archived_at = DateTime.now
+        notice_message = "L'aide a bien été archivée, elle n'apparaît plus sur le site."
+      else
+        aid.archived_at = nil
+        notice_message = "L'aide a été publiée sur le site."
+      end
+
+      aid.save
+      redirect_to(
+        admin_root_path,
+        notice: notice_message
+      )
     end
 
     def _all_explicitations 

@@ -4,23 +4,38 @@ class NewAidFive < ViewObject
     locals = hash_for(args)
     @aid = locals[:page].resource
     @filters_size = locals[:filters_size]
+    @whodunnit = locals[:whodunnit]
   end
 
   def big_message
-    if _all_stages_ok?
-      "L'aide a toute les informations requises"
+    if already_published?
+      "Cette aide est actuellement en ligne"
+    elsif _all_stages_ok?
+      "L'aide a toutes les informations requises"
     else
       "L'aide a été enregistrée en tant que brouillon"
     end
+  end
+
+  def publiable?(current_user_email)
+    !already_published? && _all_stages_ok? && @whodunnit != current_user_email 
+  end
+
+  def already_published?
+    @aid[:archived_at].blank?
   end
 
   def _all_stages_ok?
     stage_1_ok? && stage_2_ok? && stage_3_ok? && stage_4_ok?
   end
 
-  def small_message
-    if _all_stages_ok?
+  def small_message(current_user_email)
+    if already_published?
+      "Vous pouvez l'archiver pour la retirer du front grand public."
+    elsif !publiable?(current_user_email)
       "Elle sera publiée sur le site après relecture par un tiers"
+    elsif publiable?(current_user_email)
+      "Veuillez relire attentivement le contenu avant de publier."
     else
       "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
     end
@@ -92,4 +107,5 @@ class NewAidFive < ViewObject
       "Le <strong>champ d'application</strong> n'a pas été renseigné, il est <strong>obligatoire.</strong>"
     end
   end
+
 end
