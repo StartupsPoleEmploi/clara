@@ -7,13 +7,22 @@ class NewAidFive < ViewObject
     @whodunnit = locals[:whodunnit]
   end
 
-  def big_message
+  def big_message(current_user_email)
+    # if already_published?
+    #   "Cette aide est actuellement en ligne"
+    # elsif _all_stages_ok?
+    #   "L'aide a toutes les informations requises"
+    # else
+    #   "L'aide a été enregistrée en tant que brouillon"
+    # end
     if already_published?
-      "Cette aide est actuellement en ligne"
+      "Cette aide est actuellement en ligne."
+    elsif publiable?(current_user_email)
+      "L'aide est prête à être publiée."
     elsif _all_stages_ok?
-      "L'aide a toutes les informations requises"
+      "L'aide a toutes les informations requises."
     else
-      "L'aide a été enregistrée en tant que brouillon"
+      "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
     end
   end
 
@@ -32,10 +41,10 @@ class NewAidFive < ViewObject
   def small_message(current_user_email)
     if already_published?
       "Vous pouvez l'archiver pour la retirer du front grand public."
-    elsif !publiable?(current_user_email)
-      "Elle sera publiée sur le site après relecture par un tiers"
     elsif publiable?(current_user_email)
-      "Veuillez relire attentivement le contenu avant de publier."
+      "Veuillez relire attentivement le contenu avant publicatoin."
+    elsif _all_stages_ok?
+      "Elle sera publiée sur le site après relecture par un tiers."
     else
       "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
     end

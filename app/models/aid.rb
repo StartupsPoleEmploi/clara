@@ -28,10 +28,10 @@ class Aid < ApplicationRecord
     me.archived_at ||= Date.today if new_record?
   end
 
-  # after_save    { ExpireCacheJob.perform_later }
-  # after_update  { ExpireCacheJob.perform_later }
-  # after_destroy { ExpireCacheJob.perform_later }
-  # after_create  { ExpireCacheJob.perform_later }
+  after_save    { ExpireCacheJob.perform_later }
+  after_update  { ExpireCacheJob.perform_later }
+  after_destroy { ExpireCacheJob.perform_later }
+  after_create  { ExpireCacheJob.perform_later }
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,

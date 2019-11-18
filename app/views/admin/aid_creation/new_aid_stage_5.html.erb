@@ -38,7 +38,7 @@
       </div>
 
       <div class="c-newaid-belowstages">
-        <div class="c-newaid-subtitle"><%= raw v.big_message %></div>
+        <div class="c-newaid-subtitle"><%= raw v.big_message(current_user.email) %></div>
         <div class="c-newaid-subtitle-expl"><%= raw v.small_message(current_user.email) %></div>
         <% if v.publiable?(current_user.email) %>
           <div>
