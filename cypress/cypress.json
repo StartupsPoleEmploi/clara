@@ -1,4 +1,4 @@
 {
-    "pluginsFile": false,
-    "supportFile": false
+    "baseUrl": "http://0.0.0.0:3000",
+    "projectId": "z8r4w5"
 }
