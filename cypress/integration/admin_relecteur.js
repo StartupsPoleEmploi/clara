@@ -7,7 +7,7 @@ describe("Pour un relecteur", function () {
   after(function () {
     cy.connect_as_superadmin()
     cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
-    cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide?locale=fr"]').click()
+    cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide"]').click()
   })
 
   describe("Quand on liste les aides", function () {
@@ -75,7 +75,7 @@ describe("Pour un relecteur", function () {
   describe("Écran de la charte éditoriale", function () {
     before(function () {
       // when
-      cy.visit('/admin/conventions/1?locale=fr')
+      cy.visit('/admin/conventions/1')
     })
     it("Afficher le bouton modifier", function () {
       // then
@@ -94,7 +94,7 @@ describe("Pour un relecteur", function () {
   describe("Écran des administrateurs BO", function () {
     before(function () {
       // when
-      cy.visit('/admin/users?locale=fr')
+      cy.visit('/admin/users')
     })
     it("Montrer l'email d'un utilisateur'", function () {
       // then
@@ -113,7 +113,7 @@ describe("Pour un relecteur", function () {
   describe("Écran des utilisateurs API", function () {
     before(function () {
       // when
-      cy.visit('/admin/api_users?locale=fr')
+      cy.visit('/admin/api_users')
     })
     it("Montrer l'email d'un utilisateur'", function () {
       // then
