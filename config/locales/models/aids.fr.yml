@@ -15,7 +15,7 @@ fr:
       contract_type: Rubrique
       slug: Url simplifiée
       updated_at: Dernière modification
-      archived_at: Date d'arrêt de diffusion sur le site
+      archived_at: Arrêt de diffusion
     models: 
       aid: Aides
     attributes:
