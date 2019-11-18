@@ -7,7 +7,7 @@ describe("Pour un relecteur", function () {
   after(function () {
     cy.connect_as_superadmin()
     cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
-    cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide"]').click()
+    cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide?locale=fr"]').click()
   })
 
   describe("Quand on liste les aides", function () {
