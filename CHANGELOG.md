@@ -4,6 +4,11 @@
 -[#1417][TESTS] Tests pour hydrate_address.rb
 
 
+
+## 22.23.0 (18/11/2019)
+-[#1421][FEATURE] statut d'une aide
+
+
 ## 22.22.3 (18/11/2019)
 -[#1451b][TECH] docker de R7 : sudo chmod
 
