@@ -43,6 +43,8 @@ class NewAidFive < ViewObject
       "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
+    elsif @aid_status == "Brouillon" && @aid[:archived_at] == nil
+      "Cette aide a déjà été publiée. Elle le sera à nouveau quand les champs obligatoires ci-dessous auront été renseignés."
     else
       "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignées."
     end
