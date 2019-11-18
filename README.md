@@ -112,7 +112,7 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ~/home/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
 ~/home/clara> rm -rf private/.git
 ~/home/clara> cd docker 
-~/home/clara/docker> docker-compose -f docker-compose.r7.yml up --build -d
+~/home/clara/docker> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up --build -d
 ~/home/clara/docker> chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
 ```
 
