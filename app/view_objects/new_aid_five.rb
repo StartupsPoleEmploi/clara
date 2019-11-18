@@ -6,6 +6,26 @@ class NewAidFive < ViewObject
     @filters_size = locals[:filters_size]
   end
 
+  def big_message
+    if _all_stages_ok?
+      "L'aide a toute les informations requises"
+    else
+      "L'aide a été enregistrée en tant que brouillon"
+    end
+  end
+
+  def _all_stages_ok?
+    stage_1_ok? && stage_2_ok? && stage_3_ok? && stage_4_ok?
+  end
+
+  def small_message
+    if _all_stages_ok?
+      "Elle sera publiée sur le site après relecture par un tiers"
+    else
+      "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
+    end
+  end
+
   def stage_1_ok?
     true
   end
