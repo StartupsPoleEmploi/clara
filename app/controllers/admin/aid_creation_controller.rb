@@ -27,8 +27,10 @@ module Admin
       end
 
       if resource.save
+        # Hack to consider it as a "draft"
         resource.archived_at = resource.created_at
         resource.save
+        # end of hack
         if slug.blank?
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
