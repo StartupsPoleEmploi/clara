@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.22.1 (18/11/2019)
+-[#1449][TECH] stabiliser suite cypress
+
+
 ## 22.22.0 (15/11/2019)
 -[#1445][FEATURE] étape 5 : faire un récapitulatif
 
