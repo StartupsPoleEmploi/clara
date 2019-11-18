@@ -5,7 +5,7 @@ class NewAidFive < ViewObject
     @aid = locals[:page].resource
     @filters_size = locals[:filters_size]
     @whodunnit = locals[:whodunnit]
-    @activated = locals[:activated]
+    @aid_status = locals[:aid_status]
   end
 
   def big_message(current_user_email)
@@ -25,8 +25,7 @@ class NewAidFive < ViewObject
   end
 
   def already_published?
-    # @aid[:archived_at].blank?
-    @activated
+    @aid_status == "Publiée"
   end
 
   def _all_stages_ok?

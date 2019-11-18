@@ -25,7 +25,13 @@ class Aid < ApplicationRecord
   include PgSearch
 
   after_initialize do |me|
-    me.archived_at ||= Date.today if new_record?
+    me.archived_at ||= me.created_at if new_record?
+  end
+
+  after_save do |me|
+    if !Aid.redacted.include?(me)
+      me.archived_at = me.created_at
+    end
   end
 
   # after_save    { ExpireCacheJob.perform_later }
@@ -70,7 +76,13 @@ class Aid < ApplicationRecord
   end
 
  def status
-    "Brouillon"
+    res = "Brouillon"
+    if Aid.activated.include?(self)
+      res = "Publiée"
+    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
+      res = "En attente de relecture"  
+    end
+    res
   end
 
 end

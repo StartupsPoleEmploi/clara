@@ -27,6 +27,8 @@ module Admin
       end
 
       if resource.save
+        resource.archived_at = resource.created_at
+        resource.save
         if slug.blank?
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
@@ -145,7 +147,7 @@ module Admin
         page: Administrate::Page::Form.new(dashboard, aid),
         filters_size: aid.filters.size,
         whodunnit: aid.versions.first[:whodunnit],
-        activated: Aid.activated.include?(aid)
+        aid_status: aid.status
       }      
     end
 
