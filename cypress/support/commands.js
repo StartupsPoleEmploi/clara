@@ -94,6 +94,7 @@ Cypress.Commands.add('create_a_user', (email, password) => {
 Cypress.Commands.add('delete_a_user', (email) => {
   cy.connect_as_superadmin()
   cy.visit('/admin/users?locale=fr')
-  cy.get('tr').contains(email).get('a').contains('Supprimer').click()
+  cy.get('a.js-user-deletion[data-email="' + email + '"]').click()
   cy.location('pathname').should('include', 'admin/users')
+  cy.disconnect_from_admin()
 });
