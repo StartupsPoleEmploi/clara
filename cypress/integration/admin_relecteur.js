@@ -48,7 +48,7 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("À la modification d'une aide créé par un autre contributeur", function () {
+  describe("Modification de cette même aide par un tiers (contributeur)", function () {
     before(function () {
       cy.connect_as_contributeur1()
       cy.visit('/admin/aids/ma-nouvelle-aide/edit')
@@ -73,49 +73,54 @@ describe("Pour un relecteur", function () {
       cy.get('header > div > a.button').should('have.attr', 'href').and('not.include', 'delete')
     })
   })
-})
-describe("peut voir les administrateurs BO (sans pouvoir les modifier/supprimer)", function () {
-  before(function () {
-    cy.connect_as_relecteur1()
-    cy.visit('/admin/users?locale=fr')
-  })
-  it("Montrer l'email d'un utilisateur'", function () {
-    cy.get('span[data-key*="user.email"]').should('exist')
-  })
-  it("Omettre le lien Modifier", function () {
-    cy.get('a[href*="edit"]').should('not.exist')
-  })
-  it("Omettre le lien Supprimer", function () {
-    cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
-  })
-})
 
-describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer)", function () {
-  before(function () {
-    cy.connect_as_relecteur1()
-    cy.visit('/admin/api_users?locale=fr')
+  describe("peut voir les administrateurs BO (sans pouvoir les modifier/supprimer)", function () {
+    before(function () {
+      cy.connect_as_relecteur1()
+      cy.visit('/admin/users?locale=fr')
+    })
+    it("Montrer l'email d'un utilisateur'", function () {
+      cy.get('span[data-key*="user.email"]').should('exist')
+    })
+    it("Omettre le lien Modifier", function () {
+      cy.get('a[href*="edit"]').should('not.exist')
+    })
+    it("Omettre le lien Supprimer", function () {
+      cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
+    })
   })
-  it("Montrer l'email d'un utilisateur'", function () {
-    cy.get('span[data-key*="user.email"]').should('exist')
-  })
-  it("Omettre le lien Modifier", function () {
-    cy.get('a[href*="edit"]').should('not.exist')
-  })
-  it("Omettre le lien Supprimer", function () {
-    cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
-  })
-})
 
-describe("peut créer un contributeur", function () {
-  before(function () {
-    cy.connect_as_relecteur1()
-    cy.create_a_user('new_contributeur@clara.com', 'password')
+  describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer)", function () {
+    before(function () {
+      cy.connect_as_relecteur1()
+      cy.visit('/admin/api_users?locale=fr')
+    })
+    it("Montrer l'email d'un utilisateur'", function () {
+      cy.get('span[data-key*="user.email"]').should('exist')
+    })
+    it("Omettre le lien Modifier", function () {
+      cy.get('a[href*="edit"]').should('not.exist')
+    })
+    it("Omettre le lien Supprimer", function () {
+      cy.get('a[data-method="delete"][href*="users"]').should('not.exist')
+    })
   })
-  after(function () {
-    cy.delete_a_user('new_contributeur@clara.com')
+
+  describe("peut créer un contributeur", function () {
+    before(function () {
+      // given
+      cy.create_a_user('new_contributeur@clara.com', 'password')
+    })
+    after(function () {
+      cy.delete_a_user('new_contributeur@clara.com')
+    })
+    it("Montrer l'email du collaborateur créé'", function () {
+      // when
+      cy.visit('/admin/users?user[direction]=desc&user[order]=updated_at')
+      //then
+      cy.get('tr').contains('new_contributeur@clara.com').should('exist')
+      cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
+    })
   })
-  it("Montrer l'email du collaborateur créé'", function () {
-    cy.get('tr').contains('new_contributeur@clara.com').should('exist')
-    cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
-  })
+
 })

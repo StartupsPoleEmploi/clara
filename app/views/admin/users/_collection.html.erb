@@ -85,9 +85,9 @@ to display a collection of resources in an HTML table.
           <td><%= link_to(
             t("administrate.actions.destroy"),
             [namespace, resource],
-            class: "text-color-red",
+            class: "text-color-red user-deletion",
             method: :delete,
-            data: { confirm: t("administrate.actions.confirm") }
+            data: { confirm: t("administrate.actions.confirm"), email: resource.email }
           ) if show_action? :destroy, resource %></td>
         <% end %>
       </tr>
