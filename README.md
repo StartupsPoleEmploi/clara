@@ -113,7 +113,7 @@ root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
 ~/home/clara> rm -rf private/.git
 ~/home/clara> cd docker 
 ~/home/clara/docker> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up --build -d
-~/home/clara/docker> chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
+~/home/clara/docker> sudo chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
 ~/home/clara/docker$> docker-compose exec srv_app bash
 root@inside_docker:~$> cd /var/git/ara.git
 root@inside_docker:/var/git/ara.git$> git pull origin master

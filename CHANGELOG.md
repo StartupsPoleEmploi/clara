@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.22.3 (18/11/2019)
+-[#1451b][TECH] docker de R7 : sudo chmod
+
+
 ## 22.22.2 (18/11/2019)
 -[#1451][TECH] docker de R7
 
