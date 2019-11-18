@@ -38,10 +38,7 @@ class AidDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :contract_type,
-    :ordre_affichage,
-    :need_filters,
-    :custom_filters,
-    :filters,
+    :status,
     :updated_at,
     :archived_at,
   ].freeze
@@ -56,7 +53,6 @@ class AidDashboard < Administrate::BaseDashboard
     :ordre_affichage,
     :updated_at,
     :slug,
-    # :rule,
     :contract_type,
     :archived_at,
     :what,
