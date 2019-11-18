@@ -34,9 +34,7 @@ services:
       - 3000:3000
     command: >
       sh -c " bundle config --delete without &&
-        bundle install &&
-        echo 'My local machine launched !!!' && sleep infinity"
-# Then launch app with bin/rails s -p 3000 -b '0.0.0.0'
+        bundle install && bin/rails s -p 3000 -b '0.0.0.0'
 
 
 
@@ -58,7 +56,7 @@ services:
     depends_on:
       - srv_app
     environment:
-      - CYPRESS_baseUrl=http://0.0.0.0:3000
+      - CYPRESS_baseUrl=http://srv_app:3000
     working_dir: '/home/clara/cypress'
     volumes:
       - '../cypress:/home/clara/cypress'
