@@ -5,16 +5,10 @@ class NewAidFive < ViewObject
     @aid = locals[:page].resource
     @filters_size = locals[:filters_size]
     @whodunnit = locals[:whodunnit]
+    @activated = locals[:activated]
   end
 
   def big_message(current_user_email)
-    # if already_published?
-    #   "Cette aide est actuellement en ligne"
-    # elsif _all_stages_ok?
-    #   "L'aide a toutes les informations requises"
-    # else
-    #   "L'aide a été enregistrée en tant que brouillon"
-    # end
     if already_published?
       "Cette aide est actuellement en ligne."
     elsif publiable?(current_user_email)
@@ -22,7 +16,7 @@ class NewAidFive < ViewObject
     elsif _all_stages_ok?
       "L'aide a toutes les informations requises."
     else
-      "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
+      "L'aide a été enregistrée en tant que brouillon."
     end
   end
 
@@ -31,7 +25,8 @@ class NewAidFive < ViewObject
   end
 
   def already_published?
-    @aid[:archived_at].blank?
+    # @aid[:archived_at].blank?
+    @activated
   end
 
   def _all_stages_ok?
@@ -42,7 +37,7 @@ class NewAidFive < ViewObject
     if already_published?
       "Vous pouvez l'archiver pour la retirer du front grand public."
     elsif publiable?(current_user_email)
-      "Veuillez relire attentivement le contenu avant publicatoin."
+      "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
     else

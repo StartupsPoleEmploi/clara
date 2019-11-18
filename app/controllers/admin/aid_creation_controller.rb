@@ -144,7 +144,8 @@ module Admin
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
         filters_size: aid.filters.size,
-        whodunnit: aid.versions.first[:whodunnit]
+        whodunnit: aid.versions.first[:whodunnit],
+        activated: Aid.activated.include?(aid)
       }      
     end
 
