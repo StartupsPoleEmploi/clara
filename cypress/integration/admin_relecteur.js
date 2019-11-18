@@ -19,7 +19,7 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("Affichages au moment de créer une aide", function () {
+  describe("Écran de création d'une aide", function () {
     before(function () {
       cy.visit('/admin/aids/new')
     })
@@ -48,7 +48,7 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("Modification de cette même aide par un tiers (contributeur)", function () {
+  describe("Écran de modification de cette même aide par un tiers (contributeur)", function () {
     before(function () {
       cy.connect_as_contributeur1()
       cy.visit('/admin/aids/ma-nouvelle-aide/edit')
@@ -56,11 +56,13 @@ describe("Pour un relecteur", function () {
     it("Montrer la date d'archivage", function () {
       cy.get('input[name="aid[archived_at]"]').should('exist')
     })
+    after(function () {
+      cy.connect_as_relecteur1()
+    })
   })
 
-  describe("Sur la page de la charte éditoriale", function () {
+  describe("Écran de la charte éditoriale", function () {
     before(function () {
-      cy.connect_as_relecteur1()
       cy.visit('/admin/conventions/1?locale=fr')
     })
     it("Afficher le bouton modifier", function () {
@@ -74,9 +76,8 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("peut voir les administrateurs BO (sans pouvoir les modifier/supprimer)", function () {
+  describe("Écran des administrateurs BO", function () {
     before(function () {
-      cy.connect_as_relecteur1()
       cy.visit('/admin/users?locale=fr')
     })
     it("Montrer l'email d'un utilisateur'", function () {
@@ -90,9 +91,8 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("peut voir les administrateurs API (sans pouvoir les modifier/supprimer)", function () {
+  describe("Écran des utilisateurs API", function () {
     before(function () {
-      cy.connect_as_relecteur1()
       cy.visit('/admin/api_users?locale=fr')
     })
     it("Montrer l'email d'un utilisateur'", function () {
@@ -106,7 +106,7 @@ describe("Pour un relecteur", function () {
     })
   })
 
-  describe("peut créer un contributeur", function () {
+  describe("Le relecteur peut créer un contributeur", function () {
     before(function () {
       // given
       cy.create_a_user('new_contributeur@clara.com', 'password')
@@ -114,12 +114,14 @@ describe("Pour un relecteur", function () {
     after(function () {
       cy.delete_a_user('new_contributeur@clara.com')
     })
-    it("Montrer l'email du collaborateur créé'", function () {
+    it("L'utilisateur créé apparaît bien en tant que contributeur dans la liste des administrateurs", function () {
       // when
       cy.visit('/admin/users?user[direction]=desc&user[order]=updated_at')
       //then
-      cy.get('tr').contains('new_contributeur@clara.com').should('exist')
-      cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
+      cy.get('tr[data-email="new_contributeur@clara.com"]').invoke('attr', 'data-role').should('contain', 'contributeur')
+
+      // cy.get('tr').contains('new_contributeur@clara.com').should('exist')
+      // cy.get('td.cell-data--enum-field > a.action-show').first().contains('Contributeur').should('exist')
     })
   })
 

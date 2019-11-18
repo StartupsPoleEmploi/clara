@@ -56,6 +56,8 @@ to display a collection of resources in an HTML table.
   <tbody>
     <% resources.each do |resource| %>
       <tr class="js-table-row"
+          data-email="<%= resource.email %>"
+          data-role="<%= resource.role %>"
           tabindex="0"
           <% if valid_action? :show, collection_presenter.resource_name %>
             <%= %(role=link data-url=#{polymorphic_path([namespace, resource])}) %>
@@ -87,7 +89,7 @@ to display a collection of resources in an HTML table.
             [namespace, resource],
             class: "text-color-red user-deletion",
             method: :delete,
-            data: { confirm: t("administrate.actions.confirm"), email: resource.email }
+            data: { confirm: t("administrate.actions.confirm"), email: resource.email, role: resource.role }
           ) if show_action? :destroy, resource %></td>
         <% end %>
       </tr>
