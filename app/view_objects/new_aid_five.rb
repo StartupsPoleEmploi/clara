@@ -11,6 +11,8 @@ class NewAidFive < ViewObject
   def big_message(current_user_email)
     if already_published?
       "Cette aide est actuellement en ligne."
+    elsif already_archived?
+      "L'aide a été archivée."
     elsif publiable?(current_user_email)
       "L'aide est prête à être publiée."
     elsif _all_stages_ok?
@@ -34,14 +36,20 @@ class NewAidFive < ViewObject
 
   def small_message(current_user_email)
     if already_published?
-      "Vous pouvez l'archiver pour la retirer du front grand public."
+      "Vous pouvez éventuellement l'archiver pour la retirer du site web."
+    elsif already_archived?
+      "Vous pouvez la publier, attention il n'y aura pas de relecture requise."
     elsif publiable?(current_user_email)
       "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
     else
-      "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignée."
+      "Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignées."
     end
+  end
+
+  def already_archived?
+    @aid_status == "Archivée"
   end
 
   def stage_1_ok?

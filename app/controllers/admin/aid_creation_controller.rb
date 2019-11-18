@@ -26,10 +26,14 @@ module Admin
         resource = Aid.new(new_attributes)
       end
 
+      was_new = resource.id == nil
+
       if resource.save
         # Hack to consider it as a "draft"
-        resource.archived_at = resource.created_at
-        resource.save
+        if was_new
+          resource.archived_at = resource.created_at
+          resource.save
+        end
         # end of hack
         if slug.blank?
           redirect_to(

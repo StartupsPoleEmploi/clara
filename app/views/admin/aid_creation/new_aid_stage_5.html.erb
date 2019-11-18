@@ -45,7 +45,7 @@
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:archive_asked, :value, value: "false") %>
-              <%= f.submit "Publier sur le front grand public", class: "c-newbutton c-newaid-actionrecord" %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
             <% end %>            
           </div>
         <% elsif v.already_published? %>

@@ -28,16 +28,10 @@ class Aid < ApplicationRecord
     me.archived_at ||= me.created_at if new_record?
   end
 
-  after_save do |me|
-    if !Aid.redacted.include?(me)
-      me.archived_at = me.created_at
-    end
-  end
-
-  # after_save    { ExpireCacheJob.perform_later }
-  # after_update  { ExpireCacheJob.perform_later }
-  # after_destroy { ExpireCacheJob.perform_later }
-  # after_create  { ExpireCacheJob.perform_later }
+  after_save    { ExpireCacheJob.perform_later }
+  after_update  { ExpireCacheJob.perform_later }
+  after_destroy { ExpireCacheJob.perform_later }
+  after_create  { ExpireCacheJob.perform_later }
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
@@ -81,6 +75,8 @@ class Aid < ApplicationRecord
       res = "Publiée"
     elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
       res = "En attente de relecture"  
+    elsif self.archived_at != nil && self.archived_at != self.created_at
+      res = "Archivée"  
     end
     res
   end
