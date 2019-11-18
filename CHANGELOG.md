@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 22.22.2 (18/11/2019)
+-[#1451][TECH] docker de R7
+
+
 ## 22.22.1 (18/11/2019)
 -[#1449][TECH] stabiliser suite cypress
 
