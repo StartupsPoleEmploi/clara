@@ -136,7 +136,7 @@ module Admin
     end
     def post_transfer_descr
       # Calculate status on every single field
-      Aid.all.each { |aid| aid.save }
+      Aid.all.each { |aid| aid.update_status }
       render json: {
         status: "ok"
       }
