@@ -32,15 +32,13 @@ class Aid < ApplicationRecord
 
   def _calculate_status
     ap "calculate_status for #{self.name}"
-    new_status = "Erreur"
+    new_status = "Brouillon"
     if _is(Aid.activated)
       new_status = "Publiée"
     elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.redacted)
       new_status = "En attente de relecture"  
     elsif self.archived_at != nil && self.archived_at != self.created_at
-      new_status = "Archivée"  
-    elsif self.archived_at != nil && self.archived_at == self.created_at
-      new_status = "Brouillon"  
+      new_status = "Archivée"    
     end
     self.status = new_status 
   end
@@ -48,11 +46,6 @@ class Aid < ApplicationRecord
   def _is(within_scope)
     within_scope.where(:id => self.id).present?
   end
-
-  # after_save    { ExpireCacheJob.perform_later }
-  # after_update  { ExpireCacheJob.perform_later }
-  # after_destroy { ExpireCacheJob.perform_later }
-  # after_create  { ExpireCacheJob.perform_later }
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
