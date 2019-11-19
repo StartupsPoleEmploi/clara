@@ -24,10 +24,6 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
   
-  # BUG : callback not always called. Trello card should appear about that bug. 
-  # Until solved, the callback will be triggered manually.
-  # before_save :_calculate_status
-
   after_initialize do |me|
     me.archived_at ||= me.created_at if new_record?
   end
@@ -42,7 +38,8 @@ class Aid < ApplicationRecord
       new_status = "Archivée"    
     end
     self.status = new_status 
-    ap "calculate_status for #{self.name} : #{new_status}"
+    self.save
+    ap "--------------------------------calculate_status for #{self.name} : #{new_status}---------------------------------------------------------------"
   end
 
   def _is(within_scope)

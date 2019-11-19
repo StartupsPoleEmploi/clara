@@ -28,14 +28,12 @@ module Admin
 
       was_new = aid.id == nil
 
-      aid._calculate_status;
       if aid.save
+        aid._calculate_status;
         # Hack to consider it as a "draft"
         if was_new
           aid.archived_at = aid.created_at
-          aid._calculate_status
           aid._calculate_status;
-          aid.save
         end
         # end of hack
         if slug.blank?
@@ -72,8 +70,8 @@ module Admin
       new_attributes = params.require(:aid).permit(:what, :additionnal_conditions, :how_much, :how_and_when, :limitations).to_h
       all_attributes = old_attributes.merge(new_attributes)
       aid.assign_attributes(new_attributes)
-      aid._calculate_status;
       aid.save
+      aid._calculate_status;
 
       # ExpireCache.new.call
       redirect_to(
@@ -104,8 +102,8 @@ module Admin
       aid.filters = filters
       aid.short_description = new_attributes[:short_description]
       
-      aid._calculate_status;
       aid.save
+      aid._calculate_status;
       
       # ExpireCache.new.call
       redirect_to(
@@ -148,6 +146,7 @@ module Admin
         aid = Aid.find_by(slug: aid_slug)
         
         CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+        aid._calculate_status;
 
 
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
@@ -185,8 +184,8 @@ module Admin
         notice_message = "L'aide a été publiée sur le site."
       end
 
-      aid._calculate_status;
       aid.save
+      aid._calculate_status;
       
       # ExpireCache.new.call
       redirect_to(
