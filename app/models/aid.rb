@@ -34,13 +34,16 @@ class Aid < ApplicationRecord
   private
 
   def calculate_status
-    new_status = "Brouillon"
+    ap "calculate_status for #{self.name}"
+    new_status = "Erreur"
     if _is(Aid.activated)
       new_status = "Publiée"
     elsif self.archived_at == self.created_at && _is(Aid.redacted)
       new_status = "En attente de relecture"  
     elsif self.archived_at != nil && self.archived_at != self.created_at
       new_status = "Archivée"  
+    elsif self.archived_at != nil && self.archived_at == self.created_at
+      new_status = "Brouillon"  
     end
     self.status = new_status 
   end
