@@ -23,9 +23,30 @@
 class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
+  
+  before_save :calculate_status
 
   after_initialize do |me|
     me.archived_at ||= me.created_at if new_record?
+  end
+
+
+  private
+
+  def calculate_status
+    new_status = "Brouillon"
+    if _is(Aid.activated)
+      new_status = "Publiée"
+    elsif self.archived_at == self.created_at && _is(Aid.redacted)
+      new_status = "En attente de relecture"  
+    elsif self.archived_at != nil && self.archived_at != self.created_at
+      new_status = "Archivée"  
+    end
+    self.status = new_status 
+  end
+
+  def _is(within_scope)
+    within_scope.where(:id => self.id).present?
   end
 
   after_save    { ExpireCacheJob.perform_later }
@@ -69,16 +90,16 @@ class Aid < ApplicationRecord
     slug.blank?
   end
 
- def status
-    res = "Brouillon"
-    if Aid.activated.include?(self)
-      res = "Publiée"
-    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
-      res = "En attente de relecture"  
-    elsif self.archived_at != nil && self.archived_at != self.created_at
-      res = "Archivée"  
-    end
-    res
-  end
+ # def status
+ #    res = "Brouillon"
+ #    if Aid.activated.include?(self)
+ #      res = "Publiée"
+ #    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
+ #      res = "En attente de relecture"  
+ #    elsif self.archived_at != nil && self.archived_at != self.created_at
+ #      res = "Archivée"  
+ #    end
+ #    res
+ #  end
 
 end

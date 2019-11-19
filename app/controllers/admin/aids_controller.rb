@@ -17,9 +17,6 @@ module Admin
 
     def index
       search_term = params[:search].to_s.strip
-      ap scoped_resource.inspect
-      ap dashboard_class.inspect
-      ap search_term.inspect
       resources = Administrate::Search.new(scoped_resource,
                                            dashboard_class,
                                            search_term).run
