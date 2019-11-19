@@ -75,10 +75,13 @@ a.c-aid-preview {
   height: 35rem;
   overflow: auto;
   .alert-convention {
+    border-radius: 2px;
     padding: 9px 16px;
     color: white;
     background-color: #057dbc;
+    margin-bottom: 21px;
     p {
+      margin-top: 5px;
       margin-bottom: 5px;
     }
     .alert-controls {
