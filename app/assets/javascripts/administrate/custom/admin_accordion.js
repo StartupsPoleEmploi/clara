@@ -9,7 +9,7 @@ clara.js_define("admin_accordion", {
     $(".field-unit__label label[for]").addClass("js-accordion__header");
     $('.js-accordion').accordion();
     $("button.js-hide-convention").click(function () {
-      $("button.alert-convention").hide()
+      $(".alert-convention").hide()
     })
   }
 
