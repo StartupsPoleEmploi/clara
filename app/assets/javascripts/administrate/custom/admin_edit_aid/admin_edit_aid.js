@@ -42,6 +42,15 @@ clara.js_define("admin_edit_aid", {
       })
       setTimeout(function () { $(".js-collapse.is-unfold").focus() }, 100)
     })
+    $(".js-collapse.is-fold").click(function (e) {
+      $(".js-accordion__header").each(function (e) {
+        var $bar = $(this);
+        if ($bar.attr("aria-expanded") === "true") {
+          $bar.click()
+        }
+      })
+      setTimeout(function () { $(".js-collapse.is-fold").focus() }, 100)
+    })
 
     //Clean CKEDitor
     setTimeout(function () {
