@@ -74,6 +74,23 @@ a.c-aid-preview {
   width: 50%;
   height: 35rem;
   overflow: auto;
+  .alert-convention {
+    padding: 9px 16px;
+    color: white;
+    background-color: #057dbc;
+    p {
+      margin-bottom: 5px;
+    }
+    .alert-controls {
+      text-align: right;
+    button.hide-button {
+      color: white;
+    }
+    a {
+      color: white;
+    }
+  }
+  }
 }
 
 .c-aid-edit-body__child.right-panel {

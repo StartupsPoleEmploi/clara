@@ -57,17 +57,16 @@
         <button class="js-collapse is-unfold" type="button"> Tout déplier </button>
                 <div id="accordion_0" class="js-accordion">
 
-        <div class="infos-redaction">
+        <div class="alert-convention">
         <strong>Apprenez à rédiger à vos aides comme des pros</strong>
         <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
-        <ul>
-        <li onclick="this.parentElement.parentElement.style.display='none';">
-        <a>OK</a>
-        </li>
-                <li>
+        <div class="alert-controls">
+        <button class="js-hide-convention">
+        OK </button>
+
         <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
-        </li>
-        </ul>
+
+        </div>
         </div>
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if index_nb > 9 %>
