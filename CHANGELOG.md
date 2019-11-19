@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 22.24.1 (19/11/2019)
+-[#1434][DESIGN] Détails graphiques étape 2
+
 
 ## 22.24.1 (21/11/2019)
 -[#1454][BUG] la recherche d'une aide déclenche une erreur
