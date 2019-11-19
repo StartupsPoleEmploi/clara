@@ -42,7 +42,6 @@ module Admin
             notice: "L'aide a bien été enregistrée en tant que brouillon."
           )
         else
-          # ExpireCache.new.call
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
             notice: "Les modifications ont bien été enregistrées."
@@ -73,7 +72,6 @@ module Admin
       aid.save
       aid.update_status;
 
-      # ExpireCache.new.call
       redirect_to(
         admin_aid_creation_new_aid_stage_3_path(slug: aid.slug),
         notice: "Le contenu a été mis à jour"
@@ -105,7 +103,6 @@ module Admin
       aid.save
       aid.update_status;
       
-      # ExpireCache.new.call
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
         notice: "Le contenu a été mis à jour"
@@ -152,7 +149,6 @@ module Admin
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
         flash.keep(:notice)
-        # ExpireCache.new.call
         render js: "document.location = '#{url}'"        
       else
         render :json => error_message, :status => 422
@@ -187,7 +183,6 @@ module Admin
       aid.save
       aid.update_status;
       
-      # ExpireCache.new.call
       redirect_to(
         admin_root_path,
         notice: notice_message
