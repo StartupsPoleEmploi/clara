@@ -31,7 +31,6 @@ class Aid < ApplicationRecord
   end
 
   def _calculate_status
-    ap "calculate_status for #{self.name}"
     new_status = "Brouillon"
     if _is(Aid.activated)
       new_status = "Publiée"
