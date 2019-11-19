@@ -41,6 +41,7 @@ module Admin
             notice: "L'aide a bien été enregistrée en tant que brouillon."
           )
         else
+          ExpireCache.new.call
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
             notice: "Les modifications ont bien été enregistrées."
@@ -69,6 +70,8 @@ module Admin
       all_attributes = old_attributes.merge(new_attributes)
       resource.assign_attributes(new_attributes)
       resource.save
+
+      ExpireCache.new.call
       redirect_to(
         admin_aid_creation_new_aid_stage_3_path(slug: resource.slug),
         notice: "Le contenu a été mis à jour"
@@ -97,6 +100,8 @@ module Admin
       aid.filters = filters
       aid.short_description = new_attributes[:short_description]
       aid.save
+      
+      ExpireCache.new.call
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
         notice: "Le contenu a été mis à jour"
@@ -138,9 +143,11 @@ module Admin
         
         CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
 
+
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
         flash.keep(:notice)
+        ExpireCache.new.call
         render js: "document.location = '#{url}'"        
       else
         render :json => error_message, :status => 422
@@ -173,6 +180,8 @@ module Admin
       end
 
       aid.save
+      
+      ExpireCache.new.call
       redirect_to(
         admin_root_path,
         notice: notice_message
