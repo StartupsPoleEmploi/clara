@@ -118,6 +118,7 @@ module Admin
 
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
+        aid_attributes: aid.attributes.with_indifferent_access
       }      
     end
 
