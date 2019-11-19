@@ -29,13 +29,12 @@ module Admin
       was_new = aid.id == nil
 
       if aid.save
-        aid.update_status;
         # Hack to consider it as a "draft"
         if was_new
           aid.archived_at = aid.created_at
-          aid.update_status;
         end
         # end of hack
+        aid.update_status;
         if slug.blank?
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
