@@ -24,21 +24,18 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
   
-  before_save :calculate_status
+  before_save :_calculate_status
 
   after_initialize do |me|
     me.archived_at ||= me.created_at if new_record?
   end
 
-
-  private
-
-  def calculate_status
+  def _calculate_status
     ap "calculate_status for #{self.name}"
     new_status = "Erreur"
     if _is(Aid.activated)
       new_status = "Publiée"
-    elsif self.archived_at == self.created_at && _is(Aid.redacted)
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.redacted)
       new_status = "En attente de relecture"  
     elsif self.archived_at != nil && self.archived_at != self.created_at
       new_status = "Archivée"  
@@ -92,17 +89,5 @@ class Aid < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank?
   end
-
- # def status
- #    res = "Brouillon"
- #    if Aid.activated.include?(self)
- #      res = "Publiée"
- #    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
- #      res = "En attente de relecture"  
- #    elsif self.archived_at != nil && self.archived_at != self.created_at
- #      res = "Archivée"  
- #    end
- #    res
- #  end
 
 end
