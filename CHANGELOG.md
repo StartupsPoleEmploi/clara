@@ -4,6 +4,10 @@
 -[#1039][BUG] Icone-svg-page-resultat-edge-trop-grand
 
 
+## 22.24.0 (19/11/2019)
+-[#1367][FEATURE] étape 4 : enregistrer en brouillon
+
+
 ## 22.23.0 (19/11/2019)
 -[#1421][FEATURE] statut d'une aide
 
