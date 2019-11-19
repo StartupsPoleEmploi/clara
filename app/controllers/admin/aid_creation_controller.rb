@@ -8,7 +8,7 @@ module Admin
 
     def new_aid_stage_1
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
-      authorize_resource(aid)
+      authorize_aid(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid)
       }
@@ -20,73 +20,77 @@ module Admin
       new_attributes[:ordre_affichage] = new_ordre_affichage
       slug = params.require(:slug).permit(:value).to_h[:value]
       if !slug.blank?
-        resource = Aid.find_by(slug: slug)
-        resource.assign_attributes(new_attributes)
+        aid = Aid.find_by(slug: slug)
+        aid.assign_attributes(new_attributes)
       else
-        resource = Aid.new(new_attributes)
+        aid = Aid.new(new_attributes)
       end
 
-      was_new = resource.id == nil
+      was_new = aid.id == nil
 
-      if resource.save
+      aid._calculate_status;
+      if aid.save
         # Hack to consider it as a "draft"
         if was_new
-          resource.archived_at = resource.created_at
-          resource.save
+          aid.archived_at = aid.created_at
+          aid._calculate_status
+          aid._calculate_status;
+          aid.save
         end
         # end of hack
         if slug.blank?
           redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
             notice: "L'aide a bien été enregistrée en tant que brouillon."
           )
         else
-          ExpireCache.new.call
+          # ExpireCache.new.call
           redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
+            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
             notice: "Les modifications ont bien été enregistrées."
           )
         end
       else
         render :new_aid_stage_1, locals: {
-          page: Administrate::Page::Form.new(dashboard, resource),
+          page: Administrate::Page::Form.new(dashboard, aid),
         }
       end     
     end
 
     def new_aid_stage_2
-      resource = Aid.find_by(slug: params[:slug])
-      authorize_resource(resource)
+      aid = Aid.find_by(slug: params[:slug])
+      authorize_aid(aid)
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
+        page: Administrate::Page::Form.new(dashboard, aid),
       }      
     end
 
     def create_stage_2
       slug = params.require(:slug).permit(:value).to_h[:value]
-      resource = Aid.find_by(slug: slug)
-      old_attributes = resource.attributes.with_indifferent_access
+      aid = Aid.find_by(slug: slug)
+      old_attributes = aid.attributes.with_indifferent_access
       new_attributes = params.require(:aid).permit(:what, :additionnal_conditions, :how_much, :how_and_when, :limitations).to_h
       all_attributes = old_attributes.merge(new_attributes)
-      resource.assign_attributes(new_attributes)
-      resource.save
+      aid.assign_attributes(new_attributes)
+      aid._calculate_status;
+      aid.save
 
-      ExpireCache.new.call
+      # ExpireCache.new.call
       redirect_to(
-        admin_aid_creation_new_aid_stage_3_path(slug: resource.slug),
+        admin_aid_creation_new_aid_stage_3_path(slug: aid.slug),
         notice: "Le contenu a été mis à jour"
       )
     end
 
     def new_aid_stage_3
-      resource = Aid.find_by(slug: params[:slug])
-      ct = resource.contract_type
+      aid = Aid.find_by(slug: params[:slug])
+      ct = aid.contract_type
       contract_type = ct.attributes.with_indifferent_access
 
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
+        page: Administrate::Page::Form.new(dashboard, aid),
         contract_type: contract_type,
-        aid_attributes: resource.attributes.with_indifferent_access
+        aid_attributes: aid.attributes.with_indifferent_access
       }      
     end
 
@@ -99,9 +103,11 @@ module Admin
       aid = Aid.find_by(slug: slug)
       aid.filters = filters
       aid.short_description = new_attributes[:short_description]
+      
+      aid._calculate_status;
       aid.save
       
-      ExpireCache.new.call
+      # ExpireCache.new.call
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
         notice: "Le contenu a été mis à jour"
@@ -110,7 +116,7 @@ module Admin
 
     def new_aid_stage_4
       aid = Aid.find_by(slug: params[:slug])
-      authorize_resource(aid)
+      authorize_aid(aid)
 
       gon.global_state = {
         explicitations: _all_explicitations,
@@ -147,7 +153,7 @@ module Admin
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
         flash.keep(:notice)
-        ExpireCache.new.call
+        # ExpireCache.new.call
         render js: "document.location = '#{url}'"        
       else
         render :json => error_message, :status => 422
@@ -156,7 +162,7 @@ module Admin
 
     def new_aid_stage_5
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
-      authorize_resource(aid)
+      authorize_aid(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
         filters_size: aid.filters.size,
@@ -179,9 +185,10 @@ module Admin
         notice_message = "L'aide a été publiée sur le site."
       end
 
+      aid._calculate_status;
       aid.save
       
-      ExpireCache.new.call
+      # ExpireCache.new.call
       redirect_to(
         admin_root_path,
         notice: notice_message
