@@ -182,7 +182,7 @@ module Admin
 
       aid.save
       aid.update_status;
-      
+
       redirect_to(
         admin_root_path,
         notice: notice_message
