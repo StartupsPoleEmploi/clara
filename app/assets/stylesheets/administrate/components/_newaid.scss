@@ -1,3 +1,7 @@
+.c-newaid.c-newaid--stage4 .field-unit__field input, .c-newaid.c-newaid--stage4 textarea, .c-newaid.c-newaid--stage4 .selectize-input, .c-newaid.c-newaid--stage4 select {
+  height: 25px;
+}
+
 .c-newaid {
   padding: 16px;
   box-shadow: 0 0 5px 0 rgba(232, 232, 232, 0.53);
@@ -201,11 +205,6 @@
 
 .c-newaid.c-newaid--stage3 .c-btn {
   cursor: default;
-}
-
-
-.c-newaid.c-newaid--stage4 .field-unit__field input, .c-newaid textarea, .c-newaid .selectize-input, .c-newaid select {
-  height: initial;
 }
 
 .c-newaid--stage4 #main-apprule-expl {
