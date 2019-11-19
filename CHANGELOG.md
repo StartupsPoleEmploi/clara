@@ -1,5 +1,10 @@
 # CLARA Changelog
 
+
+## 22.24.0 (19/11/2019)
+-[#1439][FEATURE] étape 4 : enregistrer en brouillon
+
+
 ## 22.23.1 (19/11/2019)
 -[#1039][BUG] Icone-svg-page-resultat-edge-trop-grand
 
