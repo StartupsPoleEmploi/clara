@@ -26,7 +26,15 @@ module Admin
         resource = Aid.new(new_attributes)
       end
 
+      was_new = resource.id == nil
+
       if resource.save
+        # Hack to consider it as a "draft"
+        if was_new
+          resource.archived_at = resource.created_at
+          resource.save
+        end
+        # end of hack
         if slug.blank?
           redirect_to(
             admin_aid_creation_new_aid_stage_2_path(slug: resource.slug),
@@ -143,8 +151,31 @@ module Admin
       authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
-        filters_size: aid.filters.size
+        filters_size: aid.filters.size,
+        whodunnit: aid.versions.first[:whodunnit],
+        aid_status: aid.status
       }      
+    end
+
+    def create_stage_5
+      slug = params.require(:slug).permit(:value).to_h[:value]
+      archive_asked = params.require(:archive_asked).permit(:value).to_h[:value] == "true"
+      aid = Aid.find_by(slug: slug)
+
+      notice_message = ""
+      if archive_asked
+        aid.archived_at = DateTime.now
+        notice_message = "L'aide a bien été archivée, elle n'apparaît plus sur le site."
+      else
+        aid.archived_at = nil
+        notice_message = "L'aide a été publiée sur le site."
+      end
+
+      aid.save
+      redirect_to(
+        admin_root_path,
+        notice: notice_message
+      )
     end
 
     def _all_explicitations 

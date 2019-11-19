@@ -25,7 +25,7 @@ class Aid < ApplicationRecord
   include PgSearch
 
   after_initialize do |me|
-    me.archived_at ||= Date.today if new_record?
+    me.archived_at ||= me.created_at if new_record?
   end
 
   after_save    { ExpireCacheJob.perform_later }
@@ -60,12 +60,25 @@ class Aid < ApplicationRecord
   validates :ordre_affichage, presence: true
 
   scope :unarchived, -> { where(archived_at: nil) }
+  scope :redacted, -> { where.not(what: [nil, ""]).where.not(how_much: [nil, ""]).where.not(additionnal_conditions: [nil, ""]).where.not(how_and_when: [nil, ""]).where.not(limitations: [nil, ""]) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
-  scope :activated,  -> { self.unarchived.linked_to_rule }
+  scope :activated,  -> { self.unarchived.linked_to_rule.redacted }
   scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
   
   def should_generate_new_friendly_id?
     slug.blank?
+  end
+
+ def status
+    res = "Brouillon"
+    if Aid.activated.include?(self)
+      res = "Publiée"
+    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
+      res = "En attente de relecture"  
+    elsif self.archived_at != nil && self.archived_at != self.created_at
+      res = "Archivée"  
+    end
+    res
   end
 
 end

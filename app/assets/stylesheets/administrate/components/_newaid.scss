@@ -93,6 +93,14 @@
   margin-bottom: 1rem;
 }
 
+.c-newaid--stage5 .c-newaid-subtitle {
+  margin-bottom: 0;
+}
+.c-newaid--stage5 .c-newaid-subtitle-expl {
+  margin-bottom: 1rem;
+}
+
+
 .c-newaid-stages {
   display: flex;
 }
@@ -260,4 +268,9 @@
   line-height: 2.19;
   color: #1b1b1b;
   margin-left: .6rem;
+}
+
+.c-newaid--stage5 .c-newbutton.c-newaid-actionrecord {
+  margin-left: 0;
+  margin-bottom: 1.5rem;
 }

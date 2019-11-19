@@ -10,6 +10,7 @@ class AidDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number.with_options(export: false),
     name: Field::String,
+    status: Field::String,
     source: Field::Text.with_options(export: false),
     ordre_affichage: Field::Number.with_options(export: false),
     archived_at: Field::DateTime,
@@ -38,10 +39,7 @@ class AidDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :contract_type,
-    :ordre_affichage,
-    :need_filters,
-    :custom_filters,
-    :filters,
+    :status,
     :updated_at,
     :archived_at,
   ].freeze
@@ -56,7 +54,6 @@ class AidDashboard < Administrate::BaseDashboard
     :ordre_affichage,
     :updated_at,
     :slug,
-    # :rule,
     :contract_type,
     :archived_at,
     :what,
