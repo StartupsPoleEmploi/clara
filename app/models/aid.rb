@@ -28,7 +28,7 @@ class Aid < ApplicationRecord
     me.archived_at ||= me.created_at if new_record?
   end
 
-  def _calculate_status
+  def update_status
     new_status = "Brouillon"
     if _is(Aid.activated)
       new_status = "Publiée"
@@ -39,7 +39,6 @@ class Aid < ApplicationRecord
     end
     self.status = new_status 
     self.save
-    ap "--------------------------------calculate_status for #{self.name} : #{new_status}---------------------------------------------------------------"
   end
 
   def _is(within_scope)
