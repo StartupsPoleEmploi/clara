@@ -8,7 +8,7 @@ module Admin
 
     def new_aid_stage_1
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
-      authorize_aid(aid)
+      authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid)
       }
@@ -59,7 +59,7 @@ module Admin
 
     def new_aid_stage_2
       aid = Aid.find_by(slug: params[:slug])
-      authorize_aid(aid)
+      authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
       }      
@@ -116,7 +116,7 @@ module Admin
 
     def new_aid_stage_4
       aid = Aid.find_by(slug: params[:slug])
-      authorize_aid(aid)
+      authorize_resource(aid)
 
       gon.global_state = {
         explicitations: _all_explicitations,
@@ -162,7 +162,7 @@ module Admin
 
     def new_aid_stage_5
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
-      authorize_aid(aid)
+      authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
         filters_size: aid.filters.size,
