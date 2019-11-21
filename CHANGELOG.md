@@ -87,6 +87,10 @@
 
 
 ## 22.24.2 (21/11/2019)
+-[#1413][TECH] Dockerisation de la prod
+
+
+## 22.24.2 (21/11/2019)
 -[#1434][DESIGN] Détails graphiques étape 2
 
 
