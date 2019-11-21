@@ -138,13 +138,7 @@ me@mymachine:/workspace/clara# bin/rails ruby_cov:merge
 ~/home/clara> cd docker 
 ~/home/clara/docker> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up --build -d
 ~/home/clara/docker> sudo chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
-~/home/clara/docker$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh
-root@inside_docker:~$> cd /var/git/ara.git
-root@inside_docker:/var/git/ara.git$> git pull origin master
-root@inside_docker:/var/git/ara.git$> bundle install
-root@inside_docker:/var/git/ara.git$> export RUBYOPT="-KU -E utf-8:utf-8"
-root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
-root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy  
+~/home/clara/docker$> sudo chmod +x ./scripts/deploy_app.sh && ./scripts/deploy_app.sh 
 ```
 
 ##### Déployer une nouvelle version
