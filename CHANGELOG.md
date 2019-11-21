@@ -1,5 +1,10 @@
 # CLARA Changelog
 
+
+## 22.25.0 (21/11/2019)
+-[#1452][FEATURE] 3 champs seulement obligatoires dans la nouvelle création d'aide
+
+
 ## 22.24.2 (21/11/2019)
 -[#1434][DESIGN] Détails graphiques étape 2
 
