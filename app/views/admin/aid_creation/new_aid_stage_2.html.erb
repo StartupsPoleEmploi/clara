@@ -42,17 +42,14 @@
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
 
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
-        <div class="alert-convention">
-        <strong>Apprenez à rédiger vos aides comme des pros</strong>
-        <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
-        <div class="alert-controls">
-        <button type="button" class="js-hide-convention">
-        OK </button>
-
-        <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
-
-        </div>
-        </div>
+            <div class="alert-convention">
+              <strong>Apprenez à rédiger vos aides comme des pros</strong>
+              <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
+              <div class="alert-controls">
+                <button type="button" class="js-hide-convention">OK</button>
+                <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
+            </div>
+            </div>
 
           <div id="accordion_0" class="js-accordion">
               <% page.attributes.each_with_index do |attribute, index_nb| %>
