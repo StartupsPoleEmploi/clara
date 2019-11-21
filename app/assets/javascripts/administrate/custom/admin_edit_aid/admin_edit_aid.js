@@ -56,7 +56,7 @@ clara.js_define("admin_edit_aid", {
       $(".js-accordion__header").each(function (e) {
         var $bar = $(this);
         if ($bar.attr("aria-selected") === "false" && $bar.attr("aria-expanded") === "true") {
-          $bar.click()
+          $("#" + $bar.attr('id').substring(0, 13)).attr("aria-hidden", "true")
         }
       })
       setTimeout(function () { $(".js-collapse.is-fold").focus() }, 100)
