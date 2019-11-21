@@ -14,6 +14,7 @@ fr:
       filters: Filtres sur la page de résultat 
       contract_type: Rubrique
       slug: Url simplifiée
+      status: Statut
       updated_at: Dernière modification
       archived_at: Arrêt de diffusion
     models: 

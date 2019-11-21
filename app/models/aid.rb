@@ -24,14 +24,31 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  after_initialize do |me|
-    me.archived_at ||= me.created_at if new_record?
-  end
-
   after_save    { ExpireCacheJob.perform_later }
   after_update  { ExpireCacheJob.perform_later }
   after_destroy { ExpireCacheJob.perform_later }
   after_create  { ExpireCacheJob.perform_later }
+  
+  after_initialize do |me|
+    me.archived_at ||= me.created_at if new_record?
+  end
+
+  def update_status
+    new_status = "Brouillon"
+    if _is(Aid.activated)
+      new_status = "Publiée"
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted)
+      new_status = "En attente de relecture"  
+    elsif self.archived_at != nil && self.archived_at != self.created_at
+      new_status = "Archivée"    
+    end
+    self.status = new_status 
+    self.save
+  end
+
+  def _is(within_scope)
+    within_scope.where(:id => self.id).present?
+  end
 
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
@@ -67,18 +84,6 @@ class Aid < ApplicationRecord
   
   def should_generate_new_friendly_id?
     slug.blank?
-  end
-
- def status
-    res = "Brouillon"
-    if Aid.activated.include?(self)
-      res = "Publiée"
-    elsif self.archived_at == self.created_at && Aid.redacted.include?(self)
-      res = "En attente de relecture"  
-    elsif self.archived_at != nil && self.archived_at != self.created_at
-      res = "Archivée"  
-    end
-    res
   end
 
 end
