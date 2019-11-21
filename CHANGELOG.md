@@ -8,6 +8,10 @@
 -[#1457][DESIGN] Etape 2 : Dérouler seulement champ d'édition en cours
 
 
+## 22.26.0 (21/11/2019)
+-[#1435][FEATURE] rendre les étapes précédentes cliquables
+
+
 ## 22.25.0 (21/11/2019)
 -[#1452][FEATURE] 3 champs seulement obligatoires dans la nouvelle création d'aide
 
