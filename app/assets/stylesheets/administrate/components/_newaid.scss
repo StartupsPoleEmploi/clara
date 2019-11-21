@@ -175,12 +175,17 @@
     color: white;
     background-color: #057dbc;
     margin-bottom: 21px;
+    strong {
+      font-weight: bold;
+    }
     p {
       margin-top: 5px;
       margin-bottom: 5px;
     }
     .alert-controls {
-      text-align: right;
+      display: flex;
+      align-items: center;
+      justify-content: right;
     button.hide-button {
       color: white;
     }
