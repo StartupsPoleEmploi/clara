@@ -10,17 +10,17 @@
       <div class="c-newaid-stages">
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 1
+            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 2
+            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 3
+            <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--active">
