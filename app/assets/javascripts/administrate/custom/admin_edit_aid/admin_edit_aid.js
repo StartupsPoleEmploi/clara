@@ -33,23 +33,20 @@ clara.js_define("admin_edit_aid", {
       $("#modify-aid").click();
     });
 
-    $(".js-collapse.is-unfold").click(function (e) {
-      $(".js-accordion__header").each(function (e) {
-        var $bar = $(this);
-        if ($bar.attr("aria-expanded") === "false") {
-          $bar.click()
+    $(".js-accordion__header").click(function (e) {
+      var targeted_accordion_tab_id = $(e.target).attr("id")
+      $(".js-accordion__header").each(function (k) {
+        var $bar_id = $(this).attr('id');
+        if ($bar_id) {
+          var accordion_id = $bar_id.substring(0, 13)
+          var accordion_tab_id = accordion_id + "_tab"
+          if (targeted_accordion_tab_id !== accordion_tab_id) {
+            $("#" + accordion_tab_id).attr("aria-expanded", "false")
+            $("#" + accordion_tab_id).attr("aria-selected", "false")
+            $("#" + accordion_id).attr("aria-hidden", "true")
+          }
         }
       })
-      setTimeout(function () { $(".js-collapse.is-unfold").focus() }, 100)
-    })
-    $(".js-collapse.is-fold").click(function (e) {
-      $(".js-accordion__header").each(function (e) {
-        var $bar = $(this);
-        if ($bar.attr("aria-expanded") === "true") {
-          $bar.click()
-        }
-      })
-      setTimeout(function () { $(".js-collapse.is-fold").focus() }, 100)
     })
 
     //Clean CKEDitor

@@ -169,6 +169,32 @@
   border: solid 1px #e4e8f0;
   margin-top: -.1rem;
   margin-right: 1rem;
+  .alert-convention {
+    border-radius: 2px;
+    padding: 18px 16px 9px 16px;
+    color: white;
+    background-color: #057dbc;
+    margin-bottom: 21px;
+    strong {
+      font-weight: bold;
+    }
+    p {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .alert-controls {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    button.js-hide-convention {
+      opacity: 0.79;
+      color: white;
+    }
+    a {
+      color: white;
+    }
+  }
+  }
 }
 
 .c-newaid-actions {
