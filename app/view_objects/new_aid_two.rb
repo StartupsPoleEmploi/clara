@@ -16,8 +16,7 @@ class NewAidTwo < ViewObject
   end
 
   def mandatory_field?(attribute)
-    name = attr_name(attribute)
-    ["what"].include?(name)
+    false
   end
 
   def error_message(attribute)

@@ -86,11 +86,11 @@ class NewAidFive < ViewObject
   end
 
   def _stage_2_missing_keys
-    [:additionnal_conditions,
-    :how_and_when,
-    :how_much,
-    :limitations,
-    :what].reduce([]) { |memo, k| memo.push(k) if @aid[k].blank?; memo}
+    [
+      :how_and_when,
+      :how_much,
+      :what
+    ].reduce([]) { |memo, k| memo.push(k) if @aid[k].blank?; memo}
   end
 
   def stage_3_ok?
