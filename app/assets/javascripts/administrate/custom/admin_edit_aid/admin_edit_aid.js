@@ -36,13 +36,10 @@ clara.js_define("admin_edit_aid", {
     $(".js-accordion__header").click(function (e) {
       var targeted_accordion_tab_id = $(e.target).attr("id")
       $(".js-accordion__header").each(function (k) {
-        var $bar = $(this);
-        var accordion_id = "";
-        var accordion_tab_id = "";
-        var $bar_id = $bar.attr('id');
+        var $bar_id = $(this).attr('id');
         if ($bar_id) {
-          accordion_id = $bar_id.substring(0, 13)
-          accordion_tab_id = accordion_id + "_tab"
+          var accordion_id = $bar_id.substring(0, 13)
+          var accordion_tab_id = accordion_id + "_tab"
           if (targeted_accordion_tab_id !== accordion_tab_id) {
             $("#" + accordion_tab_id).attr("aria-expanded", "false")
             $("#" + accordion_tab_id).attr("aria-selected", "false")
