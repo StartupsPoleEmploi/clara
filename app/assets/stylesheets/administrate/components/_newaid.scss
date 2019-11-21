@@ -186,7 +186,8 @@
       display: flex;
       align-items: center;
       justify-content: right;
-    button.hide-button {
+    button.js-hide-convention {
+      opacity: 0.79;
       color: white;
     }
     a {
