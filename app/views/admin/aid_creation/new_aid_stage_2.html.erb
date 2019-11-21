@@ -8,10 +8,8 @@
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 45%">
       <div class="c-newaid-stages">
-        <div class="c-newaid-stage c-newaid-stage--inactive">
-          <div class="c-newaid-stageinside">
-            Étape 1
-          </div>
+        <div class="c-newaid-stage c-newaid-stage--active">
+          <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-stageinside" %>
         </div>
         <div class="c-newaid-stage c-newaid-stage--active">
           <div class="c-newaid-stageinside">
