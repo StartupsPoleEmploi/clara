@@ -68,7 +68,7 @@ class NewAidFive < ViewObject
 
   def stage_2_comment
     if stage_2_ok?
-      "Toutes les <strong>informations obligatoires</strong> ont été <strong>saisies</strong>."
+      "Toutes les <strong>informations obligatoires</strong> (Comment faire la demande, Contenu de l'aide, Description) ont été <strong>saisies</strong>."
     else
       missing_parts = _stage_2_missing_keys.map { |e| stage_2_translation(e)  }.join("</strong>, <strong>")
       "Des parties <strong>obligatoires</strong> sont manquantes : <strong>#{missing_parts}</strong>."
