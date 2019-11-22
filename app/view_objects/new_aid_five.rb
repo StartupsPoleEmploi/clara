@@ -8,6 +8,15 @@ class NewAidFive < ViewObject
     @aid_status = locals[:aid_status]
   end
 
+  def register_text
+    "Étape suivante"
+    # res = "Enregistrer"
+    # if @aid_attributes[:archived_at] != nil && @aid_attributes[:archived_at] == @aid_attributes[:created_at]
+    #   res = "Enregistrer en brouillon"
+    # end
+    # res
+  end
+
   def big_message(current_user_email)
     if already_published?
       "Cette aide est actuellement en ligne."
