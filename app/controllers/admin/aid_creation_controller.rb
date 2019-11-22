@@ -170,7 +170,6 @@ module Admin
       action_asked = params.require(:action_asked).permit(:value).to_h[:value]
       aid = Aid.find_by(slug: slug)
 
-      please_update_status = true
       please_save_aid = true
 
       notice_message = ""
@@ -192,6 +191,7 @@ module Admin
 
       if please_save_aid
         aid.save
+        aid.update_status
       else
         aid.destroy
       end
