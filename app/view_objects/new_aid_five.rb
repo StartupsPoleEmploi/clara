@@ -16,15 +16,6 @@ class NewAidFive < ViewObject
     res    
   end
 
-  def then_reread_text
-  end
-
-  def then_keep_text
-  end
-
-  def then_remove_text
-  end
-
   def big_message(current_user_email)
     if status_published?
       "Cette aide est actuellement en ligne."
