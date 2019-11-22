@@ -37,7 +37,9 @@ class Aid < ApplicationRecord
     new_status = "Brouillon"
     if _is(Aid.activated)
       new_status = "Publiée"
-    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted)
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && self.is_rereadable == false
+      new_status = "Correct"  
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && self.is_rereadable == true
       new_status = "En attente de relecture"  
     elsif self.archived_at != nil && self.archived_at != self.created_at
       new_status = "Archivée"    

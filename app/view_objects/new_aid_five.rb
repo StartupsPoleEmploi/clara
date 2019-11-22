@@ -26,7 +26,7 @@ class NewAidFive < ViewObject
   end
 
   def big_message(current_user_email)
-    if already_published?
+    if status_published?
       "Cette aide est actuellement en ligne."
     elsif already_archived?
       "L'aide a été archivée."
@@ -40,14 +40,18 @@ class NewAidFive < ViewObject
   end
 
   def publiable?(current_user_email)
-    !already_published? && _all_stages_ok? && @whodunnit != current_user_email 
+    !status_published? && _all_stages_ok? && @whodunnit != current_user_email && status_waiting_for?
   end
 
-  def already_published?
+  def status_correct?
+    @aid_status == "Correct"
+  end
+
+  def status_published?
     @aid_status == "Publiée"
   end
 
-  def status_waiting_for_reread?
+  def status_waiting_for?
     @aid_status == "En attente de relecture"
   end
 
@@ -56,7 +60,7 @@ class NewAidFive < ViewObject
   end
 
   def small_message(current_user_email)
-    if already_published?
+    if status_published?
       "Vous pouvez éventuellement l'archiver pour la retirer du site web."
     elsif already_archived?
       "Vous pouvez la publier, attention il n'y aura pas de relecture requise."

@@ -48,7 +48,7 @@
               <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
             <% end %>            
           </div>
-        <% elsif v.already_published? %>
+        <% elsif v.status_published? %>
           <div class="c-newaid-finalactions">
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
@@ -56,7 +56,7 @@
               <%= f.submit "Archiver cette aide", class: "c-newbutton c-newaid-actionrecord" %>
             <% end %>            
           </div>
-        <% elsif v.status_waiting_for_reread? %>
+        <% elsif v.status_waiting_for? %>
           <div class="c-newaid-finalactions">
           </div>
         <% else %>

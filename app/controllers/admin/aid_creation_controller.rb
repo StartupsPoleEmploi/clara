@@ -181,9 +181,9 @@ module Admin
         aid.archived_at = nil
         notice_message = "L'aide a été publiée sur le site."
       elsif action_asked == "reread"
+        aid.is_rereadable = true
         notice_message = "L'aide a été demandée pour relecture."
       elsif action_asked == "keep"
-        please_update_status = false
         notice_message = "L'aide a été conservée en tant que brouillon."
       elsif action_asked == "discard"
         please_save_aid = false
@@ -192,7 +192,6 @@ module Admin
 
       if please_save_aid
         aid.save
-        aid.update_status if please_update_status
       else
         aid.destroy
       end
