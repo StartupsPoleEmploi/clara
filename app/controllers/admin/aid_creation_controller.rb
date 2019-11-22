@@ -171,6 +171,7 @@ module Admin
       aid = Aid.find_by(slug: slug)
 
       please_update_status = true
+      please_save_aid = true
 
       notice_message = ""
       if action_asked == "archive"
@@ -184,13 +185,20 @@ module Admin
       elsif action_asked == "keep"
         please_update_status = false
         notice_message = "L'aide a été conservée en tant que brouillon."
+      elsif action_asked == "discard"
+        please_save_aid = false
+        notice_message = "Le brouillon a été supprimé."
       end
 
-      aid.save
-      aid.update_status if please_update_status
-
+      if please_save_aid
+        aid.save
+        aid.update_status if please_update_status
+      else
+        aid.destroy
+      end
+  
       redirect_to(
-        admin_root_path,
+        admin_root_path("aid[direction]" => "desc", "aid[order]" => "updated_at"),
         notice: notice_message
       )
     end

@@ -47,6 +47,10 @@ class NewAidFive < ViewObject
     @aid_status == "Publiée"
   end
 
+  def status_waiting_for_reread?
+    @aid_status == "En attente de relecture"
+  end
+
   def _all_stages_ok?
     stage_1_ok? && stage_2_ok? && stage_3_ok? && stage_4_ok?
   end

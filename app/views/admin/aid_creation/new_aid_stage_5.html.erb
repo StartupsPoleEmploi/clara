@@ -41,7 +41,7 @@
         <div class="c-newaid-subtitle"><%= raw v.big_message(current_user.email) %></div>
         <div class="c-newaid-subtitle-expl"><%= raw v.small_message(current_user.email) %></div>
         <% if v.publiable?(current_user.email) %>
-          <div>
+          <div class="c-newaid-finalactions">
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "publish") %>
@@ -49,12 +49,15 @@
             <% end %>            
           </div>
         <% elsif v.already_published? %>
-          <div>
+          <div class="c-newaid-finalactions">
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "archive") %>
               <%= f.submit "Archiver cette aide", class: "c-newbutton c-newaid-actionrecord" %>
             <% end %>            
+          </div>
+        <% elsif v.status_waiting_for_reread? %>
+          <div class="c-newaid-finalactions">
           </div>
         <% else %>
           <div class="c-newaid-finalactions">
@@ -76,7 +79,7 @@
               <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
                 <%= hidden_field(:slug, :value, value: page.resource.slug) %>
                 <%= hidden_field(:action_asked, :value, value: "discard") %>
-                <%= f.submit "Supprimer le brouillon", class: "c-newbutton c-newaid-actionrecord" %>
+                <%= f.submit "Supprimer le brouillon", class: "c-newbutton c-newaid-actionrecord", data: { confirm: 'Supprimer le brouillon ?' }  %>
               <% end %>            
             </div>
           </div>
