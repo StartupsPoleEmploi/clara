@@ -8,13 +8,21 @@ class NewAidFive < ViewObject
     @aid_status = locals[:aid_status]
   end
 
-  def register_text
-    "Étape suivante"
-    # res = "Enregistrer"
-    # if @aid_attributes[:archived_at] != nil && @aid_attributes[:archived_at] == @aid_attributes[:created_at]
-    #   res = "Enregistrer en brouillon"
-    # end
-    # res
+  def reread_h
+    res = {class: "c-newbutton c-newaid-actionrecord"}
+    if !_all_stages_ok?
+      res[:disabled] = "disabled"
+    end
+    res    
+  end
+
+  def then_reread_text
+  end
+
+  def then_keep_text
+  end
+
+  def then_remove_text
   end
 
   def big_message(current_user_email)

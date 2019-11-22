@@ -299,3 +299,11 @@
   margin-left: 0;
   margin-bottom: 1.5rem;
 }
+
+.c-newaid-finalactions {
+  display: flex;
+}
+
+.c-newaid-finalaction + .c-newaid-finalaction {
+  margin-left: .5rem;
+}

@@ -167,20 +167,27 @@ module Admin
 
     def create_stage_5
       slug = params.require(:slug).permit(:value).to_h[:value]
-      archive_asked = params.require(:archive_asked).permit(:value).to_h[:value] == "true"
+      action_asked = params.require(:action_asked).permit(:value).to_h[:value]
       aid = Aid.find_by(slug: slug)
 
+      please_update_status = true
+
       notice_message = ""
-      if archive_asked
+      if action_asked == "archive"
         aid.archived_at = DateTime.now
         notice_message = "L'aide a bien été archivée, elle n'apparaît plus sur le site."
-      else
+      elsif action_asked == "publish"
         aid.archived_at = nil
         notice_message = "L'aide a été publiée sur le site."
+      elsif action_asked == "reread"
+        notice_message = "L'aide a été demandée pour relecture."
+      elsif action_asked == "keep"
+        please_update_status = false
+        notice_message = "L'aide a été conservée en tant que brouillon."
       end
 
       aid.save
-      aid.update_status;
+      aid.update_status if please_update_status
 
       redirect_to(
         admin_root_path,
