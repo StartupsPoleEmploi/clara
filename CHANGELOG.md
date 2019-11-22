@@ -1,5 +1,9 @@
 # CLARA Changelog
 
+## 22.25.2 (22/11/2019)
+-[#1458][DESIGN] Rendre actif lien Aides dans menu latéral
+
+
 ## 22.25.1 (21/11/2019)
 -[#1457][DESIGN] Etape 2 : Dérouler seulement champ d'édition en cours
 
