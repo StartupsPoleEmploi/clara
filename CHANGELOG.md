@@ -1,5 +1,11 @@
 # CLARA Changelog
 
+
+
+## 22.26.0 (22/11/2019)
+-[#1435][FEATURE] rendre les étapes précédentes cliquables
+
+
 ## 22.25.2 (22/11/2019)
 -[#1458][DESIGN] Rendre actif lien Aides dans menu latéral
 
