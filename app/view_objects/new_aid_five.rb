@@ -21,7 +21,7 @@ class NewAidFive < ViewObject
       "Cette aide est actuellement en ligne."
     elsif already_archived?
       "L'aide a été archivée."
-    elsif publiable?(current_user_email)
+    elsif publishable?(current_user_email)
       "L'aide est prête à être publiée."
     elsif _all_stages_ok?
       "L'aide a toutes les informations requises."
@@ -30,7 +30,7 @@ class NewAidFive < ViewObject
     end
   end
 
-  def publiable?(current_user_email)
+  def publishable?(current_user_email)
     !status_published? && _all_stages_ok? && @whodunnit != current_user_email && status_waiting_for?
   end
 
@@ -55,7 +55,7 @@ class NewAidFive < ViewObject
       "Vous pouvez éventuellement l'archiver pour la retirer du site web."
     elsif already_archived?
       "Vous pouvez la publier, attention il n'y aura pas de relecture requise."
-    elsif publiable?(current_user_email)
+    elsif publishable?(current_user_email)
       "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
