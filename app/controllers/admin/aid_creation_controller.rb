@@ -135,7 +135,7 @@ module Admin
       aid_slug = params["aid"]
       # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
-      modify = JSON.parse(params["modify"], symbolize_names: true)
+      modify = params["modify"]
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
       error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
