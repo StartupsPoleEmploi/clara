@@ -6,7 +6,7 @@
 -[#1471][BUG] BO - si aide archivée.
 
 
-## 22.27.0 (22/11/2019)
+## 22.27.0 (25/11/2019)
 -[#1463][FEATURE] BO - sur nouvelles étapes créa d'aides, Renommer et ajouter des boutons pour passer d'une étape à l'autre
 
 
