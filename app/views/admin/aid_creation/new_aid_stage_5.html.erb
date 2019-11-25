@@ -59,6 +59,17 @@
         <% elsif v.status_waiting_for? %>
           <div class="c-newaid-finalactions">
           </div>
+        <% elsif v.status_archived? && v._all_stages_ok? %>
+          <div class="c-newaid-finalactions">
+            <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+              <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+              <%= hidden_field(:action_asked, :value, value: "publish") %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+            <% end %>            
+          </div>
+        <% elsif v.status_archived? && !v._all_stages_ok? %>
+          <div class="c-newaid-finalactions">
+          </div>
         <% else %>
           <div class="c-newaid-finalactions">
             <div  class="c-newaid-finalaction">

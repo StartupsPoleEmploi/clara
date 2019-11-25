@@ -79,7 +79,7 @@ class Aid < ApplicationRecord
   validates :ordre_affichage, presence: true
 
   scope :unarchived, -> { where(archived_at: nil) }
-  scope :redacted, -> { where.not(what: [nil, ""]).where.not(additionnal_conditions: [nil, ""]).where.not(how_much: [nil, ""]) }
+  scope :redacted, -> { where.not(what: [nil, ""]).where.not(how_and_when: [nil, ""]).where.not(how_much: [nil, ""]) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
   scope :activated,  -> { self.unarchived.linked_to_rule.redacted }
   scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
