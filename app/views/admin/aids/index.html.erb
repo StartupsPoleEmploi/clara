@@ -24,7 +24,7 @@
         "helpers.aid.creation",
         name: page.resource_name.titleize.downcase,
       ),
-      [:new, namespace, page.resource_path],
+      admin_aid_creation_new_aid_stage_1_path,
       class: "button js-create-new-aid-button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>

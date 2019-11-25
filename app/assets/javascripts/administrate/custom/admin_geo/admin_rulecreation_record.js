@@ -23,6 +23,7 @@ clara.js_define("admin_rulecreation_record", {
           data: {
             aid: $.urlParam("aid") || $.urlParam("slug"),
             trundle: JSON.stringify(store_trundle.getState()),
+            modify: $.urlParam("modify"),
             geo: JSON.stringify({
               selection: $('.c-geowhere input[type=radio]:checked').attr("id"),
               town: objf(".c-geoselect--town"),

@@ -1,21 +1,22 @@
 <%- v = view_object(:new_aid_three, local_assigns) %>
+<%- verb = params[:modify] == "true" ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage3">
   <%= link_to "‹ Retour à l'étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]), class: "c-newaid-back2" %>
-  <h1 class="c-newaid-title">Créer une aide</h1>
+  <h1 class="c-newaid-title"><%= verb %>  une aide</h1>
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 45%">
       <div class="c-newaid-stages">
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]) %>
+            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]) %>
+            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--active">
@@ -42,7 +43,8 @@
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
 
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
-
+          <%= hidden_field(:modify, :value, :value => params[:modify]) %>
+          
 
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if v.show_field?(attribute) %>

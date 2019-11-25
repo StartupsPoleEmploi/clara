@@ -2,6 +2,10 @@
 
 
 
+## 22.28.0 (25/11/2019)
+-[#1456][FEATURE] branchement nouveau système de création d'aide
+
+
 ## 22.27.1 (25/11/2019)
 -[#1471][BUG] BO - si aide archivée.
 
