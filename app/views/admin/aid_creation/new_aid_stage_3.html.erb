@@ -43,7 +43,8 @@
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
 
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
-
+          <%= hidden_field(:modify, :value, :value => params[:modify]) %>
+          
 
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if v.show_field?(attribute) %>

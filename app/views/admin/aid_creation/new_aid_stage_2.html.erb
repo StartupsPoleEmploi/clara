@@ -43,6 +43,7 @@
           <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
 
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+          <%= hidden_field(:modify, :value, :value => params[:modify]) %>
             <div class="alert-convention">
               <strong>Apprenez à rédiger vos aides comme des pros</strong>
               <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>

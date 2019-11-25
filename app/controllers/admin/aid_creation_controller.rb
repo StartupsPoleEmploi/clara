@@ -6,6 +6,10 @@ module Admin
       @dashboard ||= AidDashboard.new
     end
 
+    def _hidden(prop)
+      params.require(prop).permit(:value).to_h[:value]
+    end
+
     def new_aid_stage_1
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
       authorize_resource(aid)
@@ -37,12 +41,12 @@ module Admin
         aid.update_status;
         if slug.blank?
           redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
+            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
             notice: "L'aide a bien été enregistrée en tant que brouillon."
           )
         else
           redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug),
+            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
             notice: "Les modifications ont bien été enregistrées."
           )
         end
@@ -72,7 +76,7 @@ module Admin
       aid.update_status;
 
       redirect_to(
-        admin_aid_creation_new_aid_stage_3_path(slug: aid.slug),
+        admin_aid_creation_new_aid_stage_3_path(slug: aid.slug, modify: _hidden(:modify)),
         notice: "Le contenu a été mis à jour"
       )
     end
@@ -103,7 +107,7 @@ module Admin
       aid.update_status;
       
       redirect_to(
-        admin_aid_creation_new_aid_stage_4_path(slug: aid.slug),
+        admin_aid_creation_new_aid_stage_4_path(slug: aid.slug, modify: _hidden(:modify)),
         notice: "Le contenu a été mis à jour"
       )
     end
@@ -131,6 +135,7 @@ module Admin
       aid_slug = params["aid"]
       # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
+      modify = JSON.parse(params["modify"], symbolize_names: true)
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
       error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
@@ -138,7 +143,7 @@ module Admin
       is_void = error_message == "Étape non renseignée."
 
       if (error_message.blank? || is_void)
-        url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug)
+        url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug, modify: modify)
         aid = Aid.find_by(slug: aid_slug)
         
         CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
