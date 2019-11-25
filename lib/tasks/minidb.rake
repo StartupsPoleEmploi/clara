@@ -34,6 +34,7 @@ namespace :minidb do
     end
     p array_of_searched_rules
 
+    CompoundRule.where.not(slave_rule_id: array_of_searched_rules).destroy_all
     Rule.where.not(id: array_of_searched_rules).destroy_all
 
     # Only a few filters from the few aids
