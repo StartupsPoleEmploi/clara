@@ -33,9 +33,8 @@ namespace :minidb do
       fill_rules_array(root_rule_id, array_of_searched_rules, all_rules)
     end
     p array_of_searched_rules
-    #ActiveRecord::Base.connection.disable_referential_integrity do
+
     Rule.where.not(id: array_of_searched_rules).destroy_all
-    #end
 
     # Only a few filters from the few aids
     raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
