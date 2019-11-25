@@ -11,6 +11,19 @@ namespace :minidb do
     end
   end
 
+  def recursively_remove(rules)
+    return "ok, done" if rules.blank?
+    rules_to_delete_next = []
+    rules.each do |rule|
+      rule.slave_rules.each do |slave_rule|
+        rules_to_delete_next.push(slave_rule)
+      end
+    end
+
+    rules.each { |r| r.destroy }
+    _recursively_remove(rules_to_delete_next)
+  end
+
   task :recreate => :environment do
     p "Recreating a minidatabase from production data"
     activated_models = ActivatedModelsService.instance
@@ -34,8 +47,7 @@ namespace :minidb do
     end
     p array_of_searched_rules
 
-    CompoundRule.where.not(slave_rule_id: array_of_searched_rules).destroy_all
-    Rule.where.not(id: array_of_searched_rules).destroy_all
+    recursively_remove(Rule.where.not(id: array_of_searched_rules))
 
     # Only a few filters from the few aids
     raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
