@@ -2,6 +2,10 @@
 
 
 
+## 22.27.0 (22/11/2019)
+-[#1463][FEATURE] BO - sur nouvelles étapes créa d'aides, Renommer et ajouter des boutons pour passer d'une étape à l'autre
+
+
 ## 22.26.0 (22/11/2019)
 -[#1435][FEATURE] rendre les étapes précédentes cliquables
 

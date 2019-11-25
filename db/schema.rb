@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_090002) do
+ActiveRecord::Schema.define(version: 2019_05_27_090003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_090002) do
     t.datetime "archived_at"
     t.text "source"
     t.string "status"
+    t.boolean "is_rereadable", default: false
     t.index ["contract_type_id"], name: "index_aids_on_contract_type_id"
     t.index ["rule_id"], name: "index_aids_on_rule_id"
     t.index ["slug"], name: "index_aids_on_slug", unique: true

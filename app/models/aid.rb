@@ -24,10 +24,10 @@ class Aid < ApplicationRecord
   extend FriendlyId  
   include PgSearch
 
-  after_save    { ExpireCacheJob.perform_later }
-  after_update  { ExpireCacheJob.perform_later }
-  after_destroy { ExpireCacheJob.perform_later }
-  after_create  { ExpireCacheJob.perform_later }
+  after_save    { ExpireCacheJob.perform_later } if Rails.env.production?
+  after_update  { ExpireCacheJob.perform_later } if Rails.env.production?
+  after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
+  after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
   
   after_initialize do |me|
     me.archived_at ||= me.created_at if new_record?
@@ -37,7 +37,9 @@ class Aid < ApplicationRecord
     new_status = "Brouillon"
     if _is(Aid.activated)
       new_status = "Publiée"
-    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted)
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && !self.is_rereadable
+      new_status = "Correct"  
+    elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && self.is_rereadable
       new_status = "En attente de relecture"  
     elsif self.archived_at != nil && self.archived_at != self.created_at
       new_status = "Archivée"    
@@ -77,7 +79,7 @@ class Aid < ApplicationRecord
   validates :ordre_affichage, presence: true
 
   scope :unarchived, -> { where(archived_at: nil) }
-  scope :redacted, -> { where.not(what: [nil, ""]).where.not(how_much: [nil, ""]).where.not(additionnal_conditions: [nil, ""]).where.not(how_and_when: [nil, ""]).where.not(limitations: [nil, ""]) }
+  scope :redacted, -> { where.not(what: [nil, ""]).where.not(additionnal_conditions: [nil, ""]).where.not(how_much: [nil, ""]) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
   scope :activated,  -> { self.unarchived.linked_to_rule.redacted }
   scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}

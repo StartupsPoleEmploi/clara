@@ -7,14 +7,6 @@ class NewAidFour < ViewObject
     @aid_attributes = locals[:aid_attributes]
   end
 
-  def register_text
-    res = "Enregistrer"
-    if @aid_attributes[:archived_at] != nil && @aid_attributes[:archived_at] == @aid_attributes[:created_at]
-      res = "Enregistrer en brouillon"
-    end
-    res
-  end
-
   def attr_name(attribute)
     attribute.attribute.to_s
   end

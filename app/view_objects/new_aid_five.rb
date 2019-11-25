@@ -8,12 +8,20 @@ class NewAidFive < ViewObject
     @aid_status = locals[:aid_status]
   end
 
+  def reread_h
+    res = {class: "c-newbutton c-newaid-actionrecord"}
+    if !_all_stages_ok?
+      res[:disabled] = "disabled"
+    end
+    res    
+  end
+
   def big_message(current_user_email)
-    if already_published?
+    if status_published?
       "Cette aide est actuellement en ligne."
     elsif already_archived?
       "L'aide a été archivée."
-    elsif publiable?(current_user_email)
+    elsif publishable?(current_user_email)
       "L'aide est prête à être publiée."
     elsif _all_stages_ok?
       "L'aide a toutes les informations requises."
@@ -22,12 +30,20 @@ class NewAidFive < ViewObject
     end
   end
 
-  def publiable?(current_user_email)
-    !already_published? && _all_stages_ok? && @whodunnit != current_user_email 
+  def publishable?(current_user_email)
+    !status_published? && _all_stages_ok? && @whodunnit != current_user_email && status_waiting_for?
   end
 
-  def already_published?
+  def status_correct?
+    @aid_status == "Correct"
+  end
+
+  def status_published?
     @aid_status == "Publiée"
+  end
+
+  def status_waiting_for?
+    @aid_status == "En attente de relecture"
   end
 
   def _all_stages_ok?
@@ -35,11 +51,11 @@ class NewAidFive < ViewObject
   end
 
   def small_message(current_user_email)
-    if already_published?
+    if status_published?
       "Vous pouvez éventuellement l'archiver pour la retirer du site web."
     elsif already_archived?
       "Vous pouvez la publier, attention il n'y aura pas de relecture requise."
-    elsif publiable?(current_user_email)
+    elsif publishable?(current_user_email)
       "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
