@@ -1,5 +1,5 @@
 <%- v = view_object(:new_aid_four, local_assigns) %>
-<%- verb = params[:modify] ? "Modifier" : "Créer" %>
+<%- verb = params[:modify] == "true" ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage4 c-rulecreation">
