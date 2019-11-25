@@ -1,9 +1,8 @@
 namespace :minidb do
-
   def fill_rules_array(rule_id, array_to_fill, all_rules)
-    return if array_to_fill.include?(rule_id) 
+    return if array_to_fill.include?(rule_id)
     array_to_fill << rule_id
-    current_rule = all_rules.find{|r| rule_id == r["id"]}
+    current_rule = all_rules.find { |r| rule_id == r["id"] }
 
     if current_rule["slave_rules"].size > 0
       current_rule["slave_rules"].each do |slave_rule|
@@ -19,13 +18,13 @@ namespace :minidb do
 
     # Only a few aids
     Aid.where.not(
-      slug:[
+      slug: [
         "vsi-volontariat-de-solidarite-internationale",
         "erasmus",
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
-      ]).destroy_all
-
+      ],
+    ).destroy_all
 
     # Only a few rules from the few aids
     root_rules_id = activated_models.aids.map { |aid| aid["rule_id"] }
@@ -34,9 +33,9 @@ namespace :minidb do
       fill_rules_array(root_rule_id, array_of_searched_rules, all_rules)
     end
     p array_of_searched_rules
-    ActiveRecord::Base.connection.disable_referential_integrity do
-      Rule.where.not(id: array_of_searched_rules).destroy_all
-    end
+    #ActiveRecord::Base.connection.disable_referential_integrity do
+    Rule.where.not(id: array_of_searched_rules).destroy_all
+    #end
 
     # Only a few filters from the few aids
     raw_filters_id = activated_models.aids.map { |aid| aid["filters"].map { |f| f["id"] } }
@@ -63,11 +62,11 @@ namespace :minidb do
 
     # Only test user
     User.destroy_all
-    User.new(email:"superadmin@clara.com", password: "bar", role: "superadmin").save
-    User.new(email:"contributeur1@clara.com", password: "contributeur1", role: "contributeur").save
-    User.new(email:"contributeur2@clara.com", password: "contributeur2", role: "contributeur").save
-    User.new(email:"relecteur1@clara.com", password: "relecteur1", role: "relecteur").save
-    User.new(email:"relecteur2@clara.com", password: "relecteur2", role: "relecteur").save
+    User.new(email: "superadmin@clara.com", password: "bar", role: "superadmin").save
+    User.new(email: "contributeur1@clara.com", password: "contributeur1", role: "contributeur").save
+    User.new(email: "contributeur2@clara.com", password: "contributeur2", role: "contributeur").save
+    User.new(email: "relecteur1@clara.com", password: "relecteur1", role: "relecteur").save
+    User.new(email: "relecteur2@clara.com", password: "relecteur2", role: "relecteur").save
 
     Stat.destroy_all
 
@@ -82,7 +81,6 @@ namespace :minidb do
     # Remove pg_stats (5000 lines only for stats we don't need)
     ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
   end
-
 
   desc "Dumps the database to db/local.dump"
   task :dump => :environment do
@@ -110,10 +108,8 @@ namespace :minidb do
 
   def with_config
     yield Rails.application.class.parent_name.underscore,
-      ActiveRecord::Base.connection_config[:host],
-      ActiveRecord::Base.connection_config[:database],
-      ActiveRecord::Base.connection_config[:username]
+          ActiveRecord::Base.connection_config[:host],
+          ActiveRecord::Base.connection_config[:database],
+          ActiveRecord::Base.connection_config[:username]
   end
-
-
 end

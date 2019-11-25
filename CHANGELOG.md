@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 22.26.1 (25/11/2019)
+-[#1450][TECH] Enlever le disable_referential_integrity dans minidb.rake
 
 
 ## 22.28.0 (25/11/2019)
