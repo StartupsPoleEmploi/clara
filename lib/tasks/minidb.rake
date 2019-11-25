@@ -21,8 +21,21 @@ namespace :minidb do
     end
 
     rules.each { |r| r.destroy }
-    _recursively_remove(rules_to_delete_next)
+    recursively_remove(rules_to_delete_next)
   end
+
+  # def recursively_remove(rules)
+  #   return "ok, done" if rules.blank?
+  #   rules_to_delete_next = []
+  #   rules.each do |rule|
+  #     rule.slave_rules.each do |slave_rule|
+  #       rules_to_delete_next.push(slave_rule)
+  #     end
+  #   end
+
+  #   rules.each { |r| r.destroy }
+  #   _recursively_remove(rules_to_delete_next)
+  # end
 
   task :recreate => :environment do
     p "Recreating a minidatabase from production data"
