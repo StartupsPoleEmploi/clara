@@ -1,26 +1,27 @@
 <%- v = view_object(:new_aid_four, local_assigns) %>
+<%- verb = params[:modify] ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage4 c-rulecreation">
   <%= link_to "‹ Retour à l'étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug]), class: "c-newaid-back2" %>
-  <h1 class="c-newaid-title c-errorafter">Créer une aide</h1>
+  <h1 class="c-newaid-title c-errorafter"><%= verb %> une aide</h1>
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 60%">
       <div class="c-newaid-stages">
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]) %>
+            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]) %>
+            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug]) %>
+            <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--active">

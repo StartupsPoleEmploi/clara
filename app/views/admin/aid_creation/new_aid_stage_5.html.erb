@@ -1,33 +1,35 @@
   <%- v = view_object(:new_aid_five, local_assigns) %>
 <%- ok_svg = '<svg fill="#2b542c" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve"><g><g id="check-circle-outline"><path d="M150.45,206.55l-35.7,35.7L229.5,357l255-255l-35.7-35.7L229.5,285.6L150.45,206.55z M459,255c0,112.2-91.8,204-204,204S51,367.2,51,255S142.8,51,255,51c20.4,0,38.25,2.55,56.1,7.65l40.801-40.8C321.3,7.65,288.15,0,255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255H459z"/></g></g></svg>' %>
 <%- ko_svg = '<svg fill="#843534" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M256,0C114.497,0,0,114.507,0,256c0,141.503,114.507,256,256,256c141.503,0,256-114.507,256-256C512,114.497,397.493,0,256,0z M256,472c-119.393,0-216-96.615-216-216c0-119.393,96.615-216,216-216c119.393,0,216,96.615,216,216C472,375.393,375.385,472,256,472z"/></g></g><g><g><path d="M256,128.877c-11.046,0-20,8.954-20,20V277.67c0,11.046,8.954,20,20,20s20-8.954,20-20V148.877C276,137.831,267.046,128.877,256,128.877z"/></g></g><g><g><circle cx="256" cy="349.16" r="27"/></g></g></svg>' %>
+<%- verb = params[:modify] ? "Modifier" : "Créer" %>
+
 
 
 <section class="c-newaid c-newaid--stage5">
   <%= link_to "‹ Retour à l'étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]), class: "c-newaid-back2" %>
-  <h1 class="c-newaid-title">Créer une aide</h1>
+  <h1 class="c-newaid-title"><%= verb %> une aide</h1>
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 60%">
       <div class="c-newaid-stages">
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]) %>
+            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]) %>
+            <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug]) %>
+            <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]) %>
+            <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: params[:modify]) %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--active">

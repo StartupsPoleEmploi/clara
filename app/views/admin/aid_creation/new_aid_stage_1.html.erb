@@ -1,9 +1,10 @@
 <%- v = view_object(:new_aid_one, local_assigns) %>
+<%- verb = params[:modify] ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage1">
   <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2" %>
-  <h1 class="c-newaid-title">Créer une aide</h1>
+  <h1 class="c-newaid-title"><%= verb %> une aide</h1>
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 45%">

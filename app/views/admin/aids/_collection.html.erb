@@ -56,7 +56,7 @@
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.edit"),
-            [:edit, namespace, resource],
+            admin_aid_creation_new_aid_stage_5_path(slug: resource.slug, modify: true),
             class: "action-edit",
           ) if show_action? :edit, resource%></td>
         <% end %>
