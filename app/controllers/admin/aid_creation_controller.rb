@@ -22,7 +22,7 @@ module Admin
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
       new_ordre_affichage = new_attributes[:ordre_affichage] || 99 
       new_attributes[:ordre_affichage] = new_ordre_affichage
-      slug = params.require(:slug).permit(:value).to_h[:value]
+      slug = _hidden(:slug)
       if !slug.blank?
         aid = Aid.find_by(slug: slug)
         aid.assign_attributes(new_attributes)
@@ -66,7 +66,7 @@ module Admin
     end
 
     def create_stage_2
-      slug = params.require(:slug).permit(:value).to_h[:value]
+      slug = _hidden(:slug)
       aid = Aid.find_by(slug: slug)
       old_attributes = aid.attributes.with_indifferent_access
       new_attributes = params.require(:aid).permit(:what, :additionnal_conditions, :how_much, :how_and_when, :limitations).to_h
@@ -95,7 +95,7 @@ module Admin
 
 
     def create_stage_3
-      slug = params.require(:slug).permit(:value).to_h[:value]
+      slug = _hidden(:slug)
       new_attributes = params.require(:aid).permit(:short_description, filter_ids: []).to_h
       filters_ids = new_attributes[:filter_ids].reject { |f| f.blank? }.map { |f| f.to_i }
       filters = Filter.where(id: filters_ids)
@@ -171,8 +171,8 @@ module Admin
     end
 
     def create_stage_5
-      slug = params.require(:slug).permit(:value).to_h[:value]
-      action_asked = params.require(:action_asked).permit(:value).to_h[:value]
+      slug = _hidden(:slug)
+      action_asked = _hidden(:action_asked)
       aid = Aid.find_by(slug: slug)
 
       please_save_aid = true
