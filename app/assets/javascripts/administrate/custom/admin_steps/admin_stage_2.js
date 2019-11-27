@@ -18,14 +18,15 @@ clara.js_define("admin_stage_2", {
         var has_reached_stage3 = localStorage.getItem("stage3_" + slug);
         var has_reached_stage4 = localStorage.getItem("stage4_" + slug);
         var has_reached_stage5 = localStorage.getItem("stage5_" + slug);
+        
         if (has_reached_stage3) {
           $(".c-newaid-stage--3 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_3?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 3</a>')          
         }
         if (has_reached_stage4) {
-          $(".c-newaid-stage--4 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_3?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 3</a>')          
+          $(".c-newaid-stage--4 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_4?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 3</a>')          
         }
         if (has_reached_stage5) {
-          $(".c-newaid-stage--5 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_3?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 3</a>')          
+          $(".c-newaid-stage--5 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_5?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 3</a>')          
         }
       }
 
