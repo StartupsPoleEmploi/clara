@@ -8,9 +8,10 @@ clara.js_define("admin_stage_steps", {
       var is_modifying = $.urlParam("modify") === "true";
       var slug = $.urlParam("slug");
 
-      localStorage.setItem("stage" + current_stage + "_" + slug, "true")
-
       if (!is_modifying) {
+        
+        localStorage.setItem("stage" + current_stage_nb + "_" + slug, "true")
+        
         var has_reached_stage2 = localStorage.getItem("stage2_" + slug) === "true";
         var has_reached_stage3 = localStorage.getItem("stage3_" + slug) === "true";
         var has_reached_stage4 = localStorage.getItem("stage4_" + slug) === "true";
