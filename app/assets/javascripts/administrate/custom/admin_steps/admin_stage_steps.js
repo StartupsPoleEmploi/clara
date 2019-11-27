@@ -11,10 +11,10 @@ clara.js_define("admin_stage_steps", {
       localStorage.setItem("stage" + current_stage + "_" + slug, "true")
 
       if (!is_modifying) {
-        var has_reached_stage2 = localStorage.getItem("stage2_" + slug);
-        var has_reached_stage3 = localStorage.getItem("stage3_" + slug);
-        var has_reached_stage4 = localStorage.getItem("stage4_" + slug);
-        var has_reached_stage5 = localStorage.getItem("stage5_" + slug);
+        var has_reached_stage2 = localStorage.getItem("stage2_" + slug) === "true";
+        var has_reached_stage3 = localStorage.getItem("stage3_" + slug) === "true";
+        var has_reached_stage4 = localStorage.getItem("stage4_" + slug) === "true";
+        var has_reached_stage5 = localStorage.getItem("stage5_" + slug) === "true";
         
         if (has_reached_stage2 && current_stage_nb < 2) {
           $(".c-newaid-stage--2 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_2?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 2</a>')          
