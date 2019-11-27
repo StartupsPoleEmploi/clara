@@ -1,5 +1,6 @@
 <%- v = view_object(:new_aid_one, local_assigns) %>
-<%- verb = params[:modify] == "true" ? "Modifier" : "Créer" %>
+<%- is_modifying = params[:modify] == "true"  %>
+<%- verb = is_modifying ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage1">
@@ -16,22 +17,38 @@
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 2
+            <% if is_modifying %>
+              <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 2
+            <% end %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 3
+            <% if is_modifying %>
+              <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 3
+            <% end %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 4
+            <% if is_modifying %>
+              <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 4
+            <% end %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 5
+            <% if is_modifying %>
+              <%= link_to "Étape 5", admin_aid_creation_new_aid_stage_5_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 5
+            <% end %>
           </div>
         </div>
       </div>

@@ -1,9 +1,12 @@
 <%- v = view_object(:new_aid_three, local_assigns) %>
-<%- verb = params[:modify] == "true" ? "Modifier" : "Créer" %>
+<%- is_modifying = params[:modify] == "true"  %>
+<%- verb = is_modifying ? "Modifier" : "Créer" %>
 
 
 <section class="c-newaid c-newaid--stage3">
-  <%= link_to "‹ Retour à l'étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]), class: "c-newaid-back2" %>
+  <% if !is_modifying  %>
+    <%= link_to "‹ Retour à l'étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]), class: "c-newaid-back2" %>
+  <% end %>
   <h1 class="c-newaid-title"><%= verb %>  une aide</h1>
 
   <section class="c-newaid-panels simple-row">
@@ -26,12 +29,20 @@
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 4
+            <% if is_modifying %>
+              <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 4
+            <% end %>
           </div>
         </div>
         <div class="c-newaid-stage c-newaid-stage--inactive">
           <div class="c-newaid-stageinside">
-            Étape 5
+            <% if is_modifying %>
+              <%= link_to "Étape 5", admin_aid_creation_new_aid_stage_5_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 5
+            <% end %>
           </div>
         </div>
       </div>
@@ -62,7 +73,9 @@
         <% end %>                     
       </div>
       <div class="c-newaid-actions">
-        <%= link_to "‹ Retour à l'étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]), class: "c-newaid-back2" %>
+        <% if !is_modifying  %>
+          <%= link_to "‹ Retour à l'étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug]), class: "c-newaid-back2" %>
+        <% end %>
         <button type="submit" class="c-newbutton c-newaid-actionrecord"> Continuer </button>
       </div>
 
