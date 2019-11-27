@@ -2,6 +2,10 @@
 
 
 
+## 23.0.0 (27/11/2019)
+-[#1465][FEATURE] onglets suivants cliquables
+
+
 ## 22.28.0 (25/11/2019)
 -[#1456][FEATURE] branchement nouveau système de création d'aide
 
