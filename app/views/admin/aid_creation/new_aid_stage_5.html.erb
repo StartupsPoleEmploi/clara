@@ -9,6 +9,10 @@
   <% if !is_modifying  %>
     <%= link_to "‹ Retour à l'étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug]), class: "c-newaid-back2" %>
   <% end %>
+  <% if is_modifying %>
+    <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2" %>
+  <% end  %>
+
   <h1 class="c-newaid-title"><%= verb %> une aide</h1>
 
   <section class="c-newaid-panels simple-row">
