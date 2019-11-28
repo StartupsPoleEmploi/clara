@@ -20,33 +20,16 @@ clara.js_define("admin_stage_2", {
         CKEDITOR.instances["aid_what"].focus()
       }
 
-      function warn_user_to_save() {
-
-        for (var instanceName in CKEDITOR.instances) {
-          CKEDITOR.instances[instanceName].on('change', function () {
-            console.log(instanceName);
-          });
-        }
-
-
-
-      }
-
       if (document.activeElement.id === "js-tooltip-close") {
         $("#js-tooltip-close").on("click", function () {
           give_focus_to_description()
-          warn_user_to_save()
         })
       } else {
         give_focus_to_description()
-        warn_user_to_save()
       }
-
 
     }, 1200)
 
   }
-
-
 
 });
