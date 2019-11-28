@@ -30,6 +30,28 @@
 }
 
 .c-newaid {
+
+  .c-newaid-header {
+ul.c-newaid-action-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  li {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #e2eaf5;
+  }
+}
+
+  }
+
+  .c-detail-item {
+    padding-bottom: 2rem;
+  }
+
+
   .c-detail-item {
     padding-bottom: 2rem;
   }
