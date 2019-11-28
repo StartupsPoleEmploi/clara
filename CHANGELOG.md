@@ -1,6 +1,6 @@
 # CLARA Changelog
 
-## 23.0.1 (28/11/2019)
+## 23.0.2 (28/11/2019)
 -[#1447][DESIGN] Nouveaux boutons sur les écrans de création d'aide
 
 
