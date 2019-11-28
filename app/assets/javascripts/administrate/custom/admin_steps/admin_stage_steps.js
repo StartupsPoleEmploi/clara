@@ -57,8 +57,12 @@ clara.js_define("admin_stage_steps", {
 
       function warn_user_to_save() {
         setTimeout(function () {
-          var warning_msg = "⚠ Attention, vos modifications ne seront enregistrées que si vous cliquez sur Continuer"
-          $(".c-newaid-belowstages").append(warning_msg)
+          if ($("span#js-content-changed").length === 0) {
+            var warning_msg = document.createElement('span');
+            warning_msg.id = "js-content-changed"
+            warning_msg.append("⚠ Attention, vos modifications ne seront enregistrées que si vous cliquez sur Continuer")
+            $(".c-newaid-belowstages").append(warning_msg)
+          }
         }, 1200)
 
       }
