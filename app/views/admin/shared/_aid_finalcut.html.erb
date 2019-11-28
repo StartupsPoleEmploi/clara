@@ -1,0 +1,57 @@
+      <div class="c-newaid-subtitle"><%= raw v.big_message(current_user.email) %></div>
+        <div class="c-newaid-subtitle-expl"><%= raw v.small_message(current_user.email) %></div>
+        <% if v.publishable?(current_user.email) %>
+          <div class="c-newaid-finalactions">
+            <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+              <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+              <%= hidden_field(:action_asked, :value, value: "publish") %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+            <% end %>            
+          </div>
+        <% elsif v.status_published? %>
+          <div class="c-newaid-finalactions">
+            <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+              <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+              <%= hidden_field(:action_asked, :value, value: "archive") %>
+              <%= f.submit "Archiver cette aide", class: "c-newbutton c-newaid-actionrecord" %>
+            <% end %>            
+          </div>
+        <% elsif v.status_waiting_for? %>
+          <div class="c-newaid-finalactions">
+          </div>
+        <% elsif v.status_archived? && v._all_stages_ok? %>
+          <div class="c-newaid-finalactions">
+            <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+              <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+              <%= hidden_field(:action_asked, :value, value: "publish") %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+            <% end %>            
+          </div>
+        <% elsif v.status_archived? && !v._all_stages_ok? %>
+          <div class="c-newaid-finalactions">
+          </div>
+        <% else %>
+          <div class="c-newaid-finalactions">
+            <div  class="c-newaid-finalaction">
+              <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+                <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+                <%= hidden_field(:action_asked, :value, value: "reread") %>
+                <%= f.submit "Demander la relecture", v.reread_h %>
+              <% end %>            
+            </div>
+            <div  class="c-newaid-finalaction">
+              <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+                <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+                <%= hidden_field(:action_asked, :value, value: "keep") %>
+                <%= f.submit "Conserver le brouillon", class: "c-newbutton c-newaid-actionrecord" %>
+              <% end %>            
+            </div>
+            <div  class="c-newaid-finalaction">
+              <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
+                <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+                <%= hidden_field(:action_asked, :value, value: "discard") %>
+                <%= f.submit "Supprimer le brouillon", class: "c-newbutton c-newaid-actionrecord", data: { confirm: 'Supprimer le brouillon ?' }  %>
+              <% end %>            
+            </div>
+          </div>
+        <% end %>

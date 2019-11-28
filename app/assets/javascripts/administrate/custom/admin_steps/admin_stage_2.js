@@ -10,6 +10,9 @@ clara.js_define("admin_stage_2", {
       $("#accordion_0-0_tab").click();
 
 
+      clara.admin_stage_steps.please(2);
+
+
       // give focus to description field
       setTimeout(function(){
 
