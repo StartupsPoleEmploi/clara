@@ -1,6 +1,6 @@
 # CLARA Changelog
 
-## 23.1.0 (28/11/2019)
+## 23.0.2 (28/11/2019)
 -[#1467][FEATURE] Prévenir utilisateur s'il ne valide pas les données entrées avant de passer à l'étape suivante.
 
 ## 23.0.1 (28/11/2019)
