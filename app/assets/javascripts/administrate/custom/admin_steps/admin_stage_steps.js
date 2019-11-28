@@ -19,7 +19,7 @@ clara.js_define("admin_stage_steps", {
 
       if (has_reached_stage2 && current_stage_nb < 2) {
         $(".c-newaid-stage--2 .c-newaid-stageinside").html('<a href="/admin/aid_creation/new_aid_stage_2?locale=fr&amp;modify=' + is_modifying + '&slug=' + slug + '">Étape 2</a>')
-        $(".js-aid-edition").on('DOMSubtreeModified', ".c-detail-list", function () { // If we have a polyfill for Mutation Observer, we can change this deprecated function
+        $('form :input').change(function () { // If we have a polyfill for Mutation Observer, we can change this deprecated function
           warn_user_to_save()
         })
       }
