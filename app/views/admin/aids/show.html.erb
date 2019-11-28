@@ -34,7 +34,7 @@ as well as a link to its edit page.
   <div>
     <%= link_to(
       "#{t("administrate.actions.edit")}",
-      [:edit, namespace, page.resource],
+      admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true),
       class: "button c-aid-detail-action",
     ) if valid_action? :edit %>
   </div>
