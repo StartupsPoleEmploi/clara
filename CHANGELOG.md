@@ -2,6 +2,10 @@
 
 
 
+## 23.0.1 (28/11/2019)
+-[#1477][FEATURE] bouton qui branche sur l'ancienne version des aides
+
+
 ## 23.0.0 (27/11/2019)
 -[#1465][FEATURE] onglets suivants cliquables
 
