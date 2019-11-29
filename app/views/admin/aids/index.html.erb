@@ -47,7 +47,7 @@
     collection_presenter: page,
     collection_field_name: resource_name,
     page: page,
-    resources: resources,
+    resources: resources.sort_by { |resource| resource.updated_at }.reverse,
     table_title: "page-title"
   ) %>
 
