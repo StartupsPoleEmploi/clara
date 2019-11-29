@@ -36,16 +36,17 @@
     flex-direction: row;
     align-items: baseline;
 .c-newaid-action-icons {
-  list-style: none;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-left: 31px;
   .icon {
     display: flex;
     justify-content: center;
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    padding: 10px;
     border-radius: 5px;
     background-color: #e2eaf5;
   }
