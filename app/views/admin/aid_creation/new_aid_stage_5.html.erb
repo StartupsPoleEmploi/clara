@@ -14,21 +14,8 @@
   <% elsif is_modifying && is_coming_from_detail %>
     <%= link_to "‹ Retour au détail de l'aide", admin_aid_path(params[:slug]), class: "c-newaid-back2" %>
   <% end  %>
-  <section class="c-newaid-header">
-    <h1 class="c-newaid-title"><%= verb %> une aide</h1>
-    <ul class="c-newaid-action-icons">
-      <li>
-<%= image_tag "admin/edit_aid.svg" %>
-      </li>
-            <li>
-<%= image_tag "admin/delete_aid.svg" %>
-      </li>
-            <li>
-<%= image_tag "admin/read_to_publish.svg" %>
-      </li>
-    </ul>
-  </section>
-  
+
+<%= render "admin/shared/aid_finalcut_buttons", {v: v, page: page} %>
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 60%">
