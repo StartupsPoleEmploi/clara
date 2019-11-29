@@ -15,7 +15,12 @@
     <%= link_to "‹ Retour au détail de l'aide", admin_aid_path(params[:slug]), class: "c-newaid-back2" %>
   <% end  %>
 
-<%= render "admin/shared/aid_finalcut_buttons", {v: v, page: page} %>
+            <section class="c-newaid-header">
+    <h1 class="c-newaid-title"><%= verb %> une aide</h1>
+<%= render "admin/shared/aid_finalcut_icons", {v: v, page: page} %>
+  </section>   
+
+
 
   <section class="c-newaid-panels simple-row">
     <div class="simple-col c-newaid-leftpanel" style="width: 60%">

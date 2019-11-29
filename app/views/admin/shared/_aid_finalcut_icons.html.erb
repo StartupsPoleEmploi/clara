@@ -1,29 +1,12 @@
-          <section class="c-newaid-header">
-    <h1 class="c-newaid-title"><%= verb %> une aide</h1>
-    <ul class="c-newaid-action-icons">
-      <li>
-      
-<%= image_tag "admin/edit_aid.svg" %>
-      </li>
-            <li>
-<%= image_tag "admin/delete_aid.svg" %>
-      </li>
-            <li>
-<%= image_tag "admin/read_to_publish.svg" %>
-      </li>
-    </ul>
-  </section>     
-     
-     
-     
-      <div class="c-newaid-subtitle"><%= raw v.big_message(current_user.email) %></div>
-        <div class="c-newaid-subtitle-expl"><%= raw v.small_message(current_user.email) %></div>
+   
+
+<div class="c-newaid-action-icons">
         <% if v.publishable?(current_user.email) %>
-          <div class="c-newaid-finalactions">
+          <div class="c-newaid-finalactions-buttons">
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "publish") %>
-              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+<%= image_submit_tag "admin/read_to_publish.svg", class: "icon", alt: "Publier sur le site web"%>
             <% end %>            
           </div>
         <% elsif v.status_published? %>
@@ -42,7 +25,7 @@
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "publish") %>
-              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+              <%= image_submit_tag "admin/read_to_publish.svg", class: "icon", alt: "Publier sur le site web"%>
             <% end %>            
           </div>
         <% elsif v.status_archived? && !v._all_stages_ok? %>
@@ -50,11 +33,13 @@
           </div>
         <% else %>
           <div class="c-newaid-finalactions">
+          <% if v.reread_h[:disabled] != "disabled"  %>
             <div  class="c-newaid-finalaction">
               <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
                 <%= hidden_field(:slug, :value, value: page.resource.slug) %>
                 <%= hidden_field(:action_asked, :value, value: "reread") %>
-                <%= f.submit "Demander la relecture", v.reread_h %>
+                <%= image_submit_tag "admin/read_to_publish.svg", class: "icon", alt: "Demander la relecture" %>
+                <% end %> 
               <% end %>            
             </div>
             <div  class="c-newaid-finalaction">
@@ -68,8 +53,9 @@
               <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
                 <%= hidden_field(:slug, :value, value: page.resource.slug) %>
                 <%= hidden_field(:action_asked, :value, value: "discard") %>
-                <%= f.submit "Supprimer le brouillon", class: "c-newbutton c-newaid-actionrecord", data: { confirm: 'Supprimer le brouillon ?' }  %>
+                <%= image_submit_tag "admin/delete_aid.svg", class: "icon", data: { confirm: 'Supprimer le brouillon ?' }, alt: "Supprimer le brouillon"%>
               <% end %>            
             </div>
           </div>
+          
         <% end %>
