@@ -21,14 +21,14 @@
 #
 
 class Aid < ApplicationRecord
-  extend FriendlyId  
+  extend FriendlyId
   include PgSearch
 
-  after_save    { ExpireCacheJob.perform_later } if Rails.env.production?
-  after_update  { ExpireCacheJob.perform_later } if Rails.env.production?
+  after_save { ExpireCacheJob.perform_later } if Rails.env.production?
+  after_update { ExpireCacheJob.perform_later } if Rails.env.production?
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
-  after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
-  
+  after_create { ExpireCacheJob.perform_later } if Rails.env.production?
+
   after_initialize do |me|
     me.archived_at ||= me.created_at if new_record?
   end
@@ -38,13 +38,13 @@ class Aid < ApplicationRecord
     if _is(Aid.activated)
       new_status = "Publiée"
     elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && !self.is_rereadable
-      new_status = "Correct"  
+      new_status = "Correct"
     elsif self.archived_at != nil && self.archived_at == self.created_at && _is(Aid.linked_to_rule) && _is(Aid.redacted) && self.is_rereadable
-      new_status = "En attente de relecture"  
+      new_status = "En attente de relecture"
     elsif self.archived_at != nil && self.archived_at != self.created_at
-      new_status = "Archivée"    
+      new_status = "Archivée"
     end
-    self.status = new_status 
+    self.status = new_status
     self.save
   end
 
@@ -57,7 +57,7 @@ class Aid < ApplicationRecord
                   :against => %i(name short_description what how_much additionnal_conditions how_and_when limitations),
                   :ignoring => :accents,
                   :using => {
-                    :tsearch => {prefix: true},
+                    :tsearch => { prefix: true },
                     :dmetaphone => {},
                   }
 
@@ -70,22 +70,21 @@ class Aid < ApplicationRecord
 
   has_paper_trail ignore: [:updated_at]
 
-  
   friendly_id :name, use: :slugged
   belongs_to :rule, optional: true
   belongs_to :contract_type, optional: false
 
-  validates :name, presence: true, uniqueness: true  
+  validates :name, presence: true, uniqueness: true
   validates :ordre_affichage, presence: true
 
   scope :unarchived, -> { where(archived_at: nil) }
   scope :redacted, -> { where.not(what: [nil, ""]).where.not(how_and_when: [nil, ""]).where.not(how_much: [nil, ""]) }
   scope :linked_to_rule, -> { where.not(rule_id: nil) }
-  scope :activated,  -> { self.unarchived.linked_to_rule.redacted }
-  scope :for_admin, -> {includes(:contract_type).order('contract_types.ordre_affichage ASC', ordre_affichage: :asc)}
-  
+  scope :activated, -> { self.unarchived.linked_to_rule.redacted }
+  scope :for_admin, -> { includes(:contract_type).order("contract_types.ordre_affichage ASC", ordre_affichage: :asc) }
+  scope :last_updated, -> { reorder(updated_at: :desc) }
+
   def should_generate_new_friendly_id?
     slug.blank?
   end
-
 end
