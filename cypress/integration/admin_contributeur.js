@@ -7,13 +7,16 @@ describe("Pour un contributeur", function () {
   after(function () {
     cy.connect_as_superadmin()
     cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
-    cy.get('a.js-delete-aid[href="/admin/aids/ma-nouvelle-aide?locale=fr"]').click()
+    cy.delete_an_aid('ma-nouvelle-aide')
   })
 
   describe("Quand on liste les aides", function () {
     before(function () {
       cy.create_old_aid("derniere_aide_creee")
       cy.visit('/admin/aids')
+    })
+    after(function () {
+      cy.delete_an_aid('derniere_aide_creee')
     })
     it("La dernière aide créee apparaît la première dans la liste", function () {
       cy.get('td').first().should('contain', 'derniere_aide_creee')

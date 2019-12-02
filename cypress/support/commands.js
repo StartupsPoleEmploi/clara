@@ -98,3 +98,10 @@ Cypress.Commands.add('delete_a_user', (email) => {
   cy.location('pathname').should('include', 'admin/users')
   cy.disconnect_from_admin()
 });
+
+Cypress.Commands.add('delete_an_aid', (aid) => {
+  cy.connect_as_superadmin()
+  cy.visit('/admin/aids')
+  cy.get('a.js-delete-aid[href="/admin/aids/' + aid + '?locale=fr"]').click()
+  cy.disconnect_from_admin()
+});
