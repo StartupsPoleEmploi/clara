@@ -27,6 +27,13 @@ class NewAidOne < ViewObject
     ["name", "contract_type", "ordre_affichage"].include?(name)
   end
 
+  def placeholder_of(attribute)
+    name = attr_name(attribute)
+    {
+      "name" => "Exemple : Prépa compétences Occitanie"
+    }[name]
+  end
+
   def error_message(attribute)
     actual_attr = attribute.attribute
     @errors_h[actual_attr][0]
