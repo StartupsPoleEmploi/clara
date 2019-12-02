@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 23.1.1 (02/12/2019)
+-[#1470][FEATURE] Tri par date de modification lors de l'affichage de la liste des aides
 
 
 ## 23.1.0 (28/11/2019)
