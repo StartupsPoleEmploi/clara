@@ -2,6 +2,10 @@
 
 
 
+## 23.1.0 (28/11/2019)
+-[#1429][FEATURE] textes de guidage
+
+
 ## 23.0.1 (28/11/2019)
 -[#1477][FEATURE] bouton qui branche sur l'ancienne version des aides
 

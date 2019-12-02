@@ -27,6 +27,24 @@ class NewAidOne < ViewObject
     ["name", "contract_type", "ordre_affichage"].include?(name)
   end
 
+  def placeholder_of(attribute)
+    name = attr_name(attribute)
+    {
+      "name" => "Exemple : Prépa compétences Occitanie",
+      "source" => "Exemple : Pôle emploi, BUDI",
+    }[name]
+  end
+
+  def help_of(attribute)
+    name = attr_name(attribute)
+    {
+      "name" => "Le nom de l'aide ne doit pas comporter d'acronymes et préciser la zone géographique si nécessaire.",
+      "source" => "En général, ce sera utile pour le relecteur d'avoir accès à cette source.",
+      "contract_type" => 'Une aide est rangée dans une rubrique quand on affiche les résultats aux utilisateurs (par exemple, l\'aide Bon de transport est "rangée" dans la rubrique Aides à la mobilité pour les utilisateurs qui ont fait une simulation).',
+      "ordre_affichage" => "Visible dans la page de résultats",
+    }[name]
+  end
+
   def error_message(attribute)
     actual_attr = attribute.attribute
     @errors_h[actual_attr][0]

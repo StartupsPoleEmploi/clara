@@ -307,3 +307,21 @@
 .c-newaid-finalaction + .c-newaid-finalaction {
   margin-left: .5rem;
 }
+
+.field-unit__help {
+  color: #868686;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.3;
+  margin-top: .15rem;
+  margin-bottom: .15rem;
+}
+
+.field-unit__label-eye {
+  font-size: 14px;
+  svg {
+    width: 20px;
+  }
+  opacity: 0.71;
+}
