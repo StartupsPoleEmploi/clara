@@ -78,6 +78,11 @@ small.c-result-youcan {
 
 .c-resultcard {
   margin-top: $inuit-global-spacing-unit-small;
+  .o-flag__img {
+    padding-top: 14px;
+    padding-left: 22px;
+    padding-bottom: 12px;
+  }
 }
 
 .c-resultcontract_descr {
