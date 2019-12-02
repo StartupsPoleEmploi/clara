@@ -2,7 +2,6 @@ module Admin
   class AidsController < Admin::ApplicationController
     include AdministrateExportable::Exporter
 
-
     def valid_action?(name, resource = resource_class)
       if current_user.role != "superadmin" && current_user.role != "relecteur"
         %w[destroy].exclude?(name.to_s) && super
@@ -32,13 +31,12 @@ module Admin
         redirect_to admin_rule_creation_path(aid: resource.slug)
       else
         render :new, locals: {
-          page: Administrate::Page::Form.new(dashboard, resource),
-        }
+                page: Administrate::Page::Form.new(dashboard, resource),
+              }
       end
     end
 
-
-    def show 
+    def show
       @asker = Asker.new
       super
     end
@@ -48,8 +46,7 @@ module Admin
     end
 
     def scoped_resource
-       resource_class.for_admin
+      resource_class.for_admin.last_updated
     end
-
   end
 end

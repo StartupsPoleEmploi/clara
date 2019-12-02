@@ -14,6 +14,10 @@ describe("Pour un contributeur", function () {
     before(function () {
       cy.visit('/admin/aids')
     })
+    it("La dernière aide créee apparaît la première dans la liste", function () {
+      cy.create_old_aid("derniere_aide_creee")
+      cy.get('td.cell-data').first().should('contain', 'derniere_aide_creee')
+    })
     it("Il est impossible de supprimer une aide", function () {
       cy.get('a.js-delete-aid').should('not.exist')
     })
