@@ -35,11 +35,13 @@ class NewAidOne < ViewObject
     }[name]
   end
 
-  def small_text_of(attribute)
+  def help_of(attribute)
     name = attr_name(attribute)
     {
       "name" => "Le nom de l'aide ne doit pas comporter d'acronymes et préciser la zone géographique si nécessaire.",
       "source" => "En général, ce sera utile pour le relecteur d'avoir accès à cette source.",
+      "contract_type" => 'Une aide est rangée dans une rubrique quand on affiche les résultats aux utilisateurs (par exemple, l\'aide Bon de transport est "rangée" dans la rubrique Aides à la mobilité pour les utilisateurs qui ont fait une simulation).',
+      "ordre_affichage" => "Visible dans la page de résultats",
     }[name]
   end
 

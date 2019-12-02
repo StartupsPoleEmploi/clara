@@ -15,6 +15,7 @@ that displays all possible records to associate with.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
 %>
+<%- help ||= nil %>
 <%- is_mandatory ||= false %>
 <%- is_optional ||= false %>
 <%- arr = field.associated_resource_options.compact.map { |e| e } %>
@@ -33,6 +34,9 @@ that displays all possible records to associate with.
   <% end %>
 </div>
 <div class="field-unit__field">
+  <% if help %>
+    <%= f.label help, for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+  <% end %>
   <%= f.select field.permitted_attribute, {}, {include_blank: true} do %>
     <%= options_for_select(field.associated_resource_options.compact, field.selected_option) %>
   <% end %>

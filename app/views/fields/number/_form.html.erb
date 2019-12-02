@@ -33,7 +33,7 @@ By default, the input is a text field.
 <div class="field-unit__field">
 
   <% if help %>
-    <%= f.label t(help, default: "e"), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+    <%= f.label help, for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
   <%= f.number_field field.attribute, placeholder: t(placeholder, default: "") %>
 </div>
