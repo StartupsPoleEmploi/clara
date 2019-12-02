@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 23.0.2 (02/12/2019)
+-[#1453][TECH] Forcer expiration du cache après publication ou archivage d'une aide
 
 
 ## 23.0.1 (28/11/2019)
