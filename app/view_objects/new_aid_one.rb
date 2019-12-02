@@ -30,7 +30,16 @@ class NewAidOne < ViewObject
   def placeholder_of(attribute)
     name = attr_name(attribute)
     {
-      "name" => "Exemple : Prépa compétences Occitanie"
+      "name" => "Exemple : Prépa compétences Occitanie",
+      "source" => "Exemple : Pôle emploi, BUDI",
+    }[name]
+  end
+
+  def small_text_of(attribute)
+    name = attr_name(attribute)
+    {
+      "name" => "Le nom de l'aide ne doit pas comporter d'acronymes et préciser la zone géographique si nécessaire.",
+      "source" => "En général, ce sera utile pour le relecteur d'avoir accès à cette source.",
     }[name]
   end
 
