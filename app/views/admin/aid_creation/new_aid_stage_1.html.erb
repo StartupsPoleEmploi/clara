@@ -67,7 +67,7 @@
           <% page.attributes.each_with_index do |attribute, index_nb| %>
             <% if v.show_field?(attribute, current_user.role) %>
               <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%> is-iteration-<%= index_nb %>">
-                <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute), placeholder: "blabla" %>
                 <% if v.errored?(attribute) -%>
                   <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
                     &nbsp;⚠ <%= v.error_message(attribute) %>
