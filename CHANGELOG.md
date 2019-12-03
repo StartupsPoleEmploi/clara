@@ -1,5 +1,10 @@
 # CLARA Changelog
 
+
+## 23.1.2 (03/12/2019)
+-[#1479][BUG] Rubrique cliquable
+
+
 ## 23.1.1 (02/12/2019)
 -[#1470][FEATURE] Tri par date de modification lors de l'affichage de la liste des aides
 

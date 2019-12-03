@@ -99,9 +99,9 @@ Cypress.Commands.add('delete_a_user', (email) => {
   cy.disconnect_from_admin()
 });
 
-Cypress.Commands.add('delete_an_aid', (aid) => {
+Cypress.Commands.add('delete_an_aid', (aid_slug) => {
   cy.connect_as_superadmin()
   cy.visit('/admin/aids')
-  cy.get('a.js-delete-aid[href="/admin/aids/' + aid + '?locale=fr"]').click()
+  cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
   cy.disconnect_from_admin()
 });

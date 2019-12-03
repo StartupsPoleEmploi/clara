@@ -3,7 +3,10 @@ describe("Étape 1", function() {
   before(function() {
     cy.connect_as_contributeur1()
   })
-
+  after(function() {
+    cy.delete_an_aid("toutavecsource")
+    cy.delete_an_aid("toutsaufsource")
+  })
 
   before(function() {
     cy.visit('/admin/aid_creation/new_aid_stage_1')
@@ -79,7 +82,7 @@ describe("Étape 1", function() {
     cy.get('.js-contract').contains('Aide à la mobilité')
   })
   it("on peut passer à l'étape 2 si tous les champs sont renseignés sauf source", function() {
-    cy.get('.field-unit input#aid_name').type('test' + (new Date()).getTime())
+    cy.get('.field-unit input#aid_name').type('toutsaufsource')
     cy.get('.field-unit select#aid_contract_type_id').select("1")
     cy.get('.field-unit input#aid_ordre_affichage').type(42)
     cy.get('.field-unit textarea#aid_source').clear()
@@ -94,7 +97,7 @@ describe("Étape 1", function() {
 
     cy.visit('/admin/aid_creation/new_aid_stage_1')
 
-    cy.get('.field-unit input#aid_name').type('test' + (new Date()).getTime())
+    cy.get('.field-unit input#aid_name').type('toutavecsource')
     cy.get('.field-unit select#aid_contract_type_id').select("1")
     cy.get('.field-unit input#aid_ordre_affichage').type(42)
     cy.get('.field-unit textarea#aid_source').type("du texte")
