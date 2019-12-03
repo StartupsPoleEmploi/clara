@@ -1,12 +1,11 @@
 describe("Étape 2", function() {
 
   before(function() {
-    cy.connect_as_super_admin()
+    cy.connect_as_contributeur1()
   })
 
   after(function() {
-    cy.visit('/admin/aids?aid%5Bdirection%5D=desc&aid%5Border%5D=updated_at')
-    cy.get('a.js-delete-aid[href="/admin/aids/test-stage-2?locale=fr"]').click()
+    cy.delete_an_aid("test-stage-2")
   })
 
   before(function() {
@@ -17,7 +16,6 @@ describe("Étape 2", function() {
     // GIVEN
     cy.get('.field-unit input#aid_name').type('test stage 2')
     cy.get('.field-unit select#aid_contract_type_id').select("1")
-    cy.get('.field-unit input#aid_ordre_affichage').type(42)
     
     // WHEN
     cy.get('button.c-newaid-actionrecord').click()

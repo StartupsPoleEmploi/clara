@@ -63,7 +63,7 @@ as well as a link to its edit page.
     <dl class="c-tabbed-dl">
       <% page.attributes.each_with_index do |attribute, index_nb| %>
         <% if index_nb < 9 %>
-          <dt class="attribute-label" id="<%= attribute.name %>">
+          <dt class="attribute-label" id="<%= attribute.name %>" data-role="<%= current_user.role %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",
             default: attribute.name.titleize,
