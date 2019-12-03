@@ -2,42 +2,70 @@ describe("Étape 1", function() {
 
   before(function() {
     cy.connect_as_contributeur1()
-  })
-  after(function() {
-    cy.delete_an_aid("toutavecsource")
-    cy.delete_an_aid("toutsaufsource")
-  })
-
-  before(function() {
     cy.visit('/admin/aid_creation/new_aid_stage_1')
   })
-  it("Il y a 4 champs", function() {
+
+  after(function() {
+    cy.delete_an_aid("toutavecsource")
+  })
+
+  it("Il y a 3 champs", function() {
+    // then
     cy.get('.field-unit').should('have.length', 3)
   })
   it("Tous les champs sont vides", function() {
+    // then
     cy.get('.field-unit input#aid_name')             .should('have.value', '')
     cy.get('.field-unit select#aid_contract_type_id').should('have.value', null)
     cy.get('.field-unit textarea#aid_source')        .should('have.value', '')
   })
-  it("si on valide directement, on a 2 champs en erreur", function() {
+  it("Si on valide directement, on a 2 champs en erreur", function() {
     cy.get('button.c-newaid-actionrecord').click()
+    // then
     cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
     cy.get('.field-unit--errored-true select#aid_contract_type_id').should('have.length', 1)
     cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
   })
-  it("si on renseigne la rubrique, on a 1 champs en erreur (le nom)", function() {
-    // Given
-    cy.get('select#aid_contract_type_id').select('1')
-    // When
-    cy.get('button.c-newaid-actionrecord').click()
-    // Then
-    cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
-    cy.get('.field-unit--errored-false select#aid_contract_type_id').should('have.length', 1)
-    cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
+  it("Le nom se mets à jour en temps réel dans l'aperçu", function() {
+    cy.get('#aid_name').type('erasmus42')
+    // then
+    cy.get('.js-title').should('have.text', 'erasmus42')
   })
-  it("si on renseigne un nom existant, il reste en erreur", function() {
+  it("La rubrique se mets à jour en temps réel dans l'aperçu", function() {
+    cy.get('#aid_contract_type_id').select("1")
+    // then
+    cy.get('.js-contract').contains('Aide à la mobilité')
+  })
+  it("On peut passer à l'étape 2 si tous les champs sont renseignés", function() {
+
+    // given
+    cy.visit('/admin/aid_creation/new_aid_stage_1')
+
+    // when
+    cy.get('.field-unit input#aid_name').type('toutavecsource')
+    cy.get('.field-unit select#aid_contract_type_id').select("1")
+    cy.get('.field-unit textarea#aid_source').type("du texte")
+    cy.get('button.c-newaid-actionrecord').click()
+
+    // then
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
+  })
+  it("On peut cliquer pour revenir à l'étape 1, tous les champs sont pré-renseignés", function() {
+    // when
+    cy.get('.c-newaid-back2').eq(0).click()
+    
+    // then
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
+    cy.get('input#aid_name').invoke('val').should('contain', 'toutavecsource')
+    cy.get('select#aid_contract_type_id').invoke('text').should('contain', 'Aide à la mobilité')
+    cy.get('textarea#aid_source').invoke('val').should('contain', 'du texte')
+  })
+
+
+  it("Si on mets un nom existant, c'est refusé", function() {
     // Given
-    cy.get('#aid_name').type('erasmus +')
+    cy.get('#aid_name').clear()
+    cy.get('#aid_name').type('Erasmus +')
     // When
     cy.get('button.c-newaid-actionrecord').click()
     // Then
@@ -47,98 +75,6 @@ describe("Étape 1", function() {
     
     cy.get('.field-unit-error-msg--string').eq(0).contains("n'est pas disponible")
   })
-  it("le nom se mets à jour en temps réel dans l'aperçu", function() {
-    cy.get('.js-title').eq(0).contains('erasmus +')
-
-    cy.get('#aid_name').clear()
-    cy.get('.js-title').should('have.text', '')
-
-    cy.get('#aid_name').type('erasmus42')
-    cy.get('.js-title').should('have.text', 'erasmus42')
-  })
-  // it("le contract_type se mets à jour en temps réel dans l'aperçu", function() {
-  //   cy.get('.js-contract').contains('Aide à la mobilité')
-
-  //   cy.get('#aid_contract_type_id').select("")
-  //   cy.get('.js-contract').should('have.text', '')
-
-  //   cy.get('#aid_contract_type_id').select("1")
-  //   cy.get('.js-contract').contains('Aide à la mobilité')
-  // })
-  // it("on peut passer à l'étape 2 si tous les champs sont renseignés sauf source", function() {
-  //   cy.get('.field-unit input#aid_name').type('toutsaufsource')
-  //   cy.get('.field-unit select#aid_contract_type_id').select("1")
-  //   cy.get('.field-unit input#aid_ordre_affichage').type(42)
-  //   cy.get('.field-unit textarea#aid_source').clear()
-
-  //   cy.get('button.c-newaid-actionrecord').click()
-
-  //   cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
-
-  // })
-
-  // it("on peut passer à l'étape 2 si tous les champs sont renseignés", function() {
-
-  //   cy.visit('/admin/aid_creation/new_aid_stage_1')
-
-  //   cy.get('.field-unit input#aid_name').type('toutavecsource')
-  //   cy.get('.field-unit select#aid_contract_type_id').select("1")
-  //   cy.get('.field-unit input#aid_ordre_affichage').type(42)
-  //   cy.get('.field-unit textarea#aid_source').type("du texte")
-
-  //   cy.get('button.c-newaid-actionrecord').click()
-
-  //   cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
-  // })
-  // it("on peut cliquer pour revenir à l'étape 1, tous les champs sont pré-renseignés", function() {
-
-  //   cy.get('.c-newaid-back2').eq(0).click()
-    
-  //   cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
-
-
-  //   cy.get('input#aid_name').invoke('val').should('contain', 'test')
-  //   cy.get('select#aid_contract_type_id').invoke('text').should('contain', 'Aide')
-  //   cy.get('input#aid_ordre_affichage').invoke('val').should('contain', '42')
-  //   cy.get('textarea#aid_source').invoke('val').should('contain', 'du texte')
-
-  // })
-  // it("on peut faire une modification puis à nouveau valider", function() {
-
-  //   cy.get('#aid_ordre_affichage').clear()
-  //   cy.get('#aid_ordre_affichage').type('43')
-
-  //   cy.get('button.c-newaid-actionrecord').click()
-  //   cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
-
-  // })
-
-  // it("on peut à nouveau revenir, le champ a bien été modifié", function() {
-
-  //   cy.get('.c-newaid-back2').eq(0).click()
-
-  //   cy.get('input#aid_ordre_affichage').invoke('val').should('contain', '43')
-
-  //   cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
-
-
-  // })
-
-  // it("par contre si on mets un nom existant, c'est refusé", function() {
-
-  //   // Given
-  //   cy.get('#aid_name').clear()
-  //   cy.get('#aid_name').type('erasmus +')
-  //   // When
-  //   cy.get('button.c-newaid-actionrecord').click()
-  //   // Then
-  //   cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
-  //   cy.get('.field-unit--errored-false select#aid_contract_type_id').should('have.length', 1)
-  //   cy.get('.field-unit--errored-false input#aid_ordre_affichage')  .should('have.length', 1)
-  //   cy.get('.field-unit--errored-false textarea#aid_source')        .should('have.length', 1)
-    
-  //   cy.get('.field-unit-error-msg--string').eq(0).contains("n'est pas disponible")
-  // })
 
 
 })
