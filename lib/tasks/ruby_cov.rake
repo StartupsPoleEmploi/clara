@@ -4,7 +4,6 @@ namespace :ruby_cov do
 
   task :merge do
     results = []
-    # all_results = Dir["#{base_dir}/.resultset*.json"]
     all_results = []
     all_results << "coverage/ruby/unit/.resultset.json"
     all_results << "coverage/ruby/functional/.resultset.json"
