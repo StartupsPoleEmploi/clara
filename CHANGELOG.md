@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.1.3 (04/12/2019)
+-[#1446][TECH] Couverture Ruby totale
+
+
 ## 23.1.2 (03/12/2019)
 -[#1479][BUG] Rubrique cliquable
 
