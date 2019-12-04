@@ -8,6 +8,7 @@ SimpleCov.start do
   add_filter %r{^/test/}
   add_filter "/models/"
   track_files '{app/services,app/view_objects}/*.rb'
+  coverage_dir "coverage/ruby/unit".to_s
 end
 
 require_relative '../config/environment'

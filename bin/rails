@@ -7,3 +7,14 @@ end
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'
+
+if ENV['RAILS_ENV'] == 'development' && ENV['COVERAGE_PLEASE'] == 'true'
+  require 'simplecov'
+  SimpleCov.start do
+    coverage_dir "coverage/ruby/functional".to_s
+  end
+  Rails.application.eager_load!
+  puts "required simplecov"
+end
+
+
