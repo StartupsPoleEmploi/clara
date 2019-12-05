@@ -1,9 +1,8 @@
 # CLARA Changelog
 
 
-
 ## 23.1.7 (05/12/2019)
--[#1469][TECH] Faire les tests cypress de toutes les étapes de la nouvelle créa d'aide
+-[#1469][TECH] Faire les tests cypress étape 3
 
 
 ## 23.1.6 (05/12/2019)
