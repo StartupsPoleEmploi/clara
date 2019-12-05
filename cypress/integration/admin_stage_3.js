@@ -1,5 +1,13 @@
 describe("Étape 3", function() {
 
+  const MAIN_TITLE_SELECTOR = ".c-newaid-title"
+
+  function CONSTANTS() {
+    return {
+      MAIN_TITLE_SELECTOR: ".c-newaid-title"
+    }
+  }
+
   before(function() {
     cy.connect_as_contributeur1()
   })
@@ -20,7 +28,8 @@ describe("Étape 3", function() {
     cy.get('button.c-newaid-actionrecord').click()
   })
 
-  it("Si on vient de l'étape 2, on arrive sur l'étape 3", function() {
+  it("Si on vient de l'étape 2, on arrive sur l'étape 3 en création", function() {
+    cy.get(MAIN_TITLE_SELECTOR).should('have.text', 'Créer  une aide')
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
   })
 
@@ -29,7 +38,17 @@ describe("Étape 3", function() {
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_4')})
   })
 
+  it("On peut accéder à l'écran directement en modification", function() {
+    cy.visit('/admin/aid_creation/new_aid_stage_3?modify=true&slug=test-stage-3').then((contentWindow) => {
+      cy.get(MAIN_TITLE_SELECTOR).should('have.text', 'Modifier  une aide')
+    })
+  })
+
+
   it("On peut renseigner du texte : il se met à jour dans l'aperçu", function() {
+    cy.get(".c-resultaid__smalltxt").should('have.text', "")
+    cy.get('#aid_short_description').type("Un résumé possible de l'aide")
+    cy.get(".c-resultaid__smalltxt").should('have.text', "Un résumé possible de l'aide")
   })
 
   it("On peut renseigner des filtres", function() {
