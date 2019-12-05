@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.1.4 (05/12/2019)
+-[#1406][TECH] Supprimer les appels aux polices distantes.
+
+
 ## 23.1.3 (04/12/2019)
 -[#1446][TECH] Couverture Ruby totale
 
