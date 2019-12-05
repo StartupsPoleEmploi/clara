@@ -39,7 +39,7 @@ class ResultDefault < ViewObject
 
   def icon_for(aids_per_contract)
     icon = @contract_types.detect { |e| e["id"] == aids_per_contract[0]["contract_type_id"] }["icon"]
-    icon.blank? ? _default_svg.html_safe : icon.insert(icon.index("<svg") + 4, " width=\"100\" ").html_safe
+    icon.blank? ? _default_svg.html_safe : icon.html_safe
   end
 
   def filters_of(aid)
