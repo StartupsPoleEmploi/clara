@@ -2,12 +2,6 @@ describe("Étape 3", function() {
 
   const MAIN_TITLE_SELECTOR = ".c-newaid-title"
 
-  function CONSTANTS() {
-    return {
-      MAIN_TITLE_SELECTOR: ".c-newaid-title"
-    }
-  }
-
   before(function() {
     cy.connect_as_contributeur1()
   })
@@ -52,13 +46,49 @@ describe("Étape 3", function() {
   })
 
   it("On peut renseigner des filtres", function() {
+    
+    cy.get("#aid_filter_ids").invoke("val").should('equal', null)
+
+    cy.get("#aid_filter_ids-selectized").click()
+    cy.get("#aid_filter_ids-selectized").type("{enter}")
+
+    cy.get("#aid_filter_ids").invoke("val").should('not.equal', null)
   })
 
   it("Si on quitte l'écran sans valider, rien n'est sauvegardé", function() {
+
+    // given
+    cy.get('#js-stage-2-link').click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
+
+    // when
+    cy.get('button.c-newaid-actionrecord').click()
+
+    // then
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
+    cy.get("#aid_filter_ids").invoke("val").should('equal', null)
+    cy.get(".c-resultaid__smalltxt").should('have.text', "")
   })
 
   it("Si on valide et on revient, tout est sauvegardé", function() {
+    // given
+    cy.get('#aid_short_description').type("Un résumé possible de l'aide")
+    cy.get("#aid_filter_ids-selectized").click()
+    cy.get("#aid_filter_ids-selectized").type("{enter}")
+    cy.get("#aid_filter_ids-selectized").type("{esc}")
+    
+    // when
+    cy.get('button.c-newaid-actionrecord').click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_4')})
+    cy.get('#js-stage-3-link').click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
+
+    // then
+    cy.get("#aid_filter_ids").invoke("val").should('not.equal', null)
+    cy.get(".c-resultaid__smalltxt").should('have.text', "Un résumé possible de l'aide")
   })
+
+
 
 })
 
