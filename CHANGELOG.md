@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.1.6 (05/12/2019)
+-[#1483][BUG] Bug déploiement
+
+
 ## 23.1.5 (05/12/2019)
 -[#787][DESIGN] Enlever le padding des icones svg des types d'aide sur la page de résultats
 
