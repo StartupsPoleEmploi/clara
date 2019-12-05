@@ -92,9 +92,33 @@ Vous pouvez aussi vous connecter sous http://localhost:3000/teaspoon/default
 
 ```
 root@b883dc7f48d5:/home/clara# bin/rails minidb:recreate
-root@b883dc7f48d5:/home/clara# npm install cypress --save-dev
-root@b883dc7f48d5:/home/clara# $(npm bin)/cypress open
+me@mymachine:/workspace/clara# npm install cypress --save-dev
+me@mymachine:/workspace/clara# $(npm bin)/cypress open
 ```
+
+lancer tous les tests cypress depuis l'application Cypress
+
+#### Calculer la couverture Ruby
+
+```
+root@b883dc7f48d5:/home/clara# bin/rails test
+```
+Permet de lancer tous les tests Ruby, puis range la couverture sous coverage/ruby/unit
+
+```
+root@b883dc7f48d5:/home/clara# bin/rails minidb:recreate
+root@b883dc7f48d5:/home/clara# RAILS_ENV=development COVERAGE_PLEASE=true bin/rails s -p 3000 -b '0.0.0.0'
+me@mymachine:/workspace/clara# npm install cypress --save-dev
+me@mymachine:/workspace/clara# $(npm bin)/cypress open
+```
+
+Lancer tous les tests cypress puis arrêter le serveur Rails. La couverture Ruby des tests fonctionnels se trouve alors sous  coverage/ruby/functional
+
+Pour merger les 2 couvertures, 
+```
+me@mymachine:/workspace/clara# bin/rails ruby_cov:merge
+```
+
 
 
 #### Déployer en recette

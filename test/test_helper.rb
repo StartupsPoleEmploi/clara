@@ -4,10 +4,8 @@ require 'rspec/mocks/minitest_integration'
 
 # Coverage, may slow down suite
 require 'simplecov'
-SimpleCov.start do
-  add_filter %r{^/test/}
-  add_filter "/models/"
-  track_files '{app/services,app/view_objects}/*.rb'
+SimpleCov.start 'rails' do
+  coverage_dir "coverage/ruby/unit".to_s
 end
 
 require_relative '../config/environment'

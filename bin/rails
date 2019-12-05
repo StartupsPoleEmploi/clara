@@ -1,4 +1,16 @@
 #!/usr/bin/env ruby
+
+if ENV['RAILS_ENV'] == 'development' && ENV['COVERAGE_PLEASE'] == 'true'
+  puts ENV['COVERAGE_PLEASE']
+  puts ENV['RAILS_ENV']
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    coverage_dir "coverage/ruby/functional".to_s
+  end
+  puts "required simplecov"
+end
+
+
 begin
   load File.expand_path('../spring', __FILE__)
 rescue LoadError => e
@@ -7,3 +19,6 @@ end
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'
+
+
+
