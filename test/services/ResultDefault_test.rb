@@ -134,7 +134,7 @@ class ResultDefaultTest < ActiveSupport::TestCase
     #when
     res = sut.icon_for(aids_per_contract)
     #then
-    assert_equal("<svg width=\"50\" ></svg>", res)
+    assert_equal("<svg></svg>", res)
   end
 
   test ".icon_for gives default svg if icon is missing" do
