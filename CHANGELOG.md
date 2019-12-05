@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.1.7 (05/12/2019)
+-[#1469][TECH] Faire les tests cypress étape 3
+
+
 ## 23.1.6 (05/12/2019)
 -[#1483][BUG] Bug déploiement
 
