@@ -24,5 +24,22 @@ describe("Étape 3", function() {
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
   })
 
+  it("L'étape 3 est optionnelle : si on valide directement, on arrive sur l'étape 4", function() {
+    cy.get('button.c-newaid-actionrecord').click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_4')})
+  })
+
+  it("On peut renseigner du texte : il se met à jour dans l'aperçu", function() {
+  })
+
+  it("On peut renseigner des filtres", function() {
+  })
+
+  it("Si on quitte l'écran sans valider, rien n'est sauvegardé", function() {
+  })
+
+  it("Si on valide et on revient, tout est sauvegardé", function() {
+  })
+
 })
 
