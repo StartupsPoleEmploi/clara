@@ -7,7 +7,6 @@ if ENV['RAILS_ENV'] == 'development' && ENV['COVERAGE_PLEASE'] == 'true'
   SimpleCov.start 'rails' do
     coverage_dir "coverage/ruby/functional".to_s
   end
-  # Rails.application.eager_load!
   puts "required simplecov"
 end
 
