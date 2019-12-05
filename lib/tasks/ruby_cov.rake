@@ -1,8 +1,8 @@
-require 'simplecov'
 
 namespace :ruby_cov do
 
   task :merge do
+    require 'simplecov'
     results = []
     all_results = []
     all_results << "coverage/ruby/unit/.resultset.json"
