@@ -51,11 +51,5 @@ describe("Pour un contributeur", function () {
     })
   })
 
-  // describe("URL NON-autorisées", function () {
-  //   it("Accès à /admin/custom_filters : non", function () {
-  //     no_for("/admin/custom_filters")
-  //   })
-  // })
-
 })
 
