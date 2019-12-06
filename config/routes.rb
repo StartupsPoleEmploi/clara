@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :filters
     resources :custom_filters
     resources :custom_parent_filters
-    resources :aids, only: [:index, :show] do
+    resources :aids, only: [:index, :show, :new, :edit] do
       get :export, on: :collection
     end
     namespace :aid_creation do

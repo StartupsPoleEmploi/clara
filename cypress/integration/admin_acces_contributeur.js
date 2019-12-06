@@ -2,7 +2,7 @@ describe("Pour un contributeur", function () {
 
 
   const POSSIBLY_FAIL = {failOnStatusCode: false}
-  const SEL = "body header h1"
+  const ERROR_MSG = "Exception caught"
 
   before(function () {
     cy.connect_as_contributeur1()
@@ -10,17 +10,13 @@ describe("Pour un contributeur", function () {
 
   function yes_for(url) {
     cy.visit(url, POSSIBLY_FAIL).then(() => { 
-      cy.get(SEL).then($el => {
-        expect($el.text()).not.includes("Error");
-      });
+      cy.title().should('not.include', ERROR_MSG)
     })
   }
 
   function no_for(url) {
     cy.visit(url, POSSIBLY_FAIL).then(() => { 
-      cy.get(SEL).then($el => {
-        expect($el.text()).includes("Error");
-      });
+      cy.title().should('include', ERROR_MSG)
     })
   }
 
@@ -33,7 +29,6 @@ describe("Pour un contributeur", function () {
                   "/admin/conventions/1", 
                   "/admin/get_cache", 
                   "/apidocs", 
-                  "/admin/aids/export.csv", 
                ]
     urls.forEach(function(url) {
       it("Accès AUTORISÉ pour " + url, function () {

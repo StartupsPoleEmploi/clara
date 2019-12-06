@@ -28,6 +28,10 @@ module Admin
       super
     end
 
+    def new
+      raise SecurityError, "Not Allowed"
+    end
+
     def find_filters_params
       params.permit(:ids => []).to_h
     end
