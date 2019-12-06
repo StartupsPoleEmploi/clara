@@ -27,11 +27,11 @@ describe("Pour un contributeur", function () {
 
   describe("URLs autorisées", function () {
     let urls = [
-                "/admin/aids", 
-                "/admin/aids/erasmus",
-                "/admin/aids/erasmus/edit",
-                "/admin/aids/new",
-                ]
+                  "/admin/aids", 
+                  "/admin/aids/erasmus",
+                  "/admin/aids/erasmus/edit",
+                  "/admin/aids/new",
+               ]
     urls.forEach(function(url) {
       it("OUI pour " + url, function () {
         yes_for(url)
@@ -41,9 +41,9 @@ describe("Pour un contributeur", function () {
 
   describe("URLs non-autorisées", function () {
     let urls = [
-                "/admin/custom_filters", 
-                "/admin/custom_filters/new",
-                ]
+                  "/admin/custom_filters", 
+                  "/admin/custom_filters/new",
+               ]
     urls.forEach(function(url) {
       it("NON pour " + url, function () {
         no_for(url)
