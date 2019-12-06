@@ -1,7 +1,7 @@
 describe("Pour un contributeur", function () {
 
 
-  const YES_FAIL = {failOnStatusCode: false}
+  const POSSIBLY_FAIL = {failOnStatusCode: false}
   const SEL = "body header h1"
 
   before(function () {
@@ -9,7 +9,19 @@ describe("Pour un contributeur", function () {
   })
 
   function yes_for(url) {
-    cy.visit('/admin/aids', YES_FAIL).then(() => { cy.get(SEL).then($el => { expect($el.text()).not.includes("Error");});})
+    cy.visit(url, POSSIBLY_FAIL).then(() => { 
+      cy.get(SEL).then($el => {
+        expect($el.text()).not.includes("Error");
+      });
+    })
+  }
+
+  function no_for(url) {
+    cy.visit(url, POSSIBLY_FAIL).then(() => { 
+      cy.get(SEL).then($el => {
+        expect($el.text()).includes("Error");
+      });
+    })
   }
 
 
@@ -18,8 +30,7 @@ describe("Pour un contributeur", function () {
       yes_for("/admin/aids")
     })
     it("Accès à /admin/custom_filters : non", function () {
-      cy.visit('/admin/custom_filters', YES_FAIL).then(() => { cy.get(SEL).then($el => { expect($el.text()).includes("Error");});})
-      // cy.visit('/admin/custom_filters', YES_FAIL).then(() => { cy.get(SEL).then($el => { expect($el.text()).not.includes("Error");});})
+      no_for("/admin/custom_filters")
     })
   })
 
