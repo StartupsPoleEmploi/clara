@@ -4,57 +4,6 @@ require 'csv'
 module Admin
   class PagesController < Admin::ApplicationController
 
-    def rule_creation
-
-      aid = Aid.find_by(slug: params[:aid])
-
-      is_new_aid = IsNewAid.new.call(aid)
-
-      gon.global_state = {
-        explicitations: _all_explicitations,
-        operator_kinds: _all_operator_kinds,        
-        variables: _all_variables,        
-      }
-
-      gon.initial_scope = ExtractScopeForAid.new.call(aid)
-      gon.initial_geo = ExtractGeoForAid.new.call(aid)
-
-      render locals: {
-        aid: aid ? aid.attributes.with_indifferent_access : nil,
-        is_new_aid: is_new_aid
-      }
-    end
-    def post_rule_creation
-      aid_slug = params["aid"]
-      # Need to parse JSON in order to preserve arrays as correct arrays
-      trundle = JSON.parse(params["trundle"], symbolize_names: true)
-      geo = JSON.parse(params["geo"], symbolize_names: true)
-      
-      error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
-
-
-      if error_message.blank?
-        url = admin_aid_path(aid_slug)
-        aid = Aid.find_by(slug: aid_slug)
-
-        is_new_aid = IsNewAid.new.call(aid)
-        
-        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
-
-        msg = "Mise à jour du champ d'application effectué."
-        if is_new_aid
-          msg += " L'aide sera publiée sur le site après relecture par l'équipe de modération."
-        end
-        flash[:notice] = msg
-        flash.keep(:notice)
-        render js: "document.location = '#{url}'"        
-      else
-        render :json => error_message, :status => 422
-      end
-
-    end
-
-
     def _all_explicitations 
       JSON.parse(Explicitation.all.to_json(:only => [ :id, :value_eligible, :operator_kind, :template ], :include => {variable: {only:[:name]}})).map{|e| e["variable_name"] = e["variable"]["name"];e.delete("variable");e}
     end
