@@ -25,10 +25,21 @@ describe("Pour un contributeur", function () {
   }
 
 
-  describe("Accès aux aides", function () {
-    it("OUI pour /admin/aids", function () {
-      yes_for("/admin/aids")
+  describe("URL autorisées", function () {
+    let urls = [
+                "/admin/aids", 
+                "/admin/aids/erasmus",
+                "/admin/aids/erasmus/edit",
+                "/admin/aids/new",
+                ]
+    urls.forEach(function(url) {
+      it("OUI pour " + url, function () {
+        yes_for(url)
+      })
     })
+  })
+
+  describe("URL NON-autorisées", function () {
     it("Accès à /admin/custom_filters : non", function () {
       no_for("/admin/custom_filters")
     })
