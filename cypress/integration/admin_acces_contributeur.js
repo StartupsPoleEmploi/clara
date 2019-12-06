@@ -25,7 +25,7 @@ describe("Pour un contributeur", function () {
   }
 
 
-  describe("URL autorisées", function () {
+  describe("URLs autorisées", function () {
     let urls = [
                 "/admin/aids", 
                 "/admin/aids/erasmus",
@@ -39,11 +39,23 @@ describe("Pour un contributeur", function () {
     })
   })
 
-  describe("URL NON-autorisées", function () {
-    it("Accès à /admin/custom_filters : non", function () {
-      no_for("/admin/custom_filters")
+  describe("URLs non-autorisées", function () {
+    let urls = [
+                "/admin/custom_filters", 
+                "/admin/custom_filters/new",
+                ]
+    urls.forEach(function(url) {
+      it("NON pour " + url, function () {
+        no_for(url)
+      })
     })
   })
+
+  // describe("URL NON-autorisées", function () {
+  //   it("Accès à /admin/custom_filters : non", function () {
+  //     no_for("/admin/custom_filters")
+  //   })
+  // })
 
 })
 
