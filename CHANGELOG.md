@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 23.1.9 (06/12/2019)
 -[#1485][TECH] tester la sécurité du BO
 
