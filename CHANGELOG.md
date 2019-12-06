@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.1.8 (06/12/2019)
+-[#1486][TECH] bugfix puma auto
+
+
 ## 23.1.7 (05/12/2019)
 -[#1469][TECH] Faire les tests cypress étape 3
 
