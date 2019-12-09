@@ -4,11 +4,11 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends wget git sudo vim telnet iputils-ping ssh openssh-server cron
+    && apt-get install -y --no-install-recommends curl wget git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
-    && wget deb.nodesource.com/setup_12.x -O nodesource_setup.sh \
+    && curl -sL -k https://deb.nodesource.com/setup_10.x -O nodesource_setup.sh \
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
