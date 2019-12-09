@@ -25,7 +25,7 @@ describe("Voir une aide", function() {
 
     })
 
-    it("Pour un contributeur, la rubrique est cliquable", function() {
+    it("Pour un superadmin, la rubrique est cliquable", function() {
       // then
       const $contract_type_elt = Cypress.$("#contract_type").next().children()
       expect($contract_type_elt.prop("tagName")).to.equal("A")

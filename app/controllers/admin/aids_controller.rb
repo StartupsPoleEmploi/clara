@@ -23,22 +23,13 @@ module Admin
       super
     end
 
-    def create
-      resource = resource_class.new(resource_params)
-      authorize_resource(resource)
-
-      if resource.save
-        redirect_to admin_rule_creation_path(aid: resource.slug)
-      else
-        render :new, locals: {
-                page: Administrate::Page::Form.new(dashboard, resource),
-              }
-      end
-    end
-
     def show
       @asker = Asker.new
       super
+    end
+
+    def new
+      raise SecurityError, "Not Allowed"
     end
 
     def find_filters_params

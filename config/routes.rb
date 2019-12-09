@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :filters
     resources :custom_filters
     resources :custom_parent_filters
-    resources :aids do
+    resources :aids, only: [:index, :show, :new, :edit, :destroy] do
       get :export, on: :collection
     end
     namespace :aid_creation do
@@ -76,8 +76,6 @@ Rails.application.routes.draw do
       delete 'delete_simulation', on: :member
     end
     controller 'pages' do
-      get 'rule_creation'
-      post 'post_rule_creation'
       get 'get_all_filters_menu'
       get 'get_need_menu'
       get 'get_custom_filter_menu'
