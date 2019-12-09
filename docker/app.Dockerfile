@@ -3,7 +3,7 @@ FROM ruby:2.6.0
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
-RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server
+RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~\
@@ -39,6 +39,5 @@ RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemf
 RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
 RUN bundle install --without development test undefined 
 
-# wait...
-CMD sleep infinity
-
+# Launch cron jobs (for db dump everyday)
+CMD service cron start && sleep infinity
