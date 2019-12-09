@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo v
 
 # executable JS is required
 RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh\
-    && bash nodesource_setup.sh\
+    && sh nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
 
