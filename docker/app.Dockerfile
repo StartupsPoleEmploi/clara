@@ -6,6 +6,8 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ruby libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
+RUN gem install bundler;
+
 # executable JS is required
 RUN cd ~ \
     && apt-get install -y nodejs npm
