@@ -4,11 +4,11 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl wget git sudo vim telnet iputils-ping ssh openssh-server cron
+    && apt-get install -y --no-install-recommends libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
-    && wget deb.nodesource.com/setup_10.x -O nodesource_setup.sh \
+    && curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
@@ -37,8 +37,8 @@ RUN echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ./allow_local_tunn
 RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 
 # Pre-load deployment gems
-RUN wget https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -O Gemfile
-RUN wget https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -O Gemfile.lock
+RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile
+RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
 RUN bundle install --without development test undefined 
 
 # Launch cron jobs (for db dump everyday)
