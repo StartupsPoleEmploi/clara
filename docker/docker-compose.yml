@@ -46,14 +46,3 @@ services:
       - '../private/latest.dump:/home/dumped/latest.dump'
       - vol_data:/var/lib/postgresql/data
     restart: always
-
-    srv_backup:
-      container_name: clara_backup
-      depends_on:
-        - srv_db
-      volumes:
-        - '/mnt/backups:/mnt/backups'
-      restart: always
-      command: >
-      sh -c "chmod 0644 cronjobs &&
-             crontab cronjobs"

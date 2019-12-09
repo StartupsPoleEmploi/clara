@@ -15,3 +15,14 @@ services:
     volumes:
       - '../private/prod/db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
       - '../private/prod/db/init.sql:/docker-entrypoint-initdb.d/init.sql'
+      
+  srv_backup:
+    container_name: clara_backup
+    depends_on:
+      - srv_db
+    volumes:
+      - '/mnt/backups:/mnt/backups'
+    restart: always
+    command: >
+    sh -c "chmod 0644 cronjobs &&
+            crontab cronjobs"
