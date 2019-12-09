@@ -1,9 +1,10 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
+    apt remove libcurl4 \
     && apt-get install -y --no-install-recommends libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
