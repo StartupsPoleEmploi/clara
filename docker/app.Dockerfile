@@ -1,20 +1,17 @@
-FROM ubuntu:19.10
+FROM ruby:2.6.5
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ruby libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
-
-RUN gem install bundler;
+    && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
-    && apt-get install -y nodejs npm
-    # && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
-    # && bash nodesource_setup.sh\
-    # && apt install nodejs\
-    # && nodejs -v
+    && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
+    && bash nodesource_setup.sh\
+    && apt install nodejs\
+    && nodejs -v
 
 # See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
 RUN export DEBIAN_FRONTEND=noninteractive; \
