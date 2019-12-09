@@ -23,7 +23,6 @@ services:
       - srv_db
     volumes:
       - '/mnt/backups:/mnt/backups'
-    restart: always
     command: >
       sh -c "chmod 0644 cronjobs &&
               crontab cronjobs"
