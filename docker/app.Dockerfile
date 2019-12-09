@@ -8,10 +8,11 @@ RUN apt-get update \
 
 # executable JS is required
 RUN cd ~ \
-    && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
-    && bash nodesource_setup.sh\
-    && apt install nodejs\
-    && nodejs -v
+    && apt install nodejs
+    # && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
+    # && bash nodesource_setup.sh\
+    # && apt install nodejs\
+    # && nodejs -v
 
 # See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
 RUN export DEBIAN_FRONTEND=noninteractive; \
