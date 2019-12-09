@@ -1,6 +1,5 @@
 module Admin
   class ApiUsersController < Admin::ApplicationController
-    include AdministrateExportable::Exporter
     
     before_action :require_superadmin_or_relecteur
 
