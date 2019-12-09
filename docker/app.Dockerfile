@@ -4,7 +4,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
+    && apt-get install -y --no-install-recommends ruby libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
