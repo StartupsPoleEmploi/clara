@@ -1,15 +1,14 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.10
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
-RUN apt-get update; \
-    apt remove libcurl4; \
-    apt-get install -y --no-install-recommends libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libcurl4-openssl-dev libcurl4 curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
-    && curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh \
+    && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
