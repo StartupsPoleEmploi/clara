@@ -4,17 +4,18 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Utilities
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
+    && apt-get install -y --no-install-recommends wget git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
 RUN cd ~ \
-    && curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh \
+    && wget -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
 
 # See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
-RUN apt-get install -y tzdata
+RUN export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y tzdata
 
 # for postgres
 RUN apt-get install -y libpq-dev
@@ -36,8 +37,8 @@ RUN echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ./allow_local_tunn
 RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 
 # Pre-load deployment gems
-RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile
-RUN curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
+RUN wget https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -O Gemfile
+RUN wget https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -O Gemfile.lock
 RUN bundle install --without development test undefined 
 
 # Launch cron jobs (for db dump everyday)
