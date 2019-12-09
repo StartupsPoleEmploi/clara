@@ -8,7 +8,7 @@ RUN apt-get update \
 
 # executable JS is required
 RUN cd ~ \
-    && apt-get install nodejs npm
+    && apt-get install -y nodejs npm
     # && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
     # && bash nodesource_setup.sh\
     # && apt install nodejs\
