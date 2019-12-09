@@ -6,8 +6,7 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 RUN apt-get update && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
 
 # executable JS is required
-RUN cd ~\
-    && curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh\
+RUN curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh\
     && bash nodesource_setup.sh\
     && apt install nodejs\
     && nodejs -v
