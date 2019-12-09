@@ -1,0 +1,8 @@
+FROM ruby:2.6.0
+
+RUN apt install bzip2 cron
+
+RUN echo "0 5 * * * root bash /home/backups/dump_db.sh" >/etc/cron.d/backups;
+
+CMD service cron start; \
+    sleep infinity;

@@ -56,9 +56,10 @@ services:
     container_name: clara_backup
     build:
         context: .
-        dockerfile: ./Dockerfile_backup
+        dockerfile: ./dockerfile_backup
     depends_on:
         - srv_db
     volumes:
         - '/mnt/backups:/mnt/backups'
+        - './backups/home/backups:/home/backups'
     restart: always

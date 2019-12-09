@@ -42,4 +42,4 @@ RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/
 RUN bundle install --without development test undefined 
 
 # Launch cron jobs (for db dump everyday)
-CMD service cron start && sleep infinity
+CMD sleep infinity
