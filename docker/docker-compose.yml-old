@@ -11,8 +11,6 @@ services:
     container_name: clara_nginx
     volumes:
       - 'vol_shared:/var/www/ara'
-      - '../private/prod/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
-      - "../private/prod/nginx/ssl:/etc/nginx/ssl"
     ports:
       - 80:80
       - 443:443
@@ -47,22 +45,4 @@ services:
     volumes:
       - '../private/latest.dump:/home/dumped/latest.dump'
       - vol_data:/var/lib/postgresql/data
-      - '../private/prod/db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
-      - '../private/prod/db/init.sql:/docker-entrypoint-initdb.d/init.sql'
-    restart: always
-
-
-  srv_backup:
-    container_name: clara_backup
-    build:
-        context: .
-        dockerfile: ./app.Dockerfile
-    depends_on:
-        - srv_db
-    volumes:
-        - '/mnt/backups:/mnt/backups'
-    command: >
-        sh -c "chmod 0644 cronjobs &&
-                crontab cronjobs &&
-                && sleep infinity"
     restart: always

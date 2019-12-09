@@ -25,4 +25,5 @@ services:
       - '/mnt/backups:/mnt/backups'
     command: >
       sh -c "chmod 0644 cronjobs &&
-              crontab cronjobs"
+              crontab cronjobs
+              "
