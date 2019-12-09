@@ -1,4 +1,4 @@
-describe("Voir une aide", function() {
+describe("Lister les aides", function() {
 
   describe("Pour un relecteur", function() {
     before(function() {
