@@ -44,6 +44,7 @@ describe("Pour un contributeur", function () {
                   "/admin/tracings", 
                   "/admin/traces", 
                   "/admin/users", 
+                  "/admin/api_users", 
                   "/admin/rules", 
                   "/admin/contract_types",
                   "/admin/custom_filters", 
