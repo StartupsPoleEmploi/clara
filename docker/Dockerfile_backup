@@ -2,6 +2,6 @@ FROM ruby:2.6.0
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN chmod -x scripts/dump_db.sh \
+RUN ls \# chmod -x scripts/dump_db.sh \
 #    && bash scripts/dump_db.sh \
     && sleep infinity
