@@ -56,13 +56,9 @@ services:
     container_name: clara_backup
     build:
         context: .
-        dockerfile: ./app.Dockerfile
+        dockerfile: ./Dockerfile_backup
     depends_on:
         - srv_db
     volumes:
         - '/mnt/backups:/mnt/backups'
-    command: >
-        sh -c "chmod 0644 cronjobs &&
-                crontab cronjobs &&
-                && sleep infinity"
     restart: always
