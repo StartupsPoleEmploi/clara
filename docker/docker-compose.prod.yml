@@ -18,6 +18,7 @@ services:
       
   srv_backup:
     container_name: clara_backup
+    image: alpine:3.6
     depends_on:
       - srv_db
     volumes:
