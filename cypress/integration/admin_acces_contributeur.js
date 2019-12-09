@@ -41,6 +41,8 @@ describe("Pour un contributeur", function () {
   describe("URLs non-autorisées", function () {
     let urls = [
                   "/sign_up", 
+                  "/admin/conventions/new", 
+                  "/admin/conventions/1/edit", 
                   "/admin/tracings", 
                   "/admin/traces", 
                   "/admin/users", 
