@@ -29,7 +29,7 @@ services:
     volumes:
     #   - '..:/var/git/ara.git'
     #  - '../.env:/home/clara/.env'
-      - '../.:/home/clara'
+      - '../app:/home/clara'
     ports:
       - "3000:3000"
     depends_on:
