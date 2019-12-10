@@ -62,4 +62,5 @@ services:
     volumes:
         - '/mnt/backups:/mnt/backups'
         - './backups/home/backups:/home/backups'
+        - '../private/prod/.env:/home/clara/.env'
     restart: always
