@@ -60,7 +60,13 @@ describe("Étape 4", function() {
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      
+
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
       // then
@@ -74,7 +80,11 @@ describe("Étape 4", function() {
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+      
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
 
@@ -89,7 +99,11 @@ describe("Étape 4", function() {
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+      
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
 
@@ -106,7 +120,11 @@ describe("Étape 4", function() {
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+      
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
 
@@ -120,14 +138,21 @@ describe("Étape 4", function() {
       cy.get("#select-department-selectized").type("{enter}")
       cy.get("#select-town-selectized").click()
       cy.get("#select-town-selectized").type("ile")
+      
+      // remote XHR, wait...
       cy.wait(2000)
+
       cy.get("#select-town-selectized").type("{enter}")
 
       // when
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+      
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
 
@@ -155,7 +180,11 @@ describe("Étape 4", function() {
       cy.get('#record_root_rule').click()
       cy.visit('/admin/get_cache')
       cy.get('#button-empty-cache').click()
-      cy.wait(2000)
+      
+      // wait for clear cache to finish
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
       // then
