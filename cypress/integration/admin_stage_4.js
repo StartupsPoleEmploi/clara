@@ -115,11 +115,13 @@ describe("Étape 4", function() {
     })
     it("... en incluant un ou plusieurs critère(s) géographique(s)  - exemple avec un plusieurs", function() {
       // given
-      cy.get('#tout_sauf').click()
-      cy.get("#select-region-selectized").click()
-      cy.get("#select-region-selectized").type("{enter}")
+      cy.get('#rien_sauf').click()
       cy.get("#select-department-selectized").click()
       cy.get("#select-department-selectized").type("{enter}")
+      cy.get("#select-town-selectized").click()
+      cy.get("#select-town-selectized").type("ile")
+      cy.wait(2000)
+      cy.get("#select-town-selectized").type("{enter}")
 
       // when
       cy.get('#record_root_rule').click()
@@ -130,7 +132,7 @@ describe("Étape 4", function() {
       cy.get('#label_tab_4').click()
 
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("blabla");
+      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider à Île-Tudy 29soit Résider dans le département 01 Ainsoit Résider dans la région Auvergne-Rhône-Alpes");
     })
     it("On peut enregistrer une règle composite", function() {
       // given
