@@ -28,7 +28,7 @@ RUN mkdir /root/.ssh/
 RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
 RUN echo "root:root" | chpasswd
-# RUN mkdir -p /home/clara
+RUN mkdir -p /home/clara
 WORKDIR /home/clara
 
 RUN echo "service ssh restart" > ./allow_local_tunnel.sh
@@ -40,9 +40,6 @@ RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 #RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile
 #RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
 
-#RUN bundle install --without development test undefined 
-RUN ls -la
-RUN cd ..
 RUN bundle install --without development test undefined 
 
 # Launch cron jobs (for db dump everyday)
