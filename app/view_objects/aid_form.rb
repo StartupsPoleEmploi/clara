@@ -13,9 +13,6 @@ class AidForm < ViewObject
   def _build_h(rule_id)
 
     actual_rule = @rules.detect{|r| r["id"] == rule_id}
-    p '- - - - - - - - - - - - - - actual_rule- - - - - - - - - - - - - - - -' 
-    pp actual_rule
-    p ''
     res = {
       name: actual_rule["name"],
       description: actual_rule["description"],
@@ -33,16 +30,10 @@ class AidForm < ViewObject
   def ability_tree
     res = {}
     root_rule_id = @page.resource.attributes["rule_id"]
-    p '- - - - - - - - - - - - - - root_rule_id- - - - - - - - - - - - - - - -' 
-    pp root_rule_id
-    p ''
     if root_rule_id
       begin
         res = _build_h(root_rule_id)
       rescue StandardError
-        p '- - - - - - - - - - - - - - StandardError- - - - - - - - - - - - - - - -' 
-        pp res
-        p ''
         res = {}
       end
     end
