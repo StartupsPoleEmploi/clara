@@ -5,7 +5,6 @@ date=`date +%d`
 DUMP_NAME=database_"$date".dump.bz2
 WWW_NAME=www_"$date".bz2
 
-#DATABASE_NAME=`docker exec srv_app printenv ARA_DATABASE_NAME`
 DATABASE_NAME=ara_production
 ENV_NAME=production
 
