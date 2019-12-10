@@ -40,7 +40,7 @@ RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 #RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile
 #RUN curl -sL https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
 
-RUN bundle install --without development test undefined 
+# RUN bundle install --without development test undefined 
 
 # Launch cron jobs (for db dump everyday)
 CMD sleep infinity
