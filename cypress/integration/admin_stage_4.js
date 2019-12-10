@@ -96,6 +96,42 @@ describe("Étape 4", function() {
       // then
       cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider dans le département Guadeloupesoit Résider dans le département Martiniquesoit Résider dans le département Guyanesoit Résider dans le département La Réunionsoit Résider dans le département Saint-Pierre-et-Miquelonsoit Résider dans le département Mayotte");
     })
+    it("... en excluant un ou plusieurs critère(s) géographique(s)  - exemple avec un seul", function() {
+      // given
+      cy.get('#tout_sauf').click()
+      cy.get("#select-region-selectized").click()
+      cy.get("#select-region-selectized").type("{enter}")
+
+      // when
+      cy.get('#record_root_rule').click()
+      cy.visit('/admin/get_cache')
+      cy.get('#button-empty-cache').click()
+      cy.wait(2000)
+      cy.visit('/admin/aids/test-stage-4')
+      cy.get('#label_tab_4').click()
+
+      // then
+      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Ne pas résider dans la région Auvergne-Rhône-Alpes");
+    })
+    it("... en incluant un ou plusieurs critère(s) géographique(s)  - exemple avec un plusieurs", function() {
+      // given
+      cy.get('#tout_sauf').click()
+      cy.get("#select-region-selectized").click()
+      cy.get("#select-region-selectized").type("{enter}")
+      cy.get("#select-department-selectized").click()
+      cy.get("#select-department-selectized").type("{enter}")
+
+      // when
+      cy.get('#record_root_rule').click()
+      cy.visit('/admin/get_cache')
+      cy.get('#button-empty-cache').click()
+      cy.wait(2000)
+      cy.visit('/admin/aids/test-stage-4')
+      cy.get('#label_tab_4').click()
+
+      // then
+      cy.get(".c-display-appfield").shouldHaveTrimmedText("blabla");
+    })
     it("On peut enregistrer une règle composite", function() {
       // given
       cy.visit('/admin/aid_creation/new_aid_stage_4?modify=true&slug=test-stage-4')
