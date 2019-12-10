@@ -1,0 +1,52 @@
+FROM ruby:2.6.0
+
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Utilities
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
+
+# executable JS is required
+RUN cd ~ \
+    && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
+    && bash nodesource_setup.sh\
+    && apt install nodejs\
+    && nodejs -v
+
+# See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
+RUN export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y tzdata
+
+# for postgres
+RUN apt-get install -y libpq-dev
+
+# for nokogiri
+RUN apt-get install -y libxml2-dev libxslt1-dev
+
+# For local tunneling
+RUN mkdir /root/.ssh/
+RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
+
+RUN echo "root:root" | chpasswd
+
+
+RUN echo "service ssh restart" > ~/allow_local_tunnel.sh; \
+    echo "yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''" >> ~/allow_local_tunnel.sh; \
+    echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ~/allow_local_tunnel.sh; \
+    echo "chmod og-wx ~/.ssh/authorized_keys" >> ~/allow_local_tunnel.sh;
+
+RUN chmod u+x ~/allow_local_tunnel.sh; \
+    ~/allow_local_tunnel.sh;
+
+COPY rails/Gemfile* /root/
+
+RUN cd ~; \
+    bundle install --without development test undefined;
+
+# Launch cron jobs (for db dump everyday)
+CMD service ssh start; \
+    cd /home/clara; \
+    export RUBYOPT="-KU -E utf-8:utf-8"; \
+    bundle exec mina production2 setup; \
+    bundle exec mina production2 deploy;\
+    sleep infinity
