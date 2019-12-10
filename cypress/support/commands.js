@@ -105,3 +105,15 @@ Cypress.Commands.add('delete_an_aid', (aid_slug) => {
   cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
   cy.disconnect_from_admin()
 });
+
+// See https://github.com/cypress-io/cypress/issues/3887#issuecomment-522962482
+Cypress.Commands.add(
+    'shouldHaveTrimmedText',
+    {
+        prevSubject: true,
+    },
+    (subject, equalTo) => {
+        expect(subject.text().trim()).to.eq(equalTo);
+        return subject;
+    },
+);
