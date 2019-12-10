@@ -28,7 +28,7 @@ RUN mkdir /root/.ssh/
 RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
 RUN echo "root:root" | chpasswd
-RUN mkdir -p /home/clara
+COPY ../. /home/clara
 WORKDIR /home/clara
 
 RUN echo "service ssh restart" > ./allow_local_tunnel.sh
