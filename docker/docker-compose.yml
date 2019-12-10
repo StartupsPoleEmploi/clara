@@ -1,7 +1,7 @@
 version: "2.2"
 
 volumes:
-  vol_shared: ../.
+  vol_shared:
   vol_data:
 
 services:
@@ -29,8 +29,7 @@ services:
     volumes:
     #   - '..:/var/git/ara.git'
     #  - '../.env:/home/clara/.env'
-      - 'vol_shared:/var/www/ara'
-      - 'vol_shared:/home/clara'
+      - '../.:/home/clara'
     ports:
       - "3000:3000"
     depends_on:
