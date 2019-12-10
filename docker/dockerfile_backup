@@ -4,6 +4,7 @@ RUN apt-get update && \
     apt-get -y install bzip2 cron postgresql-client
 
 RUN echo "0 5 * * * root bash /home/backups/dump_db.sh" >/etc/cron.d/backups;
+RUN echo "0 5 * * * root bash /home/backups/clone_www.sh" >/etc/cron.d/backups;
 
 CMD service cron start; \
     sleep infinity;
