@@ -113,7 +113,7 @@ describe("Étape 4", function() {
       // then
       cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Ne pas résider dans la région Auvergne-Rhône-Alpes");
     })
-    it("... en incluant un ou plusieurs critère(s) géographique(s)  - exemple avec un plusieurs", function() {
+    it("... en incluant un ou plusieurs critère(s) géographique(s)  - exemple avec plusieurs", function() {
       // given
       cy.get('#rien_sauf').click()
       cy.get("#select-department-selectized").click()
