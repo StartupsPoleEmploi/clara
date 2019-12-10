@@ -30,7 +30,9 @@ services:
       #- "./rails/private/latest.dump:/home/dumped/latest.dump"
 
   srv_db:
-    image: postgres:9.5.17
+    build:
+      context: .
+      dockerfile: dockerfile_db
     hostname: clara_db
     container_name: clara_db
     #ports:
