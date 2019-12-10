@@ -1,6 +1,6 @@
 Vous pouvez rafraîchir les rules, contract_types et aids ici
 <%= form_with url: admin_post_cache_path, local: false, id: 'admin_post_cache_form' do |form| %>
-  <%= form.submit 'Supprimer le cache de l\'accueil, rules, aides actives, contract_types et filtres' %>
+  <%= form.submit 'Supprimer le cache de l\'accueil, rules, aides actives, contract_types et filtres', id: "button-empty-cache" %>
 <% end %>
 <p>&nbsp;</p>
 <script> 
