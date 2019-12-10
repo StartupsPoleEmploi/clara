@@ -1,7 +1,7 @@
 version: "2.2"
 
 volumes:
-  vol_shared:
+  vol_shared:../.
   vol_data:
 
 services:
@@ -30,15 +30,15 @@ services:
     #   - '..:/var/git/ara.git'
     #  - '../.env:/home/clara/.env'
       - 'vol_shared:/var/www/ara'
-      - '..:/home/clara'
+    # - '../:/home/clara'
     ports:
       - "3000:3000"
     depends_on:
       - srv_db
-    command: >
-      sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
-             cd /var/git/ara.git && bundle install --without development test undefined &&
-             echo 'My app launched !!!' && sleep infinity"
+    # command: >
+    #   sh -c "chmod u+x ./allow_local_tunnel.sh && ./allow_local_tunnel.sh &&
+    #          cd /var/git/ara.git && bundle install --without development test undefined &&
+    #          echo 'My app launched !!!' && sleep infinity"
 
   srv_db:
     container_name: clara_db
