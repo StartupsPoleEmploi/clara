@@ -1,7 +1,7 @@
 version: "2.2"
 
 volumes:
-  vol_shared: '../.'
+  vol_shared: ../.
   vol_data:
 
 services:
