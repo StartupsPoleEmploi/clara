@@ -28,7 +28,7 @@ RUN mkdir /root/.ssh/
 RUN echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
 
 RUN echo "root:root" | chpasswd
-COPY ../. /home/clara
+COPY .. /home/clara
 WORKDIR /home/clara
 
 RUN echo "service ssh restart" > ./allow_local_tunnel.sh
@@ -42,7 +42,7 @@ RUN echo "chmod og-wx ~/.ssh/authorized_keys" >> ./allow_local_tunnel.sh
 
 # RUN bundle install --without development test undefined 
 RUN sleep 30
-RUN cd /home/clara
+WORKDIR /home/clara
 RUN cat Gemfile
 RUN bundle install
 
