@@ -27,9 +27,10 @@ services:
       dockerfile: ./app.Dockerfile
     user: root
     volumes:
-      - '..:/var/git/ara.git'
+    #   - '..:/var/git/ara.git'
       - '../.env:/home/clara/.env'
       - 'vol_shared:/var/www/ara'
+      -'..:/home/clara'
     ports:
       - "3000:3000"
     depends_on:
