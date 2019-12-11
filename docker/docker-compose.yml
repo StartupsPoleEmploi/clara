@@ -2,6 +2,7 @@ version: "3"
 
 volumes:
   vol_data:
+  vol_shared:
 
 services:
 
@@ -9,7 +10,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile_nginx 
-      hostname: clara_nginx 
+    hostname: clara_nginx 
     container_name: clara_nginx
     volumes:
       - 'vol_shared:/var/www/ara'
@@ -21,7 +22,6 @@ services:
     depends_on:
       - srv_rails
     restart: always
-
 
 
   srv_rails:
