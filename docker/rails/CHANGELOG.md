@@ -1,6 +1,6 @@
 # CLARA Changelog
 
-## 24.0.0 (10/12/2019)
+## 24.0.0 (12/12/2019)
 -[#1413][TECH] Dockerisation de la prod
 
 
