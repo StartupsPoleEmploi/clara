@@ -2,6 +2,10 @@
 
 
 
+## 23.1.13 (12/12/2019)
+-[#1492][TECH] BO - recette fonctionnelle étape 5
+
+
 ## 23.1.12 (11/12/2019)
 -[#1488][BUG] BO - création d'aide - affichage des critères géo trop petit
 
