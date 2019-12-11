@@ -14,8 +14,8 @@ services:
     container_name: clara_nginx
     volumes:
       - 'vol_shared:/var/www/ara'
-      - '../private/prod/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
-      - "../private/prod/nginx/ssl:/etc/nginx/ssl"
+      - './private/prod/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
+      - "./private/prod/nginx/ssl:/etc/nginx/ssl"
     ports:
       - 80:80
       - 443:443
