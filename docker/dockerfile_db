@@ -1,6 +1,6 @@
 FROM postgres:9.5.17
 
-CMD pg_restore -d ara_production  /home/dumped/latest.dump; \
+CMD pg_restore -h localhost -d ara_production  /home/dumped/latest.dump; \
     sleep infinity;
 # CMD service cron start; \
 #    sleep infinity;

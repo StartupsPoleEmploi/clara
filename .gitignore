@@ -10,15 +10,15 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/docker/rails/db/*.sqlite3
+/docker/rails/db/*.sqlite3-journal
 ara
 *.dump
 *.psql
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+/docker/rails/log/*
+/docker/rails/tmp/*
 !/log/.keep
 !/tmp/.keep
 
@@ -32,21 +32,21 @@ ara
 .env
 
 # Ignore page cache
-/public/index.html
+/docker/rails/public/index.html
 # Ignore profiling
-/public/profile/*
+/docker/rails/public/profile/*
 # Ignore precompiled assets
-/public/assets/*
+/docker/rails/public/assets/*
 # Ignore temp file
-/public/activated_models.txt
+/docker/rails/public/activated_models.txt
 
 # Everything private remains private
-/private/*
+/docker/private/*
 
-coverage
+/docker/rails/coverage
 
-/cypress/videos/*
-/cypress/screenshots/*
+/docker/rails/cypress/videos/*
+/docker/rails/cypress/screenshots/*
 
 
 
