@@ -23,9 +23,9 @@ describe("Étape 2", function() {
     // THEN
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
 
-    cy.wait(2000)
-
     // close notice
+    cy.get('.tooltip__closetext__container').should('exist')
+    cy.get('.field-unit--ckeditor').should('exist')
     cy.get('.tooltip__closetext__container').click()
 
     // Should have 5 empty editors
