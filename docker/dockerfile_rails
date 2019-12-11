@@ -46,7 +46,8 @@ RUN cd ~; \
 # Launch cron jobs (for db dump everyday)
 CMD service ssh start; \
     cd /home/clara; \
-    export RUBYOPT="-KU -E utf-8:utf-8"; \
-    bundle exec mina production2 setup; \
-    bundle exec mina production2 deploy;\
+    chmod u+x scripts/deploy.sh; \
+    sh scripts/deploy.sh; \
+#    bundle exec mina production2 setup; \
+#    bundle exec mina production2 deploy;\
     sleep infinity

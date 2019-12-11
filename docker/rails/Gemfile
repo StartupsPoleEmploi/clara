@@ -53,7 +53,7 @@ gem "administrate"
 gem "administrate-field-ckeditor", "~> 0.0.8"
 
 gem "mina", require: false, group: "deployment"
-gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma', group: "deployment"
+gem "mina-puma", require: false, github: 'bdavidxyz/mina-puma', group: "deployment" # Remove personal dependencies
 gem "mina-multistage", require: false, group: "deployment"
 gem "climate_control"
 gem "fuubar"
@@ -62,7 +62,7 @@ gem "knock"
 gem "bcrypt", "~> 3.1.7"
 gem "google-api-client"
 gem "i18n-js"
-gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
+gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable' # Remove personal dependencies
 gem "clearance"
 gem "bootsnap"
 
@@ -74,7 +74,7 @@ group :development, :test do
   gem "pry-stack_explorer"
   gem "pry-remote"
   gem "magic_lamp"
-  gem "teaspoon-jasmine", git: 'https://github.com/bdavidxyz/teaspoon-jasmine.git'
+  gem "teaspoon-jasmine", git: 'https://github.com/bdavidxyz/teaspoon-jasmine.git' # Remove personal dependencies
   gem "factory_bot_rails", "~> 4.0"
 end
 

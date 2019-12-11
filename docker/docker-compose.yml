@@ -17,8 +17,8 @@ services:
       - './private/prod/nginx/clara.conf:/etc/nginx/conf.d/default.conf'
       - "./private/prod/nginx/ssl:/etc/nginx/ssl"
     ports:
-      - 80:80
-      - 443:443
+      - 80
+      - 443
     depends_on:
       - srv_rails
     restart: always
@@ -59,7 +59,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-    - "../private/latest.dump:/home/dumped/latest.dump"
+    - "./private/latest.dump:/home/dumped/latest.dump"
     #  - "./database/home/dumped:/home/dumped"
     - "vol_data:/var/lib/postgresql/data"
     #  - '../private/prod/db/pg_hba.conf:/etc/postgresql/9.5/main/pg_hba.conf'
