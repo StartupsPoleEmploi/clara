@@ -140,7 +140,7 @@ describe("Étape 4", function() {
       cy.get("#select-town-selectized").type("ile")
       
       // remote XHR, wait...
-      cy.wait(2000)
+      cy.get('.c-geoselect--town .option.active').should('exist');
 
       cy.get("#select-town-selectized").type("{enter}")
 

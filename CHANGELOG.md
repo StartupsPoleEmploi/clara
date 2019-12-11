@@ -2,6 +2,10 @@
 
 
 
+## 23.1.12 (11/12/2019)
+-[#1488][BUG] BO - création d'aide - affichage des critères géo trop petit
+
+
 ## 23.1.11 (10/12/2019)
 -[#1490][TECH] cypress étape 4
 
