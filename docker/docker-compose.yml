@@ -33,6 +33,7 @@ services:
     restart: always
     volumes:
       - "./rails:/home/clara"
+      - './private/prod/.env:/home/clara/.env'
     ports:
       - "3000:3000"
 
