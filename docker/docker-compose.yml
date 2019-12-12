@@ -57,7 +57,8 @@ services:
     container_name: clara_db
     restart: always
     ports:
-      - "5432:5432"
+      - 5432:5432
+      - 23780
     volumes:
     - "./private/latest.dump:/home/dumped/latest.dump"
     #  - "./database/home/dumped:/home/dumped"
