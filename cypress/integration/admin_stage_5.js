@@ -60,6 +60,11 @@ describe("Étape 5", function() {
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
       cy.get(".c-newaid-removedraft").should("not.have.attr", "disabled")
     })
+    it("Si le contributeur choisi de conserver le brouillon, il apparaît comme simple brouillon dans la liste des aides", function() {
+      cy.get(".c-newaid-keepdraft").click()
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Brouillon")
+    })
   })
 
   describe("Si il complète les étapes manquantes", function() {
@@ -105,16 +110,69 @@ describe("Étape 5", function() {
     it("Auquel cas on signale à l'utilisateur qu'il peut demander la relecture", function() {
       cy.get(".c-newaid-subtitle-expl").shouldHaveTrimmedText("Elle sera publiée sur le site après relecture par un tiers.")
     })
+    it("Auquel cas il y a 3 actions possibles", function() {
+      cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 3)
+    })
     it("Auquel cas le bouton de demande de relecture est présent et actif", function() {
-      cy.get(".c-newaid-askforreread").should("not.have.attr", "disabled")
+      cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-askforreread").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
-      cy.get(".c-newaid-keepdraft").should("not.have.attr", "disabled")
+      cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-keepdraft").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
-      cy.get(".c-newaid-removedraft").should("not.have.attr", "disabled")
+      cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-removedraft").should("not.have.attr", "disabled")
+    })
+    it("Si le contributeur choisi de conserver le brouillon, il apparaît comme brouillon complété dans la liste des aides", function() {
+      cy.get(".c-newaid-keepdraft").click()
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Brouillon, complet")
+    })
+    it("Si le contributeur choisi de demander la relecture, il apparaît comme en attente de relecture dans la liste des aides", function() {
+      //given
+      cy.visit('/admin/aid_creation/new_aid_stage_5?modify=true&slug=test-stage-5')
+      cy.get(".c-newaid-askforreread").should("exist")
+      //when
+      cy.get(".c-newaid-askforreread").click()
+      //then
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("En attente de relecture")
+    })
+    it("Si le contributeur choisi de revenir en modification sur l'aide, il n'y a plus d'actions possibles à l'étape 5", function() {
+      //given
+      //when
+      cy.visit('/admin/aid_creation/new_aid_stage_5?modify=true&slug=test-stage-5')
+      cy.get(".c-newaid-subtitle").should("exist")
+      //then
+      cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 0)
     })
   })
+
+  describe("Si un relecteur arrive sur l'écran de modification de l'aide", function() {
+
+    before(function() {
+      // given
+      cy.connect_as_relecteur1()
+      // when
+      cy.visit("/admin/aid_creation/new_aid_stage_5?modify=true&slug=test-stage-5")
+    })
+    it("Auquel cas il n'y a qu'une action possible", function() {
+      // then
+      cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 1)
+    })
+    it("Cette action est la publication sur le site web, en front", function() {
+      // then
+      cy.get(".c-newaid-finalactions .c-newbutton.js-publishonsite").should("exist")
+    })
+    it("Si le relecteur choisi de publier l'aide, elle apparaît comme publiée dans la liste des aides", function() {
+      // when
+      cy.get(".c-newaid-finalactions .c-newbutton.js-publishonsite").click()
+      // then
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Publiée")
+    })
+
+  })
+
 
 })
 

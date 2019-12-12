@@ -5,7 +5,7 @@
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "publish") %>
-              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord js-publishonsite" %>
             <% end %>            
           </div>
         <% elsif v.status_published? %>
@@ -24,7 +24,7 @@
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
               <%= hidden_field(:slug, :value, value: page.resource.slug) %>
               <%= hidden_field(:action_asked, :value, value: "publish") %>
-              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord" %>
+              <%= f.submit "Publier sur le site web", class: "c-newbutton c-newaid-actionrecord js-publishonsite" %>
             <% end %>            
           </div>
         <% elsif v.status_archived? && !v._all_stages_ok? %>
