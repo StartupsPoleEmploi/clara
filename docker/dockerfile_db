@@ -1,6 +1,16 @@
 FROM postgres:9.5.17
 
-CMD pg_restore -h localhost -d ara_production  /home/dumped/latest.dump; \
-    sleep infinity;
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+COPY private/prod/db/init.sql /
+
+#RUN su - postgres -c "psql -f /init.sql"
+
+CMD ["postgres"]
+
+#CMD sh -c "postgres &"; \
+#    pg_restore -h localhost -d ara_production  /home/dumped/latest.dump; \
+#    sleep infinity;
+
 # CMD service cron start; \
 #    sleep infinity;
