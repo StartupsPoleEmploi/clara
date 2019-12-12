@@ -27,6 +27,7 @@ describe("Quand on arrive sur la question adresse", function () {
     // given
     cy.visit('/address_questions/new')
     cy.get('input[type="number"]').first().type("44200")
+    cy.get('li.autocomplete-item').should("exist")
     cy.get('li.autocomplete-item').first().click()
     // when
     cy.get('input[value="Continuer"]').click()

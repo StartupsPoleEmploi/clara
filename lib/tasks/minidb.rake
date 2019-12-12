@@ -22,7 +22,7 @@ namespace :minidb do
       slug:[
         "vsi-volontariat-de-solidarite-internationale",
         "erasmus",
-        "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
+        "contrat-adultes-relais",
         "autres-aides-nationales-pour-la-mobilite",
       ]).destroy_all
 
