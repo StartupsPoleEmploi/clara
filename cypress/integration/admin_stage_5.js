@@ -55,13 +55,13 @@ describe("Étape 5", function() {
       cy.get(".js-askforreread").should("have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
-      cy.get(".c-newaid-keepdraft").should("not.have.attr", "disabled")
+      cy.get(".js-keepdraft").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
       cy.get(".c-newaid-removedraft").should("not.have.attr", "disabled")
     })
     it("Si le contributeur choisi de conserver le brouillon, il apparaît comme simple brouillon dans la liste des aides", function() {
-      cy.get(".c-newaid-keepdraft").click()
+      cy.get(".js-keepdraft").click()
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Brouillon")
     })
@@ -117,13 +117,13 @@ describe("Étape 5", function() {
       cy.get(".c-newaid-finalactions .c-newbutton.js-askforreread").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
-      cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-keepdraft").should("not.have.attr", "disabled")
+      cy.get(".c-newaid-finalactions .c-newbutton.js-keepdraft").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
       cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-removedraft").should("not.have.attr", "disabled")
     })
     it("Si le contributeur choisi de conserver le brouillon, il apparaît comme brouillon complété dans la liste des aides", function() {
-      cy.get(".c-newaid-keepdraft").click()
+      cy.get(".js-keepdraft").click()
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Brouillon, complet")
     })
@@ -171,10 +171,7 @@ describe("Étape 5", function() {
     })
     it("Elle est publiée sur le front grand public après vidage manuel du cache", function() {
       //given
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
       //when
       cy.visit("/aides/detail/test-stage-5")
       //then

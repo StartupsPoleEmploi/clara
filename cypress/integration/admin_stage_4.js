@@ -58,15 +58,9 @@ describe("Étape 4", function() {
       cy.get('.c-apprule-button.is-validation').click()
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
 
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
       
-
-
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
       // then
@@ -78,12 +72,8 @@ describe("Étape 4", function() {
 
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
-      
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
+
 
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
@@ -97,12 +87,8 @@ describe("Étape 4", function() {
 
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
-      
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
+
 
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
@@ -118,12 +104,8 @@ describe("Étape 4", function() {
 
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
-      
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
+
 
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
@@ -146,12 +128,7 @@ describe("Étape 4", function() {
 
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
-      
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      cy.clear_the_cache()
 
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()
@@ -178,12 +155,8 @@ describe("Étape 4", function() {
 
       // when
       cy.get('#record_root_rule').click()
-      cy.visit('/admin/get_cache')
-      cy.get('#button-empty-cache').click()
+      cy.clear_the_cache()
       
-      // wait for clear cache to finish
-      cy.get('#button-empty-cache[disabled]').should('exist')
-      cy.get('#button-empty-cache[disabled]').should('not.exist')
 
       cy.visit('/admin/aids/test-stage-4')
       cy.get('#label_tab_4').click()

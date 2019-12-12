@@ -43,7 +43,7 @@
               <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>
                 <%= hidden_field(:slug, :value, value: page.resource.slug) %>
                 <%= hidden_field(:action_asked, :value, value: "keep") %>
-                <%= f.submit "Conserver le brouillon", class: "c-newbutton c-newaid-actionrecord c-newaid-keepdraft" %>
+                <%= f.submit "Conserver le brouillon", class: "c-newbutton c-newaid-actionrecord js-keepdraft" %>
               <% end %>            
             </div>
             <div  class="c-newaid-finalaction">

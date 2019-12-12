@@ -16,7 +16,7 @@ By default, the attribute is rendered as a truncated string.
 %>
 
 <%- actual_v = field.resource.class.to_s.downcase + '.' + field.attribute.to_s + '.' + field.data.to_s %>
-<%- actual_name = field.resource.name ? field.resource.name : "" %>
+<%- actual_name = field.resource.try(:name) ? field.resource.try(:name) : "" %>
 <%- actual_col = field.resource.class.to_s.downcase + '.' + field.attribute.to_s %>
 <%- transl = t(actual_v, default: field.truncate.to_s).to_s.truncate(30) %>
 <span data-name="<%=actual_name%>" data-col="<%=actual_col%>" data-key="<%=actual_v%>" data-val="<%=field.truncate.to_s%>"><%= transl %></span>

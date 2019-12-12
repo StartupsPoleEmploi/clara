@@ -106,6 +106,15 @@ Cypress.Commands.add('delete_an_aid', (aid_slug) => {
   cy.disconnect_from_admin()
 });
 
+Cypress.Commands.add('clear_the_cache', () => {
+  cy.visit('/admin/get_cache')
+  cy.get('#button-empty-cache').should("exist")
+  cy.get('#button-empty-cache').click()
+  // wait for clear cache to finish
+  cy.get('#button-empty-cache[disabled]').should('exist')
+  cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
+});
+
 // See https://github.com/cypress-io/cypress/issues/3887#issuecomment-522962482
 Cypress.Commands.add(
     'shouldHaveTrimmedText',
