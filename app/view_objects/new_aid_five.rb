@@ -9,7 +9,7 @@ class NewAidFive < ViewObject
   end
 
   def reread_h
-    res = {class: "c-newbutton c-newaid-actionrecord"}
+    res = {class: "c-newbutton c-newaid-actionrecord c-newaid-askforreread"}
     if !_all_stages_ok?
       res[:disabled] = "disabled"
     end
