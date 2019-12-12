@@ -52,7 +52,7 @@ describe("Étape 5", function() {
       cy.get(".c-newaid-subtitle-expl").shouldHaveTrimmedText("Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignées.")
     })
     it("Auquel cas le bouton de demande de relecture est présent mais inactif", function() {
-      cy.get(".c-newaid-askforreread").should("have.attr", "disabled")
+      cy.get(".js-askforreread").should("have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
       cy.get(".c-newaid-keepdraft").should("not.have.attr", "disabled")
@@ -114,7 +114,7 @@ describe("Étape 5", function() {
       cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 3)
     })
     it("Auquel cas le bouton de demande de relecture est présent et actif", function() {
-      cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-askforreread").should("not.have.attr", "disabled")
+      cy.get(".c-newaid-finalactions .c-newbutton.js-askforreread").should("not.have.attr", "disabled")
     })
     it("Auquel cas le bouton de conservation du brouillon est présent et actif", function() {
       cy.get(".c-newaid-finalactions .c-newbutton.c-newaid-keepdraft").should("not.have.attr", "disabled")
@@ -130,9 +130,9 @@ describe("Étape 5", function() {
     it("Si le contributeur choisi de demander la relecture, il apparaît comme en attente de relecture dans la liste des aides", function() {
       //given
       cy.visit('/admin/aid_creation/new_aid_stage_5?modify=true&slug=test-stage-5')
-      cy.get(".c-newaid-askforreread").should("exist")
+      cy.get(".js-askforreread").should("exist")
       //when
-      cy.get(".c-newaid-askforreread").click()
+      cy.get(".js-askforreread").click()
       //then
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("En attente de relecture")
@@ -148,7 +148,6 @@ describe("Étape 5", function() {
   })
 
   describe("Si un relecteur arrive sur l'écran de modification de l'aide", function() {
-
     before(function() {
       // given
       cy.connect_as_relecteur1()
@@ -170,7 +169,17 @@ describe("Étape 5", function() {
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Publiée")
     })
-
+    it("Elle est publiée sur le front grand public après vidage manuel du cache", function() {
+      //given
+      cy.visit('/admin/get_cache')
+      cy.get('#button-empty-cache').click()
+      cy.get('#button-empty-cache[disabled]').should('exist')
+      cy.get('#button-empty-cache[disabled]').should('not.exist')
+      //when
+      cy.visit("/aides/detail/test-stage-5")
+      //then
+      cy.get("body.c-body.detail").should("exist")
+    })
   })
 
 
