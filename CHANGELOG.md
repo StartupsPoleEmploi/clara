@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 23.1.14 (13/12/2019)
+-[#1493][TECH] front - recette fonctionnelle écran final
+
 
 ## 23.1.13 (12/12/2019)
 -[#1492][TECH] BO - recette fonctionnelle étape 5

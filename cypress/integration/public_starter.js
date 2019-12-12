@@ -10,5 +10,40 @@ describe("Pour un visiteur", function () {
     cy.location().should((loc) => { expect(loc.pathname).contains('question') })
   })
 
+  it("On peut remplir toutes les questions, on arrive sur l'écran de résultat", function () {
+
+    // given
+    cy.get('#moins_d_un_an').should("exist")
+    cy.get('#moins_d_un_an').click()
+    cy.get('.js-next').click()
+
+    cy.get('#radio_ARE_ASP').should("exist")
+    cy.get('#radio_ARE_ASP').click()
+    cy.get('.js-next').click()
+
+    cy.get('#montant').should("exist")
+    cy.get('#montant').type("842")
+    cy.get('.js-next').click()
+
+    cy.get('#age').should("exist")
+    cy.get('#age').type("33")
+    cy.get('.js-next').click()
+    
+    cy.get('#niveau_4').should("exist")
+    cy.get('#niveau_4').click()
+    cy.get('.js-next').click()
+    
+    cy.get('#search').should("exist")
+    cy.get('.js-next').click()
+    
+    cy.get('#val_spectacle').should("exist")
+
+    //when
+    cy.get('.js-next').click()
+
+    //then 
+    cy.get("body.c-body.aides").should("exist")
+
+  })
 })
 
