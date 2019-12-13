@@ -1,0 +1,324 @@
+.c-situation {
+  border: solid 1px #dcdcdc;
+  border-radius: 3px;
+  background-color:white;
+}
+
+.c-filterings-area__content {
+  border: solid 1px #dcdcdc;
+  border-radius: 3px;
+  background-color:white;  
+}
+
+h4.c-situation-title {
+  font-weight: 500;
+  text-align: center;
+  color: white;
+  background-color:#057dbc;
+  margin-bottom: space(0);
+}
+
+.c-situation__data-line:first-child {
+  margin-top: space(1);
+}
+
+.c-situation__data-prop {
+  color: grey;
+}
+
+.c-situation__data-val {
+  font-weight: bold;
+}
+
+.c-situation__header {
+  color: grey;
+}
+
+.c-situation__header-border {
+  border-bottom: 1px solid #C4C4C4;
+}
+
+.c-situation__header-link {
+  margin-right: space(2);
+}
+
+.c-situation__header-title {
+  font-weight: bold;
+}
+
+.c-situation-paragraph {
+  border-bottom: 1px solid #C4C4C4;
+  margin: space(6) space(5);
+  padding-bottom: space(6);
+  font-size: 16px;
+}
+
+.c-situation-paragraph--first {
+  margin-top: 0;
+  padding-top: space(6);
+}
+
+.c-situation-paragraph--last {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+
+.c-situation-paragraph + .c-situation-paragraph {
+  margin-top: space(0);
+}
+
+.c-situation-paragraph:last-child {
+  margin-bottom: space(4);
+}
+
+.c-situation-reset {
+  text-align: center;
+  margin-top: space(5);
+  margin-bottom: space(3);
+}
+
+a.c-situation-reset__button {
+  border: 0;
+  border-radius: space(8);
+  background-color: #057dbc;
+  padding: space(3) space(8);
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   #FLAG
+   ========================================================================== */
+
+/**
+ * The flag object is a design pattern similar to the media object, however it
+ * utilises `display: table[-cell];` to give us control over the vertical
+ * alignments of the text and image.
+ *
+ * http://csswizardry.com/2013/05/the-flag-object/
+ *
+ * 1. Allows us to control vertical alignments.
+ * 2. Force the object to be the full width of its parent. Combined with [1],
+ *    this makes the object behave in a quasi-`display: block;` manner.
+ * 3. Reset inherited `border-spacing` declarations.
+ */
+
+.o-flag {
+  display: table; /* [1] */
+  width: 100%; /* [2] */
+  border-spacing: 0; /* [3] */
+}
+
+  /**
+   * Items within a flag object. There should only ever be one of each.
+   *
+   * 1. Default to aligning content to their middles.
+   */
+
+  .o-flag__img,
+  .o-flag__body {
+    display: table-cell;
+    vertical-align: middle; /* [1] */
+  }
+
+  /**
+   * Flag images have a space between them and the body of the object.
+   *
+   * 1. Force `.flag__img` to take up as little space as possible:
+   *    https://pixelsvsbytes.com/2012/02/this-css-layout-grid-is-no-holy-grail/
+   */
+
+  .o-flag__img {
+    width: 1px; /* [1] */
+    padding-right: 1rem;
+
+    /**
+     * 1. Fixes problem with images disappearing.
+     *
+     *    The direct child selector '>' needs to remain in order for nested flag
+     *    objects to not inherit their parent’s formatting. In case the image tag
+     *    is wrapped into another tag, e.g. an anchor for linking reasons, it will
+     *    disappear. In that case try wrapping the whole o-flag__img object into
+     *    an anchor tag.
+     *
+     *    E.g.:
+     *
+     *      <a href="/">
+     *        <div class="o-flag__img">
+     *          <img src="./link/to/image.jpg" alt="image alt text">
+     *        </div>
+     *      </a>
+     */
+
+    > img {
+      max-width: none; /* [1] */
+    }
+
+  }
+
+  /**
+   * The container for the main content of the flag object.
+   *
+   * 1. Forces the `.flag__body` to take up all remaining space.
+   */
+
+  .o-flag__body {
+    width: auto; /* [1] */
+
+    &,
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+  }
+
+
+
+
+
+/* Size variants
+   ========================================================================== */
+
+.o-flag--flush {
+
+  > .o-flag__img {
+    padding-right: 0;
+    padding-left:  0;
+  }
+
+}
+
+
+.o-flag--tiny {
+
+  > .o-flag__img {
+    padding-right: .3rem;
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: .3rem;
+    }
+
+  }
+
+}
+
+
+.o-flag--small {
+
+  > .o-flag__img {
+    padding-right: .5rem;
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: .5rem;
+    }
+
+  }
+
+}
+
+
+.o-flag--large {
+
+  > .o-flag__img {
+    padding-right: 1.5rem;
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: 1.5rem;
+    }
+
+  }
+
+}
+
+
+.o-flag--huge {
+
+  > .o-flag__img {
+    padding-right: 2rem;
+  }
+
+  &.o-flag--reverse {
+
+    > .o-flag__img {
+      padding-right: 0;
+      padding-left: 2rem;
+    }
+
+  }
+
+}
+
+
+
+
+
+/* Reversed flag
+   ========================================================================== */
+
+/**
+ * 1. Swap the rendered direction of the object…
+ * 2. …and reset it.
+ * 3. Reassign margins to the correct sides.
+ */
+
+.o-flag--reverse {
+  direction: rtl; /* [1] */
+
+  > .o-flag__img,
+  > .o-flag__body {
+    direction: ltr; /* [2] */
+  }
+
+  > .o-flag__img {
+    padding-right: 0; /* [3] */
+    padding-left: 1rem; /* [3] */
+  }
+
+}
+
+
+
+
+
+/* Alignment variants
+   ========================================================================== */
+
+/**
+ * Vertically align the image- and body-content differently. Defaults to middle.
+ */
+
+.o-flag--top {
+
+  > .o-flag__img,
+  > .o-flag__body {
+    vertical-align: top;
+  }
+
+}
+
+
+.o-flag--bottom {
+
+  > .o-flag__img,
+  > .o-flag__body {
+    vertical-align: bottom;
+  }
+
+}
