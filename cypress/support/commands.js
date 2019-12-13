@@ -115,6 +115,46 @@ Cypress.Commands.add('clear_the_cache', () => {
   cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
 });
 
+Cypress.Commands.add('authorize_google_analytics', () => {
+  cy.visit('/cookies/preference/edit')
+  cy.get("body.c-body.cookies.edit").should("exist")
+
+  cy.get('#authorize_statistic').click()
+  cy.get('#submit-cookie-preference').click()
+
+  cy.get("body.c-body.welcome.index").should("exist")
+});
+
+Cypress.Commands.add('forbid_google_analytics', () => {
+  cy.visit('/cookies/preference/edit')
+  cy.get("body.c-body.cookies.edit").should("exist")
+
+  cy.get('#forbid_statistic').click()
+  cy.get('#submit-cookie-preference').click()
+
+  cy.get("body.c-body.welcome.index").should("exist")
+});
+
+Cypress.Commands.add('authorize_hotjar', () => {
+  cy.visit('/cookies/preference/edit')
+  cy.get("body.c-body.cookies.edit").should("exist")
+
+  cy.get('#authorize_navigation').click()
+  cy.get('#submit-cookie-preference').click()
+
+  cy.get("body.c-body.welcome.index").should("exist")
+});
+
+Cypress.Commands.add('forbid_hotjar', () => {
+  cy.visit('/cookies/preference/edit')
+  cy.get("body.c-body.cookies.edit").should("exist")
+
+  cy.get('#forbid_navigation').click()
+  cy.get('#submit-cookie-preference').click()
+
+  cy.get("body.c-body.welcome.index").should("exist")
+});
+
 // See https://github.com/cypress-io/cypress/issues/3887#issuecomment-522962482
 Cypress.Commands.add(
     'shouldHaveTrimmedText',
