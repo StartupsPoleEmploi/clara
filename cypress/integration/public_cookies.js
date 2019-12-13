@@ -8,13 +8,7 @@ Cypress.on('window:before:load', (win) => {
 describe('Google Analytics', function () {
 
   it('Google analytics peut être bloqué', function () {
-    cy.visit('/cookies/preference/edit')
-    cy.get("body.c-body.cookies.edit").should("exist")
-
-    cy.get('#forbid_statistic').click()
-    cy.get('#submit-cookie-preference').click()
-
-    cy.get("body.c-body.welcome.index").should("exist")
+    cy.forbid_google_analytics()
 
     cy
     .get('@ga')
@@ -22,14 +16,7 @@ describe('Google Analytics', function () {
 
   })
   it('Google analytics peut être autorisé', function () {
-
-    cy.visit('/cookies/preference/edit')
-    cy.get("body.c-body.cookies.edit").should("exist")
-
-    cy.get('#authorize_statistic').click()
-    cy.get('#submit-cookie-preference').click()
-
-    cy.get("body.c-body.welcome.index").should("exist")
+    cy.authorize_google_analytics()
 
     cy
     .get('@ga')
@@ -55,33 +42,23 @@ describe('Google Analytics', function () {
 
 describe('Hotjar', function () {
 
+  const HOTJAR_POLL = '#_hj_poll_container'
+
   it('Hotjar peut être bloqué', function () {
-    cy.visit('/cookies/preference/edit')
-    cy.get("body.c-body.cookies.edit").should("exist")
-
-    cy.get('#forbid_navigation').click()
-    cy.get('#submit-cookie-preference').click()
-
-    cy.get("body.c-body.welcome.index").should("exist")
+    cy.forbid_hotjar()
 
     cy.visit("http://localhost:3000/aides?for_id=LDQsbywsNixuLG4sMzIwMTMsbm90X2FwcGxpY2FibGUsbg==")
     cy.get("body.c-body.aides.index").should("exist")
 
-    cy.get('#_hj_poll_container').should("not.exist")
+    cy.get(HOTJAR_POLL).should("not.exist")
 
   })
   it('Hotjar peut être autorisé', function () {
-    cy.visit('/cookies/preference/edit')
-    cy.get("body.c-body.cookies.edit").should("exist")
-
-    cy.get('#authorize_navigation').click()
-    cy.get('#submit-cookie-preference').click()
-
-    cy.get("body.c-body.welcome.index").should("exist")
+    cy.authorize_hotjar()
 
     cy.visit("http://localhost:3000/aides?for_id=LDQsbywsNixuLG4sMzIwMTMsbm90X2FwcGxpY2FibGUsbg==")
     cy.get("body.c-body.aides.index").should("exist")
 
-    cy.get('#_hj_poll_container').should("exist")
+    cy.get(HOTJAR_POLL).should("exist")
   })
 })
