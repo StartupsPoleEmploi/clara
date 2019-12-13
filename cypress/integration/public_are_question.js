@@ -2,6 +2,7 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
 
   before(function () {
     cy.visit('/')
+    cy.get("body.c-body.welcome.index").should('exist')
     cy.visit('/are_questions/new')
   })
 

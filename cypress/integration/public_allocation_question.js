@@ -1,6 +1,8 @@
 describe("Quand on arrive sur la question allocation", function () {
 
   before(function () {
+    cy.visit('/')
+    cy.get("body.c-body.welcome.index").should('exist')
     cy.visit('/allocation_questions/new')
   })
 

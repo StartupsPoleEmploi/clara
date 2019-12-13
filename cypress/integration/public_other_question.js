@@ -1,6 +1,8 @@
 describe("Quand on arrive sur la question autres", function () {
 
   before(function () {
+    cy.visit('/')
+    cy.get("body.c-body.welcome.index").should('exist')
     cy.visit('/other_questions/new')
   })
 

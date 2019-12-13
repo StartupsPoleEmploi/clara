@@ -1,6 +1,8 @@
 describe("Quand on arrive sur la question grade", function () {
 
   before(function () {
+    cy.visit('/')
+    cy.get("body.c-body.welcome.index").should('exist')
     cy.visit('/grade_questions/new')
   })
 

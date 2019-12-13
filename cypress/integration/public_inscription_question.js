@@ -3,6 +3,8 @@
 describe("Quand on arrive sur la question inscription", function () {
 
   before(function () {
+    cy.visit('/')
+    cy.get("body.c-body.welcome.index").should('exist')
     cy.visit('/inscription_questions/new')
   })
 
