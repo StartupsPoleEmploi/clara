@@ -88,10 +88,6 @@ describe("Pour un visiteur", function () {
     cy.get(CHECKED_AID).should("exist")
     
   })
-  it("Sur l'écran de résultat il y a le sondage hotjar", function () {
-    //then 
-    cy.get('#_hj_poll_container').should("exist")
-  })
   it("Sur l'écran de résultat on peut déplier une rubrique", function () {
     //then 
     cy.get('.c-btn.js-open').first().click()

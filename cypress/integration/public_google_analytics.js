@@ -53,3 +53,35 @@ describe('Google Analytics', function () {
   })
 })
 
+describe('Hotjar', function () {
+
+  it('Hotjar peut être bloqué', function () {
+    cy.visit('/cookies/preference/edit')
+    cy.get("body.c-body.cookies.edit").should("exist")
+
+    cy.get('#forbid_navigation').click()
+    cy.get('#submit-cookie-preference').click()
+
+    cy.get("body.c-body.welcome.index").should("exist")
+
+    cy.visit("http://localhost:3000/aides?for_id=LDQsbywsNixuLG4sMzIwMTMsbm90X2FwcGxpY2FibGUsbg==")
+    cy.get("body.c-body.aides.index").should("exist")
+
+    cy.get('#_hj_poll_container').should("not.exist")
+
+  })
+  it('Hotjar peut être autorisé', function () {
+    cy.visit('/cookies/preference/edit')
+    cy.get("body.c-body.cookies.edit").should("exist")
+
+    cy.get('#authorize_navigation').click()
+    cy.get('#submit-cookie-preference').click()
+
+    cy.get("body.c-body.welcome.index").should("exist")
+
+    cy.visit("http://localhost:3000/aides?for_id=LDQsbywsNixuLG4sMzIwMTMsbm90X2FwcGxpY2FibGUsbg==")
+    cy.get("body.c-body.aides.index").should("exist")
+
+    cy.get('#_hj_poll_container').should("exist")
+  })
+})
