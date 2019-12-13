@@ -5,6 +5,10 @@
 -[#1493][TECH] front - recette fonctionnelle écran final
 
 
+## 23.1.15 (13/12/2019)
+-[#1487][BUG] BO - icônes
+
+
 ## 23.1.13 (12/12/2019)
 -[#1492][TECH] BO - recette fonctionnelle étape 5
 
