@@ -113,11 +113,11 @@ describe("Pour un visiteur", function () {
   })
   describe("On peut filtrer les résultats", function () {
     const HIDDEN_ELTS = ".c-resultcard.u-hidden-visually"
+    const VISIBLE_TAGS = '.c-resultfilter[data-name="travailler-a-l-international"]:visible'
     before(function () {
       //given
       cy.get(HIDDEN_ELTS).should('not.exist')
-      // cy.get('.is-visible .c-resultfilter').should('not.exist')
-      cy.get('.c-resultfilter[data-name="travailler-a-l-international"]:visible').should('not.exist')
+      cy.get(VISIBLE_TAGS).should('not.exist')
       //when
       cy.get('#check_2').click()
     })
@@ -129,7 +129,7 @@ describe("Pour un visiteur", function () {
       //when
       cy.get(".js-toggle-ineligies").first().click()
       //then
-      cy.get('.c-resultfilter[data-name="travailler-a-l-international"]:visible').its('length').should('eq', 2)
+      cy.get(VISIBLE_TAGS).its('length').should('eq', 2)
     })
 
   })
