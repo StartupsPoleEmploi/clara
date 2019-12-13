@@ -1,4 +1,7 @@
 {
+  "blacklistHosts": "www.google-analytics.com",
+  "fixturesFolder": false,
+  "supportFile": false,
   "baseUrl": "http://localhost:3000",
   "projectId": "z8r4w5"
 }
