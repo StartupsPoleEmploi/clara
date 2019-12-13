@@ -1,5 +1,6 @@
 describe("Pour un visiteur", function () {
 
+  const AMOB_SPECTACLE = '[data-aslug="aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle"]'
 
   it("Quand on arrive sur la page principale, on peut démarrer le formulaire", function () {
     // given
@@ -68,6 +69,23 @@ describe("Pour un visiteur", function () {
   it("Sur l'écran de résultat il y a au moins les aides éligibles", function () {
     cy.get('.c-resultcard--green').its('length').should('be.gt', 0)
   })
+  it("Une aide peut passer d'éligible à inéligible si on change un paramètre", function () {
+    // given
+    const CHECKED_AID = ".c-resultaid.is-ineligible" + AMOB_SPECTACLE
+    cy.get(".js-open").first().click()
+    cy.get(CHECKED_AID).should("not.exist")
+    cy.get(".js-recap-zone").click()
+    cy.get("a.js-modify-other").click()
+    // when
+    cy.get("#none").click()
+    cy.get('.js-next').click()
+    // then
+    cy.get("body.c-body.aides").should("exist")
+    cy.get(".js-toggle-ineligies").first().click()
+    cy.get(".js-ineligibles-zone .js-open").first().click()
+    cy.get(CHECKED_AID).should("exist")
+    
+  })
   it("Sur l'écran de résultat il y a le sondage hotjar", function () {
     cy.get('#_hj_poll_container').should("exist")
   })
@@ -85,8 +103,36 @@ describe("Pour un visiteur", function () {
     cy.visit("/")
     cy.get("body.c-body.welcome.index").should("exist")
     //then 
-    cy.visit("http://localhost:3000/aides?for_id=MzQsMSxuLG8sMixuLG0sNzE0NjksMTYyLG8=")
+    cy.visit("http://localhost:3000/aides?for_id=LDQsbywsNixuLG4sMzIwMTMsbm90X2FwcGxpY2FibGUsbg==")
     cy.get("body.c-body.aides").should("exist")
   })
+  it("Il peut y avoir des réultats éligibles, incertains et inéligibles", function () {
+    cy.get('.c-resultcard--red').its('length').should('be.gt', 0)
+    cy.get('.c-resultcard--orange').its('length').should('be.gt', 0)
+    cy.get('.c-resultcard--green').its('length').should('be.gt', 0)
+  })
+  describe("On peut filtrer les résultats", function () {
+    const HIDDEN_ELTS = ".c-resultcard.u-hidden-visually"
+    before(function () {
+      //given
+      cy.get(HIDDEN_ELTS).should('not.exist')
+      // cy.get('.is-visible .c-resultfilter').should('not.exist')
+      cy.get('.c-resultfilter[data-name="travailler-a-l-international"]:visible').should('not.exist')
+      //when
+      cy.get('#check_2').click()
+    })
+    it("Certains résultats sont cachés", function(){
+      //then
+      cy.get(HIDDEN_ELTS).its('length').should('eq', 2)
+    })
+    it("Les petites étiquettes apparaissent", function(){
+      //when
+      cy.get(".js-toggle-ineligies").first().click()
+      //then
+      cy.get('.c-resultfilter[data-name="travailler-a-l-international"]:visible').its('length').should('eq', 2)
+    })
+
+  })
+
 })
 
