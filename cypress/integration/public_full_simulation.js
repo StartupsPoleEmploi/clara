@@ -123,13 +123,13 @@ describe("Pour un visiteur", function () {
     })
     it("Certains résultats sont cachés", function(){
       //then
-      cy.get(HIDDEN_ELTS).its('length').should('eq', 2)
+      cy.get(HIDDEN_ELTS).should('exist')
     })
     it("Les petites étiquettes apparaissent", function(){
       //when
       cy.get(".js-toggle-ineligies").first().click()
       //then
-      cy.get(VISIBLE_TAGS).its('length').should('eq', 2)
+      cy.get(VISIBLE_TAGS).should('exist')
     })
 
   })
