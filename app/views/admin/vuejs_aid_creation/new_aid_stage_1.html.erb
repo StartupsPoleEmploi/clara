@@ -1,0 +1,100 @@
+<%- v = view_object(:new_aid_one, local_assigns) %>
+<%- is_modifying = params[:modify] == "true"  %>
+<%- verb = is_modifying ? "Modifier" : "Créer" %>
+
+
+<section class="c-newaid c-newaid--stage1">
+  <% if !is_modifying %>
+    <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2" %>
+  <% end  %>
+  <h1 class="c-newaid-title"><%= verb %> une aide</h1>
+
+  <section class="c-newaid-panels simple-row">
+    <div class="simple-col c-newaid-leftpanel" style="width: 45%">
+      <div class="c-newaid-stages">
+        <div class="c-newaid-stage c-newaid-stage--1 c-newaid-stage--active">
+          <div class="c-newaid-stageinside">
+            Étape 1
+          </div>
+        </div>
+        <div class="c-newaid-stage  c-newaid-stage--2 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 2", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 2
+            <% end %>
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--3 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 3
+            <% end %>
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--4 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 4
+            <% end %>
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--5 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 5", admin_aid_creation_new_aid_stage_5_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 5
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-newaid-belowstages">
+        <div class="c-newaid-subtitle">Informations générales</div>
+
+
+        <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_1_path, html: { class: "form" }) do |f| %>
+
+          <%= hidden_field(:slug, :value, :value => !!page.resource.created_at ? page.resource.slug : "") %>
+          <%= hidden_field(:modify, :value, :value => params[:modify]) %>
+
+          <% page.attributes.each_with_index do |attribute, index_nb| %>
+            <% if v.show_field?(attribute, current_user.role) %>
+              <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%> is-iteration-<%= index_nb %>">
+                <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute), placeholder: v.placeholder_of(attribute), help: v.help_of(attribute) %>
+                <% if v.errored?(attribute) -%>
+                  <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                    &nbsp;⚠ <%= v.error_message(attribute) %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <%= f.submit "Enregistrer", id: "submit-current-step" %>
+        <% end %>              
+      </div>
+      
+      <div class="c-newaid-actions">
+        <% if !is_modifying %>
+          <%= link_to "‹ Retour liste des aides", admin_aids_path, class: "c-newaid-back2" %>
+        <% end  %>
+
+        <button type="submit" class="c-newbutton c-newaid-actionrecord"> Continuer </button>
+      </div>
+
+    </div>    
+    <div class="simple-col">
+      <%= render "aid_preview" %>    
+    </div>
+  </section>
+</section>
+
+
+

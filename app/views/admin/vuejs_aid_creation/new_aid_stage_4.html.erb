@@ -1,3 +1,17 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" %>
+  <%= javascript_pack_tag 'hello_vue' %>
+<% end %>
+
+
+
+
+<%= javascript_pack_tag 'hello_vue' %>
+
+
+
+
 <%- v = view_object(:new_aid_four, local_assigns) %>
 <%- is_modifying = params[:modify] == "true"  %>
 <%- verb = is_modifying ? "Modifier" : "Créer" %>
@@ -44,6 +58,10 @@
 
       <div class="c-newaid-belowstages">
         <div class="c-newaid-subtitle">Champ d'application</div>
+          <div id="hello">
+    <p>{{ message }}</p>
+    <app></app>
+  </div>
 
     <section class="varopval unsortable ui-sortable" style="display: none;">
       <div class="c-apprule-inputs">
@@ -203,3 +221,7 @@
     </div>
   </section>
 </section>
+
+
+
+

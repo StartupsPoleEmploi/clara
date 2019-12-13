@@ -1,0 +1,105 @@
+<%- v = view_object(:new_aid_two, local_assigns) %>
+<%- is_modifying = params[:modify] == "true"  %>
+<%- verb = is_modifying ? "Modifier" : "Créer" %>
+
+
+<section class="c-newaid c-newaid--stage2">
+  <% if !is_modifying  %>
+    <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2" %>
+  <% end %>
+  <h1 class="c-newaid-title"><%= verb %> une aide</h1>
+
+  <section class="c-newaid-panels simple-row">
+    <div class="simple-col c-newaid-leftpanel" style="width: 45%">
+      <div class="c-newaid-stages">
+        <div class="c-newaid-stage c-newaid-stage--1 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <%= link_to "Étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug], modify: is_modifying) %>
+          </div>
+        </div>
+        <div class="c-newaid-stage  c-newaid-stage--2 c-newaid-stage--active">
+          <div class="c-newaid-stageinside">
+            Étape 2
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--3 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 3
+            <% end %>
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--4 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 4", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 4
+            <% end %>
+          </div>
+        </div>
+        <div class="c-newaid-stage c-newaid-stage--5 c-newaid-stage--inactive">
+          <div class="c-newaid-stageinside">
+            <% if is_modifying %>
+              <%= link_to "Étape 5", admin_aid_creation_new_aid_stage_5_path(slug: params[:slug], modify: is_modifying) %>
+            <% else  %>
+              Étape 5
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-newaid-belowstages">
+        <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_2_path, html: { class: "form" }) do |f| %>
+          <h2 class="c-newaid-subtitle">Contenu de l'aide</h2>
+          <input placeholder="" type="hidden" name="aid[name]" id="aid_name" value="<%= page.resource.name %>">
+          <input placeholder="" type="hidden" name="aid[contract_type_id]" id="aid_contract_type_id" value="<%= page.resource.contract_type.name %>">
+
+          <%= hidden_field(:slug, :value, value: page.resource.slug) %>
+          <%= hidden_field(:modify, :value, :value => params[:modify]) %>
+            <div class="alert-convention">
+              <strong>Apprenez à rédiger vos aides comme des pros</strong>
+              <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
+              <div class="alert-controls">
+                <button type="button" class="js-hide-convention">OK</button>
+                <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
+            </div>
+            </div>
+
+          <div id="accordion_0" class="js-accordion">
+              <% page.attributes.each_with_index do |attribute, index_nb| %>
+                <% if v.show_field?(attribute) %>
+                  <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
+                    <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
+                    <% if v.errored?(attribute) -%>
+                      <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
+                        &nbsp;⚠ <%= v.error_message(attribute) %>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+          </div>
+          <%= f.submit "Enregistrer", id: "submit-current-step" %>
+        <% end %>                     
+      </div>
+      
+      <div class="c-newaid-actions">
+        <% if !is_modifying  %>
+          <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2" %>
+        <% end %>
+
+        <button type="submit" class="c-newbutton c-newaid-actionrecord"> Continuer </button>
+      </div>
+
+    </div>    
+    <div class="simple-col">
+      <%= render "aid_preview" %>    
+    </div>
+  </section>
+</section>
+
+
+
