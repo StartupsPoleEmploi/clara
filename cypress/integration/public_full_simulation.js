@@ -55,6 +55,7 @@ describe("Pour un visiteur", function () {
 
   })
   it("Sur l'écran de résultat, il y a un récapitulatif", function () {
+    //then 
     cy.get(".c-situation--age").shouldHaveTrimmedText("16")
     cy.get(".c-situation--grade").shouldHaveTrimmedText("Bac")
     cy.get(".c-situation--address").shouldHaveTrimmedText("49490 Noyant-Villages")
@@ -67,6 +68,7 @@ describe("Pour un visiteur", function () {
     cy.get(".c-situation--cadre").shouldHaveTrimmedText("non")
   })
   it("Sur l'écran de résultat il y a au moins les aides éligibles", function () {
+    //then 
     cy.get('.c-resultcard--green').its('length').should('be.gt', 0)
   })
   it("Une aide peut passer d'éligible à inéligible si on change un paramètre", function () {
@@ -87,9 +89,11 @@ describe("Pour un visiteur", function () {
     
   })
   it("Sur l'écran de résultat il y a le sondage hotjar", function () {
+    //then 
     cy.get('#_hj_poll_container').should("exist")
   })
   it("Sur l'écran de résultat on peut déplier une rubrique", function () {
+    //then 
     cy.get('.c-btn.js-open').first().click()
   })
   it("Sur l'écran de résultat cliquer sur \"En savoir plus\" pour connaître le détail d'une aide", function () {
