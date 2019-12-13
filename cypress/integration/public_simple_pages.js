@@ -34,4 +34,12 @@ describe("Pour un visiteur", function () {
     // then
     cy.get("body.c-body.contact.index").should("exist")
   })
+  it("On peut voir toutes les aides depuis la page d'accueil", function () {
+    // given
+    cy.visit('/')
+    // when
+    cy.get('.c-body__footer').contains("Toutes nos aides").click()
+    // then
+    cy.get("body.c-body.aides.index").should("exist")
+  })
 })
