@@ -33,15 +33,19 @@
 
 
 import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
+// import router from '../aid_creation/router'
+// import store from '../aid_creation/store/'
+import Multisteps from '../aid_creation/components/multisteps.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
-    el: '#hello',
+    router,
+    store,
+    el: '#aid-creation',
     data: {
       message: "Can you say hello?"
     },
-    components: { App }
+    components: { Multisteps }
   })
 })
 //
