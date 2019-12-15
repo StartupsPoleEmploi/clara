@@ -1,8 +1,8 @@
 # CLARA Changelog
 
-## 23.1.15 (13/12/2019)
--[#1494][TECH] BO - Enlever le bouton vidage de cache pour les non-admin
 
+## 23.1.16 (13/12/2019)
+-[#1494][TECH] BO - Enlever le bouton vidage de cache pour les non-admin
 
 
 ## 23.1.15 (13/12/2019)
