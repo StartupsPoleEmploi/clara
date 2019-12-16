@@ -68,6 +68,8 @@ class RuletreeService
 
   def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
     case rule_type
+      when 'float'
+        calculate_for_integer(criterion_value, rule_value, op_kind)
       when 'integer'
         calculate_for_integer(criterion_value, rule_value, op_kind)
       when 'string'
