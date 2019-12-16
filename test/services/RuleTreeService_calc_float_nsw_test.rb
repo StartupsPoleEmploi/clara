@@ -3,20 +3,20 @@ require "test_helper"
 class RuleTreeServiceCalcFloatNswTest < ActiveSupport::TestCase
 
   
-  test ".calculate float, 34.02, not_starts_with, 3.23 => false" do
+  test ".calculate float, 34.02, not_starts_with, 3 => false" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "34.02", "not_starts_with", "3.23", "float", ""
+    res = sut.send :calculate, "34.02", "not_starts_with", "3", "float", ""
     #then
     assert_equal(false, res)
   end
 
-  test ".calculate float, 123.29, not_starts_with, 12.54 => false" do
+  test ".calculate float, 123.29, not_starts_with, 123.2 => false" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "123.29", "not_starts_with", "12.54", "float", ""
+    res = sut.send :calculate, "123.29", "not_starts_with", "123.2", "float", ""
     #then
     assert_equal(false, res)
   end

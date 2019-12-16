@@ -103,9 +103,15 @@ class RuletreeService
       when 'not_amongst'
         !typed_list.include?(typed_criterion_value.to_s)
       when 'starts_with'
-        typed_criterion_value.to_s.starts_with?(typed_rule_value.to_s)
+        criterion_value.to_s.starts_with?(rule_value.to_s)
       when 'not_starts_with'
-        !typed_criterion_value.to_s.starts_with?(typed_rule_value.to_s)
+        # p '- - - - - - - - - - - - - - typed_criterion_value- - - - - - - - - - - - - - - -' 
+        # pp criterion_value
+        # p ''
+        # p '- - - - - - - - - - - - - - typed_rule_value- - - - - - - - - - - - - - - -' 
+        # pp rule_value
+        # p ''
+        !criterion_value.to_s.starts_with?(rule_value.to_s)
       else
         false
     end
