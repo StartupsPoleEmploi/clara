@@ -4,6 +4,7 @@ class Variable < ApplicationRecord
 
   enum variable_kind: {
     integer: "integer", 
+    float: "float", 
     string: "string", 
     selectionnable: "selectionnable", 
   }
