@@ -69,13 +69,47 @@ class RuletreeService
   def calculate(criterion_value, op_kind, rule_value, rule_type, elements)
     case rule_type
       when 'float'
-        calculate_for_integer(criterion_value, rule_value, op_kind)
+        calculate_for_float(criterion_value, rule_value, op_kind)
       when 'integer'
         calculate_for_integer(criterion_value, rule_value, op_kind)
       when 'string'
         calculate_for_string(criterion_value, rule_value, op_kind)
       when 'selectionnable'
         calculate_for_selectionnable(criterion_value, rule_value, op_kind, elements)
+      else
+        false
+    end
+  end
+
+  def calculate_for_float(criterion_value, rule_value, operator_kind)
+    typed_criterion_value = criterion_value.to_f
+    typed_rule_value = rule_value.to_f
+    typed_list = rule_value.to_s.split(",")
+    case operator_kind
+      when 'equal'
+        typed_criterion_value == typed_rule_value
+      when 'not_equal'
+        typed_criterion_value != typed_rule_value
+      when 'more_than'
+        typed_criterion_value > typed_rule_value
+      when 'more_or_equal_than'
+        typed_criterion_value >= typed_rule_value
+      when 'less_or_equal_than'
+        typed_criterion_value <= typed_rule_value
+      when 'less_than'
+        typed_criterion_value < typed_rule_value
+      when 'amongst'
+        typed_list.include?(typed_criterion_value.to_s)
+      when 'not_amongst'
+        !typed_list.include?(typed_criterion_value.to_s)
+      when 'starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a.starts_with?(b)
+      when 'not_starts_with'
+        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        !a.starts_with?(b)
       else
         false
     end
