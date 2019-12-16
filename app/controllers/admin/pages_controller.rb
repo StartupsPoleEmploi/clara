@@ -68,7 +68,7 @@ module Admin
 
     # cache
     def get_cache
-      raise SecurityError, "Not Allowed" unless current_user.role == "superadmin"
+      # raise SecurityError, "Not Allowed" unless current_user.role == "superadmin"
     end
 
     def post_cache
