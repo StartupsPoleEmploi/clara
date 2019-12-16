@@ -1,5 +1,10 @@
 _.mixin({
 
+  //See https://stackoverflow.com/a/14794066/2595513
+  isIntegerLike: function(value) {
+    return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
+  },
+
   none: function () {
     return !_.some.apply(_, arguments);
   },

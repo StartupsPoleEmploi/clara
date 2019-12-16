@@ -24,6 +24,10 @@ clara.js_define("admin_simple_rule_form", {
         newState["selected_value"] = action.value
       }
 
+      console.log("newState")
+      console.log(newState)
+      console.log("")
+
       return newState;
     };
 

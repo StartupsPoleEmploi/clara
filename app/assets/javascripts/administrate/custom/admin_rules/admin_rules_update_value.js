@@ -61,7 +61,7 @@ clara.js_define("admin_rules_update_value", {
   },
 
   _input_is_float: function(initial_value) {
-    console.log("hell")
+    console.log("hello " + initial_value)
     $("#rule_value_eligible_selectible").css('display','none');
     $("#rule_value_eligible_selectible").removeAttr("name", "rule[value_eligible]");
     $("#rule_value_eligible").css('display','block');
