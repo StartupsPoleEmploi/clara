@@ -12,11 +12,11 @@ class RuleTreeServiceCalcFloatNamTest < ActiveSupport::TestCase
     assert_equal(false, res)
   end
 
-  test ".calculate float, 42.26, not_amongst, 1.01,99.22,42.45,657.2 => false" do
+  test ".calculate float, 42.26, not_amongst, 1.01,99.22,42.26,657.2 => false" do
     #given
     sut = RuletreeService.new
     #when
-    res = sut.send :calculate, "42.26", "not_amongst", "1.01,99.22,42.45,657.2", "float", ""
+    res = sut.send :calculate, "42.26", "not_amongst", "1.01,99.22,42.26,657.2", "float", ""
     #then
     assert_equal(false, res)
   end

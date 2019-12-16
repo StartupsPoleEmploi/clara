@@ -105,12 +105,6 @@ class RuletreeService
       when 'starts_with'
         criterion_value.to_s.starts_with?(rule_value.to_s)
       when 'not_starts_with'
-        # p '- - - - - - - - - - - - - - typed_criterion_value- - - - - - - - - - - - - - - -' 
-        # pp criterion_value
-        # p ''
-        # p '- - - - - - - - - - - - - - typed_rule_value- - - - - - - - - - - - - - - -' 
-        # pp rule_value
-        # p ''
         !criterion_value.to_s.starts_with?(rule_value.to_s)
       else
         false
