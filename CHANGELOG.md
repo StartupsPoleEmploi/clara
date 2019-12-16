@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 23.2.0 (16/12/2019)
 -[#600] Montant journalier
 
