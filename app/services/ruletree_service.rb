@@ -103,13 +103,9 @@ class RuletreeService
       when 'not_amongst'
         !typed_list.include?(typed_criterion_value.to_s)
       when 'starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        a.starts_with?(b)
+        typed_criterion_value.to_s.starts_with?(typed_rule_value.to_s)
       when 'not_starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        !a.starts_with?(b)
+        !typed_criterion_value.to_s.starts_with?(typed_rule_value.to_s)
       else
         false
     end
