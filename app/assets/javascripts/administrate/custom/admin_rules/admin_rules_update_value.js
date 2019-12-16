@@ -11,6 +11,8 @@ clara.js_define("admin_rules_update_value", {
       var currentType = currentVar.variable_kind
       if (currentType === "integer") {
         that._input_is_number(s.selected_value)
+      } else if (currentType === "float") {
+        that._input_is_float(s.selected_value)
       } else if (currentType === "string") {
         that._input_is_text(s.selected_value)
       } else if (currentType === "selectionnable") {
@@ -56,6 +58,18 @@ clara.js_define("admin_rules_update_value", {
     $("#rule_value_eligible").val(initial_value);
     $("#rule_value_eligible").attr("min", "0");
     $("#rule_value_eligible").attr("oninput", "validity.valid||(value='');");
+  },
+
+  _input_is_float: function(initial_value) {
+    console.log("hell")
+    $("#rule_value_eligible_selectible").css('display','none');
+    $("#rule_value_eligible_selectible").removeAttr("name", "rule[value_eligible]");
+    $("#rule_value_eligible").css('display','block');
+    $("#rule_value_eligible").attr("name", "rule[value_eligible]");
+    $("#rule_value_eligible").attr("type", "number");
+    $("#rule_value_eligible").val(initial_value);
+    $("#rule_value_eligible").attr("min", "0");
+    $("#rule_value_eligible").attr("step", "0.01");
   },
 
   _input_is_select: function() {
