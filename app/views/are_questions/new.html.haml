@@ -1,5 +1,5 @@
 - title_data "Votre montant d'allocation"
-- raw_description = 'Quel est le montant de cette allocation ?'
+- raw_description = 'Quel est le montant net journalier de cette allocation ?'
 - description_data(raw_description)
 
 - has_error = !(flash[:error].blank?)
@@ -25,14 +25,13 @@
           =raw_description
 
         .c-are__form{:class => classes_of_are_form}
-          %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Montant par mois
+          %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Montant par jour
             
-          = f.number_field :minimum_income, 
+          = f.text_field :minimum_income, 
             class: classes_of_input,    
             id: 'montant',            
             value: @are.minimum_income,            
             autofocus: true,           
-            step: '0.01',           
             autocomplete: 'off',
             title: "Montant par mois de l'allocation",       
             'aria-describedby' => aria_described_by_of_input             

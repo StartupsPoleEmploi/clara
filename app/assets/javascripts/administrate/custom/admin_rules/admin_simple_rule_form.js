@@ -49,9 +49,9 @@ clara.js_define("admin_simple_rule_form", {
 
     $('#rule_value_eligible').on('input', function() {
       var value = $(this).val().replace("." ,",");
-      if (!_.includes("0123456789,", _.last(value))) {
-        value = value.slice(0, -1); // removes last char
-      }
+      var invalid_char_function = function(e){return !_.includes("0123456789,",e)};
+      var invalid_char = _.find(value, invalid_char_function);
+      value = value.replace(invalid_char, "")
       store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 

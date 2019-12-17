@@ -5,6 +5,11 @@ _.mixin({
     return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
   },
 
+  // keep only last char of string
+  keepOnlyLast: function(str, char) {
+    return "";
+  },
+
   none: function () {
     return !_.some.apply(_, arguments);
   },
