@@ -51,13 +51,13 @@ clara.js_define("admin_simple_rule_form", {
       store_rule.dispatch({type: 'VALUE_CHANGED', value: $.betterFloat($(this).val())});
     });
 
-    $('#rule_value_eligible').on('blur', function() {
-      var value = $(this).val().replace("." ,",");
-      if (_.endsWith(value, ',')) {
-        value = value + '0'
-      }
-      store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
-    });
+    // $('#rule_value_eligible').on('blur', function() {
+    //   var value = $(this).val().replace("." ,",");
+    //   if (_.endsWith(value, ',')) {
+    //     value = value + '0'
+    //   }
+    //   store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
+    // });
 
     $('#rule_value_eligible').on('input', function() {
       var value = $(this).val().replace("." ,",");
