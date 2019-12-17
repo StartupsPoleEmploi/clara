@@ -31,7 +31,7 @@ class NewAidOne < ViewObject
     name = attr_name(attribute)
     {
       "name" => "Exemple : Prépa compétences Occitanie",
-      "source" => "Exemple : Pôle emploi, BUDI",
+      "source" => "Exemple : une url issue de pole-emploi.fr, budi ou site partenaire...",
     }[name]
   end
 
