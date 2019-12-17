@@ -59,17 +59,7 @@ clara.js_define("admin_edit_aid", {
     setTimeout(function () {
       CKEDITOR.replace( 'aid_what', {             
         extraPlugins : 'confighelper',             
-        // toolbarGroups: [
-        //     { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },     // Group's name will be used to create voice label.
-        //     '/',                                // Line break - next group will be placed in new line.
-        //     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-        // ]
-        // toolbar_Basic :
-        //   [
-        //     ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink', '-', 'About']
-        //   ],
-        // toolbar: 'basic'                                     
-        removeButtons : 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Underline,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,BulletedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Link,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About',                                                  
+        removeButtons : 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About',                                                  
       });
       clara.admin_edit_aid_clean_ckeditor.please();
     }, 1200);

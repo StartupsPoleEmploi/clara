@@ -25,7 +25,7 @@ class AidDashboard < Administrate::BaseDashboard
     how_much: Field::Ckeditor.with_options(export: false), 
     additionnal_conditions: Field::Ckeditor.with_options(export: false),
     how_and_when: Field::Ckeditor.with_options(export: false),
-    limitations: Field::Ckeditor.with_options(export: false),
+    limitations: Field::Ckeditor.with_options({ export: false, ckeditor: { uiColor: '#800000', removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About' }}),
     created_at: Field::DateTime.with_options(export: false),
     updated_at: AidLastUpdateField,
 
