@@ -52,13 +52,11 @@ clara.js_define("admin_edit_aid", {
     //Clean CKEDitor
     setTimeout(function () {
       CKEDITOR.instances.aid_what.destroy()
-      $("textarea#aid_what").attr("placeholder", "hello placeholder")
+      $("textarea#aid_what").attr("placeholder", "hello aid_what")
     }, 800);
 
     setTimeout(function () {
-      CKEDITOR.replace( 'aid_what', {             
-        extraPlugins : 'confighelper',             
-      });
+      CKEDITOR.replace( 'aid_what', { extraPlugins : 'confighelper'});
     }, 1000);
 
     setTimeout(function () {
