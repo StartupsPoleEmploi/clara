@@ -29,7 +29,7 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
     // given
     cy.visit('/are_questions/new')
     cy.get('input#montant').first().clear()
-    cy.get('input#montant').first().type("823")
+    cy.get('input#montant').first().type("823,05")
     // when
     cy.get('input[value="Continuer"]').click()
     // then
@@ -50,7 +50,7 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
     // when
     cy.visit('/are_questions/new')
     // then
-    cy.get('input#montant').first().should('have.value', '823')
+    cy.get('input#montant').first().should('have.value', '823,05')
   })
 
   it("Il n'est pas possible de saisir autre chose que des nombres", function () {
