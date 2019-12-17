@@ -3,8 +3,6 @@ require "test_helper"
 class RuleTreeServiceCalcFloatMoetTest < ActiveSupport::TestCase
 
 
-
-
   test ".calculate float, 34,89 , more_or_equal_than, 34.76 => true" do
     #given
     sut = RuletreeService.new
