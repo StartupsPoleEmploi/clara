@@ -5,6 +5,42 @@ class RuleTreeServiceCalcFloatMoetTest < ActiveSupport::TestCase
 
 
 
+  test ".calculate float, 34,89 , more_or_equal_than, 34.76 => true" do
+    #given
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, "34,89", "more_or_equal_than", "34.76", "float", ""
+    #then
+    assert_equal(true, res)
+  end
+
+  test ".calculate float, 34.89 , more_or_equal_than, 34,76 => true" do
+    #given
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, "34.89", "more_or_equal_than", "34,76", "float", ""
+    #then
+    assert_equal(true, res)
+  end
+
+  test ".calculate float, 14.19 , more_or_equal_than, 14,76 => false" do
+    #given
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, "14.19", "more_or_equal_than", "14,76", "float", ""
+    #then
+    assert_equal(false, res)
+  end
+
+  test ".calculate float, 14,19 , more_or_equal_than, 14.76 => false" do
+    #given
+    sut = RuletreeService.new
+    #when
+    res = sut.send :calculate, "14,19", "more_or_equal_than", "14.76", "float", ""
+    #then
+    assert_equal(false, res)
+  end
+
   test ".calculate float, 34.89, more_or_equal_than, 18.76 => true" do
     #given
     sut = RuletreeService.new

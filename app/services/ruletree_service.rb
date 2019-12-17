@@ -82,8 +82,9 @@ class RuletreeService
   end
 
   def calculate_for_float(criterion_value, rule_value, operator_kind)
-    typed_criterion_value = criterion_value.to_f
-    typed_rule_value = rule_value.to_f
+
+    typed_criterion_value = criterion_value.to_s.gsub(",", ".").to_f
+    typed_rule_value = rule_value.to_s.gsub(",", ".").to_f
     typed_list = rule_value.to_s.split(",")
     case operator_kind
       when 'equal'
