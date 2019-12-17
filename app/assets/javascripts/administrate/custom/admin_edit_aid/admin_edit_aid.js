@@ -53,16 +53,17 @@ clara.js_define("admin_edit_aid", {
     setTimeout(function () {
       CKEDITOR.instances.aid_what.destroy()
       $("textarea#aid_what").attr("placeholder", "hello placeholder")
-      // clara.admin_edit_aid_clean_ckeditor.please();
-    }, 1000);
+    }, 600);
 
     setTimeout(function () {
       CKEDITOR.replace( 'aid_what', {             
         extraPlugins : 'confighelper',             
-        removeButtons : 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About',                                                  
       });
+    }, 800);
+
+    setTimeout(function () {
       clara.admin_edit_aid_clean_ckeditor.please();
-    }, 1200);
+    }, 1000);
 
     // Redux
     var observables = {
