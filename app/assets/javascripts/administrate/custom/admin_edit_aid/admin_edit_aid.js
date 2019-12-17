@@ -53,17 +53,17 @@ clara.js_define("admin_edit_aid", {
     setTimeout(function () {
       CKEDITOR.instances.aid_what.destroy()
       $("textarea#aid_what").attr("placeholder", "hello placeholder")
-    }, 600);
+    }, 800);
 
     setTimeout(function () {
       CKEDITOR.replace( 'aid_what', {             
         extraPlugins : 'confighelper',             
       });
-    }, 800);
+    }, 1000);
 
     setTimeout(function () {
       clara.admin_edit_aid_clean_ckeditor.please();
-    }, 1000);
+    }, 1200);
 
     // Redux
     var observables = {
