@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.2.0 (17/12/2019)
+-[#600][FEATURE] Montant journalier
+
+
 ## 23.1.17 (16/12/2019)
 -[#1413][TECH] Dockerization
 

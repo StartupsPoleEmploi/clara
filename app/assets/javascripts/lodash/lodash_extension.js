@@ -1,5 +1,36 @@
 _.mixin({
 
+  //See https://stackoverflow.com/a/14794066/2595513
+  isIntegerLike: function(value) {
+    return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
+  },
+
+  // keep only last char of string
+  keepOnlyLast: function(str, char) {
+    var local_str = str.toString();
+    var local_char = char.toString().charAt(0);
+
+    var local_array = local_str.split("")
+    var last_index = _.lastIndexOf(local_array, char)
+
+
+    var current_str = ""
+      
+    if (last_index >= 0) {
+      _.each(local_array, function(current_char, current_index) {
+        if (current_char !== local_char) {
+          current_str += current_char
+        } else if (current_char === local_char && current_index === last_index) {
+          current_str += current_char
+        }
+      })
+    } else {
+      current_str = local_str
+    }
+
+    return current_str;
+  },
+
   none: function () {
     return !_.some.apply(_, arguments);
   },

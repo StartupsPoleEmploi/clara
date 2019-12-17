@@ -1,5 +1,14 @@
 describe("jQuery extension", function () {
 
+  describe("$.betterFloat returns a better float", function () {
+    it("Should return '12,53' for '12a,,53'", function () {
+      //when
+      var res = $.betterFloat("12a,,53")
+      //then
+      expect(res).toEqual('12,53')
+    });
+  });
+
   describe("$.urlParam for URL http://clara.com", function () {
     beforeEach(function() {
       //given

@@ -34,6 +34,7 @@ clara.js_define("admin_simple_rule_form", {
     store_rule.subscribe(function(){clara.admin_rules_update_value.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_operator.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_explanation.please(_.cloneDeep(store_rule.getState()))});
+    store_rule.subscribe(function(){clara.admin_rules_value_explanation.please(_.cloneDeep(store_rule.getState()))});
 
     // DISPATCHERS
     $('#rule_variable_id').on('input', function() {
@@ -47,7 +48,11 @@ clara.js_define("admin_simple_rule_form", {
     });
 
     $('#rule_value_eligible').on('input', function() {
-      var value = $(this).val();
+      store_rule.dispatch({type: 'VALUE_CHANGED', value: $.betterFloat($(this).val())});
+    });
+
+    $('#rule_value_eligible').on('input', function() {
+      var value = $(this).val().replace("." ,",");
       store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
     });
 
@@ -58,8 +63,5 @@ clara.js_define("admin_simple_rule_form", {
 
 
   },
-
-
-
 
 });

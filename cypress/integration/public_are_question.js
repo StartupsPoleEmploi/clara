@@ -7,11 +7,11 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
   })
 
   it("Champ nombre vide", function () {
-    cy.get('input[type="number"]').should('have.value', '')
+    cy.get('input#montant').should('have.value', '')
   })
 
   it("focus sur le champ nombre", function () {
-    cy.get('input[type="number"]').first().should('have.focus')
+    cy.get('input#montant').first().should('have.focus')
   })
 
   it("Absence d'erreur lorqu'on arrive sur la page", function () {
@@ -28,8 +28,8 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
   it("Cas nominal : on renseigne un montant et on valide, ", function () {
     // given
     cy.visit('/are_questions/new')
-    cy.get('input[type="number"]').first().clear()
-    cy.get('input[type="number"]').first().type("823")
+    cy.get('input#montant').first().clear()
+    cy.get('input#montant').first().type("823,05")
     // when
     cy.get('input[value="Continuer"]').click()
     // then
@@ -50,7 +50,24 @@ describe("Quand on arrive sur la question de montant de l'allocation", function 
     // when
     cy.visit('/are_questions/new')
     // then
-    cy.get('input[type="number"]').first().should('have.value', '823')
+    cy.get('input#montant').first().should('have.value', '823,05')
+  })
+
+  it("Il n'est pas possible de saisir autre chose que des nombres", function () {
+    // given
+    cy.get('input#montant').first().clear()
+    // when
+    cy.get('input#montant').first().type("823a")
+    // then
+    cy.get('input#montant').first().should('have.value', '823')
+  })
+  it("Il n'est pas possible de saisir plusieurs virgules", function () {
+    // given
+    cy.get('input#montant').first().clear()
+    // when
+    cy.get('input#montant').first().type("823,,12")
+    // then
+    cy.get('input#montant').first().should('have.value', '823,12')
   })
 
 })

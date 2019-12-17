@@ -120,8 +120,12 @@
           <li>
             <%=link_to "Réinitialisation d'un champ d'application", admin_get_reinit_path %>
           </li>
-        </ul>         
-      <% end %>
+        </ul>   
+      <% else %>
+        <div>
+          <i>Cette partie est reservée aux administrateurs</i>
+        </div>
+      <% end %>      
 
     </div>
   </div>

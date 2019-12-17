@@ -19,6 +19,27 @@ describe("Lodash extension", function () {
     });
   });
 
+  describe("_.keepOnlyLast", function () {
+    it("Should be defined", function () {
+      expect(_.keepOnlyLast).toBeDefined();
+    });
+    it("Should transform '3,,12' into '3,12'", function () {
+      expect(_.keepOnlyLast('3,,12', ',')).toEqual('3,12');
+    });
+    it("Should transform ',42,,45,,' into '4245,'", function () {
+      expect(_.keepOnlyLast(',42,,45,,', ',')).toEqual('4245,');
+    });
+    it("Should transform '123' into '123'", function () {
+      expect(_.keepOnlyLast('123', ',')).toEqual('123');
+    });
+    it("Should transform ',,' into ','", function () {
+      expect(_.keepOnlyLast(',,', ',')).toEqual(',');
+    });
+    it("Should transform '3' into '3'", function () {
+      expect(_.keepOnlyLast('3', ',')).toEqual('3');
+    });
+  });
+
   describe("_.isBlank", function () {
     it("Should be defined", function () {
       expect(_.isBlank).toBeDefined();

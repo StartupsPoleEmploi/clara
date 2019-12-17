@@ -26,7 +26,9 @@ class AreQuestionsController < ApplicationController
 private
 
   def allowed_params
-    params.require(:are_form).permit(:minimum_income).to_h
+    res = params.require(:are_form).permit(:minimum_income).to_h
+    res[:minimum_income] = res[:minimum_income].gsub(",", ".")
+    res
   end
 
 

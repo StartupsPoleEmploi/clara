@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst,lastIndexOf"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -1039,6 +1039,26 @@
       }
     }
     return -1;
+  }
+
+  /**
+   * A specialized version of `_.lastIndexOf` which performs strict equality
+   * comparisons of values, i.e. `===`.
+   *
+   * @private
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} fromIndex The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   */
+  function strictLastIndexOf(array, value, fromIndex) {
+    var index = fromIndex + 1;
+    while (index--) {
+      if (array[index] === value) {
+        return index;
+      }
+    }
+    return index;
   }
 
   /**
@@ -5536,6 +5556,42 @@
   }
 
   /**
+   * This method is like `_.indexOf` except that it iterates over elements of
+   * `array` from right to left.
+   *
+   * @static
+   * @memberOf _
+   * @since 0.1.0
+   * @category Array
+   * @param {Array} array The array to inspect.
+   * @param {*} value The value to search for.
+   * @param {number} [fromIndex=array.length-1] The index to search from.
+   * @returns {number} Returns the index of the matched value, else `-1`.
+   * @example
+   *
+   * _.lastIndexOf([1, 2, 1, 2], 2);
+   * // => 3
+   *
+   * // Search from the `fromIndex`.
+   * _.lastIndexOf([1, 2, 1, 2], 2, 2);
+   * // => 1
+   */
+  function lastIndexOf(array, value, fromIndex) {
+    var length = array == null ? 0 : array.length;
+    if (!length) {
+      return -1;
+    }
+    var index = length;
+    if (fromIndex !== undefined) {
+      index = toInteger(fromIndex);
+      index = index < 0 ? nativeMax(length + index, 0) : nativeMin(index, length - 1);
+    }
+    return value === value
+      ? strictLastIndexOf(array, value, index)
+      : baseFindIndex(array, baseIsNaN, index, true);
+  }
+
+  /**
    * Removes all elements from `array` that `predicate` returns truthy for
    * and returns an array of the removed elements. The predicate is invoked
    * with three arguments: (value, index, array).
@@ -9009,6 +9065,7 @@
   lodash.isSymbol = isSymbol;
   lodash.isTypedArray = isTypedArray;
   lodash.last = last;
+  lodash.lastIndexOf = lastIndexOf;
   lodash.lowerFirst = lowerFirst;
   lodash.stubArray = stubArray;
   lodash.stubFalse = stubFalse;

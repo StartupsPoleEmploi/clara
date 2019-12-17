@@ -1,3 +1,12 @@
+$.betterFloat = function(value_arg) {
+  var value = value_arg.replace("." ,",");
+  var invalid_char_function = function(e){return !_.includes("0123456789,",e)};
+  var invalid_char = _.find(value, invalid_char_function);
+  value = value.replace(invalid_char, "")
+  value = _.keepOnlyLast(value, ",")
+  return value;
+}
+
 $.currentAppPath = function () {
   return $('body').attr("data-path");
 }

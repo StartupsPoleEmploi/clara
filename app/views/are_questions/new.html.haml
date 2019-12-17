@@ -1,5 +1,5 @@
 - title_data "Votre montant d'allocation"
-- raw_description = 'Quel est le montant de cette allocation ?'
+- raw_description = 'Quel est le montant net journalier de cette allocation ?'
 - description_data(raw_description)
 
 - has_error = !(flash[:error].blank?)
@@ -21,13 +21,12 @@
     .o-card
       = form_with model: @are, :local => true, url: are_questions_path do |f|
 
-        %h1.c-question-title
-          =raw_description
+        = render 'shared/a_form_header', {title: "#{raw_description}", subtitle: "Ce montant est disponible sur pole-emploi.fr, dans votre espace personnel."}
 
         .c-are__form{:class => classes_of_are_form}
-          %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Montant par mois
+          %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Exemple : 30,50
             
-          = f.number_field :minimum_income, 
+          = f.text_field :minimum_income, 
             class: classes_of_input,    
             id: 'montant',            
             value: @are.minimum_income,            
