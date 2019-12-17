@@ -24,10 +24,6 @@ clara.js_define("admin_simple_rule_form", {
         newState["selected_value"] = action.value
       }
 
-      console.log("newState")
-      console.log(newState)
-      console.log("")
-
       return newState;
     };
 
@@ -38,6 +34,7 @@ clara.js_define("admin_simple_rule_form", {
     store_rule.subscribe(function(){clara.admin_rules_update_value.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_operator.please(_.cloneDeep(store_rule.getState()))});
     store_rule.subscribe(function(){clara.admin_rules_update_explanation.please(_.cloneDeep(store_rule.getState()))});
+    store_rule.subscribe(function(){clara.admin_rules_value_explanation.please(_.cloneDeep(store_rule.getState()))});
 
     // DISPATCHERS
     $('#rule_variable_id').on('input', function() {
@@ -52,7 +49,7 @@ clara.js_define("admin_simple_rule_form", {
 
     $('#rule_value_eligible').on('input', function() {
       var value = $(this).val().replace("." ,",");
-      if (!_.includes("0123456789,", _.last(value)) {
+      if (!_.includes("0123456789,", _.last(value))) {
         value = value.slice(0, -1); // removes last char
       }
       store_rule.dispatch({type: 'VALUE_CHANGED', value: value});
