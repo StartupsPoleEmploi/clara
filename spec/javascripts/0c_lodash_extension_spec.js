@@ -35,6 +35,9 @@ describe("Lodash extension", function () {
     it("Should transform ',,' into ','", function () {
       expect(_.keepOnlyLast(',,', ',')).toEqual(',');
     });
+    it("Should transform '3' into '3'", function () {
+      expect(_.keepOnlyLast('3', ',')).toEqual('3');
+    });
   });
 
   describe("_.isBlank", function () {

@@ -7,6 +7,7 @@ clara.js_define("new_are_question", {
         var invalid_char_function = function(e){return !_.includes("0123456789,",e)};
         var invalid_char = _.find(value, invalid_char_function);
         value = value.replace(invalid_char, "")
+        value = _.keepOnlyLast(value, ",")
         $(this).val(value)
     });
   },
