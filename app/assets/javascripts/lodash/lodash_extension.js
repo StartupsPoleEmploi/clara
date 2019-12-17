@@ -7,6 +7,12 @@ _.mixin({
 
   // keep only last char of string
   keepOnlyLast: function(str, char) {
+    var local_str = str.toString();
+    var local_char = char.toString().charAt(0);
+
+    var local_array = local_str.split("")
+    
+
     return "";
   },
 
