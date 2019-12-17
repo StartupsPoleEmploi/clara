@@ -51,15 +51,15 @@ clara.js_define("admin_edit_aid", {
 
     setTimeout(function () {
       CKEDITOR.instances.aid_what.destroy()
-      $("textarea#aid_what").attr("placeholder", "hello aid_what")
+      $("textarea#aid_what").attr("placeholder", "Décrire en quelques lignes en quoi consiste l'aide globalement et pourquoi elle existe")
       CKEDITOR.instances.aid_how_much.destroy()
-      $("textarea#aid_how_much").attr("placeholder", "hello aid_how_much")
+      $("textarea#aid_how_much").attr("placeholder", "Décrire l'aide de façon détaillée et en précisant ce à quoi elle donne droit.")
       CKEDITOR.instances.aid_limitations.destroy()
-      $("textarea#aid_limitations").attr("placeholder", "hello aid_limitations")
+      $("textarea#aid_limitations").attr("placeholder", "Décrire ici les réserves, dérogations, liens utiles, commentaires...")
       CKEDITOR.instances.aid_how_and_when.destroy()
-      $("textarea#aid_how_and_when").attr("placeholder", "hello aid_how_and_when")
+      $("textarea#aid_how_and_when").attr("placeholder", "décrire de la façon la plus claire possible le processus pour bénéficier de l'aide. Si possible, mettre en lien une URL pour effectuer la demande (par exemple, vers le site de Pôle emploi ou le site du partenaire) ou le dossier à télécharger.")
       CKEDITOR.instances.aid_additionnal_conditions.destroy()
-      $("textarea#aid_additionnal_conditions").attr("placeholder", "hello aid_additionnal_conditions")
+      $("textarea#aid_additionnal_conditions").attr("placeholder", "Indiquer dans ce champ les critères qui ne sont pas traités par le formulaire (par exemple : nombre et âge des enfants, plafond de ressources, coefficient familial...)")
     }, 800);
 
     setTimeout(function () {
