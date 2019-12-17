@@ -1,10 +1,10 @@
-$.betterFloat = function($this) {
-  var value = $this.val().replace("." ,",");
+$.betterFloat = function(value_arg) {
+  var value = value_arg.replace("." ,",");
   var invalid_char_function = function(e){return !_.includes("0123456789,",e)};
   var invalid_char = _.find(value, invalid_char_function);
   value = value.replace(invalid_char, "")
   value = _.keepOnlyLast(value, ",")
-  $this.val(value)
+  return value;
 }
 
 $.currentAppPath = function () {

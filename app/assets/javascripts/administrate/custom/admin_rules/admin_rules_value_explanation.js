@@ -5,8 +5,6 @@ clara.js_define("admin_rules_value_explanation", {
 
   please: function(state) {
 
-    console.log('hellokttiy')
-
     if (state.selected_variable === "v_allocation_value_min") {
       $("#label_value_eligible").html("Valeur (par jour)")
     } else {

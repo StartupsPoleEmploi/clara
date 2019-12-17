@@ -2,9 +2,9 @@ clara.js_define("new_are_question", {
 
   please: function() {
 
-    $.betterFloat($('input#montant'))
+    $('input#montant').val($.betterFloat($('input#montant').val()))
     
-    $('input#montant').on('input', function(e) { $.betterFloat($(this)) })
+    $('input#montant').on('input', function(e) { $(this).val($.betterFloat($(this).val())) })
 
   },
 
