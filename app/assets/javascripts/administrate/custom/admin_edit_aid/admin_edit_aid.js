@@ -49,14 +49,25 @@ clara.js_define("admin_edit_aid", {
       })
     })
 
-    //Clean CKEDitor
     setTimeout(function () {
       CKEDITOR.instances.aid_what.destroy()
       $("textarea#aid_what").attr("placeholder", "hello aid_what")
+      CKEDITOR.instances.aid_how_much.destroy()
+      $("textarea#aid_how_much").attr("placeholder", "hello aid_how_much")
+      CKEDITOR.instances.aid_limitations.destroy()
+      $("textarea#aid_limitations").attr("placeholder", "hello aid_limitations")
+      CKEDITOR.instances.aid_how_and_when.destroy()
+      $("textarea#aid_how_and_when").attr("placeholder", "hello aid_how_and_when")
+      CKEDITOR.instances.aid_additionnal_conditions.destroy()
+      $("textarea#aid_additionnal_conditions").attr("placeholder", "hello aid_additionnal_conditions")
     }, 800);
 
     setTimeout(function () {
       CKEDITOR.replace( 'aid_what', { extraPlugins : 'confighelper'});
+      CKEDITOR.replace( 'aid_how_much', { extraPlugins : 'confighelper'});
+      CKEDITOR.replace( 'aid_limitations', { extraPlugins : 'confighelper'});
+      CKEDITOR.replace( 'aid_how_and_when', { extraPlugins : 'confighelper'});
+      CKEDITOR.replace( 'aid_additionnal_conditions', { extraPlugins : 'confighelper'});
     }, 1000);
 
     setTimeout(function () {
