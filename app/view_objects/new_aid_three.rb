@@ -12,6 +12,15 @@ class NewAidThree < ViewObject
     attribute.attribute.to_s
   end
 
+  def help_of(attribute)
+    name = attr_name(attribute)
+    {
+      "short_description" => "Décrire en une ligne l'aide, ce résumé apparaît pour l'utilisateur dans les résultats de sa simulation, juste en dessous du nom de l'aide.",
+      "filters" => "L'utilisateur retrouvera plus facilement cette aide, s'il applique des filtres après sa simulation; ce champ est différent du champ \"Rubrique\" et sert aux utilisateurs qui veulent voir apparaître moins de résultats, en fonction de ce qu'ils sont venus chercher.",
+    }[name]
+  end
+
+
   def show_field?(attribute)
     name = attr_name(attribute)
     [ "short_description", "filters" ].include?(name)

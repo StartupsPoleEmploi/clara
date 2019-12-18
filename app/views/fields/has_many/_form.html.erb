@@ -29,7 +29,7 @@ and is augmented with [Selectize].
 </div>
 <div class="field-unit__field">
   <% if help %>
-    <%= f.label t(help, default: ""), for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+    <%= f.label help, for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
   <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
     <%= options_for_select(field.associated_resource_options, field.selected_options) %>
