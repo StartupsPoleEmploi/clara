@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 23.3.0 (17/12/2019)
+## 23.3.0 (18/12/2019)
 -[#1484][FEATURE] Guidage utilisateur, suite
 
 
