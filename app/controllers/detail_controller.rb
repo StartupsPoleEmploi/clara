@@ -3,7 +3,10 @@ class DetailController < ApplicationController
   after_action :save_asker
 
   def show
-    @aid = Aid.activated.friendly.find(params[:id])
+    @aid = Aid.activated.friendly.find_by(slug: params[:id])
+    if (@aid == nil && current_user != nil)
+      @aid = Aid.find_by(slug: params[:id])
+    end
     if has_active_user
       existing = Rails.cache.read(params[:for_id])
       if (existing) # already in the cache, we dont have to calculate anything
@@ -17,6 +20,7 @@ class DetailController < ApplicationController
     else
       @loaded = DetailService.new(@aid).hashified_aid
     end
+    raise SecurityError if @loaded[:aid] == nil
     # gon.loaded = @loaded # testing & debug purpose only
   end
 

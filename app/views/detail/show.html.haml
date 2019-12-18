@@ -3,7 +3,6 @@
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
-- is_new_aid = ActivatedModelsService.instance.rules.detect{|r| r["id"] == aid[:rule_id]}["name"].include?("_root_box")
 
 
 %main#main.c-detail-show{role: "main"}
