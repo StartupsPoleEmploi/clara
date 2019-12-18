@@ -78,6 +78,7 @@ Cypress.Commands.add('connect_as_superadmin', () => {
 });
 
 Cypress.Commands.add('disconnect_from_admin', () => {
+  cy.visit('/admin')
   cy.get('.js-sign-out').click()
 });
 
