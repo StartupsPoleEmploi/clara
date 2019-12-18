@@ -36,7 +36,7 @@ This partial renders a textarea element for a text attribute.
 </div>
 <div class="field-unit__field">
   <% if help %>
-    <%= f.label help, for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
+    <%= f.label help.html_safe, for:"#{f.object.class.name.underscore}_#{field.attribute}", "class" => "field-unit__help" %>
   <% end %>
   <%= f.text_area field.attribute, placeholder: placeholder %>
 </div>
