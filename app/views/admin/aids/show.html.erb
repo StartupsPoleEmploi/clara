@@ -36,10 +36,7 @@ as well as a link to its edit page.
     <dl class="c-tabbed-dl">
       <% v.ordered_info_attributes.each_with_index do |attribute, index_nb| %>
           <dt class="attribute-label" id="<%= attribute.name %>" data-role="<%= current_user.role %>">
-          <%= t(
-            "helpers.label.#{resource_name}.#{attribute.name}",
-            default: attribute.name.titleize,
-          ) %>
+            <%= v.label_of(attribute.name) %>
           </dt>
 
           <dd class="attribute-data attribute-data--<%=attribute.html_class%>"

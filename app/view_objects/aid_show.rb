@@ -7,6 +7,12 @@ class AidShow < ViewObject
 
 
 
+  def label_of(attr_name)
+    {
+      "name" => "Blablabla",
+    }[attr_name].to_s
+  end
+
   def ordered_info_attributes
     res = []
     res << @page.attributes.find{|e| e.attribute == :name}
