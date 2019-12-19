@@ -4,8 +4,8 @@ clara.js_define("admin_edit_aid", {
     return $(".js-aid-edition").exists();
   },
 
-
   please: /* istanbul ignore next */ function () {
+    var that = clara.admin_edit_aid;
 
     var REMOVE_BUTTONS = 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About'
 
@@ -50,38 +50,9 @@ clara.js_define("admin_edit_aid", {
       })
     })
 
-    setTimeout(function () {
-      if(Cypress) {
-        // Do nothing
-      } else {
-        CKEDITOR.instances.aid_what.destroy()
-        $("textarea#aid_what").attr("placeholder", "Décrire en quelques lignes en quoi consiste l'aide globalement et pourquoi elle existe")
-        CKEDITOR.instances.aid_how_much.destroy()
-        $("textarea#aid_how_much").attr("placeholder", "Décrire l'aide de façon détaillée et en précisant ce à quoi elle donne droit.")
-        CKEDITOR.instances.aid_limitations.destroy()
-        $("textarea#aid_limitations").attr("placeholder", "Décrire ici les réserves, dérogations, liens utiles, commentaires...")
-        CKEDITOR.instances.aid_how_and_when.destroy()
-        $("textarea#aid_how_and_when").attr("placeholder", "Décrire de la façon la plus claire possible le processus pour bénéficier de l'aide. Si possible, mettre en lien une URL pour effectuer la demande (par exemple, vers le site de Pôle emploi ou le site du partenaire) ou le dossier à télécharger.")
-        CKEDITOR.instances.aid_additionnal_conditions.destroy()
-        $("textarea#aid_additionnal_conditions").attr("placeholder", "Indiquer dans ce champ les critères qui ne sont pas traités par le formulaire (par exemple : nombre et âge des enfants, plafond de ressources, coefficient familial...)")      
-      }
-    }, 800);
-
-    setTimeout(function () {
-      if(Cypress) {
-        // Do nothing
-      } else {
-        CKEDITOR.replace( 'aid_what', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
-        CKEDITOR.replace( 'aid_how_much', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
-        CKEDITOR.replace( 'aid_limitations', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
-        CKEDITOR.replace( 'aid_how_and_when', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
-        CKEDITOR.replace( 'aid_additionnal_conditions', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
-      }
-    }, 1000);
-
-    setTimeout(function () {
-      clara.admin_edit_aid_clean_ckeditor.please();
-    }, 1200);
+    _.executeAfter(that._destroy_ckeditors, 800)
+    _.executeAfter(that._reload_ckeditors, 1000)
+    _.executeAfter(clara.admin_edit_aid_clean_ckeditor.please, 1200)
 
     // Redux
     var observables = {
@@ -112,6 +83,29 @@ clara.js_define("admin_edit_aid", {
     });
 
     main_store.dispatch({ type: 'INIT' })
-  }
+  },
+
+  _destroy_ckeditors: function() {
+    CKEDITOR.instances.aid_what.destroy()
+    $("textarea#aid_what").attr("placeholder", "Décrire en quelques lignes en quoi consiste l'aide globalement et pourquoi elle existe")
+    CKEDITOR.instances.aid_how_much.destroy()
+    $("textarea#aid_how_much").attr("placeholder", "Décrire l'aide de façon détaillée et en précisant ce à quoi elle donne droit.")
+    CKEDITOR.instances.aid_limitations.destroy()
+    $("textarea#aid_limitations").attr("placeholder", "Décrire ici les réserves, dérogations, liens utiles, commentaires...")
+    CKEDITOR.instances.aid_how_and_when.destroy()
+    $("textarea#aid_how_and_when").attr("placeholder", "Décrire de la façon la plus claire possible le processus pour bénéficier de l'aide. Si possible, mettre en lien une URL pour effectuer la demande (par exemple, vers le site de Pôle emploi ou le site du partenaire) ou le dossier à télécharger.")
+    CKEDITOR.instances.aid_additionnal_conditions.destroy()
+    $("textarea#aid_additionnal_conditions").attr("placeholder", "Indiquer dans ce champ les critères qui ne sont pas traités par le formulaire (par exemple : nombre et âge des enfants, plafond de ressources, coefficient familial...)")      
+  },
+
+  _reload_ckeditors: function() {
+    CKEDITOR.replace( 'aid_what', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
+    CKEDITOR.replace( 'aid_how_much', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
+    CKEDITOR.replace( 'aid_limitations', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
+    CKEDITOR.replace( 'aid_how_and_when', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
+    CKEDITOR.replace( 'aid_additionnal_conditions', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
+  },
+
+
 
 });
