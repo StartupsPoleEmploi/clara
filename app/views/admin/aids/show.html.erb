@@ -18,15 +18,17 @@ as well as a link to its edit page.
 <%- v_aid_form = view_object(:aid_form, local_assigns) %>
 <%- v = view_object(:aid_show, local_assigns) %>
 
-<% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(45)}" } %>
+<% content_for(:title) { "#{t("helpers.aid.detail")} : <span class='is-actual-title'>#{page.resource.name.truncate(45)}</span>".html_safe } %>
+
+<a class="c-aid-detail-goback" onclick="window.history.back();">
+  <strong> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 444.531 444.531" style="enable-background:new 0 0 444.531 444.531;" xml:space="preserve"><g><path d="M213.13,222.409L351.88,83.653c7.05-7.043,10.567-15.657,10.567-25.841c0-10.183-3.518-18.793-10.567-25.835l-21.409-21.416C323.432,3.521,314.817,0,304.637,0s-18.791,3.521-25.841,10.561L92.649,196.425c-7.044,7.043-10.566,15.656-10.566,25.841s3.521,18.791,10.566,25.837l186.146,185.864c7.05,7.043,15.66,10.564,25.841,10.564s18.795-3.521,25.834-10.564l21.409-21.412c7.05-7.039,10.567-15.604,10.567-25.697c0-10.085-3.518-18.746-10.567-25.978L213.13,222.409z" fill="#057dbc"/></g></svg> </strong>
+  <span>Retour</span>
+</a>
 
 <header class="main-content__header c-aid-detail-header" role="banner">
-  <h1 class="main-content__page-title">
+  <h1 class="main-content__page-title c-aid-detail-title">
     <%= content_for(:title) %>
   </h1>
-</header>
-
-<header class="c-aid-detail-subheader">
 </header>
 
 <section class="main-content__body c-aid-detail-body">

@@ -61,3 +61,29 @@ header.main-content__header.c-aid-detail-header {
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
+
+.c-aid-detail-title {
+  font-size: 27px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  .is-actual-title {
+    font-weight: normal;
+  }
+}
+
+.c-aid-detail-goback {
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.5;
+  letter-spacing: normal;
+  color: #057dbc;
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
