@@ -9,7 +9,12 @@ class AidShow < ViewObject
 
   def label_of(attr_name)
     {
-      "name" => "Blablabla",
+      "name" => "Nom de l’aide",
+      "short_description" => "Résumé de l’aide",
+      "contract_type" => "Rubrique associée",
+      "ordre_affichage" => "Ordre d'affichage dans la rubrique",
+      "filters" => "Filtres sur la page de résultats",
+      "source" => "Sources",
     }[attr_name].to_s
   end
 
