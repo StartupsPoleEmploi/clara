@@ -344,7 +344,7 @@ GEM
       pry (>= 0.9.11)
     public_suffix (3.1.1)
     puma (3.12.2)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-attack (6.1.0)
       rack (>= 1.0, < 3)
     rack-livereload (0.3.17)
@@ -554,7 +554,7 @@ DEPENDENCIES
   pry-remote
   pry-stack_explorer
   puma (~> 3.12)
-  rack (>= 2.0.6)
+  rack (>= 2.0.8)
   rack-attack
   rack-livereload
   rack_session_access
@@ -583,4 +583,4 @@ RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

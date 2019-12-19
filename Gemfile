@@ -15,7 +15,7 @@ gem "rack-attack"
 gem "mailjet"
 gem "kaminari"
 gem "pg_search"
-gem "rack", ">= 2.0.6"
+gem "rack", ">= 2.0.8"
 
 gem "haml", "~> 5"
 gem "haml-rails"

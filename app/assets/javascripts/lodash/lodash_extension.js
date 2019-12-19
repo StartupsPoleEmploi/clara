@@ -1,5 +1,15 @@
 _.mixin({
 
+  //This function is here to avoid any call while running Cypress.
+  //If you want to delay a function call, juste use setTimeout as usual.
+  executeAfter: function(function_delayed, time_in_ms) {
+    if (window.Cypress) {
+      // Do nothing
+    } else {
+      setTimeout(function_delayed, time_in_ms)
+    }
+  },
+
   //See https://stackoverflow.com/a/14794066/2595513
   isIntegerLike: function(value) {
     return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))

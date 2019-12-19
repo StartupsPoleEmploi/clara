@@ -65,6 +65,24 @@ describe("Étape 5", function() {
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Brouillon")
     })
+    describe("Prévisualisation", function() {
+      it("Pour un admin, il est possible de prévisualiser une aide, même si c'est un brouillon", function() {
+        cy.visit('/aides/detail/test-stage-5')
+        cy.get('body.c-body.detail.show').should("exist")
+        cy.title().should('not.include', 'Exception caught')
+        cy.disconnect_from_admin()
+      })
+      it("Pour un simple visiteur, il n'est pas possible de prévisualiser une aide qui est à l'état de brouillon", function() {
+        cy.visit('/aides/detail/test-stage-5', {failOnStatusCode: false})
+        cy.title().should('include', 'Exception caught')
+        cy.get('body.c-body.detail.show').should("not.exist")
+      })
+      it("Pour un simple visiteur, il est possible de prévisualiser une aide publiée", function() {
+        cy.visit('/aides/detail/erasmus')
+        cy.get('body.c-body.detail.show').should("exist")
+        cy.title().should('not.include', 'Exception caught')
+      })
+    })
   })
 
   describe("Si il complète les étapes manquantes", function() {
