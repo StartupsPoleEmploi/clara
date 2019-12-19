@@ -9,20 +9,12 @@ class AidShow < ViewObject
 
   def ordered_info_attributes
     res = []
-    p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-    pp @page.attributes.map { |e| e.attribute  }
-    p ''
     res << @page.attributes.find{|e| e.attribute == :name}
     res << @page.attributes.find{|e| e.attribute == :short_description}
     res << @page.attributes.find{|e| e.attribute == :contract_type}
     res << @page.attributes.find{|e| e.attribute == :ordre_affichage}
     res << @page.attributes.find{|e| e.attribute == :filters}
     res << @page.attributes.find{|e| e.attribute == :source}
-    # res << @page.attributes["short_description"]
-    # res << @page.attributes["contract_type"]
-    # res << @page.attributes["ordre_affichage"]
-    # res << @page.attributes["filters"]
-    # res << @page.attributes["source"]
     res
   end
 
