@@ -6,8 +6,8 @@ set :domain, 'localhost'
 set :user, 'root'
 set :application_name, 'ara'
 set :deploy_to, "/var/www/ara"
-set :repository, "/var/git/ara.git"
-set :branch, 'master'
+set :repository, "/var/git/ara.git/clara"
+set :branch, 'docker'
 set :shared_dirs, fetch(:shared_dirs, []).push('log', 'tmp/pids', 'tmp/sockets', 'public/uploads')
 set :shared_paths, ['config/database.yml', 'log']
 set :keep_releases, 2
@@ -32,6 +32,7 @@ task :deploy do
       comment "Deploying ARA to PRODUCTION2"
       command %{pwd}
       invoke :'git:clone'
+      command %{mv ./clara/rails/* ./clara}
       invoke :'deploy:link_shared_paths'
       command %{bundle install --without test development deployment}
       command %{export ARA_DATABASE_NAME=ara_production}

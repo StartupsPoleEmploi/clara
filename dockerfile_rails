@@ -43,7 +43,11 @@ COPY rails/Gemfile* /root/
 #    curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile; \
 #    curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
 
-WORKDIR /var/git/ara.git
+RUN mkdir -p /var/git/ara.git
+
+WORKDIR /var/git/ara.git/
+
+RUN git clone https://github.com/StartupsPoleEmploi/clara/ -b docker;
 
 ENV RUBYOPT="-KU -E utf-8:utf-8"
 
@@ -54,7 +58,7 @@ RUN echo "** Environment: $ENV_TYPE **";
 # Launch cron jobs (for db dump everyday)
 CMD ln -sf /home/env/$ENV_TYPE/.env "/home/clara/.env"; \
     service ssh start; \
-    cd /var/git/ara.git; \
+    cd /var/git/ara.git/clara/rails; \
     rm -f /var/www/ara/shared/tmp/sockets/pumactl.sock /var/www/ara/deploy.lock; \
     bundle install; \
     bundle exec mina production2 setup; \
