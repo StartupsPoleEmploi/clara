@@ -47,7 +47,10 @@ header.main-content__header.c-aid-detail-header {
 }
 
 .c-aid-detail-section  {
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
+  li {
+    padding-left: 1rem;
+  }
 }
 
 .c-aid-detail-subtitle {

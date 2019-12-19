@@ -22,7 +22,7 @@ class DetailConditionList < ViewObject
 
   def _node_for(ability, parent_ability, i, skip_img=false)
     _and_or(parent_ability, i) + _eligibility(ability, skip_img)  + _all_or_at_least(ability) +
-    "<ol>" +
+    "<ul>" +
       ability[:slave_rules].map.with_index do |sub_ability, indx|
         if sub_ability[:composition_type].blank?
           "<li>" + _and_or(ability, indx).to_s  + _eligibility(sub_ability).to_s + sub_ability[:description].to_s  + "</li>"
@@ -30,7 +30,7 @@ class DetailConditionList < ViewObject
           "<li>" + _node_for(sub_ability, ability, indx) +  "</li>"
         end
       end.join +
-    "</ol>"
+    "</ul>"
   end
 
 
