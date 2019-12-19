@@ -42,15 +42,7 @@ describe("Étape 2", function() {
   })
 
 
-  // Doesnt work because of CKEditor integration hack
-  it.skip("on peut renseigner une description, elle se mets à jour en temps réel", function() {
-
-    cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Ma description</p>");});
-    cy.get('.js-what').contains('Ma description')
-  })
-  
-  // Doesnt work because of CKEditor integration hack
-  it.skip("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
+  it("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
 
     cy.get('#accordion_0-1_tab').click()
     cy.window().then(win => {win.CKEDITOR.instances["aid_additionnal_conditions"].setData("<p>Mes conditions à remplir</p>");});
