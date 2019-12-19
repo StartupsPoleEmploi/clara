@@ -9,9 +9,9 @@ class DetailConditionList < ViewObject
     res = ""
     if @ability_tree.is_a?(Hash) && !@ability_tree.blank?
       if @ability_tree[:slave_rules].size == 0
-        res = "il faut remplir la condition suivante : " + "<ul><li>" + _and_or(@ability_tree) + _eligibility(@ability_tree) + @ability_tree[:description] + "</li></ul>"
+        res = "<span class='c-detail-condition-intro'>il faut remplir la condition suivante : </span>" + "<ul><li>" + _and_or(@ability_tree) + _eligibility(@ability_tree) + @ability_tree[:description] + "</li></ul>"
       else
-        res = "il faut réunir " + _node_for(@ability_tree, {}, 0, true)
+        res = "<span class='c-detail-condition-intro'>il faut réunir " + _node_for(@ability_tree, {}, 0, true) + "</span>"
       end
     else
       res = "Le champ d'application n'existe pas, ou n'est pas encore visible. Si vous venez de le créer, il apparaîtra d'ici quelques instants."
