@@ -7,8 +7,6 @@ clara.js_define("admin_edit_aid", {
   please: /* istanbul ignore next */ function () {
     var that = clara.admin_edit_aid;
 
-    var REMOVE_BUTTONS = 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About'
-
     var selected_rule = $("#aid_rule_id").children("option:selected").html();
 
     if (_.isNotBlank(selected_rule)) {
@@ -52,7 +50,7 @@ clara.js_define("admin_edit_aid", {
 
     _.executeAfter(that._destroy_ckeditors, 800)
     _.executeAfter(that._reload_ckeditors, 1000)
-    _.executeAfter(clara.admin_edit_aid_clean_ckeditor.please, 1200)
+    setTimeout(function () {clara.admin_edit_aid_clean_ckeditor.please();}, 1200);
 
     // Redux
     var observables = {
@@ -99,6 +97,7 @@ clara.js_define("admin_edit_aid", {
   },
 
   _reload_ckeditors: function() {
+    var REMOVE_BUTTONS = 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Undo,Redo,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Italic,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,NumberedList,Outdent,Indent,Blockquote,CreateDiv,JustifyLeft,JustifyCenter,JustifyRight,JustifyBlock,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,PageBreak,Iframe,Styles,Format,Font,FontSize,TextColor,BGColor,Maximize,ShowBlocks,About'
     CKEDITOR.replace( 'aid_what', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
     CKEDITOR.replace( 'aid_how_much', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
     CKEDITOR.replace( 'aid_limitations', { extraPlugins : 'confighelper', removeButtons: REMOVE_BUTTONS});
