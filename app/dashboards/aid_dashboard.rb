@@ -52,6 +52,7 @@ class AidDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :name,
     :status,
+    :source,
     :short_description,
     :need_filters,
     :filters,

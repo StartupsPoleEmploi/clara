@@ -15,7 +15,8 @@ as well as a link to its edit page.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
-<%- v = view_object(:aid_form, local_assigns) %>
+<%- v_aid_form = view_object(:aid_form, local_assigns) %>
+<%- v = view_object(:aid_show, local_assigns) %>
 
 <% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(45)}" } %>
 
@@ -26,43 +27,14 @@ as well as a link to its edit page.
 </header>
 
 <header class="c-aid-detail-subheader">
-  <div class="c-aid-detail-action">
-    <form>
-      <input type="button" value="&larr;&nbsp;Retour&nbsp;&nbsp;" onclick="history.back();">
-    </form>
-  </div>
-  <div>
-    <%= link_to(
-      "#{t("administrate.actions.edit")}",
-      admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true),
-      class: "button c-aid-detail-action",
-    ) if valid_action? :edit %>
-  </div>
-  <div>
-    <%= link_to '👁 Visionner en ligne&nbsp;'.html_safe, detail_url(page.resource), class: "button c-aid-preview c-aid-detail-action", target: "blank" %>
-  </div>
 </header>
 
 <section class="main-content__body c-aid-detail-body">
-  <div class="js-tabs" data-tabs-disable-fragment="true">
-    <ul class="js-tablist" data-hx="h2" data-tabs-prefix-class="example-tabs" data-tabs-generated-hx-class="focusable_tab_title">
-     <li class="js-tablist__item">
-      <a href="#tab_1" id="label_tab_1" class="js-tablist__link">Informations générales</a>
-     </li>
-     <li class="js-tablist__item">
-      <a href="#tab_2" id="label_tab_2" class="js-tablist__link">Contenu</a>
-     </li>
-     <li class="js-tablist__item">
-      <a href="#tab_3" id="label_tab_3" class="js-tablist__link">Historique des modifications</a>
-     </li>
-     <li class="js-tablist__item">
-      <a href="#tab_4" id="label_tab_4" class="js-tablist__link">S'applique si</a>
-     </li>
-    </ul>
-   <div id="tab_1" class="js-tabcontent">
+
+  <section class="c-aid-detail-info">
+    <h2>Informations générales</h2>
     <dl class="c-tabbed-dl">
-      <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb < 9 %>
+      <% v.ordered_info_attributes.each_with_index do |attribute, index_nb| %>
           <dt class="attribute-label" id="<%= attribute.name %>" data-role="<%= current_user.role %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",
@@ -72,15 +44,13 @@ as well as a link to its edit page.
 
           <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
               ><%= render_field attribute %></dd>
-        <% end %>
       <% end %>
-    </dl>
-   </div>
-   <div id="tab_2" class="js-tabcontent">
+    </dl>    
+  </section>
+  <section class="c-aid-detail-content">
     <dl class="c-tabbed-dl">
-      <% page.attributes.each_with_index do |attribute, index_nb| %>
-        <% if index_nb > 8 %>
-          <dt class="attribute-label" id="<%= attribute.name %>">
+      <% v.ordered_content_attributes.each_with_index do |attribute, index_nb| %>
+          <dt class="attribute-label" id="<%= attribute.name %>" data-role="<%= current_user.role %>">
           <%= t(
             "helpers.label.#{resource_name}.#{attribute.name}",
             default: attribute.name.titleize,
@@ -89,17 +59,14 @@ as well as a link to its edit page.
 
           <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
               ><%= render_field attribute %></dd>
-        <% end %>
       <% end %>
-    </dl>
-   </div>
-   <div id="tab_3" class="js-tabcontent">
-      <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
-   </div>
-   <div id="tab_4" class="js-tabcontent">
-      <div class="big-left-margin c-display-appfield">
-          <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v.ability_tree } %>
-      </div>
-   </div>
-  </div>
+    </dl>        
+  </section>
+  <section class="c-aid-detail-criteria">
+    
+  </section>
+  <section class="c-aid-detail-history">
+    
+  </section>
+
 </section>
