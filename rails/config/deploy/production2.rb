@@ -36,7 +36,7 @@ task :deploy do
       invoke :'deploy:link_shared_paths'
       command %{bundle install --without test development deployment}
       command %{export ARA_DATABASE_USER=ara}
-      command %{export ARA_DATABASE_NAME=ara_${ENV_TYPE}}
+      command %{export ARA_DATABASE_NAME=ara_production}
       command %{export ARA_SECRET_KEY_BASE=`bundle exec rake secret`}
       command %{export ARA_DATABASE_HOST=clara_db}
       invoke :'rails:db_migrate'
