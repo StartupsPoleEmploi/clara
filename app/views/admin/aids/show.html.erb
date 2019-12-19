@@ -31,7 +31,7 @@ as well as a link to its edit page.
 
 <section class="main-content__body c-aid-detail-body">
 
-  <section class="c-aid-detail-info">
+  <section class="c-aid-detail-section c-aid-detail-info">
     <h2>Informations générales</h2>
     <dl class="c-tabbed-dl">
       <% v.ordered_info_attributes.each_with_index do |attribute, index_nb| %>
@@ -46,7 +46,7 @@ as well as a link to its edit page.
   </section>
 
 
-  <section class="c-aid-detail-content">
+  <section class="c-aid-detail-section c-aid-detail-content">
     <h2>Contenu</h2>
     <dl class="c-tabbed-dl">
       <% v.ordered_content_attributes.each_with_index do |attribute, index_nb| %>
@@ -64,13 +64,13 @@ as well as a link to its edit page.
   </section>
   
 
-  <section class="c-aid-detail-criteria">  
+  <section class="c-aid-detail-section c-aid-detail-criteria">  
     <h2>Critères d'application de l'aide</h2>
     <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v_aid_form.ability_tree } %>
   </section>
   
 
-  <section class="c-aid-detail-history">
+  <section class="c-aid-detail-section c-aid-detail-history">
     <h2>Historique des modifications</h2>
     <%= render partial: 'admin/history/resume', locals: { resource: page.resource } %>
   </section>

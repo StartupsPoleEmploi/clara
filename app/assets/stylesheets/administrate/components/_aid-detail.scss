@@ -10,14 +10,32 @@ header.main-content__header.c-aid-detail-header {
   border: none;
 }
 
-.c-aid-detail-info .c-tabbed-dl {
+.c-aid-detail-body .c-tabbed-dl {
   margin-left: 0;
 }
 
 .main-content__body.c-aid-detail-body .attribute-data {
   width: 65%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
 }
 
 .main-content__body.c-aid-detail-body .attribute-label {
   width: 35%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #797676;
+}
+
+.c-aid-detail-section + .c-aid-detail-section {
+  border-top:  solid 1px #e4e8f0;
 }
