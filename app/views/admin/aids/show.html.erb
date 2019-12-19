@@ -48,6 +48,7 @@ as well as a link to its edit page.
     </dl>    
   </section>
   <section class="c-aid-detail-content">
+    <h2>Contenu</h2>
     <dl class="c-tabbed-dl">
       <% v.ordered_content_attributes.each_with_index do |attribute, index_nb| %>
           <dt class="attribute-label" id="<%= attribute.name %>" data-role="<%= current_user.role %>">

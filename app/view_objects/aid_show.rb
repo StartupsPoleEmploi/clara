@@ -20,7 +20,11 @@ class AidShow < ViewObject
 
   def ordered_content_attributes
     res = []
-    # res << @page.resource.attributes["what"]
+    res << @page.attributes.find{|e| e.attribute == :what}
+    res << @page.attributes.find{|e| e.attribute == :how_much}
+    res << @page.attributes.find{|e| e.attribute == :additionnal_conditions}
+    res << @page.attributes.find{|e| e.attribute == :how_and_when}
+    res << @page.attributes.find{|e| e.attribute == :limitations}
     res
   end
 
