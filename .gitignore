@@ -29,7 +29,7 @@ ara
 /node_modules/*
 
 # Ignore env var
-.env
+./.env
 
 # Ignore page cache
 /public/index.html
