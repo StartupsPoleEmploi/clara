@@ -1,0 +1,15 @@
+FROM postgres:9.5.17
+
+#ENTRYPOINT ["docker-entrypoint.sh"]
+RUN apt-get update && \
+    apt-get -y install vim
+
+ARG ENV_TYPE=${ENV_TYPE:-production}
+
+RUN ln -sf /home/db/init.sh /docker-entrypoint-initdb.d/10-init.sh; \
+    echo "#!/bin/bash\npg_restore --verbose --clean -x -h localhost -S ara -d ara_production /home/db/latest.dump >>/var/log/restore_dump.log" >/docker-entrypoint-initdb.d/20-restore.sh; \
+    chmod u+rwx /docker-entrypoint-initdb.d/20-restore.sh; \
+    mkdir -p /etc/postgresql/9.5/main/; \
+    ln -sf /home/db/$ENV_TYPE/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf;
+
+CMD ["postgres"]

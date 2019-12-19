@@ -1,0 +1,84 @@
+version: "3"
+
+volumes:
+  vol_data:
+  vol_shared:
+
+services:
+  clara_nginx:
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_nginx
+      args:
+      - ENV_TYPE=${ENV:-production}
+    hostname: clara_nginx 
+    container_name: clara_nginx
+    volumes:
+    - "vol_shared:/var/www/ara"
+    - "../private/nginx:/home/nginx"
+    ports:
+    - "80:80"
+    - "443:443"
+    depends_on:
+    - clara_rails
+    networks:
+    - mynetwork
+
+  clara_rails:
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_rails
+      args:
+      - ENV_TYPE=${ENV:-production}
+    hostname: clara_rails
+    container_name: clara_rails
+    volumes:
+    - "vol_shared:/var/www/ara"
+    - "./rails:/var/git/ara.git"
+    - "./rails:/home/clara"
+    - "../private/env:/home/env"
+#    ports:
+#    - "3000:3000"
+    networks:
+    - mynetwork
+
+  clara_db:
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_db
+      args:
+      - ENV_TYPE=${ENV:-production}
+    hostname: clara_db
+    container_name: clara_db
+#    ports:
+#    - "5432:5432"
+    volumes:
+    - "vol_data:/var/lib/postgresql/data"
+    - "../private/db:/home/db"
+    networks:
+    - mynetwork
+
+  clara_backups:
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile_backups
+      args:
+      - ENV_TYPE=${ENV:-production}
+    hostname: clara_backups
+    container_name: clara_backups
+    volumes:
+    - "./:/home/docker"
+    - "./backups/home/backups:/home/backups"
+    - "/mnt/backups:/mnt/backups"
+    depends_on:
+    - clara_db
+    networks:
+    - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

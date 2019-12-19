@@ -1,0 +1,62 @@
+FROM ruby:2.6.0
+
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# Utilities
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl git sudo vim telnet iputils-ping ssh openssh-server cron
+
+# executable JS is required
+RUN cd ~ \
+    && curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh \
+    && bash nodesource_setup.sh\
+    && apt install nodejs\
+    && nodejs -v
+
+# See https://github.com/phusion/passenger-docker/issues/195#issuecomment-321868848
+RUN export DEBIAN_FRONTEND=noninteractive; \
+    apt-get install -y tzdata
+
+# for postgres
+RUN apt-get install -y libpq-dev
+
+# for nokogiri
+RUN apt-get install -y libxml2-dev libxslt1-dev
+
+# For local tunneling
+RUN mkdir /root/.ssh/; \
+    echo 'NoHostAuthenticationForLocalhost yes' > /root/.ssh/config
+
+RUN echo "root:root" | chpasswd; \
+    mkdir -p /home/clara;
+
+
+#RUN echo "service ssh restart" > ~/allow_local_tunnel.sh; \
+RUN echo "yes y | ssh-keygen -t rsa -f ~/.ssh/id_rsa -N ''" >> ~/allow_local_tunnel.sh; \
+    echo "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys" >> ~/allow_local_tunnel.sh; \
+    echo "chmod og-wx ~/.ssh/authorized_keys" >> ~/allow_local_tunnel.sh; \
+    chmod u+x ~/allow_local_tunnel.sh; \
+    sh ~/allow_local_tunnel.sh;
+
+COPY rails/Gemfile* /root/
+#RUN cd /root; \
+#    curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile -o Gemfile; \
+#    curl https://raw.githubusercontent.com/StartupsPoleEmploi/clara/20.37.0/Gemfile.lock -o Gemfile.lock
+
+WORKDIR /var/git/ara.git
+
+ENV RUBYOPT="-KU -E utf-8:utf-8"
+
+ARG ENV_TYPE=${ENV_TYPE:-production}
+ENV ENV_TYPE=$ENV_TYPE
+RUN echo "** Environment: $ENV_TYPE **";
+
+# Launch cron jobs (for db dump everyday)
+CMD ln -sf /home/env/$ENV_TYPE/.env "/home/clara/.env"; \
+    service ssh start; \
+    cd /var/git/ara.git; \
+    rm -f /var/www/ara/shared/tmp/sockets/pumactl.sock /var/www/ara/deploy.lock; \
+    bundle install; \
+    bundle exec mina production2 setup; \
+    bundle exec mina production2 deploy; \
+    sleep infinity
