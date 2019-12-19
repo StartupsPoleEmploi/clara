@@ -32,7 +32,7 @@ task :deploy do
       comment "Deploying ARA to PRODUCTION2"
       command %{pwd}
       invoke :'git:clone'
-      command %{mv ./clara/rails/* ./clara}
+      command %{mv ./rails/* ./}
       invoke :'deploy:link_shared_paths'
       command %{bundle install --without test development deployment}
       command %{export ARA_DATABASE_NAME=ara_production}
