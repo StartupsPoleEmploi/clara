@@ -1,8 +1,13 @@
-%header.main-content__header.c-history
+- v = view_object(:history, local_assigns)
+
+
+%header.c-history
 - resource.versions.reverse_order.each  do |version|
-  %section.main-content__body
+  %section
+    .c-history-datetime
+      le #{v.date_of(l version.created_at)}
     %h3
-      #{version.whodunnit}, le #{l version.created_at}
+      #{version.whodunnit} a modifié cette aide
     %table.table.table-striped
       %thead
         %tr
@@ -12,6 +17,6 @@
       %tbody
         - version.changeset.each do |property,change|
           %tr
-            %td=property
+            %td.js-history-property=property
             %td=change.first.to_s.html_safe
             %td=change.last.to_s.html_safe
