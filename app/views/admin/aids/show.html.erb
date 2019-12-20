@@ -81,7 +81,9 @@ as well as a link to its edit page.
 
   <section class="c-aid-detail-section c-aid-detail-criteria">  
     <h2 class="c-aid-detail-subtitle">Critères d'application de l'aide</h2>
-    <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v_aid_form.ability_tree } %>
+    <div class="js-criterions">
+      <%= render partial: 'shared/detail_condition_list.haml', locals: { ability_tree: v_aid_form.ability_tree } %>
+    </div>
   </section>
   
 
