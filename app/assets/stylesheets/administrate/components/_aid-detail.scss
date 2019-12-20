@@ -123,7 +123,7 @@ header.main-content__header.c-aid-detail-header {
 }
 
 .c-history-section + .c-history-section {
-  margin-top: 1rem;
+  margin-top: 2.2rem;
 }
 
 .c-history-datetime {
@@ -136,6 +136,9 @@ header.main-content__header.c-aid-detail-header {
   color: #797676;
 }
 
-.c-history-subsection {
-  margin-bottom: .5rem;
+.c-history-subsection  {
+  margin-bottom: .8rem;
+}
+.c-history-subsection + .c-history-subsection {
+  margin-bottom: .6rem;
 }
