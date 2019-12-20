@@ -24,11 +24,13 @@ from the associated resource class's dashboard.
   <%- klass =  field.data[0].class.name %>  
 
   <% names_and_ids.each do |name_and_id| %>
-    <span>
+    <span class="admin-tag-<%= klass.downcase %>">
       <% if klass == "Tag" %>
         <div>
           <%= link_to name_and_id[:name], admin_tag_path(name_and_id[:id]) %>
         </div>
+      <% elsif klass == "Filter" %>
+          <%= name_and_id[:name] %>
       <% elsif klass == "Rule" %>
         <div>
           <%= link_to name_and_id[:name], admin_rule_path(name_and_id[:id]) %>
