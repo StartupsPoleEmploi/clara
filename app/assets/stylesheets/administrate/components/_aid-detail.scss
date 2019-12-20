@@ -115,5 +115,21 @@ header.main-content__header.c-aid-detail-header {
     letter-spacing: normal;
     color: #057dbc;
     text-decoration: underline;
+    padding-left: 0;
+    padding-top: 0;
   }
+}
+
+.c-history-section + .c-history-section {
+  margin-top: 1rem;
+}
+
+.c-history-datetime {
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #797676;
 }

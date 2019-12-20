@@ -9,7 +9,7 @@ class History < ViewObject
     arr.insert(3, "à")
     arr.pop
     joined = arr.join(" ")
-    joined.delete_suffix('min') 
+    joined.delete_suffix('min')
   end
 
 
