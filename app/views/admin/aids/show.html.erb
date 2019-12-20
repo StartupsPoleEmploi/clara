@@ -21,8 +21,8 @@ as well as a link to its edit page.
 <% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(42)}".html_safe } %>
 
 <a class="c-aid-detail-goback" onclick="window.history.back();">
-  <strong> <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="9px" height="9px" viewBox="0 0 444.531 444.531" style="enable-background:new 0 0 444.531 444.531;" xml:space="preserve"><g><path d="M213.13,222.409L351.88,83.653c7.05-7.043,10.567-15.657,10.567-25.841c0-10.183-3.518-18.793-10.567-25.835l-21.409-21.416C323.432,3.521,314.817,0,304.637,0s-18.791,3.521-25.841,10.561L92.649,196.425c-7.044,7.043-10.566,15.656-10.566,25.841s3.521,18.791,10.566,25.837l186.146,185.864c7.05,7.043,15.66,10.564,25.841,10.564s18.795-3.521,25.834-10.564l21.409-21.412c7.05-7.039,10.567-15.604,10.567-25.697c0-10.085-3.518-18.746-10.567-25.978L213.13,222.409z" fill="#057dbc"/></g></svg> </strong>
-  <span>Retour</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8"><path fill="#057DBC" fill-rule="nonzero" d="M3.8 0L5 1.2 2.4 3.8 5 6.4 3.8 7.6 0 3.8l.1-.1-.1-.1z"/></svg>
+  <span>&nbsp;Retour</span>
 </a>
 
 <header class="main-content__header c-aid-detail-header" role="banner">
@@ -30,13 +30,13 @@ as well as a link to its edit page.
     <%="#{t("helpers.aid.detail")}".html_safe  %> : <span class='is-actual-title'><%= "#{page.resource.name.truncate(45)}".html_safe %></span>
   </h1>
   <nav class="c-aid-detail-cutebuttons">
-    <a class="c-cutebutton">
-      <svg width="19px" height="13px" viewBox="0 0 27 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="right-arrow" transform="translate(13.500000, 11.000000) rotate(180.000000) translate(-13.500000, -11.000000) " fill="#057DBC" fill-rule="nonzero"><path d="M18.1814862,0.330864421 C17.8136551,-0.11028814 17.2014608,-0.11028814 16.8207685,0.330864421 C16.4529374,0.757113179 16.4529374,1.46653419 16.8207685,1.89178936 L23.7203874,9.88718273 L0.952588123,9.88718273 C0.421848206,9.88817632 0,10.377021 0,10.9920513 C0,11.6070816 0.421848206,12.1118237 0.952588123,12.1118237 L23.7203874,12.1118237 L16.8207685,20.0923133 C16.4529374,20.5334658 16.4529374,21.2438804 16.8207685,21.6691356 C17.2014608,22.1102881 17.8145125,22.1102881 18.1814862,21.6691356 L26.7144808,11.7809593 C27.0951731,11.3547105 27.0951731,10.6452895 26.7144808,10.2200343 L18.1814862,0.330864421 Z" id="Shape"></path></g></g></svg>
+    <a data-simpletooltip-prefix-class="cute" data-simpletooltip-tag="div" data-simpletooltip-text="Retour" class="c-cutebutton is-back js-simple-tooltip" onclick="window.history.back();" >
+      <svg height="17" viewBox="0 0 18 17" width="18" xmlns="http://www.w3.org/2000/svg"><path d="m16.875 9.6h-13.342l4.083 5.232c.398.51.332 1.268-.146 1.692a1.079 1.079 0 0 1 -1.586-.156l-5.625-7.2a1.45 1.45 0 0 1 -.102-.18c0-.06-.056-.096-.078-.156a1.27 1.27 0 0 1 -.079-.432 1.27 1.27 0 0 1 .079-.432c0-.06.056-.096.078-.156a1.45 1.45 0 0 1 .102-.18l5.625-7.2c.214-.274.531-.433.866-.432.263 0 .518.097.72.276.23.203.375.496.402.814.028.317-.064.633-.256.878l-4.083 5.232h13.342c.621 0 1.125.537 1.125 1.2s-.504 1.2-1.125 1.2z" fill="#057dbc"/></svg>
     </a>
-    <a class="c-cutebutton">
+    <a data-simpletooltip-prefix-class="cute" data-simpletooltip-tag="div" data-simpletooltip-text="Modifier"  class="c-cutebutton is-modification js-simple-tooltip" href="<%= admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true) %>">
       <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19"><path fill="#057DBC" fill-rule="nonzero" d="M15.707.293a.999.999 0 0 0-1.414 0l-13 13a1.003 1.003 0 0 0-.263.464l-1 4a1 1 0 0 0 1.212 1.213l4-1c.176-.044.337-.135.465-.263l13-13a.999.999 0 0 0 0-1.414l-3-3zM4.487 16.097l-2.113.528.529-2.114L12 5.414 13.586 7l-9.098 9.097zM15 5.587L13.414 4 15 2.414 16.586 4 15 5.586z"/></svg>
     </a>
-    <a class="c-cutebutton">
+    <a data-simpletooltip-prefix-class="cute" data-simpletooltip-tag="div" data-simpletooltip-text="Visionner en ligne" class="c-cutebutton is-preview js-simple-tooltip" href="<%= detail_url(page.resource) %>" target="blank">
       <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19"><path fill="#057DBC" fill-rule="nonzero" d="M7.773 3.455a.864.864 0 1 0 0 1.727.864.864 0 0 0 0-1.727zm-3.455 0a.864.864 0 1 0 0 1.727.864.864 0 0 0 0-1.727zm6.91 0a.864.864 0 1 0 0 1.727.864.864 0 0 0 0-1.727zM16.408 0H2.591A2.59 2.59 0 0 0 0 2.59v13.82A2.59 2.59 0 0 0 2.59 19h13.82A2.59 2.59 0 0 0 19 16.41V2.59A2.59 2.59 0 0 0 16.41 0zm.864 16.41a.864.864 0 0 1-.864.863H2.591a.864.864 0 0 1-.864-.864V8.636h15.546v7.773zm0-9.5H1.727V2.59c0-.476.387-.863.864-.863h13.818c.477 0 .864.387.864.864v4.318z"/></svg>
     </a>
   </nav>
@@ -89,3 +89,22 @@ as well as a link to its edit page.
   </section>
 
 </section>
+<nav class="c-aid-detail-bottomnav">
+<div class="c-aid-detail-bottomnav-item">
+  <a class="c-aid-detail-goback" onclick="window.history.back();">
+    <svg xmlns="http://www.w3.org/2000/svg" width="5" height="8" viewBox="0 0 5 8"><path fill="#057DBC" fill-rule="nonzero" d="M3.8 0L5 1.2 2.4 3.8 5 6.4 3.8 7.6 0 3.8l.1-.1-.1-.1z"/></svg>
+    <span>&nbsp;Retour</span>
+  </a>    
+</div>
+<div class="c-aid-detail-bottomnav-item">
+  <a class="is-modification" href="<%= admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true) %>">
+    Modifier
+  </a>
+</div>
+<div class="c-aid-detail-bottomnav-item">
+  <a class="is-preview" href="<%= detail_url(page.resource) %>" target="blank">
+    Visionner en ligne
+  </a>
+</div>
+
+</nav>
