@@ -60,6 +60,7 @@ Utiliser un navigateur et l'URL: http://localhost
 
 ```
 ~/workspace/clara/clara$> docker container prune
+~/workspace/clara/clara$> docker-compose up -d --build
 ```
 
 
