@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.4.0 (19/12/2019)
+-[#1491][BUG] Bo preview aid
+
+
 ## 23.3.0 (18/12/2019)
 -[#1484][FEATURE] Guidage utilisateur, suite
 

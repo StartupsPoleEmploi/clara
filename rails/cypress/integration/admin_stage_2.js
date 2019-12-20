@@ -41,13 +41,7 @@ describe("Étape 2", function() {
     
   })
 
-  it("on peut renseigner une description, elle se mets à jour en temps réel", function() {
 
-    cy.get('#accordion_0-0_tab').click()
-    cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Ma description</p>");});
-    cy.get('.js-what').contains('Ma description')
-  })
-  
   it("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
 
     cy.get('#accordion_0-1_tab').click()
