@@ -8,15 +8,18 @@
       le #{v.date_of(l version.created_at)}
     %h3
       #{version.whodunnit} a modifié cette aide
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Propriété
-          %th Avant
-          %th Après
-      %tbody
-        - version.changeset.each do |property,change|
+
+    .c-history-expander.js-expandmore Voir les changements
+    .js-to_expand
+      %table.table.table-striped
+        %thead
           %tr
-            %td.js-history-property=property
-            %td=change.first.to_s.html_safe
-            %td=change.last.to_s.html_safe
+            %th Propriété
+            %th Avant
+            %th Après
+        %tbody
+          - version.changeset.each do |property,change|
+            %tr
+              %td.js-history-property=property
+              %td=change.first.to_s.html_safe
+              %td=change.last.to_s.html_safe
