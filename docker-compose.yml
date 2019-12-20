@@ -36,7 +36,6 @@ services:
     container_name: clara_rails
     volumes:
     - "vol_shared:/var/www/ara"
-#    - "./rails:/var/git/ara.git"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
 #    ports:
