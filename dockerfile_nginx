@@ -10,6 +10,7 @@ ARG ENV_TYPE=${ENV_TYPE:-production}
 RUN if [ "$ENV_TYPE" = "production" ]; then \
         ln -sfn /home/nginx/$ENV_TYPE/ssl /etc/nginx/ssl; \
     fi; \
+    rm -f /etc/nginx/conf.d/*; \
     ln -sf /home/nginx/$ENV_TYPE/clara.conf /etc/nginx/conf.d/clara.conf;
 
 CMD service nginx start; \

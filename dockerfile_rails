@@ -61,7 +61,7 @@ CMD ln -sf /home/env/$ENV_TYPE/.env "/home/clara/.env"; \
     cd /var/git/ara.git/clara/rails; \
     git pull; \
     rm -f /var/www/ara/shared/tmp/sockets/pumactl.sock /var/www/ara/deploy.lock; \
-    #bundle install; \
-    #bundle exec mina production2 setup; \
-    #bundle exec mina production2 deploy; \
+    bundle install; \
+    bundle exec mina production2 setup; \
+    bundle exec mina production2 deploy; \
     sleep infinity
