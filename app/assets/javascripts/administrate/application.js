@@ -1,3 +1,4 @@
+//= require urlize/urlize
 //= require redux/redux
 //= require lodash/lodash
 //= require lodash/lodash_extension
