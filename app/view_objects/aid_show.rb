@@ -15,6 +15,7 @@ class AidShow < ViewObject
       "ordre_affichage" => "Ordre d'affichage dans la rubrique",
       "filters" => "Filtres sur la page de résultats",
       "source" => "Sources",
+      "status" => "Statut",
     }[attr_name].to_s
   end
 
@@ -26,6 +27,7 @@ class AidShow < ViewObject
     res << @page.attributes.find{|e| e.attribute == :ordre_affichage}
     res << @page.attributes.find{|e| e.attribute == :filters}
     res << @page.attributes.find{|e| e.attribute == :source}
+    res << @page.attributes.find{|e| e.attribute == :status}
     res
   end
 
