@@ -6,11 +6,12 @@
 
 ### Prérequis
 
+Ports 80 et/ou 443 libres
 ```
-~/workspace> docker --version
+~/workspace$> docker --version
 Docker version 17.12.0-ce, build c97c6d6
 
-~/workspace> docker-compose --version
+~/workspace$> docker-compose --version
 docker-compose version 1.18.0, build 8dd22a9
 ```
 
@@ -21,79 +22,74 @@ docker-compose version 1.18.0, build 8dd22a9
 
 ```
 
-~/workspace> git clone https://github.com/StartupsPoleEmploi/clara.git
+~/workspace$> mkdir clara
 
-~/workspace> cd clara
+~/workspace$> cd clara/
+
+~/workspace/clara$> git clone https://github.com/StartupsPoleEmploi/clara.git
 
 ensuite, le user/mdp sera demandé pour un accès à gitlab pole emploi
 
-~/workspace/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
+~/workspace/clara$> git clone https://git.beta.pole-emploi.fr/clara/private.git
 
-~/workspace/clara> rm -rf private/.git
+~/workspace/clara$> cd clara/
 
-~/workspace/clara> cd docker 
+il faut créér un fichier .env avec au choix pour variable ENV=production|recette| developpement. Si absent, alors docker se lance en mode production
 
-~/workspace/clara/docker> docker-compose -f docker-compose.dev.yml up --build -d
+~/workspace/clara/clara$> echo "ENV=recette" >.env
 
-Les machines docker (app, db, nginx) sont lancées, mais pas encore l'application
+~/workspace/clara/clara$> docker-compose up -d --build
 
-~/workspace/clara/docker> chmod +x ./scripts/restore_db_dev.sh && ./scripts/restore_db_dev.sh
+dernière étape, peupler la base de données
 
-Désormais la base de données est remplie avec les dernières données issues de la prod.
+~/workspace/clara/clara$> bash ./restore_db_latest.sh
 
-Dans un autre onglet du terminal, 
+L'application web est lancée.
+Le premier lancement nécessitera plusieurs minutes avant mise à disposition de l'interface web
 
-~/workspace/clara/docker> docker-compose exec srv_app bash
-
-root@b883dc7f48d5:/home/clara# bundle install
-```
-#### Pour arrêter Docker
+Utiliser un navigateur et l'URL: http://localhost
 
 ```
-~/workspace/clara/docker> docker stop $(docker ps -aq)
-```
-
-#### Pour redémarrer de zéro
+#### Pour arrêter les conteneurs Docker
 
 ```
-~/workspace/clara/docker> docker container prune
+~/workspace/clara/clara$> docker-compose stop
 ```
 
+#### Pour redémarrer de zéro après arret des conteneurs
+
+```
+~/workspace/clara/clara$> docker container prune
+```
 
 
 #### Problèmes possibles d'installation
 
- - Si Postgre est déjà installé sur votre machine, le service postgre doit être arrêté
- - Vous devez être connecté en tant que root pour faire marcher Docker
+ - En mode recette, le port 80 de votre machine host doit être libre
+ - en mode production les ports 80 et 443 de la machine host doivent être libres
 
-### Commandes utiles au quotidien
+#### Naviguer l'application
 
-#### Lancer l'application
-
-```
-root@b883dc7f48d5:/home/clara# bin/rails s -p 3000 -b '0.0.0.0'
-```
-
-L'application est visible sous http://localhost ou http://localhost:3000
+L'application est visible sous http://localhost
 
 
 
 #### Lancer les tests front
 
 ```
-root@b883dc7f48d5:/home/clara# npm install -g istanbul
-root@b883dc7f48d5:/home/clara# bundle exec teaspoon
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; npm install -g istanbul"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; bundle exec teaspoon"
 ```
 
-Vous pouvez aussi vous connecter sous http://localhost:3000/teaspoon/default
+Vous pouvez aussi vous connecter sous http://localhost/teaspoon/default
 
 
 #### Lancer les tests de recette
 
 ```
-root@b883dc7f48d5:/home/clara# bin/rails minidb:recreate
-me@mymachine:/workspace/clara# npm install cypress --save-dev
-me@mymachine:/workspace/clara# $(npm bin)/cypress open
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; bin/rails test minidb:recreate"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; npm install cypress --save-dev"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; \$(npm bin)/cypress open"
 ```
 
 lancer tous les tests cypress depuis l'application Cypress
@@ -101,25 +97,23 @@ lancer tous les tests cypress depuis l'application Cypress
 #### Calculer la couverture Ruby
 
 ```
-root@b883dc7f48d5:/home/clara# bin/rails test
+~/workspace/clara/clara> docker-compose exec clara_rails bash -c "cd clara/rails; bin/rails test"
 ```
 Permet de lancer tous les tests Ruby, puis range la couverture sous coverage/ruby/unit
 
 ```
-root@b883dc7f48d5:/home/clara# bin/rails minidb:recreate
-root@b883dc7f48d5:/home/clara# RAILS_ENV=development COVERAGE_PLEASE=true bin/rails s -p 3000 -b '0.0.0.0'
-me@mymachine:/workspace/clara# npm install cypress --save-dev
-me@mymachine:/workspace/clara# $(npm bin)/cypress open
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; bin/rails minidb:recreate"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; RAILS_ENV=development COVERAGE_PLEASE=true bin/rails s -p 3000 -b '0.0.0.0'"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; npm install cypress --save-dev"
+~/workspace/clara/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; \$(npm bin)/cypress open"
 ```
 
 Lancer tous les tests cypress puis arrêter le serveur Rails. La couverture Ruby des tests fonctionnels se trouve alors sous  coverage/ruby/functional
 
 Pour merger les 2 couvertures, 
 ```
-me@mymachine:/workspace/clara# bin/rails ruby_cov:merge
+~/workspace/clara/clara> docker-compose exec clara_rails bash -c "cd clara/rails; bin/rails ruby_cov:merge"
 ```
-
-
 
 #### Déployer en recette
 
@@ -127,24 +121,13 @@ me@mymachine:/workspace/clara# bin/rails ruby_cov:merge
 
 
 ```
-~/home> sudo git clone https://github.com/StartupsPoleEmploi/clara.git
-~/home> cd clara
-~/home/clara> groupadd git
-~/home/clara> chgrp -R git .git
-~/home/clara> chgrp -R git ./
-~/home/clara> usermod -aG git $(whoami)
-~/home/clara> git clone https://git.beta.pole-emploi.fr/clara/private.git
-~/home/clara> rm -rf private/.git
-~/home/clara> cd docker 
-~/home/clara/docker> docker-compose -f docker-compose.yml -f docker-compose.r7.yml up --build -d
-~/home/clara/docker> sudo chmod +x ./scripts/restore_db_prod.sh && ./scripts/restore_db_prod.sh
-~/home/clara/docker$> docker-compose exec srv_app bash
-root@inside_docker:~$> cd /var/git/ara.git
-root@inside_docker:/var/git/ara.git$> git pull origin master
-root@inside_docker:/var/git/ara.git$> bundle install
-root@inside_docker:/var/git/ara.git$> export RUBYOPT="-KU -E utf-8:utf-8"
-root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
-root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy  
+~/> mkdir -p /home/docker
+~/> cd /home/docker
+/home/docker$> git clone https://github.com/StartupsPoleEmploi/clara.git
+/home/docker$> git clone https://git.beta.pole-emploi.fr/clara/private.git #login/mdp exigés
+/home/docker$> cd clara/
+/home/docker/clara$> echo "ENV=recette" >.env
+/home/docker/clara$> docker-compose up -d --build
 ```
 
 ##### Déployer une nouvelle version
@@ -152,24 +135,28 @@ root@inside_docker:/var/git/ara.git$> bundle exec mina production2 deploy
 ```
 ssh identifiant@adresse_recette
 
-~/$> cd /home/clara/docker
-~/home/clara/docker$> docker-compose exec srv_app bash
-root@inside_docker:~$> cd /var/git/ara.git
-root@inside_docker:/var/git/ara.git$> git pull origin master
-root@inside_docker:/var/git/ara.git$> bundle install
-root@inside_docker:/var/git/ara.git$> export RUBYOPT="-KU -E utf-8:utf-8"
-root@inside_docker:/var/git/ara.git$> bundle exec mina production2 setup 
+~/$> cd /home/docker/clara
+/home/docker/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; git pull; bundle install; bundle exec mina production2 setup"
 ```
 
 ##### Commandes utiles
 
 ```
 docker-compose down -v
+docker-compose up -d
 ```
 
-##### URL
+##### URL recette
 
 L'application est visible sous https://clara.beta.pole-emploi.fr/
+
+##### URL production
+
+L'application est visible sous https://clara.pole-emploi.fr/
+
+##### URL developpement
+
+L'application est visible sous http://localhost/
 
 ### Ecriture d'un test
 
