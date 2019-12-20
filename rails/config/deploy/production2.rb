@@ -1,6 +1,6 @@
 require 'mina/puma'
 
-set :rails_env, ENV['ENV_TYPE']
+set :rails_env, 'production'
 
 set :domain, 'localhost'
 set :user, 'root'
