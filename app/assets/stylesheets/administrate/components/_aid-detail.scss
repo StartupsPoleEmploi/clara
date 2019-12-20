@@ -185,9 +185,18 @@ header.main-content__header.c-aid-detail-header {
 
 .c-aid-detail-bottomnav-item.is-modification {
   color: #057dbc;
+  transition: background-color .5s;
+  &:hover {
+    background-color: #f8f8f8;
+  }
 }
 
 .c-aid-detail-bottomnav-item.is-preview {
   background-color: #057dbc;
   color: #ffffff;
+  transition: background-color .5s;
+  &:hover {
+    background-color: rgb(2, 99, 150);
+    border-color: rgb(2, 99, 150);
+  }
 }
