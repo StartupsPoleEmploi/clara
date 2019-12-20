@@ -9,7 +9,7 @@ clara.js_define("admin_show_aid", {
       $("#contract_type").next().children().replaceTag('<div>', false)
     }
     var $source = $($("#source").next().children())
-    if (urlize) {
+    if (window.urlize) {
       $source.html(urlize($source.html(), {target: "blank"}))
     }
   }
