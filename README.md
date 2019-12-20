@@ -34,7 +34,7 @@ ensuite, le user/mdp sera demandé pour un accès à gitlab pole emploi
 
 ~/workspace/clara$> cd clara/
 
-il faut créér un fichier .env avec au choix pour variable ENV=production|recette| developpement. Si absent, alors docker se lance en mode production
+il faut créér un fichier .env avec au choix pour variable ENV=production|recette|developpement. Si absent, alors docker se lance en mode production
 
 ~/workspace/clara/clara$> echo "ENV=recette" >.env
 
