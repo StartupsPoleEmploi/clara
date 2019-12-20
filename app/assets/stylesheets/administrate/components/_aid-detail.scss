@@ -165,8 +165,7 @@ header.main-content__header.c-aid-detail-header {
   padding-top: .5rem;
 }
 .c-aid-detail-bottomnav-item + .c-aid-detail-bottomnav-item {
-  margin-left: 1rem;
-  margin-top: .8rem;
+  margin-top: .9rem;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -179,13 +178,14 @@ header.main-content__header.c-aid-detail-header {
   border: solid 1px #057dbc;
   border-radius: 30px;
   background-color: #ffffff;
-  padding: .7rem 2rem;
+  padding: .6rem 2rem;
   cursor: pointer;
 }
 
 .c-aid-detail-bottomnav-item.is-modification {
   color: #057dbc;
   transition: background-color .5s;
+  margin-left: 2rem;
   &:hover {
     background-color: #f8f8f8;
   }
@@ -195,6 +195,7 @@ header.main-content__header.c-aid-detail-header {
   background-color: #057dbc;
   color: #ffffff;
   transition: background-color .5s;
+  margin-left: 1rem;
   &:hover {
     background-color: rgb(2, 99, 150);
     border-color: rgb(2, 99, 150);
