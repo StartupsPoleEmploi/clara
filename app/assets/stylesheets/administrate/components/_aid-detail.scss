@@ -162,10 +162,11 @@ header.main-content__header.c-aid-detail-header {
 }
 .c-aid-detail-bottomnav {
   display: flex;
+  padding-top: .5rem;
 }
 .c-aid-detail-bottomnav-item + .c-aid-detail-bottomnav-item {
-  margin-left: 2rem;
-  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-top: .8rem;
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -179,6 +180,7 @@ header.main-content__header.c-aid-detail-header {
   border-radius: 30px;
   background-color: #ffffff;
   padding: .7rem 2rem;
+  cursor: pointer;
 }
 
 .c-aid-detail-bottomnav-item.is-modification {
@@ -187,7 +189,5 @@ header.main-content__header.c-aid-detail-header {
 
 .c-aid-detail-bottomnav-item.is-preview {
   background-color: #057dbc;
-  a {
-    color: #ffffff;
-  }
+  color: #ffffff;
 }
