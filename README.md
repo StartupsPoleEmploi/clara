@@ -66,10 +66,10 @@ Utiliser un navigateur et l'URL: http://localhost
 
 #### Problèmes possibles d'installation
 
- - En mode recette, le port 80 de votre machine host doit être libre
+ - en mode recette, le port 80 de votre machine host doit être libre
  - en mode production les ports 80 et 443 de la machine host doivent être libres
 
-#### Naviguer l'application
+#### Naviguer dans l'application web
 
 L'application est visible sous http://localhost
 
