@@ -24,10 +24,10 @@ input[type="submit"],
   vertical-align: middle;
   white-space: nowrap;
 
-  &:hover {
-    background-color: mix($black, $action-color, 20%);
-    color: $white;
-  }
+  // &:hover {
+  //   background-color: mix($black, $action-color, 20%);
+  //   color: $white;
+  // }
 
   &:focus {
     outline: $focus-outline;

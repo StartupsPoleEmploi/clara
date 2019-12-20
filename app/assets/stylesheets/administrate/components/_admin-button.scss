@@ -1,0 +1,11 @@
+a.button {
+  &:hover {
+    background-color: rgb(2, 99, 150);
+    color: white;
+  }
+}
+a.button.is-white {
+  &:hover {
+    color: black;
+  }
+}
