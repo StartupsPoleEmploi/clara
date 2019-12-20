@@ -96,13 +96,13 @@ as well as a link to its edit page.
     <span>&nbsp;Retour</span>
   </a>    
 </div>
-<div class="c-aid-detail-bottomnav-item">
-  <a class="is-modification" href="<%= admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true) %>">
+<div class="c-aid-detail-bottomnav-item is-modification">
+  <a href="<%= admin_aid_creation_new_aid_stage_5_path(slug: page.resource.slug, modify: true, back2detail: true) %>">
     Modifier
   </a>
 </div>
-<div class="c-aid-detail-bottomnav-item">
-  <a class="is-preview" href="<%= detail_url(page.resource) %>" target="blank">
+<div class="c-aid-detail-bottomnav-item is-preview">
+  <a href="<%= detail_url(page.resource) %>" target="blank">
     Visionner en ligne
   </a>
 </div>

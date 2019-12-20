@@ -168,13 +168,6 @@ header.main-content__header.c-aid-detail-header {
   margin-top: 1rem;
   display: flex;
   align-items: center;
-  border: solid 1px #057dbc;
-  border-radius: 30px;
-  background-color: #ffffff;
-  padding: .7rem 2rem;
-}
-
-.c-aid-detail-bottomnav-item .is-modification {
   font-size: 16px;
   font-weight: bold;
   font-stretch: normal;
@@ -182,5 +175,19 @@ header.main-content__header.c-aid-detail-header {
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
+  border: solid 1px #057dbc;
+  border-radius: 30px;
+  background-color: #ffffff;
+  padding: .7rem 2rem;
+}
+
+.c-aid-detail-bottomnav-item.is-modification {
   color: #057dbc;
+}
+
+.c-aid-detail-bottomnav-item.is-preview {
+  background-color: #057dbc;
+  a {
+    color: #ffffff;
+  }
 }
