@@ -22,6 +22,12 @@ fr:
     attributes:
       aid:
         <<: *labels
+        rule_id: Identifiant du champ d'application
+        id: Identifiant en base de données
+        contract_type_id: Identifiant de la rubrique
+        source: Source
+        ordre_affichage: Ordre d'affichage dans la rubrique
+        created_at: Date de création
   helpers:
     label:
       aid:

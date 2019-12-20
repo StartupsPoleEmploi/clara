@@ -20,6 +20,6 @@
           %tbody
             - version.changeset.each do |property,change|
               %tr
-                %td.js-history-property=property
+                %td.js-history-property=I18n.t "activerecord.attributes.aid.#{property}"
                 %td=change.first.to_s.html_safe
                 %td=change.last.to_s.html_safe

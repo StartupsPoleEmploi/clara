@@ -14,10 +14,10 @@ class History < ViewObject
   end
 
   def _remove_last_given_char_from_string(str, char)
-    reversed_array = str.reverse.split("")
-    index_of_char_to_remove = reversed_array.find_index{|e| e == char}
-    reversed_array.delete_at(index_of_char_to_remove)
-    reversed_array.reverse.join("")
+    array = str.split("")
+    index_of_char_to_remove = array.rindex{|e| e == char}
+    array.delete_at(index_of_char_to_remove)
+    array.join("")
   end
 
 

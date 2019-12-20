@@ -1,5 +1,7 @@
 .main-content__header.c-aid-detail-header {
   padding-bottom: 1.5rem;
+  width: calc(80% + 2rem);
+  padding-right: 0;
 }
 
 .main-content__body.c-aid-detail-body {
@@ -150,4 +152,11 @@ header.main-content__header.c-aid-detail-header {
 }
 .c-history-subsection + .c-history-subsection {
   margin-bottom: .6rem;
+}
+
+.c-aid-detail-cutebuttons {
+  display: flex;
+  .c-cutebutton + .c-cutebutton {
+    margin-left: .3rem;
+  }
 }

@@ -9,3 +9,15 @@ a.button.is-white {
     color: black;
   }
 }
+
+.c-cutebutton {
+  background-color: #e2eaf5;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;  
+}
