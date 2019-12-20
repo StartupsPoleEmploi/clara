@@ -4,12 +4,12 @@
 .c-history
   - resource.versions.reverse_order.each  do |version|
     %section.c-history-section
-      .c-history-datetime
+      .c-history-datetime.c-history-subsection
         Le #{v.date_of(l version.created_at)}
-      %h3
+      %h3.c-history-subsection
         #{version.whodunnit} a modifié cette aide
 
-      .c-history-expander.js-expandmore Voir les changements
+      .c-history-expander.js-expandmore.c-history-subsection Voir les changements
       .js-to_expand
         %table.table.table-striped
           %thead
