@@ -108,6 +108,13 @@ header.main-content__header.c-aid-detail-header {
   margin-bottom: 1rem;
 }
 
+.c-history {
+  margin-bottom: 3rem;
+  th {
+    padding-top: 0;
+  }
+}
+
 .c-history-expander {
   .expandmore__button {
     font-size: 16px;
