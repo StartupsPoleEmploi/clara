@@ -35,10 +35,8 @@ Cypress.Commands.add('create_old_aid', (aid_name) => {
 
 Cypress.Commands.add('connect_as_contributeur1', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('contributeur1@clara.com').should('have.value', 'contributeur1@clara.com')
-  cy.get('#session_password')
-    .type('contributeur1').should('have.value', 'contributeur1')
+  cy.get('#session_email').clear().invoke('val', 'contributeur1@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'contributeur1').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -46,10 +44,8 @@ Cypress.Commands.add('connect_as_contributeur1', () => {
 
 Cypress.Commands.add('connect_as_relecteur1', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('relecteur1@clara.com').should('have.value', 'relecteur1@clara.com')
-  cy.get('#session_password')
-    .type('relecteur1').should('have.value', 'relecteur1')
+  cy.get('#session_email').clear().invoke('val', 'relecteur1@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'relecteur1').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -57,10 +53,11 @@ Cypress.Commands.add('connect_as_relecteur1', () => {
 
 Cypress.Commands.add('connect_as_contributeur2', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('contributeur2@clara.com').should('have.value', 'contributeur2@clara.com')
-  cy.get('#session_password')
-    .type('contributeur2').should('have.value', 'contributeur2')
+
+  cy.get('#session_email').clear().invoke('val', 'contributeur2@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'contributeur2').trigger('input');
+
+
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -68,10 +65,8 @@ Cypress.Commands.add('connect_as_contributeur2', () => {
 
 Cypress.Commands.add('connect_as_superadmin', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
-  cy.get('#session_password')
-    .type('bar').should('have.value', 'bar')
+  cy.get('#session_email').clear().invoke('val', 'superadmin@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'bar').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
