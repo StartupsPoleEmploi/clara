@@ -9,19 +9,6 @@ Vous pouvez générer les données de recette en cliquant ici
   function defer1(method) { if (window.jQuery) { admin_load_r7_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
   function admin_load_r7_page() {
 
-var oldXHR = window.XMLHttpRequest;
-
-function newXHR() {
-    var realXHR = new oldXHR();
-    realXHR.addEventListener("readystatechange", function() {
-        if(realXHR.readyState==4 && realXHR.status==302){
-            console.log("ok stuff deleted")
-        }
-    }, false);
-    return realXHR;
-}
-window.XMLHttpRequest = newXHR;
-
     $("#admin_admin_post_r7_data_form").on("ajax:success", 
       function(event, data) { 
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
@@ -30,10 +17,12 @@ window.XMLHttpRequest = newXHR;
         console.log(event); 
         $("#admin_admin_post_r7_data_form").append('<div id="rule"><a id="delete_rule" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div>')
 
-        $("#delete_rule").on("ajax:success", function(e,d){console.log("successfully removed rule")})
-        $("#delete_rule").on("ajax:error", function(e,d){
+        $(document).on("ajax:success", function(e,d){console.log("successfully removed rule")})
+        $(document).on("ajax:error", function(e,d){
+          console.log(e); 
           console.log("errorly removed rule"); 
-          console.log(e); console.log(d)})
+          console.log(_.trimPrefix($(e.target).attr("id").toString(), "delete_"));
+        })
       });     
   }
   defer1();

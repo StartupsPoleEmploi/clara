@@ -1,5 +1,13 @@
 _.mixin({
 
+  trimPrefix: function(str, prefix) {
+      if (str.indexOf(prefix) > -1) {
+          return str.slice(prefix.length)
+      } else {
+          return str
+      }
+  },
+
   //This function is here to avoid any call while running Cypress.
   //If you want to delay a function call, juste use setTimeout as usual.
   executeAfter: function(function_delayed, time_in_ms) {

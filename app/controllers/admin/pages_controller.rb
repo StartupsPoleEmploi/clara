@@ -89,6 +89,18 @@ module Admin
     def get_r7_data
     end
 
+    def get_r7_info
+      p '- - - - - - - - - - - - - - params- - - - - - - - - - - - - - - -' 
+      pp params[:target_object]
+      pp params[:target_id]
+      pp Object.const_set(params[:target_object].capitalize, Class.new)
+      
+      p ''
+      render json: {
+        rule_id: r.id
+      }
+    end
+
     def post_r7_data
       r = Rule.new(
         name: "r_fake_age_" + rand(36**8).to_s(36),
