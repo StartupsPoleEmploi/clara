@@ -19,9 +19,6 @@ Vous pouvez générer les données de recette en cliquant ici
           $.get({
             url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
             success: function(k) {
-              console.log(k)
-              console.log("k.actual_object")
-              console.log(k.actual_object)
               if (_.isNotBlank(k.actual_object)) {
                 $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " existe toujours</div>")
               } else {
