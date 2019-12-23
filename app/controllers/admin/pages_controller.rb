@@ -85,6 +85,25 @@ module Admin
       Rails.application.load_seed
     end
 
+    # refdata
+    def get_r7_data
+    end
+
+    def post_r7_data
+      r = Rule.new(
+        name: "r_fake_age_" + rand(36**8).to_s(36),
+        kind: "simple",
+        variable_id: 1,
+        operator_kind: "more_than",
+        description: "age...",
+        value_eligible: "42"
+      )
+      r.save
+      render json: {
+        rule_id: r.id
+      }
+    end
+
     # transfer anything
     def get_transfer_descr
     end

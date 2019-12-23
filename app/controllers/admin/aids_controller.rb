@@ -14,6 +14,12 @@ module Admin
       Aid.find_by!(slug: param)
     end
 
+    def destroy
+      p '- - - - - - - - - - - - - - destroy- - - - - - - - - - - - - - - -' 
+      p ''
+      super
+    end
+
     def index
       search_term = params[:search].to_s.strip
       resources = Administrate::Search.new(scoped_resource,
