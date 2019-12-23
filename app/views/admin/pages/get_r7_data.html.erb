@@ -61,6 +61,10 @@ Vous pouvez générer les données de recette en cliquant ici
         $("#staging-cards").append('<div id="contract_type" class="staging-card"><div>contract_type ' + data.contract_type_id + '</div><div><a id="delete_contract_type" data-id="' + data.contract_type_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_contract_type_path.replace("XXX", data.contract_type_id) + '">Supprimer contract_type</a></div></div>')
         $("#contract_type").append('<div><form id="edit_contract_type" action="/admin/contract_types/' + data.contract_type_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="contract_type[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
 
+        var admin_filter_path = "<%= admin_filter_path("XXX") %>";
+        $("#staging-cards").append('<div id="filter" class="staging-card"><div>filter ' + data.filter_id + '</div><div><a id="delete_filter" data-id="' + data.filter_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_filter_path.replace("XXX", data.filter_id) + '">Supprimer filter</a></div></div>')
+        $("#filter").append('<div><form id="edit_filter" action="/admin/filters/' + data.filter_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="filter[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
+
       });     
   }
   defer1();

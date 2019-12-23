@@ -95,6 +95,7 @@ module Admin
       a = Rule if target_object == "rule"
       a = ContractType if target_object == "contract_type"
       a = Convention if target_object == "convention"
+      a = Filter if target_object == "filter"
       res = a.find_by(id: target_id)
       render json: {
         actual_object: res
@@ -102,24 +103,24 @@ module Admin
     end
 
     def post_r7_data
-      r = Rule.new(
-        name: "r_fake_age_" + rand(36**8).to_s(36),
-        kind: "simple",
-        variable_id: 1,
-        operator_kind: "more_than",
-        description: "age...",
-        value_eligible: "42"
-      )
+      r = Rule.new(name: "r_fake_age_" + rand(36**8).to_s(36), kind: "simple", variable_id: 1, operator_kind: "more_than", description: "age...", value_eligible: "42")
       r.save
+
       c = ContractType.new(name: 'r_fake_contract_' + rand(36**8).to_s(36))
       c.ordre_affichage = 42
       c.save
+
       cv = Convention.new(name: 'r_fake_convention_' + rand(36**8).to_s(36))
       cv.save
+
+      f = Filter.new(name: 'r_fake_filter_' + rand(36**8).to_s(36))
+      f.save
+      
       render json: {
         rule_id: r.id,
         contract_type_id: c.slug,
         convention_id: cv.id,
+        filter_id: f.id,
       }
     end
 
