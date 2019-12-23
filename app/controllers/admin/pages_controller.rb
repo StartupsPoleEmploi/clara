@@ -93,7 +93,7 @@ module Admin
       target_object = params[:target_object]
       target_id = params[:target_id]
       a = Rule if target_object == "rule"
-      a = ContractType if target_object == "contract"
+      a = ContractType if target_object == "contract_type"
       res = a.find_by(id: target_id)
       render json: {
         actual_object: res

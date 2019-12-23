@@ -1,11 +1,12 @@
 _.mixin({
 
-  trimPrefix: function(str, prefix) {
-      if (str.indexOf(prefix) > -1) {
-          return str.slice(prefix.length)
-      } else {
-          return str
-      }
+  // 'sometext-20202-303', '-' => '20202-303'
+  textAfter: function(str, prefix) {
+    return str.substring(str.indexOf(prefix) + 1);
+  },
+
+  textBefore: function(str, prefix) {
+    return str.split(prefix)[0];
   },
 
   //This function is here to avoid any call while running Cypress.
