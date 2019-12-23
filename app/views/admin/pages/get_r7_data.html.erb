@@ -4,6 +4,8 @@ Vous pouvez générer les données de recette en cliquant ici
   <%= form.submit 'générer'%>
 <% end %>
 
+<div id="staging-cards">
+</div>
 
 <script> 
   function defer1(method) { if (window.jQuery) { admin_load_r7_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
@@ -14,22 +16,31 @@ Vous pouvez générer les données de recette en cliquant ici
 
     $(document).on("ajax:error", function(e){
       var targeted = $(e.target).attr("id").toString()
-      var targeted_object_name = targeted.split("_")[1]
+      var target_object = targeted.split("_")[1]
       var targeted_action = targeted.split("_")[0]
-      console.log(targeted_object_name + " global ajax error !!! " + targeted)
+      console.log(target_object + " global ajax error !!! " + targeted)
       if (targeted_action === "edit") {
-
+        $("#" + target_object).append("<div class='" + target_object + "_edit_expl'> update no</div>")
       } else if (targeted_action === "delete") {
-        // $.get({
-        //   url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
-        //   success: function(k) {
-        //     if (_.isNotBlank(k.actual_object)) {
-        //       $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " existe toujours</div>")
-        //     } else {
-        //       $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " n'existe plus en base</div>")
-        //     }
-        //   },
-        // })        
+        $.get({
+          url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
+          success: function(k) {
+            if (_.isNotBlank(k.actual_object)) {
+              $("#" + target_object).append("<div class='" + target_object + "_delete_expl'> delete no</div>")
+            } else {
+              $("#" + target_object).append("<div class='" + target_object + "_delete_expl'> delete yes</div>")
+            }
+          },
+        })        
+      }
+    })
+    $(document).on("ajax:success", function(e){
+      var targeted = $(e.target).attr("id").toString()
+      var target_object = targeted.split("_")[1]
+      var targeted_action = targeted.split("_")[0]
+      console.log(target_object + " global ajax success !!! " + targeted)
+      if (targeted_action === "edit") {
+        $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>update yes</div>")
       }
     })
 
@@ -39,8 +50,9 @@ Vous pouvez générer les données de recette en cliquant ici
       console.log("success!!")
 
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
-        $('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>').insertAfter("#admin_admin_post_r7_data_form")
-        $("#rule").append('<div><form id="edit_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour"></form></div>')
+        $("#staging-cards").append('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>')
+        // $().insertAfter("#admin_admin_post_r7_data_form")
+        $("#rule").append('<div><form id="edit_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
 
       });     
   }
