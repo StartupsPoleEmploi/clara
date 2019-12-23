@@ -7,41 +7,42 @@ Vous pouvez générer les données de recette en cliquant ici
 
 <script> 
   function defer1(method) { if (window.jQuery) { admin_load_r7_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
+
   function admin_load_r7_page() {
+
+
+    $(document).on("ajax:error", function(e){
+      var target_object = _.trimPrefix($(e.target).attr("id").toString(), "delete_")
+      $.get({
+        url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
+        success: function(k) {
+          if (_.isNotBlank(k.actual_object)) {
+            $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " existe toujours</div>")
+          } else {
+            $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " n'existe plus en base</div>")
+          }
+        },
+      })
+    })
 
     $("#admin_admin_post_r7_data_form").on("ajax:success", 
       function(event, data) { 
+      console.log("success!!")
 
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
-        $("#admin_admin_post_r7_data_form").append('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>')
+        $('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>').insertAfter("#admin_admin_post_r7_data_form")
         // $("#rule").append('<div><form id="edit_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour"></form></div>')
-        $("#rule").append('<div id="edit_rule">Modifier</div>')
-
-        $(document).on("ajax:error", function(e){
-          var target_object = _.trimPrefix($(e.target).attr("id").toString(), "delete_")
-          $.get({
-            url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
-            success: function(k) {
-              if (_.isNotBlank(k.actual_object)) {
-                $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " existe toujours</div>")
-              } else {
-                $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " n'existe plus en base</div>")
-              }
-            },
-          })
-        })
-
-        $(document).on("ajax:success", function(e){
-          console.log("success!!")
-        })
+        // $("#edit_rule").on("ajax:success", function(v){v.preventDefault();console.log('edit rule ok')})
+        $("#rule").append('<div id="edit_rule" on>Modifier</div>')
 
 
-        $('#edit_rule').on("click", function(event) {  
+        $("#edit_rule").on("click", function edit_rule_clicked(event2) {  
+          console.log("call!!")
           var mydata = {
             rule: {description: "ok"},
             // authenticity_token: "<%= form_authenticity_token %>"
           };
-          Rails.ajax({
+          $.post({
             url: "/admin/rules/" + data.rule_id, //sumbits it to the given url of the form
             method: "PUT",
             data: {rule: {description: "ok"}},
@@ -56,8 +57,8 @@ Vous pouvez générer les données de recette en cliquant ici
               console.log(xerror2);
             },
           })
-          event.preventDefault();
         });
+
 
       });     
   }

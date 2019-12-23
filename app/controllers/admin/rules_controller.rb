@@ -72,6 +72,8 @@ module Admin
     end
 
     def update
+      p '- - - - - - - - - - - - - - update- - - - - - - - - - - - - - - -' 
+      p ''
       if requested_resource.update(resource_params)
         redirect_to(
           [namespace, requested_resource],
