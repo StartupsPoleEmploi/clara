@@ -51,8 +51,12 @@ Vous pouvez générer les données de recette en cliquant ici
 
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
         $("#staging-cards").append('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>')
-        // $().insertAfter("#admin_admin_post_r7_data_form")
         $("#rule").append('<div><form id="edit_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
+
+
+        var admin_contract_type_path = "<%= admin_contract_type_path("XXX") %>";
+        $("#staging-cards").append('<div id="contract_type" class="staging-card"><div>contract_type ' + data.contract_type_id + '</div><div><a id="delete_contract_type" data-id="' + data.contract_type_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_contract_type_path.replace("XXX", data.contract_type_id) + '">Supprimer contract_type</a></div></div>')
+        $("#contract_type").append('<div><form id="edit_contract_type" action="/admin/contract_types/' + data.contract_type_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="contract_type[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
 
       });     
   }

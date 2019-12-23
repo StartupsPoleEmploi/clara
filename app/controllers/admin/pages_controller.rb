@@ -92,7 +92,6 @@ module Admin
     def get_r7_info
       target_object = params[:target_object]
       target_id = params[:target_id]
-      # obj = Object.const_set( params[:target_object].capitalize, Class.new)
       a = Rule if target_object == "rule"
       res = a.find_by(id: target_id)
       render json: {
@@ -110,8 +109,12 @@ module Admin
         value_eligible: "42"
       )
       r.save
+      c = ContractType.new(name: 'r_fake_contract_' + rand(36**8).to_s(36))
+      c.ordre_affichage = 42
+      c.save
       render json: {
-        rule_id: r.id
+        rule_id: r.id,
+        contract_type_id: c.id,
       }
     end
 
