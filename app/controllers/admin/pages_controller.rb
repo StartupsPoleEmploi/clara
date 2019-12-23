@@ -94,6 +94,7 @@ module Admin
       target_id = params[:target_id]
       a = Rule if target_object == "rule"
       a = ContractType if target_object == "contract_type"
+      a = Convention if target_object == "convention"
       res = a.find_by(id: target_id)
       render json: {
         actual_object: res
@@ -113,9 +114,12 @@ module Admin
       c = ContractType.new(name: 'r_fake_contract_' + rand(36**8).to_s(36))
       c.ordre_affichage = 42
       c.save
+      cv = Convention.new(name: 'r_fake_convention_' + rand(36**8).to_s(36))
+      cv.save
       render json: {
         rule_id: r.id,
         contract_type_id: c.slug,
+        convention_id: cv.id,
       }
     end
 
