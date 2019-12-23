@@ -15,14 +15,29 @@ Vous pouvez générer les données de recette en cliquant ici
         console.log("load r7 data is a success ! detail below : "); 
         console.log(data); 
         console.log(event); 
-        $("#admin_admin_post_r7_data_form").append('<div id="rule"><a id="delete_rule" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div>')
+        $("#admin_admin_post_r7_data_form").append('<div id="rule"><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div>')
 
         $(document).on("ajax:success", function(e,d){console.log("successfully removed rule")})
-        $(document).on("ajax:error", function(e,d){
+        $(document).on("ajax:error", function(e){
           console.log(e); 
           console.log("errorly removed rule"); 
-          console.log(_.trimPrefix($(e.target).attr("id").toString(), "delete_"));
+          var target_object = _.trimPrefix($(e.target).attr("id").toString(), "delete_")
+          console.log();
+          $.get({
+            url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
+            success: function(k) {
+              console.log(k)
+              console.log("k.actual_object")
+              console.log(k.actual_object)
+              if (_.isNotBlank(k.actual_object)) {
+                $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " existe toujours</div>")
+              } else {
+                $("#" + target_object).append("<div class='" + target_object + "_expl'>" + target_object + " n'existe plus en base</div>")
+              }
+            },
+          })
         })
+
       });     
   }
   defer1();

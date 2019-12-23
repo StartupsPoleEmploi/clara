@@ -90,14 +90,13 @@ module Admin
     end
 
     def get_r7_info
-      p '- - - - - - - - - - - - - - params- - - - - - - - - - - - - - - -' 
-      pp params[:target_object]
-      pp params[:target_id]
-      pp Object.const_set(params[:target_object].capitalize, Class.new)
-      
-      p ''
+      target_object = params[:target_object]
+      target_id = params[:target_id]
+      # obj = Object.const_set( params[:target_object].capitalize, Class.new)
+      a = Rule if target_object == "rule"
+      res = a.find_by(id: target_id)
       render json: {
-        rule_id: r.id
+        actual_object: res
       }
     end
 
