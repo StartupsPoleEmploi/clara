@@ -94,16 +94,18 @@ describe("Étape 5", function() {
       cy.visit('/admin/aid_creation/new_aid_stage_2?modify=true&slug=test-stage-5')
       cy.get('.field-unit--ckeditor').should('exist')
 
-      cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Ma description</p>");});
             
       cy.get('#accordion_0-1_tab').click()
       cy.window().then(win => {win.CKEDITOR.instances["aid_additionnal_conditions"].setData("<p>Mes conditions à remplir</p>");});
 
       cy.get('#accordion_0-2_tab').click()
-      cy.window().then(win => {win.CKEDITOR.instances["aid_how_much"].setData("<p>Combien?</p>");});
+      cy.window().then(win => {win.CKEDITOR.instances["aid_how_much"].setData("<p>Contenu de l'aide (combien)?</p>");});
 
       cy.get('#accordion_0-3_tab').click()
       cy.window().then(win => {win.CKEDITOR.instances["aid_how_and_when"].setData("<p>Comment je fais la demande</p>");});
+
+      cy.get('#accordion_0-0_tab').click()
+      cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Ma description</p>");});
 
       cy.get('button.c-newaid-actionrecord').click()
 

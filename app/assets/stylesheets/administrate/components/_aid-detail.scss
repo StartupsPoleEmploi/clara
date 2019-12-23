@@ -1,0 +1,224 @@
+.main-content__header.c-aid-detail-header {
+  padding-bottom: 1.5rem;
+  width: calc(80% + 2rem);
+  padding-right: 0;
+}
+
+.main-content__body.c-aid-detail-body {
+  padding: 0;
+  margin-left: 2rem;
+}
+
+.c-aid-detail-body {
+  border: solid 1px #e4e8f0;
+  border-radius: 2px;
+  width: 80%;
+}
+
+header.main-content__header.c-aid-detail-header {
+  border: none;
+}
+
+.c-aid-detail-body .c-tabbed-dl {
+  margin-left: 0;
+}
+
+.main-content__body.c-aid-detail-body .attribute-data {
+  width: 65%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.main-content__body.c-aid-detail-body .attribute-label {
+  width: 35%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #797676;
+  margin-bottom: 1rem;
+}
+
+.c-aid-detail-section + .c-aid-detail-section {
+  border-top:  solid 1px #e4e8f0;
+}
+
+.c-aid-detail-section  {
+  padding: 1rem 1rem;
+  li {
+    padding-left: 1rem;
+  }
+}
+
+.c-aid-detail-subtitle {
+  font-size: 20px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  color: #1b1b1b;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.c-aid-detail-title {
+  font-size: 27px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  .is-actual-title {
+    font-weight: normal;
+  }
+}
+
+.c-aid-detail-goback {
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.5;
+  letter-spacing: normal;
+  color: #057dbc;
+  cursor: pointer;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  display: block;
+}
+
+.c-aid-detail-criteria .c-aid-detail-subtitle {
+  margin-bottom: 1rem;
+}
+
+.c-detail-condition-intro {
+  margin-bottom: .8rem;
+  display: block;
+}
+
+.c-aid-detail-history .c-aid-detail-subtitle {
+  margin-bottom: 1rem;
+}
+
+.c-history {
+  margin-bottom: 3rem;
+  max-height: 375px;
+  overflow: auto;
+  th {
+    padding-top: 0;
+  }
+}
+
+.c-history-expander {
+  .expandmore__button {
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #057dbc;
+    text-decoration: underline;
+    padding: 0;
+  }
+}
+
+.c-history-section + .c-history-section {
+  margin-top: 2.2rem;
+}
+
+.c-history-datetime {
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #797676;
+}
+
+.c-history-subsection  {
+  margin-bottom: .8rem;
+}
+.c-history-subsection + .c-history-subsection {
+  margin-bottom: .6rem;
+}
+
+.c-aid-detail-cutebuttons {
+  display: flex;
+}
+.cute-simpletooltip_container {
+  margin-left: .3rem;
+}
+.c-aid-detail-bottomnav {
+  display: flex;
+  padding-top: .5rem;
+}
+.c-aid-detail-bottomnav-item + .c-aid-detail-bottomnav-item {
+  margin-top: .9rem;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  border: solid 1px #057dbc;
+  border-radius: 30px;
+  background-color: #ffffff;
+  padding: .6rem 2rem;
+  cursor: pointer;
+}
+
+.c-aid-detail-bottomnav-item.is-modification {
+  color: #057dbc;
+  transition: background-color .5s;
+  margin-left: 2rem;
+  &:hover {
+    background-color: #f8f8f8;
+  }
+}
+
+.c-aid-detail-bottomnav-item.is-preview {
+  background-color: #057dbc;
+  color: #ffffff;
+  transition: background-color .5s;
+  margin-left: 1rem;
+  &:hover {
+    background-color: rgb(2, 99, 150);
+    border-color: rgb(2, 99, 150);
+  }
+}
+
+.admin-tag-filter {
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.27;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.54);
+  display: inline-block;
+  padding: .2rem 1rem;
+  margin-bottom: .3rem;
+  margin-right: .3rem;
+}
+
+.attribute-data--ckeditor {
+  margin-bottom: 12px;
+}

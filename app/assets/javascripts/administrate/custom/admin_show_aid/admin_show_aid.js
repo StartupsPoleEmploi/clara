@@ -8,6 +8,10 @@ clara.js_define("admin_show_aid", {
     if ($("#contract_type").attr("data-role") !== "superadmin") {
       $("#contract_type").next().children().replaceTag('<div>', false)
     }
+    var $source = $($("#source").next().children())
+    if (window.urlize) {
+      $source.html(urlize($source.html(), {target: "blank"}))
+    }
   }
 
 });

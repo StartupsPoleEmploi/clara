@@ -1,17 +1,25 @@
-%header.main-content__header.c-history
-- resource.versions.reverse_order.each  do |version|
-  %section.main-content__body
-    %h3
-      #{version.whodunnit}, le #{l version.created_at}
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Propriété
-          %th Avant
-          %th Après
-      %tbody
-        - version.changeset.each do |property,change|
-          %tr
-            %td=property
-            %td=change.first.to_s.html_safe
-            %td=change.last.to_s.html_safe
+- v = view_object(:history, local_assigns)
+
+
+.c-history
+  - resource.versions.reverse_order.each  do |version|
+    %section.c-history-section
+      .c-history-datetime.c-history-subsection
+        Le #{v.date_of(l version.created_at)}
+      %h3.c-history-subsection
+        #{version.whodunnit} a modifié cette aide
+
+      .c-history-expander.js-expandmore.c-history-subsection Voir les changements
+      .js-to_expand
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Propriété
+              %th Avant
+              %th Après
+          %tbody
+            - version.changeset.each do |property,change|
+              %tr
+                %td.js-history-property=I18n.t "activerecord.attributes.aid.#{property}"
+                %td=change.first.to_s.html_safe
+                %td=change.last.to_s.html_safe

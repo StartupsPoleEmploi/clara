@@ -1,3 +1,4 @@
+//= require urlize/urlize
 //= require redux/redux
 //= require lodash/lodash
 //= require lodash/lodash_extension
@@ -7,6 +8,8 @@
 //= require custom/load_js_per_page
 //= require custom/load_js
 //= require jquery/jquery
+//= require jquery/jquery-accessible-hide-show-aria.js
+//= require jquery/jquery-accessible-simple-tooltip-aria
 //= require jquery/jquery-accessible-dialog-tooltip-aria
 //= require jquery/jquery-accessible-modal-delete-window-aria
 //= require jquery/jquery-accessible-tabs-aria

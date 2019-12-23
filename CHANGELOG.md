@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.0 (20/12/2019)
+-[#1481][FEATURE] Bo view aid
+
+
 ## 23.4.0 (19/12/2019)
 -[#1491][BUG] Bo preview aid
 

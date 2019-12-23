@@ -62,10 +62,10 @@ describe("Étape 4", function() {
       cy.clear_the_cache()
       
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText('il faut remplir la condition suivante : Être en catégorie 1, 2, 3, 4 ou 5');
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut remplir la condition suivante : Être en catégorie 1, 2, 3, 4 ou 5");
     })
+
     it("... avec un critère géographique hors DOM", function() {
       // given
       cy.get('#tout_sauf_domtom').click()
@@ -76,11 +76,11 @@ describe("Étape 4", function() {
 
 
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
 
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 l'ensemble des 6 conditions suivantes Ne pas résider dans le département Guadeloupe Ne pas résider dans le département Martinique Ne pas résider dans le département Guyane Ne pas résider dans le département La Réunion Ne pas résider dans le département Saint-Pierre-et-Miquelon Ne pas résider dans le département Mayotte");
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 l'ensemble des 6 conditions suivantes Ne pas résider dans le département Guadeloupe Ne pas résider dans le département Martinique Ne pas résider dans le département Guyane Ne pas résider dans le département La Réunion Ne pas résider dans le département Saint-Pierre-et-Miquelon Ne pas résider dans le département Mayotte");
     })
+
     it("... avec un critère géographique DOM uniquement", function() {
       // given
       cy.get('#domtom_seulement').click()
@@ -91,11 +91,11 @@ describe("Étape 4", function() {
 
 
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
 
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider dans le département Guadeloupesoit Résider dans le département Martiniquesoit Résider dans le département Guyanesoit Résider dans le département La Réunionsoit Résider dans le département Saint-Pierre-et-Miquelonsoit Résider dans le département Mayotte");
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider dans le département Guadeloupesoit Résider dans le département Martiniquesoit Résider dans le département Guyanesoit Résider dans le département La Réunionsoit Résider dans le département Saint-Pierre-et-Miquelonsoit Résider dans le département Mayotte");
     })
+
     it("... en excluant un ou plusieurs critère(s) géographique(s)  - exemple avec un seul", function() {
       // given
       cy.get('#tout_sauf').click()
@@ -108,11 +108,11 @@ describe("Étape 4", function() {
 
 
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
 
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Ne pas résider dans la région Auvergne-Rhône-Alpes");
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Ne pas résider dans la région Auvergne-Rhône-Alpes");
     })
+
     it("... en incluant un ou plusieurs critère(s) géographique(s)  - exemple avec plusieurs", function() {
       // given
       cy.get('#rien_sauf').click()
@@ -131,11 +131,11 @@ describe("Étape 4", function() {
       cy.clear_the_cache()
 
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
 
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider à Île-Tudy 29soit Résider dans le département 01 Ainsoit Résider dans la région Auvergne-Rhône-Alpes");
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut réunir l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 au moins une des conditions suivantessoit Résider à Île-Tudy 29soit Résider dans le département 01 Ainsoit Résider dans la région Auvergne-Rhône-Alpes");
     })
+
     it("On peut enregistrer une règle composite", function() {
       // given
       cy.visit('/admin/aid_creation/new_aid_stage_4?modify=true&slug=test-stage-4')
@@ -159,9 +159,8 @@ describe("Étape 4", function() {
       
 
       cy.visit('/admin/aids/test-stage-4')
-      cy.get('#label_tab_4').click()
       // then
-      cy.get(".c-display-appfield").shouldHaveTrimmedText("il faut réunir au moins une des conditions suivantessoit l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Avoir un âge strictement supérieur à 18 anssoit Être en Quartier Prioritaire de la Ville");
+      cy.get(".js-criterions").shouldHaveTrimmedText("il faut réunir au moins une des conditions suivantessoit l'ensemble des 2 conditions suivantes Être en catégorie 1, 2, 3, 4 ou 5 Avoir un âge strictement supérieur à 18 anssoit Être en Quartier Prioritaire de la Ville");
     })
 
 
