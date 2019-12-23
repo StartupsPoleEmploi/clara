@@ -53,11 +53,8 @@ Cypress.Commands.add('connect_as_relecteur1', () => {
 
 Cypress.Commands.add('connect_as_contributeur2', () => {
   cy.visit('/sign_in')
-
   cy.get('#session_email').clear().invoke('val', 'contributeur2@clara.com').trigger('input');
   cy.get('#session_password').clear().invoke('val', 'contributeur2').trigger('input');
-
-
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
