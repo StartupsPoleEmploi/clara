@@ -1,39 +1,32 @@
-describe("Pour un contributeur", function () {
-
+describe("Liste des accès", function () {
+  const POSSIBLE_URLS = [
+    "/admin/aids",
+    "/admin/get_hidden_admin",
+    "/admin/conventions/1",
+    "/admin/get_cache",
+    "/apidocs",
+    "/sign_up",
+    "/admin/conventions/new",
+    "/admin/conventions/1/edit",
+    "/admin/tracings",
+    "/admin/traces",
+    "/admin/users",
+    "/admin/api_users",
+    "/admin/rules",
+    "/admin/contract_types",
+    "/admin/custom_filters",
+    "/admin/filters",
+    "/admin/need_filters",
+    "/admin/axle_filters",
+    "/admin/domain_filters",
+    "/admin/aids/erasmus/edit",
+    "/admin/aids/new",
+    "/admin/variables",
+    "/admin/explicitations",
+  ]
 
   const POSSIBLY_FAIL = {failOnStatusCode: false}
   const ERROR_MSG = "Exception caught"
-
-
-  const POSSIBLE_URLS = [
-    {url_value: "/admin/aids",                access_authorized: true},
-    {url_value: "/admin/get_hidden_admin",    access_authorized: true},
-    {url_value: "/admin/conventions/1",       access_authorized: true},
-    {url_value: "/admin/get_cache",           access_authorized: true},
-    {url_value: "/apidocs",                   access_authorized: true},
-    {url_value: "/sign_up",                   access_authorized: false},
-    {url_value: "/admin/conventions/new",     access_authorized: false},
-    {url_value: "/admin/conventions/1/edit",  access_authorized: false},
-    {url_value: "/admin/tracings",            access_authorized: false},
-    {url_value: "/admin/traces",              access_authorized: false},
-    {url_value: "/admin/users",               access_authorized: false},
-    {url_value: "/admin/api_users",           access_authorized: false},
-    {url_value: "/admin/rules",               access_authorized: false},
-    {url_value: "/admin/contract_types",      access_authorized: false},
-    {url_value: "/admin/custom_filters",      access_authorized: false},
-    {url_value: "/admin/filters",             access_authorized: false},
-    {url_value: "/admin/need_filters",        access_authorized: false},
-    {url_value: "/admin/axle_filters",        access_authorized: false},
-    {url_value: "/admin/domain_filters",      access_authorized: false},
-    {url_value: "/admin/aids/erasmus/edit",   access_authorized: false},
-    {url_value: "/admin/aids/new",            access_authorized: false},
-    {url_value: "/admin/variables",           access_authorized: false},
-    {url_value: "/admin/explicitations",      access_authorized: false},
-  ]
-
-  before(function () {
-    cy.connect_as_contributeur1()
-  })
 
   function yes_for(url) {
     cy.visit(url, POSSIBLY_FAIL).then(() => { 
@@ -47,33 +40,91 @@ describe("Pour un contributeur", function () {
     })
   }
 
+  describe("Pour un contributeur", function () {
 
-  // TODO : manque la plupart des edit, delete, post
-  describe("URLs autorisées", function () {
+    before(function () {
+      cy.connect_as_contributeur1()
+    })
 
-    let urls = Cypress._.chain(POSSIBLE_URLS)
-      .filter(function(e) {return e.access_authorized === true})
-      .map(function(e) {return e.url_value})
-      .value()
+    let authorizeds = [
+      "/admin/aids", 
+      "/admin/get_hidden_admin",
+      "/admin/conventions/1",
+      "/admin/get_cache",
+      "/apidocs"]
 
-    urls.forEach(function(url) {
-      it("Accès AUTORISÉ pour " + url, function () {
-        yes_for(url)
+
+    if (!Cypress._.every(authorizeds, function(authorized){return POSSIBLE_URLS.includes(authorized)})) {
+      throw {msg: "authorizeds URL must be a POSSIBLE_URL"}
+    }
+
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs autorisées", function () {
+
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
+      urls.forEach(function(url) {
+        it("Accès AUTORISÉ pour " + url, function () {
+          yes_for(url)
+        })
       })
     })
+
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs non-autorisées", function () {
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
+      urls.forEach(function(url) {
+        it("Accès INTERDIT pour " + url, function () {
+          no_for(url)
+        })
+      })
+    })
+
   })
 
-  // TODO : manque la plupart des edit, delete, post
-  describe("URLs non-autorisées", function () {
-    let urls = Cypress._.chain(POSSIBLE_URLS)
-      .filter(function(e) {return e.access_authorized === false})
-      .map(function(e) {return e.url_value})
-      .value()
-    urls.forEach(function(url) {
-      it("Accès INTERDIT pour " + url, function () {
-        no_for(url)
+  describe("Pour un relecteur", function () {
+
+    before(function () {
+      cy.connect_as_relecteur1()
+    })
+
+    let authorizeds = [
+      "/admin/aids", 
+      "/admin/get_hidden_admin",
+      "/admin/conventions/1",
+      "/admin/get_cache",
+      "/apidocs",
+      "/sign_up",
+      "/admin/users",
+      "/admin/api_users",
+      "/admin/conventions/1/edit",
+      ]
+
+
+    if (!Cypress._.every(authorizeds, function(authorized){return POSSIBLE_URLS.includes(authorized)})) {
+      throw {msg: "authorizeds URL must be a POSSIBLE_URL"}
+    }
+
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs autorisées", function () {
+
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
+      urls.forEach(function(url) {
+        it("Accès AUTORISÉ pour " + url, function () {
+          yes_for(url)
+        })
       })
     })
+
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs non-autorisées", function () {
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
+      urls.forEach(function(url) {
+        it("Accès INTERDIT pour " + url, function () {
+          no_for(url)
+        })
+      })
+    })
+
   })
 
 })
