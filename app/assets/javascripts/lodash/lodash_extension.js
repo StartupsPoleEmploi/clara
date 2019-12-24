@@ -5,6 +5,7 @@ _.mixin({
     return str.substring(str.indexOf(prefix) + 1);
   },
 
+  // 'sometext-20202-303', '-' => 'sometext'
   textBefore: function(str, prefix) {
     return str.split(prefix)[0];
   },

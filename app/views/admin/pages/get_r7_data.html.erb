@@ -7,6 +7,48 @@ Vous pouvez générer les données de recette en cliquant ici
 <div id="staging-cards">
 </div>
 
+<div id="staging-table">
+<table>
+    <thead>
+        <tr>
+            <th>table name</th>
+            <th>id</th>
+            <th>index</th>
+            <th>new</th>
+            <th>create</th>
+            <th>show</th>
+            <th>edit</th>
+            <th>update</th>
+            <th>destroy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Rule (règle)</td>
+            <td class="id_rule"></td>
+            <td class="index_rule"></td>
+            <td class="new_rule"></td>
+            <td class="create_rule"></td>
+            <td class="show_rule"></td>
+            <td class="edit_rule"></td>
+            <td class="update_rule"></td>
+            <td class="destroy_rule"></td>
+        </tr>
+        <tr>
+            <td>Contract Type (rubrique)</td>
+            <td class="id_contract_type"></td>
+            <td class="index_contract_type"></td>
+            <td class="new_contract_type"></td>
+            <td class="create_contract_type"></td>
+            <td class="show_contract_type"></td>
+            <td class="edit_contract_type"></td>
+            <td class="update_contract_type"></td>
+            <td class="destroy_contract_type"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
 <script> 
   function defer1(method) { if (window.jQuery) { admin_load_r7_page(); } else { setTimeout(function() { defer1(method) }, 50); } }
 
@@ -42,6 +84,9 @@ Vous pouvez générer les données de recette en cliquant ici
       if (targeted_action === "edit") {
         $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>update yes</div>")
       }
+      if (targeted_action === "show") {
+        $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>show yes</div>")
+      }
     })
 
 
@@ -52,18 +97,20 @@ Vous pouvez générer les données de recette en cliquant ici
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
         $("#staging-cards").append('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer rule</a></div></div>')
         $("#rule").append('<div><form id="edit_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
-
-        var admin_convention_path = "<%= admin_convention_path("XXX") %>";
-        $("#staging-cards").append('<div id="convention" class="staging-card"><div>convention ' + data.convention_id + '</div><div><a id="delete_convention" data-id="' + data.convention_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_convention_path.replace("XXX", data.convention_id) + '">Supprimer convention</a></div></div>')
-        $("#convention").append('<div><form id="edit_convention" action="/admin/conventions/' + data.convention_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="convention[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
+        $("#rule").append('<a id="show_rule" href=' + admin_rule_path.replace("XXX", data.rule_id) + ' data-remote="true">Voir</a>')
 
         var admin_contract_type_path = "<%= admin_contract_type_path("XXX") %>";
         $("#staging-cards").append('<div id="contract_type" class="staging-card"><div>contract_type ' + data.contract_type_id + '</div><div><a id="delete_contract_type" data-id="' + data.contract_type_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_contract_type_path.replace("XXX", data.contract_type_id) + '">Supprimer contract_type</a></div></div>')
         $("#contract_type").append('<div><form id="edit_contract_type" action="/admin/contract_types/' + data.contract_type_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="contract_type[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
 
-        var admin_filter_path = "<%= admin_filter_path("XXX") %>";
-        $("#staging-cards").append('<div id="filter" class="staging-card"><div>filter ' + data.filter_id + '</div><div><a id="delete_filter" data-id="' + data.filter_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_filter_path.replace("XXX", data.filter_id) + '">Supprimer filter</a></div></div>')
-        $("#filter").append('<div><form id="edit_filter" action="/admin/filters/' + data.filter_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="filter[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
+        // var admin_convention_path = "<%= admin_convention_path("XXX") %>";
+        // $("#staging-cards").append('<div id="convention" class="staging-card"><div>convention ' + data.convention_id + '</div><div><a id="delete_convention" data-id="' + data.convention_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_convention_path.replace("XXX", data.convention_id) + '">Supprimer convention</a></div></div>')
+        // $("#convention").append('<div><form id="edit_convention" action="/admin/conventions/' + data.convention_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="convention[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
+
+
+        // var admin_filter_path = "<%= admin_filter_path("XXX") %>";
+        // $("#staging-cards").append('<div id="filter" class="staging-card"><div>filter ' + data.filter_id + '</div><div><a id="delete_filter" data-id="' + data.filter_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_filter_path.replace("XXX", data.filter_id) + '">Supprimer filter</a></div></div>')
+        // $("#filter").append('<div><form id="edit_filter" action="/admin/filters/' + data.filter_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="filter[name]"></textarea><input type="submit" value="mettre à jour" class="submit-edition"></form></div>')
 
       });     
   }
