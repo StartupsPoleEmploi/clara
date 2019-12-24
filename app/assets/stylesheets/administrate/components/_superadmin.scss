@@ -66,6 +66,9 @@ th:hover::after {
   flex-wrap: wrap;
   margin-left: 2rem;
 }
+#forms {
+  display: flex;
+}
 
 .staging-card {
   flex: 1 0 15%; 

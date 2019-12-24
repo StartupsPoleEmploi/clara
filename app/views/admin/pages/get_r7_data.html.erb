@@ -1,8 +1,13 @@
 Vous pouvez générer les données de recette en cliquant ici
 
-<%= form_with url: admin_post_r7_data_path, local: false, id: 'admin_admin_post_r7_data_form' do |form| %>
-  <%= form.submit 'générer'%>
+<div id="forms">
+<%= form_with url: admin_delete_r7_data_path, method: "delete", local: false, id: 'admin_admin_delete_r7_data_form' do |form| %>
+  <%= form.submit 'supprimer', id: "submit-delete-all"%>
 <% end %>
+<%= form_with url: admin_post_r7_data_path, local: false, id: 'admin_admin_post_r7_data_form' do |form| %>
+  <%= form.submit 'regénérer'%>
+<% end %>
+</div>
 
 <div id="staging-cards">
 </div>
@@ -12,6 +17,10 @@ Vous pouvez générer les données de recette en cliquant ici
 
 
   function admin_load_r7_page() {
+
+    $("#submit-delete-all").on("click", function(e) {
+      $("#staging-cards").empty()
+    })
 
     $(document).on("ajax:error", function(e){
       var targeted = $(e.target).attr("id").toString()

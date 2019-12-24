@@ -90,6 +90,7 @@ Rails.application.routes.draw do
       get 'get_r7_info' if ENV["R7_MODE"]
       get 'get_r7_data' if ENV["R7_MODE"]
       post 'post_r7_data' if ENV["R7_MODE"]
+      delete 'delete_r7_data' if ENV["R7_MODE"]
       get 'get_transfer_descr'
       post 'post_transfer_descr'
       get 'get_delete_trace'

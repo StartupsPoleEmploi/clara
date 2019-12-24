@@ -111,6 +111,23 @@ module Admin
       }
     end
 
+    def delete_r7_data
+      Rule.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      ContractType.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Convention.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Filter.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Variable.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Aid.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Explicitation.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Trace.where("url LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      Tracing.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      User.where("email LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      ApiUser.where("email LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
+      render json: {
+        ok: "done"
+      }
+    end
+
     def post_r7_data
       r = Rule.new(name: "r_fake_" + rand(36**8).to_s(36), kind: "simple", variable_id: 1, operator_kind: "more_than", description: "age...", value_eligible: "42")
       r.save
