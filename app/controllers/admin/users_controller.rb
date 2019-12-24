@@ -15,7 +15,8 @@ module Admin
     #   User.find_by!(slug: param)
     # end
 
-    before_action :require_superadmin_or_relecteur
+    before_action :require_superadmin, only: [:udpate, :destroy, :edit, :show]
+    before_action :require_superadmin_or_relecteur, only: [:index]
 
 
     def valid_action?(name, resource = resource_class)
