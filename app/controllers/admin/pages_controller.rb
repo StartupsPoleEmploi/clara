@@ -132,13 +132,10 @@ module Admin
       
       tracing = Tracing.new(name: 'r_fake_' + rand(36**8).to_s(36), rule_id: 362)
       tracing.save
-      
-      user = User.last
-      u2 = user.dup
-      u2.email='r_fake_' + rand(36**8).to_s(36)
-      u2.id = nil
-      u2.save
-      
+
+      user = User.new(email:"r_fake#{rand(36**8).to_s(36)}@clara.com", password: "bar", role: "contributeur")  
+      user.save
+
       render json: {
         rule_id: r.id,
         contract_type_id: c.slug,
@@ -149,7 +146,7 @@ module Admin
         explicitation_id: e.slug,
         trace_id: trace.id,
         tracing_id: tracing.id,
-        user_id: u2.id,
+        user_id: user.id,
       }
     end
 
