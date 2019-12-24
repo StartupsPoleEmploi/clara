@@ -107,6 +107,8 @@ Rails.application.routes.draw do
   # a route to check exception are propertly sent
   resources :divide_by_zero,         only: [:index]
 
+  resources :r7_pen, only: [:index]  if ENV["R7_MODE"]
+
   resources :age_questions,         only: [:new, :create]
   resources :address_questions,     only: [:new, :create]
   resources :allocation_questions,  only: [:new, :create]
