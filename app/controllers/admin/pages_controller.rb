@@ -92,13 +92,12 @@ module Admin
     def get_r7_info
       target_object = params[:target_object]
       target_id = params[:target_id]
-      a = Rule if target_object == "rule"
-      a = ContractType if target_object == "contract_type"
-      a = Convention if target_object == "convention"
-      a = Filter if target_object == "filter"
-      res = a.find_by(id: target_id)
+      b = target_object.capitalize.constantize.new
+      c = b.class
+
+      res = c.find_by(id: target_id)
       if res == nil
-        res = a.find_by(slug: target_id)
+        res = c.find_by(slug: target_id) if c.column_names.include? "slug"
       end
       render json: {
         actual_object: res
