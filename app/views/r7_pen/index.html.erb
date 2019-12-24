@@ -40,14 +40,14 @@ body.c-body #staging-cards input.submit {
 <% end %>
 
 <div class="c-identifier">
-  Bonjour <span class="c-identifier-role">Simple visiteur</span>
+  Bonjour <span class="c-identifier-role"></span>
 </div>
 
 <div id="forms">
-<%= form_with url: admin_delete_r7_data_path, method: "delete", local: false, id: 'admin_admin_delete_r7_data_form' do |form| %>
+<%= form_with url: delete_r7_data_path, method: "delete", local: false, id: 'admin_admin_delete_r7_data_form' do |form| %>
   <%= form.submit 'supprimer', id: "submit-delete-all"%>
 <% end %>
-<%= form_with url: admin_post_r7_data_path, local: false, id: 'admin_admin_post_r7_data_form' do |form| %>
+<%= form_with url: post_r7_data_path, local: false, id: 'admin_admin_post_r7_data_form' do |form| %>
   <%= form.submit 'regénérer'%>
 <% end %>
 </div>
@@ -73,7 +73,7 @@ body.c-body #staging-cards input.submit {
         $(".c-identifier-role").html(a.content)
       },
       error: function(e) {
-        console.log("error ")
+        $(".c-identifier-role").html("simple visiteur")
         console.log(e)
       }
 
@@ -107,7 +107,7 @@ body.c-body #staging-cards input.submit {
         $("#" + target_object).append("<div class='" + target_object + "_new_expl'>create2 no</div>")
       } else if (targeted_action === "delete") {
         $.get({
-          url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
+          url: "/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
           success: function(k) {
             if (_.isNotBlank(k.actual_object)) {
               $("#" + target_object).append("<div class='" + target_object + "_delete_expl'> delete no</div>")
