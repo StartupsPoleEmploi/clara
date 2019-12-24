@@ -97,6 +97,9 @@ module Admin
       a = Convention if target_object == "convention"
       a = Filter if target_object == "filter"
       res = a.find_by(id: target_id)
+      if res == nil
+        res = a.find_by(slug: target_id)
+      end
       render json: {
         actual_object: res
       }
