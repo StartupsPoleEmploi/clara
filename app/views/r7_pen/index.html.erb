@@ -1,6 +1,6 @@
 
 <div class="c-identifier">
-  Bonjour <span class="c-identifier-role">Simple visiteur</span>, <span class="c-identifier-email">(non connecté à l'admin)</span>
+  Bonjour <span class="c-identifier-role">Simple visiteur</span>
 </div>
 
 <div id="forms">
@@ -24,7 +24,13 @@
       type: "GET",
       success: function(e) {
         console.log("success ")
-        console.log(e)
+        var a = _.find($.parseHTML( e ), function(k) {
+          if (k && k.outerHTML) {
+            return k.outerHTML.indexOf('meta name="role"') > 0
+          }
+          return false;
+        })
+        $(".c-identifier-role").html(a.content)
       },
       error: function(e) {
         console.log("error ")
