@@ -92,8 +92,14 @@ module Admin
     def get_r7_info
       target_object = params[:target_object]
       target_id = params[:target_id]
-      b = ContractType.new if target_object == "contract_type"
-      b = target_object.capitalize.constantize.new if target_object != "contract_type"
+      b = nil
+      if target_object == "contract_type"
+        b = ContractType.new 
+      elsif target_object == "api_user"
+        b = ApiUser.new 
+      else
+        b = target_object.capitalize.constantize.new
+      end  
       c = b.class
 
       res = c.find_by(id: target_id)
@@ -135,6 +141,9 @@ module Admin
 
       user = User.new(email:"r_fake#{rand(36**8).to_s(36)}@clara.com", password: "bar", role: "contributeur")  
       user.save
+      
+      api_user = ApiUser.new(email:"r_fake#{rand(36**8).to_s(36)}@apiuser.com", password: "bar")  
+      api_user.save
 
       render json: {
         rule_id: r.id,
@@ -147,6 +156,7 @@ module Admin
         trace_id: trace.id,
         tracing_id: tracing.id,
         user_id: user.id,
+        api_user_id: api_user.id,
       }
     end
 

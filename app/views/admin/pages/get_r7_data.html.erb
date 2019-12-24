@@ -179,6 +179,15 @@ Vous pouvez générer les données de recette en cliquant ici
         $("#user").append('<div><a id="new_user" href="/admin/users/new" data-remote="true">Voir création ancienne</a></div>')
         $("#user").append('<div><a id="new2_user" href="/sign_up" data-remote="true">Voir création nouvelle</a></div>')
 
+        var admin_api_user_path = "<%= admin_api_user_path("XXX") %>";
+        var admin_edit_api_user_path = "<%= edit_admin_api_user_path("XXX") %>";
+        $("#staging-cards").append('<div id="api_user" class="staging-card"><div>api_user ' + data.api_user_id + '</div><div><a id="delete_api_user" data-id="' + data.api_user_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_api_user_path.replace("XXX", data.api_user_id) + '">Supprimer</a></div></div>')
+        $("#api_user").append('<div><form id="update_api_user" action="/admin/api_users/' + data.api_user_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="api_user[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#api_user").append('<div><form id="create_api_user" action="/admin/api_users" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="api_user[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#api_user").append('<div><a id="show_api_user" href=' + admin_api_user_path.replace("XXX", data.api_user_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#api_user").append('<div><a id="index_api_user" href="/admin/api_users/" data-remote="true">Voir liste</a></div>')
+        $("#api_user").append('<div><a id="edit_api_user" href=' + admin_edit_api_user_path.replace("XXX", data.api_user_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#api_user").append('<div><a id="new_api_user" href="/admin/api_users/new" data-remote="true">Voir création</a></div>')
 
       });     
   }
