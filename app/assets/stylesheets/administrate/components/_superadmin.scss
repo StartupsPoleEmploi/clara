@@ -23,11 +23,38 @@ body[data-path="admin_get_r7_data_path"] {
   textarea {
     display: none;
   }
-  input.submit-edition {
+  input.submit {
     background-color: white;
     padding: 0;
     color: blue;
   }
+
+table {
+  overflow: hidden;
+}
+
+tr:hover {
+  background-color: #ffa;
+}
+
+td, th {
+  position: relative;
+}
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: #ffa;
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}
+
+
+
+
 }
 
 #admin_admin_post_r7_data_form {
