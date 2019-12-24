@@ -92,7 +92,8 @@ module Admin
     def get_r7_info
       target_object = params[:target_object]
       target_id = params[:target_id]
-      b = target_object.capitalize.constantize.new
+      b = ContractType.new if target_object == "contract_type"
+      b = target_object.capitalize.constantize.new if target_object != "contract_type"
       c = b.class
 
       res = c.find_by(id: target_id)
@@ -129,7 +130,7 @@ module Admin
       trace = Trace.new(url: 'r_fake_' + rand(36**8).to_s(36))
       trace.save
       
-      tracing = Tracing.new(name: 'r_fake_' + rand(36**8).to_s(36))
+      tracing = Tracing.new(name: 'r_fake_' + rand(36**8).to_s(36), rule_id: 362)
       tracing.save
       
       render json: {

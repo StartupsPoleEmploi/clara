@@ -63,9 +63,11 @@ th:hover::after {
 
 #staging-cards {
   display: flex;
+  flex-wrap: wrap;
   margin-left: 2rem;
 }
 
 .staging-card {
+  flex: 1 0 21%; 
   padding: 1rem;
 }
