@@ -118,6 +118,10 @@ module Admin
       f = Filter.new(name: 'r_fake_filter_' + rand(36**8).to_s(36))
       f.save
       
+      v = Variable.new(name: 'r_fake_variable_' + rand(36**8).to_s(36))
+      v.variable_kind = "integer"
+      v.save
+      
       a = Aid.new(name: 'r_fake_aid_' + rand(36**8).to_s(36))
       a.ordre_affichage = 43
       a.contract_type_id = 1
@@ -129,6 +133,7 @@ module Admin
         convention_id: cv.id,
         filter_id: f.id,
         aid_id: a.slug,
+        variable_id: v.id,
       }
     end
 
