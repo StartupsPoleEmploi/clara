@@ -18,7 +18,6 @@ Vous pouvez générer les données de recette en cliquant ici
       var targeted = $(e.target).attr("id").toString()
       var target_object = _.textAfter(targeted, "_")
       var targeted_action = _.textBefore(targeted, "_")
-      console.log(target_object + " global ajax error !!! " + targeted_action)
       if (targeted_action === "update") {
         $("#" + target_object).append("<div class='" + target_object + "_update_expl'>update no</div>")
       } else if (targeted_action === "show") {
@@ -52,7 +51,6 @@ Vous pouvez générer les données de recette en cliquant ici
       var targeted = $(e.target).attr("id").toString()
       var target_object = _.textAfter(targeted, "_")
       var targeted_action = _.textBefore(targeted, "_")
-      console.log(target_object + " global ajax success !!! " + targeted)
       if (targeted_action === "update") {
         $("#" + target_object).append("<div class='" + target_object + "_update_expl'>update yes</div>")
       } else if (targeted_action === "show") {
@@ -75,7 +73,6 @@ Vous pouvez générer les données de recette en cliquant ici
 
     $("#admin_admin_post_r7_data_form").on("ajax:success", 
       function(event, data) { 
-      console.log("success!!")
 
         var admin_rule_path = "<%= admin_rule_path("XXX") %>";
         var admin_edit_rule_path = "<%= edit_admin_rule_path("XXX") %>";
