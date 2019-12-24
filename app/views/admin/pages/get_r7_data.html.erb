@@ -139,6 +139,16 @@ Vous pouvez générer les données de recette en cliquant ici
         $("#explicitation").append('<div><a id="edit_explicitation" href=' + admin_edit_explicitation_path.replace("XXX", data.explicitation_id) + ' data-remote="true">Voir édition</a></div>')
         $("#explicitation").append('<div><a id="new_explicitation" href="/admin/explicitations/new" data-remote="true">Voir création</a></div>')
 
+        var admin_trace_path = "<%= admin_trace_path("XXX") %>";
+        var admin_edit_trace_path = "<%= edit_admin_trace_path("XXX") %>";
+        $("#staging-cards").append('<div id="trace" class="staging-card"><div>trace ' + data.trace_id + '</div><div><a id="delete_trace" data-id="' + data.trace_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_trace_path.replace("XXX", data.trace_id) + '">Supprimer</a></div></div>')
+        $("#trace").append('<div><form id="update_trace" action="/admin/traces/' + data.trace_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="trace[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#trace").append('<div><form id="create_trace" action="/admin/traces" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="trace[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#trace").append('<div><a id="show_trace" href=' + admin_trace_path.replace("XXX", data.trace_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#trace").append('<div><a id="index_trace" href="/admin/traces/" data-remote="true">Voir liste</a></div>')
+        $("#trace").append('<div><a id="edit_trace" href=' + admin_edit_trace_path.replace("XXX", data.trace_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#trace").append('<div><a id="new_trace" href="/admin/traces/new" data-remote="true">Voir création</a></div>')
+
       });     
   }
   defer1();
