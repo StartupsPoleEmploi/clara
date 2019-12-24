@@ -105,25 +105,25 @@ module Admin
     end
 
     def post_r7_data
-      r = Rule.new(name: "r_fake_age_" + rand(36**8).to_s(36), kind: "simple", variable_id: 1, operator_kind: "more_than", description: "age...", value_eligible: "42")
+      r = Rule.new(name: "r_fake_" + rand(36**8).to_s(36), kind: "simple", variable_id: 1, operator_kind: "more_than", description: "age...", value_eligible: "42")
       r.save
 
-      c = ContractType.new(name: 'r_fake_contract_' + rand(36**8).to_s(36), ordre_affichage: 42)
+      c = ContractType.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 42)
       c.save
 
-      cv = Convention.new(name: 'r_fake_convention_' + rand(36**8).to_s(36))
+      cv = Convention.new(name: 'r_fake_' + rand(36**8).to_s(36))
       cv.save
 
-      f = Filter.new(name: 'r_fake_filter_' + rand(36**8).to_s(36))
+      f = Filter.new(name: 'r_fake_' + rand(36**8).to_s(36))
       f.save
       
-      v = Variable.new(name: 'r_fake_variable_' + rand(36**8).to_s(36), variable_kind: "integer")
+      v = Variable.new(name: 'r_fake_' + rand(36**8).to_s(36), variable_kind: "integer")
       v.save
       
-      a = Aid.new(name: 'r_fake_aid_' + rand(36**8).to_s(36), ordre_affichage: 43, contract_type_id: 1 )
+      a = Aid.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 43, contract_type_id: 1 )
       a.save
       
-      e = Explicitation.new(name: 'r_fake_aid_' + rand(36**8).to_s(36), template: "t", variable_id: 1)
+      e = Explicitation.new(name: 'r_fake_' + rand(36**8).to_s(36), template: "t", variable_id: 1)
       e.save
       
       render json: {
@@ -133,7 +133,7 @@ module Admin
         filter_id: f.id,
         aid_id: a.slug,
         variable_id: v.id,
-        explicitation_id: e.id,
+        explicitation_id: e.slug,
       }
     end
 
