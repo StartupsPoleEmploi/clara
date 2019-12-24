@@ -120,24 +120,24 @@ module Admin
       v = Variable.new(name: 'r_fake_' + rand(36**8).to_s(36), variable_kind: "integer")
       v.save
       
-      a = Aid.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 43, contract_type_id: 1 )
-      a.save
+      aid = Aid.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 43, contract_type_id: 1 )
+      aid.save
       
       e = Explicitation.new(name: 'r_fake_' + rand(36**8).to_s(36), template: "t", variable_id: 1)
       e.save
       
-      t = Trace.new
-      t.save
+      trace = Trace.new
+      trace.save
       
       render json: {
         rule_id: r.id,
         contract_type_id: c.slug,
         convention_id: cv.id,
         filter_id: f.id,
-        aid_id: a.slug,
+        aid_id: aid.slug,
         variable_id: v.id,
         explicitation_id: e.slug,
-        trace_id: e.id,
+        trace_id: trace.id,
       }
     end
 
