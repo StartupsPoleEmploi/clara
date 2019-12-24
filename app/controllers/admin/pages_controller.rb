@@ -126,8 +126,11 @@ module Admin
       e = Explicitation.new(name: 'r_fake_' + rand(36**8).to_s(36), template: "t", variable_id: 1)
       e.save
       
-      trace = Trace.new
+      trace = Trace.new(url: 'r_fake_' + rand(36**8).to_s(36))
       trace.save
+      
+      tracing = Tracing.new(name: 'r_fake_' + rand(36**8).to_s(36))
+      tracing.save
       
       render json: {
         rule_id: r.id,
@@ -138,6 +141,7 @@ module Admin
         variable_id: v.id,
         explicitation_id: e.slug,
         trace_id: trace.id,
+        tracing_id: tracing.id,
       }
     end
 
