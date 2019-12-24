@@ -31,6 +31,8 @@ Vous pouvez générer les données de recette en cliquant ici
         $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>edit no</div>")
       } else if (targeted_action === "new") {
         $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new no</div>")
+      } else if (targeted_action === "new2") {
+        $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new2 no</div>")
       } else if (targeted_action === "delete") {
         $.get({
           url: "/admin/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
@@ -61,6 +63,8 @@ Vous pouvez générer les données de recette en cliquant ici
         $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>edit yes</div>")
       } else if (targeted_action === "new") {
         $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new yes</div>")
+      } else if (targeted_action === "new2") {
+        $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new2 yes</div>")
       }
     })
 
@@ -163,11 +167,12 @@ Vous pouvez générer les données de recette en cliquant ici
         var admin_edit_user_path = "<%= edit_admin_user_path("XXX") %>";
         $("#staging-cards").append('<div id="user" class="staging-card"><div>user ' + data.user_id + '</div><div><a id="delete_user" data-id="' + data.user_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_user_path.replace("XXX", data.user_id) + '">Supprimer</a></div></div>')
         $("#user").append('<div><form id="update_user" action="/admin/users/' + data.user_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="user[role]">relecteur</textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
-        $("#user").append('<div><form id="create_user" action="/admin/users" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="user[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#user").append('<div><form id="create_user" action="/admin/users" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="user[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer ancien" class="submit submit-creation"></form></div>')
         $("#user").append('<div><a id="show_user" href=' + admin_user_path.replace("XXX", data.user_id) + ' data-remote="true">Voir détail</a></div>')
         $("#user").append('<div><a id="index_user" href="/admin/users/" data-remote="true">Voir liste</a></div>')
         $("#user").append('<div><a id="edit_user" href=' + admin_edit_user_path.replace("XXX", data.user_id) + ' data-remote="true">Voir édition</a></div>')
-        $("#user").append('<div><a id="new_user" href="/admin/users/new" data-remote="true">Voir création</a></div>')
+        $("#user").append('<div><a id="new_user" href="/admin/users/new" data-remote="true">Voir création ancienne</a></div>')
+        $("#user").append('<div><a id="new2_user" href="/sign_up" data-remote="true">Voir création nouvelle</a></div>')
 
 
       });     
