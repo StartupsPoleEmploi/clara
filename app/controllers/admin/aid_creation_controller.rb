@@ -7,9 +7,6 @@ module Admin
     end
 
     def _hidden(prop)
-      p '- - - - - - - - - - - - - - prop- - - - - - - - - - - - - - - -' 
-      pp prop
-      p ''
       params.require(prop).permit(:value).to_h[:value]
     end
 
