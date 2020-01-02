@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.2 (02/01/2020)
+-[#1500][BUG] traduction manquante
+
+
 ## 23.5.1 (23/12/2019)
 -[#1496][BUG] Margin de 3
 

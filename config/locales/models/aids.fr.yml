@@ -28,6 +28,7 @@ fr:
         source: Source
         ordre_affichage: Ordre d'affichage dans la rubrique
         created_at: Date de création
+        is_rereadable: Demande de relecture effectuée
   helpers:
     label:
       aid:
