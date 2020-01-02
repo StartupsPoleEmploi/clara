@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :explicitations
     resources :conventions
     resources :api_users
-    resources :users
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :tracings
     resources :traces do
       get :export, on: :collection
@@ -102,6 +102,13 @@ Rails.application.routes.draw do
 
   # a route to check exception are propertly sent
   resources :divide_by_zero,         only: [:index]
+
+  resources :r7_pen, only: [:index]  if ENV["R7_MODE"]
+  controller 'r7_pen' do
+    get 'get_r7_info' if ENV["R7_MODE"]
+    post 'post_r7_data' if ENV["R7_MODE"]
+    delete 'delete_r7_data' if ENV["R7_MODE"]
+  end
 
   resources :age_questions,         only: [:new, :create]
   resources :address_questions,     only: [:new, :create]

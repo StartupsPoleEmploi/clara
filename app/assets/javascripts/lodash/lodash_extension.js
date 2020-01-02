@@ -1,5 +1,15 @@
 _.mixin({
 
+  // 'sometext-20202-303', '-' => '20202-303'
+  textAfter: function(str, prefix) {
+    return str.substring(str.indexOf(prefix) + 1);
+  },
+
+  // 'sometext-20202-303', '-' => 'sometext'
+  textBefore: function(str, prefix) {
+    return str.split(prefix)[0];
+  },
+
   //This function is here to avoid any call while running Cypress.
   //If you want to delay a function call, juste use setTimeout as usual.
   executeAfter: function(function_delayed, time_in_ms) {

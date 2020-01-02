@@ -97,8 +97,11 @@ module Admin
     def create_stage_3
       slug = _hidden(:slug)
       new_attributes = params.require(:aid).permit(:short_description, filter_ids: []).to_h
-      filters_ids = new_attributes[:filter_ids].reject { |f| f.blank? }.map { |f| f.to_i }
-      filters = Filter.where(id: filters_ids)
+      filters = []
+      if new_attributes[:filter_ids]
+        filters_ids = new_attributes[:filter_ids].reject { |f| f.blank? }.map { |f| f.to_i }
+        filters = Filter.where(id: filters_ids)
+      end      
       aid = Aid.find_by(slug: slug)
       aid.filters = filters
       aid.short_description = new_attributes[:short_description]

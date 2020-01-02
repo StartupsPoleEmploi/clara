@@ -64,5 +64,6 @@ Rails.application.configure do
 
   # OmniAuth.config.test_mode = true
   config.action_mailer.default_url_options = { :host => ENV["ARA_HOST"] }
+
   
 end

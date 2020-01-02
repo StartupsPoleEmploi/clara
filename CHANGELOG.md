@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.1 (23/12/2019)
+-[#1496][BUG] Margin de 3
+
+
 ## 23.5.0 (20/12/2019)
 -[#1481][FEATURE] Bo view aid
 
