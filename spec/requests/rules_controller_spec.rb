@@ -7,18 +7,18 @@ describe Admin::RulesController, type: :request do
   # after(:each) do 
   #   ENV["ARA_SKIP_ADMIN_AUTH"] = nil
   # end 
-  describe "POST save_simulation" do
-    # it "Can be successful" do
-    #   adult_rule = create(:rule, :be_an_adult)
-    #   post save_simulation_admin_rule_path(id: adult_rule.id), params: {simulation:{result: 'a', name: 'a'}, asker: {v_handicap: 'a'}}
-    #   expect(response.status).to eq(201)
-    # end
-    it "Can be unsuccessful" do
-      adult_rule = create(:rule, :be_an_adult)
-      post save_simulation_admin_rule_path(id: adult_rule.id), params: {simulation:{result: 'a'}, asker: {v_handicap: 'a'}}
-      expect(response.status).to eq(422)
-    end
-  end
+  # describe "POST save_simulation" do
+  #   it "Can be successful" do
+  #     adult_rule = create(:rule, :be_an_adult)
+  #     post save_simulation_admin_rule_path(id: adult_rule.id), params: {simulation:{result: 'a', name: 'a'}, asker: {v_handicap: 'a'}}
+  #     expect(response.status).to eq(201)
+  #   end
+  #   it "Can be unsuccessful" do
+  #     adult_rule = create(:rule, :be_an_adult)
+  #     post save_simulation_admin_rule_path(id: adult_rule.id), params: {simulation:{result: 'a'}, asker: {v_handicap: 'a'}}
+  #     expect(response.status).to eq(422)
+  #   end
+  # end
   # describe "DELETE delete_simulation" do
   #   it "Can be successful" do
   #     custom_rule_check = create(:custom_rule_check, name: 'any')
