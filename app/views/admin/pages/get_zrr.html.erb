@@ -1,6 +1,6 @@
 <div style="margin-top: 2rem;">
 copiez/collez les ZRR (au format CSV) dans le cadre puis cliquez sur "charger"
-<%= form_with url: admin_post_zrr_path, remote:true, id: 'admin_post_zrr_form' do |form| %>
+<%= form_with url: admin_post_zrr_path, local:false, id: 'admin_post_zrr_form' do |form| %>
   <%= form.text_area :csv_data, cols: 40, rows: 5, placeholder: "02004,55082,45098..." %>
   <%= form.submit 'Charger les ZRR'%>
 <% end %>
