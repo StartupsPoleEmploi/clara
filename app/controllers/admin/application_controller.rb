@@ -17,18 +17,12 @@ module Admin
     before_action :set_cache_headers
 
     def require_superadmin
-      p '- - - - - - - - - - - - - - require_superadmin- - - - - - - - - - - - - - - -' 
-      pp current_user.role
-      p ''
       unless current_user.role === "superadmin"
         raise SecurityError, "Not Allowed"
       end
     end
 
     def require_superadmin_or_relecteur
-      p '- - - - - - - - - - - - - - require_superadmin_or_relecteur- - - - - - - - - - - - - - - -' 
-      pp current_user.role
-      p ''
       unless current_user.role == "superadmin" || current_user.role == "relecteur"
         raise SecurityError, "Not Allowed"
       end
