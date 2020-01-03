@@ -1,5 +1,3 @@
-require 'tasks/utils'
-
 namespace :maintenance do  
   
   db = Rails.application.config.database_configuration[Rails.env]
