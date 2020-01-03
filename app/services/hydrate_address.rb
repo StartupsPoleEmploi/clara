@@ -8,7 +8,6 @@ class HydrateAddress
     citycode = output_asker.v_location_citycode
     zipcode = output_asker.v_location_zipcode
     return output_asker if citycode.blank?
-    return output_asker if zipcode.present?
     output_asker.v_zrr = IsZrr.new.call(citycode)
     zip_city_region = GetZipCityRegion.new.call(citycode)
     got_them = zip_city_region.is_a?(Array)
