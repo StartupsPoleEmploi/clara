@@ -10,8 +10,8 @@ describe("Utiliser l'API", function() {
   }
 
   function fire(cy) {
-    cy.get(TRY_SEL).click()
-    cy.get(EXEC_SEL).should("exist")
+    cy.get(EXEC_SEL).click()
+    cy.get(ANSWER_SEL).first().should("exist")
   }
 
   describe("Un simple ping", function () {
@@ -22,8 +22,7 @@ describe("Utiliser l'API", function() {
     it("Doit répondre ok", function () {
       // when
       first_steps(cy)
-      cy.get(EXEC_SEL).click()
-      cy.get(ANSWER_SEL).first().should("exist")
+      fire(cy)
       cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '')).to.eq('{"status":"ok"}')}
       )
@@ -42,8 +41,8 @@ describe("Utiliser l'API", function() {
         );
       cy.get(".body-param__text").click()
       cy.get(".body-param__text").type(" ")
-      // cy.get(".body-param__text").type("text")
       cy.get("a.tablinks").first().click()
+      fire(cy)
 
     })
   })
