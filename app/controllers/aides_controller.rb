@@ -80,8 +80,6 @@ class AidesController < ApplicationController
   def pull_asker
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
-    elsif asker_exists?
-      @asker = require_asker
     else
       @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end
