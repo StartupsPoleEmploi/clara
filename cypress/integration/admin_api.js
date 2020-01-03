@@ -69,18 +69,19 @@ describe("Utiliser l'API", function() {
       )
     })
   })
+
   describe("La liste des filtres", function () {
     before(function () {
       // given
-      cy.visit('/apidocs#/filters/getAllFilters')
+      cy.visit('/apidocs#/filters/getNeedFilters')
     })
-    it("Doit renvoyer la liste des filtres", function () {
+    it("Doit renvoyer la liste des filtres de l'écran de résultats", function () {
       // when
       first_steps(cy)
       authenticate(cy)
       fire(cy)
       cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
-        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"filters":[')).to.eq(0)}
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"need_filters":[')).to.eq(0)}
       )
     })
   })
@@ -97,6 +98,29 @@ describe("Utiliser l'API", function() {
       fire(cy)
       cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"need_filters":[')).to.eq(0)}
+      )
+    })
+  })
+
+  describe("Le détail d'une aide", function () {
+    before(function () {
+      // given
+      cy.visit('/apidocs#/aids/getAidDetail')
+    })
+    it("Doit renvoyer le détail d'une aide", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="aidSlug - Slug of aid"]')
+        .clear()
+        .invoke('val', 'erasmu')
+        .trigger('input')
+      cy.get('input[placeholder="aidSlug - Slug of aid"]').click()
+      cy.get('input[placeholder="aidSlug - Slug of aid"]').type("s")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"aid":{"name":"Erasmus+"')).to.eq(0)}
       )
     })
   })
