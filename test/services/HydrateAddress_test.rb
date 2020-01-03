@@ -1,6 +1,6 @@
 require "test_helper"
 
-class HydrateAddressnTest < ActiveSupport::TestCase
+class HydrateAddressTest < ActiveSupport::TestCase
   def setup
     _fake_is_zrr
     _fake_get_zip_city_region
