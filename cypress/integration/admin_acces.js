@@ -94,82 +94,82 @@ describe("Liste des accès", function () {
   })
 
 
-  // describe("Pour un contributeur", function () {
+  describe("Pour un contributeur", function () {
 
-  //   before(function () {
-  //     cy.connect_as_contributeur1()
-  //   })
+    before(function () {
+      cy.connect_as_contributeur1()
+    })
 
-  //   let authorizeds = check_authorized_urls([
-  //     "/admin/aids", 
-  //     "/admin/get_hidden_admin",
-  //     "/admin/conventions/1",
-  //     "/admin/get_cache",
-  //     "/apidocs"])
+    let authorizeds = check_authorized_urls([
+      "/admin/aids", 
+      "/admin/get_hidden_admin",
+      "/admin/conventions/1",
+      "/admin/get_cache",
+      "/apidocs"])
 
-  //   // TODO : manque la plupart des edit, delete, post
-  //   describe("URLs autorisées", function () {
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs autorisées", function () {
 
-  //     let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
-  //     urls.forEach(function(url) {
-  //       it("Accès AUTORISÉ pour " + url, function () {
-  //         yes_for(url)
-  //       })
-  //     })
-  //   })
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
+      urls.forEach(function(url) {
+        it("Accès AUTORISÉ pour " + url, function () {
+          yes_for(url)
+        })
+      })
+    })
 
-  //   // TODO : manque la plupart des edit, delete, post
-  //   describe("URLs non-autorisées", function () {
-  //     let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
-  //     urls.forEach(function(url) {
-  //       it("Accès INTERDIT pour " + url, function () {
-  //         no_for(url)
-  //       })
-  //     })
-  //   })
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs non-autorisées", function () {
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
+      urls.forEach(function(url) {
+        it("Accès INTERDIT pour " + url, function () {
+          no_for(url)
+        })
+      })
+    })
 
-  // })
+  })
 
-  // describe("Pour un relecteur", function () {
+  describe("Pour un relecteur", function () {
 
-  //   before(function () {
-  //     cy.connect_as_relecteur1()
-  //   })
+    before(function () {
+      cy.connect_as_relecteur1()
+    })
 
-  //   let authorizeds = check_authorized_urls([
-  //     "/admin/aids", 
-  //     "/admin/get_hidden_admin",
-  //     "/admin/conventions/1",
-  //     "/admin/get_cache",
-  //     "/apidocs",
-  //     "/sign_up",
-  //     "/admin/users",
-  //     "/admin/api_users",
-  //     "/admin/conventions/1/edit",
-  //     ])
+    let authorizeds = check_authorized_urls([
+      "/admin/aids", 
+      "/admin/get_hidden_admin",
+      "/admin/conventions/1",
+      "/admin/get_cache",
+      "/apidocs",
+      "/sign_up",
+      "/admin/users",
+      "/admin/api_users",
+      "/admin/conventions/1/edit",
+      ])
 
-  //   // TODO : manque la plupart des edit, delete, post
-  //   describe("URLs autorisées", function () {
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs autorisées", function () {
 
-  //     let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
-  //     urls.forEach(function(url) {
-  //       it("Accès AUTORISÉ pour " + url, function () {
-  //         yes_for(url)
-  //       })
-  //     })
-  //   })
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) { return authorizeds.includes(e); })
+      urls.forEach(function(url) {
+        it("Accès AUTORISÉ pour " + url, function () {
+          yes_for(url)
+        })
+      })
+    })
 
-  //   // TODO : manque la plupart des edit, delete, post
-  //   describe("URLs non-autorisées", function () {
-  //     let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
-  //     urls.forEach(function(url) {
-  //       it("Accès INTERDIT pour " + url, function () {
-  //         no_for(url)
-  //       })
-  //     })
-  //   })
+    // TODO : manque la plupart des edit, delete, post
+    describe("URLs non-autorisées", function () {
+      let urls = Cypress._.filter(POSSIBLE_URLS, function(e) {return !authorizeds.includes(e);})
+      urls.forEach(function(url) {
+        it("Accès INTERDIT pour " + url, function () {
+          no_for(url)
+        })
+      })
+    })
 
-  // })
+  })
 
 
 
