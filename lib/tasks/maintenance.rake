@@ -4,16 +4,6 @@ namespace :maintenance do
   
   db = Rails.application.config.database_configuration[Rails.env]
   
-  desc "Import production database locally"
-  task :transfer_ara_from_sandbox_to_dev do
-    app = 'mae-attempt'
-    run_and_stop_if_error "heroku pg:backups capture --app #{app}"
-    url = run_and_stop_if_error("heroku pg:backups public-url -q --app #{app}")
-    puts `curl -o #{ara_dump_path} "#{url}"`
-    username_option = db['username'].blank? ? nil : "-U #{db['username']}"
-    puts `pg_restore --verbose --clean --no-acl --no-owner -h localhost #{username_option} -d ara #{ara_dump_path}`
-  end
-
   def ara_dump_path
     ENV['ARA_DUMP_PATH']
   end

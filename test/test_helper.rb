@@ -7,6 +7,7 @@ require 'simplecov'
 SimpleCov.start 'rails' do
   coverage_dir "coverage/ruby/unit".to_s
   add_filter "app/controllers/r7_pen_controller.rb"
+  add_filter "bin/spring"
 end
 
 require_relative '../config/environment'
