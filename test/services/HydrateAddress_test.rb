@@ -21,13 +21,7 @@ class HydrateAddressnTest < ActiveSupport::TestCase
     assert_equal(returned_asker.attributes, asker.attributes)
   end
 
-  test "Returns an asker with same attributes if zipcode is already here" do
-    asker = Asker.new(v_location_citycode: "59035", v_location_zipcode: "59440")
-    returned_asker = HydrateAddress.new.call(asker.attributes)
-    assert_equal(returned_asker.attributes, asker.attributes)
-  end
-
-  test "Returns an asker with fulfilled geo attributes if citycode is here, but not zipcode" do
+  test "Returns an asker with fulfilled geo attributes if citycode is here" do
     asker = Asker.new(v_location_citycode: "59035")
     returned_asker = HydrateAddress.new.call(asker.attributes)
     h = returned_asker.attributes
