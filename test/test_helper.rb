@@ -6,6 +6,7 @@ require 'rspec/mocks/minitest_integration'
 require 'simplecov'
 SimpleCov.start 'rails' do
   coverage_dir "coverage/ruby/unit".to_s
+  add_filter "app/controllers/r7_pen_controller.rb"
 end
 
 require_relative '../config/environment'
