@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.4 (03/01/2020)
+-[#1503][TECH] couverture 80%
+
+
 ## 23.5.3 (03/01/2020)
 -[#1495][BUG] la ville n'apparaît plus si accès direct par URL
 
