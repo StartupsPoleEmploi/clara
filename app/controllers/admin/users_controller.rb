@@ -2,8 +2,8 @@ module Admin
   class UsersController < Admin::ApplicationController
 
 
-    before_action :require_superadmin_or_relecteur, only: [:update]
-    before_action :require_superadmin, only: [:update, :destroy, :edit, :show]
+    before_action :require_superadmin_or_relecteur, only: [:update, :index, :show]
+    before_action :require_superadmin, only: [:update, :destroy, :edit]
 
 
     def valid_action?(name, resource = resource_class)
