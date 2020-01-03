@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.3 (03/01/2020)
+-[#1495][BUG] la ville n'apparaît plus si accès direct par URL
+
+
 ## 23.5.2 (02/01/2020)
 -[#1500][BUG] traduction manquante
 

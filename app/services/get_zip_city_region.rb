@@ -7,7 +7,8 @@ class GetZipCityRegion
 
   def call(citycode)
     if (citycode && citycode.is_a?(String) && !citycode.blank?)
-      escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "rue&citycode=" + citycode) 
+      query_q = "rue"
+      escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "#{query_q}&citycode=" + citycode) 
       uri = URI.parse(escaped_address)
       response = HttpService.get_instance.get(uri)
       if !response.blank? && response.include?("timeout")
