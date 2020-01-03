@@ -70,6 +70,69 @@ describe("Utiliser l'API", function() {
     })
   })
 
+  // console.log(txt.replace(/[\s\n\r]+/g, ''));
+  describe("La liste des aides éligibles", function () {
+    before(function () {
+      // given
+      cy.visit('apidocs#/aids/getEligibleAids')
+    })
+    it("Doit renvoyer les données d'entrée, suivi des aides éligibles", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="age - Age of asker"]')
+        .clear()
+        .invoke('val', '2')
+        .trigger('input')
+      cy.get('input[placeholder="age - Age of asker"]').click()
+      cy.get('input[placeholder="age - Age of asker"]').type("2")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{"age":"22"}},"aids":[{')).to.eq(0)}
+      )
+    })
+  })
+  // console.log(txt.replace(/[\s\n\r]+/g, ''));
+  describe("La liste des aides inéligibles", function () {
+    before(function () {
+      // given
+      cy.visit('apidocs#/aids/getIneligibleAids')
+    })
+    it("Doit renvoyer les données d'entrée, suivi des aides inéligibles", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="age - Age of asker"]')
+        .clear()
+        .invoke('val', '1')
+        .trigger('input')
+      cy.get('input[placeholder="age - Age of asker"]').click()
+      cy.get('input[placeholder="age - Age of asker"]').type("7")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{"age":"17"}},"aids":[{')).to.eq(0)}
+      )
+    })
+  })
+
+  describe("La liste des aides incertaines", function () {
+    before(function () {
+      // given
+      cy.visit('apidocs#/aids/getUncertainAids')
+    })
+    it("Doit renvoyer les données d'entrée, suivi des aides incertaines", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      fire(cy)
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{}},"aids":[{')).to.eq(0)}
+      )
+    })
+  })
+
   describe("La liste des filtres", function () {
     before(function () {
       // given
@@ -124,6 +187,8 @@ describe("Utiliser l'API", function() {
       )
     })
   })
+
+
 
 
 
