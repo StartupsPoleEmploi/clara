@@ -4,6 +4,8 @@ describe("Utiliser l'API", function() {
   const EXEC_SEL = "button.btn.execute"
   const TRY_SEL = "button.try-out__btn"
 
+  let reusable_jwt_token;
+
   function first_steps(cy) {
     cy.get(TRY_SEL).click()
     cy.get(EXEC_SEL).should("exist")
@@ -46,9 +48,7 @@ describe("Utiliser l'API", function() {
           let answer = txt.replace(/[\s\n\r]+/g, '')
           let almost_jwt = answer.split(":")[1]
           let jwt = almost_jwt.substring(0, almost_jwt.length - 2).substr(1);
-          console.log(answer)
-          console.log(almost_jwt)
-          console.log(jwt)
+          reusable_jwt_token = jwt
         }
       )
     })
