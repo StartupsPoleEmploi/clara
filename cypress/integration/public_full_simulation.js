@@ -59,7 +59,7 @@ describe("Pour un visiteur", function () {
     cy.get(".c-situation--age").shouldHaveTrimmedText("16")
     cy.get(".c-situation--grade").shouldHaveTrimmedText("Bac")
     cy.get(".c-situation--address").shouldHaveTrimmedText("49490 Noyant-Villages")
-    cy.get(".c-situation--zrr").shouldHaveTrimmedText("indisponible")
+    cy.get(".c-situation--zrr").shouldHaveTrimmedText("oui")
     cy.get(".c-situation--inscription").shouldHaveTrimmedText("moins d'un an")
     cy.get(".c-situation--category").shouldHaveTrimmedText("12345")
     cy.get(".c-situation--allocation-montant").shouldHaveTrimmedText("842")
