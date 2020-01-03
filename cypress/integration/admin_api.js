@@ -35,7 +35,7 @@ describe("Utiliser l'API", function() {
       // given
       cy.visit('/apidocs#/user/api_user_token')
     })
-    it("Doit répondre ok", function () {
+    it("Doit renvoyer un token JWT de longueur 140", function () {
       first_steps(cy)
       cy.get(".body-param__text").click()
       cy.get('.body-param__text').clear().invoke('val', '{"auth":\n {\n   "email": "foo@bar.com",\n   "password": "Zecret+237"\n}\n}\n').trigger('input')
@@ -49,6 +49,7 @@ describe("Utiliser l'API", function() {
           let almost_jwt = answer.split(":")[1]
           let jwt = almost_jwt.substring(0, almost_jwt.length - 2).substr(1);
           reusable_jwt_token = jwt
+          expect(reusable_jwt_token).to.have.length(140)
         }
       )
     })
