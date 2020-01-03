@@ -85,6 +85,22 @@ describe("Utiliser l'API", function() {
     })
   })
 
+  describe("La liste des filtres par besoin", function () {
+    before(function () {
+      // given
+      cy.visit('/apidocs#/filters/getNeedFilters')
+    })
+    it("Doit renvoyer la liste des filtres par besoin", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      fire(cy)
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"need_filters":[')).to.eq(0)}
+      )
+    })
+  })
+
 
 
 })
