@@ -36,14 +36,21 @@ describe("Utiliser l'API", function() {
     it("Doit répondre ok", function () {
       first_steps(cy)
       cy.get(".body-param__text").click()
-      cy.get('.body-param__text').clear().invoke('val', '{"auth":\n {\n   "email": "foo@bar.com",\n   "password": "Zecret+237"\n}\n}\n').trigger('input').then(
-(window) => {console.log("bla");}
-        );
+      cy.get('.body-param__text').clear().invoke('val', '{"auth":\n {\n   "email": "foo@bar.com",\n   "password": "Zecret+237"\n}\n}\n').trigger('input')
       cy.get(".body-param__text").click()
       cy.get(".body-param__text").type(" ")
       cy.get("a.tablinks").first().click()
       fire(cy)
-
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').then(
+        (txt) => {
+          let answer = txt.replace(/[\s\n\r]+/g, '')
+          let almost_jwt = answer.split(":")[1]
+          let jwt = almost_jwt.substring(0, almost_jwt.length - 2).substr(1);
+          console.log(answer)
+          console.log(almost_jwt)
+          console.log(jwt)
+        }
+      )
     })
   })
 
