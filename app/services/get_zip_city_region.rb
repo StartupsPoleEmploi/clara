@@ -10,9 +10,6 @@ class GetZipCityRegion
       query_q = "rue"
       escaped_address = URI.escape(ENV['ARA_URL_BAN'] + "#{query_q}&citycode=" + citycode) 
       uri = URI.parse(escaped_address)
-      p '- - - - - - - - - - - - - - uri- - - - - - - - - - - - - - - -' 
-      pp uri
-      p ''
       response = HttpService.get_instance.get(uri)
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
