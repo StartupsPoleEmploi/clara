@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.5 (06/01/2020)
+-[#1504][BUG] mauvais code postal
+
+
 ## 23.5.4 (03/01/2020)
 -[#1503][TECH] couverture 80%
 
