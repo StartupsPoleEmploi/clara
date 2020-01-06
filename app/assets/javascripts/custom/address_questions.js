@@ -64,11 +64,6 @@ clara.load_js(function only_if(){return $("body").hasClasses("address_questions"
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    // PING Api first (hack) in order to awake it
-    // $.ajax({url: _.get(window, 'clara.env.ARA_URL_BAN') + "amiens", type:'GET'});
-
-    /* Init
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
     if ($(clara.search1.search_selector).val() === "") {
       // Must set type="number" dynamically like this, or tanaguru test won't pass
       $(clara.search1.search_selector).prop("type", "number");
