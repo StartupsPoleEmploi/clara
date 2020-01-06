@@ -14,9 +14,6 @@ and renders all form fields for a resource's editable attributes.
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Form
 %>
 
-<%- v = view_object(:rule_form_vo, local_assigns) %>
-
-
 <%- rule_kind_param = request.query_parameters["rule_kind"]%>
 <%- kind = rule_kind_param ? rule_kind_param :  page.resource.try(:kind)  %>
 

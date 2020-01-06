@@ -2,7 +2,7 @@ module Admin
   class UsersController < Admin::ApplicationController
 
 
-    before_action :require_superadmin_or_relecteur, only: [:update]
+    before_action :require_superadmin_or_relecteur, only: [:update, :index]
     before_action :require_superadmin, only: [:update, :destroy, :edit, :show]
 
 

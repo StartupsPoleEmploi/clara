@@ -6,6 +6,8 @@ if ENV['RAILS_ENV'] == 'development' && ENV['COVERAGE_PLEASE'] == 'true'
   require 'simplecov'
   SimpleCov.start 'rails' do
     coverage_dir "coverage/ruby/functional".to_s
+    add_filter "app/controllers/r7_pen_controller.rb"
+    add_filter "bin/spring"
   end
   puts "required simplecov"
 end

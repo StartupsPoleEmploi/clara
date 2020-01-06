@@ -64,9 +64,9 @@
         "tags": [
           "filters"
         ],
-        "summary": "Get all filters",
+        "summary": "Get need filters",
         "description": "",
-        "operationId": "getAllFilters",
+        "operationId": "getNeedFilters",
         "consumes": [
           "application/json"
         ],
