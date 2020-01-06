@@ -14,7 +14,7 @@ _.set(window, 'clara.search1', {
     return _.get(window, 'clara.env.ARA_URL_GEO_API') + "communes?codePostal=";
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
-    var result = _.map(feature_collection, function(e) {return e.nom + " " + e.codesPostaux[0]})
+    var result = _.map(feature_collection, function(e) {return e.codesPostaux[0] + " " + e.nom  })
     var mapped_address_data = _.map(feature_collection, function(e){
       return {
         country: "France",
