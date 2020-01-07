@@ -3,58 +3,7 @@
 //= require a11y-autocomplete/accessible_autocomplete
 //= require custom/address_questions
 describe('address_questions.js', function() {
-  var typical_input = {};
 
-  beforeEach(function() {
-
-    typical_input = {
-      attribution: 'BAN',
-      licence: 'ODbL 1.0',
-      query: '8 bd du port',
-      type: 'FeatureCollection',
-      version: 'draft',
-      features: [
-        {
-          properties: {
-            context: '80, Somme, Picardie',
-            housenumber: '8',
-            label: '8 Boulevard du Port 80000 Amiens',
-            postcode: '80000',
-            citycode: '80021',
-            id: 'ADRNIVX_0000000260875032',
-            score: 0.3351181818181818,
-            name: '8 Boulevard du Port',
-            city: 'Amiens',
-            type: 'municipality'
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [2.29009, 49.897446]
-          },
-          type: 'Feature'
-        },
-        {
-          properties: {
-            context: '34, Herault, Languedoc-Roussillon',
-            housenumber: '8',
-            label: '8 Boulevard du Port 34140 Meze',
-            postcode: '34140',
-            citycode: '34157',
-            id: 'ADRNIVX_0000000284423783',
-            score: 0.3287575757575757,
-            name: '8 Boulevard du Port',
-            city: 'Meze',
-            type: 'municipality'
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [3.605875, 43.425232]
-          },
-          type: 'Feature'
-        }
-      ]
-    };
-  });
   describe('Definitions', function() {
     it('Needs clara to be defined', function() {
       expect(clara).toBeDefined();
