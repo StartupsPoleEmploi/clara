@@ -3,58 +3,7 @@
 //= require a11y-autocomplete/accessible_autocomplete
 //= require custom/address_questions
 describe('address_questions.js', function() {
-  var typical_input = {};
 
-  beforeEach(function() {
-
-    typical_input = {
-      attribution: 'BAN',
-      licence: 'ODbL 1.0',
-      query: '8 bd du port',
-      type: 'FeatureCollection',
-      version: 'draft',
-      features: [
-        {
-          properties: {
-            context: '80, Somme, Picardie',
-            housenumber: '8',
-            label: '8 Boulevard du Port 80000 Amiens',
-            postcode: '80000',
-            citycode: '80021',
-            id: 'ADRNIVX_0000000260875032',
-            score: 0.3351181818181818,
-            name: '8 Boulevard du Port',
-            city: 'Amiens',
-            type: 'municipality'
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [2.29009, 49.897446]
-          },
-          type: 'Feature'
-        },
-        {
-          properties: {
-            context: '34, Herault, Languedoc-Roussillon',
-            housenumber: '8',
-            label: '8 Boulevard du Port 34140 Meze',
-            postcode: '34140',
-            citycode: '34157',
-            id: 'ADRNIVX_0000000284423783',
-            score: 0.3287575757575757,
-            name: '8 Boulevard du Port',
-            city: 'Meze',
-            type: 'municipality'
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [3.605875, 43.425232]
-          },
-          type: 'Feature'
-        }
-      ]
-    };
-  });
   describe('Definitions', function() {
     it('Needs clara to be defined', function() {
       expect(clara).toBeDefined();
@@ -70,8 +19,8 @@ describe('address_questions.js', function() {
     });
   });
 
-  it('Should be able to autocomplete every 1 chars', function() {
-    expect(clara.search1.autocomplete_every).toBe(1);
+  it('Should be able to autocomplete every 5 chars', function() {
+    expect(clara.search1.autocomplete_every).toBe(5);
   });
   it('Should have autocompletion mapped to the #search input', function() {
     expect(clara.search1.search_selector).toBe('#search');
@@ -130,128 +79,50 @@ describe('address_questions.js', function() {
       expect($('.c-address__explanation .sorry').length).toEqual(1)
     });
   });
-  describe('.search1.transformInputVal', function() {
-    it('Should be defined', function() {
-      expect(clara.search1.transformInputVal).toBeDefined();
-    });
-    it('Should transform "bd" into "boulevard"', function() {
-      expect(clara.search1.transformInputVal('11 bd machin')).toEqual('11 boulevard machin');
-    });
-    it('Should transform "BD" into "boulevard"', function() {
-      expect(clara.search1.transformInputVal('11 BD machin')).toEqual('11 boulevard machin');
-    });
-  });
   describe('.search1.url', function() {
     it('Should be defined', function() {
       expect(clara.search1.url).toBeDefined();
     });
-    it('Should return undefined if window.clara.env.ARA_URL_BAN is not properly set', function() {
-      _.set(window, 'clara.env.ARA_URL_BAN', undefined)
+    it('Should return undefined if window.clara.env.ARA_URL_GEO_API is not properly set', function() {
+      _.set(window, 'clara.env.ARA_URL_GEO_API', undefined)
       expect(clara.search1.url()).toEqual(undefined);
     });
-    it('Should get window.clara.env.ARA_URL_BAN', function() {
-      _.set(window, 'clara.env.ARA_URL_BAN', 'http://url_from_ban.com')
-      expect(clara.search1.url()).toEqual('http://url_from_ban.com');
+    it('Should get window.clara.env.ARA_URL_GEO_API', function() {
+      _.set(window, 'clara.env.ARA_URL_GEO_API', 'http://url_api_geo.com/')
+      expect(clara.search1.url()).toEqual('http://url_api_geo.com/communes?codePostal=');
     });
   });
   describe('.search1.buildResultsFromAjax', function() {
     it('Should be defined', function() {
       expect(clara.search1.buildResultsFromAjax).toBeDefined();
     });
-    it('French arrondissement - Should return label', function() {
+    it('Should return list of towns', function() {
       var pivot_map = {};
-      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
+      var geo_api_code_postal = MagicLamp.loadJSON("geo_api_code_postal");
       // when
-      var output = clara.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      var output = clara.search1.buildResultsFromAjax(geo_api_code_postal, pivot_map);
       // then
-      expect(output).toEqual(["75020 Paris"]);
+      expect(output).toEqual(["44240 La Chapelle-sur-Erdre", "44240 Sucé-sur-Erdre"]);
     });
-    it('French arrondissement - Should assign only one town in pivot_map', function() {
+    it('pivot_map must be correctly assigned', function() {
       var pivot_map = {};
-      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
+      var geo_api_code_postal = MagicLamp.loadJSON("geo_api_code_postal");
       var expected_output = {
-        "75020 Paris": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "75120",
-          "context": "75, Paris, Île-de-France",
-          "postcode": "75020",
-          "city": "Paris",
-          "name": "Rue des Pyrénées",
-          "type": "street"
+        "44240 La Chapelle-sur-Erdre": {
+          "zipcode": "44240",
+          "citycode": "44035",
+          "locality": "La Chapelle-sur-Erdre",
+          "country": "France",
+        },
+        "44240 Sucé-sur-Erdre": {
+          "zipcode": "44240",
+          "citycode": "44201",
+          "locality": "Sucé-sur-Erdre",
+          "country": "France",
         }
       };
       // when
-      clara.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
-      // then
-      expect(pivot_map).toEqual(expected_output);
-    });
-    it('Multiple towns per postcode - Should return labels', function() {
-      var pivot_map = {};
-      var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
-      // when
-      var output = clara.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
-      // then
-      expect(output).toEqual(["43000 Le Puy-en-Velay", "43000 Espaly-Saint-Marcel", "43000 Polignac", "43000 Ceyssac", "43000 Aiguilhe"]);
-    });
-    it('Multiple towns per postcode - Should assign only one town in pivot_map', function() {
-      var pivot_map = {};
-      var multiple_towns_per_postcode_input = MagicLamp.loadJSON("multiple_towns_per_postcode_json");
-      var expected_output = {
-        "43000 Le Puy-en-Velay": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "43157",
-          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
-          "postcode": "43000",
-          "city": "Le Puy-en-Velay",
-          "name": "Le Puy-en-Velay",
-          "type": "municipality"
-        },
-        "43000 Espaly-Saint-Marcel": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "43089",
-          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
-          "postcode": "43000",
-          "city": "Espaly-Saint-Marcel",
-          "name": "Espaly-Saint-Marcel",
-          "type": "municipality"
-        },
-        "43000 Polignac": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "43152",
-          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
-          "postcode": "43000",
-          "city": "Polignac",
-          "name": "Polignac",
-          "type": "municipality"
-        },
-        "43000 Ceyssac": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "43045",
-          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
-          "postcode": "43000",
-          "city": "Ceyssac",
-          "name": "Ceyssac",
-          "type": "municipality"
-        },
-        "43000 Aiguilhe": {
-          "housenumber":undefined,
-          "street":undefined,
-          "citycode": "43002",
-          "context": "43, Haute-Loire, Auvergne-Rhône-Alpes (Auvergne)",
-          "postcode": "43000",
-          "city": "Aiguilhe",
-          "name": "Aiguilhe",
-          "type": "municipality"
-        }
-      };
-
-      // when
-      clara.search1.buildResultsFromAjax(multiple_towns_per_postcode_input, pivot_map);
+      clara.search1.buildResultsFromAjax(geo_api_code_postal, pivot_map);
       // then
       expect(pivot_map).toEqual(expected_output);
     });
