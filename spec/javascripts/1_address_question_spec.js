@@ -134,13 +134,13 @@ describe('address_questions.js', function() {
     it('Should be defined', function() {
       expect(clara.search1.url).toBeDefined();
     });
-    it('Should return undefined if window.clara.env.ARA_URL_API_GEO is not properly set', function() {
-      _.set(window, 'clara.env.ARA_URL_API_GEO', undefined)
+    it('Should return undefined if window.clara.env.ARA_URL_GEO_API is not properly set', function() {
+      _.set(window, 'clara.env.ARA_URL_GEO_API', undefined)
       expect(clara.search1.url()).toEqual(undefined);
     });
-    it('Should get window.clara.env.ARA_URL_API_GEO', function() {
-      _.set(window, 'clara.env.ARA_URL_API_GEO', 'http://url_api_geo.com')
-      expect(clara.search1.url()).toEqual('http://url_api_geo.com');
+    it('Should get window.clara.env.ARA_URL_GEO_API', function() {
+      _.set(window, 'clara.env.ARA_URL_GEO_API', 'http://url_api_geo.com/')
+      expect(clara.search1.url()).toEqual('http://url_api_geo.com/communes?codePostal=');
     });
   });
   describe('.search1.buildResultsFromAjax', function() {
@@ -163,13 +163,13 @@ describe('address_questions.js', function() {
         "44240 La Chapelle-sur-Erdre": {
           "zipcode": "44240",
           "citycode": "44035",
-          "city": "La Chapelle-sur-Erdre",
+          "locality": "La Chapelle-sur-Erdre",
           "country": "France",
         },
         "44240 Sucé-sur-Erdre": {
           "zipcode": "44240",
           "citycode": "44201",
-          "city": "Sucé-sur-Erdre",
+          "locality": "Sucé-sur-Erdre",
           "country": "France",
         }
       };

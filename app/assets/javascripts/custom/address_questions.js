@@ -11,7 +11,10 @@ _.set(window, 'clara.search1', {
     $('.c-address__explanation').append('<div class="h5-like sorry">Le service d\'adresse est <strong>momentanément indisponible</strong>, veuillez nous en excuser.<div>Cliquez sur "Continuer".</div></div>');
   },
   url: function() {
-    return _.get(window, 'clara.env.ARA_URL_GEO_API') + "communes?codePostal=";
+    var url_geo_api = _.get(window, 'clara.env.ARA_URL_GEO_API');
+    if (_.isNotBlank(url_geo_api)) {
+      return _.get(window, 'clara.env.ARA_URL_GEO_API') + "communes?codePostal=";
+    }
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
     var result = _.map(feature_collection, function(e) {return e.codesPostaux[0] + " " + e.nom  })
