@@ -7,6 +7,9 @@ class TranslateB64AskerService
     base_keys = base_h.keys.sort_by(&:itself)
     # https://stackoverflow.com/a/9137388/2595513
     asker_h = Hash[base_keys.zip(asker_array)] 
+    p '- - - - - - - - - - - - - - asker_h- - - - - - - - - - - - - - - -' 
+    pp asker_h
+    p ''
     asker = Asker.new
     asker.v_cadre              = boolean_to_b64(asker_h["cadre"])
     asker.v_spectacle              = boolean_to_b64(asker_h["spectacle"])
@@ -18,12 +21,13 @@ class TranslateB64AskerService
     asker.v_allocation_value_min   = integer_to_b64(asker_h["monthly_allocation_value"])
     asker.v_age                    = integer_to_b64(asker_h["age"])
     asker.v_location_citycode      = integer_to_b64(asker_h["location_citycode"])
+    asker.v_location_zipcode       = integer_to_b64(asker_h["location_zipcode"])
     asker
   end
   
   def into_b64(asker)
     h = base_h
-    h["cadre"]                = boolean_from_b64(asker.v_cadre)
+    h["cadre"]                    = boolean_from_b64(asker.v_cadre)
     h["spectacle"]                = boolean_from_b64(asker.v_spectacle)
     h["disabled"]                 = boolean_from_b64(asker.v_handicap)
     h["diploma"]                  = diploma_from_b64(asker.v_diplome)
@@ -33,6 +37,7 @@ class TranslateB64AskerService
     h["monthly_allocation_value"] = integer_from_b64(asker.v_allocation_value_min)
     h["age"]                      = integer_from_b64(asker.v_age)
     h["location_citycode"]        = integer_from_b64(asker.v_location_citycode)
+    h["location_zipcode"]         = integer_from_b64(asker.v_location_zipcode)
     Base64.urlsafe_encode64(h.keys.sort_by(&:itself).map{|e| h[e]}.join(','))
   end
   
@@ -50,6 +55,7 @@ class TranslateB64AskerService
     h["monthly_allocation_value"] = ""
     h["age"]                      = ""
     h["location_citycode"]        = ""
+    h["location_zipcode"]        = ""
     h
   end
 
