@@ -53,9 +53,6 @@ _.set(window, 'clara.search1', {
       $('.js-next').focus();
     }
   },
-  transformInputVal: function(input_val) {
-    return input_val;
-  }
 });
 
 
