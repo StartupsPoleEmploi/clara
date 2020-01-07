@@ -107,7 +107,6 @@ describe('address_questions.js', function() {
     it('pivot_map must be correctly assigned', function() {
       var pivot_map = {};
       var geo_api_code_postal = MagicLamp.loadJSON("geo_api_code_postal");
-      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
       var expected_output = {
         "44240 La Chapelle-sur-Erdre": {
           "zipcode": "44240",
