@@ -17,21 +17,18 @@ _.set(window, 'clara.search1', {
     }
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
-    var result = _.map(feature_collection, function(e) {return e.codesPostaux[0] + " " + e.nom  })
     var as_int = function(e) { return parseInt(e, 10);}
     var get_postcode = function(e) {
       var rez = ""
       console.log(e.codesPostaux)
       if (_.size(e.codesPostaux) === 1) {
-        console.log("normal")
         rez = e.codesPostaux[0];
       } else if (_.size(e.codesPostaux) > 1) {
-        console.log("minBy")
-        rez = _.minBy(e.codesPostaux, function(k) {return as_int(k) - as_int(e)})
+        rez = stringSimilarity.findBestMatch($('input#search').val(), e.codesPostaux).bestMatch.target
       }
-      console.log(rez)
       return rez
     }
+    var result = _.map(feature_collection, function(e) {return get_postcode(e) + " " + e.nom  })
     var mapped_address_data = _.map(feature_collection, function(e) {
       return {
         country: "France",
