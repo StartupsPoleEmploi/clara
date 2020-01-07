@@ -116,7 +116,7 @@ describe('address_questions.js', function() {
       // when
       var output = clara.search1.buildResultsFromAjax(geo_api_code_postal_multiple, pivot_map);
       // then
-      expect(output).toEqual(["31000 Toulouse"]);
+      expect(output).toEqual(["31200 Toulouse"]);
     });
     it('pivot_map must be correctly assigned', function() {
       var pivot_map = {};
