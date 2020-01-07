@@ -7,9 +7,6 @@ class TranslateB64AskerService
     base_keys = base_h.keys.sort_by(&:itself)
     # https://stackoverflow.com/a/9137388/2595513
     asker_h = Hash[base_keys.zip(asker_array)] 
-    p '- - - - - - - - - - - - - - asker_h- - - - - - - - - - - - - - - -' 
-    pp asker_h
-    p ''
     asker = Asker.new
     asker.v_cadre              = boolean_to_b64(asker_h["cadre"])
     asker.v_spectacle              = boolean_to_b64(asker_h["spectacle"])
