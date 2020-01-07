@@ -158,13 +158,13 @@ describe('address_questions.js', function() {
     it('Should be defined', function() {
       expect(clara.search1.buildResultsFromAjax).toBeDefined();
     });
-    it('French arrondissement - Should return label', function() {
+    it('Should return list of towns', function() {
       var pivot_map = {};
-      var french_arrondissement_input = MagicLamp.loadJSON("french_arrondissement_input");
+      var geo_api_code_postal = MagicLamp.loadJSON("geo_api_code_postal");
       // when
-      var output = clara.search1.buildResultsFromAjax(french_arrondissement_input, pivot_map);
+      var output = clara.search1.buildResultsFromAjax(geo_api_code_postal, pivot_map);
       // then
-      expect(output).toEqual(["75020 Paris"]);
+      expect(output).toEqual(["44240 La Chapelle-sur-Erdre", "44240 Sucé-sur-Erdre"]);
     });
     it('French arrondissement - Should assign only one town in pivot_map', function() {
       var pivot_map = {};
