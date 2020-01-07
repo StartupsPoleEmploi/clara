@@ -1,7 +1,4 @@
 describe('External libs', function() {
-  it('Should have string-similarity', function() {
-    expect(stringSimilarity).toBeDefined();
-  });
   it('Should have jquery 1.12.4', function() {
     expect($.fn.jquery).toBe('1.12.4');
   });

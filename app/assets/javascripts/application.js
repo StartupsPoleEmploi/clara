@@ -14,7 +14,6 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
-//= require string-similarity/string-similarity
 //= require jquery/jquery_extension
 //= require jquery/jquery-cache-image
 //= require jquery/jquery-accessible-modal-window-aria
