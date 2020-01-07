@@ -13,7 +13,7 @@ _.set(window, 'clara.search1', {
   url: function() {
     var url_geo_api = _.get(window, 'clara.env.ARA_URL_GEO_API');
     if (_.isNotBlank(url_geo_api)) {
-      return _.get(window, 'clara.env.ARA_URL_GEO_API') + "communes?codePostal=";
+      return url_geo_api + "communes?codePostal=";
     }
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
