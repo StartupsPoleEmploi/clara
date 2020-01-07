@@ -1,5 +1,26 @@
 _.mixin({
 
+
+  // See https://gist.github.com/andrei-m/982927#gistcomment-1853560
+  levenshtein: function(a, b) {
+    if(!a || !b) return (a || b).length;
+    var m = [];
+    for(var i = 0; i <= b.length; i++){
+        m[i] = [i];
+        if(i === 0) continue;
+        for(var j = 0; j <= a.length; j++){
+            m[0][j] = j;
+            if(j === 0) continue;
+            m[i][j] = b.charAt(i - 1) == a.charAt(j - 1) ? m[i - 1][j - 1] : Math.min(
+                m[i-1][j-1] + 1,
+                m[i][j-1] + 1,
+                m[i-1][j] + 1
+            );
+        }
+    }
+    return m[b.length][a.length];
+  },
+
   // 'sometext-20202-303', '-' => '20202-303'
   textAfter: function(str, prefix) {
     return str.substring(str.indexOf(prefix) + 1);

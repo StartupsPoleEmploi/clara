@@ -20,11 +20,10 @@ _.set(window, 'clara.search1', {
     var as_int = function(e) { return parseInt(e, 10);}
     var get_postcode = function(e) {
       var rez = ""
-      console.log(e.codesPostaux)
       if (_.size(e.codesPostaux) === 1) {
         rez = e.codesPostaux[0];
       } else if (_.size(e.codesPostaux) > 1) {
-        rez = stringSimilarity.findBestMatch($('input#search').val(), e.codesPostaux).bestMatch.target
+        rez = _.minBy(e.codesPostaux, function(k){return _.levenshtein(k, $('input#search').val())})
       }
       return rez
     }
