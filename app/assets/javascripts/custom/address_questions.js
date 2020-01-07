@@ -2,8 +2,8 @@ _.set(window, 'clara.search1', {
   search_selector: '#search',
   results_selector: '#results',
   arialive_selector: '[aria-live]',
-  autocomplete_every: 1,
-  errorOccured: function() {
+  autocomplete_every: 5,
+  errorOccured: function(e) {
     $('input#search').val('');
     this.resetAllCalculatedFields();
     $('.c-address__explanation').empty();
@@ -11,48 +11,23 @@ _.set(window, 'clara.search1', {
     $('.c-address__explanation').append('<div class="h5-like sorry">Le service d\'adresse est <strong>momentanément indisponible</strong>, veuillez nous en excuser.<div>Cliquez sur "Continuer".</div></div>');
   },
   url: function() {
-    return _.get(window, 'clara.env.ARA_URL_BAN');
+    var url_geo_api = _.get(window, 'clara.env.ARA_URL_GEO_API');
+    if (_.isNotBlank(url_geo_api)) {
+      return url_geo_api + "communes?codePostal=";
+    }
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
-    var properties = _.map(feature_collection.features, 'properties');
-
-    function extract_props(the_name) {
-      var local_collection = _.map(properties, the_name);
-      return _.map(local_collection, function(e) {
-        return _.zipObject([the_name], [e]);
-      });
-    }
-    var address_data = _.map(extract_props('citycode'), function(e, i) {
-      return _.assign(
-        {},
-        extract_props('citycode')[i],
-        extract_props('context')[i],
-        extract_props('postcode')[i],
-        extract_props('housenumber')[i],
-        extract_props('city')[i],
-        extract_props('street')[i],
-        extract_props('name')[i],
-        extract_props('type')[i]
-        );
-    });
-
-
-    var municipality_address_data = _.filter(address_data, function(a){return a.type ===  "municipality"});
-
-    var choosen_address_data = municipality_address_data;
-    if (_.size(municipality_address_data) === 0) {
-      var street_address_data = _.filter(address_data, function(a){return a.type ===  "street"});
-      var uniq_street_address_data = _.uniqBy(street_address_data, function(e){return _.get(e, 'city') + _.get(e, 'citycode')})
-      if (_.size(uniq_street_address_data) > 0) {
-        choosen_address_data = uniq_street_address_data
+    var result = _.map(feature_collection, function(e) {return e.codesPostaux[0] + " " + e.nom  })
+    var mapped_address_data = _.map(feature_collection, function(e){
+      return {
+        country: "France",
+        zipcode: e.codesPostaux[0],
+        citycode: e.code,
+        locality: e.nom,
       }
-    }
-
-    var mapped_address_data = _.map(choosen_address_data, function(e) {return e.postcode + " " + e.city})
-
-    _.assign(pivot_map, _.zipObject(mapped_address_data, address_data));
-
-    return mapped_address_data;
+    });
+    _.assign(pivot_map, _.zipObject(result, mapped_address_data))
+    return result;
   },
   contentOfInputManuallyChanged: function() {
     this.resetAllCalculatedFields();
@@ -69,44 +44,23 @@ _.set(window, 'clara.search1', {
   newResultEntered:  function(the_input_val, pivot_map) {
     var obj = pivot_map[the_input_val];
     if (_.isPlainObject(obj)) {
-      var the_name = obj.name;
-      var the_street = obj.street;
-      var the_type = obj.type;
-
-      var the_route = null;
-      if (the_type === 'housenumber' || the_type === 'street') {
-        the_route = the_street ? the_street : the_name;
-      }
 
       $('#citycode').val(obj.citycode);
-      $('#administrative_area_level_1').val(_.last(obj.context.split(', ')));
-      $('#country').val('France');
-      $('#postal_code').val(obj.postcode);
-      $('#street_number').val(obj.housenumber);
-      $('#locality').val(obj.city);
-      $('#route').val(the_route);
-      $('#location_label').val($(clara.search1.search_selector).val().trim());
+      $('#country').val(obj.country);
+      $('#postal_code').val(obj.zipcode);
+      $('#locality').val(obj.locality);
 
       $('.js-next').focus();
     }
   },
   transformInputVal: function(input_val) {
-    if (_.includes(input_val.toLowerCase(), ' bd ')) {
-      return input_val.toLowerCase().replace(' bd ', ' boulevard ');
-    } else {
-      return input_val;
-    }
+    return input_val;
   }
 });
 
 
 clara.load_js(function only_if(){return $("body").hasClasses("address_questions", "new")}, function() {
 
-
-    /* Init
-    ––––––––––––––––––––––––––––––––––––––––––––––––––*/
-    // PING Api first (hack) in order to awake it
-    $.ajax({url: _.get(window, 'clara.env.ARA_URL_BAN') + "amiens", type:'GET'});
 
     /* Init
     ––––––––––––––––––––––––––––––––––––––––––––––––––*/
