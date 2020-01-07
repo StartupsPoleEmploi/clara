@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.5.6 (07/01/2020)
+-[#1504c][BUG] mauvais code postal 2
+
+
 ## 23.5.5 (06/01/2020)
 -[#1504][BUG] mauvais code postal
 
