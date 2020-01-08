@@ -15,5 +15,24 @@ describe("Contrôle de règle", function() {
     cy.get('#rule_check_title').shouldHaveTrimmedText('Contrôle de la règle')
   })
 
+  it("Comme superadmin, on peut faire une simulation qui renvoie un résultat éligible", function() {
+    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
+    cy.get('input#v_duree_d_inscription').clear()
+    cy.get('input#v_duree_d_inscription').type("plus_d_un_an")
+    cy.get('input#btn_simulate').click()
+    cy.get('.c-simulator-result .eligibility-ok').should("exist")
+  })
+
+  it("Comme superadmin, on peut enregistrer le résultat d'une simulation éligible", function() {
+    cy.get('td.simulation-table-name').should("not.exist")
+    cy.get('input#name_for_saving').clear()
+    cy.get('input#name_for_saving').type("ok_plus_dun_an")
+    cy.get('button#btn-save').click()
+    cy.get('td.simulation-table-name').should("exist")
+  })
+  it("Comme superadmin, on peut supprimer le résultat d'une simulation éligible", function() {
+    cy.get('.simulation-table-delete').first().click()
+  })
+
 })
 
