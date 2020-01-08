@@ -31,7 +31,9 @@ describe("Contrôle de règle", function() {
     cy.get('td.simulation-table-name').should("exist")
   })
   it("Comme superadmin, on peut supprimer le résultat d'une simulation éligible", function() {
+    cy.get('td.simulation-table-name').should("exist")
     cy.get('.simulation-table-delete').first().click()
+    cy.get('td.simulation-table-name').should("not.exist")
   })
 
 })
