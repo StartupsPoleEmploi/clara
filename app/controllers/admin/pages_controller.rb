@@ -10,10 +10,6 @@ module Admin
       JSON.parse(Explicitation.all.to_json(:only => [:id, :value_eligible, :operator_kind, :template], :include => { variable: { only: [:name] } })).map { |e| e["variable_name"] = e["variable"]["name"]; e.delete("variable"); e }
     end
 
-    def _all_operator_kinds
-      ListOperatorKind.new.call
-    end
-
     def _all_variables
       JSON.parse(Variable.all.to_json(:only => [:id, :name, :variable_kind, :elements, :elements_translation, :is_visible, :name_translation]))
     end
@@ -30,19 +26,6 @@ module Admin
     end
 
     def post_reinit
-      slug = _slug_data
-      a = Aid.find_by(slug: slug)
-      if a
-        a.rule = nil
-        a.save
-        message = "👍👍👍Le champ d'application de l'aide \"#{a.name}\" a été réinitialisé"
-      else
-        message = "⚠️⚠️⚠️échec : aucune aide pour le slug #{slug}"
-      end
-      render json: {
-        message: message,
-        status: "ok",
-      }
     end
 
     def _slug_data
@@ -93,11 +76,6 @@ module Admin
     end
 
     def post_transfer_descr
-      # Calculate status on every single field
-      Aid.all.each { |aid| aid.update_status }
-      render json: {
-        status: "ok",
-      }
     end
   end
 end

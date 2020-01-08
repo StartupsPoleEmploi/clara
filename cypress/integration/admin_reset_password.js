@@ -25,11 +25,6 @@ describe("Réinitialisation du mot de passe", function() {
 
   it("Si on clique sur le lien dans l'email, on accède à la page de réinitialisation", function() {
     cy.visit('/letter_opener')
-    // cy.get('a[target="mail"]').first().click()
-    // cy.get('a#change_password_please').click()
-
-
-
     cy.get('iframe#mail').then(function ($iframe) {
       const $body = $iframe.contents().find('body')
 
@@ -45,10 +40,7 @@ describe("Réinitialisation du mot de passe", function() {
             });
         })
     })
-
   })
-
-
 
   it("Par défaut le mot de passe n'est pas renseigné", function() {
     cy.get('input#password_reset_password').should('have.value', '')
@@ -57,7 +49,34 @@ describe("Réinitialisation du mot de passe", function() {
     cy.get('input#password_reset_password').click()
     cy.get('input[value="Enregistrer"]').click()
     cy.get('#flash_notice').shouldHaveTrimmedText("✖ Le mot de passe ne peut être vide.");
-
+  })
+  it("Un mot de passe ne peut avoir moins de 8 caractères", function() {
+    cy.get('input#password_reset_password').clear()
+    cy.get('input#password_reset_password').type("Conur2+")
+    cy.get('input#password_reset_password').click()
+    cy.get('input[value="Enregistrer"]').click()
+    cy.get('#flash_notice').shouldHaveTrimmedText("✖ Le mot de passe doit avoir au moins 8 caractères.");
+  })
+  it("Un mot de passe doit avoir un caractère spécial au moins", function() {
+    cy.get('input#password_reset_password').clear()
+    cy.get('input#password_reset_password').type("Contributeur2")
+    cy.get('input#password_reset_password').click()
+    cy.get('input[value="Enregistrer"]').click()
+    cy.get('#flash_notice').shouldHaveTrimmedText("✖ Le mot de passe doit avoir au moins un caractère spécial.");
+  })
+  it("Un mot de passe doit avoir un chiffre au moins", function() {
+    cy.get('input#password_reset_password').clear()
+    cy.get('input#password_reset_password').type("Contributeur+")
+    cy.get('input#password_reset_password').click()
+    cy.get('input[value="Enregistrer"]').click()
+    cy.get('#flash_notice').shouldHaveTrimmedText("✖ Le mot de passe doit avoir au moins un chiffre.");
+  })
+  it("Un mot de passe doit avoir une majuscule au moins", function() {
+    cy.get('input#password_reset_password').clear()
+    cy.get('input#password_reset_password').type("contributeur2+")
+    cy.get('input#password_reset_password').click()
+    cy.get('input[value="Enregistrer"]').click()
+    cy.get('#flash_notice').shouldHaveTrimmedText("✖ Le mot de passe doit avoir au moins une majuscule.");
   })
   it("Un mot de passe correct est accepté", function() {
     cy.get('input#password_reset_password').first().type("Contributeur2+")
