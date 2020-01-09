@@ -6,14 +6,6 @@ module Admin
 
     before_action :require_superadmin, except: [:get_hidden_admin, :get_cache, :post_cache]
 
-    def _all_explicitations
-      JSON.parse(Explicitation.all.to_json(:only => [:id, :value_eligible, :operator_kind, :template], :include => { variable: { only: [:name] } })).map { |e| e["variable_name"] = e["variable"]["name"]; e.delete("variable"); e }
-    end
-
-    def _all_variables
-      JSON.parse(Variable.all.to_json(:only => [:id, :name, :variable_kind, :elements, :elements_translation, :is_visible, :name_translation]))
-    end
-
     def get_delete_trace
     end
 
@@ -26,10 +18,6 @@ module Admin
     end
 
     def post_reinit
-    end
-
-    def _slug_data
-      params.extract!(:slug_data).permit(:slug_data).to_h["slug_data"]
     end
 
     # load zrr
