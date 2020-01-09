@@ -39,4 +39,10 @@ MagicLamp.define do
     ')
   end
 
+  fixture(name: "geo_api_code_postal_multiple") do
+    JSON.parse('
+      [{"nom":"Toulouse","code":"31555","codeDepartement":"31","codeRegion":"76","codesPostaux":["31500","31100","31400","31300","31000","31200","31998"],"population":475438}]
+    ')
+  end
+
 end

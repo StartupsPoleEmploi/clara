@@ -93,6 +93,12 @@ describe('address_questions.js', function() {
     });
   });
   describe('.search1.buildResultsFromAjax', function() {
+    beforeEach(function() {
+      $('body').append('<input id="search" value="31200" type="text">');
+    });
+    afterEach(function() {
+      $('#search').remove();
+    });
     it('Should be defined', function() {
       expect(clara.search1.buildResultsFromAjax).toBeDefined();
     });
@@ -103,6 +109,14 @@ describe('address_questions.js', function() {
       var output = clara.search1.buildResultsFromAjax(geo_api_code_postal, pivot_map);
       // then
       expect(output).toEqual(["44240 La Chapelle-sur-Erdre", "44240 Sucé-sur-Erdre"]);
+    });
+    it('Should return closest postcode if apply', function() {
+      var pivot_map = {};
+      var geo_api_code_postal_multiple = MagicLamp.loadJSON("geo_api_code_postal_multiple");
+      // when
+      var output = clara.search1.buildResultsFromAjax(geo_api_code_postal_multiple, pivot_map);
+      // then
+      expect(output).toEqual(["31200 Toulouse"]);
     });
     it('pivot_map must be correctly assigned', function() {
       var pivot_map = {};

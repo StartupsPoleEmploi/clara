@@ -17,11 +17,21 @@ _.set(window, 'clara.search1', {
     }
   },
   buildResultsFromAjax: function(feature_collection, pivot_map) {
-    var result = _.map(feature_collection, function(e) {return e.codesPostaux[0] + " " + e.nom  })
-    var mapped_address_data = _.map(feature_collection, function(e){
+    var as_int = function(e) { return parseInt(e, 10);}
+    var get_postcode = function(e) {
+      var rez = ""
+      if (_.size(e.codesPostaux) === 1) {
+        rez = e.codesPostaux[0];
+      } else if (_.size(e.codesPostaux) > 1) {
+        rez = _.minBy(e.codesPostaux, function(k){return _.levenshtein(k, $('input#search').val())})
+      }
+      return rez
+    }
+    var result = _.map(feature_collection, function(e) {return get_postcode(e) + " " + e.nom  })
+    var mapped_address_data = _.map(feature_collection, function(e) {
       return {
         country: "France",
-        zipcode: e.codesPostaux[0],
+        zipcode: get_postcode(e),
         citycode: e.code,
         locality: e.nom,
       }
