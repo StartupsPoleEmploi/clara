@@ -2,7 +2,6 @@ describe("Contrôle de règle", function() {
 
   before(function() {
     cy.connect_as_superadmin()
-    
   })
 
   it("Comme superadmin, on peut visiter le détail d'une règle", function() {
@@ -15,20 +14,6 @@ describe("Contrôle de règle", function() {
     cy.get('#rule_check_title').shouldHaveTrimmedText('Contrôle de la règle')
   })
 
-  it("Comme superadmin, on peut faire une simulation qui renvoie un résultat incertain", function() {
-    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
-    cy.get('input#v_duree_d_inscription').clear()
-    cy.get('input#btn_simulate').click()
-    cy.get('.c-simulator-result .eligibility-uncertain').should("exist")
-  })
-
-  it("Comme superadmin, on peut faire une simulation qui renvoie un résultat inéligible", function() {
-    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
-    cy.get('input#v_duree_d_inscription').clear()
-    cy.get('input#v_duree_d_inscription').type("non_inscrit")
-    cy.get('input#btn_simulate').click()
-    cy.get('.c-simulator-result .eligibility-nok').should("exist")
-  })
 
   it("Comme superadmin, on peut faire une simulation qui renvoie un résultat éligible", function() {
     cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
@@ -46,8 +31,29 @@ describe("Contrôle de règle", function() {
     cy.get('td.simulation-table-name').should("exist")
   })
   
+  it("Comme superadmin, on peut faire une simulation qui renvoie un résultat incertain", function() {
+    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
+    cy.get('input#v_duree_d_inscription').clear()
+    cy.get('input#btn_simulate').click()
+    cy.get('.c-simulator-result .eligibility-uncertain').should("exist")
+  })
+
+  it("Comme superadmin, on peut faire une simulation qui renvoie un résultat inéligible", function() {
+    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
+    cy.get('input#v_duree_d_inscription').clear()
+    cy.get('input#v_duree_d_inscription').type("non_inscrit")
+    cy.get('input#btn_simulate').click()
+    cy.get('.c-simulator-result .eligibility-nok').should("exist")
+  })
+
+  it("Comme superadmin, on peut rejouer le résultat d'une simulation enregistrée", function() {
+    cy.get('.c-simulator-result .eligibility-ok').should("not.exist")
+    cy.get('.simulation-table-replay').first().click()
+    cy.get('input#btn_simulate').click()
+    cy.get('.c-simulator-result .eligibility-ok').should("exist")
+  })
+
   it("Comme superadmin, on peut supprimer le résultat d'une simulation éligible", function() {
-    cy.get('td.simulation-table-name').should("exist")
     cy.get('.simulation-table-delete').first().click()
     cy.get('td.simulation-table-name').should("not.exist")
   })
