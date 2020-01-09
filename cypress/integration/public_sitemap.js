@@ -10,5 +10,23 @@ describe("En tant que simple visiteur", function () {
     })
   })
 
+  it("Je peux visiter le sitemap des aides", function () {
+    cy.request('/aides-sitemap.xml').then((response) => {
+      expect(response.status).to.eq(200)
+      const xml = Cypress.$.parseXML(response.body)
+      const urlset = xml.getElementsByTagName('urlset')
+      expect(Cypress.$(urlset).find("url>loc").last().text().indexOf("/aides/detail/")).to.be.greaterThan(0)
+    })
+  })
+
+  it("Je peux visiter le sitemap des types d'aides", function () {
+    cy.request('/types-aides-sitemap.xml').then((response) => {
+      expect(response.status).to.eq(200)
+      const xml = Cypress.$.parseXML(response.body)
+      const urlset = xml.getElementsByTagName('urlset')
+      expect(Cypress.$(urlset).find("url>loc").last().text().indexOf("/aides/type/")).to.be.greaterThan(0)
+    })
+  })
+
 })
 
