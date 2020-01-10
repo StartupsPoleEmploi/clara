@@ -148,6 +148,13 @@ Cypress.Commands.add('forbid_hotjar', () => {
   cy.get("body.c-body.welcome.index").should("exist")
 });
 
+Cypress.Commands.add('clear_mailbox', () => {
+  cy.visit('/letter_opener')
+  cy.get('a[href="/letter_opener/clear"]').should("exist")
+  cy.get('a[href="/letter_opener/clear"]').click()
+  cy.get('table.letter-opener tbody').shouldHaveTrimmedText('')
+});
+
 // See https://github.com/cypress-io/cypress/issues/3887#issuecomment-522962482
 Cypress.Commands.add(
     'shouldHaveTrimmedText',

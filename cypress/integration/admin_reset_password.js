@@ -3,8 +3,10 @@ describe("Réinitialisation du mot de passe", function() {
   before(function() {
     cy.connect_as_contributeur2()
     cy.disconnect_from_admin()
+    cy.clear_mailbox()
     cy.visit('/sign_in')
   })
+
 
   it("On peut demander à réinitialiser son mot de passe", function() {
     cy.get('a#forgot_link').click()
