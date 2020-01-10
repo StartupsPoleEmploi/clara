@@ -43,4 +43,9 @@ class HttpServicePostTest < ActiveSupport::TestCase
       HttpService.get_instance.post('scheme', 'host', 'port', 'path', {}, {}))
   end
 
+  test 'send a invalid POST (form) HTTP request : Returns "timeout" if any error occurs' do    
+    assert_equal("timeout", 
+      HttpService.get_instance.post_form('invalid', 'params'))
+  end
+
 end
