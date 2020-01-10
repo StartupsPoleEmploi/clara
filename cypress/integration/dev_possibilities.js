@@ -1,4 +1,8 @@
-describe("En tant que dev", function () {
+describe("En tant que dev, connecté comme superadmin", function () {
+
+  before(function() {
+    cy.connect_as_superadmin()
+  })
 
   it("Je peux délibérément provoquer une erreur 500 pour tester les remontée d'erreur", function () {
     cy.visit('/divide_by_zero', {failOnStatusCode: false}).then(() => { 
@@ -6,6 +10,14 @@ describe("En tant que dev", function () {
     })
   })
 
+  it("Je peux afficher quelques stats de la base", function () {
+    cy.visit('/admin/status').then(() => { 
+      cy.get("body pre").invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"db_stats":{')).to.eq(0)}
+      )
+    })
+  })
+  
   it("Je peux afficher l'IP courante", function () {
     cy.visit('/reqip').then(() => { 
       cy.get("h1").shouldHaveTrimmedText("127.0.0.1")
