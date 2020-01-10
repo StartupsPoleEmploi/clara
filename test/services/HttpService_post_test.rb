@@ -14,10 +14,10 @@ class HttpServicePostTest < ActiveSupport::TestCase
       json_params = {'num_adresse' => 11, 'nom_voie' => 'rue des trucs', 'code_postal' => '68190', 'nom_commune' => 'Ensisheim'}
       headers  = {"Content-Type"=>"application/json", "Accept"=>"application/json"}
       assert_equal(true, 
-                    HttpService
-                      .get_instance
-                      .post(scheme, host, port, path, json_params, headers)
-                      .kind_of? Net::HTTPSuccess)
+        HttpService
+          .get_instance
+          .post(scheme, host, port, path, json_params, headers)
+          .kind_of?(Net::HTTPSuccess))
   end
 
   test 'send a invalid GET HTTP request : Returns "timeout" if any error occurs' do    
