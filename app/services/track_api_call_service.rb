@@ -27,7 +27,7 @@ class TrackApiCallService
                "ea" => endpoint,
                "el" => who,
                "ev" => 1}
-    HttpService.get_instance.post_form(uri, params)
+    HttpService.new.post_form(uri, params)
   end
 
   end

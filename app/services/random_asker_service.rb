@@ -16,6 +16,7 @@ class RandomAskerService
     asker.v_category = ["cat_12345","autres_cat"].sample
     asker.v_duree_d_inscription = ["plus_d_un_an","moins_d_un_an","non_inscrit"].sample
     asker.v_location_citycode = Array(10000..99999).map(&:to_s).sample.to_s
+    asker.v_location_zipcode = Array(10000..99999).map(&:to_s).sample.to_s
     asker
   end
 

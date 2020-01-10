@@ -113,7 +113,7 @@ describe("Pour un visiteur", function () {
   })
   describe("On peut filtrer les résultats", function () {
     const HIDDEN_ELTS = ".c-resultcard.u-hidden-visually"
-    const VISIBLE_TAGS = '.c-resultfilter[data-name="travailler-a-l-international"]:visible'
+    const VISIBLE_TAGS = '.c-resultfilter[data-name="garder-enfant"]:visible'
     before(function () {
       //given
       cy.get(HIDDEN_ELTS).should('not.exist')
@@ -126,8 +126,6 @@ describe("Pour un visiteur", function () {
       cy.get(HIDDEN_ELTS).should('exist')
     })
     it("Les petites étiquettes apparaissent", function(){
-      //when
-      cy.get(".js-toggle-ineligies").first().click()
       //then
       cy.get(VISIBLE_TAGS).should('exist')
     })

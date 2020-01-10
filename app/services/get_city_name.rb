@@ -9,7 +9,7 @@ class GetCityName
     if (citycode && citycode.is_a?(String) && !citycode.blank?)
       escaped_address = URI.escape(ENV['ARA_URL_GEO_API'] + "communes/#{citycode}") 
       uri = URI.parse(escaped_address)
-      response = HttpService.get_instance.get(uri)
+      response = HttpService.new.get(uri)
       if !response.blank? && response.include?("timeout")
         return 'erreur_service_indisponible'
       elsif !response.blank?

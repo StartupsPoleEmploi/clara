@@ -1,6 +1,8 @@
 module Admin
   class RuleChecksController < Admin::ApplicationController
 
+    before_action :require_superadmin
+
     def index
       all_rules = Rule.all
       @all_rules_composition = []

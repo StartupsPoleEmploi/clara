@@ -16,8 +16,7 @@ class TrackSearch
                  "ea" => "search",
                  "el" => user_search,
                }
-      Net::HTTP.post_form(uri, params)
-      # HttpService.get_instance.post_form(uri, params)
+      HttpService.new.post_form(uri, params)
     else
       "not called"
     end

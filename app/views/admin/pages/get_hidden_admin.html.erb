@@ -85,7 +85,7 @@
       <% if current_user.role === "superadmin" %>
         <ul>
           <li>
-            <%=link_to "Voir les statistiques", stats_index_path %>
+            <%=link_to "Voir les statistiques", ENV["ARA_STATS"] %>
           </li>
           <li>
             <%=link_to "Stratégies de suivi", admin_tracings_path %>
@@ -97,7 +97,7 @@
       <% else %>
         <ul>
           <li>
-            <%=link_to "Voir les statistiques", stats_index_path %>
+            <%=link_to "Voir les statistiques", ENV["ARA_STATS"] %>
           </li>
         </ul>
       <% end %>
