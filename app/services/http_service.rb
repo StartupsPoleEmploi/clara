@@ -50,7 +50,7 @@ def get(uri)
       return Net::HTTP.get(uri)
     end
   rescue Exception => e 
-   p "Net::HTTP GET request failed with #{e.message}" 
+   p "Net::HTTP GET request failed with #{e.message}" unless Rails.env.test?
    return "timeout"
  end
 end
