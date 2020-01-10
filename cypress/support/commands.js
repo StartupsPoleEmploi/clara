@@ -104,7 +104,8 @@ Cypress.Commands.add('clear_the_cache', () => {
   cy.get('#button-empty-cache').should("exist")
   cy.get('#button-empty-cache').click()
   // wait for clear cache to finish
-  cy.get('#button-empty-cache[disabled]').should('exist')
+  // cy.get('#button-empty-cache[disabled]').should('exist')
+  cy.wait(1000)
   cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
 });
 

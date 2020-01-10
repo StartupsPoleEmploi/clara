@@ -2,8 +2,16 @@ class RecordRegister
 
   def call(session, asker, url)
     city_key = asker.v_location_citycode
+    p '- - - - - - - - - - - - - - city_key- - - - - - - - - - - - - - - -' 
+    pp CookiePreference.new(session).ga_disabled?
+    p ''
     unless CookiePreference.new(session).ga_disabled?
+      p '- - - - - - - - - - - - - - CookiePreference- - - - - - - - - - - - - - - -' 
+      p ''
       tracings = ActivatedModelsService.instance.tracings
+      p '- - - - - - - - - - - - - - tracings- - - - - - - - - - - - - - - -' 
+      pp tracings
+      p ''
       aid_filtered_tracings = _scan_tracings_aids(asker, tracings, url)
       aid_and_rule_filtered_tracings = _scan_tracings_rules(asker, aid_filtered_tracings)
       aid_and_rule_filtered_tracings.each do |e|
