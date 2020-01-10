@@ -10,11 +10,11 @@ class HttpServiceGetTest < ActiveSupport::TestCase
   test 'send a valid GET HTTP request : Returns "ok" if remote service return "ok"' do    
     escaped_address = URI.escape("http://fakeurl.com") 
     uri = URI.parse(escaped_address)
-    assert_equal("ok", HttpService.get_instance.get(uri))
+    assert_equal("ok", HttpService.new.get(uri))
   end
 
   test 'send a invalid GET HTTP request : Returns "timeout" if any error occurs' do    
-    assert_equal("timeout", HttpService.get_instance.get("invalid_string"))
+    assert_equal("timeout", HttpService.new.get("invalid_string"))
   end
 
 end
