@@ -150,6 +150,7 @@ Cypress.Commands.add('forbid_hotjar', () => {
 
 Cypress.Commands.add('clear_mailbox', () => {
   cy.visit('/letter_opener')
+  // cy.get('table.letter-opener tbody').shouldHaveTrimmedText('')
   cy.get('a[href="/letter_opener/clear"]').should("exist")
   cy.get('a[href="/letter_opener/clear"]').click()
   cy.get('table.letter-opener tbody').shouldHaveTrimmedText('')

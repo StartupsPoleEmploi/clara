@@ -1,5 +1,10 @@
 describe("En tant que simple visiteur", function () {
 
+  before(function() {
+    cy.clear_mailbox()
+  })
+
+
   it("Je peux remplir le formulaire de contact sans remplir les champs, les erreurs s'affichent", function () {
     //given
     cy.visit('/contact')
@@ -24,6 +29,19 @@ describe("En tant que simple visiteur", function () {
     cy.get('textarea#question').clear().invoke('val', 'Ceci est ma question non musicale').trigger('input');
     cy.get('input#send_message').click()    
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/contact_sent')})
+  })
+  it("Un email a bien été envoyé", function () {
+    //given
+    cy.visit('/letter_opener')
+    cy.get('iframe#mail').then(function ($iframe) {
+      const $body = $iframe.contents().find('body')
+      cy.wrap($body)
+        .find('iframe[seamless="seamless"]')
+        .then(function ($iframe2) {
+          const $body2 = $iframe2.contents().find('body')
+          cy.wrap($body2).find('h1').first().shouldHaveTrimmedText('Un formulaire a été rempli correctement')
+        })
+    })
   })
 
 })
