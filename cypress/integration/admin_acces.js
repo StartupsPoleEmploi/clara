@@ -6,6 +6,7 @@ describe("Liste des accès", function () {
     "/admin/get_hidden_admin",
     "/admin/conventions/1",
     "/admin/get_cache",
+    "/admin/rule_checks",
     "/apidocs",
     "/sign_up",
     "/admin/conventions/new",
