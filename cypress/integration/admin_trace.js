@@ -8,9 +8,13 @@ describe("Tracer une aide", function() {
 
     after(function() {
       cy.visit('/admin/tracings/')
-      cy.get('.js-table-row a[data-method="delete"]').click()
+      cy.get('.flash-notice').should('not.exist')
+      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
+      cy.get('.flash-notice').should('exist')
       cy.visit('/admin/traces/')
-      cy.get('.js-table-row a[data-method="delete"]').click()
+      cy.get('.flash-notice').should('not.exist')
+      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
+      cy.get('.flash-notice').should('exist')
     })
 
     it("On part d'un état où aucun suivi n'a encore eu lieu", function () {
