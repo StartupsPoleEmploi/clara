@@ -27,14 +27,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-  namespace :stats do
-    root 'stats#index'
-    get '/index' => 'stats#index'
-    get '/time' => 'stats#time'
-  end
-
-
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
