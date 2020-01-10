@@ -1,20 +1,29 @@
 describe("Tracer une aide", function() {
 
+  function _remove_all(cy) {
+    cy.visit('/admin/tracings/')
+    cy.get('.flash-notice').should('not.exist')
+    if (cy.find('.js-table-row a[data-method="delete"]').length > 0) {
+      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
+      cy.get('.flash-notice').should('exist')      
+    }
+    cy.visit('/admin/traces/')
+    cy.get('.flash-notice').should('not.exist')
+    if (cy.find('.js-table-row a[data-method="delete"]').length > 0) {
+      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
+      cy.get('.flash-notice').should('exist')
+    }
+  }
+
   describe("Pour un superadmin", function() {
     before(function() {
       cy.connect_as_superadmin()
       cy.authorize_google_analytics()
+      _remove_all(cy)
     })
 
     after(function() {
-      cy.visit('/admin/tracings/')
-      cy.get('.flash-notice').should('not.exist')
-      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
-      cy.get('.flash-notice').should('exist')
-      cy.visit('/admin/traces/')
-      cy.get('.flash-notice').should('not.exist')
-      cy.get('.js-table-row a[data-method="delete"]').click({ multiple: true })
-      cy.get('.flash-notice').should('exist')
+      _remove_all(cy)
     })
 
     it("On part d'un état où aucun suivi n'a encore eu lieu", function () {
