@@ -1,4 +1,4 @@
-class NewAidThree < ViewObject
+class NewAidThree < NewAidStep
 
   def after_init(args)
     locals = hash_for(args)
@@ -7,10 +7,6 @@ class NewAidThree < ViewObject
     @aid_attributes = locals[:aid_attributes]
     @errors_h = _init_errors_messages(@page)
     @aid_status = locals[:aid_status]
-  end
-
-  def action_displayed
-    @page.try(:resource).try(:status) == "Publiée" ? "Publier les modification" : "Continuer"
   end
 
   def attr_name(attribute)

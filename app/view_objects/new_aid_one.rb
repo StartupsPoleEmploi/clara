@@ -1,4 +1,4 @@
-class NewAidOne < ViewObject
+class NewAidOne < NewAidStep
 
   def after_init(args)
     locals = hash_for(args)
@@ -7,8 +7,8 @@ class NewAidOne < ViewObject
     @aid_status = locals[:aid_status]
   end
 
-  def action_displayed
-    @aid_status == "Publiée" ? "Publier les modification" : "Continuer"
+  def has_disabled_button
+    @aid_status == "Publiée"
   end
 
   def attr_name(attribute)

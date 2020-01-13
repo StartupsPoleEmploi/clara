@@ -1,4 +1,4 @@
-class NewAidFive < ViewObject
+class NewAidFive < NewAidStep
 
   def after_init(args)
     locals = hash_for(args)
