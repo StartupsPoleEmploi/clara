@@ -1,3 +1,4 @@
+<%- v = view_object(:new_aid_four, local_assigns) %>
 <%- is_modifying = params[:modify] == "true"  %>
 <%- verb = is_modifying ? "Modifier" : "Créer" %>
 
@@ -172,7 +173,7 @@
     </div>
   </section>     
   <button id="record_root_rule" data-url="<%=  admin_aid_creation_create_stage_4_path  %>" type="submit">
-    <%= is_modifying ? "Modifier" : "Continuer" %>
+    <%= v.action_displayed %>
   </button>
 
 
