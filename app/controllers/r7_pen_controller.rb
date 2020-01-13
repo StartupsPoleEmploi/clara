@@ -36,6 +36,13 @@ class R7PenController < ApplicationController
     }
   end
 
+  def clear_cache
+    ExpireCache.new.call
+    render json: {
+      status: "ok"
+    }
+  end
+
   def delete_r7_data
     Rule.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all
     ContractType.where("name LIKE :prefix", prefix: "#{'r_fake'}%").destroy_all

@@ -93,10 +93,6 @@ Cypress.Commands.add('delete_a_user', (email) => {
 });
 
 Cypress.Commands.add('delete_an_aid', (aid_slug) => {
-  // cy.connect_as_superadmin()
-  // cy.visit('/admin/aids')
-  // cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
-  // cy.disconnect_from_admin()
   cy.request("DELETE", "/delete_aid/" + aid_slug)
 });
 
@@ -107,6 +103,10 @@ Cypress.Commands.add('clear_the_cache', () => {
     cy.wait(1000)
     cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
   })
+  // cy.request("POST", "/clear_cache/").then((resp) => {
+  //   expect(resp.status).to.eq(200)
+  // })
+  // cy.wait(3000)
 });
 
 Cypress.Commands.add('authorize_google_analytics', () => {
