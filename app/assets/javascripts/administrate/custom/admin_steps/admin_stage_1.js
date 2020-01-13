@@ -16,7 +16,7 @@ clara.js_define("admin_stage_1", {
       }
 
       function listen_to(sel) {
-        $(sel).on("input change keyup", sth_changed)
+        $(sel).on("input change keyup paste", sth_changed)
       }
 
       listen_to("#aid_name");
