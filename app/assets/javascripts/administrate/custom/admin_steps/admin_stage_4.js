@@ -18,6 +18,7 @@ clara.js_define("admin_stage_4", {
       }
       // hack to access to selectize modification
       window.detect_selectize_change = function(){
+        console.log("detect_selectize_change ok")
         sth_changed();
       }
       // radiobutton change
