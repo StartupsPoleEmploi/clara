@@ -8,6 +8,10 @@ class NewAidFive < ViewObject
     @aid_status = locals[:aid_status]
   end
 
+  def action_displayed
+    @aid_status == "Publiée" ? "Publier les modification" : "Continuer"
+  end
+
   def reread_h
     res = {class: "c-newbutton c-newaid-actionrecord js-askforreread"}
     if !_all_stages_ok?

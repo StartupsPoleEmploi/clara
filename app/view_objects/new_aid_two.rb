@@ -4,6 +4,11 @@ class NewAidTwo < ViewObject
     locals = hash_for(args)
     @page = locals[:page]
     @errors_h = _init_errors_messages(@page)
+    @aid_status = locals[:aid_status]
+  end
+
+  def action_displayed
+    @aid_status == "Publiée" ? "Publier les modification" : "Continuer"
   end
 
   def attr_name(attribute)

@@ -14,7 +14,8 @@ module Admin
       aid = params[:slug] ? Aid.find_by(slug: params[:slug]) : Aid.new
       authorize_resource(aid)
       render locals: {
-        page: Administrate::Page::Form.new(dashboard, aid)
+        page: Administrate::Page::Form.new(dashboard, aid),
+        aid_status: aid.status
       }
     end
 
@@ -62,6 +63,7 @@ module Admin
       authorize_resource(aid)
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
+        aid_status: aid.status
       }      
     end
 
@@ -89,7 +91,8 @@ module Admin
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
         contract_type: contract_type,
-        aid_attributes: aid.attributes.with_indifferent_access
+        aid_attributes: aid.attributes.with_indifferent_access,
+        aid_status: aid.status
       }      
     end
 
@@ -130,7 +133,8 @@ module Admin
 
       render locals: {
         page: Administrate::Page::Form.new(dashboard, aid),
-        aid_attributes: aid.attributes.with_indifferent_access
+        aid_attributes: aid.attributes.with_indifferent_access,
+        aid_status: aid.status
       }      
     end
 

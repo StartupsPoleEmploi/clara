@@ -6,6 +6,11 @@ class NewAidThree < ViewObject
     @ct = locals[:contract_type]
     @aid_attributes = locals[:aid_attributes]
     @errors_h = _init_errors_messages(@page)
+    @aid_status = locals[:aid_status]
+  end
+
+  def action_displayed
+    @page.try(:resource).try(:status) == "Publiée" ? "Publier les modification" : "Continuer"
   end
 
   def attr_name(attribute)
