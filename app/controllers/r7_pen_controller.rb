@@ -1,5 +1,7 @@
 class R7PenController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def index
   end
 
@@ -23,6 +25,14 @@ class R7PenController < ApplicationController
     end
     render json: {
       actual_object: res
+    }
+  end
+
+  def delete_aid
+    aid_slug = ExtractParam.new(params).call("aid_slug")
+    Aid.find_by(slug: aid_slug).destroy
+    render json: {
+      status: "ok"
     }
   end
 

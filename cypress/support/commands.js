@@ -93,10 +93,11 @@ Cypress.Commands.add('delete_a_user', (email) => {
 });
 
 Cypress.Commands.add('delete_an_aid', (aid_slug) => {
-  cy.connect_as_superadmin()
-  cy.visit('/admin/aids')
-  cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
-  cy.disconnect_from_admin()
+  // cy.connect_as_superadmin()
+  // cy.visit('/admin/aids')
+  // cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
+  // cy.disconnect_from_admin()
+  cy.request("DELETE", "/delete_aid/" + aid_slug)
 });
 
 Cypress.Commands.add('clear_the_cache', () => {
