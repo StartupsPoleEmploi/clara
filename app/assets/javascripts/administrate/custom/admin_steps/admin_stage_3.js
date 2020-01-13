@@ -8,6 +8,9 @@ clara.js_define("admin_stage_3", {
 
       clara.admin_stage_steps.please(3);
 
+      // init text first
+      txt_update();
+      
       var txt_update = function() {
         var slug = $.urlParam("slug")
         var $txt = $(".c-resultaid__smalltxt--" + slug)
