@@ -13,8 +13,13 @@ describe("Pour une aide déjà publiée", function() {
     cy.get("button.c-newaid-actionrecord").should("have.attr", "disabled")
   })
   it("Si on entre du texte dans un des champs de l'étape 1, le bouton devient activé", function() {
-    cy.get('.field-unit textarea#aid_source').type("du texte")
+    cy.get('.field-unit textarea#aid_source').type("d").type("{backspace}")
     cy.get("button.c-newaid-actionrecord").should("not.have.attr", "disabled")
+  })
+  it("Si on valide l'étape 1", function() {
+    cy.get("button.c-newaid-actionrecord").click()
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
+    cy.get(".flash").first().shouldHaveTrimmedText("Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes.")
   })
   it("L'étape 2 a bouton de validation 'Publier les modifications' ", function() {
     cy.visit('/admin/aid_creation/new_aid_stage_2?locale=fr&modify=true&slug=erasmus')
