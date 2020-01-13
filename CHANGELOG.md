@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 23.6.0 (13/01/2020)
+-[#1482][FEATURE] demande explicite de modification
+
+
 ## 23.5.7 (10/01/2020)
 -[#1506][TECH] couverture 90%
 
