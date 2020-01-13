@@ -69,8 +69,6 @@ namespace :minidb do
     User.new(email:"relecteur1@clara.com", password: "relecteur1", role: "relecteur").save
     User.new(email:"relecteur2@clara.com", password: "relecteur2", role: "relecteur").save
 
-    Stat.destroy_all
-
     # No need to keep who did what
     PaperTrail::Version.destroy_all
 
