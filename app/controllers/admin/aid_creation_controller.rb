@@ -20,6 +20,7 @@ module Admin
     end
 
     def create_stage_1
+      notice_msg = ""
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
       new_ordre_affichage = new_attributes[:ordre_affichage] || 99 
       new_attributes[:ordre_affichage] = new_ordre_affichage
@@ -41,16 +42,16 @@ module Admin
         # end of hack
         aid.update_status;
         if slug.blank?
-          redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
-            notice: "L'aide a bien été enregistrée en tant que brouillon."
-          )
-        else
-          redirect_to(
-            admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
-            notice: "Les modifications ont bien été enregistrées."
-          )
+          notice_msg = "L'aide a bien été enregistrée en tant que brouillon."
+        elsif aid.status != "Publiée"
+          notice_msg = "Les modifications ont bien été enregistrées."
+        elsif aid.status == "Publiée"
+          notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
         end
+        redirect_to(
+          admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
+          notice: notice_msg
+        )
       else
         render :new_aid_stage_1, locals: {
           page: Administrate::Page::Form.new(dashboard, aid),
@@ -155,7 +156,6 @@ module Admin
         
         CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
         aid.update_status;
-
 
         msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
         flash[:notice] = msg
