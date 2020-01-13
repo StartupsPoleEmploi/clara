@@ -69,6 +69,7 @@ module Admin
     end
 
     def create_stage_2
+      notice_msg = ""
       slug = _hidden(:slug)
       aid = Aid.find_by(slug: slug)
       old_attributes = aid.attributes.with_indifferent_access
@@ -78,9 +79,15 @@ module Admin
       aid.save
       aid.update_status;
 
+      if aid.status == "Publiée"
+        notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+      else
+        notice_msg = "Le contenu a été mis à jour"
+      end
+
       redirect_to(
         admin_aid_creation_new_aid_stage_3_path(slug: aid.slug, modify: _hidden(:modify)),
-        notice: "Le contenu a été mis à jour"
+        notice: notice_msg
       )
     end
 
@@ -99,6 +106,7 @@ module Admin
 
 
     def create_stage_3
+      notice_msg = ""
       slug = _hidden(:slug)
       new_attributes = params.require(:aid).permit(:short_description, filter_ids: []).to_h
       filters = []
@@ -113,9 +121,15 @@ module Admin
       aid.save
       aid.update_status;
       
+      if aid.status == "Publiée"
+        notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+      else
+        notice_msg = "Le contenu a été mis à jour"
+      end
+
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug, modify: _hidden(:modify)),
-        notice: "Le contenu a été mis à jour"
+        notice: notice_msg
       )
     end
 
@@ -140,6 +154,7 @@ module Admin
     end
 
     def create_stage_4
+      notice_msg = ""
       aid_slug = params["aid"]
       # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
@@ -157,8 +172,12 @@ module Admin
         CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
         aid.update_status;
 
-        msg = is_void ? "Mise à jour du champ d'application effectué, celui-ci est vide." : "Mise à jour du champ d'application effectué."
-        flash[:notice] = msg
+        if aid.status == "Publiée"
+          notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+        else
+          notice_msg = "Mise à jour du champ d'application effectué."
+        end
+        flash[:notice] = notice_msg
         flash.keep(:notice)
         render js: "document.location = '#{url}'"        
       else
@@ -187,10 +206,10 @@ module Admin
       notice_message = ""
       if action_asked == "archive"
         aid.archived_at = DateTime.now
-        notice_message = "L'aide a bien été archivée, elle n'apparaît plus sur le site."
+        notice_message = "L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes."
       elsif action_asked == "publish"
         aid.archived_at = nil
-        notice_message = "L'aide a été publiée sur le site."
+        notice_message = "L'aide a été publiée sur le site, elle apparaîtra dans quelques secondes."
       elsif action_asked == "reread"
         aid.is_rereadable = true
         notice_message = "L'aide a été demandée pour relecture."
