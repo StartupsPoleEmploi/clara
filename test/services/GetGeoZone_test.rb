@@ -38,6 +38,43 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Uniquement les départements 01 Ain, 44 Loire-Atlantique.", res)
   end
 
+  test '.call RIEN_SAUF a nice sentence if 2 regions only are filled' do
+    #given
+    returned = _except_two_regions
+    returned["selection"] = "rien_sauf"
+    allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(returned)
+    sut = GetGeoZone.new
+    #when
+    res = sut.call(nil)
+    #then
+    assert_equal("Uniquement les régions Bretagne, Corse.", res)
+  end
+
+  test '.call RIEN_SAUF a nice sentence if all things are filled with multiple values' do
+    #given
+    returned = _except_multiple_per_type
+    returned["selection"] = "rien_sauf"
+    allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(returned)
+    sut = GetGeoZone.new
+    #when
+    res = sut.call(nil)
+    #then
+    assert_equal("Uniquement les régions Bretagne, Corse; les départements 01 Ain, 44 Loire-Atlantique; les villes Île-Tudy 29, Renescure 59.", res)
+  end
+
+  test '.call RIEN_SAUF only departements missing' do
+    #given
+    returned = _except_multiple_per_type
+    returned["selection"] = "rien_sauf"
+    returned["department"] = []
+    allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(returned)
+    sut = GetGeoZone.new
+    #when
+    res = sut.call(nil)
+    #then
+    assert_equal("Uniquement les régions Bretagne, Corse; les villes Île-Tudy 29, Renescure 59.", res)
+  end
+
   test '.call should return "Toute la France" by default' do
     #given
     sut = GetGeoZone.new
