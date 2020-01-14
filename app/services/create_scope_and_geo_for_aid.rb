@@ -1,5 +1,4 @@
-# HACK : please rename once new aid creation is released
-class CreateScopeAndGeoForAidToo
+class CreateScopeAndGeoForAid
 
   def call(h)
     trundle = h[:trundle]

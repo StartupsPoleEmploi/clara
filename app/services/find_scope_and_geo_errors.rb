@@ -1,5 +1,4 @@
-# HACK : please rename once new aid creation is released
-class FindScopeAndGeoErrorsToo
+class FindScopeAndGeoErrors
 
   def call(trundle, geo)
     res = ""    

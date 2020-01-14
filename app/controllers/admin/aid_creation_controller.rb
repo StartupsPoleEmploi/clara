@@ -161,7 +161,7 @@ module Admin
       modify = params["modify"]
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
-      error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
+      error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
 
       is_void = error_message == "Étape non renseignée."
 
@@ -169,7 +169,7 @@ module Admin
         url = admin_aid_creation_new_aid_stage_5_path(slug: aid_slug, modify: modify)
         aid = Aid.find_by(slug: aid_slug)
         
-        CreateScopeAndGeoForAidToo.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
+        CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
         aid.update_status;
 
         if aid.status == "Publiée"
