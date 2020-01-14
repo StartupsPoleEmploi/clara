@@ -12,15 +12,15 @@ clara.js_define("admin_flash", {
         return $(".tooltip__wrapper").outerHeight();
       }
 
-      function defer1() { 
+      function defer() { 
         if (_.isBlank(height())) { 
-          setTimeout(function() { defer1() }, 100); 
+          setTimeout(function() { defer() }, 100); 
         } else { 
           $("#js-tooltip").css("height", height() + 5 + "px")
         } 
       }
 
-      defer1()
+      defer()
 
       setTimeout(
         function(){
