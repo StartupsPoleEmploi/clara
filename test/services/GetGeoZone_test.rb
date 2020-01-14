@@ -15,7 +15,7 @@ class GetGeoZoneTest < ActiveSupport::TestCase
 
   end
 
-  test '.call a nice sentence if all town, departement and region are filled' do
+  test '.call TOUT_SAUF a nice sentence if all town, departement and region are filled' do
     #given
     allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_except_one_per_type)
     sut = GetGeoZone.new
@@ -25,7 +25,7 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception de la région Bretagne; du département 01 Ain; de la ville Île-Tudy 29.", res)
   end
 
-  test '.call a nice sentence if 2 towns only are filled' do
+  test '.call TOUT_SAUF a nice sentence if 2 towns only are filled' do
     #given
     allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_except_two_towns)
     sut = GetGeoZone.new
@@ -35,7 +35,7 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception des villes Île-Tudy 29, Renescure 59.", res)
   end
 
-  test '.call a nice sentence if 2 departements only are filled' do
+  test '.call TOUT_SAUF a nice sentence if 2 departements only are filled' do
     #given
     allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_except_two_departements)
     sut = GetGeoZone.new
@@ -45,7 +45,7 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception des départements 01 Ain, 44 Loire-Atlantique.", res)
   end
 
-  test '.call a nice sentence if 2 regions only are filled' do
+  test '.call TOUT_SAUF a nice sentence if 2 regions only are filled' do
     #given
     allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_except_two_regions)
     sut = GetGeoZone.new
@@ -55,7 +55,7 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception des régions Bretagne, Corse.", res)
   end
 
-  test '.call a nice sentence if all things are filled with multiple values' do
+  test '.call TOUT_SAUF a nice sentence if all things are filled with multiple values' do
     #given
     allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_except_multiple_per_type)
     sut = GetGeoZone.new
