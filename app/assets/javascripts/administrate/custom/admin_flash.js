@@ -8,6 +8,20 @@ clara.js_define("admin_flash", {
       
       $(".js-tooltip").click();
       
+      function height() {
+        return $(".tooltip__wrapper").outerHeight();
+      }
+
+      function defer1() { 
+        if (_.isBlank(height())) { 
+          setTimeout(function() { defer1() }, 100); 
+        } else { 
+          $("#js-tooltip").css("height", height() + 5 + "px")
+        } 
+      }
+
+      defer1()
+
       setTimeout(
         function(){
           $("#js-tooltip-close").click();

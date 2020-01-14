@@ -1,12 +1,14 @@
 describe("Pour une aide déjà publiée", function() {
 
+  let slug = "vsi-volontariat-de-solidarite-internationale"
+
   before(function() {
     cy.connect_as_contributeur1()
   })
 
 
   it("L'étape 1 a bouton de validation 'Publier les modifications' ", function() {
-    cy.visit('/admin/aid_creation/new_aid_stage_1?locale=fr&modify=true&slug=erasmus')
+    cy.visit('/admin/aid_creation/new_aid_stage_1?locale=fr&modify=true&slug=' + slug)
     cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
   })
   it("L'étape 1 a bouton de validation qui est désactivé", function() {
@@ -22,14 +24,14 @@ describe("Pour une aide déjà publiée", function() {
     cy.get(".flash").first().shouldHaveTrimmedText("Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes.")
   })
   it("L'étape 2 a bouton de validation 'Publier les modifications' ", function() {
-    cy.visit('/admin/aid_creation/new_aid_stage_2?locale=fr&modify=true&slug=erasmus')
+    cy.visit('/admin/aid_creation/new_aid_stage_2?locale=fr&modify=true&slug=' + slug)
     cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
   })
   it("L'étape 2 a bouton de validation qui est désactivé", function() {
     cy.get("button.c-newaid-actionrecord").should("have.attr", "disabled")
   })
   it("L'étape 3 a bouton de validation 'Publier les modifications' ", function() {
-    cy.visit('/admin/aid_creation/new_aid_stage_3?locale=fr&modify=true&slug=erasmus')
+    cy.visit('/admin/aid_creation/new_aid_stage_3?locale=fr&modify=true&slug=' + slug)
     cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
   })
   it("L'étape 3 a bouton de validation qui est désactivé", function() {
@@ -45,7 +47,7 @@ describe("Pour une aide déjà publiée", function() {
     cy.get(".flash").first().shouldHaveTrimmedText("Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes.")
   })
   it("L'étape 4 a bouton de validation 'Publier les modifications' ", function() {
-    cy.visit('/admin/aid_creation/new_aid_stage_4?locale=fr&modify=true&slug=erasmus')
+    cy.visit('/admin/aid_creation/new_aid_stage_4?locale=fr&modify=true&slug=' + slug)
     cy.get("button#record_root_rule").shouldHaveTrimmedText("Publier les modification")
   })
   it("L'étape 4 a bouton de validation qui est désactivé", function() {

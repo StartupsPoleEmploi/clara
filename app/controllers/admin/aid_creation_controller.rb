@@ -46,7 +46,7 @@ module Admin
         elsif aid.status != "Publiée"
           notice_msg = "Les modifications ont bien été enregistrées."
         elsif aid.status == "Publiée"
-          notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+          notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
         end
         redirect_to(
           admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),

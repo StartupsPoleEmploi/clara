@@ -1,4 +1,4 @@
-describe("Liste des accès", function () {
+describe.skip("Liste des accès", function () {
   const POSSIBLE_URLS = [
     "/admin/aids",
     "/admin/aids/erasmus/edit",
