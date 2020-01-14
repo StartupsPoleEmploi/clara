@@ -80,7 +80,7 @@ module Admin
       aid.update_status;
 
       if aid.status == "Publiée"
-        notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+        notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
       else
         notice_msg = "Le contenu a été mis à jour"
       end
@@ -122,7 +122,7 @@ module Admin
       aid.update_status;
       
       if aid.status == "Publiée"
-        notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+        notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
       else
         notice_msg = "Le contenu a été mis à jour"
       end
@@ -173,7 +173,7 @@ module Admin
         aid.update_status;
 
         if aid.status == "Publiée"
-          notice_msg = "Les modifications vont être publiées sur le site web ! Cela peut prendre quelques secondes."
+          notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
         else
           notice_msg = "Mise à jour du champ d'application effectué."
         end
