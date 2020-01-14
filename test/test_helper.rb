@@ -9,6 +9,8 @@ SimpleCov.start 'rails' do
   coverage_dir "coverage/ruby/unit".to_s
   add_filter "app/controllers/r7_pen_controller.rb"
   add_filter "bin/spring"
+  add_filter "app/channels/application_cable/channel.rb"
+  add_filter "app/channels/application_cable/connection.rb"
 end
 
 require_relative '../config/environment'

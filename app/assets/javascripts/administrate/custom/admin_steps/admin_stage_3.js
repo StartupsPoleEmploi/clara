@@ -15,9 +15,24 @@ clara.js_define("admin_stage_3", {
         $txt.text(new_textarea_value)
       }
 
-      $("#aid_short_description").on("change keyup paste", txt_update);
-      
-      txt_update();
+      // init text first
+      txt_update();      
+
+      // detect change to change button behaviour
+      function sth_changed() {
+        $("button.c-newaid-actionrecord").removeAttr("disabled");
+      }
+      // hack to have access to selectize "onChange" event
+      window.detect_selectize_change = function() {
+        sth_changed()
+      }
+      $("#aid_short_description").on("input change keyup paste", function() {
+        txt_update();
+        sth_changed();
+      })
+
+
+
     }
 
 });

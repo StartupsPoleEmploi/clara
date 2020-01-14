@@ -91,7 +91,7 @@
           <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2" %>
         <% end %>
 
-        <button type="submit" class="c-newbutton c-newaid-actionrecord"> Continuer </button>
+        <button type="submit" class="c-newbutton c-newaid-actionrecord" <%= v.disability %>> <%= v.action_displayed %> </button>
       </div>
 
     </div>    

@@ -1,9 +1,14 @@
-class NewAidOne < ViewObject
+class NewAidOne < NewAidStep
 
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
     @errors_h = _init_errors_messages(@page)
+    @aid_status = locals[:aid_status]
+  end
+
+  def has_disabled_button
+    @aid_status == "Publiée"
   end
 
   def attr_name(attribute)
