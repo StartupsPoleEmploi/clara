@@ -18,12 +18,6 @@ class GetGeoZone
 
 
   def _des_regions(regions_array, departements_array, towns_array)
-    # res = ""
-    # if _isnt_empty(regions_array)
-    #   uniq = regions_array.size === 1
-    #   res = ", #{uniq ? "de la" : "des"} région#{uniq ? "" : (s)} #{regions_array.join(',')}."
-    # end
-    # res
     res = ""
     if _isnt_empty(regions_array)
       uniq = regions_array.size === 1
@@ -57,17 +51,6 @@ class GetGeoZone
       res = "#{uniq ? "de la" : "des"} ville#{uniq ? "" : (s)} #{towns_array.map{|d| d.values[0]}.join(',')}."
     end
     res
-    # res = ""
-    # if _isnt_empty(towns_array)
-    #   uniq = towns_array.size === 1
-    #   res = "#{uniq ? "de la" : "des"} ville#{uniq ? "" : (s)} #{towns_array.map{|d| d.values[0]}.join(',')}"
-    #   if (_isnt_empty(departements_array)) || (_isnt_empty(regions_array))
-    #     res += ", "
-    #   else
-    #     res += "."
-    #   end
-    # end
-    # res
   end
 
 end
