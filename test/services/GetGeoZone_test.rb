@@ -2,9 +2,6 @@ require "test_helper"
 
 class GetGeoZoneTest < ActiveSupport::TestCase
   
-  def setup
-  end
-
   test '.call should return "Toute la France" by default' do
     #given
     sut = GetGeoZone.new
