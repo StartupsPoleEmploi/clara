@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.0.0 (14/01/2020)
+-[#1498][FEATURE] Zone geo dans CSV
+
+
 ## 23.6.0 (13/01/2020)
 -[#1482][FEATURE] demande explicite de modification
 
