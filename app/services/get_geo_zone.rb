@@ -21,7 +21,7 @@ class GetGeoZone
     res = ""
     if _isnt_empty(regions_array)
       uniq = regions_array.size === 1
-      res = "#{uniq ? "de la" : "des"} région#{uniq ? "" : "s"} #{regions_array.map{|d| d.values[0]}.join(',')}"
+      res = "#{uniq ? "de la" : "des"} région#{uniq ? "" : "s"} #{regions_array.map{|d| d.values[0]}.join(', ')}"
       if (_isnt_empty(departements_array)) || (_isnt_empty(towns_array))
         res += "; "
       else
