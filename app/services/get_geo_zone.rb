@@ -6,8 +6,8 @@ class GetGeoZone
 
   def _h_to_text(h)
     res = "Toute la France"
-    if h[:selection] == "tout_sauf"
-      res = "Toute la France, à l'exception #{_des_regions(h[:region], h[:department], h[:town] )}#{_des_departements(h[:department], h[:town])}#{_des_villes(h[:town])}"
+    if h["selection"] == "tout_sauf"
+      res = "Toute la France, à l'exception #{_des_regions(h["region"], h["department"], h["town"] )}#{_des_departements(h["department"], h["town"])}#{_des_villes(h["town"])}"
     end
     res
   end
