@@ -161,7 +161,7 @@ module Admin
       modify = params["modify"]
       geo = JSON.parse(params["geo"], symbolize_names: true)
       
-      error_message = FindScopeAndGeoErrorsToo.new.call(trundle, geo)
+      error_message = FindScopeAndGeoErrors.new.call(trundle, geo)
 
       is_void = error_message == "Étape non renseignée."
 
