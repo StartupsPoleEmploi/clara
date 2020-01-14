@@ -8,6 +8,10 @@ class GetGeoZone
     res = "Toute la France"
     if h["selection"] == "tout_sauf"
       res = "Toute la France, à l'exception #{_des_regions(h["region"], h["department"], h["town"] )}#{_des_departements(h["department"], h["town"])}#{_des_villes(h["town"])}"
+    elsif h["selection"] == "tout_sauf_domtom"
+      res = "Toute la France, à l'exception des DOM-TOM"
+    elsif h["selection"] == "domtom_seulement"
+      res = "Uniquement les DOM-TOM"
     end
     res
   end

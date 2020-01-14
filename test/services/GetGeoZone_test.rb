@@ -65,6 +65,24 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception des régions Bretagne, Corse; des départements 01 Ain, 44 Loire-Atlantique; des villes Île-Tudy 29, Renescure 59.", res)
   end
 
+  test '.call TOUT_SAUF_DOMTOM' do
+    #given
+    allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_not_domtom)
+    sut = GetGeoZone.new
+    #when
+    res = sut.call(nil)
+    #then
+    assert_equal("Toute la France, à l'exception des DOM-TOM", res)
+  end
+
+  def _domtom_only
+    {"selection"=>"domtom_seulement"}
+  end
+
+  def _not_domtom
+    {"selection"=>"tout_sauf_domtom"}
+  end
+
   def _except_one_per_type
     {"selection"=>"tout_sauf", "town"=>[{"29085"=>"Île-Tudy 29"}], "department"=>[{"01"=>"01 Ain"}], "region"=>[{"BRE"=>"Bretagne"}]}
   end
