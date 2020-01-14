@@ -155,6 +155,39 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Uniquement les DOM-TOM", res)
   end
 
+  test '.call integration' do
+    #given
+    c = ContractType.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 42)
+    c.save
+    v = Variable.new(name: 'r_fake_' + rand(36**8).to_s(36), variable_kind: "string")
+    v.save
+    r1 = Rule.new(name: "r_fake_" + rand(36**8).to_s(36), kind: "simple", variable: v, operator_kind: "more_than", description: "age...", value_eligible: "42")
+    r1.save 
+    r2 = Rule.new(
+        name: "r_akfejtcdsvxmyblu_region_starts_with_bretagne_id_48035229939258206",
+        value_eligible: "Bretag",
+        variable: v,
+        description: "Résider dans la région Bretagne",
+        kind: "simple",
+        operator_kind: "starts_with",
+    )
+    r2.save 
+    r_root = Rule.new(
+       name: "r_akfejtcdsvxmyblu_box_all",
+       value_eligible: nil,
+       composition_type: "and_rule",
+       kind: "composite",
+       slave_rules: [r1, r2]
+    )
+    r_root.save 
+    aid = Aid.new(name: 'r_fake_' + rand(36**8).to_s(36), ordre_affichage: 43, contract_type: c, rule: r_root)
+    aid.save
+    #when
+    res = aid.zone_geo
+    #then
+    assert_equal("Uniquement la région Bretagne.", res)
+  end
+
   def _domtom_only
     {"selection"=>"domtom_seulement"}
   end
