@@ -75,6 +75,16 @@ class GetGeoZoneTest < ActiveSupport::TestCase
     assert_equal("Toute la France, à l'exception des DOM-TOM", res)
   end
 
+  test '.call DOMTOM_SEULEMENT' do
+    #given
+    allow_any_instance_of(ExtractGeoForAid).to receive(:call).and_return(_domtom_only)
+    sut = GetGeoZone.new
+    #when
+    res = sut.call(nil)
+    #then
+    assert_equal("Uniquement les DOM-TOM", res)
+  end
+
   def _domtom_only
     {"selection"=>"domtom_seulement"}
   end
