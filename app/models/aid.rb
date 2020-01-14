@@ -89,8 +89,7 @@ class Aid < ApplicationRecord
   end
 
   def zone_geo
-    res = "Toute la France"
-    res
+    GetGeoZone.new.call(self)
   end
 
 end
