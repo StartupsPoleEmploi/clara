@@ -14,6 +14,7 @@ class AidDashboard < Administrate::BaseDashboard
     id: Field::Number.with_options(export: false),
     name: Field::String,
     status: Field::String,
+    zone_geo: Field::String,
     source: Field::Text.with_options(export: false),
     ordre_affichage: Field::Number.with_options(export: false),
     archived_at: Field::DateTime,

@@ -87,4 +87,10 @@ class Aid < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank?
   end
+
+  def zone_geo
+    res = "Toute la France"
+    res
+  end
+
 end
