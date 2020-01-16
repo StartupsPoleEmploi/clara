@@ -22,6 +22,7 @@ namespace :minidb do
       slug:[
         "vsi-volontariat-de-solidarite-internationale",
         "erasmus",
+        "illico-solidaire",
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
       ]).destroy_all

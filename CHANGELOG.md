@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.0.3 (16/01/2020)
+-[#1510][BUG] Région non calculée
+
+
 ## 24.0.2 (16/01/2020)
 -[#1508b][BUG] Prévisualisation temps réel
 
