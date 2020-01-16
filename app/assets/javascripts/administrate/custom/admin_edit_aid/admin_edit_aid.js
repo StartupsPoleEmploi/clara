@@ -52,35 +52,39 @@ clara.js_define("admin_edit_aid", {
     _.executeAfter(that._reload_ckeditors, 1000)
     setTimeout(function () {clara.admin_edit_aid_clean_ckeditor.please();}, 1200);
 
-    // Redux
-    var observables = {
-      editor_additionnal_conditions: CKEDITOR.instances['aid_additionnal_conditions'],
-      editor_how_and_when: CKEDITOR.instances['aid_how_and_when'],
-      editor_how_much: CKEDITOR.instances['aid_how_much'],
-      editor_limitations: CKEDITOR.instances['aid_limitations'],
-      editor_what: CKEDITOR.instances['aid_what'],
-      $aid_name: $("#aid_name"),
-      $aid_contract_type_id: $("#aid_contract_type_id"),
-    }
+    setTimeout(function () {
+      // Redux
+      var observables = {
+        editor_additionnal_conditions: CKEDITOR.instances['aid_additionnal_conditions'],
+        editor_how_and_when: CKEDITOR.instances['aid_how_and_when'],
+        editor_how_much: CKEDITOR.instances['aid_how_much'],
+        editor_limitations: CKEDITOR.instances['aid_limitations'],
+        editor_what: CKEDITOR.instances['aid_what'],
+        $aid_name: $("#aid_name"),
+        $aid_contract_type_id: $("#aid_contract_type_id"),
+      }
 
-    var global_state = clara.admin_edit_aid_init.please(observables);
+      var global_state = clara.admin_edit_aid_init.please(observables);
 
-    // REDUCER
-    var reducer = clara.admin_edit_aid_reducer.please;
+      // REDUCER
+      var reducer = clara.admin_edit_aid_reducer.please;
 
-    // STORE
-    window.main_store = Redux.createStore(reducer, global_state);
+      // STORE
+      window.main_store = Redux.createStore(reducer, global_state);
 
-    // DISPATCHERS
-    clara.admin_edit_aid_dispatcher.please(main_store, observables);
+      // DISPATCHERS
+      clara.admin_edit_aid_dispatcher.please(main_store, observables);
 
-    // SUBSCRIBER
-    main_store.subscribe(function () {
-      var state = _.cloneDeep(main_store.getState());
-      clara.admin_edit_aid_subscriber.please(state);
-    });
+      // SUBSCRIBER
+      main_store.subscribe(function () {
+        var state = _.cloneDeep(main_store.getState());
+        clara.admin_edit_aid_subscriber.please(state);
+      });
 
-    main_store.dispatch({ type: 'INIT' })
+      main_store.dispatch({ type: 'INIT' })
+
+    }, 1200);
+
   },
 
   _destroy_ckeditors: function() {
