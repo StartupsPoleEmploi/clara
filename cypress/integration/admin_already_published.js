@@ -9,7 +9,7 @@ describe("Pour une aide déjà publiée", function() {
 
   it("L'étape 1 a bouton de validation 'Publier les modifications' ", function() {
     cy.visit('/admin/aid_creation/new_aid_stage_1?locale=fr&modify=true&slug=' + slug)
-    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
+    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modifications")
   })
   it("L'étape 1 a bouton de validation qui est désactivé", function() {
     cy.get("button.c-newaid-actionrecord").should("have.attr", "disabled")
@@ -25,14 +25,14 @@ describe("Pour une aide déjà publiée", function() {
   })
   it("L'étape 2 a bouton de validation 'Publier les modifications' ", function() {
     cy.visit('/admin/aid_creation/new_aid_stage_2?locale=fr&modify=true&slug=' + slug)
-    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
+    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modifications")
   })
   it("L'étape 2 a bouton de validation qui est désactivé", function() {
     cy.get("button.c-newaid-actionrecord").should("have.attr", "disabled")
   })
   it("L'étape 3 a bouton de validation 'Publier les modifications' ", function() {
     cy.visit('/admin/aid_creation/new_aid_stage_3?locale=fr&modify=true&slug=' + slug)
-    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modification")
+    cy.get("button.c-newaid-actionrecord").shouldHaveTrimmedText("Publier les modifications")
   })
   it("L'étape 3 a bouton de validation qui est désactivé", function() {
     cy.get("button.c-newaid-actionrecord").should("have.attr", "disabled")
@@ -48,7 +48,7 @@ describe("Pour une aide déjà publiée", function() {
   })
   it("L'étape 4 a bouton de validation 'Publier les modifications' ", function() {
     cy.visit('/admin/aid_creation/new_aid_stage_4?locale=fr&modify=true&slug=' + slug)
-    cy.get("button#record_root_rule").shouldHaveTrimmedText("Publier les modification")
+    cy.get("button#record_root_rule").shouldHaveTrimmedText("Publier les modifications")
   })
   it("L'étape 4 a bouton de validation qui est désactivé", function() {
     cy.get("button#record_root_rule").should("have.attr", "disabled")

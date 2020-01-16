@@ -5,7 +5,7 @@ class NewAidStep < ViewObject
   end
 
   def action_displayed
-    @aid_status == "Publiée" ? "Publier les modification" : "Continuer"
+    @aid_status == "Publiée" ? "Publier les modifications" : "Continuer"
   end
 
 end
