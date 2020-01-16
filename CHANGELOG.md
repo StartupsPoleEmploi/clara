@@ -2,7 +2,7 @@
 
 
 ## 24.0.2 (16/01/2020)
--[#1508b][BUG] Prévisualisation temps réel
+-[#1510][BUG] Région non calculée
 
 
 ## 24.0.1 (16/01/2020)

@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 require 'json'
 
-class GetCityName
+class GetCityNameRegionCode
 
 
   def call(citycode)
@@ -16,7 +16,7 @@ class GetCityName
         begin
           props = JSON.parse(response)
           if props && props["nom"]
-            return props["nom"]
+            return [props["nom"], props["codeRegion"]]
           else
             return "erreur_ville_introuvable"
           end

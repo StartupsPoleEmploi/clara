@@ -3,7 +3,7 @@ require "test_helper"
 class HydrateAddressTest < ActiveSupport::TestCase
   def setup
     _fake_is_zrr
-    _fake_get_city_name
+    _fake_get_city_name_region_code
   end
 
   test "Raise an error if arg is not a asker attributes hash" do
@@ -26,6 +26,7 @@ class HydrateAddressTest < ActiveSupport::TestCase
     returned_asker = HydrateAddress.new.call(asker.attributes)
     h = returned_asker.attributes
     assert_equal(h["v_location_city"], "Avesnelles")
+    assert_equal(h["v_location_state"], "Hauts-de-France")
     assert_equal(h["v_location_label"], "59440 Avesnelles")
     assert_equal(h["v_location_zipcode"], "59440")
     assert_equal(h["v_zrr"], "oui")
@@ -35,7 +36,8 @@ class HydrateAddressTest < ActiveSupport::TestCase
     allow_any_instance_of(IsZrr).to receive(:call).and_return("oui")
   end
 
-  def _fake_get_city_name
-    allow_any_instance_of(GetCityName).to receive(:call).and_return("Avesnelles")
+  def _fake_get_city_name_region_code
+    allow_any_instance_of(GetCityNameRegionCode).to receive(:call).and_return(["Avesnelles", "32"])
+    allow_any_instance_of(GetRegion).to receive(:call).and_return("Hauts-de-France")
   end
 end

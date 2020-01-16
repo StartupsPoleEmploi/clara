@@ -9,9 +9,15 @@ class HydrateAddress
     zipcode = output_asker.v_location_zipcode || ""
     return output_asker if citycode.blank?
     output_asker.v_zrr = IsZrr.new.call(citycode)
-    city_name = GetCityName.new.call(citycode)
+    
+    city_name_region_code = GetCityNameRegionCode.new.call(citycode)
+    city_name = city_name_region_code[0]
+    region_code = city_name_region_code[1]
+    region_name = GetRegion.new.call(region_code)
+
     output_asker.v_location_label = zipcode + " " + city_name
     output_asker.v_location_city = city_name
+    output_asker.v_location_state = region_name
     output_asker
   end
 
