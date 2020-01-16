@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_090003) do
+ActiveRecord::Schema.define(version: 2019_05_27_090004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -206,14 +206,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_090003) do
     t.string "operator_kind"
     t.string "simulated"
     t.index ["variable_id"], name: "index_rules_on_variable_id"
-  end
-
-  create_table "stats", force: :cascade do |t|
-    t.jsonb "ga", default: "{}"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "ga_pe", default: "{}"
-    t.jsonb "hj_ad", default: "{}"
   end
 
   create_table "traces", force: :cascade do |t|

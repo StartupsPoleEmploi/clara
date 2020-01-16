@@ -87,4 +87,9 @@ class Aid < ApplicationRecord
   def should_generate_new_friendly_id?
     slug.blank?
   end
+
+  def zone_geo
+    GetGeoZone.new.call(self)
+  end
+
 end

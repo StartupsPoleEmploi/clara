@@ -59,7 +59,7 @@ describe("Pour un visiteur", function () {
     cy.get(".c-situation--age").shouldHaveTrimmedText("16")
     cy.get(".c-situation--grade").shouldHaveTrimmedText("Bac")
     cy.get(".c-situation--address").shouldHaveTrimmedText("49490 Noyant-Villages")
-    cy.get(".c-situation--zrr").shouldHaveTrimmedText("indisponible")
+    cy.get(".c-situation--zrr").shouldHaveTrimmedText("oui")
     cy.get(".c-situation--inscription").shouldHaveTrimmedText("moins d'un an")
     cy.get(".c-situation--category").shouldHaveTrimmedText("12345")
     cy.get(".c-situation--allocation-montant").shouldHaveTrimmedText("842")
@@ -113,7 +113,7 @@ describe("Pour un visiteur", function () {
   })
   describe("On peut filtrer les résultats", function () {
     const HIDDEN_ELTS = ".c-resultcard.u-hidden-visually"
-    const VISIBLE_TAGS = '.c-resultfilter[data-name="travailler-a-l-international"]:visible'
+    const VISIBLE_TAGS = '.c-resultfilter[data-name]:visible'
     before(function () {
       //given
       cy.get(HIDDEN_ELTS).should('not.exist')
@@ -126,8 +126,6 @@ describe("Pour un visiteur", function () {
       cy.get(HIDDEN_ELTS).should('exist')
     })
     it("Les petites étiquettes apparaissent", function(){
-      //when
-      cy.get(".js-toggle-ineligies").first().click()
       //then
       cy.get(VISIBLE_TAGS).should('exist')
     })

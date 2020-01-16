@@ -7,6 +7,7 @@ class AidesController < ApplicationController
       pull_asker
       augment_asker_if_necessary
       results = create_results_from_asker
+      gon.asker = @asker # debug
       hydrate_view(results)
     else
       aids_h, total_nb = _aides_index_search
@@ -80,8 +81,6 @@ class AidesController < ApplicationController
   def pull_asker
     if (params[:for_id] == 'random')
       @asker = RandomAskerService.new.go
-    elsif asker_exists?
-      @asker = require_asker
     else
       @asker = TranslateB64AskerService.new.from_b64(params[:for_id])
     end

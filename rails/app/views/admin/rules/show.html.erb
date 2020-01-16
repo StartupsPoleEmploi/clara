@@ -29,7 +29,7 @@
     <%= link_to(
       "Tester",
       request.original_url + "?rule_check_title=true",
-      class: "button is-white",
+      class: "button is-white js-control-rule-btn",
     ) if valid_action? :edit %>
   </div>
   <div class="js-simulation-button hidden">

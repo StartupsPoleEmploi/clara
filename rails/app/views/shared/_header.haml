@@ -1,4 +1,4 @@
-- unless request.path == root_path || request.path == stats_root_path
+- unless request.path == root_path
   .c-qh
     .u-useful-width.u-margin-constraint
       = render 'shared/logozone', {display_search: request.path == get_search_front_path}

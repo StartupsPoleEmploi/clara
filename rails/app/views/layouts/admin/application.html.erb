@@ -21,6 +21,7 @@ By default, it renders:
 <head>
   <%= Gon::Base.render_data %>
   <meta charset="utf-8">
+  <meta name="role" content="<%= current_user.role %>">
   <meta name="ROBOTS" content="NOODP">
   <meta name="viewport" content="initial-scale=1">
   <title>

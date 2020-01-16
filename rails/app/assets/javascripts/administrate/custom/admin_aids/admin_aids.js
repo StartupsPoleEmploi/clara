@@ -5,7 +5,13 @@ clara.js_define("admin_aids", {
     },
 
     please: function() {
+
       localStorage.clear();
+
+      if ( $(".c-topbar__connect").attr("data-role") !== "superadmin" ) {
+        $(".cell-data--belongs-to a").replaceTag('<div>', false)
+      }
+
     }
 
 });

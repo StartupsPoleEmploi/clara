@@ -1,6 +1,62 @@
 # CLARA Changelog
 
 
+## 24.0.4 (17/01/2020)
+-[#1511][TECH] Docker prod
+
+
+## 24.0.3 (16/01/2020)
+-[#1510][BUG] Région non calculée
+
+
+## 24.0.2 (16/01/2020)
+-[#1508b][BUG] Prévisualisation temps réel
+
+
+## 24.0.1 (16/01/2020)
+-[#1508][BUG] Prévisualisation temps réel
+
+
+## 24.0.0 (14/01/2020)
+-[#1498][FEATURE] Zone geo dans CSV
+
+
+## 23.6.0 (13/01/2020)
+-[#1482][FEATURE] demande explicite de modification
+
+
+## 23.5.7 (10/01/2020)
+-[#1506][TECH] couverture 90%
+
+
+## 23.5.6 (07/01/2020)
+-[#1504c][BUG] mauvais code postal 2
+
+
+## 23.5.5 (06/01/2020)
+-[#1504][BUG] mauvais code postal
+
+
+## 23.5.4 (03/01/2020)
+-[#1503][TECH] couverture 80%
+
+
+## 23.5.3 (03/01/2020)
+-[#1495][BUG] la ville n'apparaît plus si accès direct par URL
+
+
+## 23.5.2 (02/01/2020)
+-[#1500][BUG] traduction manquante
+
+
+## 23.5.1 (23/12/2019)
+-[#1496][BUG] Margin de 3
+
+
+## 23.5.0 (20/12/2019)
+-[#1481][FEATURE] Bo view aid
+
+
 ## 23.4.0 (19/12/2019)
 -[#1491][BUG] Bo preview aid
 

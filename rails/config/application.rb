@@ -23,7 +23,6 @@ module Mae
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
-
   end
 end
 

@@ -22,6 +22,7 @@ namespace :minidb do
       slug:[
         "vsi-volontariat-de-solidarite-internationale",
         "erasmus",
+        "illico-solidaire",
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
       ]).destroy_all
@@ -65,11 +66,9 @@ namespace :minidb do
     User.destroy_all
     User.new(email:"superadmin@clara.com", password: "bar", role: "superadmin").save
     User.new(email:"contributeur1@clara.com", password: "contributeur1", role: "contributeur").save
-    User.new(email:"contributeur2@clara.com", password: "contributeur2", role: "contributeur").save
+    User.new(email:"contributeur2@clara.com", password: "Contributeur2+", role: "contributeur").save
     User.new(email:"relecteur1@clara.com", password: "relecteur1", role: "relecteur").save
     User.new(email:"relecteur2@clara.com", password: "relecteur2", role: "relecteur").save
-
-    Stat.destroy_all
 
     # No need to keep who did what
     PaperTrail::Version.destroy_all

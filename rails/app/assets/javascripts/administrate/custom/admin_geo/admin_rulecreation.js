@@ -40,6 +40,11 @@ clara.js_define("admin_rulecreation", {
 
         }
 
+        var trundle_changed = function() {
+          if (window.decision_tree_changed) {
+            decision_tree_changed();
+          }
+        }
 
         // REDUCER
         var reducer = function(state, action) { 
@@ -59,6 +64,7 @@ clara.js_define("admin_rulecreation", {
             node_current.xval = action.value_val
             node_current.xtxt = action.value_txt
             node_current.is_editing = false
+            trundle_changed()
           } else if (action.type === 'ADD_CONDITION') {
             var node_parent = _.deepSearch(newState, "name", function(k, v){return v === action.parent_box})
             var new_box  = create_new_box();
@@ -99,6 +105,7 @@ clara.js_define("admin_rulecreation", {
               var new_default_box  = create_new_box();
               new_default_box.is_editing = !is_initially_not_void
               _.assign(node_current, new_default_box);
+              trundle_changed()
            } else if (action.type === 'CANCEL_EDITION') {            
               var ante_previous_state =  state_history.length - 2;
               newState = _.cloneDeep(state_history[ante_previous_state]) 

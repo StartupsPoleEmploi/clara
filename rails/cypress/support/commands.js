@@ -35,10 +35,8 @@ Cypress.Commands.add('create_old_aid', (aid_name) => {
 
 Cypress.Commands.add('connect_as_contributeur1', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('contributeur1@clara.com').should('have.value', 'contributeur1@clara.com')
-  cy.get('#session_password')
-    .type('contributeur1').should('have.value', 'contributeur1')
+  cy.get('#session_email').clear().invoke('val', 'contributeur1@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'contributeur1').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -46,10 +44,8 @@ Cypress.Commands.add('connect_as_contributeur1', () => {
 
 Cypress.Commands.add('connect_as_relecteur1', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('relecteur1@clara.com').should('have.value', 'relecteur1@clara.com')
-  cy.get('#session_password')
-    .type('relecteur1').should('have.value', 'relecteur1')
+  cy.get('#session_email').clear().invoke('val', 'relecteur1@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'relecteur1').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -57,10 +53,8 @@ Cypress.Commands.add('connect_as_relecteur1', () => {
 
 Cypress.Commands.add('connect_as_contributeur2', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('contributeur2@clara.com').should('have.value', 'contributeur2@clara.com')
-  cy.get('#session_password')
-    .type('contributeur2').should('have.value', 'contributeur2')
+  cy.get('#session_email').clear().invoke('val', 'contributeur2@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'Contributeur2+').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -68,10 +62,8 @@ Cypress.Commands.add('connect_as_contributeur2', () => {
 
 Cypress.Commands.add('connect_as_superadmin', () => {
   cy.visit('/sign_in')
-  cy.get('#session_email')
-    .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
-  cy.get('#session_password')
-    .type('bar').should('have.value', 'bar')
+  cy.get('#session_email').clear().invoke('val', 'superadmin@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'bar').trigger('input');
   cy.get('.c-login-connect input').click()
   cy.location('pathname').should('include', '/admin')
   cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
@@ -101,19 +93,20 @@ Cypress.Commands.add('delete_a_user', (email) => {
 });
 
 Cypress.Commands.add('delete_an_aid', (aid_slug) => {
-  cy.connect_as_superadmin()
-  cy.visit('/admin/aids')
-  cy.get('a.js-delete-aid[href="/admin/aids/' + aid_slug + '?locale=fr"]').click()
-  cy.disconnect_from_admin()
+  cy.request("DELETE", "/delete_aid/" + aid_slug)
 });
 
 Cypress.Commands.add('clear_the_cache', () => {
-  cy.visit('/admin/get_cache')
-  cy.get('#button-empty-cache').should("exist")
-  cy.get('#button-empty-cache').click()
-  // wait for clear cache to finish
-  cy.get('#button-empty-cache[disabled]').should('exist')
-  cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
+  cy.visit('/admin/get_cache').then((contentWindow) => {
+    cy.get('#button-empty-cache').should("exist")
+    cy.get('#button-empty-cache').click()
+    cy.wait(1000)
+    cy.get('#button-empty-cache[disabled]', { timeout: 10000 }).should('not.exist')
+  })
+  // cy.request("POST", "/clear_cache/").then((resp) => {
+  //   expect(resp.status).to.eq(200)
+  // })
+  // cy.wait(3000)
 });
 
 Cypress.Commands.add('authorize_google_analytics', () => {
@@ -154,6 +147,14 @@ Cypress.Commands.add('forbid_hotjar', () => {
   cy.get('#submit-cookie-preference').click()
 
   cy.get("body.c-body.welcome.index").should("exist")
+});
+
+Cypress.Commands.add('clear_mailbox', () => {
+  cy.visit('/letter_opener')
+  // cy.get('table.letter-opener tbody').shouldHaveTrimmedText('')
+  cy.get('a[href="/letter_opener/clear"]').should("exist")
+  cy.get('a[href="/letter_opener/clear"]').click()
+  cy.get('table.letter-opener tbody').shouldHaveTrimmedText('')
 });
 
 // See https://github.com/cypress-io/cypress/issues/3887#issuecomment-522962482

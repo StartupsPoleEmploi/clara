@@ -1,9 +1,10 @@
-class NewAidTwo < ViewObject
+class NewAidTwo < NewAidStep
 
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
     @errors_h = _init_errors_messages(@page)
+    @aid_status = locals[:aid_status]
   end
 
   def attr_name(attribute)

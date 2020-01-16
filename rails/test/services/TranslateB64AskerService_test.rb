@@ -8,7 +8,7 @@ class TranslateB64AskerServiceTest < ActiveSupport::TestCase
     #when
     sut = TranslateB64AskerService.new.into_b64(asker)
     #then
-    assert_equal("MzUsMSxvLG8sMyxvLHAsNzkzNTEsMzQwLG4=", sut)
+    assert_equal("MzUsMSxvLG8sMyxvLHAsNzkzNTEsOTE4MDAsMzQwLG4=", sut)
   end
 
   test '.into_b64 The generated string must be an list of properties once decoded' do
@@ -18,7 +18,7 @@ class TranslateB64AskerServiceTest < ActiveSupport::TestCase
     #when
     sut = Base64.urlsafe_decode64(str)
     #then
-    assert_equal("35,1,o,o,3,o,p,79351,340,n", sut)
+    assert_equal("35,1,o,o,3,o,p,79351,91800,340,n", sut)
   end
 
   test '.from_b64 Should return an asker' do
@@ -32,18 +32,19 @@ class TranslateB64AskerServiceTest < ActiveSupport::TestCase
   test '.from_b64 asker properties must be filled' do
     #given
     #when
-    sut = TranslateB64AskerService.new.from_b64("MzQsMixvLDEsMyxuLHAsOTExMTQsMTQzLG8=")
+    sut = TranslateB64AskerService.new.from_b64("MzQsNCxuLDEsMyxuLHAsMzQxNzIsMzQwNzAsbm90X2FwcGxpY2FibGUsbg==")
     #then
     assert_equal("non", sut.v_handicap)
-    assert_equal("oui", sut.v_spectacle)
-    assert_equal("oui", sut.v_cadre)
+    assert_equal("non", sut.v_spectacle)
+    assert_equal("non", sut.v_cadre)
     assert_equal("niveau_3", sut.v_diplome)
     assert_equal("cat_12345", sut.v_category)
     assert_equal("plus_d_un_an", sut.v_duree_d_inscription)
-    assert_equal("143", sut.v_allocation_value_min)
-    assert_equal("ASS_AER_APS_AS-FNE", sut.v_allocation_type)     
+    assert_equal("not_applicable", sut.v_allocation_value_min)
+    assert_equal("RSA", sut.v_allocation_type)     
     assert_equal("34", sut.v_age)                 
-    assert_equal("91114", sut.v_location_citycode)   
+    assert_equal("34172", sut.v_location_citycode)   
+    assert_equal("34070", sut.v_location_zipcode)   
   end
 
   test '.into_b64 and .from_b64, when chained, must end up with the same asker' do
@@ -68,6 +69,7 @@ class TranslateB64AskerServiceTest < ActiveSupport::TestCase
       v_allocation_type: 'ARE_ASP',
       v_age: 35,
       v_location_citycode: '79351',
+      v_location_zipcode: '91800',
     )
   end
 

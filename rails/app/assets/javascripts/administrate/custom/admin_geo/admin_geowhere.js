@@ -9,9 +9,11 @@ clara.js_define("admin_geowhere", {
         $("input#" + gon.initial_geo.selection).prop("checked", true);
 
         var department_options = {        
+
           valueField: 'value',
           labelField: 'name',
           searchField: 'name',
+          onChange: function(){if (window.detect_selectize_change) {detect_selectize_change()}},
           options: [
                     {value:"01", name:"01 Ain"},
                     {value:"02", name:"02 Aisne"},
@@ -133,6 +135,7 @@ clara.js_define("admin_geowhere", {
           valueField: 'value',
           labelField: 'name',
           searchField: 'name',
+          onChange: function(){if (window.detect_selectize_change) {detect_selectize_change()}},
           options: [
             {value:"ARA", name:"Auvergne-Rhône-Alpes"},
             {value:"BFC", name:"Bourgogne-Franche-Comté"},
@@ -164,6 +167,7 @@ clara.js_define("admin_geowhere", {
           labelField: 'name',
           searchField: 'name',
           create: false,
+          onChange: function(){if (window.detect_selectize_change) {detect_selectize_change()}},
           load: function(query, callback) {
             var that = this;
             if (!query.length) return callback();
