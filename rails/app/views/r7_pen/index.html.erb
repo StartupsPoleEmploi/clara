@@ -1,0 +1,255 @@
+
+<% content_for :custom_css do %>
+<style type="text/css">
+
+body.c-body #staging-cards textarea {
+    display: none;
+}
+body.c-body #staging-cards .text-color-red {
+    color: red;
+}
+body.c-body #staging-cards div a {
+    color: blue;
+}
+body.c-body #staging-cards input.submit {
+    background-color: white;
+    padding: 0;
+    color: blue;
+  }
+}
+
+#admin_admin_post_r7_data_form {
+  margin-bottom: 1rem;
+}
+
+#staging-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+}
+#forms {
+  display: flex;
+}
+
+.staging-card {
+  flex: 1 0 15%; 
+  padding: 1rem;
+}
+  
+</style>
+<% end %>
+
+<div class="c-identifier">
+  Bonjour <span class="c-identifier-role"></span>
+</div>
+
+<div id="forms">
+<%= form_with url: delete_r7_data_path, method: "delete", local: false, id: 'admin_admin_delete_r7_data_form' do |form| %>
+  <%= form.submit 'supprimer', id: "submit-delete-all"%>
+<% end %>
+<%= form_with url: post_r7_data_path, local: false, id: 'admin_admin_post_r7_data_form' do |form| %>
+  <%= form.submit 'regénérer'%>
+<% end %>
+</div>
+
+<div id="staging-cards">
+</div>
+
+<script> 
+
+  $(document).on("ready", function admin_load_r7_page() {
+
+    $.ajax({
+      url: "/admin",
+      type: "GET",
+      success: function(e) {
+        console.log("success ")
+        var a = _.find($.parseHTML( e ), function(k) {
+          if (k && k.outerHTML) {
+            return k.outerHTML.indexOf('meta name="role"') > 0
+          }
+          return false;
+        })
+        $(".c-identifier-role").html(a.content)
+      },
+      error: function(e) {
+        $(".c-identifier-role").html("simple visiteur")
+        console.log(e)
+      }
+
+    })
+
+    $(".c-body__footer").empty();
+
+    $("#submit-delete-all").on("click", function(e) {
+      $("#staging-cards").empty()
+    })
+
+    $(document).on("ajax:error", function(e){
+      var targeted = $(e.target).attr("id").toString()
+      var target_object = _.textAfter(targeted, "_")
+      var targeted_action = _.textBefore(targeted, "_")
+      if (targeted_action === "update") {
+        $("#" + target_object).append("<div class='" + target_object + "_update_expl'>update no</div>")
+      } else if (targeted_action === "show") {
+        $("#" + target_object).append("<div class='" + target_object + "_show_expl'>show no</div>")
+      } else if (targeted_action === "create") {
+        $("#" + target_object).append("<div class='" + target_object + "_create_expl'>create no</div>")
+      } else if (targeted_action === "index") {
+        $("#" + target_object).append("<div class='" + target_object + "_index_expl'>index no</div>")
+      } else if (targeted_action === "edit") {
+        $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>edit no</div>")
+      } else if (targeted_action === "new") {
+        $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new no</div>")
+      } else if (targeted_action === "delete") {
+        $.get({
+          url: "/get_r7_info?target_object=" + target_object + "&target_id=" + $(e.target).attr("data-id"),
+          success: function(k) {
+            if (_.isNotBlank(k.actual_object)) {
+              $("#" + target_object).append("<div class='" + target_object + "_delete_expl'> delete no</div>")
+            } else {
+              $("#" + target_object).append("<div class='" + target_object + "_delete_expl'> delete yes</div>")
+            }
+          },
+        })        
+      }
+    })
+    $(document).on("ajax:success", function(e){
+      var targeted = $(e.target).attr("id").toString()
+      var target_object = _.textAfter(targeted, "_")
+      var targeted_action = _.textBefore(targeted, "_")
+      if (targeted_action === "update") {
+        $("#" + target_object).append("<div class='" + target_object + "_update_expl'>update yes</div>")
+      } else if (targeted_action === "show") {
+        $("#" + target_object).append("<div class='" + target_object + "_show_expl'>show yes</div>")
+      } else if (targeted_action === "create") {
+        $("#" + target_object).append("<div class='" + target_object + "_create_expl'>create yes</div>")
+      } else if (targeted_action === "index") {
+        $("#" + target_object).append("<div class='" + target_object + "_index_expl'>index yes</div>")
+      } else if (targeted_action === "edit") {
+        $("#" + target_object).append("<div class='" + target_object + "_edit_expl'>edit yes</div>")
+      } else if (targeted_action === "new") {
+        $("#" + target_object).append("<div class='" + target_object + "_new_expl'>new yes</div>")
+      }
+    })
+
+
+    $("#admin_admin_post_r7_data_form").on("ajax:success", 
+      function(event) { 
+        var detail = event.detail;
+        var data = detail[0];
+        console.log(event)
+        console.log(data)
+        var admin_rule_path = "<%= admin_rule_path("XXX") %>";
+        var admin_edit_rule_path = "<%= edit_admin_rule_path("XXX") %>";
+        $("#staging-cards").append('<div id="rule" class="staging-card"><div>rule ' + data.rule_id + '</div><div><a id="delete_rule" data-id="' + data.rule_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_rule_path.replace("XXX", data.rule_id) + '">Supprimer</a></div></div>')
+        $("#rule").append('<div><form id="update_rule" action="/admin/rules/' + data.rule_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#rule").append('<div><form id="create_rule" action="/admin/rules" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="rule[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#rule").append('<div><a id="show_rule" href=' + admin_rule_path.replace("XXX", data.rule_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#rule").append('<div><a id="index_rule" href="/admin/rules/" data-remote="true">Voir liste</a></div>')
+        $("#rule").append('<div><a id="edit_rule" href=' + admin_edit_rule_path.replace("XXX", data.rule_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#rule").append('<div><a id="new_rule" href="/admin/rules/new" data-remote="true">Voir création</a></div>')
+
+        var admin_contract_type_path = "<%= admin_contract_type_path("XXX") %>";
+        var admin_edit_contract_type_path = "<%= edit_admin_contract_type_path("XXX") %>";
+        $("#staging-cards").append('<div id="contract_type" class="staging-card"><div>contract_type ' + data.contract_type_id + '</div><div><a id="delete_contract_type" data-id="' + data.contract_type_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_contract_type_path.replace("XXX", data.contract_type_id) + '">Supprimer</a></div></div>')
+        $("#contract_type").append('<div><form id="update_contract_type" action="/admin/contract_types/' + data.contract_type_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="contract_type[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#contract_type").append('<div><form id="create_contract_type" action="/admin/contract_types" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="contract_type[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#contract_type").append('<div><a id="show_contract_type" href=' + admin_contract_type_path.replace("XXX", data.contract_type_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#contract_type").append('<div><a id="index_contract_type" href="/admin/contract_types/" data-remote="true">Voir liste</a></div>')
+        $("#contract_type").append('<div><a id="edit_contract_type" href=' + admin_edit_contract_type_path.replace("XXX", data.contract_type_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#contract_type").append('<div><a id="new_contract_type" href="/admin/contract_types/new" data-remote="true">Voir création</a></div>')
+
+        var admin_convention_path = "<%= admin_convention_path("XXX") %>";
+        var admin_edit_convention_path = "<%= edit_admin_convention_path("XXX") %>";
+        $("#staging-cards").append('<div id="convention" class="staging-card"><div>convention ' + data.convention_id + '</div><div><a id="delete_convention" data-id="' + data.convention_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_convention_path.replace("XXX", data.convention_id) + '">Supprimer</a></div></div>')
+        $("#convention").append('<div><form id="update_convention" action="/admin/conventions/' + data.convention_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="convention[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#convention").append('<div><form id="create_convention" action="/admin/conventions" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="convention[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#convention").append('<div><a id="show_convention" href=' + admin_convention_path.replace("XXX", data.convention_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#convention").append('<div><a id="index_convention" href="/admin/conventions/" data-remote="true">Voir liste</a></div>')
+        $("#convention").append('<div><a id="edit_convention" href=' + admin_edit_convention_path.replace("XXX", data.convention_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#convention").append('<div><a id="new_convention" href="/admin/conventions/new" data-remote="true">Voir création</a></div>')
+
+        var admin_filter_path = "<%= admin_filter_path("XXX") %>";
+        var admin_edit_filter_path = "<%= edit_admin_filter_path("XXX") %>";
+        $("#staging-cards").append('<div id="filter" class="staging-card"><div>filter ' + data.filter_id + '</div><div><a id="delete_filter" data-id="' + data.filter_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_filter_path.replace("XXX", data.filter_id) + '">Supprimer</a></div></div>')
+        $("#filter").append('<div><form id="update_filter" action="/admin/filters/' + data.filter_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="filter[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#filter").append('<div><form id="create_filter" action="/admin/filters" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="filter[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#filter").append('<div><a id="show_filter" href=' + admin_filter_path.replace("XXX", data.filter_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#filter").append('<div><a id="index_filter" href="/admin/filters/" data-remote="true">Voir liste</a></div>')
+        $("#filter").append('<div><a id="edit_filter" href=' + admin_edit_filter_path.replace("XXX", data.filter_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#filter").append('<div><a id="new_filter" href="/admin/filters/new" data-remote="true">Voir création</a></div>')
+
+        var admin_aid_path = "<%= admin_aid_path("XXX") %>";
+        var admin_edit_aid_path = "<%= edit_admin_aid_path("XXX") %>";
+        $("#staging-cards").append('<div id="aid" class="staging-card"><div>aid ' + data.aid_id + '</div><div><a id="delete_aid" data-id="' + data.aid_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_aid_path.replace("XXX", data.aid_id) + '">Supprimer</a></div></div>')
+        $("#aid").append('<div><form id="update_aid" action="/admin/aid_creation/create_stage_3" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="modify[value]" value="false"><input type="hidden" name="slug[value]" value="' + data.aid_id + '"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="aid[short_description]">sd</textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#aid").append('<div><form id="create_aid" action="/admin/aid_creation/create_stage_1" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="modify[value]" value="false"><input type="hidden" name="slug[value]" value="' + data.aid_id + '"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="aid[ordre_affichage]">45</textarea><textarea name="aid[contract_type_id]">1</textarea><textarea name="aid[name]">r_fake_aid_' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#aid").append('<div><a id="show_aid" href=' + admin_aid_path.replace("XXX", data.aid_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#aid").append('<div><a id="index_aid" href="/admin/aids/" data-remote="true">Voir liste</a></div>')
+        $("#aid").append('<div><a id="edit_aid" href="/admin/aid_creation/new_aid_stage_5?modify=true&slug=' + data.aid_id + '" data-remote="true">Voir édition</a></div>')
+        $("#aid").append('<div><a id="new_aid" href="/admin/aid_creation/new_aid_stage_1" data-remote="true">Voir création</a></div>')
+
+        var admin_variable_path = "<%= admin_variable_path("XXX") %>";
+        var admin_edit_variable_path = "<%= edit_admin_variable_path("XXX") %>";
+        $("#staging-cards").append('<div id="variable" class="staging-card"><div>variable ' + data.variable_id + '</div><div><a id="delete_variable" data-id="' + data.variable_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_variable_path.replace("XXX", data.variable_id) + '">Supprimer</a></div></div>')
+        $("#variable").append('<div><form id="update_variable" action="/admin/variables/' + data.variable_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="variable[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#variable").append('<div><form id="create_variable" action="/admin/variables" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="variable[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#variable").append('<div><a id="show_variable" href=' + admin_variable_path.replace("XXX", data.variable_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#variable").append('<div><a id="index_variable" href="/admin/variables/" data-remote="true">Voir liste</a></div>')
+        $("#variable").append('<div><a id="edit_variable" href=' + admin_edit_variable_path.replace("XXX", data.variable_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#variable").append('<div><a id="new_variable" href="/admin/variables/new" data-remote="true">Voir création</a></div>')
+
+        var admin_explicitation_path = "<%= admin_explicitation_path("XXX") %>";
+        var admin_edit_explicitation_path = "<%= edit_admin_explicitation_path("XXX") %>";
+        $("#staging-cards").append('<div id="explicitation" class="staging-card"><div>explicitation ' + data.explicitation_id + '</div><div><a id="delete_explicitation" data-id="' + data.explicitation_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_explicitation_path.replace("XXX", data.explicitation_id) + '">Supprimer</a></div></div>')
+        $("#explicitation").append('<div><form id="update_explicitation" action="/admin/explicitations/' + data.explicitation_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="explicitation[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#explicitation").append('<div><form id="create_explicitation" action="/admin/explicitations" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="explicitation[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#explicitation").append('<div><a id="show_explicitation" href=' + admin_explicitation_path.replace("XXX", data.explicitation_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#explicitation").append('<div><a id="index_explicitation" href="/admin/explicitations/" data-remote="true">Voir liste</a></div>')
+        $("#explicitation").append('<div><a id="edit_explicitation" href=' + admin_edit_explicitation_path.replace("XXX", data.explicitation_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#explicitation").append('<div><a id="new_explicitation" href="/admin/explicitations/new" data-remote="true">Voir création</a></div>')
+
+        var admin_trace_path = "<%= admin_trace_path("XXX") %>";
+        var admin_edit_trace_path = "<%= edit_admin_trace_path("XXX") %>";
+        $("#staging-cards").append('<div id="trace" class="staging-card"><div>trace ' + data.trace_id + '</div><div><a id="delete_trace" data-id="' + data.trace_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_trace_path.replace("XXX", data.trace_id) + '">Supprimer</a></div></div>')
+        $("#trace").append('<div><form id="update_trace" action="/admin/traces/' + data.trace_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="trace[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#trace").append('<div><form id="create_trace" action="/admin/traces" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="trace[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#trace").append('<div><a id="show_trace" href=' + admin_trace_path.replace("XXX", data.trace_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#trace").append('<div><a id="index_trace" href="/admin/traces/" data-remote="true">Voir liste</a></div>')
+        $("#trace").append('<div><a id="edit_trace" href=' + admin_edit_trace_path.replace("XXX", data.trace_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#trace").append('<div><a id="new_trace" href="/admin/traces/new" data-remote="true">Voir création</a></div>')
+
+        var admin_tracing_path = "<%= admin_tracing_path("XXX") %>";
+        var admin_edit_tracing_path = "<%= edit_admin_tracing_path("XXX") %>";
+        $("#staging-cards").append('<div id="tracing" class="staging-card"><div>tracing ' + data.tracing_id + '</div><div><a id="delete_tracing" data-id="' + data.tracing_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_tracing_path.replace("XXX", data.tracing_id) + '">Supprimer</a></div></div>')
+        $("#tracing").append('<div><form id="update_tracing" action="/admin/tracings/' + data.tracing_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="tracing[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#tracing").append('<div><form id="create_tracing" action="/admin/tracings" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="tracing[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#tracing").append('<div><a id="show_tracing" href=' + admin_tracing_path.replace("XXX", data.tracing_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#tracing").append('<div><a id="index_tracing" href="/admin/tracings/" data-remote="true">Voir liste</a></div>')
+        $("#tracing").append('<div><a id="edit_tracing" href=' + admin_edit_tracing_path.replace("XXX", data.tracing_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#tracing").append('<div><a id="new_tracing" href="/admin/tracings/new" data-remote="true">Voir création</a></div>')
+
+        var admin_user_path = "<%= admin_user_path("XXX") %>";
+        var admin_edit_user_path = "<%= edit_admin_user_path("XXX") %>";
+        $("#staging-cards").append('<div id="user" class="staging-card"><div>user ' + data.user_id + '</div><div><a id="delete_user" data-id="' + data.user_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_user_path.replace("XXX", data.user_id) + '">Supprimer</a></div></div>')
+        $("#user").append('<div><form id="update_user" action="/admin/users/' + data.user_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="user[role]">relecteur</textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#user").append('<div><form id="create_user" action="/users" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="user[email]">re' + (new Date().getTime()) + '@clara.com</textarea><textarea name="user[password]">pwd</textarea><input type="submit" value="créer nouveau" class="submit submit-creation"></form></div>')
+        $("#user").append('<div><a id="show_user" href=' + admin_user_path.replace("XXX", data.user_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#user").append('<div><a id="index_user" href="/admin/users/" data-remote="true">Voir liste</a></div>')
+        $("#user").append('<div><a id="edit_user" href=' + admin_edit_user_path.replace("XXX", data.user_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#user").append('<div><a id="new_user" href="/sign_up" data-remote="true">Voir création</a></div>')
+
+        var admin_api_user_path = "<%= admin_api_user_path("XXX") %>";
+        var admin_edit_api_user_path = "<%= edit_admin_api_user_path("XXX") %>";
+        $("#staging-cards").append('<div id="api_user" class="staging-card"><div>api_user ' + data.api_user_id + '</div><div><a id="delete_api_user" data-id="' + data.api_user_id + '" class="text-color-red" rel="nofollow" data-method="delete" data-remote="true" href="' + admin_api_user_path.replace("XXX", data.api_user_id) + '">Supprimer</a></div></div>')
+        $("#api_user").append('<div><form id="update_api_user" action="/admin/api_users/' + data.api_user_id + '" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="api_user[name]"></textarea><input type="submit" value="mettre à jour" class="submit submit-edition"></form></div>')
+        $("#api_user").append('<div><form id="create_api_user" action="/admin/api_users" accept-charset="UTF-8" method="post" data-remote="true"><input type="hidden" name="_method" value="post"><input type="hidden" name="authenticity_token" value="<%=  form_authenticity_token%>"><textarea name="api_user[name]">' + (new Date().getTime()) + '</textarea><input type="submit" value="créer" class="submit submit-creation"></form></div>')
+        $("#api_user").append('<div><a id="show_api_user" href=' + admin_api_user_path.replace("XXX", data.api_user_id) + ' data-remote="true">Voir détail</a></div>')
+        $("#api_user").append('<div><a id="index_api_user" href="/admin/api_users/" data-remote="true">Voir liste</a></div>')
+        $("#api_user").append('<div><a id="edit_api_user" href=' + admin_edit_api_user_path.replace("XXX", data.api_user_id) + ' data-remote="true">Voir édition</a></div>')
+        $("#api_user").append('<div><a id="new_api_user" href="/admin/api_users/new" data-remote="true">Voir création</a></div>')
+
+      });     
+  });
+</script>
