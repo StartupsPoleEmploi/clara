@@ -1,0 +1,17 @@
+FROM nginx:1.10.3
+
+RUN apt-get update && \
+    apt-get -y install vim telnet
+
+ARG ENV_TYPE=${ENV_TYPE:-production}
+
+#Ajout du repertoire ssl si environnement production
+#Pointe la conf nginx de l'environnement visé
+RUN if [ "$ENV_TYPE" = "production" ]; then \
+        ln -sfn /home/nginx/$ENV_TYPE/ssl /etc/nginx/ssl; \
+    fi; \
+    rm -f /etc/nginx/conf.d/*; \
+    ln -sf /home/nginx/$ENV_TYPE/clara.conf /etc/nginx/conf.d/clara.conf;
+
+CMD service nginx start; \
+    sleep infinity;

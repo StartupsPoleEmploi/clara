@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.0.4 (17/01/2020)
+-[#1511][TECH] Docker prod
+
+
 ## 24.0.3 (16/01/2020)
 -[#1510][BUG] Région non calculée
 

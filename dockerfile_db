@@ -1,0 +1,14 @@
+FROM postgres:9.5.17
+
+#ENTRYPOINT ["docker-entrypoint.sh"]
+RUN apt-get update && \
+    apt-get -y install vim
+
+ARG ENV_TYPE=${ENV_TYPE:-production}
+ENV ENV_TYPE=$ENV_TYPE
+
+RUN ln -sf /home/db/$ENV_TYPE/init.sql /docker-entrypoint-initdb.d/init.sql; \
+    mkdir -p /etc/postgresql/9.5/main/; \
+    ln -sf /home/db/$ENV_TYPE/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf;
+
+CMD ["postgres"]
