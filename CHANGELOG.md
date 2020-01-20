@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.1.0 (20/01/2020)
+-[#1476][FEATURE] Titres manquants aux étapes
+
+
 ## 24.0.3 (16/01/2020)
 -[#1510][BUG] Région non calculée
 
