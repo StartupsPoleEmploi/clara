@@ -1,0 +1,14 @@
+FROM ruby:2.6.0
+
+RUN apt-get update && \
+    apt-get -y install bzip2 cron postgresql-client
+
+ARG ENV_TYPE=${ENV_TYPE:-production}
+
+RUN if [ "$ENV_TYPE" != "developpement" ]; then \
+        echo "0 5 * * * root bash /home/backups/backup.sh $ENV_TYPE" >/etc/cron.d/backups; \
+    fi;
+
+CMD service cron start; \
+    sleep infinity;
+
