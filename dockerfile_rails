@@ -47,7 +47,7 @@ RUN mkdir -p /var/git/ara.git
 
 WORKDIR /var/git/ara.git/
 
-RUN git clone https://github.com/StartupsPoleEmploi/clara/ -b docker;
+RUN git clone https://github.com/StartupsPoleEmploi/clara/ -b master;
 
 ENV RUBYOPT="-KU -E utf-8:utf-8"
 
