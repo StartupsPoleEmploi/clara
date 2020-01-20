@@ -7,7 +7,7 @@ set :user, 'root'
 set :application_name, 'ara'
 set :deploy_to, "/var/www/ara"
 set :repository, "/var/git/ara.git/clara"
-set :branch, 'docker'
+set :branch, 'master'
 set :shared_dirs, fetch(:shared_dirs, []).push('log', 'tmp/pids', 'tmp/sockets', 'public/uploads')
 set :shared_paths, ['config/database.yml', 'log']
 set :keep_releases, 2
