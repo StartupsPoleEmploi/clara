@@ -1,7 +1,13 @@
 # CLARA Changelog
 
+
+## 24.0.6 (20/01/2020)
+-[#1511c][TECH] Version vide de test
+
+
 ## 24.0.5 (20/01/2020)
 -[#1511b][TECH] Ajustements Docker prod
+
 
 ## 24.0.4 (17/01/2020)
 -[#1511][TECH] Docker prod
