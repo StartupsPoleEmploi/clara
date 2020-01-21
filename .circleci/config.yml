@@ -1,10 +1,8 @@
 version: 2.1
 
-general:
-  build_dir: rails
-
 jobs:
   build:
+    working_directory: rails
     docker:
       - image: circleci/ruby:2.6.0-node-browsers-legacy
         environment:
