@@ -116,20 +116,7 @@ Pour merger les 2 couvertures,
 ~/workspace/clara/clara> docker-compose exec clara_rails bash -c "cd clara/rails; bin/rails ruby_cov:merge"
 ```
 
-#### Déployer en recette
-
-##### Installer Clara sur une nouvelle recette vierge
-
-
-```
-~/> mkdir -p /home/docker
-~/> cd /home/docker
-/home/docker$> git clone https://github.com/StartupsPoleEmploi/clara.git
-/home/docker$> git clone https://git.beta.pole-emploi.fr/clara/private.git #login/mdp exigés
-/home/docker$> cd clara/
-/home/docker/clara$> echo "ENV=recette" >.env
-/home/docker/clara$> docker-compose up -d --build
-```
+# Déploiement
 
 ##### Déployer une nouvelle version
 
@@ -146,10 +133,6 @@ ssh identifiant@adresse_recette
 docker-compose down -v
 docker-compose up -d
 ```
-
-##### URL recette
-
-L'application est visible sous https://clara.beta.pole-emploi.fr/
 
 ##### URL production
 
