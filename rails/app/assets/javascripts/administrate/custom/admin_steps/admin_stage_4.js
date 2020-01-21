@@ -11,6 +11,16 @@ clara.js_define("admin_stage_4", {
       // detection change
       function sth_changed() {
         $("button#record_root_rule").removeAttr("disabled");
+        var ALERT_MSG = "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?"
+        $(".c-newaid-stageinside a").on("click", function() {
+          $(".c-newaid-stage--1 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--2 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--3 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--5 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+        })
+        $(".c-newaid-back2").on("click", function() {
+          $(this).attr("data-confirm", ALERT_MSG)
+        })
       }
       // hack to access to store_trundle modification
       window.decision_tree_changed = function(){

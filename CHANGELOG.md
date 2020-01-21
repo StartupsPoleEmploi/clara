@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.2.0 (21/01/2020)
+-[#1430b][FEATURE] Prévenir si chgt d'onglet autres étapes que 3
+
+
 ## 24.1.1 (21/01/2020)
 -[#1511d][TECH] Version vide de test essai déploiement
 

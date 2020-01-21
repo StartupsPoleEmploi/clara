@@ -21,12 +21,15 @@ clara.js_define("admin_stage_3", {
       // detect change to change button behaviour
       function sth_changed() {
         $("button.c-newaid-actionrecord").removeAttr("disabled");
+        var ALERT_MSG = "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?"
         $(".c-newaid-stageinside a").on("click", function() {
-          localStorage.setItem("clicked_yes_3", "true")
-          $(".c-newaid-stage--1 .c-newaid-stageinside a").attr("data-confirm", "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?")
-          $(".c-newaid-stage--2 .c-newaid-stageinside a").attr("data-confirm", "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?")
-          $(".c-newaid-stage--4 .c-newaid-stageinside a").attr("data-confirm", "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?")
-          $(".c-newaid-stage--5 .c-newaid-stageinside a").attr("data-confirm", "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?")
+          $(".c-newaid-stage--1 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--2 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--4 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--5 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+        })
+        $(".c-newaid-back2").on("click", function() {
+          $(this).attr("data-confirm", ALERT_MSG)
         })
       }
       // hack to have access to selectize "onChange" event
