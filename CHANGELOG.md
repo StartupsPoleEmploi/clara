@@ -1,6 +1,22 @@
 # CLARA Changelog
 
 
+## 24.1.1 (21/01/2020)
+-[#1511d][TECH] Version vide de test essai déploiement
+
+
+## 24.1.0 (21/01/2020)
+-[#1430a][FEATURE] Prévenir si chgt d'onglet étape 3
+
+
+## 24.0.6 (20/01/2020)
+-[#1511c][TECH] Version vide de test
+
+
+## 24.0.5 (20/01/2020)
+-[#1511b][TECH] Ajustements Docker prod
+
+
 ## 24.0.4 (17/01/2020)
 -[#1511][TECH] Docker prod
 

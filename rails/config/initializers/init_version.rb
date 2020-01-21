@@ -1,4 +1,5 @@
-lines = File.foreach('CHANGELOG.md').first(10)
+file_location = File.file?('CHANGELOG.md') ? 'CHANGELOG.md' : '../CHANGELOG.md'
+lines = File.foreach(file_location).first(10)
 
 
 
