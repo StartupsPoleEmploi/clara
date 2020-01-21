@@ -12,7 +12,7 @@ DOCKER_NAME="${ENV_NAME}_docker_$date.tar.bz2"
 
 DATABASE_NAME=ara_production
 
-pg_dump postgres://backup@srv_db:5432/$DATABASE_NAME | bzip2 -cq9 | tee /home/backups/$DUMP_NAME /mnt/backups/$DUMP_NAME >/dev/null
+pg_dump postgres://backup@clara_db:5432/$DATABASE_NAME | bzip2 -cq9 | tee /home/backups/$DUMP_NAME /mnt/backups/$DUMP_NAME >/dev/null
 
 #scp -r srv_app /home/clara | bzip2 -cq9 | tee /home/backups/$ENV_NAME/$WWW_NAME /mnt/backups/$ENV_NAME/$WWW_NAME
 
