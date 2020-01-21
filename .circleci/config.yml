@@ -15,31 +15,41 @@ jobs:
           POSTGRES_DB: ara_test
           POSTGRES_PASSWORD: ""
     steps:
-      - checkout # check out the code in the project directory
+      - checkout: # check out the code in the project directory
+          working_directory: rails
 
       - restore_cache:
+          working_directory: rails
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - gem-cache-v1-{{ arch }}-{{ .Branch }}
             - gem-cache-v1
 
-      - run: bundle install --path vendor/bundle
-
+      - run:
+          working_directory: rails
+          command: 
+            bundle install --path vendor/bundle
       - save_cache:
+          working_directory: rails
           key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
             
       - run:
+          working_directory: rails
           name: run db migrations
           command: bin/rails db:migrate RAILS_ENV=test
 
       - run:
+          working_directory: rails
           name: run ruby test
           command: bin/rails test
 
-      - run: sudo npm install -g istanbul
-
+      - run: 
+          working_directory: rails
+          command: sudo npm install -g istanbul
+          
       - run:
+          working_directory: rails
           name: run JS test
           command: bundle exec teaspoon
