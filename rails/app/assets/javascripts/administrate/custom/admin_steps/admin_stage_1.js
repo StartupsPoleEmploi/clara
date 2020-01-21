@@ -13,6 +13,13 @@ clara.js_define("admin_stage_1", {
 
       function sth_changed() {
         $("button.c-newaid-actionrecord").removeAttr("disabled");
+        $(".c-newaid-stageinside a").on("click", function() {
+          var ALERT_MSG = "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?"
+          $(".c-newaid-stage--2 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--3 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--4 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+          $(".c-newaid-stage--5 .c-newaid-stageinside a").attr("data-confirm", ALERT_MSG)
+        })
       }
 
       function listen_to(sel) {
