@@ -1,8 +1,10 @@
 version: 2.1
 
+general:
+  build_dir: rails
+
 jobs:
   build:
-    working_directory: ~/rails
     docker:
       - image: circleci/ruby:2.6.0-node-browsers-legacy
         environment:
@@ -15,8 +17,7 @@ jobs:
           POSTGRES_DB: ara_test
           POSTGRES_PASSWORD: ""
     steps:
-      - checkout: # check out the code in the project directory
-          path: ~/rails
+      - checkout # check out the code in the project directory
 
       - restore_cache:
           keys:
