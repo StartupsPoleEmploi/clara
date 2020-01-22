@@ -1,5 +1,6 @@
 class NewAidTwo < NewAidStep
 
+
   def after_init(args)
     locals = hash_for(args)
     @page = locals[:page]
@@ -14,7 +15,6 @@ class NewAidTwo < NewAidStep
       @context.session[:display_convention] = "shown_once"
       return true
     end
-
   end
 
 
@@ -42,9 +42,12 @@ class NewAidTwo < NewAidStep
   end
 
   def _init_errors_messages(page)
-    res_h = page.resource.errors.messages
-    res_h.transform_keys! do |key|
-      key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
+    res_h = {}
+    if page && page.resource
+      res_h = page.resource.errors.messages
+      res_h.transform_keys! do |key|
+        key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
+      end
     end
     res_h
   end
