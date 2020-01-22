@@ -12,7 +12,7 @@ class NewAidTwo < NewAidStep
     if @context.session[:display_convention]
       return false
     else
-      @context.session[:display_convention] = "shown_once"
+      @context.session[:display_convention] = "already_shown_once"
       return true
     end
   end
