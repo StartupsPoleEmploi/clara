@@ -20,4 +20,13 @@ class NewAidTwoTest < ActiveSupport::TestCase
     #then
     assert_equal(false, res)
   end
+  test '.display_convention? should return false if called twice' do
+    #given
+    new_aid_two = NewAidTwo.new(OpenStruct.new(session: {}), {})
+    #when
+    res = new_aid_two.display_convention?
+    res = new_aid_two.display_convention?
+    #then
+    assert_equal(false, res)
+  end
 end
