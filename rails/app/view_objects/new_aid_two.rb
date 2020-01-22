@@ -9,7 +9,7 @@ class NewAidTwo < NewAidStep
   end
 
   def display_convention?
-    # force to load session here
+    # HACK : force to load session here
     @context.session["init"] = true
     if @context.session[:display_convention]
       return false
