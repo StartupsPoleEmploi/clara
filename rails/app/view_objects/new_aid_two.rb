@@ -7,6 +7,17 @@ class NewAidTwo < NewAidStep
     @aid_status = locals[:aid_status]
   end
 
+  def display_convention?
+    if @context.session[:display_convention]
+      return false
+    else
+      @context.session[:display_convention] = "shown_once"
+      return true
+    end
+
+  end
+
+
   def attr_name(attribute)
     attribute.attribute.to_s
   end

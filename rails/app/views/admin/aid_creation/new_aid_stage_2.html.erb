@@ -59,14 +59,16 @@
 
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
           <%= hidden_field(:modify, :value, :value => params[:modify]) %>
+          <% if v.display_convention? %>
             <div class="alert-convention">
               <strong>Apprenez à rédiger vos aides comme des pros</strong>
               <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
               <div class="alert-controls">
                 <button type="button" class="js-hide-convention">OK</button>
                 <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
-            </div>
-            </div>
+              </div>
+            </div>            
+          <% end %>
 
           <div id="accordion_0" class="js-accordion">
               <% page.attributes.each_with_index do |attribute, index_nb| %>
