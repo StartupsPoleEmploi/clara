@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
   after_action :set_response_language_header
 
 
+
+  def sign_in(user)
+    session.clear
+    super
+  end
+  
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end
