@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.6.1 (24/01/2020)
+-[#1520][BUG] IE11 rubriques
+
+
 ## 24.6.0 (23/01/2020)
 -[#1497][FEATURE] BO - Supprimer astérisques
 
