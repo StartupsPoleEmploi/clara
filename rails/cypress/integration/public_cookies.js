@@ -42,7 +42,7 @@ describe('Google Analytics', function () {
 
 describe('Hotjar', function () {
 
-  const HOTJAR_POLL = '#_hj_poll_container'
+  const HOTJAR_POLL = '#_hjRemoteVarsFrame'
 
   it('Hotjar peut être bloqué', function () {
     cy.forbid_hotjar()
