@@ -17,9 +17,7 @@ clara.js_define("admin_accordion", {
 
     $(".js-accordion__header span").on("click", function(e){
       $(this).parent(".js-accordion__header").click()
-      // $(".js-accordion__header").click();
       return false;
-      // e.preventDefault();
     });
 
   }
