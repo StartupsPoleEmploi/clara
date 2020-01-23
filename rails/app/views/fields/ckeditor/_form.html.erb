@@ -1,6 +1,10 @@
+<%- is_mandatory ||= false %>
 <%- additional_label ||= nil %>
 
 <div class="field-unit__label">
+  <% if is_mandatory %>
+    <span class="field-unit__label-mandatory">*</span>
+  <% end %>
   <%= f.label field.attribute %>
   <% if additional_label %>
     <label class="field-unit__label-additional"><%=additional_label%></label>
