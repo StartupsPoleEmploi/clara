@@ -14,6 +14,14 @@ clara.js_define("admin_accordion", {
 
     $("#accordion_0-1_tab").html("<span>" + $("#accordion_0-1_tab").html() + "</span><span>&nbsp;</span><span class='field-unit__label-optional'>Facultatif</span>")
     $("#accordion_0-4_tab").html("<span>" + $("#accordion_0-4_tab").html() + "</span><span>&nbsp;</span><span class='field-unit__label-optional'>Facultatif</span>")
+
+    $(".js-accordion__header span").on("click", function(e){
+      $(this).parent(".js-accordion__header").click()
+      // $(".js-accordion__header").click();
+      return false;
+      // e.preventDefault();
+    });
+
   }
 
 });
