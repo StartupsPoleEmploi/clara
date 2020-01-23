@@ -12,17 +12,8 @@ class NewAidTwoTest < ActiveSupport::TestCase
   end
   test '.display_convention? should return false if display_convention in session is set' do
     #given
-    new_aid_two = NewAidTwo.new(OpenStruct.new(session: {display_convention: "yes"}), {})
+    new_aid_two = NewAidTwo.new(OpenStruct.new(session: {hide_convention: "yes"}), {})
     #when
-    res = new_aid_two.display_convention?
-    #then
-    assert_equal(false, res)
-  end
-  test '.display_convention? should return false if called twice' do
-    #given
-    new_aid_two = NewAidTwo.new(OpenStruct.new(session: {}), {})
-    #when
-    res = new_aid_two.display_convention?
     res = new_aid_two.display_convention?
     #then
     assert_equal(false, res)
