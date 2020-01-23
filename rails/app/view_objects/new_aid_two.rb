@@ -23,6 +23,7 @@ class NewAidTwo < NewAidStep
   end
 
   def mandatory_field?(attribute)
+    # JS will take care if field is mandatory or not
     false
   end
 

@@ -2,7 +2,6 @@
 <%- is_modifying = params[:modify] == "true"  %>
 <%- verb = is_modifying ? "Modifier" : "Créer" %>
 
-
 <section class="c-newaid c-newaid--stage2">
   <% if !is_modifying  %>
     <%= link_to "‹ Retour à l'étape 1", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug]), class: "c-newaid-back2" %>
@@ -71,18 +70,13 @@
           <% end %>
 
           <div id="accordion_0" class="js-accordion">
-              <% page.attributes.each_with_index do |attribute, index_nb| %>
-                <% if v.show_field?(attribute) %>
-                  <div class="field-unit field-unit--<%= attribute.html_class %> field-unit--errored-<%=v.errored?(attribute)%>">
-                    <%= render_field attribute, f: f, is_mandatory: v.mandatory_field?(attribute), is_optional: !v.mandatory_field?(attribute) %>
-                    <% if v.errored?(attribute) -%>
-                      <div class="field-unit-error-msg field-unit-error-msg--<%= attribute.html_class %>">
-                        &nbsp;⚠ <%= v.error_message(attribute) %>
-                      </div>
-                    <% end %>
-                  </div>
-                <% end %>
+            <% page.attributes.each_with_index do |attribute, index_nb| %>
+              <% if v.show_field?(attribute) %>
+                <div class="field-unit field-unit--<%= attribute.html_class %>">
+                  <%= render_field attribute, f: f %>
+                </div>
               <% end %>
+            <% end %>
           </div>
           <%= f.submit "Enregistrer", id: "submit-current-step" %>
         <% end %>                     

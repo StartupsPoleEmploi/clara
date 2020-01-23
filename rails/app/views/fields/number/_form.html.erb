@@ -25,10 +25,10 @@ By default, the input is a text field.
     default: field.attribute.to_s,
   ).titleize %>
 
-  <%= f.label label_text, for:"#{f.object.class.name.underscore}_#{field.attribute}", id: "label_#{field.attribute}" %>
   <% if is_mandatory %>
     <span class="field-unit__label-mandatory">*</span>
   <% end %>
+  <%= f.label label_text, for:"#{f.object.class.name.underscore}_#{field.attribute}", id: "label_#{field.attribute}" %>
 </div>
 <div class="field-unit__field">
 

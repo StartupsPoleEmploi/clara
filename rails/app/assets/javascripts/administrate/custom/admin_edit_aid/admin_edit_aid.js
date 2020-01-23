@@ -48,8 +48,8 @@ clara.js_define("admin_edit_aid", {
       })
     })
 
-    _.executeAfter(that._destroy_ckeditors, 800)
-    _.executeAfter(that._reload_ckeditors, 1000)
+    setTimeout(function () {if (window.Cypress) {} else {that._destroy_ckeditors();}}, 800);
+    setTimeout(function () {if (window.Cypress) {} else {that._reload_ckeditors();}}, 1000);
     setTimeout(function () {clara.admin_edit_aid_clean_ckeditor.please();}, 1200);
 
     setTimeout(function () {

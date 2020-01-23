@@ -31,6 +31,10 @@ class NewAidThree < NewAidStep
     false
   end
 
+  def optional_field?(attribute)
+    true
+  end
+
   def error_message(attribute)
     actual_attr = attribute.attribute
     @errors_h[actual_attr][0]
