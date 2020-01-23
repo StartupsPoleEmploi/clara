@@ -62,6 +62,7 @@
   flex-direction: column;
   margin-right: 1.5rem;
   justify-content: center;
+  width: 100%;
 }
 
 h2.c-result-aid__title {
@@ -89,4 +90,5 @@ h2.c-result-aid__title {
   line-height: 1.5;
   letter-spacing: normal;
   color: #333333;
+  max-width: 100%;
 }
