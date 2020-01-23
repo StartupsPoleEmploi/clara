@@ -46,10 +46,10 @@ describe("Étape 5", function() {
       cy.get(".c-newaid-stage5expl.is-ok-false").should('have.length', 2)
     })
     it("Auquel cas l'aide est signalée comme étant à l'état de brouillon", function() {
-      cy.get(".c-newaid-subtitle").shouldHaveTrimmedText("L'aide a été enregistrée en tant que brouillon.")
+      cy.get(".c-newaid-finalcut").shouldHaveTrimmedText("L'aide a été enregistrée en tant que brouillon.")
     })
     it("Auquel cas on signale à l'utilisateur qu'il ne peut pas demander la relecture tout de suite", function() {
-      cy.get(".c-newaid-subtitle-expl").shouldHaveTrimmedText("Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignées.")
+      cy.get(".c-newaid-finalcut-expl").shouldHaveTrimmedText("Vous pourrez demander une relecture pour publication une fois que toutes les informations obligatoires auront été renseignées.")
     })
     it("Auquel cas le bouton de demande de relecture est présent mais inactif", function() {
       cy.get(".js-askforreread").should("have.attr", "disabled")
@@ -138,10 +138,10 @@ describe("Étape 5", function() {
       cy.get(".c-newaid-stage5expl.is-ok-false").should('have.length', 0)
     })
     it("Auquel cas l'aide est signalée comme totalement remplie", function() {
-      cy.get(".c-newaid-subtitle").shouldHaveTrimmedText("L'aide a toutes les informations requises.")
+      cy.get(".c-newaid-finalcut").shouldHaveTrimmedText("L'aide a toutes les informations requises.")
     })
     it("Auquel cas on signale à l'utilisateur qu'il peut demander la relecture", function() {
-      cy.get(".c-newaid-subtitle-expl").shouldHaveTrimmedText("Elle sera publiée sur le site après relecture par un tiers.")
+      cy.get(".c-newaid-finalcut-expl").shouldHaveTrimmedText("Elle sera publiée sur le site après relecture par un tiers.")
     })
     it("Auquel cas il y a 3 actions possibles", function() {
       cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 3)
@@ -174,7 +174,7 @@ describe("Étape 5", function() {
       //given
       //when
       cy.visit('/admin/aid_creation/new_aid_stage_5?modify=true&slug=test-stage-5')
-      cy.get(".c-newaid-subtitle").should("exist")
+      cy.get(".c-newaid-finalcut").should("exist")
       //then
       cy.get(".c-newaid-finalactions .c-newbutton").should('have.length', 0)
     })
