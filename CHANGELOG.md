@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.5.0 (23/01/2020)
+-[#1468][FEATURE] BO - Prévenir l'utilisateur
+
+
 ## 24.4.0 (23/01/2020)
 -[#1476][FEATURE] Respecter le titre de chaque étape
 
