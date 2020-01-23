@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.6.0 (23/01/2020)
+-[#1497][FEATURE] BO - Supprimer astérisques
+
+
 ## 24.5.0 (23/01/2020)
 -[#1468][FEATURE] BO - Prévenir l'utilisateur
 
