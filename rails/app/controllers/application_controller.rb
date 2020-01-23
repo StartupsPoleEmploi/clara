@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
 
-
+  skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
 
   def sign_in(user)
     session.clear
