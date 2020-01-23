@@ -68,6 +68,10 @@ module Admin
       }      
     end
 
+    def hide_alert_convention
+      session[:hide_convention] = "yes"
+    end
+
     def create_stage_2
       notice_msg = ""
       slug = _hidden(:slug)

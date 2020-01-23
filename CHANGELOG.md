@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.3.0 (22/01/2020)
+-[#1464][FEATURE] Encart n'apparaît qu'une seule fois par session
+
+
 ## 24.2.0 (21/01/2020)
 -[#1430b][FEATURE] Prévenir si chgt d'onglet autres étapes que 3
 
