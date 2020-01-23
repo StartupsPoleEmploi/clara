@@ -23,8 +23,8 @@ class NewAidTwo < NewAidStep
   end
 
   def mandatory_field?(attribute)
-    name = attr_name(attribute)
-    ["what", "additionnal_conditions", "how_much", "how_and_when"].include?(name)
+    # JS will take care if field is mandatory or not
+    false
   end
 
   def error_message(attribute)
