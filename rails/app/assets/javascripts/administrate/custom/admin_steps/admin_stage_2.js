@@ -17,7 +17,10 @@ clara.js_define("admin_stage_2", {
         $(".alert-convention").hide()
         $.ajax({
           url: $(".alert-convention").data("url"),
-          type: "POST"
+          type: "POST",
+          data: {
+            authenticity_token: window._token
+          }
         });
         
       })

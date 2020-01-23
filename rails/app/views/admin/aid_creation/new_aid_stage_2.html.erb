@@ -65,7 +65,7 @@
               <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
               <div class="alert-controls">
                 <button type="button" class="js-hide-convention">OK</button>
-                <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first) %>
+                <%=link_to "EN SAVOIR PLUS",  admin_convention_path(Convention.first), "class" => "js-know-more" %>
               </div>
             </div>            
           <% end %>
@@ -101,6 +101,7 @@
       <%= render "aid_preview" %>    
     </div>
   </section>
+  <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 </section>
 
 
