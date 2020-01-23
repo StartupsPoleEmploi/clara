@@ -126,6 +126,7 @@ describe("Étape 5", function() {
 
       cy.get('select#rule_variable_id').should('exist')
       cy.get('select#rule_variable_id').select('v_category')
+      cy.get('select#rule_variable_id').select('v_category')
       cy.get('select#rule_value_eligible_selectible').select('cat_12345')
       cy.get('.c-apprule-button.is-validation').click()
       
