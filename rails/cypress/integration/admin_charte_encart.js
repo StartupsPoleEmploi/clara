@@ -33,6 +33,15 @@ describe("Voir l'encart de la charte", function() {
       cy.get('.js-hide-convention').click()
       cy.get('.alert-convention').should('not.be.visible')
     })
+    it("Si on quitte l'URL originale, l'encart n'est plus là - évidemment", function () {
+      cy.get('.c-newaid-stage--3 a').click()
+      cy.get('.alert-convention').should('not.exist')
+    })
+    // CYPRESS BUG - actually works in real conditions....
+    // it("Si on revient l'URL originale, l'encart a disparu pour les 24 prochaines heures", function () {
+    //   cy.get('.c-newaid-stage--2 a').click()
+    //   cy.get('.alert-convention').should('not.be.visible')
+    // })
   })
 
 })
