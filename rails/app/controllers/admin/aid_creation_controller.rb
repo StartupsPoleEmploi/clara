@@ -215,7 +215,7 @@ module Admin
         notice_message = "L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes."
       elsif action_asked == "publish"
         aid.archived_at = nil
-        notice_message = "L'aide a été publiée sur le site, elle apparaîtra dans quelques secondes."
+        notice_message = "<strong>L'aide va être publiée sur le site web ! </strong><br> Cela peut prendre quelques secondes..."
       elsif action_asked == "reread"
         aid.is_rereadable = true
         notice_message = "L'aide a été demandée pour relecture."
