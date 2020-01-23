@@ -1,5 +1,5 @@
-      <div class="c-newaid-subtitle"><%= raw v.big_message(current_user.email) %></div>
-        <div class="c-newaid-subtitle-expl"><%= raw v.small_message(current_user.email) %></div>
+      <div class="c-newaid-finalcut"><%= raw v.big_message(current_user.email) %></div>
+        <div class="c-newaid-finalcut-expl"><%= raw v.small_message(current_user.email) %></div>
         <% if v.publishable?(current_user.email) %>
           <div class="c-newaid-finalactions">
             <%= form_for([namespace, page.resource], method: "post", url: admin_aid_creation_create_stage_5_path, html: { class: "form" }) do |f| %>

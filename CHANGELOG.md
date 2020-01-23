@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.4.0 (23/01/2020)
+-[#1476][FEATURE] Respecter le titre de chaque étape
+
+
 ## 24.3.0 (22/01/2020)
 -[#1464][FEATURE] Encart n'apparaît qu'une seule fois par session
 

@@ -80,27 +80,35 @@
   }
 }
 
-
 .c-newaid.c-newaid--stage3 .selectize-input {
   height: initial; 
 }
 
 .c-newaid-subtitle {
-  font-family: Roboto;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.94;
   letter-spacing: normal;
   color: #1b1b1b;
   margin-bottom: 1rem;
+  strong {
+    font-weight: 500;
+  }
 }
 
-.c-newaid--stage5 .c-newaid-subtitle {
+.c-newaid-finalcut {
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.94;
+  letter-spacing: normal;
+  color:#1b1b1b;
   margin-bottom: 0;
 }
-.c-newaid--stage5 .c-newaid-subtitle-expl {
+.c-newaid-finalcut-expl {
   margin-bottom: 1rem;
 }
 
@@ -269,7 +277,7 @@
   display: flex;
   border-radius: 4px;
   padding: .5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .c-newaid-stage5expl.is-ok-true {
