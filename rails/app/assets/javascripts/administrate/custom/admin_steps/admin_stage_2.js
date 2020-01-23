@@ -13,6 +13,16 @@ clara.js_define("admin_stage_2", {
       clara.admin_stage_steps.please(2);
 
 
+      $("button.js-hide-convention").click(function () {
+        $(".alert-convention").hide()
+        $.ajax({
+          url: $(".alert-convention").data("url"),
+          type: "POST"
+        });
+        
+      })
+
+
       function sth_changed() {
         var ALERT_MSG = "Attention, vous avez des modifications en cours non enregistrées. Quitter quand même la page ?"
         $("button.c-newaid-actionrecord").removeAttr("disabled");

@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       get  "new_aid_stage_1"
       post "create_stage_1"
       get  "new_aid_stage_2"
+      post "hide_alert_convention"
       post "create_stage_2"
       get  "new_aid_stage_3"
       post "create_stage_3"

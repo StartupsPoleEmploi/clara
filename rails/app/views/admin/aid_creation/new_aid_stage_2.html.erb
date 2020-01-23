@@ -60,7 +60,7 @@
           <%= hidden_field(:slug, :value, value: page.resource.slug) %>
           <%= hidden_field(:modify, :value, :value => params[:modify]) %>
           <% if v.display_convention? %>
-            <div class="alert-convention">
+            <div class="alert-convention" data-url="<%= admin_aid_creation_hide_alert_convention_path %>">
               <strong>Apprenez à rédiger vos aides comme des pros</strong>
               <p>Nous mettons à votre disposition une charte de contribution pour vous aider à rédiger vos aides</p>
               <div class="alert-controls">

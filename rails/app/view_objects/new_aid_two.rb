@@ -9,16 +9,9 @@ class NewAidTwo < NewAidStep
   end
 
   def display_convention?
-    # HACK : force to load session here
-    @context.session["init"] = true
-    if @context.session[:display_convention]
-      return false
-    else
-      @context.session[:display_convention] = "already_shown_once"
-      return true
-    end
+    @context.session["init"] = true # HACK : force to load session here
+    @context.session[:hide_convention] == nil
   end
-
 
   def attr_name(attribute)
     attribute.attribute.to_s
