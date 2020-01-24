@@ -16,7 +16,7 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout:
-          path: ~/rails
+          path: rails
 
       - restore_cache:
           path: rails
