@@ -19,12 +19,15 @@ jobs:
           path: ~/rails
 
       - restore_cache:
+          path: ~/rails
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - gem-cache-v1-{{ arch }}-{{ .Branch }}
             - gem-cache-v1
 
-      - run: bundle install --path vendor/bundle
+      - run: 
+          path: ~/rails
+          command: bundle install --path vendor/bundle
 
       - save_cache:
           key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
