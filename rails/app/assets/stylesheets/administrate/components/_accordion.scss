@@ -10,11 +10,15 @@ button.js-accordion__header {
   display: block !important;
 }
 
-.js-accordion__header[aria-expanded="true"]:before {
+.js-accordion__header[aria-expanded="true"]:after {
   content: "∧ ";
+  text-align: right;
+  float:right;
 }
-.js-accordion__header[aria-expanded="false"]:before {
+.js-accordion__header[aria-expanded="false"]:after {
   content: "∨ ";
+  text-align: right;
+  float:right;
 }
 
 .js-accordion__header[aria-selected="true"] {

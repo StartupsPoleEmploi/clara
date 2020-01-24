@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 25.0.0 (27/01/2020)
+-[#1522][FEATURE] admin - étape 2 - chevron à droite
+
+
 ## 24.7.0 (24/01/2020)
 -[#1517][TECH] refaire README
 
