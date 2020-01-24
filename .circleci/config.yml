@@ -1,8 +1,11 @@
 version: 2.1
 
+general:
+  build_dir: rails
+
 jobs:
   build:
-    working_directory: ~/rails
+    # working_directory: ~/rails
     docker:
       - image: circleci/ruby:2.6.0-node-browsers-legacy
         environment:
@@ -16,17 +19,17 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout: # check out the code in the project directory
-          path: ~/rails
+          # path: ~/rails
 
       - restore_cache:
-          path: ~/rails
+          # path: ~/rails
           keys:
             - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - gem-cache-v1-{{ arch }}-{{ .Branch }}
             - gem-cache-v1
 
       - run:
-          path: ~/rails
+          # path: ~/rails
           command: 
             bundle install --path vendor/bundle
       - save_cache:
@@ -36,20 +39,20 @@ jobs:
             - vendor/bundle
             
       - run:
-          path: ~/rails
+          # path: ~/rails
           name: run db migrations
           command: bin/rails db:migrate RAILS_ENV=test
 
       - run:
-          path: ~/rails
+          # path: ~/rails
           name: run ruby test
           command: bin/rails test
 
       - run: 
-          path: ~/rails
+          # path: ~/rails
           command: sudo npm install -g istanbul
 
       - run:
-          path: ~/rails
+          # path: ~/rails
           name: run JS test
           command: bundle exec teaspoon
