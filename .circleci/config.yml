@@ -15,7 +15,8 @@ jobs:
           POSTGRES_DB: ara_test
           POSTGRES_PASSWORD: ""
     steps:
-      - checkout # check out the code in the project directory
+      - checkout:
+          path: ~/rails
 
       - restore_cache:
           keys:
