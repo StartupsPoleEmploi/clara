@@ -1,7 +1,7 @@
 version: 2.1
 
 general:
-  build_dir: rails
+  working_directory: rails
 
 jobs:
   build:
