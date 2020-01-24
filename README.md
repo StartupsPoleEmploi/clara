@@ -18,8 +18,7 @@ Il faut disposer des droits d'accès sur GitHub et Gitlab pour installer le proj
 Vous aurez besoin du VPN interne à Pôle Emploi pour déployer en recette
 
 ```
-~/workspace/repo$> cd private
-~/workspace/repo$> ./.execute.sh deploy recette
+~/workspace/repo/private$> ./.execute.sh deploy recette
 ```
 
 ## Déploiement en production
@@ -27,7 +26,6 @@ Vous aurez besoin du VPN interne à Pôle Emploi pour déployer en recette
 Vous aurez besoin d'une clé SSH pour déployer en production
 
 ```
-~/workspace/repo$> cd private
-~/workspace/repo$> ./.execute.sh deploy production
+~/workspace/repo/private$> ./.execute.sh deploy production
 ```
 
