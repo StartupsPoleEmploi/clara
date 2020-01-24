@@ -35,15 +35,20 @@ jobs:
       #       - vendor/bundle
             
       - run:
+          path: rails
           name: run db migrations
           command: bin/rails db:migrate RAILS_ENV=test
 
       - run:
+          path: rails
           name: run ruby test
           command: bin/rails test
 
-      - run: sudo npm install -g istanbul
+      - run:
+          path: rails
+          command: sudo npm install -g istanbul
 
       - run:
+          path: rails
           name: run JS test
           command: bundle exec teaspoon
