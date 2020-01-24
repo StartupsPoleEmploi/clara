@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 24.7.0 (24/01/2020)
+-[#1517][TECH] refaire README
+
+
 ## 24.6.1 (24/01/2020)
 -[#1520][BUG] IE11 rubriques
 
