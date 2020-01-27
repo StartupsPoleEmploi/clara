@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 25.1.0 (27/01/2020)
+-[#1514][FEATURE] barre de progression
+
+
 ## 25.0.1 (27/01/2020)
 -[#1509][TECH] supprimer la table "rule_check"
 
