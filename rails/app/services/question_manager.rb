@@ -28,10 +28,6 @@ class QuestionManager
       form = args[1]
       res = self.public_send('after_' + referer, nil)[:weight]
     end
-    p '- - - - - - - - - - - - - - getCurrentWeight res- - - - - - - - - - - - - - - -' 
-    pp res
-    pp 1/8
-    p ''
     res 
   end
 
@@ -44,8 +40,6 @@ class QuestionManager
   end
 
   def after_inscription(inscriptionForm)
-    p '- - - - - - - - - - - - - - after_inscription- - - - - - - - - - - - - - - -' 
-    p ''
     path = ""
     if inscriptionForm
       path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path

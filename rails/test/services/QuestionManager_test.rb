@@ -1,6 +1,86 @@
 require "test_helper"
 
 class QuestionManagerTest < ActiveSupport::TestCase
+
+  test ".getCurrentWeight empty args, weight is 0" do
+    #given
+    #when
+    res = QuestionManager.new.getCurrentWeight
+    #then
+    assert_equal(0, res)
+  end
+
+  test ".getCurrentWeight inscription, weight is 1/8" do
+    #given
+    referer = 'inscription'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(1.0/8, res)
+  end
+
+  test ".getCurrentWeight go from category to allocation" do
+    #given
+    referer = 'category'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(2.0/8, res)
+  end
+
+  test ".getCurrentWeight go from allocation to A.R.E, if type of allocation is 'ASS_AER_APS_AS-FNE'" do
+    #given
+    referer = 'allocation'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(3.0/8, res)
+  end
+
+  test ".getCurrentWeight go from A.R.E to age" do
+    #given
+    referer = 'are'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(4.0/8, res)
+  end
+
+  test ".getCurrentWeight go from age to grade" do
+    #given
+    referer = 'age'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(5.0/8, res)
+  end
+
+  test ".getCurrentWeight go from grade to address" do
+    #given
+    referer = 'grade'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(6.0/8, res)
+  end
+
+  test ".getCurrentWeight go from address to other" do
+    #given
+    referer = 'address'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(7.0/8, res)
+  end
+
+  test ".getCurrentWeight go from other to results" do
+    #given
+    referer = 'other'
+    #when
+    res = QuestionManager.new.getCurrentWeight(referer, nil)
+    #then
+    assert_equal(8.0/8, res)
+  end
   
   test ".getNextPath empty args, go to inscription screen by default" do
     #given
