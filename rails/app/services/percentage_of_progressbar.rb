@@ -5,6 +5,7 @@ class PercentageOfProgressbar
     pp the_question
     p ''
     res = QuestionManager.new.getCurrentWeight(the_question)
+    
     p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
     pp res
     p ''
