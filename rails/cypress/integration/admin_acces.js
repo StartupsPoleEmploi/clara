@@ -178,7 +178,5 @@ describe("Liste des accès", function () {
 
   })
 
-
-
 })
 
