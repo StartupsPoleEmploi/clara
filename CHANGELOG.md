@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 25.0.1 (27/01/2020)
+-[#1509][TECH] supprimer la table "rule_check"
+
+
 ## 25.0.0 (27/01/2020)
 -[#1522][FEATURE] admin - étape 2 - chevron à droite
 

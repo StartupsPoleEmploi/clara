@@ -89,7 +89,6 @@ Rails.application.routes.draw do
     get 'status', to: 'status#index'
     resources :variables
     resources :contract_types
-    resources :rule_checks
     root to: "aids#index"
   end
 
