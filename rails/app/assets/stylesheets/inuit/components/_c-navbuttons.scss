@@ -1,8 +1,16 @@
 .c-navbutton {
-  @extend .c-button;
-  font-size: 24px; //HACK
-  margin-top: space(2);
-  width: 2*space(11);
+  border-radius: 20px;
+  border: solid 1px #057dbc;
+  background-color: #057dbc;
+  padding: space(5) space(7);
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
 }
 
 .c-navbutton--previous {
