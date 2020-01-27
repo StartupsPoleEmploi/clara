@@ -18,9 +18,10 @@
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
-    .o-card
+    .o-card.o-card--question
       = form_with model: @are, :local => true, url: are_questions_path do |f|
 
+        = render 'shared/progressbar'
         = render 'shared/a_form_header', {title: "#{raw_description}", subtitle: "Ce montant est disponible sur pole-emploi.fr, dans votre espace personnel."}
 
         .c-are__form{:class => classes_of_are_form}

@@ -112,7 +112,10 @@ class QuestionManager
   end
 
   def after_other(asker_id)
-    path = aides_path + '?for_id=' + asker_id
+    path = ""
+    if asker_id
+      path = aides_path + '?for_id=' + asker_id
+    end
     {
       weight: 8.0/8,
       path: path

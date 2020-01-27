@@ -6,10 +6,11 @@
 
   = render 'shared/breadcrumb'
   .u-useful-width.u-margin-constraint
-    .o-card
+    .o-card.o-card--question
 
       = form_with model: @allocation, url: allocation_questions_path, :local => true do |f|
 
+        = render 'shared/progressbar'
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
       
         .o-layout.o-layout--stretch.o-layout--center

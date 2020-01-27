@@ -8,8 +8,14 @@
   = render 'shared/breadcrumb'
   
   .u-useful-width.u-margin-constraint
-    .o-card
+    .o-card.o-card--question
+
+
+
       = form_with model: @grade, url: grade_questions_path, :local => true do |f|
+        
+        = render 'shared/progressbar'
+        
         %h1.c-question-title
           =raw_description
 
