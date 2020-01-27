@@ -12,8 +12,9 @@
 %main#main{role: "main"}
   = render 'shared/breadcrumb'
   .u-useful-width.u-margin-constraint
-    .o-card
+    .o-card.o-card--question
       = form_with model: @age, url: age_questions_path, :local => true do |f|
+        = render 'shared/progressbar'
         %h1.c-question-title
           %span= raw_description
         .c-age__form
