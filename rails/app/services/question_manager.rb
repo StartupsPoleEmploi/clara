@@ -40,7 +40,10 @@ class QuestionManager
   end
 
   def after_inscription(inscriptionForm)
-    path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
+    path = ""
+    if inscriptionForm
+      path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
+    end
     {
       weight: 1,
       path: path
@@ -57,10 +60,12 @@ class QuestionManager
 
   def after_allocation(allocationForm)
     path = ""
-    if allocationForm && (allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP')
-      path = new_are_question_path
-    else
-      path = new_age_question_path
+    if allocationForm 
+      if allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP'
+        path = new_are_question_path
+      else
+        path = new_age_question_path
+      end
     end
     {
       weight: 3,

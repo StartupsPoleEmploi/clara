@@ -1,4 +1,4 @@
-class PercentageOfProgression
+class PercentageOfProgressbar
 
  def call(the_question)
     p '- - - - - - - - - - - - - - the_question- - - - - - - - - - - - - - - -' 
