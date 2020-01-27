@@ -9,7 +9,6 @@ class Navigation < ViewObject
       "admin_explicitations_path", 
       "admin_variables_path", 
       "admin_get_stats_path", 
-      "admin_rule_checks_path", 
       "admin_api_users_path", 
       "admin_users_path", 
       "admin_tracings_path", 
