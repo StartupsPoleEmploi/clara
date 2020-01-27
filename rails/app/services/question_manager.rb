@@ -19,10 +19,22 @@ class QuestionManager
   
   end
 
+  def getCurrentWeight(*args)
+    res = 0
+    if args.empty?
+      res = after_default[:weight]
+    else
+      referer = args[0]
+      form = args[1]
+      res = self.public_send('after_' + referer, nil)[:weight]
+    end
+    res 
+  end
+
   def after_default
     path = new_inscription_question_path
     {
-      weight: 1,
+      weight: 0,
       path: path
     }
   end
@@ -30,7 +42,7 @@ class QuestionManager
   def after_inscription(inscriptionForm)
     path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
     {
-      weight: 2,
+      weight: 1,
       path: path
     }
   end
@@ -38,20 +50,20 @@ class QuestionManager
   def after_category(categoryForm)
     path = new_allocation_question_path
     {
-      weight: 3,
+      weight: 2,
       path: path
     }
   end
 
   def after_allocation(allocationForm)
     path = ""
-    if allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP'
+    if allocationForm && (allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP')
       path = new_are_question_path
     else
       path = new_age_question_path
     end
     {
-      weight: 4,
+      weight: 3,
       path: path
     }
   end
@@ -59,7 +71,7 @@ class QuestionManager
   def after_are(areForm)
     path = new_age_question_path
     {
-      weight: 5,
+      weight: 4,
       path: path
     }
   end
@@ -67,7 +79,7 @@ class QuestionManager
   def after_age(ageForm)
     path = new_grade_question_path
     {
-      weight: 6,
+      weight: 5,
       path: path
     }
   end  
@@ -75,7 +87,7 @@ class QuestionManager
   def after_grade(ageForm)
     path = new_address_question_path
     {
-      weight: 7,
+      weight: 6,
       path: path
     }
   end  
@@ -83,7 +95,7 @@ class QuestionManager
   def after_address(addressForm)
     path = new_other_question_path
     {
-      weight: 8,
+      weight: 7,
       path: path
     }
   end
@@ -91,7 +103,7 @@ class QuestionManager
   def after_other(asker_id)
     path = aides_path + '?for_id=' + asker_id
     {
-      weight: 9,
+      weight: 8,
       path: path
     }
   end 
