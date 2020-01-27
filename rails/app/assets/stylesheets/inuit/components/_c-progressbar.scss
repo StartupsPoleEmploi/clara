@@ -1,3 +1,6 @@
+.c-progressbar {
+  position: relative;
+}
 .c-progressbar-background-container {
   display:inline-block;
   width: 100%;
@@ -10,3 +13,12 @@
   background-color: #ebebeb;
   margin: auto;
 }
+
+.c-progressbar-foreground {
+  position: absolute;
+  height: 8px;
+  width: 20px;
+  border-radius: 10px;
+  background-color:#057dbc;
+}
+
