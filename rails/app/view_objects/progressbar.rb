@@ -4,7 +4,7 @@ class Progressbar < ViewObject
   end
 
   def progressbar_width
-    percentage = PercentageOfProgression.new.call(current_question)
+    percentage = PercentageOfProgressbar.new.call(current_question)
     (percentage * 400).round
   end
 
