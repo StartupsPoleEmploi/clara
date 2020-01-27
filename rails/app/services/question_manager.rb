@@ -10,53 +10,90 @@ class QuestionManager
   def getNextPath(*args)
   
     if args.empty?
-      after_default
+      after_default[:path]
     else
       referer = args[0]
       form = args[1]
-      self.public_send('after_' + referer, form)
+      self.public_send('after_' + referer, form)[:path]
     end
   
   end
 
   def after_default
-    new_inscription_question_path
+    path = new_inscription_question_path
+    {
+      weight: 1,
+      path: path
+    }
   end
 
   def after_inscription(inscriptionForm)
-    inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
+    path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
+    {
+      weight: 2,
+      path: path
+    }
   end
 
   def after_category(categoryForm)
-    new_allocation_question_path
+    path = new_allocation_question_path
+    {
+      weight: 3,
+      path: path
+    }
   end
 
   def after_allocation(allocationForm)
+    path = ""
     if allocationForm.type == 'ASS_AER_APS_AS-FNE' || allocationForm.type == 'ARE_ASP'
-      new_are_question_path
+      path = new_are_question_path
     else
-      new_age_question_path
+      path = new_age_question_path
     end
+    {
+      weight: 4,
+      path: path
+    }
   end
 
   def after_are(areForm)
-    new_age_question_path
+    path = new_age_question_path
+    {
+      weight: 5,
+      path: path
+    }
   end
 
   def after_age(ageForm)
-    new_grade_question_path
+    path = new_grade_question_path
+    {
+      weight: 6,
+      path: path
+    }
   end  
 
   def after_grade(ageForm)
-    new_address_question_path
+    path = new_address_question_path
+    {
+      weight: 7,
+      path: path
+    }
   end  
   
   def after_address(addressForm)
-    new_other_question_path
+    path = new_other_question_path
+    {
+      weight: 8,
+      path: path
+    }
   end
 
   def after_other(asker_id)
-    aides_path + '?for_id=' + asker_id
+    path = aides_path + '?for_id=' + asker_id
+    {
+      weight: 9,
+      path: path
+    }
   end 
 
   def before_other(asker)
