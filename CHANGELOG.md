@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 25.2.0 (27/01/2020)
+-[#740][FEATURE] refaire l'UI du front
+
+
 ## 25.1.2 (28/01/2020)
 -[#1514c][TECH] MEP - remettre barre de progression
 
