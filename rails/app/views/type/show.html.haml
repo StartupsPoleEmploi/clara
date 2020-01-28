@@ -2,17 +2,17 @@
 - v = view_object(:type_show, local_assigns)
 - title_data v.title_of_tab
 - description_data(v.contract_type[:description].to_s.html_safe)
-- larger_container ||= "no"
+- larger_container "yes"
 
 
-= render 'shared/breadcrumb', {where: 'detail'}
+= render 'shared/breadcrumb', {larger_container: 'yes', where: 'detail'}
 
 %main#main.c-type-show{role: "main"}
   %h1.c-detail-title{"class" => v.clazz}
-    %span.c-detail-title-inside.u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
+    %span.c-detail-title-inside.u-useful-width.u-useful-width--larger.u-margin-constraint
       = v.title_of_tab
 
-  .c-detail-show2.u-useful-width.u-margin-constraint
+  .c-detail-show2.u-useful-width.u-useful-width--larger.u-margin-constraint
     .o-layout
       .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
         - if v.has_line
