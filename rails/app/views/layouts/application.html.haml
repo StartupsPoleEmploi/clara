@@ -36,13 +36,13 @@
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
     .c-body__wrapper
       .c-body__content
-        = render 'shared/header'
+        = render 'shared/header', {larger_container: (yield :larger_container)}
         = yield
       %footer.c-body__footer
         - if content_for?(:footer)
           = yield :footer
         - else
-          = render partial: 'shared/footer'
+          = render 'shared/footer', {larger_container: (yield :larger_container)}
     
     - if (!hj_disabled? && from_pe?(request))
       = javascript_tag "(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:window.clara.hotjar_id,hjsv:5}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');", id: "hj-script"

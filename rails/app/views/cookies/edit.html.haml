@@ -1,9 +1,10 @@
 - title_data 'Gestion des cookies'
 - description_data 'En activant les cookies, votre navigateur retient certaines informations de visite.'
 - e = view_object(:error_view_object, {errors: flash[:error]})
+- larger_container "yes"
 
 %main#main{role: "main"}
-  .u-useful-width.u-margin-constraint
+  .u-useful-width.u-useful-width--larger.u-margin-constraint
     %h1.c-cookie-title.u-margin-top.u-margin-bottom-large
       Gestion de vos préférences sur les cookies
 

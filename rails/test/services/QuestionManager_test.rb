@@ -16,7 +16,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(1.0/8, res)
+    assert_equal(1.0/9, res)
   end
 
   test ".getCurrentWeight go from category to allocation" do
@@ -25,7 +25,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(2.0/8, res)
+    assert_equal(2.0/9, res)
   end
 
   test ".getCurrentWeight go from allocation to A.R.E, if type of allocation is 'ASS_AER_APS_AS-FNE'" do
@@ -34,7 +34,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(3.0/8, res)
+    assert_equal(3.0/9, res)
   end
 
   test ".getCurrentWeight go from A.R.E to age" do
@@ -43,7 +43,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(4.0/8, res)
+    assert_equal(4.0/9, res)
   end
 
   test ".getCurrentWeight go from age to grade" do
@@ -52,7 +52,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(5.0/8, res)
+    assert_equal(5.0/9, res)
   end
 
   test ".getCurrentWeight go from grade to address" do
@@ -61,7 +61,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(6.0/8, res)
+    assert_equal(6.0/9, res)
   end
 
   test ".getCurrentWeight go from address to other" do
@@ -70,7 +70,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(7.0/8, res)
+    assert_equal(7.0/9, res)
   end
 
   test ".getCurrentWeight go from other to results" do
@@ -79,7 +79,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(8.0/8, res)
+    assert_equal(8.0/9, res)
   end
   
   test ".getNextPath empty args, go to inscription screen by default" do

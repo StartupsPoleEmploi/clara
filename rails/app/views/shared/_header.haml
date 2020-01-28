@@ -1,4 +1,6 @@
+- larger_container ||= "no"
 - unless request.path == root_path
   .c-qh
-    .u-useful-width.u-margin-constraint
+    .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
       = render 'shared/logozone', {display_search: request.path == get_search_front_path}
+    

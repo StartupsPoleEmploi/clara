@@ -11,9 +11,13 @@
   margin-bottom: space(4);
   @include inuit-font-size(14px);
   @include mq($from: tablet) {
-    margin: auto;
-    width: 70%;
+    padding-bottom: 32px;
+    padding-top: 32px;
   }
+}
+
+.c-help--address1st {
+  padding-top: .2rem;
 }
 
 .c-help--allocation {

@@ -1,11 +1,16 @@
 - e ||= OpenStruct.new(has_error:false, main_error:'')
 - title ||= nil
 - subtitle ||= nil
+- youranswer ||= "yes"
 
 
-%h1.c-question-title.u-text--center
+%h1.c-question-title
   =title
 
+- if youranswer == "yes"
+  %h2.c-question-youranswer
+    Votre réponse
+  
 - if subtitle
   .c-question-subtitle
     =subtitle

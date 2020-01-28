@@ -1,13 +1,9 @@
 .c-age__form {
-  text-align: center;
   padding: space(6);
+  padding-left: 0;
   &.is-error {
     padding-bottom: space(0);
   }  
-}
-
-.c-age__title {
-  text-align: center;
 }
 
 .c-age-input {

@@ -1,6 +1,6 @@
 .c-address-input {
   @extend .u-padding-vertical-small;
-  width: 2*space(12) !important; // HACK
+  width: 290px !important; // HACK
 } 
 
 .c-address__explanation {
@@ -11,13 +11,8 @@
 }
 
 .c-address__content {
-  display: flex;
-  flex-direction: column;
   margin-top: space(4);
   margin-bottom: space(4);
-  text-align: center;
-  justify-content: center;
-  align-items: center; 
 }
 
 .c-address__form {

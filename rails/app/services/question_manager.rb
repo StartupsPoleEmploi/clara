@@ -45,7 +45,7 @@ class QuestionManager
       path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
     end
     {
-      weight: 1.0/8,
+      weight: 1.0/9,
       path: path
     }
   end
@@ -53,7 +53,7 @@ class QuestionManager
   def after_category(categoryForm)
     path = new_allocation_question_path
     {
-      weight: 2.0/8,
+      weight: 2.0/9,
       path: path
     }
   end
@@ -68,7 +68,7 @@ class QuestionManager
       end
     end
     {
-      weight: 3.0/8,
+      weight: 3.0/9,
       path: path
     }
   end
@@ -76,7 +76,7 @@ class QuestionManager
   def after_are(areForm)
     path = new_age_question_path
     {
-      weight: 4.0/8,
+      weight: 4.0/9,
       path: path
     }
   end
@@ -84,7 +84,7 @@ class QuestionManager
   def after_age(ageForm)
     path = new_grade_question_path
     {
-      weight: 5.0/8,
+      weight: 5.0/9,
       path: path
     }
   end  
@@ -92,7 +92,7 @@ class QuestionManager
   def after_grade(ageForm)
     path = new_address_question_path
     {
-      weight: 6.0/8,
+      weight: 6.0/9,
       path: path
     }
   end  
@@ -100,7 +100,7 @@ class QuestionManager
   def after_address(addressForm)
     path = new_other_question_path
     {
-      weight: 7.0/8,
+      weight: 7.0/9,
       path: path
     }
   end
@@ -111,7 +111,7 @@ class QuestionManager
       path = aides_path + '?for_id=' + asker_id
     end
     {
-      weight: 8.0/8,
+      weight: 8.0/9,
       path: path
     }
   end 

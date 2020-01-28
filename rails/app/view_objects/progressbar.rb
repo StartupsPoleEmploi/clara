@@ -5,7 +5,9 @@ class Progressbar < ViewObject
 
   def progressbar_width
     percentage = QuestionManager.new.getCurrentWeight(current_question)
-    (percentage * 400).round
+    # Note that background is already 50% of contained with,
+    # thus need here to divide percentage by 2.
+    (percentage*100 / 2).round
   end
 
   def current_question

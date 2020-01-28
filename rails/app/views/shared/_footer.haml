@@ -1,10 +1,11 @@
 - aides ||= []
 - dispositifs ||= []
+- larger_container ||= "no"
 
 - v = view_object(:footer, {aides: aides, dispositifs: dispositifs})
 
 .c-footer.u-padding-vertical-large
-  .u-useful-width.u-margin-constraint
+  .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
     .o-layout
       .o-layout__item{:class=>"u-3/4@desktop u-1/2@tablet"}
         .c-footer__content

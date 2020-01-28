@@ -18,11 +18,12 @@
   = render 'shared/breadcrumb'
 
   .u-useful-width.u-margin-constraint
+    = render 'shared/back_question'
     .o-card.o-card--question
       = form_with model: @are, :local => true, url: are_questions_path do |f|
 
         = render 'shared/progressbar'
-        = render 'shared/a_form_header', {title: "#{raw_description}", subtitle: "Ce montant est disponible sur pole-emploi.fr, dans votre espace personnel."}
+        = render 'shared/a_form_header', {youranswer: "no", title: "#{raw_description}", subtitle: "Ce montant est disponible sur pole-emploi.fr, dans votre espace personnel."}
 
         .c-are__form{:class => classes_of_are_form}
           %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Exemple : 30,50

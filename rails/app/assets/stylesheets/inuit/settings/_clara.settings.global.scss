@@ -79,7 +79,10 @@ a {
 }
 
 .u-useful-width {
-  max-width:1200px;
+  max-width:992px;
   margin-left:auto;
   margin-right:auto;
+}
+.u-useful-width.u-useful-width--larger {
+  max-width:1200px;
 }

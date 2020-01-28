@@ -1,6 +1,7 @@
 - v = view_object(:breadcrumb, local_assigns)
+- larger_container ||= "no"
 
-.c-breadcrumb.u-useful-width.u-margin-constraint
+.c-breadcrumb.u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
   .o-layout
     .o-layout__item{:class => "u-1/2"}
       %nav{"aria-label" => "breadcrumbs", :role => "navigation"}
