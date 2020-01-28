@@ -1,6 +1,7 @@
 # CLARA Changelog
 
 
+
 ## 25.2.0 (27/01/2020)
 -[#740][FEATURE] refaire l'UI du front
 
