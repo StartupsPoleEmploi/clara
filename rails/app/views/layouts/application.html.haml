@@ -36,7 +36,7 @@
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
     .c-body__wrapper
       .c-body__content
-        = render 'shared/header'
+        = render 'shared/header', {larger_container: (yield :larger_container)}
         = yield
       %footer.c-body__footer
         - if content_for?(:footer)

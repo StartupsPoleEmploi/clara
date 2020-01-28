@@ -15,10 +15,8 @@
       = form_with model: @grade, url: grade_questions_path, :local => true do |f|
         
         = render 'shared/progressbar'
+        = render 'shared/a_form_header', {title: "#{raw_description}"}
         
-        %h1.c-question-title
-          =raw_description
-
         .c-question__form 
           %fieldset.c-fieldset.o-centerbox-h__item{ :class => has_error ? 'is-error' : '' }
             %legend.u-hidden-visually Cochez le meilleur diplôme &#xE0;  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.

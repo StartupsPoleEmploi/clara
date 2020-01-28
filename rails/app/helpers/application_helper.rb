@@ -14,6 +14,10 @@ module ApplicationHelper
     content_for :title_data, text.to_s
   end
 
+  def larger_container(text)
+    content_for :larger_container, text.to_s
+  end
+
   def from_pe?(the_request)
     urls = ENV['ARA_URL_PE'] || "nothing"
     urls.split(",").include?(the_request.remote_ip)

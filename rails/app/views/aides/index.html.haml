@@ -2,9 +2,10 @@
 
 - title_data v.title.html_safe
 - description_data v.description.html_safe
-  
+- larger_container "yes"
+
 %main#main.c-results-index{role: 'main'}
-  = render 'shared/breadcrumb'
+  = render 'shared/breadcrumb', {larger_container: "yes"}
 
   - if v.has_user
     = render 'shared/result_default', local_assigns

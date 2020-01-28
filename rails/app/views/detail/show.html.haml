@@ -3,17 +3,18 @@
 - title_data "#{aid[:name]}"
 - description_data "#{aid[:what]}"
 - has_active_user = !!params[:for_id]
+- larger_container "yes"
 
 
 %main#main.c-detail-show{role: "main"}
 
-  = render 'shared/breadcrumb'
+  = render 'shared/breadcrumb', {larger_container: "yes"}
 
   %h1.c-detail-title.u-margin-bottom-none
-    .c-detail-title-inside.u-useful-width.u-margin-constraint
+    .c-detail-title-inside.u-useful-width.u-useful-width--larger.u-margin-constraint
       = aid[:name]
   
-  .u-useful-width.u-margin-constraint.u-margin-vertical-small
+  .u-useful-width.u-useful-width--larger.u-margin-constraint.u-margin-vertical-small
     .c-detail-goback.u-margin-bottom-small{"onclick" =>"window.history.back();"}
       %strong < Retour
     
