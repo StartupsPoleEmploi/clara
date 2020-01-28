@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 25.1.2 (28/01/2020)
+-[#1514c][TECH] MEP - remettre barre de progression
+
+
 ## 25.1.1 (28/01/2020)
--[#1514b][FEATURE] MEP - cacher barre de progression
+-[#1514b][TECH] MEP - cacher barre de progression
 
 
 ## 25.1.0 (27/01/2020)
