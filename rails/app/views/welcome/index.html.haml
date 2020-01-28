@@ -6,6 +6,8 @@
 - slug_of_amob = local_assigns[:slug_of_amob] || "not_found"
 - slug_of_alternance = local_assigns[:slug_of_alternance] || "not_found"
 - slug_of_project = local_assigns[:slug_of_project] || "not_found"
+- larger_container "yes"
+
 
 .c-newhome
 
@@ -15,6 +17,6 @@
 
 
   - content_for :footer do
-    = render partial: 'shared/footer', locals: {aides: type_aides, dispositifs: type_dispositifs}
+    = render partial: 'shared/footer', locals: {larger_container: "yes", aides: type_aides, dispositifs: type_dispositifs}
 
 = render 'shared/cookies_banner'
