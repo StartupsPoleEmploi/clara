@@ -143,7 +143,7 @@ input.c-main-cta {
   }
   @include mq($from: wide) {
     @include inuit-font-size(18px);
-    // padding: space(6) space(12) space(6) space(12);
+    padding: space(6) space(12) space(6) space(12);
   }
 }
 
