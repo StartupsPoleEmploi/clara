@@ -2,7 +2,11 @@
 
 
 
-## 25.2.0 (27/01/2020)
+## 25.3.0 (30/01/2020)
+-[#1524][FEATURE] changer numéro de question
+
+
+## 25.2.0 (28/01/2020)
 -[#740][FEATURE] refaire l'UI du front
 
 
