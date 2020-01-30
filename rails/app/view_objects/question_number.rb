@@ -85,7 +85,8 @@ class QuestionNumber < ViewObject
   end
 
   def _isnt_montant(asker)
-    asker.v_allocation_type == 'ASS_AER_APS_AS-FNE' || asker.v_allocation_type == 'ARE_ASP'
+    is_montant = asker.v_allocation_type == 'ASS_AER_APS_AS-FNE' || asker.v_allocation_type == 'ARE_ASP'
+    !is_montant
   end
 
 end
