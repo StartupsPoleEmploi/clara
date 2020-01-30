@@ -6,6 +6,12 @@ describe("Quand on arrive sur la question adresse", function () {
     cy.visit('/address_questions/new')
   })
 
+  it("Les éléments : retour, progressbar, et numéro de question sont présents", function () {
+    cy.get('.c-progressbar').should("exist")
+    cy.get('.c-question-number').should("exist")
+    cy.get('.c-back-question').should("exist")
+  })
+
   it("Champ nombre vide", function () {
     cy.get('input[type="number"]').should('be.empty')
   })
@@ -54,15 +60,6 @@ describe("Quand on arrive sur la question adresse", function () {
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
     // then
     cy.get(".c-situation--address").shouldHaveTrimmedText("75017 Paris")
-  })
-
-  it("On peut revenir à l'écran précédent", function () {
-    // given
-    cy.visit('/address_questions/new')
-    // when
-    cy.get('input[value="Revenir"]').click()
-    // then
-    cy.location('pathname').should('not.contain', 'address_questions')
   })
 
 })

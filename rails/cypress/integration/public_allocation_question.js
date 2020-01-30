@@ -6,6 +6,12 @@ describe("Quand on arrive sur la question allocation", function () {
     cy.visit('/allocation_questions/new')
   })
 
+  it("Les éléments : retour, progressbar, et numéro de question sont présents", function () {
+    cy.get('.c-progressbar').should("exist")
+    cy.get('.c-question-number').should("exist")
+    cy.get('.c-back-question').should("exist")
+  })
+
   it("Aucun radiobutton coché", function () {
     cy.get('input[type="radio"]').should('not.be.checked')
   })
@@ -35,13 +41,5 @@ describe("Quand on arrive sur la question allocation", function () {
     cy.location('pathname').should('not.contain', 'allocation_questions')
   })
 
-  it("On peut revenir à l'écran précédent", function () {
-    // given
-    cy.visit('/allocation_questions/new')
-    // when
-    cy.get('input[value="Revenir"]').click()
-    // then
-    cy.location('pathname').should('not.contain', 'allocation_questions')
-  })
 
 })

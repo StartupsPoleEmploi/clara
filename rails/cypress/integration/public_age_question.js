@@ -6,6 +6,12 @@ describe("Quand on arrive sur la question âge", function () {
     cy.visit('/age_questions/new')
   })
 
+  it("Les éléments : retour, progressbar, et numéro de question sont présents", function () {
+    cy.get('.c-progressbar').should("exist")
+    cy.get('.c-question-number').should("exist")
+    cy.get('.c-back-question').should("exist")
+  })
+
   it("Champ nombre vide", function () {
     cy.get('input[type="number"]').should('be.empty')
   })
@@ -31,15 +37,6 @@ describe("Quand on arrive sur la question âge", function () {
     cy.get('input[type="number"]').first().type("44")
     // when
     cy.get('input[value="Continuer"]').click()
-    // then
-    cy.location('pathname').should('not.contain', 'age_questions')
-  })
-
-  it("On peut revenir à l'écran précédent", function () {
-    // given
-    cy.visit('/age_questions/new')
-    // when
-    cy.get('input[value="Revenir"]').click()
     // then
     cy.location('pathname').should('not.contain', 'age_questions')
   })
