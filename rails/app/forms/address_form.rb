@@ -12,6 +12,9 @@ class AddressForm < ActiveType::Object
   attr_reader :value
 
   validate :cannot_change_address_manually
+  validates :label, presence: true
+  
+
 
   def cannot_change_address_manually
 
