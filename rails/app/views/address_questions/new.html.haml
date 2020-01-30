@@ -19,6 +19,7 @@
     .o-card.o-card--question
       = form_with model: @address, url: address_questions_path, :local => true do |f|
         = render 'shared/progressbar'
+        = render 'shared/question_number'
 
         %h1.c-question-title.js-title Quel est votre code postal de votre lieu de résidence ?
         .o-layout.o-layout--stretch

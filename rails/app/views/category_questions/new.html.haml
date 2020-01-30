@@ -14,6 +14,7 @@
       = form_with model: @category, url: category_questions_path, :local => true do |f|
         
         = render 'shared/progressbar'
+        = render 'shared/question_number'
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
         
         .c-question__form
