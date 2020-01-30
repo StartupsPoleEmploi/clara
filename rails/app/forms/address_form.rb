@@ -13,13 +13,13 @@ class AddressForm < ActiveType::Object
 
   validate :cannot_change_address_manually
   validates :label, presence: true
-  
+
 
 
   def cannot_change_address_manually
 
     if label.present? && !country.present? 
-      errors.add(:cannot_change_address_manually, "Vous devez sélectionner une ville parmi celles proposées, si vous ne trouvez pas, mettez le code postal de la ville la plus proche ou passez à l'étape suivante.")
+      errors.add(:cannot_change_address_manually, "Vous devez sélectionner une ville parmi celles proposées, si vous ne trouvez pas, mettez le code postal de la ville la plus proche.")
     end 
   end
 end
