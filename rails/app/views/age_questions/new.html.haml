@@ -16,6 +16,7 @@
     .o-card.o-card--question
       = form_with model: @age, url: age_questions_path, :local => true do |f|
         = render 'shared/progressbar'
+        = render 'shared/question_number'
         = render 'shared/a_form_header', {title: "#{raw_description}"}
 
         .c-age__form
