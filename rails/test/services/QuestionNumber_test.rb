@@ -93,6 +93,45 @@ class QuestionNumberTest < ActiveSupport::TestCase
     assert_equal(3, res)
   end
 
+  test '.value for question "grade" is 6 at most' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("grade")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(6, res)
+  end
+  test '.value for question "grade" is 5 if "avec montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("grade")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(5, res)
+  end
+  test '.value for question "grade" is 5 if "sans montant, inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("grade")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(5, res)
+  end
+  test '.value for question "grade" is 4 if "sans montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("grade")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(4, res)
+  end
+
+
+
   def _subcribed_asker(existing_asker=nil)
     res = existing_asker || Asker.new
     res.v_duree_d_inscription = 'more_than_a_year'
