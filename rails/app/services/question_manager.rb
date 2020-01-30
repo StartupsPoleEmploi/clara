@@ -42,7 +42,11 @@ class QuestionManager
   def after_inscription(inscriptionForm)
     path = ""
     if inscriptionForm
-      path = inscriptionForm.value != 'non_inscrit' ? new_category_question_path : new_allocation_question_path
+      if inscriptionForm.value != 'non_inscrit'
+        path = new_category_question_path
+      else
+        path = new_allocation_question_path
+      end
     end
     {
       weight: 1.0/9,
