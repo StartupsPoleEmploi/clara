@@ -20,4 +20,26 @@ class QuestionNumberTest < ActiveSupport::TestCase
     #then
     assert_equal(2, res)
   end
+  test '.value for question "allocation" is 2 if asker is "non_inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker)
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("allocation")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(2, res)
+  end
+
+  def _unsubcribed_asker(existing_asker=nil)
+    res = existing_asker || Asker.new
+    res.v_duree_d_inscription = 'non_inscrit'
+    res
+  end
+
+  def _asker_without_montant(existing_asker=nil)
+    res = existing_asker || Asker.new
+    res.v_allocation_type = 'ASS_AER_APS_AS-FNE'
+    res
+  end
+
 end
