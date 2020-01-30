@@ -56,15 +56,42 @@ class QuestionNumberTest < ActiveSupport::TestCase
     #then
     assert_equal(3, res)
   end
-  # test '.value for question "age" is 5 at most' do
-  #   #given
-  #   allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(Asker.new)
-  #   allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("age")
-  #   #when
-  #   res = QuestionNumber.new(nil).value
-  #   #then
-  #   assert_equal(5, res)
-  # end
+  test '.value for question "age" is 5 at most' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("age")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(5, res)
+  end
+  test '.value for question "age" is 4 if "avec montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("age")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(4, res)
+  end
+  test '.value for question "age" is 4 if "sans montant, inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("age")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(4, res)
+  end
+  test '.value for question "age" is 3 if "sans montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("age")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(3, res)
+  end
 
   def _subcribed_asker(existing_asker=nil)
     res = existing_asker || Asker.new
@@ -79,6 +106,12 @@ class QuestionNumberTest < ActiveSupport::TestCase
   end
 
   def _asker_without_montant(existing_asker=nil)
+    res = existing_asker || Asker.new
+    res.v_allocation_type = 'RSA'
+    res
+  end
+
+  def _asker_with_montant(existing_asker=nil)
     res = existing_asker || Asker.new
     res.v_allocation_type = 'ASS_AER_APS_AS-FNE'
     res
