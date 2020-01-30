@@ -13,6 +13,7 @@
       = form_with model: @other, url: other_questions_path, :local => true do |f|
     
         = render 'shared/progressbar'
+        = render 'shared/question_number'
         = render 'shared/a_form_header', {youranswer: "no", title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
         
         %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }

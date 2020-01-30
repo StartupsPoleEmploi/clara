@@ -12,6 +12,7 @@
       = form_with model: @allocation, url: allocation_questions_path, :local => true do |f|
 
         = render 'shared/progressbar'
+        = render 'shared/question_number'
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
       
         .o-layout.o-layout--stretch.o-layout--center
