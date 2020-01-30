@@ -81,11 +81,18 @@ class QuestionNumber < ViewObject
   end
 
   def _isnt_inscrit(asker)
-    asker.v_duree_d_inscription == 'non_inscrit'
+    is_inscrit = false
+    if asker && asker.v_duree_d_inscription
+      is_inscrit = asker.v_duree_d_inscription == 'non_inscrit'
+    end
+    !is_inscrit
   end
 
   def _isnt_montant(asker)
-    is_montant = asker.v_allocation_type == 'ASS_AER_APS_AS-FNE' || asker.v_allocation_type == 'ARE_ASP'
+    is_montant = false
+    if asker && asker.v_allocation_type
+      is_montant = asker.v_allocation_type == 'ASS_AER_APS_AS-FNE' || asker.v_allocation_type == 'ARE_ASP'
+    end
     !is_montant
   end
 
