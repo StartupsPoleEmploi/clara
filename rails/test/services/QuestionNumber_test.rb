@@ -167,6 +167,43 @@ class QuestionNumberTest < ActiveSupport::TestCase
     assert_equal(5, res)
   end
 
+  test '.value for question "other" is 8 at most' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("other")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(8, res)
+  end
+  test '.value for question "other" is 7 if "avec montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_with_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("other")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(7, res)
+  end
+  test '.value for question "other" is 7 if "sans montant, inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_subcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("other")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(7, res)
+  end
+  test '.value for question "other" is 6 if "sans montant, non inscrit"' do
+    #given
+    allow_any_instance_of(QuestionNumber).to receive(:_get_asker).and_return(_unsubcribed_asker(_asker_without_montant))
+    allow_any_instance_of(QuestionNumber).to receive(:_current_question).and_return("other")
+    #when
+    res = QuestionNumber.new(nil).value
+    #then
+    assert_equal(6, res)
+  end
+
 
 
   def _subcribed_asker(existing_asker=nil)
