@@ -2,6 +2,10 @@
 
 
 
+## 25.4.1 (31/01/2020)
+-[#740b][DESIGN] chevron à gauche
+
+
 ## 25.4.0 (31/01/2020)
 -[#1515][FEATURE] rendre la question code postal obligatoire
 
