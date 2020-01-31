@@ -2,6 +2,10 @@
 
 
 
+## 25.4.0 (31/01/2020)
+-[#1515][FEATURE] rendre la question code postal obligatoire
+
+
 ## 25.3.0 (30/01/2020)
 -[#1524][FEATURE] changer numéro de question
 

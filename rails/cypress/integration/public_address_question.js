@@ -24,11 +24,11 @@ describe("Quand on arrive sur la question adresse", function () {
     cy.get('.c-label.is-error').should('not.exist')
   })
 
-  it("Pas d'erreur si on ne remplit rien ", function () {
+  it("Erreur si on ne remplit rien ", function () {
     // when
     cy.get('input[value="Continuer"]').click()
     // then
-    cy.get('.c-label.is-error').should('not.exist')
+    cy.get('.c-label.is-error').should('exist')
   })
 
   it("Cas nominal : on renseigne un code postal, on sélectionne une ville et on valide, ", function () {
@@ -41,6 +41,19 @@ describe("Quand on arrive sur la question adresse", function () {
     cy.get('input[value="Continuer"]').click()
     // then
     cy.location('pathname').should('not.contain', 'address_questions')
+  })
+  it("Erreur : on renseigne un code postal, on sélectionne une ville, on la modifie et on valide", function () {
+    // given
+    cy.visit('/address_questions/new')
+    cy.get('.c-label.is-error').should('not.exist')
+    cy.get('input#search').first().type("44200")
+    cy.get('li.autocomplete-item').should("exist")
+    cy.get('li.autocomplete-item').first().click()
+    cy.get('input#search').first().type("not_allowed_chars")
+    // when
+    cy.get('input[value="Continuer"]').click()
+    // then
+    cy.get('.c-label.is-error').should('exist')
   })
   it("Cas compliqué : arrondissement de grande ville", function () {
     // given
