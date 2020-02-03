@@ -28,7 +28,6 @@
                 = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
                 = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé•e', hide_svg: true} 
               
-              = render 'shared/error_in_form', e: e     
           .o-layout__item{:class => "u-1/1 u-2/5@tablet u-margin-bottom"}
             %section.c-help.c-help--allocation{:tabindex=>"0"}
               %h2 Aide : Liste complète des allocations
@@ -52,4 +51,4 @@
                 %span Régime public de rémunération des demandeurs d'emploi en formation (<strong>RFPE</strong>)
                 %span Rémunération de fin de formation (<strong>RFF</strong>)
      
-        = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f, e: e
