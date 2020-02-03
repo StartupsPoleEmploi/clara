@@ -1,3 +1,11 @@
-.o-layout.o-layout--small.o-layout--reverse
-  .o-layout__item{"class" => "u-text--right"}
+- e ||= OpenStruct.new(has_error:false, main_error:'')
+- m ||= "Veuillez sélectionner l'une de ces options"
+
+.o-layout
+  .o-layout__item{:class => "u-1/1 u-1/2@tablet"}
+    - if e.has_error
+      .c-error-in-form{:class => "u-margin-bottom-small u-margin-bottom-none@tablet"}
+        %label.c-label.is-error  &nbsp; #{m}
+  .o-layout__item{:class => "u-1/1 u-1/2@tablet u-text--right"}
     = f.submit 'Continuer', "name" => "commit", "value"=>"Continuer", "class" => "c-navbutton c-navbutton--continue js-next"
+

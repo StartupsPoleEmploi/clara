@@ -4,14 +4,15 @@
 
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'is-error']
-  - classes_of_are_form = ['c-are__form', 'is-error']
+  - classes_of_input = ['c-field']
+  - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr', 'minimum-descr-error']
 - else
   - classes_of_input = ['c-field']
   - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr']
 
+- previous_value = @are.minimum_income == "not_applicable" ? "" : @are.minimum_income
 
 %main#main{role: "main"}
 
@@ -32,7 +33,7 @@
           = f.text_field :minimum_income, 
             class: classes_of_input,    
             id: 'montant',            
-            value: @are.minimum_income,            
+            value: previous_value,            
             autofocus: true,           
             autocomplete: 'off',
             title: "Montant par mois de l'allocation",       
@@ -40,11 +41,5 @@
 
           %span.mls.c-are-euro
             €
-
-        - if has_error
-          .c-are-error
-            %label#age-error.c-label.is-error{ id: "minimum-descr-error"} &#x2716; #{flash[:error][0]}
-        - else
-          .c-age-error__label.visibility-hidden &nbsp;
             
-        = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f, e: OpenStruct.new(has_error: has_error), m: "Veuillez renseigner un montant"
