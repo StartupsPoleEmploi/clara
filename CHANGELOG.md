@@ -2,6 +2,10 @@
 
 
 
+## 25.5.1 (03/02/2020)
+-[#1531][BUG] bug api
+
+
 ## 25.5.0 (03/02/2020)
 -[#1513][FEATURE] clickable search result
 
