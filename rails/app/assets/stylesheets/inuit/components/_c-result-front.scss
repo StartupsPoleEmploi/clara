@@ -102,6 +102,39 @@ input.c-search-front-submit {
   }
 }
 
+.o-layout.c-result-line-front-item {
+  margin-left: 0;
+}
+
+.o-layout--stretch.c-result-line-front-item > .o-layout__item {
+  display: block;
+}
+
+.o-layout--stretch.c-result-line-front-item > .o-layout__item ~ .o-layout__item {
+  display: inherit;
+}
+
+a.c-result-line-seeaid {
+  border: 0;
+  border-radius: 36px;
+  background-color: #047cbc;
+  padding: 5px 12px 5px 12px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+  height: 29px;
+  margin: auto;
+}
+
 .c-result-line-front-item {
   border-bottom: 1px solid #BDBDBD;
   background-color: white;
