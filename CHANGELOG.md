@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 25.1.1 (03/02/2020)
+-[#1531][TECH] Ajout des custom errors nginx
 
 ## 24.1.1 (21/01/2020)
 -[#1511d][TECH] Version vide de test essai déploiement
