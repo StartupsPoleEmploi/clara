@@ -1,6 +1,6 @@
 .c-result-line-front{class: "#{aids.size <= 20 ? 'has-no-nav' : 'has-nav'}"}
   - aids.each_with_index do |aid, i|      
-    .o-layout.c-result-line-front-item{class: "#{aids.size == 1 ? 'is-first is-last' : i == 0 ? 'is-first' : i == aids.size - 1 ? 'is-last' : ''}"}
+    .o-layout.o-layout--stretch.c-result-line-front-item{class: "#{aids.size == 1 ? 'is-first is-last' : i == 0 ? 'is-first' : i == aids.size - 1 ? 'is-last' : ''}"}
       .o-layout__item{:class => "u-1/1 u-4/5@tablet"}
         .c-result-line-front__name
           = link_to(detail_path(aid["slug"])) do
