@@ -1,8 +1,14 @@
 # CLARA Changelog
 
 
+
+## 25.5.3 (03/02/2020)
+-[#1531c][BUG] bug api, ESD non trouvé
+
+
 ## 25.5.2 (03/02/2020)
 -[#1531b][BUG] bug api
+
 
 ## 25.5.1 (03/02/2020)
 -[#1531][BUG] bug api
