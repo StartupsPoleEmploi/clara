@@ -13,9 +13,9 @@ RUN if [ "$ENV_TYPE" = "production" ]; then \
     rm -f /etc/nginx/conf.d/*; \
     ln -sf /home/nginx/$ENV_TYPE/clara.conf /etc/nginx/conf.d/clara.conf; \
 
-CMD service nginx start; \
-    if [ -d "/home/nginx/$ENV_TYPE/html" ]; then \
+CMD if [ -d "/home/nginx/$ENV_TYPE/html" ]; then \
        ln -sf /home/nginx/$ENV_TYPE/html/custom_404.html /usr/share/nginx/html/custom_404.html; \
        ln -sf /home/nginx/$ENV_TYPE/html/custom_50x.html /usr/share/nginx/html/custom_50x.html; \
-    fi
+    fi \
+    service nginx start; \
     sleep infinity;
