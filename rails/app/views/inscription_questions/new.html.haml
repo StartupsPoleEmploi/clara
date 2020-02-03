@@ -26,6 +26,4 @@
             = render 'shared/inscription_form_line', {id: 'moins_d_un_an', value: @inscription.value, text: 'Moins d\'un an'} 
             = render 'shared/inscription_form_line', {id: 'plus_d_un_an', value: @inscription.value, text: 'Plus d\'un an'} 
           
-          = render 'shared/error_in_form', e: e
-
-        = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f, e: e
