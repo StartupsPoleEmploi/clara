@@ -2,6 +2,10 @@
 
 
 
+## 25.5.0 (03/02/2020)
+-[#1513][FEATURE] clickable search result
+
+
 ## 25.4.1 (31/01/2020)
 -[#740b][DESIGN] chevron à gauche
 
