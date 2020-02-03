@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 25.6.0 (03/02/2020)
+-[#1527][FEATURE] refaire le design des erreurs du formulaire 
+
 
 ## 25.5.3 (03/02/2020)
 -[#1531c][BUG] bug api, ESD non trouvé
