@@ -18,7 +18,7 @@
         = render 'shared/a_form_header', {e: e, title: "#{raw_description}"}
         
         .c-question__form
-          %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+          %fieldset.c-fieldset
             %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
             .c-radioline.js-enterspace{id: 'radio1'}

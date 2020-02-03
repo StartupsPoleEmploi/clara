@@ -16,7 +16,7 @@
         = render 'shared/question_number'
         = render 'shared/a_form_header', {youranswer: "no", title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
         
-        %fieldset.c-fieldset{ :class => e.has_error ? 'is-error' : '' }
+        %fieldset.c-fieldset
           %legend.u-hidden-visually Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
        
           = render 'shared/other_form_line', {id: 'val_spectacle',current_val: @other.val_spectacle, current_text: 'Artiste ou technicien•ne du spectacle'} 

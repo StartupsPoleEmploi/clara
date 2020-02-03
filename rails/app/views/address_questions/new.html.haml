@@ -4,7 +4,7 @@
 
 - has_error = !(flash[:error].blank?)
 - if has_error
-  - classes_of_input = ['c-field', 'c-address-input', 'is-error'].join(" ")
+  - classes_of_input = ['c-field', 'c-address-input'].join(" ")
   - aria_described_by_of_input = ['initInstr', 'address-error'].join(" ")
 - else
   - classes_of_input = ['c-field', 'c-address-input', 'numberonly'].join(" ")
