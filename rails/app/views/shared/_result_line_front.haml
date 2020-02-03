@@ -8,5 +8,5 @@
         .c-result-line-front__description
           = highlight(aid["short_description"], usearch)
       .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-        blabla
+        = link_to("Voir l'aide", detail_path(aid["slug"]), {class: "c-result-line-seeaid"})
 
