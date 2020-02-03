@@ -82,10 +82,4 @@
               %label.c-radiolabel{for: 'niveau_infra_5'}
                 Je n'ai aucun de ces diplômes
           
-          %div
-            - if has_error
-              %label.c-label.is-error &#x2716; #{flash[:error][0]}
-            - else
-              %label.c-label.flex-container.h4-like.visibility-hidden &nbsp;
-
-        = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f, e: OpenStruct.new(has_error: has_error)

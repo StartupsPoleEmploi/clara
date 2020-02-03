@@ -42,10 +42,11 @@
 //= require custom/expand_tree
 //= require custom/inscription_questions
 //= require custom/category_questions
-//= require custom/allocation_questions
 //= require custom/grade_questions
 //= require custom/address_questions
 //= require custom/new_age_question
+//= require custom/new_allocation_question
+//= require custom/new_address_question
 //= require custom/new_are_question
 //= require custom/other_questions
 //= require custom/sign_in
