@@ -29,11 +29,5 @@
               autocomplete: 'off',
               'aria-describedby' => aria_described_by_of_input, 
               'aria-required' => 'true'
-          .c-age-error
-            - if has_error
-              %label.c-age-error__label.c-label.is-error
-                =flash[:error][0]
-            - else
-              .c-age-error__label.visibility-hidden &nbsp;
 
-        = render 'nav/next_previous', f: f
+        = render 'nav/next_previous', f: f, e: OpenStruct.new(has_error: has_error), m: "Veuillez renseigner un âge"
