@@ -2,6 +2,10 @@
 
 
 
+## 25.7.0 (04/02/2020)
+-[#1519][FEATURE] redirection /stats
+
+
 ## 25.6.0 (03/02/2020)
 -[#1527][FEATURE] refaire le design des erreurs du formulaire 
 
