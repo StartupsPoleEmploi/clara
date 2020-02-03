@@ -26,4 +26,12 @@ class TrackApiCallServiceTest < ActiveSupport::TestCase
     #then
     assert_equal("user_not_found@clara.com", result)
   end
+  test '._tracked returns email_not_found@clara.com if input has not email method' do
+    #given
+    given_arg = []
+    #when
+    result = TrackApiCallService.new._tracked(given_arg)
+    #then
+    assert_equal("email_not_found@clara.com", result)
+  end
 end
