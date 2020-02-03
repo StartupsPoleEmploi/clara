@@ -24,6 +24,6 @@ class TrackApiCallServiceTest < ActiveSupport::TestCase
     #when
     result = TrackApiCallService.new._tracked(given_arg)
     #then
-    assert_not_equal("user_not_found@clara.com", result)
+    assert_equal("user_not_found@clara.com", result)
   end
 end
