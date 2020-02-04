@@ -27,3 +27,13 @@
             = render 'shared/inscription_form_line', {id: 'plus_d_un_an', value: @inscription.value, text: 'Plus d\'un an'} 
           
         = render 'nav/next_previous', f: f, e: e
+
+.example
+  %label.radio-button
+    %input#choice1-1.radio-button__input{:name => "choice1", :type => "radio"}/
+    %span.radio-button__control
+    %span.radio-button__label Yes
+  %label.radio-button
+    %input#choice1-2.radio-button__input{:name => "choice1", :type => "radio"}/
+    %span.radio-button__control
+    %span.radio-button__label No
