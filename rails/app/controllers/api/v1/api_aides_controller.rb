@@ -4,7 +4,7 @@ module Api
   module V1
     class ApiAidesController < Api::V1::ApiController
 
-      before_action :authenticate_v1_user, except: [:ping]
+      before_action :authenticate_api_user, except: [:ping]
 
       # /api/v1/aids/ping(.:format)
       def ping
