@@ -2,6 +2,10 @@
 
 
 
+## 25.10.1 (05/02/2020)
+-[#1533][DESIGN] CSS formulaire, radiobouttons
+
+
 ## 25.10.0 (05/02/2020)
 -[#1512][FEATURE] retirer ARE et ASS
 
