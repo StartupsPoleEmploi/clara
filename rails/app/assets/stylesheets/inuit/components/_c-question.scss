@@ -122,3 +122,23 @@ h2.c-question-youranswer {
   transform: scale(1.5);
 }
 
+.radio-button__label {
+  text-align: left;
+  margin-top: 0;
+  vertical-align: baseline;
+  padding: 6px;
+  padding-left: 6px;
+  padding-left: 12px;
+  font-size: 18px;
+  opacity: 0.73;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color:#000000;
+}
+
+.is-error .radio-button__control {
+  border: 2px solid #b50318;
+}
