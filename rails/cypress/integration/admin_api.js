@@ -8,6 +8,7 @@ describe("Utiliser l'API", function() {
 
   let reusable_jwt_token;
 
+
   function first_steps(cy) {
     cy.get(TRY_SEL).first().click()
     cy.get(EXEC_SEL).should("exist")
@@ -81,10 +82,10 @@ describe("Utiliser l'API", function() {
     })
   })
 
-  // console.log(txt.replace(/[\s\n\r]+/g, ''));
   describe("La liste des aides éligibles", function () {
     beforeEach(function () {
       // given
+      // cy.reload()
       cy.visit('apidocs#/aids/getEligibleAids')
     })
     it("Doit renvoyer les données d'entrée, suivi des aides éligibles", function () {
@@ -103,6 +104,25 @@ describe("Utiliser l'API", function() {
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{"age":"22"}},"aids":[{')).to.eq(0)}
       )
     })
+    it("Doit renvoyer une 400 si paramètres d'entrée hors cadre", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="age - Age of asker"]')
+        .clear()
+        .invoke('val', '1')
+        .trigger('input')
+      cy.get('input[placeholder="age - Age of asker"]').click()
+      cy.get('input[placeholder="age - Age of asker"]').type("2")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
+        (txt) => {expect(txt.indexOf('Error: Bad Request')).to.eq(0)}
+      )
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"age":["doitêtresupérieurouégalà16"]}')).to.eq(0)}
+      )
+    })
     it("Doit renvoyer une 401 si mal authentifié", function () {
       // when
       first_steps(cy)
@@ -114,10 +134,10 @@ describe("Utiliser l'API", function() {
     })
   })
 
-  // console.log(txt.replace(/[\s\n\r]+/g, ''));
   describe("La liste des aides inéligibles", function () {
     beforeEach(function () {
       // given
+      // cy.reload()
       cy.visit('apidocs#/aids/getIneligibleAids')
     })
     it("Doit renvoyer les données d'entrée, suivi des aides inéligibles", function () {
@@ -136,6 +156,25 @@ describe("Utiliser l'API", function() {
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{"age":"17"}},"aids":[{')).to.eq(0)}
       )
     })
+    it("Doit renvoyer une 400 si paramètres d'entrée hors cadre", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="age - Age of asker"]')
+        .clear()
+        .invoke('val', '1')
+        .trigger('input')
+      cy.get('input[placeholder="age - Age of asker"]').click()
+      cy.get('input[placeholder="age - Age of asker"]').type("2")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
+        (txt) => {expect(txt.indexOf('Error: Bad Request')).to.eq(0)}
+      )
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"age":["doitêtresupérieurouégalà16"]}')).to.eq(0)}
+      )
+    })
     it("Doit renvoyer une 401 si mal authentifié", function () {
       // when
       first_steps(cy)
@@ -148,7 +187,7 @@ describe("Utiliser l'API", function() {
   })
 
   describe("La liste des aides incertaines", function () {
-    before(function () {
+    beforeEach(function () {
       // given
       cy.visit('apidocs#/aids/getUncertainAids')
     })
@@ -161,6 +200,35 @@ describe("Utiliser l'API", function() {
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"input":{"asker":{}},"aids":[{')).to.eq(0)}
       )
     })
+    it("Doit renvoyer une 400 si paramètres d'entrée hors cadre", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="age - Age of asker"]')
+        .clear()
+        .invoke('val', '1')
+        .trigger('input')
+      cy.get('input[placeholder="age - Age of asker"]').click()
+      cy.get('input[placeholder="age - Age of asker"]').type("2")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
+        (txt) => {expect(txt.indexOf('Error: Bad Request')).to.eq(0)}
+      )
+      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
+        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"age":["doitêtresupérieurouégalà16"]}')).to.eq(0)}
+      )
+    })
+    it("Doit renvoyer une 401 si mal authentifié", function () {
+      // when
+      first_steps(cy)
+      badly_authenticate(cy)
+      fire(cy)
+      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
+        (txt) => {expect(txt.indexOf('Error: Unauthorized')).to.eq(0)}
+      )
+    })
+
   })
 
   describe("La liste des filtres, correctement authentifié", function () {
@@ -232,6 +300,22 @@ describe("Utiliser l'API", function() {
       fire(cy)
       cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
         (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"aid":{"name":"Erasmus+"')).to.eq(0)}
+      )
+    })
+    it("Doit renvoyer une 404 si pas trouvé", function () {
+      // when
+      first_steps(cy)
+      authenticate(cy)
+      cy.get('input[placeholder="aidSlug - Slug of aid"]')
+        .clear()
+        .invoke('val', 'wrong_slug')
+        .trigger('input')
+      cy.get('input[placeholder="aidSlug - Slug of aid"]').click()
+      cy.get('input[placeholder="aidSlug - Slug of aid"]').type("s")
+      cy.get("a.tablinks").first().click()
+      fire(cy)
+      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
+        (txt) => {expect(txt.indexOf('Error: Not Found')).to.eq(0)}
       )
     })
     it("Doit renvoyer une 401 si mal authentifié", function () {
