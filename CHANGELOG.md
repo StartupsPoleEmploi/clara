@@ -3,11 +3,11 @@
 
 
 ## 25.7.2 (04/02/2020)
--[#1531e] bug api unauthorized
+-[#1531e] bug api unauthorized back to new TrackApiCallService
 
 
 ## 25.7.1 (04/02/2020)
--[#1531d] bug api unauthorized
+-[#1531d] bug api unauthorized back to old TrackApiCallService
 
 
 ## 25.7.0 (04/02/2020)
