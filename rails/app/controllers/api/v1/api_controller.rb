@@ -3,8 +3,8 @@ module Api
     class ApiController < ActionController::API
       include Knock::Authenticable
 
-      def authenticate_v1_user
-        authenticate_for ApiUser
+      def authenticate_api_user
+        unauthorized_entity('ApiUser') unless authenticate_entity('ApiUser')
       end
 
     end
