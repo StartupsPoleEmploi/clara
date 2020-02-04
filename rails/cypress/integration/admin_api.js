@@ -85,7 +85,6 @@ describe("Utiliser l'API", function() {
   describe("La liste des aides éligibles", function () {
     beforeEach(function () {
       // given
-      // cy.reload()
       cy.visit('apidocs#/aids/getEligibleAids')
     })
     it("Doit renvoyer les données d'entrée, suivi des aides éligibles", function () {
@@ -137,7 +136,6 @@ describe("Utiliser l'API", function() {
   describe("La liste des aides inéligibles", function () {
     beforeEach(function () {
       // given
-      // cy.reload()
       cy.visit('apidocs#/aids/getIneligibleAids')
     })
     it("Doit renvoyer les données d'entrée, suivi des aides inéligibles", function () {

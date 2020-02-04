@@ -14,8 +14,6 @@ class ApiUser < ApplicationRecord
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_payload payload
-    p '- - - - - - - - - - - - - - from_token_payload- - - - - - - - - - - - - - - -' 
-    p ''
     user_id = payload["sub"]
     # Returns a valid user, `nil` or raise
     Rails.cache.fetch("apiuser:#{user_id}") { self.find(user_id) if payload['class'] && payload['class'] == to_s }
@@ -23,8 +21,6 @@ class ApiUser < ApplicationRecord
 
   # See https://github.com/nsarno/knock/blob/v2.1.1/README.md#customization
   def self.from_token_request request
-    p '- - - - - - - - - - - - - - from_token_request- - - - - - - - - - - - - - - -' 
-    p ''
     return nil unless request.respond_to?(:params) && request.params["auth"] && request.params["auth"]["email"]
     email = request.params["auth"]["email"]
     Rails.cache.fetch("apiuser_email:#{email}") { self.find_by(email: email) }
@@ -33,8 +29,6 @@ class ApiUser < ApplicationRecord
   private
   
   def invalidate_cache
-    p '- - - - - - - - - - - - - - invalidate_cache- - - - - - - - - - - - - - - -' 
-    p ''
     Rails.cache.delete("apiuser:#{id}")
     Rails.cache.delete("apiuser_email:#{email}")
   end
