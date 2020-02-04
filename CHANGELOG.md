@@ -2,6 +2,10 @@
 
 
 
+## 25.9.0 (05/02/2020)
+-[#1536][FEATURE] google optimize
+
+
 ## 25.8.0 (04/02/2020)
 -[#1528][FEATURE] retour question 1
 
