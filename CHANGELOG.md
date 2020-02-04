@@ -2,6 +2,10 @@
 
 
 
+## 25.10.0 (05/02/2020)
+-[#1512][FEATURE] retirer ARE et ASS
+
+
 ## 25.9.0 (05/02/2020)
 -[#1536][FEATURE] google optimize
 

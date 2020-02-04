@@ -81,11 +81,7 @@ class QuestionNumber < ViewObject
   end
 
   def _isnt_inscrit(asker)
-    isnt_inscrit = false
-    if asker && asker.v_duree_d_inscription
-      isnt_inscrit = asker.v_duree_d_inscription == 'non_inscrit'
-    end
-    isnt_inscrit
+    IsNotInscrit.new.call(asker)
   end
 
   def _isnt_montant(asker)

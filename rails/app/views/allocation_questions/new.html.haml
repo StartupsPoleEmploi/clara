@@ -1,7 +1,10 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
+- v = view_object(:allocation_new)
+
 - title_data 'Vos allocations'
 - raw_description = 'Quelle allocation percevez-vous actuellement ?'
 - description_data(raw_description)
+
 %main#main{role: "main"}
 
   = render 'shared/breadcrumb'
@@ -20,9 +23,10 @@
             .c-question__form
               %fieldset.c-fieldset
                 %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
-                
-                = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'Une prestation d’assurance chômage : ARE / ASP'} 
-                = render 'shared/allocation_form_line', {id: 'ASS_AER_APS_AS-FNE',           value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / APS / AS-FNE'} 
+                - if v.display_are?
+                  = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'Une prestation d’assurance chômage : ARE / ASP'} 
+                - if v.display_ass?
+                  = render 'shared/allocation_form_line', {id: 'ASS_AER_APS_AS-FNE',           value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / APS / AS-FNE'} 
                 = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi : RPS / RFPE / RFF / pension de retraite'} 
                 = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
                 = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
