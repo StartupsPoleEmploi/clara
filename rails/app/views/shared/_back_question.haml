@@ -1,4 +1,9 @@
 - v = view_object(:back_question, local_assigns)
+- back_to_previous ||= "no"
 
-%a{class: "c-back-question", onclick: "window.location.href='#{v.url}'"}
-  <svg height="8" viewBox="0 0 5 8" width="5" xmlns="http://www.w3.org/2000/svg"><path d="m3.8 0 1.2 1.2-2.6 2.6 2.6 2.6-1.2 1.2-3.8-3.8.1-.1-.1-.1z" fill-opacity=".6"/></svg> &nbsp;Retour à la question précédente
+%a{class: "c-back-question", onclick: "#{v.onclick_value}"}
+  <svg height="8" viewBox="0 0 5 8" width="5" xmlns="http://www.w3.org/2000/svg"><path d="m3.8 0 1.2 1.2-2.6 2.6 2.6 2.6-1.2 1.2-3.8-3.8.1-.1-.1-.1z" fill-opacity=".6"/></svg>
+  %span
+    &nbsp;
+  %span
+    = v.actual_text
