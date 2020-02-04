@@ -2,6 +2,10 @@
 
 
 
+## 25.8.0 (04/02/2020)
+-[#1528][FEATURE] retour question 1
+
+
 ## 25.7.2 (04/02/2020)
 -[#1531e] bug api unauthorized back to new TrackApiCallService
 

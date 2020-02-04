@@ -9,7 +9,7 @@
 
   .u-useful-width.u-margin-constraint
 
-    = render 'shared/back_question'
+    = render 'shared/back_question', back_to_previous: "yes"
     .o-card.o-card--question
 
       = form_with model: @inscription, url: inscription_questions_path, :local => true do |f|
