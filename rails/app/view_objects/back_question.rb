@@ -13,13 +13,17 @@ class BackQuestion < ViewObject
     @context.request.path.split("_questions")[0][1..-1]
   end
 
+  def _should_go_to_previous_page
+    @back_to_previous == "yes"
+  end
+
   def url
     QuestionManager.new.public_send('before_' + _current_question, _get_asker)
   end
 
   def onclick_value
     res = "window.location.href='#{url}'"
-    if @back_to_previous == "yes"
+    if _should_go_to_previous_page
       res = "window.history.back()"
     end
     res
@@ -27,7 +31,7 @@ class BackQuestion < ViewObject
 
   def actual_text
     res = "Retour à la question précédente"
-    if @back_to_previous == "yes"
+    if _should_go_to_previous_page
       res = "Retour à la page précédente"
     end
     res
