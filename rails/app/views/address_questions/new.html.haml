@@ -55,4 +55,4 @@
               %td.wideField
                 %input#citycode.field{name: "address_form[citycode]", value:"#{@address.citycode}"}/
 
-        = render 'nav/next_previous', f: f, e: OpenStruct.new(has_error: has_error), m: flash.try(:[], "error").try(:[], 0)
+        = render 'nav/next_previous', f: f, e: OpenStruct.new(has_error: has_error), m: flash.try(:[], "error").try(:[], 0), guidance: "yes"
