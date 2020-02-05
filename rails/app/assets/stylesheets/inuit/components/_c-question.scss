@@ -53,6 +53,14 @@ h2.c-question-youranswer {
 }
 
 .c-question-subtitle {
-  @extend .u-margin-vertical-small;
-  font-size: $inuit-font-size-h4;
+  opacity: 0.6;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  margin-bottom: 1.5rem;
 }

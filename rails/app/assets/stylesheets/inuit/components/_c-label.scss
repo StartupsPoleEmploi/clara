@@ -27,3 +27,22 @@
   border: solid 1px #ebcccc;
   background-color: #f2dede;
 }
+
+.c-question-guidance {
+  opacity: 0.53;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+  align-self: end;
+  margin-left: auto;
+  margin-right: .5rem;
+  margin-bottom: .70rem;
+}
+
+.c-nextprev .c-navbutton {
+  align-self: end;
+}

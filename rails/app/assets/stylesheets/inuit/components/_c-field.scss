@@ -3,14 +3,14 @@
   margin: 0;
   line-height: space(8);
   text-align: center;
-  border: 2px solid #96a8b2;
-  border-radius: 4px;
-  background-color: #fff;
   font-family: inherit;
   font-size: 34px; // HACK
   font-weight: 400;
   resize: vertical;
   appearance: none;
+  border-radius: 4px;
+  border: solid 1px #dddbda;
+  background-color: #ffffff;
 }
 
 .c-field:focus {
