@@ -1,3 +1,15 @@
+input#montant {
+  opacity: 0.6;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
 .c-are__form {
   &.is-error {
     padding-bottom: space(0);
@@ -6,22 +18,27 @@
 
 .c-are-label {
   display: block;
+  margin-bottom: .3rem;
 }
 .c-label.c-are-label {
-  font-size: 17px;
+  opacity: 0.55;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: italic;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
 }
 
 .c-are-error {
 }
 
 .c-are-euro {
-  font-size: space(7);
+  font-size: space(6);
 }
 
 .c-are__form .c-field {
-  width: 1.5 * space(12);    
-  @extend .u-padding-vertical-small;
-  input {
-    @extend .u-padding-vertical-small;
-  }
+  width: 60px;
+  height: 39px;
 }
