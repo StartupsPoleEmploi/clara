@@ -27,24 +27,31 @@
                   = render 'shared/allocation_form_line', {id: 'ARE_ASP',                      value: @allocation.type, text: 'Une prestation d’assurance chômage : ARE / ASP'} 
                 - if v.display_ass?
                   = render 'shared/allocation_form_line', {id: 'ASS_AER_APS_AS-FNE',           value: @allocation.type, text: 'Une prestation de solidarité : ASS / AER / APS / AS-FNE'} 
-                = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi : RPS / RFPE / RFF / pension de retraite'} 
-                = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
-                = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
-                = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé•e', hide_svg: true} 
+                - if v.display_ass?
+                  = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi les suivantes : RPS / RFPE / RFF / pension de retraite'} 
+                  = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
+                  = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
+                  = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé•e', hide_svg: true} 
+                - else
+                  = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
+                  = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
+                  = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi les suivantes : RPS / RFPE / RFF / pension de retraite'} 
+                  = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé•e', hide_svg: true} 
               
           .o-layout__item{:class => "u-1/1 u-2/5@tablet u-margin-bottom"}
             %section.c-help.c-help--allocation{:tabindex=>"0"}
               %h2 Aide : Liste complète des allocations
-               
-              %p
-                %span Allocation d'aide au Retour à l'emploi (<strong>ARE</strong>)
-                %span Allocation de sécurisation professionnelle (<strong>ASP</strong>)
-               
-              %p 
-                %span Allocation de solidarité spécifique (<strong>ASS</strong>)
-                %span Allocation équivalent retraite (<strong>AER</strong>)
-                %span Allocation de professionnalisation et de solidarité (<strong>APS</strong>)
-                %span Allocation spéciale du Fonds national de l'emploi (<strong>AS-FNE</strong>)
+
+              - if v.display_ass?               
+                %p
+                  %span Allocation d'aide au Retour à l'emploi (<strong>ARE</strong>)
+                  %span Allocation de sécurisation professionnelle (<strong>ASP</strong>)
+                 
+                %p 
+                  %span Allocation de solidarité spécifique (<strong>ASS</strong>)
+                  %span Allocation équivalent retraite (<strong>AER</strong>)
+                  %span Allocation de professionnalisation et de solidarité (<strong>APS</strong>)
+                  %span Allocation spéciale du Fonds national de l'emploi (<strong>AS-FNE</strong>)
                
               %p 
                 %span Revenu de solidarité active (<strong>RSA</strong>)
