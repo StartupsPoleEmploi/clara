@@ -32,7 +32,7 @@
                   = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
                   = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
                   = render 'shared/allocation_form_line', {id: 'pas_indemnise',                value: @allocation.type, text: 'Je ne suis pas indemnisé•e', hide_svg: true} 
-                - if else
+                - else
                   = render 'shared/allocation_form_line', {id: 'RSA',                          value: @allocation.type, text: 'Le RSA'} 
                   = render 'shared/allocation_form_line', {id: 'AAH',                          value: @allocation.type, text: 'L’AAH'} 
                   = render 'shared/allocation_form_line', {id: 'RPS_RFPA_RFF_pensionretraite', value: @allocation.type, text: 'Une autre indemnité parmi les suivantes : RPS / RFPE / RFF / pension de retraite'} 
