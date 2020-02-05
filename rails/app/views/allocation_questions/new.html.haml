@@ -41,16 +41,17 @@
           .o-layout__item{:class => "u-1/1 u-2/5@tablet u-margin-bottom"}
             %section.c-help.c-help--allocation{:tabindex=>"0"}
               %h2 Aide : Liste complète des allocations
-               
-              %p
-                %span Allocation d'aide au Retour à l'emploi (<strong>ARE</strong>)
-                %span Allocation de sécurisation professionnelle (<strong>ASP</strong>)
-               
-              %p 
-                %span Allocation de solidarité spécifique (<strong>ASS</strong>)
-                %span Allocation équivalent retraite (<strong>AER</strong>)
-                %span Allocation de professionnalisation et de solidarité (<strong>APS</strong>)
-                %span Allocation spéciale du Fonds national de l'emploi (<strong>AS-FNE</strong>)
+
+              - if v.display_ass?               
+                %p
+                  %span Allocation d'aide au Retour à l'emploi (<strong>ARE</strong>)
+                  %span Allocation de sécurisation professionnelle (<strong>ASP</strong>)
+                 
+                %p 
+                  %span Allocation de solidarité spécifique (<strong>ASS</strong>)
+                  %span Allocation équivalent retraite (<strong>AER</strong>)
+                  %span Allocation de professionnalisation et de solidarité (<strong>APS</strong>)
+                  %span Allocation spéciale du Fonds national de l'emploi (<strong>AS-FNE</strong>)
                
               %p 
                 %span Revenu de solidarité active (<strong>RSA</strong>)
