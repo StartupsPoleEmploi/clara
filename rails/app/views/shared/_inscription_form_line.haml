@@ -3,10 +3,12 @@
 - text ||= ""
 
 .c-radioline.js-enterspace{id: "radio_#{id}"}
-  = radio_button_tag "inscription_form[value]", |
-      "#{id}", |
-      "#{value}" == "#{id}", | 
-      id: "#{id}", |
-      class: 'c-radioinput'
-  %label.c-radiolabel.u-padding-left-small{for: "#{id}"}
-    =text
+  %label.radio-button 
+    - if value != ""
+      %input.radio-button__input{:name => "inscription_form[value]", :type => "radio", id: "#{id}", checked: "checked"}
+    - else
+      %input.radio-button__input{:name => "inscription_form[value]", :type => "radio", id: "#{id}"}
+    %span.radio-button__control
+    %span.radio-button__label 
+      =text
+
