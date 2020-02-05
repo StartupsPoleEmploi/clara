@@ -2,6 +2,10 @@
 
 
 
+## 25.10.1 (05/02/2020)
+-[#1540][DESIGN] amélioration des polices
+
+
 ## 25.10.0 (05/02/2020)
 -[#1512][FEATURE] retirer ARE et ASS
 
