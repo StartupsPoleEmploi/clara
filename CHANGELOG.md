@@ -2,6 +2,10 @@
 
 
 
+## 25.10.4 (06/02/2020)
+-[#1533][DESIGN] correction des espacements
+
+
 ## 25.10.3 (06/02/2020)
 -[#1540b][DESIGN] correction des polices
 
