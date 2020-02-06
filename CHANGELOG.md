@@ -2,6 +2,10 @@
 
 
 
+## 25.10.3 (06/02/2020)
+-[#1540b][DESIGN] correction des polices
+
+
 ## 25.10.2 (05/02/2020)
 -[#1541][FEATURE] improve ARE
 
