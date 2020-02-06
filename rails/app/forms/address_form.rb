@@ -11,10 +11,16 @@ class AddressForm < ActiveType::Object
 
   attr_reader :value
 
+  validate :address_must_be_present
   validate :cannot_change_address_manually
-  validates :label, presence: true
 
 
+  def address_must_be_present
+
+    if label.blank?
+      errors.add(:address_must_be_present, "Le code postal est manquant")
+    end 
+  end
 
   def cannot_change_address_manually
 
