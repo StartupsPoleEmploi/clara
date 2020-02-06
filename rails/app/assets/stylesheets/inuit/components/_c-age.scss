@@ -12,8 +12,7 @@ input#age {
 }
 
 .c-age__form {
-  padding: space(6);
-  padding-left: 0;
+  padding: 0 space(6) space(6) 0;
   &.is-error {
     padding-bottom: space(0);
   }  
