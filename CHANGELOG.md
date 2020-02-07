@@ -1,6 +1,8 @@
 # CLARA Changelog
 
 
+## 25.10.5 (07/02/2020)
+-[#1534] ajout de fail2ban
 
 ## 25.10.4 (06/02/2020)
 -[#1533][DESIGN] correction des espacements
