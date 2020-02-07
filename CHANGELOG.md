@@ -2,6 +2,10 @@
 
 
 
+## 25.11.0 (06/02/2020)
+-[#1545][FEATURE] retour à la page d'accueil après la 1ère question
+
+
 ## 25.10.4 (06/02/2020)
 -[#1533][DESIGN] correction des espacements
 
