@@ -4,6 +4,10 @@
 ## 25.10.5 (07/02/2020)
 -[#1534] ajout de fail2ban
 
+## 26.0.0 (10/02/2020)
+-[#1537][DESIGN][SPRINT4] Amélioration UI des questions
+
+
 ## 25.11.0 (06/02/2020)
 -[#1545][FEATURE] retour à la page d'accueil après la 1ère question
 
