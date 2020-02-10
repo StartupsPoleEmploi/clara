@@ -1,9 +1,11 @@
 FROM nginx:1.10.3
 
 RUN apt-get update && \
+    apt-get -y install fail2ban logrotate cron && \
     apt-get -y install vim telnet
 
 ARG ENV_TYPE=${ENV_TYPE:-production}
+ARG NGINX_ERRORLOG=/var/log/nginx/ara_nginx.error.log
 
 #Ajout du repertoire ssl si environnement production
 #Pointe la conf nginx de l'environnement visé
@@ -15,6 +17,17 @@ RUN if [ "$ENV_TYPE" = "production" ]; then \
     ln -sf /home/nginx/$ENV_TYPE/html/custom_404.html /usr/share/nginx/html/custom_404.html; \
     ln -sf /home/nginx/$ENV_TYPE/html/custom_50x.html /usr/share/nginx/html/custom_50x.html;
 
-CMD service nginx start; \
+#Conf fail2ban: surveillance du log d'erreur nginx
+RUN echo "[ssh]\nenabled = false\n\n[nginx-req-limit]\nenabled = true\nfilter = nginx-req-limit\naction = iptables-multiport[name=ReqLimit, port=\"http,https\", protocol=tcp]\nport = http,https\nlogpath = $NGINX_ERRORLOG\nfindtime = 600\nbantime = 7200\nmaxretry = 10\n\n[nginx-conn-limit]\nenabled = true\nfilter = nginx-conn-limit\naction = iptables-multiport[name=ConnLimit, port=\"http,https\", protocol=tcp]\nport = http,https\nlogpath = $NGINX_ERRORLOG\nfindtime = 300\nbantime = 7200\nmaxretry = 100\n" >/etc/fail2ban/jail.d/nginx.conf;\
+    echo "[Definition]\nfailregex = limiting requests, excess:.* by zone.*client: <HOST>" >/etc/fail2ban/filter.d/nginx-req-limit.conf; \
+    echo "[Definition]\nfailregex = ^ \[error\] \d+#\d+: \*\d+ user \"\S+\":? (password mismatch|was not found in \".*\"), client: <HOST>, server: \S+, request: \"\S+ \S+ HTTP/\d+\.\d+\", host: \"\S+\"\s*\$\nignoreregex =" >/etc/fail2ban/filter.d/nginx-http-auth.conf; \
+    echo "[Definition]\nfailregex = limiting connections by zone.*client: <HOST>"  >/etc/fail2ban/filter.d/nginx-conn-limit.conf;
+
+#Pour logrotate sous docker
+RUN echo -e '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
+
+CMD service cron start; \
+    service nginx start; \
+    service fail2ban start; \
     sleep infinity;
 

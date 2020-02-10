@@ -1,6 +1,8 @@
 # CLARA Changelog
 
 
+## 25.10.5 (07/02/2020)
+-[#1534] ajout de fail2ban
 
 ## 25.11.0 (06/02/2020)
 -[#1545][FEATURE] retour à la page d'accueil après la 1ère question
