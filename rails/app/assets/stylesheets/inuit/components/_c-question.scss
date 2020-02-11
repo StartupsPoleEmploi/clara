@@ -30,6 +30,22 @@
   margin-bottom: 0;
 }
 
+.c-question-title__warning {
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #1b1b1b;
+  margin-top: 14px;
+  margin-bottom: 22px;
+}
+
+.c-question-title__warning-red {
+  color: #b50318;  
+}
+
 h1 {
   span.c-question-title__asterisk {
     font-size: 24px;
