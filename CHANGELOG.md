@@ -2,6 +2,10 @@
 
 
 
+## 26.2.0 (11/02/2020)
+-[#1544][FEATURE] Changement tooltip
+
+
 ## 26.1.0 (11/02/2020)
 -[#1527][DESIGN] Questions obligatoires
 
