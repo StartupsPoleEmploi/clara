@@ -3,7 +3,7 @@ clara.js_define("track_outbound_link", {
   please_if: _.stubFalse,
 
   // See https://support.google.com/analytics/answer/7478520?hl=fr
-  please: function(url, target = 'notSet') {
+  please: function(url, target) {
 
     var link_obj = {'href': url};
 
@@ -13,7 +13,7 @@ clara.js_define("track_outbound_link", {
 
     ga('send', 'event', 'outbound', 'click', url, {
      'transport': 'tag',
-     'hitCallback': function(){
+     'hitCallback': function() {
         $('<a />', link_obj).get(0).click();
      }
    });      
