@@ -5,7 +5,10 @@
 
 
 %h1.c-question-title
-  =title
+  %span.c-question-title__asterisk
+    *
+  %span.c-question-title__actual
+    =title
 
 - if youranswer == "yes"
   %h2.c-question-youranswer
