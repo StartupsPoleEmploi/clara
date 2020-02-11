@@ -2,6 +2,10 @@
 
 
 
+## 26.1.0 (11/02/2020)
+-[#1527][DESIGN] Questions obligatoires
+
+
 ## 26.0.0 (10/02/2020)
 -[#1537][DESIGN][SPRINT4] Amélioration UI des questions
 
