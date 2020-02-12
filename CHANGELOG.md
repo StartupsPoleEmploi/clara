@@ -2,6 +2,10 @@
 
 
 
+## 26.3.0 (11/02/2020)
+-[#1526][DESIGN] Espacement dans le msg d'erreur 
+
+
 ## 26.2.0 (11/02/2020)
 -[#1544][FEATURE] Changement tooltip
 
