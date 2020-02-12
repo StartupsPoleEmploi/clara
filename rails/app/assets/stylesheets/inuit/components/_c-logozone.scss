@@ -9,6 +9,15 @@
   }
 }
 
+.c-logozone--clara.c-logozone--clara-notroot {
+  img {
+    width: 12rem;
+    margin-top: 9px;    
+  }
+}
+
+
+
 .c-logozone .c-logozone--pe img {
   margin-left: space(2);
   @include mq($until: tablet) {
