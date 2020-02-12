@@ -3,12 +3,20 @@
   margin-left: -2px;
   img {
     padding-right: space(3);
-    border-right: 1px solid grey;
     @include mq($until: tablet) {
       width: 150px;
     }
   }
 }
+
+.c-logozone--clara.c-logozone--clara-notroot {
+  img {
+    width: 12rem;
+    margin-top: 9px;    
+  }
+}
+
+
 
 .c-logozone .c-logozone--pe img {
   margin-left: space(2);

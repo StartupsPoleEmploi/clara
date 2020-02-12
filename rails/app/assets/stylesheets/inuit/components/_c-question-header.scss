@@ -12,10 +12,7 @@
   .svg-logo-clara-black {
     padding-right: space(3);
   }
-  height: 56px;
-  @include mq($from: tablet) {
-    height: 80px;
-  }
+  height: 80px;
 }
 
 .c-qh > * {

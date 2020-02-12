@@ -2,6 +2,10 @@
 
 
 
+## 26.4.0 (12/02/2020)
+-[#1071][DESIGN] Nouveau logo clara
+
+
 ## 26.3.0 (11/02/2020)
 -[#1526][DESIGN] Espacement dans le msg d'erreur 
 
