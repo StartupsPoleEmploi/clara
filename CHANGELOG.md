@@ -2,6 +2,10 @@
 
 
 
+## 26.5.0 (13/02/2020)
+-[#1523][FEATURE] Suppression des écrans inutiles
+
+
 ## 26.4.0 (12/02/2020)
 -[#1071][DESIGN] Nouveau logo clara
 
