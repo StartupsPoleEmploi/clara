@@ -29,6 +29,21 @@ class SerializeResultsService
 
   def api_eligible(asker, filters)
     calculator = AidCalculationService.get_instance(asker)
+    _whitelist(_filter(calculator.every_eligible, filters))
+  end
+
+  def api_ineligible(asker, filters)
+    calculator = AidCalculationService.get_instance(asker)
+    _whitelist(_filter(calculator.every_ineligible, filters))
+  end
+
+  def api_uncertain(asker, filters)
+    calculator = AidCalculationService.get_instance(asker)
+    _whitelist(_filter(calculator.every_uncertain, filters))
+  end
+
+  def _whitelist(aids)
+    aids.map {|aid| WhitelistAidService.new.for_aid_in_list(aid)}
   end
 
   def _extract_custom_childrens(custom_parent_slug_list)
@@ -69,7 +84,28 @@ class SerializeResultsService
   end
 
   def _filter(elies, filters)
-    _find_elies("filters", filters, elies)
+    regular_elies              = _find_elies("filters", filters, elies)
+
+    selected_elies = []
+
+    all_hash = {
+      regular: {elies: regular_elies, filters: filters},
+    }
+
+    is_filter_required = proc { |k,v| v.is_a?(Hash) && v[:filters].is_a?(String) && !v[:filters].empty? }
+
+    number_of_filter_required = all_hash.count(&is_filter_required)
+
+    if number_of_filter_required == 0
+      # if no filter is required by user, just don't filter, send the elies back
+      selected_elies = elies
+    elsif number_of_filter_required == 1
+      # if only one filter is required by user, just send back the filtered items
+      # [0] is the key, [1] the value
+      selected_elies = all_hash.find(&is_filter_required)[1][:elies]
+    end        
+
+    selected_elies
   end
 
 end
