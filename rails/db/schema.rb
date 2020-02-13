@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_085354) do
+ActiveRecord::Schema.define(version: 2020_02_13_085355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -89,26 +89,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_085354) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "custom_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "custom_parent_filter_id"
-    t.index ["custom_parent_filter_id"], name: "index_custom_filters_on_custom_parent_filter_id"
-    t.index ["slug"], name: "index_custom_filters_on_slug", unique: true
-  end
-
-  create_table "custom_parent_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_custom_parent_filters_on_slug", unique: true
   end
 
   create_table "custom_rule_checks", force: :cascade do |t|
@@ -244,7 +224,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_085354) do
   add_foreign_key "aids", "contract_types"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
-  add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
   add_foreign_key "explicitations", "variables"
   add_foreign_key "rules", "variables"
