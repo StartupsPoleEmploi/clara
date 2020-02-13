@@ -133,10 +133,6 @@ Rails.application.routes.draw do
   get 'aides-sitemap.xml', :to => 'sitemap#aides', :as => 'aides_sitemap'
   get 'types-aides-sitemap.xml', :to => 'sitemap#types', :as => 'types_sitemap'
 
-
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
-
   get '/stats', to: redirect('https://datastudio.google.com/reporting/1CHDn1yxUb7yK_rgH39nHB1-b90Sg22-q/page/IDGN')
 
 end
