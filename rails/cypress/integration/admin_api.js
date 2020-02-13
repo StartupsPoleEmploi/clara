@@ -229,56 +229,6 @@ describe("Utiliser l'API", function() {
 
   })
 
-  describe("La liste des filtres, correctement authentifié", function () {
-    beforeEach(function () {
-      // given
-      cy.visit('/apidocs#/filters/getNeedFilters')
-    })
-    it("Doit renvoyer la liste des filtres de l'écran de résultats", function () {
-      // when
-      first_steps(cy)
-      authenticate(cy)
-      fire(cy)
-      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
-        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"need_filters":[')).to.eq(0)}
-      )
-    })
-    it("Doit renvoyer une 401 si mal authentifié", function () {
-      // when
-      first_steps(cy)
-      badly_authenticate(cy)
-      fire(cy)
-      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
-        (txt) => {expect(txt.indexOf('Error: Unauthorized')).to.eq(0)}
-      )
-    })
-  })
-
-  describe("La liste des filtres par besoin", function () {
-    beforeEach(function () {
-      // given
-      cy.visit('/apidocs#/filters/getNeedFilters')
-    })
-    it("Doit renvoyer la liste des filtres par besoin", function () {
-      // when
-      first_steps(cy)
-      authenticate(cy)
-      fire(cy)
-      cy.get(ANSWER_SEL).first().siblings().invoke('text').should(
-        (txt) => {expect(txt.replace(/[\s\n\r]+/g, '').indexOf('{"need_filters":[')).to.eq(0)}
-      )
-    })
-    it("Doit renvoyer une 401 si mal authentifié", function () {
-      // when
-      first_steps(cy)
-      badly_authenticate(cy)
-      fire(cy)
-      cy.get(ANSWER_SEL_HEADER).first().invoke('text').should(
-        (txt) => {expect(txt.indexOf('Error: Unauthorized')).to.eq(0)}
-      )
-    })
-  })
-
   describe("Le détail d'une aide", function () {
     beforeEach(function () {
       // given

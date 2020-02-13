@@ -123,8 +123,7 @@ class TypeShowTest < ActiveSupport::TestCase
           "ordre_affichage"=>1,
           "contract_type_id"=>6,
           "filters"=>[{"id"=>12, "slug"=>"pres_de_chez_vous"}],
-          "custom_filters"=>[],
-          "need_filters"=>[]},
+        },
        {"id"=>60,
           "name"=>"Accompagnement Intensif des Jeunes (AIJ)",
           "slug"=>"accompagnement-intensif-des-jeunes-aij",
@@ -134,8 +133,7 @@ class TypeShowTest < ActiveSupport::TestCase
           "ordre_affichage"=>46,
           "contract_type_id"=>6,
           "filters"=>[{"id"=>4, "slug"=>"accompagne-recherche-emploi"}],
-          "custom_filters"=>[],
-          "need_filters"=>[]},
+        },
       ]
     }
 

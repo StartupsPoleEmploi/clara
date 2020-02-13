@@ -8,10 +8,6 @@ MagicLamp.define do
     render partial: 'admin/shared/c-simulator-result'
   end
 
-  fixture(name: "realistic_paginated_aid_collection") do
-    render partial: 'test/realistic_aid_collection'
-  end
-
   fixture(name: "geo_api_code_postal") do
     JSON.parse('
       [

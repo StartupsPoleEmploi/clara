@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'api_user_token' => 'api_user_token#create'
       get 'filters'  => 'api_aides#filters'
-      get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
@@ -41,12 +40,7 @@ Rails.application.routes.draw do
     resources :traces do
       get :export, on: :collection
     end
-    resources :domain_filters
-    resources :axle_filters
-    resources :need_filters
     resources :filters
-    resources :custom_filters
-    resources :custom_parent_filters
     resources :aids, only: [:index, :show, :new, :edit, :destroy] do
       get :export, on: :collection
     end

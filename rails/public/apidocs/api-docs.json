@@ -57,58 +57,6 @@
         }
       }
     },
-    "/need_filters":
-    {
-      "get":
-      {
-        "tags": [
-          "filters"
-        ],
-        "summary": "Get need filters",
-        "description": "",
-        "operationId": "getNeedFilters",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-        {
-          "in": "header",
-          "name": "Authorization",
-          "type": "string",
-          "description": "Bearer [your JWT token here]",
-          "required": true
-        }],
-        "responses":
-        {
-          "200":
-          {
-            "description": "Found",
-            "example": {
-              "need_filters": [
-                {
-                  "name": "Gérer un problème d'alcool",
-                  "description": "Savoir gérer un problème d'alcool",
-                  "slug": "gerer-un-probleme-d-alcool",
-                  "axle_filter": "gerer-une-addiction",
-                  "domain_filter": "gerer-une-contrainte-personnelle"
-                }
-              ]
-            }
-          },
-          "500":
-          {
-            "description": "Internal server error"
-          },
-          "429":
-          {
-            "description": "Too many request"
-          }
-        }
-      }
-    },
     "/filters":
     {
       "get":
@@ -333,27 +281,6 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
-        },
-        {
-          "in": "query",
-          "name": "need_filters",
-          "type": "string",
-          "description": "comma-separated values of need_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_filters",
-          "type": "string",
-          "description": "comma-separated values of custom_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_parent_filters",
-          "type": "string",
-          "description": "comma-separated values of custom parent filter's slug",
-          "required": false
         }
       ],
         "responses":
@@ -377,8 +304,6 @@
                   "location_citycode": "02004"
                 },
                 "filters": "garder-enfant",
-                "custom_filters": "lbf_2",
-                "custom_parent_filters": "lbf"
               },
               "aids": [
                 {
@@ -388,17 +313,6 @@
                   "filters": [
                     {
                       "slug": "garder-enfant"
-                    }
-                  ],
-                  "custom_filters": [
-                    {
-                      "slug": "lbf_2",
-                      "parent_slug": "lbf"
-                    }
-                  ],
-                  "need_filters": [
-                    {
-                      "slug": "gerer-un-probleme-d-argent"
                     }
                   ],
                   "contract_type": "contrat-cadre"
@@ -525,27 +439,6 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
-        },
-        {
-          "in": "query",
-          "name": "need_filters",
-          "type": "string",
-          "description": "comma-separated values of need_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_filters",
-          "type": "string",
-          "description": "comma-separated values of custom_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_parent_filters",
-          "type": "string",
-          "description": "comma-separated values of custom parent filter's slug",
-          "required": false
         }],
         
         "responses":
@@ -569,8 +462,6 @@
                   "location_citycode": "02004"
                 },
                 "filters": "garder-enfant",
-                "custom_filters": "lbf_2",
-                "custom_parent_filters": "lbf"
               },
               "aids": [
                 {
@@ -580,17 +471,6 @@
                   "filters": [
                     {
                       "slug": "garder-enfant"
-                    }
-                  ],
-                  "custom_filters": [
-                    {
-                      "slug": "lbf_2",
-                      "parent_slug": "lbf"
-                    }
-                  ],
-                  "need_filters": [
-                    {
-                      "slug": "gerer-un-probleme-d-argent"
                     }
                   ],
                   "contract_type": "contrat-cadre"
@@ -717,27 +597,6 @@
           "type": "string",
           "description": "comma-separated values of filter's slug",
           "required": false
-        },
-        {
-          "in": "query",
-          "name": "need_filters",
-          "type": "string",
-          "description": "comma-separated values of need_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_filters",
-          "type": "string",
-          "description": "comma-separated values of custom_filter's slug",
-          "required": false
-        },
-        {
-          "in": "query",
-          "name": "custom_parent_filters",
-          "type": "string",
-          "description": "comma-separated values of custom parent filter's slug",
-          "required": false
         }],
         
         "responses":
@@ -761,8 +620,6 @@
                   "location_citycode": "02004"
                 },
                 "filters": "garder-enfant",
-                "custom_filters": "lbf_2",
-                "custom_parent_filters": "lbf"
               },
               "aids": [
                 {
@@ -772,17 +629,6 @@
                   "filters": [
                     {
                       "slug": "garder-enfant"
-                    }
-                  ],
-                  "custom_filters": [
-                    {
-                      "slug": "lbf_2",
-                      "parent_slug": "lbf"
-                    }
-                  ],
-                  "need_filters": [
-                    {
-                      "slug": "gerer-un-probleme-d-argent"
                     }
                   ],
                   "contract_type": "contrat-cadre"
