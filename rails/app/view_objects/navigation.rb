@@ -22,7 +22,6 @@ class Navigation < ViewObject
   def filter_clazz
     current_path = GetCurrentPathService.new(@context.request).call
     actives_pathes = [
-      "admin_get_all_filters_menu_path", 
       "admin_get_custom_filter_menu_path", 
       "admin_get_need_menu_path", 
       "admin_filters_path",
