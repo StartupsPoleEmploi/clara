@@ -23,7 +23,6 @@ class Navigation < ViewObject
     current_path = GetCurrentPathService.new(@context.request).call
     actives_pathes = [
       "admin_get_custom_filter_menu_path", 
-      "admin_get_need_menu_path", 
       "admin_filters_path",
       "admin_filter_path",
       "edit_admin_filter_path",

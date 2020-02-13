@@ -69,7 +69,6 @@ Rails.application.routes.draw do
       delete 'delete_simulation', on: :member
     end
     controller 'pages' do
-      get 'get_need_menu'
       get 'get_custom_filter_menu'
       get 'get_reinit'
       post 'post_reinit'
