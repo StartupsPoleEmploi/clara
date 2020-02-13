@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_085355) do
+ActiveRecord::Schema.define(version: 2020_02_13_085356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -40,18 +40,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_085355) do
     t.index ["slug"], name: "index_aids_on_slug", unique: true
   end
 
-  create_table "aids_custom_filters", id: false, force: :cascade do |t|
-    t.bigint "custom_filter_id", null: false
-    t.bigint "aid_id", null: false
-  end
-
   create_table "aids_filters", id: false, force: :cascade do |t|
     t.bigint "filter_id", null: false
-    t.bigint "aid_id", null: false
-  end
-
-  create_table "aids_need_filters", id: false, force: :cascade do |t|
-    t.bigint "need_filter_id", null: false
     t.bigint "aid_id", null: false
   end
 
