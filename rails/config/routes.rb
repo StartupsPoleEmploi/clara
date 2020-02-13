@@ -57,11 +57,6 @@ Rails.application.routes.draw do
       get "new_aid_stage_5"
       post "create_stage_5"
     end
-    resources :rules do 
-      get 'resolve', on: :member
-      post 'save_simulation', on: :member
-      delete 'delete_simulation', on: :member
-    end
     controller 'pages' do
       get 'get_custom_filter_menu'
       get 'get_reinit'
