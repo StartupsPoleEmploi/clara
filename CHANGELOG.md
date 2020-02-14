@@ -2,6 +2,10 @@
 
 
 
+## 26.6.0 (14/02/2020)
+-[#1549][FEATURE] CSV du résumé de l'aide
+
+
 ## 26.5.0 (13/02/2020)
 -[#1523][FEATURE] Suppression des écrans inutiles
 
