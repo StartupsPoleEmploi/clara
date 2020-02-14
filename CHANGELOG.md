@@ -2,6 +2,10 @@
 
 
 
+## 26.6.1 (14/02/2020)
+-[#1521][BUG] BUG IE11 code postaux
+
+
 ## 26.6.0 (14/02/2020)
 -[#1549][FEATURE] CSV du résumé de l'aide
 
