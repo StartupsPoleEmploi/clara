@@ -56,7 +56,12 @@ class AidesController < ApplicationController
     end
     
     @aids = aids.page(page_nb).per(GetPaginationSearchNumberService.new.call)
-    @h_aids = JSON.parse(@aids.to_json(:only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ], :include => {filters: {only:[:id, :slug]}, custom_filters: {only:[:id, :slug, :custom_parent_filter_id]}, need_filters: {only:[:id, :slug]}}))
+    @h_aids = JSON.parse(
+      @aids.to_json(
+        :only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ],
+        :include => {filters: {only:[:id, :slug]}}
+      )
+    )
     return @h_aids, aids.size
   end
 

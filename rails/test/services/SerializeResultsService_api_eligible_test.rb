@@ -3,9 +3,6 @@ require "test_helper"
 class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
   
   def setup
-    allow(JsonModelsService).to receive(:custom_parent_filters).and_return(custom_parent_filters)
-    allow(JsonModelsService).to receive(:custom_filters).and_return(custom_filters)
-    allow(JsonModelsService).to receive(:need_filters).and_return(need_filters)
     allow(JsonModelsService).to receive(:filters).and_return(filters)
     allow(JsonModelsService).to receive(:rules).and_return(rules)
     allow(JsonModelsService).to receive(:aids).and_return(aids)
@@ -18,14 +15,14 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     above_18_asker = asker_without_age
     above_18_asker.v_age = "38"
     #when
-    res = SerializeResultsService.get_instance.api_eligible(above_18_asker, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_eligible(above_18_asker, filters)
     #then
     assert_equal([vsi], res)
   end
   test '_.api_eligible, no' do
     #given
     #when
-    res = SerializeResultsService.get_instance.api_eligible(asker_without_age, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_eligible(asker_without_age, filters)
     #then
     assert_equal([], res)
   end
@@ -34,21 +31,21 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     under_18_asker = asker_without_age
     under_18_asker.v_age = "16"
     #when
-    res = SerializeResultsService.get_instance.api_ineligible(under_18_asker, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_ineligible(under_18_asker, filters)
     #then
     assert_equal([vsi], res)
   end
   test '_.api_ineligible, no' do
     #given
     #when
-    res = SerializeResultsService.get_instance.api_ineligible(asker_without_age, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_ineligible(asker_without_age, filters)
     #then
     assert_equal([], res)
   end
   test '_.api_uncertain, yes' do
     #given
     #when
-    res = SerializeResultsService.get_instance.api_uncertain(asker_without_age, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_uncertain(asker_without_age, filters)
     #then
     assert_equal([vsi], res)
   end
@@ -57,13 +54,13 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     above_18_asker = asker_without_age
     above_18_asker.v_age = "38"
     #when
-    res = SerializeResultsService.get_instance.api_uncertain(above_18_asker, filters, "", "", "")
+    res = SerializeResultsService.get_instance.api_uncertain(above_18_asker, filters)
     #then
     assert_equal([], res)
   end
 
   def vsi
-    {"name"=>"Volontariat de solidarité internationale (VSI)", "slug"=>"vsi-volontariat-de-solidarite-internationale", "short_description"=>"Missions effectuées en dehors de l'espace économique européen et au sein d'associations agréées", "filters"=>[{"slug"=>"travailler-a-l-international", "id"=>7}], "custom_filters"=>[], "need_filters"=>[], "contract_type"=>"emploi-international"}
+    {"name"=>"Volontariat de solidarité internationale (VSI)", "slug"=>"vsi-volontariat-de-solidarite-internationale", "short_description"=>"Missions effectuées en dehors de l'espace économique européen et au sein d'associations agréées", "filters"=>[{"slug"=>"travailler-a-l-international", "id"=>7}], "contract_type"=>"emploi-international"}
   end
 
   def filters
@@ -100,27 +97,6 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
     ]
   end
 
-  def need_filters
-    [
-      {"id" => 7, "slug" => "acceder-a-un-moyen-de-transport"},
-      {"id" => 10, "slug" => "trouver-des-pistes-de-metiers-diversifees"} 
-    ]
-  end
-
-  def custom_parent_filters
-    [
-      {"id" => 1, "slug" => "prestataire"},
-      {"id" => 2,"slug" => "public"}
-    ]
-  end
-
-  def custom_filters
-    [
-      {"id" => 1,"slug" => "pole-emploi","custom_parent_filter_id" => 1},
-      {"id" => 2,"slug" => "partenaire","custom_parent_filter_id" => 1}
-    ]
-  end
-
   def rules
     [{
       "id" => 61,
@@ -152,8 +128,6 @@ class SerializeResultsServiceApiEligibleTest < ActiveSupport::TestCase
       "filters" => [
         {"slug" => "travailler-a-l-international", "id" => 7}
       ],
-      "custom_filters" => [],
-      "need_filters" => []
     }]
   end
 

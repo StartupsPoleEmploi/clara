@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_27_090005) do
+ActiveRecord::Schema.define(version: 2020_02_13_085356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -40,18 +40,8 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
     t.index ["slug"], name: "index_aids_on_slug", unique: true
   end
 
-  create_table "aids_custom_filters", id: false, force: :cascade do |t|
-    t.bigint "custom_filter_id", null: false
-    t.bigint "aid_id", null: false
-  end
-
   create_table "aids_filters", id: false, force: :cascade do |t|
     t.bigint "filter_id", null: false
-    t.bigint "aid_id", null: false
-  end
-
-  create_table "aids_need_filters", id: false, force: :cascade do |t|
-    t.bigint "need_filter_id", null: false
     t.bigint "aid_id", null: false
   end
 
@@ -60,17 +50,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "axle_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "domain_filter_id"
-    t.index ["domain_filter_id"], name: "index_axle_filters_on_domain_filter_id"
-    t.index ["slug"], name: "index_axle_filters_on_slug", unique: true
   end
 
   create_table "compound_rules", id: :serial, force: :cascade do |t|
@@ -102,26 +81,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "custom_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "custom_parent_filter_id"
-    t.index ["custom_parent_filter_id"], name: "index_custom_filters_on_custom_parent_filter_id"
-    t.index ["slug"], name: "index_custom_filters_on_slug", unique: true
-  end
-
-  create_table "custom_parent_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_custom_parent_filters_on_slug", unique: true
-  end
-
   create_table "custom_rule_checks", force: :cascade do |t|
     t.bigint "rule_id"
     t.string "result"
@@ -130,15 +89,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
-  end
-
-  create_table "domain_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_domain_filters_on_slug", unique: true
   end
 
   create_table "explicitations", force: :cascade do |t|
@@ -173,18 +123,6 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
-  end
-
-  create_table "need_filters", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.bigint "axle_filter_id"
-    t.boolean "confidentiality", default: true
-    t.index ["axle_filter_id"], name: "index_need_filters_on_axle_filter_id"
-    t.index ["slug"], name: "index_need_filters_on_slug", unique: true
   end
 
   create_table "rules", id: :serial, force: :cascade do |t|
@@ -274,12 +212,9 @@ ActiveRecord::Schema.define(version: 2019_05_27_090005) do
   end
 
   add_foreign_key "aids", "contract_types"
-  add_foreign_key "axle_filters", "domain_filters"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
-  add_foreign_key "custom_filters", "custom_parent_filters"
   add_foreign_key "custom_rule_checks", "rules"
   add_foreign_key "explicitations", "variables"
-  add_foreign_key "need_filters", "axle_filters"
   add_foreign_key "rules", "variables"
 end

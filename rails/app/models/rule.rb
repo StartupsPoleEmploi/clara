@@ -38,27 +38,4 @@ class Rule < ApplicationRecord
   validates :name, uniqueness: true, format: { with: /\A[A-Za-z_0-9-]+\z/, message: "Seules les lettres minuscules et majuscules sans accent, le tiret bas et haut,  et les chiffres sont autorisés" }
   validates_with RuleValidator
 
-  def tested
-    res = {}
-    all_crc = custom_rule_checks.map{|e| e.attributes}
-    has_eligible_simulation = all_crc.any? { |e| e["result"] == "eligible"  }
-    has_ineligible_simulation = all_crc.any? { |e| e["result"] == "ineligible"  }
-    if has_eligible_simulation && has_ineligible_simulation
-      res[:status] = "ok"
-    end
-    if !has_eligible_simulation && !has_ineligible_simulation
-      res[:status] = "nok"
-      res[:reason] = "simulation missing"
-    end
-    if has_eligible_simulation && !has_ineligible_simulation
-      res[:status] = "nok"
-      res[:reason] = "ineligible missing"
-    end
-    if !has_eligible_simulation && has_ineligible_simulation
-      res[:status] = "nok"
-      res[:reason] = "eligible missing"
-    end
-    return res
-  end
-
 end

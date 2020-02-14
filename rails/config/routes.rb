@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'api_user_token' => 'api_user_token#create'
       get 'filters'  => 'api_aides#filters'
-      get 'need_filters'  => 'api_aides#need_filters'
       get 'aids/detail/:aid_slug'   => 'api_aides#detail'
       get 'aids/eligible'   => 'api_aides#eligible'
       get 'aids/ineligible' => 'api_aides#ineligible'
@@ -41,12 +40,7 @@ Rails.application.routes.draw do
     resources :traces do
       get :export, on: :collection
     end
-    resources :domain_filters
-    resources :axle_filters
-    resources :need_filters
     resources :filters
-    resources :custom_filters
-    resources :custom_parent_filters
     resources :aids, only: [:index, :show, :new, :edit, :destroy] do
       get :export, on: :collection
     end
@@ -63,21 +57,14 @@ Rails.application.routes.draw do
       get "new_aid_stage_5"
       post "create_stage_5"
     end
-    resources :rules do 
-      get 'resolve', on: :member
-      post 'save_simulation', on: :member
-      delete 'delete_simulation', on: :member
-    end
     controller 'pages' do
-      get 'get_all_filters_menu'
-      get 'get_need_menu'
       get 'get_custom_filter_menu'
       get 'get_reinit'
       post 'post_reinit'
       get 'get_zrr'
       post 'post_zrr'
-      get 'get_cache'
-      post 'post_cache'
+      get 'get_cache'  if ENV["R7_MODE"]
+      post 'post_cache'  if ENV["R7_MODE"]
       get 'get_ref_data'
       post 'post_ref_data'
       get 'get_transfer_descr'
@@ -145,10 +132,6 @@ Rails.application.routes.draw do
   get 'sitemap.xml', :to => 'sitemap#index', :as => 'main_sitemap'
   get 'aides-sitemap.xml', :to => 'sitemap#aides', :as => 'aides_sitemap'
   get 'types-aides-sitemap.xml', :to => 'sitemap#types', :as => 'types_sitemap'
-
-
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
 
   get '/stats', to: redirect('https://datastudio.google.com/reporting/1CHDn1yxUb7yK_rgH39nHB1-b90Sg22-q/page/IDGN')
 

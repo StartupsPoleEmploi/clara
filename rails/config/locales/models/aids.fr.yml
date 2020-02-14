@@ -10,7 +10,6 @@ fr:
       short_description: Résumé
       custom_filters: Filtres personnalisés
       rule: Règle
-      need_filters: Filtres par besoins
       filters: Filtres sur la page de résultat 
       contract_type: Rubrique
       slug: Url simplifiée

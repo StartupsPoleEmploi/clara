@@ -49,19 +49,13 @@ class AidForm < ViewObject
 
   def hide_field?(attribute, role = "", path = "", email = "")
     a = attr_name(attribute)
-    cond1, cond2, cond3 = false
+    cond1 = false
     if a == "archived_at"
       current_aid =  @page.resource
       self_created = current_aid.try(:versions).try(:first).try(:whodunnit) == email
       cond1 = path != "edit_admin_aid_path" || (role != "superadmin" && self_created)
     end
-    if a == "custom_filters"
-      cond2 = role != "superadmin"
-    end 
-    if a == "need_filters"
-      cond3 = role != "superadmin"
-    end 
-    cond1 || cond2 || cond3
+    cond1
   end
 
   def attr_name(attribute)

@@ -13,13 +13,6 @@ module Admin
       Trace.destroy_all
     end
 
-    # load reinit
-    def get_reinit
-    end
-
-    def post_reinit
-    end
-
     # load zrr
     def get_zrr
     end

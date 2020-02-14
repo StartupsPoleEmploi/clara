@@ -203,7 +203,7 @@ describe("Étape 5", function() {
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       cy.get('span[data-name="test-stage-5"][data-col="aid.status"]').shouldHaveTrimmedText("Publiée")
     })
-    it("Elle est publiée sur le front grand public après vidage manuel du cache", function() {
+    it("Elle est publiée sur le front grand public après vidage du cache", function() {
       //given
       cy.clear_the_cache()
       //when

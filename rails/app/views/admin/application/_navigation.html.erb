@@ -28,13 +28,8 @@
   ) %>      
   <% if current_user.role === "superadmin" %>
     <%= link_to(
-      "Règles",
-      admin_rules_path,
-      class: "navigation__link navigation__link--#{nav_link_state('rules')}"
-    ) %>      
-    <%= link_to(
       "Filtres",
-      admin_get_all_filters_menu_path,
+      admin_filters_path,
       class: v.filter_clazz
     ) %>    
   <% end %>
