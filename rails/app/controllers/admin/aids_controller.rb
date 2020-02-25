@@ -3,11 +3,16 @@ module Admin
     include AdministrateExportable::Exporter
 
     def valid_action?(name, resource = resource_class)
-      if current_user.role != "superadmin" && current_user.role != "relecteur"
+      if current_user.role != "superadmin"
         %w[destroy].exclude?(name.to_s) && super
       else
         true
       end
+    end
+
+    def archive_one_aid
+      flash[:notice] = "L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes."
+      redirect_to action: :index
     end
 
     def find_resource(param)
