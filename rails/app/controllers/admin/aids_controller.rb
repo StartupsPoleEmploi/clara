@@ -11,6 +11,10 @@ module Admin
     end
 
     def archive_one_aid
+      aid = Aid.find_by(slug: ExtractParam.new(params).call("aid_id"))
+      aid.archived_at = DateTime.now
+      aid.save
+      aid.update_status
       flash[:notice] = "L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes."
       redirect_to action: :index
     end
