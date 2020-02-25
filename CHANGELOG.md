@@ -2,6 +2,10 @@
 
 
 
+## 26.6.2 (25/02/2020)
+-[#1550][FEATURETTE] Retirer la colonne résumé dans l'extraction CSV
+
+
 ## 26.6.1 (14/02/2020)
 -[#1521][BUG] BUG IE11 code postaux
 
