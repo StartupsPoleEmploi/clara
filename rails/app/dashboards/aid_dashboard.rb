@@ -22,7 +22,7 @@ class AidDashboard < Administrate::BaseDashboard
     rule: Field::BelongsTo.with_options(export: false),
     contract_type: Field::BelongsTo,
     filters: Field::HasMany.with_options(export: false),
-    short_description: Field::Text.with_options(truncate: 50000),
+    short_description: Field::Text.with_options(export: false),
     what: Field::Ckeditor.with_options({ export: false, ckeditor: { removeButtons: REMOVE_BUTTONS }}),
     how_much: Field::Ckeditor.with_options({ export: false, ckeditor: { removeButtons: REMOVE_BUTTONS }}), 
     additionnal_conditions: Field::Ckeditor.with_options({ export: false, ckeditor: { removeButtons: REMOVE_BUTTONS }}),
