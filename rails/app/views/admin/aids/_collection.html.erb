@@ -61,6 +61,14 @@
           ) if show_action? :edit, resource%></td>
         <% end %>
 
+        <% if current_user.role === "superadmin" || current_user.role === "relecteur" %>
+          <td><%= link_to(
+            "Archiver",
+            admin_aid_archive_one_aid_path(resource.slug),
+            class: "text-color-red js-archive-aid",
+            method: :post,
+          ) %></td>
+        <% end %>
         <% if valid_action? :destroy, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.destroy"),

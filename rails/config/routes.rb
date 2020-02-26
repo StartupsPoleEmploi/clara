@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     resources :filters
     resources :aids, only: [:index, :show, :new, :edit, :destroy] do
       get :export, on: :collection
+      post :archive_one_aid
     end
     namespace :aid_creation do
       get  "new_aid_stage_1"

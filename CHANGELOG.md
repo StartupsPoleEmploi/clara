@@ -2,6 +2,10 @@
 
 
 
+## 26.7.0 (25/02/2020)
+-[#1532][BO] le relecteur ne peut pas supprimer une aide publiée, seulement l'archiver
+
+
 ## 26.6.2 (25/02/2020)
 -[#1550][FEATURETTE] Retirer la colonne résumé dans l'extraction CSV
 
