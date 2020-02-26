@@ -7,6 +7,8 @@ clara.js_define("admin_stage_4", {
     please: function() {
       clara.admin_stage_steps.please(4);
 
+      //CSS hack
+      $(".sortable").width(($(".c-newaid-belowstages").width() - 50) + "px")
 
       // detection change
       function sth_changed() {
