@@ -2,6 +2,10 @@
 
 
 
+## 26.7.1 (26/02/2020)
+-[#1530][BUG] adaptation basse résolution
+
+
 ## 26.7.0 (25/02/2020)
 -[#1532][BO] le relecteur ne peut pas supprimer une aide publiée, seulement l'archiver
 
