@@ -13,7 +13,7 @@
       "!! Certains contenus ne seront pas correctement affichés car votre navigateur est obsolète." +
     "</div>" +
     "<div class='c-browser-deprecated__line'>" +
-      "<a href='https://whatbrowser.org'>Ce site</a> peut vous aider à mettre à jour votre navigateur." +
+      "<a href='https://updatemybrowser.org'>Ce site</a> peut vous aider à mettre à jour votre navigateur." +
     "</div>" +
   "</div>";
 
