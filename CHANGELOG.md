@@ -2,6 +2,10 @@
 
 
 
+## 26.7.2 (27/02/2020)
+-[#1548][BUG] whatbrowser
+
+
 ## 26.7.1 (26/02/2020)
 -[#1530][BUG] adaptation basse résolution
 
