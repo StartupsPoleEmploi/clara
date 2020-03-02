@@ -80,6 +80,16 @@ class QuestionNumber < ViewObject
     res
   end
 
+  def _value_for_filter
+    res = 9
+    if _isnt_inscrit(@asker) && _isnt_montant(@asker)
+      res = 7
+    elsif _isnt_inscrit(@asker) || _isnt_montant(@asker)
+      res = 8
+    end
+    res
+  end
+
   def _isnt_inscrit(asker)
     IsNotInscrit.new.call(asker)
   end

@@ -14,6 +14,7 @@ class QuestionManager
     else
       referer = args[0]
       form = args[1]
+      ap 'after_' + referer
       self.public_send('after_' + referer, form)[:path]
     end
   
@@ -112,7 +113,7 @@ class QuestionManager
   def after_other(asker_id)
     path = new_filter_question_path
     {
-      weight: 7.0/10,
+      weight: 8.0/10,
       path: path
     }
   end 
@@ -126,6 +127,10 @@ class QuestionManager
       weight: 9.0/10,
       path: path
     }
+  end 
+
+  def before_filter(asker)
+    new_other_question_path
   end 
 
   def before_other(asker)
