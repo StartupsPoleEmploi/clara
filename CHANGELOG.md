@@ -2,7 +2,11 @@
 
 
 
-## 26.7.3 (27/02/2020)
+## 27.0.0 (02/03/2020)
+-[#1461][FEATURE] question en plus dans le formulaire
+
+
+## 26.7.3 (28/02/2020)
 -[#966][BUG] NVDA
 
 
