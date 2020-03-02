@@ -3,11 +3,12 @@ class FilterQuestionsController < ApplicationController
   before_action :require_asker, only: [:new, :create]
 
   def new
+    hydrate_view(
+      filters:  Filter.with_aid_attached
+    )
   end
 
   def create
-    p '- - - - - - - - - - - - - - create- - - - - - - - - - - - - - - -' 
-    p ''
     if params[:commit] == 'Revenir' 
       my_redirect_to QuestionManager.new.getPreviousPath('filter', @asker)
     else
