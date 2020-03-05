@@ -4,8 +4,7 @@ class FilterQuestionsController < ApplicationController
 
   def new
     hydrate_view(
-      filters:  Filter.with_aid_attached,
-      asker: @asker
+      filters:  Filter.with_aid_attached
     )
   end
 
