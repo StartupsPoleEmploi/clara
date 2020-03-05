@@ -49,6 +49,7 @@ describe("Pour un visiteur", function () {
 
     //when
     cy.get('.js-next').click()
+    cy.get('.js-next').click()
 
     //then 
     cy.get("body.c-body.aides").should("exist")
@@ -80,6 +81,7 @@ describe("Pour un visiteur", function () {
     cy.get("a.js-modify-other").click()
     // when
     cy.get("#none").click()
+    cy.get('.js-next').click()
     cy.get('.js-next').click()
     // then
     cy.get("body.c-body.aides").should("exist")
