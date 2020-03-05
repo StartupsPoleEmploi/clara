@@ -14,7 +14,6 @@ class QuestionManager
     else
       referer = args[0]
       form = args[1]
-      ap 'after_' + referer
       self.public_send('after_' + referer, form)[:path]
     end
   
