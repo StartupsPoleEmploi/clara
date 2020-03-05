@@ -5,7 +5,8 @@
 
 %main#main{role: "main"}
   = render 'shared/breadcrumb'
-  
+  = pp local_assigns[:asker].attributes 
+
   .u-useful-width.u-margin-constraint  
     = render 'shared/back_question'
     .o-card.o-card--question

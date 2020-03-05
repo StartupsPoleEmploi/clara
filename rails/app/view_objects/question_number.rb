@@ -2,10 +2,17 @@ class QuestionNumber < ViewObject
 
   def after_init(args)
     @asker = _get_asker
+    p '- - - - - - - - - - - - - - @asker in QuestionNumber init- - - - - - - - - - - - - - - -' 
+    pp @asker
+    p ''
   end
 
   def value
     res = self.public_send('_value_for_' + _current_question)
+    p '- - - - - - - - - - - - - - _value_for_- - - - - - - - - - - - - - - -' 
+    pp res
+    p ''
+    res
   end
 
   def _get_asker
@@ -82,10 +89,19 @@ class QuestionNumber < ViewObject
 
   def _value_for_filter
     res = 9
+    p '- - - - - - - - - - - - - - res1- - - - - - - - - - - - - - - -' 
+    pp res
+    p ''
     if _isnt_inscrit(@asker) && _isnt_montant(@asker)
       res = 7
+      p '- - - - - - - - - - - - - - res2- - - - - - - - - - - - - - - -' 
+      pp res
+      p ''
     elsif _isnt_inscrit(@asker) || _isnt_montant(@asker)
       res = 8
+      p '- - - - - - - - - - - - - - res3- - - - - - - - - - - - - - - -' 
+      pp res
+      p ''
     end
     res
   end
