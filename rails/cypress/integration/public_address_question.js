@@ -70,6 +70,8 @@ describe("Quand on arrive sur la question adresse", function () {
     cy.get('input#val_spectacle').click()
     cy.get('input[value="Continuer"]').click()
     // given
+    cy.location().should((loc) => {expect(loc.pathname).to.eq('/filter_questions/new')})
+    cy.get('input[value="Continuer"]').click()
     cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
     // then
     cy.get(".c-situation--address").shouldHaveTrimmedText("75017 Paris")
