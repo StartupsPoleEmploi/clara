@@ -6,6 +6,7 @@ class QuestionNumber < ViewObject
 
   def value
     res = self.public_send('_value_for_' + _current_question)
+    res
   end
 
   def _get_asker
@@ -76,6 +77,16 @@ class QuestionNumber < ViewObject
       res = 6
     elsif _isnt_inscrit(@asker) || _isnt_montant(@asker)
       res = 7
+    end
+    res
+  end
+
+  def _value_for_filter
+    res = 9
+    if _isnt_inscrit(@asker) && _isnt_montant(@asker)
+      res = 7
+    elsif _isnt_inscrit(@asker) || _isnt_montant(@asker)
+      res = 8
     end
     res
   end

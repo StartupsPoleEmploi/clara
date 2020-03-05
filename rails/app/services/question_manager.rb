@@ -49,7 +49,7 @@ class QuestionManager
       end
     end
     {
-      weight: 1.0/9,
+      weight: 1.0/10,
       path: path
     }
   end
@@ -57,7 +57,7 @@ class QuestionManager
   def after_category(categoryForm)
     path = new_allocation_question_path
     {
-      weight: 2.0/9,
+      weight: 2.0/10,
       path: path
     }
   end
@@ -72,7 +72,7 @@ class QuestionManager
       end
     end
     {
-      weight: 3.0/9,
+      weight: 3.0/10,
       path: path
     }
   end
@@ -80,7 +80,7 @@ class QuestionManager
   def after_are(areForm)
     path = new_age_question_path
     {
-      weight: 4.0/9,
+      weight: 4.0/10,
       path: path
     }
   end
@@ -88,7 +88,7 @@ class QuestionManager
   def after_age(ageForm)
     path = new_grade_question_path
     {
-      weight: 5.0/9,
+      weight: 5.0/10,
       path: path
     }
   end  
@@ -96,7 +96,7 @@ class QuestionManager
   def after_grade(ageForm)
     path = new_address_question_path
     {
-      weight: 6.0/9,
+      weight: 6.0/10,
       path: path
     }
   end  
@@ -104,20 +104,32 @@ class QuestionManager
   def after_address(addressForm)
     path = new_other_question_path
     {
-      weight: 7.0/9,
+      weight: 7.0/10,
       path: path
     }
   end
 
   def after_other(asker_id)
+    path = new_filter_question_path
+    {
+      weight: 8.0/10,
+      path: path
+    }
+  end 
+
+  def after_filter(asker_id)
     path = ""
     if asker_id
       path = aides_path + '?for_id=' + asker_id
     end
     {
-      weight: 8.0/9,
+      weight: 9.0/10,
       path: path
     }
+  end 
+
+  def before_filter(asker)
+    new_other_question_path
   end 
 
   def before_other(asker)

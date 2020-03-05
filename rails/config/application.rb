@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 
 module Mae
   class Application < Rails::Application
+    config.i18n.fallbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.public_file_server.enabled = true
     config.assets.precompile += Ckeditor.assets

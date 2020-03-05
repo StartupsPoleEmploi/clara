@@ -31,7 +31,7 @@ describe("Quand on arrive sur la question autres", function () {
     cy.get('.c-label.is-error').should('exist')
   })
 
-  it("Cas nominal : on côche un choix et on valide, ", function () {
+  it("Cas nominal : on coche un choix et on valide, ", function () {
     // given
     cy.visit('/other_questions/new')
     cy.get('input[type="checkbox"]').first().check()
@@ -39,7 +39,6 @@ describe("Quand on arrive sur la question autres", function () {
     cy.get('input[value="Continuer"]').click()
     // then
     cy.location('pathname').should('not.contain', 'other_questions')
-    cy.location('pathname').should('contain', 'aides')
   })
 
 })

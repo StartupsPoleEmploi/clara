@@ -16,7 +16,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(1.0/9, res)
+    assert_equal(1.0/10, res)
   end
 
   test ".getCurrentWeight go from category to allocation" do
@@ -25,7 +25,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(2.0/9, res)
+    assert_equal(2.0/10, res)
   end
 
   test ".getCurrentWeight go from allocation to A.R.E, if type of allocation is 'ASS_AER_APS_AS-FNE'" do
@@ -34,7 +34,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(3.0/9, res)
+    assert_equal(3.0/10, res)
   end
 
   test ".getCurrentWeight go from A.R.E to age" do
@@ -43,7 +43,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(4.0/9, res)
+    assert_equal(4.0/10, res)
   end
 
   test ".getCurrentWeight go from age to grade" do
@@ -52,7 +52,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(5.0/9, res)
+    assert_equal(5.0/10, res)
   end
 
   test ".getCurrentWeight go from grade to address" do
@@ -61,7 +61,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(6.0/9, res)
+    assert_equal(6.0/10, res)
   end
 
   test ".getCurrentWeight go from address to other" do
@@ -70,7 +70,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(7.0/9, res)
+    assert_equal(7.0/10, res)
   end
 
   test ".getCurrentWeight go from other to results" do
@@ -79,7 +79,7 @@ class QuestionManagerTest < ActiveSupport::TestCase
     #when
     res = QuestionManager.new.getCurrentWeight(referer, nil)
     #then
-    assert_equal(8.0/9, res)
+    assert_equal(8.0/10, res)
   end
   
   test ".getNextPath empty args, go to inscription screen by default" do
@@ -190,9 +190,19 @@ class QuestionManagerTest < ActiveSupport::TestCase
     assert_equal("/other_questions/new", res)
   end
 
-  test ".getNextPath go from other to results" do
+  test ".getNextPath go from other to filter" do
     #given
     referer = 'other'
+    form = 'the_id'
+    #when
+    res = QuestionManager.new.getNextPath(referer, form)
+    #then
+    assert_equal("/filter_questions/new", res)
+  end
+
+  test ".getNextPath go from filter to results" do
+    #given
+    referer = 'filter'
     form = 'the_id'
     #when
     res = QuestionManager.new.getNextPath(referer, form)
@@ -200,6 +210,15 @@ class QuestionManagerTest < ActiveSupport::TestCase
     assert_equal("/aides?for_id=the_id", res)
   end
 
+
+  test ".getPreviousPath go from filter back to other page" do
+    #given
+    referer = 'filter'
+    #when
+    res = QuestionManager.new.getPreviousPath(referer, Asker.new)
+    #then
+    assert_equal("/other_questions/new", res)    
+  end
 
   test ".getPreviousPath go from other back to address page" do
     #given

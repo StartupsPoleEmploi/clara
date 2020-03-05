@@ -101,6 +101,7 @@ Rails.application.routes.draw do
   resources :inscription_questions, only: [:new, :create]
   resources :are_questions,         only: [:new, :create]
   resources :other_questions,       only: [:new, :create]
+  resources :filter_questions,      only: [:new, :create]
 
   resources :contact,               only: [:index, :create]
   resources :contact_sent,          only: [:index]
