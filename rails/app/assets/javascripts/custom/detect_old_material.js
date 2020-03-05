@@ -65,7 +65,9 @@
     content_to_add.id = "content_to_add";
     content_to_add.innerHTML = template_to_add;
 
-    document.body.insertBefore(content_to_add, document.body.childNodes[0]);
+    if (document && document.body && document.body.insertBefore) {
+      document.body.insertBefore(content_to_add, document.body.childNodes[0]);
+    }
   }
 
 
