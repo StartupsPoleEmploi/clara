@@ -12,7 +12,7 @@ _.mixin({
   },
 
   getLastLocalStorageItemWhoseKeyStartsWith: function(prefix) {
-
+    return _.last(_.listAllLocalStorageKeys(), function(e){return _.toString(e).indexOf(prefix) === 0})
   },
 
   // See https://gist.github.com/andrei-m/982927#gistcomment-1853560
