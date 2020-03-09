@@ -44,10 +44,7 @@ clara.js_define("aides_main_reducer", {
         } else {
           aid.is_collapsed = true;
         }
-        
-        // contract state
-        if (!no_filter) contract.is_collapsed = false;          
-          
+                  
       }, newState);
     }
     else if (action.type === 'TOGGLE_FILTERS_ZONE') {

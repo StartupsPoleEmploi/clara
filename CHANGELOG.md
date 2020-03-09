@@ -2,8 +2,12 @@
 
 
 
+## 27.2.0 (09/03/2020)
+-[#1564][FEATURE] Les rubriques ne se déplient pas automatiquement lorsque je sélectionne des filtres 
+
+
 ## 27.1.0 (06/03/2020)
--[#1563][FEATURE]les filtres sélectionnés dans le formulaire sont cochés sur la page de résultats
+-[#1563][FEATURE] les filtres sélectionnés dans le formulaire sont cochés sur la page de résultats
 
 
 ## 27.0.0 (02/03/2020)
