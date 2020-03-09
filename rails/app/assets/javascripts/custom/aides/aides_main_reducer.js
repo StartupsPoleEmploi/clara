@@ -46,7 +46,7 @@ clara.js_define("aides_main_reducer", {
         }
         
         // contract state
-        if (!no_filter) contract.is_collapsed = false;          
+        if (!no_filter) contract.is_collapsed = true;          
           
       }, newState);
     }
