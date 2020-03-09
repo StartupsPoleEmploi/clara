@@ -17,7 +17,7 @@
               
             %fieldset.c-resultfilterings
               %legend.u-padding-vertical-small.u-padding-left-small Chercher les aides pour
-              #o_all_filters{"data-init" => ""}
+              #o_all_filters
                 - v.displayed_filters.each_with_index do |a_filter, i|
                   .c-resultfiltering.u-padding-small{class:"#{'c-resultfiltering--even' if (i%2 == 0)}", "data-name" => "#{a_filter['slug']}"}
                     %input{:id => "check_#{i}", :type => "checkbox"}/

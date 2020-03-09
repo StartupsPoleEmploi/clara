@@ -1,20 +1,5 @@
 _.mixin({
 
-  listAllLocalStorageKeys: function() {
-    var result = [];
-    if (_.get(window, "localStorage")) {
-      for (i=0; i<=localStorage.length-1; i++) { 
-        var key = localStorage.key(i);
-        result.push(key);  
-      }
-    }
-    return result;
-  },
-
-  getLastLocalStorageItemWhoseKeyStartsWith: function(prefix) {
-    return _.last(_.listAllLocalStorageKeys(), function(e){return _.toString(e).indexOf(prefix) === 0})
-  },
-
   // See https://gist.github.com/andrei-m/982927#gistcomment-1853560
   levenshtein: function(a, b) {
     if(!a || !b) return (a || b).length;
