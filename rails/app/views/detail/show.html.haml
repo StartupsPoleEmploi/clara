@@ -14,7 +14,7 @@
     .c-detail-title-inside.u-useful-width.u-useful-width--larger.u-margin-constraint
       = aid[:name]
   
-  .u-useful-width.u-useful-width--larger.u-margin-constraint.u-margin-vertical-small
+  .u-useful-width.u-useful-width--larger.u-margin-constraint.u-margin-top-small
     .c-detail-goback.u-margin-bottom-small{"onclick" =>"window.history.back();"}
       %strong < Retour
     
@@ -40,3 +40,9 @@
     - if has_active_user
       .c-detail-back
         = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
+
+    .c-prefooter
+      hello
+  - content_for :prefooter do
+    .c-prefooter.c-feedback
+      feedback
