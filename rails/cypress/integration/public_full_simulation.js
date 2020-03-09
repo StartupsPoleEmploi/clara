@@ -49,6 +49,8 @@ describe("Pour un visiteur", function () {
 
     //when
     cy.get('.js-next').click()
+
+    cy.get('input#se-deplacer').click()
     cy.get('.js-next').click()
 
     //then 
@@ -67,6 +69,10 @@ describe("Pour un visiteur", function () {
     cy.get(".c-situation--spectacle").shouldHaveTrimmedText("oui")
     cy.get(".c-situation--handicap").shouldHaveTrimmedText("non")
     cy.get(".c-situation--cadre").shouldHaveTrimmedText("non")
+  })
+  it("Sur l'écran de résultat, il y a un filtre précoché", function () {
+    //then 
+    cy.get('div[data-name="se-deplacer"] input').should('be.checked') 
   })
   it("Sur l'écran de résultat il y a au moins les aides éligibles", function () {
     //then 

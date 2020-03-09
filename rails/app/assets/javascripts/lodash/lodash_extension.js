@@ -1,6 +1,5 @@
 _.mixin({
 
-
   // See https://gist.github.com/andrei-m/982927#gistcomment-1853560
   levenshtein: function(a, b) {
     if(!a || !b) return (a || b).length;

@@ -6,6 +6,10 @@ clara.js_define("aides_main_subscriber", {
 
     var state = main_store.getState();
 
+    // remember chosen filters
+    var new_choosen_filters = _.map(_.filter(_.get(state, "filters_zone.filters"), function(filter){return filter.is_checked === true}), function(filter){return filter.name})
+    localStorage.setItem("choosen_filters", JSON.stringify(new_choosen_filters));
+
     // filters_zone : caret
     state.filters_zone.is_collapsed ? $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_OPEN"]) : $('.js-filters-zone .c-mask-filter__caret').html(clara.aides_constants["GREY_CARET_CLOSE"]);
 

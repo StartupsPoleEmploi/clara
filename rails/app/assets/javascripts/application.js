@@ -48,6 +48,7 @@
 //= require custom/new_allocation_question
 //= require custom/new_address_question
 //= require custom/new_are_question
+//= require custom/new_filter_question
 //= require custom/other_questions
 //= require custom/sign_in
 //= require custom/wrap_outbound_link
