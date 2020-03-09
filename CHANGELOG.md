@@ -2,6 +2,10 @@
 
 
 
+## 27.3.0 (10/03/2020)
+-[#1560][FEATURE] Détail : Cette page est-elle utile ?
+
+
 ## 27.2.0 (09/03/2020)
 -[#1564][FEATURE] Les rubriques ne se déplient pas automatiquement lorsque je sélectionne des filtres 
 
