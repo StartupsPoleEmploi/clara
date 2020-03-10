@@ -41,11 +41,11 @@
       .c-detail-back
         = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
 
-    .c-prefooter-background
+    .c-feedback.c-feedback-background.c-feedback-police
       %span.js-hideable Cette page est-elle utile?
       %span.js-expandmore.js-hideable Oui
       .js-to_expand
-        Merci pour votre retour
+        Merci pour votre avis !
       %span.js-hideable /
       %span
       %span.js-expandmore.js-hideable Non
@@ -58,5 +58,5 @@
             = f.submit 'Envoyer', "name" => "commit", "value"=>"Envoyer", "class" => ""
 
   - content_for :prefooter do
-    .c-prefooter-background.c-feedback
+    .c-feedback-background
       feedback
