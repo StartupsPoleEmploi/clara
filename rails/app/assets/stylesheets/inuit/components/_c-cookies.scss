@@ -7,6 +7,9 @@
 .c-cookie-explanation {
   @include inuit-font-size(18px);
 }
+.c-cookie-edit {
+  margin-bottom: space(5);
+}
 
 h2.c-cookie-preference {
   @include inuit-font-size(18px);
