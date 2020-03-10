@@ -42,9 +42,13 @@
         = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
 
     .c-prefooter-background
-      %span Cette page est-elle utile?
-      %span Oui /
-      %span.js-expandmore Non
+      %span.js-hideable Cette page est-elle utile?
+      %span.js-expandmore.js-hideable Oui
+      .js-to_expand
+        Merci pour votre retour
+      %span.js-hideable /
+      %span
+      %span.js-expandmore.js-hideable Non
       .js-to_expand
         Comment pouvons-nous l'améliorer ?
         = form_with url: feedback_path, :local => false, method: 'post' do |f|

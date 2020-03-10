@@ -36,6 +36,7 @@
 //= require custom/welcome_index
 //= require_tree ./custom/aides
 //= require custom/edit_cooky
+//= require custom/show_detail
 //= require custom/contact
 //= require custom/google_analytics_push
 //= require custom/print
