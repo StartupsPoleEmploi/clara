@@ -55,8 +55,7 @@
           %div
             = f.text_area(:actual_feedback, size: '50x5') 
           %div
-            = f.submit 'Envoyer', "name" => "commit", "value"=>"Envoyer", "class" => ""
+            = f.submit 'Envoyer', "class" => ""
 
   - content_for :prefooter do
-    .c-feedback-background
-      feedback
+    .c-feedback-background.c-feedback-line

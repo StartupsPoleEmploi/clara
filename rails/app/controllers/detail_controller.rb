@@ -25,6 +25,7 @@ class DetailController < ApplicationController
   end
 
   def post_feedback
+    ap "posted !!!!!!!!!!!!!!!!!!!!!!!!!!"
   end
 
   def has_active_user
