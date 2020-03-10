@@ -25,7 +25,6 @@ class DetailController < ApplicationController
   end
 
   def post_feedback
-    ap "posted !!!!!!!!!!!!!!!!!!!!!!!!!!"
     render json: {
       status: "ok"
     }
