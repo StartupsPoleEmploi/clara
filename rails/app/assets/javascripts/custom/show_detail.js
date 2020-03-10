@@ -7,6 +7,10 @@ clara.js_define("show_detail", {
       $(".js-hideable").on("click", function(e) {
         $(".js-hideable").hide();
       });
+      $("#post_feedback_form").on('ajax:success', function() {
+        $(".js-expandmore-yes").click();
+        $(this).hide()
+      });    
     },
 
 });
