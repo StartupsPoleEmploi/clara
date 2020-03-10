@@ -44,18 +44,18 @@
     .c-feedback.c-feedback-background.c-feedback-police
       %span.js-hideable Cette page est-elle utile ?
       %span.js-expandmore.js-hideable.js-expandmore-yes Oui
-      .js-to_expand
+      .js-to_expand.js-thankyou
         Merci pour votre avis !
       %span.js-hideable /
       %span
-      %span.js-expandmore.js-hideable Non
+      %span.js-expandmore.js-hideable.js-expandmore-no Non
       .js-to_expand
         = form_with id: "post_feedback_form", url: feedback_path, :local => false, method: 'post' do |f|
           Comment pouvons-nous l'améliorer ?
           %div
             = f.text_area(:actual_feedback, size: '50x5') 
           %div
-            = f.submit 'Envoyer', "class" => ""
+            = f.submit 'Envoyer', "id" => "submit_feedback"
 
   - content_for :prefooter do
     .c-feedback-background.c-feedback-line
