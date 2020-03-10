@@ -42,7 +42,11 @@
         = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
 
     .c-prefooter-background
-      hello
+      %span Cette page est-elle utile?
+      %span Oui /
+      %span.js-expandmore Non
+      .js-to_expand
+        here the hidden content
   - content_for :prefooter do
     .c-prefooter-background.c-feedback
       feedback
