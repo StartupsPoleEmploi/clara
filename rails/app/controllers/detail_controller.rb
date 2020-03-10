@@ -24,6 +24,9 @@ class DetailController < ApplicationController
     # gon.loaded = @loaded # testing & debug purpose only
   end
 
+  def post_feedback
+  end
+
   def has_active_user
     !!params[:for_id]
   end

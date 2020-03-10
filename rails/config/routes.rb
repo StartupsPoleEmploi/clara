@@ -116,6 +116,7 @@ Rails.application.routes.draw do
       resources :detail, only: [:show]
     end
   end
+  post 'feedback', to: 'detail#post_feedback'
   post 'aides/search_for_aids'
   get 'get_search_front', to: 'aides#get_search_front'
   post 'post_search_front', to: 'aides#post_search_front'

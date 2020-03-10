@@ -46,7 +46,13 @@
       %span Oui /
       %span.js-expandmore Non
       .js-to_expand
-        Comment pouvons-nous l'améliorer
+        Comment pouvons-nous l'améliorer ?
+        = form_with url: feedback_path, :local => false, method: 'post' do |f|
+          %div
+            = f.text_area(:actual_feedback, size: '50x5') 
+          %div
+            = f.submit 'Envoyer', "name" => "commit", "value"=>"Envoyer", "class" => ""
+
   - content_for :prefooter do
     .c-prefooter-background.c-feedback
       feedback
