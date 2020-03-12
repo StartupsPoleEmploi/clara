@@ -1,0 +1,18 @@
+fr:
+  activerecord:
+    labels: &labels
+      name: Nom
+      content: Comment améliorer ?
+      url_of_detail: Url de la page de détail
+      positive: A aimé
+      created_at: "Créé le"
+      updated_at: "Mis à jour le"
+    models: 
+      feedback: Suggestion d'amélioration
+    attributes:
+      feedback:
+        <<: *labels
+  helpers:
+    label:
+      feedback:
+        <<: *labels

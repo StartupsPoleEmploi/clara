@@ -42,20 +42,20 @@
         = link_to 'Retour à la liste', aides_path + '?for_id='+ params[:for_id], :class => 'c-navbutton c-navbutton--back js-previous';
 
     .c-feedback.c-feedback-background.c-feedback-police
-      %span.js-hideable Cette page est-elle utile ?
-      %span.js-expandmore.js-hideable.js-expandmore-yes Oui
-      .js-to_expand.js-thankyou
-        Merci pour votre avis !
-      %span.js-hideable /
-      %span
-      %span.js-expandmore.js-hideable.js-expandmore-no Non
-      .js-to_expand
-        = form_with id: "post_feedback_form", url: feedback_path, :local => false, method: 'post' do |f|
-          Comment pouvons-nous l'améliorer ?
-          %div
-            = f.text_area(:actual_feedback, size: '50x5') 
-          %div
-            = f.submit 'Envoyer', "id" => "submit_feedback"
+      %span.c-feedback-question.js-hideable Cette page est-elle utile ?
+      %div.c-feedback-question-zone
+        %button.js-feedback.js-feedback-yes.js-hideable Oui
+        %span.js-hideable /
+        %span.js-hideable.js-expandmore.js-feedback.js-feedback-no Non
+        .js-to_expand
+          = form_with id: "post_feedback_form", url: feedback_path, :local => false, method: 'post' do |f|
+            Comment pouvons-nous l'améliorer ?
+            %div
+              = f.text_area(:content, size: '50x5')
+              = f.hidden_field :positive, :value => 'non', id: 'hidden_decision_value'
+              = f.hidden_field :url_of_detail, :value => "#{params[:id]}"
+            %div
+              = f.submit 'Envoyer', "id" => "submit_feedback"
 
   - content_for :prefooter do
     .c-feedback-background.c-feedback-line

@@ -1,9 +1,11 @@
 .c-feedback {
   padding: space(5) space(9);
 }
+
 .c-feedback textarea {
   padding: space(4);
 }
+
 .c-feedback-background {
   background-color: #057dbc;
 }
@@ -14,7 +16,15 @@
   color: #ffffff;
 }
 
-.c-feedback button.js-expandmore-button {
+.c-feedback .js-feedback-yes {
+  text-decoration: underline;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  padding-left: 0;
+}
+.c-feedback .js-feedback-no button {
   text-decoration: underline;
   border: none;
   cursor: pointer;
