@@ -48,8 +48,6 @@ describe("Quand on arrive sur le détail d'une aide", function () {
     cy.get("a.text-color-red").first().click()
     cy.get("#js-tooltip-close").click()
     cy.get(".js-table-row").should('not.exist')
-    
   })
-
 
 })
