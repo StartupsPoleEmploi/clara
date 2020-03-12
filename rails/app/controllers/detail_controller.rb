@@ -25,6 +25,13 @@ class DetailController < ApplicationController
   end
 
   def post_feedback
+    extractor = ExtractParam.new(params)
+    new_feedback = Feedback.new(
+      content: extractor.call("content"),
+      positive: extractor.call("positive"),
+      url_of_detail: extractor.call("url_of_detail")
+    )
+    new_feedback.save
     render json: {
       status: "ok"
     }

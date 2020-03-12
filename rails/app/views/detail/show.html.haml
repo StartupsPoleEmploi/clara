@@ -51,8 +51,9 @@
           = form_with id: "post_feedback_form", url: feedback_path, :local => false, method: 'post' do |f|
             Comment pouvons-nous l'améliorer ?
             %div
-              = f.text_area(:actual_feedback, size: '50x5')
-              = f.hidden_field :decision, :value => 'no', id: 'hidden_decision_value'
+              = f.text_area(:content, size: '50x5')
+              = f.hidden_field :positive, :value => 'no', id: 'hidden_decision_value'
+              = f.hidden_field :url_of_detail, :value => "#{params[:id]}"
             %div
               = f.submit 'Envoyer', "id" => "submit_feedback"
 
