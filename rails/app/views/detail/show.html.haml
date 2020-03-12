@@ -52,7 +52,7 @@
             Comment pouvons-nous l'améliorer ?
             %div
               = f.text_area(:content, size: '50x5')
-              = f.hidden_field :positive, :value => 'no', id: 'hidden_decision_value'
+              = f.hidden_field :positive, :value => 'non', id: 'hidden_decision_value'
               = f.hidden_field :url_of_detail, :value => "#{params[:id]}"
             %div
               = f.submit 'Envoyer', "id" => "submit_feedback"
