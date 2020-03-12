@@ -12,14 +12,14 @@ describe("Quand on arrive sur le détail d'une aide", function () {
 
   it("Si on coche oui, un remerciement est affiché", function () {
     cy.get(".c-feedback .js-thankyou").should('not.be.visible')
-    cy.get(".c-feedback .js-expandmore-yes").click()
+    cy.get(".c-feedback .js-feedback-yes").click()
     cy.get(".c-feedback .js-thankyou").should('be.visible')
   })
 
   it("Si on coche non, un formulaire est affiché", function () {
     cy.reload()
     cy.get(".c-feedback form#post_feedback_form").should('not.be.visible')
-    cy.get(".c-feedback .js-expandmore-no").click()
+    cy.get(".c-feedback .js-feedback-no").click()
     cy.get(".c-feedback form#post_feedback_form").should('be.visible')
   })
 

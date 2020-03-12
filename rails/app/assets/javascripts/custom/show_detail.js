@@ -4,12 +4,13 @@ clara.js_define("show_detail", {
       return $(".c-body.detail.show").exists()
     },
     please: function() {
-      $(".js-hideable").on("click", function(e) {
-        $(".js-hideable").hide();
-      });
+
+      $(".js-feedback-yes").on("click", function(e) {
+        $("#hidden_decision_value").attr("value", "yes")
+        $("#submit_feedback").click()
+      })
       $("#post_feedback_form").on('ajax:success', function() {
-        $(".js-expandmore-yes").click();
-        $(this).hide()
+        $(".c-feedback").html("Merci pour votre avis !")
       });    
     },
 
