@@ -1,15 +1,5 @@
 describe("Quand on arrive sur le détail d'une aide", function () {
 
-  // before(function () {
-  //   cy.visit('/admin/feedbacks')
-  //   cy.get(".js-table-row").should('not.exist')
-  // })
-  // after(function () {
-  //   cy.connect_as_superadmin()
-  //   cy.visit('/admin/feedbacks')
-  //   cy.get(".js-table-row").should('not.exist')
-  // })
-
   before(function () {
     cy.visit('/aides/detail/erasmus')
     cy.get("body.c-body.detail.show").should('exist')
