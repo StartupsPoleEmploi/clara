@@ -5,6 +5,9 @@ clara.js_define("show_detail", {
     },
     please: function() {
 
+      $(".js-feedback-no").on("click", function(e) {
+        $(".js-hideable").hide()
+      })
       $(".js-feedback-yes").on("click", function(e) {
         $("#hidden_decision_value").attr("value", "oui")
         $("#submit_feedback").click()
