@@ -2,6 +2,10 @@
 
 
 
+## 27.4.0 (12/03/2020)
+-[#1561][FEATURE][BO] Les feedbacks à la question "Cette page est-elle utile ?" sont collectés 
+
+
 ## 27.3.0 (10/03/2020)
 -[#1560][FEATURE] Détail : Cette page est-elle utile ?
 
