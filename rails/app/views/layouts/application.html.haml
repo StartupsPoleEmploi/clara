@@ -38,6 +38,8 @@
       .c-body__content
         = render 'shared/header', {larger_container: (yield :larger_container)}
         = yield
+      - if content_for?(:prefooter)
+        = yield :prefooter
       %footer.c-body__footer
         - if content_for?(:footer)
           = yield :footer

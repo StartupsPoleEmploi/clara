@@ -168,3 +168,13 @@ Cypress.Commands.add(
         return subject;
     },
 );
+Cypress.Commands.add(
+    'shouldHaveTextStartingWith',
+    {
+        prevSubject: true,
+    },
+    (subject, equalTo) => {
+        expect(subject.text().trim().indexOf(equalTo)).to.eq(0);
+        return subject;
+    },
+);

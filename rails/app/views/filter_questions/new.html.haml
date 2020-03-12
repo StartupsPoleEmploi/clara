@@ -14,7 +14,7 @@
     
         = render 'shared/progressbar'
         = render 'shared/question_number'
-        = render 'shared/a_form_header', {youranswer: "yes", title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
+        = render 'shared/a_form_header', {mandatory: "no", youranswer: "yes", title: "#{raw_description}", subtitle: "Cochez la ou les situations correspondantes"}
         
         %fieldset.c-fieldset
           %legend.u-hidden-visually Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.

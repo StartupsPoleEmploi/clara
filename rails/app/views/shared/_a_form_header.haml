@@ -2,21 +2,26 @@
 - title ||= nil
 - subtitle ||= nil
 - youranswer ||= "yes"
+- mandatory ||= "yes"
 
 
-.c-question-title__warning
-  %span
-    Les champs marqués d'un
-  %span.c-question-title__warning-red
-    * 
-  %span 
-    sont obligatoires
+- if mandatory == "yes"
+  .c-question-title__warning
+    %span
+      Les champs marqués d'un
+    %span.c-question-title__warning-red
+      * 
+    %span 
+      sont obligatoires
 
 %h1.c-question-title
-  %span.c-question-title__asterisk
-    *
+  - if mandatory == "yes"
+    %span.c-question-title__asterisk
+      *
   %span.c-question-title__actual
     =title
+    %span.c-question-title__optionnal
+      Facultatif
 
 - if youranswer == "yes"
   %h2.c-question-youranswer
