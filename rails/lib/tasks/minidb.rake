@@ -74,6 +74,7 @@ namespace :minidb do
     PaperTrail::Version.destroy_all
 
     # Remove statistics stuffs
+    Feedback.destroy_all
     Trace.destroy_all
     Tracing.destroy_all
     Tracization.destroy_all

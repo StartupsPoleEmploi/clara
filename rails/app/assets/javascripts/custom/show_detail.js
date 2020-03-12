@@ -13,7 +13,7 @@ clara.js_define("show_detail", {
         $("#submit_feedback").click()
       })
       $("#post_feedback_form").on('ajax:success', function() {
-        $(".c-feedback").html("Merci pour votre avis !")
+        $(".c-feedback").html("<div class='js-thankyou'>Merci pour votre avis !</div>")
       });    
     },
 
