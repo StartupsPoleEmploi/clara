@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_085356) do
+ActiveRecord::Schema.define(version: 2020_02_13_085357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 2020_02_13_085356) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["variable_id"], name: "index_explicitations_on_variable_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text "content"
+    t.string "positive"
+    t.string "url_of_detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "filters", force: :cascade do |t|
