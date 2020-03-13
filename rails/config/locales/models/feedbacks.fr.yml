@@ -2,13 +2,13 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
-      content: Comment améliorer ?
-      url_of_detail: Url de la page de détail
-      positive: A aimé
-      created_at: "Créé le"
+      content: Comment pouvons-nous l'améliorer ?
+      url_of_detail: Page
+      positive: Cette page est-elle utile ?
+      created_at: "Date"
       updated_at: "Mis à jour le"
     models: 
-      feedback: Suggestion d'amélioration
+      feedback: Suggestions d'amélioration
     attributes:
       feedback:
         <<: *labels
