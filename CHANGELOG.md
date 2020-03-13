@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 27.4.2 (13/03/2020)
 [#1564b][BUG] rubrique, deploiement
 
