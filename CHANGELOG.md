@@ -2,6 +2,10 @@
 
 
 
+## 27.4.2 (13/03/2020)
+[#1564b][BUG] rubrique, deploiement
+
+
 ## 27.4.1 (13/03/2020)
 -[#1569][BUG] Facultatif partout
 
