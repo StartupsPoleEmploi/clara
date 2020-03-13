@@ -2,6 +2,10 @@
 
 
 
+## 27.4.1 (13/03/2020)
+-[#1569][BUG] Facultatif partout
+
+
 ## 27.4.0 (12/03/2020)
 -[#1561][FEATURE][BO] Les feedbacks à la question "Cette page est-elle utile ?" sont collectés 
 
