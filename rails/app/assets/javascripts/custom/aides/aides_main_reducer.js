@@ -29,7 +29,7 @@ clara.js_define("aides_main_reducer", {
 
       var filter_changed = _.find(newState.filters_zone.filters, function(filter){return filter.name === action.name});
       filter_changed.is_checked = action.value;
-      if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
+      // if (filter_changed.is_checked) filter_changed.updated_at = (new Date()).getTime();
       clara.aides_iterate_through_aids.please(function(ely, contract, aid){
         var aid_filters_name = _.map(aid.filters, function(e) {return e.name});
         var existing_filters_name = _.map(_.filter(newState.filters_zone.filters, function(f){return f.is_checked}), function(e) {return e.name});
