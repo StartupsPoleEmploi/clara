@@ -9,6 +9,7 @@ clara.js_define("aides_update_filtering", {
         var no_filter = _.isEmpty(_.filter(filters, function(e){return e.is_checked === true}))
 
         // aid state
+        // aid.is_collapsed = true;
         if (no_filter) {
           aid.is_collapsed = false;
         } else if (has_intersection) {
@@ -16,7 +17,8 @@ clara.js_define("aides_update_filtering", {
         } else {
           aid.is_collapsed = true;
         }
-                  
+        
+        contract.is_collapsed = true;         
   }
 
 });
