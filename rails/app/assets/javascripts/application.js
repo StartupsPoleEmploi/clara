@@ -40,6 +40,7 @@
 //= require custom/contact
 //= require custom/google_analytics_push
 //= require custom/print
+//= require custom/target_blank
 //= require custom/expand_tree
 //= require custom/inscription_questions
 //= require custom/category_questions
