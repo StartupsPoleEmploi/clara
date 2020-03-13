@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 27.5.0 (16/03/2020)
+[#1066][TECH] amélioration des liens de type "blank"
+
+
 ## 27.4.3 (13/03/2020)
 [#1561b][FEATURETTE] améliorations feedback
 

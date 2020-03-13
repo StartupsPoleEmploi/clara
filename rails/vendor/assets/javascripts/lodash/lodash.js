@@ -1,7 +1,7 @@
 /**
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst,lastIndexOf,minBy,first,last"`
+ * Build: `lodash include="set,get,map,zipObject,assign,filter,size,uniqBy,isPlainObject,last,includes,isEmpty,throttle,every,unset,each,find,intersection,sumBy,some,chain,toNumber,groupBy,sum,keys,split,startsWith,findIndex,isEqual,mixin,isNumber,isArray,reduce,has,negate,defaultTo,countBy,isObject,deburr,wrap,concat,sortBy,cloneDeep,trim,endsWith,difference,uniq,remove,template,transform,indexOf,isInteger,lowerFirst,lastIndexOf,minBy,first,last,stubTrue"`
  * Copyright JS Foundation and other contributors <https://js.foundation/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -8989,6 +8989,23 @@
     return false;
   }
 
+  /**
+   * This method returns `true`.
+   *
+   * @static
+   * @memberOf _
+   * @since 4.13.0
+   * @category Util
+   * @returns {boolean} Returns `true`.
+   * @example
+   *
+   * _.times(2, _.stubTrue);
+   * // => [true, true]
+   */
+  function stubTrue() {
+    return true;
+  }
+
   /*------------------------------------------------------------------------*/
 
   /**
@@ -9164,6 +9181,7 @@
   lodash.minBy = minBy;
   lodash.stubArray = stubArray;
   lodash.stubFalse = stubFalse;
+  lodash.stubTrue = stubTrue;
   lodash.noop = noop;
   lodash.now = now;
   lodash.reduce = reduce;
