@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 27.4.3 (13/03/2020)
+[#1561b][FEATURETTE] améliorations feedback
+
+
 ## 27.4.2 (13/03/2020)
 [#1564b][BUG] rubrique, deploiement
 
