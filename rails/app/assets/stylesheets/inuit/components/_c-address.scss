@@ -49,6 +49,12 @@ input#search {
   border-radius: 4px;
   border: solid 1px #d0e9c6;
   background-color: #dff0d8;
+  .o-layout {
+    height: 100%;
+  }
+  .o-layout__item {
+    align-items: center;
+  }
 }
 
 .c-address__heartening-txtlast {
