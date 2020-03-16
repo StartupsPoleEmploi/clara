@@ -19,7 +19,7 @@
         %fieldset.c-fieldset
           %legend.u-hidden-visually Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
 
-          - local_assigns[:filters].each do |filter|       
+          - local_assigns[:filters].sort_by(&:ordre_affichage).each do |filter|       
             = render 'shared/other_form_line', {id: "#{filter.slug}", current_text: "#{filter.name}"} 
                 
         = render 'nav/next_previous', f: f
