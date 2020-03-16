@@ -49,7 +49,7 @@ gem "oj"
 
 # Admin
 gem "paper_trail", "~> 9.0.0"
-gem "administrate"
+gem "administrate", ">= 0.13.0"
 
 gem "administrate-field-ckeditor", "~> 0.0.8"
 

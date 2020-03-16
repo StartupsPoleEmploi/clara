@@ -38,3 +38,25 @@ input#search {
   color: #000000;
   max-width: 280px;
 }
+
+.c-address__heartening {
+  background-color: #dff0d8;
+  width: 100%;
+  color: #2b542c;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 4px;
+  border: solid 1px #d0e9c6;
+  background-color: #dff0d8;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .o-layout {
+    height: 100%;
+  }
+  .o-layout__item {
+    align-items: center;
+  }
+  @include mq($until: tablet) {
+    max-width: 250px;
+  }
+}

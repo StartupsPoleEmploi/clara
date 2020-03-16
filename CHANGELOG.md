@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 28.0.0 (17/03/2020)
+[#1553][FEATURE] encouragement à la question adresse
+
+
 ## 27.5.0 (16/03/2020)
 [#1066][TECH] amélioration des liens de type "blank"
 
