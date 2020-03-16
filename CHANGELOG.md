@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 28.0.1 (17/03/2020)
+[#1568][FEATURETTE] ordre filtres
+
+
 ## 28.0.0 (17/03/2020)
 [#1553][FEATURE] encouragement à la question adresse
 
