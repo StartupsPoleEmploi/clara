@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 27.6.0 (17/03/2020)
+## 28.0.0 (17/03/2020)
 [#1553][FEATURE] encouragement à la question adresse
 
 
