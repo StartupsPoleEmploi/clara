@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "cypress": "4.0.1"
+    "cypress": "4.0.1",
+    "minimist": ">=1.2.2"
   }
 }
