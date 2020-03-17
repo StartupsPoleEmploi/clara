@@ -40,10 +40,10 @@ input#search {
 }
 
 .c-address__heartening {
+  max-height: 5rem;
   background-color: #dff0d8;
   width: 100%;
   color: #2b542c;
-  font-size: 16px;
   line-height: 1.5;
   border-radius: 4px;
   border: solid 1px #d0e9c6;
@@ -59,4 +59,11 @@ input#search {
   @include mq($until: tablet) {
     max-width: 250px;
   }
+}
+
+.c-address__hearteningtxt {
+  font-size: 16px;
+  @include mq($until: mobile) {
+    font-size: 12px;
+  }  
 }

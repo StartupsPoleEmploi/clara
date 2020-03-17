@@ -2,6 +2,10 @@
 
 
 
+## 28.0.2 (18/03/2020)
+[#1575][DESIGN] meilleur logo de la main + allongement intempestif
+
+
 ## 28.0.1 (17/03/2020)
 [#1568][FEATURETTE] ordre filtres
 
