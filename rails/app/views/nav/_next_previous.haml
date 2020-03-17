@@ -1,14 +1,11 @@
 - e ||= OpenStruct.new(has_error:false, main_error:'')
 - m ||= "Veuillez sélectionner l'une de ces options"
-- guidance ||= "no"
 
 .o-layout.o-layout--stretch.c-nextprev
-  .o-layout__item{:class => "u-1/1 #{guidance == 'yes' ? 'u-1/3@tablet' : 'u-1/2@tablet'}"}
+  .o-layout__item{:class => "u-1/1 u-1/2@tablet"}
     - if e.has_error
       .c-error-in-form{:class => "u-margin-bottom-small u-margin-bottom-none@tablet"}
         %label.c-label.is-error #{m}
-  .o-layout__item{:class => "u-1/1 #{guidance == 'yes' ? 'u-2/3@tablet' : 'u-1/2@tablet'} u-text--right"}
-    - if guidance == "yes"
-      %span.c-question-guidance Il vous reste juste 2 questions avant vos résultats
+  .o-layout__item{:class => "u-1/1 u-1/2@tablet u-text--right"}
     = f.submit 'Continuer', "name" => "commit", "value"=>"Continuer", "class" => "c-navbutton c-navbutton--continue js-next #{guidance == 'yes' ? '' : 'u-margin-left-auto'}"
 
