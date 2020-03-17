@@ -2,6 +2,10 @@
 
 
 
+## 28.1.0 (18/03/2020)
+[#1574][FEATURE] Le message "Il vous reste juste 2 questions avant vos résultats" est supprimé
+
+
 ## 28.0.3 (18/03/2020)
 [#1574][BUG] double highlight à gauche.
 
