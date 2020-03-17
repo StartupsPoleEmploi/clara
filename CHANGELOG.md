@@ -2,6 +2,10 @@
 
 
 
+## 28.0.3 (18/03/2020)
+[#1574][BUG] double highlight à gauche.
+
+
 ## 28.0.2 (18/03/2020)
 [#1575][DESIGN] meilleur logo de la main + allongement intempestif
 
