@@ -2,6 +2,11 @@
 
 
 
+
+## 28.2.0 (18/03/2020)
+[#1555][DESIGN] Sur les pages erreur 404 et erreur 500, le logo Clara est le bon
+
+
 ## 28.1.0 (18/03/2020)
 [#1574][FEATURE] Le message "Il vous reste juste 2 questions avant vos résultats" est supprimé
 
