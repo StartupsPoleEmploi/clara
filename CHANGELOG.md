@@ -3,6 +3,10 @@
 
 
 
+## 28.2.1 (18/03/2020)
+[#1555b][BUG] Guidance bug
+
+
 ## 28.2.0 (18/03/2020)
 [#1555][DESIGN] Sur les pages erreur 404 et erreur 500, le logo Clara est le bon
 
