@@ -2,39 +2,29 @@ clara.js_define("admin_modify_ct", {
 
 
     please_if: function() {
-      var edit_path = "body[data-path='edit_admin_contract_type_path']"
-      var creation_path = "body[data-path='new_admin_contract_type_path']"
+      var edit_path = "body[data-path='edit_admin_filter_path']"
+      var creation_path = "body[data-path='new_admin_filter_path']"
       return $(edit_path).exists() || $(creation_path).exists();
     },
 
     please: function() {
       var that = this;
-      var edit_path = "body[data-path='edit_admin_contract_type_path']";
+      var edit_path = "body[data-path='edit_admin_filter_path']";
 
-      // multiple buttons for submit
-      $(".c-ct-record").click(function (event) {
-        $("#create-ct").click();
-      });
-
-      $('#contract_type_name').on('input', function(event) {
-        $("#contract_type_plural").val($('#contract_type_name').val() + "s")
-      });
-      
       setTimeout(function(e){
-        if (!_.isBlank($('#contract_type_icon').val())){
-          // $(".field-unit-svg-preview").show();
-          $(".field-unit-svg-preview__img").html($('#contract_type_icon').val());
+        if (!_.isBlank($('#filter_icon').val())){
+          $(".field-unit-svg-preview__img").html($('#filter_icon').val());
         } else {
-          // $(".field-unit-svg-preview").hide();
+          // over
         }
       }, 200)
 
       // hide the str input, and show the file input
-      var $str_icon = $("#contract_type_icon").parent().parent();
+      var $str_icon = $("#filter_icon").parent().parent();
       $str_icon.addClass("hidden");
       $str_icon.after(that.constants.tpl_icon_file);
 
-      $('input#contract_type_icon_file').change(function(){
+      $('input#filter_icon_file').change(function(){
          var svg_text = that.handleFileSelect();
          that.receivedText();         
       });
@@ -62,7 +52,7 @@ clara.js_define("admin_modify_ct", {
         return;
       }   
 
-      var input = document.getElementById("contract_type_icon_file");
+      var input = document.getElementById("filter_icon_file");
       if (!input) {
         console.error("Um, couldn't find the fileinput element.");
       }
@@ -83,12 +73,12 @@ clara.js_define("admin_modify_ct", {
 
     receivedText: function() {
       var actual_svg_text = fr.result;
-      $('#contract_type_icon').val(actual_svg_text);
+      $('#filter_icon').val(actual_svg_text);
       // $(".field-unit-svg-preview").show();
 
       $(".field-unit-svg-preview__img").html(actual_svg_text);
       // if you want to reset the input file, uncomment below
-      // document.getElementById("contract_type_icon_file").value = "";
+      // document.getElementById("filter_icon_file").value = "";
     },
 
     constants: {
@@ -106,10 +96,10 @@ clara.js_define("admin_modify_ct", {
           '</div>' +
           '<div class="field-unit field-unit--svg-file-field c-ct-change-icon">' +
             '<div class="field-unit__label">' +
-                '<label for="contract_type_icon_file">Changer l\'icône</label>' +
+                '<label for="filter_icon_file">Changer l\'icône</label>' +
             '</div>' +
             '<div class="field-unit__field">' +
-               '<input accept=".svg" type="file" id="contract_type_icon_file">' +
+               '<input accept=".svg" type="file" id="filter_icon_file">' +
             '</div>' +
           '</div>' +
         '</div>' 

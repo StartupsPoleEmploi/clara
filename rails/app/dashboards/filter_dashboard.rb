@@ -41,6 +41,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :icon,
     :ordre_affichage,
     :aids,
   ].freeze
