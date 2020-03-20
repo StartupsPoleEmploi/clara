@@ -121,11 +121,9 @@ describe("Pour un visiteur", function () {
   })
   describe("On peut filtrer les résultats", function () {
     const HIDDEN_ELTS = ".c-resultcard.u-hidden-visually"
-    const VISIBLE_TAGS = '.c-resultfilter[data-name]:visible'
     before(function () {
       //given
       cy.get(HIDDEN_ELTS).should('not.exist')
-      cy.get(VISIBLE_TAGS).should('not.exist')
       //when
       cy.get('#check_2').click()
     })
@@ -133,11 +131,6 @@ describe("Pour un visiteur", function () {
       //then
       cy.get(HIDDEN_ELTS).should('exist')
     })
-    it("Les petites étiquettes apparaissent", function(){
-      //then
-      cy.get(VISIBLE_TAGS).should('exist')
-    })
-
   })
 
 })
