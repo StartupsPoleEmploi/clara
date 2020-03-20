@@ -22,10 +22,7 @@ clara.js_define("admin_modify_filter", {
       
       setTimeout(function(e){
         if (!_.isBlank($('#contract_type_icon').val())){
-          // $(".field-unit-svg-preview").show();
           $(".field-unit-svg-preview__img").html($('#contract_type_icon').val());
-        } else {
-          // $(".field-unit-svg-preview").hide();
         }
       }, 200)
 
@@ -84,7 +81,6 @@ clara.js_define("admin_modify_filter", {
     receivedText: function() {
       var actual_svg_text = fr.result;
       $('#contract_type_icon').val(actual_svg_text);
-      // $(".field-unit-svg-preview").show();
 
       $(".field-unit-svg-preview__img").html(actual_svg_text);
       // if you want to reset the input file, uncomment below
