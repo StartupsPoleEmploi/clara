@@ -2,7 +2,6 @@
 
 
 
-
 ## 28.3.0 (20/03/2020)
 [#1562][FEATURE] Icône BO pour filtres
 
