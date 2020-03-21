@@ -12,7 +12,7 @@ class FilterDashboard < Administrate::BaseDashboard
     ordre_affichage: Field::Number,
     name: Field::String,
     slug: Field::String,
-    # description: Field::String,
+    icon: Field::String,
     aids: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -34,7 +34,6 @@ class FilterDashboard < Administrate::BaseDashboard
     :aids,
     :name,
     :slug,
-    # :description,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -42,9 +41,9 @@ class FilterDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :name,
+    :icon,
     :ordre_affichage,
     :aids,
-    # :description,
   ].freeze
 
   # Overwrite this method to customize how aidss are displayed
