@@ -14,8 +14,6 @@ clara.js_define("admin_modify_ct", {
       setTimeout(function(e){
         if (!_.isBlank($('#filter_icon').val())){
           $(".field-unit-svg-preview__img").html($('#filter_icon').val());
-        } else {
-          // over
         }
       }, 200)
 
@@ -74,7 +72,6 @@ clara.js_define("admin_modify_ct", {
     receivedText: function() {
       var actual_svg_text = fr.result;
       $('#filter_icon').val(actual_svg_text);
-      // $(".field-unit-svg-preview").show();
 
       $(".field-unit-svg-preview__img").html(actual_svg_text);
       // if you want to reset the input file, uncomment below
