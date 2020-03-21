@@ -2,6 +2,10 @@
 
 
 
+## 28.4.0 (20/03/2020)
+[#1551][DESIGN] nouveau design filtres
+
+
 ## 28.3.0 (20/03/2020)
 [#1562][FEATURE] Icône BO pour filtres
 
