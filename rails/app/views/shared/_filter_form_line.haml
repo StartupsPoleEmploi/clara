@@ -1,0 +1,10 @@
+- id ||= ""
+- current_val ||= ""
+- current_text ||= ""
+- current_icon ||= "<svg height='9' width='9' ></svg>"
+
+.c-filterbox
+  %input.checkbox{:id => "lists[new_#{id}]", :name => "lists[new_#{id}]", :type => "checkbox"}/
+  %label{:for => "lists[new_#{id}]"}
+    %span.check=raw(current_icon)
+    =current_text
