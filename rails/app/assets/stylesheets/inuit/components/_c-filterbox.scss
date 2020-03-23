@@ -21,9 +21,10 @@
   input:checked + label {
     border-radius: 2px;
     border: solid 2px #057dbc;
-    color: #F00;
+    color: #057dbc;
+    font-weight: bold;
     .fillable-svg-path {
-      fill: red;
+      fill: #057dbc;
     }
   }
 
