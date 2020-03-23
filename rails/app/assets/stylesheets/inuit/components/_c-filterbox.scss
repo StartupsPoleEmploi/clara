@@ -17,6 +17,19 @@
   input:checked + label {
     border: solid 1px red;
     color: #F00;
+    .fillable-svg-path {
+      fill: red;
+    }
+  }
+
+  .check {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+    .fillable-svg-path {
+      fill: black;
+    }
   }
 
 }
