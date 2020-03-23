@@ -1,12 +1,16 @@
+.c-filterboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .c-filterbox {
+  width: 320px;
+  height:75px;
   label {
     display:block;
-    border:solid 1px gray;
-    line-height:40px;
-    height:40px;
-    border-radius:40px;
-    margin-top:10px;
-    text-align:center;
+    border-radius: 2px;
+    border: solid 2px #454545;
+    line-height:1.5;
     cursor: pointer;
   }
 
@@ -15,7 +19,8 @@
   }
 
   input:checked + label {
-    border: solid 1px red;
+    border-radius: 2px;
+    border: solid 2px #057dbc;
     color: #F00;
     .fillable-svg-path {
       fill: red;
