@@ -11,11 +11,18 @@
     display: flex;
     align-items: center;
     height:75px;
-    width: 320px;
+      width: 80%;
     border-radius: 2px;
     border: solid 2px #454545;
     line-height:1.5;
     cursor: pointer;
+    @include mq($until: mobile) {
+      font-size: 14px;
+      width: 190px;
+    }
+    @include mq($from: mobile) {
+      width: 320px;
+    }
   }
 
   input[type=checkbox] {
