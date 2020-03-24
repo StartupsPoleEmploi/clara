@@ -1,6 +1,14 @@
 {
   "dependencies": {
-    "cypress": "4.0.1",
-    "minimist": ">=1.2.2"
+    "cypress": "4.0.1"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
+  },
+  "devDependencies": {
+    "minimist": "^1.2.5"
+  },
+  "scripts": {
+    "preinstall": "npx npm-force-resolutions"
   }
 }
