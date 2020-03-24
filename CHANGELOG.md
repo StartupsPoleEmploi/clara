@@ -2,7 +2,11 @@
 
 
 
-## 28.4.0 (20/03/2020)
+## 28.4.1 (24/03/2020)
+[#1578][BUG] bouton continuer
+
+
+## 28.4.0 (23/03/2020)
 [#1551][DESIGN] nouveau design filtres
 
 
