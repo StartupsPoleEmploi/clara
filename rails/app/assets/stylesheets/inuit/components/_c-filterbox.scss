@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     height:75px;
-      width: 80%;
+    width: 80%;
     border-radius: 2px;
     border: solid 2px #454545;
     line-height:1.5;
@@ -34,7 +34,7 @@
     border: solid 2px #057dbc;
     color: #057dbc;
     font-weight: bold;
-    .fillable-svg-path {
+    svg path {
       fill: #057dbc;
     }
   }
@@ -43,9 +43,9 @@
     svg {
       width: 32px;
       height: 32px;
-    }
-    .fillable-svg-path {
-      fill: black;
+      path {
+        fill: black;
+      }
     }
   }
 
