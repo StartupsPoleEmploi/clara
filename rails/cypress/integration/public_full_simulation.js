@@ -50,7 +50,7 @@ describe("Pour un visiteur", function () {
     //when
     cy.get('.js-next').click()
 
-    cy.get('input#se-deplacer').click()
+    cy.get('label[for="se-deplacer"]').click()
     cy.get('.js-next').click()
 
     //then 

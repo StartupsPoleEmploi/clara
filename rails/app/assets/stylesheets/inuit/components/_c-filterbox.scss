@@ -1,0 +1,55 @@
+.c-filterboxes {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.c-filterbox {
+  label {
+    margin-top: .5rem;
+    margin-right: .5rem;
+    padding: 0rem 1rem;
+    display: flex;
+    align-items: center;
+    height:75px;
+    width: 80%;
+    border-radius: 2px;
+    border: solid 2px #454545;
+    line-height:1.5;
+    cursor: pointer;
+    @include mq($until: mobile) {
+      font-size: 14px;
+      width: 190px;
+    }
+    @include mq($from: mobile) {
+      width: 320px;
+    }
+  }
+
+  input[type=checkbox] {
+    display: none;
+  }
+
+  input:checked + label {
+    border-radius: 2px;
+    border: solid 2px #057dbc;
+    color: #057dbc;
+    font-weight: bold;
+    svg path {
+      fill: #057dbc;
+    }
+  }
+
+  .check {
+    svg {
+      width: 32px;
+      height: 32px;
+      path {
+        fill: black;
+      }
+    }
+  }
+
+  .checktxt {
+    margin-left: .5rem;
+  }
+}
