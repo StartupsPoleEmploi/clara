@@ -17,7 +17,7 @@ describe("Pour un visiteur", function () {
     cy.get('input#se-deplacer').should('be.checked')
   })
   it("Si on coche une case sur la question filtre, elle apparaît aussi sur l'écran de résultat", function () {
-    cy.get('input#garder-enfant').check()
+    cy.get('label[for="garder-enfant"]').click()
     cy.get('input#se-deplacer').should('be.checked')
     cy.get('input#garder-enfant').should('be.checked')
     cy.get('.js-next').click()
