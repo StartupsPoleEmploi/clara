@@ -2,6 +2,10 @@
 
 
 
+## 28.6.0 (26/03/2020)
+[#1304][FEATURE] date de rappel d'une aide
+
+
 ## 28.5.0 (25/03/2020)
 [#1562b][FEATURETTE] icône filtre par défaut
 
