@@ -17,5 +17,7 @@ as a localized date & time string.
 %>
 
 <% if field.data %>
-  <%= ((I18n.t :abbr_month_names, :scope => :date)[field.data.month]) + " " +  field.data.year.to_s %>
+  <span data-actual="<%= ap field.data.strftime("%B %d, %Y") %>">
+    <%= ((I18n.t :abbr_month_names, :scope => :date)[field.data.month]) + " " +  field.data.year.to_s %>
+  </span>
 <% end %>
