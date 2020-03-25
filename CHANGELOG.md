@@ -2,6 +2,10 @@
 
 
 
+## 28.5.0 (25/03/2020)
+[#1562b][FEATURETTE] icône filtre par défaut
+
+
 ## 28.4.1 (24/03/2020)
 [#1578][BUG] bouton continuer
 
