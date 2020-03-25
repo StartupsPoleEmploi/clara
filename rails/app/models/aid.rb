@@ -62,6 +62,7 @@ class Aid < ApplicationRecord
                   }
 
   has_many :tracizations
+  has_many :recalls
   has_many :tracings, through: :tracizations
 
   has_and_belongs_to_many :filters
