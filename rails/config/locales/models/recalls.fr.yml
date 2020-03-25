@@ -1,0 +1,17 @@
+fr:
+  activerecord:
+    labels: &labels
+      trigger_at: Date d'envoi
+      aid: Aide
+      created_at: Date
+      updated_at: Mis à jour le
+      email: E-mail
+    models: 
+      recalls: Rappels
+    attributes:
+      recall:
+        <<: *labels
+  helpers:
+    label:
+      recall:
+        <<: *labels

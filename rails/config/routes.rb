@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post 'accept_all_cookies' => 'welcome#accept_all_cookies'
 
   namespace :admin do
+    resources :recalls
     resources :feedbacks
     resources :explicitations
     resources :conventions
