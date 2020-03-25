@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_085360) do
   end
 
   create_table "recalls", force: :cascade do |t|
-    t.datetime "trigger_at", null: false
+    t.datetime "trigger_at"
     t.bigint "aid_id"
     t.string "email"
     t.datetime "created_at", null: false
