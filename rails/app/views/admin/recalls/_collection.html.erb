@@ -72,6 +72,14 @@ to display a collection of resources in an HTML table.
           </td>
         <% end %>
 
+        <% if valid_action? :show, collection_presenter.resource_name %>
+          <td><%= link_to(
+            "Consulter".html_safe ,
+            polymorphic_path([namespace, resource]),
+            class: "action-edit") %>
+          </td>
+        <% end %>
+
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.edit"),
