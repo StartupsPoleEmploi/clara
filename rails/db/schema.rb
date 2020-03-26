@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_085360) do
     t.datetime "trigger_at"
     t.bigint "aid_id"
     t.string "email"
-    t.string "status"
+    t.string "status", default: "not_sent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["aid_id"], name: "index_recalls_on_aid_id"

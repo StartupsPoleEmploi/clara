@@ -12,6 +12,7 @@ class RecallDashboard < Administrate::BaseDashboard
     id: Field::Number,
     trigger_at: Field::DateTime,
     email: Field::String,
+    status: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -33,6 +34,7 @@ class RecallDashboard < Administrate::BaseDashboard
   aid
   trigger_at
   email
+  status
   created_at
   updated_at
   ].freeze
