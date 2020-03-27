@@ -1,6 +1,6 @@
 class RecallMailer < ApplicationMailer
 
-  def contact_email
+  def recall_email
     @aid_name = params[:aid_name] 
     @aid_status = params[:aid_status] 
     @email_target = params[:email_target] 
