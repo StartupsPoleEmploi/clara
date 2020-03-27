@@ -3,6 +3,7 @@ class RecallMailer < ApplicationMailer
   def recall_email
     @aid_name = params[:aid_name] 
     @aid_status = params[:aid_status] 
+    @aid_link = params[:aid_link] 
     @email_target = params[:email_target] 
     mail(
       subject: "[Clara] vous avez une aide à vérifier !",

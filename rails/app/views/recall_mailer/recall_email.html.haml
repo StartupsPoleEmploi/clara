@@ -3,5 +3,25 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %body
-    %h1
-      Ceci est un rappel
+    %div
+      Bonjour,
+    %div
+      Vous avez créé une alerte automatique pour l'aide ""      
+    %div
+      Cette aide est actuellement au statut ""
+
+    %div
+      Vous pouvez effectuer des modifications sur cette aide directement dans le Back-Office de Clara, en suivant ce lien :
+
+    %div
+      %a{href: "#{@aid_link}"}
+        Effectuer des modifications
+
+    %div
+      Si vous rencontrez des difficultés pour vous connecter au back-office, vous pouvez prendre contact avec l'équipe : clara@pole-emploi.fr
+
+    %div
+      Bonne journée !
+
+    %div
+      L'équipe Clara.
