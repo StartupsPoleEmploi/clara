@@ -22,7 +22,7 @@
 
 class Aid < ApplicationRecord
   extend FriendlyId
-  include PgSearch
+  include PgSearch::Model
 
   after_save { ExpireCacheJob.perform_later } if Rails.env.production?
   after_update { ExpireCacheJob.perform_later } if Rails.env.production?
