@@ -9,8 +9,12 @@ class SendRecall
     p ''
     if _time_to_send_email? || is_forced
       recall_to_be_sent = Recall.please_send.first
+      p '- - - - - - - - - - - - - - recall_to_be_sent- - - - - - - - - - - - - - - -' 
+      ap recall_to_be_sent
+      ap recall_to_be_sent.aid if recall_to_be_sent
+      p ''
       if recall_to_be_sent
-        RecallMailer.with(email_target: recall_to_be_sent.email).contact_email.deliver_now            
+        RecallMailer.with(email_target: recall_to_be_sent.email).recall_email.deliver_now
         recall_to_be_sent.status = "sent"
         recall_to_be_sent.save
       end
