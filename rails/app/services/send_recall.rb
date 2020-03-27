@@ -1,11 +1,14 @@
 class SendRecall
 
-  def call(is_forced, domain)
+  def call(is_forced, domain, protocol)
     p '- - - - - - - - - - - - - - is_forced- - - - - - - - - - - - - - - -' 
     pp is_forced
     p ''
     p '- - - - - - - - - - - - - - domain- - - - - - - - - - - - - - - -' 
     pp domain
+    p ''
+    p '- - - - - - - - - - - - - - protocol- - - - - - - - - - - - - - - -' 
+    pp protocol
     p ''
     p '- - - - - - - - - - - - - - _time_to_send_email?- - - - - - - - - - - - - - - -' 
     pp _time_to_send_email?
@@ -22,7 +25,7 @@ class SendRecall
           email_target: recall_to_be_sent.email,
           domain: domain,
           aid_name: aid.name,
-          aid_link: domain + "/" + aid.slug.to_s,
+          aid_link: protocol + domain + "/admin/aids/" + aid.slug.to_s,
           aid_status: aid.status,
         ).recall_email.deliver_now
         recall_to_be_sent.status = "sent"

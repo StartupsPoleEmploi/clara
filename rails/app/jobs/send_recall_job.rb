@@ -6,7 +6,8 @@ class SendRecallJob < ApplicationJob
   def perform(*args)
     is_forced = args[0]
     domain = args[1]
-    SendRecall.new.call(is_forced, domain)
+    protocol = args[2]
+    SendRecall.new.call(is_forced, domain, protocol)
   end
 
 end
