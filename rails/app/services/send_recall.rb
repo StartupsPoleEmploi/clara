@@ -25,7 +25,7 @@ class SendRecall
           email_target: recall_to_be_sent.email,
           domain: domain,
           aid_name: aid.name,
-          aid_link: protocol + domain + "/admin/aids/" + aid.slug.to_s,
+          aid_link: protocol + domain + "/admin/aid_creation/new_aid_stage_1?locale=fr&modify=true&slug=" + aid.slug.to_s,
           aid_status: aid.status,
         ).recall_email.deliver_now
         recall_to_be_sent.status = "sent"
