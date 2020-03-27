@@ -1,8 +1,11 @@
 class SendRecall
 
-  def call(is_forced)
+  def call(is_forced, domain)
     p '- - - - - - - - - - - - - - is_forced- - - - - - - - - - - - - - - -' 
     pp is_forced
+    p ''
+    p '- - - - - - - - - - - - - - domain- - - - - - - - - - - - - - - -' 
+    pp domain
     p ''
     p '- - - - - - - - - - - - - - _time_to_send_email?- - - - - - - - - - - - - - - -' 
     pp _time_to_send_email?
@@ -14,7 +17,14 @@ class SendRecall
       ap recall_to_be_sent.aid if recall_to_be_sent
       p ''
       if recall_to_be_sent
-        RecallMailer.with(email_target: recall_to_be_sent.email).recall_email.deliver_now
+        aid = recall_to_be_sent.aid || Aid.new
+        RecallMailer.with(
+          email_target: recall_to_be_sent.email
+          domain: domain
+          aid_name: aid.name
+          aid_link: "#{domain/aid.slug}"
+          aid_status: aid.status
+        ).recall_email.deliver_now
         recall_to_be_sent.status = "sent"
         recall_to_be_sent.save
       end

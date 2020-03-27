@@ -4,7 +4,9 @@ class SendRecallJob < ApplicationJob
 
   # Do something later
   def perform(*args)
-    SendRecall.new.call(args[0])
+    is_forced = args[0]
+    domain = args[1]
+    SendRecall.new.call(is_forced, domain)
   end
 
 end
