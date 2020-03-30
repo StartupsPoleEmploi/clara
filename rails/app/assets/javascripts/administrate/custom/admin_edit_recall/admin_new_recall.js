@@ -11,5 +11,4 @@ clara.js_define("admin_edit_recall", {
     $("#recall_email").css("color", "grey")
   }
 
-
 });
