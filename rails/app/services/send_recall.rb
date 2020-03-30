@@ -21,6 +21,8 @@ class SendRecall
       p ''
       if recall_to_be_sent
         aid = recall_to_be_sent.aid || Aid.new
+        recall_to_be_sent.status = "sent"
+        recall_to_be_sent.save
         RecallMailer.with(
           email_target: recall_to_be_sent.email,
           domain: domain,
@@ -28,8 +30,6 @@ class SendRecall
           aid_link: protocol + domain + "/admin/aid_creation/new_aid_stage_1?locale=fr&modify=true&slug=" + aid.slug.to_s,
           aid_status: aid.status,
         ).recall_email.deliver_now
-        recall_to_be_sent.status = "sent"
-        recall_to_be_sent.save
       end
     end
   end
