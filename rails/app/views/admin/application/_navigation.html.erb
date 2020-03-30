@@ -45,5 +45,10 @@
       class: "navigation__link navigation__link--#{nav_link_state('feedbacks')}"
     ) %>    
   <% end %>
+  <%= link_to(
+    "Rappels",
+    admin_recalls_path,
+    class: "navigation__link navigation__link--#{nav_link_state('recalls')}"
+  ) %>    
   
 </nav>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_085359) do
+ActiveRecord::Schema.define(version: 2020_03_13_085360) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -134,6 +134,16 @@ ActiveRecord::Schema.define(version: 2020_02_13_085359) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "recalls", force: :cascade do |t|
+    t.datetime "trigger_at"
+    t.bigint "aid_id"
+    t.string "email"
+    t.string "status", default: "not_sent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aid_id"], name: "index_recalls_on_aid_id"
+  end
+
   create_table "rules", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "value_eligible"
@@ -225,5 +235,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_085359) do
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
   add_foreign_key "custom_rule_checks", "rules"
   add_foreign_key "explicitations", "variables"
+  add_foreign_key "recalls", "aids"
   add_foreign_key "rules", "variables"
 end

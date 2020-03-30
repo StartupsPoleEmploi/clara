@@ -22,7 +22,7 @@
 
 class Aid < ApplicationRecord
   extend FriendlyId
-  include PgSearch
+  include PgSearch::Model
 
   after_save { ExpireCacheJob.perform_later } if Rails.env.production?
   after_update { ExpireCacheJob.perform_later } if Rails.env.production?
@@ -62,6 +62,7 @@ class Aid < ApplicationRecord
                   }
 
   has_many :tracizations
+  has_many :recalls
   has_many :tracings, through: :tracizations
 
   has_and_belongs_to_many :filters

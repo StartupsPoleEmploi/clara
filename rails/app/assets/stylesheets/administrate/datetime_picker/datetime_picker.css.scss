@@ -364,3 +364,18 @@
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.glyphicon.glyphicon-chevron-left:before {
+  content: "<<";
+}
+.glyphicon.glyphicon-chevron-right:before {
+  content: ">>";
+}
+
+
+.list-unstyled {
+  list-style-type: none;
+  list-style: none;
+}
+
+

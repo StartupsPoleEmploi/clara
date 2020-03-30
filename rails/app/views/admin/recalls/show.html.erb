@@ -1,22 +1,4 @@
-<%#
-# Show
-
-This view is the template for the show page.
-It renders the attributes of a resource,
-as well as a link to its edit page.
-
-## Local variables:
-
-- `page`:
-  An instance of [Administrate::Page::Show][1].
-  Contains methods for accessing the resource to be displayed on the page,
-  as well as helpers for describing how each attribute of the resource
-  should be displayed.
-
-[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
-%>
-
-<% content_for(:title) { t("helpers.domain_filter.detail", name: page.page_title) } %>
+<% content_for(:title) { "Détail du rappel" } %>
 
 <header class="main-content__header" role="banner">
   <h1 class="main-content__page-title">
@@ -25,7 +7,7 @@ as well as a link to its edit page.
 
   <div>
     <%= link_to(
-      t("administrate.actions.edit", name: page.page_title),
+      "Modifier ce rappel",
       [:edit, namespace, page.resource],
       class: "button",
     ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
@@ -43,7 +25,7 @@ as well as a link to its edit page.
       </dt>
 
       <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
-          ><%= render_field attribute %></dd>
+          ><%= render_field attribute, page: page %></dd>
     <% end %>
   </dl>
 </section>
