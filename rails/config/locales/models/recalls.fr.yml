@@ -15,3 +15,7 @@ fr:
     label:
       recall:
         <<: *labels
+  recall:
+    status:
+      sent: "Envoyé"
+      not_sent: "Prêt"
