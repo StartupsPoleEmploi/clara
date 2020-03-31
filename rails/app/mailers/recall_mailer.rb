@@ -6,7 +6,7 @@ class RecallMailer < ApplicationMailer
     @aid_link = params[:aid_link] 
     @email_target = params[:email_target] 
     mail(
-      subject: "[Clara] vous avez une aide à vérifier !",
+      subject: "[Clara] Vous avez une aide à vérifier !",
       from: ENV['ARA_EMAIL_FROM'],
       to: @email_target,
       delivery_method_options: { api_key: ENV['ARA_EMAIL_API_KEY'], secret_key: ENV['ARA_EMAIL_SECRET_KEY'] }
