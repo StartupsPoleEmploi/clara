@@ -1,14 +1,11 @@
 class SendRecall
 
-  def call(is_forced, domain, protocol)
+  def call(is_forced, root_url)
     p '- - - - - - - - - - - - - - is_forced- - - - - - - - - - - - - - - -' 
     pp is_forced
     p ''
-    p '- - - - - - - - - - - - - - domain- - - - - - - - - - - - - - - -' 
-    pp domain
-    p ''
-    p '- - - - - - - - - - - - - - protocol- - - - - - - - - - - - - - - -' 
-    pp protocol
+    p '- - - - - - - - - - - - - - root_url- - - - - - - - - - - - - - - -' 
+    pp root_url
     p ''
     p '- - - - - - - - - - - - - - _time_to_send_email?- - - - - - - - - - - - - - - -' 
     pp _time_to_send_email?
@@ -25,9 +22,8 @@ class SendRecall
         recall_to_be_sent.save
         RecallMailer.with(
           email_target: recall_to_be_sent.email,
-          domain: domain,
           aid_name: aid.name,
-          aid_link: domain + "/admin/aid_creation/new_aid_stage_1?modify=true&slug=" + aid.slug.to_s,
+          aid_link: root_url + "/admin/aid_creation/new_aid_stage_1?modify=true&slug=" + aid.slug.to_s,
           aid_status: aid.status,
         ).recall_email.deliver_now
       end

@@ -3,7 +3,7 @@ class DetailController < ApplicationController
   after_action :save_asker
 
   def show
-    SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:domain), request.try(:protocol))
+    SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:original_url))
     @aid = Aid.activated.friendly.find_by(slug: params[:id])
     if (@aid == nil && current_user != nil)
       @aid = Aid.find_by(slug: params[:id])
