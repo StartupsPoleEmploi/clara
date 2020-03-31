@@ -2,6 +2,10 @@
 
 
 
+## 28.6.1 (31/03/2020)
+[#1582][BUG] rappel : le lien dans le mail doit être écrit en toutes lettres
+
+
 ## 28.6.0 (26/03/2020)
 [#1304][FEATURE] date de rappel d'une aide
 
