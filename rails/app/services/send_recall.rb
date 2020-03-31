@@ -1,14 +1,11 @@
 class SendRecall
 
-  def call(is_forced, domain, protocol)
+  def call(is_forced, domain)
     p '- - - - - - - - - - - - - - is_forced- - - - - - - - - - - - - - - -' 
     pp is_forced
     p ''
     p '- - - - - - - - - - - - - - domain- - - - - - - - - - - - - - - -' 
     pp domain
-    p ''
-    p '- - - - - - - - - - - - - - protocol- - - - - - - - - - - - - - - -' 
-    pp protocol
     p ''
     p '- - - - - - - - - - - - - - _time_to_send_email?- - - - - - - - - - - - - - - -' 
     pp _time_to_send_email?

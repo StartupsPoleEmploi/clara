@@ -2,6 +2,10 @@
 
 
 
+## 28.6.2 (31/03/2020)
+[#1582b][BUG] rappel : le lien doit être écrit sans erreur
+
+
 ## 28.6.1 (31/03/2020)
 [#1582][BUG] rappel : le lien dans le mail doit être écrit en toutes lettres
 
