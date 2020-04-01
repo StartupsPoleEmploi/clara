@@ -26,9 +26,11 @@ module Admin
     end
 
     def post_clock
-      render json: {
-        status: "ok",
-      }
+      clock_delta = ExtractParam.new(params).call(:clock_delta)
+      current_clockdiff = Clockdiff.first
+      current_clockdiff.value = clock_delta.to_i
+      current_clockdiff.save
+      my_redirect_to admin_get_clock_path
     end
 
     # load zrr
