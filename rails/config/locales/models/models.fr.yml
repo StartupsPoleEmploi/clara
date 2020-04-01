@@ -1,6 +1,7 @@
 fr:
   activerecord:
     models:
+      feedback: "Suggestion d'amélioration"
       rule: "Règles"
       variable: "Variables"
       contract_type: "Rubriques"
