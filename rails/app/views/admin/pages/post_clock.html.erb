@@ -14,13 +14,5 @@
   <div>
     Heure perçue par Clara : <%= changed.strftime("%d %b %Y %H:%M:%S") %>
   </div>
-  <br>
-  <div>
-    Changement du delta appliqué :
-  </div>
-  <%= form_with url: admin_post_clock_path, remote:false, id: 'admin_post_clock_form' do |form| %>
-    <%= form.number_field :clock_delta, in: -24..24, step: 1, value: delta %>
-    <%= form.submit "Changer le delta (en heure)"%>
-  <% end %>
 </div>
 

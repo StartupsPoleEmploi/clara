@@ -30,7 +30,9 @@ module Admin
       current_clockdiff = Clockdiff.first
       current_clockdiff.value = clock_delta.to_i
       current_clockdiff.save
-      my_redirect_to admin_get_clock_path
+      render locals: {
+        current_diff_value: current_clockdiff.value
+      }
     end
 
     # load zrr
