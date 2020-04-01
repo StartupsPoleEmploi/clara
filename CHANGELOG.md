@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 28.7.0 (02/04/2020)
 [#1570][ADMIN] La page Suggestions d'amélioration est accessible aux contributeurs et relecteurs
 
