@@ -1,0 +1,20 @@
+<div style="margin-top: 2rem;margin-left: 2rem;">
+  <div>
+    Heure actuelle du serveur : <%=DateTime.now.strftime("%d %b %Y %I:%M:%S") %>
+  </div>
+  <div>
+    Delta actuel (en heure) : <%=local_assigns[:delta_value]%>
+  </div>
+  <div>
+    Heure perçue par Clara :
+  </div>
+  <br>
+  <div>
+    Changement du delta appliqué :
+  </div>
+  <%= form_with url: admin_post_clock_path, local:false, id: 'admin_post_clock_form' do |form| %>
+    <%= form.number_field :clock_delta, in: -24..24, step: 1, value: local_assigns[:delta_value] %>
+    <%= form.submit "Changer le delta (en heure)"%>
+  <% end %>
+</div>
+

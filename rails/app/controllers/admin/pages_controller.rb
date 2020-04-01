@@ -13,6 +13,24 @@ module Admin
       Trace.destroy_all
     end
 
+    # load clock
+    def get_clock
+      first_delta = Delta.first
+      unless first_delta
+        first_delta = Delta.new(value: 0)
+        first_delta.save
+      end
+      render locals: {
+        delta_value: first_delta.value
+      }
+    end
+
+    def post_clock
+      render json: {
+        status: "ok",
+      }
+    end
+
     # load zrr
     def get_zrr
     end

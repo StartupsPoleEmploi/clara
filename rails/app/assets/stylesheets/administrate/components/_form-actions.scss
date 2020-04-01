@@ -1,3 +1,9 @@
 .form-actions {
   margin-left: calc(15% + 2rem);
 }
+
+#admin_post_clock_form {
+  input[type="number"] {
+    width: 70px;
+  }
+}
