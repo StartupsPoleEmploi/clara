@@ -15,13 +15,13 @@ module Admin
 
     # load clock
     def get_clock
-      first_delta = Delta.first
-      unless first_delta
-        first_delta = Delta.new(value: 0)
-        first_delta.save
+      first_diff = Clockdiff.first
+      unless first_diff
+        first_diff = Clockdiff.new(value: 0)
+        first_diff.save
       end
       render locals: {
-        delta_value: first_delta.value
+        current_diff_value: first_diff.value
       }
     end
 
