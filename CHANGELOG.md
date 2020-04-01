@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 28.8.0 (02/04/2020)
+[#1571][FEATURE] Vocabulaire incitatif à entrer dans la simulation
+
+
 ## 28.7.0 (02/04/2020)
 [#1570][ADMIN] La page Suggestions d'amélioration est accessible aux contributeurs et relecteurs
 
