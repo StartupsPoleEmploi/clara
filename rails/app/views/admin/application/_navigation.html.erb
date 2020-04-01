@@ -38,13 +38,11 @@
     admin_get_hidden_admin_path,
     class: v.admin_clazz
     ) %> 
-  <% if current_user.role === "superadmin" %>
-    <%= link_to(
-      "Suggestions d'amélioration",
-      admin_feedbacks_path,
-      class: "navigation__link navigation__link--#{nav_link_state('feedbacks')}"
-    ) %>    
-  <% end %>
+  <%= link_to(
+    "Suggestions d'amélioration",
+    admin_feedbacks_path,
+    class: "navigation__link navigation__link--#{nav_link_state('feedbacks')}"
+  ) %>    
   <%= link_to(
     "Rappels",
     admin_recalls_path,
