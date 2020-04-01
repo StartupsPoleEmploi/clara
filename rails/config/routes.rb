@@ -64,6 +64,8 @@ Rails.application.routes.draw do
       get 'get_custom_filter_menu'
       get 'get_reinit'
       post 'post_reinit'
+      get 'get_clock'
+      post 'post_clock'
       get 'get_zrr'
       post 'post_zrr'
       get 'get_cache'  if ENV["R7_MODE"]

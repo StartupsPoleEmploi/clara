@@ -13,6 +13,28 @@ module Admin
       Trace.destroy_all
     end
 
+    # load clock
+    def get_clock
+      first_diff = Clockdiff.first
+      unless first_diff
+        first_diff = Clockdiff.new(value: 0)
+        first_diff.save
+      end
+      render locals: {
+        current_diff_value: first_diff.value
+      }
+    end
+
+    def post_clock
+      clock_delta = ExtractParam.new(params).call(:clock_delta)
+      current_clockdiff = Clockdiff.first
+      current_clockdiff.value = clock_delta.to_i
+      current_clockdiff.save
+      render locals: {
+        current_diff_value: current_clockdiff.value
+      }
+    end
+
     # load zrr
     def get_zrr
     end

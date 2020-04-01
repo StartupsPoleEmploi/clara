@@ -1,0 +1,18 @@
+<%- now = DateTime.now %>
+<%- delta = local_assigns[:current_diff_value] %>
+<%- changed = now.change(hour: now.hour + delta, min: now.minute, sec: now.second)  %>
+
+<div style="margin-top: 2rem;margin-left: 2rem;">
+  <div>
+    Heure actuelle du serveur : <%= now.strftime("%d %b %Y %H:%M:%S") %>
+  </div>
+  <div>
+  </div>
+  <div>
+    Delta actuel (en heure) : <%=delta%>
+  </div>
+  <div>
+    Heure perçue par Clara : <%= changed.strftime("%d %b %Y %H:%M:%S") %>
+  </div>
+</div>
+

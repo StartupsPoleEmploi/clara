@@ -2,6 +2,10 @@
 
 
 
+## 28.6.3 (01/04/2020)
+[#1583][TECH] pouvoir mettre à jour l'horloge Clara
+
+
 ## 28.6.2 (31/03/2020)
 [#1582b][BUG] rappel : le lien doit être écrit sans erreur
 
