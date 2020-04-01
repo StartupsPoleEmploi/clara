@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 28.7.0 (02/04/2020)
+[#1570][ADMIN] La page Suggestions d'amélioration est accessible aux contributeurs et relecteurs
+
 
 ## 28.6.3 (01/04/2020)
 [#1583][TECH] pouvoir mettre à jour l'horloge Clara
