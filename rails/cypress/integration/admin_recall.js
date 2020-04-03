@@ -5,8 +5,8 @@ describe("En tant que superadmin", function () {
     cy.connect_as_superadmin()
   })
   after(function() {
-    // cy.visit('/admin/recalls')
-    // cy.get('a.text-color-red').first().click()
+    cy.visit('/admin/recalls')
+    cy.get('a.text-color-red').first().click()
   })
 
   it("Il est possible d'accéder à la liste des rappels depuis le menu de gauche", function () {
