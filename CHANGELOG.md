@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 28.8.1 (03/04/2020)
+[#1581][TECH] Test auto des rappels
+
+
 ## 28.8.0 (02/04/2020)
 [#1571][FEATURE] Vocabulaire incitatif à entrer dans la simulation
 
