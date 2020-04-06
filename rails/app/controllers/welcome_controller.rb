@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
+    SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:original_url))
     clean_asker_params
     view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
       {
