@@ -19,7 +19,7 @@ class SendRecall
     end
   end
 
-  def _time_to_send_email?(now=DateTime.now, lo_time='7h15', hi_time='8h30')
+  def _time_to_send_email?(now=DateTime.now, lo_time='7h00', hi_time='9h00')
     delta = Clockdiff.first.value
     now_delta = now.change(hour: now.hour + delta)
     lo = now.change(hour: lo_time.split('h')[0].to_i, min: lo_time.split('h')[1].to_i)
