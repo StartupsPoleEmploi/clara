@@ -1,9 +1,13 @@
 .c-filterboxes {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .c-filterbox {
+  width: 100%;
   label {
     margin-top: .5rem;
     margin-right: .5rem;
@@ -11,17 +15,13 @@
     display: flex;
     align-items: center;
     height:75px;
-    width: 80%;
+    width: 100%;
     border-radius: 2px;
     border: solid 2px #454545;
     line-height:1.5;
     cursor: pointer;
     @include mq($until: mobile) {
       font-size: 14px;
-      width: 190px;
-    }
-    @include mq($from: mobile) {
-      width: 320px;
     }
   }
 
