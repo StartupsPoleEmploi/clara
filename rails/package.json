@@ -1,6 +1,7 @@
 {
   "dependencies": {},
   "devDependencies": {
-    "cypress": "^4.3.0"
+    "cypress": "^4.3.0",
+    "minimist": ">=1.2.5"
   }
 }
