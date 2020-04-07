@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 29.0.0 (06/04/2020)
+[#1584][DESIGN] Filtres sur mobile
+
+
 ## 28.8.1 (03/04/2020)
 [#1581][TECH] Test auto des rappels
 
