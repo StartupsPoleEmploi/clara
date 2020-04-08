@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 29.1.0 (08/04/2020)
+[#1590][FEATURE] Extraction CSV
+
+
 ## 29.0.0 (06/04/2020)
 [#1584][DESIGN] Filtres sur mobile
 
