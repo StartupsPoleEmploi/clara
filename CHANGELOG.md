@@ -1,6 +1,7 @@
 # CLARA Changelog
 
 
+
 ## 29.1.0 (08/04/2020)
 [#1590][FEATURE] Extraction CSV
 
