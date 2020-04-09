@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :recalls
-    resources :feedbacks
+    resources :feedbacks do
+      get :export, on: :collection
+    end
     resources :explicitations
     resources :conventions
     resources :api_users
