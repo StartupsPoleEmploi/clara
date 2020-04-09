@@ -8,7 +8,7 @@ class FeedbackDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
+    id: Field::Number.with_options(export: false),
     content: Field::Text,
     positive: Field::String,
     url_of_detail: Field::String,
