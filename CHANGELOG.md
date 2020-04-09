@@ -2,6 +2,10 @@
 
 
 
+## 29.1.1 (09/04/2020)
+[#1589][TECH] évènement GA si filtre cliqué
+
+
 ## 29.1.0 (08/04/2020)
 [#1590][FEATURE] Extraction CSV
 
