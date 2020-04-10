@@ -10,7 +10,7 @@
     = render 'shared/back_question'
     .o-card.o-card--question
 
-      = form_with url: filter_questions_path, :local => true do |f|
+      = form_with id: "filter_question_form", url: filter_questions_path, :local => true do |f|
     
         = render 'shared/progressbar'
         = render 'shared/question_number'

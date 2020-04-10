@@ -28,6 +28,22 @@ clara.js_define("new_filter_question", {
         });
       }
 
+      $('.c-fieldset input[type="checkbox"]').on("click", function(k) {
+        var $e = $(this);
+        var slug_of_filter = $e.attr("value");
+        var actually_checked = $e.prop("checked");
+        if (actually_checked) {
+          clara.aides_track_filter.please("question__" + slug_of_filter);
+        }
+      });
+
+      $('form#filter_question_form').submit(function() {
+        if ($('.c-fieldset input[type="checkbox"]:checked').size() === 0) {
+          clara.aides_track_filter.please("question__0");
+        }
+        return true;
+      })
+
     }
 
 });
