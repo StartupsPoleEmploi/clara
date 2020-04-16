@@ -2,6 +2,10 @@
 
 
 
+## 29.2.1 (16/04/2020)
+[#1588][DESIGN] Ajustements
+
+
 ## 29.2.0 (14/04/2020)
 [#1573][FEATURE] Bouton partager sur page de résultats 
 
