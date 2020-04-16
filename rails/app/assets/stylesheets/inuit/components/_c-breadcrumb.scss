@@ -26,13 +26,25 @@
 .c-breadcrumb-printer__item {
   display: inline-flex;
   align-items:center;
-  border: 1px solid #3f3f3f;
-  color:#3f3f3f;
-  padding: space(2);
-  border-radius: 5px;
   cursor: pointer;
+  font-size: 20px;
+  border: 2px solid #057dbc;
+  border-radius: 30px;
+  background-color: white;
+  color: #057dbc;
   @include mq($until: tablet) {
     display: none;
+  }
+  span {
+    padding-top: space(2);
+    padding-bottom: space(2);
+  }
+  span.first {
+    padding-left: space(6);
+    padding-right: space(2);
+  }
+  span.second {
+    padding-right: space(6);
   }
 }
 
