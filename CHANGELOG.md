@@ -2,6 +2,10 @@
 
 
 
+## 29.2.0 (14/04/2020)
+[#1573][FEATURE] Bouton partager sur page de résultats 
+
+
 ## 29.1.1 (09/04/2020)
 [#1589][TECH] évènement GA si filtre cliqué
 
