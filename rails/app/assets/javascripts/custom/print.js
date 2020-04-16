@@ -1,15 +1,27 @@
-clara.load_js(function only_if(){return true}, function() {
-  
-  $('.c-breadcrumb-printer__item').click(function(e) {
-    if (typeof ga === "function") {
-      ga('send', 'event', 'results', 'print', document.location.pathname);
+clara.js_define("global_print", {
+
+    please_if: function() {
+      return $(".c-breadcrumb-printer").exists();
+    },
+
+    please: function() {
+      $(".c-breadcrumb-printer__item").click(function(e) {
+        if (typeof ga === "function") {
+          ga("send", "event", "results", "share", document.location.pathname);
+        }
+        var lenTwo = function(val){
+          if (val.toString().length === 1) {
+            return ('0'+val)
+          } else {
+            return val;
+          }
+        }
+        var d = new Date();
+        var now = lenTwo(d.getDay()) +"/"+lenTwo(d.getMonth())+"/"+d.getFullYear();
+        var subject = 'Ma simulation d\'aides Clara du ' + now;
+        var body = window.location.href;
+        window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+      });
     }
-    if (_.get(window, 'main_store')) {
-      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "eligibles"});
-      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "ineligibles"});
-      window.main_store.dispatch({type:'FOLD_ELIGY', eligy_name: "uncertains"});      
-    }
-    window.print();
-  });
-  
-}, "global_print");
+
+});

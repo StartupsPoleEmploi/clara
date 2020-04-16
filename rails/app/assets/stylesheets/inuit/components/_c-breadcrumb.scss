@@ -27,9 +27,10 @@
   display: inline-flex;
   align-items:center;
   cursor: pointer;
-  font-size: 20px;
-  border: 2px solid #057dbc;
-  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 100px;
+  border: solid 1px #057dbc;
   background-color: white;
   color: #057dbc;
   @include mq($until: tablet) {
@@ -40,11 +41,11 @@
     padding-bottom: space(2);
   }
   span.first {
-    padding-left: space(6);
+    padding-left: space(5);
     padding-right: space(2);
   }
   span.second {
-    padding-right: space(6);
+    padding-right: space(5);
   }
 }
 
