@@ -2,6 +2,10 @@
 
 
 
+## 29.2.2 (16/04/2020)
+[#1585][DESIGN] Ajustements mobile
+
+
 ## 29.2.1 (16/04/2020)
 [#1588][DESIGN] Ajustements
 
