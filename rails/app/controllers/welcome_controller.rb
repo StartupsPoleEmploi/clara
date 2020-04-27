@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
         type_dispositifs:   ContractType.dispositifs.map{|e| e.attributes},
         slug_of_creation:   ContractType.find_by(slug: "aide-a-la-creation-ou-reprise-d-entreprise"),
         slug_of_amob:       ContractType.find_by(slug: "aide-a-la-mobilite"),
-        slug_of_alternance: ContractType.find_by(slug: "contrat-en-alternance"),
+        slug_of_alternance: ContractType.find_by(slug: "financement-et-aide-a-la-formation"),
         slug_of_project:    ContractType.find_by(slug: "aide-a-la-definition-du-projet-professionnel"),        
       }
     end
