@@ -25,6 +25,7 @@ namespace :minidb do
         "illico-solidaire",
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
+        "rps-remuneration-publique-des-stagiaires",
       ]).destroy_all
 
 
