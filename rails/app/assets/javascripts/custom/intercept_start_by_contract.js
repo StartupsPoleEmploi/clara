@@ -7,6 +7,8 @@ clara.js_define("intercept_start_by_contract", {
     please: function() {
       var FILTER_TABLE = {
         "aide-a-la-mobilite": "se-deplacer",
+        "aide-a-la-creation-ou-reprise-d-entreprise": "creer-entreprise",
+        "contrat-specifique": "s-informer-sur-contrats-specifiques",
 
       }
       var current_contract = _.last(window.location.pathname.split("/"))
