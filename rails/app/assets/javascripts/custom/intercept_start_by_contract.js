@@ -11,15 +11,10 @@ clara.js_define("intercept_start_by_contract", {
       }
       var current_contract = _.last(window.location.pathname.split("/"))
       var matching_filter = FILTER_TABLE[current_contract]
-
       $(".c-detail-cta.js-contract").click(function(e){
           e.preventDefault();
           var href = this.href;
-
           localStorage.setItem("choosen_filters", JSON.stringify([matching_filter]));          
-
-          console.log("hello")
-          console.log(_.last(window.location.pathname.split("/")))
           location.href = href;
       });
     },
