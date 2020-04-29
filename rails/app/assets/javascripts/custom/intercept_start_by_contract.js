@@ -10,6 +10,7 @@ clara.js_define("intercept_start_by_contract", {
         "aide-a-la-creation-ou-reprise-d-entreprise": "creer-entreprise",
         "contrat-specifique": "s-informer-sur-contrats-specifiques",
         "aide-regionale": "pres_de_chez_vous",
+        "emploi-international": "travailler-a-l-international",
 
       }
       var current_contract = _.last(window.location.pathname.split("/"))
