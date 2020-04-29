@@ -25,6 +25,7 @@ namespace :minidb do
         "illico-solidaire",
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
+        "rps-remuneration-publique-des-stagiaires",
       ]).destroy_all
 
 
@@ -72,6 +73,12 @@ namespace :minidb do
 
     # No need to keep who did what
     PaperTrail::Version.destroy_all
+
+    first_diff = Clockdiff.first
+    unless first_diff
+      first_diff = Clockdiff.new(value: 0)
+      first_diff.save
+    end
 
     # Remove statistics stuffs
     Feedback.destroy_all

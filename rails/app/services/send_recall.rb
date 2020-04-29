@@ -1,8 +1,6 @@
 class SendRecall
 
   def call(is_forced, root_url)
-    p "- - - - - - - - - - - - - - _time_to_send_email? #{_time_to_send_email?}- - - - - - - - - - - - - - - -"
-    p "- - - - - - - - - - - - - - is_forced #{is_forced}- - - - - - - - - - - - - - - -"
     if _time_to_send_email? || is_forced
       recall_to_be_sent = Recall.please_send.first
       if recall_to_be_sent

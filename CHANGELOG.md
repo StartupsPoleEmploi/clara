@@ -2,6 +2,10 @@
 
 
 
+## 30.0.0 (27/04/2020)
+[#1592][FEATURE] Nouvelle pastille "En Formation"
+
+
 ## 29.2.2 (16/04/2020)
 [#1585][DESIGN] Ajustements mobile
 
