@@ -2,6 +2,10 @@
 
 
 
+## 30.1.0 (29/04/2020)
+[#1594][FEATURE] Entrée via une rubrique dans la simulation
+
+
 ## 30.0.0 (27/04/2020)
 [#1592][FEATURE] Nouvelle pastille "En Formation"
 

@@ -35,6 +35,7 @@
 //= require_tree ./forms
 //= require custom/welcome_index
 //= require_tree ./custom/aides
+//= require custom/intercept_start_by_contract
 //= require custom/edit_cooky
 //= require custom/show_detail
 //= require custom/contact
