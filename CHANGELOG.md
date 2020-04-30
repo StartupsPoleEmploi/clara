@@ -2,6 +2,10 @@
 
 
 
+## 30.2.0 (04/05/2020)
+[#1595][FEATURE] Intégrer les aides à la mobilité dans la rubrique Financements
+
+
 ## 30.1.0 (29/04/2020)
 [#1594][FEATURE] Entrée via une rubrique dans la simulation
 
