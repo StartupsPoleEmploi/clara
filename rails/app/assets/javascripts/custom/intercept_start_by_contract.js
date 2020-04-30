@@ -5,6 +5,7 @@ clara.js_define("intercept_start_by_contract", {
     },
 
     please: function() {
+      // HACK : hard-coded mapping
       var FILTER_TABLE = {
         "appui-a-l-embauche": "accompagne-recherche-emploi",
         "aide-a-la-definition-du-projet-professionnel": "trouver-change-de-metier",
