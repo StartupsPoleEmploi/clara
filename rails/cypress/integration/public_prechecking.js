@@ -33,7 +33,7 @@ describe("En tant que visiteur DDCT", function () {
     cy.visit('/aides/type/aide-a-la-mobilite')
     cy.get('.c-detail-cta.js-contract').click()
     cy.visit('/filter_questions/new')
-    cy.get('input#blabla').should('be.checked') 
+    cy.get('input#se-deplacer').should('be.checked') 
   })
 
 })
