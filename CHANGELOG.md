@@ -2,6 +2,10 @@
 
 
 
+## 30.2.1 (05/05/2020)
+[#1594b][FEATURE] Pré-cochage multiple
+
+
 ## 30.2.0 (04/05/2020)
 [#1595][FEATURE] Intégrer les aides à la mobilité dans la rubrique Financements
 
