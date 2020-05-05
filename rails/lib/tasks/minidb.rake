@@ -26,6 +26,10 @@ namespace :minidb do
         "aide-a-la-mobilite-professionnelle-des-artistes-et-technicien-ne-s-du-spectacle",
         "autres-aides-nationales-pour-la-mobilite",
         "rps-remuneration-publique-des-stagiaires",
+        "aide-a-la-mobilite-frais-de-deplacement",
+        "aide-a-la-mobilite-frais-d-hebergement",
+        "aide-a-la-mobilite-frais-de-repas",
+        "agepi",
       ]).destroy_all
 
 

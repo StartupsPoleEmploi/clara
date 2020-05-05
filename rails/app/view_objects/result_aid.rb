@@ -8,9 +8,10 @@ class ResultAid < ViewObject
 
   end
 
-  def css_addendum(the_index)
+  def css_addendum(the_index, is_last)
     a = the_index == 0 ? "first" : ""
-    "#{a} #{@aid[:slug]}"
+    b = is_last ? "last" : ""
+    "#{a} #{b} #{@aid[:slug]}"
   end
 
   def name

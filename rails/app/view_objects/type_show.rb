@@ -4,6 +4,24 @@ class TypeShow < ViewObject
     locals = hash_for(args)
     @contract = hash_for(locals[:contract])
     @aids = array_for(locals[:aids])
+    _hacky_addition_for_ddct(@aids)
+  end
+
+  def _hacky_addition_for_ddct(aids)
+    if @context
+      slug_of_contract = @context.params[:id]
+      if slug_of_contract == "financement-aide-a-la-formation"
+        activated_aids = ActivatedModelsService.instance.aids
+        # Remboursement des frais kilométriques
+        aids << activated_aids.detect{|aid| aid["slug"] == "aide-a-la-mobilite-frais-de-deplacement"} 
+        # Frais d'hébergement
+        aids << activated_aids.detect{|aid| aid["slug"] == "aide-a-la-mobilite-frais-d-hebergement"} 
+        # Frais de repas
+        aids << activated_aids.detect{|aid| aid["slug"] == "aide-a-la-mobilite-frais-de-repas"} 
+        # Aide à la garde d'enfant pour les parents isolés (AGEPI)
+        aids << activated_aids.detect{|aid| aid["slug"] == "agepi"} 
+      end
+    end
   end
 
   def contract_type
