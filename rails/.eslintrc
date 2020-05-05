@@ -13,6 +13,6 @@
   // To give you an idea how to override rule options:
   "rules": {
     // Tons of rules you can use, for example...
-    "quotes": [1, "double"]
+    // "quotes": [1, "double"]
   }
 }
