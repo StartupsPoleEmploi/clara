@@ -7,7 +7,7 @@ clara.js_define("intercept_start_by_contract", {
     please: function() {
       // HACK : hard-coded mapping
       var FILTER_TABLE = {
-        "appui-a-l-embauche": ["accompagne-recherche-emploi"],
+        "appui-a-l-embauche": ["accompagne-recherche-emploi", "se-deplacer"],
         "aide-a-la-definition-du-projet-professionnel": ["trouver-change-de-metier"],
         "aide-a-la-mobilite": ["se-deplacer"],
         "dispositif-de-conversion-d-experience-en-titre": ["se-former-valoriser-ses-competences"],

@@ -25,7 +25,8 @@ describe("En tant que visiteur DDCT", function () {
     cy.visit('/aides/type/appui-a-l-embauche')
     cy.get('.c-detail-cta.js-contract').click()
     cy.visit('/filter_questions/new')
-    cy.get('input#se-former-valoriser-ses-competences').should('be.checked') 
+    cy.get('input#accompagne-recherche-emploi').should('be.checked') 
+    cy.get('input#se-deplacer').should('be.checked') 
   })
 
 })
