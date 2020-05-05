@@ -29,5 +29,12 @@ describe("En tant que visiteur DDCT", function () {
     cy.get('input#se-deplacer').should('be.checked') 
   })
 
+  it("Aides à la mobilité : Si je clique JE COMMENCE, le(s) filtre(s) correspondant(s) à la formation est précoché à la question filtres", function () {
+    cy.visit('/aides/type/aide-a-la-mobilite')
+    cy.get('.c-detail-cta.js-contract').click()
+    cy.visit('/filter_questions/new')
+    cy.get('input#blabla').should('be.checked') 
+  })
+
 })
 
