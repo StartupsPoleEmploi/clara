@@ -26,6 +26,8 @@ services:
       - '127.0.0.1:3000:3000'
     environment:
       ARA_DATABASE_HOST: "db-srv"
+      ARA_DATABASE_USER: "ara"
+      ARA_DATABASE_NAME: "ara_dev"
     depends_on:
       - db-srv
 
