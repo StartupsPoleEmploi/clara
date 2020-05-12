@@ -129,20 +129,12 @@ namespace :minidb do
     exec cmd
   end
 
-  task :reprod_if_nothing => :environment do
+  task :ensure_minimalistic_data => :environment do
     unless ActiveRecord::Base.connection.table_exists? 'aids'
-
-      cmd = nil
-      # with_config do |app, host, db, user|
-        # cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev ../../private/db/latest.dump"
-      # end
       Rake::Task["db:drop"].invoke
       Rake::Task["db:create"].invoke
       Rake::Task["db:migrate"].invoke
       Rake::Task["db:seed"].invoke
-      # puts cmd
-      # exec cmd
-
     end
   end
 
