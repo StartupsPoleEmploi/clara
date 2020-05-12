@@ -119,6 +119,7 @@ namespace :minidb do
 
   desc "Restores the database dump from production"
   task :reprod => :environment do
+    p "Restoring latest known production data"
     cmd = nil
     with_config do |app, host, db, user|
       cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/../../private/db/latest.dump"
@@ -130,6 +131,7 @@ namespace :minidb do
   end
 
   task :ensure_minimalistic_data => :environment do
+    p "Ensuring the app will work with minimalistic data"
     unless ActiveRecord::Base.connection.table_exists? 'aids'
       Rake::Task["db:drop"].invoke
       Rake::Task["db:create"].invoke
