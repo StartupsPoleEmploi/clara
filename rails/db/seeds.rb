@@ -558,3 +558,5 @@ end
 
 
 Convention.first ? nil : Convention.create(name: "Charte éditoriale")
+
+Clockdiff.first ? nil : Clockdiff.create(value: 0)

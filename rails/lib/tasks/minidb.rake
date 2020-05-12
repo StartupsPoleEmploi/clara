@@ -117,6 +117,35 @@ namespace :minidb do
     exec cmd
   end
 
+  desc "Restores the database dump from production"
+  task :reprod => :environment do
+    cmd = nil
+    with_config do |app, host, db, user|
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev #{Rails.root}/../../private/db/latest.dump"
+    end
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    puts cmd
+    exec cmd
+  end
+
+  task :reprod_if_nothing => :environment do
+    unless ActiveRecord::Base.connection.table_exists? 'aids'
+
+      cmd = nil
+      # with_config do |app, host, db, user|
+        # cmd = "pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ara_dev ../../private/db/latest.dump"
+      # end
+      Rake::Task["db:drop"].invoke
+      Rake::Task["db:create"].invoke
+      Rake::Task["db:migrate"].invoke
+      Rake::Task["db:seed"].invoke
+      # puts cmd
+      # exec cmd
+
+    end
+  end
+
   private
 
   def with_config
