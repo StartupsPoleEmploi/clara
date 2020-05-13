@@ -48,8 +48,5 @@ coverage
 /cypress/videos/*
 /cypress/screenshots/*
 
-
-
-# /config/deploy/*
 # generated for docker
 rails/CHANGELOG.md
