@@ -2,6 +2,10 @@
 
 
 
+## 31.0.2 (14/05/2020)
+[#1596b][TECH] En local avec Docker, améliorations
+
+
 ## 31.0.1 (13/05/2020)
 [#1596][TECH] En local avec Docker
 
