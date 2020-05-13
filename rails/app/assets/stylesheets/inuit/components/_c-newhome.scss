@@ -338,16 +338,35 @@ h2.c-newhomerecall__content {
 /* Covid19 section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomehero-covid {
+  position: relative;
+  z-index: 999;
   border: solid 1px #ee534f;
   background-color: white;
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
   color: #222222;
+  padding: space(5) space(0);
+}
+.c-newhomehero-covid.is-scrolled {
+  display: none;
 }
 .c-newhomehero-covid__title {
   font-weight: bold;
   letter-spacing: 1.2px;
 }
 .c-newhomehero-covid__text {
+}
+
+.c-newhomehero-covid-container {
+  margin-top: 0;
+  @include mq($from: wide) {
+    margin-top: -15px;
+  }
+}
+.c-newhomehero-hero-container {
+  margin-top: 0;
+  @include mq($from: wide) {
+    margin-top: -50px;
+  }
 }

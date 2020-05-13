@@ -5,14 +5,15 @@
         = render 'shared/logozone', {display_search: true}
 
   .c-newhomehero__content
-    .c-newhomehero-covid.u-useful-width.u-useful-width--larger.u-margin-constraint
-      .c-newhomehero-covid__title
-        [INFORMATION COVID-19]
-      .c-newhomehero-covid__text
-        Information COVID-19 : En raison de la crise sanitaire actuelle, les conditions d'accès à certaines aides ou prestations peuvent être modifiées. 
-      .c-newhomehero-covid__text
-        Vous trouverez des précisions sur nos contenus, sur le site de Pôle emploi ou ceux de nos partenaires.
-    .u-useful-width.u-useful-width--larger.u-margin-constraint
+    .c-newhomehero-covid-container.u-useful-width.u-useful-width--larger.u-margin-constraint
+      .c-newhomehero-covid
+        .c-newhomehero-covid__title
+          [INFORMATION COVID-19]
+        .c-newhomehero-covid__text
+          En raison de la crise sanitaire actuelle, les conditions d'accès à certaines aides ou prestations peuvent être modifiées. 
+        .c-newhomehero-covid__text
+          Vous trouverez des précisions sur nos contenus, sur le site de Pôle emploi ou ceux de nos partenaires.
+    .c-newhomehero-hero-container.u-useful-width.u-useful-width--larger.u-margin-constraint
       .o-layout.o-layout--middle
         .o-layout__item{:class => "u-1/1 u-1/2@desktop"}
           %h1.c-newhomehero__title{:class => "u-text--center u-textalign-left-from@desktop"} 
