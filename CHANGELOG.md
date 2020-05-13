@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 31.0.3 (14/05/2020)
+[#1596c][TECH] En local avec Docker, dernière retouche
+
 
 ## 31.0.2 (14/05/2020)
 [#1596b][TECH] En local avec Docker, améliorations

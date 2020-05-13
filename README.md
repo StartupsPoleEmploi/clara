@@ -49,11 +49,11 @@ Il faut disposer des droits d'accès sur GitHub et Gitlab pour cloner le projet.
 
 ```
 ~$> cd workspace
-~/workspace$> mkdir repo
+~/workspace$> mkdir repo && cd repo
 ~/workspace/repo$> git clone git@github.com:StartupsPoleEmploi/clara.git
 ~/workspace/repo$> git clone git@git.beta.pole-emploi.fr:23/clara/private.git
 ou
-~/workspace/repo$> git clone https://git.beta.pole-emploi.frs/clara/private.git
+~/workspace/repo$> git clone https://git.beta.pole-emploi.fr/clara/private.git
 ```
 
 
