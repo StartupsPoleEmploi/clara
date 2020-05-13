@@ -4,6 +4,18 @@
 
 ## Installation
 
+### 0. Prérequis
+
+```
+$> docker -v
+Docker version 17.12.0-ce
+
+$> docker-compose -v
+docker-compose version 1.18.0
+```
+
+Toute version supérieur devrait fonctionner.
+
 Il faut disposer des droits d'accès sur GitHub et Gitlab pour installer le projet.
 
 ```
