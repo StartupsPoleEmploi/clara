@@ -51,3 +51,5 @@ coverage
 
 
 # /config/deploy/*
+# generated for docker
+rails/CHANGELOG.md
