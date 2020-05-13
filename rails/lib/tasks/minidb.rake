@@ -117,6 +117,16 @@ namespace :minidb do
     exec cmd
   end
 
+  task :ensure_minimalistic_data => :environment do
+    p "Ensuring the app will work with minimalistic data"
+    unless ActiveRecord::Base.connection.table_exists? 'aids'
+      Rake::Task["db:drop"].invoke
+      Rake::Task["db:create"].invoke
+      Rake::Task["db:migrate"].invoke
+      Rake::Task["db:seed"].invoke
+    end
+  end
+
   private
 
   def with_config

@@ -1,0 +1,38 @@
+version: '2.2'
+
+services:
+
+  db-srv:
+    image: postgres:9.5.17
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - '../private/db/developpement/init.sql:/docker-entrypoint-initdb.d/init.sql'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+
+  web-srv:
+    build:
+      context: .
+      dockerfile: dockerfile_rails_local
+    command: bash -c " [ ! -e /railsapp/tmp/pids/server.pid ] || rm /railsapp/tmp/pids/server.pid && bundle install && bin/rails minidb:ensure_minimalistic_data && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - "../private/env/developpement/.env:/railsapp/.env"
+      - './rails:/railsapp'
+      - './CHANGELOG.md:/railsapp/CHANGELOG.md'
+      - bundle:/usr/local/bundle
+      - node_modules:/railsapp/node_modules
+    ports:
+      - '127.0.0.1:3000:3000'
+    environment:
+      ARA_DATABASE_HOST: "db-srv"
+      ARA_DATABASE_USER: "ara"
+      ARA_DATABASE_NAME: "ara_dev"
+    depends_on:
+      - db-srv
+
+volumes:
+  bundle:
+  pgdata:
+  node_modules:

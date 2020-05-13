@@ -558,3 +558,7 @@ end
 
 
 Convention.first ? nil : Convention.create(name: "Charte éditoriale")
+
+Clockdiff.first ? nil : Clockdiff.create(value: 0)
+
+User.first ? nil : User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")

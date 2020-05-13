@@ -4,7 +4,22 @@
 
 ## Installation
 
-Il faut disposer des droits d'accès sur GitHub et Gitlab pour installer le projet.
+### 0. Prérequis
+
+```
+$> docker -v
+Docker version 17.12.0-ce
+
+$> docker-compose -v
+docker-compose version 1.18.0
+```
+
+Toute version supérieure devrait fonctionner.
+
+
+### 1. Téléchargement des projets
+
+Il faut disposer des droits d'accès sur GitHub et Gitlab pour cloner le projet.
 
 ```
 ~$> cd workspace
@@ -12,6 +27,26 @@ Il faut disposer des droits d'accès sur GitHub et Gitlab pour installer le proj
 ~/workspace/repo$> git clone git@github.com:StartupsPoleEmploi/clara.git
 ~/workspace/repo$> git clone git@git.beta.pole-emploi.fr:23/clara/private.git
 ```
+
+### 2. Lancement à minima du serveur local
+```
+~/workspace/repo$> docker-compose -f docker-compose-local.yml up --build
+```
+
+puis ouvrir un navigateur à l'adresse http://localhost:3000/
+
+la page d'accueil de Clara s'affiche. 
+
+Il est désormais possible d'effectuer des développements car les données de référence sont chargées, et les variables d'environnement aussi.
+
+### 3. Lancer des commandes rails
+```
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm --no-deps web-srv bash
+root@0ac2cfcb2722:/railsapp# bundle exec rails --version
+Rails 5.2.4.2
+```
+
+Toutes les commandes classiques de migration, de console Rails, de lancement de tests unitaires, etc, peuvent ainsi être lancées.
 
 ## Déploiement en recette
 
