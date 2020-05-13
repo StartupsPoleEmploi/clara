@@ -39,8 +39,6 @@ services:
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
-#    ports:
-#    - "3000:3000"  
     networks:
     - mynetwork
 
@@ -53,8 +51,6 @@ services:
       - ENV_TYPE=${ENV:-production}
     hostname: clara_db
     container_name: clara_db
-#    ports:
-#    - "5432:5432"
     volumes:
     - "vol_data:/var/lib/postgresql/data"
     - "../private/db:/home/db"
