@@ -40,7 +40,7 @@ services:
     - "./rails:/home/clara"
     - "../private/env:/home/env"
 #    ports:
-#    - "3000:3000"
+#    - "3000:3000"  
     networks:
     - mynetwork
 
