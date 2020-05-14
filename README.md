@@ -80,6 +80,41 @@ Rails 5.2.4.2
 Toutes les commandes classiques de migration, de console Rails, de lancement de tests unitaires, etc, peuvent ainsi être lancées.
 
 
+### 4. Mettre la base de données de production en local
+
+Pour débuguer ou développer, il est bien plus simple de partir des données de production que de données vides.
+
+```
+docker-compose -f docker-compose-local.yml run --rm --no-deps db-srv bash -c "pg_restore --verbose --clean --no-acl --no-owner -U ara -h db-srv -d ara_dev /latest.dump"
+```
+
+
+### 5. Simplifier la base de données
+
+Une version simplifiée de la base de données donne beaucoup confort de développement : temps de réponse plus rapide, charge mentale du développeur réduite.
+Cette version permet également de lancer la suite de test d'intégration, c'est donc celle à privilégier au quotidien lors des développements.
+
+Une fois les données de production chargées en local, vous pouvez effectuer la commande suivante.
+
+```
+docker-compose -f docker-compose-local.yml run --rm web-srv bash -c "bundle exec rails minidb:recreate"
+```
+
+### 6. Lancer les tests d'intégration
+
+
+
+ - Télécharger la version desktop de Cypress https://download.cypress.io/desktop
+ - s'assurer que le variable d'environnement R7_MODE vaut *true* (c'est normalement le cas par défaut en dev, vérifiez le .env)
+ - choisissez le répértoire "/workspace/repo/clara/rails"
+ - cliquez sur "Run all specs" en haut à droite
+  
+```
+docker-compose -f docker-compose-local.yml run --rm web-srv bash -c "bundle exec rails minidb:recreate"
+```
+
+
+
 
 
 ## Déploiement en recette

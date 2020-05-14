@@ -17,6 +17,9 @@ namespace :minidb do
     activated_models = ActivatedModelsService.instance
     all_rules = activated_models.rules
 
+    # Recall not needed
+    Recall.destroy_all
+
     # Only a few aids
     Aid.where.not(
       slug:[
