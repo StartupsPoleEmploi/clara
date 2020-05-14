@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
 if ENV['RAILS_ENV'] == 'development' && ENV['COVERAGE_PLEASE'] == 'true'
-  puts ENV['COVERAGE_PLEASE']
-  puts ENV['RAILS_ENV']
   require 'simplecov'
   SimpleCov.start 'rails' do
     coverage_dir "coverage/ruby/functional".to_s
