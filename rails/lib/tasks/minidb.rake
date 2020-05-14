@@ -117,6 +117,22 @@ namespace :minidb do
     exec cmd
   end
 
+  task :reprod => :environment do
+    p "Recreating production database locally"
+    cmd = nil 
+    with_config do |app, host, db, user|  
+      p "app #{app}"
+      p "host #{host}"
+      p "db #{db}"
+      p "user #{user}"
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -U #{user} -h #{host} -d #{db} db/latest.dump" 
+    end
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    puts cmd
+    exec cmd
+  end
+
   task :ensure_minimalistic_data => :environment do
     p "Ensuring the app will work with minimalistic data"
     unless ActiveRecord::Base.connection.table_exists? 'aids'

@@ -72,7 +72,7 @@ Il est désormais possible d'effectuer des développements car les données de r
 
 ### 3. Lancer des commandes rails
 ```
-~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm --no-deps web-srv bash
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm web-srv bash
 root@0ac2cfcb2722:/railsapp# bundle exec rails --version
 Rails 5.2.4.2
 ```
