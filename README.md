@@ -100,20 +100,35 @@ Une fois les données de production chargées en local, vous pouvez effectuer la
 docker-compose -f docker-compose-local.yml run --rm web-srv bash -c "bundle exec rails minidb:recreate"
 ```
 
-### 6. Lancer les tests d'intégration
 
+### 6. Tests
 
+#### a. Lancer la recette fonctionnelle automatisée
 
  - Télécharger la version desktop de Cypress https://download.cypress.io/desktop
  - s'assurer que le variable d'environnement R7_MODE vaut *true* (c'est normalement le cas par défaut en dev, vérifiez le .env)
- - choisissez le répértoire "/workspace/repo/clara/rails"
+ - choisissez le répertoire "/workspace/repo/clara/rails"
  - cliquez sur "Run all specs" en haut à droite
-  
+
+#### b. Lancer les tests unitaires "back"
+
 ```
-docker-compose -f docker-compose-local.yml run --rm web-srv bash -c "bundle exec rails minidb:recreate"
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm web-srv bash
+root@0ac2cfcb2722:/railsapp# bundle exec rails t
+# Running:
+...........................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Finished in 3.649742s, 125.7623 runs/s, 146.3117 assertions/s.
 ```
 
+#### c. Lancer les tests unitaires "front"
 
+Ouvrir le navigateur à l'adresse http://localhost:3000/teaspoon/default
+
+Une autre possibilité consiste à lancer la commande suivante :
+```
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm web-srv bash
+root@0ac2cfcb2722:/railsapp# bundle exec rails teaspoon
+```
 
 
 
