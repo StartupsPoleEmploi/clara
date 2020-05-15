@@ -94,7 +94,7 @@ namespace :minidb do
     Tracization.destroy_all
 
     # Remove pg_stats (5000 lines only for stats we don't need)
-    ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
+    # ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
   end
 
 
