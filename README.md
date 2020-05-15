@@ -68,7 +68,11 @@ puis ouvrir un navigateur à l'adresse http://localhost:3000/
 
 la page d'accueil de Clara s'affiche. 
 
-Il est désormais possible d'effectuer des développements car les données de référence sont chargées, et les variables d'environnement aussi.
+Le site web fonctionne "à minima", car les données de références et les variables d'environnement sont chargées.
+
+Toutefois il est compliqué d'effectuer des développements avec si peu de données.
+
+Il est conseillé de travailler soit avec les données de production, soit avec un jeu de données simplifié de la base de production (voir ci-dessous)
 
 ### 3. Lancer des commandes rails
 ```
@@ -91,7 +95,7 @@ docker-compose -f docker-compose-local.yml run --rm --no-deps db-srv bash -c "pg
 
 ### 5. Simplifier la base de données
 
-Une version simplifiée de la base de données donne beaucoup confort de développement : temps de réponse plus rapide, charge mentale du développeur réduite.
+Une version simplifiée de la base de données donne beaucoup de confort de développement : temps de réponse plus rapide, charge mentale du développeur réduite.
 Cette version permet également de lancer la suite de test d'intégration, c'est donc celle à privilégier au quotidien lors des développements.
 
 Une fois les données de production chargées en local, vous pouvez effectuer la commande suivante.

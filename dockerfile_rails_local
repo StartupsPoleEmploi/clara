@@ -25,5 +25,4 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 
 WORKDIR /railsapp
 
-# RUN bundle install
 CMD sleep infinity

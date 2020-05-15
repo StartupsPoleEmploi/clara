@@ -137,12 +137,14 @@ namespace :minidb do
   end
 
   task :ensure_minimalistic_data => :environment do
-    p "Ensuring the app will work with minimalistic data"
     unless ActiveRecord::Base.connection.table_exists? 'aids'
+      p 'No data in database, seeding it with minimalistic data'
       Rake::Task["db:drop"].invoke
       Rake::Task["db:create"].invoke
       Rake::Task["db:migrate"].invoke
       Rake::Task["db:seed"].invoke
+    else
+      p 'Database is filled'
     end
   end
 
