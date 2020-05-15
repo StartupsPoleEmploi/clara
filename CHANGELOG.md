@@ -2,7 +2,7 @@
 
 
 ## 31.0.4 (14/05/2020)
-[#1598][TECH] Remettre la doc tech à jour
+[#1598][TECH] Remettre la doc tech à jour pour l'installation locale
 
 
 ## 31.0.3 (14/05/2020)
