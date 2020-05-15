@@ -117,14 +117,13 @@ Lancer la commande **une deuxième fois** pour s'assurer de l'absence d'effets d
 #### a. Lancer la recette fonctionnelle automatisée
 
  - Télécharger la version desktop de Cypress https://download.cypress.io/desktop
- - s'assurer que le variable d'environnement R7_MODE vaut *true* (c'est normalement le cas par défaut en dev, vérifiez le .env)
  - choisissez le répertoire "/workspace/repo/clara/rails"
  - cliquez sur "Run all specs" en haut à droite
 
 #### b. Lancer les tests unitaires "back"
 
 ```
-~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm --no-deps web-srv bash
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm web-srv bash
 root@0ac2cfcb2722:/railsapp# bundle exec rails t
 # Running:
 ...........................................................................................................................................................................................................................................................................................................................................................................................................................................................................
@@ -137,7 +136,7 @@ Ouvrir le navigateur à l'adresse http://localhost:3000/teaspoon/default
 
 Une autre possibilité consiste à lancer la commande suivante :
 ```
-~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm --no-deps web-srv bash
+~/workspace/repo$> docker-compose -f docker-compose-local.yml run --rm web-srv bash
 root@0ac2cfcb2722:/railsapp# bundle exec rails teaspoon
 ```
 
