@@ -17,6 +17,9 @@ namespace :minidb do
     activated_models = ActivatedModelsService.instance
     all_rules = activated_models.rules
 
+    # Recall not needed
+    Recall.destroy_all
+
     # Only a few aids
     Aid.where.not(
       slug:[
@@ -91,7 +94,7 @@ namespace :minidb do
     Tracization.destroy_all
 
     # Remove pg_stats (5000 lines only for stats we don't need)
-    ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
+    # ActiveRecord::Base.connection.exec_query("DROP EXTENSION pg_stat_statements;")
   end
 
 
@@ -117,13 +120,31 @@ namespace :minidb do
     exec cmd
   end
 
+  task :reprod => :environment do
+    p "Recreating production database locally"
+    cmd = nil 
+    with_config do |app, host, db, user|  
+      p "app #{app}"
+      p "host #{host}"
+      p "db #{db}"
+      p "user #{user}"
+      cmd = "pg_restore --verbose --clean --no-acl --no-owner -U #{user} -h #{host} -d #{db} db/latest.dump" 
+    end
+    Rake::Task["db:drop"].invoke
+    Rake::Task["db:create"].invoke
+    puts cmd
+    exec cmd
+  end
+
   task :ensure_minimalistic_data => :environment do
-    p "Ensuring the app will work with minimalistic data"
     unless ActiveRecord::Base.connection.table_exists? 'aids'
+      p 'No data in database, seeding it with minimalistic data'
       Rake::Task["db:drop"].invoke
       Rake::Task["db:create"].invoke
       Rake::Task["db:migrate"].invoke
       Rake::Task["db:seed"].invoke
+    else
+      p 'Database is filled'
     end
   end
 

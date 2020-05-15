@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.0.4 (14/05/2020)
+[#1598][TECH] Remettre la doc tech à jour pour l'installation locale
+
+
 ## 31.0.3 (14/05/2020)
 [#1596c][TECH] En local avec Docker, dernière retouche
 

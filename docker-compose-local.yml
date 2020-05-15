@@ -7,6 +7,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - '../private/db/developpement/init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - "../private/db/latest.dump:/latest.dump"
     ports:
       - '5432:5432'
     environment:
@@ -16,7 +17,11 @@ services:
     build:
       context: .
       dockerfile: dockerfile_rails_local
-    command: bash -c " [ ! -e /railsapp/tmp/pids/server.pid ] || rm /railsapp/tmp/pids/server.pid && bundle install && bin/rails minidb:ensure_minimalistic_data && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: >
+        bash -c "[ ! -e /railsapp/tmp/pids/server.pid ] || rm /railsapp/tmp/pids/server.pid
+        && bundle check || bundle install
+        && bin/rails minidb:ensure_minimalistic_data
+        && R7_MODE=true COVERAGE_PLEASE=true RAILS_ENV=development bin/rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - "../private/env/developpement/.env:/railsapp/.env"
       - './rails:/railsapp'
