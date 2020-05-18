@@ -139,7 +139,9 @@ root@0ac2cfcb2722:/railsapp# bundle exec rails teaspoon
 
 
 
-## Déploiement en recette
+## Recette
+
+### 1. Déploiement en recette
 
 Vous aurez besoin du VPN interne à Pôle Emploi pour déployer en recette
 
@@ -147,14 +149,41 @@ Vous aurez besoin du VPN interne à Pôle Emploi pour déployer en recette
 ~/workspace/repo/private$> ./.execute.sh deploy recette
 ```
 
+### 2. Restaurer la recette avec des données de production
+
+Mettre à jour latest.dump dans le répertoire "private" du Gitlab et pusher les modifications sur la master.
+
+Puis
+
+```
+~/workspace/repo/private$> ./.execute.sh majbd recette
+```
 
 
 
-## Déploiement en production
+## Production
+
+### 1. Déploiement en production
 
 Vous aurez besoin d'une clé SSH pour déployer en production
 
 ```
 ~/workspace/repo/private$> ./.execute.sh deploy production
+```
+
+### 2. Dump de base de données
+
+Aller sur la production, puis
+
+```
+~$> cd /home/docker/clara
+/home/docker/clara$> sudo su
+/home/docker/clara$> docker-compose exec -T clara_db bash -c "pg_dump -Fc -U ara --role=ara --dbname=ara_production" > /tmp/clara_dump.dump
+```
+
+### 3. Récuperer la base de données de production en local
+
+```
+~$> scp dboureau@<addresse-IP-de-la-prod>:/tmp/clara_dump.dump /Users/me/workspace/ 
 ```
 
