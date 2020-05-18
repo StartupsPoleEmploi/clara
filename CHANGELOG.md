@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.0.5 (18/05/2020)
+[#1600][TECH] Remettre la doc tech à jour, recette et prod
+
+
 ## 31.0.4 (14/05/2020)
 [#1598][TECH] Remettre la doc tech à jour pour l'installation locale
 
