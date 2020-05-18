@@ -159,6 +159,12 @@ Puis
 ~/workspace/repo/private$> ./.execute.sh majbd recette
 ```
 
+### 3. Autres scénariis
+
+```
+~/workspace/repo/private$> ./.execute.sh -h
+```
+
 
 
 ## Production
@@ -181,9 +187,16 @@ Aller sur la production, puis
 /home/docker/clara$> docker-compose exec -T clara_db bash -c "pg_dump -Fc -U ara --role=ara --dbname=ara_production" > /tmp/clara_dump.dump
 ```
 
-### 3. Récuperer la base de données de production en local
+### 3. Autres scénariis
+
+```
+~/workspace/repo/private$> ./.execute.sh -h
+```
+
+### 4. Récuperer la base de données de production en local
 
 ```
 ~$> scp dboureau@<addresse-IP-de-la-prod>:/tmp/clara_dump.dump /Users/me/workspace/ 
 ```
+
 
