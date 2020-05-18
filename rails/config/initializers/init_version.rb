@@ -6,5 +6,4 @@ ARA_VERSION = lines.detect {|e| e.start_with?("## ")}.split("## ")[1].split(" ("
 ARA_EXT_URL = ENV.to_h.select { |key, value| key.to_s.match(/^ARA_URL/) }
 
 
-Rails.application.load_tasks
-ARA_DATA = Rake::Task['about'].invoke.inspect
+Rake::Task['about'].invoke
