@@ -213,7 +213,7 @@ FROM ruby:
 Et remplacer l'ancien numéro de version du Ruby par le nouveau, sur toutes les occurences.
 
 
-#### c. Dans le .ruby-version
+#### b. Dans le .ruby-version
 
 Changez le numéro de version à l'intérieur du fichier .ruby-version
 
