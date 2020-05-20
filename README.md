@@ -224,3 +224,11 @@ Changez le numéro de version à l'intérieur du fichier Gemfile
 ```ruby
 ruby '2.6.6' # <----- Changez le numéro de version correspondant
 ```
+
+#### c. Dans le fichier de configuration CircleCI
+
+Changez le numéro de version à l'intérieur du fichier .circleci/config.yml
+
+```
+  - image: circleci/ruby:2.6.6-node-browsers-legacy
+```
