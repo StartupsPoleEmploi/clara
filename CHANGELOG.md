@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.0.7 (20/05/2020)
+[#1586b][TECH] Montée de version de Ruby, doc à jour
+
+
 ## 31.0.6 (19/05/2020)
 [#1586][TECH] Montée de version de Ruby
 

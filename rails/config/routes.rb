@@ -79,6 +79,7 @@ Rails.application.routes.draw do
       get 'get_delete_trace'
       post 'post_delete_trace'
       get 'get_hidden_admin'
+      get 'req'
     end
     get 'status', to: 'status#index'
     resources :variables
@@ -127,9 +128,6 @@ Rails.application.routes.draw do
   get 'get_search_front', to: 'aides#get_search_front'
   post 'post_search_front', to: 'aides#post_search_front'
 
-  resources :req,       only: [:index]
-  resources :reqip,    only: [:index]
-  
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
