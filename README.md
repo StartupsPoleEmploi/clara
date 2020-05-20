@@ -202,6 +202,8 @@ Aller sur la production, puis
 
 ### 5. Montée de version de Ruby
 
+#### a. Dans les Dockerfiles
+
 Faire une recherche "plain text" sur le texte suivant
 
 ```
@@ -209,3 +211,16 @@ FROM ruby:
 ```
 
 Et remplacer l'ancien numéro de version du Ruby par le nouveau, sur toutes les occurences.
+
+
+#### c. Dans le .ruby-version
+
+Changez le numéro de version à l'intérieur du fichier .ruby-version
+
+#### c. Dans le Gemfile
+
+Changez le numéro de version à l'intérieur du fichier Gemfile
+
+```ruby
+ruby '2.6.6' # <----- Changez le numéro de version correspondant
+```
