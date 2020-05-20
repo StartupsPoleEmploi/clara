@@ -200,7 +200,9 @@ Aller sur la production, puis
 ```
 
 
-### 5. Montée de version de Ruby
+## 5. Montée de version de Ruby
+
+### A. Dans les fichiers
 
 #### a. Dans les Dockerfiles
 
@@ -225,10 +227,32 @@ Changez le numéro de version à l'intérieur du fichier Gemfile
 ruby '2.6.6' # <----- Changez le numéro de version correspondant
 ```
 
-#### c. Dans le fichier de configuration CircleCI
+#### d. Dans le fichier de configuration CircleCI
 
 Changez le numéro de version à l'intérieur du fichier .circleci/config.yml
 
 ```
   - image: circleci/ruby:2.6.6-node-browsers-legacy
+```
+
+### B. Mise à jour du serveur
+
+En recette
+
+```
+~/workspace/repo/private$> ./.execute.sh rebuild recette
+```
+
+En production
+
+```
+~/workspace/repo/private$> ./.execute.sh rebuild production
+```
+
+## 6. Un déploiement a échoué
+
+Sur la machine distante
+
+```
+a@b:/home/docker/clara$> docker-compose exec clara_rails bash -c "cd clara/rails; bundle exec mina production2 deploy:force_unlock"
 ```
