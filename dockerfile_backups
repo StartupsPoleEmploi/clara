@@ -1,4 +1,4 @@
-FROM ruby:2.6.0
+FROM ruby:2.6.6
 
 RUN apt-get update && \
     apt-get -y install bzip2 cron postgresql-client
