@@ -200,3 +200,12 @@ Aller sur la production, puis
 ```
 
 
+### 5. Montée de version de Ruby
+
+Faire une recherche "plain text" sur le texte suivant
+
+```
+FROM ruby:
+```
+
+Et remplacer l'ancien numéro de version du Ruby par le nouveau, sur toutes les occurences.
