@@ -2,24 +2,22 @@
 <%- h.tap { |hs| hs.delete(:clearance) } %>
 <div style="margin-top: 2rem;">
 
-<div>
-About the app :
-</div> 
-<%= ap(`rake about`.split("\n")).html_safe %>
+  <div>
+  About the app :
+  </div> 
+  <%= ap(Rails::Info.to_s.split("\n")).html_safe %>
 
-<div>
-About the request :
-</div> 
-<%= ap(h).html_safe %>
+  <div>
+  About the request :
+  </div> 
+  <%= ap(h).html_safe %>
 
-<div>
-Remote IP is :
-</div> 
-<div>
-<%= ap(request.remote_ip).html_safe %>
-</div> 
-
-
+  <div>
+  Remote IP is :
+  </div> 
+  <div>
+  <%= ap(request.remote_ip).html_safe %>
+  </div> 
 
 
 </div>

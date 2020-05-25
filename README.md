@@ -227,6 +227,8 @@ Changez le numéro de version à l'intérieur du fichier Gemfile
 ruby '2.6.6' # <----- Changez le numéro de version correspondant
 ```
 
+Puis n'oubliez pas le **bundle install** pour mettre à jour le Gemfile.lock
+
 #### d. Dans le fichier de configuration CircleCI
 
 Changez le numéro de version à l'intérieur du fichier .circleci/config.yml
