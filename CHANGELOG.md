@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.0.10 (28/05/2020)
+[#1572][TECH] Rails 6
+
+
 ## 31.0.9 (27/05/2020)
 [#1572a][TECH] Préparation passage à Rails 6 (Rails 5.2.4.3, corrections tests)
 
