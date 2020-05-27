@@ -27,6 +27,7 @@ describe("Tracer une aide", function() {
       cy.wait(1000)
     })
 
+    // TEST FAILURE
     it("On part d'un état où aucun suivi n'a encore eu lieu", function () {
       cy.visit('/admin/traces')
       cy.get('table[aria-labelledby="page-title"] tbody').shouldHaveTrimmedText('')
@@ -34,17 +35,18 @@ describe("Tracer une aide", function() {
       cy.get('table[aria-labelledby="page-title"] tbody').shouldHaveTrimmedText('')
     })
 
-
+    // TEST FAILURE
     it("Pour un superadmin, la création d'un suivi est possible", function() {
       cy.visit('/admin/tracings/new')
       cy.get('input#tracing_name').clear().invoke('val', 'suivi-test').trigger('input');
       cy.get('textarea#tracing_description').clear().invoke('val', 'une description').trigger('input');
-      cy.get('select#tracing_rule_id').select("362")
+      cy.get('select#tracing_rule_id').selectNth(2)
       cy.get('input#tracing_all_aids').click()
       cy.get('input[value="Créer ce suivi"]').click()
       cy.clear_the_cache()
     })  
 
+    // TEST FAILURE
     it("Si un simple visiteur effectue une visite sur la page de détail qui correspond aux critères de suivi, le suivi est enregistré", function () {
       cy.visit('/aides/detail/erasmus?for_id=MjMsNCxuLDEsNixuLHAsLCxub3RfYXBwbGljYWJsZSxu')
       cy.get('body.detail.show').should('exist')
