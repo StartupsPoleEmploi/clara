@@ -48,8 +48,9 @@ describe("En tant que superadmin", function () {
       .first()
       .shouldHaveTrimmedText("Création effectuée avec succès.")
   })
-  it("Si un visiteur visite la page de détail d'une aide, et qu'un rappel n'a pas encore été envoyé, un email adéquat est envoyé", function () {
-    cy.visit("/aides/detail/illico-solidaire?force=true&for_id=MjcsNCxuLCwxLG4sbiw0MzAwMiw0MzAwMCxub3RfYXBwbGljYWJsZSxv")
+
+  it("Si un visiteur visite la page d'accueil, et qu'un rappel n'a pas encore été envoyé, un email adéquat est envoyé", function () {
+    cy.visit("/?force=true")
     cy.visit('/letter_opener')
       cy.get('iframe#mail').then(function ($iframe) {
       const $body = $iframe.contents().find('body')

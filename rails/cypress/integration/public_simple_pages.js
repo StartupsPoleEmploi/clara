@@ -42,11 +42,12 @@ describe("Pour un visiteur", function () {
     // then
     cy.get("body.c-body.aides.index").should("exist")
   })
+  // TEST FAILURE
   it("On peut voir une rubrique depuis la page d'accueil", function () {
     // given
     cy.visit('/')
     // when
-    cy.get('.c-body__footer').contains("Emploi international").click()
+    cy.get('.c-body__footer').contains("Aide pour se former ou travailler à l'international").click()
     // then
     cy.get("body.c-body.type.show").should("exist")
   })

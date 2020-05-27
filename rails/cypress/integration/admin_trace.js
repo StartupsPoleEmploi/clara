@@ -34,12 +34,11 @@ describe("Tracer une aide", function() {
       cy.get('table[aria-labelledby="page-title"] tbody').shouldHaveTrimmedText('')
     })
 
-
     it("Pour un superadmin, la création d'un suivi est possible", function() {
       cy.visit('/admin/tracings/new')
       cy.get('input#tracing_name').clear().invoke('val', 'suivi-test').trigger('input');
       cy.get('textarea#tracing_description').clear().invoke('val', 'une description').trigger('input');
-      cy.get('select#tracing_rule_id').select("362")
+      cy.get('select#tracing_rule_id').selectNth(2)
       cy.get('input#tracing_all_aids').click()
       cy.get('input[value="Créer ce suivi"]').click()
       cy.clear_the_cache()
