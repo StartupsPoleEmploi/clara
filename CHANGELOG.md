@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.0.9 (27/05/2020)
+[#1572][TECH] Passage à Rails 6
+
+
 ## 31.0.8 (25/05/2020)
 [#1586c][TECH] Montée de version de Ruby, doc à jour, simplifiée
 
