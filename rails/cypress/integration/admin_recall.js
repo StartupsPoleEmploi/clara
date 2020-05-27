@@ -49,25 +49,24 @@ describe("En tant que superadmin", function () {
       .shouldHaveTrimmedText("Création effectuée avec succès.")
   })
 
-  // TEST FAILURE
-  // it("Si un visiteur visite la page de détail d'une aide, et qu'un rappel n'a pas encore été envoyé, un email adéquat est envoyé", function () {
-  //   cy.visit("/aides/detail/illico-solidaire?force=true&for_id=MjcsNCxuLCwxLG4sbiw0MzAwMiw0MzAwMCxub3RfYXBwbGljYWJsZSxv")
-  //   cy.visit('/letter_opener')
-  //     cy.get('iframe#mail').then(function ($iframe) {
-  //     const $body = $iframe.contents().find('body')
+  it("Si un visiteur visite la page d'accueil, et qu'un rappel n'a pas encore été envoyé, un email adéquat est envoyé", function () {
+    cy.visit("/?force=true")
+    cy.visit('/letter_opener')
+      cy.get('iframe#mail').then(function ($iframe) {
+      const $body = $iframe.contents().find('body')
 
-  //     cy.wrap($body)
-  //       .find('iframe[seamless="seamless"]')
-  //       .then(function ($iframe2) {
-  //         const $body2 = $iframe2.contents().find('body')
+      cy.wrap($body)
+        .find('iframe[seamless="seamless"]')
+        .then(function ($iframe2) {
+          const $body2 = $iframe2.contents().find('body')
 
-  //         cy.wrap($body2)
-  //           .find('div')
-  //           .eq(1)
-  //           .shouldHaveTrimmedText('Vous avez créé une alerte automatique pour l\'aide "Erasmus +".')
-  //       })
-  //   })
+          cy.wrap($body2)
+            .find('div')
+            .eq(1)
+            .shouldHaveTrimmedText('Vous avez créé une alerte automatique pour l\'aide "Erasmus +".')
+        })
+    })
 
-  // })
+  })
 })
 
