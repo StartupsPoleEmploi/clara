@@ -33,18 +33,14 @@ clara.js_define("welcome_index", {
         setTimeout(setFocusIframe, 500);
       });
 
-      // local_ga('send', 'event', 'results', 'filter', filter_name);
-      
       $("a.c-chip-creation").click(function(e){
         var local_ga = _.get(window, "ga");
         e.preventDefault();
         var href = this.href;
         if (typeof local_ga === "function") {
           local_ga('send', 'event', 'home', 'chip', 'creation');
-          console.log("sent!!!!!!!!!! creation")
-        } else {
-          location.href = href;
         }
+        location.href = href;
       });
 
       $("a.c-chip-mobilite").click(function(e){
@@ -53,7 +49,6 @@ clara.js_define("welcome_index", {
         var href = this.href;
         if (typeof local_ga === "function") {
           local_ga('send', 'event', 'home', 'chip', 'mobilite');
-          console.log("sent!!!!!!!!!! mobilite")
         }    
         location.href = href;
       });
@@ -63,7 +58,6 @@ clara.js_define("welcome_index", {
         var href = this.href;
         if (typeof local_ga === "function") {
           local_ga('send', 'event', 'home', 'chip', 'formation');
-          console.log("sent!!!!!!!!!! formation")
         }    
         location.href = href;
       });
@@ -73,7 +67,6 @@ clara.js_define("welcome_index", {
         var href = this.href;
         if (typeof local_ga === "function") {
           local_ga('send', 'event', 'home', 'chip', 'projetpro');
-          console.log("sent!!!!!!!!!! projetpro")
         }    
         location.href = href;
       });
