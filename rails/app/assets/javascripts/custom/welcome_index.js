@@ -5,7 +5,6 @@ clara.js_define("welcome_index", {
     },
 
     please: function() {
-   
 
       store.clearAll();
       console.log("Version : " + clara.version);
@@ -25,7 +24,6 @@ clara.js_define("welcome_index", {
         var iframe = $("#video-clara")[0];
         iframe.contentWindow.focus();
       }
-
 
       $(".c-seevideo").click(function(){
         var html = '<iframe id="video-clara" width="720" height="405" src="https://www.youtube.com/embed/8IDnLjfAt5U?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
