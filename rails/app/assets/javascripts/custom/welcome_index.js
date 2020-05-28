@@ -33,43 +33,29 @@ clara.js_define("welcome_index", {
         setTimeout(setFocusIframe, 500);
       });
 
-      $("a.c-chip-creation").click(function(e){
+      var intercept_link_and_call_ga = function(event_name, e, url) {
         var local_ga = _.get(window, "ga");
         e.preventDefault();
-        var href = this.href;
+        var href = url;
         if (typeof local_ga === "function") {
-          local_ga('send', 'event', 'home', 'chip', 'creation');
+          local_ga('send', 'event', 'home', 'chip', event_name);
         }
         location.href = href;
-      });
+      }
 
+      $("a.c-chip-creation").click(function(e){
+        intercept_link_and_call_ga('creation', e, this.href);
+      });
       $("a.c-chip-mobilite").click(function(e){
-        var local_ga = _.get(window, "ga");
-        e.preventDefault();
-        var href = this.href;
-        if (typeof local_ga === "function") {
-          local_ga('send', 'event', 'home', 'chip', 'mobilite');
-        }    
-        location.href = href;
+        intercept_link_and_call_ga('mobilite', e, this.href);
       });
       $("a.c-chip-formation").click(function(e){
-        var local_ga = _.get(window, "ga");
-        e.preventDefault();
-        var href = this.href;
-        if (typeof local_ga === "function") {
-          local_ga('send', 'event', 'home', 'chip', 'formation');
-        }    
-        location.href = href;
+        intercept_link_and_call_ga('formation', e, this.href);
       });
       $("a.c-chip-projetpro").click(function(e){
-        var local_ga = _.get(window, "ga");
-        e.preventDefault();
-        var href = this.href;
-        if (typeof local_ga === "function") {
-          local_ga('send', 'event', 'home', 'chip', 'projetpro');
-        }    
-        location.href = href;
+        intercept_link_and_call_ga('projetpro', e, this.href);
       });
+
 
     },
 
