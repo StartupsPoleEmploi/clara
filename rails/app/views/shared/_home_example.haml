@@ -3,7 +3,7 @@
     %h2.c-newhomeexample__title Quelques exemples d'aides
     %p.c-newhomeexample__subtitle Clara calcule votre éligibilité sur #{nb_of_active_aids} aides et mesures
     .c-newhomeexample__cards.o-layout
-      %a.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_creation)}
+      %a.c-chip-creation.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_creation)}
         .c-newhomeexample__card-svg.c-newhomeexample__card-svg1
           = image_tag(empty_image, alt: "Petite entreprise", data: { "src" => image_path("logo-exemple-creation.svg") }) 
         .c-newhomeexample__card-title <strong>Création, reprise d'entreprise</strong>
@@ -12,7 +12,7 @@
         %span.c-newhomeexample__card-txt d'un capital de départ
         .c-newhomeexample__card-plus 
           En savoir plus >
-      %a.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_amob)}
+      %a.c-chip-mobilite.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_amob)}
         .c-newhomeexample__card-svg.c-newhomeexample__card-svg2
           = image_tag(empty_image, alt: "Voiture dans un garage", data: { "src" => image_path("logo-exemple-amob.svg") }) 
         .c-newhomeexample__card-title <strong>Mobilité</strong>
@@ -21,7 +21,7 @@
         %span.c-newhomeexample__card-txt hébergement
         .c-newhomeexample__card-plus
           En savoir plus >
-      %a.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_formation)}
+      %a.c-chip-formation.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_formation)}
         .c-newhomeexample__card-svg.c-newhomeexample__card-svg3
           = image_tag(empty_image, alt: "Contrat avec un stylo", data: { "src" => image_path("logo-exemple-formation.svg") }) 
         .c-newhomeexample__card-title <strong>En formation</strong>
@@ -30,7 +30,7 @@
         %span.c-newhomeexample__card-txt.more &nbsp;
         .c-newhomeexample__card-plus
           En savoir plus >
-      %a.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_project)}
+      %a.c-chip-projetpro.c-newhomeexample__card.o-layout__item{:class => "u-1/1 u-1/4@tablet", href: type_path(slug_of_project)}
         .c-newhomeexample__card-svg.c-newhomeexample__card-svg4
           = image_tag(empty_image, alt: "Des gens autour d'une table", data: { "src" => image_path("logo-exemple-projetpro.svg") }) 
         .c-newhomeexample__card-title <strong>Projet professionnel</strong>
