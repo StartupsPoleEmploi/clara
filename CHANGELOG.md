@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.1.0 (28/05/2020)
+[#1602][FEATURE] Tracer les pastilles sur GA
+
+
 ## 31.0.10 (28/05/2020)
 [#1572][TECH] Rails 6
 
