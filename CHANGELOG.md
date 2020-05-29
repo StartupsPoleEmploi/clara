@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 31.1.2 (29/05/2020)
+[#1597][BUG] Dans la créa de Rappels, le bouton Retour me positionne sur la HOME
+
+
 ## 31.1.1 (29/05/2020)
 [#1603][BUG] Transliterate
 
