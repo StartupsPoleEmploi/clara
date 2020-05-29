@@ -134,12 +134,12 @@ class RuletreeService
       when 'not_amongst'
         !typed_list.include?(typed_criterion_value.to_s)
       when 'starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a = _removeaccents(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = _removeaccents(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         a.starts_with?(b)
       when 'not_starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a = _removeaccents(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = _removeaccents(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         !a.starts_with?(b)
       else
         false
@@ -167,12 +167,12 @@ class RuletreeService
       when 'not_amongst'
         !typed_rule_value.split(",").include?(typed_criterion_value)
       when 'starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a = _removeaccents(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = _removeaccents(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         a.starts_with?(b)
       when 'not_starts_with'
-        a = ActiveSupport::Inflector.transliterate(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
-        b = ActiveSupport::Inflector.transliterate(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        a = _removeaccents(typed_criterion_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
+        b = _removeaccents(typed_rule_value.to_s).downcase.gsub(/[^0-9a-z]/i, '')
         !a.starts_with?(b)
       else
         false
@@ -201,5 +201,41 @@ class RuletreeService
         false
     end
   end
+  
+  # Remove the accents from the string.
+  # See https://gist.github.com/abelorian/8e2ea78f0601770336921fd254d39bdd
+  def _removeaccents(str)
+    res = String.new(str)   
+    {
+      'E' => [200,201,202,203],
+      'e' => [232,233,234,235],
+      'A' => [192,193,194,195,196,197],
+      'a' => [224,225,226,227,228,229,230],
+      'C' => [199],
+      'c' => [231],
+      'O' => [210,211,212,213,214,216],
+      'o' => [242,243,244,245,246,248],
+      'I' => [204,205,206,207],
+      'i' => [236,237,238,239],
+      'U' => [217,218,219,220],
+      'u' => [249,250,251,252],
+      'N' => [209],
+      'n' => [241],
+      'Y' => [221],
+      'y' => [253,255],
+      'AE' => [306],
+      'ae' => [346],
+      'OE' => [188],
+      'oe' => [189]
+    }.each {|letter,accents|
+      packed = accents.pack('U*')
+      rxp = Regexp.new("[#{packed}]", nil)
+      res.gsub!(rxp, letter)
+    }
+    
+    res
+  end
+
+  
 
 end

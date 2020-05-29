@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 31.1.1 (29/05/2020)
+[#1603][BUG] Transliterate
+
+
 ## 31.1.0 (28/05/2020)
-[#1602][FEATURE] Tracer les pastilles sur GA
+[#1602][FEATURETTEURE] Tracer les pastilles sur GA
 
 
 ## 31.0.10 (28/05/2020)
