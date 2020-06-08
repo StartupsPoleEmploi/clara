@@ -11,7 +11,7 @@
   - if display_search
     .o-line__item{"class" => "u-hide u-show@tablet"}
       = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
-        = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
+        = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide", :autocomplete => "off"
         = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit c-loop"
