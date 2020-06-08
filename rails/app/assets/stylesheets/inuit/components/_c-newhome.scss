@@ -6,14 +6,14 @@
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-navbar {
   width: 100%;
-  background-color: #E2EAF5;
+  background-color: #f7fcff;
 }
 
 
 /* Hero section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhome {
-  background-color: #E2EAF5;
+  background-color: #f7fcff;
   @include mq($until: mobile) {
     h1 {
       font-size: $inuit-font-size-h4;
@@ -70,7 +70,7 @@
 
 .c-newhomehero__content {
   margin-left: 0;
-  padding-top: space(12);
+  padding-top: space(6);
   padding-bottom: space(9);
   a {
     margin: space(5) 0 0 0; 
@@ -338,7 +338,6 @@ h2.c-newhomerecall__content {
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomehero-covid {
   position: relative;
-  z-index: 999;
   border: solid 1px #ee534f;
   background-color: white;
   font-size: 16px;
