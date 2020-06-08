@@ -364,7 +364,4 @@ h2.c-newhomerecall__content {
 }
 .c-newhomehero-hero-container {
   margin-top: 0;
-  @include mq($from: wide) {
-    margin-top: -50px;
-  }
 }
