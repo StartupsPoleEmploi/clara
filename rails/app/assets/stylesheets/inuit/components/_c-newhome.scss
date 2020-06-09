@@ -26,14 +26,24 @@
 
 h1.c-newhomehero__title {
   span {
-    display: block;
-    font-size: 70px;
-    font-weight: 900;
+
+    font-size: 40px;
+    font-weight: 700;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.07;
     letter-spacing: -0.5px;
     color: #152e3a;
+    display: block;
+    @include mq($from: tablet) {
+      font-size: 70px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.07;
+      letter-spacing: -0.5px;
+      color: #152e3a;
+    }
   }
 }
 
@@ -130,6 +140,21 @@ h1.c-newhomehero__title {
   }
 }
 
+
+input.c-main-cta2 {
+  background-color: #057dbc;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #fafafa;
+  border: none;
+  text-transform: uppercase;
+  padding: 2rem 4rem;
+}
 
 input.c-main-cta {
   border: 0;
@@ -370,5 +395,9 @@ h2.c-newhomerecall__content {
   }
 }
 .c-newhomehero-hero-container {
-  margin-top: space(5);
+  margin-top: 14px;
+}
+
+.c-newhomehero-actions {
+  margin-top: -10px;
 }

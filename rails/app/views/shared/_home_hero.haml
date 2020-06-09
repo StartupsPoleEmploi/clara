@@ -20,12 +20,12 @@
             %span Boostez votre
             %span recherche d'emploi
             %span en moins de 4 minutes
-
-
-
-
-
         .o-layout__item{:class => "u-1/1 u-1/3@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "", data: { "src" => image_path("jump.svg") }) 
-  
+      .o-layout.o-layout--middle.c-newhomehero-actions
+        .o-layout__item{:class => "u-1/1 u-2/3@desktop"}
+          = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
+            = f.submit 'Je commence', class: 'c-main-cta2'
+        .o-layout__item{:class => "u-1/1 u-1/3@desktop"}
+          Découvrir Clara en vidéo
