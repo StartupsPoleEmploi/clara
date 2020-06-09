@@ -13,15 +13,7 @@
 /* Hero section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhome {
-  background-color: #f7fcff;
-  @include mq($until: mobile) {
-    h1 {
-      font-size: $inuit-font-size-h4;
-    }
-    h2 {
-      font-size: $inuit-font-size-h5;
-    }
-  }
+  background-color: #ffffff;
 }
 
 h1.c-newhomehero__title {
