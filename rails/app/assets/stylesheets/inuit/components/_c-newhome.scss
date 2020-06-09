@@ -409,13 +409,20 @@ h2.c-newhomerecall__content {
 .c-newhomehero-discover {
   vertical-align: middle;
   text-transform: uppercase;
-  font-size: 22px;
   font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.5px;
   color: #152e3a;
+  font-size: 17px;
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
+  @include mq($from: wide) {
+    font-size: 22px;
+  }
 }
 
 .c-newhomehero-discovertxt {
@@ -427,6 +434,14 @@ h2.c-newhomerecall__content {
 .c-newhomehero-duration {
   margin-top: -12px;
   margin-left: 51px;
-  font-size: 18px;
   color: #403c43;
+  font-size: 16px;
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
+  @include mq($from: wide) {
+    font-size: 18px;
+  }
+
 }
