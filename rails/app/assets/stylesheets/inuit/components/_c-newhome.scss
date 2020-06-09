@@ -372,7 +372,6 @@ h2.c-newhomerecall__content {
   position: relative;
   border: solid 1px #ee534f;
   background-color: white;
-  font-size: 16px;
   line-height: 1.5;
   text-align: center;
   color: #222222;
@@ -386,6 +385,11 @@ h2.c-newhomerecall__content {
   letter-spacing: 1.2px;
 }
 .c-newhomehero-covid__text {
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 16px;
+  }
+
 }
 
 .c-newhomehero-covid-container {
@@ -400,4 +404,29 @@ h2.c-newhomerecall__content {
 
 .c-newhomehero-actions {
   margin-top: -10px;
+}
+
+.c-newhomehero-discover {
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #152e3a;
+}
+
+.c-newhomehero-discovertxt {
+  vertical-align: middle;
+}
+.c-newhomehero-durationballast {
+  margin-bottom: -12px;
+}
+.c-newhomehero-duration {
+  margin-top: -12px;
+  margin-left: 51px;
+  font-size: 18px;
+  color: #403c43;
 }

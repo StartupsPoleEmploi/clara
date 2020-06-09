@@ -28,4 +28,12 @@
           = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
             = f.submit 'Je commence', class: 'c-main-cta2'
         .o-layout__item{:class => "u-1/1 u-1/3@desktop"}
-          Découvrir Clara en vidéo
+          .c-newhomehero-durationballast
+            &nbsp;
+          .c-newhomehero-discover
+            %span.u-cursor-pointer
+              = image_tag(empty_image, alt: "Voir la vidéo", data: { "src" => image_path("playvideo.svg") }) 
+            %span.c-newhomehero-discovertxt
+              Découvrir Clara en vidéo
+          .c-newhomehero-duration
+            Durée : 1m30
