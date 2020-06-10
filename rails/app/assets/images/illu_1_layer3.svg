@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 412 320" style="enable-background:new 0 0 412 320;" xml:space="preserve">
+<style type="text/css">
+	.st0{filter:url(#filter-2);}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#BCE8FF;}
+	.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#152E3A;}
+	.st5{fill:none;stroke:#BCE6FC;stroke-width:3;}
+	.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#BCE6FC;}
+	.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#C6EAFF;stroke:#F8FCFF;stroke-width:4;}
+	.st8{enable-background:new    ;}
+	.st9{fill:#38353A;}
+</style>
+<filter  filterUnits="objectBoundingBox" height="168.6%" id="filter-2" width="148.1%" x="-24.1%" y="-34.3%">
+	<feOffset  dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="25"></feGaussianBlur>
+	
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0.877104446   0 0 0 0 0.917217183   0 0 0 0 0.937273551  0 0 0 1 0">
+		</feColorMatrix>
+</filter>
+<g id="Page-1">
+	<g id="V3_2" transform="translate(-182.000000, -1235.000000)">
+		<g id="LAYER_3" transform="translate(129.000000, 1056.000000)">
+			<g id="Group" transform="translate(103.000000, 204.000000)">
+				<g id="ILLU">
+					<g id="Group-3" transform="translate(0.000000, 25.442433)">
+						<g id="Rectangle">
+							<g class="st0">
+								<path id="path-1_2_" class="st1" d="M4,0h303.6c2.2,0,4,1.8,4,4v210.6c0,2.2-1.8,4-4,4H4c-2.2,0-4-1.8-4-4V4
+									C0,1.8,1.8,0,4,0z"/>
+							</g>
+							<g>
+								<path id="path-1_1_" class="st2" d="M4,0h303.6c2.2,0,4,1.8,4,4v210.6c0,2.2-1.8,4-4,4H4c-2.2,0-4-1.8-4-4V4
+									C0,1.8,1.8,0,4,0z"/>
+							</g>
+						</g>
+						<rect id="Rectangle_1_" x="22.4" y="76" class="st3" width="266.2" height="11.5"/>
+						<g id="Group-2" transform="translate(23.997104, 103.223926)">
+							<rect id="Rectangle-Copy" x="35.3" y="6.9" class="st4" width="78.7" height="11.5"/>
+							<rect id="Rectangle-Copy-3" x="35.2" y="39.3" class="st4" width="78.7" height="11.5"/>
+							<rect id="Rectangle-Copy-6" x="35.2" y="71.2" class="st4" width="78.7" height="11.5"/>
+							<g id="Material_x2F_Light_x2F_Radio-button-off" transform="translate(3.467684, 37.133641)">
+								<path id="Shape" class="st4" d="M7.3-2.7c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S12.8-2.7,7.3-2.7L7.3-2.7z
+									 M7.3,15.3c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S11.7,15.3,7.3,15.3L7.3,15.3z"/>
+							</g>
+							<g id="Material_x2F_Light_x2F_Radio-button-off_1_" transform="translate(3.467684, 69.033641)">
+								<path id="Shape_1_" class="st4" d="M7.3-2.7c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S12.8-2.7,7.3-2.7L7.3-2.7z
+									 M7.3,15.3c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S11.7,15.3,7.3,15.3L7.3,15.3z"/>
+							</g>
+							<path id="Shape_2_" class="st4" d="M11.2,6.8c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S14,6.8,11.2,6.8L11.2,6.8z M11.2,1.8
+								c-5.5,0-10,4.5-10,10s4.5,10,10,10s10-4.5,10-10S16.7,1.8,11.2,1.8L11.2,1.8z M11.2,19.8c-4.4,0-8-3.6-8-8s3.6-8,8-8
+								s8,3.6,8,8S15.6,19.8,11.2,19.8L11.2,19.8z"/>
+						</g>
+						<path id="Rectangle_2_" class="st5" d="M29.9,41.4h251.2c4.1,0,7.5,3.4,7.5,7.5v1.9c0,4.1-3.4,7.5-7.5,7.5H29.9
+							c-4.1,0-7.5-3.4-7.5-7.5v-1.9C22.4,44.7,25.7,41.4,29.9,41.4z"/>
+						<path id="Rectangle-Copy-4" class="st6" d="M29.9,41.4h41.3c4.1,0,7.5,3.4,7.5,7.5v1.9c0,4.1-3.4,7.5-7.5,7.5H29.9
+							c-4.1,0-7.5-3.4-7.5-7.5v-1.9C22.4,44.7,25.7,41.4,29.9,41.4z"/>
+						<path id="Rectangle_3_" class="st4" d="M218.8,173.8h48.4c6.2,0,11.2,5,11.2,11.2l0,0c0,6.2-5,11.2-11.2,11.2h-48.4
+							c-6.2,0-11.2-5-11.2-11.2l0,0C207.6,178.8,212.6,173.8,218.8,173.8z"/>
+					</g>
+					<g id="_x31_" transform="translate(131.000000, 0.000000)">
+						<g id="Icon-1" transform="translate(0.000000, 1.000000)">
+							<circle id="Oval" class="st7" cx="25" cy="25" r="25"/>
+						</g>
+						<g class="st8">
+							<path class="st9" d="M27.2,31h-3.1V19l-3.7,1.1v-2.5l6.5-2.3h0.3V31z"/>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
