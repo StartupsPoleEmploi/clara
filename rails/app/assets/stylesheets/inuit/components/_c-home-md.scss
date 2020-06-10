@@ -30,11 +30,6 @@ h2.c-home-md-title {
   }
 }
 
-.c-home-md-illu {
-  width: 312px;
-  height: 245px;
-}
-
 .c-home-md-stages {
   text-align: center;
   @include mq($from: desktop) {
@@ -47,4 +42,20 @@ h2.c-home-md-title {
       width: auto;
     }
   }
+}
+
+.c-home-md-explain span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.31;
+  letter-spacing: 0.2px;
+  color: #152e3a;
+  @include mq($from: wide) {
+    font-size: 26px;
+  }
+}
+.c-home-md-explain {
+  margin-top: -2rem;
+  text-align: center;
 }
