@@ -56,6 +56,9 @@ h2.c-home-md-title {
   }
 }
 .c-home-md-explain {
-  margin-top: -1rem;
+  margin-top: -2rem;
+  @include mq($from: wide) {
+    margin-top: -1rem;
+  }
   text-align: center;
 }
