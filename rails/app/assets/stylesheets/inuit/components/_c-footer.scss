@@ -1,14 +1,27 @@
 .c-footer {
-  background-color: #152E3A;  
-  color: white;
-  a:link, a:visited,  a:active {
-    text-decoration:underline;
-    color: white; 
-  }
-  a:hover {
+
+  font-size: 16px;
+  color: #312e33;
+  background-color: #ffffff;  
+  line-height: 1.88;
+  a:link, a:visited,  a:active, a:hover {
     text-decoration:none;
-    color: white; 
+    color: #312e33;
   }
+}
+
+.c-footer-intro {
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+  span {
+    display: block;
+  }
+}
+
+.c-footer-subtitle {
+  font-size: 22px;
+  line-height: 1.27;
+  color: #312e33;
 }
 
 .c-body.welcome.index {
@@ -24,6 +37,7 @@ a.c-link-to-all-aides {
 .c-footer__content {
   display: flex;
   flex-direction: column;
+  padding-bottom: 3rem;
 }
 
 .c-footer__contenttitle {
@@ -31,7 +45,7 @@ a.c-link-to-all-aides {
 }
 
 .c-li-ct {
-  margin-top: space(2);
+  margin-top: space(5);
 }
 
 .c-footer-cgu {
