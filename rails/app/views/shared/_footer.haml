@@ -8,7 +8,8 @@
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
     .o-layout
       .o-layout__item{:class=>"u-1/4@desktop u-1/3@tablet"}
-        = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
+        %a{href: root_path}
+          = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
         .c-footer-intro
           %span
             Clara est un service de Pôle emploi 
@@ -38,7 +39,7 @@
         .c-footer__content
           .c-footer-cgu
             .c-footer-subtitle
-              Liens utiles :
+              Liens utiles
             %br
             = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
             = link_to "Nous contacter", contact_index_path
