@@ -70,8 +70,10 @@ a.c-link-to-all-aides {
 }
 
 .c-footer-motherhome {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  @include mq($from: tablet) {    
+    text-align: right;
+  }
 }
 
 .c-footer-link + .c-footer-link, .c-footer-link-li + .c-footer-link-li {
