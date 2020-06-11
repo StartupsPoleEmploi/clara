@@ -2,12 +2,19 @@
   background-color: #ffffff;
 }
 
+.c-home-catalog-card {
+  width: 555px;
+  margin-bottom: 2rem;
+}
+
 h2.c-home-catalog-title {
   margin-top: 40px;
+  font-size: 40px;
   font-weight: 900;
   line-height: 1.2;
+  letter-spacing: -0.36px;
+  text-align: center;
   color: #152e3a;
-  font-size: 20px;
   @include mq($from: tablet) {
     font-size: 32px;
   }
@@ -15,4 +22,43 @@ h2.c-home-catalog-title {
     font-size: 40px;
   }
   text-align: center;
+}
+
+.c-home-catalog-cardimg {
+  width: 240px;
+  height: 240px;
+}
+
+.c-home-catalog-cardbody {
+  position: relative;
+  height: 240px;
+}
+
+.c-home-catalog-cardtxt1 {
+  span {
+    display: block;
+  }
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.29;
+  color: #152e3a;
+  margin-top: 30px;
+}
+
+.c-home-catalog-cardtxt2 {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 30px;
+  a.c-am-i-eligible {
+    font-size: 24px;
+    line-height: 1.08;
+    color: #057dbc;
+    text-decoration: underline;
+  }
+}
+
+.c-home-catalog-card {
+  border-radius: 8px;
+  box-shadow: 0 11px 55px 10px rgba(0, 0, 0, 0.07), 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
 }

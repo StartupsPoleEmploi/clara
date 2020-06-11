@@ -2,3 +2,50 @@
   .u-useful-width.u-useful-width--larger.u-margin-constraint
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
+
+    .o-layout
+      .o-layout__item.c-home-md-illu{:class => "u-1/1 u-1/2@desktop"}
+        .c-home-catalog-card
+          .o-media 
+            .o-media__img.c-home-catalog-cardimg
+              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
+            .o-media__body.c-home-catalog-cardbody
+              .c-home-catalog-cardtxt1
+                %span
+                  Se former, obtenir
+                %span
+                  ou valider un diplôme
+              .c-home-catalog-cardtxt2
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+      .o-layout__item.c-home-md-illu{:class => "u-1/1 u-1/2@desktop"}
+        .c-home-catalog-card
+          .o-media 
+            .o-media__img.c-home-catalog-cardimg
+              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
+            .o-media__body.c-home-catalog-cardbody
+              .c-home-catalog-cardtxt1
+                Se former, obtenir ou valider un diplôme
+              .c-home-catalog-cardtxt2
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+
+    .o-layout
+      .o-layout__item.c-home-md-illu{:class => "u-1/1 u-1/2@desktop"}
+        .c-home-catalog-card
+          .o-media 
+            .o-media__img.c-home-catalog-cardimg
+              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
+            .o-media__body.c-home-catalog-cardbody
+              .c-home-catalog-cardtxt1
+                Se former, obtenir ou valider un diplôme
+              .c-home-catalog-cardtxt2
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+      .o-layout__item.c-home-md-illu{:class => "u-1/1 u-1/2@desktop"}
+        .c-home-catalog-card
+          .o-media 
+            .o-media__img.c-home-catalog-cardimg
+              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
+            .o-media__body.c-home-catalog-cardbody
+              .c-home-catalog-cardtxt1
+                Se former, obtenir ou valider un diplôme
+              .c-home-catalog-cardtxt2
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
