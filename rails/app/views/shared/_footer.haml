@@ -23,28 +23,30 @@
         .c-footer__content
           .c-footer-subtitle
             Clara
+          .c-footer-subtitle-line
           %br 
           .o-layout.c-footer-links
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
               = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"}
               - v.first_part_of_contract_type.each do |ct|  
                 %li.c-li-ct
-                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-link-to-ct"}
+                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
               - v.second_part_of_contract_type.each do |ct|      
                 %li.c-li-ct
-                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-link-to-ct"} 
+                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
 
       .o-layout__item{:class=>"u-1/4@desktop u-1/3@tablet"}
         .c-footer__content
           .c-footer-cgu
             .c-footer-subtitle
               Liens utiles
+            .c-footer-subtitle-line
             %br
-            = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path
-            = link_to "Nous contacter", contact_index_path
-            = link_to "Cookies et politique de confidentialité", confidentiality_index_path
-            = link_to "Accessibilité", accessibilite_path
+            = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path, class: "c-footer-link"
+            = link_to "Nous contacter", contact_index_path, class: "c-footer-link"
+            = link_to "Cookies et politique de confidentialité", confidentiality_index_path, class: "c-footer-link"
+            = link_to "Accessibilité", accessibilite_path, class: "c-footer-link"
 
     .u-padding-vertical-large
       .o-layout
