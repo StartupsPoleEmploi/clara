@@ -6,14 +6,16 @@
   .o-line__item
     %a.c-logozone--clara{href: root_path, class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--clara-root' : 'c-logozone--clara-notroot'}"}
       = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
+    %a.c-logozone--pe{href: "pole-emploi.fr", class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--pe-root' : 'c-logozone--pe-notroot'}"}
+      = image_tag("header-logo-pole-emploi-mono.svg", alt: "Le site de Pôle emploi" )
   - if display_search
-    .o-line__item{"class" => "u-hide u-show@tablet"}
+    .o-line__item{"class" => "u-hide u-show@wide"}
       = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
-        = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide"
+        = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide", :autocomplete => "off"
         = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit c-loop"
-    .o-line__item{"class" => "u-hide@tablet"}
+    .o-line__item{"class" => "u-hide@wide"}
       %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_search", "data-modal-prefix-class" => "search", "data-modal-focus-id" => "u-search-modal"}
       #modal_search.u-display-none
         .c-logozone.o-line.c-logozone--modal

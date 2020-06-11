@@ -5,29 +5,37 @@
 /* Navbar
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-navbar {
-  position: fixed;
   width: 100%;
-  background-color: #E2EAF5;
+  background-color: #f7fcff;
 }
 
 
 /* Hero section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhome {
-  background-color: #E2EAF5;
-  @include mq($until: mobile) {
-    h1 {
-      font-size: $inuit-font-size-h4;
-    }
-    h2 {
-      font-size: $inuit-font-size-h5;
-    }
-  }
+  background-color: #ffffff;
 }
 
-.c-newhomehero__title {
+h1.c-newhomehero__title {
   span {
+
+    font-size: 40px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.07;
+    letter-spacing: -0.5px;
+    color: #152e3a;
     display: block;
+    @include mq($from: tablet) {
+      font-size: 70px;
+      font-weight: 900;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.07;
+      letter-spacing: -0.5px;
+      color: #152e3a;
+    }
   }
 }
 
@@ -36,9 +44,9 @@
   padding-bottom: space(4);
   margin: 0 space(1) 0 space(1); 
 }
-.c-newhomehero__header.is-scrolled {
-  border-bottom: 2px solid #047dbb;
-}
+// .c-newhomehero__header.is-scrolled {
+//   border-bottom: 2px solid #047dbb;
+// }
 
 .c-newhomehero__right {
   margin-right: 8%;
@@ -70,8 +78,9 @@
 }
 
 .c-newhomehero__content {
+  background-color: #f7fcff;
   margin-left: 0;
-  padding-top: space(12);
+  padding-top: space(6);
   padding-bottom: space(9);
   a {
     margin: space(5) 0 0 0; 
@@ -124,6 +133,21 @@
   }
 }
 
+
+input.c-main-cta2 {
+  background-color: #057dbc;
+  font-size: 22px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #fafafa;
+  border: none;
+  text-transform: uppercase;
+  padding: 2rem 4rem;
+}
 
 input.c-main-cta {
   border: 0;
@@ -339,23 +363,26 @@ h2.c-newhomerecall__content {
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomehero-covid {
   position: relative;
-  z-index: 999;
   border: solid 1px #ee534f;
   background-color: white;
-  font-size: 16px;
   line-height: 1.5;
   text-align: center;
   color: #222222;
   padding: space(5) space(0);
 }
-.c-newhomehero-covid.is-scrolled {
-  display: none;
-}
+// .c-newhomehero-covid.is-scrolled {
+//   display: none;
+// }
 .c-newhomehero-covid__title {
   font-weight: bold;
   letter-spacing: 1.2px;
 }
 .c-newhomehero-covid__text {
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 16px;
+  }
+
 }
 
 .c-newhomehero-covid-container {
@@ -365,8 +392,50 @@ h2.c-newhomerecall__content {
   }
 }
 .c-newhomehero-hero-container {
-  margin-top: 0;
+  margin-top: 14px;
+}
+
+.c-newhomehero-actions {
+  margin-top: -10px;
+}
+
+.c-newhomehero-discover {
+  vertical-align: middle;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #152e3a;
+  font-size: 17px;
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
   @include mq($from: wide) {
-    margin-top: -50px;
+    font-size: 22px;
   }
 }
+
+.c-newhomehero-discovertxt {
+  vertical-align: middle;
+}
+.c-newhomehero-durationballast {
+  margin-bottom: -12px;
+}
+.c-newhomehero-duration {
+  margin-top: -12px;
+  margin-left: 51px;
+  color: #403c43;
+  font-size: 16px;
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
+  @include mq($from: wide) {
+    font-size: 18px;
+  }
+
+}
+

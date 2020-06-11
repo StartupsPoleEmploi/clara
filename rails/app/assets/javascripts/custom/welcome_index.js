@@ -9,16 +9,16 @@ clara.js_define("welcome_index", {
       store.clearAll();
       console.log("Version : " + clara.version);
 
-      $(document).scroll(function() {
-        var scroll_position = $(document).scrollTop();
-        if (scroll_position > 0) {
-          $(".c-newhomehero-covid").addClass("is-scrolled");
-          $(".c-newhomehero__header").addClass("is-scrolled");
-        } else {
-          $(".c-newhomehero-covid").removeClass("is-scrolled");
-          $(".c-newhomehero__header").removeClass("is-scrolled");
-        }
-      });
+      // $(document).scroll(function() {
+      //   var scroll_position = $(document).scrollTop();
+      //   if (scroll_position > 0) {
+      //     $(".c-newhomehero-covid").addClass("is-scrolled");
+      //     $(".c-newhomehero__header").addClass("is-scrolled");
+      //   } else {
+      //     $(".c-newhomehero-covid").removeClass("is-scrolled");
+      //     $(".c-newhomehero__header").removeClass("is-scrolled");
+      //   }
+      // });
 
       function setFocusIframe() {
         var iframe = $("#video-clara")[0];

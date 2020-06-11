@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="412" height="320" viewBox="0 0 412 320">
+    <defs>
+        <filter id="prefix__a" width="148.1%" height="168.6%" x="-24.1%" y="-34.3%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="25"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.877104446 0 0 0 0 0.917217183 0 0 0 0 0.937273551 0 0 0 1 0"/>
+        </filter>
+        <rect id="prefix__b" width="311.627" height="218.562" x="0" y="0" rx="4"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(50 25) translate(0 25.442)">
+            <use fill="#000" filter="url(#prefix__a)" xlink:href="#prefix__b"/>
+            <use fill="#FFF" xlink:href="#prefix__b"/>
+            <path fill="#BCE8FF" d="M22.389 76.003H288.63300000000004V87.506H22.389z"/>
+            <g fill="#152E3A">
+                <path d="M35.327 5.879H113.99V17.381999999999998H35.327zM35.155 38.334H113.818V49.837H35.155zM35.155 70.234H113.818V81.737H35.155zM10.729 33.399c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zM10.729 65.299c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zM11.158 5.834c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5zm0-5c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" transform="translate(23.997 104.224)"/>
+            </g>
+            <rect width="266.244" height="16.907" x="22.389" y="41.358" stroke="#BCE6FC" stroke-width="3" rx="7.5"/>
+            <rect width="56.274" height="16.907" x="22.389" y="41.358" fill="#BCE6FC" rx="7.5"/>
+            <rect width="70.797" height="22.401" x="207.634" y="173.76" fill="#152E3A" rx="11.201"/>
+        </g>
+        <g transform="translate(50 25) translate(131)">
+            <circle cx="25" cy="25" r="25" fill="#C6EAFF" stroke="#F8FCFF" stroke-width="4" transform="translate(0 1)"/>
+            <text fill="#38353A" font-family="Roboto-Black, Roboto" font-size="22" font-weight="700">
+                <tspan x="18.63" y="20">1</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

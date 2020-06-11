@@ -1,0 +1,58 @@
+.c-home-approved {
+  margin-bottom: 80px;
+}
+
+h2.c-home-approved-title {
+  margin-top: 80px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  @include mq($from: tablet) {
+    font-size: 32px;
+  }
+  @include mq($from: wide) {
+    font-size: 40px;
+  }
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.36px;
+  text-align: center;
+  color: #152e3a;
+  @include mq($from: tablet) {
+    font-size: 32px;
+  }
+  @include mq($from: wide) {
+    font-size: 40px;
+  }
+  text-align: center;
+}
+
+.c-home-approved-card {
+  border-radius: 8px;
+  box-shadow: 0 11px 55px 10px rgba(0, 0, 0, 0.07), 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  margin-top: space(6);
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 22  0px;
+  @include mq($from: desktop) {
+    height: 280px;
+    margin-left: inherit;
+    margin-right: inherit;
+    max-width: inherit;
+  }
+}
+
+.c-home-approved-txt {
+  line-height: 1.27;
+  text-align: center;
+  color: #312e33;
+  height: 220px;
+  font-size: 19px;
+  padding: 26px 38px 0 38px;
+  @include mq($from: desktop) {
+    padding: 56px 38px 0 38px;
+    font-size: 22px;
+    height: 280px;
+  }
+}

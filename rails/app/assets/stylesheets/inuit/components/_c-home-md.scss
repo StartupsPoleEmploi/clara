@@ -1,0 +1,64 @@
+.c-home-md {
+  background-color: #ffffff;
+}
+
+h2.c-home-md-title {
+  margin-top: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #152e3a;
+  span {
+    display: block;
+  }
+  font-size: 20px;
+  @include mq($from: tablet) {
+    font-size: 32px;
+  }
+  @include mq($from: wide) {
+    font-size: 40px;
+  }
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
+}
+
+.c-home-md-arrowcontainer {
+  margin-top: 0;
+  @include mq($from: desktop) {
+    margin-top: 2rem;
+  }
+}
+
+.c-home-md-stages {
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
+  
+  img {
+    width: 312px;
+    @include mq($from: desktop) {
+      width: auto;
+    }
+  }
+}
+
+.c-home-md-explain span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.31;
+  letter-spacing: 0.2px;
+  color: #152e3a;
+  @include mq($from: wide) {
+    font-size: 26px;
+  }
+}
+.c-home-md-explain {
+  margin-top: -2rem;
+  @include mq($from: wide) {
+    margin-top: -1rem;
+  }
+  text-align: center;
+}

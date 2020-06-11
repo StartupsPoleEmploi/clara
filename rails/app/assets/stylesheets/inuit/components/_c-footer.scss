@@ -1,14 +1,41 @@
 .c-footer {
-  background-color: #152E3A;  
-  color: white;
-  a:link, a:visited,  a:active {
-    text-decoration:underline;
-    color: white; 
+
+  font-size: 16px;
+  color: #312e33;
+  background-color: #ffffff;  
+  line-height: 1.88;
+  a:link, a:visited,  a:active, a:hover {
+    text-decoration: none;
+    color: #312e33;
   }
   a:hover {
-    text-decoration:none;
-    color: white; 
+    text-decoration: underline;
   }
+}
+
+.c-footer-subtitle-line {
+  width: 28px;
+  height: 1px;
+  border: solid 2px #3483ef; 
+  margin-top: space(5);
+}
+
+
+.c-footer-intro {
+  padding-top: 1rem;
+  padding-bottom: 0;
+  @include mq($until: tablet) {    
+    padding-bottom: 3rem;
+  }
+  span {
+    display: block;
+  }
+}
+
+.c-footer-subtitle {
+  font-size: 22px;
+  line-height: 1.27;
+  color: #312e33;
 }
 
 .c-body.welcome.index {
@@ -24,29 +51,45 @@ a.c-link-to-all-aides {
 .c-footer__content {
   display: flex;
   flex-direction: column;
+  padding-bottom: 0;
+  @include mq($until: tablet) {    
+    padding-bottom: 3rem;
+  }
 }
 
 .c-footer__contenttitle {
   font-weight: bold;
 }
 
-.c-li-ct {
-  margin-top: space(2);
-}
-
 .c-footer-cgu {
   display: flex;
   flex-direction: column;
-  a {
-    margin-top: space(2);
-  }
   @include mq($until: tablet) {    
     padding-top: space(6);
   }
 }
 
 .c-footer-motherhome {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  @include mq($from: tablet) {    
+    text-align: right;
+  }
 }
 
+.c-footer-link + .c-footer-link, .c-footer-link-li + .c-footer-link-li {
+  margin-top: space(6);
+}
+
+.c-footer-logos {
+  display: inherit;
+}
+
+.c-footer-logos-container {
+  padding-left: 0;
+  text-align: center;
+  margin-bottom: 1rem;
+  @include mq($from: tablet) {    
+    margin-bottom: 0;
+    text-align: left;
+  }
+}

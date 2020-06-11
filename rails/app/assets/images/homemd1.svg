@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="412" height="320" viewBox="0 0 412 320">
+    <defs>
+        <filter id="prefix__a" width="148.1%" height="168.6%" x="-24.1%" y="-34.3%" filterUnits="objectBoundingBox">
+            <feOffset in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="25"/>
+            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.877104446 0 0 0 0 0.917217183 0 0 0 0 0.937273551 0 0 0 1 0"/>
+        </filter>
+        <rect id="prefix__b" width="311.627" height="218.562" x="0" y="0" rx="4"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(50 25) translate(0 25.442)">
+            <use fill="#000" filter="url(#prefix__a)" xlink:href="#prefix__b"/>
+            <use fill="#FFF" xlink:href="#prefix__b"/>
+            <g>
+                <path fill="#152E3A" d="M33.155 4.546H167.155V16.049H33.155z" transform="translate(72 78.558)"/>
+                <path fill="#1A3D4B" d="M9.643 83L0 74.346 2.7 71.923 9.643 78.154 24.3 65 27 67.423zM9.643 51L0 42.346 2.7 39.923 9.643 46.154 24.3 33 27 35.423zM9.643 18L0 9.346 2.7 6.923 9.643 13.154 24.3 0 27 2.423zM9.643 114L0 105.346 2.7 102.923 9.643 109.154 24.3 96 27 98.423z" transform="translate(72 78.558)"/>
+                <path fill="#152E3A" d="M33.155 37H167.155V48.503H33.155zM33.155 68.9H167.155V80.403H33.155zM33.155 100.566H167.155V112.069H33.155z" transform="translate(72 78.558)"/>
+            </g>
+            <rect width="266.244" height="16.907" x="22.389" y="41.358" stroke="#BCE6FC" stroke-width="3" rx="7.5"/>
+            <rect width="266" height="16.907" x="22.389" y="41.358" fill="#BCE6FC" rx="7.5"/>
+        </g>
+        <g transform="translate(50 25) translate(131)">
+            <circle cx="25" cy="25" r="25" fill="#C6EAFF" stroke="#F8FCFF" stroke-width="4" transform="translate(0 1)"/>
+            <text fill="#38353A" font-family="Roboto-Black, Roboto" font-size="22" font-weight="700">
+                <tspan x="18.63" y="20">2</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
