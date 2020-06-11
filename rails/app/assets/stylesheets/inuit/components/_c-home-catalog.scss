@@ -1,0 +1,18 @@
+.c-home-catalog {
+  background-color: #ffffff;
+}
+
+h2.c-home-catalog-title {
+  margin-top: 40px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #152e3a;
+  font-size: 20px;
+  @include mq($from: tablet) {
+    font-size: 32px;
+  }
+  @include mq($from: wide) {
+    font-size: 40px;
+  }
+  text-align: center;
+}
