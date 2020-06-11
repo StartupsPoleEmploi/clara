@@ -61,16 +61,9 @@ a.c-link-to-all-aides {
   font-weight: bold;
 }
 
-.c-li-ct {
-  margin-top: space(5);
-}
-
 .c-footer-cgu {
   display: flex;
   flex-direction: column;
-  a {
-    margin-top: space(2);
-  }
   @include mq($until: tablet) {    
     padding-top: space(6);
   }
@@ -79,5 +72,9 @@ a.c-link-to-all-aides {
 .c-footer-motherhome {
   display: flex;
   flex-direction: column;
+}
+
+.c-footer-link + .c-footer-link, .c-footer-link-li + .c-footer-link-li {
+  margin-top: space(6);
 }
 

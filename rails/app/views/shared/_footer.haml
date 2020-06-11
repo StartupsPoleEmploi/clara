@@ -7,7 +7,7 @@
 .c-footer
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
     .o-layout
-      .o-layout__item{:class=>"u-1/4@desktop u-1/3@tablet"}
+      .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
         %a{href: root_path}
           = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
         .c-footer-intro
@@ -19,7 +19,7 @@
             personnalisée, sur les aides, mesures,
           %span
             contrats et prestations.
-      .o-layout__item{:class=>"u-2/4@desktop u-1/3@tablet"}
+      .o-layout__item{:class=>"u-2/4@desktop u-3/5@tablet"}
         .c-footer__content
           .c-footer-subtitle
             Clara
@@ -29,14 +29,14 @@
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
               = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"}
               - v.first_part_of_contract_type.each do |ct|  
-                %li.c-li-ct
+                %li.c-footer-link-li
                   =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
               - v.second_part_of_contract_type.each do |ct|      
-                %li.c-li-ct
+                %li.c-footer-link-li
                   =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
 
-      .o-layout__item{:class=>"u-1/4@desktop u-1/3@tablet"}
+      .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
         .c-footer__content
           .c-footer-cgu
             .c-footer-subtitle
