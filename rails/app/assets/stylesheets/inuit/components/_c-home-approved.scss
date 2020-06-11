@@ -1,19 +1,4 @@
-.c-home-catalog {
-  background-color: #ffffff;
-}
-
-
-.c-home-catalog-card {
-  width: 320px;
-  @include mq($from: tablet) {
-    width: 555px;
-  }  
-  margin-bottom: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h2.c-home-catalog-title {
+h2.c-home-approved-title {
   margin-top: 80px;
   margin-bottom: 40px;
   font-size: 20px;
@@ -37,60 +22,16 @@ h2.c-home-catalog-title {
   text-align: center;
 }
 
-.c-home-catalog-cardimg {
-  width: 120px;
-  height: 120px;
-  @include mq($from: tablet) {
-    width: 240px;
-    height: 240px;
-  }  
-}
-
-.c-home-catalog-cardbody {
-  position: relative;
-  height: 120px;
-  @include mq($from: tablet) {
-    height: 240px;
-  }  
-}
-
-.c-home-catalog-cardtxt1 {
-  margin-top: 10px;
-  @include mq($from: tablet) {
-    margin-top: 30px;
-  }  
-  span {
-    display: block;
-    font-weight: bold;
-    line-height: 1.29;
-    color: #152e3a;
-    font-size: 18px;
-    @include mq($from: tablet) {
-      font-size: 28px;
-    }  
-  }
-}
-
-.c-home-catalog-cardtxt2 {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 10px;
-  @include mq($from: tablet) {
-    padding-bottom: 30px;
-  }  
-  a.c-am-i-eligible {
-    font-size: 16px;
-    @include mq($from: tablet) {
-      font-size: 24px;
-    }  
-    line-height: 1.08;
-    color: #057dbc;
-    text-decoration: underline;
-  }
-}
-
-.c-home-catalog-card {
+.c-home-approved-card {
   border-radius: 8px;
   box-shadow: 0 11px 55px 10px rgba(0, 0, 0, 0.07), 0 13px 18px -8px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
+}
+
+.c-home-approved-txt {
+  font-size: 22px;
+  line-height: 1.27;
+  text-align: center;
+  color: #312e33;
+  height: 140px;
 }
