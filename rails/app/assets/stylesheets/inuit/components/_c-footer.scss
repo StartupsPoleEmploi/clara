@@ -5,8 +5,11 @@
   background-color: #ffffff;  
   line-height: 1.88;
   a:link, a:visited,  a:active, a:hover {
-    text-decoration:none;
+    text-decoration: none;
     color: #312e33;
+  }
+  a:hover {
+    text-decoration: underline;
   }
 }
 
