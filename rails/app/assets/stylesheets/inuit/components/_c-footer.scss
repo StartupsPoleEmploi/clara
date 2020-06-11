@@ -11,8 +11,11 @@
 }
 
 .c-footer-intro {
-  padding-bottom: 3rem;
   padding-top: 1rem;
+  padding-bottom: 0;
+  @include mq($until: tablet) {    
+    padding-bottom: 3rem;
+  }
   span {
     display: block;
   }
@@ -37,7 +40,10 @@ a.c-link-to-all-aides {
 .c-footer__content {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3rem;
+  padding-bottom: 0;
+  @include mq($until: tablet) {    
+    padding-bottom: 3rem;
+  }
 }
 
 .c-footer__contenttitle {
