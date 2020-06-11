@@ -27,7 +27,7 @@
           %br 
           .o-layout.c-footer-links
             .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-              = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides"}
+              = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides c-footer-link-li"}
               - v.first_part_of_contract_type.each do |ct|  
                 %li.c-footer-link-li
                   =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
