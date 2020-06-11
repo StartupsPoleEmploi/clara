@@ -3,7 +3,7 @@
   width: 45px;
   @include mq($from: mobile) {
     width: 90px;
-    margin: 0 10px 0 30px;
+    margin: 0 10px 0 0;
   }
 }
 
@@ -34,10 +34,9 @@
 
 .c-fse-p p {
   display: block;
-  color: #044da1;
   font-size: 9px;
-  text-align: left;
-  width: 85px;
+  line-height: 1.5;
+  color: #312e33;
   @include mq($from: mobile) {
     width: 130px;
   }
