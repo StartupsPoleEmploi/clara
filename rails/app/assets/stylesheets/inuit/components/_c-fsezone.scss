@@ -37,6 +37,8 @@
   font-size: 9px;
   line-height: 1.5;
   color: #312e33;
+  text-align: left;
+  width: 80px;
   @include mq($from: mobile) {
     width: 130px;
   }
