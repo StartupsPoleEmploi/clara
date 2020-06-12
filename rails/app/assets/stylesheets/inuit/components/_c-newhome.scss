@@ -146,7 +146,11 @@ input.c-main-cta2 {
   color: #fafafa;
   border: none;
   text-transform: uppercase;
-  padding: 2rem 4rem;
+  padding: 1rem 2rem;
+  @include mq($from: tablet) {
+    padding: 2rem 4rem;
+  }
+  cursor: pointer;
 }
 
 input.c-main-cta {

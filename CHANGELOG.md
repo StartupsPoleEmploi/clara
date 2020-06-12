@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 32.0.1 (12/06/2020)
+[#1605b][FEATURE] Home, suite
+
+
 ## 32.0.0 (08/06/2020)
 [#1605][FEATURE] Home 
 
@@ -14,7 +18,7 @@
 
 
 ## 31.1.0 (28/05/2020)
-[#1602][FEATURETTEURE] Tracer les pastilles sur GA
+[#1602][FEATURETTE] Tracer les pastilles sur GA
 
 
 ## 31.0.10 (28/05/2020)

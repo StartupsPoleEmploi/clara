@@ -16,7 +16,7 @@
                 %span
                   ou valider un diplôme
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-former-valoriser-ses-competences'}
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -29,7 +29,7 @@
                 %span
                   dans sa recherche
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'accompagne-recherche-emploi'}
 
     .o-layout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
@@ -44,7 +44,7 @@
                 %span
                   une entreprise
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'creer-entreprise'}
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -57,9 +57,9 @@
                 %span
                   se reconvertir
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'trouver-change-de-metier'}
 
-    .o-layout
+    .o-layout.c-home-catalog-lastlayout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -70,7 +70,7 @@
                 %span
                   Aides à la mobilité
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-deplacer'}
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -85,4 +85,11 @@
                 %span
                   l'international
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'travailler-a-l-international'}
+
+    .u-text--center.c-home-catalog-seemore-container
+      %button.c-home-catalog-seemore
+        Voir plus
+
+    .c-home-catalog-penultimate{data: { "src1" => image_path("image_remuneration_formation.jpg"), "src2" => image_path("image_garde_enfant.jpg")  }}
+    .c-home-catalog-ultimate{data: { "src1" => image_path("image_contrats_specifiques.jpg"), "src2" => image_path("image_aides_regionales.jpg")  }}

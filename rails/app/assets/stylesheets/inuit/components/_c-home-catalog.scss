@@ -80,9 +80,6 @@ h2.c-home-catalog-title {
   }  
   a.c-am-i-eligible {
     font-size: 16px;
-    @include mq($from: tablet) {
-      font-size: 24px;
-    }  
     line-height: 1.08;
     color: #057dbc;
     text-decoration: underline;
@@ -93,4 +90,21 @@ h2.c-home-catalog-title {
   border-radius: 8px;
   box-shadow: 0 11px 55px 10px rgba(0, 0, 0, 0.07), 0 13px 18px -8px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
+}
+
+.c-home-catalog-seemore {
+  border: solid 2px #057dbc;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #152e3a;
+  font-size: 18px;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  margin-top: 25px;
+  cursor: pointer;
+  @include mq($from: tablet) {
+    padding: 2rem 5rem;
+    font-size: 22px;
+  }  
 }

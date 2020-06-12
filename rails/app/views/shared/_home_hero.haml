@@ -32,8 +32,17 @@
             &nbsp;
           .c-newhomehero-discover
             %span.u-cursor-pointer
-              = image_tag(empty_image, alt: "Voir la vidéo", data: { "src" => image_path("playvideo.svg") }) 
+              = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg"), "modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }) 
             %span.c-newhomehero-discovertxt
               Découvrir Clara en vidéo
+              #modal_video.u-display-none
+                %div.c-video-close-line
+                  %button#js-modal-close.js-modal-close.video-modal-close.c-video-btn-close{"data-content-back-id" => "modal_video", :type => "button"}
+                    Fermer
+                .c-video-container
+                .c-video-close-line.is-bottom
+                  %button.c-btn.c-btn--result.is-modal-video.u-margin-vertical.js-modal-close
+                    Fermer la fenêtre
+
           .c-newhomehero-duration
             Durée : 1m30

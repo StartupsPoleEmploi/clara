@@ -190,11 +190,14 @@ h1.c-result-front-subtitle {
 }
 
 .c-search-front-usearch-modal {
-  width: 345px;
+  width: 220px;
   height: 40px;
   border-radius: 4px;
   border: solid 1px #e3e3e3;
   background-color: #efefef;
+  @include mq($from: mobile) {
+    width: 345px;
+  }
 }
 
 .c-search-front-submit-modal {
