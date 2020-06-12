@@ -29,7 +29,7 @@
                 %span
                   dans sa recherche
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'accompagne-recherche-emploi'}
 
     .o-layout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
@@ -44,7 +44,7 @@
                 %span
                   une entreprise
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'creer-entreprise'}
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -57,7 +57,7 @@
                 %span
                   se reconvertir
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'trouver-change-de-metier'}
 
     .o-layout.c-home-catalog-lastlayout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
@@ -70,7 +70,7 @@
                 %span
                   Aides à la mobilité
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-deplacer'}
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -85,7 +85,7 @@
                 %span
                   l'international
               .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
+                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'travailler-a-l-international'}
 
     .u-text--center.c-home-catalog-seemore-container
       %button.c-home-catalog-seemore

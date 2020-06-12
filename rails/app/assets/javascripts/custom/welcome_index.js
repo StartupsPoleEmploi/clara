@@ -97,7 +97,7 @@ clara.js_define("welcome_index", {
       strPenultimate += "</span>";
       strPenultimate += "</div>";
       strPenultimate += "<div class='c-home-catalog-cardtxt2'>";
-      strPenultimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strPenultimate += "<a class='c-am-i-eligible' data-filter='percevoir-une-remuneration-pendant-la-formation' href='/inscription_questions/new'>Suis-je éligible ?</a>";
       strPenultimate += "</div>";
       strPenultimate += "</div>";
       strPenultimate += "</div>";
@@ -124,7 +124,7 @@ clara.js_define("welcome_index", {
       strPenultimate += "</span>";
       strPenultimate += "</div>";
       strPenultimate += "<div class='c-home-catalog-cardtxt2'>";
-      strPenultimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strPenultimate += "<a class='c-am-i-eligible' data-filter='garder-enfant' href='/inscription_questions/new'>Suis-je éligible ?</a>";
       strPenultimate += "</div>";
       strPenultimate += "</div>";
       strPenultimate += "</div>";
@@ -149,7 +149,7 @@ clara.js_define("welcome_index", {
       strUltimate += "</span>";
       strUltimate += "</div>";
       strUltimate += "<div class='c-home-catalog-cardtxt2'>";
-      strUltimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strUltimate += "<a class='c-am-i-eligible' data-filter='s-informer-sur-contrats-specifiques' href='/inscription_questions/new'>Suis-je éligible ?</a>";
       strUltimate += "</div>";
       strUltimate += "</div>";
       strUltimate += "</div>";
@@ -173,7 +173,7 @@ clara.js_define("welcome_index", {
       strUltimate += "</span>";
       strUltimate += "</div>";
       strUltimate += "<div class='c-home-catalog-cardtxt2'>";
-      strUltimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strUltimate += "<a class='c-am-i-eligible' data-filter='pres_de_chez_vous' href='/inscription_questions/new'>Suis-je éligible ?</a>";
       strUltimate += "</div>";
       strUltimate += "</div>";
       strUltimate += "</div>";
