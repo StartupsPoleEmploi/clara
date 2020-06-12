@@ -56,6 +56,7 @@ clara.js_define("welcome_index", {
 
       $("button.c-home-catalog-seemore").click(function(e){
         $(".c-home-catalog-seemore-container").remove();
+        $(".c-home-catalog-lastlayout").after(strUltimate);
         $(".c-home-catalog-lastlayout").after(strPenultimate);
           
       });
@@ -63,7 +64,7 @@ clara.js_define("welcome_index", {
 
 
       var strPenultimate="";
-      strPenultimate += "<div class='o-layout'>";
+      strPenultimate += "<div class='o-layout c-home-catalog-penultimate'>";
       strPenultimate += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
       strPenultimate += "<div class='c-home-catalog-card'>";
       strPenultimate += "<div class='o-media'>";
@@ -114,6 +115,54 @@ clara.js_define("welcome_index", {
       strPenultimate += "</div>";
       strPenultimate += "</div>";
 
+      var strUltimate="";
+      strUltimate += "<div class='o-layout c-home-catalog-ultimate'>";
+      strUltimate += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      strUltimate += "<div class='c-home-catalog-card'>";
+      strUltimate += "<div class='o-media'>";
+      strUltimate += "<div class='o-media__img c-home-catalog-cardimg'>";
+      strUltimate += "<img alt='Contrats spécifiques' src='";
+      strUltimate += $(".c-home-catalog-ultimate").data("src1");
+      strUltimate += "'>";
+      strUltimate += "</div>";
+      strUltimate += "<div class='o-media__body c-home-catalog-cardbody'>";
+      strUltimate += "<div class='c-home-catalog-cardtxt1'>";
+      strUltimate += "<span>";
+      strUltimate += "Connaître les contrats pour les publics spécifiques";
+      strUltimate += "</span>";
+      strUltimate += "</div>";
+      strUltimate += "<div class='c-home-catalog-cardtxt2'>";
+      strUltimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      strUltimate += "<div class='c-home-catalog-card'>";
+      strUltimate += "<div class='o-media'>";
+      strUltimate += "<div class='o-media__img c-home-catalog-cardimg'>";
+      strUltimate += "<img alt='dans ma région' src='";
+      strUltimate += $(".c-home-catalog-ultimate").data("src2");
+      strUltimate += "'>";
+      strUltimate += "</div>";
+      strUltimate += "<div class='o-media__body c-home-catalog-cardbody'>";
+      strUltimate += "<div class='c-home-catalog-cardtxt1'>";
+      strUltimate += "<span>";
+      strUltimate += "Les aides";
+      strUltimate += "</span>";
+      strUltimate += "<span>";
+      strUltimate += "dans ma région";
+      strUltimate += "</span>";
+      strUltimate += "</div>";
+      strUltimate += "<div class='c-home-catalog-cardtxt2'>";
+      strUltimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
+      strUltimate += "</div>";
 
     },
 
