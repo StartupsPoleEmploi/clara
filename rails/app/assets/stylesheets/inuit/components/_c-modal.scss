@@ -89,7 +89,6 @@ dialog {
   }
 }
 
-
 .c-video-btn-close {
    border: none;
    color: #2e88c7;
@@ -97,6 +96,7 @@ dialog {
    padding-right: 21px;
    font-size: 16px;
    cursor: pointer;
+   border-top-right-radius: 10px;
  }
  
 .c-video-btn-close:after {
