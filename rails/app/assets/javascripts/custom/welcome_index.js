@@ -41,6 +41,21 @@ clara.js_define("welcome_index", {
         location.href = href;
       }
 
+      var intercept_link_and_set_filters = function() {
+
+        $("a.c-am-i-eligible").click(function(e) {
+          e.preventDefault();
+          var href = this.href;
+          var choosen_filter = $(this).data('filter');
+          console.log($(this).data('filter'));
+          localStorage.setItem("choosen_filters", JSON.stringify([choosen_filter]));          
+          location.href = href;
+        });
+
+      }
+
+      intercept_link_and_set_filters();
+
       $("a.c-chip-creation").click(function(e){
         intercept_link_and_call_ga('creation', e, this.href);
       });
@@ -58,8 +73,10 @@ clara.js_define("welcome_index", {
         $(".c-home-catalog-seemore-container").remove();
         $(".c-home-catalog-lastlayout").after(strUltimate);
         $(".c-home-catalog-lastlayout").after(strPenultimate);
-          
+        $("a.c-am-i-eligible").off();
+        intercept_link_and_set_filters();
       });
+
 
 
 
