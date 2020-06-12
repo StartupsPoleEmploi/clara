@@ -47,7 +47,6 @@ clara.js_define("welcome_index", {
           e.preventDefault();
           var href = this.href;
           var choosen_filter = $(this).data('filter');
-          console.log($(this).data('filter'));
           localStorage.setItem("choosen_filters", JSON.stringify([choosen_filter]));          
           location.href = href;
         });
