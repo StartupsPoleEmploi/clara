@@ -59,7 +59,7 @@
               .c-home-catalog-cardtxt2
                 = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
 
-    .o-layout
+    .o-layout.c-home-catalog-lastlayout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}
         .c-home-catalog-card
           .o-media 
@@ -87,6 +87,8 @@
               .c-home-catalog-cardtxt2
                 = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible'
 
-    .u-text--center
+    .u-text--center.c-home-catalog-seemore-container
       %button.c-home-catalog-seemore
         Voir plus
+
+    .c-home-catalog-penultimate{data: { "src1" => image_path("image_remuneration_formation.jpg"), "src2" => image_path("image_garde_enfant.jpg")  }}

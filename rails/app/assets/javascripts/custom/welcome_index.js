@@ -54,6 +54,64 @@ clara.js_define("welcome_index", {
         intercept_link_and_call_ga('projetpro', e, this.href);
       });
 
+      $("button.c-home-catalog-seemore").click(function(e){
+        $(".c-home-catalog-seemore-container").remove();
+        $(".c-home-catalog-lastlayout").after(strPenultimate);
+          
+      });
+
+
+
+      var strPenultimate="";
+      strPenultimate += "<div class='o-layout'>";
+      strPenultimate += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      strPenultimate += "<div class='c-home-catalog-card'>";
+      strPenultimate += "<div class='o-media'>";
+      strPenultimate += "<div class='o-media__img c-home-catalog-cardimg'>";
+      strPenultimate += "<img alt='mobilité' src='";
+      strPenultimate += $(".c-home-catalog-penultimate").data("src1");
+      strPenultimate += "'>";
+      strPenultimate += "</div>";
+      strPenultimate += "<div class='o-media__body c-home-catalog-cardbody'>";
+      strPenultimate += "<div class='c-home-catalog-cardtxt1'>";
+      strPenultimate += "<span>";
+      strPenultimate += "Percevoir une rémunération pendant la formation";
+      strPenultimate += "</span>";
+      strPenultimate += "</div>";
+      strPenultimate += "<div class='c-home-catalog-cardtxt2'>";
+      strPenultimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      strPenultimate += "<div class='c-home-catalog-card'>";
+      strPenultimate += "<div class='o-media'>";
+      strPenultimate += "<div class='o-media__img c-home-catalog-cardimg'>";
+      strPenultimate += "<img alt='international' src='/assets/image_travailler_international-1de8cb26246da3b9e23a78d625ba3e549fbc2ffe823fe5e4a7c9f1b13fa0c600.jpg'>";
+      strPenultimate += "</div>";
+      strPenultimate += "<div class='o-media__body c-home-catalog-cardbody'>";
+      strPenultimate += "<div class='c-home-catalog-cardtxt1'>";
+      strPenultimate += "<span>";
+      strPenultimate += "Se former,";
+      strPenultimate += "</span>";
+      strPenultimate += "<span>";
+      strPenultimate += "ou travailler à";
+      strPenultimate += "</span>";
+      strPenultimate += "<span>";
+      strPenultimate += "l'international";
+      strPenultimate += "</span>";
+      strPenultimate += "</div>";
+      strPenultimate += "<div class='c-home-catalog-cardtxt2'>";
+      strPenultimate += "<a class='c-am-i-eligible' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+      strPenultimate += "</div>";
+
 
     },
 
