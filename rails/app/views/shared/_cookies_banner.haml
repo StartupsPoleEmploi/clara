@@ -5,14 +5,14 @@
       .o-line
         .o-line__item
           %div
-            %span
+            %span.c-cookies-banner-txt
               Clara utilise des cookies afin de mieux comprendre l’utilisation de ses sites web. 
-            %span.c-cookies-clickhere
+            %span.c-cookies-banner-txt.c-cookies-clickhere
               = link_to "Lire notre politique de confidentialité.", edit_cooky_path('preference')
           %div
-            %span
+            %span.c-cookies-banner-txt
               Vous pouvez désactiver le suivi en affichant
-            %span.c-cookies-clickhere
+            %span.c-cookies-banner-txt.c-cookies-clickhere
               = link_to " les paramètres.", edit_cooky_path('preference')
         .o-line__item
           = button_to "OK, C'EST NOTÉ !", accept_all_cookies_path, :remote => true, "class" => "c-cookies-button", "onclick" => "document.getElementById('c-cookie-banner').style.display='none';"

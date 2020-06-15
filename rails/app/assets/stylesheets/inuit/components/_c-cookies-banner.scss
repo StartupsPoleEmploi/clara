@@ -1,5 +1,12 @@
 .c-cookies-banner {
   background-color: #152e3a;
+  opacity: 0.94;
+  color: #ffffff;
+}
+
+.c-cookies-banner-txt {
+  font-size: 16px;
+  line-height: 1.5;
   color: #ffffff;
 }
 
@@ -12,34 +19,25 @@
 }
 
 .c-cookies-button {
-  margin-top: space(3);
-  border: 0;
+  padding: 17px 27px;
+  margin: 24px 0;
   white-space: nowrap;
-  border-radius: space(3);
-  background-color: #FFFFFF;
-  padding: space(3);
   cursor: pointer;
-  text-decoration: none;
+  border: solid 2px #ffffff;
+  font-size: 16px;
   font-weight: bold;
-  color: #358ED7;
-}
-
-.c-cookies-banner-container .o-line {
-  @include mq($until: tablet) {
-    display: block;
-    width: inherit;
-  }
-}
-
-.c-cookies-banner-container .o-line__item {
-  @include mq($until: tablet) {
-    display: block;
-    vertical-align: inherit;
-    text-align: center;
-  }
+  letter-spacing: 0.8px;
+  text-align: center;
+  background-color: #152e3a;
+  color: #ffffff;
 }
 
 
-.c-cookies-clickhere a {
-  color: #C0C0C0;
+
+
+.c-cookies-clickhere a:link, a:visited, a:hover, a:active {
+  text-decoration: underline;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #ffffff;
 }
