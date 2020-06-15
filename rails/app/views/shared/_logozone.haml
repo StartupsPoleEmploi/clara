@@ -6,7 +6,7 @@
   .o-line__item
     %a.c-logozone--clara{href: root_path, class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--clara-root' : 'c-logozone--clara-notroot'}"}
       = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
-    %a.c-logozone--pe{href: "pole-emploi.fr", class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--pe-root' : 'c-logozone--pe-notroot'}"}
+    %a.c-logozone--pe{href: "https://www.pole-emploi.fr/", class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--pe-root' : 'c-logozone--pe-notroot'}"}
       = image_tag("header-logo-pole-emploi-mono.svg", alt: "Le site de Pôle emploi" )
   - if display_search
     .o-line__item{"class" => "u-hide u-show@wide"}
