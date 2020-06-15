@@ -11,7 +11,8 @@ clara.js_define("welcome_index", {
 
     $(document).scroll(function() {
       var scroll_position = $(document).scrollTop();
-      if (scroll_position > 800 && !$(".c-home-catalog-first").exists()) {
+      if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {
+        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strThird());
         $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strSecond());
         $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strFirst());
         $("a.c-am-i-eligible").off();
