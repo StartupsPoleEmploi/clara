@@ -68,6 +68,10 @@ button.c-search-front-submit {
   cursor: pointer;
 }
 
+.u-useful-width--normal input.c-search-front-submit { 
+  right: 84%;
+}
+
 input.c-search-front-submit {
   right: 73%;
   position: absolute;
