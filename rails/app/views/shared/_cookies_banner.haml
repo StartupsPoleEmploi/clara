@@ -1,14 +1,14 @@
 
 - unless cookie_preference_already_defined?
   #c-cookie-banner.c-cookies-banner
-    .c-cookies-banner-container
+    .u-useful-width.u-useful-width--larger.u-margin-constraint
       .o-line
         .o-line__item
           %div
             %span.c-cookies-banner-txt
               Clara utilise des cookies afin de mieux comprendre l’utilisation de ses sites web. 
             %span.c-cookies-banner-txt.c-cookies-clickhere
-              = link_to "Lire notre politique de confidentialité.", edit_cooky_path('preference')
+              = link_to "Lire notre politique de confidentialité.", confidentiality_index_path
           %div
             %span.c-cookies-banner-txt
               Vous pouvez désactiver le suivi en affichant
