@@ -10,7 +10,7 @@ clara.js_define("welcome_index_constants", {
       res += "<div class='o-media'>";
       res += "<div class='o-media__img c-home-catalog-cardimg'>";
       res += "<img alt='Se former' src='";
-      res += $(".c-home-catalog-first").data("src1");
+      res += $(".c-home-catalog-firstline").data("src1");
       res += "'>";
       res += "</div>";
       res += "<div class='o-media__body c-home-catalog-cardbody'>";
@@ -34,7 +34,7 @@ clara.js_define("welcome_index_constants", {
       res += "<div class='o-media'>";
       res += "<div class='o-media__img c-home-catalog-cardimg'>";
       res += "<img alt='être accompagné dans sa recherche' src='";
-      res += $(".c-home-catalog-first").data("src2");
+      res += $(".c-home-catalog-firstline").data("src2");
       res += "'>";
       res += "</div>";
       res += "<div class='o-media__body c-home-catalog-cardbody'>";
