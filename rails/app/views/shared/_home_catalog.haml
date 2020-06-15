@@ -3,89 +3,10 @@
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
 
-    .o-layout
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Se former, obtenir
-                %span
-                  ou valider un diplôme
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-former-valoriser-ses-competences'}
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "être accompagné", data: { "src" => image_path("image_accompagnement.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Être accompagné
-                %span
-                  dans sa recherche
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'accompagne-recherche-emploi'}
+    .c-home-catalog-firstline{data: { "src1" => image_path("image_se_former.jpg"), "src2" => image_path("image_accompagnement.jpg")  }}
+    .c-home-catalog-secondline{data: { "src1" => image_path("image_creer_entreprise.jpg"), "src2" => image_path("image_orienter_reconvertir.jpg")  }}
+    .c-home-catalog-thirdline{data: { "src1" => image_path("image_aide_mobilite.jpg"), "src2" => image_path("image_travailler_international.jpg")  }}
 
-    .o-layout
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "créer ou reprendre une entreprise", data: { "src" => image_path("image_creer_entreprise.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Créer ou reprendre
-                %span
-                  une entreprise
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'creer-entreprise'}
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "s'orienter", data: { "src" => image_path("image_orienter_reconvertir.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  S'orienter,
-                %span
-                  se reconvertir
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'trouver-change-de-metier'}
-
-    .o-layout.c-home-catalog-lastlayout
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "mobilité", data: { "src" => image_path("image_aide_mobilite.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Aides à la mobilité
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-deplacer'}
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "international", data: { "src" => image_path("image_travailler_international.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Se former,
-                %span
-                  ou travailler à
-                %span
-                  l'international
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'travailler-a-l-international'}
 
     .u-text--center.c-home-catalog-seemore-container
       %button.c-home-catalog-seemore
