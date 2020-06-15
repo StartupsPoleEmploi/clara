@@ -2,6 +2,10 @@
 
 
 
+## 32.2.0 (16/06/2020)
+[#1608][FEATURE] Home, bannière cookies
+
+
 ## 32.1.0 (15/06/2020)
 [#1610][FEATURE] Home, chargement asynchrone des images
 

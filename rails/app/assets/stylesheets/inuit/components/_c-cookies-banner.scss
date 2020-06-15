@@ -1,48 +1,65 @@
 .c-cookies-banner {
-  position: fixed;
-  bottom: 0;
-  background: #2b2b2b;
-  opacity: 0.9;
-  color: #C0C0C0;
+  background-color: #152e3a;
+  opacity: 0.94;
+  color: #ffffff;
+  form.button_to {
+    text-align: center;
+    @include mq($from: desktop) {
+      text-align: right;
+    }
+  }
 }
 
-
-.c-cookies-banner-container {
-  padding: space(2);
-  @include mq($from: tablet) {
-    padding: space(3) space(12);
+.c-cookies-banner-txt {
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
   }
+  line-height: 1.5;
+  color: #ffffff;
 }
 
 .c-cookies-button {
-  margin-top: space(3);
-  border: 0;
+  padding: 10px 15px;
+  margin: 16px 0;
+  @include mq($from: desktop) {
+    padding: 17px 27px;
+    margin: 24px 0;
+  }
   white-space: nowrap;
-  border-radius: space(3);
-  background-color: #FFFFFF;
-  padding: space(3);
   cursor: pointer;
-  text-decoration: none;
+  border: solid 2px #ffffff;
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
+  }
   font-weight: bold;
-  color: #358ED7;
+  letter-spacing: 0.8px;
+  text-align: center;
+  background-color: #152e3a;
+  color: #ffffff;
 }
 
-.c-cookies-banner-container .o-line {
-  @include mq($until: tablet) {
-    display: block;
-    width: inherit;
+.c-cookies-clickhere a:link, a:visited, a:hover, a:active {
+  text-decoration: underline;
+  line-height: 1.5;
+  color: #ffffff;
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
   }
 }
 
-.c-cookies-banner-container .o-line__item {
-  @include mq($until: tablet) {
-    display: block;
-    vertical-align: inherit;
-    text-align: center;
-  }
+.c-cookies-banner-line.is-first {
+  margin-top: 16px;  
+  @include mq($from: desktop) {
+    margin-top: 0;
+  }  
 }
 
-
-.c-cookies-clickhere a {
-  color: #C0C0C0;
+.c-cookies-banner-line {
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
 }
