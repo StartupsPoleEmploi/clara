@@ -68,8 +68,8 @@ clara.js_define("welcome_index", {
 
     $("button.c-home-catalog-seemore").click(function(e){
       $(".c-home-catalog-seemore-container").remove();
-      $(".c-home-catalog-lastlayout").after(clara.welcome_index_constants.strUltimate());
-      $(".c-home-catalog-lastlayout").after(clara.welcome_index_constants.strPenultimate());
+      $(".c-home-catalog-third").after(clara.welcome_index_constants.strUltimate());
+      $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
 
       $("a.c-am-i-eligible").off();
       intercept_link_and_set_filters();
