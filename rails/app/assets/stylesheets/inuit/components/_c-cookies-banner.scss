@@ -3,23 +3,36 @@
   opacity: 0.94;
   color: #ffffff;
   form.button_to {
-    text-align: right;
+    text-align: center;
+    @include mq($from: desktop) {
+      text-align: right;
+    }
   }
 }
 
 .c-cookies-banner-txt {
-  font-size: 16px;
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
+  }
   line-height: 1.5;
   color: #ffffff;
 }
 
 .c-cookies-button {
-  padding: 17px 27px;
-  margin: 24px 0;
+  padding: 10px 15px;
+  margin: 16px 0;
+  @include mq($from: desktop) {
+    padding: 17px 27px;
+    margin: 24px 0;
+  }
   white-space: nowrap;
   cursor: pointer;
   border: solid 2px #ffffff;
-  font-size: 16px;
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
+  }
   font-weight: bold;
   letter-spacing: 0.8px;
   text-align: center;
@@ -29,7 +42,24 @@
 
 .c-cookies-clickhere a:link, a:visited, a:hover, a:active {
   text-decoration: underline;
-  font-size: 16px;
   line-height: 1.5;
   color: #ffffff;
+  font-size: 14px;
+  @include mq($from: desktop) {
+    font-size: 16px;
+  }
+}
+
+.c-cookies-banner-line.is-first {
+  margin-top: 16px;  
+  @include mq($from: desktop) {
+    margin-top: 0;
+  }  
+}
+
+.c-cookies-banner-line {
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }
 }

@@ -2,18 +2,20 @@
 - unless cookie_preference_already_defined?
   #c-cookie-banner.c-cookies-banner
     .u-useful-width.u-useful-width--larger.u-margin-constraint
-      .o-line
-        .o-line__item
-          %div
+      .o-layout.o-layout--middle
+        .o-layout__item{:class => "u-1/1 u-3/4@desktop"}
+
+          .c-cookies-banner-line.is-first
             %span.c-cookies-banner-txt
               Clara utilise des cookies afin de mieux comprendre l’utilisation de ses sites web. 
             %span.c-cookies-banner-txt.c-cookies-clickhere
               = link_to "Lire notre politique de confidentialité.", confidentiality_index_path
-          %div
+          .c-cookies-banner-line
             %span.c-cookies-banner-txt
               Vous pouvez désactiver le suivi en affichant
             %span.c-cookies-banner-txt.c-cookies-clickhere
               = link_to " les paramètres.", edit_cooky_path('preference')
-        .o-line__item
+
+        .o-layout__item{:class => "u-1/1 u-1/4@desktop"}
           = button_to "OK, C'EST NOTÉ !", accept_all_cookies_path, :remote => true, "class" => "c-cookies-button", "onclick" => "document.getElementById('c-cookie-banner').style.display='none';"
 
