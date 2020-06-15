@@ -112,6 +112,61 @@ clara.js_define("welcome_index_constants", {
       return res;
     },
 
+    strThird: function() {
+      var res="";
+      res += "<div class='o-layout c-home-catalog-third'>";
+      res += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      res += "<div class='c-home-catalog-card'>";
+      res += "<div class='o-media'>";
+      res += "<div class='o-media__img c-home-catalog-cardimg'>";
+      res += "<img alt='Aides à la mobilité' src='";
+      res += $(".c-home-catalog-thirdline").data("src1");
+      res += "'>";
+      res += "</div>";
+      res += "<div class='o-media__body c-home-catalog-cardbody'>";
+      res += "<div class='c-home-catalog-cardtxt1'>";
+      res += "<span>";
+      res += "Aides à la mobilité";
+      res += "</span>";
+      res += "</div>";
+      res += "<div class='c-home-catalog-cardtxt2'>";
+      res += "<a class='c-am-i-eligible' data-filter='se-deplacer' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "<div class='o-layout__item u-1/1 u-1/2@wide'>";
+      res += "<div class='c-home-catalog-card'>";
+      res += "<div class='o-media'>";
+      res += "<div class='o-media__img c-home-catalog-cardimg'>";
+      res += "<img alt='se reconvertir' src='";
+      res += $(".c-home-catalog-thirdline").data("src2");
+      res += "'>";
+      res += "</div>";
+      res += "<div class='o-media__body c-home-catalog-cardbody'>";
+      res += "<div class='c-home-catalog-cardtxt1'>";
+      res += "<span>";
+      res += "Se former,";
+      res += "</span>";
+      res += "<span>";
+      res += "ou travailler à";
+      res += "</span>";
+      res += "<span>";
+      res += "l'international";
+      res += "</span>";
+      res += "</div>";
+      res += "<div class='c-home-catalog-cardtxt2'>";
+      res += "<a class='c-am-i-eligible' data-filter='travailler-a-l-international' href='/inscription_questions/new'>Suis-je éligible ?</a>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      res += "</div>";
+      return res;
+    },
+
     strUltimate: function() {
       var res="";
       res += "<div class='o-layout c-home-catalog-ultimate'>";
