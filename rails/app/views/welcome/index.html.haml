@@ -12,6 +12,7 @@
 .c-newhome
 
   = render partial: 'shared/home_hero'
+  = render partial: 'shared/cookies_banner'
   = render partial: 'shared/home_feat'
   = render partial: 'shared/home_md'
   = render partial: 'shared/home_catalog'
@@ -21,4 +22,3 @@
   - content_for :footer do
     = render partial: 'shared/footer', locals: {larger_container: "yes", aides: type_aides, dispositifs: type_dispositifs}
 
-= render 'shared/cookies_banner'
