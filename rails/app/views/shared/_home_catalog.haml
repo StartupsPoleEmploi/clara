@@ -3,33 +3,7 @@
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
 
-    .o-layout
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "se former", data: { "src" => image_path("image_se_former.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Se former, obtenir
-                %span
-                  ou valider un diplôme
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'se-former-valoriser-ses-competences'}
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media 
-            .o-media__img.c-home-catalog-cardimg
-              = image_tag(empty_image, alt: "être accompagné", data: { "src" => image_path("image_accompagnement.jpg") }) 
-            .o-media__body.c-home-catalog-cardbody
-              .c-home-catalog-cardtxt1
-                %span
-                  Être accompagné
-                %span
-                  dans sa recherche
-              .c-home-catalog-cardtxt2
-                = link_to 'Suis-je éligible ?', QuestionManager.new.getNextPath, class: 'c-am-i-eligible', data: {filter: 'accompagne-recherche-emploi'}
+    .c-home-catalog-firstline{data: { "src1" => image_path("image_se_former.jpg"), "src2" => image_path("image_accompagnement.jpg")  }}
 
     .o-layout
       .o-layout__item{:class => "u-1/1 u-1/2@wide"}

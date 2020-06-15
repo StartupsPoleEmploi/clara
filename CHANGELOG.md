@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 32.1.0 (15/06/2020)
+[#1610][FEATURE] Home, chargement asynchrone des images
+
+
 ## 32.0.1 (12/06/2020)
 [#1605b][FEATURE] Home, suite
 
