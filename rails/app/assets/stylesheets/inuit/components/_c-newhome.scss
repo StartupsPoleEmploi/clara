@@ -133,6 +133,9 @@ h1.c-newhomehero__title {
   }
 }
 
+input.c-main-cta2:hover {
+  background-color: #026396;
+}
 
 input.c-main-cta2 {
   background-color: #057dbc;
@@ -151,28 +154,6 @@ input.c-main-cta2 {
     padding: 2rem 4rem;
   }
   cursor: pointer;
-}
-
-input.c-main-cta {
-  border: 0;
-  white-space: nowrap;
-  border-radius: space(8);
-  background-color: #358ED7;
-  padding: space(4) space(8) space(4) space(8);
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  @include inuit-font-size(16px);
-  @include mq($from: desktop) {
-    @include inuit-font-size(18px);
-    padding: space(5) space(10) space(5) space(10);
-  }
-  @include mq($from: wide) {
-    @include inuit-font-size(18px);
-    padding: space(6) space(12) space(6) space(12);
-  }
 }
 
 /* Examples section
@@ -403,7 +384,17 @@ h2.c-newhomerecall__content {
   margin-top: -10px;
 }
 
+a.c-newhomehero-discover:hover {
+  color: #026396;
+  cursor: pointer;
+  font-size: 17px;
+  @include mq($from: wide) {
+    font-size: 22px;
+  }
+}
+
 .c-newhomehero-discover {
+
   vertical-align: middle;
   text-transform: uppercase;
   font-weight: bold;
