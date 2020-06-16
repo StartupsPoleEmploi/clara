@@ -385,8 +385,10 @@ h2.c-newhomerecall__content {
 }
 
 .c-newhomehero-durationcontainer {
+  margin-top: 12px;
   text-align: center;
   @include mq($from: desktop) {
+    margin-top: 0;
     text-align: left;
   }  
 }
