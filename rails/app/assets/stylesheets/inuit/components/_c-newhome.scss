@@ -424,19 +424,20 @@ a.c-newhomehero-discover:hover {
 
 .c-newhomehero-discovertxt {
   vertical-align: middle;
+  margin-left: 6px;
 }
 .c-newhomehero-durationballast {
   margin-bottom: -12px;
 }
 .c-newhomehero-duration {
   margin-top: -12px;
-  margin-left: -55px;
+  margin-left: -50px;
   color: #403c43;
   font-size: 16px;
   text-align: center;
   @include mq($from: desktop) {
     text-align: left;
-    margin-left: 51px;
+    margin-left: 56px;
   }
   @include mq($from: wide) {
     font-size: 18px;
