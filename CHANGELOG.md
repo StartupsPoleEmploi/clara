@@ -2,7 +2,11 @@
 
 
 
-## 32.2.0 (17/06/2020)
+## 32.4.0 (17/06/2020)
+[#1606][FEATURE] Home, bandeau COVID19
+
+
+## 32.3.0 (17/06/2020)
 [#1613][FEATURE] Home, ajustements
 
 
