@@ -9,6 +9,8 @@ clara.js_define("welcome_index", {
     store.clearAll();
     console.log("Version : " + clara.version);
 
+    $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
+
     $(document).scroll(function() {
       var scroll_position = $(document).scrollTop();
       if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {

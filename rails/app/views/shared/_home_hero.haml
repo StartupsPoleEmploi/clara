@@ -30,9 +30,9 @@
         .o-layout__item{:class => "u-1/1 u-1/3@desktop c-newhomehero-durationcontainer"}
           .c-newhomehero-durationballast
             &nbsp;
-          %a.c-newhomehero-discover{data: {"modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }}
+          %a.c-newhomehero-discover{data: {}}
             %span.u-cursor-pointer
-              = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg")}) 
+              = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg"), "modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }) 
             %span.c-newhomehero-discovertxt
               Découvrir Clara en vidéo
               #modal_video.u-display-none
