@@ -1,9 +1,13 @@
 .c-homefeat {
   background-color: rgba(0, 167, 255, 0.2);
+  padding: 0px 15px 30px 15px;
+  @include mq($from: wide) {
+    padding: 50px 15px 50px 15px;
+  }
 }
 
 h2.c-homefeat-title {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 15px;
   font-size: 28px;
   font-weight: 900;
@@ -13,16 +17,15 @@ h2.c-homefeat-title {
   @include mq($from: tablet) {
     font-size: 28px;
   }
+  @include mq($from: wide) {
+    margin-top: 15px;
+  }
 }
 .c-homefeat-txt {
   line-height: 1.55;
-  color: #152e3a;
+  color: #000000;
   font-size: 18px;
   @include mq($from: tablet) {
     font-size: 22px;
   }
-}
-
-.c-homefeat-separator {
-  padding-bottom: 52px;
 }

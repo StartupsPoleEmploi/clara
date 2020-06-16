@@ -4,7 +4,8 @@
   img {
     padding-right: space(3);
     @include mq($until: tablet) {
-      width: 150px;
+      width: 151px;
+      padding-left: 3px;
     }
   }
 }
@@ -21,7 +22,8 @@
 .c-logozone .c-logozone--pe img {
   margin-left: space(2);
   @include mq($until: tablet) {
-    width: 50px;
+    margin-left: -10px;
+    width: 100px;
   }
 }
 
@@ -33,3 +35,6 @@
   border-bottom: 2px solid #047dbb;
 }
 
+.c-logozone-rightsearch {
+  text-align: right;
+}

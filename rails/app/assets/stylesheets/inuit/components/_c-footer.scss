@@ -1,5 +1,5 @@
 .c-footer {
-
+  padding-top: 60px;
   font-size: 16px;
   color: #312e33;
   background-color: #ffffff;  
@@ -13,6 +13,12 @@
   }
 }
 
+hr.c-footer-hr {
+  height: 1px;
+  background-color: rgba(49, 46, 51, 0.1);
+  border: 0;
+}
+
 .c-footer-subtitle-line {
   width: 28px;
   height: 1px;
@@ -22,10 +28,12 @@
 
 
 .c-footer-intro {
-  padding-top: 1rem;
-  padding-bottom: 0;
-  @include mq($until: tablet) {    
-    padding-bottom: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  @include mq($from: tablet) {    
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 0;
   }
   span {
     display: block;
@@ -46,6 +54,17 @@
 
 a.c-link-to-all-aides {
   color: white;
+}
+
+.c-footer__content.is-first {
+  padding-left: 1rem;
+  @include mq($from: tablet) {    
+    padding-left: 2rem;
+  }
+}
+
+.c-footer__content.is-last {
+  padding-left: 1rem;
 }
 
 .c-footer__content {

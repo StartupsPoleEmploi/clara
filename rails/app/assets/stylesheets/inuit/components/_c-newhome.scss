@@ -40,13 +40,11 @@ h1.c-newhomehero__title {
 }
 
 .c-newhomehero__header {
-  padding-top: space(4);
-  padding-bottom: space(4);
-  margin: 0 space(1) 0 space(1); 
+  padding: space(4) space(2);
+  @include mq($from: tablet) {
+    padding: space(4) 0;
+  }
 }
-// .c-newhomehero__header.is-scrolled {
-//   border-bottom: 2px solid #047dbb;
-// }
 
 .c-newhomehero__right {
   margin-right: 8%;
@@ -133,14 +131,14 @@ h1.c-newhomehero__title {
   }
 }
 
+input.c-main-cta2:hover {
+  background-color: #026396;
+}
 
 input.c-main-cta2 {
   background-color: #057dbc;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: 0.8px;
   text-align: center;
   color: #fafafa;
@@ -148,31 +146,10 @@ input.c-main-cta2 {
   text-transform: uppercase;
   padding: 1rem 2rem;
   @include mq($from: tablet) {
+    font-size: 22px;
     padding: 2rem 4rem;
   }
   cursor: pointer;
-}
-
-input.c-main-cta {
-  border: 0;
-  white-space: nowrap;
-  border-radius: space(8);
-  background-color: #358ED7;
-  padding: space(4) space(8) space(4) space(8);
-  cursor: pointer;
-  color: white;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  @include inuit-font-size(16px);
-  @include mq($from: desktop) {
-    @include inuit-font-size(18px);
-    padding: space(5) space(10) space(5) space(10);
-  }
-  @include mq($from: wide) {
-    @include inuit-font-size(18px);
-    padding: space(6) space(12) space(6) space(12);
-  }
 }
 
 /* Examples section
@@ -373,10 +350,12 @@ h2.c-newhomerecall__content {
   text-align: center;
   color: #222222;
   padding: space(5) space(0);
+  margin: 0 6px;
+  @include mq($from: tablet) {
+    margin: 0;
+  }
 }
-// .c-newhomehero-covid.is-scrolled {
-//   display: none;
-// }
+
 .c-newhomehero-covid__title {
   font-weight: bold;
   letter-spacing: 1.2px;
@@ -403,7 +382,26 @@ h2.c-newhomerecall__content {
   margin-top: -10px;
 }
 
+.c-newhomehero-durationcontainer {
+  margin-top: 12px;
+  text-align: center;
+  @include mq($from: desktop) {
+    margin-top: 0;
+    text-align: left;
+  }  
+}
+
+a.c-newhomehero-discover:hover {
+  color: #026396;
+  cursor: pointer;
+  font-size: 17px;
+  @include mq($from: wide) {
+    font-size: 22px;
+  }
+}
+
 .c-newhomehero-discover {
+
   vertical-align: middle;
   text-transform: uppercase;
   font-weight: bold;
@@ -424,18 +422,20 @@ h2.c-newhomerecall__content {
 
 .c-newhomehero-discovertxt {
   vertical-align: middle;
+  margin-left: 6px;
 }
 .c-newhomehero-durationballast {
   margin-bottom: -12px;
 }
 .c-newhomehero-duration {
   margin-top: -12px;
-  margin-left: 51px;
+  margin-left: -50px;
   color: #403c43;
   font-size: 16px;
   text-align: center;
   @include mq($from: desktop) {
     text-align: left;
+    margin-left: 56px;
   }
   @include mq($from: wide) {
     font-size: 18px;

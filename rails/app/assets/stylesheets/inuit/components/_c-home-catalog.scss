@@ -14,7 +14,7 @@
 }
 
 h2.c-home-catalog-title {
-  margin-top: 80px;
+  margin-top: 115px;
   margin-bottom: 40px;
   font-size: 20px;
   @include mq($from: tablet) {
@@ -80,9 +80,15 @@ h2.c-home-catalog-title {
   }  
   a.c-am-i-eligible {
     font-size: 16px;
+    @include mq($from: tablet) {
+      font-size: 24px;
+    }  
     line-height: 1.08;
     color: #057dbc;
     text-decoration: underline;
+  }
+  a.c-am-i-eligible:hover {
+    color: #03537e;
   }
 }
 
@@ -93,6 +99,7 @@ h2.c-home-catalog-title {
 }
 
 .c-home-catalog-seemore {
+  background-color: white;
   border: solid 2px #057dbc;
   font-weight: bold;
   letter-spacing: 0.8px;
@@ -107,4 +114,8 @@ h2.c-home-catalog-title {
     padding: 2rem 5rem;
     font-size: 22px;
   }  
+}
+button.c-home-catalog-seemore:hover {
+  background-color: #F8F8F8;
+  color: black;
 }

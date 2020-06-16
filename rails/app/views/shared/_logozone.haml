@@ -15,7 +15,7 @@
         = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
         = form.submit '', :class => "c-search-front-submit c-loop"
-    .o-line__item{"class" => "u-hide@wide"}
+    .o-line__item{"class" => "u-hide@wide c-logozone-rightsearch"}
       %button.c-search-front-submit.c-loop.js-modal{"data-modal-content-id"=>"modal_search", "data-modal-prefix-class" => "search", "data-modal-focus-id" => "u-search-modal"}
       #modal_search.u-display-none
         .c-logozone.o-line.c-logozone--modal

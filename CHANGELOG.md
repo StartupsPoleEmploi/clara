@@ -2,6 +2,10 @@
 
 
 
+## 32.2.0 (17/06/2020)
+[#1613][FEATURE] Home, ajustements
+
+
 ## 32.2.0 (16/06/2020)
 [#1608][FEATURE] Home, bannière cookies
 
