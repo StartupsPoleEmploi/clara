@@ -384,6 +384,13 @@ h2.c-newhomerecall__content {
   margin-top: -10px;
 }
 
+.c-newhomehero-durationcontainer {
+  text-align: center;
+  @include mq($from: desktop) {
+    text-align: left;
+  }  
+}
+
 a.c-newhomehero-discover:hover {
   color: #026396;
   cursor: pointer;
@@ -421,12 +428,13 @@ a.c-newhomehero-discover:hover {
 }
 .c-newhomehero-duration {
   margin-top: -12px;
-  margin-left: 51px;
+  margin-left: -55px;
   color: #403c43;
   font-size: 16px;
   text-align: center;
   @include mq($from: desktop) {
     text-align: left;
+    margin-left: 51px;
   }
   @include mq($from: wide) {
     font-size: 18px;
