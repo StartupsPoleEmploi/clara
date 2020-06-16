@@ -3,7 +3,7 @@
 }
 
 h2.c-homefeat-title {
-  margin-top: 15px;
+  margin-top: 30px;
   margin-bottom: 15px;
   font-size: 28px;
   font-weight: 900;
@@ -12,6 +12,9 @@ h2.c-homefeat-title {
   font-size: 22px;
   @include mq($from: tablet) {
     font-size: 28px;
+  }
+  @include mq($from: wide) {
+    margin-top: 15px;
   }
 }
 .c-homefeat-txt {
