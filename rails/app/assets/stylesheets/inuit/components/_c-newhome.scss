@@ -350,6 +350,10 @@ h2.c-newhomerecall__content {
   text-align: center;
   color: #222222;
   padding: space(5) space(0);
+  margin: 0 6px;
+  @include mq($from: tablet) {
+    margin: 0;
+  }
 }
 
 .c-newhomehero-covid__title {
