@@ -80,6 +80,9 @@ h2.c-home-catalog-title {
   }  
   a.c-am-i-eligible {
     font-size: 16px;
+    @include mq($from: tablet) {
+      font-size: 24px;
+    }  
     line-height: 1.08;
     color: #057dbc;
     text-decoration: underline;

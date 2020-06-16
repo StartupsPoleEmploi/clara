@@ -50,7 +50,8 @@ h2.c-home-md-title {
   font-weight: bold;
   line-height: 1.31;
   letter-spacing: 0.2px;
-  color: #152e3a;
+  color: #312e33;
+  
   @include mq($from: wide) {
     font-size: 26px;
   }

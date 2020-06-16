@@ -1,6 +1,9 @@
 .c-homefeat {
   background-color: rgba(0, 167, 255, 0.2);
-  padding: 0 15px 0 15px;
+  padding: 0px 15px 30px 15px;
+  @include mq($from: wide) {
+    padding: 50px 15px 50px 15px;
+  }
 }
 
 h2.c-homefeat-title {
@@ -25,8 +28,4 @@ h2.c-homefeat-title {
   @include mq($from: tablet) {
     font-size: 22px;
   }
-}
-
-.c-homefeat-separator {
-  padding-bottom: 52px;
 }
