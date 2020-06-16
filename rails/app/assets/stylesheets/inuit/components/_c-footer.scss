@@ -1,5 +1,5 @@
 .c-footer {
-
+  padding-top: 60px;
   font-size: 16px;
   color: #312e33;
   background-color: #ffffff;  
@@ -11,6 +11,12 @@
   a:hover {
     text-decoration: underline;
   }
+}
+
+hr.c-footer-hr {
+  height: 1px;
+  background-color: rgba(49, 46, 51, 0.1);
+  border: 0;
 }
 
 .c-footer-subtitle-line {

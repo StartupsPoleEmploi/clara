@@ -14,7 +14,7 @@
 }
 
 h2.c-home-catalog-title {
-  margin-top: 80px;
+  margin-top: 115px;
   margin-bottom: 40px;
   font-size: 20px;
   @include mq($from: tablet) {
@@ -84,6 +84,9 @@ h2.c-home-catalog-title {
     color: #057dbc;
     text-decoration: underline;
   }
+  a.c-am-i-eligible:hover {
+    color: #03537e;
+  }
 }
 
 .c-home-catalog-card {
@@ -107,4 +110,8 @@ h2.c-home-catalog-title {
     padding: 2rem 5rem;
     font-size: 22px;
   }  
+}
+button.c-home-catalog-seemore:hover {
+  background-color: #F8F8F8;
+  color: black;
 }
