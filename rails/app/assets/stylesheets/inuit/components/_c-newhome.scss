@@ -44,9 +44,6 @@ h1.c-newhomehero__title {
   padding-bottom: space(4);
   margin: 0 space(1) 0 space(1); 
 }
-// .c-newhomehero__header.is-scrolled {
-//   border-bottom: 2px solid #047dbb;
-// }
 
 .c-newhomehero__right {
   margin-right: 8%;
@@ -139,11 +136,8 @@ input.c-main-cta2:hover {
 
 input.c-main-cta2 {
   background-color: #057dbc;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: 0.8px;
   text-align: center;
   color: #fafafa;
@@ -151,6 +145,7 @@ input.c-main-cta2 {
   text-transform: uppercase;
   padding: 1rem 2rem;
   @include mq($from: tablet) {
+    font-size: 22px;
     padding: 2rem 4rem;
   }
   cursor: pointer;

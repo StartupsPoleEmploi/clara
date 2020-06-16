@@ -20,7 +20,7 @@
           %span
             contrats et prestations.
       .o-layout__item{:class=>"u-2/4@desktop u-3/5@tablet"}
-        .c-footer__content
+        .c-footer__content.is-first
           .c-footer-subtitle
             Clara
           .c-footer-subtitle-line
@@ -37,7 +37,7 @@
                   =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
 
       .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
-        .c-footer__content
+        .c-footer__content.is-last
           .c-footer-cgu
             .c-footer-subtitle
               Liens utiles

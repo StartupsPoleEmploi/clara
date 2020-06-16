@@ -54,6 +54,14 @@ a.c-link-to-all-aides {
   color: white;
 }
 
+.c-footer__content.is-first {
+  padding-left: 2rem;
+}
+
+.c-footer__content.is-last {
+  padding-left: 1rem;
+}
+
 .c-footer__content {
   display: flex;
   flex-direction: column;
