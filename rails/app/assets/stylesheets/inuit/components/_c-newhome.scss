@@ -40,9 +40,10 @@ h1.c-newhomehero__title {
 }
 
 .c-newhomehero__header {
-  padding-top: space(4);
-  padding-bottom: space(4);
-  margin: 0 space(1) 0 space(1); 
+  padding: space(4) space(2);
+  @include mq($from: tablet) {
+    padding: space(4) 0;
+  }
 }
 
 .c-newhomehero__right {
@@ -350,9 +351,7 @@ h2.c-newhomerecall__content {
   color: #222222;
   padding: space(5) space(0);
 }
-// .c-newhomehero-covid.is-scrolled {
-//   display: none;
-// }
+
 .c-newhomehero-covid__title {
   font-weight: bold;
   letter-spacing: 1.2px;

@@ -28,10 +28,12 @@ hr.c-footer-hr {
 
 
 .c-footer-intro {
-  padding-top: 1rem;
-  padding-bottom: 0;
-  @include mq($until: tablet) {    
-    padding-bottom: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 1rem;
+  @include mq($from: tablet) {    
+    padding-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 0;
   }
   span {
     display: block;
@@ -55,7 +57,10 @@ a.c-link-to-all-aides {
 }
 
 .c-footer__content.is-first {
-  padding-left: 2rem;
+  padding-left: 1rem;
+  @include mq($from: tablet) {    
+    padding-left: 2rem;
+  }
 }
 
 .c-footer__content.is-last {

@@ -4,7 +4,8 @@
   img {
     padding-right: space(3);
     @include mq($until: tablet) {
-      width: 150px;
+      width: 151px;
+      padding-left: 3px;
     }
   }
 }
@@ -21,6 +22,7 @@
 .c-logozone .c-logozone--pe img {
   margin-left: space(2);
   @include mq($until: tablet) {
+    margin-left: -10px;
     width: 100px;
   }
 }
