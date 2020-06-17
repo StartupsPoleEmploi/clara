@@ -8,9 +8,9 @@
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
     .o-layout
       .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
+        %a{href: root_path}
+          = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
         .c-footer-intro
-          %a{href: root_path}
-            = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta" )
           %span
             Clara est un service de Pôle emploi 
           %span

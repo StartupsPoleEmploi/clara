@@ -2,6 +2,10 @@
 
 
 
+## 32.4.0 (18/06/2020)
+[#1607][FEATURE] Home, rappel sticky
+
+
 ## 32.4.0 (17/06/2020)
 [#1606][FEATURE] Home, bandeau COVID19
 
