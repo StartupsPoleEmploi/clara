@@ -2,4 +2,21 @@
   position: fixed;
   bottom: 0;
   background-color: #ccedff;
+  display: none;
+  width: 100%;
+  .c-main-cta2 {
+    margin: 28px 0;
+  }
+}
+
+.c-home-sticky__firstblock {
+  text-align: center;
+  @include mq($from: tablet) {
+    text-align: right;
+  }
+}.c-home-sticky__secondblock {
+  text-align: center;
+  @include mq($from: tablet) {
+    text-align: left;
+  }
 }
