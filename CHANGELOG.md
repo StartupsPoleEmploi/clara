@@ -1,8 +1,7 @@
 # CLARA Changelog
 
 
-
-## 32.4.0 (18/06/2020)
+## 32.5.0 (18/06/2020)
 [#1607][FEATURE] Home, rappel sticky
 
 
