@@ -5,16 +5,39 @@
   display: none;
   width: 100%;
   .c-main-cta2 {
-    margin: 28px 0;
+    margin: 14px 0;
+    @include mq($from: tablet) {
+      margin: 28px 0;
+    }
+  }
+}
+
+.c-home-sticky__txt {
+  font-size: 18px;
+  line-height: 1.29;
+  color: #312e33;
+  text-align: center;
+  margin-top: 14px;
+  @include mq($from: tablet) {
+    margin-top: 53px;
+    text-align: right;
+  }
+  @include mq($from: desktop) {
+    font-size: 21px;
+  }
+  @include mq($from: wide) {
+    font-size: 28px;
   }
 }
 
 .c-home-sticky__firstblock {
   text-align: center;
   @include mq($from: tablet) {
-    text-align: right;
+    text-align: left;
   }
-}.c-home-sticky__secondblock {
+}
+
+.c-home-sticky__secondblock {
   text-align: center;
   @include mq($from: tablet) {
     text-align: left;
