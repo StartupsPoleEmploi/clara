@@ -22,6 +22,24 @@ clara.js_define("welcome_index", {
       }
     }); 
 
+    var sticky_calc = function() {      
+      var ELT = "input.c-main-cta2"
+      var top_of_element = $(ELT).offset().top;
+      var bottom_of_element = $(ELT).offset().top + $(ELT).outerHeight();
+      var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+      var top_of_screen = $(window).scrollTop();
+
+      if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)){
+          // main CTA is visible, hide recall of CTA
+          $(".c-home-sticky").css("display", "none")
+      } else {
+          // main CTA not visible, display recall of CTA
+          $(".c-home-sticky").css("display", "block")
+      }
+    };
+    sticky_calc();
+    $(window).scroll(sticky_calc);
+
     function setFocusIframe() {
       var iframe = $("#video-clara")[0];
       iframe.contentWindow.focus();

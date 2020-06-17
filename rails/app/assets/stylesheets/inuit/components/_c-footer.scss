@@ -13,6 +13,13 @@
   }
 }
 
+.c-footer-firstimg {
+  padding-left: 1rem;
+  @include mq($from: tablet) {    
+    padding-left: 0;
+  }
+}
+
 hr.c-footer-hr {
   height: 1px;
   background-color: rgba(49, 46, 51, 0.1);
@@ -118,4 +125,13 @@ a.c-link-to-all-aides {
     text-align: left;
     margin-bottom: 0;
   }
+}
+
+.c-footer-bottom {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.c-body.welcome .c-footer-bottom {
+  padding-top: 48px;
+  padding-bottom: 133px;
 }
