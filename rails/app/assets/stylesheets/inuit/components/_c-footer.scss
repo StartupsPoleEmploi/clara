@@ -5,6 +5,9 @@
   background-color: #ffffff;  
   line-height: 1.88;
   a:link, a:visited,  a:active, a:hover {
+    background-color: #ffffff;  
+    color: #312e33;
+    font-size: 16px;
     line-height: 1.88;
     text-decoration: none;
     color: #312e33;
@@ -74,7 +77,10 @@ a.c-link-to-all-aides {
 }
 
 .c-footer__content.is-last {
-  padding-left: 1rem;
+  padding-left: 0;
+  @include mq($from: tablet) {    
+    padding-left: 1rem;
+  }
 }
 
 .c-footer__content {

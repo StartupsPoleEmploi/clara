@@ -1,0 +1,6 @@
+#main {
+  margin: 0 6px;
+  @include mq($from: mobile) {    
+    margin: inherit;
+  }
+}
