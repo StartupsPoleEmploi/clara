@@ -104,6 +104,11 @@ a.c-link-to-all-aides {
   }
 }
 
+.c-footer-motherhome a.c-propels-by {
+  font-size: 13px;
+}
+
+
 .c-footer-motherhome {
   text-align: center;
   @include mq($from: tablet) {    
@@ -126,7 +131,7 @@ a.c-link-to-all-aides {
 .c-footer.is-not-home .c-footer-logos {
   padding-left: 0;
   @include mq($from: tablet) {    
-    padding-left: 3rem;
+    padding-left: 2rem;
   }
 }
 
@@ -164,5 +169,12 @@ a.c-link-to-all-aides {
   text-align: center;
   @include mq($from: tablet) {    
     text-align: left;
+  }
+}
+
+.c-footer-bulk-links-not-home {
+  padding-left: 6px;
+  @include mq($from: mobile) {    
+    padding-left: 0;
   }
 }
