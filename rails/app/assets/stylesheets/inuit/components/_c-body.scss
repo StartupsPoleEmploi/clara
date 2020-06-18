@@ -23,3 +23,11 @@
 .c-body.errors {
   background-color:#e2eaf5;
 }
+.c-body__content {
+  margin-bottom: 37px;
+}
+
+body.detail.show .c-body__content,
+body.aides.index .c-body__content {
+  margin-bottom: 0;
+}
