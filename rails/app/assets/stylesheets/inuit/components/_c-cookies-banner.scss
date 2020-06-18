@@ -40,16 +40,6 @@
   color: #ffffff;
 }
 
-.c-cookies-clickhere a:link, a:visited, a:hover, a:active {
-  text-decoration: underline;
-  line-height: 1.5;
-  color: #ffffff;
-  font-size: 14px;
-  @include mq($from: desktop) {
-    font-size: 16px;
-  }
-}
-
 .c-cookies-banner-line.is-first {
   margin-top: 16px;  
   @include mq($from: desktop) {

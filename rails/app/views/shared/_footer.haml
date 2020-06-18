@@ -102,7 +102,7 @@
                 - v.first_part_of_contract_type.each do |ct|  
                   %li.c-footer-link-li
                     =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
-              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
+              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet c-footer-middle-container"} 
                 - v.second_part_of_contract_type.each do |ct|      
                   %li.c-footer-link-li
                     =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
