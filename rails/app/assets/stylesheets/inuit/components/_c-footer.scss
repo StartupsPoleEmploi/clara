@@ -1,5 +1,5 @@
 .c-footer {
-  padding-top: 60px;
+  padding-top: 50px;
   font-size: 16px;
   color: #312e33;
   background-color: #ffffff;  
@@ -191,3 +191,11 @@ a.c-link-to-all-aides {
     padding-left: 0;
   }
 }
+
+.c-body__footer {
+  border-top: 10px #ccedff solid;
+}
+
+body.welcome.index .c-body__footer {
+  border-top: none;
+  }
