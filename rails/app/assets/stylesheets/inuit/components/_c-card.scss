@@ -5,7 +5,6 @@
 }
 .o-card.o-card--question {
   padding: space(2) space(4) space(4) space(4);  
-  margin-bottom: 37px;
   @include mq($from: tablet) {
     padding: space(5) space(8);  
   }
