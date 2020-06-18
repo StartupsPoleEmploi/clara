@@ -15,7 +15,9 @@
 
 .c-footer-firstimg {
   padding-left: 1rem;
+  width: 200px;
   @include mq($from: tablet) {    
+    width: inherit;
     padding-left: 0;
   }
 }
@@ -100,12 +102,13 @@ a.c-link-to-all-aides {
   @include mq($from: tablet) {    
     text-align: right;
   }
-  small span {
-    display: block;
-    @include mq($from: mobile) {    
-      display: inherit;
-    }
-  }
+}
+
+.c-footer-motherhome__span {
+  display: block;
+  @include mq($from: desktop) {    
+    display: inline-block;
+  }  
 }
 
 .c-footer-link + .c-footer-link, .c-footer-link-li + .c-footer-link-li {
@@ -113,14 +116,24 @@ a.c-link-to-all-aides {
   line-height: 1.5;
 }
 
+.c-footer.is-not-home .c-footer-logos {
+  padding-left: 0;
+  @include mq($from: tablet) {    
+    padding-left: 3rem;
+  }
+}
+
 .c-footer-logos {
   display: inherit;
+  margin-top: 1rem;
+  @include mq($from: tablet) {    
+    margin-top: 0;
+  }
 }
 
 .c-footer-logos-container {
   padding-left: 0;
   text-align: center;
-  margin-bottom: 1rem;
   @include mq($from: tablet) {    
     text-align: left;
     margin-bottom: 0;
@@ -134,4 +147,15 @@ a.c-link-to-all-aides {
 .c-body.welcome .c-footer-bottom {
   padding-top: 48px;
   padding-bottom: 133px;
+}
+
+.c-footer.is-not-home .c-footer__content.is-first {
+  padding-left: 0;
+}
+
+.c-footer-reroot-container {
+  text-align: center;
+  @include mq($from: tablet) {    
+    text-align: left;
+  }
 }
