@@ -1,74 +1,79 @@
 - aides ||= []
 - dispositifs ||= []
 - larger_container ||= "no"
+- is_home ||= "no"
 
 - v = view_object(:footer, {aides: aides, dispositifs: dispositifs})
 
 .c-footer
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
-    .o-layout
-      .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
-        %a{href: root_path}
-          = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta", class: "c-footer-firstimg" )
-        .c-footer-intro
-          %span
-            Clara est un service de Pôle emploi 
-          %span
-            qui vous donne une information
-          %span
-            personnalisée, sur les aides, mesures,
-          %span
-            contrats et prestations.
-      .o-layout__item{:class=>"u-2/4@desktop u-3/5@tablet"}
-        .c-footer__content.is-first
-          .c-footer-subtitle
-            Clara
-          .c-footer-subtitle-line
-          %br 
-          .o-layout.c-footer-links
-            .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
-              = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides c-footer-link-li"}
-              - v.first_part_of_contract_type.each do |ct|  
-                %li.c-footer-link-li
-                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
-            .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
-              - v.second_part_of_contract_type.each do |ct|      
-                %li.c-footer-link-li
-                  =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
-
-      .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
-        .c-footer__content.is-last
-          .c-footer-cgu
-            .c-footer-subtitle
-              Liens utiles
-            .c-footer-subtitle-line
-            %br
-            = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path, class: "c-footer-link"
-            = link_to "Nous contacter", contact_index_path, class: "c-footer-link"
-            = link_to "Cookies et politique de confidentialité", confidentiality_index_path, class: "c-footer-link"
-            = link_to "Accessibilité", accessibilite_path, class: "c-footer-link"
-
-    .c-footer-bottom
+    - if is_home == "yes"
       .o-layout
-        %hr.c-footer-hr
-        .o-layout__item.c-footer-logos-container{:class=>"u-1/1 u-1/2@tablet"}
-          .c-footer-logos
-            %li.o-line__item
-              .c-fse-logo
-                %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
-                  = image_tag(empty_image, alt: "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-fse.svg") }) 
-            %li.o-line__item
-              .c-fse-logo-pe
-                %a{:href => "https://www.pole-emploi.fr/accueil/", :rel => "noopener noreferrer", :target => "_blank", :title => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)"}
-                  = image_tag(empty_image, alt: "Pôle Emploi", data: { "src" => image_path("logo-pe.svg") }) 
-            %li.o-line__item
-              .c-fse-logo-ue
-                %a{:href => "https://europa.eu/european-un  ion/index_fr", :rel => "noopener noreferrer", :target => "_blank", :title => "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Union européenne - Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)"}
-                  = image_tag(empty_image, alt: "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-ue.svg") }) 
-            %li.o-line__item
-              .c-fse-p
-                %p
-                  Ce dispositif est cofinancé par le Fonds Social Européen dans le cadre du Programme opérationnel national "Emploi et inclusion" 2014-2020
-        .o-layout__item.u-text--center{:class=>"u-1/1 u-1/2@tablet"}
-          = render 'shared/footer_motherhome'
+        .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
+          %a{href: root_path}
+            = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic – site en version Bêta", class: "c-footer-firstimg" )
+          .c-footer-intro
+            %span
+              Clara est un service de Pôle emploi 
+            %span
+              qui vous donne une information
+            %span
+              personnalisée, sur les aides, mesures,
+            %span
+              contrats et prestations.
+        .o-layout__item{:class=>"u-2/4@desktop u-3/5@tablet"}
+          .c-footer__content.is-first
+            .c-footer-subtitle
+              Clara
+            .c-footer-subtitle-line
+            %br 
+            .o-layout.c-footer-links
+              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"}       
+                = link_to "Toutes nos aides", aides_path, {"class" => "c-link-to-all-aides c-footer-link-li"}
+                - v.first_part_of_contract_type.each do |ct|  
+                  %li.c-footer-link-li
+                    =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"}
+              .o-layout__item{:class=>"u-1/2@desktop u-1/2@tablet"} 
+                - v.second_part_of_contract_type.each do |ct|      
+                  %li.c-footer-link-li
+                    =link_to ct["name"], type_path(ct["slug"]), {"class" => "c-footer-link"} 
 
+        .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
+          .c-footer__content.is-last
+            .c-footer-cgu
+              .c-footer-subtitle
+                Liens utiles
+              .c-footer-subtitle-line
+              %br
+              = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path, class: "c-footer-link"
+              = link_to "Nous contacter", contact_index_path, class: "c-footer-link"
+              = link_to "Cookies et politique de confidentialité", confidentiality_index_path, class: "c-footer-link"
+              = link_to "Accessibilité", accessibilite_path, class: "c-footer-link"
+
+      .c-footer-bottom
+        .o-layout
+          %hr.c-footer-hr
+          .o-layout__item.c-footer-logos-container{:class=>"u-1/1 u-1/2@tablet"}
+            .c-footer-logos
+              %li.o-line__item
+                .c-fse-logo
+                  %a{:href => "http://www.fse.gouv.fr/", :rel => "noopener noreferrer", :target => "_blank", :title => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)"}
+                    = image_tag(empty_image, alt: "Site du Fonds Social Européen (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-fse.svg") }) 
+              %li.o-line__item
+                .c-fse-logo-pe
+                  %a{:href => "https://www.pole-emploi.fr/accueil/", :rel => "noopener noreferrer", :target => "_blank", :title => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)"}
+                    = image_tag(empty_image, alt: "Pôle Emploi", data: { "src" => image_path("logo-pe.svg") }) 
+              %li.o-line__item
+                .c-fse-logo-ue
+                  %a{:href => "https://europa.eu/european-un  ion/index_fr", :rel => "noopener noreferrer", :target => "_blank", :title => "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", "aria-label" => "Union européenne - Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)"}
+                    = image_tag(empty_image, alt: "Site officiel de l'Union européenne (Ouverture dans une nouvelle fenêtre)", data: { "src" => image_path("logo-ue.svg") }) 
+              %li.o-line__item
+                .c-fse-p
+                  %p
+                    Ce dispositif est cofinancé par le Fonds Social Européen dans le cadre du Programme opérationnel national "Emploi et inclusion" 2014-2020
+          .o-layout__item.u-text--center{:class=>"u-1/1 u-1/2@tablet"}
+            = render 'shared/footer_motherhome'
+
+    - else
+      %div
+        is not home !
