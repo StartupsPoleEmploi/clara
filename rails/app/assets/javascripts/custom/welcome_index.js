@@ -11,6 +11,13 @@ clara.js_define("welcome_index", {
 
     $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
 
+    $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
+    $('.c-newhomehero-discovertxt').hover(function() {
+        $('.c-seevideo').addClass('hover');
+    }, function(){
+        $('.c-seevideo').removeClass('hover');
+    })
+
     $(document).scroll(function() {
       var scroll_position = $(document).scrollTop();
       if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {

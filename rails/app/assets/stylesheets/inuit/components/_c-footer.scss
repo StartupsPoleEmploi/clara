@@ -1,10 +1,14 @@
 .c-footer {
-  padding-top: 60px;
+  padding-top: 50px;
   font-size: 16px;
   color: #312e33;
   background-color: #ffffff;  
   line-height: 1.88;
   a:link, a:visited,  a:active, a:hover {
+    background-color: #ffffff;  
+    color: #312e33;
+    font-size: 16px;
+    line-height: 1.88;
     text-decoration: none;
     color: #312e33;
   }
@@ -15,7 +19,9 @@
 
 .c-footer-firstimg {
   padding-left: 1rem;
+  width: 200px;
   @include mq($from: tablet) {    
+    width: inherit;
     padding-left: 0;
   }
 }
@@ -71,6 +77,14 @@ a.c-link-to-all-aides {
 }
 
 .c-footer__content.is-last {
+  padding-left: 0;
+  @include mq($from: tablet) {    
+    padding-left: 1rem;
+  }
+}
+
+
+.c-footer.is-home .c-footer__content.is-last {
   padding-left: 1rem;
 }
 
@@ -95,17 +109,24 @@ a.c-link-to-all-aides {
   }
 }
 
+.c-footer-motherhome a.c-propels-by {
+  font-size: 13px;
+}
+
+
 .c-footer-motherhome {
   text-align: center;
   @include mq($from: tablet) {    
     text-align: right;
   }
-  small span {
-    display: block;
-    @include mq($from: mobile) {    
-      display: inherit;
-    }
-  }
+}
+
+
+.c-footer.is-not-home .c-footer-motherhome__span {
+  display: block;
+  @include mq($from: desktop) {    
+    display: inline-block;
+  }  
 }
 
 .c-footer-link + .c-footer-link, .c-footer-link-li + .c-footer-link-li {
@@ -113,14 +134,31 @@ a.c-link-to-all-aides {
   line-height: 1.5;
 }
 
+.c-footer.is-home .c-footer-logos {
+  padding-left: 0;
+  @include mq($from: tablet) {    
+    padding-left: .5rem;
+  }
+}
+
+.c-footer.is-not-home .c-footer-logos {
+  padding-left: 0;
+  @include mq($from: tablet) {    
+    padding-left: 2rem;
+  }
+}
+
 .c-footer-logos {
   display: inherit;
+  margin-top: 1rem;
+  @include mq($from: tablet) {    
+    margin-top: 0;
+  }
 }
 
 .c-footer-logos-container {
   padding-left: 0;
   text-align: center;
-  margin-bottom: 1rem;
   @include mq($from: tablet) {    
     text-align: left;
     margin-bottom: 0;
@@ -134,4 +172,34 @@ a.c-link-to-all-aides {
 .c-body.welcome .c-footer-bottom {
   padding-top: 48px;
   padding-bottom: 133px;
+}
+
+.c-footer.is-not-home .c-footer__content.is-first {
+  padding-left: 0;
+}
+
+.c-footer-reroot-container {
+  text-align: center;
+  @include mq($from: tablet) {    
+    text-align: left;
+  }
+}
+
+.c-footer-bulk-links-not-home {
+  padding-left: 6px;
+  @include mq($from: mobile) {    
+    padding-left: 0;
+  }
+}
+
+.c-body__footer {
+  border-top: 10px #ccedff solid;
+}
+
+body.welcome.index .c-body__footer {
+  border-top: none;
+}
+
+.c-body.type.show .c-detail-void__line li {
+  margin-top: .6rem;
 }

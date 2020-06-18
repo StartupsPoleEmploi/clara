@@ -1,3 +1,16 @@
+.c-footer.is-not-home {
+  .c-fse-logo {
+    margin: 0;
+  }
+  .c-fse-logo-pe {
+    margin: 0;
+  }
+  .c-fse-logo-ue {
+    margin: 0;
+  }
+}
+
+
 .c-fse-logo {
   margin: 0;
   width: 45px;
@@ -38,7 +51,7 @@
   line-height: 1.5;
   color: #312e33;
   text-align: left;
-  width: 80px;
+  width: 120px;
   @include mq($from: mobile) {
     width: 130px;
   }
