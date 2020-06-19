@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 32.6.2 (19/06/2020)
 [#1029][BUG] Régression logo HP
 
