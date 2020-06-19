@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 32.6.1 (19/06/2020)
+[#1626][BUG] Petites régressions
+
+
 ## 32.6.0 (18/06/2020)
 [#1619][FEATURE] Nouveau footer sur les autres pages que la home
 
