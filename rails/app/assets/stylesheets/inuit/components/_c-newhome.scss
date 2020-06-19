@@ -209,44 +209,6 @@ h2.c-newhomenumber__title {
   font-size: space(8);
 }
 
-/* Recall section
-––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.c-newhomerecall {
-  background-color: #057DBC;
-}
-
-h2.c-newhomerecall__content {
-  font-weight: 400;
-  margin-left: space(3);
-  margin-right: space(3);
-}
-
-.c-newhomerecall__content {
-  text-align: center;
-}
-
-.c-newhomerecall__content--line {
-  color: white;
-  span {
-    display: block;
-  }
-}
-
-.c-newhomerecall__content--cta {
-  a {
-    @include inuit-font-size(18px);
-    border: 0;
-    border-radius: space(8);
-    background-color: white;
-    padding: space(4) space(9) space(4) space(9);
-    margin-top: space(3);
-    font-weight: bold;
-    cursor: pointer;
-    color: #057DBC;
-    text-decoration: none;
-    display: inline-block;    
-  }
-}
 
 /* Covid19 section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
