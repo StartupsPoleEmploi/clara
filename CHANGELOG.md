@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 33.0.1 (22/06/2020)
+[#1630][FEATURE] Logo HP
+
+
 ## 33.0.0 (22/06/2020)
 [#1627][FEATURE] Mise à jour de la page CGU
 
