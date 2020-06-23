@@ -9,7 +9,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    attachment: Field::ActiveStorage,
+    attachment: Field::ActiveStorage.with_options(show_preview_size: [150, 150]),
     ordre_affichage: Field::Number,
     name: Field::String,
     slug: Field::String,

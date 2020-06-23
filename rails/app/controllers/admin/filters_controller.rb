@@ -13,12 +13,6 @@ module Admin
       super
     end
 
-    def destroy_attachment
-      attachment = requested_resource.attachment
-      attachment.purge
-      redirect_back(fallback_location: requested_resource)
-    end
-
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)
     #   Variable.find_by!(slug: param)
