@@ -18,6 +18,7 @@ class Filter < ApplicationRecord
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
+  has_one_attached :attachment
 
   has_and_belongs_to_many :aids
   validates :name, presence: true, uniqueness: true
