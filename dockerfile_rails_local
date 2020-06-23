@@ -23,6 +23,9 @@ RUN apt-get install -y libpq-dev
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
+# for imagemagik
+RUN apt-get install -y imagemagick
+
 WORKDIR /railsapp
 
 CMD sleep infinity
