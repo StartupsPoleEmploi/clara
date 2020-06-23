@@ -1,6 +1,8 @@
 Rails.application.configure do
+  
+  config.active_storage.service = :local
+  
   # Settings specified here will take precedence over those in config/application.rb.
-
   config.require_master_key = false
 
   # Code is not reloaded between requests.
