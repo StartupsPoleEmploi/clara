@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 33.1.0 (23/06/2020)
 [#1609][FEATURE] Upload photos
 
