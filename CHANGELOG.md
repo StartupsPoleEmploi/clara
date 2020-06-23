@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 33.0.3 (23/06/2020)
+[#1627c][FEATURE] Corrections CGU
+
+
 ## 33.0.2 (23/06/2020)
 [#1627b][FEATURE] Anciennes CGU
 
