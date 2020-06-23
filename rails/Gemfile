@@ -69,7 +69,8 @@ gem "clearance"
 gem "bootsnap"
 
 gem 'administrate-field-active_storage'
-gem "image_processing"
+gem 'image_processing'
+gem 'active_storage_validations'
 
 group :development, :test do
   gem "byebug", platform: :mri

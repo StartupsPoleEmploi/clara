@@ -73,6 +73,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (0.8.9)
+      rails (>= 5.2.0)
     active_type (1.3.1)
       activerecord (>= 3.2)
     activejob (6.0.3.1)
@@ -540,6 +542,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
+  active_storage_validations
   active_type
   administrate (= 0.13.0)
   administrate-field-active_storage
