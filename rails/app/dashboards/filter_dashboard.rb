@@ -11,6 +11,7 @@ class FilterDashboard < Administrate::BaseDashboard
     id: Field::Number,
     attachment: Field::ActiveStorage.with_options(show_preview_size: [150, 150]),
     ordre_affichage: Field::Number,
+    author: Field::String,
     name: Field::String,
     slug: Field::String,
     icon: Field::String,
@@ -34,8 +35,9 @@ class FilterDashboard < Administrate::BaseDashboard
     :ordre_affichage,
     :aids,
     :name,
-    :attachment,
     :slug,
+    :attachment,
+    :author,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,8 +47,9 @@ class FilterDashboard < Administrate::BaseDashboard
     :name,
     :icon,
     :ordre_affichage,
-    :attachment,
     :aids,
+    :attachment,
+    :author,
   ].freeze
 
   # Overwrite this method to customize how aidss are displayed

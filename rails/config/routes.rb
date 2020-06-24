@@ -44,7 +44,9 @@ Rails.application.routes.draw do
     resources :traces do
       get :export, on: :collection
     end
-    resources :filters
+    resources :filters do
+      delete :attachment, on: :member, action: :destroy_attachment
+    end
     resources :aids, only: [:index, :show, :new, :edit, :destroy] do
       get :export, on: :collection
       post :archive_one_aid
