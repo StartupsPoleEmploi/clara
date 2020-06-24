@@ -18,10 +18,10 @@ class Filter < ApplicationRecord
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
-  validates :attachment, attached: true 
-  validates :attachment, content_type: { in: ['image/jpg', 'image/jpeg'], message: 'le fichier choisi n\'est pas une image JPG' }
-  validates :attachment, size: { less_than: 50.kilobytes , message: 'taille de la photo : 50 Ko maximum' }
-  validates :attachment, dimension: { width: 240, height: 240 , message: 'les dimensions autorisées sont 240x240' }
+  # validates :attachment, attached: true 
+  validates :attachment, content_type: { in: ['image/jpg', 'image/jpeg'], message: 'le fichier choisi n\'est pas une image JPG' }, if: :has_attachment?
+  validates :attachment, size: { less_than: 50.kilobytes , message: 'taille de la photo : 50 Ko maximum' }, if: :has_attachment?
+  validates :attachment, dimension: { width: 240, height: 240 , message: 'les dimensions autorisées sont 240x240' }, if: :has_attachment?
 
   has_one_attached :attachment
 
@@ -36,6 +36,10 @@ class Filter < ApplicationRecord
   scope :with_aid_attached, -> { where.not(id: without_aid_attached) }
 
   friendly_id :name, use: :slugged
+
+  def has_attachment?
+    !!attachment
+  end
 
   def should_generate_new_friendly_id?
     slug.blank?
