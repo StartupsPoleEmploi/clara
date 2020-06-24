@@ -13,9 +13,6 @@ clara.js_define("admin_filter_form", {
       $(".field-unit--active-storage").prepend("<div class='c-aid-filters-hint'>Optionnel : vous pouvez faire apparaître ce filtre en page d'accueil en renseignant une photo d'illustration, et en créditant l'auteur</div>")
       $(".field-unit--active-storage .field-unit__field").css("display", "flex")
 
-      var $elt = $("#filter_attachment").parent();
-      $elt.html($elt.children());
-      $elt.prepend("Choisir une photo d'illustration : ");
 
       $(".attachments-listing").css("margin-right", "5rem")
       $("#filter_attachment").parent().css("margin-top", "-1.5rem")
@@ -30,10 +27,17 @@ clara.js_define("admin_filter_form", {
         $(".field-unit--active-storage").prepend($dtach)
       }
 
+      var choose_txt = "Choisir une photo d'illustration : "
       if ($(".attachments-listing").length === 0) {
         $(".field-unit--active-storage .field-unit__label").remove()
+        $("#filter_attachment").parent().css("margin-top", "0")
+      } else  {
+        choose_txt = "Remplacer la photo d'illustration :"
       }
 
+      var $elt = $("#filter_attachment").parent();
+      $elt.html($elt.children());
+      $elt.prepend(choose_txt);
     },
 });
 
