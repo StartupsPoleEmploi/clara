@@ -1,6 +1,6 @@
 <%- v = view_object(:filter_form_vo, local_assigns) %>
 
-<%= form_for([namespace, page.resource], html: { class: "form" }) do |f| %>
+<%= form_for([namespace, page.resource], html: { class: "form actual-filter-form" }) do |f| %>
   <% if page.resource.errors.any? %>
     <div id="error_explanation">
       <h2  class="flash-error">
