@@ -9,7 +9,10 @@ class FilterDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
+    attachment: Field::ActiveStorage.with_options(show_preview_size: [150, 150]),
     ordre_affichage: Field::Number,
+    ordre_affichage_home: Field::Number,
+    author: Field::String,
     name: Field::String,
     slug: Field::String,
     icon: Field::String,
@@ -34,6 +37,9 @@ class FilterDashboard < Administrate::BaseDashboard
     :aids,
     :name,
     :slug,
+    :attachment,
+    :author,
+    :ordre_affichage_home,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -44,6 +50,9 @@ class FilterDashboard < Administrate::BaseDashboard
     :icon,
     :ordre_affichage,
     :aids,
+    :attachment,
+    :author,
+    :ordre_affichage_home,
   ].freeze
 
   # Overwrite this method to customize how aidss are displayed

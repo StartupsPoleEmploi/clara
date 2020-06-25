@@ -33,7 +33,6 @@
 //= require custom/lazy_img_loading
 //= require custom/font_load
 //= require_tree ./forms
-//= require custom/welcome_index_constants
 //= require custom/welcome_index
 //= require_tree ./custom/aides
 //= require custom/intercept_start_by_contract

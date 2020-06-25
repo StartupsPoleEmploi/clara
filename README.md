@@ -86,7 +86,7 @@ Toutes les commandes classiques de migration, de console Rails, de lancement de 
 
 ### 4. Mettre la base de données de production en local
 
-Vérifiez que les conteneurs docker sont **stoppés**
+Vérifiez que les conteneurs docker sont **démarrés**
 
 ```
 docker-compose -f docker-compose-local.yml run --rm --no-deps db-srv bash -c "pg_restore --verbose --clean --no-acl --no-owner -U ara -h db-srv -d ara_dev /latest.dump"

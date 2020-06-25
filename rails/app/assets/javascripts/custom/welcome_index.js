@@ -18,17 +18,6 @@ clara.js_define("welcome_index", {
         $('.c-seevideo').removeClass('hover');
     })
 
-    $(document).scroll(function() {
-      var scroll_position = $(document).scrollTop();
-      if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strThird());
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strSecond());
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strFirst());
-        $("a.c-am-i-eligible").off();
-        intercept_link_and_set_filters();
-      }
-    }); 
-
     var sticky_calc = function() {      
       var ELT = "input.c-main-cta2"
       var top_of_element = $(ELT).offset().top;
@@ -59,48 +48,60 @@ clara.js_define("welcome_index", {
     });
 
     var intercept_link_and_call_ga = function(event_name, e, url) {
-      var local_ga = _.get(window, "ga");
       e.preventDefault();
       var href = url;
+      var local_ga = _.get(window, "ga");
       if (typeof local_ga === "function") {
         local_ga('send', 'event', 'home', 'chip', event_name);
       }
       location.href = href;
     }
 
-    var intercept_link_and_set_filters = function() {
-
+    var intercept_filters_links = function() {
       $("a.c-am-i-eligible").click(function(e) {
         e.preventDefault();
         var href = this.href;
         var choosen_filter = $(this).data('filter');
         localStorage.setItem("choosen_filters", JSON.stringify([choosen_filter]));          
+        var local_ga = _.get(window, "ga")
+        if (typeof local_ga === "function") {
+          local_ga('send', 'event', 'home', 'chip', choosen_filter);
+        }
         location.href = href;
       });
-
     }
 
-    $("a.c-chip-creation").click(function(e){
-      intercept_link_and_call_ga('creation', e, this.href);
-    });
-    $("a.c-chip-mobilite").click(function(e){
-      intercept_link_and_call_ga('mobilite', e, this.href);
-    });
-    $("a.c-chip-formation").click(function(e){
-      intercept_link_and_call_ga('formation', e, this.href);
-    });
-    $("a.c-chip-projetpro").click(function(e){
-      intercept_link_and_call_ga('projetpro', e, this.href);
+    // Filters : bind links, load images on scroll
+    intercept_filters_links();
+    var already_scrolled = false;
+    $(document).scroll(function() {
+      var scroll_position = $(document).scrollTop();
+      if (scroll_position > 50 && !already_scrolled) {
+        $(".is-early .c-home-catalog-replacable").replaceTagName("img")
+        already_scrolled = true;
+      }
     });
 
-    $("button.c-home-catalog-seemore").click(function(e){
-      $(".c-home-catalog-seemore-container").remove();
-      $(".c-home-catalog-third").after(clara.welcome_index_constants.strUltimate());
-      $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
-
-      $("a.c-am-i-eligible").off();
-      intercept_link_and_set_filters();
-    });
+    var see_more_already_clicked = false;
+    $(".c-home-catalog-toggle").click(function(e) {
+      $e = $(this);
+      if ($e.hasClass("c-home-catalog-seemore")) {
+        $e.removeClass("c-home-catalog-seemore")
+        $e.addClass("c-home-catalog-seeless")
+        $e.text("Voir moins")
+        $e.addClass("u-display-none")
+        if (!see_more_already_clicked) {
+          see_more_already_clicked = true
+          $("div.c-home-catalog-replacable").replaceTagName("img")
+        }
+      } else  {
+        $e.addClass("c-home-catalog-seemore")
+        $e.removeClass("c-home-catalog-seeless")        
+        $e.text("Voir plus")
+      }
+      $(".c-home-catalog-line.u-display-none").removeClass("u-display-none")
+    })
+    
   }
 });
 

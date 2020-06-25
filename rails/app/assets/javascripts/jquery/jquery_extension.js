@@ -35,10 +35,10 @@ $.replaceTag = function (currentElem, newTagObj, keepProps) {
   var $currentElem = $(currentElem);
   var i, $newTag = $(newTagObj).clone();
   if (keepProps) {
-      newTag = $newTag[0];
-      newTag.className = currentElem.className;
-      $.extend(newTag.classList, currentElem.classList);
-      $.extend(newTag.attributes, currentElem.attributes);
+    newTag = $newTag[0];
+    newTag.className = currentElem.className;
+    $.extend(newTag.classList, currentElem.classList);
+    $.extend(newTag.attributes, currentElem.attributes);
   }
   $currentElem.wrapAll($newTag);
   $currentElem.contents().unwrap();
@@ -77,3 +77,23 @@ jQuery.fn.extend({
 
 
 });
+
+(function (a) {
+    a.fn.replaceTagName = function (f) {
+        var g = [],
+            h = this.length;
+        while (h--) {
+            var k = document.createElement(f),
+                b = this[h],
+                d = b.attributes;
+            for (var c = d.length - 1; c >= 0; c--) {
+                var j = d[c];
+                k.setAttribute(j.name, j.value)
+            }
+            k.innerHTML = b.innerHTML;
+            a(b).after(k).remove();
+            g[h - 1] = k
+        }
+        return a(g)
+    }
+})(window.jQuery);

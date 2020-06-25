@@ -2,6 +2,7 @@
 - title_data 'Filtres'
 - raw_description = "Avez-vous besoin d'aides personnalisées pour retrouver un emploi ?".html_safe
 - description_data(raw_description)
+- local_filters = local_assigns[:filters].map {|e| e.ordre_affichage ||= 999; e}
 
 %main#main{role: "main"}
   = render 'shared/breadcrumb'
@@ -19,7 +20,7 @@
         %fieldset.c-fieldset
           %legend.u-hidden-visually Cochez la situation &#xE0; : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
           .c-filterboxes
-            - local_assigns[:filters].sort_by(&:ordre_affichage).each do |filter|       
+            - local_filters.sort_by(&:ordre_affichage).each do |filter|       
               = render 'shared/filter_form_line', {id: "#{filter.slug}", current_text: "#{filter.name}", current_icon: "#{filter.icon}"} 
                 
         = render 'nav/next_previous', f: f

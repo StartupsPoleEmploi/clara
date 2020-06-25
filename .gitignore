@@ -50,3 +50,6 @@ coverage
 
 # generated for docker
 rails/CHANGELOG.md
+
+# active storage refused :)
+rails/storage/

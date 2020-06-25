@@ -1,6 +1,8 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  
+  config.active_storage.service = :cloudinary
 
+  # Settings specified here will take precedence over those in config/application.rb.
   config.require_master_key = false
 
   # Code is not reloaded between requests.

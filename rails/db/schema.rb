@@ -2,20 +2,42 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_085363) do
+ActiveRecord::Schema.define(version: 2020_06_23_123456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "unaccent"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "aids", id: :serial, force: :cascade do |t|
     t.string "name"
@@ -125,10 +147,13 @@ ActiveRecord::Schema.define(version: 2020_03_13_085363) do
     t.string "slug"
     t.integer "ordre_affichage"
     t.text "icon", default: "<svg width=\"80\" height=\"80\" class=\"default-svg\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 500 500\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" enable-background=\"new 0 0 100 100\"><g><g><path d=\"m197.2,311.2c6.2-4.2 12.5-6.2 19.8-6.2 7.3,0 13.5,1 18.7,3.1 5.2,2.1 10.4,6.2 15.6,12.5l13.5-16.6c-11.4-14.7-28.1-22-47.8-22-13.5,0-26,4.2-36.4,12.5-10.4,8.3-17.7,18.7-21.8,32.3h-19.8v16.6 1h15.6c-0.2,8.1 1,12.5 1,15.6h-16.6v16.6h20.8c4.2,12.5 11.4,22.9 21.8,30.2 10.4,7.3 21.8,11.4 35.4,11.4 19.8,0 35.4-7.3 46.8-21.8l-13.5-16.6c-5.2,6.2-10.4,10.4-15.6,12.5-5.2,3.1-10.4,4.2-17.7,4.2-14.6,0-23.9-6.2-31.2-19.8h43.7v-16.6h-48.9c-1-2.1-1.7-11-1-15.6h48.9v-16.6h-44.7c3-7.4 7.2-12.6 13.4-16.7z\"></path><path d=\"M325.2,11.5H70.3v489h370.4l0-373.5L325.2,11.5z M406.3,121.8h-74.9V46.9L406.3,121.8z M90,479.7V32.3h220.6v98.8 c0,6.2,5.2,10.4,10.4,10.4h99.9v338.1H90z\"></path></g></g></svg>"
+    t.boolean "is_hidden", default: false
+    t.string "author"
+    t.integer "ordre_affichage_home"
     t.index ["slug"], name: "index_filters_on_slug", unique: true
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -236,6 +261,7 @@ ActiveRecord::Schema.define(version: 2020_03_13_085363) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "aids", "contract_types"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"

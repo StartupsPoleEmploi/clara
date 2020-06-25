@@ -6,6 +6,7 @@
 - slug_of_amob = local_assigns[:slug_of_amob] || "not_found"
 - slug_of_formation = local_assigns[:slug_of_formation] || "not_found"
 - slug_of_project = local_assigns[:slug_of_project] || "not_found"
+- first_filters = local_assigns[:first_filters] || []
 - larger_container "yes"
 
 
@@ -15,7 +16,7 @@
   = render partial: 'shared/cookies_banner'
   = render partial: 'shared/home_feat'
   = render partial: 'shared/home_md'
-  = render partial: 'shared/home_catalog'
+  = render partial: 'shared/home_catalog', locals: {all_home_filters: all_home_filters}
   = render partial: 'shared/home_approved'
   = render partial: 'shared/home_sticky'
 

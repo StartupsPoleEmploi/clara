@@ -2,7 +2,12 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
+      attachment: Photographie d'illustration
+      author: Crédit photo
+      is_hidden: Cacher le filtre sur la page d'accueil
       aids: Aides rattachées au filtre
+      ordre_affichage: Ordre d'affichage sur le formulaire
+      ordre_affichage_home: Ordre d'affichage sur la page d'accueil
     models: 
       filter: Filtres
     attributes:

@@ -2,6 +2,9 @@ Rails.application.configure do
 
   config.hosts << "bs-local.com"
 
+
+  config.active_storage.service = :cloudinary
+  
   # See https://stackoverflow.com/a/36294165/2595513
   # config.active_record.logger = nil
   # See http://www.jakobbeyer.de/disable-action-view-logger-in-production-for-ruby-on-rails

@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "6.0.3.1"
+gem "rails", "6.0.3.2"
 gem "puma"
 gem "rake"
 gem "uglifier"
@@ -67,6 +67,11 @@ gem "i18n-js"
 gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
+
+gem 'administrate-field-active_storage'
+gem 'image_processing'
+gem 'active_storage_validations'
+gem 'cloudinary'
 
 group :development, :test do
   gem "byebug", platform: :mri

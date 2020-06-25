@@ -1,16 +1,29 @@
+- all_filters = all_home_filters.sort_by{|e| e[:ordre]}
+
 .c-home-catalog
   .u-useful-width.u-useful-width--larger.u-margin-constraint
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
-
-    .c-home-catalog-firstline{data: { "src1" => image_path("image_se_former.jpg"), "src2" => image_path("image_accompagnement.jpg")  }}
-    .c-home-catalog-secondline{data: { "src1" => image_path("image_creer_entreprise.jpg"), "src2" => image_path("image_orienter_reconvertir.jpg")  }}
-    .c-home-catalog-thirdline{data: { "src1" => image_path("image_aide_mobilite.jpg"), "src2" => image_path("image_travailler_international.jpg")  }}
-
+      
+    - all_filters.each_slice(2).to_a.each_with_index do |array_of_2_filters, indx|
+      .o-layout{class: indx > 2 ? "u-display-none c-home-catalog-line" : "c-home-catalog-line is-early"}
+        - array_of_2_filters.each do |filt|
+          - name = filt[:name].to_s
+          - slug = filt[:slug]
+          - src = filt[:url]
+          .o-layout__item{:class => "u-1/1 u-1/2@wide"}
+            .c-home-catalog-card
+              .o-media
+                .o-media__img.c-home-catalog-cardimg
+                  %div{alt: name, src: src, class: 'c-home-catalog-replacable' }
+                .o-media__body.c-home-catalog-cardbody
+                  .c-home-catalog-cardtxt1
+                    %span=name
+                  .c-home-catalog-cardtxt2
+                    %a.c-am-i-eligible{"data-filter" => slug, :href => "/inscription_questions/new"} Suis-je éligible ?
+      
 
     .u-text--center.c-home-catalog-seemore-container
-      %button.c-home-catalog-seemore
+      %button.c-home-catalog-seemore.c-home-catalog-toggle
         Voir plus
 
-    .c-home-catalog-penultimate{data: { "src1" => image_path("image_remuneration_formation.jpg"), "src2" => image_path("image_garde_enfant.jpg")  }}
-    .c-home-catalog-ultimate{data: { "src1" => image_path("image_contrats_specifiques.jpg"), "src2" => image_path("image_aides_regionales.jpg")  }}
