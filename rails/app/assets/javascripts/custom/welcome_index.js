@@ -84,28 +84,6 @@ clara.js_define("welcome_index", {
       }
     }); 
 
-
-    // $("a.c-chip-creation").click(function(e){
-    //   intercept_link_and_call_ga('creation', e, this.href);
-    // });
-    // $("a.c-chip-mobilite").click(function(e){
-    //   intercept_link_and_call_ga('mobilite', e, this.href);
-    // });
-    // $("a.c-chip-formation").click(function(e){
-    //   intercept_link_and_call_ga('formation', e, this.href);
-    // });
-    // $("a.c-chip-projetpro").click(function(e){
-    //   intercept_link_and_call_ga('projetpro', e, this.href);
-    // });
-
-    // $("button.c-home-catalog-seemore").click(function(e){
-    //   $(".c-home-catalog-seemore-container").remove();
-    //   $(".c-home-catalog-third").after(clara.welcome_index_constants.strUltimate());
-    //   $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
-
-    //   $("a.c-am-i-eligible").off();
-    //   intercept_filters_links();
-    // });
   }
 });
 
