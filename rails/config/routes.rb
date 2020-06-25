@@ -72,8 +72,8 @@ Rails.application.routes.draw do
       post 'post_clock'
       get 'get_zrr'
       post 'post_zrr'
-      get 'get_cache'  if ENV["R7_MODE"]
-      post 'post_cache'  if ENV["R7_MODE"]
+      get 'get_cache'
+      post 'post_cache'
       get 'get_ref_data'
       post 'post_ref_data'
       get 'get_transfer_descr'
