@@ -5,8 +5,8 @@
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
       
-    - all_filters.each_slice(2).to_a.each do |array_of_2_filters|
-      .o-layout
+    - all_filters.each_slice(2).to_a.each_with_index do |array_of_2_filters, indx|
+      .o-layout{class: indx > 2 ? "u-display-none c-home-catalog-line" : "c-home-catalog-line is-early"}
         - array_of_2_filters.each do |filt|
           - name = filt[:name].to_s
           - slug = filt[:slug]
@@ -21,4 +21,9 @@
                     %span=name
                   .c-home-catalog-cardtxt2
                     %a.c-am-i-eligible{"data-filter" => slug, :href => "/inscription_questions/new"} Suis-je éligible ?
+      
+
+    .u-text--center.c-home-catalog-seemore-container
+      %button.c-home-catalog-seemore.c-home-catalog-toggle
+        Voir plus
 

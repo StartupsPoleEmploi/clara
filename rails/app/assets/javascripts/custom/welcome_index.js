@@ -58,7 +58,6 @@ clara.js_define("welcome_index", {
     }
 
     var intercept_filters_links = function() {
-
       $("a.c-am-i-eligible").click(function(e) {
         e.preventDefault();
         var href = this.href;
@@ -70,20 +69,39 @@ clara.js_define("welcome_index", {
         }
         location.href = href;
       });
-
     }
 
     // Filters : bind links, load images on scroll
-    var already_scrolled = false;
     intercept_filters_links();
+    var already_scrolled = false;
     $(document).scroll(function() {
       var scroll_position = $(document).scrollTop();
       if (scroll_position > 50 && !already_scrolled) {
-        $(".c-home-catalog-replacable").replaceTagName("img")
+        $(".is-early .c-home-catalog-replacable").replaceTagName("img")
         already_scrolled = true;
       }
-    }); 
+    });
 
+    var see_more_already_clicked = false;
+    $(".c-home-catalog-toggle").click(function(e) {
+      $e = $(this);
+      if ($e.hasClass("c-home-catalog-seemore")) {
+        $e.removeClass("c-home-catalog-seemore")
+        $e.addClass("c-home-catalog-seeless")
+        $e.text("Voir moins")
+        $e.addClass("u-display-none")
+        if (!see_more_already_clicked) {
+          see_more_already_clicked = true
+          $("div.c-home-catalog-replacable").replaceTagName("img")
+        }
+      } else  {
+        $e.addClass("c-home-catalog-seemore")
+        $e.removeClass("c-home-catalog-seeless")        
+        $e.text("Voir plus")
+      }
+      $(".c-home-catalog-line.u-display-none").removeClass("u-display-none")
+    })
+    
   }
 });
 
