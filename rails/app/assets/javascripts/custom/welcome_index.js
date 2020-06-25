@@ -18,16 +18,16 @@ clara.js_define("welcome_index", {
         $('.c-seevideo').removeClass('hover');
     })
 
-    $(document).scroll(function() {
-      var scroll_position = $(document).scrollTop();
-      if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strThird());
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strSecond());
-        $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strFirst());
-        $("a.c-am-i-eligible").off();
-        intercept_link_and_set_filters();
-      }
-    }); 
+    // $(document).scroll(function() {
+    //   var scroll_position = $(document).scrollTop();
+    //   if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {
+    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strThird());
+    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strSecond());
+    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strFirst());
+    //     $("a.c-am-i-eligible").off();
+    //     intercept_link_and_set_filters();
+    //   }
+    // }); 
 
     var sticky_calc = function() {      
       var ELT = "input.c-main-cta2"
@@ -80,27 +80,27 @@ clara.js_define("welcome_index", {
 
     }
 
-    $("a.c-chip-creation").click(function(e){
-      intercept_link_and_call_ga('creation', e, this.href);
-    });
-    $("a.c-chip-mobilite").click(function(e){
-      intercept_link_and_call_ga('mobilite', e, this.href);
-    });
-    $("a.c-chip-formation").click(function(e){
-      intercept_link_and_call_ga('formation', e, this.href);
-    });
-    $("a.c-chip-projetpro").click(function(e){
-      intercept_link_and_call_ga('projetpro', e, this.href);
-    });
+    // $("a.c-chip-creation").click(function(e){
+    //   intercept_link_and_call_ga('creation', e, this.href);
+    // });
+    // $("a.c-chip-mobilite").click(function(e){
+    //   intercept_link_and_call_ga('mobilite', e, this.href);
+    // });
+    // $("a.c-chip-formation").click(function(e){
+    //   intercept_link_and_call_ga('formation', e, this.href);
+    // });
+    // $("a.c-chip-projetpro").click(function(e){
+    //   intercept_link_and_call_ga('projetpro', e, this.href);
+    // });
 
-    $("button.c-home-catalog-seemore").click(function(e){
-      $(".c-home-catalog-seemore-container").remove();
-      $(".c-home-catalog-third").after(clara.welcome_index_constants.strUltimate());
-      $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
+    // $("button.c-home-catalog-seemore").click(function(e){
+    //   $(".c-home-catalog-seemore-container").remove();
+    //   $(".c-home-catalog-third").after(clara.welcome_index_constants.strUltimate());
+    //   $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
 
-      $("a.c-am-i-eligible").off();
-      intercept_link_and_set_filters();
-    });
+    //   $("a.c-am-i-eligible").off();
+    //   intercept_link_and_set_filters();
+    // });
   }
 });
 

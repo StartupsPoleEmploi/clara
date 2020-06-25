@@ -2,15 +2,21 @@
   .u-useful-width.u-useful-width--larger.u-margin-constraint
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
+      
+    =ap all_home_filters.size
+    
+    .o-layout
+    
+      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
+        .c-home-catalog-card
+          .o-media
+            .o-media__img.c-home-catalog-cardimg
+              %img{:alt => "Financer une formation, obtenir un diplôme", :src => "/assets/image_se_former-310cd83a77a926bbf202c530bbe075f51cfa3ca7105d2f5bc11c1045a9e53ec8.jpg"}/
+              .o-media__body.c-home-catalog-cardbody
+                .c-home-catalog-cardtxt1
+                  %span Financer une formation,
+                  %span obtenir un diplôme
+                .c-home-catalog-cardtxt2
+                  %a.c-am-i-eligible{"data-filter" => "se-former-valoriser-ses-competences", :href => "/inscription_questions/new"} Suis-je éligible ?
 
-    .c-home-catalog-firstline{data: { "src1" => image_path("image_se_former.jpg"), "src2" => image_path("image_accompagnement.jpg")  }}
-    .c-home-catalog-secondline{data: { "src1" => image_path("image_creer_entreprise.jpg"), "src2" => image_path("image_orienter_reconvertir.jpg")  }}
-    .c-home-catalog-thirdline{data: { "src1" => image_path("image_aide_mobilite.jpg"), "src2" => image_path("image_travailler_international.jpg")  }}
 
-
-    .u-text--center.c-home-catalog-seemore-container
-      %button.c-home-catalog-seemore
-        Voir plus
-
-    .c-home-catalog-penultimate{data: { "src1" => image_path("image_remuneration_formation.jpg"), "src2" => image_path("image_garde_enfant.jpg")  }}
-    .c-home-catalog-ultimate{data: { "src1" => image_path("image_contrats_specifiques.jpg"), "src2" => image_path("image_aides_regionales.jpg")  }}
