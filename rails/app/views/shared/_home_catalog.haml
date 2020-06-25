@@ -3,20 +3,20 @@
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
       
-    =ap all_home_filters.size
-    
-    .o-layout
-    
-      .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-        .c-home-catalog-card
-          .o-media
-            .o-media__img.c-home-catalog-cardimg
-              %img{:alt => "Financer une formation, obtenir un diplôme", :src => "/assets/image_se_former-310cd83a77a926bbf202c530bbe075f51cfa3ca7105d2f5bc11c1045a9e53ec8.jpg"}/
-              .o-media__body.c-home-catalog-cardbody
-                .c-home-catalog-cardtxt1
-                  %span Financer une formation,
-                  %span obtenir un diplôme
-                .c-home-catalog-cardtxt2
-                  %a.c-am-i-eligible{"data-filter" => "se-former-valoriser-ses-competences", :href => "/inscription_questions/new"} Suis-je éligible ?
-
+    %br
+    - all_home_filters.each_slice(2).to_a.each do |array_of_2_filters|
+      .o-layout
+      - array_of_2_filters.each do |filt|
+        - name = filt[:name].to_s
+        - slug = filt[:slug]
+        .o-layout__item{:class => "u-1/1 u-1/2@wide"}
+          .c-home-catalog-card
+            .o-media
+              .o-media__img.c-home-catalog-cardimg
+                %img{:alt => name}/
+                .o-media__body.c-home-catalog-cardbody
+                  .c-home-catalog-cardtxt1
+                    %span=name
+                  .c-home-catalog-cardtxt2
+                    %a.c-am-i-eligible{"data-filter" => slug, :href => "/inscription_questions/new"} Suis-je éligible ?
 
