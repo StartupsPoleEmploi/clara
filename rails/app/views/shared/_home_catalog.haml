@@ -3,17 +3,17 @@
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
       
-    %br
     - all_home_filters.each_slice(2).to_a.each do |array_of_2_filters|
       .o-layout
-      - array_of_2_filters.each do |filt|
-        - name = filt[:name].to_s
-        - slug = filt[:slug]
-        .o-layout__item{:class => "u-1/1 u-1/2@wide"}
-          .c-home-catalog-card
-            .o-media
-              .o-media__img.c-home-catalog-cardimg
-                %img{:alt => name}/
+        - array_of_2_filters.each do |filt|
+          - name = filt[:name].to_s
+          - slug = filt[:slug]
+          - src = filt[:url]
+          .o-layout__item{:class => "u-1/1 u-1/2@wide"}
+            .c-home-catalog-card
+              .o-media
+                .o-media__img.c-home-catalog-cardimg
+                  %img{alt: name, src: src }
                 .o-media__body.c-home-catalog-cardbody
                   .c-home-catalog-cardtxt1
                     %span=name
