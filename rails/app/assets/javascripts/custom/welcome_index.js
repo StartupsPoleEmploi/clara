@@ -18,15 +18,6 @@ clara.js_define("welcome_index", {
         $('.c-seevideo').removeClass('hover');
     })
 
-    // Filters : bind links, load images on scroll
-    intercept_filters_links();
-    $(document).scroll(function() {
-      var scroll_position = $(document).scrollTop();
-      if (scroll_position > 50) {
-        
-      }
-    }); 
-
     var sticky_calc = function() {      
       var ELT = "input.c-main-cta2"
       var top_of_element = $(ELT).offset().top;
@@ -73,13 +64,26 @@ clara.js_define("welcome_index", {
         var href = this.href;
         var choosen_filter = $(this).data('filter');
         localStorage.setItem("choosen_filters", JSON.stringify([choosen_filter]));          
-        if (typeof _.get(window, "ga") === "function") {
+        var local_ga = _.get(window, "ga")
+        if (typeof local_ga === "function") {
           local_ga('send', 'event', 'home', 'chip', choosen_filter);
         }
         location.href = href;
       });
 
     }
+
+    // Filters : bind links, load images on scroll
+    var already_scrolled = false;
+    intercept_filters_links();
+    $(document).scroll(function() {
+      var scroll_position = $(document).scrollTop();
+      if (scroll_position > 50 && !already_scrolled) {
+        $(".c-home-catalog-replacable").replaceTagName("img")
+        already_scrolled = true;
+      }
+    }); 
+
 
     // $("a.c-chip-creation").click(function(e){
     //   intercept_link_and_call_ga('creation', e, this.href);
