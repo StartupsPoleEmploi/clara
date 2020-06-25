@@ -18,16 +18,14 @@ clara.js_define("welcome_index", {
         $('.c-seevideo').removeClass('hover');
     })
 
-    // $(document).scroll(function() {
-    //   var scroll_position = $(document).scrollTop();
-    //   if (scroll_position > 10 && !$(".c-home-catalog-first").exists()) {
-    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strThird());
-    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strSecond());
-    //     $("h2.c-home-catalog-title").after(clara.welcome_index_constants.strFirst());
-    //     $("a.c-am-i-eligible").off();
-    //     intercept_link_and_set_filters();
-    //   }
-    // }); 
+    // Filters : bind links, load images on scroll
+    intercept_filters_links();
+    $(document).scroll(function() {
+      var scroll_position = $(document).scrollTop();
+      if (scroll_position > 50) {
+        
+      }
+    }); 
 
     var sticky_calc = function() {      
       var ELT = "input.c-main-cta2"
@@ -59,22 +57,25 @@ clara.js_define("welcome_index", {
     });
 
     var intercept_link_and_call_ga = function(event_name, e, url) {
-      var local_ga = _.get(window, "ga");
       e.preventDefault();
       var href = url;
+      var local_ga = _.get(window, "ga");
       if (typeof local_ga === "function") {
         local_ga('send', 'event', 'home', 'chip', event_name);
       }
       location.href = href;
     }
 
-    var intercept_link_and_set_filters = function() {
+    var intercept_filters_links = function() {
 
       $("a.c-am-i-eligible").click(function(e) {
         e.preventDefault();
         var href = this.href;
         var choosen_filter = $(this).data('filter');
         localStorage.setItem("choosen_filters", JSON.stringify([choosen_filter]));          
+        if (typeof _.get(window, "ga") === "function") {
+          local_ga('send', 'event', 'home', 'chip', choosen_filter);
+        }
         location.href = href;
       });
 
@@ -99,7 +100,7 @@ clara.js_define("welcome_index", {
     //   $(".c-home-catalog-third").after(clara.welcome_index_constants.strPenultimate());
 
     //   $("a.c-am-i-eligible").off();
-    //   intercept_link_and_set_filters();
+    //   intercept_filters_links();
     // });
   }
 });
