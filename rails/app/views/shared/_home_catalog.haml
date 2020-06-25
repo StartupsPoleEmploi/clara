@@ -1,9 +1,11 @@
+- all_filters = all_home_filters.sort_by{|e| e[:ordre]}
+
 .c-home-catalog
   .u-useful-width.u-useful-width--larger.u-margin-constraint
     %h2.c-home-catalog-title
       Accédez au catalogue Clara
       
-    - all_home_filters.each_slice(2).to_a.each do |array_of_2_filters|
+    - all_filters.each_slice(2).to_a.each do |array_of_2_filters|
       .o-layout
         - array_of_2_filters.each do |filt|
           - name = filt[:name].to_s
