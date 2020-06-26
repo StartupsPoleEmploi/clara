@@ -12,11 +12,6 @@ clara.js_define("admin_filter_form", {
 
       $(".field-unit--paperclip").prepend("<div class='c-aid-filters-hint'>Optionnel : vous pouvez faire apparaître ce filtre en page d'accueil en renseignant une photo d'illustration, et en créditant l'auteur</div>")
 
-      window.addEventListener('error', function(e) {
-          console.log('eeerror', e);
-          console.log(e);
-      }, true);
-
     },
 });
 
