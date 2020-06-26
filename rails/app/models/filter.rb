@@ -26,10 +26,11 @@ class Filter < ApplicationRecord
 
   # has_one_attached :attachment
 
-  has_and_belongs_to_many :aids
-  validates :name, presence: true, uniqueness: true
+  has_attached_file :illustration
 
-  scope :homable, -> { joins(attachment_attachment: :blob) }
+  has_and_belongs_to_many :aids
+
+  scope :homable, -> { where.not(illustration_file_name: '') }
   scope :without_aid_attached, -> {
     joins("LEFT JOIN aids_filters ON filters.id = aids_filters.filter_id")
     .where("aids_filters.filter_id IS NULL")
@@ -39,6 +40,9 @@ class Filter < ApplicationRecord
 
 
   friendly_id :name, use: :slugged
+
+  validates :name, presence: true, uniqueness: true
+  validates_attachment_content_type :illustration, :content_type => ["image/jpg", "image/jpeg"]
 
   def has_attachment?
     !!attachment
