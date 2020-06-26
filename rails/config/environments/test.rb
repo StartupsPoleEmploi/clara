@@ -5,8 +5,6 @@ Rails.application.configure do
   config.middleware.use RackSessionAccess::Middleware
   config.middleware.use Clearance::BackDoor
 
-  config.active_storage.service = :test
-  
   config.assets.compile = true
   # Settings specified here will take precedence over those in config/application.rb.
 

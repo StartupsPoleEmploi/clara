@@ -2,6 +2,10 @@
 
 
 
+## 33.2.2 (26/06/2020)
+[#1609h][TECH] remove active_storage
+
+
 ## 33.2.1 (26/06/2020)
 [#1609g][TECH] cloudinary paperclip
 
