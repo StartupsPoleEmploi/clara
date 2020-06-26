@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 33.1.2 (26/06/2020)
+[#1609c]
+
+
 ## 33.1.1 (23/06/2020)
 [#1609b][FEATURE] Upload photos, cache disponible
 
