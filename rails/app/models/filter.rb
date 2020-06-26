@@ -18,7 +18,10 @@ class Filter < ApplicationRecord
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
-  has_attached_file :illustration
+  has_attached_file :illustration, 
+                    :storage => :cloudinary, 
+                    :path => ':id/:style/:filename', 
+                    :cloudinary_credentials => cloudinary_credentials
 
   has_and_belongs_to_many :aids
 
@@ -38,6 +41,15 @@ class Filter < ApplicationRecord
   validates_attachment_content_type :illustration, :content_type => ["image/jpg", "image/jpeg"], message: 'seules les images JPG sont autorisées'
   validates_attachment :illustration, dimensions: { height: 240, width: 240 }
   validates :author, presence: true, if: :has_illustration?
+
+  def cloudinary_credentials
+    e = ENV["CLOUDINARY_URL"]
+    {
+      cloud_name: e.split("@")[1],
+      api_key: e.split("://")[1].split(":")[0],
+      api_secret: e.split("://")[1].split("@")[0].split(":")[1],
+    }
+  end
 
   def has_illustration?
     !!illustration_file_name

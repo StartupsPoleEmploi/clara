@@ -68,14 +68,11 @@ gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
 
-gem 'administrate-field-active_storage'
-gem 'image_processing'
-gem 'active_storage_validations'
-gem 'cloudinary'
 
 gem 'administrate-field-paperclip'
 gem 'kt-paperclip'
 gem 'paperclip-dimension-validator'
+gem 'paperclip-cloudinary'
 
 group :development, :test do
   gem "byebug", platform: :mri
