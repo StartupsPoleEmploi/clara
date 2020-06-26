@@ -89,17 +89,17 @@ clara.js_define("welcome_index", {
         $e.removeClass("c-home-catalog-seemore")
         $e.addClass("c-home-catalog-seeless")
         $e.text("Voir moins")
-        $e.addClass("u-display-none")
         if (!see_more_already_clicked) {
           see_more_already_clicked = true
           $("div.c-home-catalog-replacable").replaceTagName("img")
         }
+        $(".c-home-catalog-line.is-late").removeClass("u-display-none")
       } else  {
         $e.addClass("c-home-catalog-seemore")
         $e.removeClass("c-home-catalog-seeless")        
         $e.text("Voir plus")
+        $(".c-home-catalog-line.is-late").addClass("u-display-none")
       }
-      $(".c-home-catalog-line.u-display-none").removeClass("u-display-none")
     })
     
   }

@@ -6,7 +6,7 @@
       Accédez au catalogue Clara
       
     - all_filters.each_slice(2).to_a.each_with_index do |array_of_2_filters, indx|
-      .o-layout{class: indx > 2 ? "u-display-none c-home-catalog-line" : "c-home-catalog-line is-early"}
+      .o-layout{class: indx > 2 ? "u-display-none c-home-catalog-line is-late" : "c-home-catalog-line is-early"}
         - array_of_2_filters.each do |filt|
           - name = filt[:name].to_s
           - slug = filt[:slug]
