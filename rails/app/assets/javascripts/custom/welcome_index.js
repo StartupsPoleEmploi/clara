@@ -89,7 +89,7 @@ clara.js_define("welcome_index", {
         $e.removeClass("c-home-catalog-seemore")
         $e.addClass("c-home-catalog-seeless")
         $e.text("Voir moins")
-        $e.addClass("u-display-none")
+        // $e.addClass("u-display-none")
         if (!see_more_already_clicked) {
           see_more_already_clicked = true
           $("div.c-home-catalog-replacable").replaceTagName("img")
