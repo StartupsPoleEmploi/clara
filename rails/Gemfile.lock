@@ -112,6 +112,9 @@ GEM
     administrate-field-active_storage (0.3.5)
       administrate (>= 0.2.2)
       rails (>= 6.0)
+    administrate-field-paperclip (0.0.6)
+      administrate (~> 0.13)
+      rails (>= 4.2)
     annotate (2.4.0)
     autoprefixer-rails (9.7.6)
       execjs
@@ -289,6 +292,12 @@ GEM
       bcrypt (~> 3.1)
       jwt (~> 1.5)
       rails (>= 4.2)
+    kt-paperclip (6.2.2)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -551,6 +560,7 @@ DEPENDENCIES
   administrate (= 0.13.0)
   administrate-field-active_storage
   administrate-field-ckeditor!
+  administrate-field-paperclip
   administrate_exportable!
   annotate
   autoprefixer-rails
@@ -581,6 +591,7 @@ DEPENDENCIES
   jbuilder
   kaminari
   knock
+  kt-paperclip
   launchy
   letter_opener_web
   listen

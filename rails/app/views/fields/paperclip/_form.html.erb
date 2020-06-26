@@ -1,0 +1,26 @@
+<div class="paperclip-form-label">
+  <%= f.label field.attribute %>
+</div>
+<div class="paperclip-form">
+  <div class="paperclip-existing">
+    <% if field.url.present? %>
+      <%= image_tag field.url  %>
+    <% else %>
+      Aucune image 
+    <% end %>
+  </div>
+  <div class="paperclip-input">
+    <div class="field-unit__label">
+    </div>
+    <div class="field-unit__field">
+      <div>
+        <% if field.url.present? %>
+          Remplacer par :
+        <% end %>        
+      </div>
+      <div>
+        <%= f.file_field field.attribute %>
+      </div>
+    </div>  
+  </div>
+</div>

@@ -10,6 +10,7 @@ class FilterDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     attachment: Field::ActiveStorage.with_options(show_preview_size: [150, 150]),
+    illustration: Field::Paperclip,
     ordre_affichage: Field::Number,
     ordre_affichage_home: Field::Number,
     author: Field::String,
@@ -37,7 +38,8 @@ class FilterDashboard < Administrate::BaseDashboard
     :aids,
     :name,
     :slug,
-    :attachment,
+    # :attachment,
+    :illustration,
     :author,
     :ordre_affichage_home,
   ].freeze
@@ -50,7 +52,8 @@ class FilterDashboard < Administrate::BaseDashboard
     :icon,
     :ordre_affichage,
     :aids,
-    :attachment,
+    # :attachment,
+    :illustration,
     :author,
     :ordre_affichage_home,
   ].freeze

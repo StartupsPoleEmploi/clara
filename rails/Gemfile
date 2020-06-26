@@ -73,6 +73,9 @@ gem 'image_processing'
 gem 'active_storage_validations'
 gem 'cloudinary'
 
+gem 'administrate-field-paperclip'
+gem 'kt-paperclip'
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "database_cleaner"
