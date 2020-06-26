@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 33.1.5 (26/06/2020)
+[#1609f] finishing images upload
+
 ## 33.1.4 (26/06/2020)
 [#1609e] paperclip
 

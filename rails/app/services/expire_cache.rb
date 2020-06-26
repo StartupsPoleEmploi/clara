@@ -1,4 +1,3 @@
-# deprecated
 class ExpireCache
 
   def call

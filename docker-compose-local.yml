@@ -25,7 +25,6 @@ services:
     volumes:
       - "../private/env/developpement/.env:/railsapp/.env"
       - './rails:/railsapp'
-      - './CHANGELOG.md:/railsapp/CHANGELOG.md'
       - bundle:/usr/local/bundle
       - node_modules:/railsapp/node_modules
     ports:

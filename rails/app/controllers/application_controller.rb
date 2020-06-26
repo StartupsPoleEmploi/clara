@@ -4,6 +4,8 @@ require 'asker'
 class ApplicationController < ActionController::Base
   include Clearance::Controller
   protect_from_forgery with: :exception
+  
+  before_action :check_cache
 
   # back button that works, see http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
   before_action :set_cache_headers
@@ -14,11 +16,17 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
 
+  def check_cache
+    unless File.file?(Rails.root.join('public','activated_models.txt'))
+      ActivatedModelsGeneratorService.new.regenerate
+    end
+  end
+
   def sign_in(user)
     session.clear
     super
   end
-  
+
   def set_response_language_header
       response.headers["Content-Language"] = "fr-FR"
   end

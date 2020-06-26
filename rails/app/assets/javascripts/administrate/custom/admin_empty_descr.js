@@ -9,8 +9,6 @@ clara.js_define("admin_empty_descr", {
         function(i,e){
           if (_.isEmpty($(e).text().trim()) && !$(e).hasClass("attribute-data--paperclip")) {
             $(e).text("Non renseigné");
-          } else if ($(e).text().trim() === "No attachment") {
-            $(e).text("Aucun");
           }
         }
       );
