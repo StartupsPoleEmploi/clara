@@ -13,14 +13,6 @@ module Admin
       super
     end
 
-    def destroy_attachment
-      avatar = requested_resource.attachment.find(params[:attachment_id])
-      avatar.purge
-      render json: {
-        status: 'ok'
-      }
-    end
-
     def find_resource(param)
       result = Filter.find_by(slug: param)
       result.blank? ? Filter.find_by(id: param) : result

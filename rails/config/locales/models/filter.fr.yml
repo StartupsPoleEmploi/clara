@@ -2,7 +2,6 @@ fr:
   activerecord:
     labels: &labels
       name: Nom
-      attachment: Photographie d'illustration
       author: Crédit photo
       is_hidden: Cacher le filtre sur la page d'accueil
       aids: Aides rattachées au filtre

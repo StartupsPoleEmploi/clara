@@ -18,15 +18,6 @@ class Filter < ApplicationRecord
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
-  # validates :attachment, content_type: { in: ['image/jpg', 'image/jpeg'], message: 'le fichier choisi n\'est pas une image JPG' }, if: :has_attachment?
-  # validates :attachment, size: { less_than: 50.kilobytes , message: 'taille de la photo : 50 Ko maximum' }, if: :has_attachment?
-  # validates :attachment, dimension: { width: 240, height: 240 , message: 'les dimensions autorisées sont 240x240' }, if: :has_attachment?
-  
-
-  # has_one_attached :attachment
-
-
-
   has_attached_file :illustration
 
   has_and_belongs_to_many :aids
@@ -43,7 +34,6 @@ class Filter < ApplicationRecord
   friendly_id :name, use: :slugged
 
   validates :name, presence: true, uniqueness: true
-  # validates_with AttachmentPresenceValidator, attributes: :illustration
   validates_with AttachmentSizeValidator, attributes: :illustration, less_than: 50.kilobytes, message: 'taille de 50 Ko maximum'
   validates_attachment_content_type :illustration, :content_type => ["image/jpg", "image/jpeg"], message: 'seules les images JPG sont autorisées'
   validates_attachment :illustration, dimensions: { height: 240, width: 240 }
