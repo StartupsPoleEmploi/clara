@@ -9,7 +9,7 @@
 #  description :string
 #  slug        :string
 #
-require "image_processing/mini_magick"
+# require "image_processing/mini_magick"
 class Filter < ApplicationRecord
   extend FriendlyId
 
@@ -20,8 +20,17 @@ class Filter < ApplicationRecord
 
   has_attached_file :illustration, 
                     :storage => :cloudinary, 
-                    :path => ':id/:style/:filename', 
-                    :cloudinary_credentials => cloudinary_credentials
+                    :path => 'clara/:filename', 
+                    :cloudinary_credentials =>     {
+                      cloud_name: ENV["CLOUDINARY_URL"].split("@")[1],
+                      api_key: ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0],
+                      api_secret: ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1],
+                    },
+                    :cloudinary_upload_options => {
+                      :default => {
+                        :tags => [ 'Clara' ],
+                      }
+                    }
 
   has_and_belongs_to_many :aids
 
@@ -42,14 +51,6 @@ class Filter < ApplicationRecord
   validates_attachment :illustration, dimensions: { height: 240, width: 240 }
   validates :author, presence: true, if: :has_illustration?
 
-  def cloudinary_credentials
-    e = ENV["CLOUDINARY_URL"]
-    {
-      cloud_name: e.split("@")[1],
-      api_key: e.split("://")[1].split(":")[0],
-      api_secret: e.split("://")[1].split("@")[0].split(":")[1],
-    }
-  end
 
   def has_illustration?
     !!illustration_file_name
