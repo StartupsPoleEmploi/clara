@@ -19,5 +19,13 @@
   <%= ap(request.remote_ip).html_safe %>
   </div> 
 
+  <% if params["env"] %>
+    <div>
+      ENV <%= params["env"] %> is :
+    </div> 
+    <div>
+      <%= ap(ENV[params["env"]]).html_safe %>
+    </div> 
+  <% end %>
 
 </div>
