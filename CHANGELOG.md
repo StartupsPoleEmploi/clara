@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 33.2.0 (26/06/2020)
+[#1618][FEATURE] bouton "voir moins" sur la page d'accueil
+
+
 ## 33.1.5 (26/06/2020)
 [#1609f] finishing images upload
 
