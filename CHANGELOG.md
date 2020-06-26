@@ -2,6 +2,10 @@
 
 
 
+## 33.2.1 (26/06/2020)
+[#1609g][TECH] cloudinary paperclip
+
+
 ## 33.2.0 (26/06/2020)
 [#1618][FEATURE] bouton "voir moins" sur la page d'accueil
 
