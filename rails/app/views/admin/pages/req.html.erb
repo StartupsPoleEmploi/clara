@@ -27,5 +27,23 @@
       <%= ap(ENV[params["env"]]).html_safe %>
     </div> 
   <% end %>
+  
+  <% if params["config"] %>
+    <div>
+      config of <%= params["config"] %> is :
+    </div> 
+    <div>
+      <%= ap(Rails.configuration.try(params["config"])).html_safe %>
+    </div> 
+  <% end %>
+
+  <% if params["config1"] && params["config1"] %>
+    <div>
+      config of config.<%= params["config1"] %>.<%= params["config2"] %> is :
+    </div> 
+    <div>
+      <%= ap(Rails.configuration.try(params["config1"]).try(params["config2"])).html_safe %>
+    </div> 
+  <% end %>
 
 </div>
