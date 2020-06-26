@@ -9,7 +9,6 @@
 #  description :string
 #  slug        :string
 #
-# require "image_processing/mini_magick"
 class Filter < ApplicationRecord
   extend FriendlyId
 
