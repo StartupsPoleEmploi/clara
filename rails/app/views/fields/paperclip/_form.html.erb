@@ -1,20 +1,22 @@
+<%- image_size = field.attribute.to_s + "_file_size" %>
+<%- has_image = field.data.instance.try(image_size).to_i > 0 %>
+<%- appender = has_image ? " actuelle" : "" %>
+
 <div class="paperclip-form-label">
-  <%= f.label field.attribute %>
+  <%= f.label field.attribute.to_s + appender %> 
 </div>
 <div class="paperclip-form">
   <div class="paperclip-existing">
-    <% if field.url.present? %>
+    <% if has_image %>
       <%= image_tag field.url  %>
-    <% else %>
-      Aucune image 
     <% end %>
   </div>
   <div class="paperclip-input">
     <div class="field-unit__label">
     </div>
-    <div class="field-unit__field">
+    <div class="field-unit__field" style="<%= has_image ? 'width:inherit' : 'margin-left: 0' %>">
       <div>
-        <% if field.url.present? %>
+        <% if has_image %>
           Remplacer par :
         <% end %>        
       </div>

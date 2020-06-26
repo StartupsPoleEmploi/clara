@@ -45,3 +45,10 @@ fr:
       header:
         one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
         other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
+  activerecord:
+    errors:
+      models:
+        filter: 
+          attributes:
+            illustration:
+              dimension: erreur, dimension autorisée de 240x240
