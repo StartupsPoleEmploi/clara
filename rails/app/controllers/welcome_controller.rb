@@ -29,6 +29,10 @@ class WelcomeController < ApplicationController
   end
 
   def terms
+    all_home_filters = Filter.homable.map { |e| {credit: e.author, name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
+    hydrate_view({
+      all_home_filters: all_home_filters
+    })
   end
 
   def accessibility
