@@ -2,6 +2,10 @@
 
 
 
+## 33.3.0 (29/06/2020)
+[#1625][FEATURE] crédits photos
+
+
 ## 33.2.2 (26/06/2020)
 [#1609h][TECH] remove active_storage
 

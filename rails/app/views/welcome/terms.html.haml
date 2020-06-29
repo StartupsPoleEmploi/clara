@@ -1,4 +1,5 @@
 - description_data("Conditions générales d'utilisation".html_safe)
+- all_home_filters = local_assigns[:all_home_filters]
 
 .o-card.c-terms
 
@@ -106,4 +107,18 @@
   %p Le site web <a target='_blank' href='http://clara.pole-emploi.fr'>clara.pole-emploi.fr</a> est protégé au titre des dispositions relatives au droit d’auteur défini aux articles L.111-1 et suivants du code de la propriété intellectuelle et au titre des dispositions relatives aux bases de données définies aux articles L.341-1 et suivants du même code. Pôle emploi est titulaire de l’ensemble des droits de propriété intellectuelle sur les éléments composant le site.
   %p Sans préjudice des dispositions prévues à l’article L.122-5 du code de la propriété intellectuelle, toute représentation, reproduction ou diffusion, intégrale ou partielle du site, sur quelque support que ce soit, sans l'autorisation expresse et préalable de Pôle emploi constitue un acte de contrefaçon, sanctionné au titre des articles L.335-2 et L.335-3 du même code.
   %p Par ailleurs, les marques Pôle emploi et Clara sont protégées au titre des articles L.712-1 et suivants du code de la propriété intellectuelle. Toute représentation, reproduction ou diffusion, intégrale ou partielle de l’une de ces marques, sur quelque support que ce soit, sans l'autorisation expresse et préalable de Pôle emploi constitue un acte de contrefaçon, sanctionné au titre des articles L.716-1 du même code.
-  
+
+  %h2 8. Crédits photos
+  .o-layout
+    - all_home_filters.each do |filt|
+      - name = filt[:name].to_s
+      - src = filt[:url]
+      - credit = filt[:credit]
+      .o-layout__item{:class => "u-1/1 u-1/2@desktop u-1/4@wide"}
+        %div.c-terms-credit
+          %div
+            %img{alt: name, src: src }
+          %div
+            =credit
+      
+
