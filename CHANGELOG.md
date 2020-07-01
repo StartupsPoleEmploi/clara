@@ -2,6 +2,10 @@
 
 
 
+## 33.3.1 (29/06/2020)
+[#6][DESIGN] left align
+
+
 ## 33.3.0 (29/06/2020)
 [#1625][FEATURE] crédits photos
 

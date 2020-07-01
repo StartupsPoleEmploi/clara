@@ -14,16 +14,16 @@
         .c-newhomehero-covid__text
           Des précisions peuvent être apportées directement sur nos contenus, sur le site de Pôle emploi ou ceux de nos partenaires
     .c-newhomehero-hero-container.u-useful-width.u-useful-width--larger.u-margin-constraint
-      .o-layout.o-layout--middle
+      .c-newhomehero-hero-insider.o-layout.o-layout--middle
         .o-layout__item{:class => "u-1/1 u-2/3@desktop"}
-          %h1.c-newhomehero__title{:class => "u-text--center u-textalign-left-from@desktop"} 
+          %h1.c-newhomehero__title{:class => "u-textalign-left"} 
             %span Boostez votre
             %span recherche d'emploi
             %span en moins de 4 minutes
         .o-layout__item{:class => "u-1/1 u-1/3@desktop"}
           %div{:class => "u-hide u-show@desktop"}
             = image_tag(empty_image, alt: "", data: { "src" => image_path("jump.svg") }) 
-      .o-layout.o-layout--middle.c-newhomehero-actions
+      .c-newhomehero-hero-insider.o-layout.o-layout--middle.c-newhomehero-actions
         .o-layout__item{:class => "u-1/1 u-2/3@desktop"}
           = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
             = f.submit 'Je commence', class: 'c-main-cta2'
@@ -44,5 +44,5 @@
                   %button.c-btn.c-btn--result.is-modal-video.u-margin-vertical.js-modal-close
                     Fermer la fenêtre
 
-          .c-newhomehero-duration
+          .c-newhomehero-hero-insider.c-newhomehero-duration
             Durée : 1min 30sec
