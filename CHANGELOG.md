@@ -1,8 +1,11 @@
 # CLARA Changelog
 
 
+## 33.3.2 (01/07/2020)
+[#7][DESIGN] bandeau COVID réduit
 
-## 33.3.1 (29/06/2020)
+
+## 33.3.1 (01/07/2020)
 [#6][DESIGN] left align
 
 
