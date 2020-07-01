@@ -3,9 +3,11 @@ class PeconnectController < ApplicationController
 
   def index
 
-    base_url = request.base_url
-    state = Digest::SHA1.hexdigest rand(1000000000).to_s
-    nonce = Digest::SHA1.hexdigest rand(1000000000).to_s
+    incoming_uri = URI.parse(request.base_url)
+
+    base_url = "https://#{incoming_uri.host}"
+    state = Digest::SHA1.hexdigest(rand(1000000000).to_s)
+    nonce = Digest::SHA1.hexdigest(rand(1000000000).to_s)
 
     clientid = ENV['ESD_CLIENTID']
 
@@ -32,7 +34,7 @@ class PeconnectController < ApplicationController
 
   def callback
     p '- - - - - - - - - - - - - - callback- !!!!!! - - - - - - - - - - - - - - -' 
-    ap params
+    params.inspect
     p ''
   end
 
