@@ -244,12 +244,12 @@ h2.c-newhomenumber__title {
 .c-newhomehero-hero-container {
   margin-top: 14px;
 }
-.c-newhomehero-hero-container.u-margin-constraint {
+
+.c-newhomehero-hero-insider {
   @include mq($until: tablet) {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 6px;
   }  
-}
+ }
 
 .c-newhomehero-actions {
   margin-top: -10px;

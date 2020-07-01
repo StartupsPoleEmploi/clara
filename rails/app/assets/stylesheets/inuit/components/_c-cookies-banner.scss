@@ -46,15 +46,15 @@
 }
 
 .c-cookies-banner-line.is-first {
-  margin-top: 16px;  
+  margin-top: 16px;    
   @include mq($from: desktop) {
     margin-top: 0;
   }  
 }
 
 .c-cookies-banner-line {
-  text-align: center;
-  @include mq($from: desktop) {
-    text-align: left;
+  text-align: left;
+  @include mq($until: tablet) {
+    padding-left: 6px;
   }
 }
