@@ -21,9 +21,9 @@ class Filter < ApplicationRecord
                     :storage => :cloudinary, 
                     :path => 'clara/:filename', 
                     :cloudinary_credentials =>     {
-                      cloud_name: ENV["CLOUDINARY_URL"].split("@")[1],
-                      api_key: ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0],
-                      api_secret: ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1],
+                      cloud_name: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("@")[1] : "",
+                      api_key: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0] : "",
+                      api_secret: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1] : "",
                     },
                     :cloudinary_upload_options => {
                       :default => {
