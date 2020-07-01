@@ -210,6 +210,7 @@ h2.c-newhomenumber__title {
 /* Covid19 section
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/
 .c-newhomehero-covid {
+  cursor: pointer;
   position: relative;
   border: solid 1px #ee534f;
   background-color: white;
@@ -229,6 +230,7 @@ h2.c-newhomenumber__title {
 }
 .c-newhomehero-covid__text {
   font-size: 14px;
+  display: none;
   @include mq($from: tablet) {
     font-size: 16px;
   }

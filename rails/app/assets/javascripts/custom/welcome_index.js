@@ -9,6 +9,17 @@ clara.js_define("welcome_index", {
     store.clearAll();
     console.log("Version : " + clara.version);
 
+    var is_covid_displayed = false;
+    $(".c-newhomehero-covid").click(function(e){
+      if (is_covid_displayed) {
+        is_covid_displayed = false;
+        $(".c-newhomehero-covid__text").css("display", "none")
+      } else {
+        is_covid_displayed = true;
+        $(".c-newhomehero-covid__text").css("display", "block")
+      }
+    })
+
     $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
 
     $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
