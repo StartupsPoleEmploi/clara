@@ -117,10 +117,7 @@ h1.c-newhomehero__title {
 }
 
 .c-newhomehero__cta {
-  text-align: center;
-  @include mq($from: desktop) {
-    text-align: left;
-  }  
+  text-align: left;
 }
 
 
@@ -247,6 +244,12 @@ h2.c-newhomenumber__title {
 .c-newhomehero-hero-container {
   margin-top: 14px;
 }
+.c-newhomehero-hero-container.u-margin-constraint {
+  @include mq($until: tablet) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }  
+}
 
 .c-newhomehero-actions {
   margin-top: -10px;
@@ -254,10 +257,9 @@ h2.c-newhomenumber__title {
 
 .c-newhomehero-durationcontainer {
   margin-top: 12px;
-  text-align: center;
+  text-align: left;
   @include mq($from: desktop) {
     margin-top: 0;
-    text-align: left;
   }  
 }
 
@@ -299,14 +301,10 @@ a.c-newhomehero-discover:hover {
 }
 .c-newhomehero-duration {
   margin-top: -12px;
-  margin-left: -50px;
+  margin-left: 56px;
   color: #403c43;
   font-size: 16px;
-  text-align: center;
-  @include mq($from: desktop) {
-    text-align: left;
-    margin-left: 56px;
-  }
+  text-align: left;
   @include mq($from: wide) {
     font-size: 18px;
   }
