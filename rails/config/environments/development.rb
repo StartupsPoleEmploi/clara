@@ -1,6 +1,8 @@
 Rails.application.configure do
 
   config.hosts << "bs-local.com"
+  config.hosts << "lvh.me"
+  config.hosts << "dboureau.beta.pole-emploi.fr"
 
 
   # See https://stackoverflow.com/a/36294165/2595513
