@@ -10,8 +10,6 @@ clara.js_define("welcome_index", {
     console.log("Version : " + clara.version);
 
     var is_covid_displayed = $($(".c-newhomehero-covid__text")[0]).is(":visible");
-    console.log('is_covid_displayed')
-    console.log(is_covid_displayed)
     $(".c-newhomehero-covid").click(function(e){
       $(".c-newhomehero-covid__text").removeClass("u-hide")
       $(".c-newhomehero-covid__text").removeClass("u-show@tablet")
