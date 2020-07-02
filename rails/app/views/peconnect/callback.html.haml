@@ -1,6 +1,8 @@
-%div
-  callback page
-%div
-  params
-%div
-  =ap(params.permit(params.keys).to_h).html_safe
+.u-useful-width.u-useful-width--larger.u-margin-constraint
+
+  %div
+    Bienvenue !
+  %div
+    =@info["family_name"]
+  %div
+    =@info["given_name"]
