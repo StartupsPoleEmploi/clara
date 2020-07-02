@@ -34,8 +34,49 @@ class PeconnectController < ApplicationController
 
   def callback
     p '- - - - - - - - - - - - - - callback- !!!!!! - - - - - - - - - - - - - - -' 
-    params.inspect
+
+    incoming_uri = URI.parse(request.base_url)
+    base_url = "https://#{incoming_uri.host}"
+    all_params = params.permit(params.keys).to_h.with_indifferent_access
+    clientid = ENV['ESD_CLIENTID']
+    clientsecret = ENV['ESD_CLIENTSECRET']
+    ap all_params
     p ''
+
+    my_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/access_token?realm=%2findividu'
+    my_url_host = 'authentification-candidat.pole-emploi.fr'
+    my_url_path = '/connexion/oauth2/access_token?realm=%2findividu'
+    my_form_params = {
+      # 'realm'=>'/individu',
+      'grant_type' => "authorization_code",
+      'code' => all_params[:code],
+      'client_id' => clientid,
+      'client_secret' => clientsecret,
+      'redirect_uri'=>"#{base_url}/peconnect_callback",
+    }
+
+    ap my_form_params
+
+    # my_http_client = http_client(my_url_host, 443)
+    # ap post_form(my_http_client, my_url_path, my_form_params)
+    my_uri = URI.parse(my_url)
+
+    my_response = HttpService.new.post_form(my_uri, my_form_params)
+    ap JSON.parse(my_response.body)
+    ap 'form posted'
+  end
+
+  def post_form(http_client, path, form_params)
+    encoded_form = URI.encode_www_form(form_params)
+    headers = { content_type: "application/x-www-form-urlencoded" }
+    http_client.request_post(path, encoded_form, headers)
+  end
+
+  def http_client(host, port)
+    http_client = Net::HTTP.new(host, port)
+    http_client.read_timeout = 10 # seconds
+    http_client.use_ssl = true
+    http_client
   end
 
 end
