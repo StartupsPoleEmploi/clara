@@ -12,16 +12,27 @@
   }
 }
 
+.c-home-sticky__firstblock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  @include mq($from: tablet) {
+    flex-direction: row;
+  }
+}
+
+// .c-home-sticky-inner {
+//   margin-left: 0;
+//   @include mq($from: tablet) {
+//     margin-left: 271px;
+//   }
+// }
+
 .c-home-sticky__txt {
   font-size: 18px;
   line-height: 1.29;
   color: #312e33;
-  text-align: center;
-  margin-top: 14px;
-  @include mq($from: tablet) {
-    margin-top: 53px;
-    text-align: right;
-  }
   @include mq($from: desktop) {
     font-size: 21px;
   }
@@ -30,16 +41,31 @@
   }
 }
 
-.c-home-sticky__firstblock {
-  text-align: center;
+.c-home-sticky__txt.is-first {
+  margin-top: 14px;
+  margin-right: 0;
   @include mq($from: tablet) {
-    text-align: left;
+    margin-top: 0;
+    margin-right: 1rem;
+  }
+}
+.c-home-sticky__txt.is-last {
+  margin-left: 0;
+  @include mq($from: tablet) {
+    margin-left: 1rem;
   }
 }
 
-.c-home-sticky__secondblock {
-  text-align: center;
-  @include mq($from: tablet) {
-    text-align: left;
-  }
-}
+// .c-home-sticky__firstblock {
+//   text-align: center;
+//   @include mq($from: tablet) {
+//     text-align: left;
+//   }
+// }
+
+// .c-home-sticky__secondblock {
+//   text-align: center;
+//   @include mq($from: tablet) {
+//     text-align: left;
+//   }
+// }

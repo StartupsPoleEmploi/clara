@@ -1,8 +1,8 @@
 .c-home-sticky
-  .o-layout
-    .o-layout__item.c-home-sticky__firstblock{:class => "u-1/1 u-3/6@tablet"}
-      .c-home-sticky__txt
+  .c-home-sticky-inner
+    .c-home-sticky__firstblock
+      .c-home-sticky__txt.is-first
         Découvrez à <strong>quelles aides vous êtes éligible</strong>
-    .o-layout__item.c-home-sticky__secondblock{:class => "u-1/1 u-3/6@tablet"}
-      = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form2', class: "c-newhomehero__cta2" do |f|
-        = f.submit 'Je commence', class: 'c-main-cta2'
+      .c-home-sticky__txt.is-last
+        = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form2', class: "c-newhomehero__cta2" do |f|
+          = f.submit 'Je commence', class: 'c-main-cta2'
