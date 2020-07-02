@@ -15,7 +15,7 @@ class PeconnectController < ApplicationController
       'realm' => '/individu',
       'response_type'=>'code',
       'client_id'=>clientid,
-      'scope'=>"application_#{clientid} api_peconnect-individuv1",
+      'scope'=>"application_#{clientid} api_peconnect-individuv1 email openid profile",
       'redirect_uri'=>"#{base_url}/peconnect_callback",
       'state'=>state,
       'nonce'=>nonce,
@@ -62,8 +62,27 @@ class PeconnectController < ApplicationController
     my_uri = URI.parse(my_url)
 
     my_response = HttpService.new.post_form(my_uri, my_form_params)
+    my_parsed = JSON.parse(my_response.body)
     ap JSON.parse(my_response.body)
-    ap 'form posted'
+    ap 'form posted++++'
+    ap my_parsed["access_token"]
+    get_info(my_parsed["access_token"])
+  end
+
+  def get_info(access_token)
+    p '- - - - - - - - - - - - - - access_token- - - - - - - - - - - - - - - -' 
+    pp access_token
+    p ''
+
+    url = URI.parse('https://api.emploi-store.fr/partenaire/peconnect-individu/v1/userinfo')
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    req = Net::HTTP::Get.new(url.request_uri)
+    req["Authorization"] = "Bearer #{access_token}"
+    response = http.request(req)
+    ap '------------------------ info finally is --------------------------'
+    ap response
+    ap JSON.parse(response.body)
   end
 
   def post_form(http_client, path, form_params)
@@ -80,6 +99,30 @@ class PeconnectController < ApplicationController
   end
 
 end
+
+
+# function peConnectGetIndividu($access_token)
+#   {
+#     $opts=array(
+#       "http"=>array(
+#         'method'=>'GET',
+#         'max-redirects'=>10,
+#         'header'=>"Authorization: Bearer $access_token\r\n",
+#         'ignore_errors'=>true
+#       ),
+#       "ssl"=>array(
+#         'verify_peer'=>false,
+#         'verify_peer_name'=>false
+#       )
+#     );
+#     if($context=stream_context_create($opts))
+#     {
+#       $individu=@file_get_contents('https://api.emploi-store.fr/partenaire/peconnect-individu/v1/userinfo',false,$context);
+#       return $individu;
+#     }
+#     return false;
+#   }
+
 
 # static function peConnectGetForwardUrl($quark,$uri)
 #     {
