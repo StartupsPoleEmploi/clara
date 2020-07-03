@@ -5,6 +5,16 @@ class Breadcrumb < ViewObject
     @where = string_for(locals[:where])
     @context = locals[:context] if locals[:context]
     @current_path = StringToRouteService.new(@context.request).path
+    @larger_container = locals[:larger_container] || "no"
+    @margin_constraint = locals[:margin_constraint] || "yes"
+  end
+
+  def additional_css
+    res = ''
+    res += ' u-useful-width--larger' if @larger_container == "yes"
+    res += ' u-useful-width--normal' if @larger_container == "no"
+    res += ' u-margin-constraint' if @margin_constraint == "yes"
+    res
   end
 
   def display_form?
@@ -17,6 +27,10 @@ class Breadcrumb < ViewObject
 
   def display_results?
     @current_path == "aides_path" && @context.params[:for_id]
+  end
+
+  def display_cgu?
+    @current_path == "conditions_generales_d_utilisation_path"
   end
 
   def display_confidentiality?

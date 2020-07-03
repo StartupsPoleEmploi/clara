@@ -1,7 +1,7 @@
 - v = view_object(:breadcrumb, local_assigns)
-- larger_container ||= "no"
 
-.c-breadcrumb.u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
+
+.c-breadcrumb.u-useful-width{"class" => "#{v.additional_css}"}
   .o-layout
     .o-layout__item{:class => "u-1/2"}
       %nav{"aria-label" => "breadcrumbs", :role => "navigation"}
@@ -14,6 +14,8 @@
           %a.c-breadcrumb-current.c-breadcrumb-current--question{ :href => ""} Formulaire
         - elsif v.display_search?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats de la recherche
+        - elsif v.display_cgu?
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Conditions générales d'utilisation
         - elsif v.display_results?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats
         - elsif v.display_confidentiality?
