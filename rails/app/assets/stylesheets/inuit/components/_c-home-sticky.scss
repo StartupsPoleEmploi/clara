@@ -37,7 +37,9 @@
 .c-home-sticky__txt.is-first {
   margin-top: 14px;
   margin-right: 0;
+  text-align: center;
   @include mq($from: tablet) {
+    text-align: left;
     margin-top: 0;
     margin-right: 1rem;
   }
