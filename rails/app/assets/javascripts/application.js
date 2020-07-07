@@ -14,6 +14,7 @@
 //= require lodash/lodash
 //= require lodash/lodash_extension
 //= require jquery/jquery
+//= require jquery/jquery-modal
 //= require jquery/jquery_extension
 //= require jquery/jquery-cache-image
 //= require jquery/jquery-accessible-modal-window-aria

@@ -1,0 +1,86 @@
+.welcome .blocker {
+  background-color: rgba(255, 255, 255, 0.91);
+  box-shadow: 0 0 2px #000;
+}
+.welcome .modal {
+  box-shadow: 0 0 2px #000;
+}
+
+h2.c-start-modal-title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 900;
+  line-height: 1;
+  color: #152e3a;
+  font-size: 22px;
+}
+
+.c-start-modal-heading {
+  color: #207bad;
+  font-weight: 500;
+}
+
+.c-start-modal-media .o-media__img {
+  margin-right: 5px;
+}
+
+.c-start-modal-media.is-last {
+  margin-top: 10px;
+}
+
+#login-form.modal {
+  max-width: 600px;
+  border-radius: 4px;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include mq($from: tablet) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.c-start-modal-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.c-start-modal__button {
+  width: 255px;
+}
+
+
+.c-start-modal__separator {
+  margin: 5px 0;
+}
+
+.c-start-modal__separator:after,
+.c-start-modal__separator:before{
+  color: #dddfe7;
+  text-decoration:none;
+  content:"";
+  @include mq($from: tablet) {
+    content:"\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+    text-decoration:line-through;
+  }
+}
+
+#start-clara {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #086ea6;
+  font-family: Roboto;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: inherit;
+  }
+}
+
+#start-clara:hover {
+  color: #054f78;
+}
+

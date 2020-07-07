@@ -4,5 +4,4 @@
       .c-home-sticky__txt.is-first
         Découvrez à <strong>quelles aides vous êtes éligible</strong>
       .c-home-sticky__txt.is-last
-        = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form2', class: "c-newhomehero__cta2" do |f|
-          = f.submit 'Je commence', class: 'c-main-cta2'
+        %input.c-main-cta2{"data-disable-with" => "Je commence", :type => 'button', :value => "Je commence", id: 'start_wizard_form2', class: 'c-main-cta2'}
