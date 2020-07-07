@@ -2,6 +2,10 @@
 
 
 
+## 34.0.0 (07/07/2020)
+[#32][FEATURE] Démarrage PE Connect ou formulaire
+
+
 ## 33.3.5 (03/07/2020)
 [#11][DESIGN] CGU
 
