@@ -47,7 +47,7 @@
                 .c-start-modal-text
                   Clara vous propose les aides qui correspondent le mieux à votre profil
             .c-start-modal-actions
-              %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?#{url_of_peconnect}"}
+              %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{url_of_peconnect}"}
                 = image_tag(empty_image, alt: "Se connecter avec Pôle Emploi", class: 'c-start-modal__button', data: { "src" => image_path("logo-pe-connect.svg") }) 
               .c-start-modal__separator
                 &nbsp;ou&nbsp;  
