@@ -118,7 +118,7 @@ jQuery(document).ready(function($) {
 
             $page.removeAttr('aria-hidden');
 
-            var delay = $js_modal.css("animation-duration");
+            var delay = $js_modal.css("animation-duration") || '0s';
             if (delay != '0s') {
                 var timeout = parseFloat(delay.replace('s', '')) * 1000;
                 timeout++;
