@@ -2,8 +2,8 @@
 
 
 
-## 34.0.1 (07/07/2020)
-[#32b][DEBUG] commencer avec PE connect
+## 34.0.2 (07/07/2020)
+[#32c][DEBUG] debug URL
 
 
 ## 34.0.0 (07/07/2020)

@@ -14,12 +14,11 @@ class PeConnectUrl
       'nonce'=>nonce,
     }
 
-    "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?#{myparams.to_query}"
+    "#{myparams.to_query}"
   end
  
   def peconnect_oauth2_auth
-    # Do not work currently
-    # ENV['PECONNECT_OAUTH2_AUTH']
+    ENV['PECONNECT_OAUTH2_AUTH']
   end
 
   def clientsecret
