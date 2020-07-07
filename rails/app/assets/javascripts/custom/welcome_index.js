@@ -9,6 +9,10 @@ clara.js_define("welcome_index", {
     store.clearAll();
     console.log("Version : " + clara.version);
 
+    $("#start_wizard_form2").click(function(argument) {
+      $("#start_wizard_form1").click()
+    })
+
     var is_covid_displayed = $($(".c-newhomehero-covid__text")[0]).is(":visible");
     $(".c-newhomehero-covid").click(function(e){
       $(".c-newhomehero-covid__text").removeClass("u-hide")
