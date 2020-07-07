@@ -32,7 +32,7 @@ clara.js_define("welcome_index", {
     })
 
     var sticky_calc = function() {      
-      var ELT = "input.c-main-cta2"
+      var ELT = ".js-hideable"
       var top_of_element = $(ELT).offset().top;
       var bottom_of_element = $(ELT).offset().top + $(ELT).outerHeight();
       var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
