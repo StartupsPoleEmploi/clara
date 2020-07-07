@@ -1,0 +1,79 @@
+h2.c-start-modal-title {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-weight: 900;
+  line-height: 1;
+  color: #152e3a;
+  font-size: 22px;
+  @include mq($from: tablet) {
+    font-size: 28px;
+  }
+  @include mq($from: wide) {
+    margin-top: 15px;
+  }
+}
+
+#login-form.modal {
+  max-width: 700px;
+  border-radius: 4px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.c-start-modal-actions {
+  text-align: center;
+}
+
+.c-start-modal__button {
+  width: 255px;
+}
+
+
+.c-start-modal__separator:after,
+.c-start-modal__separator:before{
+    content:"\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+    text-decoration:line-through;
+    color: #dddfe7;
+}
+
+#start-clara {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: #086ea6;
+  font-family: Roboto;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#start-clara:hover {
+  color: #054f78;
+}
+// .c-start-modal__separator {
+//     overflow: hidden;
+//     text-align: center;
+// }
+
+// .c-start-modal__separator:before,
+
+// .c-start-modal__separator:after {
+//     background-color: #000;
+//     content: "";
+//     display: inline-block;
+//     height: 1px;
+//     position: relative;
+//     vertical-align: middle;
+//     width: 50%;
+// }
+
+// .c-start-modal__separator:before {
+//     right: 0.5em;
+//     margin-left: -50%;
+// }
+
+// .c-start-modal__separator:after {
+//     left: 0.5em;
+//     margin-right: -50%;
+// }
