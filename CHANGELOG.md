@@ -2,6 +2,10 @@
 
 
 
+## 34.0.1 (07/07/2020)
+[#32b][DEBUG] commencer avec PE connect
+
+
 ## 34.0.0 (07/07/2020)
 [#32][FEATURE] commencer avec PE connect
 

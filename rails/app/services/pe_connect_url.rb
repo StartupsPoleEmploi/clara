@@ -18,7 +18,8 @@ class PeConnectUrl
   end
  
   def peconnect_oauth2_auth
-    ENV['PECONNECT_OAUTH2_AUTH']
+    # ENV['PECONNECT_OAUTH2_AUTH']
+    "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize"
   end
 
   def clientsecret
