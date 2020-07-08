@@ -23,8 +23,13 @@ class PeconnectController < ApplicationController
       "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
       "niveau_formation" => _actual_formation(formation),
       "coord" => _actual_coord(coord),
-      "alloc" => _actual_allocation(alloc)
+      "alloc" => _actual_allocation(alloc),
+      "prenom" => _actual_prenom(info["given_name"])
     }.with_indifferent_access)
+  end
+
+  def _actual_prenom(prenom_str)
+    _upcase_first_letter(prenom_str.downcase)
   end
 
   def _actual_formation(h_formation)
@@ -65,6 +70,10 @@ class PeconnectController < ApplicationController
       end
     end
     "Allocation perçue : #{res}"
+  end
+
+  def _upcase_first_letter(str)
+    str[0].upcase + str[1..-1]
   end
 
 end
