@@ -21,6 +21,16 @@
   }
 }
 
+.c-callback {
+  margin-bottom: 3rem;
+}
+
+.c-callback-layout.o-layout {
+  margin-left: -22px;
+  @include mq($from: mobile) {
+    margin-left: 0;
+  }  
+}
 
 .c-callback-title {
   font-size: 30px;

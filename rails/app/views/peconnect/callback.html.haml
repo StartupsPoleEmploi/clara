@@ -12,22 +12,19 @@
         Vous êtes connecté.e
 
   .c-callback-layout.o-layout.o-layout--middle
-    .o-layout__item{:class => "u-1/5"}
-    .o-layout__item{:class => "u-3/5"}
+    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
+    .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
       %h2.c-callback-subtitle Mon profil
-      %div
-        =d[:family_name]
-      %div
-        =d[:given_name]
-      %div
-        =d[:libelle_statut_individu]
-      %div
-        =d[:date_de_naissance]
-      %div
-        =d[:niveau_formation]
-      %div
-        =d[:coord]
-      %div
-        =d[:alloc]
-    .o-layout__item{:class => "u-1/5"}
+      %ul    
+        %li
+          =d[:libelle_statut_individu]
+        %li
+          =d[:date_de_naissance]
+        %li
+          =d[:niveau_formation]
+        %li
+          =d[:coord]
+        %li
+          =d[:alloc]
+    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 
