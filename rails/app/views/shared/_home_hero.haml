@@ -1,3 +1,5 @@
+- pe_connect_base_url = url_of_peconnect.start_with?('?') ? url_of_peconnect : ('?' + url_of_peconnect)
+
 .c-newhomehero
   .c-navbar
     .c-newhomehero__header
@@ -47,7 +49,7 @@
                 .c-start-modal-text
                   Clara vous propose les aides qui correspondent le mieux à votre profil
             .c-start-modal-actions
-              %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{url_of_peconnect}"}
+              %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{pe_connect_base_url}"}
                 = image_tag(empty_image, alt: "Se connecter avec Pôle Emploi", class: 'c-start-modal__button', data: { "src" => image_path("logo-pe-connect.svg") }) 
               .c-start-modal__separator
                 &nbsp;ou&nbsp;  
