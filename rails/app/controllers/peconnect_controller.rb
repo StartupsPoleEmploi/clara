@@ -2,40 +2,42 @@ require 'digest/sha1'
 class PeconnectController < ApplicationController
 
   def index
-
-    state = Digest::SHA1.hexdigest(rand(1000000000).to_s)
-    nonce = Digest::SHA1.hexdigest(rand(1000000000).to_s)
-
-    myparams = {
-      'realm' => '/individu',
-      'response_type'=>'code',
-      'client_id'=>clientid,
-      'scope'=>"application_#{clientid} api_peconnect-individuv1 email openid profile",
-      'redirect_uri'=>"#{base_url}/peconnect_callback",
-      'state'=>state,
-      'nonce'=>nonce,
-    }
-
-    @built_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?'
-    @built_url += myparams.to_query
-
+    @built_url = ''
   end
 
   def callback
-    all_params = params.permit(params.keys).to_h.with_indifferent_access
-    my_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/access_token?realm=%2findividu'
-    my_form_params = {
-      'grant_type' => "authorization_code",
-      'code' => all_params[:code],
-      'client_id' => clientid,
-      'client_secret' => clientsecret,
-      'redirect_uri'=>"#{base_url}/peconnect_callback",
-    }
 
-    my_uri = URI.parse(my_url)
-    my_response = HttpService.new.post_form(my_uri, my_form_params)
-    my_parsed = JSON.parse(my_response.body)
-    res = get_info(my_parsed["access_token"])
+    code = ExtractParam.new(params).call("code")
+    p '- - - - - - - - - - - - - - code- - - - - - - - - - - - - - - -' 
+    pp code
+    p ''
+    base_url = "https://#{request.host}"    
+    p '- - - - - - - - - - - - - - base_url- - - - - - - - - - - - - - - -' 
+    pp base_url
+    p ''
+
+    access_token = PeConnectAccessToken.new.call(base_url, code)
+
+    # all_params = params.permit(params.keys).to_h.with_indifferent_access
+    # my_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/access_token?realm=%2findividu'
+    # my_form_params = {
+    #   'grant_type' => "authorization_code",
+    #   'code' => all_params[:code],
+    #   'client_id' => clientid,
+    #   'client_secret' => clientsecret,
+    #   'redirect_uri'=>"#{base_url}/peconnect_callback",
+    # }
+
+    # my_uri = URI.parse(my_url)
+    # my_response = HttpService.new.post_form(my_uri, my_form_params)
+    # my_parsed = JSON.parse(my_response.body)
+    # access_token = my_parsed["access_token"]
+
+    info = PeConnectInfo.new.call(access_token)
+    # res = get_statut(my_parsed["access_token"])
+    # res = get_info(my_parsed["access_token"])
+    ap '*************************************************************************************'
+    ap res
     @info = {
       "family_name" => res["family_name"],
       "given_name" => res["given_name"]
@@ -65,6 +67,17 @@ class PeconnectController < ApplicationController
     req = Net::HTTP::Get.new(url.request_uri)
     req["Authorization"] = "Bearer #{access_token}"
     response = http.request(req)
+    JSON.parse(response.body)
+  end
+
+  def get_statut(access_token)
+    url = URI.parse('https://api.emploi-store.fr/partenaire/peconnect-statut/v1/statut')
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    req = Net::HTTP::Get.new(url.request_uri)
+    req["Authorization"] = "Bearer #{access_token}"
+    response = http.request(req)
+    ap response.body
     JSON.parse(response.body)
   end
 
