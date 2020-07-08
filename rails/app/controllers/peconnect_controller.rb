@@ -16,6 +16,7 @@ class PeconnectController < ApplicationController
     statut = PeConnectStatut.new.call(access_token)
     birth = PeConnectBirthdate.new.call(access_token)
     formation = PeConnectFormation.new.call(access_token)
+    coord = PeConnectCoord.new.call(access_token)
     ap '*************************************************************************************'
     ap info
     ap statut
@@ -27,7 +28,7 @@ class PeconnectController < ApplicationController
       "code_statut_individu" => statut["codeStatutIndividu"],
       "libelle_statut_individu" => statut["libelleStatutIndividu"],
       "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
-      # "niveau_formation" => formation[0]["niveau"]),
+      "niveau_formation" => formation.try(:[], 0).try(:[], "niveau").try(:[], "libelle"),
     }.with_indifferent_access)
   end
 
