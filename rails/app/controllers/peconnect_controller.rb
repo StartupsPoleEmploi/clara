@@ -32,8 +32,8 @@ class PeconnectController < ApplicationController
       "libelle_statut_individu" => statut["libelleStatutIndividu"],
       "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
       "niveau_formation" => formation.try(:[], 0).try(:[], "niveau").try(:[], "libelle"),
-      "coord" => coord.try(:[], "codePostal") + ' ' + coord.try(:[], "libelleCommune")
-      "allocation" => _actual_allocation(alloc)
+      "coord" => coord.try(:[], "codePostal") + ' ' + coord.try(:[], "libelleCommune"),
+      "alloc" => _actual_allocation(alloc)
     }.with_indifferent_access)
   end
 
