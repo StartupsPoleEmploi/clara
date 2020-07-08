@@ -11,18 +11,23 @@
       %span
         Vous êtes connecté.e
 
-    %h2.c-callback-subtitle Mon profil
-    %div
-      =d[:family_name]
-    %div
-      =d[:given_name]
-    %div
-      =d[:libelle_statut_individu]
-    %div
-      =d[:date_de_naissance]
-    %div
-      =d[:niveau_formation]
-    %div
-      =d[:coord]
-    %div
-      =d[:alloc]
+  .c-callback-layout.o-layout.o-layout--middle
+    .o-layout__item{:class => "u-1/5"}
+    .o-layout__item{:class => "u-3/5"}
+      %h2.c-callback-subtitle Mon profil
+      %div
+        =d[:family_name]
+      %div
+        =d[:given_name]
+      %div
+        =d[:libelle_statut_individu]
+      %div
+        =d[:date_de_naissance]
+      %div
+        =d[:niveau_formation]
+      %div
+        =d[:coord]
+      %div
+        =d[:alloc]
+    .o-layout__item{:class => "u-1/5"}
+
