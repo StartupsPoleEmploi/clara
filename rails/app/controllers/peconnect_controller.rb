@@ -33,7 +33,7 @@ class PeconnectController < ApplicationController
     # my_parsed = JSON.parse(my_response.body)
     # access_token = my_parsed["access_token"]
 
-    info = PeConnectInfo.new.call(access_token)
+    res = PeConnectInfo.new.call(access_token)
     # res = get_statut(my_parsed["access_token"])
     # res = get_info(my_parsed["access_token"])
     ap '*************************************************************************************'
