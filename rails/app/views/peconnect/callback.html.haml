@@ -1,8 +1,16 @@
-.u-margin-constraint.u-useful-width.u-useful-width--normal
+- description_data("Vous êtes connecté".html_safe)
 
-  %div
-    Bienvenue !
-  %div
-    =@info["family_name"]
-  %div
-    =@info["given_name"]
+.c-callback
+
+  .u-useful-width.u-margin-constraint.u-margin-top
+    = render 'shared/breadcrumb', {margin_constraint: "no"}
+    
+    %h1.c-callback-title Vous êtes connecté
+
+
+    %div
+      Bienvenue !
+    %div
+      =@info["family_name"]
+    %div
+      =@info["given_name"]

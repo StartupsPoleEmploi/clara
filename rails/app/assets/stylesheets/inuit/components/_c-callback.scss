@@ -1,0 +1,64 @@
+.c-callback {
+  .c-breadcrumb {
+    margin: 10px 0;
+    a {
+      text-decoration: none;
+    }
+  }
+  a {
+    color: #057dbc;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  a:hover {
+    color: #035884;
+  }
+  p {
+    width: 700px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+  }
+}
+
+
+.c-callback-credit {
+  margin-bottom: 2rem;
+  max-width: 240px;
+}
+
+.c-callback-title {
+  font-size: 40px;
+  margin-top: 11px;
+}
+
+.c-callback-h2title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 2;
+  color: #000000;
+}
+
+a.c-callback-return {
+  text-decoration: none;
+  text-transform: uppercase;
+  border: solid 2px #057dbc;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.58px;
+  text-align: center;
+  color: #152e3a;
+  padding: 17px 34px;
+}
+
+.c-callback-return-container.is-first {
+  margin-top: 35px;
+}
+.c-callback-return-container.is-last {
+  margin: 20px 0;
+}
+
+a.c-callback-return:hover {
+  background-color: #d3d3d352;
+}
+
