@@ -6,7 +6,7 @@
     = render 'shared/breadcrumb', {margin_constraint: "no"}
     
     %h1.c-callback-title Vous êtes connecté
-    
+
     %h2.c-callback-subtitle Mon profil
     %div
       =d[:family_name]
@@ -16,3 +16,5 @@
       =d[:code_statut_individu]
     %div
       =d[:libelle_statut_individu]
+    %div
+      =d[:date_de_naissance]

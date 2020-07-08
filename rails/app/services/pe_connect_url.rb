@@ -8,7 +8,7 @@ class PeConnectUrl < PeConnectService
       'realm' => '/individu',
       'response_type'=>'code',
       'client_id'=>clientid,
-      'scope'=>"application_#{clientid} api_peconnect-individuv1 email openid profile api_peconnect-statutv1 statut",
+      'scope'=>"application_#{clientid} api_peconnect-individuv1 email openid profile api_peconnect-statutv1 statut api_peconnect-datenaissancev1 datenaissance",
       'redirect_uri'=>"#{base_url}/peconnect_callback",
       'state'=>state,
       'nonce'=>nonce,
