@@ -18,13 +18,6 @@ class PeconnectController < ApplicationController
     formation = PeConnectFormation.new.call(access_token)
     coord = PeConnectCoord.new.call(access_token)
     alloc = PeConnectAlloc.new.call(access_token)
-    ap '*************************************************************************************'
-    ap info
-    ap statut
-    ap birth
-    ap formation
-    ap coord
-    ap alloc
     hydrate_view({
       "libelle_statut_individu" => _actual_libelle(statut["libelleStatutIndividu"]),
       "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
