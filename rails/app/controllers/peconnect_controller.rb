@@ -47,7 +47,7 @@ class PeconnectController < ApplicationController
   end
 
   def _actual_libelle(str_libelle)
-    "Inscrit à Pôle Emploi : #{str_libelle}"
+    "Statut : #{str_libelle}"
   end
 
   def _actual_age(str_birth)
