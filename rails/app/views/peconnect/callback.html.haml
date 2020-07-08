@@ -1,15 +1,18 @@
 - description_data("Vous êtes connecté".html_safe)
+- d = local_assigns
 
 .c-callback
-
   .u-useful-width.u-margin-constraint.u-margin-top
     = render 'shared/breadcrumb', {margin_constraint: "no"}
     
     %h1.c-callback-title Vous êtes connecté
-
-
+    
     %h2.c-callback-subtitle Mon profil
     %div
-      =@info["family_name"]
+      =d[:family_name]
     %div
-      =@info["given_name"]
+      =d[:given_name]
+    %div
+      =d[:code_statut_individu]
+    %div
+      =d[:libelle_statut_individu]

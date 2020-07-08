@@ -8,40 +8,21 @@ class PeconnectController < ApplicationController
   def callback
 
     code = ExtractParam.new(params).call("code")
-    p '- - - - - - - - - - - - - - code- - - - - - - - - - - - - - - -' 
-    pp code
-    p ''
     base_url = "https://#{request.host}"    
-    p '- - - - - - - - - - - - - - base_url- - - - - - - - - - - - - - - -' 
-    pp base_url
-    p ''
 
     access_token = PeConnectAccessToken.new.call(base_url, code)
 
-    # all_params = params.permit(params.keys).to_h.with_indifferent_access
-    # my_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/access_token?realm=%2findividu'
-    # my_form_params = {
-    #   'grant_type' => "authorization_code",
-    #   'code' => all_params[:code],
-    #   'client_id' => clientid,
-    #   'client_secret' => clientsecret,
-    #   'redirect_uri'=>"#{base_url}/peconnect_callback",
-    # }
-
-    # my_uri = URI.parse(my_url)
-    # my_response = HttpService.new.post_form(my_uri, my_form_params)
-    # my_parsed = JSON.parse(my_response.body)
-    # access_token = my_parsed["access_token"]
-
-    res = PeConnectInfo.new.call(access_token)
-    # res = get_statut(my_parsed["access_token"])
-    # res = get_info(my_parsed["access_token"])
+    info = PeConnectInfo.new.call(access_token)
+    statut = PeConnectStatut.new.call(access_token)
     ap '*************************************************************************************'
-    ap res
-    @info = {
-      "family_name" => res["family_name"],
-      "given_name" => res["given_name"]
-    }
+    ap info
+    ap statut
+    hydrate_view({
+      "family_name" => info["family_name"],
+      "given_name" => info["given_name"],
+      "code_statut_individu" => statut["codeStatutIndividu"],
+      "libelle_statut_individu" => statut["libelleStatutIndividu"],
+    }.with_indifferent_access)
   end
 
   def clientsecret
