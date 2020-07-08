@@ -22,6 +22,7 @@ class PeconnectController < ApplicationController
     ap statut
     ap birth
     ap formation
+    ap coord
     hydrate_view({
       "family_name" => info["family_name"],
       "given_name" => info["given_name"],
@@ -29,6 +30,7 @@ class PeconnectController < ApplicationController
       "libelle_statut_individu" => statut["libelleStatutIndividu"],
       "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
       "niveau_formation" => formation.try(:[], 0).try(:[], "niveau").try(:[], "libelle"),
+      "coord" => coord.try(:[], "codePostal") + ' ' + coord.try(:[], "libelleCommune")
     }.with_indifferent_access)
   end
 
