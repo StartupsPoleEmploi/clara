@@ -16,6 +16,8 @@
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats de la recherche
         - elsif v.display_cgu?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Conditions générales d'utilisation
+        - elsif v.display_callback?
+          %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Données 
         - elsif v.display_results?
           %a.c-breadcrumb-current.c-breadcrumb-current--results{ :href => ""} Résultats
         - elsif v.display_confidentiality?

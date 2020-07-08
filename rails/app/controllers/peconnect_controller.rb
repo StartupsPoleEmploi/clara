@@ -2,85 +2,81 @@ require 'digest/sha1'
 class PeconnectController < ApplicationController
 
   def index
-
-    state = Digest::SHA1.hexdigest(rand(1000000000).to_s)
-    nonce = Digest::SHA1.hexdigest(rand(1000000000).to_s)
-
-    myparams = {
-      'realm' => '/individu',
-      'response_type'=>'code',
-      'client_id'=>clientid,
-      'scope'=>"application_#{clientid} api_peconnect-individuv1 email openid profile",
-      'redirect_uri'=>"#{base_url}/peconnect_callback",
-      'state'=>state,
-      'nonce'=>nonce,
-    }
-
-    @built_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?'
-    @built_url += myparams.to_query
-
+    @built_url = ''
   end
 
   def callback
-    all_params = params.permit(params.keys).to_h.with_indifferent_access
-    my_url = 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/access_token?realm=%2findividu'
-    my_form_params = {
-      'grant_type' => "authorization_code",
-      'code' => all_params[:code],
-      'client_id' => clientid,
-      'client_secret' => clientsecret,
-      'redirect_uri'=>"#{base_url}/peconnect_callback",
-    }
 
-    my_uri = URI.parse(my_url)
-    my_response = HttpService.new.post_form(my_uri, my_form_params)
-    my_parsed = JSON.parse(my_response.body)
-    res = get_info(my_parsed["access_token"])
-    @info = {
-      "family_name" => res["family_name"],
-      "given_name" => res["given_name"]
-    }
+    code = ExtractParam.new(params).call("code")
+    base_url = "https://#{request.host}"    
+
+    access_token = PeConnectAccessToken.new.call(base_url, code)
+
+    info = PeConnectInfo.new.call(access_token)
+    statut = PeConnectStatut.new.call(access_token)
+    birth = PeConnectBirthdate.new.call(access_token)
+    formation = PeConnectFormation.new.call(access_token)
+    coord = PeConnectCoord.new.call(access_token)
+    alloc = PeConnectAlloc.new.call(access_token)
+    hydrate_view({
+      "libelle_statut_individu" => _actual_libelle(statut["libelleStatutIndividu"]),
+      "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
+      "niveau_formation" => _actual_formation(formation),
+      "coord" => _actual_coord(coord),
+      "alloc" => _actual_allocation(alloc),
+      "prenom" => _actual_prenom(info["given_name"])
+    }.with_indifferent_access)
   end
 
-  def clientsecret
-    ENV['ESD_CLIENTSECRET']
+  def _actual_prenom(prenom_str)
+    _upcase_first_letter(prenom_str.downcase)
   end
 
-  def clientid
-    ENV['ESD_CLIENTID']
+  def _actual_formation(h_formation)
+    libelle_formation = h_formation.try(:[], 0).try(:[], "niveau").try(:[], "libelle")
+    res = libelle_formation || "non défini"
+    "Diplôme obtenu le plus haut : #{res}"
   end
 
-  def incoming_uri
-    URI.parse(request.base_url)
+  def _actual_coord(h_coord)
+    res = 'Non définie'
+    if h_coord.try(:[], "libelleCommune")
+      res = h_coord.try(:[], "codePostal") + ' ' + h_coord.try(:[], "libelleCommune")
+    end
+    "Commune de résidence : #{res}"
   end
 
-  def base_url
-    "https://#{incoming_uri.host}"
+  def _actual_libelle(str_libelle)
+    "Statut : #{str_libelle}"
   end
 
-  def get_info(access_token)
-    url = URI.parse('https://api.emploi-store.fr/partenaire/peconnect-individu/v1/userinfo')
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    req = Net::HTTP::Get.new(url.request_uri)
-    req["Authorization"] = "Bearer #{access_token}"
-    response = http.request(req)
-    JSON.parse(response.body)
+  def _actual_age(str_birth)
+    res = nil
+    if str_birth
+      dob = DateTime.strptime(str_birth, '%Y-%m-%dT%H:%M:%S%z')
+      now = Date.today
+      res = now.year - dob.year - (now.strftime('%m%d') < dob.strftime('%m%d') ? 1 : 0)
+    end
+    "Vous avez #{res} ans"
   end
 
-  def post_form(http_client, path, form_params)
-    encoded_form = URI.encode_www_form(form_params)
-    headers = { content_type: "application/x-www-form-urlencoded" }
-    http_client.request_post(path, encoded_form, headers)
+  def _actual_allocation(obj_allocation)
+    res = 'Aucune'
+    if obj_allocation.is_a?(Hash)
+      if obj_allocation["beneficiairePrestationSolidarite"] == true
+        res = "Bénéficiaire d'un minima social (ASS, AAH, RSA, AER)"
+      elsif obj_allocation["beneficiairePrestationSolidarite"] == true
+        res = "Bénéficiaire de l'assurance chômage"
+      end
+    end
+    "Allocation perçue : #{res}"
   end
 
-  def http_client(host, port)
-    http_client = Net::HTTP.new(host, port)
-    http_client.read_timeout = 10 # seconds
-    http_client.use_ssl = true
-    http_client
+  def _upcase_first_letter(str)
+    str[0].upcase + str[1..-1]
   end
 
 end
 
 
+  

@@ -2,6 +2,11 @@
 
 
 
+
+## 34.1.0 (09/07/2020)
+[#26][FEATURE] pré-remplissage des données depuis PE connect
+
+
 ## 34.0.4 (08/07/2020)
 [#32e][DEBUG] debug URL, last
 

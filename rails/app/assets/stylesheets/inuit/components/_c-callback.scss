@@ -1,0 +1,53 @@
+.c-callback {
+  .c-breadcrumb {
+    margin: 10px 0;
+    a {
+      text-decoration: none;
+    }
+  }
+  a {
+    color: #057dbc;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  a:hover {
+    color: #035884;
+  }
+  p {
+    width: 700px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+  }
+}
+
+.c-callback {
+  margin-bottom: 3rem;
+}
+
+.c-callback-layout.o-layout {
+  margin-left: -22px;
+  @include mq($from: mobile) {
+    margin-left: 0;
+  }  
+}
+
+h1.c-callback-title {
+  font-size: 30px;
+  font-weight: bold;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.c-callback-name {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.c-callback-subtitle {
+  color: #1d6a9b;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
