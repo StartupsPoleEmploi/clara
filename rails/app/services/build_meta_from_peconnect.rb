@@ -1,8 +1,7 @@
 class BuildMetaFromPeconnect
   
-  def call(info)
-    res = ''
-    res
+  def call(h)
+    h[:info].slice('given_name')
   end
 
 end
