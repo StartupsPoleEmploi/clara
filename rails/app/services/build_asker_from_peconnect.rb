@@ -2,6 +2,7 @@ class BuildAskerFromPeconnect
   
   def call(peconnect_data)
     asker = Asker.new
+
     asker.v_age = _actual_age(peconnect_data.try(:[], :birth).try(:[], "dateDeNaissance"))
     asker.v_location_citycode = peconnect_data.try(:[], :coord).try(:[], "codeINSEE")
     asker.v_location_zipcode = peconnect_data.try(:[], :coord).try(:[], "codePostal")
@@ -10,8 +11,17 @@ class BuildAskerFromPeconnect
     asker.v_location_label = asker.v_location_citycode + ' ' + asker.v_location_city
     asker.v_inscrit = _actual_inscrit(peconnect_data.try(:[], :statut).try(:[], "codeStatutIndividu"))
     asker.v_diplome = _actual_grade(peconnect_data.try(:[], :formation))
+    asker.v_allocation_type = _actual_alloc(peconnect_data.try(:[], :alloc).try(:[], "beneficiairePrestationSolidarite"))
 
     asker
+  end
+
+  def _actual_alloc(presta_solidarite)
+    res = ''
+    if presta_solidarite == true
+      res = 'ARE_ASP'
+    end
+    res
   end
 
   def _actual_grade(grades)
