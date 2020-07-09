@@ -37,14 +37,6 @@ class PeconnectController < ApplicationController
       asker: asker,
       meta: meta
     })
-    # hydrate_view({
-    #   "libelle_statut_individu" => _actual_libelle(statut["libelleStatutIndividu"]),
-    #   "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
-    #   "niveau_formation" => _actual_formation(formation),
-    #   "coord" => _actual_coord(coord),
-    #   "alloc" => _actual_allocation(alloc),
-    #   "prenom" => _actual_prenom(info["given_name"])
-    # }.with_indifferent_access)
   end
 
   def _actual_prenom(prenom_str)
