@@ -16,10 +16,11 @@ class PeconnectController < ApplicationController
 
   def callback
 
+    fake = ExtractParam.new(params).call("fake")
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
 
-    extraction_h = PeConnectExtraction.new.call(base_url, code)
+    extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
 
     asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
     meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
