@@ -4,7 +4,8 @@ class StringToRouteService
 
   def initialize(request)
     return unless request && request.respond_to?(:fullpath) && request.respond_to?(:request_method)
-    @fullpath = request.fullpath
+    # @fullpath = request.fullpath
+    @fullpath = request.url.split('?').first
     @verb = request.request_method.downcase.to_sym
   end
 

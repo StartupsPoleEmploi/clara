@@ -4,28 +4,33 @@ class PeconnectController < ApplicationController
   def index
     @built_url = ''
   end
+  
+  def post_question_1
+  end
+
+  def callback_question_2
+  end
+
+  def post_question_2
+  end
 
   def callback
 
+    fake = ExtractParam.new(params).call("fake")
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
 
-    access_token = PeConnectAccessToken.new.call(base_url, code)
+    extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
 
-    info = PeConnectInfo.new.call(access_token)
-    statut = PeConnectStatut.new.call(access_token)
-    birth = PeConnectBirthdate.new.call(access_token)
-    formation = PeConnectFormation.new.call(access_token)
-    coord = PeConnectCoord.new.call(access_token)
-    alloc = PeConnectAlloc.new.call(access_token)
+    asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
+    meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
+
+    save_asker(asker)
+
     hydrate_view({
-      "libelle_statut_individu" => _actual_libelle(statut["libelleStatutIndividu"]),
-      "date_de_naissance" => _actual_age(birth["dateDeNaissance"]),
-      "niveau_formation" => _actual_formation(formation),
-      "coord" => _actual_coord(coord),
-      "alloc" => _actual_allocation(alloc),
-      "prenom" => _actual_prenom(info["given_name"])
-    }.with_indifferent_access)
+      asker: asker,
+      meta: meta
+    })
   end
 
   def _actual_prenom(prenom_str)

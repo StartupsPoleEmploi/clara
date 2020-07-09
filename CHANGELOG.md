@@ -3,6 +3,10 @@
 
 
 
+## 34.2.1 (10/07/2020)
+[#26b][FEATURE] pré-remplissage des données depuis PE connect plus précis
+
+
 ## 34.1.0 (09/07/2020)
 [#26][FEATURE] pré-remplissage des données depuis PE connect
 

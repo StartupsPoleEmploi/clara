@@ -20,8 +20,8 @@ class ResultSituation < ViewObject
     _print_boolean(@asker[:v_spectacle])
   end
 
-  def diplome
-    case @asker[:v_diplome]
+  def diplome(asker=@asker)
+    case asker[:v_diplome]
     when 'niveau_1'
       "Bac +4 et +"
     when 'niveau_2'
@@ -67,8 +67,8 @@ class ResultSituation < ViewObject
     @asker[:v_allocation_value_min] || "indisponible"
   end
   
-  def allocation_type
-    case @asker[:v_allocation_type]
+  def allocation_type(asker=@asker)
+    case asker[:v_allocation_type]
     when 'ARE_ASP'
       "ARE ASP"
     when 'ASS_AER_APS_AS-FNE'

@@ -1,9 +1,9 @@
 - description_data("Vous êtes connecté".html_safe)
-- d = local_assigns
+- l = local_assigns
+- v = view_object(:callback_asker, {meta: l[:meta], asker: l[:asker]})
 
 .c-callback
   .u-useful-width.u-margin-constraint.u-margin-top
-    = render 'shared/breadcrumb', {margin_constraint: "no"}
     
     %h1.c-callback-title 
       %span
@@ -14,7 +14,7 @@
       %span
         Bienvenue, 
       %span
-        =d[:prenom]
+        =v.prenom
 
   .c-callback-layout.o-layout.o-layout--middle
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
@@ -22,14 +22,37 @@
       %h2.c-callback-subtitle Mon profil
       %ul    
         %li
-          =d[:libelle_statut_individu]
+          %span
+            Statut :
+          %span
+            =v.inscription
         %li
-          =d[:date_de_naissance]
+          %span
+            Age :
+          %span
+            =v.age
         %li
-          =d[:niveau_formation]
+          %span
+            Diplôme obtenu le plus élevé :
+          %span
+            =v.diplome
         %li
-          =d[:coord]
+          %span
+            Commune de résidence :
+          %span
+            =v.location_label
         %li
-          =d[:alloc]
+          %span
+            Type d'allocation :
+          %span
+            =v.allocation_type
+    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
+
+  .c-callback-layout.o-layout.o-layout--middle
+    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
+    .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
+      %h2.c-callback-subtitle Informations complémentaires
+      = render 'shared/callback_question', {asker: l[:asker]}
+
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 
