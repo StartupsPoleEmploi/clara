@@ -22,9 +22,6 @@ class PeConnectExtraction < PeConnectService
           coord: coord, 
           alloc: alloc}
     end
-    p '- - - - - - - - - - - - - - res- - - - - - - - - - - - - - - -' 
-    pp res
-    p ''
 
     res
   end

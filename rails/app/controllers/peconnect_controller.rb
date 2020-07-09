@@ -23,13 +23,7 @@ class PeconnectController < ApplicationController
     extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
 
     asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
-    p '- - - - - - - - - - - - - - asker- - - - - - - - - - - - - - - -' 
-    ap asker
-    p ''
     meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
-    p '- - - - - - - - - - - - - - meta- - - - - - - - - - - - - - - -' 
-    ap meta
-    p ''
 
     save_asker(asker)
 
