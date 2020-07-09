@@ -20,7 +20,7 @@ class BuildAskerFromPeconnect
     if grades.is_a?(Array)
       obtained = grades.select{|e| e["diplomeObtenu"] == true}
       if obtained.size > 0
-        leveled = obtained.select{|e| e.try(:[], "niveau").try(:[], "code").start_with?('NV')}
+        leveled = obtained.select{|e| e.try(:[], "niveau").try(:[], "code").to_s.start_with?('NV')}
         if leveled.size > 0
           sorted = leveled.sort_by { |e| e.try(:[], "niveau").try(:[], "code")}
           found_grade = sorted[0]
