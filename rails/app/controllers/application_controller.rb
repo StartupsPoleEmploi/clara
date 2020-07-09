@@ -36,8 +36,8 @@ class ApplicationController < ActionController::Base
     redirect_to url, {turbolinks: :advance}
   end
 
-  def save_asker
-    session[:asker] = @asker.attributes.to_json.to_s if @asker
+  def save_asker(asker=@asker)
+    session[:asker] = asker.attributes.to_json.to_s if asker
   end
 
   def require_asker

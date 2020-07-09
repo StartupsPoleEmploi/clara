@@ -3,6 +3,10 @@
 
 
 
+## 34.2.0 (10/07/2020)
+[#27][FEATURE] ajout des données manquantes
+
+
 ## 34.1.0 (09/07/2020)
 [#26][FEATURE] pré-remplissage des données depuis PE connect
 
