@@ -13,6 +13,9 @@ class AddressQuestionsController < ApplicationController
       my_redirect_to QuestionManager.new.getPreviousPath('address', @asker)
     else
       @address = AddressForm.new(allowed_params)
+      p '- - - - - - - - - - - - - - @address- - - - - - - - - - - - - - - -' 
+      pp @address
+      p ''
       if @address.valid?
         if @address.label.present?
           AddressService.new.upload(@address, @asker)
