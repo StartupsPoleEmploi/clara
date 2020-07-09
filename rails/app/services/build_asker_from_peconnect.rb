@@ -25,9 +25,6 @@ class BuildAskerFromPeconnect
   end
 
   def _actual_inscrit(val)
-    p '- - - - - - - - - - - - - - val- - - - - - - - - - - - - - - -' 
-    pp val
-    p ''
     res = ''
     if val == "0"
       res = "en_recherche"
