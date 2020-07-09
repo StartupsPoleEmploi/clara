@@ -19,17 +19,10 @@ class PeconnectController < ApplicationController
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
 
-    access_token = PeConnectAccessToken.new.call(base_url, code)
+    extraction_h = PeConnectExtraction.new.call(base_url, code)
 
-    info = PeConnectInfo.new.call(access_token)
-    statut = PeConnectStatut.new.call(access_token)
-    birth = PeConnectBirthdate.new.call(access_token)
-    formation = PeConnectFormation.new.call(access_token)
-    coord = PeConnectCoord.new.call(access_token)
-    alloc = PeConnectAlloc.new.call(access_token)
-
-    asker = BuildAskerFromPeconnect.new.call({statut: statut, birth: birth, formation: formation, coord: coord, alloc: alloc})
-    meta = BuildMetaFromPeconnect.new.call({info: info})
+    asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
+    meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
 
     save_asker(asker)
 

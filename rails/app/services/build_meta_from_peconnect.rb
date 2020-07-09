@@ -1,6 +1,6 @@
 class BuildMetaFromPeconnect
   
-  def call(peconnect_data)
+  def call(info)
     res = ''
     res
   end

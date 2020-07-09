@@ -19,7 +19,7 @@ class CallbackAsker < ViewObject
   end
 
   def diplome
-    '42'
+    'Bac +2/3'
   end
 
   def location_label
