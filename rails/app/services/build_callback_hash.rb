@@ -6,17 +6,18 @@ class BuildCallbackHash
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
 
-    asker = PullAskerFromSession.new.call(session)
-    meta = PullMetaFromSession.new.call(session)
 
     if _pull_or_stub_data_from_api?(fake, code)
       extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
       asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
       meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
+      SaveMetaToSession.new.call(session, meta)
+      SaveAskerToSession.new.call(session, asker)
+    else
+      asker = PullAskerFromSession.new.call(session)
+      meta = PullMetaFromSession.new.call(session)
     end
 
-    SaveAskerToSession.new.call(session, asker)
-    SaveMetaToSession.new.call(session, meta)
 
     {
       asker: asker,
