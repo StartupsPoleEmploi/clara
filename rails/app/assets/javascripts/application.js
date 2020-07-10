@@ -38,6 +38,7 @@
 //= require_tree ./custom/aides
 //= require custom/intercept_start_by_contract
 //= require custom/edit_cooky
+//= require custom/callback_question
 //= require custom/show_detail
 //= require custom/contact
 //= require custom/google_analytics_push
