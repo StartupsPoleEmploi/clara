@@ -41,11 +41,12 @@
             Commune de résidence :
           %span
             =v.location_label
-        %li
-          %span
-            Type d'allocation :
-          %span
-            =v.allocation_type
+        - if v.allocation_type
+          %li
+            %span
+              Type d'allocation :
+            %span
+              =v.allocation_type
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 
   .c-callback-layout.o-layout.o-layout--middle

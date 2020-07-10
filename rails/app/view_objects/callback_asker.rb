@@ -34,7 +34,12 @@ class CallbackAsker < ViewObject
   end
 
   def allocation_type
-    ResultSituation.new(nil, nil).allocation_type(@asker)
+    res = nil
+    temp = ResultSituation.new(nil, nil).allocation_type(@asker)
+    if temp != 'indisponible'
+      res = temp
+    end
+    res
   end
 
 
