@@ -142,10 +142,7 @@ Rails.application.routes.draw do
 
   get '/stats', to: redirect('https://datastudio.google.com/reporting/1CHDn1yxUb7yK_rgH39nHB1-b90Sg22-q/page/IDGN')
 
-  get '/peconnect', to: 'peconnect#index'
   get '/peconnect_callback', to: 'peconnect#callback'
   post '/peconnect_question', to: 'peconnect#question'
-  post '/peconnect_question_1', to: 'peconnect#post_question_1'
-  get '/peconnect_question_2', to: 'peconnect#question_2'
 
 end
