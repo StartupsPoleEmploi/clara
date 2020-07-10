@@ -51,3 +51,21 @@ h1.c-callback-title {
   font-size: 20px;
   margin-bottom: 12px;
 }
+
+.c-callback-submit {
+  margin-top: 1rem;
+  background-color: #057dbc;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #fafafa;
+  border: none;
+  text-transform: uppercase;
+  padding: .5rem 1rem;
+  @include mq($from: tablet) {
+    font-size: 16px;
+    padding: 1.5rem 3rem;
+  }
+  cursor: pointer;
+}

@@ -12,7 +12,11 @@
   line-height: normal;
   letter-spacing: normal;
   color: #000000;
+}
 
+.c-radiolabel--callback {
+  font-size: 16px;
+  opacity: inherit;
 }
 
 .c-fieldset > .c-radiolabel:first-of-type {
