@@ -15,9 +15,6 @@ class PeconnectController < ApplicationController
   end
 
   def callback
-    p '- - - - - - - - - - - - - - question- - - - - - - - - - - - - - - -' 
-    ap session[:meta]
-    p ''
     render locals: BuildCallbackHash.new.call(session, params, request)
   end
 
