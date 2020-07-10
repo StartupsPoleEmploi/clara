@@ -1,7 +1,7 @@
 class PullMetaFromSession
 
   def call(session)
-    session[:meta] || {}
+    JSON.parse(session[:meta]) || {}
   end
   
 end

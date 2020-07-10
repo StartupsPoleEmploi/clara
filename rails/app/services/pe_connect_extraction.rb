@@ -21,6 +21,7 @@ class PeConnectExtraction < PeConnectService
           formation: formation, 
           coord: coord, 
           alloc: alloc}
+      ap res
     end
 
     res
