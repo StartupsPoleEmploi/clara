@@ -2,7 +2,10 @@
 
 .c-callback-question
   .o-layout
-    .o-layout__item{:class => "u-1/2"}
-      callback_question here
-    .o-layout__item{:class => "u-1/2"}
+    .o-layout__item{:class => "u-3/4"}
+      - if v.display_duree_d_inscription?
+        = render 'shared/callback_v_duree_inscription', {inscription: InscriptionForm.new(value: asker[:v_duree_d_inscription])}
+      - else
+        = render 'shared/callback_v_preferences', {filters: filters}
+    .o-layout__item{:class => "u-1/4"}
       

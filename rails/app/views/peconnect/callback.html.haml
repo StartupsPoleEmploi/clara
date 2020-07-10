@@ -26,6 +26,12 @@
             Statut :
           %span
             =v.inscription
+        - if !v.duree_d_inscription.blank?
+          %li
+            %span
+              Durée d'inscription :
+            %span
+              =v.duree_d_inscription
         %li
           %span
             Age :
@@ -41,18 +47,21 @@
             Commune de résidence :
           %span
             =v.location_label
-        %li
-          %span
-            Type d'allocation :
-          %span
-            =v.allocation_type
+        - if v.allocation_type
+          %li
+            %span
+              Type d'allocation :
+            %span
+              =v.allocation_type
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 
   .c-callback-layout.o-layout.o-layout--middle
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
     .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
-      %h2.c-callback-subtitle Informations complémentaires
-      = render 'shared/callback_question', {asker: l[:asker]}
+      = render 'shared/callback_question', {asker: l[:asker], filters: l[:filters]}
+
+      
+
 
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 

@@ -3,6 +3,10 @@
 
 
 
+## 34.3.0 (10/07/2020)
+[#27a][FEATURE] première question connectée
+
+
 ## 34.2.1 (10/07/2020)
 [#26b][FEATURE] pré-remplissage des données depuis PE connect plus précis
 

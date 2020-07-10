@@ -3,11 +3,17 @@ class CallbackAsker < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @asker = locals[:asker].attributes.with_indifferent_access
-    @meta = hash_for(locals[:meta])
+    @meta = locals[:meta].with_indifferent_access
   end
 
   def prenom
-    @meta[:given_name]
+    _upcase_first_letter(@meta[:given_name])
+  end
+
+  def _upcase_first_letter(str)
+    local_str = str.downcase
+    final_str = local_str[0].upcase + local_str[1..-1]
+    final_str
   end
 
   def inscription
@@ -33,8 +39,20 @@ class CallbackAsker < ViewObject
     @asker[:v_location_label]
   end
 
+  def duree_d_inscription
+    res = ''
+    res = "plus d'un an" if @asker[:v_duree_d_inscription] == 'plus_d_un_an'
+    res = "moins d'un an" if @asker[:v_duree_d_inscription] == 'moins_d_un_an'
+    res
+  end
+
   def allocation_type
-    ResultSituation.new(nil, nil).allocation_type(@asker)
+    res = nil
+    temp = ResultSituation.new(nil, nil).allocation_type(@asker)
+    if temp != 'indisponible'
+      res = temp
+    end
+    res
   end
 
 

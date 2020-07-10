@@ -10,6 +10,7 @@ class BuildAskerFromPeconnect
     asker.v_location_country = peconnect_data.try(:[], :coord).try(:[], "libellePays")
     asker.v_location_label = asker.v_location_citycode + ' ' + asker.v_location_city
     asker.v_inscrit = _actual_inscrit(peconnect_data.try(:[], :statut).try(:[], "codeStatutIndividu"))
+    asker.v_duree_d_inscription = "non_inscrit" if asker.v_inscrit == "en_recherche"
     asker.v_diplome = _actual_grade(peconnect_data.try(:[], :formation))
     asker.v_allocation_type = _actual_alloc(peconnect_data.try(:[], :alloc).try(:[], "beneficiairePrestationSolidarite"))
 
