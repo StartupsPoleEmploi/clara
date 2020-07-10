@@ -3,11 +3,17 @@ class CallbackAsker < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @asker = locals[:asker].attributes.with_indifferent_access
-    @meta = hash_for(locals[:meta])
+    @meta = JSON.parse(locals[:meta]).with_indifferent_access
   end
 
   def prenom
-    @meta[:given_name]
+    _upcase_first_letter(@meta[:given_name])
+  end
+
+  def _upcase_first_letter(str)
+    local_str = str.downcase
+    final_str = local_str[0].upcase + local_str[1..-1]
+    final_str
   end
 
   def inscription

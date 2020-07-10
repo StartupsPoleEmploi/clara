@@ -7,7 +7,7 @@ class BuildCallbackHash
     base_url = "https://#{request.host}"    
 
 
-    if _pull_or_stub_data_from_api?(fake, code)
+    if _pull_or_stub_data_from_api?(session, fake, code)
       extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
       asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
       meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
@@ -26,8 +26,8 @@ class BuildCallbackHash
     }
   end
   
-  def _pull_or_stub_data_from_api?(fake, code)
-    fake || code
+  def _pull_or_stub_data_from_api?(session, fake, code)
+    (fake || code) && session[:meta].blank?
   end
 
 end

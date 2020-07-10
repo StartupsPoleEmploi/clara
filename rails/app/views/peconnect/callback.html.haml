@@ -26,7 +26,7 @@
             Statut :
           %span
             =v.inscription
-        - if v.duree_d_inscription
+        - if !v.duree_d_inscription.blank?
           %li
             %span
               Durée d'inscription :
