@@ -29,7 +29,8 @@ class PeconnectController < ApplicationController
 
     hydrate_view({
       asker: asker,
-      meta: meta
+      meta: meta,
+      filters:  Filter.with_aid_attached
     })
   end
 
