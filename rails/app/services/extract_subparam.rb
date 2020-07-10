@@ -6,6 +6,5 @@ class ExtractSubparam
       res = params.require(parent_param).permit(param).to_h[param]
     end
     res
-
   end
 end
