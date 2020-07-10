@@ -33,6 +33,13 @@ class CallbackAsker < ViewObject
     @asker[:v_location_label]
   end
 
+  def duree_d_inscription
+    res = ''
+    res = "plus d'un an" if @asker[:v_duree_d_inscription] == 'plus_d_un_an'
+    res = "moins d'un an" if @asker[:v_duree_d_inscription] == 'moins_d_un_an'
+    res
+  end
+
   def allocation_type
     res = nil
     temp = ResultSituation.new(nil, nil).allocation_type(@asker)

@@ -26,6 +26,12 @@
             Statut :
           %span
             =v.inscription
+        - if v.duree_d_inscription
+          %li
+            %span
+              Durée d'inscription :
+            %span
+              =v.duree_d_inscription
         %li
           %span
             Age :
