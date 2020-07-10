@@ -3,6 +3,10 @@
 
 
 
+## 34.3.1 (13/07/2020)
+[#27b][FEATURE] 2ème question connectée
+
+
 ## 34.3.0 (10/07/2020)
 [#27a][FEATURE] première question connectée
 
