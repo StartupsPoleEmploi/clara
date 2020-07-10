@@ -1,11 +1,15 @@
 class EnrichAskerFromParams
 
   def call(asker, params)
-    asker.v_duree_d_inscription = extract_duree_d_inscription(params)
+    asker.v_duree_d_inscription = _extract_duree_d_inscription(params)
   end
 
-  def extract_duree_d_inscription(params)
-    ExtractParam.new(params).call("inscription_form")
+  def _extract_duree_d_inscription(params)
+    res = nil
+    if params.has_key?(:inscription_form)
+      res = params.require(:inscription_form).permit(:value).to_h[:value]
+    end
+    res
   end
 
 end
