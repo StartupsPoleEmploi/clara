@@ -8,6 +8,9 @@
   }
 }
 .c-filterbox2 {
+  input, label {
+    cursor: pointer;
+  }
   margin-bottom: .5rem;
   label {
     padding-left: .5rem;
