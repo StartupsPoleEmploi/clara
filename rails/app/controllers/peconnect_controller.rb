@@ -14,24 +14,31 @@ class PeconnectController < ApplicationController
   def post_question_2
   end
 
+  def question
+    redirect_to peconnect_callback_path
+  end
+
   def callback
 
-    fake = ExtractParam.new(params).call("fake")
-    code = ExtractParam.new(params).call("code")
-    base_url = "https://#{request.host}"    
+    render locals: BuildCallbackHash.new.call(session, params, request)
 
-    extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
 
-    asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
-    meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
+    # fake = ExtractParam.new(params).call("fake")
+    # code = ExtractParam.new(params).call("code")
+    # base_url = "https://#{request.host}"    
 
-    save_asker(asker)
+    # extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
 
-    hydrate_view({
-      asker: asker,
-      meta: meta,
-      filters:  Filter.with_aid_attached
-    })
+    # asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
+    # meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
+
+    # save_asker(asker)
+
+    # hydrate_view({
+    #   asker: asker,
+    #   meta: meta,
+    #   filters:  Filter.with_aid_attached
+    # })
   end
 
   def _actual_prenom(prenom_str)

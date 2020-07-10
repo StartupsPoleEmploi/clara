@@ -1,6 +1,6 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 
-= form_with model: inscription, url: inscription_questions_path, :local => true do |f|
+= form_with model: inscription, url: peconnect_question_path, :local => true do |f|
 
   %h2.c-callback-subtitle Depuis combien de temps êtes-vous inscrit•e à Pôle emploi ?
   .c-question__form
