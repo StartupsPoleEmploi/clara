@@ -7,6 +7,12 @@
     justify-content: center;
   }
 }
+.c-filterbox2 {
+  margin-bottom: .5rem;
+  label {
+    padding-left: .5rem;
+  }
+}
 
 .c-filterbox {
   @include mq($until: tablet) {
