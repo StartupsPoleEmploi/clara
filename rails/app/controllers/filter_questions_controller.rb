@@ -23,7 +23,4 @@ private
     my_redirect_to QuestionManager.new.getNextPath('filter', base64_str)
   end
 
-  def allowed_params
-  end
-
 end

@@ -6,6 +6,11 @@ class PeconnectController < ApplicationController
     redirect_to peconnect_callback_path
   end
 
+  def final
+    base64_str = TranslateB64AskerService.new.into_b64(@asker)
+    redirect_to aides_path + '?for_id=' + base64_str
+  end
+
   def callback
     render locals: BuildCallbackHash.new.call(session, params, request)
   end

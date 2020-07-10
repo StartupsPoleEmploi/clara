@@ -144,5 +144,6 @@ Rails.application.routes.draw do
 
   get '/peconnect_callback', to: 'peconnect#callback'
   post '/peconnect_question', to: 'peconnect#question'
+  post '/peconnect_final', to: 'peconnect#final'
 
 end
