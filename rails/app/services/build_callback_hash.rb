@@ -6,8 +6,8 @@ class BuildCallbackHash
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
 
-    asker = session[:asker] || Asker.new
-    meta = session[:meta] || {}
+    asker = PullAskerFromSession.new.call(session)
+    meta = PullMetaFromSession.new.call(session)
 
     if _pull_or_stub_data_from_api?(fake, code)
       extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
@@ -23,7 +23,6 @@ class BuildCallbackHash
       meta: meta,
       filters:  Filter.with_aid_attached
     }
-
   end
   
   def _pull_or_stub_data_from_api?(fake, code)
