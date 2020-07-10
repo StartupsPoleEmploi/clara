@@ -3,12 +3,7 @@ class CallbackAsker < ViewObject
   def after_init(args)
     locals = hash_for(args)
     @asker = locals[:asker].attributes.with_indifferent_access
-    p '- - - - - - - - - - - - - - parse- - - - - - - - - - - - - - - -' 
-    pp locals[:meta]
-    p ''
     @meta = locals[:meta].with_indifferent_access
-
-
   end
 
   def prenom
