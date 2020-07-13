@@ -42,7 +42,7 @@ class CallbackAsker < ViewObject
   def duree_d_inscription
     res = nil
     temp = ResultSituation.new(nil, nil).duree_d_inscription(@asker)
-    if temp != 'indisponible'
+    if temp != 'indisponible' && temp != 'non inscrit'
       res = temp
     end
     res

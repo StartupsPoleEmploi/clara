@@ -18,7 +18,9 @@ class CallbackQuestion < ViewObject
   end
 
   def display_montant?
-    @asker[:v_allocation_value_min].blank?
+    kind = @asker[:v_allocation_type]
+    amount = @asker[:v_allocation_value_min]
+    amount.blank? && ['ARE_ASP', 'ASS_AER_APS_AS-FNE'].include?(kind)
   end
 
 
