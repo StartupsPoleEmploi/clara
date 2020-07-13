@@ -1,6 +1,10 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
 
 = form_with model: category, url: peconnect_question_path, :local => true do |f|
+
+
+  
+  %h2.c-callback-subtitle Êtes-vous actuellement dans l'une des situations suivantes ?
   .c-question__form.c-question-connected
     %fieldset.c-fieldset
       %legend.u-hidden-visually Cochez l'allocation &#xE0; laquelle vous avez droit : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir une.
