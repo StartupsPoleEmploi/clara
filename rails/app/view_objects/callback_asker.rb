@@ -66,5 +66,9 @@ class CallbackAsker < ViewObject
     res
   end
 
+  def allocation_montant
+    asker[:v_allocation_value_min].to_s
+  end
+
 
 end
