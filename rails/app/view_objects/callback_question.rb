@@ -17,5 +17,9 @@ class CallbackQuestion < ViewObject
     @asker[:v_allocation_type].blank?
   end
 
+  def display_montant?
+    @asker[:v_allocation_value_min].blank?
+  end
+
 
 end

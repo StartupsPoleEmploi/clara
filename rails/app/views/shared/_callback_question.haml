@@ -9,6 +9,8 @@
         = render 'shared/callback_v_category', {category: CategoryForm.new(value: asker[:v_category])}
       - elsif v.display_alloc?
         = render 'shared/callback_v_alloc', {alloc: AllocationForm.new(type: asker[:v_allocation_type])}
+      - elsif v.display_montant?
+        = render 'shared/callback_v_alloc_montant', {montant: AreForm.new(minimum_income: asker[:v_allocation_value_min])}
       - else
         = render 'shared/callback_v_preferences', {filters: filters}
     .o-layout__item{:class => "u-1/4"}
