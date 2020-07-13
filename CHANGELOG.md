@@ -3,6 +3,10 @@
 
 
 
+## 34.3.3 (13/07/2020)
+[#34][DESIGN] Elargissement modale
+
+
 ## 34.3.2 (13/07/2020)
 [#27c][BUG] Correction bug adresse
 
