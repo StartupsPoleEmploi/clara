@@ -12,16 +12,25 @@ h2.c-start-modal-title {
   font-weight: 900;
   line-height: 1;
   color: #152e3a;
-  font-size: 22px;
+  font-size: 25px;
 }
 
 .c-start-modal-heading {
   color: #207bad;
   font-weight: 500;
+  font-size: 20px;
+}
+
+.c-start-modal-text {
+  font-size: 18px;
 }
 
 .c-start-modal-media .o-media__img {
   margin-right: 5px;
+}
+
+.c-start-modal-media svg {
+  margin-top: .4rem;
 }
 
 .c-start-modal-media.is-last {
@@ -29,7 +38,7 @@ h2.c-start-modal-title {
 }
 
 #login-form.modal {
-  max-width: 600px;
+  max-width: 750px;
   border-radius: 4px;
   padding-bottom: 2rem;
   padding-top: 1rem;
@@ -47,7 +56,7 @@ h2.c-start-modal-title {
 }
 
 .c-start-modal__button {
-  width: 255px;
+  width: 295px;
 }
 
 
@@ -74,10 +83,7 @@ h2.c-start-modal-title {
   font-family: Roboto;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 14px;
-  @include mq($from: tablet) {
-    font-size: inherit;
-  }
+  font-size: 18px;
 }
 
 #start-clara:hover {
