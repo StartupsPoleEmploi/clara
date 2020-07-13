@@ -1,21 +1,20 @@
 - e = view_object(:error_view_object, {errors: flash[:error]})
-- previous_value = montant.minimum_income == "not_applicable" ? "" : montant.minimum_income
 
 = form_with model: montant, :local => true, url: peconnect_question_path do |f|
 
+  %h2.c-callback-subtitle Quel est le montant net journalier de cette allocation ?
+
   .c-are__form.c-question-connected
     %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Exemple : 30,50
-      
+
     = f.text_field :minimum_income, 
-      class: classes_of_input,    
       id: 'montant',            
-      value: previous_value,            
       autofocus: true,           
       autocomplete: 'off',
-      title: "Montant par jour de l'allocation",       
-      'aria-describedby' => aria_described_by_of_input             
+      title: "Montant par jour de l'allocation"
 
     %span.mls.c-are-euro
       €
   
   = f.submit 'Je valide', {class: 'c-callback-submit'}
+

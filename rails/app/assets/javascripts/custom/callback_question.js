@@ -7,8 +7,15 @@ clara.js_define("callback_question", {
   please: function () {
 
     function check_count(count) {
-      console.log(`count ${count}`)
       if (count === 0) {
+        $(".c-callback-submit").hide();
+      } else {
+        $(".c-callback-submit").show();
+      }
+    }
+
+    function check_montant(value) {
+      if (_.isBlank(value)) {
         $(".c-callback-submit").hide();
       } else {
         $(".c-callback-submit").show();
@@ -22,8 +29,22 @@ clara.js_define("callback_question", {
       check_count(count)
     }
 
-    $("input[type='checkbox']").click(check_all)
-    $("input[type='radio']").click(check_all)
+    if ($("input[type='checkbox']").exists() || $("input[type='radio']").exists()) {
+      $("input[type='checkbox']").click(check_all)
+      $("input[type='radio']").click(check_all)      
+    } else {
+      var $montant = $("input#montant")
+
+      $('input#montant').val($.betterFloat($('input#montant').val()))
+      $('input#montant').on('input', function(e) { $(this).val($.betterFloat($(this).val())) })
+
+
+      $montant.on("keyup", function(e) {
+        var kc = e.keyCode;
+        check_montant($montant.val())
+      });
+    }
+
 
     setTimeout(check_all, 1000)
   }

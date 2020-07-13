@@ -59,10 +59,10 @@
               Type d'allocation :
             %span
               =v.allocation_type
-        - if v.allocation_montant
+        - if !v.allocation_montant.blank?
           %li
             %span
-              Type d'allocation :
+              Montant d'allocation :
             %span
               =v.allocation_montant
     .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
