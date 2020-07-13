@@ -3,6 +3,10 @@
 
 
 
+## 34.3.2 (13/07/2020)
+[#27c][BUG] Correction bug adresse
+
+
 ## 34.3.1 (13/07/2020)
 [#27b][FEATURE] 2ème question connectée
 

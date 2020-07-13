@@ -8,7 +8,9 @@ class BuildAskerFromPeconnect
     asker.v_location_zipcode = peconnect_data.try(:[], :coord).try(:[], "codePostal")
     asker.v_location_city = peconnect_data.try(:[], :coord).try(:[], "libelleCommune")
     asker.v_location_country = peconnect_data.try(:[], :coord).try(:[], "libellePays")
-    asker.v_location_label = asker.v_location_citycode + ' ' + asker.v_location_city
+    if !asker.v_location_zipcode.blank? && !asker.v_location_city.blank?
+      asker.v_location_label = "#{asker.v_location_zipcode.to_s} #{asker.v_location_city.to_s}"
+    end
     asker.v_inscrit = _actual_inscrit(peconnect_data.try(:[], :statut).try(:[], "codeStatutIndividu"))
     asker.v_duree_d_inscription = "non_inscrit" if asker.v_inscrit == "en_recherche"
     asker.v_diplome = _actual_grade(peconnect_data.try(:[], :formation))
