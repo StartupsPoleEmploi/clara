@@ -13,5 +13,9 @@ class CallbackQuestion < ViewObject
     @asker[:v_category].blank?
   end
 
+  def display_alloc?
+    @asker[:v_allocation_type].blank?
+  end
+
 
 end
