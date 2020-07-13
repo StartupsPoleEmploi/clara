@@ -15,6 +15,9 @@ class BuildCallbackHash
       SaveAskerToSession.new.call(session, asker)
     else
       asker = PullAskerFromSession.new.call(session)
+      p '- - - - - - - - - - - - - - PullAskerFromSession- - - - - - - - - - - - - - - -' 
+      ap asker
+      p ''
       meta = PullMetaFromSession.new.call(session)
     end
 
