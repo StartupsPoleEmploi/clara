@@ -83,7 +83,10 @@ h2.c-start-modal-title {
   font-family: Roboto;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 14px;
+  @include mq($from: mobile) {
+    font-size: 18px;
+  }
 }
 
 #start-clara:hover {
