@@ -5,6 +5,8 @@
     .o-layout__item{:class => "u-3/4"}
       - if v.display_duree_d_inscription?
         = render 'shared/callback_v_duree_inscription', {inscription: InscriptionForm.new(value: asker[:v_duree_d_inscription])}
+      - elsif v.display_category?
+        = render 'shared/callback_v_category', {category: CategoryForm.new(value: asker[:v_category])}
       - else
         = render 'shared/callback_v_preferences', {filters: filters}
     .o-layout__item{:class => "u-1/4"}

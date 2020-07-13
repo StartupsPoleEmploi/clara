@@ -9,5 +9,9 @@ class CallbackQuestion < ViewObject
     @asker[:v_inscrit] == "oui" && @asker[:v_duree_d_inscription].blank?
   end
 
+  def display_category?
+    @asker[:v_category].blank?
+  end
+
 
 end

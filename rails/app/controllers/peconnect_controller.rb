@@ -1,7 +1,7 @@
 require 'digest/sha1'
 class PeconnectController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:final]
+  skip_before_action :verify_authenticity_token, only: [:final, :question] if Rails.env.development?
   
   def question
     BuildCallbackQuestion.new.call(session, params, request)
