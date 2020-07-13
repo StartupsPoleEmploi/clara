@@ -32,6 +32,12 @@
               Durée d'inscription :
             %span
               =v.duree_d_inscription
+        - if !v.categorie.blank?
+          %li
+            %span
+              Catégorie :
+            %span
+              =v.categorie
         %li
           %span
             Age :

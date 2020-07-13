@@ -40,9 +40,20 @@ class CallbackAsker < ViewObject
   end
 
   def duree_d_inscription
-    res = ''
-    res = "plus d'un an" if @asker[:v_duree_d_inscription] == 'plus_d_un_an'
-    res = "moins d'un an" if @asker[:v_duree_d_inscription] == 'moins_d_un_an'
+    res = nil
+    temp = ResultSituation.new(nil, nil).duree_d_inscription(@asker)
+    if temp != 'indisponible'
+      res = temp
+    end
+    res
+  end
+
+  def categorie
+    res = nil
+    temp = ResultSituation.new(nil, nil).category(@asker)
+    if temp != 'indisponible'
+      res = temp
+    end
     res
   end
 
