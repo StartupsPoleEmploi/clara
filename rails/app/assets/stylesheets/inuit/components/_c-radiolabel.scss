@@ -14,10 +14,13 @@
   color: #000000;
 }
 
-.c-radiolabel--callback {
-  font-size: 16px;
-  opacity: inherit;
+.c-question-connected {
+  .c-radiolabel {
+    font-size: 16px;
+    opacity: inherit;
+  }
 }
+
 
 .c-fieldset > .c-radiolabel:first-of-type {
   margin-top: 0;

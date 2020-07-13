@@ -1,0 +1,24 @@
+- e = view_object(:error_view_object, {errors: flash[:error]})
+- subtitle = 'Ce montant est disponible sur pole-emploi.fr, dans votre espace personnel.'
+= form_with model: montant, :local => true, url: peconnect_question_path do |f|
+
+  .c-question-connected
+    %h2.c-callback-subtitle Quel est le montant net journalier de cette allocation ?
+
+    .c-question-subtitle
+      =subtitle
+
+    .c-are__form
+      %label{for: "montant", :class => "c-label c-are-label", id: "minimum-descr"} Exemple : 30,50
+
+      = f.text_field :minimum_income, 
+        id: 'montant',            
+        autofocus: true,           
+        autocomplete: 'off',
+        title: "Montant par jour de l'allocation"
+
+      %span.mls.c-are-euro
+        €
+    
+    = f.submit 'Je valide', {class: 'c-callback-submit'}
+

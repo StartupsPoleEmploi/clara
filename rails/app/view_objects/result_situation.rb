@@ -39,8 +39,8 @@ class ResultSituation < ViewObject
     end
   end
  
-  def category
-    case @asker[:v_category]
+  def category(asker=@asker)
+    case asker[:v_category]
     when 'cat_12345'
       "12345"
     when 'autres_cat'
@@ -50,8 +50,8 @@ class ResultSituation < ViewObject
     end
   end
   
-  def duree_d_inscription
-    case @asker[:v_duree_d_inscription]
+  def duree_d_inscription(asker=@asker)
+    case asker[:v_duree_d_inscription]
     when 'moins_d_un_an'
       "moins d'un an"
     when 'plus_d_un_an'
