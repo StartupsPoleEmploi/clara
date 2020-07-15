@@ -3,6 +3,10 @@
 
 
 
+## 34.4.0 (15/07/2020)
+[#39][FEATURE] Pouvoir (dés)activer PE Connect
+
+
 ## 34.3.3 (13/07/2020)
 [#34][DESIGN] Elargissement modale
 
