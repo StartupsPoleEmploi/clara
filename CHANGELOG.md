@@ -4,6 +4,10 @@
 
 
 ## 34.4.1 (15/07/2020)
+[#39c][BUG] Pouvoir (dés)activer PE Connect, bug modale
+
+
+## 34.4.1 (15/07/2020)
 [#39b][FEATURE] Pouvoir (dés)activer PE Connect, valeur par défaut
 
 
