@@ -1,4 +1,4 @@
-<%- is_activated ||= false %>
+<%- is_activated = local_assigns[:is_activated] != "off" %>
 <%- activation_text = is_activated ? "Désactiver PE Connect" : "Activer PE Connect" %>
 
 <div style="margin-top: 2rem;margin-left: 2rem;">
