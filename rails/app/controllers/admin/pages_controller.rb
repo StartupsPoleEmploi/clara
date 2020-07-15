@@ -13,6 +13,13 @@ module Admin
       Trace.destroy_all
     end
 
+    def get_switch_peconnect
+    end
+
+    def post_switch_peconnect
+      redirect_to admin_get_switch_peconnect_path
+    end
+
     # load clock
     def get_clock
       first_diff = Clockdiff.first

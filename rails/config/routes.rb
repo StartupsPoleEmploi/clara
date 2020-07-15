@@ -68,6 +68,8 @@ Rails.application.routes.draw do
       post 'post_reinit'
       get 'get_clock'
       post 'post_clock'
+      get 'get_switch_peconnect'
+      post 'post_switch_peconnect'
       get 'get_zrr'
       post 'post_zrr'
       get 'get_cache'
