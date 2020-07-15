@@ -3,7 +3,11 @@
 
 
 
-## 34.4.1 (15/07/2020)
+## 34.5.0 (15/07/2020)
+[#42][FEATURE] Question filtre uniquement
+
+
+## 34.4.2 (15/07/2020)
 [#39c][BUG] Pouvoir (dés)activer PE Connect, bug modale
 
 
