@@ -1,4 +1,5 @@
 - pe_connect_base_url = url_of_peconnect.start_with?('?') ? url_of_peconnect : ('?' + url_of_peconnect)
+- is_peconnect_activated ||= false
 
 .c-newhomehero
   .c-navbar
@@ -58,9 +59,12 @@
                   = f.submit 'Je commence sans me connecter', id: 'start-clara'
               
 
-          %a{:href => "#login-form", :rel => "modal:open", "class" => "js-hideable c-main-cta2", "id" => "start_wizard_form1"}
-            Je commence
-            
+          - if is_peconnect_activated
+            %a{:href => "#login-form", :rel => "modal:open", "class" => "js-hideable c-main-cta2", "id" => "start_wizard_form1"}
+              Je commence
+          - else             
+            = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form', class: "c-newhomehero__cta" do |f|
+              = f.submit 'Je commence', class: 'c-main-cta2'
 
         .o-layout__item{:class => "u-1/1 u-1/3@desktop c-newhomehero-durationcontainer"}
           .c-newhomehero-durationballast

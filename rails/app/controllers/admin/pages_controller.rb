@@ -25,9 +25,6 @@ module Admin
 
     def post_switch_peconnect
       off = Offpeconnect.first
-      p '- - - - - - - - - - - - - - off- - - - - - - - - - - - - - - -' 
-      pp off
-      p ''
       current_val = off.value
       off.value = "on" if current_val == "off"
       off.value = "off" if current_val == "on"

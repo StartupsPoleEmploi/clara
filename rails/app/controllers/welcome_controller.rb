@@ -14,7 +14,8 @@ class WelcomeController < ApplicationController
       slug_of_formation:  ContractType.find_by(slug: "financement-aide-a-la-formation"),
       slug_of_project:    ContractType.find_by(slug: "aide-a-la-definition-du-projet-professionnel"),        
       all_home_filters:   all_home_filters,
-      url_of_peconnect:   PeConnectUrl.new.call("https://#{request.host}")
+      url_of_peconnect:   PeConnectUrl.new.call("https://#{request.host}"),
+      is_peconnect_activated: Offpeconnect.first.value != 'off'
     }
     end
     hydrate_view(view_params)
