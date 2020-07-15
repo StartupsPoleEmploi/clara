@@ -14,21 +14,13 @@ module Admin
     end
 
     def get_switch_peconnect
-      unless Offpeconnect.first
-        Offpeconnect.new.save
-      end
-      off = Offpeconnect.first
       render locals: {
-        is_activated: off.value
+        is_activated: PeconnectActivation.new.get_value
       }
     end
 
     def post_switch_peconnect
-      off = Offpeconnect.first
-      current_val = off.value
-      off.value = "on" if current_val == "off"
-      off.value = "off" if current_val == "on"
-      off.save
+      PeconnectActivation.new.switch_value
       redirect_to admin_get_switch_peconnect_path
     end
 
