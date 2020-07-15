@@ -3,6 +3,10 @@
 
 
 
+## 34.4.1 (15/07/2020)
+[#39b][FEATURE] Pouvoir (dés)activer PE Connect, valeur par défaut
+
+
 ## 34.4.0 (15/07/2020)
 [#39][FEATURE] Pouvoir (dés)activer PE Connect
 
