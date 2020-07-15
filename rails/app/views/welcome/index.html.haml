@@ -11,8 +11,7 @@
 
 
 .c-newhome
-
-  = render partial: 'shared/home_hero', locals: {url_of_peconnect: local_assigns[:url_of_peconnect]}
+  = render partial: 'shared/home_hero', locals: local_assigns.slice(:url_of_peconnect, :is_peconnect_activated)
   = render partial: 'shared/cookies_banner'
   = render partial: 'shared/home_feat'
   = render partial: 'shared/home_md'

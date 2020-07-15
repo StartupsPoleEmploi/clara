@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
     clean_asker_params
     all_home_filters = Filter.homable.map { |e| {name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
     view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
-    {
+    res = {
       nb_of_active_aids:  Aid.activated.count,
       type_aides:         ContractType.aides.map{|e| e.attributes},
       type_dispositifs:   ContractType.dispositifs.map{|e| e.attributes},
@@ -14,8 +14,10 @@ class WelcomeController < ApplicationController
       slug_of_formation:  ContractType.find_by(slug: "financement-aide-a-la-formation"),
       slug_of_project:    ContractType.find_by(slug: "aide-a-la-definition-du-projet-professionnel"),        
       all_home_filters:   all_home_filters,
-      url_of_peconnect:   PeConnectUrl.new.call("https://#{request.host}")
+      url_of_peconnect:   PeConnectUrl.new.call("https://#{request.host}"),
+      is_peconnect_activated: Offpeconnect.first.value != 'off'
     }
+    res
     end
     hydrate_view(view_params)
   end
