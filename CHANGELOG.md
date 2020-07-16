@@ -3,6 +3,10 @@
 
 
 
+## 34.6.0 (16/07/2020)
+[#44][DESIGN] Améliorations modale de démarrage
+
+
 ## 34.5.0 (15/07/2020)
 [#42][FEATURE] Question filtre uniquement
 
