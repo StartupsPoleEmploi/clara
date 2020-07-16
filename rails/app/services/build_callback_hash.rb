@@ -29,7 +29,7 @@ class BuildCallbackHash
   end
   
   def _pull_or_stub_data_from_api?(session, fake, code)
-    (fake || code) && session[:meta].blank?
+    (fake || code)
   end
 
 end
