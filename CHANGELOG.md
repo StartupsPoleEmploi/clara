@@ -2,6 +2,10 @@
 
 
 
+## 34.7.3 (16/07/2020)
+[#43c][BUG] Profil PE
+
+
 ## 34.7.2 (16/07/2020)
 [#43b][BUG] Suppression Google Tag Manager
 
