@@ -8,14 +8,12 @@ class BuildCallbackHash
 
 
     if _pull_or_stub_data_from_api?(session, fake, code)
-      ap 'not in the cache'
       extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
       asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
       meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
       SaveMetaToSession.new.call(session, meta)
       SaveAskerToSession.new.call(session, asker)
     else
-      ap 'in the cache'
       asker = PullAskerFromSession.new.call(session)
       meta = PullMetaFromSession.new.call(session)
     end
