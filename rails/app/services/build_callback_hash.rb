@@ -2,8 +2,6 @@ class BuildCallbackHash
 
   def call(session, params, request)
     
-    session.clear
-
     fake = ExtractParam.new(params).call("fake")
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
@@ -29,7 +27,7 @@ class BuildCallbackHash
   end
   
   def _pull_or_stub_data_from_api?(session, fake, code)
-    (fake || code)
+    (fake || code) && session[:asker].blank?
   end
 
 end
