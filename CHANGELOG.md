@@ -2,6 +2,9 @@
 
 
 
+## 34.7.1 (16/07/2020)
+[#44b][DESIGN] Améliorations modale de démarrage
+
 
 ## 34.7.0 (16/07/2020)
 [#43][FEATURE] Google Tag Manager

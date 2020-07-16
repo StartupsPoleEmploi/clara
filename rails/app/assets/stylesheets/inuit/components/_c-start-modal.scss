@@ -78,20 +78,24 @@ h2.c-start-modal-title {
 }
 
 #start-clara {
-  background: none!important;
+  background-color: #1b2e57;
   border: none;
-  padding: 0!important;
-  color: #086ea6;
+  color: white;
+  padding: 22px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 32px;
   font-family: Roboto;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
   @include mq($from: mobile) {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
 #start-clara:hover {
-  color: #054f78;
 }
 
