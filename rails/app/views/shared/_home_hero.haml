@@ -32,31 +32,25 @@
         .o-layout__item{:class => "u-1/1 u-2/3@desktop"}
           #login-form.modal
             %h2.c-start-modal-title
-              Se connecter avec son compte Pôle Emploi
+              2 moyens rapides d’accéder à vos aides
             .o-media.c-start-modal-media
               .o-media__img
-                <svg version="1.1" id="Capa_1" width="17px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
               .o-media__body
                 .c-start-modal-heading
-                  Votre profil est à jour ? Gagnez du temps
+                  <svg version="1.1" id="Capa_1" width="17px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
+                  %span Votre profil est à jour ? Gagnez du temps
                 .c-start-modal-text
-                  Plus besoin de répondre aux questions du formulaire
+                  %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{pe_connect_base_url}"}
+                    = image_tag(empty_image, alt: "Se connecter avec Pôle Emploi", class: 'c-start-modal__button', data: { "src" => image_path("logo-pe-connect.svg") }) 
             .o-media.c-start-modal-media.is-last
               .o-media__img
-                <svg version="1.1" id="Capa_1" width="17px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
               .o-media__body
                 .c-start-modal-heading
-                  Des aides personnalisées
+                  <svg version="1.1" id="Capa_1" width="17px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
+                  %span Evaluez votre éligibilité en quelques clics !
                 .c-start-modal-text
-                  Clara vous propose les aides qui correspondent le mieux à votre profil
-            .c-start-modal-actions
-              %a{:href => "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{pe_connect_base_url}"}
-                = image_tag(empty_image, alt: "Se connecter avec Pôle Emploi", class: 'c-start-modal__button', data: { "src" => image_path("logo-pe-connect.svg") }) 
-              .c-start-modal__separator
-                &nbsp;ou&nbsp;  
-              %div
-                = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form' do |f|
-                  = f.submit 'Je commence sans me connecter', id: 'start-clara'
+                  = form_with url: welcome_start_wizard_path, :local => true, id: 'start_wizard_form' do |f|
+                    = f.submit 'j\'accède au formulaire', id: 'start-clara'
               
 
           - if is_peconnect_activated

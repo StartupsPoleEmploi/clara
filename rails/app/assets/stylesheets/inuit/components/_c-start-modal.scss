@@ -16,6 +16,7 @@ h2.c-start-modal-title {
 }
 
 .c-start-modal-heading {
+  margin-top: 2rem;
   color: #207bad;
   font-weight: 500;
   font-size: 20px;
@@ -38,6 +39,7 @@ h2.c-start-modal-title {
 }
 
 #login-form.modal {
+  text-align: center;
   max-width: 750px;
   border-radius: 4px;
   padding-bottom: 2rem;
@@ -56,7 +58,7 @@ h2.c-start-modal-title {
 }
 
 .c-start-modal__button {
-  width: 295px;
+  width: 419px;
 }
 
 
@@ -85,7 +87,7 @@ h2.c-start-modal-title {
   cursor: pointer;
   font-size: 14px;
   @include mq($from: mobile) {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
