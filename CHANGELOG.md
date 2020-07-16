@@ -2,6 +2,10 @@
 
 
 
+## 34.7.2 (16/07/2020)
+[#43b][BUG] Suppression Google Tag Manager
+
+
 ## 34.7.1 (16/07/2020)
 [#44b][DESIGN] Améliorations modale de démarrage
 
