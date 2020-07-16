@@ -2,6 +2,8 @@ class BuildCallbackHash
 
   def call(session, params, request)
     
+    session.clear
+
     fake = ExtractParam.new(params).call("fake")
     code = ExtractParam.new(params).call("code")
     base_url = "https://#{request.host}"    
