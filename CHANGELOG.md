@@ -2,6 +2,10 @@
 
 
 
+## 34.8.0 (17/07/2020)
+[#46][FEATURE] Bouton de déconnexion PE Connect
+
+
 ## 34.7.4 (16/07/2020)
 [#43d][BUG] Profil PE ok
 
