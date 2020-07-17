@@ -22,6 +22,13 @@ class WelcomeController < ApplicationController
     hydrate_view(view_params)
   end
 
+  def start_peconnect
+    clean_asker_params
+    url_of_peconnect = PeConnectUrl.new.call("https://#{request.host}")
+    pe_connect_base_url = url_of_peconnect.start_with?('?') ? url_of_peconnect : ('?' + url_of_peconnect)
+    redirect_to "https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize#{pe_connect_base_url}"
+  end
+
   def start_wizard
     clean_asker_params
     my_redirect_to QuestionManager.new.getNextPath

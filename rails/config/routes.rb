@@ -133,6 +133,7 @@ Rails.application.routes.draw do
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
+  post 'welcome/start_peconnect'
 
   get 'accessibilite', to: 'welcome#accessibility'
 
