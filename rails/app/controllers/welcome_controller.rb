@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-  skip_before_action :verify_authenticity_token, only: [:start_peconnect] if Rails.env.development?
+  skip_before_action :verify_authenticity_token, only: [:start_peconnect, :disconnect_from_peconnect] if Rails.env.development?
 
   def index
     SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:original_url))
@@ -34,6 +34,11 @@ class WelcomeController < ApplicationController
   def start_wizard
     clean_asker_params
     my_redirect_to QuestionManager.new.getNextPath
+  end
+
+  def disconnect_from_peconnect
+    clean_asker_params
+    redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{session[:id_token]}&redirect_uri=#{request.host}"
   end
 
   def accept_all_cookies

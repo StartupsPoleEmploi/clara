@@ -1,18 +1,22 @@
 class PeConnectExtraction < PeConnectService
 
-  def call(base_url, code, fake)
+  def call(session, base_url, code, fake)
     res = {}
     
     if fake
       res = to_hash_object(fake)
     else
-      access_token = PeConnectAccessToken.new.call(base_url, code)
+      tokens = PeConnectToken.new.call(base_url, code)
+      access_token = tokens[:access_token]
+      id_token = tokens[:id_token]
       info = PeConnectInfo.new.call(access_token)
       statut = PeConnectStatut.new.call(access_token)
       birth = PeConnectBirthdate.new.call(access_token)
       formation = PeConnectFormation.new.call(access_token)
       coord = PeConnectCoord.new.call(access_token)
       alloc = PeConnectAlloc.new.call(access_token)
+
+      session[:id_token] = id_token
 
       res = 
         {info: info, 
@@ -21,7 +25,6 @@ class PeConnectExtraction < PeConnectService
           formation: formation, 
           coord: coord, 
           alloc: alloc}
-      ap res
     end
 
     res

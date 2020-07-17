@@ -134,6 +134,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
   post 'welcome/start_wizard'
   post 'welcome/start_peconnect'
+  post 'welcome/disconnect_from_peconnect'
 
   get 'accessibilite', to: 'welcome#accessibility'
 

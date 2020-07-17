@@ -3,4 +3,7 @@
   .c-qh
     .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
       = render 'shared/logozone', {display_search: request.path == get_search_front_path}
-    
+    = form_with url: welcome_disconnect_from_peconnect_path, :local => true, id: 'disconnect_peconnect_form' do |f|
+      = f.submit "Se déconnecter", id: 'clara-peconnect-disconnect'
+
+          
