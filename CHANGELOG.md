@@ -1,6 +1,7 @@
 # CLARA Changelog
 
 
+
 ## 34.8.0 (17/07/2020)
 [#46][FEATURE] Bouton de déconnexion PE Connect
 
