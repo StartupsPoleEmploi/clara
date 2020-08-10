@@ -94,8 +94,7 @@ class PasswordsController < Clearance::PasswordsController
     user_param = Clearance.configuration.user_id_parameter
     token = params[:token] || session[:password_reset_token]
 
-    Clearance.configuration.user_model.
-      find_by_id_and_confirmation_token params[user_param], token.to_s
+    ClearanceFindByUserAndToken.new.call(params, user_param, token)
   end
 
   def find_user_for_create

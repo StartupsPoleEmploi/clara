@@ -34,4 +34,8 @@ class ActiveSupport::TestCase
   def same_array?(a, b)
     !a.difference(b).any?
   end
+
+  def text_of(selector)
+    Nokogiri::HTML(response.body).css(selector).text
+  end
 end

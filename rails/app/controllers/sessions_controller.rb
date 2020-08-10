@@ -9,7 +9,6 @@ class SessionsController < Clearance::SessionsController
     raise: false
 
   def create
-
     set_remember_me
 
     @user = authenticate(params)
