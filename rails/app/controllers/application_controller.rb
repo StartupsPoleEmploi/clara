@@ -3,6 +3,7 @@ require 'asker'
 
 class ApplicationController < ActionController::Base
   include Clearance::Controller
+  
   protect_from_forgery with: :exception
   
   before_action :check_cache

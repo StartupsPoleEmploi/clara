@@ -3,4 +3,13 @@
   .c-qh
     .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
       = render 'shared/logozone', {display_search: request.path == get_search_front_path}
-    
+
+      .c-deconnect
+        - if session[:id_token]
+          .c-deconnect-name
+            = StringUtils.new.upcase_first_downcase_others(JSON.parse(session[:meta])['given_name'])
+          .c-deconnect-button
+            = form_with url: welcome_disconnect_from_peconnect_path, :local => true, id: 'disconnect_peconnect_form' do |f|
+              = f.submit "Me déconnecter", id: 'clara-peconnect-disconnect'
+
+          

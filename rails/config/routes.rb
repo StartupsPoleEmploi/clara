@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :passwords, controller: "passwords", only: [:create, :new]
+  resources :passwords, controller: "passwords", only: [:create, :new], as: nil
   resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users", only: [:create] do
-    resource :password,
-      controller: "passwords",
-      only: [:create, :edit, :update]
+    resource :password, controller: "passwords", only: [:create, :edit, :update], as: nil
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"
@@ -133,6 +131,8 @@ Rails.application.routes.draw do
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'
+  post 'welcome/start_peconnect'
+  post 'welcome/disconnect_from_peconnect'
 
   get 'accessibilite', to: 'welcome#accessibility'
 

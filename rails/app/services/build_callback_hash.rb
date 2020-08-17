@@ -8,7 +8,7 @@ class BuildCallbackHash
 
 
     if _pull_or_stub_data_from_api?(session, fake, code)
-      extraction_h = PeConnectExtraction.new.call(base_url, code, fake)
+      extraction_h = PeConnectExtraction.new.call(session, base_url, code, fake)
       asker = BuildAskerFromPeconnect.new.call(extraction_h.slice(:statut, :birth, :formation, :coord, :alloc))
       meta = BuildMetaFromPeconnect.new.call(extraction_h.slice(:info))
       SaveMetaToSession.new.call(session, meta)

@@ -38,7 +38,7 @@ class PasswordsController < Clearance::PasswordsController
 
     password = password_reset_params
 
-    error_message = password_is_complex_enough(password)
+    error_message = PasswordComplexEnough.new.call(password)
 
     if error_message.blank?
       @user.update_password(password)
@@ -52,24 +52,6 @@ class PasswordsController < Clearance::PasswordsController
   end
 
   private
-
-  def password_is_complex_enough(password)
-    message = ""
-    if password.blank?
-      message = "Le mot de passe ne peut être vide."
-    elsif password.size < 8
-      message = "Le mot de passe doit avoir au moins 8 caractères."
-    elsif !password.match(/[a-z]/)
-      message = "Le mot de passe doit avoir au moins une minuscule."
-    elsif !password.match(/[A-Z]/)
-      message = "Le mot de passe doit avoir au moins une majuscule."
-    elsif !password.match(/\d/)
-      message = "Le mot de passe doit avoir au moins un chiffre."
-    elsif !password.match(/\W/)
-      message = "Le mot de passe doit avoir au moins un caractère spécial."
-    end
-    message
-  end
 
   def deliver_email(user)
     mail = ::ClearanceMailer.change_password(user)
@@ -94,8 +76,7 @@ class PasswordsController < Clearance::PasswordsController
     user_param = Clearance.configuration.user_id_parameter
     token = params[:token] || session[:password_reset_token]
 
-    Clearance.configuration.user_model.
-      find_by_id_and_confirmation_token params[user_param], token.to_s
+    ClearanceFindByUserAndToken.new.call(params, user_param, token)
   end
 
   def find_user_for_create
