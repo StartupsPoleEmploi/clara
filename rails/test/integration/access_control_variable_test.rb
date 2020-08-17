@@ -2,6 +2,9 @@ require 'test_helper'
 
 class AccessControlVariableTest < ActionDispatch::IntegrationTest
   
+  ########################################################
+  ############               LIST           ##############
+  ########################################################
   test "Un superadmin peut lister les variables" do
     #given
     superadmin = User.create(role: "superadmin", email:"a@b.c", password: "p")
@@ -33,7 +36,10 @@ class AccessControlVariableTest < ActionDispatch::IntegrationTest
       get admin_variables_path
     end
   end
-  
+
+  ########################################################
+  ############               READ           ##############
+  ########################################################
   test "Un superadmin peut lire une variable" do
     #given
     superadmin = User.create(role: "superadmin", email:"a@b.c", password: "p")
@@ -69,5 +75,41 @@ class AccessControlVariableTest < ActionDispatch::IntegrationTest
     end
   end
   
+  ########################################################
+  ############               EDIT             ############
+  ########################################################
+  test "Un superadmin peut accéder à l'édition d'une variable" do
+    #given
+    superadmin = User.create(role: "superadmin", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
+    variable_age = Variable.create(name: "age", variable_kind: "integer")
+    #when
+    get edit_admin_variable_path(variable_age.id)
+    #then
+    assert_response :ok
+  end
+
+  test "Un contributeur ne peut pas accéder à l'édition d'une variable" do
+    #given
+    contributeur = User.create(role: "contributeur", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    variable_age = Variable.create(name: "age", variable_kind: "integer")
+    #then
+    assert_raises SecurityError do
+      #when
+      get edit_admin_variable_path(variable_age.id)
+    end
+  end
   
+  test "Un relecteur ne peut pas accéder à l'édition d'une variable" do
+    #given
+    relecteur = User.create(role: "relecteur", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
+    variable_age = Variable.create(name: "age", variable_kind: "integer")
+    #then
+    assert_raises SecurityError do
+      #when
+      get edit_admin_variable_path(variable_age.id)
+    end
+  end
 end
