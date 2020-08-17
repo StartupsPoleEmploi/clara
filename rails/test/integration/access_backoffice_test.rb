@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AccessControlBackofficeTest < ActionDispatch::IntegrationTest
+class AccessBackofficeTest < ActionDispatch::IntegrationTest
 
   test "L'accès au backoffice est interdit par défaut" do
     #given

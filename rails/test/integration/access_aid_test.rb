@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AccessControlAidTest < ActionDispatch::IntegrationTest
+class AccessAidTest < ActionDispatch::IntegrationTest
 
   test "Un contributeur peut lister les aides" do
     #given
