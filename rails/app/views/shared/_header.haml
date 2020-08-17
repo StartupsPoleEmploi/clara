@@ -6,9 +6,9 @@
 
       .c-deconnect
         - if session[:id_token]
-          %div
-            = session[:meta]['given_name']
-          %div
+          .c-deconnect-name
+            = StringUtils.new.upcase_first_downcase_others(JSON.parse(session[:meta])['given_name'])
+          .c-deconnect-button
             = form_with url: welcome_disconnect_from_peconnect_path, :local => true, id: 'disconnect_peconnect_form' do |f|
               = f.submit "Se déconnecter", id: 'clara-peconnect-disconnect'
 
