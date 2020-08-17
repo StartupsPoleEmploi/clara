@@ -12,7 +12,7 @@ class AccessAidTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
     
-  test "Un contributeur peut créer une aide" do
+  test "Un contributeur peut créer une aide, étape 1" do
     #given
     contributeur = User.create(role: "contributeur", email:"a@b.c", password: "p")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
@@ -24,8 +24,8 @@ class AccessAidTest < ActionDispatch::IntegrationTest
       "aid"=>{"name"=>"aaa", "contract_type_id"=>contract.id.to_s, "ordre_affichage"=>"42", "source"=>"myself"}
     }
     #then
-    assert_redirected_to admin_aid_creation_new_aid_stage_2_path(locale: 'fr', slug: 'aaa', modify: '')
     assert_response :redirect
+    assert_redirected_to admin_aid_creation_new_aid_stage_2_path(locale: 'fr', slug: 'aaa', modify: '')
     assert 'aaa', Aid.last.name
   end
     
@@ -51,14 +51,41 @@ class AccessAidTest < ActionDispatch::IntegrationTest
       "locale"=>"fr"
     }
     #then
-    assert_redirected_to admin_aid_creation_new_aid_stage_3_path(locale: 'fr', slug: 'aaa', modify: '')
     assert_response :redirect
+    assert_redirected_to admin_aid_creation_new_aid_stage_3_path(locale: 'fr', slug: 'aaa', modify: '')
     last_aid = Aid.last
-    assert '<p>descr</p>', last_aid.what
-    assert '<p>conditions</p>', last_aid.additionnal_conditions
-    assert '<p>contenu</p>', last_aid.how_much
-    assert '<p>comment</p>', last_aid.how_and_when
-    assert '<p>infos</p>', last_aid.limitations
+    assert_equal "<p>descr</p>\r\n", last_aid.what
+    assert_equal "<p>conditions</p>\r\n", last_aid.additionnal_conditions
+    assert_equal "<p>contenu</p>\r\n", last_aid.how_much
+    assert_equal "<p>comment</p>\r\n", last_aid.how_and_when
+    assert_equal "<p>infos</p>\r\n", last_aid.limitations
+  end
+
+  test "Un contributeur peut créer une aide, étape 3" do
+    #given
+    contributeur = User.create(role: "contributeur", email:"a@b.c", password: "p")
+    filter = Filter.create!(name: "Se déplacer")
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    aid = Aid.create!(name: "aaa", contract_type: contract, ordre_affichage: 3)
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    # when 
+    post admin_aid_creation_create_stage_3_path, params: {
+      "aid"=> {
+        "name"=>"aaa", 
+        "short_description"=>"résumé", 
+        "filter_ids"=>[filter.id.to_s]}, 
+        "slug"=>{"value"=>"aaa"}, 
+        "modify"=>{"value"=>""}, 
+        "locale"=>"fr"
+    }
+    #then
+    assert_response :redirect
+    assert_redirected_to admin_aid_creation_new_aid_stage_4_path(locale: 'fr', slug: 'aaa', modify: '')
+    last_aid = Aid.last
+    assert_equal 'résumé', last_aid.short_description
+    assert_equal 1, last_aid.filters.size
+    assert_equal 'se-deplacer', last_aid.filters.first.slug
+
   end
 
 end
