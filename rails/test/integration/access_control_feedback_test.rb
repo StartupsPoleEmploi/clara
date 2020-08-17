@@ -160,12 +160,12 @@ class AccessControlFeedbackTest < ActionDispatch::IntegrationTest
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
     feedback = Feedback.create!(content: "any")
-    assert_equal 1, feedback.count
+    assert_equal 1, Feedback.count
     #when
     delete admin_feedback_path(feedback.id)
     #then
     assert_response :found
-    assert_equal 0, feedback.count
+    assert_equal 0, Feedback.count
   end
 
   test "Un relecteur ne peut pas supprimer un feedback" do
