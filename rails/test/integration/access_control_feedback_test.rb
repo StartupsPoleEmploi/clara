@@ -124,7 +124,7 @@ class AccessControlFeedbackTest < ActionDispatch::IntegrationTest
     #then
     assert_raises SecurityError do
       #when
-      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
+      put admin_feedback_path(feedback.id)
     end
   end
 
@@ -136,7 +136,7 @@ class AccessControlFeedbackTest < ActionDispatch::IntegrationTest
     #then
     assert_raises SecurityError do
       #when
-      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
+      put admin_feedback_path(feedback.id)
     end
   end
 
@@ -148,7 +148,7 @@ class AccessControlFeedbackTest < ActionDispatch::IntegrationTest
     #then
     assert_raises SecurityError do
       #when
-      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
+      put admin_feedback_path(feedback.id)
     end
   end
 
