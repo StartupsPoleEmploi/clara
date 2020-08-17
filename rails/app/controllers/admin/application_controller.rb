@@ -18,6 +18,11 @@ module Admin
 
     # skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
 
+    def throw_security_error
+      # Hacky, but allows to define routes and skipping by controller's filter
+      raise SecurityError.new "Not allowed (custom error)"
+    end
+
     def require_superadmin
       unless current_user.role === "superadmin"
         raise SecurityError, "Not Allowed"

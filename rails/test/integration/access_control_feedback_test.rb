@@ -1,197 +1,194 @@
 require 'test_helper'
 
-class AccessControlVariableTest < ActionDispatch::IntegrationTest
+class AccessControlFeedbackTest < ActionDispatch::IntegrationTest
   
   ########################################################
   ############               LIST           ##############
   ########################################################
-  test "Un superadmin peut lister les variables" do
+  test "Un superadmin peut lister les feedbacks" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
     #when
-    get admin_variables_path
+    get admin_feedbacks_path
+    #then
+    assert_response :ok
+  end
+
+  test "Un relecteur ne peut pas lister les feedbacks" do
+    #given
+    relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
+    #when
+    get admin_feedbacks_path
     #then
     assert_response :ok
   end
   
-  test "Un relecteur ne peut pas lister les variables" do
-    #given
-    relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
-    post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
-    #then
-    assert_raises SecurityError do
-      #when
-      get admin_variables_path
-    end
-  end
-
-  test "Un contributeur ne peut pas lister les variables" do
+  test "Un contributeur peut lister les feedbacks" do
     #given
     contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #when
+    get admin_feedbacks_path
     #then
-    assert_raises SecurityError do
-      #when
-      get admin_variables_path
-    end
+    assert_response :ok
   end
   
 
   ########################################################
   ############               READ           ##############
   ########################################################
-  test "Un superadmin peut lire une variable" do
+  test "Un superadmin peut lire un feedback" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #when
-    get admin_variable_path(variable_age.id)
+    get admin_feedback_path(feedback.id)
     #then
     assert_response :ok
   end
   
-  test "Un relecteur ne peut pas lire une variable" do
+  test "Un relecteur peut lire un feedback" do
     #given
     relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
+    #when
+    get admin_feedback_path(feedback.id)
     #then
-    assert_raises SecurityError do
-      #when
-      get admin_variable_path(variable_age.id)
-    end
+    assert_response :ok
   end
 
-  test "Un contributeur ne peut pas lire une variable" do
+  test "Un contributeur peut lire un feedback" do
     #given
     contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
+    #when
+    get admin_feedback_path(feedback.id)
     #then
-    assert_raises SecurityError do
-      #when
-      get admin_variable_path(variable_age.id)
-    end
-  end
-  
+    assert_response :ok
+  end  
   
   ########################################################
   ############               EDIT             ############
   ########################################################
-  test "Un superadmin peut accéder à l'édition d'une variable" do
+  test "Un superadmin ne peut pas accéder à l'édition d'un feedback" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
-    #when
-    get edit_admin_variable_path(variable_age.id)
+    feedback = Feedback.create!(content: "any")
     #then
-    assert_response :ok
+    assert_raises SecurityError do
+      #when
+      get edit_admin_feedback_path(feedback.id)
+    end
   end
 
-  test "Un relecteur ne peut pas accéder à l'édition d'une variable" do
+  test "Un relecteur ne peut pas accéder à l'édition d'un feedback" do
     #given
     relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      get edit_admin_variable_path(variable_age.id)
+      get edit_admin_feedback_path(feedback.id)
     end
   end
 
-  test "Un contributeur ne peut pas accéder à l'édition d'une variable" do
+  test "Un contributeur ne peut pas accéder à l'édition d'un feedback" do
     #given
     contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      get edit_admin_variable_path(variable_age.id)
+      get edit_admin_feedback_path(feedback.id)
     end
   end
   
+
   
   ########################################################
   ############               UPDATE             ##########
   ########################################################
-  test "Un superadmin peut éditer une variable" do
+  test "Un superadmin ne peut pas éditer un feedback" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
-    #when
-    put admin_variable_path(variable_age.id, params: { variable: { variable_kind: "string" }})
-    #then
-    assert_response :found
-    assert_equal "string", Variable.last.variable_kind
-  end
-
-  test "Un relecteur ne peut pas éditer une variable" do
-    #given
-    relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
-    post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      put admin_variable_path(variable_age.id, params: { variable: { variable_kind: "string" }})
+      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
     end
   end
 
-  test "Un contributeur ne peut pas éditer une variable" do
+  test "Un relecteur ne peut pas éditer un feedback" do
     #given
-    contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
-    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      put admin_variable_path(variable_age.id, params: { variable: { variable_kind: "string" }})
+      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
+    end
+  end
+
+  test "Un contributeur ne peut pas éditer un feedback" do
+    #given
+    contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    feedback = Feedback.create!(content: "any")
+    #then
+    assert_raises SecurityError do
+      #when
+      put admin_feedback_path(feedback.id, params: { feedback: { feedback_kind: "string" }})
     end
   end
 
   ########################################################
   ############               DELETE             ##########
   ########################################################
-  test "Un superadmin peut supprimer une variable" do
+  test "Un superadmin peut supprimer un feedback" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
-    assert_equal 1, Variable.count
+    feedback = Feedback.create!(content: "any")
+    assert_equal 1, feedback.count
     #when
-    delete admin_variable_path(variable_age.id)
+    delete admin_feedback_path(feedback.id)
     #then
     assert_response :found
-    assert_equal 0, Variable.count
+    assert_equal 0, feedback.count
   end
 
-  test "Un relecteur ne peut pas supprimer une variable" do
+  test "Un relecteur ne peut pas supprimer un feedback" do
     #given
     relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      delete admin_variable_path(variable_age.id)
+      delete admin_feedback_path(feedback.id)
     end
   end
 
-  test "Un contributeur ne peut pas supprimer une variable" do
+  test "Un contributeur ne peut pas supprimer un feedback" do
     #given
     contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
-    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    feedback = Feedback.create!(content: "any")
     #then
     assert_raises SecurityError do
       #when
-      delete admin_variable_path(variable_age.id)
+      delete admin_feedback_path(feedback.id)
     end
   end
 
