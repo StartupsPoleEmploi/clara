@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.8.1 (18/08/2020)
+[#50][BUG] Annulation PE Connect
+
+
 ## 34.8.0 (17/08/2020)
 [#51][FEATURE] Bouton de déconnexion PE Connect
 
