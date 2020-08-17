@@ -3,6 +3,7 @@ require 'asker'
 
 class ApplicationController < ActionController::Base
   include Clearance::Controller
+  
   protect_from_forgery with: :exception
   
   before_action :check_cache
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
 
-  skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
+  # skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
 
   def check_cache
     unless File.file?(Rails.root.join('public','activated_models.txt'))

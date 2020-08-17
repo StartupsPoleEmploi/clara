@@ -16,7 +16,7 @@ module Admin
 
     before_action :set_cache_headers
 
-    skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
+    # skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
 
     def require_superadmin
       unless current_user.role === "superadmin"
