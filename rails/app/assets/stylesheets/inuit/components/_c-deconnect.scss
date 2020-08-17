@@ -1,7 +1,40 @@
 .c-deconnect {
   display: flex;
+  align-items: center;
+  margin-top: 9px;
 }
 
 .c-deconnect-name {
-  margin-right: .5rem;
+  margin-right: 1.4rem;
+  margin-top: -2px;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  text-align: right;
+  color: #152e3a;
+}
+
+.c-deconnect-button {
+  input[type="submit"] {
+    padding:0; 
+    margin:0;
+    border:0;
+    background-color:transparent;    
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    text-align: center;
+    color: #152e3a;
+  }
+  padding: 10px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: solid 2px #057dbc;
 }
