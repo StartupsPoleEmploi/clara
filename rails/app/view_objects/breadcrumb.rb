@@ -18,7 +18,7 @@ class Breadcrumb < ViewObject
   end
 
   def display_form?
-    return RoutesList.asked_questions.keys.include?(@current_path)
+    return RoutesList.new.asked_questions.keys.include?(@current_path)
   end
 
   def display_search?
