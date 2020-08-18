@@ -11,7 +11,9 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
     #then
     assert_equal({"given_name"=>"ROBERT"}, res[:meta])
-    assert_equal('44', res[:asker].v_age)
+    assert_equal( '44', res[:asker].v_age)
+    assert_equal( '44190', res[:asker].v_location_citycode)
+    assert_equal( 0, res[:filters].size)
   end
 
   def extraction
