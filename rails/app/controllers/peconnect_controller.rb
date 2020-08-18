@@ -13,7 +13,15 @@ class PeconnectController < ApplicationController
   end
 
   def callback
-    render locals: BuildCallbackHash.new.call(session, params, request)
+    if _user_cancelled_peconnect
+      redirect_to root_path
+    else
+      render locals: BuildCallbackHash.new.call(session, params, request)
+    end
+  end
+
+  def _user_cancelled_peconnect
+    ExtractParam.new(params).call("state") && !ExtractParam.new(params).call("code")
   end
 
 
