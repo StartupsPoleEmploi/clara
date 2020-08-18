@@ -91,15 +91,6 @@ Rails.application.routes.draw do
   resources :divide_by_zero,         only: [:index]
   
 
-  resources :r7_pen, only: [:index]  if ENV["R7_MODE"]
-  controller 'r7_pen' do
-    get 'get_r7_info' if ENV["R7_MODE"]
-    post 'post_r7_data' if ENV["R7_MODE"]
-    delete 'delete_r7_data' if ENV["R7_MODE"]
-    delete 'delete_aid/:aid_slug', to: 'r7_pen#delete_aid' if ENV["R7_MODE"]
-    post 'clear_cache', to: 'r7_pen#clear_cache' if ENV["R7_MODE"]
-  end
-
   resources :age_questions,         only: [:new, :create]
   resources :address_questions,     only: [:new, :create]
   resources :allocation_questions,  only: [:new, :create]
