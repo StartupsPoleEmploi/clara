@@ -40,6 +40,7 @@ class QuestionAreTest < ActionDispatch::IntegrationTest
     #then
     assert_response :redirect
     assert_match /are/, response.redirect_url
+    assert_equal ["n'est pas un nombre"], flash[:error] 
   end
 
 
