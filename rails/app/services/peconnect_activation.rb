@@ -1,11 +1,11 @@
 class PeconnectActivation
     
   def switch_value
-    off = Offpeconnect.first
-    current_value = off.value.to_s
-    off.value = "on" if current_value == "off"
-    off.value = "off" if current_value == "on"
-    off.save
+    if get_value
+      Offpeconnect.first.update_attribute(:value, 'off')
+    else
+      Offpeconnect.first.update_attribute(:value, 'on')
+    end
   end
 
   def get_value
