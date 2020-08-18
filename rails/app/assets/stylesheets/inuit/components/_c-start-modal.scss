@@ -9,17 +9,27 @@
 h2.c-start-modal-title {
   margin-top: 30px;
   margin-bottom: 15px;
+  font-size: 28px;
   font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
   line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
   color: #152e3a;
-  font-size: 25px;
 }
 
 .c-start-modal-heading {
   margin-top: 2rem;
-  color: #207bad;
-  font-weight: 500;
-  font-size: 20px;
+  span {
+    font-size: 22px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.27;
+    letter-spacing: normal;
+    color: #046ea5;
+  }
 }
 
 .c-start-modal-text {
