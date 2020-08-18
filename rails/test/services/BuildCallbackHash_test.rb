@@ -10,7 +10,8 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     #when
     res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
     #then
-    assert_equal 42, res
+    assert_equal({"given_name"=>"ROBERT"}, res[:meta])
+    assert_equal('44', res[:asker].v_age)
   end
 
   def extraction
@@ -36,6 +37,34 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
                    "prenom" => nil,
           "dateDeNaissance" => "1976-03-12T00:00:00+01:00"
       },
+      :formation => [
+          {
+                   "anneeFin" => 2016,
+                "description" => "c'était bien :)",
+              "diplomeObtenu" => true,
+                    "domaine" => {
+                     "code" => "15066",
+                  "libelle" => "Efficacité personnelle"
+              },
+                   "etranger" => false,
+                   "intitule" => "product manager d'élite"
+          }
+      ],
+      :coord => {
+            "adresse1" => "APPARTEMENT 45",
+            "adresse2" => "RESIDENCE DU SOLEIL",
+            "adresse3" => "BATIMENT B",
+            "adresse4" => "34 ALLEE DU 6 JUIN",
+          "codePostal" => "44230",
+           "codeINSEE" => "44190",
+      "libelleCommune" => "ST SEBASTIEN SUR LOIRE",
+            "codePays" => "FR",
+         "libellePays" => "FRANCE"
+      },
+      :alloc => {
+        "beneficiairePrestationSolidarite" => false,
+            "beneficiaireAssuranceChomage" => false
+      }
     }
   end
 
