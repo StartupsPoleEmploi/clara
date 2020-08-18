@@ -1,10 +1,10 @@
 class BuildCallbackHash
 
-  def call(session, params, request)
+  def call(session, params, host)
     
-    fake = ExtractParam.new(params).call("fake")
-    code = ExtractParam.new(params).call("code")
-    base_url = "https://#{request.host}"    
+    fake = params[:fake]
+    code = params[:code]
+    base_url = "https://#{host}"    
 
     if _pull_or_stub_data_from_api?(session, fake, code)
       extraction_h = PeConnectExtraction.new.call(session, base_url, code, fake)

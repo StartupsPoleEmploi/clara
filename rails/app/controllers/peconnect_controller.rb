@@ -16,7 +16,7 @@ class PeconnectController < ApplicationController
     if HasUserCancelledPeconnect.new.call(request.original_url)
       redirect_to root_path
     else
-      render locals: BuildCallbackHash.new.call(session, params, request)
+      render locals: BuildCallbackHash.new.call(session, params, request.host)
     end
   end
 

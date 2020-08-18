@@ -6,7 +6,6 @@ class PeConnectExtraction < PeConnectService
     if fake
       res = to_hash_object(fake)
     else
-      tokens = PeConnectToken.new.call(base_url, code)
       access_token = tokens[:access_token]
       id_token = tokens[:id_token]
       info = PeConnectInfo.new.call(access_token)
