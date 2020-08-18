@@ -4,8 +4,7 @@ class GradeQuestionsController < ApplicationController
   after_action :save_asker, only: [:create]
   
   def new
-    @grade = GradeForm.new
-    @grade.value = @asker.v_diplome
+    @grade = GetPreviousGradeForm.new.call(@asker.v_diplome)
   end
 
   def create
