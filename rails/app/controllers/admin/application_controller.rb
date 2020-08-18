@@ -16,7 +16,7 @@ module Admin
 
     before_action :set_cache_headers
 
-    # skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
+    skip_before_action :verify_authenticity_token if Rails.env.development?
 
     def throw_security_error
       # Hacky, but allows to define routes and skipping by controller's filter

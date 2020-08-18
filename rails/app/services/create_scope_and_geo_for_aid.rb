@@ -92,7 +92,6 @@ class CreateScopeAndGeoForAid
     all_rules = []
 
     create_rule = -> (obj, _p, _i) do 
-      ap obj[:name]
       kind = _is_simple_rule(obj) ? "simple" : _is_complex_rule(obj) ? "composite" : nil
       composition_type = obj[:subcombination] == "AND" ? :and_rule : obj[:subcombination] == "OR" ? :or_rule : nil
       slave_rules_descr = ""

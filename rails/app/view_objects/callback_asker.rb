@@ -7,13 +7,7 @@ class CallbackAsker < ViewObject
   end
 
   def prenom
-    _upcase_first_letter(@meta[:given_name])
-  end
-
-  def _upcase_first_letter(str)
-    local_str = str.downcase
-    final_str = local_str[0].upcase + local_str[1..-1]
-    final_str
+    StringUtils.new.upcase_first_downcase_others(@meta[:given_name])
   end
 
   def inscription

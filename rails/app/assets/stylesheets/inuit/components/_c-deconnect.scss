@@ -19,7 +19,7 @@
 
 .c-deconnect-button {
   input[type="submit"] {
-    padding:0; 
+    padding: 10px 15px;
     margin:0;
     border:0;
     background-color:transparent;    
@@ -33,7 +33,6 @@
     text-align: center;
     color: #152e3a;
   }
-  padding: 10px 15px;
   white-space: nowrap;
   cursor: pointer;
   border: solid 2px #057dbc;
