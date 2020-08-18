@@ -27,20 +27,20 @@ class QuestionAreTest < ActionDispatch::IntegrationTest
   test "Question AGE, user submits a valid AGE" do
     #given
     #when
-    post age_questions_path, params: {"age_form"=>{"minimum_income"=>"42"}}
+    post age_questions_path, params: {"age_form"=>{"number_of_years"=>"42"}}
     #then
     assert_response :redirect
-    assert_no_match /are/, response.redirect_url
+    assert_no_match /age/, response.redirect_url
   end
 
   test "Question AGE, user submits an invalid AGE" do
     #given
     #when
-    post age_questions_path, params: {"age_form"=>{"minimum_income"=>"invalid"}}
+    post age_questions_path, params: {"age_form"=>{"number_of_years"=>"invalid"}}
     #then
     assert_response :redirect
-    assert_match /are/, response.redirect_url
-    assert_equal ["n'est pas un nombre"], flash[:error] 
+    assert_match /age/, response.redirect_url
+    assert_equal ["n'est pas un nombre", "L'âge doit être supérieur ou égal à 16 ans"], flash[:error] 
   end
 
 
