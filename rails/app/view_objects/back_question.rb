@@ -5,7 +5,7 @@ class BackQuestion < ViewObject
   end
 
   def _get_asker
-    Asker.new(JSON.parse(@context.session[:asker].to_s))
+    RequireAsker.new.call(@context.session)
   end  
 
   def _current_question

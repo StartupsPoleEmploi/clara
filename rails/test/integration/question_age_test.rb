@@ -14,7 +14,9 @@ class QuestionAreTest < ActionDispatch::IntegrationTest
   
   test "Question AGE, age is extracted from asker if already here" do
     #given
-    allow_any_instance_of(AgeService).to receive(:new_and_download).and_return(AgeForm.new(number_of_years: '42'))
+    # allow_any_instance_of(AgeService).to receive(:new_and_download).and_return(AgeForm.new(number_of_years: '42'))
+    allow_any_instance_of(RequireAsker).to receive(:call).and_return(Asker.new(v_age: '42'))
+    
     #when
     get new_age_question_path
     #then
@@ -31,6 +33,8 @@ class QuestionAreTest < ActionDispatch::IntegrationTest
     #then
     assert_response :redirect
     assert_no_match /age/, response.redirect_url
+    assert_equal true, IsValidJson.new.call(session[:asker])
+    assert_equal '42', JSON.parse(session[:asker])['v_age']
   end
 
   test "Question AGE, user submits an invalid AGE" do
