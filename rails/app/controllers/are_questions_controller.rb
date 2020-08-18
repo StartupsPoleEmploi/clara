@@ -9,17 +9,13 @@ class AreQuestionsController < ApplicationController
   end
 
   def create
-    if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath('are', @asker)
+    @are = AreForm.new(allowed_params)
+    if @are.valid?
+      @asker.v_allocation_value_min = @are.minimum_income
+      my_redirect_to QuestionManager.new.getNextPath('are', @are)
     else
-      @are = AreForm.new(allowed_params)
-      if @are.valid?
-        @asker.v_allocation_value_min = @are.minimum_income
-        my_redirect_to QuestionManager.new.getNextPath('are', @are)
-      else
-        flash[:error] = @are.errors.messages.values.flatten
-        my_redirect_to new_are_question_path
-      end
+      flash[:error] = @are.errors.messages.values.flatten
+      my_redirect_to new_are_question_path
     end
   end
 
