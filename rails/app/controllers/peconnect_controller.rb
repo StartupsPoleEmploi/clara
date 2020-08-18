@@ -21,15 +21,13 @@ class PeconnectController < ApplicationController
   end
 
   def _user_cancelled_peconnect
-    has_state =  ExtractParam.new(params).call("state") != nil
-    no_code = ExtractParam.new(params).call("code") == nil
-    p '- - - - - - - - - - - - - - no_code- - - - - - - - - - - - - - - -' 
-    ap no_code
+    copy_url = request.original_url 
+    uri    = URI.parse(copy_url)
+    query_params = CGI.parse(uri.query)
+    p '- - - - - - - - - - - - - - query_params- - - - - - - - - - - - - - - -' 
+    ap query_params
     p ''
-    p '- - - - - - - - - - - - - - has_state- - - - - - - - - - - - - - - -' 
-    ap has_state
-    p ''
-    has_state && no_code
+    query_params.size == 1 && !!query_params['state']
   end
 
 
