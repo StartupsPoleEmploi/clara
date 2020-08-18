@@ -4,6 +4,9 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
 
   test ".perform calls ExpireCache" do
     #given
+    filter = Filter.create!(name: "Se déplacer")
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    aid = Aid.create!(name: "aaa", contract_type: contract, ordre_affichage: 3, filters: [filter])
     allow_any_instance_of(PeConnectExtraction).to receive(:call).and_return(extraction)
     session_h = {}
     params_h = {code: 'any'}
@@ -13,7 +16,8 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     assert_equal({"given_name"=>"ROBERT"}, res[:meta])
     assert_equal( '44', res[:asker].v_age)
     assert_equal( '44190', res[:asker].v_location_citycode)
-    assert_equal( 0, res[:filters].size)
+    assert_equal( 1, res[:filters].size)
+    assert_equal( 'se-deplacer', res[:filters][0].slug)
   end
 
   def extraction
