@@ -21,7 +21,15 @@ class PeconnectController < ApplicationController
   end
 
   def _user_cancelled_peconnect
-    ExtractParam.new(params).call("state") && !ExtractParam.new(params).call("code")
+    has_state =  ExtractParam.new(params).call("state") != nil
+    no_code = ExtractParam.new(params).call("code") == nil
+    p '- - - - - - - - - - - - - - no_code- - - - - - - - - - - - - - - -' 
+    ap no_code
+    p ''
+    p '- - - - - - - - - - - - - - has_state- - - - - - - - - - - - - - - -' 
+    ap has_state
+    p ''
+    has_state && no_code
   end
 
 
