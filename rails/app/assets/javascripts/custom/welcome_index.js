@@ -6,6 +6,10 @@ clara.js_define("welcome_index", {
 
   please: function() {
 
+    $(document).on($.modal.BEFORE_OPEN, function(event, modal) {
+      modal.options.closeText = 'x Fermer'
+    });
+
     store.clearAll();
     console.log("Version : " + clara.version);
 
