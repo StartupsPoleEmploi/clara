@@ -2,7 +2,7 @@ require "test_helper"
 
 class BuildCallbackHashTest < ActiveSupport::TestCase
 
-  test ".perform calls ExpireCache" do
+  test ".call renders {:meta, :asker, :filters}, fill session[:meta] and session[:asker]" do
     #given
     filter = Filter.create!(name: "Se déplacer")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
@@ -13,11 +13,28 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     #when
     res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
     #then
-    assert_equal({"given_name"=>"ROBERT"}, res[:meta])
-    assert_equal( '44', res[:asker].v_age)
-    assert_equal( '44190', res[:asker].v_location_citycode)
-    assert_equal( 1, res[:filters].size)
-    assert_equal( 'se-deplacer', res[:filters][0].slug)
+    assert_equal( {"given_name"=>"ROBERT"},       res[:meta])
+    assert_equal( '44',                           res[:asker].v_age)
+    assert_equal( '44190',                        res[:asker].v_location_citycode)
+    assert_equal( 1,                              res[:filters].size)
+    assert_equal( 'se-deplacer',                  res[:filters][0].slug)
+    assert_equal( "{\"given_name\":\"ROBERT\"}",  session_h[:meta])
+    assert_equal( true,                           session_h[:asker] != nil)
+  end
+  test ".call renders  a {:meta, :asker, :filters} hash, but pull :meta and :asker from session" do
+    #given
+    filter = Filter.create!(name: "Se déplacer")
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    aid = Aid.create!(name: "aaa", contract_type: contract, ordre_affichage: 3, filters: [filter])
+    session_h = {asker: Asker.new.attributes.to_json.to_s, meta: "{\"given_name\":\"ROBERT\"}"}
+    params_h = {}
+    #when
+    res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
+    #then
+    assert_equal( Asker.new.attributes,           res[:asker].attributes)
+    assert_equal( {"given_name"=>"ROBERT"},       res[:meta])
+    assert_equal( 1,                              res[:filters].size)
+    assert_equal( 'se-deplacer',                  res[:filters][0].slug)
   end
 
   def extraction
