@@ -5,6 +5,9 @@ class AidesTest < ActionDispatch::IntegrationTest
   test "Aides : result screen, with active user" do
     #given
     _create_realistic_aid('my aid')
+    allow_any_instance_of(GetCityNameRegionCode).to receive(:call).and_return(['Ceyssac', 'ARA'])
+
+    
     #when
     get aides_path(for_id: 'NDUsNCxvLDEsMyxuLG0sNDMwNDUsNDMwMDAsbm90X2FwcGxpY2FibGUsbg==')
     #then
