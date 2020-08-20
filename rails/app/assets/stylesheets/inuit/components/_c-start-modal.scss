@@ -7,7 +7,7 @@
 }
 
 h2.c-start-modal-title {
-  margin-top: 30px;
+  margin-top: 100px;
   margin-bottom: 15px;
   font-weight: 900;
   font-stretch: normal;
@@ -63,6 +63,9 @@ h2.c-start-modal-title {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
   @include mq($from: tablet) {
     padding-left: 7rem;
     padding-right: 7rem;
