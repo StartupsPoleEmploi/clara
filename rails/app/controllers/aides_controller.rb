@@ -7,7 +7,6 @@ class AidesController < ApplicationController
       pull_asker
       augment_asker_if_necessary
       results = create_results_from_asker
-      gon.asker = @asker # debug
       hydrate_view(results)
     else
       aids_h, total_nb = _aides_index_search
@@ -62,6 +61,7 @@ class AidesController < ApplicationController
         :include => {filters: {only:[:id, :slug]}}
       )
     )
+
     return @h_aids, aids.size
   end
 

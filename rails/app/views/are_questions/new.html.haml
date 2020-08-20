@@ -12,7 +12,7 @@
   - classes_of_are_form = ['c-are__form']
   - aria_described_by_of_input = ['minimum-descr']
 
-- previous_value = @are.minimum_income == "not_applicable" ? "" : @are.minimum_income
+- previous_value = GetPreviousAreValue.new.call(@are)
 
 %main#main{role: "main"}
 

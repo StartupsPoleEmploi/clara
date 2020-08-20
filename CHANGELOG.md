@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.9.0 (20/08/2020)
+[#55][DESIGN] Choix pop-in
+
+
 ## 34.8.1 (18/08/2020)
 [#50][BUG] Annulation PE Connect
 

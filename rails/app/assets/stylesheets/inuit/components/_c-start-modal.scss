@@ -7,19 +7,36 @@
 }
 
 h2.c-start-modal-title {
-  margin-top: 30px;
+  margin-top: 90px;
   margin-bottom: 15px;
   font-weight: 900;
+  font-stretch: normal;
+  font-style: normal;
   line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
   color: #152e3a;
-  font-size: 25px;
+  font-size: 22px;
+  @include mq($from: tablet) {
+    font-size: 28px;
+  }
 }
 
 .c-start-modal-heading {
+  text-align: left;
   margin-top: 2rem;
-  color: #207bad;
-  font-weight: 500;
-  font-size: 20px;
+  span {
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.27;
+    letter-spacing: normal;
+    color: #046ea5;
+    @include mq($from: tablet) {
+      font-size: 22px;
+    }
+  }
 }
 
 .c-start-modal-text {
@@ -40,15 +57,18 @@ h2.c-start-modal-title {
 
 #login-form.modal {
   text-align: center;
-  max-width: 750px;
+  max-width: 700px;
   border-radius: 4px;
   padding-bottom: 2rem;
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
   @include mq($from: tablet) {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
@@ -78,28 +98,40 @@ h2.c-start-modal-title {
 }
 
 #start-clara-peconnect {
-  width: 395px;
-}
-
-#start-clara {
-  background-color: #1b2e57;
-  border: none;
-  color: white;
-  padding: 22px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 32px;
-  font-family: Roboto;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
+  width: 185px;
+  margin-top: 20px;
   @include mq($from: mobile) {
-    font-size: 18px;
+    width: 285px;
+  }
+  @include mq($from: tablet) {
+    width: 385px;
   }
 }
 
-#start-clara:hover {
+#start_wizard_form {
+  input[type="submit"] {
+    margin:0;
+    border:0;
+    background-color:transparent;    
+    text-transform: uppercase;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.8px;
+    text-align: center;
+    color: #152e3a;
+    white-space: nowrap;
+    cursor: pointer;
+    border: solid 2px #057dbc;
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: break-spaces;
+    @include mq($from: tablet) {
+      white-space: nowrap;
+      padding: 20px 30px;
+      font-size: 16px;
+    }
+  }
+  margin-top: 20px;
 }
-

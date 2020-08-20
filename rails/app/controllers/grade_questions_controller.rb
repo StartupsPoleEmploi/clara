@@ -4,23 +4,18 @@ class GradeQuestionsController < ApplicationController
   after_action :save_asker, only: [:create]
   
   def new
-    @grade = GradeForm.new
-    @grade.value = @asker.v_diplome
+    @grade = GetPreviousGradeForm.new.call(@asker.v_diplome)
   end
 
   def create
-    if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath('grade', @asker)
+    @grade = GradeForm.new(allowed_params)
+    if @grade.valid?
+      @asker.v_diplome = @grade.value if @grade.value.present?
+      save_asker
+      my_redirect_to QuestionManager.new.getNextPath('grade', @grade)
     else
-      @grade = GradeForm.new(allowed_params)
-      if @grade.valid?
-        @asker.v_diplome = @grade.value if @grade.value.present?
-        save_asker
-        my_redirect_to QuestionManager.new.getNextPath('grade', @grade)
-      else
-        flash[:error] = @grade.errors.messages.values.flatten
-        my_redirect_to new_grade_question_path
-      end
+      flash[:error] = @grade.errors.messages.values.flatten
+      my_redirect_to new_grade_question_path
     end
   end
  

@@ -8,18 +8,14 @@ class AgeQuestionsController < ApplicationController
   end
 
   def create
-    if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath('age', @asker)
+    @age = new_from_params
+    if @age.valid?
+      populate_asker(@age, @asker)
+      redirect_to_next_question(request)
     else
-      @age = new_from_params
-      if @age.valid?
-        populate_asker(@age, @asker)
-        redirect_to_next_question(request)
-      else
-        save_asker
-        populate_errors(flash)
-        redirect_to_same_page
-      end
+      save_asker
+      populate_errors(flash)
+      redirect_to_same_page
     end
   end
  

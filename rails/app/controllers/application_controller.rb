@@ -42,18 +42,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_asker
-    if asker_exists?
-      @asker = Asker.new(JSON.parse(session[:asker].to_s))
-    else
-      @asker = Asker.new
-      session[:asker] = @asker.to_json.to_s
-    end
-    @asker
-    # gon.asker = @asker # for debug purposes
-  end
-
-  def asker_exists?
-    !!session[:asker]
+    @asker = RequireAsker.new.call(session)
   end
 
   def hydrate_view(stuff)
