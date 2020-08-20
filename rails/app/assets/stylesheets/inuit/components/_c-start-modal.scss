@@ -7,7 +7,7 @@
 }
 
 h2.c-start-modal-title {
-  margin-top: 100px;
+  margin-top: 90px;
   margin-bottom: 15px;
   font-weight: 900;
   font-stretch: normal;
@@ -57,7 +57,7 @@ h2.c-start-modal-title {
 
 #login-form.modal {
   text-align: center;
-  max-width: 750px;
+  max-width: 700px;
   border-radius: 4px;
   padding-bottom: 2rem;
   padding-top: 1rem;
@@ -67,8 +67,8 @@ h2.c-start-modal-title {
   box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
   @include mq($from: tablet) {
-    padding-left: 7rem;
-    padding-right: 7rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
