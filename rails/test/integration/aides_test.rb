@@ -6,8 +6,7 @@ class AidesTest < ActionDispatch::IntegrationTest
     #given
     _create_realistic_aid('my aid')
     allow_any_instance_of(GetCityNameRegionCode).to receive(:call).and_return(['Ceyssac', 'ARA'])
-
-    
+    allow_any_instance_of(GetRegion).to receive(:call).and_return('Auvergne')
     #when
     get aides_path(for_id: 'NDUsNCxvLDEsMyxuLG0sNDMwNDUsNDMwMDAsbm90X2FwcGxpY2FibGUsbg==')
     #then
