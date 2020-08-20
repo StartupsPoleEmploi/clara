@@ -21,7 +21,6 @@ class DetailController < ApplicationController
       @loaded = DetailService.new(@aid).hashified_aid
     end
     raise SecurityError if @loaded[:aid] == nil
-    # gon.loaded = @loaded # testing & debug purpose only
   end
 
   def post_feedback

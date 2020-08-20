@@ -61,6 +61,7 @@ class AidesController < ApplicationController
         :include => {filters: {only:[:id, :slug]}}
       )
     )
+
     return @h_aids, aids.size
   end
 
