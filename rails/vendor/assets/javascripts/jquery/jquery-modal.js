@@ -139,7 +139,7 @@
     show: function() {
       this.$elm.trigger($.modal.BEFORE_OPEN, [this._ctx()]);
       if (this.options.showClose) {
-        this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal ' + this.options.closeClass + '"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"> <path fill="#046EA5" d="M9.24 7.83c.34.397.317.988-.052 1.358-.37.369-.961.392-1.358.052L5 6.41 2.17 9.24c-.397.34-.988.317-1.358-.052C.443 8.818.42 8.227.76 7.83L3.59 5 .76 2.17C.42 1.773.443 1.182.812.812 1.182.443 1.773.42 2.17.76L5 3.59 7.83.76c.397-.34.988-.317 1.358.052.369.37.392.961.052 1.358L6.41 5l2.83 2.83z"/> </svg>' + this.options.closeText + '</a>');
+        this.closeButton = $('<a href="#close-modal" rel="modal:close" class="close-modal ' + this.options.closeClass + '"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"> <path fill="#046EA5" d="M9.24 7.83c.34.397.317.988-.052 1.358-.37.369-.961.392-1.358.052L5 6.41 2.17 9.24c-.397.34-.988.317-1.358-.052C.443 8.818.42 8.227.76 7.83L3.59 5 .76 2.17C.42 1.773.443 1.182.812.812 1.182.443 1.773.42 2.17.76L5 3.59 7.83.76c.397-.34.988-.317 1.358.052.369.37.392.961.052 1.358L6.41 5l2.83 2.83z"/> </svg> ' + this.options.closeText + '</a>');
         this.$elm.append(this.closeButton);
       }
       this.$elm.addClass(this.options.modalClass).appendTo(this.$blocker);
