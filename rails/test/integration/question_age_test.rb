@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class QuestionAreTest < ActionDispatch::IntegrationTest
+class QuestionAgeTest < ActionDispatch::IntegrationTest
   
   test "Question AGE, by default age is nil" do
     #given
@@ -14,7 +14,6 @@ class QuestionAreTest < ActionDispatch::IntegrationTest
   
   test "Question AGE, age is extracted from asker if already here" do
     #given
-    # allow_any_instance_of(AgeService).to receive(:new_and_download).and_return(AgeForm.new(number_of_years: '42'))
     allow_any_instance_of(RequireAsker).to receive(:call).and_return(Asker.new(v_age: '42'))
     
     #when

@@ -9,26 +9,21 @@ class AddressQuestionsController < ApplicationController
   end
 
   def create
-    if params[:commit] == 'Revenir' 
-      my_redirect_to QuestionManager.new.getPreviousPath('address', @asker)
-    else
-      @address = AddressForm.new(allowed_params)
-      if @address.valid?
-        if @address.label.present?
-          AddressService.new.upload(@address, @asker)
-        else
-          AddressService.new.reset(@asker)
-        end
-        @asker.v_zrr = nil
-        @asker.v_qpv = nil
-        my_redirect_to QuestionManager.new.getNextPath('address', @age)
+    @address = AddressForm.new(allowed_params)
+    if @address.valid?
+      if @address.label.present?
+        AddressService.new.upload(@address, @asker)
       else
         AddressService.new.reset(@asker)
-        flash[:error] = @address.errors.messages.values.flatten
-        my_redirect_to new_address_question_path
       end
+      @asker.v_zrr = nil
+      @asker.v_qpv = nil
+      my_redirect_to QuestionManager.new.getNextPath('address', @age)
+    else
+      AddressService.new.reset(@asker)
+      flash[:error] = @address.errors.messages.values.flatten
+      my_redirect_to new_address_question_path
     end
-
   end
   
 private
