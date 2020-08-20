@@ -10,6 +10,9 @@ class CreateScopeAndGeoForAid
       uuid               = _create_uuid
       rules_no_geo       = _create_rules_no_geo(trundle, uuid)
       root_rule_no_geo   = rules_no_geo[0]
+      p '- - - - - - - - - - - - - - root_rule_no_geo- - - - - - - - - - - - - - - -' 
+      ap root_rule_no_geo
+      p ''
       root_rule_with_geo = _create_geo(root_rule_no_geo, geo, uuid)
       aid.rule           = root_rule_with_geo
       aid.save

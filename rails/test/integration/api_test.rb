@@ -56,6 +56,32 @@ class ApiTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal ({'aid'=>{'name'=>'aaa', 'slug'=>'aaa'}}), JSON.parse(response.body)
   end
+  
+
+  test "API : eligible, refused if not authenticated" do
+    #given
+    #when
+    get api_v1_aids_eligible_path
+    #then
+    assert_response 401
+  end
+
+  test "API : eligible, when authenticated" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_eligible_path(age: 22), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :success
+    assert_equal ({'input'=>{'asker'=>{'age' => '22'}}, 'aids'=>['blabla']}), JSON.parse(response.body)
+  end
+
+  def _create_realistic_aid
+    variable_age = Variable.create!(name: "age", variable_kind: "integer")
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    rule = Rule.create!({name: "r_majorite", value_eligible: "18", variable: variable_age, description: "descr", kind: "simple", operator_kind: "more_than"})
+    aid = Aid.create!(name: "aaa", contract_type: contract, rule: rule, ordre_affichage: 3)
+  end
 
   def _jwt
     api_user = ApiUser.create!(email:"a@b.c", password: "p")
