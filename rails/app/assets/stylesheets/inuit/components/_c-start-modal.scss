@@ -1,5 +1,5 @@
 .welcome .blocker {
-  background-color: rgba(255, 255, 255, 0.91);
+  background-color: rgba(247, 252, 255, 0.9);
   box-shadow: 0 0 2px #000;
 }
 .welcome .modal {
@@ -33,9 +33,13 @@ h2.c-start-modal-title {
     line-height: 1.27;
     letter-spacing: normal;
     color: #046ea5;
+    margin-left: .7rem;
     @include mq($from: tablet) {
       font-size: 22px;
     }
+  }
+  img {
+    margin-top: -3px;
   }
 }
 

@@ -1,6 +1,9 @@
 # CLARA Changelog
 
 
+## 34.10.2 (21/08/2020)
+[#55b][DESIGN] Légère amélioration pop-in
+
 ## 34.10.1 (21/08/2020)
 [#50b][FEATURETTE] Revenir sur la popin ouverte
 
