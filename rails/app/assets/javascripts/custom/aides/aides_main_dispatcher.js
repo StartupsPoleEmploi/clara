@@ -41,16 +41,7 @@ clara.js_define("aides_main_dispatcher", {
         });
       });
     });
-
-    _.each(clara.aides_constants["ELIGIES"], function(eligy_name) {
-      $('#' + eligy_name + ' .js-fold').click(function(){
-        main_store.dispatch({type: 'FOLD_ELIGY', eligy_name: eligy_name});
-      });
-      $('#' + eligy_name + ' .js-unfold').click(function(){
-        main_store.dispatch({type: 'UNFOLD_ELIGY', eligy_name: eligy_name});
-      });
-    });
-
+    
   }
 
 
