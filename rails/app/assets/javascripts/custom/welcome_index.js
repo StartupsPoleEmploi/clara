@@ -13,6 +13,10 @@ clara.js_define("welcome_index", {
     store.clearAll();
     console.log("Version : " + clara.version);
 
+    if ($.urlParam('trigger_popin')) {
+      $("#start_wizard_form1").click()
+    }
+
     $("#start_wizard_form2").click(function(argument) {
       $("#start_wizard_form1").click()
     })

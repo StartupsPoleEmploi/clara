@@ -14,7 +14,7 @@ class PeconnectController < ApplicationController
 
   def callback
     if HasUserCancelledPeconnect.new.call(request.original_url)
-      redirect_to root_path
+      redirect_to root_path(trigger_popin: true)
     else
       render locals: BuildCallbackHash.new.call(session, params, request.host)
     end
