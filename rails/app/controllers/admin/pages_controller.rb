@@ -11,6 +11,7 @@ module Admin
 
     def post_delete_trace
       Trace.destroy_all
+      render json: {status: "ok"}
     end
 
     def get_switch_peconnect
@@ -37,9 +38,8 @@ module Admin
     end
 
     def post_clock
-      clock_delta = ExtractParam.new(params).call(:clock_delta)
       current_clockdiff = Clockdiff.first
-      current_clockdiff.value = clock_delta.to_i
+      current_clockdiff.value = params[:clock_delta].to_i
       current_clockdiff.save
       render locals: {
         current_diff_value: current_clockdiff.value
@@ -72,9 +72,7 @@ module Admin
 
     def post_cache
       ExpireCache.new.call
-      render json: {
-        status: "ok",
-      }
+      render json: {status: "ok"}
     end
 
     # refdata
@@ -83,6 +81,7 @@ module Admin
 
     def post_ref_data
       Rails.application.load_seed
+      render json: {status: "ok"}
     end
 
     # transfer anything
@@ -90,6 +89,7 @@ module Admin
     end
 
     def post_transfer_descr
+      render json: {status: "ok"}
     end
   end
 end
