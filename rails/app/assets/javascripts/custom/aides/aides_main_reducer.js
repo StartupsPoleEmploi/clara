@@ -50,20 +50,6 @@ clara.js_define("aides_main_reducer", {
       var found = _.find(newState[ely + "_zone"][ely], function(e) {return e.name === action.contract_name});
       found.is_collapsed = true;
     }
-    else if (action.type === 'FOLD_ELIGY') {
-      var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-      contracts = newState[ely + "_zone"][ely]
-      _.each(contracts, function(contract){
-        contract.is_collapsed = false;
-      })
-    }
-    else if (action.type === 'UNFOLD_ELIGY') {
-      var ely = action.eligy_name; // either eligibles, ineligibles, or uncertains
-      contracts = newState[ely + "_zone"][ely]
-      _.each(contracts, function(contract){
-        contract.is_collapsed = true;
-      });
-    }
     
     clara.aides_set_state.please(newState);
 

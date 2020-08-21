@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.10.0 (21/08/2020)
+[#53][FEATURE] Retirer "tout déplier"
+
+
 ## 34.9.0 (20/08/2020)
 [#55][DESIGN] Choix pop-in
 
