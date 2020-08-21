@@ -76,10 +76,74 @@ class AccessFilterTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
 
+
+  test "Un contributeur ne peut pas lister les filters" do
+    #given
+    filter, contributeur = _filter_and_contributeur
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #then
+    assert_raises SecurityError do
+      #when
+      get admin_filters_path
+    end
+  end
+
+  test "Un contributeur ne peut pas lire un filter" do
+    #given
+    filter, contributeur = _filter_and_contributeur
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #then
+    assert_raises SecurityError do
+      #when
+      get admin_filter_path(filter.id)
+    end
+  end  
+
+  test "Un contributeur ne peut pas accéder à l'édition d'un filter" do
+    #given
+    filter, contributeur = _filter_and_contributeur
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #then
+    assert_raises SecurityError do
+      #when
+      get edit_admin_filter_path(filter.id)
+    end
+  end
+
+  test "Un contributeur ne peut pas modifier un filter" do
+    #given
+    filter, contributeur = _filter_and_contributeur
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #then
+    assert_raises SecurityError do
+      #when
+      put admin_filter_path(filter.id), params: { filter: { trigger_at: DateTime.new }}
+    end
+  end
+
+  test "Un contributeur ne peut pas supprimer un filter" do
+    #given
+    filter, contributeur = _filter_and_contributeur
+    post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
+    #then
+    assert_raises SecurityError do
+      #when
+      delete admin_filter_path(filter.id)
+    end
+  end
+
+
+
   def _filter_and_superadmin
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     filter  = Filter.create!(name: "Se déplacer")
     [filter, superadmin]
+  end
+
+  def _filter_and_contributeur
+    contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
+    filter  = Filter.create!(name: "Se déplacer")
+    [filter, contributeur]
   end
 
 end

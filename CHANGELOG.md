@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.10.1 (21/08/2020)
+[#50b][FEATURETTE] Revenir sur la popin ouverte
+
+
 ## 34.10.0 (21/08/2020)
 [#53][FEATURE] Retirer "tout déplier"
 

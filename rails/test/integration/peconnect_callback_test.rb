@@ -7,7 +7,7 @@ class PeconnectCallbackTest < ActionDispatch::IntegrationTest
     #when
     get peconnect_callback_path(state: 'any')
     #then
-    assert_redirected_to root_url
+    assert_redirected_to root_url(trigger_popin: true)
   end
 
   test "callback of peconnect : accept callback if request params are here" do
