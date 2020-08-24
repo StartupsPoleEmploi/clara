@@ -49,10 +49,6 @@ class Breadcrumb < ViewObject
     @current_path == "detail_path" && @context.params[:for_id]
   end
 
-  def display_share?
-    @current_path == "detail_path" ||  (@current_path == "aides_path" && !!@context.params[:for_id])
-  end
-
   def link_to_aides
     "#{aides_path}?for_id=#{@context.params[:for_id]}"
   end
