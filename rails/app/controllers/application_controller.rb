@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def hydrate_view(stuff)
+    @raw_rendered = stuff
     render locals: stuff
   end
 
