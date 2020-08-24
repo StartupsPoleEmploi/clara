@@ -1,0 +1,23 @@
+.c-resulteligy-title {
+  display: flex;
+}
+
+.c-resulteligy-share {
+  margin-left: auto;
+  background-color: #057dbc;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #ffffff;
+  border: none;
+  text-transform: uppercase;
+  padding: .75rem 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.c-resulteligy-title__actual {
+  display: flex;
+  align-items: center;
+}
