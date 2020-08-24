@@ -49,7 +49,7 @@ class Breadcrumb < ViewObject
     @current_path == "detail_path" && @context.params[:for_id]
   end
 
-  def display_print?
+  def display_share?
     @current_path == "detail_path" ||  (@current_path == "aides_path" && !!@context.params[:for_id])
   end
 
