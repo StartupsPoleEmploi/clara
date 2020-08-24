@@ -3,7 +3,7 @@ clara.js_define("aides", {
   please: function() {
 
     
-    $(".c-resulteligy-share").click(function(e) {
+    $(".js-resulteligy-share").click(function(e) {
       if (typeof ga === "function") {
         ga("send", "event", "results", "share", document.location.pathname);
       }
