@@ -7,7 +7,7 @@ dialog {
   overflow: hidden;
 }
 /* overlay covers everything */
-.simple-modal-overlay {
+.callback-modal-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -19,7 +19,7 @@ dialog {
   cursor: pointer;
 }
 /* modal */
-.simple-modal {
+.callback-modal {
   position: fixed;
   left: 15%;
   top: 5%;
@@ -32,7 +32,7 @@ dialog {
   padding: 2em;
   overflow: auto;
 }
-.simple-modal-close {
+.callback-modal-close {
   float: right;
   background: #933;
   border-radius: 1em;
@@ -42,12 +42,12 @@ dialog {
   line-height: 1.2;
   text-align: center;
 }
-.simple-modal-close:focus,
-.simple-modal-close:hover,
-.simple-modal-close:active {
+.callback-modal-close:focus,
+.callback-modal-close:hover,
+.callback-modal-close:active {
   background: #882525;
 }
-.simple-modal-overlay[data-background-click="disabled"] {
+.callback-modal-overlay[data-background-click="disabled"] {
   cursor: auto;
 }
 
@@ -56,7 +56,7 @@ dialog {
 /* for this example: tablets */
 @media (max-width: 55.625em) {
 
-  .simple-modal {
+  .callback-modal {
     left: 5%;
     top: 5%;
     bottom: 5%;
@@ -68,7 +68,7 @@ dialog {
 /* for this example: mobile */
 @media (max-width: 44.375em) {
 
-  .simple-modal {
+  .callback-modal {
     left: 1%;
     top: 1%;
     max-width: 98%;
@@ -80,7 +80,7 @@ dialog {
 
 /* another modal styling example */
 /* tooltip modal for it’s easy button */
-.simple-left-modal-overlay {
+.callback-left-modal-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -92,7 +92,7 @@ dialog {
   cursor: pointer;
 }
 
-.simple-left-modal {
+.callback-left-modal {
   left: auto;
   right: 0;
   top: 0;
@@ -120,7 +120,7 @@ dialog {
       );
   background-attachment: local;
 }
-.simple-left-modal-close {
+.callback-left-modal-close {
   position: absolute;
   top: .25em;
   right: 0;
