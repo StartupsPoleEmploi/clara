@@ -7,12 +7,16 @@ clara.js_define("peconnect_callback", {
     please: function() {
       console.log("defining");
 
+      function redirect_on_close() {
+        window.document.location = '/';
+      }
+
       $('.c-footer-subtitle').on('click', function(e) { console.log("blabla"); })
       $('.js-modal').on('click', function(e) { 
         console.log("open js-modal"); 
         setTimeout(function () {
-          $('#js-modal-close').on('click', function(e) { console.log("close"); })
-          $('.simple-modal-overlay').on('click', function(e) { console.log("overlay"); })
+          $('#js-modal-close').on('click', redirect_on_close)
+          $('.simple-modal-overlay').on('click', redirect_on_close)
         }, 500)
         
       })
