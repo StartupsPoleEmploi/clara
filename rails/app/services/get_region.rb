@@ -4,7 +4,7 @@ require 'json'
 
 class GetRegion
 
-
+  # :nocov:
   def call(regioncode)
     if (regioncode && regioncode.is_a?(String) && !regioncode.blank?)
       escaped_address = URI.escape(ENV['ARA_URL_GEO_API'] + "regions/#{regioncode}") 
@@ -30,5 +30,6 @@ class GetRegion
       return 'erreur_technique'
     end
   end
+  # :nocov:
   
 end
