@@ -20,6 +20,11 @@ class PeconnectController < ApplicationController
     end
   end
 
+  # def disconnect
+  #   session.clear
+  #   redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{session[:id_token]}&redirect_uri=https://#{request.host}"
+  # end
+
 end
 
 

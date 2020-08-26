@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 
 module Mae
   class Application < Rails::Application
+    config.load_defaults 6.0
     config.i18n.fallbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.public_file_server.enabled = true

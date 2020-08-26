@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
 
   # skip_before_action :verify_authenticity_token if Rails.env.development?
+  # skip_before_action :verify_authenticity_token, :only => [:disconnect_from_peconnect]
 
   def index
     SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:original_url))
