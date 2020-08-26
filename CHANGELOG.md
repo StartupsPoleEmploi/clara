@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.12.0 (27/08/2020)
+[#56][FEATURE] Popin post-connexion
+
+
 ## 34.11.0 (24/08/2020)
 [#52][FEATURE] redirection
 
