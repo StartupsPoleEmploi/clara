@@ -2,9 +2,14 @@
 - l = local_assigns
 - v = view_object(:callback_asker, {meta: l[:meta], asker: l[:asker]})
 
-%button.js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title"}
-  Show me a modal window
 
+
+%button.js-modal{"data-modal-close-text" => "Close it", "data-modal-close-title" => "Close it, really", "data-modal-content-id" => "modal_id_2nd_example", "data-modal-prefix-class" => "simple", "data-modal-title" => "Title for your modal"}
+  Show me another modal
+#modal_id_2nd_example.hidden
+  Woot, you can take the content of a hidden
+  = succeed "," do
+    %code div
 
 .c-callback.u-display-none
   .u-useful-width.u-margin-constraint.u-margin-top
