@@ -2,7 +2,11 @@
 - l = local_assigns
 - v = view_object(:callback_asker, {meta: l[:meta], asker: l[:asker]})
 
-.c-callback
+%button.js-modal{"data-modal-close-text" => "Close", "data-modal-close-title" => "Close this window", "data-modal-prefix-class" => "simple", "data-modal-text" => "Hello world!", "data-modal-title" => "Title"}
+  Show me a modal window
+
+
+.c-callback.u-display-none
   .u-useful-width.u-margin-constraint.u-margin-top
     
     - unless params[:already_connected]
