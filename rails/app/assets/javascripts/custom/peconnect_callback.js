@@ -30,7 +30,6 @@ clara.js_define("peconnect_callback", {
                 redirect_on_close();
               },
             });
-            // redirect_on_close();
           })
           $('.simple-modal-overlay').on('click', redirect_on_close)
         }, 500)
