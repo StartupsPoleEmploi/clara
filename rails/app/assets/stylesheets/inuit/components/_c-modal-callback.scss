@@ -13,8 +13,8 @@ dialog {
   bottom: 0;
   right: 0;
   left: 0;
-  background: #fff;
-  opacity: .8;
+  background: #f7fcff;
+  opacity: .9;
   z-index: 666; /* satan inside */
   cursor: pointer;
 }
@@ -29,11 +29,14 @@ dialog {
   border: 2px solid #000; 
   background: #fff;
   z-index: 667;
-  padding: 2em;
+  padding: 1rem 2rem;
   overflow: auto;
+  border-radius: 8px;
+  box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  border: 0px #fff solid;
 }
+
 .callback-modal-close {
-  float: right;
   text-align: center;
 }
 
@@ -136,4 +139,19 @@ button.callback-modal-close, button.callback-modal-close:hover {
   border: solid 2px #057dbc;
   border-radius: 0px;
   cursor: pointer;
+}
+
+.callback-modal__wrapper {
+  text-align: right;
+}
+
+.callback-modal__content {
+  text-align: center;
+  .c-fieldset, .my-profile {
+    text-align: left;
+  }
+}
+
+.c-callback-subtitle {
+  text-align: left;
 }
