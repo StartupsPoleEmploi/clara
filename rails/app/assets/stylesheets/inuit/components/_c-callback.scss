@@ -53,7 +53,6 @@ h1.c-callback-title {
 }
 
 .c-callback-submit {
-  display: none;
   margin-top: 1rem;
   background-color: #057dbc;
   font-size: 14px;
@@ -71,3 +70,13 @@ h1.c-callback-title {
   cursor: pointer;
 }
 
+
+button#display_more_filters {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+  color: #046ea5;
+}

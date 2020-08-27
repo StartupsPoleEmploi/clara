@@ -31,20 +31,20 @@ clara.js_define("peconnect_callback", {
       
       $('.js-modal').click();
 
-      if ($('.c-filterbox2.hidden').exists()) {
-        var $lastbox = $('.c-filterbox2.hidden').last()
+      if ($('.c-filterbox2.u-display-none').exists()) {
+        var $lastbox = $('.c-filterbox2.u-display-none').last()
         $( "<button id='display_more_filters'>Afficher plus</button>" ).insertAfter( $lastbox );
-        $('#display_more_filters').on('click', function(e) { 
+        $('button#display_more_filters').on('click', function(e) { 
 
           e.preventDefault();
 
-          if ($('.c-filterbox2.hidden').exists()) {
-            $('.c-filterbox2.hidden').addClass('tohide');
-            $('.c-filterbox2.hidden').removeClass('hidden'); 
+          if ($('.c-filterbox2.u-display-none').exists()) {
+            $('.c-filterbox2.u-display-none').addClass('tohide');
+            $('.c-filterbox2.u-display-none').removeClass('u-display-none'); 
             $('#display_more_filters').html('Afficher moins')           
           } else if ($('.c-filterbox2.tohide').exists()) {
-            $('.c-filterbox2.tohide').addClass('hidden');
-            $('.c-filterbox2.hidden').removeClass('tohide');            
+            $('.c-filterbox2.tohide').addClass('u-display-none');
+            $('.c-filterbox2.u-display-none').removeClass('tohide');            
             $('#display_more_filters').html('Afficher plus')           
           }
 
