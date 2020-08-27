@@ -34,17 +34,15 @@ class WelcomeController < ApplicationController
   end
 
   def disconnect_from_peconnect
-    old_token = session[:id_token]
-    session.clear
-    ap 'go !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-
-    if params[:json]
-      ap 'JSON !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-      render json: {redirection_url: "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"}
-    else
-      ap 'HTML !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-      redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"
-    end
+    # old_token = session[:id_token]
+    # session.clear
+    # if params[:json]
+    #   render json: {redirection_url: "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"}
+    # else
+    #   redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"
+    # end
+    res = DisconnectFromPeconnect.new.call(request, session, params)
+    public_send(res[:method], res[:arg])
   end
 
   def accept_all_cookies
