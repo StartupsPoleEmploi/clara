@@ -32,7 +32,6 @@ clara.js_define("peconnect_callback", {
       $('.js-modal').click();
 
       if ($('.c-filterbox2.hidden').exists()) {
-        // console.log($('.c-filterbox2.hidden').last());
         var $lastbox = $('.c-filterbox2.hidden').last()
         $( "<button id='display_more_filters'>Afficher plus</button>" ).insertAfter( $lastbox );
         $('#display_more_filters').on('click', function(e) { 
