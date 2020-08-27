@@ -33,7 +33,7 @@ clara.js_define("peconnect_callback", {
 
       if ($('.c-filterbox2.u-display-none').exists()) {
         var $lastbox = $('.c-filterbox2.u-display-none').last()
-        $( "<button id='display_more_filters'>Afficher plus</button>" ).insertAfter( $lastbox );
+        $( "<button id='display_more_filters' class='callback-display-more'>Afficher plus</button>" ).insertAfter( $lastbox );
         $('button#display_more_filters').on('click', function(e) { 
 
           e.preventDefault();
@@ -51,6 +51,30 @@ clara.js_define("peconnect_callback", {
         })
       }
       
+
+      if ($('.c-callback-userinfo').length > 3 ) {
+        console.log("more than 3 userinfo");
+        for (var i = $('.c-callback-userinfo').length - 1; i >= 3; i--) {
+          $('.c-callback-userinfo:eq(' + i + ')').addClass('u-display-none')
+        }
+        $( "<button id='display_more_userinfo' class='callback-display-more'>Afficher plus</button>" ).insertAfter( $('.c-callback-userinfo').last() );
+        $('button#display_more_userinfo').on('click', function(e) { 
+
+          e.preventDefault();
+
+          if ($('.c-callback-userinfo.u-display-none').exists()) {
+            $('.c-callback-userinfo.u-display-none').addClass('tohide');
+            $('.c-callback-userinfo.u-display-none').removeClass('u-display-none'); 
+            $('#display_more_userinfo').html('Afficher moins')           
+          } else if ($('.c-callback-userinfo.tohide').exists()) {
+            $('.c-callback-userinfo.tohide').addClass('u-display-none');
+            $('.c-callback-userinfo.u-display-none').removeClass('tohide');            
+            $('#display_more_userinfo').html('Afficher plus')           
+          }
+
+        })
+      }
+
     }
 });
 

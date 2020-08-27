@@ -21,10 +21,10 @@ dialog {
 /* modal */
 .callback-modal {
   position: fixed;
-  left: 15%;
-  top: 5%;
-  width: 70%;
-  max-height: 98vh;
+  left: 25%;
+  top: 3%;
+  width: 50%;
+  max-height: 93vh;
   right: auto;
   border: 2px solid #000; 
   background: #fff;
@@ -150,6 +150,10 @@ button.callback-modal-close, button.callback-modal-close:hover {
   .c-fieldset, .my-profile {
     text-align: left;
   }
+}
+
+.c-callback-leftpad {
+  padding-left: 4rem;
 }
 
 .c-callback-subtitle {

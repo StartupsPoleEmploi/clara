@@ -24,61 +24,61 @@
           =v.prenom
 
     .c-callback-layout.o-layout.o-layout--middle
-      .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-      .o-layout__item{:class => "u-1/1 u-3/5@tablet my-profile"}
+      .o-layout__item{:class => ""}
+      .o-layout__item{:class => "my-profile c-callback-leftpad"}
         %h2.c-callback-subtitle Mon profil
         %ul    
-          %li
+          %li.c-callback-userinfo
             %span
               Statut :
             %span
               =v.inscription
           - if !v.duree_d_inscription.blank?
-            %li
+            %li.c-callback-userinfo
               %span
                 Durée d'inscription :
               %span
                 =v.duree_d_inscription
           - if !v.categorie.blank?
-            %li
+            %li.c-callback-userinfo
               %span
                 Catégorie :
               %span
                 =v.categorie
-          %li
+          %li.c-callback-userinfo
             %span
               Age :
             %span
               =v.age
-          %li
+          %li.c-callback-userinfo
             %span
               Diplôme obtenu le plus élevé :
             %span
               =v.diplome
-          %li
+          %li.c-callback-userinfo
             %span
               Commune de résidence :
             %span
               =v.location_label
           - if v.allocation_type
-            %li
+            %li.c-callback-userinfo
               %span
                 Type d'allocation :
               %span
                 =v.allocation_type
           - if !v.allocation_montant.blank?
-            %li
+            %li.c-callback-userinfo
               %span
                 Montant d'allocation :
               %span
                 =v.allocation_montant
-      .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
+      .o-layout__item{:class => ""}
 
     .c-callback-layout.o-layout.o-layout--middle
-      .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-      .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
+      .o-layout__item{:class => ""}
+      .o-layout__item{:class => "c-callback-leftpad"}
         = render 'shared/callback_question', {asker: l[:asker], filters: l[:filters]}      
-      .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
+      .o-layout__item{:class => ""}
 
 
 
