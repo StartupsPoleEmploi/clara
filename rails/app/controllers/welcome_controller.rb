@@ -34,8 +34,10 @@ class WelcomeController < ApplicationController
   end
 
   def disconnect_from_peconnect
+    old_token = session[:id_token]
     session.clear
-    redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{session[:id_token]}&redirect_uri=https://#{request.host}"
+    ap 'go !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"
   end
 
   def accept_all_cookies

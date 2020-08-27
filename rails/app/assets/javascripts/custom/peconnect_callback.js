@@ -23,7 +23,7 @@ clara.js_define("peconnect_callback", {
               },
               success: function(resp){ 
                 console.log("disconnected - ok");
-                redirect_on_close();
+                // redirect_on_close();
               },
               error: function(e){ 
                 console.log("disconnected - error");
