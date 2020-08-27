@@ -5,7 +5,7 @@
       = render 'shared/logozone', {display_search: request.path == get_search_front_path}
 
       .c-deconnect
-        - if display_disconnect_button?
+        - if display_disconnect_button?(session, request)
           .c-deconnect-name
             = StringUtils.new.upcase_first_downcase_others(JSON.parse(session[:meta])['given_name'])
           .c-deconnect-button
