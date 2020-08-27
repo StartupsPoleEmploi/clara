@@ -17,17 +17,20 @@ clara.js_define("peconnect_callback", {
         setTimeout(function () {
           $('#js-modal-close').on('click', function(){
             $.ajax({
-              url: '/welcome/disconnect_from_peconnect',
+              url: '/welcome/disconnect_from_peconnect?json=true',
               type: "POST",
+              contentType: "application/json",
               data: {
               },
               success: function(resp){ 
                 console.log("disconnected - ok");
-                // redirect_on_close();
+                console.log(resp);
+                window.document.location = resp.redirection_url;
               },
               error: function(e){ 
                 console.log("disconnected - error");
-                redirect_on_close();
+                console.log(e);
+                window.document.location = '/';
               },
             });
           })

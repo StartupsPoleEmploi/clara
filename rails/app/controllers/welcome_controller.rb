@@ -37,7 +37,14 @@ class WelcomeController < ApplicationController
     old_token = session[:id_token]
     session.clear
     ap 'go !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-    redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"
+
+    if params[:json]
+      ap 'JSON !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+      render json: {redirection_url: "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"}
+    else
+      ap 'HTML !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+      redirect_to "https://authentification-candidat.pole-emploi.fr/compte/deconnexion?id_token_hint=#{old_token}&redirect_uri=https://#{request.host}"
+    end
   end
 
   def accept_all_cookies

@@ -68,7 +68,7 @@
               = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg"), "modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }) 
           %span.c-newhomehero-discovertxt
             Découvrir Clara en vidéo
-            - if !fake_start_button
+            - unless fake_start_button
               #modal_video.u-display-none
                 %div.c-video-close-line
                   %button#js-modal-close.js-modal-close.video-modal-close.c-video-btn-close{"data-content-back-id" => "modal_video", :type => "button"}
