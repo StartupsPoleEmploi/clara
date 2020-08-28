@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.13.0 (28/08/2020)
+[#43][FEATURE] tag manager
+
+
 ## 34.12.0 (27/08/2020)
 [#56][FEATURE] Popin post-connexion
 
