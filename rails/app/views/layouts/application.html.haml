@@ -2,8 +2,7 @@
 %html.c-html{:lang => "#{I18n.locale}"}
   %head
     - unless ga_disabled?
-      = javascript_include_tag "", async: true, src: "https://www.googletagmanager.com/gtag/js?id=#{ENV['ARA_GOOGLE_GTAG_ID']}", id: "ga-gtag-src"
-      = javascript_tag "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);};gtag('js', new Date());gtag('config', '#{ENV["ARA_GOOGLE_GTAG_ID"]}', { 'optimize_id': '#{ENV["ARA_GOOGLE_OPTIMIZE_ID"]}'});", id: "ga-gtag-exec"
+      = javascript_tag "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}');</script>", id: "ga-gtag-exec"
 
 
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
@@ -35,6 +34,8 @@
     = yield :custom_css
         
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
+    = javascript_tag "<noscript><iframe src='https://www.googletagmanager.com/ns.html?id=#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>"
+
     .c-body__wrapper
       .c-body__content
         = render 'shared/header', {larger_container: (yield :larger_container)}
