@@ -2,7 +2,7 @@
 %html.c-html{:lang => "#{I18n.locale}"}
   %head
     - unless ga_disabled?
-      = javascript_tag "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })(window,document,'script','dataLayer','#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}');</script>", id: "ga-gtag-exec"
+      = "<!-- Google Tag Manager --><script id='ga-gtag-exec'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}');</script><!-- End Google Tag Manager -->".html_safe
 
 
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
@@ -34,7 +34,8 @@
     = yield :custom_css
         
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
-    = javascript_tag "<noscript><iframe src='https://www.googletagmanager.com/ns.html?id=#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript>"
+    - unless ga_disabled?
+      ="<!-- Google Tag Manager (noscript) --><noscript><iframe src='https://www.googletagmanager.com/ns.html?id=#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript><!-- End Google Tag Manager (noscript) -->".html_safe
 
     .c-body__wrapper
       .c-body__content
