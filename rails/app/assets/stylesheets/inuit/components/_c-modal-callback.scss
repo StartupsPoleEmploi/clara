@@ -1,0 +1,161 @@
+/* needed for old browsers */
+dialog {
+  display: block;
+}
+/* removes scroll when modal is opened */
+.no-scroll {
+  overflow: hidden;
+}
+/* overlay covers everything */
+.callback-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #f7fcff;
+  opacity: .9;
+  z-index: 666; /* satan inside */
+  cursor: pointer;
+}
+/* modal */
+.callback-modal {
+  position: fixed;
+  left: 25%;
+  top: 3%;
+  width: 50%;
+  max-height: 93vh;
+  right: auto;
+  border: 2px solid #000; 
+  background: #fff;
+  z-index: 667;
+  padding: 1rem 2rem;
+  overflow: auto;
+  border-radius: 8px;
+  box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
+  border: 0px #fff solid;
+}
+
+.callback-modal-close {
+  text-align: center;
+}
+
+.callback-modal-overlay[data-background-click="disabled"] {
+  cursor: auto;
+}
+
+/* it can be easily adapted in media-queries for tablets/mobile */
+
+/* for this example: tablets */
+@media (max-width: 55.625em) {
+
+  .callback-modal {
+    left: 5%;
+    top: 5%;
+    bottom: 5%;
+    width: 90%;
+  }
+  
+}
+
+/* for this example: mobile */
+@media (max-width: 44.375em) {
+
+  .callback-modal {
+    left: 1%;
+    top: 1%;
+    max-width: 98%;
+    bottom: 1%;
+  }
+
+}
+
+
+/* another modal styling example */
+/* tooltip modal for it’s easy button */
+.callback-left-modal-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8);
+  opacity: .8;
+  z-index: 666;
+  cursor: pointer;
+}
+
+.callback-left-modal {
+  left: auto;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 667;
+  position: fixed;
+  width: 40em;
+  max-width: 100%;
+  padding: 1em;
+  font-size: 1em;
+  border: 0;
+  overflow: auto;
+  background-color: #fff;
+  background-attachment: local;
+}
+.callback-left-modal-close {
+  position: absolute;
+  top: .25em;
+  right: 0;
+  background: transparent;
+  color: #fff;
+}
+
+
+.invisible, .hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+button.callback-modal-close, button.callback-modal-close:hover {
+  padding: 15px 25px;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: #152e3a;
+  border: solid 2px #057dbc;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.callback-modal__wrapper {
+  text-align: right;
+}
+
+.callback-modal__content {
+  text-align: center;
+  .c-fieldset, .my-profile {
+    text-align: left;
+  }
+}
+
+.c-callback-leftpad {
+  padding-left: 4rem;
+}
+
+.c-callback-subtitle {
+  text-align: left;
+}

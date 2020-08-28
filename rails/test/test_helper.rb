@@ -38,4 +38,8 @@ class ActiveSupport::TestCase
   def text_of(selector)
     Nokogiri::HTML(response.body).css(selector).text
   end
+
+  def fake(h)
+    OpenStruct.new(h)
+  end
 end

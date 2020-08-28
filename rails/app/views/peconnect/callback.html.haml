@@ -2,79 +2,83 @@
 - l = local_assigns
 - v = view_object(:callback_asker, {meta: l[:meta], asker: l[:asker]})
 
-.c-callback
-  .u-useful-width.u-margin-constraint.u-margin-top
-    
-    - unless params[:already_connected]
-      %h1.c-callback-title 
-        %span
-          <svg version="1.1" id="Capa_1" width="27px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
-        %span
-          Vous êtes connecté.e
-    %div.c-callback-name
-      %span
-        Bienvenue, 
-      %span
-        =v.prenom
 
-  .c-callback-layout.o-layout.o-layout--middle
-    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-    .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
-      %h2.c-callback-subtitle Mon profil
-      %ul    
-        %li
-          %span
-            Statut :
-          %span
-            =v.inscription
-        - if !v.duree_d_inscription.blank?
-          %li
-            %span
-              Durée d'inscription :
-            %span
-              =v.duree_d_inscription
-        - if !v.categorie.blank?
-          %li
-            %span
-              Catégorie :
-            %span
-              =v.categorie
-        %li
-          %span
-            Age :
-          %span
-            =v.age
-        %li
-          %span
-            Diplôme obtenu le plus élevé :
-          %span
-            =v.diplome
-        %li
-          %span
-            Commune de résidence :
-          %span
-            =v.location_label
-        - if v.allocation_type
-          %li
-            %span
-              Type d'allocation :
-            %span
-              =v.allocation_type
-        - if !v.allocation_montant.blank?
-          %li
-            %span
-              Montant d'allocation :
-            %span
-              =v.allocation_montant
-    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-
-  .c-callback-layout.o-layout.o-layout--middle
-    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
-    .o-layout__item{:class => "u-1/1 u-3/5@tablet"}
-      = render 'shared/callback_question', {asker: l[:asker], filters: l[:filters]}
-
+= render partial: 'shared/home_hero_content', locals: {fake_start_button: true}
+= render partial: 'shared/home_feat'
+%button.js-modal.invisible{"data-modal-close-text" => "Me déconnecter", "data-modal-close-title" => "Me déconnecter et fermer la modale", "data-modal-content-id" => "modal_id_2nd_example", "data-modal-prefix-class" => "callback", "data-modal-focus-id" => "filterbox2-n0 input"}
+  Ouvrir la modale (texte non visible)
+#modal_id_2nd_example.hidden
+  .c-callback
+    .u-useful-width.u-margin-constraint.u-margin-top
       
+      - unless params[:already_connected]
+        %h1.c-callback-title 
+          %span
+            <svg version="1.1" id="Capa_1" width="27px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 426.667 426.667" style="enable-background:new 0 0 426.667 426.667;" xml:space="preserve"> <g> <g> <path d="M421.876,56.307c-6.548-6.78-17.352-6.968-24.132-0.42c-0.142,0.137-0.282,0.277-0.42,0.42L119.257,334.375 l-90.334-90.334c-6.78-6.548-17.584-6.36-24.132,0.42c-6.388,6.614-6.388,17.099,0,23.713l102.4,102.4 c6.665,6.663,17.468,6.663,24.132,0L421.456,80.44C428.236,73.891,428.424,63.087,421.876,56.307z" fill="#207bad"/> </g> </g> </svg>
+          %span
+            Vous êtes connecté.e
+      %div.c-callback-name
+        %span
+          Bienvenue, 
+        %span
+          =v.prenom
+
+    .c-callback-layout.o-layout.o-layout--middle
+      .o-layout__item{:class => ""}
+      .o-layout__item{:class => "my-profile c-callback-leftpad"}
+        %h2.c-callback-subtitle Mon profil
+        %ul    
+          %li.c-callback-userinfo
+            %span
+              Statut :
+            %span
+              =v.inscription
+          - if !v.duree_d_inscription.blank?
+            %li.c-callback-userinfo
+              %span
+                Durée d'inscription :
+              %span
+                =v.duree_d_inscription
+          - if !v.categorie.blank?
+            %li.c-callback-userinfo
+              %span
+                Catégorie :
+              %span
+                =v.categorie
+          %li.c-callback-userinfo
+            %span
+              Age :
+            %span
+              =v.age
+          %li.c-callback-userinfo
+            %span
+              Diplôme obtenu le plus élevé :
+            %span
+              =v.diplome
+          %li.c-callback-userinfo
+            %span
+              Commune de résidence :
+            %span
+              =v.location_label
+          - if v.allocation_type
+            %li.c-callback-userinfo
+              %span
+                Type d'allocation :
+              %span
+                =v.allocation_type
+          - if !v.allocation_montant.blank?
+            %li.c-callback-userinfo
+              %span
+                Montant d'allocation :
+              %span
+                =v.allocation_montant
+      .o-layout__item{:class => ""}
+
+    .c-callback-layout.o-layout.o-layout--middle
+      .o-layout__item{:class => ""}
+      .o-layout__item{:class => "c-callback-leftpad"}
+        = render 'shared/callback_question', {asker: l[:asker], filters: l[:filters]}      
+      .o-layout__item{:class => ""}
 
 
-    .o-layout__item{:class => "u-1/1 u-1/5@tablet"}
 

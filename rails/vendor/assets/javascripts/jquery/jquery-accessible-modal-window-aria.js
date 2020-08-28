@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 
     /*
      * jQuery simple and accessible modal window, using ARIA
-     * @version v1.10.0
+     * @version v1.11.0
      * Website: https://a11y.nicolas-hoffmann.net/modal/
      * License MIT: https://github.com/nico3333fr/jquery-accessible-modal-window-aria/blob/master/LICENSE
      */
@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
     });
 
     // jQuery formatted selector to search for focusable items
-    var focusableElementsString = "a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
+    var focusableElementsString = "a[href], area[href], input:not([type='hidden']):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]";
 
     if ($('#js-modal-page').length === 0) { // just to avoid missing #js-modal-page
         $body.wrapInner('<div id="js-modal-page"></div>');
@@ -55,11 +55,11 @@ jQuery(document).ready(function($) {
 
         // insert code at the end
         $modal_code = '<' + $modal_tag + ' ' + $modal_role_dialog + ' ' + $modal_role_alertdialog + ' id="js-modal" class="' + $modal_prefix_classes + 'modal" aria-labelledby="modal-title" open ' + $modal_aria + '><div role="document" class="' + $modal_prefix_classes + 'modal__wrapper">';
-        // $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
+        $modal_code += '<button type="button" id="js-modal-close" class="' + $modal_prefix_classes + 'modal-close" data-content-back-id="' + modal_content_id + '" data-focus-back="' + $modal_starter_id + '" title="' + $modal_close_title + '">';
         if ($modal_close_img !== '') {
             $modal_code += '<img src="' + $modal_close_img + '" alt="' + $modal_close_text + '" class="' + $modal_prefix_classes + 'modal__closeimg" />';
         } else {
-            // $modal_code += '<span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span>';
+            $modal_code += '<span class="' + $modal_prefix_classes + 'modal-close__text">' + $modal_close_text + '</span>';
         }
         $modal_code += '</button>';
         $modal_code += '<div class="' + $modal_prefix_classes + 'modal__content">';
@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 
     })
     // close button and esc key
-    $body.on('click', '.js-modal-close', function() {
+    $body.on('click', '#js-modal-close', function() {
             var $this = $(this),
                 $focus_back = '#' + $this.attr('data-focus-back'),
                 $content_back_id = $this.attr('data-content-back-id'),
@@ -119,6 +119,7 @@ jQuery(document).ready(function($) {
             $page.removeAttr('aria-hidden');
 
             var delay = $js_modal.css("animation-duration");
+            //alert(delay);
             if (delay != '0s') {
                 var timeout = parseFloat(delay.replace('s', '')) * 1000;
                 timeout++;
