@@ -73,11 +73,11 @@ h1.c-callback-title {
   border: none;
   text-transform: uppercase;
   width: 100%;
-  padding: 1.75rem 0;
-  @include mq($from: mobile) {
-    padding: 1.75rem 5rem;
-  }
+  padding: 1.35rem 0;
+  max-width: 200px;
   @include mq($from: tablet) {
+    max-width: inherit;
+    padding: 1.75rem 5rem;
     color: #fafafa;
     width: auto;
     font-size: 22px;
