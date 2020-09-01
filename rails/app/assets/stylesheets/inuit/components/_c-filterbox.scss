@@ -18,9 +18,12 @@
   input[type='checkbox']{
     filter: grayscale(.48);
   }
-  font-size: 18px;
   line-height: 1.56;
   color: #152e3a;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 18px;
+  }
 }
 
 .c-filterbox {
