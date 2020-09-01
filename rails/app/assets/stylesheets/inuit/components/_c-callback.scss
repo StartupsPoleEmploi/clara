@@ -11,9 +11,11 @@
 }
 
 h1.c-callback-title {
-  font-size: 30px;
-  font-weight: bold;
-  font-weight: 900;
+  color: #152E3A; 
+  font-size: 28px; 
+  font-weight: 900; 
+  letter-spacing: 0; 
+  line-height: 28px; 
   text-align: center;
   margin-bottom: 0;
 }
@@ -64,8 +66,20 @@ button.callback-display-more {
   cursor: pointer;
   font-size: 16px;
   color: #046ea5;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 28px;
 }
 
 #display_more_userinfo {
   margin-top: .5rem;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.c-callback-userinfo {
+  color: #152E3A;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 28px;
 }

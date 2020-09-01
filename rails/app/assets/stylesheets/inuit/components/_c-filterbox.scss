@@ -15,6 +15,12 @@
   label {
     padding-left: .5rem;
   }
+  input[type='checkbox']{
+    filter: grayscale(.48);
+  }
+  font-size: 18px;
+  line-height: 1.56;
+  color: #152e3a;
 }
 
 .c-filterbox {
