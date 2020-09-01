@@ -1,6 +1,11 @@
 
 .c-callback {
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  @include mq($from: mobile) {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }  
 }
 
 .c-callback-layout.o-layout {
@@ -10,48 +15,77 @@
   }  
 }
 
+.c-callback-titlecont {
+  display: flex;
+  justify-content: center;
+  .o-media__img {
+    margin-right: 16px;
+  }
+}
+
 h1.c-callback-title {
-  font-size: 30px;
-  font-weight: bold;
-  font-weight: 900;
-  text-align: center;
+  color: #152E3A; 
+  font-weight: 900; 
+  letter-spacing: 0; 
+  line-height: 28px; 
+  text-align: left;
   margin-bottom: 0;
+  font-size: 19px; 
+  @include mq($from: tablet) {
+    font-size: 28px; 
+  }
 }
 
 .c-callback-name {
-  text-align: center;
+  text-align: left;
   margin-bottom: 24px;
-  font-size: 18px;
   font-weight: 500;
   line-height: 1.56;
   color: #152e3a;
+  margin-bottom: 2rem;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 28px; 
+  }
+}
+
+.c-callback-subtitle.is-first {
+  margin-top: 12px;
 }
 
 .c-callback-subtitle {
-  margin-bottom: 12px;
-  font-size: 22px;
   font-weight: 700;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.27;
   letter-spacing: normal;
   color: #046ea5;
+  font-size: 17px;
+  margin-bottom: 6px;
+  @include mq($from: tablet) {
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
 }
 
 .c-callback-submit {
-  margin-top: 3rem;
   background-color: #026396;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.5px;
   text-align: center;
-  color: #fafafa;
+  color: #ffffff;
   border: none;
   text-transform: uppercase;
-  padding: .5rem 1rem;
+  width: 100%;
+  padding: 1.35rem 0;
+  max-width: 200px;
   @include mq($from: tablet) {
-    font-size: 22px;
+    max-width: inherit;
     padding: 1.75rem 5rem;
+    color: #fafafa;
+    width: auto;
+    font-size: 22px;
   }
   cursor: pointer;
 }
@@ -64,8 +98,25 @@ button.callback-display-more {
   cursor: pointer;
   font-size: 16px;
   color: #046ea5;
+  letter-spacing: 0;
+  line-height: 28px;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 18px;
+  }
 }
 
 #display_more_userinfo {
   margin-top: .5rem;
+  line-height: 1.56;
+}
+
+.c-callback-userinfo {
+  color: #152E3A;
+  letter-spacing: 0;
+  line-height: 28px;
+  font-size: 14px;
+  @include mq($from: tablet) {
+    font-size: 18px;
+  }
 }
