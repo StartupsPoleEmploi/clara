@@ -1,6 +1,11 @@
 
 .c-callback {
-  margin-bottom: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  @include mq($from: mobile) {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }  
 }
 
 .c-callback-layout.o-layout {
