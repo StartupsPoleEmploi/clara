@@ -58,18 +58,6 @@ dialog {
   
 }
 
-/* for this example: mobile */
-@media (max-width: 44.375em) {
-
-  .callback-modal {
-    left: 1%;
-    top: 1%;
-    max-width: 98%;
-    bottom: 1%;
-  }
-
-}
-
 
 /* another modal styling example */
 /* tooltip modal for it’s easy button */
@@ -153,7 +141,10 @@ button.callback-modal-close, button.callback-modal-close:hover {
 }
 
 .c-callback-leftpad {
-  padding-left: 4rem;
+  padding-left: 0;
+  @include mq($from: tablet) {
+    padding-left: 4rem;
+  }
 }
 
 .c-callback-subtitle {
