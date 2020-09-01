@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.15.0 (02/08/2020)
+[#56c][DESIGN]  Popin post-connexion responsive, 2
+
+
 ## 34.14.0 (01/08/2020)
 [#56b][DESIGN]  Popin post-connexion responsive
 
