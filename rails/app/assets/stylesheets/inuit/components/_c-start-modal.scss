@@ -134,7 +134,7 @@ h2.c-start-modal-title {
     border: solid 2px #057dbc;
     padding: 10px 20px;
     font-size: 14px;
-    white-space: break-spaces;
+    white-space: normal;
     @include mq($from: tablet) {
       white-space: nowrap;
       padding: 20px 30px;
