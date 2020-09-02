@@ -65,11 +65,15 @@ h2.c-start-modal-title {
   border-radius: 4px;
   padding-bottom: 2rem;
   padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
   border-radius: 8px;
   box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
   background-color: #ffffff;
+  @include mq($from: mobile) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
   @include mq($from: tablet) {
     padding-left: 5rem;
     padding-right: 5rem;
@@ -102,7 +106,7 @@ h2.c-start-modal-title {
 }
 
 #start-clara-peconnect {
-  width: 185px;
+  width: 240px;
   margin-top: 20px;
   @include mq($from: mobile) {
     width: 285px;
