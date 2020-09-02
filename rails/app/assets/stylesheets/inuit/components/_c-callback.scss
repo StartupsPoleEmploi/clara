@@ -51,6 +51,10 @@ h1.c-callback-title {
 
 .c-callback-subtitle.is-first {
   margin-top: 12px;
+  padding-left: 5px; 
+  @include mq($from: mobile) {
+    padding-left: inherit; 
+  }
 }
 
 .c-callback-subtitle {
@@ -114,7 +118,6 @@ button.callback-display-more {
 .c-callback-userinfo {
   color: #152E3A;
   letter-spacing: 0;
-  line-height: 28px;
   font-size: 14px;
   @include mq($from: tablet) {
     font-size: 18px;
