@@ -2,7 +2,7 @@
 
 
 ## 34.15.1 (02/08/2020)
-[#56d][DESIGN]  Popin post-connexion responsive, 2
+[#56d][DESIGN]  Popin post-connexion responsive, 3
 
 
 ## 34.15.0 (02/08/2020)
