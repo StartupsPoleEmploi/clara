@@ -57,6 +57,10 @@
   line-height: 1.57;
   letter-spacing: normal;
   color: #046ea5;
+  margin-right: -13px;
+  @include mq($from: mobile) {
+    margin-right: inherit;
+  }
 }
 
 .modal-spinner {
