@@ -61,9 +61,9 @@ h1.c-callback-title {
   letter-spacing: normal;
   color: #046ea5;
   font-size: 17px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   @include mq($from: tablet) {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
     font-size: 22px;
   }
 }
