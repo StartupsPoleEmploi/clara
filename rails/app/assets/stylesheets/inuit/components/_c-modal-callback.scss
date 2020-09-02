@@ -29,7 +29,7 @@ dialog {
   border: 2px solid #000; 
   background: #fff;
   z-index: 667;
-  padding: 1rem 2rem;
+  padding: .5rem 1.5rem;
   overflow: auto;
   border-radius: 8px;
   box-shadow: 0 13px 18px -8px rgba(0, 0, 0, 0.15);
@@ -136,7 +136,7 @@ button.callback-modal-close, button.callback-modal-close:hover {
   border-radius: 0px;
   cursor: pointer;
 
-  padding: 10px 15px;
+  padding: 5px 15px;
   margin-right: -15px;
   font-size: 12px;
   @include mq($from: tablet) {
