@@ -29,7 +29,7 @@ clara.js_define("peconnect_callback", {
               error: function(e){ 
                 console.log("disconnected - error");
                 console.log(e);
-                window.document.location = '/';
+                // window.document.location = '/';
               },
             });
           })
