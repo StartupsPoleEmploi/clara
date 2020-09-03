@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.15.3 (03/08/2020)
+[#62][BUG] Post-prod
+
+
 ## 34.15.2 (02/08/2020)
 [#61][DESIGN] Mobile
 

@@ -5,8 +5,15 @@ clara.js_define("peconnect_callback", {
     },
 
     please: function() {
+
       $('.js-modal').on('click', function(e) { 
+
         setTimeout(function () {
+           $('#c-callback-submit2').on('click', function(e) { 
+              console.log("hello");
+              $('#c-callback-submit1').click();
+            });
+
           $('#js-modal-close').on('click', function(){
             $.ajax({
               url: '/welcome/disconnect_from_peconnect?json=true',
@@ -27,6 +34,7 @@ clara.js_define("peconnect_callback", {
             });
           })
         }, 500)
+        
       })
       
       $('.js-modal').click();
