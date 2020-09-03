@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # See https://stackoverflow.com/a/38003702/2595513
   after_action :set_response_language_header
 
-  skip_before_action :verify_authenticity_token if ENV["R7_MODE"]
+  skip_before_action :verify_authenticity_token if Rails.env.development?
 
   def check_cache
     unless File.file?(Rails.root.join('public','activated_models.txt'))
