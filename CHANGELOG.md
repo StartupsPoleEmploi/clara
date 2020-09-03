@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 34.15.4 (03/08/2020)
+[#62b][BUG] Post-prod 2
+
+
 ## 34.15.3 (03/08/2020)
 [#62][BUG] Post-prod
 
