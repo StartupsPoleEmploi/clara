@@ -7,7 +7,7 @@ volumes:
 
 services:
 
-  clara_redis:
+  redis:
     image: 'redis:5-alpine'
     command: redis-server
     ports:
@@ -51,6 +51,10 @@ services:
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
+    depends_on:
+    - redis
+    environment:
+    - REDIS_URL=redis://redis:6379/1
     networks:
     - mynetwork
 
