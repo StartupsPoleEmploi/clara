@@ -1,13 +1,17 @@
 .c-deconnect {
   display: flex;
   align-items: center;
-  margin-top: 9px;
+  justify-content: flex-end;
+  flex-direction: column;
+  @include mq($from: tablet) {
+    margin-top: 9px;
+    flex-direction: row;
+  }
 }
 
 .c-deconnect-name {
   margin-right: 1.4rem;
   margin-top: -2px;
-  font-size: 18px;
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -15,6 +19,10 @@
   letter-spacing: normal;
   text-align: right;
   color: #152e3a;
+  font-size: 16px;
+  @include mq($from: tablet) {
+    font-size: 18px;
+  }
 }
 
 .c-deconnect-button {
@@ -24,7 +32,7 @@
     border:0;
     background-color:transparent;    
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
@@ -32,6 +40,9 @@
     letter-spacing: 0.8px;
     text-align: center;
     color: #152e3a;
+    @include mq($from: tablet) {
+      font-size: 16px;
+    }
   }
   white-space: nowrap;
   cursor: pointer;
