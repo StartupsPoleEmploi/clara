@@ -9,8 +9,6 @@ services:
     - '6379:6379'
     volumes:
     - 'redis:/data'
-    networks:
-    - mynetwork
 
   db-srv:
     image: postgres:9.5.17
@@ -19,7 +17,7 @@ services:
       - '../private/db/developpement/init.sql:/docker-entrypoint-initdb.d/init.sql'
       - "../private/db/latest.dump:/latest.dump"
     ports:
-      - '5432:5432'
+      - '5432'
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
 

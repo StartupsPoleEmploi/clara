@@ -324,6 +324,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logster (2.9.4)
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -450,6 +451,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.2)
     regexp_parser (1.7.1)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -606,6 +608,7 @@ DEPENDENCIES
   launchy
   letter_opener_web
   listen
+  logster
   loofah
   magic_lamp
   mailjet
@@ -635,6 +638,7 @@ DEPENDENCIES
   rails-html-sanitizer
   rake
   rb-fsevent
+  redis
   rspec-rails
   ruby-prof
   rubyzip

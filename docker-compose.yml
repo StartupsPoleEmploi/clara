@@ -2,6 +2,7 @@ version: "3"
 
 volumes:
   vol_data:
+  vol_redis:
   vol_shared:
 
 services:
@@ -12,7 +13,7 @@ services:
     ports:
     - '6379:6379'
     volumes:
-    - 'redis:/data'
+    - 'vol_redis:/data'
     networks:
     - mynetwork
 
