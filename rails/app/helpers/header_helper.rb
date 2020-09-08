@@ -1,7 +1,7 @@
 module HeaderHelper
 
-  def display_disconnect_button?(session=session, request=request)
-    !!(session[:id_token] && request.path != peconnect_callback_path)
+  def display_disconnect_button?(local_session=session, local_request=request)
+    !!(local_session[:id_token] && local_request.path != peconnect_callback_path)
   end
 
 end
