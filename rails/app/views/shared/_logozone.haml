@@ -1,4 +1,5 @@
 - display_search ||= false
+- display_deconnect ||= false
 - page = request.query_parameters["page"]
 - usearch = request.query_parameters["usearch"]
 
@@ -8,7 +9,15 @@
       = image_tag("pe-clara-a.svg", alt: "Clara, Vos aides en un clic " )
     %a.c-logozone--pe{target: "_blank", rel: "noopener noreferrer", "aria-label" => "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)",  href: "https://www.pole-emploi.fr/accueil/", title: "Clara est un service de Pôle Emploi - Site de Pôle emploi (Ouverture dans une nouvelle fenêtre)", class: "#{StringToRouteService.new(request).path == 'root_path' ? 'c-logozone--pe-root' : 'c-logozone--pe-notroot'}"}
       = image_tag("header-logo-pole-emploi-mono.svg", alt: "Le site de Pôle emploi")
-  - if display_search
+  - if display_disconnect_button?(session, request)
+    .o-line__item
+      .c-deconnect
+        .c-deconnect-name
+          = StringUtils.new.upcase_first_downcase_others(JSON.parse(session[:meta])['given_name'])
+        .c-deconnect-button
+          = form_with url: welcome_disconnect_from_peconnect_path, :local => true, id: 'disconnect_peconnect_form' do |f|
+            = f.submit "Me déconnecter", id: 'clara-peconnect-disconnect'
+  - elsif display_search
     .o-line__item{"class" => "u-hide u-show@wide"}
       = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
         = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide", :autocomplete => "off"

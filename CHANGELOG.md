@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 35.0.0 (08/08/2020)
+[#64][BUG][DESIGN] Bouton de déconnexion sur safari 
+
+
 ## 34.15.4 (03/08/2020)
 [#62b][BUG] Post-prod 2
 

@@ -10,20 +10,21 @@
   }
 }
 
-.c-logozone--clara.c-logozone--clara-notroot {
-  img {
+.c-logozone--clara.c-logozone--clara-notroot img {
+  margin-top: 9px;    
+  width: 100px;
+  @include mq($from: tablet) {
     width: 214px;
-    margin-top: 9px;    
   }
 }
 
 
 
 .c-logozone .c-logozone--pe img {
-  margin-left: space(2);
-  @include mq($until: tablet) {
+  width: 100px;
+  margin-left: -5px;
+  @include mq($from: tablet) {
     margin-left: -10px;
-    width: 100px;
   }
   margin-bottom: -5px;
 }

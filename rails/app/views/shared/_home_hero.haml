@@ -4,6 +4,8 @@
   .c-navbar
     .c-newhomehero__header
       .u-useful-width.u-useful-width--larger.u-margin-constraint
-        = render 'shared/logozone', {display_search: true}
+        .c-logozone.o-line
+          .o-line__item
+            = render 'shared/logozone', {display_search: true}
 
   = render 'shared/home_hero_content', {is_peconnect_activated: is_peconnect_activated}
