@@ -2,6 +2,16 @@ version: '2.2'
 
 services:
 
+  redis-srv:
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+    - '6379:6379'
+    volumes:
+    - 'redis:/data'
+    networks:
+    - mynetwork
+
   db-srv:
     image: postgres:9.5.17
     volumes:
@@ -39,4 +49,5 @@ services:
 volumes:
   bundle:
   pgdata:
+  redis:
   node_modules:

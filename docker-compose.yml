@@ -5,6 +5,17 @@ volumes:
   vol_shared:
 
 services:
+
+  clara_redis:
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+    - '6379:6379'
+    volumes:
+    - 'redis:/data'
+    networks:
+    - mynetwork
+
   clara_nginx:
     restart: always
     privileged: true
