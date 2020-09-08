@@ -14,7 +14,9 @@ services:
     - '6379:6379'
     volumes:
     - 'vol_redis:/data'
-
+    networks:
+    - mynetwork
+    
   clara_nginx:
     restart: always
     privileged: true
