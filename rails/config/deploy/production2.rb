@@ -40,6 +40,7 @@ task :deploy do
       command %{export ARA_SECRET_KEY_BASE=`bundle exec rake secret`}
       command %{export ARA_DATABASE_HOST=clara_db}
       invoke :'rails:db_migrate'
+      invoke :'rails:assets_clean'
       invoke :'rails:assets_precompile'
       invoke :'deploy:cleanup'
 
