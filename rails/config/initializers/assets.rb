@@ -1,5 +1,3 @@
-require 'fileutils'
-
 # Be sure to restart your server when you modify this file.
 
 # Version of your assets, change this if you want to expire all your assets.
@@ -18,10 +16,7 @@ dir_css = "#{Rails.root}/public/logs/stylesheets/"
 Dir.mkdir(dir) unless File.exists?(dir)
 Dir.mkdir(dir_js) unless File.exists?(dir_js)
 Dir.mkdir(dir_css) unless File.exists?(dir_css)
-# FileUtils.touch("#{Rails.root}/public/logs/javascript/client-app.js")
-# FileUtils.touch("#{Rails.root}/public/logs/javascript/vendor.js")
-# FileUtils.touch("#{Rails.root}/public/logs/stylesheets/client-app.css")
-# FileUtils.touch("#{Rails.root}/public/logs/stylesheets/vendor.css")
+
 copy_file("#{Rails.root}/vendor/assets/javascripts/logster/client-app.js", "#{Rails.root}/public/logs/javascript/client-app.js")
 copy_file("#{Rails.root}/vendor/assets/javascripts/logster/vendor.js", "#{Rails.root}/public/logs/javascript/vendor.js")
 copy_file("#{Rails.root}/vendor/assets/stylesheets/logster/client-app.css", "#{Rails.root}/public/logs/stylesheets/client-app.css")
