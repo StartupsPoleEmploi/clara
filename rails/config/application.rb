@@ -13,7 +13,7 @@ module Mae
     config.public_file_server.enabled = true
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )
-    config.assets.precompile += %w( logs/* )
+    config.assets.precompile << ["logs/client-app.css", "logs/client-app.js", "logs/vendor.css", "logs/vendor.js"]
     config.assets.precompile << ["*.svg", "*.eot", "*.woff", "*.ttf"]
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
