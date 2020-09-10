@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 35.0.3 (10/08/2020)
+[#63d][FEATURE] redis
+
+
 ## 35.0.2 (08/08/2020)
 [#63c][FEATURE] logs
 
