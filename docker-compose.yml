@@ -51,8 +51,6 @@ services:
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
-    environment:
-      REDIS_URL: "redis://claredis:6379/1"
     depends_on:
     - claredis
     networks:
