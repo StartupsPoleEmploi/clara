@@ -19,7 +19,7 @@
             = f.submit "Me déconnecter", id: 'clara-peconnect-disconnect'
   - elsif display_search
     .o-line__item{"class" => "u-hide u-show@wide"}
-      = form_with url: post_search_front_path, id: "search_front", :class => "c-search-front" do |form|
+      = form_with url: post_search_front_path, local: true, id: "search_front", :class => "c-search-front" do |form|
         = form.text_field :plain_text_search, value: usearch, :class => "c-search-front-usearch", :placeholder => "Rechercher une aide", :autocomplete => "off"
         = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
         = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
@@ -36,7 +36,7 @@
               %button.u-nobutton.u-padding-right#js-modal-close.js-modal-close.modal-close.c-modal-closer{"data-content-back-id" => "modal_search", :type => "button"}
         .o-line
           .o-line__item
-            = form_with url: post_search_front_path, id: "search_front_modal", :class => "c-search-front-modal" do |form|
+            = form_with url: post_search_front_path, local: true, id: "search_front_modal", :class => "c-search-front-modal" do |form|
               = form.hidden_field :page_nb, value: page, :class => "c-search-front-pagenb"
               = form.hidden_field :previous_search, value: usearch, :class => "c-search-front-previous-search"
               %div

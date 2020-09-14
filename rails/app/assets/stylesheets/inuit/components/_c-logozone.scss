@@ -24,7 +24,8 @@
   width: 100px;
   margin-left: -5px;
   @include mq($from: tablet) {
-    margin-left: -10px;
+    width: 143px;
+    margin-left: 0px;
   }
   margin-bottom: -5px;
 }

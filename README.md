@@ -76,7 +76,7 @@ Il est conseillé de travailler soit avec les données de production, soit avec 
 Vérifiez que les conteneurs docker sont lancés
 
 ```
-docker-compose -f docker-compose-local.yml run --rm --no-deps web-srv bash
+docker-compose -f docker-compose-local.yml run --rm web-srv bash
 root@0ac2cfcb2722:/railsapp# bundle exec rails --version
 Rails 5.2.4.2
 ```

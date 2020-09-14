@@ -1,43 +1,47 @@
 # CLARA Changelog
 
 
-## 35.0.3 (10/08/2020)
+## 35.0.4 (14/09/2020)
+[#68][BUG] barre de recherche
+
+
+## 35.0.3 (10/09/2020)
 [#63d][FEATURE] redis
 
 
-## 35.0.2 (08/08/2020)
+## 35.0.2 (08/09/2020)
 [#63c][FEATURE] logs
 
 
-## 35.0.1 (08/08/2020)
+## 35.0.1 (08/09/2020)
 [#63b][FEATURE] logs
 
 
-## 35.0.0 (08/08/2020)
+## 35.0.0 (08/09/2020)
 [#64][BUG][DESIGN] Bouton de déconnexion sur safari 
 
 
-## 34.15.4 (03/08/2020)
+## 34.15.4 (03/09/2020)
 [#62b][BUG] Post-prod 2
 
 
-## 34.15.3 (03/08/2020)
+## 34.15.3 (03/09/2020)
 [#62][BUG] Post-prod
 
 
-## 34.15.2 (02/08/2020)
+## 34.15.2 (02/09/2020)
 [#61][DESIGN] Mobile
 
 
-## 34.15.1 (02/08/2020)
+## 34.15.1 (02/09/2020)
 [#56d][DESIGN]  Popin post-connexion responsive, 3
 
 
-## 34.15.0 (02/08/2020)
+## 34.15.0 (02/09/2020)
 [#56c][DESIGN]  Popin post-connexion responsive, 2
 
 
-## 34.14.0 (01/08/2020)
+## 34.14.0 (01/09/2020)
 [#56b][DESIGN]  Popin post-connexion responsive
 
 
