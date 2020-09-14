@@ -224,3 +224,7 @@ h1.c-result-front-subtitle {
 .c-label-search-modal {
   @include inuit-font-size(18px);
 }
+
+.welcome.index #js-modal-close {
+  display: none;
+}
