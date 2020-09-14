@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 35.0.5 (14/09/2020)
+[#69][BUG] faille sécu prod
+
+
 ## 35.0.4 (14/09/2020)
 [#68][BUG] barre de recherche
 

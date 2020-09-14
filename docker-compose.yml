@@ -11,7 +11,7 @@ services:
     image: 'redis:5-alpine'
     command: redis-server
     ports:
-    - '6379:6379'
+    - '127.0.0.1:6379:6379'
     volumes:
     - 'vol_redis:/data'
     networks:
