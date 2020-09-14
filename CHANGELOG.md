@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 35.0.4 (14/09/2020)
+[#68][BUG] barre de recherche
+
+
 ## 35.0.3 (10/08/2020)
 [#63d][FEATURE] redis
 
