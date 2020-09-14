@@ -71,8 +71,8 @@ button.c-search-front-submit {
   cursor: pointer;
 }
 
-.u-useful-width--normal input.c-search-front-submit { 
-  right: 84%;
+.aides.get_search_front input.c-search-front-submit { 
+  right: 86%;
 }
 
 input.c-search-front-submit {
@@ -225,7 +225,9 @@ h1.c-result-front-subtitle {
   @include inuit-font-size(18px);
 }
 
-.welcome.index #js-modal-close {
+
+
+.aides.get_search_front #js-modal-close, .welcome.index #js-modal-close {
   display: none;
 }
 
