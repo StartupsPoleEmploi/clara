@@ -1,8 +1,13 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new { |user| user.role == 'superadmin' } do
     mount Logster::Web => "/logs"
   end
+
+  mount Sidekiq::Web => '/sidekiq'
+
 
   resources :passwords, controller: "passwords", only: [:create, :new], as: nil
   resource :session, controller: "sessions", only: [:create]

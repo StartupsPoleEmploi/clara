@@ -17,7 +17,7 @@ services:
       - '../private/db/developpement/init.sql:/docker-entrypoint-initdb.d/init.sql'
       - "../private/db/latest.dump:/latest.dump"
     ports:
-      - '5432'
+      - '5432:5432'
     environment:
       POSTGRES_HOST_AUTH_METHOD: "trust"
 
@@ -45,6 +45,28 @@ services:
     depends_on:
       - db-srv
       - redis-srv
+
+
+  sidekiq-srv:
+    build:
+      context: .
+      dockerfile: dockerfile_rails_local
+    depends_on:
+      - 'db-srv'
+      - 'redis-srv'
+      - 'web-srv'
+    command: >
+        bash -c "bundle exec sidekiq"
+    volumes:
+      - "../private/env/developpement/.env:/railsapp/.env"
+      - './rails:/railsapp'
+      - bundle:/usr/local/bundle
+      - '/railsapp/tmp' # don't mount tmp directory
+    environment:
+      ARA_DATABASE_HOST: "db-srv"
+      ARA_DATABASE_USER: "ara"
+      ARA_DATABASE_NAME: "ara_dev"
+      REDIS_URL: "redis://redis-srv:6379/1"
 
 volumes:
   bundle:

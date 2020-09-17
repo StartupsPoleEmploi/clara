@@ -77,6 +77,7 @@ gem 'kt-paperclip'
 gem 'paperclip-dimension-validator'
 gem 'paperclip-cloudinary'
 gem 'activerecord-session_store'
+gem 'sidekiq'
 
 group :development, :test do
   gem "byebug", platform: :mri
