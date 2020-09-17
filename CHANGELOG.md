@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.0.0 (17/09/2020)
+[#67][FEATURE] alertes auto
+
+
 ## 35.0.5 (14/09/2020)
 [#69][BUG] faille sécu prod
 
