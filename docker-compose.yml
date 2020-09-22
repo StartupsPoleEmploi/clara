@@ -97,7 +97,9 @@ services:
       - clara_db
       - claredis
       - clara_rails
-    command: cd /var/www/ara/current && bundle exec sidekiq -e production -C config/sidekiq.yml
+    command: >
+        bash -c "cd /var/www/ara/current
+        && bundle exec sidekiq -e production -C config/sidekiq.yml"
     volumes:
       - "vol_shared:/var/www/ara"
       - "../private/env:/home/env"
