@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.1.2 (22/09/2020)
+[#70c][BUG] reinstall bundler volume
+
+
 ## 36.1.1 (22/09/2020)
 [#70b][BUG] downgrade puma
 

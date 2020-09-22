@@ -4,6 +4,7 @@ volumes:
   vol_data:
   vol_shared:
   vol_redis:
+  bundle:
 
 services:
 
@@ -49,6 +50,7 @@ services:
     container_name: clara_rails
     volumes:
     - "vol_shared:/var/www/ara"
+    - "bundle:/usr/local/bundle"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
     depends_on:
@@ -102,6 +104,7 @@ services:
         && gem install sidekiq 
         && bundle exec sidekiq -e production -C config/sidekiq.yml"
     volumes:
+      - "bundle:/usr/local/bundle"
       - "vol_shared:/var/www/ara"
       - "../private/env:/home/env"
       - "./rails:/home/clara"
