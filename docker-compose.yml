@@ -98,7 +98,7 @@ services:
       - claredis
       - clara_rails
     command: >
-        bash -c "bundle exec sidekiq"
+        bash -c "bundle exec sidekiq -e production -C /home/clara/config/sidekiq.yml"
     volumes:
       - "../private/env:/home/env"
       - "./rails:/home/clara"
