@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.0.1 (22/09/2020)
+[#67b][FEATURE] alertes auto, assets
+
+
 ## 36.0.0 (17/09/2020)
 [#67][FEATURE] alertes auto
 

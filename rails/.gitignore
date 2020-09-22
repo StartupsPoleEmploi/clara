@@ -37,6 +37,8 @@ ara
 /public/profile/*
 # Ignore precompiled assets
 /public/assets/*
+/public/logs/*
+/public/sidekiq/*
 # Ignore temp file
 /public/activated_models.txt
 
