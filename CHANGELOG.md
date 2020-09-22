@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.1.1 (22/09/2020)
+[#70b][BUG] downgrade puma
+
+
 ## 36.1.0 (22/09/2020)
 [#70][FEATURE] envoi de rappel programmé
 
