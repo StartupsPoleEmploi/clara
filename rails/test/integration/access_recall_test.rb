@@ -79,7 +79,7 @@ class AccessRecallTest < ActionDispatch::IntegrationTest
     contributeur = User.create!(role: "contributeur", email:"a@b.c", password: "p")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
     aid = Aid.create!(name: "aaa", contract_type: contract, ordre_affichage: 3)
-    recall = Recall.create!(email: 'a@b.c', aid: aid, trigger_at: DateTime.new)
+    recall = Recall.create!(email: 'a@b.c', aid: aid, trigger_at: DateTime.new, hourmin: '14:33')
     [contributeur, recall]
   end
 
