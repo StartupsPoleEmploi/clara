@@ -5,7 +5,7 @@ volumes:
   vol_shared:
   vol_redis:
   bundle:
-    
+
 services:
 
   claredis:
@@ -101,6 +101,7 @@ services:
       - clara_rails
     command: >
         bash -c "cd /var/www/ara/current
+        && bundle install sidekiq 
         && bundle exec sidekiq -e production -C config/sidekiq.yml"
     volumes:
       - "bundle:/usr/local/bundle"
