@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.0.2 (22/09/2020)
+[#67c][FEATURE] working version of sidekiq !!
+
+
 ## 36.0.1 (22/09/2020)
 [#67b][FEATURE] alertes auto, assets
 
