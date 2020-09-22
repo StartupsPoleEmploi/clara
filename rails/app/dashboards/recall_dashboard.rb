@@ -10,7 +10,7 @@ class RecallDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     aid: Field::BelongsTo,
     id: Field::Number,
-    trigger_at: Field::DateTime,
+    trigger_at: Field::DateTime.with_options(format: "%d/%m/%Y %H:%M:%S"),
     email: Field::String,
     status: Field::String,
     created_at: Field::DateTime,
