@@ -2,14 +2,8 @@ class SendRecall
 
   def call(recall_id, original_url)
     recall_to_be_sent = Recall.find(recall_id)
-    p '- - - - - - - - - - - - - - recall_to_be_sent- - - - - - - - - - - - - - - -' 
-    ap recall_to_be_sent
-    p ''
     if recall_to_be_sent
       aid = recall_to_be_sent.aid || Aid.new
-      p '- - - - - - - - - - - - - - aid- - - - - - - - - - - - - - - -' 
-      ap aid
-      p ''
       recall_to_be_sent.status = "sent"
       recall_to_be_sent.save
       RecallMailer.with(
