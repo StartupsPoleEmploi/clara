@@ -81,9 +81,9 @@ services:
     hostname: clara_backups
     container_name: clara_backups
     volumes:
-    - "./:/home/docker"
-    - "./backups/home/backups:/home/backups"
-    - "/mnt/backups:/mnt/backups"
+    - "vol_shared:/var/www/ara"
+    - "./rails:/home/clara"
+    - "../private/env:/home/env"
     depends_on:
     - clara_db
     networks:
@@ -97,8 +97,9 @@ services:
       - clara_db
       - claredis
       - clara_rails
-    command: bundle exec sidekiq -e production -C /home/clara/config/sidekiq.yml
+    command: bundle exec sidekiq
     volumes:
+      - "vol_shared:/var/www/ara"
       - "../private/env:/home/env"
       - "./rails:/home/clara"
     networks:
