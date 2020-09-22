@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_085355) do
+ActiveRecord::Schema.define(version: 2020_09_22_125424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
@@ -135,7 +136,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_085355) do
     t.index ["slug"], name: "index_filters_on_slug", unique: true
   end
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -160,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_085355) do
     t.string "status", default: "not_sent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hourmin"
     t.index ["aid_id"], name: "index_recalls_on_aid_id"
   end
 

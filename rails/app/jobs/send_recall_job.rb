@@ -6,7 +6,10 @@ class SendRecallJob < ApplicationJob
   def perform(*args)
     is_forced = args[0]
     original_url = args[1]
-    SendRecall.new.call(is_forced, _root_url_for(original_url))
+    recall_id = args[2]
+    if Recall.find(recall_id)
+      SendRecall.new.call(recall_id, _root_url_for(original_url))
+    end
   end
 
   def _root_url_for(original_url)
