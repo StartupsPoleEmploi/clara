@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
 
-
   def index
     clean_asker_params
     all_home_filters = Filter.homable.map { |e| {name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
@@ -50,14 +49,9 @@ class WelcomeController < ApplicationController
   end
 
   private
+
   def clean_asker_params
     session.delete :asker
   end
-
-
-
-  
-
-
 
 end

@@ -3,10 +3,7 @@ class SendRecallJob < ApplicationJob
   queue_as :default
 
   # Do something later
-  def perform(*args)
-    is_forced = args[0]
-    original_url = args[1]
-    recall_id = args[2]
+  def perform(recall_id, original_url)
     if Recall.find(recall_id)
       SendRecall.new.call(recall_id, _root_url_for(original_url))
     end

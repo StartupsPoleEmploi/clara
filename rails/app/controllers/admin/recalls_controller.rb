@@ -28,7 +28,7 @@ module Admin
       deadline = Datime.parse("#{the_day} #{the_hourmin}")
       delta = Clockdiff.first.value
       delta_deadline = deadline.change(hour: deadline.hour + delta)
-      SendRecallJob.set(wait_until: delta_deadline).perform_later(false, the_request.try(:original_url), the_resource.id)
+      SendRecallJob.set(wait_until: delta_deadline).perform_later(the_resource.id, the_request.try(:original_url))
     end
 
   end
