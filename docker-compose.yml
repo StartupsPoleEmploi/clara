@@ -101,7 +101,7 @@ services:
       - clara_rails
     command: >
         bash -c "cd /var/www/ara/current
-        && gem install sidekiq 
+        && bundle install
         && bundle exec sidekiq -e production -C config/sidekiq.yml"
     volumes:
       - "bundle:/usr/local/bundle"
