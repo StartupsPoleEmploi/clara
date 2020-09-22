@@ -1,7 +1,7 @@
 clara.js_define("admin_edit_recall", {
 
   please_if: function () {
-    return $("body[data-path='edit_admin_recall_path']").exists() || $("body[data-path='new_admin_recall_path']").exists();
+    return $("input#recall_email").exists();
   },
 
   please: function () {
@@ -9,6 +9,7 @@ clara.js_define("admin_edit_recall", {
     $("#recall_email").css("background-color", "#f8f8f8")
     $("#recall_email").css("color", "grey")
     $("#recall_hourmin").attr('value', '07:30')
+    $("#recall_hourmin").attr('autofill', 'disabled')
   }
 
 
