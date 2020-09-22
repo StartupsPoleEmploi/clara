@@ -3,6 +3,7 @@ fr:
     labels: &labels
       trigger_at: Date d'envoi prévue
       aid: Aide
+      hourmin: Heure/minute d'envoi
       created_at: Date
       updated_at: Mis à jour le
       email: E-mail

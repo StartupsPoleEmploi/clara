@@ -26,7 +26,7 @@ gem "friendly_id"
 gem "loofah"
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "autoprefixer-rails"
+gem "autoprefixer-rails", '10.0.0.1'
 gem "active_type"
 gem "bulk_insert"
 gem "gon"
@@ -114,6 +114,7 @@ group :development do
   gem "web-console"
   gem "rack-livereload"
   gem "rb-fsevent", require: false
-  gem "letter_opener_web"
+  gem 'letter_opener'
+  gem 'letter_opener_web'
   gem "annotate"
 end

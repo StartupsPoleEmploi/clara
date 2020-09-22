@@ -73,9 +73,9 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
 
-
-  # config.action_mailer.delivery_method = :mailjet
+  # do not work with docker
   config.action_mailer.delivery_method = :letter_opener_web
-  config.action_mailer.default_url_options = { :host => ENV["ARA_HOST"] }
+  # do not work with docker
+  config.action_mailer.default_url_options = {host: 'web-srv', port: 3000}
 
 end

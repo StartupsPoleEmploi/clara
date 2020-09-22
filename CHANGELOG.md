@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.1.0 (22/09/2020)
+[#70][FEATURE] envoi de rappel programmé
+
+
 ## 36.0.2 (22/09/2020)
 [#67c][FEATURE] working version of sidekiq !!
 

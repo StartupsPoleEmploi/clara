@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_085355) do
+ActiveRecord::Schema.define(version: 2020_09_22_125424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2020_08_17_085355) do
     t.string "status", default: "not_sent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "hourmin"
     t.index ["aid_id"], name: "index_recalls_on_aid_id"
   end
 

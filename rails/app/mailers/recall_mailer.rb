@@ -4,7 +4,7 @@ class RecallMailer < ApplicationMailer
     @aid_name = params[:aid_name] 
     @aid_status = params[:aid_status] 
     @aid_link = params[:aid_link] 
-    @email_target = params[:email_target] 
+    @email_target = params[:email_target]
     mail(
       subject: "[Clara] Vous avez une aide à vérifier !",
       from: ENV['ARA_EMAIL_FROM'],
