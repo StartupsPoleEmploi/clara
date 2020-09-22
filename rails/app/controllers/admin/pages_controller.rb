@@ -89,6 +89,7 @@ module Admin
     end
 
     def post_transfer_descr
+      HelloWorldJob.set(wait: 5.seconds).perform_later
       render json: {status: "ok"}
     end
   end

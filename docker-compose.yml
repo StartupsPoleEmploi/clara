@@ -89,6 +89,23 @@ services:
     networks:
     - mynetwork
 
+  clara_sidekiq:
+    build:
+      context: .
+      dockerfile: dockerfile_rails
+    depends_on:
+      - clara_db
+      - claredis
+      - clara_rails
+    command: >
+        bash -c "bundle exec sidekiq"
+    volumes:
+      - "../private/env:/home/env"
+      - "./rails:/home/clara"
+      - bundle:/usr/local/bundle
+    networks:
+    - mynetwork
+    
 networks:
   mynetwork:
     driver: bridge
