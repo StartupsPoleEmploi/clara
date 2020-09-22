@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
 
 
   def index
-    SendRecallJob.perform_later(request && request.params[:force] == "true", request.try(:original_url))
     clean_asker_params
     all_home_filters = Filter.homable.map { |e| {name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
     view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
