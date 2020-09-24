@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.2.0 (24/09/2020)
+[#66][FEATURE] détection et suppression des liens cassés
+
+
 ## 36.1.2 (22/09/2020)
 [#70c][BUG] reinstall bundler volume
 
