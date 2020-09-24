@@ -6,7 +6,12 @@ module Admin
 
     before_action :require_superadmin, except: [:get_hidden_admin, :get_cache, :post_cache]
 
-    def get_delete_trace
+    def get_relink
+      l = ListAidLinks.new.call
+      a = l.reduce([]){|memo, e| memo.concat(e[:links])}
+      uniq_links = a.uniq
+      links_not_to_check = uniq_links.filter{|e| e.start_with?('https://candidat.pole-emploi.fr') && e.size > 'https://candidat.pole-emploi.fr/'.size}
+      links_to_check = uniq_links - links_not_to_check
     end
 
     def post_delete_trace
