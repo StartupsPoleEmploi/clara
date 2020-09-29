@@ -4,7 +4,16 @@
 
 <div class='c-relink-title'>
   
-Dernière vérification le <%= last_time %>
+<% if last_time.present? %>
+  Dernière vérification le <%= last_time %>
+<% else %>
+<div>
+  Pas encore de vérification lancée. Vous pouvez essayer d'en lancer une ici :
+</div>
+  <div>
+    <%= link_to 'lancer une vérification', admin_get_broken_path %>
+  </div>
+<% end %>
 </div>
 
 <div>
