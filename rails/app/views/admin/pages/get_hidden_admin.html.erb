@@ -121,7 +121,10 @@
             <%=link_to "Voir la file de tâches", '/sidekiq/scheduled' %>
           </li>
           <li>
-            <%=link_to "liens cassés (⚠ calcul long)", admin_get_relink_path %>
+            <%=link_to "Lancer la détection de liens cassés", admin_get_broken_path %>
+          </li>
+          <li>
+            <%=link_to "Voir les liens cassés", admin_get_relink_path %>
           </li>
         </ul>   
       <% else %>

@@ -26,12 +26,12 @@ class ListBrokenLinks
             res = nil
           else
             is_redirection = faraday_answer.status == 301 || faraday_answer.status == 302
-            res = {url: e, problem: faraday_answer.status, new_url: is_redirection ? faraday_answer.env.response_headers['location'] : ''}
+            res = {url: e, code: faraday_answer.status, new_url: is_redirection ? faraday_answer.env.response_headers['location'] : ''}
           end
         end      
       rescue Timeout::Error
         ap "#{timestamp}, #{ix}, #{e} timedout"
-        res = {url: e, problem: 'no_response'}
+        res = {url: e, code: 408}
       end
       res
     end
@@ -40,7 +40,7 @@ class ListBrokenLinks
 
     broken_links_with_aids = broken_links.map do |e|
       aids_concerned = l.filter{|k| k[:links].include?(e[:url])}
-      e[:aids] = aids_concerned.map{|y| y[:aid_slug]}
+      e[:aids_slug] = aids_concerned.map{|y| y[:aid_slug]}
       e
     end
 

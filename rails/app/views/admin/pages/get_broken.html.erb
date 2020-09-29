@@ -1,0 +1,35 @@
+
+<h1 style="margin-top: 1rem; margin-bottom: 1rem; margin-left: 1rem;">Lancer une tâche qui va détecter tous les liens cassés</h1>
+
+
+
+<div style="margin-top: 2rem;margin-left: 2rem;">
+  
+  <%= form_with url: admin_post_broken_path, local: false do |form| %>
+    <%= form.submit 'Démarrer la détection'%>
+  <% end %>
+
+  <div id="appendto"></div>
+
+</div>
+
+
+<script type="text/javascript">
+(function() {
+    var origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+      console.log('request started!');
+      this.addEventListener('load', function() {
+        console.log('request completed!');
+        console.log(this.readyState); //will always be 4 (ajax is completed successfully)
+        console.log(this.responseText); //whatever the response was
+        var element = document.querySelector("#appendto");
+        var child = document.createElement("DIV");
+        child.innerHTML = this.responseText;
+        element.appendChild(child);
+      });
+      origOpen.apply(this, arguments);
+    };
+})();
+</script>
+ 

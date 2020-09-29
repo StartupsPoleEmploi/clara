@@ -4,10 +4,10 @@
 
 <div>
 
-<table>
+<table class="c-relink">
     <tr>
       <th>Url qui pose problème</th>
-      <th>Code http</th>
+      <th style="max-width: 20px">Code http</th>
       <th>Nouvelle URL conseillée (si applicable)</th>
       <th>Aides concernées</th>
     </tr>
@@ -17,16 +17,16 @@
         <td>
           <%= link_to  e[:url], e[:url], target: '_blank'  %>
         </td>
-        <td>
-          <%= e[:problem]  %>
+        <td style="max-width: 20px">
+          <%= e[:code]  %>
         </td>
         <td>
           <%= e[:new_url]  %>
         </td>
         <td>
-          <% (e.try(:[], :aids) ? e[:aids] : []).each do |aid|   %>
+          <% (e.try(:[], :aids_slug) ? e[:aids_slug] : []).each do |aid_slug|   %>
             <div>
-              <%= link_to "/admin/aids/#{aid}", "/admin/aids/#{aid}", target: '_blank'  %>
+              <%= link_to "/admin/aids/#{aid_slug}", "/admin/aids/#{aid_slug}", target: '_blank'  %>
             </div>
           <% end %>
         </td>

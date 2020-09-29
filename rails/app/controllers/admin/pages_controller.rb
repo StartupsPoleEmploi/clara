@@ -6,35 +6,26 @@ module Admin
 
     before_action :require_superadmin, except: [:get_hidden_admin, :get_cache, :post_cache]
 
+    def post_broken
+      DetectBrokenLinksJob.perform_later
+      render json: {
+        status: "ok, tâche démarée, durée 3 min. environ. Vous pouvez allez voir sous /admin/sidekiq/scheduled.",
+      }
+    end
+
     def get_relink
-      res = [{:url=>"http://www.wimoov.org/", :problem=>301, :new_url=>"https://www.wimoov.org/"},
-  {:url=>"https://www.agefiph.fr/Les-services-et-aides-financieres-de-l-Agefiph/Aide-protheses-auditives",
-  :problem=>301,
-  :new_url=>"https://www.agefiph.fr/aides-handicap/aide-protheses-auditives",
-  :aids=>["aide-a-l-achat-de-protheses-auditives"]},
- {:url=>"http://www.pole-emploi.fr/accueil/",
-  :problem=>301,
-  :new_url=>"https://www.pole-emploi.fr/accueil/",
-  :aids=>
-   ["arce-aide-a-la-reprise-ou-a-la-creation-d-entreprise",
-    "eccp",
-    "dispositif-d-interessement-a-la-reprise-d-activite",
-    "programme-reactivate",
-    "aide-a-la-mobilite-frais-de-deplacement-bon-de-transport",
-    "accompagnement-apec",
-    "contrat-de-professionnalisation",
-    "aide-agefiph-au-contrat-d-apprentissage",
-    "aide-a-la-mobilite-agefiph",
-    "activ-crea",
-    "aide-agefiph-a-la-creation-et-reprise-d-entreprise",
-    "pmsmp",
-    "aides-a-la-remuneration-pendant-une-formation",
-    "aide-a-la-mobilite-frais-d-hebergement",
-    "aide-incitative-a-la-reprise-d-emploi"]}
-     ]
+
+     res = Broken.all.map do |e| 
+        h = {}
+        h[:url] = e[:url]
+        h[:new_url] = e[:new_url]
+        h[:aids_slug] = JSON.parse(e[:aids_slug])
+        h[:code] = e[:code]
+        h
+     end
 
       render locals: {
-        broken_links: res
+        broken_links: res.sort_by { |e| e[:aids_slug].size  }
       }
       
     end
