@@ -1,0 +1,3 @@
+class Broken  < ApplicationRecord
+
+end

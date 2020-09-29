@@ -1,0 +1,46 @@
+
+<h1 class='c-relink-title'>Liste des liens à revérifier (doute possible sur leur validité)</h1>
+
+
+<div class='c-relink-title'>
+  
+Dernière vérification le <%= last_time %>
+</div>
+
+<div>
+
+<table class="c-relink">
+    <tr>
+      <th>Url qui pose problème</th>
+      <th style="max-width: 20px">Code http</th>
+      <th>Nouvelle URL conseillée (si applicable)</th>
+      <th>Aides concernées</th>
+    </tr>
+
+    <% local_assigns[:broken_links].each do |e|   %>
+      <tr>
+        <td>
+          <%= link_to  e[:url], e[:url], target: '_blank'  %>
+        </td>
+        <td style="max-width: 20px">
+          <%= e[:code]  %>
+        </td>
+        <td>
+          <%= e[:new_url]  %>
+        </td>
+        <td>
+          <% (e.try(:[], :aids_slug) ? e[:aids_slug] : []).each do |aid_slug|   %>
+            <div>
+              <%= link_to "/admin/aids/#{aid_slug}", "/admin/aids/#{aid_slug}", target: '_blank'  %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+</table>
+  
+</div>
+
+
+

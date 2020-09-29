@@ -6,7 +6,31 @@ module Admin
 
     before_action :require_superadmin, except: [:get_hidden_admin, :get_cache, :post_cache]
 
-    def get_delete_trace
+    def post_broken
+      DetectBrokenLinksJob.perform_later
+      render json: {
+        status: "ok, tâche démarée, durée 3 min. environ. Vous pouvez allez voir sous /admin/sidekiq/scheduled.",
+      }
+    end
+
+    def get_relink
+
+     res = Broken.all.map do |e| 
+        h = {}
+        h[:url] = e[:url]
+        h[:new_url] = e[:new_url]
+        h[:aids_slug] = JSON.parse(e[:aids_slug])
+        h[:code] = e[:code]
+        h
+     end
+
+     last_time = Broken.last.created_at.strftime('%d %b %Y')
+
+      render locals: {
+        broken_links: res.sort_by { |e| e[:aids_slug].size  },
+        last_time: last_time
+      }
+      
     end
 
     def post_delete_trace

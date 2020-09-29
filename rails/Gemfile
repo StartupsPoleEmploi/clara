@@ -26,7 +26,7 @@ gem "friendly_id"
 gem "loofah"
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "autoprefixer-rails", '10.0.0.1'
+gem "autoprefixer-rails"
 gem "active_type"
 gem "bulk_insert"
 gem "gon"
@@ -40,6 +40,7 @@ gem "actionpack-page_caching"
 gem "awesome_print"
 gem "seed_dump"
 gem "nokogiri"
+gem "faraday"
 
 ## Devops
 gem "newrelic_rpm"
@@ -78,6 +79,7 @@ gem 'paperclip-dimension-validator'
 gem 'paperclip-cloudinary'
 gem 'activerecord-session_store'
 gem 'sidekiq'
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   gem "byebug", platform: :mri

@@ -70,7 +70,10 @@ Rails.application.routes.draw do
       post "create_stage_5"
     end
     controller 'pages' do
+      get 'get_broken'
+      post 'post_broken'
       get 'get_custom_filter_menu'
+      get 'get_relink'
       get 'get_reinit'
       post 'post_reinit'
       get 'get_clock'

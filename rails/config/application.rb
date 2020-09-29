@@ -23,6 +23,7 @@ module Mae
     config.middleware.use Rack::Attack
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
     config.active_job.queue_adapter = :sidekiq
+    Logster.set_environments([:production])
     # config.web_console.allowed_ips  = '172.26.0.1' if Rails.env.development?
 
     config.to_prepare do

@@ -27,10 +27,12 @@ By default, it renders:
   <title>
     <%= actual_title %>
   </title>
+
+  <% unless Rails.env.test? %>
+    <%= stylesheet_link_tag 'application', '', media: 'all' %>  
+    <%= render "stylesheet" %>    
+  <% end %>
   
-  <%= stylesheet_link_tag 'application', '', media: 'all' %>
-  
-  <%= render "stylesheet" %>
   <%= csrf_meta_tags %>
 </head>
 <body data-path="<%= GetCurrentPathService.new(request).call %>" data-locale="<%= I18n.locale %>">
@@ -45,7 +47,9 @@ By default, it renders:
     </main>
   </div>
 
-  <%= render "javascript" %>
+  <% unless Rails.env.test? %>
+    <%= render "javascript" %>
+  <% end %>
   <%= yield :javascript_includes %>
 </body>
 </html>
