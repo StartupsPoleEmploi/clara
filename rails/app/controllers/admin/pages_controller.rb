@@ -8,24 +8,29 @@ module Admin
 
     def get_relink
       res = [{:url=>"http://www.wimoov.org/", :problem=>301, :new_url=>"https://www.wimoov.org/"},
-             {:url=>"http://www.garages-solidaires.fr", :problem=>301, :new_url=>"https://www.garages-solidaires.fr/"},
-             {:url=>"https://mobiliz.groupe.renault.com/",
-              :problem=>301,
-              :new_url=>"https://mobilize.groupe.renault.com"},
-             {:url=>"http://www.fastt.org/", :problem=>301, :new_url=>"https://www.fastt.org/"},
-             {:url=>"https://www.linkedin.com/company/google-atelier-num%C3%A9rique-montpellier/?viewAsMember=true",
-              :problem=>999,
-              :new_url=>""},
-             {:url=>"http://europass.cedefop.europa.eu/sites/default/files/cefr-fr.pdf",
-              :problem=>301,
-              :new_url=>"https://europass.cedefop.europa.eu/sites/default/files/cefr-fr.pdf"},
-             {:url=>"http://www.moncompteformation.gouv.fr/",
-              :problem=>301,
-              :new_url=>"https://www.moncompteformation.gouv.fr/"},
-             {:url=>"https://travail-emploi.gouv.fr/emploi/accompagnement-des-mutations-economiques/activite-partielle",
-              :problem=>302,
-              :new_url=>
-               "https://travail-emploi.gouv.fr/le-ministere-en-action/coronavirus-covid-19/proteger-les-travailleurs-les-emplois-les-savoir-faire-et-les-competences/proteger-les-emplois/chomage-partiel-activite-partielle/article/fiche-activite-partielle-chomage-partiel"}
+  {:url=>"https://www.agefiph.fr/Les-services-et-aides-financieres-de-l-Agefiph/Aide-protheses-auditives",
+  :problem=>301,
+  :new_url=>"https://www.agefiph.fr/aides-handicap/aide-protheses-auditives",
+  :aids=>["aide-a-l-achat-de-protheses-auditives"]},
+ {:url=>"http://www.pole-emploi.fr/accueil/",
+  :problem=>301,
+  :new_url=>"https://www.pole-emploi.fr/accueil/",
+  :aids=>
+   ["arce-aide-a-la-reprise-ou-a-la-creation-d-entreprise",
+    "eccp",
+    "dispositif-d-interessement-a-la-reprise-d-activite",
+    "programme-reactivate",
+    "aide-a-la-mobilite-frais-de-deplacement-bon-de-transport",
+    "accompagnement-apec",
+    "contrat-de-professionnalisation",
+    "aide-agefiph-au-contrat-d-apprentissage",
+    "aide-a-la-mobilite-agefiph",
+    "activ-crea",
+    "aide-agefiph-a-la-creation-et-reprise-d-entreprise",
+    "pmsmp",
+    "aides-a-la-remuneration-pendant-une-formation",
+    "aide-a-la-mobilite-frais-d-hebergement",
+    "aide-incitative-a-la-reprise-d-emploi"]}
      ]
 
       render locals: {

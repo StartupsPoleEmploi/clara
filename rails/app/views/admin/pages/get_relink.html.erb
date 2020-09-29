@@ -1,5 +1,5 @@
 
-<h1>Liste des liens à revérifier (doute possible sur leur validité)</h1>
+<h1 style="margin-top: 1rem; margin-bottom: 1rem; margin-left: 1rem;">Liste des liens à revérifier (doute possible sur leur validité)</h1>
 
 
 <div>
@@ -9,21 +9,29 @@
       <th>Url qui pose problème</th>
       <th>Code http</th>
       <th>Nouvelle URL conseillée (si applicable)</th>
+      <th>Aides concernées</th>
     </tr>
 
-  <% local_assigns[:broken_links].each do |e|   %>
-    <tr>
-      <td>
-        <%= link_to  e[:url]  %>
-      </td>
-      <td>
-        <%= e[:problem]  %>
-      </td>
-      <td>
-        <%= e[:new_url]  %>
-      </td>
-    </tr>
-  <% end %>
+    <% local_assigns[:broken_links].each do |e|   %>
+      <tr>
+        <td>
+          <%= link_to  e[:url], e[:url], target: '_blank'  %>
+        </td>
+        <td>
+          <%= e[:problem]  %>
+        </td>
+        <td>
+          <%= e[:new_url]  %>
+        </td>
+        <td>
+          <% (e.try(:[], :aids) ? e[:aids] : []).each do |aid|   %>
+            <div>
+              <%= link_to "/admin/aids/#{aid}", "/admin/aids/#{aid}", target: '_blank'  %>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
 
 </table>
   

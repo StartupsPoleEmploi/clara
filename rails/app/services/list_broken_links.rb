@@ -38,7 +38,13 @@ class ListBrokenLinks
 
     broken_links = problematic_links.reject{|e| e == nil}
 
-    broken_links
+    broken_links_with_aids = broken_links.map do |e|
+      aids_concerned = l.filter{|k| k[:links].include?(e[:url])}
+      e[:aids] = aids_concerned.map{|y| y[:aid_slug]}
+      e
+    end
+
+    broken_links_with_aids
   end
   
 end
