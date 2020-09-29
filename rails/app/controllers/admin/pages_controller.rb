@@ -24,8 +24,11 @@ module Admin
         h
      end
 
+     last_time = Broken.last.created_at.strftime('%d %b %Y')
+
       render locals: {
-        broken_links: res.sort_by { |e| e[:aids_slug].size  }
+        broken_links: res.sort_by { |e| e[:aids_slug].size  },
+        last_time: last_time
       }
       
     end
