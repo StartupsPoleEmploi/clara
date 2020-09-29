@@ -9,7 +9,7 @@ module Admin
     def post_broken
       DetectBrokenLinksJob.perform_later
       render json: {
-        status: "ok, tâche démarrée, durée 3 min. environ. Vous pouvez allez voir sous /admin/sidekiq/scheduled.",
+        status: "ok, tâche démarrée, durée 3 min. environ. Vous pouvez allez voir sous /sidekiq/scheduled.",
       }
     end
 
