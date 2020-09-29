@@ -1,6 +1,14 @@
 # CLARA Changelog
 
 
+## 36.2.4 (29/09/2020)
+[#66e] CHANGELOG problem
+
+
+## 36.2.3 (29/09/2020)
+[#66d] more robust
+
+
 ## 36.2.2 (29/09/2020)
 [#66c]
 
