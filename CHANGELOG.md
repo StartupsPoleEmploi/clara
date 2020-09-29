@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 36.2.1 (29/09/2020)
+[#66b]
+
+
 ## 36.2.0 (24/09/2020)
 [#66][FEATURE] détection et suppression des liens cassés
 

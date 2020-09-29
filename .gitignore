@@ -54,3 +54,5 @@ rails/CHANGELOG.md
 # active storage refused :)
 rails/storage/
 rails/public/system/
+
+logfile
