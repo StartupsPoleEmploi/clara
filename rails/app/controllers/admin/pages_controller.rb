@@ -7,7 +7,31 @@ module Admin
     before_action :require_superadmin, except: [:get_hidden_admin, :get_cache, :post_cache]
 
     def get_relink
+      res = [{:url=>"http://www.wimoov.org/", :problem=>301, :new_url=>"https://www.wimoov.org/"},
+             {:url=>"http://www.garages-solidaires.fr", :problem=>301, :new_url=>"https://www.garages-solidaires.fr/"},
+             {:url=>"https://mobiliz.groupe.renault.com/",
+              :problem=>301,
+              :new_url=>"https://mobilize.groupe.renault.com"},
+             {:url=>"http://www.fastt.org/", :problem=>301, :new_url=>"https://www.fastt.org/"},
+             {:url=>"https://www.linkedin.com/company/google-atelier-num%C3%A9rique-montpellier/?viewAsMember=true",
+              :problem=>999,
+              :new_url=>""},
+             {:url=>"http://europass.cedefop.europa.eu/sites/default/files/cefr-fr.pdf",
+              :problem=>301,
+              :new_url=>"https://europass.cedefop.europa.eu/sites/default/files/cefr-fr.pdf"},
+             {:url=>"http://www.moncompteformation.gouv.fr/",
+              :problem=>301,
+              :new_url=>"https://www.moncompteformation.gouv.fr/"},
+             {:url=>"https://travail-emploi.gouv.fr/emploi/accompagnement-des-mutations-economiques/activite-partielle",
+              :problem=>302,
+              :new_url=>
+               "https://travail-emploi.gouv.fr/le-ministere-en-action/coronavirus-covid-19/proteger-les-travailleurs-les-emplois-les-savoir-faire-et-les-competences/proteger-les-emplois/chomage-partiel-activite-partielle/article/fiche-activite-partielle-chomage-partiel"}
+     ]
 
+      render locals: {
+        broken_links: res
+      }
+      
     end
 
     def post_delete_trace
