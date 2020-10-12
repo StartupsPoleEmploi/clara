@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.0.0 (12/10/2020)
+[#71] Enlever le bandeau COVID
+
+
 ## 36.2.4 (29/09/2020)
 [#66e] CHANGELOG problem
 
