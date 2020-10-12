@@ -8,10 +8,10 @@ class PeidDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    id: Field::Number,
+    id: Field::Number.with_options(export: false),
     value: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: Field::DateTime.with_options(format: "%b %Y"),
+    updated_at: Field::DateTime.with_options(export: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -20,10 +20,8 @@ class PeidDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  id
   value
   created_at
-  updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
