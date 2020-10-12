@@ -206,42 +206,6 @@ h2.c-newhomenumber__title {
   font-size: space(8);
 }
 
-
-/* Covid19 section
-––––––––––––––––––––––––––––––––––––––––––––––––––*/
-.c-newhomehero-covid {
-  cursor: pointer;
-  position: relative;
-  border: solid 1px #ee534f;
-  background-color: white;
-  line-height: 1.5;
-  text-align: center;
-  color: #222222;
-  padding: space(5) space(0);
-  margin: 10px 6px;
-  @include mq($from: tablet) {
-    margin: 0;
-  }
-}
-
-.c-newhomehero-covid__title {
-  font-weight: bold;
-  letter-spacing: 1.2px;
-}
-.c-newhomehero-covid__text {
-  font-size: 14px;
-  @include mq($from: tablet) {
-    font-size: 16px;
-  }
-
-}
-
-.c-newhomehero-covid-container {
-  margin-top: 0;
-  @include mq($from: wide) {
-    margin-top: -15px;
-  }
-}
 .c-newhomehero-hero-container {
   margin-top: 14px;
 }

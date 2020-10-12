@@ -21,19 +21,6 @@ clara.js_define("welcome_index", {
       $("#start_wizard_form1").click()
     })
 
-    var is_covid_displayed = $($(".c-newhomehero-covid__text")[0]).is(":visible");
-    $(".c-newhomehero-covid").click(function(e){
-      $(".c-newhomehero-covid__text").removeClass("u-hide")
-      $(".c-newhomehero-covid__text").removeClass("u-show@tablet")
-      if (is_covid_displayed) {
-        is_covid_displayed = false;
-        $(".c-newhomehero-covid__text").css("display", "none")
-      } else {
-        is_covid_displayed = true;
-        $(".c-newhomehero-covid__text").css("display", "block")
-      }
-    })
-
     $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
 
     $(".c-newhomehero-discovertxt").click(function(e){$(".c-seevideo").click()})
