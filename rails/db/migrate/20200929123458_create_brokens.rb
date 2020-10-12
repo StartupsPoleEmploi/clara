@@ -1,4 +1,4 @@
-class CreateBrokens < ActiveRecord::Migration[5.2]
+class CreateBrokens < ActiveRecord::Migration[6.0]
   def change
     create_table :brokens do |t|
       t.string :url

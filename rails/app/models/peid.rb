@@ -1,0 +1,3 @@
+class Peid < ApplicationRecord
+  
+end
