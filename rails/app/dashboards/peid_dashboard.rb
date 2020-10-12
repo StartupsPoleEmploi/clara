@@ -10,19 +10,19 @@ class PeidDashboard < Administrate::BaseDashboard
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
-  value
-  created_at
+    value
+    created_at
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
-  id
-  value
-  created_at
-  updated_at
+    id
+    value
+    created_at
+    updated_at
   ].freeze
 
   FORM_ATTRIBUTES = %i[
-  value
+    value
   ].freeze
 
   COLLECTION_FILTERS = {}.freeze
