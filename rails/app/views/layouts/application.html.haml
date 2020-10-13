@@ -10,21 +10,6 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:content => "initial-scale=1, maximum-scale=1, user-scalable=yes", :name => "viewport"}
     %meta{:name => "turbolinks-cache-control", :content => "no-cache"}
-    / Google search console SebSEO
-    %meta{:content => "neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q", :name => "google-site-verification"}/
-    / Google search console Mat
-    %meta{:content => "TNQnOQs84jCeQUgbEPOAV9gE4LXDUQaG5ypdnlRz2E8", :name => "google-site-verification"}/
-    / Google search console Beg
-    %meta{:content => "eZYLdUFSc9uBqciZ7fcOxXybmBPxcPME-N9NCRvFn8w", :name => "google-site-verification"}/
-    / Google search console Maxd
-    %meta{:content => "f_xo9InTg_SGabP-vnvDjrslUaixMcuxCaGidnXJT9s", :name => "google-site-verification"}/
-    / Google search console Davb
-    %meta{:content => "rjlrEGuLOWAOnmomQMmM5epqCRA3dZY4p1oMDbfCxiY", :name => "google-site-verification"}/
-    / Google search console Acm
-    %meta{:content => "YOm5sNGxbHWmN2Rf3Udg6v29ca5YjM3RNRz8TjWA6Pw", :name => "google-site-verification"}/
-    / Google search console Mar
-    %meta{:content => "0jDmSXtIkrU_nDcXoExkAHbG0TmRlGrx7LdJoX9ktWg", :name => "google-site-verification"}/
-
 
     = javascript_tag "window.clara = window.clara || {}; clara.hotjar_id = '#{ENV['ARA_HOTJAR_ID'].to_s}';clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID'].to_s}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json};"
     = csrf_meta_tags
@@ -55,6 +40,7 @@
     - unless ga_disabled?
       = javascript_tag "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');", id: "ga-script"
       = javascript_tag "ga('create', window.clara.ga_id, 'auto');", id: "ga-create-script"
+      = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
       - if from_pe?(request)
         = javascript_tag "ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"
       - else

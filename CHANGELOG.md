@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.1.0 (13/10/2020)
+[#78] Google tag commander
+
+
 ## 37.0.0 (12/10/2020)
 [#71] Enlever le bandeau COVID
 
