@@ -1,6 +1,11 @@
 # CLARA Changelog
 
 
+
+## 37.2.0 (121/10/2020)
+[#76] Enregistrer les PEID
+
+
 ## 37.1.0 (13/10/2020)
 [#78] Google tag commander
 
