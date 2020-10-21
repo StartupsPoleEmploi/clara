@@ -27,6 +27,9 @@
             <li>
               <%=link_to "Liste des PEIDs", admin_peids_path %>
             </li>
+            <li>
+              <%=link_to "Liste des réponses", admin_answers_path %>
+            </li>
           <% end %>
           <% if current_user.role === "relecteur" %>
             <li>
