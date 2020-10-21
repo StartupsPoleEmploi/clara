@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_123459) do
+ActiveRecord::Schema.define(version: 2020_09_29_123460) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -44,6 +44,22 @@ ActiveRecord::Schema.define(version: 2020_09_29_123459) do
   create_table "aids_filters", id: false, force: :cascade do |t|
     t.bigint "filter_id", null: false
     t.bigint "aid_id", null: false
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.string "handicap"
+    t.string "spectacle"
+    t.string "cadre"
+    t.string "diplome"
+    t.string "category"
+    t.string "duree_d_inscription"
+    t.string "allocation_value_min"
+    t.string "allocation_type"
+    t.string "age"
+    t.string "location_citycode"
+    t.string "location_zipcode"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "api_users", force: :cascade do |t|
