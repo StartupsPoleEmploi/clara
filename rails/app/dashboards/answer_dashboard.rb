@@ -20,8 +20,8 @@ class AnswerDashboard < Administrate::BaseDashboard
     age: Field::String,
     location_citycode: Field::String,
     location_zipcode: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    created_at: Field::DateTime.with_options(format: "%b %Y"),
+    updated_at: Field::DateTime.with_options(export: false),
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -31,9 +31,17 @@ class AnswerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
+  handicap
+  spectacle
+  cadre
+  diplome
+  category
+  duree_d_inscription
+  allocation_value_min
+  allocation_type
   age
   location_citycode
-  cadre
+  location_zipcode
   created_at
   ].freeze
 
