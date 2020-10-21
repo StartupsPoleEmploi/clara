@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 37.2.0 (121/10/2020)
 [#76] Enregistrer les PEID
 
