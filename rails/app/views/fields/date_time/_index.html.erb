@@ -18,7 +18,9 @@ as a localized date & time string.
 
 <% if field.data %>
   <span data-actual="<%= ap field.data %>">
-    <span class="day-of-datetime"><%= field.data.day.to_s %></span>
+    <% unless request.path_info.include?('peids') %>
+      <span class="day-of-datetime"><%= field.data.day.to_s %></span>
+    <% end %>
     <span><%= ((I18n.t :abbr_month_names, :scope => :date)[field.data.month]) + " " +  field.data.year.to_s %></span>
     
   </span>

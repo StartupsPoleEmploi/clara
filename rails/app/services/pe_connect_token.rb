@@ -15,10 +15,22 @@ class PeConnectToken < PeConnectService
     my_parsed = JSON.parse(my_response.body)
     access_token = my_parsed["access_token"]
     id_token = my_parsed["id_token"]
+    claim_sub = _extract_sub(id_token)
+    RecordPeid.new.call(claim_sub)
     {
       id_token: id_token,
       access_token: access_token
     }
+  end
+
+
+  def _extract_sub(id_token)
+    claim_as_str = Base64.decode64(id_token.try(:split, '.').try(:[], 1))
+    claim = {}
+    if IsValidJson.new.call(claim_as_str)
+      claim = JSON.parse(claim_as_str)
+    end
+    claim['sub']
   end
 
 
