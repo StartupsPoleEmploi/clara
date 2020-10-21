@@ -5,6 +5,7 @@ class AidesController < ApplicationController
   def index
     if have_active_asker?
       pull_asker
+      save_answer
       augment_asker_if_necessary
       results = create_results_from_asker
       hydrate_view(results)
@@ -15,6 +16,10 @@ class AidesController < ApplicationController
         "total_nb" => total_nb,
       })
     end
+  end
+
+  def save_answer
+    SaveAnswer.new.call(@asker)
   end
 
   def get_search_front
