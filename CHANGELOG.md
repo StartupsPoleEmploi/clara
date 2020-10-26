@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 37.3.0 (21/10/2020)
+## 37.3.0 (26/10/2020)
 [#77] Lister les réponses
 
 
