@@ -16,10 +16,9 @@ clara.js_define("track_outbound_link", {
       'transport': 'tag',
       'hitCallback': function() {
           $('<a />', link_obj).get(0).click();
-      }
-    }
-
-   });      
+      }  
+    });      
+  }
 
   },
 
