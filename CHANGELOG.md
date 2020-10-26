@@ -1,7 +1,11 @@
 # CLARA Changelog
 
 
-## 37.2.0 (121/10/2020)
+## 37.3.0 (26/10/2020)
+[#77] Lister les réponses
+
+
+## 37.2.0 (21/10/2020)
 [#76] Enregistrer les PEID
 
 
