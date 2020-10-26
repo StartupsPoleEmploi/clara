@@ -13,12 +13,12 @@ clara.js_define("track_outbound_link", {
 
     if (typeof ga === "function") {
       ga('send', 'event', 'outbound', 'click', url, {
-      'transport': 'tag',
-      'hitCallback': function() {
-          $('<a />', link_obj).get(0).click();
-      }  
-    });      
-  }
+        'transport': 'tag',
+        'hitCallback': function() {
+            $('<a />', link_obj).get(0).click();
+        }  
+      });      
+    }
 
   },
 
