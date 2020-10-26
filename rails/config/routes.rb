@@ -90,6 +90,8 @@ Rails.application.routes.draw do
       post 'post_zrr'
       get 'get_cache'
       post 'post_cache'
+      get 'get_reset_answers'
+      post 'post_reset_answers'
       get 'get_ref_data'
       post 'post_ref_data'
       get 'get_transfer_descr'

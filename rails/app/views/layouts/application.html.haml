@@ -1,9 +1,6 @@
 !!!
 %html.c-html{:lang => "#{I18n.locale}"}
   %head
-    - unless ga_disabled?
-      = "<!-- Google Tag Manager --><script id='ga-gtag-exec'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}');</script><!-- End Google Tag Manager -->".html_safe
-
 
     = render 'shared/tab_title', {title_data: (yield :title_data), description_data: (yield :description_data) }
 
@@ -20,8 +17,6 @@
     = yield :custom_css
         
   %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
-    - unless ga_disabled?
-      ="<!-- Google Tag Manager (noscript) --><noscript><iframe src='https://www.googletagmanager.com/ns.html?id=#{ENV["ARA_GOOGLE_TAG_MANAGER_ID"]}' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript><!-- End Google Tag Manager (noscript) -->".html_safe
 
     .c-body__wrapper
       .c-body__content
@@ -38,8 +33,6 @@
     - if (!hj_disabled? && from_pe?(request))
       = javascript_tag "(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:window.clara.hotjar_id,hjsv:5}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');", id: "hj-script"
     - unless ga_disabled?
-      = javascript_tag "(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');", id: "ga-script"
-      = javascript_tag "ga('create', window.clara.ga_id, 'auto');", id: "ga-create-script"
       = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
       - if from_pe?(request)
         = javascript_tag "ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"

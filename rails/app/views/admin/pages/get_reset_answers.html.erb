@@ -1,0 +1,17 @@
+Vous pouvez remettre à zéro les réponses ici
+<%= form_with url: admin_post_reset_answers_path, local: false, id: 'admin_post_reset_answers_form' do |form| %>
+  <%= form.submit 'Supprimer toutes les réponses des utilisateurss', id: "button-empty-reset_answers" %>
+<% end %>
+<p>&nbsp;</p>
+<script> 
+  function defer2(method) { if (window.jQuery) { admin_post_reset_answers_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_post_reset_answers_callback() {
+    $("#admin_post_reset_answers_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("admin_post_reset_answers success, detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer2();
+</script>
