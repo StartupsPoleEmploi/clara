@@ -101,6 +101,14 @@ module Admin
       render json: {status: "ok"}
     end
 
+    # reset all answers
+    def get_reset_answers
+    end
+    def post_reset_answers
+      Answer.destroy_all
+      render json: {status: "ok"}
+    end
+
     # refdata
     def get_ref_data
     end
