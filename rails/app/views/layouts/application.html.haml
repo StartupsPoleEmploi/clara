@@ -35,9 +35,9 @@
     - unless ga_disabled?
       = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
       - if from_pe?(request)
-        = javascript_tag "ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"
+        = javascript_tag "if (typeof ga === 'function') ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"
       - else
-        = javascript_tag "ga('set', 'dimension1', 'false');", id: "ga-frompe", class: "ga-frompe-false"
+        = javascript_tag "if (typeof ga === 'function') ga('set', 'dimension1', 'false');", id: "ga-frompe", class: "ga-frompe-false"
       :javascript
         !function(){window._DD;var e=document,t=window.getComputedStyle,r=e.getElementsByTagName("head")[0],o=e.createElement("p"),d=o.style,a=["flex","-webkit-flex","-ms-flexbox","-webkit-box","-moz-box"],n=["flexWrap","WebkitFlexWrap","msFlexWrap"];r.appendChild(o);for(var i=0,s=a.length;i<s;i++){if(!n[i]||n[i]in d)if(d.cssText="display:"+a[i],(t?t(o,null).getPropertyValue("display"):o.currentStyle.display)==a[i]){_DD=i+1;break}}if(r.removeChild(o),1!==window._DD){var c=document.createElement("div");c.id="content_to_add",c.innerHTML="<div class='c-browser-deprecated u-padding' style='background-color: orange;'><div class='c-browser-deprecated__line'>!! Certains contenus ne seront pas correctement affichés car votre navigateur est obsolète.</div><div class='c-browser-deprecated__line'><a href='https://updatemybrowser.org'>Ce site</a> peut vous aider à mettre à jour votre navigateur.</div></div>",document&&document.body&&document.body.insertBefore&&document.body.insertBefore(c,document.body.childNodes[0])}}();
 
