@@ -38,7 +38,7 @@ class SaveAnswerTest < ActiveSupport::TestCase
       #then
       after_answer_count = Answer.count
       assert_equal before_answer_count, after_answer_count
-      assert_equal session[:saved_answer], nil
+      assert_nil session[:saved_answer]
     end
 
     test '.call, do not touch anything if Asker attributes are empty' do
@@ -51,7 +51,7 @@ class SaveAnswerTest < ActiveSupport::TestCase
       #then
       after_answer_count = Answer.count
       assert_equal before_answer_count, after_answer_count
-      assert_equal session[:saved_answer], nil
+      assert_nil session[:saved_answer]
     end
 
 end
