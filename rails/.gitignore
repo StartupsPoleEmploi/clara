@@ -51,5 +51,6 @@ coverage
 /cypress/screenshots/*
 
 
+.vscode/*
 
 # /config/deploy/*

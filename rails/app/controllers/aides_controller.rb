@@ -19,10 +19,7 @@ class AidesController < ApplicationController
   end
 
   def save_answer
-    if session[:saved_answer] == nil
-      SaveAnswer.new.call(@asker)
-      session[:saved_answer] = 'true'
-    end
+    SaveAnswer.new.call(@asker, session)
   end
 
   def get_search_front
