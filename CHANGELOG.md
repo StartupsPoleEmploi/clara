@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.4.0 (26/10/2020)
+[#79] Suppression appels en dur GA + GTM
+
+
 ## 37.3.0 (26/10/2020)
 [#77] Lister les réponses
 
