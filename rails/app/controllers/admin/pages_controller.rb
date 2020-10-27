@@ -108,10 +108,6 @@ module Admin
     def post_resetpwd
       email = params.extract!(:email).permit(:email).to_h["email"]
       new_pwd = params.extract!(:new_pwd).permit(:new_pwd).to_h["new_pwd"]
-      ap 'email'
-      ap email
-      ap 'new_pwd'
-      ap new_pwd
       user = User.find_by(email: email)
       msg = 'not found'
       if user
