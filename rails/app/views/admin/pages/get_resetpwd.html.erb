@@ -1,0 +1,25 @@
+Vous pouvez réinitialiser un pwd ici
+<%= form_with url: admin_post_resetpwd_path, local: false, id: 'admin_post_resetpwd_form' do |form| %>
+  <label>
+    email
+  </label>
+  <%= form.text_field :email, type: 'email', required: true %>
+  <label style="margin-top: 2rem;">
+    new pwd
+  </label>
+  <%= form.text_field :new_pwd, type: 'text', required: true %>
+  <%= form.submit 'reset pwd', id: "button-empty-resetpwd" %>
+<% end %>
+<p>&nbsp;</p>
+<script> 
+  function defer2(method) { if (window.jQuery) { admin_post_resetpwd_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_post_resetpwd_callback() {
+    $("#admin_post_resetpwd_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("admin_post_resetpwd success, detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer2();
+</script>

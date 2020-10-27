@@ -101,6 +101,22 @@ module Admin
       render json: {status: "ok"}
     end
 
+    # reset pwd
+    def get_resetpwd
+    end
+
+    def post_resetpwd
+      email = params.extract!(:email).permit(:email).to_h["email"]
+      new_pwd = params.extract!(:new_pwd).permit(:new_pwd).to_h["new_pwd"]
+      user = User.find_by(email: email)
+      msg = 'not found'
+      if user
+        user.update(password: new_pwd)
+        msg = 'ok'        
+      end
+      render json: {status: msg}
+    end
+
     # reset all answers
     def get_reset_answers
     end

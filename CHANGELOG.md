@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.5.4 (27/10/2020)
+[#83c] Sidekiq sans retry !
+
+
 ## 37.5.3 (27/10/2020)
 [#83b] Envoi de mail pour reset password, réessai
 
