@@ -54,27 +54,12 @@ class PasswordsController < Clearance::PasswordsController
   private
 
   def deliver_email(user)
-    mail = change_actual_password(user)
+    mail = CustomClearanceMailer.change_password(user)
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
     else
       mail.deliver
-    end
-  end
-
-  def change_actual_password(user)
-    @user = user
-    # See https://stackoverflow.com/a/35392237/2595513
-    mail(
-      from: Clearance.configuration.mailer_sender,
-      to: @user.email,
-      subject: I18n.t(
-        :change_password,
-        scope: [:clearance, :models, :clearance_mailer]
-      ),
-    ) do |format|
-        format.html
     end
   end
 
