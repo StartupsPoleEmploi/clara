@@ -32,7 +32,7 @@
     
     - if (!hj_disabled? && from_pe?(request))
       = javascript_tag "(function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:window.clara.hotjar_id,hjsv:5}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');", id: "hj-script"
-    - unless ga_disabled?
+    - unless ga_disabled? || Rails.env.development?
       = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
       - if from_pe?(request)
         = javascript_tag "if (typeof ga === 'function') ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"

@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.5.6 (27/10/2020)
+[#83e] root url in .env
+
+
 ## 37.5.5 (27/10/2020)
 [#83d] Sidekiq ok ?
 

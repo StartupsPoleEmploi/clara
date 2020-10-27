@@ -76,6 +76,6 @@ Rails.application.configure do
   # do not work with docker
   config.action_mailer.delivery_method = :letter_opener_web
   # do not work with docker
-  config.action_mailer.default_url_options = {host: 'web-srv', port: 3000}
+  config.action_mailer.default_url_options = {host: 'localhost', port: 5000}
 
 end

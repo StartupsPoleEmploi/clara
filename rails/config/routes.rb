@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
 
-  resources :custom_passwords, controller: "custom_passwords", only: [:create, :new], as: nil
+  resources :custom_passwords, controller: "custom_passwords", only: [:create, :new, :edit], as: nil
   resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users", only: [:create] do
