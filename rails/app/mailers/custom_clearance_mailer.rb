@@ -1,5 +1,4 @@
 class CustomClearanceMailer < ActionMailer::Base
-  sidekiq_options retry: false
   def change_password(user)
     @user = user
     mail(
