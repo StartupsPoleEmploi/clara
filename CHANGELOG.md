@@ -1,7 +1,7 @@
 # CLARA Changelog
 
 
-## 37.5.3 (27/10/2020)
+## 37.5.4 (27/10/2020)
 [#83c] Sidekiq sans retry !
 
 
