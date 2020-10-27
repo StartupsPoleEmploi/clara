@@ -54,7 +54,7 @@ class CustomPasswordsController < Clearance::PasswordsController
   private
 
   def deliver_email(user, request)
-    urlPrefix = "http://#{request.ssl? ? 's' : ''}"
+    urlPrefix = "http#{request.ssl? ? 's' : ''}://"
     urlBase = request.host
     urlFor = edit_user_password_path(user, token: user.confirmation_token.html_safe)
     finalUrl = "#{urlPrefix}#{urlBase}#{urlFor}"
