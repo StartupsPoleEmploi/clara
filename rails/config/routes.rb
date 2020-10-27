@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resource :session, controller: "sessions", only: [:create]
 
   resources :users, controller: "users", only: [:create] do
-    resource :password, controller: "passwords", only: [:create, :edit, :update], as: nil
+    resource :password, controller: "custom_passwords", only: [:create, :update, :edit], as: nil
   end
 
   get "/sign_in" => "sessions#new", as: "sign_in"

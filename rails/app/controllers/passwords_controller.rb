@@ -1,6 +1,6 @@
 require 'active_support/deprecation'
 
-class CustomPasswordsController < Clearance::PasswordsController
+class PasswordsController < Clearance::PasswordsController
 
   skip_before_action :require_login,
     only: [:create, :edit, :new, :update],
