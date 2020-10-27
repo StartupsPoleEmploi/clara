@@ -9,7 +9,7 @@
       <div>Vous devez déjà être inscrit avec cet email.</div>
     </p>
 
-    <%= form_for :password, url: passwords_path do |form| %>
+    <%= form_for :password, url: custom_passwords_path do |form| %>
       <div class="text-field">
         <%= form.label :email, "Votre adresse e-mail" %>
         <%= form.text_field :email, type: 'email', "class" => "u-1/1", value: "#{params[:email]}" %>
