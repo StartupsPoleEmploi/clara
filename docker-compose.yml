@@ -102,7 +102,7 @@ services:
     command: >
         bash -c "cd /var/www/ara/current
         && bundle install
-        && bundle exec sidekiq  -q default -q mailers -e production -C config/sidekiq.yml"
+        && bundle exec sidekiq -e production -C config/sidekiq.yml"
     volumes:
       - "bundle:/usr/local/bundle"
       - "vol_shared:/var/www/ara"

@@ -1,6 +1,6 @@
 require 'active_support/deprecation'
 
-class PasswordsController < Clearance::PasswordsController
+class CustomPasswordsController < Clearance::PasswordsController
 
   skip_before_action :require_login,
     only: [:create, :edit, :new, :update],
@@ -30,7 +30,7 @@ class PasswordsController < Clearance::PasswordsController
   end
 
   def new
-    render template: 'passwords/new'
+    render template: 'custom_passwords/new'
   end
 
   def update
@@ -54,7 +54,9 @@ class PasswordsController < Clearance::PasswordsController
   private
 
   def deliver_email(user)
-    mail = ::ClearanceMailer.change_password(user)
+    mail = CustomClearanceMailer.change_password(user)
+
+    ap 'ok, reset email - - - - - - - - - - - - - - - - -'
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
