@@ -13,7 +13,7 @@ class CustomPasswordsController < Clearance::PasswordsController
   def create
     if user = find_user_for_create
       user.forgot_password!
-      deliver_email(user)
+      deliver_email(user, request)
     end
     render template: 'passwords/create'
   end
@@ -53,10 +53,12 @@ class CustomPasswordsController < Clearance::PasswordsController
 
   private
 
-  def deliver_email(user)
-    mail = CustomClearanceMailer.change_password(user)
-
-    ap 'ok, reset email - - - - - - - - - - - - - - - - -'
+  def deliver_email(user, request)
+    urlPrefix = "http://#{request.ssl? ? 's' : ''}"
+    urlBase = request.host
+    urlFor = edit_user_password_path(user, token: user.confirmation_token.html_safe)
+    finalUrl = "#{urlPrefix}#{urlBase}#{urlFor}"
+    mail = CustomClearanceMailer.change_password(user.email, finalUrl)
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
@@ -121,3 +123,4 @@ class CustomPasswordsController < Clearance::PasswordsController
     Clearance.configuration.redirect_url
   end
 end
+

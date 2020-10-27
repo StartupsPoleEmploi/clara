@@ -16,10 +16,10 @@ class AdminPageTest < ActionDispatch::IntegrationTest
     connect_as_superadmin
     c = Clockdiff.create!(value: 0)
     #when
-    post admin_post_clock_path, params: {"clock_delta"=>"2"}
+    post admin_post_clock_path, params: {"clock_delta"=>"-2"}
     #then
     assert_response :ok
-    assert_select '.actual-delta', '2'
+    assert_select '.actual-delta', '-2'
   end
 
   test "Un superadmin peut demander à activer ou non peconnect" do
