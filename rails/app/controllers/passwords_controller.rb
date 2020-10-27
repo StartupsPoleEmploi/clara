@@ -54,7 +54,13 @@ class PasswordsController < Clearance::PasswordsController
   private
 
   def deliver_email(user)
-    mail = ::ClearanceMailer.change_password(user)
+    base_url = "https://#{request.host}"
+    p '- - - - - - - - - - - - - - base_url- - - - - - - - - - - - - - - -' 
+    ap base_url
+    p ''
+    mail = ::ClearanceMailer.change_password(user, base_url='')
+    p '- - - - - - - - - - - - - - mail- - - - - - - - - - - - - - - -' 
+    ap mail.html_part.body.decoded
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
