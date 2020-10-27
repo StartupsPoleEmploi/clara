@@ -30,7 +30,7 @@ class CustomPasswordsController < Clearance::PasswordsController
   end
 
   def new
-    render template: 'passwords/new'
+    render template: 'custom_passwords/new'
   end
 
   def update
@@ -55,6 +55,8 @@ class CustomPasswordsController < Clearance::PasswordsController
 
   def deliver_email(user)
     mail = CustomClearanceMailer.change_password(user)
+
+    ap 'ok, reset email - - - - - - - - - - - - - - - - -'
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
