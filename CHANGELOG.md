@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 37.5.1 (27/10/2020)
+[#81c] Password oublié, revert
+
+
 ## 37.5.0 (27/10/2020)
-[#81] Password oublié, ne marche plus
+[#81b] Password oublié, ne marche plus
 
 
 ## 37.4.1 (26/10/2020)
