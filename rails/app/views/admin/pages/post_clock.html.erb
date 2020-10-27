@@ -1,6 +1,6 @@
 <%- now = DateTime.now %>
-<%- delta = local_assigns[:current_diff_value] %>
-<%- changed = now.change(hour: now.hour + delta, min: now.minute, sec: now.second)  %>
+<%- delta = local_assigns[:current_diff_value].to_i || 0 %>
+<%- changed = now.change(hour: now.hour + delta,min: now.minute, sec: now.second)  %>
 
 <div style="margin-top: 2rem;margin-left: 2rem;">
   <div>
