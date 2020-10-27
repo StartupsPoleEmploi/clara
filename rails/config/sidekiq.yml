@@ -1,8 +1,11 @@
 development:
   :concurrency: 5
+
 production:
-  :concurrency: 25
+  :concurrency: 10
+
+:max_retries: 1
+
 :queues:
-  - high
-  - [mailers, 7]
-  - [default, 5]
+  - default
+  - mailers
