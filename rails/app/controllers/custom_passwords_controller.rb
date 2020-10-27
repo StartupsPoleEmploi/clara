@@ -58,12 +58,7 @@ class CustomPasswordsController < Clearance::PasswordsController
     urlBase = request.host
     urlFor = edit_custom_password_path(user, token: user.confirmation_token.html_safe)
     finalUrl = "#{urlPrefix}#{urlBase}#{urlFor}"
-    p '- - - - - - - - - - - - - - finalUrl- - - - - - - - - - - - - - - -' 
-    ap finalUrl
-    p ''
     mail = CustomClearanceMailer.change_password(user.email, finalUrl)
-
-    ap 'ok, reset email - - - - - - - - - - - - - - - - -'
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
