@@ -54,7 +54,7 @@ class PasswordsController < Clearance::PasswordsController
   private
 
   def deliver_email(user)
-    mail = ::ClearanceMailer.change_password(user)
+    mail = CustomClearanceMailer.change_password(user)
 
     if mail.respond_to?(:deliver_later)
       mail.deliver_later
