@@ -88,6 +88,8 @@ Rails.application.routes.draw do
       post 'post_switch_peconnect'
       get 'get_zrr'
       post 'post_zrr'
+      get 'get_resetpwd'
+      post 'post_resetpwd'
       get 'get_cache'
       post 'post_cache'
       get 'get_reset_answers'
