@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 37.5.8 (29/10/2020)
+[#86] bug sur la recherche
+
+
 ## 37.5.7 (28/10/2020)
 [#83f] typo url
 
