@@ -51,7 +51,7 @@ class AidesController < ApplicationController
 
     aids = nil
     if usearch
-      aids = Aid.roughly_spelled_like(usearch)
+      aids = Aid.roughly_spelled_like(usearch).activated
       unless CookiePreference.new(session).ga_disabled?
         TrackSearch.new.call(usearch)
       end
