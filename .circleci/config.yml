@@ -35,13 +35,13 @@ jobs:
 
       - type: cache-save
         name: Store bundle cache
-        key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
+        key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
         paths:
           - /home/circleci/rails/vendor/bundle
 
       - type: cache-save
         name: Store npm cache
-        key: clara-npm-{{ checksum "rails/package-lock.json" }}
+        key: clara-npm2-{{ checksum "rails/package-lock.json" }}
         paths:
           - /home/circleci/rails/rails/node_modules
 
