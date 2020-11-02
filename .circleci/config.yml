@@ -19,11 +19,11 @@ jobs:
       
       - type: cache-restore
         name: Restore bundle cache
-        key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
+        key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
         name: Restore npm cache
-        key: clara-npm-{{ checksum "rails/package-lock.json" }}
+        key: clara-npm2-{{ checksum "rails/package-lock.json" }}
 
       - run:
           name: Bundle Install

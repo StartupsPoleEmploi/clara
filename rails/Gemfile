@@ -82,7 +82,7 @@ gem 'sidekiq'
 gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
-  # gem "byebug", platform: :mri
+  gem "byebug", platform: :mri
   gem "database_cleaner"
   gem "rspec-rails"
   gem "pry-rails"
