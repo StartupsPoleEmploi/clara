@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.1.1 (2/11/2020)
+[#88b] vérif init cypress-rails
+
+
 ## 38.1.0 (2/11/2020)
 [#88] suppression des appels hotjar en dur
 
