@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.0.0 (2/11/2020)
+[#65] parcours auto tests e2e
+
+
 ## 37.5.8 (29/10/2020)
 [#86] bug sur la recherche
 
