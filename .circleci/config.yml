@@ -51,12 +51,12 @@ jobs:
 
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: rails/bin/rails db:schema:load --trace
 
       - run:
           name: Run e2e tests
-          command: bin/rails cypress:run
+          command: rails/bin/rails cypress:run
 
       - run:
           name: Run Rails tests
-          command: bin/rails test
+          command: rails/bin/rails test
