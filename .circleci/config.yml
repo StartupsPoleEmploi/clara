@@ -27,7 +27,7 @@ jobs:
 
       - run:
           name: Bundle Install
-          command: cd rails && bin/bundle install --path vendor/bundle
+          command: cd rails && bin/bundle install --path /home/circleci/rails/vendor/bundle
 
       - run:
           name: Npm Install
@@ -37,7 +37,7 @@ jobs:
         name: Store bundle cache
         key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
         paths:
-          - rails/vendor/bundle
+          - /home/circleci/rails/vendor/bundle
 
       - type: cache-save
         name: Store npm cache
