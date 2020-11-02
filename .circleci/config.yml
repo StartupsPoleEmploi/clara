@@ -18,33 +18,36 @@ jobs:
       - run: cd rails/; ls -la; pwd;
       
       - type: cache-restore
+        paths:
+          - rails/rails
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
-          - rails/rails
-        name: Restore npm cache
-        key: clara-npm-{{ checksum "rails/package-lock.json" }}
+        name: Restore yarn cache
+        key: clara-yarn-{{ checksum "yarn.lock" }}
 
       - run:
           name: Bundle Install
-          command: bin/bundle install --path rails/rails/vendor/bundle
+          command: bin/bundle install --path rails/vendor/bundle
 
       - run:
-          name: Npm Install
-          command: npm install rails/rails/node_modules
+          name: Yarn Install
+          command: yarn install
+          paths:
+            - rails
 
       - type: cache-save
         name: Store bundle cache
-        key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
+        key: clara-bundle-{{ checksum "Gemfile.lock" }}
         paths:
           - ~/rails/vendor/bundle
 
       - type: cache-save
-        name: Store npm cache
-        key: clara-npm-{{ checksum "rails/npm.lock" }}
+        name: Store yarn cache
+        key: clara-yarn-{{ checksum "yarn.lock" }}
         paths:
-          - ~/rails/.npm-cache
+          - ~/rails/.yarn-cache
 
       - run:
           name: Wait for DB
