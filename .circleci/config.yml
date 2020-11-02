@@ -13,21 +13,26 @@ jobs:
           POSTGRES_USER: circleci
           POSTGRES_DB: clara_test
     steps:
-      - checkout
+      - checkout:
+          path: ~/rails
 
       - type: cache-restore
+        path: rails
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
 
       - type: cache-restore
+        path: rails
         name: Restore yarn cache
         key: clara-yarn-{{ checksum "yarn.lock" }}
 
       - run:
+          path: rails
           name: Bundle Install
           command: bin/bundle install --path vendor/bundle
 
       - run:
+          path: rails
           name: Yarn Install
           command: yarn install
 
@@ -35,26 +40,30 @@ jobs:
         name: Store bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
         paths:
-          - vendor/bundle
+          - rails/vendor/bundle
 
       - type: cache-save
         name: Store yarn cache
         key: clara-yarn-{{ checksum "yarn.lock" }}
         paths:
-          - ~/.yarn-cache
+          - ~/rails/.yarn-cache
 
       - run:
+          path: rails
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
+          path: rails
           name: Database setup
           command: bin/rails db:schema:load --trace
 
       - run:
+          path: rails
           name: Run e2e tests
           command: bin/rails cypress:run
 
       - run:
+          path: rails
           name: Run Rails tests
           command: bin/rails test
