@@ -14,10 +14,10 @@ jobs:
           POSTGRES_DB: clara_test
     steps:
       - checkout
-
+      
+      - run: cd rails/; ls -la; pwd;
+      
       - type: cache-restore
-        paths:
-          - clara/rails
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
 
