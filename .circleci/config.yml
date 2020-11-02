@@ -22,8 +22,8 @@ jobs:
         key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
-        name: Restore npm cache
-        key: clara-npm2-{{ checksum "rails/package-lock.json" }}
+        name: Restore yarn cache
+        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
 
       - run:
           name: Bundle Install
@@ -40,10 +40,10 @@ jobs:
           - /home/circleci/rails/vendor/bundle
 
       - type: cache-save
-        name: Store npm cache
-        key: clara-npm2-{{ checksum "rails/package-lock.json" }}
+        name: Store yarn cache
+        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
         paths:
-          - /home/circleci/rails/rails/node_modules
+          - ~/.yarn-cache
 
       - run:
           name: Wait for DB
