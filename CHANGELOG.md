@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.1.0 (2/11/2020)
+[#88] suppression des appels hotjar en dur
+
+
 ## 38.0.0 (2/11/2020)
 [#65] parcours auto tests e2e
 
