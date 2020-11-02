@@ -1,36 +1,30 @@
-version: 2.1
-
-
+version: 2
 jobs:
   build:
     working_directory: ~/rails
     docker:
-      - image: circleci/ruby:2.6.6-node-browsers-legacy
+      - image: circleci/ruby:2.6-node-browsers
         environment:
-          PGHOST: localhost
-          PGUSER: ara
+          PGHOST: 127.0.0.1
+          PGUSER: circleci
           RAILS_ENV: test
-      - image: postgres:9.5
+      - image: circleci/postgres:9.5-alpine
         environment:
-          POSTGRES_USER: ara
-          POSTGRES_DB: ara_test
-          POSTGRES_HOST_AUTH_METHOD: trust
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: circleci
+          POSTGRES_DB: clara_test
     steps:
-      - checkout:
-          path: ~/rails
-
+      - checkout
+      
       - run: cd rails/; ls -la; pwd;
-
-
+      
       - type: cache-restore
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
+          - rails/rails
         name: Restore npm cache
         key: clara-npm-{{ checksum "rails/package-lock.json" }}
-
 
       - run:
           name: Bundle Install
@@ -40,7 +34,6 @@ jobs:
           name: Npm Install
           command: npm install rails/rails/node_modules
 
-
       - type: cache-save
         name: Store bundle cache
         key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
@@ -49,25 +42,22 @@ jobs:
 
       - type: cache-save
         name: Store npm cache
-        key: clara-npm-{{ checksum "rails/package-lock.json" }}
+        key: clara-npm-{{ checksum "rails/npm.lock" }}
         paths:
           - ~/rails/.npm-cache
-            
-      - run:
-          path: rails
-          name: run db migrations
-          command: bin/rails db:migrate RAILS_ENV=test
 
       - run:
-          path: rails
-          name: run ruby test
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+
+      - run:
+          name: Run e2e tests
+          command: bin/rails cypress:run
+
+      - run:
+          name: Run Rails tests
           command: bin/rails test
-
-      - run:
-          path: rails
-          command: sudo npm install -g istanbul
-
-      - run:
-          path: rails
-          name: run JS test
-          command: bundle exec teaspoon
