@@ -11,7 +11,7 @@ jobs:
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: circleci
-          POSTGRES_DB: clara_test
+          POSTGRES_DB: ara_test
     steps:
       - checkout
       
