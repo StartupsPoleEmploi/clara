@@ -43,7 +43,7 @@ jobs:
         name: Store npm cache
         key: clara-npm-{{ checksum "rails/package-lock.json" }}
         paths:
-          - rails/rails/node_modules
+          - /home/circleci/rails/rails/node_modules
 
       - run:
           name: Wait for DB
