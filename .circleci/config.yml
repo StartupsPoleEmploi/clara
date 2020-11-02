@@ -16,6 +16,8 @@ jobs:
       - checkout
 
       - type: cache-restore
+        paths:
+          - clara/rails
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
 
