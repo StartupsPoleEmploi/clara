@@ -13,8 +13,7 @@ jobs:
           POSTGRES_USER: circleci
           POSTGRES_DB: clara_test
     steps:
-      - checkout:
-          path: ~/rails
+      - checkout
 
       - type: cache-restore
         name: Restore bundle cache
