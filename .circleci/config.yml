@@ -1,66 +1,73 @@
-version: 2
+version: 2.1
+
+
 jobs:
   build:
     working_directory: ~/rails
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.6.6-node-browsers-legacy
         environment:
-          PGHOST: 127.0.0.1
-          PGUSER: circleci
+          PGHOST: localhost
+          PGUSER: ara
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
+      - image: postgres:9.5
         environment:
-          POSTGRES_USER: circleci
-          POSTGRES_DB: clara_test
+          POSTGRES_USER: ara
+          POSTGRES_DB: ara_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PASSWORD: ""
     steps:
-      - checkout
-      
+      - checkout:
+          path: ~/rails
+
       - run: cd rails/; ls -la; pwd;
-      
+
+
       - type: cache-restore
-        paths:
-          - rails/rails
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
-        name: Restore yarn cache
-        key: clara-yarn-{{ checksum "yarn.lock" }}
+        name: Restore npm cache
+        key: clara-npm-{{ checksum "rails/package-lock.json" }}
+
 
       - run:
           name: Bundle Install
-          command: bin/bundle install --path rails/vendor/bundle
+          command: bin/bundle install --path rails/rails/vendor/bundle
 
       - run:
-          name: Yarn Install
-          command: yarn install
-          paths:
-            - rails
+          name: Npm Install
+          command: npm install rails/rails/node_modules
+
 
       - type: cache-save
         name: Store bundle cache
-        key: clara-bundle-{{ checksum "Gemfile.lock" }}
+        key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
         paths:
           - ~/rails/vendor/bundle
 
       - type: cache-save
-        name: Store yarn cache
-        key: clara-yarn-{{ checksum "yarn.lock" }}
+        name: Store npm cache
+        key: clara-npm-{{ checksum "rails/package-lock.json" }}
         paths:
-          - ~/rails/.yarn-cache
+          - ~/rails/.npm-cache
+            
+      - run:
+          path: rails
+          name: run db migrations
+          command: bin/rails db:migrate RAILS_ENV=test
 
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - run:
-          name: Database setup
-          command: bin/rails db:schema:load --trace
-
-      - run:
-          name: Run e2e tests
-          command: bin/rails cypress:run
-
-      - run:
-          name: Run Rails tests
+          path: rails
+          name: run ruby test
           command: bin/rails test
+
+      - run:
+          path: rails
+          command: sudo npm install -g istanbul
+
+      - run:
+          path: rails
+          name: run JS test
+          command: bundle exec teaspoon
