@@ -62,10 +62,5 @@ jobs:
           command: cd rails && bundle exec rails test
 
       - run:
-          path: rails
-          name: Install Instanbul
-          command: sudo npm install -g istanbul
-
-      - run:
           name: Run JS test
           command: cd rails && bundle exec teaspoon
