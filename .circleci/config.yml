@@ -19,30 +19,36 @@ jobs:
       - type: cache-restore
         name: Restore bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
+        paths:
+          - rails
 
       - type: cache-restore
         name: Restore yarn cache
         key: clara-yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - rails
 
       - run:
           name: Bundle Install
-          command: bin/bundle install --path vendor/bundle
+          command: bin/bundle install --path rails/vendor/bundle
 
       - run:
           name: Yarn Install
           command: yarn install
+          paths:
+            - rails
 
       - type: cache-save
         name: Store bundle cache
         key: clara-bundle-{{ checksum "Gemfile.lock" }}
         paths:
-          - vendor/bundle
+          - ~/rails/vendor/bundle
 
       - type: cache-save
         name: Store yarn cache
         key: clara-yarn-{{ checksum "yarn.lock" }}
         paths:
-          - ~/.yarn-cache
+          - ~/rails/.yarn-cache
 
       - run:
           name: Wait for DB
