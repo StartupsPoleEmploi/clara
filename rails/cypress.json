@@ -1,5 +1,8 @@
 {
-  "blacklistHosts": "www.google-analytics.com",
+  "screenshotsFolder": "tmp/cypress_screenshots",
+  "videosFolder": "tmp/cypress_videos",
+  "trashAssetsBeforeRuns": false,
+  "blockHosts": "www.google-analytics.com",
   "baseUrl": "http://localhost:3000",
   "projectId": "z8r4w5"
 }

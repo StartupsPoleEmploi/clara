@@ -120,3 +120,8 @@ group :development do
   gem 'letter_opener_web'
   gem "annotate"
 end
+
+# e2e tests with Cypress
+group :development, :test do
+  gem 'cypress-rails'
+end

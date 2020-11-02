@@ -186,6 +186,9 @@ GEM
     connection_pool (2.2.3)
     crack (0.4.4)
     crass (1.0.6)
+    cypress-rails (0.4.1)
+      puma (>= 3.8.0)
+      railties (>= 5.2.0)
     database_cleaner (1.8.5)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -600,6 +603,7 @@ DEPENDENCIES
   climate_control
   clipboard
   coffee-rails
+  cypress-rails
   database_cleaner
   dotenv-rails
   factory_bot_rails

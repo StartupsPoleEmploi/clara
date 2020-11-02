@@ -1,8 +1,6 @@
 {
   "dependencies": {},
   "devDependencies": {
-    "cypress": "^4.4.0",
-    "minimist": ">=1.2.5",
-    "lodash": ">=4.17.19"
+    "cypress": "^5.5.0"
   }
 }
