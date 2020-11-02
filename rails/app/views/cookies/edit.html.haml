@@ -15,18 +15,8 @@
         =link_to "En savoir plus", confidentiality_index_path
       %span
         sur notre politique de confidentialité.
-    .o-layout.c-cookie-line
-      .o-layout__item{:class => "u-1/2"}
-        %h2.c-cookie-preference Préférence pour tous les services
-      .o-layout__item{:class => "u-1/2"}
-        .o-layout
-          .o-layout__item{:class => "u-1/2"}
-            %button#authorize_all.c-cookie-cta.c-cookie-cta--green Tout autoriser
-          .o-layout__item{:class => "u-1/2"}
-            %button#forbid_all.c-cookie-cta.c-cookie-cta--red Tout interdire
-
       
-    = form_with model: @cooky, url: cooky_path, method:  :put, :local => true, id: "cookie-form" do |f|
+    = form_with model: @cooky, url: cooky_path, method:  :put, :local => true, id: "preferences-form" do |f|
       %legend.u-hidden-visually Cochez vos préférences pour les cookies, de statistiques et de navigation  : appuyez sur Tab pour changer de case, et Entr&#xE9;e pour en choisir un.      
       .o-layout.c-cookie-line
         .o-layout__item{:class => "u-1/2"}
@@ -41,19 +31,6 @@
             .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}                          
               = render 'shared/cookies_form_line', {id: 'forbid_statistic', text: 'Interdire', choice: 'analytics', already_checked: @is_ga_disabled}       
 
-      .o-layout.c-cookie-line
-        .o-layout__item{:class => "u-1/2"}
-          %h2.c-cookie-preference  
-            Navigation
-          %p.c-cookie-description
-            Ces cookies nous permettent d'analyser la navigation sur le site afin de l’améliorer et d’analyser les comportements des internautes 
-        .o-layout__item{:class => "u-1/2"}
-          .o-layout
-            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form_line', {id: 'authorize_navigation', text: 'Autoriser', choice: 'hotjar', already_checked: !@is_hj_disabled}       
-            .o-layout__item{:class => "u-1/2@desktop u-1/2@tablet u-text--center"}
-              = render 'shared/cookies_form_line', {id: 'forbid_navigation', text: 'Interdire', choice: 'hotjar', already_checked: @is_hj_disabled}                     
-      
       
       .actions.u-text--right
         %button#submit-cookie-preference.c-btn.c-btn--result.c-cookie-submit Valider et continuer
