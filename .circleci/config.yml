@@ -30,8 +30,8 @@ jobs:
           command: cd rails && bin/bundle install --path /home/circleci/rails/vendor/bundle
 
       - run:
-          name: Npm Install
-          command: cd rails && npm install
+          name: Yarn Install
+          command: cd rails && yarn install
 
       - type: cache-save
         name: Store bundle cache
