@@ -27,13 +27,11 @@ jobs:
 
       - run:
           name: Bundle Install
-          command: bin/bundle install --path rails/vendor/bundle
+          command: cd rails && bin/bundle install
 
       - run:
-          name: Yarn Install
-          command: yarn install
-          paths:
-            - rails
+          name: Npm Install
+          command: cd rails && npm install
 
       - type: cache-save
         name: Store bundle cache
