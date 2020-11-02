@@ -16,8 +16,7 @@ class CookiesController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cooky_params
-      params.require(:choices).permit(:analytics, :hotjar)
-    end
+  def cooky_params
+    params.require(:choices).permit(:analytics, :hotjar)
+  end
 end
