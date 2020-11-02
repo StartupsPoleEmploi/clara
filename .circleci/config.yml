@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 
 
 jobs:
@@ -63,7 +63,4 @@ jobs:
           name: Run Rails tests
           command: cd rails && bundle exec rails test
 
-      - run:
-          path: rails
-          name: run JS test
-          command: bundle exec teaspoon
+
