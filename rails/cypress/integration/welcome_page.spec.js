@@ -9,7 +9,7 @@ context('Welcome page', () => {
   describe('Title section', () => {
 
     it('should contain a welcome message', () => {
-      cy.get('.c-title').contains('Hello')
+      cy.get('.c-newhomehero__title').contains('Boostez')
     })
 
   })
