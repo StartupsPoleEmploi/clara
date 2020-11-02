@@ -18,8 +18,10 @@ jobs:
       - run: cd rails/; ls -la; pwd;
       
       - type: cache-restore
+        paths:
+          - rails/rails
         name: Restore bundle cache
-        key: clara-bundle-{{ checksum "Gemfile.lock" }}
+        key: clara-bundle-{{ checksum "rails/Gemfile.lock" }}
 
       - type: cache-restore
         name: Restore yarn cache
