@@ -515,8 +515,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-raven (3.1.0)
-      faraday (>= 1.0)
     sexp_processor (4.15.1)
     shellany (0.0.1)
     sidekiq (6.1.2)
@@ -664,7 +662,6 @@ DEPENDENCIES
   sass-rails
   seed_dump
   selenium-webdriver
-  sentry-raven
   sidekiq
   simplecov
   spring
