@@ -5,15 +5,17 @@ jobs:
   build:
     working_directory: ~/rails
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.6.6-node-browsers-legacy
         environment:
-          PGHOST: 127.0.0.1
-          PGUSER: circleci
+          PGHOST: localhost
+          PGUSER: ara
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
+      - image: postgres:9.5
         environment:
-          POSTGRES_USER: circleci
+          POSTGRES_USER: ara
           POSTGRES_DB: ara_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
       
