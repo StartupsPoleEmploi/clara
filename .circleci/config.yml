@@ -70,4 +70,7 @@ jobs:
           name: Run Rails tests
           command: cd rails && bundle exec rails test
 
-
+      - run:
+          path: rails
+          name: Run JS test
+          command: bundle exec teaspoon
