@@ -36,6 +36,7 @@ class WelcomeController < ApplicationController
 
   def accept_all_cookies
     CookiePreference.new(session).accept_all_cookies
+    redirect_to root_path
   end
 
   def terms
