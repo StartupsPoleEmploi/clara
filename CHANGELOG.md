@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.3.0 (3/11/2020)
+[#89] Bloquer les cookies en amont
+
+
 ## 38.2.0 (3/11/2020)
 [#87] Supprimer Sentry
 
