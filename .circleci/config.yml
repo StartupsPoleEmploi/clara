@@ -20,16 +20,19 @@ jobs:
       - checkout:
           path: ~/rails
       
-      - run: cd rails/; ls -la; pwd;
+      - run: 
+          name: Where Am I
+          command: cd rails/; ls -la; pwd;
       
-      - restore_cache:
+      - restore_cache_ruby:
           type: cache-restore
           name: Restore bundle cache
           key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
 
-      - type: cache-restore
-        name: Restore yarn cache
-        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
+      - restore_cache_js:
+          type: cache-restore
+          name: Restore yarn cache
+          key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
 
       - run:
           name: Bundle Install
@@ -39,17 +42,19 @@ jobs:
           name: Yarn Install
           command: cd rails && yarn install
 
-      - type: cache-save
-        name: Store bundle cache
-        key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
-        paths:
-          - /home/circleci/rails/vendor/bundle
+      - save_cache_ruby:
+          type: cache-save
+          name: Store bundle cache
+          key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
+          paths:
+            - /home/circleci/rails/vendor/bundle
 
-      - type: cache-save
-        name: Store yarn cache
-        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
-        paths:
-          - ~/.yarn-cache
+      - save_cache_js:
+          type: cache-save
+          name: Store yarn cache
+          key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
+          paths:
+            - ~/.yarn-cache
 
       - run:
           name: Wait for DB
