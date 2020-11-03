@@ -22,12 +22,12 @@ jobs:
       
       - run: cd rails/; ls -la; pwd;
       
-      - restore_cache_ruby:
+      - restore_cache:
           type: cache-restore
           name: Restore bundle cache
           key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
 
-      - restore_cache_js:
+      - restore_cache:
           type: cache-restore
           name: Restore yarn cache
           key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
@@ -40,14 +40,14 @@ jobs:
           name: Yarn Install
           command: cd rails && yarn install
 
-      - save_cache_ruby:
+      - save_cache:
           type: cache-save
           name: Store bundle cache
           key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
           paths:
             - /home/circleci/rails/vendor/bundle
 
-      - save_cache_js:
+      - save_cache:
           type: cache-save
           name: Store yarn cache
           key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
