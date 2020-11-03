@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.2.0 (3/11/2020)
+[#87] Supprimer Sentry
+
+
 ## 38.1.1 (2/11/2020)
 [#88b] vérif init cypress-rails
 
