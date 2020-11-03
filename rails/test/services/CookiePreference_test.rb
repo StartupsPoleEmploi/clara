@@ -36,7 +36,6 @@ class CookiePreferenceTest < ActiveSupport::TestCase
       #then
       assert_equal cookie_preference.symbolize_keys, {
         analytics: "authorize_statistic",
-        hotjar: "authorize_navigation"
       }
     end
 
