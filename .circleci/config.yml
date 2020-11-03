@@ -20,9 +20,7 @@ jobs:
       - checkout:
           path: ~/rails
       
-      - run: 
-          name: Where Am I
-          command: cd rails/; ls -la; pwd;
+      - run: cd rails/; ls -la; pwd;
       
       - restore_cache_ruby:
           type: cache-restore
