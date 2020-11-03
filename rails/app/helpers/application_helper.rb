@@ -6,9 +6,6 @@ module ApplicationHelper
   def ga_disabled?
     CookiePreference.new(session).ga_disabled?
   end
-  def hj_disabled?
-    CookiePreference.new(session).hj_disabled?
-  end
 
   def title_data(text)
     content_for :title_data, text.to_s

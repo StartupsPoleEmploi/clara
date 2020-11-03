@@ -12,17 +12,12 @@ class CookiePreference
   end
 
   def ga_disabled?
-    @s[:cookie] && @s[:cookie]["analytics"] && @s[:cookie]["analytics"] == "forbid_statistic"
-  end
-
-  def hj_disabled?
-    @s[:cookie] && @s[:cookie]["hotjar"] && @s[:cookie]["hotjar"] == "forbid_navigation"
+    @s[:cookie].try(:[], "analytics") != "authorize_statistic"
   end
 
   def accept_all_cookies
     @s[:cookie] = {
      "analytics" => "authorize_statistic",
-     "hotjar" => "authorize_navigation",
     }
   end
 

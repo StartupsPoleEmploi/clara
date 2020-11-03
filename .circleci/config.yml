@@ -1,31 +1,36 @@
-version: 2
+version: 2.1
 
 
 jobs:
   build:
     working_directory: ~/rails
     docker:
-      - image: circleci/ruby:2.6-node-browsers
+      - image: circleci/ruby:2.6.6-node-browsers-legacy
         environment:
-          PGHOST: 127.0.0.1
-          PGUSER: circleci
+          PGHOST: localhost
+          PGUSER: ara
           RAILS_ENV: test
-      - image: circleci/postgres:9.5-alpine
+      - image: postgres:9.5
         environment:
-          POSTGRES_USER: circleci
+          POSTGRES_USER: ara
           POSTGRES_DB: ara_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_PASSWORD: ""
     steps:
-      - checkout
+      - checkout:
+          path: ~/rails
       
       - run: cd rails/; ls -la; pwd;
       
-      - type: cache-restore
-        name: Restore bundle cache
-        key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
+      - restore_cache:
+          type: cache-restore
+          name: Restore bundle cache
+          key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
 
-      - type: cache-restore
-        name: Restore yarn cache
-        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
+      - restore_cache:
+          type: cache-restore
+          name: Restore yarn cache
+          key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
 
       - run:
           name: Bundle Install
@@ -35,17 +40,19 @@ jobs:
           name: Yarn Install
           command: cd rails && yarn install
 
-      - type: cache-save
-        name: Store bundle cache
-        key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
-        paths:
-          - /home/circleci/rails/vendor/bundle
+      - save_cache:
+          type: cache-save
+          name: Store bundle cache
+          key: clara-bundle2-{{ checksum "rails/Gemfile.lock" }}
+          paths:
+            - /home/circleci/rails/vendor/bundle
 
-      - type: cache-save
-        name: Store yarn cache
-        key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
-        paths:
-          - ~/.yarn-cache
+      - save_cache:
+          type: cache-save
+          name: Store yarn cache
+          key: clara-yarn2-{{ checksum "rails/yarn.lock" }}
+          paths:
+            - ~/.yarn-cache
 
       - run:
           name: Wait for DB
@@ -63,4 +70,7 @@ jobs:
           name: Run Rails tests
           command: cd rails && bundle exec rails test
 
-
+      - run:
+          path: rails
+          name: Run JS test
+          command: bundle exec teaspoon

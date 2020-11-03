@@ -5,7 +5,6 @@ class CookiesController < ApplicationController
     @cooky = CookieForm.new(session[:cookie])
     cookie_preference = CookiePreference.new(session)
     @is_ga_disabled = cookie_preference.ga_disabled?
-    @is_hj_disabled = cookie_preference.hj_disabled?
   end
 
   # PATCH/PUT /cookies/preference

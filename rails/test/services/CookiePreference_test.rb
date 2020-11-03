@@ -10,21 +10,13 @@ class CookiePreferenceTest < ActiveSupport::TestCase
       #then
       assert_equal false, res
     end
-    test 'GA is enabled by default' do
+    test 'GA is disabled by default' do
       #given
       session = {}
       #when
-      res = !!CookiePreference.new(session).ga_disabled?
+      res = CookiePreference.new(session).ga_disabled?
       #then
-      assert_equal false, res
-    end
-    test 'HJ is enabled by default' do
-      #given
-      session = {}
-      #when
-      res = !!CookiePreference.new(session).hj_disabled?
-      #then
-      assert_equal false, res
+      assert_equal true, res
     end
     test 'GA can be disabled' do
       #given
@@ -32,17 +24,7 @@ class CookiePreferenceTest < ActiveSupport::TestCase
       sut = CookiePreference.new(session)
       sut.set_preference({"analytics" => "forbid_statistic"})
       #when
-      res = !!sut.ga_disabled?
-      #then
-      assert_equal true, res
-    end
-    test 'HJ can be disabled' do
-      #given
-      session = {}
-      sut = CookiePreference.new(session)
-      sut.set_preference({"hotjar" => "forbid_navigation"})
-      #when
-      res = !!sut.hj_disabled?
+      res = sut.ga_disabled?
       #then
       assert_equal true, res
     end
@@ -54,7 +36,6 @@ class CookiePreferenceTest < ActiveSupport::TestCase
       #then
       assert_equal cookie_preference.symbolize_keys, {
         analytics: "authorize_statistic",
-        hotjar: "authorize_navigation"
       }
     end
 
