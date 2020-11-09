@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.4.0 (9/11/2020)
+[#91] Datalayer : pour savoir si il s'agit d'un utilisateur connecté
+
+
 ## 38.3.0 (3/11/2020)
 [#89] Bloquer les cookies en amont
 
