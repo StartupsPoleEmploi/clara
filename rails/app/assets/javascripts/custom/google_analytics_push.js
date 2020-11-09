@@ -5,6 +5,8 @@ clara.load_js(function only_if(){return true}, function() {
     return ga("send", "pageview");
   }
 
-  
+  if (window.dataLayer) {
+    window.dataLayer.push({'is-connected': 0})
+  }
 
 }, "global_ga_push");

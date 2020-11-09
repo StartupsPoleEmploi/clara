@@ -5,6 +5,7 @@ class PeConnectExtraction < PeConnectService
     
     if fake
       res = FakeConnection.new.call(fake)
+      session[:id_token] = 'fake'
     else
       pe_connect = PeConnectService.new
       tokens = PeConnectToken.new.call(base_url, code)
