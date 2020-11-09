@@ -6,7 +6,7 @@
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:content => "initial-scale=1, maximum-scale=1, user-scalable=yes", :name => "viewport"}
-    %meta{:name => "turbolinks-cache-control", :content => "no-cache"}
+    %meta{:name => "is-connected", :content => "#{is_connected_with_pe?}"}
 
     = javascript_tag "window.clara = window.clara || {}; clara.hotjar_id = '#{ENV['ARA_HOTJAR_ID'].to_s}';clara.ga_id = '#{ENV['ARA_GOOGLE_ANALYTICS_ID'].to_s}'; clara.version = '#{ARA_VERSION}'; clara.env = #{ARA_EXT_URL.to_json};"
     = csrf_meta_tags
@@ -16,8 +16,7 @@
       = javascript_include_tag 'application', 'async' => Rails.env.production?, 'defer' => Rails.env.production?
     = yield :custom_css
         
-  %body{class: "c-body #{controller_name} #{action_name}", data: {env: Rails.env, path: GetCurrentPathService.new(request).call}}
-
+  %body{class: "c-body #{controller_name} #{action_name}", data: {connect: is_connected_with_pe?.to_s, env: Rails.env, path: GetCurrentPathService.new(request).call}}
     .c-body__wrapper
       .c-body__content
         = render 'shared/header', {larger_container: (yield :larger_container)}

@@ -40,7 +40,7 @@
 //= require custom/edit_cooky
 //= require custom/show_detail
 //= require custom/contact
-//= require custom/google_analytics_push
+//= require custom/push_data_layer
 //= require custom/target_blank
 //= require custom/expand_tree
 //= require custom/inscription_questions

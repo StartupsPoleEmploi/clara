@@ -7,6 +7,10 @@ module ApplicationHelper
     CookiePreference.new(session).ga_disabled?
   end
 
+  def is_connected_with_pe?
+    !!session[:id_token]
+  end
+
   def title_data(text)
     content_for :title_data, text.to_s
   end
