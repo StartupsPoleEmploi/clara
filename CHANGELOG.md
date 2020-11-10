@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.5.0 (10/11/2020)
+[#65b] Rétablissement d'un test de bout en bout
+
+
 ## 38.4.0 (9/11/2020)
 [#91] Datalayer : pour savoir si il s'agit d'un utilisateur connecté
 
