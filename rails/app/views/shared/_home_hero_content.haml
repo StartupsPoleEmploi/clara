@@ -50,26 +50,27 @@
             = f.submit 'Je commence', class: 'c-main-cta2 js-hideable', id: 'start_wizard_form1'
 
       .o-layout__item{:class => "u-1/1 u-1/3@desktop c-newhomehero-durationcontainer"}
-        - unless ga_disabled?
-          .c-newhomehero-durationballast
-            &nbsp;
-          %a.c-newhomehero-discover
-            %span.u-cursor-pointer
-              - if fake_start_button
-                = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo", data: { "src" => image_path("playvideo.svg")}) 
-              - else
-                = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg"), "modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }) 
-            %span.c-newhomehero-discovertxt
-              Découvrir Clara en vidéo
-              - unless fake_start_button
-                #modal_video.u-display-none
-                  %div.c-video-close-line
-                    %button#js-modal-close.js-modal-close.video-modal-close.c-video-btn-close{"data-content-back-id" => "modal_video", :type => "button"}
-                      Fermer
-                  .c-video-container
-                  .c-video-close-line.is-bottom
-                    %button.c-btn.c-btn--result.is-modal-video.u-margin-vertical.js-modal-close
-                      Fermer la fenêtre
+        .c-newhomehero-durationballast
+          &nbsp;
+        %a.c-newhomehero-discover
+          %span.u-cursor-pointer
+            - if fake_start_button
+              = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo", data: { "src" => image_path("playvideo.svg")}) 
+            - else
+              = image_tag(empty_image, alt: "Voir la vidéo", class: "c-seevideo js-modal", data: { "src" => image_path("playvideo.svg"), "modal-content-id"=>"modal_video", "modal-prefix-class" => "video", "modal-focus-id" => "js-modal-close" }) 
+          %span.c-newhomehero-discovertxt
+            Découvrir Clara en vidéo
+            - unless fake_start_button
+              #modal_video.u-display-none
+                %div.c-video-close-line
+                  %button#js-modal-close.js-modal-close.video-modal-close.c-video-btn-close{"data-content-back-id" => "modal_video", :type => "button"}
+                    Fermer
+                .c-video-container
+                  %div{tag: '1001'}
+                    <!-- <iframe id="video-clara" width="720" height="405" src="https://www.youtube.com/embed/8IDnLjfAt5U?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+                .c-video-close-line.is-bottom
+                  %button.c-btn.c-btn--result.is-modal-video.u-margin-vertical.js-modal-close
+                    Fermer la fenêtre
 
-          .c-newhomehero-hero-insider.c-newhomehero-duration
-            Durée : 1min 30sec
+        .c-newhomehero-hero-insider.c-newhomehero-duration
+          Durée : 1min 30sec
