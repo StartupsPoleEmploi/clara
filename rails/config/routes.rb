@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   mount MagicLamp::Genie, at: "/magic_lamp" if defined?(MagicLamp)
 
   root 'welcome#index'
-  post 'accept_all_cookies' => 'welcome#accept_all_cookies'
 
   namespace :admin do
     resources :recalls
@@ -125,7 +124,6 @@ Rails.application.routes.draw do
   resources :contact,               only: [:index, :create]
   resources :contact_sent,          only: [:index]
   
-  resources :cookies,               only: [:edit, :update]
   resources :confidentiality,       only: [:index]
   
   

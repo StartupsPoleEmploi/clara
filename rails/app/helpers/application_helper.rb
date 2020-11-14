@@ -3,9 +3,6 @@ module ApplicationHelper
   def cookie_preference_already_defined?
     CookiePreference.new(session).cookie_preference_already_defined?
   end
-  def ga_disabled?
-    CookiePreference.new(session).ga_disabled?
-  end
 
   def is_connected_with_pe?
     !!session[:id_token]
