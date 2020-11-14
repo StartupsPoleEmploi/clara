@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.5.0 (16/11/2020)
+[#92] Tag commander uniquement pour la gestion des cookies
+
+
 ## 38.4.0 (9/11/2020)
 [#91] Datalayer : pour savoir si il s'agit d'un utilisateur connecté
 
