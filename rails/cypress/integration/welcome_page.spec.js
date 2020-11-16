@@ -25,8 +25,8 @@ context('Parcours du formulaire', () => {
         cy.log($elem.text())
       })
 
-      cy.get('#radio_ARE_ASP').should("exist")
-      cy.get('#radio_ARE_ASP').click()
+      cy.get('input#ARE_ASP').should("exist")
+      cy.get('input#ARE_ASP').click()
       cy.get('.js-next').click()
 
       cy.wait(2000)
