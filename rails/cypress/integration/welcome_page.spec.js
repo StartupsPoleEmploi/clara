@@ -21,11 +21,20 @@ context('Parcours du formulaire', () => {
       cy.get('#cat_12345').click()
       cy.get('.js-next').click()
 
+      cy.get(".c-question-title").then(function($elem) {
+        cy.log($elem.text())
+      })
+
       cy.get('#radio_ARE_ASP').should("exist")
       cy.get('#radio_ARE_ASP').click()
       cy.get('.js-next').click()
 
-      cy.location().should((loc) => { cy.log(loc.pathname);expect(loc.pathname).contains('are'); })
+      cy.wait(2000)
+
+      cy.get(".c-question-title").then(function($elem) {
+        cy.log($elem.text())
+      })
+      // cy.log(cy.get('.c-question-title').invoke('text'))
 
 
       // cy.get('#montant').should("exist")
