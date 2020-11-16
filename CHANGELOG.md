@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.6.0 (17/11/2020)
+[#65b] Test auto parcours sans PEID
+
+
 ## 38.5.0 (16/11/2020)
 [#92] Tag commander uniquement pour la gestion des cookies
 
