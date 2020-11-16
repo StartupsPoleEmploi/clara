@@ -25,6 +25,9 @@ context('Parcours du formulaire', () => {
       cy.get('#radio_ARE_ASP').click()
       cy.get('.js-next').click()
 
+      cy.location().should((loc) => { cy.log(loc.pathname);expect(loc.pathname).contains('are'); })
+
+
       // cy.get('#montant').should("exist")
       // cy.get('#montant').type("842")
       // cy.get('.js-next').click()
