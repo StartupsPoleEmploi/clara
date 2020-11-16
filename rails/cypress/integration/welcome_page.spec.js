@@ -10,7 +10,7 @@ context('Sans PEID', () => {
     it("Quand on arrive sur la page principale, on peut ouvrir la modale de démarrage le formulaire", () => {
       // given
       cy.visit('/')
-      // cy.get('#login-form').should('not.be.visible')
+      cy.get('#login-form').should('not.be.visible')
       // when
       cy.get('#start_wizard_form1').click()
       // then

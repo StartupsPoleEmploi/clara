@@ -11,10 +11,10 @@ module Mae
     config.i18n.fallbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.public_file_server.enabled = true
-    config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w( ckeditor/* )
+    # config.assets.precompile += Ckeditor.assets
+    # config.assets.precompile += %w( ckeditor/* )
     config.assets.precompile << ["*.svg", "*.eot", "*.woff", "*.ttf"]
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    # config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
     config.i18n.default_locale = :fr
     config.i18n.available_locales = [:fr, :en]  
