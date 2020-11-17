@@ -5,6 +5,10 @@ return unless Rails.env.test?
 if defined?(CypressRails)
   CypressRails.hooks.before_server_start do
     # Called once, before either the transaction or the server is started
+
+    # Seed the database
+    Rails.application.load_seed
+    
   end
 
   CypressRails.hooks.after_transaction_start do
