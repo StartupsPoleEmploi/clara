@@ -12,20 +12,23 @@ context("Création et publication d'une aide", () => {
   })
 
   describe("Création d'une rubrique", () => {
+
     before(() => {
-      cy.visit('/admin/contract_types')
+      cy.visit('/admin/contract_types/new')
     })
-    it("On peut créer une rubrique", function() {
-      // then
-      cy.get('a.js-create-contract-type').click()
+
+    it("Une fois la rubrique créé, on l'affiche", function() {
+      cy.get('#contract_type_ordre_affichage').type("42")
+      cy.get('#contract_type_name').type("aide a la mobilisation")
+
+      cy.get('#create-ct').click()
+
       cy.location().should((location) => {
-        expect(location.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')
+        expect(location.pathname).to.eq('/admin/contract_types/aide-a-la-mobilisation')
       })
+
     })
-    it("On peut créer une rubrique", function() {
-      // then
-      cy.get('a.js-create-contract-type').should('have.length', 1)
-    })
+
   })
 
 })

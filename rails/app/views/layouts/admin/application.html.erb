@@ -28,10 +28,8 @@ By default, it renders:
     <%= actual_title %>
   </title>
 
-  <% unless Rails.env.test? %>
-    <%= stylesheet_link_tag 'application', '', media: 'all' %>  
-    <%= render "stylesheet" %>    
-  <% end %>
+  <%= stylesheet_link_tag 'application', '', media: 'all' %>  
+  <%= render "stylesheet" %>    
   
   <%= csrf_meta_tags %>
 </head>
