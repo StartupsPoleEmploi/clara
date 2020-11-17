@@ -23,3 +23,27 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('log', (subject, message) => cy.task('log', message));
+
+Cypress.Commands.add('connect_as_superadmin', () => {
+  cy.visit('/sign_in')
+  cy.get('#session_email').clear().invoke('val', 'superadmin@clara.com').trigger('input');
+  cy.get('#session_password').clear().invoke('val', 'bar').trigger('input');
+  cy.get('.c-login-connect input').click()
+  cy.location('pathname').should('include', '/admin')
+  cy.get('body').should('have.attr', 'data-path', 'admin_aids_path')
+});
+
+Cypress.Commands.add(
+  'selectNth',
+  { prevSubject: 'element' },
+  (subject, pos) => {
+    cy.wrap(subject)
+      .children('option')
+      .eq(pos)
+      .then(e => {
+        cy.wrap(subject).select(e.val())
+      })
+  }
+)

@@ -25,6 +25,10 @@ class AddressQuestionsController < ApplicationController
       my_redirect_to new_address_question_path
     end
   end
+
+  def fake_ban_communes
+    render json: JSON.parse('[{"nom":"Noyant-Villages","code":"49228","codeDepartement":"49","codeRegion":"52","codesPostaux":["49490","49390"],"population":5680},{"nom":"La Pellerine","code":"49237","codeDepartement":"49","codeRegion":"52","codesPostaux":["49490"],"population":145}]')
+  end
   
 private
 

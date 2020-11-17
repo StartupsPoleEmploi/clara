@@ -34,7 +34,7 @@
           name: page.resource_name.titleize.downcase
         ),
         [:new, namespace, page.resource_path],
-        class: "button",
+        class: "button js-create-contract-type",
       ) if valid_action?(:new) && show_action?(:new, new_resource) %>
     </div> 
 </header>

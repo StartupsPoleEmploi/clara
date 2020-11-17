@@ -138,6 +138,8 @@ Rails.application.routes.draw do
   get 'get_search_front', to: 'aides#get_search_front'
   post 'post_search_front', to: 'aides#post_search_front'
 
+  get 'fake_ban_communes', to: 'address_questions#fake_ban_communes', as: 'fake_ban_communes'
+
   get 'conditions-generales-d-utilisation', to: 'welcome#terms'
   get 'welcome/index'
   post 'welcome/start_wizard'

@@ -1,7 +1,14 @@
+# Be sure to restart your server when you modify this file.
+
+return unless Rails.env.test?
 
 if defined?(CypressRails)
   CypressRails.hooks.before_server_start do
     # Called once, before either the transaction or the server is started
+
+    # Seed the database
+    Rails.application.load_seed
+    
   end
 
   CypressRails.hooks.after_transaction_start do
@@ -14,18 +21,6 @@ if defined?(CypressRails)
 
   CypressRails.hooks.before_server_stop do
     # Called once, at_exit
-  end# Be sure to restart your server when you modify this file.
+  end
 end
 
-# Version of your assets, change this if you want to expire all your assets.
-# Rails.application.config.assets.version = '1.0'
-
-# Add additional assets to the asset load path.
-# Rails.application.config.assets.paths << Emoji.images_path
-# Add Yarn node_modules folder to the asset load path.
-# Rails.application.config.assets.paths << Rails.root.join('node_modules')
-
-# Precompile additional assets.
-# application.js, application.css, and all non-JS/CSS in the app/assets
-# folder are already added.
-# Rails.application.config.assets.precompile += %w( admin.js admin.css )
