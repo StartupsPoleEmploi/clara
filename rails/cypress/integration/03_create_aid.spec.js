@@ -43,30 +43,30 @@ context("Création et publication d'une aide", () => {
         cy.get('.field-unit--errored-true input#aid_ordre_affichage')  .should('have.length', 1)
         cy.get('.field-unit--errored-false textarea#aid_source')       .should('have.length', 1)
       })
-    //   // it("Le nom se mets à jour en temps réel dans l'aperçu", function() {
-    //   //   cy.get('#aid_name').type('erasmus42')
-    //   //   // then
-    //   //   cy.get('.js-title').should('have.text', 'erasmus42')
-    //   // })
-    //   it("On peut passer à l'étape 2 si tous les champs obligatoires sont renseignés", function() {
-    //     // when
-    //     cy.get('.field-unit input#aid_ordre_affichage').type("42")
-    //     cy.get('.field-unit select#aid_contract_type_id').select("1")
-    //     cy.get('.field-unit textarea#aid_source').type("du texte")
-    //     cy.get('button.c-newaid-actionrecord').click()
-    //     // then
-    //     cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
-    //   })
-    //   // it("On peut cliquer pour revenir à l'étape 1, tous les champs sont pré-renseignés", function() {
-    //   //   // // when
-    //   //   // cy.get('.c-newaid-back2').eq(0).click()
-    //   //   // // then
-    //   //   // cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
-    //   //   // cy.get('.field-unit input#aid_name')             .should('not.have.value', '')
-    //   //   // cy.get('.field-unit select#aid_contract_type_id').should('not.have.value', '')
-    //   //   // cy.get('.field-unit textarea#aid_source')        .should('not.have.value', '')
-    //   //   // cy.get('.field-unit input#aid_ordre_affichage')  .should('not.have.value', '')
-    //   // })
+      it("Le nom se mets à jour en temps réel dans l'aperçu", function() {
+        cy.get('#aid_name').type('erasmus42')
+        // then
+        cy.get('.js-title').should('have.text', 'erasmus42')
+      })
+      it("On peut passer à l'étape 2 si tous les champs obligatoires sont renseignés", function() {
+        // when
+        cy.get('.field-unit input#aid_ordre_affichage').type("42")
+        cy.get('select#aid_contract_type_id').selectNth(1)
+        cy.get('.field-unit textarea#aid_source').type("du texte")
+        cy.get('button.c-newaid-actionrecord').click()
+        // then
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_2')})
+      })
+      it("On peut cliquer pour revenir à l'étape 1, tous les champs sont pré-renseignés", function() {
+        // when
+        cy.get('.c-newaid-back2').eq(0).click()
+        // then
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
+        cy.get('.field-unit input#aid_name')             .should('not.have.value', '')
+        cy.get('.field-unit select#aid_contract_type_id').should('not.have.value', null)
+        cy.get('.field-unit textarea#aid_source')        .should('not.have.value', '')
+        cy.get('.field-unit input#aid_ordre_affichage')  .should('not.have.value', '')
+      })
 
 
     })
