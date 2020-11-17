@@ -11,10 +11,10 @@ module Mae
     config.i18n.fallbacks = true
     config.autoload_paths << Rails.root.join('lib')
     config.public_file_server.enabled = true
-    # config.assets.precompile += Ckeditor.assets
-    # config.assets.precompile += %w( ckeditor/* )
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w( ckeditor/* )
     config.assets.precompile << ["*.svg", "*.eot", "*.woff", "*.ttf"]
-    # config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
     config.autoload_paths += Dir["#{config.root}/app/view_objects/**/"]
     config.i18n.default_locale = :fr
     config.i18n.available_locales = [:fr, :en]  
@@ -24,11 +24,9 @@ module Mae
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
     config.active_job.queue_adapter = :sidekiq
     Logster.set_environments([:production])
-    # config.web_console.allowed_ips  = '172.26.0.1' if Rails.env.development?
 
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
   end
 end
-
