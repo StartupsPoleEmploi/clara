@@ -22,27 +22,27 @@ context("Création et publication d'une aide", () => {
         // then
         cy.get('.field-unit').should('have.length', 4)
       })
-    //   it("Tous les champs sont vides", function() {
-    //     // then
-    //     cy.get('.field-unit input#aid_name')             .should('have.value', '')
-    //     cy.get('.field-unit select#aid_contract_type_id').should('have.value', '')
-    //     cy.get('.field-unit textarea#aid_source')        .should('have.value', '')
-    //     cy.get('.field-unit input#aid_ordre_affichage')  .should('have.value', '')
-    //   })
-    //   // it("Si on valide directement, on tous les champs obligatoires en erreur", function() {
-    //   //   // given
-    //   //   cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 0)
-    //   //   cy.get('.field-unit--errored-true select#aid_contract_type_id').should('have.length', 0)
-    //   //   cy.get('.field-unit--errored-true input#aid_ordre_affichage')  .should('have.length', 0)
-    //   //   cy.get('.field-unit--errored-false textarea#aid_source')       .should('have.length', 1)
-    //   //   // when
-    //   //   cy.get('button.c-newaid-actionrecord').click()
-    //   //   // then
-    //   //   cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
-    //   //   cy.get('.field-unit--errored-true select#aid_contract_type_id').should('have.length', 1)
-    //   //   cy.get('.field-unit--errored-true input#aid_ordre_affichage')  .should('have.length', 1)
-    //   //   cy.get('.field-unit--errored-false textarea#aid_source')       .should('have.length', 1)
-    //   // })
+      it("Tous les champs sont vides", function() {
+        // then
+        cy.get('.field-unit input#aid_name')             .should('have.value', '')
+        cy.get('.field-unit select#aid_contract_type_id').should('have.value', null)
+        cy.get('.field-unit textarea#aid_source')        .should('have.value', '')
+        cy.get('.field-unit input#aid_ordre_affichage')  .should('have.value', '')
+      })
+      it("Si on valide directement, on tous les champs obligatoires en erreur", function() {
+        // given
+        cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 0)
+        cy.get('.field-unit--errored-true select#aid_contract_type_id').should('have.length', 0)
+        cy.get('.field-unit--errored-true input#aid_ordre_affichage')  .should('have.length', 0)
+        cy.get('.field-unit--errored-false textarea#aid_source')       .should('have.length', 1)
+        // when
+        cy.get('button.c-newaid-actionrecord').click()
+        // then
+        cy.get('.field-unit--errored-true input#aid_name')             .should('have.length', 1)
+        cy.get('.field-unit--errored-true select#aid_contract_type_id').should('have.length', 1)
+        cy.get('.field-unit--errored-true input#aid_ordre_affichage')  .should('have.length', 1)
+        cy.get('.field-unit--errored-false textarea#aid_source')       .should('have.length', 1)
+      })
     //   // it("Le nom se mets à jour en temps réel dans l'aperçu", function() {
     //   //   cy.get('#aid_name').type('erasmus42')
     //   //   // then
