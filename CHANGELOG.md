@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.6.1 (17/11/2020)
+[#94] Restauration couverture globale
+
+
 ## 38.6.0 (17/11/2020)
 [#65b] Test auto parcours sans PEID
 
