@@ -1,12 +1,17 @@
-context('Parcours du formulaire', () => {
+context("Connexion à l'admin", () => {
 
-
-  beforeEach(() => {
+  before(() => {
     cy.visit('/admin')
   })
+  beforeEach(() => {
+    Cypress.Cookies.preserveOnce('clara', 'remember_token')
+  })
+  after(() => {
+    cy.clearCookie('clara')
+    cy.clearCookie('remember_token')
+  })
 
-
-  describe("Pour un administrateur qui veut créer et publier une aide", () => {
+  describe("Tentative de connexion", () => {
 
     it("Il tente d'accèder à l'interface d'admin, mais il est redirigé vers la page de connexion", () => {
       cy.location().should((location) => {
@@ -17,14 +22,10 @@ context('Parcours du formulaire', () => {
 
     it("Il entre des identifiants incorrect, l'accès est refusé", () => {
       // given
-      cy.get('#session_email')
-        .type('fake@email.com').should('have.value', 'fake@email.com')
-      cy.get('#session_password')
-        .type('invalid_password').should('have.value', 'invalid_password')
-
+      cy.get('#session_email').type('fake@email.com').should('have.value', 'fake@email.com')
+      cy.get('#session_password').type('invalid_password').should('have.value', 'invalid_password')
       // when
       cy.get('.c-login-connect input').click()
-
       // then
       cy.location().should((location) => {
         expect(location.pathname).to.eq('/session')
@@ -35,9 +36,9 @@ context('Parcours du formulaire', () => {
     it("Il entre des identifiants corrects, l'accès est accepté", () => {
       // given
       cy.get('#session_email')
-        .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
+      .type('superadmin@clara.com').should('have.value', 'superadmin@clara.com')
       cy.get('#session_password')
-        .type('bar').should('have.value', 'bar')
+      .type('bar').should('have.value', 'bar')
 
       // when
       cy.get('.c-login-connect input').click()
@@ -46,9 +47,13 @@ context('Parcours du formulaire', () => {
       cy.location().should((location) => {
         expect(location.pathname).to.eq('/admin')
       })
+      cy.getCookies().should((cookies) => {
+        // each cookie has these properties
+        cy.log('--------------------cookies--------------------')
+        cy.log(cookies)
+      })
     })
 
   })
-
 
 })
