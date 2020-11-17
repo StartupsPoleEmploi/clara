@@ -45,9 +45,8 @@ By default, it renders:
     </main>
   </div>
 
-  <% unless Rails.env.test? %>
-    <%= render "javascript" %>
-  <% end %>
+  <%= render "javascript" %>
+  
   <%= yield :javascript_includes %>
 </body>
 </html>

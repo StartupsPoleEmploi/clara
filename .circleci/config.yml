@@ -62,9 +62,9 @@ jobs:
           name: Database setup
           command: cd rails && bundle exec rails db:schema:load --trace
 
-      # - run:
-      #     name: Run e2e tests
-      #     command: cd rails && bundle exec rails cypress:run ARA_URL_GEO_API=/fake_ban_
+      - run:
+          name: Run e2e tests
+          command: cd rails && bundle exec rails cypress:run ARA_URL_GEO_API=/fake_ban_
 
       - run:
           name: Run Rails tests
