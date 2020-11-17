@@ -41,11 +41,16 @@ context('Parcours du formulaire', () => {
       cy.get('#niveau_4').click()
       cy.get('.js-next').click()
 
-      // cy.get('#search').should("exist")
-      // cy.get('#search').type("49490")
-      // cy.get('li.autocomplete-item').should("exist")
-      // cy.get('li.autocomplete-item').first().click()
-      // cy.get('.js-next').click()
+      cy.window().then((win) => {
+        cy.log('----------------------win.clara.env.ARA_URL_GEO_API--------------------------------------')
+        cy.log(win.clara.env.ARA_URL_GEO_API)
+      })
+
+      cy.get('#search').should("exist")
+      cy.get('#search').type("49490")
+      cy.get('li.autocomplete-item').should("exist")
+      cy.get('li.autocomplete-item').first().click()
+      cy.get('.js-next').click()
 
       // cy.get('#val_spectacle').should("exist")
       // cy.get('#val_spectacle').click()

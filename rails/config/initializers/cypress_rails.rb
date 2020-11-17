@@ -1,5 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
+return unless Rails.env.test?
+
 if defined?(CypressRails)
   CypressRails.hooks.before_server_start do
     # Called once, before either the transaction or the server is started
