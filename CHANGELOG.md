@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.5.1 (17/11/2020)
+[#93] Test du parcours par défaut
+
+
 ## 38.5.0 (16/11/2020)
 [#92] Tag commander uniquement pour la gestion des cookies
 
