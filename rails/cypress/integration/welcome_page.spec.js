@@ -52,14 +52,14 @@ context('Parcours du formulaire', () => {
       cy.get('li.autocomplete-item').first().click()
       cy.get('.js-next').click()
 
-      // cy.get('#val_spectacle').should("exist")
-      // cy.get('#val_spectacle').click()
-      // cy.get('.js-next').click()
+      cy.get('#val_spectacle').should("exist")
+      cy.get('#val_spectacle').click()
+      cy.get('.js-next').click()
 
-      // cy.wait(2000)
-      // cy.get('.js-next').click()
+      cy.wait(2000)
+      cy.get('.js-next').click()
 
-      // cy.get("body.c-body.aides").should("exist")
+      cy.get("body.c-body.aides").should("exist")
 
     })
 
