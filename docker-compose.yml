@@ -83,6 +83,7 @@ services:
     hostname: clara_backups
     container_name: clara_backups
     volumes:
+    - "./backups/home/backups:/home/backups"
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
