@@ -84,6 +84,7 @@ services:
     container_name: clara_backups
     volumes:
     - "./backups/home/backups:/home/backups"
+    - "../:/home/docker"
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
