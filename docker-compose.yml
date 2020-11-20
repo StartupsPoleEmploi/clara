@@ -86,6 +86,7 @@ services:
     - "vol_shared:/var/www/ara"
     - "./rails:/home/clara"
     - "../private/env:/home/env"
+    - "/mnt/backups:/mnt/backups"
     depends_on:
     - clara_db
     networks:
