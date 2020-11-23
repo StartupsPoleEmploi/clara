@@ -2,7 +2,6 @@ context("Connexion à l'admin", () => {
 
   before(() => { 
     cy.request('/cypress_rails_reset_state')
-    cy.visit('/admin')
   })
   beforeEach(() => {
     Cypress.Cookies.preserveOnce('clara', 'remember_token')
@@ -15,6 +14,7 @@ context("Connexion à l'admin", () => {
   describe("Tentative de connexion", () => {
 
     it("Il tente d'accèder à l'interface d'admin, mais il est redirigé vers la page de connexion", () => {
+      cy.visit('/admin')
       cy.location().should((location) => {
         expect(location.pathname).to.eq('/sign_in')
       })

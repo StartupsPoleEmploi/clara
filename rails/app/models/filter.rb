@@ -17,19 +17,29 @@ class Filter < ApplicationRecord
   after_destroy { ExpireCacheJob.perform_later } if Rails.env.production?
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
-  has_attached_file :illustration, 
-                    :storage => :cloudinary, 
-                    :path => 'clara/:filename', 
-                    :cloudinary_credentials =>     {
-                      cloud_name: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("@")[1] : "",
-                      api_key: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0] : "",
-                      api_secret: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1] : "",
-                    },
-                    :cloudinary_upload_options => {
-                      :default => {
-                        :tags => [ 'Clara' ],
-                      }
-                    }
+
+  paperclip_opts = {}
+
+  unless Rails.env.production?
+    paperclip_opts = {
+      :storage => :cloudinary, 
+      :path => 'clara/:filename', 
+      :cloudinary_credentials =>     {
+        cloud_name: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("@")[1] : "",
+        api_key: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0] : "",
+        api_secret: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1] : "",
+      },
+      :cloudinary_upload_options => {
+        :default => {
+          :tags => [ 'Clara' ],
+        }
+      }
+    }
+
+  end
+
+  has_attached_file :illustration, paperclip_opts
+
 
   has_and_belongs_to_many :aids
 
