@@ -34,7 +34,7 @@ context('Parcours du formulaire', () => {
       cy.get('.js-next').click()
 
       cy.get('#age').should("exist")
-      cy.get('#age').type("16")
+      cy.get('#age').type("36")
       cy.get('.js-next').click()
 
       cy.get('#niveau_4').should("exist")
