@@ -31,7 +31,7 @@ module Mae
     end
 
     if ENV['R7_MODE'] == 'true'
-      ap '------------RACK CORS-------------------'
+      ap '------------DISABLING CORS (via Rack::Cors)-------------------'
       config.middleware.insert_before 0, Rack::Cors do
         allow do
           origins '*'
