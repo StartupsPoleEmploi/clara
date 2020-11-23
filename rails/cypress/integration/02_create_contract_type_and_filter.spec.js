@@ -1,4 +1,4 @@
-context("Rubriques", () => {
+context("Rubriques et filtres", () => {
 
   before(() => {
     cy.connect_as_superadmin()
@@ -29,6 +29,25 @@ context("Rubriques", () => {
 
     })
 
+  })
+
+  describe("Création d'un filtre", () => {
+
+    before(() => {
+      cy.visit('/admin/filters/new')
+    })
+
+    it("Une fois le filtre créé, on l'affiche", function() {
+      cy.get('#filter_name').type("deplacement")
+      cy.get('#filter_ordre_affichage').type("2")
+
+      cy.get('.c-filter-record').click()
+
+      cy.location().should((location) => {
+        expect(location.pathname).to.eq('/admin/filters/deplacement')
+      })
+
+    })
 
   })
 

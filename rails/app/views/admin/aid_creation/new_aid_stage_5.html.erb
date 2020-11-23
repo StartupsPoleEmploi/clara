@@ -54,7 +54,7 @@
           Étape 1 : Informations générales - 
           <%= link_to "Modifier", admin_aid_creation_new_aid_stage_1_path(slug: params[:slug], modify: is_modifying) %>
         </div>
-        <div class="c-newaid-stage5expl is-ok-<%= v.stage_1_ok? %>">
+        <div class="c-newaid-stage5expl is-ok-<%= v.stage_1_ok? %> stage1-is-ok-<%= v.stage_1_ok? %>">
           <div class="c-newaid-stage5expl__img">
             <% if v.stage_1_ok? %>
               <%= raw ok_svg %>
@@ -71,7 +71,7 @@
           Étape 2 : Contenu - 
           <%= link_to "Modifier", admin_aid_creation_new_aid_stage_2_path(slug: params[:slug], modify: is_modifying) %>
         </div>
-        <div class="c-newaid-stage5expl is-ok-<%= v.stage_2_ok? %>">
+        <div class="c-newaid-stage5expl is-ok-<%= v.stage_2_ok? %> stage2-is-ok-<%= v.stage_2_ok? %>">
           <div class="c-newaid-stage5expl__img">
             <% if v.stage_2_ok? %>
               <%= raw ok_svg %>
@@ -88,7 +88,7 @@
           Étape 3 : Page de résultat -
           <%= link_to "Modifier", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug], modify: is_modifying) %>
         </div>
-        <div class="c-newaid-stage5expl is-ok-<%= v.stage_3_ok? %>">
+        <div class="c-newaid-stage5expl is-ok-<%= v.stage_3_ok? %> stage3-is-ok-<%= v.stage_3_ok? %>">
           <div class="c-newaid-stage5expl__img">
             <% if v.stage_3_ok? %>
               <%= raw ok_svg %>
@@ -105,7 +105,7 @@
           Étape 4 : Champ d'application - 
           <%= link_to "Modifier", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
         </div>
-        <div class="c-newaid-stage5expl is-ok-<%= v.stage_4_ok? %>">
+        <div class="c-newaid-stage5expl is-ok-<%= v.stage_4_ok? %> stage4-is-ok-<%= v.stage_4_ok? %>">
           <div class="c-newaid-stage5expl__img">
             <% if v.stage_4_ok? %>
               <%= raw ok_svg %>

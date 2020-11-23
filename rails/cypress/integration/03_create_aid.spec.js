@@ -67,10 +67,135 @@ context("Création et publication d'une aide", () => {
         cy.get('.field-unit textarea#aid_source')        .should('not.have.value', '')
         cy.get('.field-unit input#aid_ordre_affichage')  .should('not.have.value', '')
       })
-
-
     })
 
+    describe("Il rempli l'étape 2", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_2?locale=fr&slug=erasmus42')
+      })
+
+      it("si on vient de créer une aide, on arrive sur un écran avec 5 champs éditables, tous vides, le premier est déplié", function() {
+        // Should have 5 empty editors
+        cy.get('.field-unit--ckeditor').should('have.length', 5)
+        cy.get('.field-unit--ckeditor .cke_contents').eq(0).should('have.text', "Press ALT 0 for help")
+        cy.get('.field-unit--ckeditor .cke_contents').eq(1).should('have.text', "Press ALT 0 for help")
+        cy.get('.field-unit--ckeditor .cke_contents').eq(2).should('have.text', "Press ALT 0 for help")
+        cy.get('.field-unit--ckeditor .cke_contents').eq(3).should('have.text', "Press ALT 0 for help")
+        cy.get('.field-unit--ckeditor .cke_contents').eq(4).should('have.text', "Press ALT 0 for help")
+
+        // First must be expanded
+        cy.get('#accordion_0-0_tab').should('have.attr', 'aria-expanded', 'true')
+      })
+
+      it("on peut renseigner une description, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-0_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Une description</p>");});
+        cy.get('.js-what').contains('Une description')
+      })
+      it("on peut renseigner un contenu, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-2_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_how_much"].setData("<p>Un contenu</p>");});
+        cy.get('.js-how-much').contains('Un contenu')
+      })
+      it("on peut renseigner le comment, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-3_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_how_and_when"].setData("<p>Le comment</p>");});
+        cy.get('.js-how-and-when').contains('Le comment')
+      })
+      it("on peut valider l'étape 2", function() {
+        cy.get('button.c-newaid-actionrecord').click()
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
+      })
+    })
+
+    describe("Il rempli l'étape 3", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_3?locale=fr&slug=erasmus42')
+      })
+
+      it("On peut renseigner du texte : il se met à jour dans l'aperçu", function() {
+        // given
+        cy.get(".c-resultaid__smalltxt").should('have.text', "")
+        // when
+        cy.get('#aid_short_description').type("Un résumé possible de l'aide")
+        // then
+        cy.get(".c-resultaid__smalltxt").should('have.text', "Un résumé possible de l'aide")
+      })
+
+      it("On peut renseigner des filtres", function() {
+        // given
+        cy.get("#aid_filter_ids").invoke("val").should('equal', null)
+
+        // when
+        cy.get("#aid_filter_ids-selectized").click()
+        cy.get("#aid_filter_ids-selectized").type("{enter}")
+        cy.get("#aid_filter_ids-selectized").type("{esc}")
+
+        // then
+        cy.get("#aid_filter_ids").invoke("val").should('not.equal', null)
+      })
+    })
+    describe("Il rempli l'étape 4", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_4?locale=fr&slug=erasmus42')
+      })
+      it("On peut enregistrer une règle composite", function() {
+
+        cy.get('select#rule_variable_id').select('v_zrr')
+        cy.get('select#rule_value_eligible_selectible').select('oui')
+        cy.get('.c-apprule-button.is-validation').click()
+
+        cy.get('.js-or:last').click()
+        cy.get('select#rule_variable_id').select('v_age')
+        cy.get('select#rule_operator_kind').select('more_than')
+        cy.get('input#rule_value_eligible').type('18')
+        cy.get('.c-apprule-button.is-validation').click()
+
+        // toute la france
+        cy.get('input#tout').click() 
+
+
+        // when
+        cy.get('#record_root_rule').click()
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
+
+      })
+    })
+    describe("Il rempli l'étape 5", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_5?locale=fr&slug=erasmus42')
+      })
+      it("Toutes les étapes sont considérées comme correctement remplies", function() {
+        cy.get('.stage1-is-ok-true').should('exist')
+        cy.get('.stage2-is-ok-true').should('exist')
+        cy.get('.stage3-is-ok-true').should('exist')
+        cy.get('.stage4-is-ok-true').should('exist')
+      })
+      it("Le créateur demande la relecture", function() {
+        cy.get('.js-askforreread').click() 
+        cy.get('.flash-notice').contains("L'aide a été demandée pour relecture.")
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      })
+    })
+
+
+  })
+
+  describe("Publication d'une aide", () => {
+    before(() => {
+      cy.connect_as_contributeur()
+    })
+    describe("Un contributeur va à l'étape 5 d'une aide nouvellement créé par quelqu'un d'autre que lui", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_5?locale=fr&slug=erasmus42')
+      })
+      it("Le contributeur peut publier l'aide", function() {
+        cy.get('.js-publishonsite').click() 
+        cy.get('.flash-notice').contains("L'aide va être publiée sur le site web")
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
+      })
+
+    })
   })
 
 })

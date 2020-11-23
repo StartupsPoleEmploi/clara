@@ -1,10 +1,9 @@
 context('Parcours du formulaire', () => {
 
 
-  beforeEach(() => {
+  before(() => {
     cy.visit('/inscription_questions/new')
   })
-
 
   describe("Pour un visiteur qui commence par la question inscription", () => {
 
@@ -32,7 +31,7 @@ context('Parcours du formulaire', () => {
       cy.get('.js-next').click()
 
       cy.get('#age').should("exist")
-      cy.get('#age').type("16")
+      cy.get('#age').type("36")
       cy.get('.js-next').click()
 
       cy.get('#niveau_4').should("exist")
@@ -54,11 +53,14 @@ context('Parcours du formulaire', () => {
       cy.get('#val_spectacle').click()
       cy.get('.js-next').click()
 
-      cy.wait(2000)
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/filter_questions/new')})
       cy.get('.js-next').click()
 
-      cy.get("body.c-body.aides").should("exist")
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
 
+      cy.get('.c-btn--result').eq(0).click()
+      cy.get('.c-btn--aid').eq(0).click()
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides/detail/erasmus42')})
     })
 
   })
