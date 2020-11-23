@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.6.3 (24/11/2020)
+[#84] Remettre les images chez nous
+
+
 ## 38.6.2 (23/11/2020)
 [#95] Couverture recherche sur la home + création aide
 
