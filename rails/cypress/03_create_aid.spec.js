@@ -172,6 +172,7 @@ context("Création et publication d'une aide", () => {
         cy.get('.stage4-is-ok-true').should('exist')
       })
       it("Le créateur demande la relecture", function() {
+        // toute la france
         cy.get('.js-askforreread').click() 
         cy.get('.flash-notice').contains("L'aide a été demandée pour relecture.")
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
@@ -179,23 +180,6 @@ context("Création et publication d'une aide", () => {
     })
 
 
-  })
-
-  describe("Publication d'une aide", () => {
-    before(() => {
-      cy.connect_as_contributeur()
-    })
-    describe("Un contributeur va à l'étape 5 d'une aide nouvellement créé par quelqu'un d'autre que lui", () => {
-      before(() => {
-        cy.visit('/admin/aid_creation/new_aid_stage_5?locale=fr&slug=erasmus42')
-      })
-      it("Le contributeur peut publier l'aide", function() {
-        cy.get('.js-publishonsite').click() 
-        cy.get('.flash-notice').contains("L'aide va être publiée sur le site web")
-        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
-      })
-
-    })
   })
 
 })

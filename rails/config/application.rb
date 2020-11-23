@@ -6,6 +6,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Mae
+    
   class Application < Rails::Application
     config.load_defaults 6.0
     config.i18n.fallbacks = true
@@ -28,5 +29,15 @@ module Mae
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
+
+    if Rails.env.test?
+      config.middleware.insert_before 0, Rack::Cors do
+        allow do
+          origins '*'
+          resource '*', headers: :any, methods: %i[post]
+        end
+      end
+    end
+
   end
 end
