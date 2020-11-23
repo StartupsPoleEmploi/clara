@@ -1,5 +1,8 @@
 # CLARA
 
+[![StartupsPoleEmploi](https://circleci.com/gh/StartupsPoleEmploi/clara.svg?style=shield)](https://app.circleci.com/pipelines/github/StartupsPoleEmploi/clara)
+
+
 **CL**arification des **A**ides pour le **R**etour à l'**A**ctivité.
 
 ## Installation
