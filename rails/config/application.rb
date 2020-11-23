@@ -30,11 +30,12 @@ module Mae
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
 
-    if Rails.env.test?
+    if ENV['R7_MODE'] == 'true'
+      ap '------------RACK CORS-------------------'
       config.middleware.insert_before 0, Rack::Cors do
         allow do
           origins '*'
-          resource '*', headers: :any, methods: %i[post]
+          resource '*', headers: :any, methods: :any
         end
       end
     end

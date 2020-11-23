@@ -73,4 +73,4 @@ jobs:
 
       - run:
           name: Run e2e tests
-          command: cd rails && bundle exec rails cypress:run ARA_URL_GEO_API=/fake_ban_
+          command: cd rails && bundle exec rails cypress:run ARA_URL_GEO_API=/fake_ban_ R7_MODE=true
