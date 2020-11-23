@@ -29,6 +29,10 @@ if defined?(CypressRails)
     if created_filter
       created_filter.destroy
     end
+    created_contributeur = User.find_by(email: 'contributeur1@clara.com')
+    unless created_contributeur
+      User.create(email: "contributeur1@clara.com", password: "contributeur1", role: "contributeur")
+    end
   end
 
   CypressRails.hooks.before_server_stop do

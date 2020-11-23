@@ -87,11 +87,30 @@ context("Création et publication d'une aide", () => {
         cy.get('#accordion_0-0_tab').should('have.attr', 'aria-expanded', 'true')
       })
 
-      it("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
+      it("on peut renseigner une description, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-0_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Une description</p>");});
+        cy.get('.js-what').contains('Une description')
+      })
+      // it("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
 
-        cy.get('#accordion_0-1_tab').click()
-        cy.window().then(win => {win.CKEDITOR.instances["aid_additionnal_conditions"].setData("<p>Mes conditions à remplir</p>");});
-        cy.get('.js-additionnal-conditions').contains('Mes conditions à remplir')
+      //   cy.get('#accordion_0-1_tab').click()
+      //   cy.window().then(win => {win.CKEDITOR.instances["aid_additionnal_conditions"].setData("<p>Mes conditions à remplir</p>");});
+      //   cy.get('.js-additionnal-conditions').contains('Mes conditions à remplir')
+      // })
+      it("on peut renseigner un contenu, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-2_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_how_much"].setData("<p>Un contenu</p>");});
+        cy.get('.js-how-much').contains('Un contenu')
+      })
+      it("on peut renseigner le comment, avec mise à jour en temps réel", function() {
+        cy.get('#accordion_0-3_tab').click()
+        cy.window().then(win => {win.CKEDITOR.instances["aid_how_and_when"].setData("<p>Le comment</p>");});
+        cy.get('.js-how-and-when').contains('Le comment')
+      })
+      it("on peut valider l'étape 2", function() {
+        cy.get('button.c-newaid-actionrecord').click()
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_3')})
       })
     })
 
