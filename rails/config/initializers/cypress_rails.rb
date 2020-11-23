@@ -17,6 +17,8 @@ if defined?(CypressRails)
 
   CypressRails.hooks.after_state_reset do
     # Triggered after `/cypress_rails_reset_state` is called
+    Aid.find_by(slug: 'erasmus42').destroy
+    ContractType.find_by(slug: 'aide-a-la-mobilisation').destroy
   end
 
   CypressRails.hooks.before_server_stop do

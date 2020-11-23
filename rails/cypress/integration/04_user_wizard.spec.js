@@ -1,9 +1,11 @@
 context('Parcours du formulaire', () => {
 
 
-  beforeEach(() => {
+  before(() => {
     cy.visit('/inscription_questions/new')
   })
+
+
 
 
   describe("Pour un visiteur qui commence par la question inscription", () => {

@@ -1,6 +1,7 @@
 context("Connexion à l'admin", () => {
 
-  before(() => {
+  before(() => { 
+    cy.request('/cypress_rails_reset_state')
     cy.visit('/admin')
   })
   beforeEach(() => {
