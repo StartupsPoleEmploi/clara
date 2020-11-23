@@ -25,6 +25,10 @@ if defined?(CypressRails)
     if created_ct
       created_ct.destroy
     end
+    created_filter = Filter.find_by(slug: 'deplacement')
+    if created_filter
+      created_filter.destroy
+    end
   end
 
   CypressRails.hooks.before_server_stop do

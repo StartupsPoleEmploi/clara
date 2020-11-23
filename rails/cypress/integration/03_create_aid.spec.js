@@ -95,6 +95,60 @@ context("Création et publication d'une aide", () => {
       })
     })
 
+    describe("Il rempli l'étape 3", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_3?locale=fr&slug=erasmus42')
+      })
+
+      it("On peut renseigner du texte : il se met à jour dans l'aperçu", function() {
+        // given
+        cy.get(".c-resultaid__smalltxt").should('have.text', "")
+        // when
+        cy.get('#aid_short_description').type("Un résumé possible de l'aide")
+        // then
+        cy.get(".c-resultaid__smalltxt").should('have.text', "Un résumé possible de l'aide")
+      })
+
+      it("On peut renseigner des filtres", function() {
+        // given
+        cy.get("#aid_filter_ids").invoke("val").should('equal', null)
+
+        // when
+        cy.get("#aid_filter_ids-selectized").click()
+        cy.get("#aid_filter_ids-selectized").type("{enter}")
+        cy.get("#aid_filter_ids-selectized").type("{esc}")
+
+        // then
+        cy.get("#aid_filter_ids").invoke("val").should('not.equal', null)
+      })
+    })
+    describe("Il rempli l'étape 4", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_4?locale=fr&slug=erasmus42')
+      })
+      it("On peut enregistrer une règle composite", function() {
+
+        cy.get('select#rule_variable_id').select('v_zrr')
+        cy.get('select#rule_value_eligible_selectible').select('oui')
+        cy.get('.c-apprule-button.is-validation').click()
+
+        cy.get('.js-or:last').click()
+        cy.get('select#rule_variable_id').select('v_age')
+        cy.get('select#rule_operator_kind').select('more_than')
+        cy.get('input#rule_value_eligible').type('18')
+        cy.get('.c-apprule-button.is-validation').click()
+
+        // toute la france
+        cy.get('input#tout').click() 
+
+
+        // when
+        cy.get('#record_root_rule').click()
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
+
+      })
+    })
+
 
   })
 
