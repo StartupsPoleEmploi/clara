@@ -74,3 +74,10 @@ jobs:
       - run:
           name: Run e2e tests
           command: cd rails && bundle exec rails cypress:run COVERAGE_PLEASE=true ARA_URL_GEO_API=/fake_ban_ R7_MODE=true CLOUDINARY_URL=cloudinary://948715495169363:eZ92_nigQ8oTzBabuP7jiYugsMg@bdavidxyz-com
+
+      - run:
+          name: Merge coverage
+          command: cd rails && bundle exec rails ruby_cov:merge
+
+      - store_artifacts:
+          path: /home/circleci/rails/rails/coverage
