@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.6.2 (23/11/2020)
+[#95] Couverture recherche sur la home + création aide
+
+
 ## 38.6.1 (17/11/2020)
 [#94] Restauration couverture globale
 
