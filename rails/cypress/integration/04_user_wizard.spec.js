@@ -56,7 +56,7 @@ context('Parcours du formulaire', () => {
       cy.get('#val_spectacle').click()
       cy.get('.js-next').click()
 
-      cy.wait(2000)
+      cy.wait(500)
       cy.get('.js-next').click()
 
       cy.get("body.c-body.aides").should("exist")

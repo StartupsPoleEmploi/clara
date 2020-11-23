@@ -92,12 +92,6 @@ context("Création et publication d'une aide", () => {
         cy.window().then(win => {win.CKEDITOR.instances["aid_what"].setData("<p>Une description</p>");});
         cy.get('.js-what').contains('Une description')
       })
-      // it("on peut renseigner des conditions à remplir, avec mise à jour en temps réel", function() {
-
-      //   cy.get('#accordion_0-1_tab').click()
-      //   cy.window().then(win => {win.CKEDITOR.instances["aid_additionnal_conditions"].setData("<p>Mes conditions à remplir</p>");});
-      //   cy.get('.js-additionnal-conditions').contains('Mes conditions à remplir')
-      // })
       it("on peut renseigner un contenu, avec mise à jour en temps réel", function() {
         cy.get('#accordion_0-2_tab').click()
         cy.window().then(win => {win.CKEDITOR.instances["aid_how_much"].setData("<p>Un contenu</p>");});
@@ -165,6 +159,23 @@ context("Création et publication d'une aide", () => {
         cy.get('#record_root_rule').click()
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
 
+      })
+    })
+    describe("Il rempli l'étape 5", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_5?locale=fr&slug=erasmus42')
+      })
+      it("Toutes les étapes sont considérées comme correctement remplies", function() {
+        cy.get('.stage1-is-ok-true').should('exist')
+        cy.get('.stage2-is-ok-true').should('exist')
+        cy.get('.stage3-is-ok-true').should('exist')
+        cy.get('.stage4-is-ok-true').should('exist')
+      })
+      it("Le créateur demande la relecture", function() {
+        // toute la france
+        cy.get('.js-askforreread').click() 
+        cy.get('.flash-notice').contains("L'aide a été demandée pour relecture.")
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       })
     })
 
