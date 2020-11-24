@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.6.4 (24/11/2020)
+[#84b] bug recette
+
+
 ## 38.6.3 (24/11/2020)
 [#84] Remettre les images chez nous
 

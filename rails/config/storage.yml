@@ -1,6 +1,6 @@
 local:
   service: Disk
-  root: <%= Rails.root.join("storage") %>
+  root: <%= Rails.root.join("public/storage") %>
 
 test:
   service: Disk
