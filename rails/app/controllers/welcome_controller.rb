@@ -38,7 +38,7 @@ class WelcomeController < ApplicationController
   end
 
   def all_home_filters
-    Filter.all.map do |e| 
+    Filter.with_aid_attached.map do |e| 
       {
         credit: e.author, 
         name: e.name, 

@@ -20,7 +20,6 @@ class Filter < ApplicationRecord
 
   has_and_belongs_to_many :aids
 
-  scope :homable, -> {  }
   scope :without_aid_attached, -> {
     joins("LEFT JOIN aids_filters ON filters.id = aids_filters.filter_id")
     .where("aids_filters.filter_id IS NULL")
