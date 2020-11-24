@@ -2,7 +2,6 @@ class WelcomeController < ApplicationController
 
   def index
     clean_asker_params
-    all_home_filters = Filter.homable.map { |e| {name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
     view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
       res = {
         nb_of_active_aids:  Aid.activated.count,
@@ -38,8 +37,19 @@ class WelcomeController < ApplicationController
     CookiePreference.new(session).accept_all_cookies
   end
 
+  def all_home_filters
+    Filter.with_aid_attached.map do |e| 
+      {
+        credit: e.author, 
+        name: e.name, 
+        slug: e.slug, 
+        avatar: e.avatar.attached? ? e.avatar : nil , 
+        ordre: e.ordre_affichage_home || 999
+      }
+    end
+  end
+  
   def terms
-    all_home_filters = Filter.homable.map { |e| {credit: e.author, name: e.name, slug: e.slug, url: e.illustration.url, ordre: e.ordre_affichage_home || 999} }
     hydrate_view({
       all_home_filters: all_home_filters
     })

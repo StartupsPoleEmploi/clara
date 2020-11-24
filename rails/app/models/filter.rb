@@ -18,51 +18,31 @@ class Filter < ApplicationRecord
   after_create  { ExpireCacheJob.perform_later } if Rails.env.production?
 
 
-  paperclip_opts = {}
-
-  unless Rails.env.production?
-    paperclip_opts = {
-      :storage => :cloudinary, 
-      :path => 'clara/:filename', 
-      :cloudinary_credentials =>     {
-        cloud_name: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("@")[1] : "",
-        api_key: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split(":")[0] : "",
-        api_secret: ENV["CLOUDINARY_URL"] ? ENV["CLOUDINARY_URL"].split("://")[1].split("@")[0].split(":")[1] : "",
-      },
-      :cloudinary_upload_options => {
-        :default => {
-          :tags => [ 'Clara' ],
-        }
-      }
-    }
-
-  end
-
-  has_attached_file :illustration, paperclip_opts
-
-
   has_and_belongs_to_many :aids
 
-  scope :homable, -> { where.not(illustration_file_name: '') }
   scope :without_aid_attached, -> {
     joins("LEFT JOIN aids_filters ON filters.id = aids_filters.filter_id")
     .where("aids_filters.filter_id IS NULL")
   }
-  
+
   scope :with_aid_attached, -> { where.not(id: without_aid_attached) }
 
 
   friendly_id :name, use: :slugged
 
+  
+  has_one_attached :avatar
+
+  validates :avatar, size: { less_than: 50.kilobytes , message: 'taille de 50 Ko maximum' }
+  validates :avatar, content_type: {in: ['image/jpg', 'image/jpeg'], message: 'image jpg seulement'}
+  validates :avatar, dimension: {width: 240, height: 240, message: 'Seule les images en 240x240 sont acceptées'}
+
   validates :name, presence: true, uniqueness: true
-  validates_with AttachmentSizeValidator, attributes: :illustration, less_than: 50.kilobytes, message: 'taille de 50 Ko maximum'
-  validates_attachment_content_type :illustration, :content_type => ["image/jpg", "image/jpeg"], message: 'seules les images JPG sont autorisées'
-  validates_attachment :illustration, dimensions: { height: 240, width: 240 }
-  validates :author, presence: true, if: :has_illustration?
+  validates :author, presence: true, if: :has_avatar?
 
 
-  def has_illustration?
-    !!illustration_file_name
+  def has_avatar?
+    avatar.attached?
   end
 
 

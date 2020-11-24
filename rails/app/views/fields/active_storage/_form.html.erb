@@ -1,0 +1,15 @@
+<div class="field-unit__label">
+  <%= f.label field.can_add_attachment? ? "Pas d'avatar actuellement" : "Avatar actuel:" %>
+</div>
+
+<div class="field-unit__field">
+  <% if field.attached? %>
+  <%= render partial: 'fields/active_storage/items', locals: { field: field } %>
+  <% end %>
+
+  <div>
+    <%= field.can_add_attachment? ? "Ajouter:" : "Remplacer par:" %>
+    <%= f.file_field field.attribute, multiple: field.many?, direct_upload: field.direct? %>
+  </div>
+  <small>attention, image JPG de 240x240, moins de 50Ko</small>
+</div>
