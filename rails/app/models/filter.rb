@@ -34,9 +34,9 @@ class Filter < ApplicationRecord
   
   has_one_attached :avatar
 
-  validates :avatar, attached: true, size: { less_than: 50.kilobytes , message: 'taille de 50 Ko maximum' }
-  validates :avatar, attached: true, content_type: {in: ['image/jpg', 'image/jpeg'], message: 'image jpg seulement'}
-  validates :avatar, attached: true, dimension: {width: 240, height: 240, message: 'Seule les images en 240x240 sont acceptées'}
+  validates :avatar, size: { less_than: 50.kilobytes , message: 'taille de 50 Ko maximum' }
+  validates :avatar, content_type: {in: ['image/jpg', 'image/jpeg'], message: 'image jpg seulement'}
+  validates :avatar, dimension: {width: 240, height: 240, message: 'Seule les images en 240x240 sont acceptées'}
 
   validates :name, presence: true, uniqueness: true
   validates :author, presence: true, if: :has_avatar?
