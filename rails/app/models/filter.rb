@@ -43,7 +43,7 @@ class Filter < ApplicationRecord
 
 
   def has_avatar?
-    !!avatar
+    avatar.attached?
   end
 
 

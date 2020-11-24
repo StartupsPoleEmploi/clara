@@ -10,7 +10,7 @@
         - array_of_2_filters.each do |filt|
           - name = filt[:name].to_s
           - slug = filt[:slug]
-          - src = filt[:url]
+          - src = filt[:avatar] ? url_for(filt[:avatar]) : ''
           .o-layout__item{:class => "u-1/1 u-1/2@wide"}
             .c-home-catalog-card
               .o-media

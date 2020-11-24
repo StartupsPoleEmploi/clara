@@ -120,8 +120,9 @@
       .o-layout
         - all_home_filters.each do |filt|
           - name = filt[:name].to_s
-          - src = filt[:url]
           - credit = filt[:credit]
+          - src = filt[:avatar] ? url_for(filt[:avatar]) : ''
+
           .o-layout__item{:class => "u-1/1 u-1/2@desktop u-1/4@wide"}
             %div.c-terms-credit
               %div
