@@ -78,4 +78,6 @@ Rails.application.configure do
   # do not work with docker
   config.action_mailer.default_url_options = {host: 'localhost', port: 5000}
 
+  config.active_storage.service = :local
+
 end
