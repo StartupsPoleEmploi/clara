@@ -10,13 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_123460) do
+ActiveRecord::Schema.define(version: 2020_09_29_123462) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
-  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "unaccent"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "aids", id: :serial, force: :cascade do |t|
     t.string "name"
@@ -74,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_09_29_123460) do
     t.integer "code"
     t.string "new_url"
     t.text "aids_slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clockdiffs", force: :cascade do |t|
@@ -154,14 +174,10 @@ ActiveRecord::Schema.define(version: 2020_09_29_123460) do
     t.boolean "is_hidden", default: false
     t.string "author"
     t.integer "ordre_affichage_home"
-    t.string "illustration_file_name"
-    t.string "illustration_content_type"
-    t.bigint "illustration_file_size"
-    t.datetime "illustration_updated_at"
     t.index ["slug"], name: "index_filters_on_slug", unique: true
   end
 
-  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
@@ -291,6 +307,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_123460) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "aids", "contract_types"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"

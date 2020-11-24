@@ -9,7 +9,7 @@ class FilterDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    illustration: Field::Paperclip,
+    avatar: Field::ActiveStorage,
     ordre_affichage: Field::Number,
     ordre_affichage_home: Field::Number,
     author: Field::String,
@@ -37,7 +37,7 @@ class FilterDashboard < Administrate::BaseDashboard
     :aids,
     :name,
     :slug,
-    :illustration,
+    :avatar,
     :author,
     :ordre_affichage_home,
   ].freeze
@@ -50,7 +50,7 @@ class FilterDashboard < Administrate::BaseDashboard
     :icon,
     :ordre_affichage,
     :aids,
-    :illustration,
+    :avatar,
     :author,
     :ordre_affichage_home,
   ].freeze

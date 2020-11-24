@@ -54,3 +54,4 @@ coverage
 .vscode/*
 
 # /config/deploy/*
+storage/
