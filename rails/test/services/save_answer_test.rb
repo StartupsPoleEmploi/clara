@@ -15,6 +15,18 @@ class SaveAnswerTest < ActiveSupport::TestCase
       assert_equal session[:saved_answer], 'true'
     end
 
+    test '.call, do not touch anything if users comes from PEID (i.e. there is the id_token in session)' do
+      #given
+      session = {id_token: 'any_token'}
+      asker = Asker.new({v_age: '42'})
+      before_answer_count = Answer.count
+      #when
+      res = SaveAnswer.new.call(asker, session)
+      #then
+      after_answer_count = Answer.count
+      assert_equal before_answer_count, after_answer_count
+    end
+
     test '.call, do not touch anything if already a flag in session' do
       #given
       session = {saved_answer: 'anything'}

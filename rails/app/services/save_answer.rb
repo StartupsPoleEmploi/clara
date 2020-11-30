@@ -5,7 +5,7 @@ class SaveAnswer
     
     if (asker.is_a?(Asker) && asker.attributes.any?{|k,v| v})
 
-      if session[:saved_answer] == nil
+      if session[:saved_answer] == nil && session[:id_token] == nil
 
         Answer.new(
           handicap: asker.v_handicap,
