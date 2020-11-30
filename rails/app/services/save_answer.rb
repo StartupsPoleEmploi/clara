@@ -1,7 +1,6 @@
 class SaveAnswer
 
   def call(asker, session)
-
     
     if (asker.is_a?(Asker) && asker.attributes.any?{|k,v| v})
 
