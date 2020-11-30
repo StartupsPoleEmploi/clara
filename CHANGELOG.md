@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.7.0 (30/11/2020)
+[#90] Ne pas stocker les réponses du formulaire si on vient du PEID
+
+
 ## 38.6.4 (24/11/2020)
 [#84b] bug recette
 
