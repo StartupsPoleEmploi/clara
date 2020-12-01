@@ -60,7 +60,7 @@ jobs:
 
       - run:
           name: Database setup
-          command: cd rails && bundle exec rails db:schema:load --trace
+          command: cd rails && bundle exec rails db:migrate --trace
 
       - run:
           name: Run Rails tests
