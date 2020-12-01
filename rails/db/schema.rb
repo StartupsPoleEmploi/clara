@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2020_09_29_123462) do
     t.integer "code"
     t.string "new_url"
     t.text "aids_slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clockdiffs", force: :cascade do |t|
