@@ -25,5 +25,4 @@ context('Recherche depuis la home', () => {
 
   })
 
-
 })
