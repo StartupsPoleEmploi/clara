@@ -52,8 +52,6 @@ class Aid < ApplicationRecord
     within_scope.where(:id => self.id).present?
   end
 
-
-
   # See https://github.com/Casecommons/pg_search
   pg_search_scope :roughly_spelled_like,
                   :against => %i(name short_description what how_much additionnal_conditions how_and_when limitations),
