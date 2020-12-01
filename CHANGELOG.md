@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.7.1 (1/12/2020)
+[#96] Stocker en BDD les images
+
+
 ## 38.7.0 (30/11/2020)
 [#90] Ne pas stocker les réponses du formulaire si on vient du PEID
 
