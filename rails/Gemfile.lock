@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/TitovDigital/activestorage-database-service.git
+  revision: f04c537f6a6c2cafe90d37845bce7310d2ed5bf0
+  specs:
+    activestorage-database-service (1.0.0)
+      rails (>= 5.2.1.1)
+
+GIT
   remote: https://github.com/bdavidxyz/administrate-field-ckeditor.git
   revision: 07f987cff19850046546d162293746b321caed3e
   specs:
@@ -576,6 +583,7 @@ DEPENDENCIES
   active_storage_validations
   active_type
   activerecord-session_store
+  activestorage-database-service!
   administrate (= 0.13.0)
   administrate-field-active_storage
   administrate-field-ckeditor!

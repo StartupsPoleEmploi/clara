@@ -73,6 +73,7 @@ gem "bootsnap"
 
 
 gem 'active_storage_validations'
+gem 'activestorage-database-service', github: 'TitovDigital/activestorage-database-service'
 gem 'administrate-field-active_storage'
 gem 'image_processing'
 
