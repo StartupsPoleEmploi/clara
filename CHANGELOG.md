@@ -1,8 +1,12 @@
 # CLARA Changelog
 
 
+## 38.7.3 (1/12/2020)
+[#99] Faire une recherche plain text plus simple
+
+
 ## 38.7.2 (1/12/2020)
-[#95b] Test recherche sur la home
+[#98] Test recherche sur la home
 
 
 ## 38.7.1 (1/12/2020)
