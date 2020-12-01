@@ -384,6 +384,12 @@ GEM
     paper_trail (11.0.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
+    paperclip (6.1.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     pg (1.2.3)
     pg_search (2.3.3)
       activerecord (>= 5.2)
@@ -628,6 +634,7 @@ DEPENDENCIES
   nokogiri
   oj
   paper_trail (= 11.0.0)
+  paperclip (>= 3)
   pg
   pg_search
   phantomjs
