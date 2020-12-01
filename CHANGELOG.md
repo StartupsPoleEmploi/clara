@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.7.2 (1/12/2020)
+[#95b] Test recherche sur la home
+
+
 ## 38.7.1 (1/12/2020)
 [#97] Faire persister les imgs entre 2 MEPs
 
