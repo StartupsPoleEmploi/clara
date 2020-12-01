@@ -9,10 +9,11 @@ context('Recherche depuis la home', () => {
 
     it("On peut faire une recherche 'plain-text', au moins un résultat est trouvé", () => {
       // Given
-      cy.get('#plain_text_search').should("exist")
-      cy.get('#plain_text_search').type("mobil")
+      cy.get('.c-search-front-submit.c-loop.js-modal').click()
+      cy.get('#u-search-modal').should("exist")
+      cy.get('#u-search-modal').type("mobil")
       // When
-      cy.get('.c-search-front-submit').click()
+      cy.get('.c-search-front-submit-modal').click()
       // Then
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/get_search_front?usearch=mobil')})
       cy.get('.c-result-line-front-item').should("exist")
