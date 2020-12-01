@@ -1,6 +1,6 @@
 local:
   service: Disk
-  root: <%= Rails.root.join("public/storage") %>
+  root: <%= Rails.env.production? ? '/var/www/ara/storage' : Rails.root.join("public/storage") %>
 
 test:
   service: Disk
