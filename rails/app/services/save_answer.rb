@@ -2,9 +2,10 @@ class SaveAnswer
 
   def call(asker, session)
     
+
     if (asker.is_a?(Asker) && asker.attributes.any?{|k,v| v})
 
-      if session[:saved_answer] == nil && session[:id_token] == nil
+      if session[:saved_answer] == nil && session[:id_token] == nil && AnswerActivation.new.get_value
 
         Answer.new(
           handicap: asker.v_handicap,
