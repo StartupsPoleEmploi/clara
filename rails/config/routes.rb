@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resources :peids do
       get :export, on: :collection
     end
-    resources :answers do
+    resources :answers, only: [:index, :show, :destroy] do
       get :export, on: :collection
     end
     resources :api_users
