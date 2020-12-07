@@ -104,7 +104,6 @@ Rails.application.routes.draw do
       get 'get_hidden_admin'
       get 'req'
     end
-    get 'status', to: 'status#index'
     resources :variables
     resources :contract_types
     root to: "aids#index"
