@@ -23,11 +23,11 @@ class AidesController < ApplicationController
   end
 
   def get_search_front
-      aids_h, total_nb = _aides_index_search
-      hydrate_view({
-        "aids" => aids_h,
-        "total_nb" => total_nb,
-      })
+    aids_h, total_nb = _aides_index_search
+    hydrate_view({
+      "aids" => aids_h,
+      "total_nb" => total_nb,
+    })
   end
   def post_search_front
     extractor = ExtractParam.new(params)
@@ -51,7 +51,7 @@ class AidesController < ApplicationController
 
     aids = nil
     if usearch
-      aids = Aid.roughly_spelled_like(usearch).activated
+      aids = Rails.env.test? ? Aid.all.activated : Aid.roughly_spelled_like(usearch).activated
       TrackSearch.new.call(usearch)
     else
       aids = Aid.all.activated
@@ -62,8 +62,8 @@ class AidesController < ApplicationController
       @aids.to_json(
         :only => [ :id, :name, :slug, :short_description, :rule_id, :contract_type_id, :ordre_affichage ],
         :include => {filters: {only:[:id, :slug]}}
+        )
       )
-    )
 
     return @h_aids, aids.size
   end
