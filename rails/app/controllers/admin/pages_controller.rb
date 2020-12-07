@@ -51,6 +51,17 @@ module Admin
       redirect_to admin_get_switch_peconnect_path
     end
 
+    def get_switch_answer
+      render locals: {
+        is_activated: AnswerActivation.new.get_value
+      }
+    end
+
+    def post_switch_answer
+      AnswerActivation.new.switch_value
+      redirect_to admin_get_switch_answer_path
+    end
+
     # load clock
     def get_clock
       first_diff = Clockdiff.first

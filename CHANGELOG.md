@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 38.8.0 (7/12/2020)
+[#102] Couper l'enregistrement des réponses
+
+
 ## 38.7.3 (1/12/2020)
 [#99] Faire une recherche plain text plus simple
 

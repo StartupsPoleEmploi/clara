@@ -2,7 +2,7 @@
 <%- activation_text = is_activated ? "Désactiver PE Connect" : "Activer PE Connect" %>
 
 <div style="margin-top: 2rem;margin-left: 2rem;">
-  <%= form_with url: admin_post_switch_peconnect_path, remote:false, id: 'admin_post_switch_peconnect_form' do |form| %>
+  <%= form_with url: admin_post_switch_peconnect_path, local: true, id: 'admin_post_switch_peconnect_form' do |form| %>
     <div>
       <% if is_activated %>
         Pe connect est actuellement activé
@@ -15,4 +15,3 @@
     </div>
   <% end %>
 </div>
-

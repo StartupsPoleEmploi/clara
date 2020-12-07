@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resources :peids do
       get :export, on: :collection
     end
-    resources :answers do
+    resources :answers, only: [:index, :show, :destroy] do
       get :export, on: :collection
     end
     resources :api_users
@@ -85,6 +85,8 @@ Rails.application.routes.draw do
       post 'post_clock'
       get 'get_switch_peconnect'
       post 'post_switch_peconnect'
+      get 'get_switch_answer'
+      post 'post_switch_answer'
       get 'get_zrr'
       post 'post_zrr'
       get 'get_resetpwd'
@@ -102,7 +104,6 @@ Rails.application.routes.draw do
       get 'get_hidden_admin'
       get 'req'
     end
-    get 'status', to: 'status#index'
     resources :variables
     resources :contract_types
     root to: "aids#index"

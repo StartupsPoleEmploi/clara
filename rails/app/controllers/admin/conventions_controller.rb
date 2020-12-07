@@ -3,7 +3,7 @@ module Admin
 
 
     before_action :require_superadmin, only: [:new, :create, :destroy]
-    before_action :require_superadmin_or_relecteur, only: [:edit]
+    before_action :require_superadmin_or_relecteur, only: [:edit, :update]
 
     def valid_action?(name, resource = resource_class)
       if current_user.role == "superadmin"
