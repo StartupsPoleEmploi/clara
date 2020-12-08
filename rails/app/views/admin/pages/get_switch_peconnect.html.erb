@@ -3,7 +3,7 @@
 
 <div style="margin-top: 2rem;margin-left: 2rem;">
   <%= form_with url: admin_post_switch_peconnect_path, local: true, id: 'admin_post_switch_peconnect_form' do |form| %>
-    <div>
+    <div class="peconnect-status">
       <% if is_activated %>
         Pe connect est actuellement activé
       <% else  %>
@@ -11,7 +11,7 @@
       <% end %>      
     </div>
     <div>
-      <%= form.submit "#{activation_text}"%>
+      <%= form.submit "#{activation_text}", id: 'submit-toggle-peconnect' %>
     </div>
   <% end %>
 </div>
