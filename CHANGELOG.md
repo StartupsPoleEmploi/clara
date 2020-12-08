@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.0 (8/12/2020)
+[#101] Search de toutes nos aide ne réponds plus
+
+
 ## 38.8.0 (7/12/2020)
 [#102] Couper l'enregistrement des réponses
 
