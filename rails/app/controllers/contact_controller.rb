@@ -1,7 +1,8 @@
 class ContactController < ApplicationController
-  
+
 
   def index
+    @errors = flash[:error] ? JSON.parse(flash[:error]) : {}
     @contact = ContactForm.new(flash[:contact])
   end
 
@@ -12,9 +13,9 @@ class ContactController < ApplicationController
       UserMailer.with(contact: @contact, origin: @origin).contact_email.deliver_now
       redirect_to contact_sent_index_path
     else
-      flash[:error] = @contact.errors.messages
+      flash[:error] = @contact.errors.messages.to_json
       flash[:contact] = @contact.attributes
-      redirect_to contact_index_path(@contact)
+      redirect_to contact_index_path
     end
   end
   
@@ -28,7 +29,7 @@ class ContactController < ApplicationController
      :askfor,
      :question,
      :honey,
-    ).to_h
+     ).to_h
   end
 
 end
