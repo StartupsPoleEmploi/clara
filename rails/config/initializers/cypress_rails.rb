@@ -8,7 +8,8 @@ if defined?(CypressRails)
 
     # Seed the database
     Rails.application.load_seed
-    
+    ap "ENV['RAILS_ENV']"
+    ap ENV['RAILS_ENV']
   end
 
   CypressRails.hooks.after_transaction_start do
