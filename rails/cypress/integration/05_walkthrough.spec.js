@@ -1,4 +1,4 @@
-context('Recherche depuis la home', () => {
+context('Pages autres que le questionnaire', () => {
 
 
   before(() => {
@@ -21,6 +21,28 @@ context('Recherche depuis la home', () => {
         expect(loc.search).to.eq('?usearch=descr')
       })
       cy.get('.c-result-line-front-item').should("exist")
+
+    })
+
+    it("On peut aller voir toutes les aides, et faire une recherche dessus", () => {
+
+      // Given
+      // When
+      cy.get('a.c-link-to-all-aides').click()
+      cy.location().should((loc) => {
+        // Then
+        expect(loc.pathname).to.eq('/aides')
+      })
+
+      // Given
+      // When
+      cy.get('input.c-search-usearch').type("mob")
+      cy.get('input.c-search-form-submit').click()
+      cy.location().should((loc) => {
+        // Then
+        expect(loc.pathname).to.eq('/aides')
+        expect(loc.search).to.eq('?usearch=mob')
+      })
 
     })
 
