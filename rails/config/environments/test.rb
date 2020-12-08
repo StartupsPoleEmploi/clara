@@ -44,7 +44,7 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_options = {from: 'no-reply@clara.pole-emploi.fr'}  
+  # config.action_mailer.default_options = {from: 'no-reply@clara.pole-emploi.fr'}  
   # config.action_mailer.smtp_settings = {  
   #   address: 'smtp.gmail.com',  
   #   port: 587,  
