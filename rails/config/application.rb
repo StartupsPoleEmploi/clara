@@ -26,6 +26,8 @@ module Mae
     config.active_job.queue_adapter = :sidekiq
     Logster.set_environments([:production])
 
+    config.action_mailer.default_options = {from: 'no-reply@clara.pole-emploi.fr'}  
+
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
