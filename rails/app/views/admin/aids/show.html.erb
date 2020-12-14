@@ -15,7 +15,6 @@ as well as a link to its edit page.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
 %>
-<%- v_aid_form = view_object(:aid_form, local_assigns) %>
 <%- v = view_object(:aid_show, local_assigns) %>
 
 <% content_for(:title) { "#{t("helpers.aid.detail")} : #{page.resource.name.truncate(42)}".html_safe } %>
