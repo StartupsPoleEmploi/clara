@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.1 (14/12/2020)
+[#103] Couverture PE Connect
+
+
 ## 39.0.0 (8/12/2020)
 [#101] Search de toutes nos aide ne réponds plus
 
