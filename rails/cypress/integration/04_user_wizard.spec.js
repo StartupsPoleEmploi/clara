@@ -2,6 +2,7 @@ context('Parcours du formulaire', () => {
 
 
   before(() => {
+    cy.request('/cypress_rails_reset_state')
     cy.visit('/inscription_questions/new')
   })
 

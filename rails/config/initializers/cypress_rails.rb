@@ -2,6 +2,9 @@
 
 return unless Rails.env.test?
 
+require 'rake'
+Mae::Application.load_tasks
+
 if defined?(CypressRails)
   CypressRails.hooks.before_server_start do
     # Called once, before either the transaction or the server is started
@@ -18,22 +21,13 @@ if defined?(CypressRails)
 
   CypressRails.hooks.after_state_reset do
     # Triggered after `/cypress_rails_reset_state` is called
-    created_aid = Aid.find_by(slug: 'erasmus42')
-    if created_aid
-      created_aid.destroy
-    end
-    created_ct = ContractType.find_by(slug: 'aide-a-la-mobilisation')
-    if created_ct
-      created_ct.destroy
-    end
-    created_filter = Filter.find_by(slug: 'deplacement')
-    if created_filter
-      created_filter.destroy
-    end
-    created_contributeur = User.find_by(email: 'contributeur1@clara.com')
-    unless created_contributeur
-      User.create(email: "contributeur1@clara.com", password: "contributeur1", role: "contributeur")
-    end
+
+    # See https://stackoverflow.com/a/57587210/2595513
+    # truncate all data and seed database
+    Rake::Task['db:seed:replant'].invoke
+
+    CreateFakeData.new.call
+
   end
 
   CypressRails.hooks.before_server_stop do

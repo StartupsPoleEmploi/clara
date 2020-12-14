@@ -2,6 +2,7 @@ context('Pages autres que le questionnaire', () => {
 
 
   before(() => {
+    cy.request('/cypress_rails_reset_state')
     cy.visit('/')
   })
 
