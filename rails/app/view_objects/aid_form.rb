@@ -1,6 +1,8 @@
 class AidForm < ViewObject
 
   def after_init(args)
+    p '- - - - - - - - - - - - - - AidForm !!!!!!!!!!!!!!!- - - - - - - - - - - - - - - -' 
+    p ''
     locals = hash_for(args)
     @page = locals[:page]
     @mandatory_list = ["name", "contract_type", "ordre_affichage"]
