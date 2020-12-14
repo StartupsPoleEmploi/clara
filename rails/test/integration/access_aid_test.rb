@@ -104,7 +104,6 @@ class AccessAidTest < ActionDispatch::IntegrationTest
       "locale"=>"fr"}
     #then
     assert_response :ok
-    ap Rule.all
     root_rule = Aid.last.rule
     assert_equal 'composite', root_rule.kind
     assert_equal 'and_rule', root_rule.composition_type
