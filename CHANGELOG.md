@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.2 (15/12/2020)
+[#104] Couverture 80%
+
+
 ## 39.0.1 (14/12/2020)
 [#103] Couverture PE Connect
 
