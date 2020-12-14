@@ -5,7 +5,7 @@ class CreateFakeData
     User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
 
     Filter.create!(name: "Se déplacer")
-    ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
     age_variable = Variable.create!(name: "age", variable_kind: "integer")
 
     rule_a = Rule.create!({
@@ -28,12 +28,24 @@ class CreateFakeData
       simulated: ""
     })
 
-    Rule.create!({
+    rule = Rule.create!({
       name: "r_fdsjmtrzunylagqc_root_box",
       composition_type: "or_rule",
       kind: "composite",
       slave_rules: [rule_a, rule_b]
     })
+
+    Aid.create!(
+      name: "Aide test mobilite", 
+      contract_type: contract, 
+      how_much: 'how much...',
+      how_and_when: 'how and when...',
+      additionnal_conditions: 'additionnal conditions...',
+      limitations: 'limitations...',
+      short_description: 'short description...',
+      rule: rule, 
+      ordre_affichage: 3)
+
 
   end
 
