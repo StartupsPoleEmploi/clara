@@ -26,7 +26,11 @@ if defined?(CypressRails)
     # truncate all data and seed database
     Rake::Task['db:seed:replant'].invoke
 
-    CreateFakeData.new.call(Variable.find_by(name: 'v_age'))
+    CreateFakeData.new.call
+
+    Rails.cache.clear
+    ActivatedModelsGeneratorService.new.regenerate
+    ActivatedModelsService.instance.regenerate
 
   end
 

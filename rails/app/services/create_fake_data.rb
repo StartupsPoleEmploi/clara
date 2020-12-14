@@ -1,19 +1,18 @@
 class CreateFakeData
 
-  def call(age_variable)
+  def call
     User.create(email: "contributeur1@clara.com", password: "contributeur1", role: "contributeur")
     User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
 
     Filter.create!(name: "Se déplacer")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
-    # age_variable = Variable.create!(name: "age", variable_kind: "integer")
 
-    # age_variable = Variable.find_or_create_by(name: 'v_age') do |var|
-    #   var.name = "v_age"                   
-    #   var.variable_kind = "integer"
-    #   var.name_translation = "âge"
-    #   var.is_visible = true
-    # end
+    age_variable = Variable.find_or_create_by(name: 'v_age') do |var|
+      var.name = "v_age"                   
+      var.variable_kind = "integer"
+      var.name_translation = "âge"
+      var.is_visible = true
+    end
 
     rule_a = Rule.create!({
       name: "r_fdsjmtrzunylagqc_box_1607963018482",
@@ -44,14 +43,17 @@ class CreateFakeData
 
     Aid.create!(
       name: "Aide test mobilite", 
+      status: "Publiée",
       contract_type: contract, 
       how_much: 'how much...',
+      what: 'what...',
       how_and_when: 'how and when...',
       additionnal_conditions: 'additionnal conditions...',
       limitations: 'limitations...',
       short_description: 'short description...',
       rule: rule, 
-      ordre_affichage: 3)
+      ordre_affichage: 3,
+      archived_at: nil)
 
 
   end

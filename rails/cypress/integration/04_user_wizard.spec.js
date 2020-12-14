@@ -32,7 +32,7 @@ context('Parcours du formulaire', () => {
       cy.get('.js-next').click()
 
       cy.get('#age').should("exist")
-      cy.get('#age').type("36")
+      cy.get('#age').type("26")
       cy.get('.js-next').click()
 
       cy.get('#niveau_4').should("exist")
@@ -61,7 +61,7 @@ context('Parcours du formulaire', () => {
 
       cy.get('.c-btn--result').eq(0).click()
       cy.get('.c-btn--aid').eq(0).click()
-      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides/detail/erasmus42')})
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides/detail/aide-test-mobilite')})
     })
 
   })
