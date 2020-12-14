@@ -41,23 +41,4 @@ class AidShow < ViewObject
     res
   end
 
-  def attr_name(attribute)
-    attribute.attribute.to_s
-  end
-
-  def errored?(attribute)
-    actual_attr = attribute.attribute
-    @errors_h.key?(actual_attr) && @errors_h[actual_attr].size > 0
-  end
-
-  def mandatory?(attr_name)
-    @mandatory_list.include?(attr_name)
-  end
-
-  def error_message(attribute)
-    actual_attr = attribute.attribute
-    @errors_h[actual_attr][0]
-  end
-
-
 end
