@@ -28,10 +28,6 @@ if defined?(CypressRails)
 
     CreateFakeData.new.call
 
-    Rails.cache.clear
-    ActivatedModelsGeneratorService.new.regenerate
-    ActivatedModelsService.instance.regenerate
-
   end
 
   CypressRails.hooks.before_server_stop do
