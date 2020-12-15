@@ -1,4 +1,4 @@
-context('Pages autres que le questionnaire', () => {
+context('Simple visiteur : Pages autres que le questionnaire', () => {
 
 
   before(() => {
@@ -45,6 +45,45 @@ context('Pages autres que le questionnaire', () => {
         expect(loc.search).to.eq('?usearch=mob')
       })
 
+    })
+
+    it("Sitemap : Le visiteur peut visiter la sitemap", () => {
+      //given
+      cy.request({
+        log: true,
+        url: "/sitemap.xml"
+      }).then(response => {
+        const urls = Cypress.$(response.body).find('loc').toArray().map(el => el.innerText)
+        expect(response).property("status").to.equal(200);
+        expect(urls[0].endsWith('/aides-sitemap.xml')).to.be.true;
+        expect(urls[1].endsWith('/types-aides-sitemap.xml')).to.be.true;
+      });
+    })
+
+
+    it("Sitemap : Le visiteur peut visiter la sitemap des aides", () => {
+      //given
+      cy.request({
+        log: true,
+        url: "/aides-sitemap.xml"
+      }).then(response => {
+        const urls = Cypress.$(response.body).find('loc').toArray().map(el => el.innerText)
+        expect(response).property("status").to.equal(200);
+        expect(urls[0].endsWith('/aides-sitemap.xml')).to.be.true;
+        expect(urls[1].endsWith('/aides/detail/aide-test-mobilite')).to.be.true;
+      });
+    })
+
+    it("Sitemap : Le visiteur peut visiter la sitemap des rubriques", () => {
+      //given
+      cy.request({
+        log: true,
+        url: "/types-aides-sitemap.xml"
+      }).then(response => {
+        const urls = Cypress.$(response.body).find('loc').toArray().map(el => el.innerText)
+        expect(response).property("status").to.equal(200);
+        expect(urls[0].endsWith('/aides/type/mobilite')).to.be.true;
+      });
     })
 
     it("Contact : Une erreur s'affiche si le formulaire est mal rempli", () => {

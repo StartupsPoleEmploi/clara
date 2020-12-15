@@ -1,4 +1,4 @@
-context("Création et publication d'une aide", () => {
+context("Administrateur : Création et publication d'une aide", () => {
 
   before(() => {
     cy.request('/cypress_rails_reset_state')

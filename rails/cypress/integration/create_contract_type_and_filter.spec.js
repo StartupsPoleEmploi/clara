@@ -1,4 +1,4 @@
-context("Rubriques et filtres", () => {
+context("Administrateur : création Rubriques et filtres", () => {
 
   before(() => {
     cy.request('/cypress_rails_reset_state')

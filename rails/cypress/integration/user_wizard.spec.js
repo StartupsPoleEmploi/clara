@@ -1,4 +1,4 @@
-context('Parcours du formulaire', () => {
+context('Simple visiteur : Parcours du formulaire', () => {
 
 
   before(() => {
