@@ -3,13 +3,6 @@ require "net/http"
 class UrlExists
 
   def call(url_string)
-    # url = URI.parse(url_string)
-    # req = Net::HTTP.new(url.host, url.port)
-    # req.use_ssl = true if url.scheme == 'https'
-    # res = req.request_head(url.path)
-    # res.code == '200'
-    # Faraday.head(url_string).status == 200
-
     url = URI.parse(url_string)
     req = Net::HTTP.new(url.host, url.port)
     req.use_ssl = (url.scheme == 'https')
@@ -20,8 +13,6 @@ class UrlExists
     else
       ! %W(4 5).include?(res.code[0]) # Not from 4xx or 5xx families
     end
-  rescue Errno::ENOENT
-    false #false if can't find the server
   rescue Errno::ENOENT   
     false #false if can't find the server 
   rescue URI::InvalidURIError   
@@ -36,5 +27,4 @@ class UrlExists
     false
   end
 
-  
 end
