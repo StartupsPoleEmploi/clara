@@ -15,7 +15,7 @@ class AccessFeedbackTest < ActionDispatch::IntegrationTest
     assert_response :ok
   end
 
-  test "Un relecteur ne peut pas lister les feedbacks" do
+  test "Un relecteur peut lister les feedbacks" do
     #given
     relecteur = User.create!(role: "relecteur", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
