@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_07_083458) do
+ActiveRecord::Schema.define(version: 2020_28_12_090005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -132,16 +132,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_083458) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "custom_rule_checks", force: :cascade do |t|
-    t.bigint "rule_id"
-    t.string "result"
-    t.string "name"
-    t.text "hsh"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["rule_id"], name: "index_custom_rule_checks_on_rule_id"
   end
 
   create_table "explicitations", force: :cascade do |t|
@@ -318,7 +308,6 @@ ActiveRecord::Schema.define(version: 2020_12_07_083458) do
   add_foreign_key "aids", "contract_types"
   add_foreign_key "compound_rules", "rules"
   add_foreign_key "compound_rules", "rules", column: "slave_rule_id"
-  add_foreign_key "custom_rule_checks", "rules"
   add_foreign_key "explicitations", "variables"
   add_foreign_key "recalls", "aids"
   add_foreign_key "rules", "variables"
