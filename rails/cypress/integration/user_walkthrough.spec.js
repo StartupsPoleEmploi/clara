@@ -3,10 +3,13 @@ context('Simple visiteur : Pages autres que le questionnaire', () => {
 
   before(() => {
     cy.request('/cypress_rails_reset_state')
-    cy.visit('/')
   })
 
   describe("Pour un visiteur qui découvre la home", () => {
+
+    beforeEach(() => {
+      cy.visit('/')
+    })
 
     it("On peut faire une recherche 'plain-text', au moins un résultat est trouvé", () => {
 
@@ -23,6 +26,12 @@ context('Simple visiteur : Pages autres que le questionnaire', () => {
       })
       cy.get('.c-result-line-front-item').should("exist")
 
+    })
+
+    it("On peut aller voir une rubrique en particulier, la liste des aides attachées à cette rubrique est affichée", () => {
+      cy.get('a.c-footer-link[href*="/aides/type/"]').click()
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides/type/mobilite')})
+      cy.get('.c-result-aid__title').should('contain', 'Aide test mobilite')
     })
 
     it("On peut aller voir toutes les aides, et faire une recherche dessus", () => {
