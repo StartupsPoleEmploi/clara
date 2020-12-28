@@ -32,6 +32,27 @@ context('Administrateur : tour des pages disponibles', () => {
       })
     })
 
+    it("On peut créer un nouvel administrateur, il apparaît alors en haut de la liste des administrateurs, en tant que simple contributeur", () => {
+      cy.visit('/admin/get_hidden_admin')
+      cy.contains('Créer un nouvel administrateur').click()
+      cy.location().should((location) => {expect(location.pathname).to.eq('/sign_up')})
+
+      cy.get('#user_email').type('utilisateur@email.com').should('have.value', 'utilisateur@email.com')
+      cy.get('#user_password').type('99ValidPassword!').should('have.value', '99ValidPassword!')
+      cy.contains('Créer ce nouvel administrateur').click()
+
+      cy.location().should((location) => {
+        expect(location.pathname).to.eq('/admin/users')
+        expect(location.search).to.eq('?user[direction]=desc&user[order]=created_at')
+      })
+
+      cy.get('.js-table-row')
+        .first()
+        .should('have.attr', 'data-email', 'utilisateur@email.com')
+        .and('have.attr', 'data-role', 'contributeur')
+
+    })
+
   })
 
 })

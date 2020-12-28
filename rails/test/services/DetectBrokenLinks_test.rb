@@ -33,7 +33,7 @@ class DetectBrokenLinksTest < ActiveSupport::TestCase
         aids_slug: ['aide-region','aide-international'].to_json
       ),
       Broken.new(
-        url: 'https://qix.com/redirected', 
+        url: 'https://qix.com/unexisting', 
         code: '404', 
         aids_slug: ['aide-deplacement'].to_json
       )
