@@ -1,4 +1,4 @@
-FROM ruby:2.6.6
+FROM ruby:2.7.2
 
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
