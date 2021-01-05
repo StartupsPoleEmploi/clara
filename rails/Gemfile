@@ -70,7 +70,7 @@ gem "i18n-js"
 gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
-
+gem 'redis-session-store'
 
 gem 'active_storage_validations'
 gem 'administrate-field-active_storage'
