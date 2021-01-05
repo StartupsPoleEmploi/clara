@@ -112,6 +112,16 @@ module Admin
       render json: {status: "ok"}
     end
 
+    # cache
+    def get_session
+    end
+
+    def post_session
+      sql = 'DELETE FROM sessions WHERE updated_at < DATE_SUB(NOW(), INTERVAL 1 DAY);'
+      ActiveRecord::Base.connection.execute(sql)
+      render json: {status: "ok"}
+    end
+
     # reset pwd
     def get_resetpwd
     end
