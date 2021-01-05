@@ -24,7 +24,7 @@ module Mae
     config.middleware.use Rack::Attack
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
     config.active_job.queue_adapter = :sidekiq
-    Logster.set_environments([:production])
+    Logster.set_environments([:development, :production])
 
     config.to_prepare do
       Administrate::ApplicationController.helper Mae::Application.helpers

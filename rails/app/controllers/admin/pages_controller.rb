@@ -118,15 +118,14 @@ module Admin
     end
 
     def post_session
-      ap 'counting sessions...'
-      ap ActiveRecord::SessionStore::Session.count
+      count = ActiveRecord::SessionStore::Session.count
       Mae::Application.load_tasks
       Rake::Task["db:sessions:clear"].invoke
 
       # Rake::Task['db:schema:cache:clear'].invoke
       # ap ActiveRecord::SessionStore::Session.count
       # ActiveRecord::SessionStore::Session.delete_all
-      render json: {status: "ok"}
+      render json: {status: "ok", count: count}
     end
 
     # reset pwd
