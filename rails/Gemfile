@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.7.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -39,7 +39,7 @@ gem "actionpack-page_caching"
 
 gem "awesome_print"
 gem "seed_dump"
-gem "nokogiri"
+gem "nokogiri", ">= 1.11.0.rc4"
 gem "faraday"
 
 ## Devops

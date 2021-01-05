@@ -227,7 +227,7 @@ Changez le numéro de version à l'intérieur du fichier .ruby-version
 Changez le numéro de version à l'intérieur du fichier Gemfile
 
 ```ruby
-ruby '2.6.6' # <----- Changez le numéro de version correspondant
+ruby '2.7.2' # <----- Changez le numéro de version correspondant
 ```
 
 Puis n'oubliez pas le **bundle install** pour mettre à jour le Gemfile.lock
@@ -237,7 +237,7 @@ Puis n'oubliez pas le **bundle install** pour mettre à jour le Gemfile.lock
 Changez le numéro de version à l'intérieur du fichier .circleci/config.yml
 
 ```
-  - image: circleci/ruby:2.6.6-node-browsers-legacy
+  - image: circleci/ruby:2.7.2-node-browsers-legacy
 ```
 
 ### B. Mise à jour du serveur
