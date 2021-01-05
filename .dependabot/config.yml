@@ -1,13 +1,13 @@
 version: 1
 update_configs:
   - package_manager: "ruby:bundler"
-    directory: "/rails"
+    directory: "rails"
     update_schedule: "live"
     default_reviewers:
       - "bdavidxyz"
 
   - package_manager: "javascript"
-    directory: "/rails"
+    directory: "rails"
     update_schedule: "live"
     default_reviewers:
       - "bdavidxyz"

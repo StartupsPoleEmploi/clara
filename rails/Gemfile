@@ -39,7 +39,7 @@ gem "actionpack-page_caching"
 
 gem "awesome_print"
 gem "seed_dump"
-gem "nokogiri"
+gem "nokogiri", ">= 1.11.0.rc4"
 gem "faraday"
 
 ## Devops
