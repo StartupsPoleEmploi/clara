@@ -118,6 +118,8 @@ module Admin
     end
 
     def post_session
+      ap 'counting sessions...'
+      ap ActiveRecord::SessionStore::Session.count
       Mae::Application.load_tasks
       Rake::Task["db:sessions:clear"].invoke
 
