@@ -1,5 +1,6 @@
 require "google/apis/analyticsreporting_v4"
 require "csv"
+require "rake"
 
 module Admin
   class PagesController < Admin::ApplicationController
@@ -117,8 +118,12 @@ module Admin
     end
 
     def post_session
-      sql = 'DELETE FROM sessions WHERE updated_at < DATE_SUB(NOW(), INTERVAL 1 DAY);'
-      ActiveRecord::Base.connection.execute(sql)
+      Mae::Application.load_tasks
+      Rake::Task["db:sessions:clear"].invoke
+
+      # Rake::Task['db:schema:cache:clear'].invoke
+      # ap ActiveRecord::SessionStore::Session.count
+      # ActiveRecord::SessionStore::Session.delete_all
       render json: {status: "ok"}
     end
 

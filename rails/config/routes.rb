@@ -93,6 +93,8 @@ Rails.application.routes.draw do
       post 'post_resetpwd'
       get 'get_cache'
       post 'post_cache'
+      get 'get_session'
+      post 'post_session'
       get 'get_reset_answers'
       post 'post_reset_answers'
       get 'get_ref_data'
