@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.5 (11/1/2020)
+[#100] Aplatir migrations 
+
+
 ## 39.0.4 (5/1/2020)
 [#106] Session redis
 
