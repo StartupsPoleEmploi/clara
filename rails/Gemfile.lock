@@ -458,6 +458,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.2)
+    redis-session-store (0.11.3)
+      actionpack (>= 3, < 7)
+      redis (>= 3, < 5)
     regexp_parser (1.8.0)
     representable (3.0.4)
       declarative (< 0.1.0)
@@ -655,6 +658,7 @@ DEPENDENCIES
   rake
   rb-fsevent
   redis
+  redis-session-store
   rspec-rails
   ruby-prof
   rubyzip

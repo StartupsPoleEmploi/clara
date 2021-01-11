@@ -1,0 +1,17 @@
+Vous pouvez supprimer toutes les sessions ici
+<%= form_with url: admin_post_session_path, local: false, id: 'admin_post_session_form' do |form| %>
+  <%= form.submit 'Supprimer les sessions', id: "button-empty-session" %>
+<% end %>
+<p>&nbsp;</p>
+<script> 
+  function defer2(method) { if (window.jQuery) { admin_post_session_callback(); } else { setTimeout(function() { defer2(method) }, 50); } }
+  function admin_post_session_callback() {
+    $("#admin_post_session_form").on("ajax:success", 
+      function(event, data) { 
+        console.log("admin_post_session success, detail below : "); 
+        console.log(event); 
+        console.log(data); 
+      });     
+  }
+  defer2();
+</script>

@@ -3,7 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new { |user| user.role == 'superadmin' } do
-    mount Logster::Web => "/logs"
+    mount Logster::Web => '/logs'
   end
 
   mount Sidekiq::Web => '/sidekiq'
@@ -93,6 +93,8 @@ Rails.application.routes.draw do
       post 'post_resetpwd'
       get 'get_cache'
       post 'post_cache'
+      get 'get_session'
+      post 'post_session'
       get 'get_reset_answers'
       post 'post_reset_answers'
       get 'get_ref_data'

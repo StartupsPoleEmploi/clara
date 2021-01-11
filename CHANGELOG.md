@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.4 (5/1/2020)
+[#106] Session redis
+
+
 ## 39.0.3 (4/1/2020)
 [#105] Changement de version Ruby
 

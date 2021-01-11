@@ -46,9 +46,10 @@ gem "faraday"
 gem "newrelic_rpm"
 gem "ruby-prof"
 gem "oj"
-gem "redis"
-gem "logster"
-gem "lograge"
+gem 'redis'
+gem 'redis-session-store'
+gem 'logster'
+gem 'lograge'
 
 
 # Admin
@@ -70,7 +71,6 @@ gem "i18n-js"
 gem "administrate_exportable", github: 'bdavidxyz/administrate_exportable'
 gem "clearance"
 gem "bootsnap"
-
 
 gem 'active_storage_validations'
 gem 'administrate-field-active_storage'
