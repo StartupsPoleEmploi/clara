@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_28_12_090005) do
+ActiveRecord::Schema.define(version: 2021_01_11_120054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
-  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
@@ -95,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_28_12_090005) do
     t.integer "code"
     t.string "new_url"
     t.text "aids_slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clockdiffs", force: :cascade do |t|
@@ -168,7 +167,7 @@ ActiveRecord::Schema.define(version: 2020_28_12_090005) do
     t.index ["slug"], name: "index_filters_on_slug", unique: true
   end
 
-  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
