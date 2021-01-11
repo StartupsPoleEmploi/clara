@@ -1,4 +1,4 @@
-class InstallFuzzystrmatch < ActiveRecord::Migration[5.2]
+class InstallFuzzystrmatch < ActiveRecord::Migration[6.0]
   def self.up
     ActiveRecord::Base.connection.execute("CREATE EXTENSION IF NOT EXISTS fuzzystrmatch;")
   end
