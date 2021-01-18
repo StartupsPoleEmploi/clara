@@ -80,10 +80,6 @@ gem 'activerecord-session_store'
 gem 'sidekiq'
 gem 'mini_racer', platforms: :ruby
 
-# not used anymore, but still required because of migrations...
-gem "paperclip", ">=3"
-
-
 group :development, :test do
   gem "byebug", platform: :mri
   gem "database_cleaner"
