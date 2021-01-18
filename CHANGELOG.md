@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.0.6 (18/1/2020)
+[#107] Suppression paperclip
+
+
 ## 39.0.5 (11/1/2020)
 [#100] Aplatir migrations 
 
