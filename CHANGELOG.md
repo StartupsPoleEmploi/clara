@@ -1,6 +1,5 @@
 # CLARA Changelog
 
-
 ## 39.0.6 (18/1/2020)
 [#107] Suppression paperclip
 
