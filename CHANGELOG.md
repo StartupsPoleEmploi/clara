@@ -1,5 +1,9 @@
 # CLARA Changelog
 
+## 39.1.0 (18/1/2020)
+[#108] Changement CGU
+
+
 ## 39.0.6 (18/1/2020)
 [#107] Suppression paperclip
 
