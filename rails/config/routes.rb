@@ -127,8 +127,6 @@ Rails.application.routes.draw do
   resources :contact,               only: [:index, :create]
   resources :contact_sent,          only: [:index]
   
-  resources :confidentiality,       only: [:index]
-  
   
   resources :aides, only: [:index] do
     collection do

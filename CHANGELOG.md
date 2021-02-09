@@ -1,5 +1,9 @@
 # CLARA Changelog
 
+## 39.1.1 (9/2/2020)
+[#108b] Suppression page cookies
+
+
 ## 39.1.0 (18/1/2020)
 [#108] Changement CGU
 

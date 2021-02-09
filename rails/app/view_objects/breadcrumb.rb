@@ -37,10 +37,6 @@ class Breadcrumb < ViewObject
     @current_path == "peconnect_callback_path"
   end
 
-  def display_confidentiality?
-    @current_path == "confidentiality_index_path"
-  end
-
   def display_contact?
     @current_path == "contact_index_path"
   end
