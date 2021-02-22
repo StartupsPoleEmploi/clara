@@ -1,5 +1,9 @@
 # CLARA Changelog
 
+## 39.1.2 (9/2/2020)
+[#110] Passage à Rails 6.1.3
+
+
 ## 39.1.1 (9/2/2020)
 [#108b] Suppression page cookies
 
