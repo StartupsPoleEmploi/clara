@@ -37,7 +37,7 @@ gem "rubyzip"
 gem "clipboard" # debug purpose only
 gem "actionpack-page_caching"
 
-gem "awesome_print"
+gem "amazing_print"
 gem "seed_dump"
 gem "nokogiri", ">= 1.11.0.rc4"
 gem "faraday"

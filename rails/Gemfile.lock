@@ -129,6 +129,7 @@ GEM
     administrate-field-active_storage (0.3.5)
       administrate (>= 0.2.2)
       rails (>= 6.0)
+    amazing_print (1.2.2)
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
@@ -137,7 +138,6 @@ GEM
       ffi-compiler (>= 0.1)
     autoprefixer-rails (10.0.0.2)
       execjs
-    awesome_print (1.8.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     binding_of_caller (0.8.0)
@@ -585,9 +585,9 @@ DEPENDENCIES
   administrate-field-active_storage
   administrate-field-ckeditor!
   administrate_exportable!
+  amazing_print
   annotate
   autoprefixer-rails
-  awesome_print
   bcrypt
   bootsnap
   bulk_insert

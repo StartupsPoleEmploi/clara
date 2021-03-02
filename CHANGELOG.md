@@ -1,5 +1,9 @@
 # CLARA Changelog
 
+## 39.1.2 (23/2/2020)
+[#111] Remplacement de awesome_print
+
+
 ## 39.1.1 (9/2/2020)
 [#108b] Suppression page cookies
 
