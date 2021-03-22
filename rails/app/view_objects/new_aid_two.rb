@@ -41,7 +41,7 @@ class NewAidTwo < NewAidStep
     res_h = {}
     if page && page.resource
       res_h = page.resource.errors.messages
-      res_h.transform_keys! do |key|
+      res_h.deep_dup.transform_keys! do |key|
         key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
       end
     end
