@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "rails", "6.0.3.3"
+gem "rails", "6.0.3.5"
 gem "puma", '4.3.6'
 gem "rake"
 gem "uglifier"
@@ -53,7 +53,7 @@ gem 'lograge'
 
 
 # Admin
-gem "paper_trail", "11.0.0"
+gem "paper_trail", "11.1.0"
 gem "administrate", "0.13.0"
 
 gem "administrate-field-ckeditor", github: 'bdavidxyz/administrate-field-ckeditor'
