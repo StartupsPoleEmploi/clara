@@ -28,7 +28,7 @@ and renders all form fields for a resource's editable attributes.
 
 <%- help_h = {"name" => "help.rule.name", "description" => "help.rule.description", "slave_rules" => "help.rule.slave_rules", "composition_type" => "help.rule.composition_type"} %>
 <%- placeholder_h = {"name" => "placeholder.rule.name", "description" => "placeholder.rule.description"} %>
-<%- errors_messages_h = page.resource.errors.messages %>
+<%- errors_messages_h = page.resource.errors.messages.deep_dup %>
 <%- errors_messages_h.transform_keys!{ |key| key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key} %>
 
 

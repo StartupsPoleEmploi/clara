@@ -27,11 +27,9 @@ class FilterFormVo < ViewObject
   end
 
   def _init_errors_messages
-    res_h = @page.resource.errors.messages
-    res_h.transform_keys! do |key|
+    @page.resource.errors.messages.deep_dup.transform_keys! do |key|
       key.to_s.end_with?("_id") ? key.to_s.chars.first(key.size - 3).join.to_sym : key
     end
-    res_h
   end
 
 end

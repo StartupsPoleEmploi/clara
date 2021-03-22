@@ -1,5 +1,11 @@
 # CLARA Changelog
 
+
+
+## 39.1.3 (22/2/2020)
+[#113] Mise à jour des dépendances
+
+
 ## 39.1.2 (23/2/2020)
 [#111] Remplacement de awesome_print
 

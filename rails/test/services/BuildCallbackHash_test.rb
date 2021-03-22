@@ -10,17 +10,19 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     allow_any_instance_of(PeConnectExtraction).to receive(:call).and_return(extraction)
     session_h = {}
     params_h = {code: 'any'}
+    current_age = Date.today.year - 1976
     #when
     res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
     #then
     assert_equal( {"given_name"=>"ROBERT"},       res[:meta])
-    assert_equal( '44',                           res[:asker].v_age)
+    assert_equal( current_age.to_s,               res[:asker].v_age)
     assert_equal( '44190',                        res[:asker].v_location_citycode)
     assert_equal( 1,                              res[:filters].size)
     assert_equal( 'se-deplacer',                  res[:filters][0].slug)
     assert_equal( "{\"given_name\":\"ROBERT\"}",  session_h[:meta])
     assert_equal( true,                           session_h[:asker] != nil)
   end
+
   test ".call renders  a {:meta, :asker, :filters} hash, but pull :meta and :asker from session" do
     #given
     filter = Filter.create!(name: "Se déplacer")
