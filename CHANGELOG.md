@@ -1,8 +1,11 @@
 # CLARA Changelog
 
 
+## 39.1.4 (23/3/2020)
+[#114] ActiveRecord_sessionstore à jour
 
-## 39.1.3 (22/2/2020)
+
+## 39.1.3 (22/3/2020)
 [#113] Mise à jour des dépendances
 
 
