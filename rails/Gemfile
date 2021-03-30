@@ -76,7 +76,7 @@ gem 'active_storage_validations'
 gem 'administrate-field-active_storage'
 gem 'image_processing'
 
-gem 'activerecord-session_store'
+gem 'activerecord-session_store', '2.0.0'
 gem 'sidekiq'
 gem 'mini_racer', platforms: :ruby
 
