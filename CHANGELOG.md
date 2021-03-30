@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.1.5 (30/3/2020)
+[#115] Bug active storage
+
+
 ## 39.1.4 (23/3/2020)
 [#114] ActiveRecord_sessionstore à jour
 
