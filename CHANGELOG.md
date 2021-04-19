@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 39.1.6 (19/4/2020)
+[#116] Rails 6.1.3.1
+
+
 ## 39.1.5 (30/3/2020)
 [#115] Bug active storage
 
