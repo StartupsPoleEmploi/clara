@@ -24,6 +24,13 @@ module Mae
     config.middleware.use Rack::Attack
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/"
     config.active_job.queue_adapter = :sidekiq
+    config.action_dispatch.default_headers = {
+      'X-XSS-Protection' => '1; mode=block',
+      'X-Download-Options' => 'noopen',
+      'X-Permitted-Cross-Domain-Policies' => 'none',
+      'Referrer-Policy' => 'strict-origin-when-cross-origin'
+    }
+
     Logster.set_environments([:development, :production])
 
     config.to_prepare do
