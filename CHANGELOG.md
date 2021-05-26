@@ -2,6 +2,10 @@
 
 
 
+## 40.0.1 (26/5/2021)
+[#119] Suppression version nginx
+
+
 ## 40.0.0 (26/5/2021)
 [#118] securite
 
