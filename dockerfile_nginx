@@ -2,7 +2,8 @@ FROM nginx:1.10.3
 
 RUN apt-get update && \
     apt-get -y install fail2ban logrotate cron && \
-    apt-get -y install vim telnet
+    apt-get -y install vim telnet && \
+    apt-get -y install nginx-extras
 
 ARG ENV_TYPE=${ENV_TYPE:-production}
 ARG NGINX_ERRORLOG=/var/log/nginx/ara_nginx.error.log
@@ -23,7 +24,10 @@ RUN echo "[ssh]\nenabled = false\n\n[nginx-req-limit]\nenabled = true\nfilter = 
     echo "[Definition]\nfailregex = ^ \[error\] \d+#\d+: \*\d+ user \"\S+\":? (password mismatch|was not found in \".*\"), client: <HOST>, server: \S+, request: \"\S+ \S+ HTTP/\d+\.\d+\", host: \"\S+\"\s*\$\nignoreregex =" >/etc/fail2ban/filter.d/nginx-http-auth.conf; \
     echo "[Definition]\nfailregex = limiting connections by zone.*client: <HOST>"  >/etc/fail2ban/filter.d/nginx-conn-limit.conf;
 
-#Pour logrotate sous docker
+# Suppression de la version de NginX
+RUN sed -i.bak 's/# server_tokens off;/server_tokens off;\n\tmore_set_headers "Server:";/' /etc/nginx/nginx.conf;
+
+# Pour logrotate sous docker
 RUN echo -e '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 
 CMD service cron start; \
