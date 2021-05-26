@@ -7,6 +7,7 @@ if Rails.env.test?
 else
   Rails.application.config.session_store :redis_session_store, {
     key: 'clara_actual_session',
+    secure: Rails.env.production?,
     redis: {
       expire_after: 120.minutes,  # cookie expiration
       ttl: 120.minutes,           # Redis expiration, defaults to 'expire_after'
