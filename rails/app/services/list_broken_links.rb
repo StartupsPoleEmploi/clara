@@ -32,6 +32,9 @@ class ListBrokenLinks
       rescue Timeout::Error
         ap "#{timestamp}, #{ix}, #{e} timedout"
         res = {url: e, code: 408}
+      rescue Exception
+        ap "#{timestamp}, #{ix}, #{e} has an unknown bug"
+        res = {url: e, code: 520}
       end
       res
     end

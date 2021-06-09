@@ -2,6 +2,10 @@
 
 
 
+## 40.0.2 (26/5/2021)
+[#120] Debug suppression de lien
+
+
 ## 40.0.1 (26/5/2021)
 [#119] Suppression version nginx
 
