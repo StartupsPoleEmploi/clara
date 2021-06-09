@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 40.0.2 (26/5/2021)
 [#120] Debug suppression de lien
 
