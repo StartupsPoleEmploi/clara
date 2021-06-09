@@ -119,11 +119,10 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    administrate (0.13.0)
-      actionpack (>= 4.2)
-      actionview (>= 4.2)
-      activerecord (>= 4.2)
-      autoprefixer-rails (>= 6.0)
+    administrate (0.16.0)
+      actionpack (>= 5.0)
+      actionview (>= 5.0)
+      activerecord (>= 5.0)
       datetime_picker_rails (~> 0.0.7)
       jquery-rails (>= 4.0)
       kaminari (>= 1.0)
@@ -140,8 +139,8 @@ GEM
     argon2 (2.0.2)
       ffi (~> 1.9)
       ffi-compiler (>= 0.1)
-    autoprefixer-rails (10.0.0.2)
-      execjs
+    autoprefixer-rails (10.2.5.1)
+      execjs (> 0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     binding_of_caller (0.8.0)
@@ -213,7 +212,7 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     eventmachine (1.2.7)
-    execjs (2.7.0)
+    execjs (2.8.1)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -221,7 +220,7 @@ GEM
       railties (>= 5.0.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
-    ffi (1.13.1)
+    ffi (1.15.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -582,7 +581,7 @@ DEPENDENCIES
   active_storage_validations
   active_type
   activerecord-session_store (= 2.0.0)
-  administrate (= 0.13.0)
+  administrate (= 0.16.0)
   administrate-field-active_storage
   administrate-field-ckeditor!
   administrate_exportable!

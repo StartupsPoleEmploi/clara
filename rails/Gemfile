@@ -54,7 +54,7 @@ gem 'lograge'
 
 # Admin
 gem "paper_trail", "11.1.0"
-gem "administrate", "0.13.0"
+gem "administrate", "0.16.0"
 
 gem "administrate-field-ckeditor", github: 'bdavidxyz/administrate-field-ckeditor'
 
