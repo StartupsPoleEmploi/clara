@@ -32,7 +32,6 @@ class Rule < ApplicationRecord
 
   has_many :aids
   has_many :contract_type
-  has_many :custom_rule_checks, dependent: :delete_all
 
 
   validates :name, uniqueness: true, format: { with: /\A[A-Za-z_0-9-]+\z/, message: "Seules les lettres minuscules et majuscules sans accent, le tiret bas et haut,  et les chiffres sont autorisés" }
