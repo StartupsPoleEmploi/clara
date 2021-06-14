@@ -20,7 +20,7 @@
   <div>
     <%= link_to(
       "Créer un filtre",
-      [:new, namespace, page.resource_path],
+      [:new, namespace.to_sym, page.resource_path.to_sym],
       class: "button",
     ) if valid_action?(:new) && show_action?(:new, new_resource) %>
   </div>

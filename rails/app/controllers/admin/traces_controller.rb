@@ -17,7 +17,7 @@ module Admin
     # end
 
     before_action :require_superadmin
-    
+  
     
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information

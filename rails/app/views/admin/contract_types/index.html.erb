@@ -33,7 +33,7 @@
           "helpers.contract_type.creation",
           name: page.resource_name.titleize.downcase
         ),
-        [:new, namespace, page.resource_path],
+        [:new, namespace.to_sym, page.resource_path.to_sym],
         class: "button js-create-contract-type",
       ) if valid_action?(:new) && show_action?(:new, new_resource) %>
     </div> 

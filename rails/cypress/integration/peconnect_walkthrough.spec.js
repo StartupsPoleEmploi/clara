@@ -20,7 +20,6 @@ context("PEconnect", () => {
 
     it("Je clique sur démarrer sur la home, le formulaire simple démarre", function() {
       cy.get('#start_wizard_form1').click()
-      cy.get('#start-clara-peconnect').should('not.be.visible')
       cy.location().should((loc) => {expect(loc.pathname).to.eq('/inscription_questions/new')})
     })
   })
