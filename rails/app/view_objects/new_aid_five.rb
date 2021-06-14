@@ -16,12 +16,12 @@ class NewAidFive < NewAidStep
     res    
   end
 
-  def big_message(current_user_email)
+  def big_message(current_user_email, current_user_role)
     if status_published?
       "Cette aide est actuellement en ligne."
     elsif status_archived?
       "L'aide a été archivée."
-    elsif publishable?(current_user_email)
+    elsif publishable?(current_user_email, current_user_role)
       "L'aide est prête à être publiée."
     elsif _all_stages_ok?
       "L'aide a toutes les informations requises."
@@ -30,8 +30,12 @@ class NewAidFive < NewAidStep
     end
   end
 
-  def publishable?(current_user_email)
-    !status_published? && _all_stages_ok? && @whodunnit != current_user_email && status_waiting_for?
+  def publishable?(current_user_email, current_user_role)
+    if current_user_role == "superadmin"
+      !status_published?
+    else
+      !status_published? && _all_stages_ok? && @whodunnit != current_user_email && status_waiting_for?
+    end
   end
 
   def status_correct?
@@ -54,14 +58,14 @@ class NewAidFive < NewAidStep
     stage_1_ok? && stage_2_ok? && stage_3_ok? && stage_4_ok?
   end
 
-  def small_message(current_user_email)
+  def small_message(current_user_email, current_user_role)
     if status_published?
       "Vous pouvez éventuellement l'archiver pour la retirer du site web."
     elsif status_archived? && _all_stages_ok?
       "Vous pouvez la publier, attention il n'y aura pas de relecture requise."
     elsif status_archived? && !_all_stages_ok?
       "Vous pourrez la publier à nouveau, une fois que les champs obligatoires auront été remplis."
-    elsif publishable?(current_user_email)
+    elsif publishable?(current_user_email, current_user_role)
       "Veuillez relire attentivement le contenu avant publication."
     elsif _all_stages_ok?
       "Elle sera publiée sur le site après relecture par un tiers."
