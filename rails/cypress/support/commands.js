@@ -34,6 +34,11 @@ Cypress.Commands.add('connect_as_contributeur', () => {
   cy.request('POST', '/session', { email: 'contributeur1@clara.com', password: 'contributeur1' })
 });
 
+Cypress.Commands.add('connect_as_relecteur', () => {
+  cy.request('POST', '/session', { email: 'relecteur1@clara.com', password: 'relecteur1' })
+});
+
+
 Cypress.Commands.add(
   'selectNth',
   { prevSubject: 'element' },

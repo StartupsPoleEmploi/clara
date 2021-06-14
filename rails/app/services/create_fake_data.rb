@@ -2,6 +2,7 @@ class CreateFakeData
 
   def call
     User.create(email: "contributeur1@clara.com", password: "contributeur1", role: "contributeur")
+    User.create(email: "relecteur1@clara.com", password: "relecteur1", role: "relecteur")
     User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
 
     Filter.create!(name: "Se déplacer")
