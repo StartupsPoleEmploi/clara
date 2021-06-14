@@ -153,7 +153,7 @@ context("Superadmin : Création et publication d'une aide", () => {
         cy.get('.c-apprule-button.is-validation').click()
 
         // toute la france
-        cy.get('input#tout').click() 
+        cy.get('input#domtom_seulement').click() 
 
 
         // when
