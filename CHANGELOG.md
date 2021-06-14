@@ -2,11 +2,15 @@
 
 
 
-## 40.0.3 (10/8/2021)
+## 40.0.4 (14/6/2021)
+[#122] Erreur 500 modification backoffice d'une aide
+
+
+## 40.0.3 (10/6/2021)
 [#121] Rails 6.1.3.2
 
 
-## 40.0.2 (9/8/2021)
+## 40.0.2 (9/6/2021)
 [#120] Debug suppression de lien
 
 

@@ -179,6 +179,28 @@ context("Administrateur : Création et publication d'une aide", () => {
       })
     })
 
+    describe("Il modifie l'étape 4", () => {
+      before(() => {
+        cy.visit('/admin/aid_creation/new_aid_stage_4?modify=true&slug=erasmus42')
+      })
+      it("On peut modifier une règle composite", function() {
+        //given
+        cy.get('.js-and:last').click()
+        cy.get('select#rule_variable_id').select('v_category')
+        cy.get('select#rule_operator_kind').select('equal')
+        cy.get('select#rule_value_eligible_selectible').select('cat_12345')
+        cy.get('.c-apprule-button.is-validation').click()
+
+        cy.get('input#tout_sauf_domtom').click() 
+
+        // when
+        cy.get('#record_root_rule').click()
+
+        //then
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
+      })
+    })
+
 
   })
 
