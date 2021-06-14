@@ -186,7 +186,9 @@ context("Superadmin : Création et publication d'une aide", () => {
         cy.get('select#rule_value_eligible_selectible').select('cat_12345')
         cy.get('.c-apprule-button.is-validation').click()
 
-        cy.get('input#tout_sauf_domtom').click() 
+        cy.get('input#tout_sauf').click() 
+        cy.get('.c-geoselect.c-geoselect--region .selectize-input').click() 
+        cy.get('.c-geoselect.c-geoselect--region .selectize-dropdown-content .option.active').click() 
 
         // when
         cy.get('#record_root_rule').click()
