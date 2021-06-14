@@ -2,6 +2,10 @@
 
 
 
+## 40.1.0 (14/6/2021)
+[#123] Superadmin et publication
+
+
 ## 40.0.4 (14/6/2021)
 [#122] Erreur 500 modification backoffice d'une aide
 

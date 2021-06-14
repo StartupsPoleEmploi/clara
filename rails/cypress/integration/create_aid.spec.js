@@ -1,4 +1,4 @@
-context("Administrateur : Création et publication d'une aide", () => {
+context("Superadmin : Création et publication d'une aide", () => {
 
   before(() => {
     cy.request('/cypress_rails_reset_state')
@@ -153,7 +153,7 @@ context("Administrateur : Création et publication d'une aide", () => {
         cy.get('.c-apprule-button.is-validation').click()
 
         // toute la france
-        cy.get('input#tout').click() 
+        cy.get('input#domtom_seulement').click() 
 
 
         // when
@@ -172,11 +172,6 @@ context("Administrateur : Création et publication d'une aide", () => {
         cy.get('.stage3-is-ok-true').should('exist')
         cy.get('.stage4-is-ok-true').should('exist')
       })
-      it("Le créateur demande la relecture", function() {
-        cy.get('.js-askforreread').click() 
-        cy.get('.flash-notice').contains("L'aide a été demandée pour relecture.")
-        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
-      })
     })
 
     describe("Il modifie l'étape 4", () => {
@@ -191,7 +186,9 @@ context("Administrateur : Création et publication d'une aide", () => {
         cy.get('select#rule_value_eligible_selectible').select('cat_12345')
         cy.get('.c-apprule-button.is-validation').click()
 
-        cy.get('input#tout_sauf_domtom').click() 
+        cy.get('input#tout_sauf').click() 
+        cy.get('.c-geoselect.c-geoselect--region .selectize-input').click() 
+        cy.get('.c-geoselect.c-geoselect--region .selectize-dropdown-content .option.active').click() 
 
         // when
         cy.get('#record_root_rule').click()
@@ -200,25 +197,14 @@ context("Administrateur : Création et publication d'une aide", () => {
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
       })
     })
-
-
-  })
-
-  describe("Publication d'une aide", () => {
-    before(() => {
-      cy.connect_as_contributeur()
-    })
-    describe("Un contributeur va à l'étape 5 d'une aide nouvellement créé par quelqu'un d'autre que lui", () => {
-      before(() => {
-        cy.visit('/admin/aid_creation/new_aid_stage_5?locale=fr&slug=erasmus42')
-      })
-      it("Le contributeur peut publier l'aide", function() {
+    describe("Il peut publier l'étape 4", () => {
+      it("Il peut publier l'aide", function() {
         cy.get('.js-publishonsite').click() 
         cy.get('.flash-notice').contains("L'aide va être publiée sur le site web")
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       })
-
     })
+
   })
 
 })
