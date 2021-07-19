@@ -33,7 +33,7 @@ By default, it renders:
   
   <%= csrf_meta_tags %>
 </head>
-<body data-path="<%= GetCurrentPathService.new(request).call %>" data-locale="<%= I18n.locale %>">
+<body data-path="<%= GetCurrentPathService.new(request).call %>" data-locale="<%= I18n.locale %>" data-env="<%= Rails.env %>">
   <%= render "icons" %>
 
   <div class="app-container">
@@ -48,5 +48,6 @@ By default, it renders:
   <%= render "javascript" %>
   
   <%= yield :javascript_includes %>
+
 </body>
 </html>

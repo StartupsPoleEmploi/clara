@@ -2,7 +2,7 @@
 <%- is_modifying = params[:modify] == "true"  %>
 <%- verb = is_modifying ? "Modifier" : "Créer" %>
 
-<section class="c-newaid c-newaid--stage4 c-rulecreation">
+<section class="c-newaid c-newaid--stage4 c-rulecreation disable-crsf-header">
   <% if !is_modifying  %>
     <%= link_to "‹ Retour à l'étape 3", admin_aid_creation_new_aid_stage_3_path(slug: params[:slug]), class: "c-newaid-back2" %>
   <% end %>

@@ -2,6 +2,10 @@
 
 
 
+## 40.1.1 (19/7/2021)
+[#124] Fix sécurité : gem addressable
+
+
 ## 40.1.0 (14/6/2021)
 [#123] Superadmin et publication
 

@@ -98,14 +98,22 @@ jQuery.fn.extend({
     }
 })(window.jQuery);
 
+
 (function() {
   if ($) {
     var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
 
-    $.ajaxSetup( {
-      beforeSend: function ( xhr ) {
-        xhr.setRequestHeader( 'X-CSRF-Token', token );
-      }
-    });      
+    var enable_crsf_header = $('body').data('env') === 'test' && $('.disable-crsf-header').length === 0
+
+    if (enable_crsf_header) {
+      console.log('enable_crsf_header')
+      $.ajaxSetup( {
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader( 'X-CSRF-Token', token );
+        }
+      });      
+    } else {
+      console.log('enable_crsf_header : no')
+    }
   }
 })();
