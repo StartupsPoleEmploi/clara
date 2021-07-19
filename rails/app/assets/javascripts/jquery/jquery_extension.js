@@ -99,3 +99,21 @@ jQuery.fn.extend({
 })(window.jQuery);
 
 
+(function() {
+  if ($) {
+    var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
+
+    var enable_crsf_protection = $('body').data('env') === 'test' && $('.disable-crsf-wrapper').length === 0
+
+    if (enable_crsf_protection) {
+      console.log('enable_crsf_protection')
+      $.ajaxSetup( {
+        beforeSend: function ( xhr ) {
+          xhr.setRequestHeader( 'X-CSRF-Token', token );
+        }
+      });      
+    } else {
+      console.log('enable_crsf_protection : no')
+    }
+  }
+})();
