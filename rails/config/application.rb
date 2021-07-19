@@ -37,15 +37,12 @@ module Mae
       Administrate::ApplicationController.helper Mae::Application.helpers
     end
 
-    if ENV['R7_MODE'] == 'true'
-      ap '------------DISABLING CORS (via Rack::Cors)-------------------'
-      config.middleware.insert_before 0, Rack::Cors do
-        allow do
-          origins '*'
-          resource '*', headers: :any, methods: :any
-        end
-      end
-    end
+    # config.middleware.insert_before 0, Rack::Cors do
+    #   allow do
+    #     origins 'http://localhost:3000', /https*:\/\/.*?pole-emploi\.(fr)\/*/
+    #     resource '*', headers: :any, methods: [:get]
+    #   end
+    # end
 
   end
 end
