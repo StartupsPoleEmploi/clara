@@ -1,15 +1,9 @@
 class CreateTownRule
 
+  # Town  { "44109" => "Nantes 44"}
+  # UUID  "dpygzckqoerjsfuv"
+  # operator_kind  "not_equal"
   def call(town, uuid, operator_kind)
-    p '- - - - - - - - - - - - - - town- - - - - - - - - - - - - - - -' 
-    ap town
-    p ''
-    p '- - - - - - - - - - - - - - uuid- - - - - - - - - - - - - - - -' 
-    ap uuid
-    p ''
-    p '- - - - - - - - - - - - - - operator_kind- - - - - - - - - - - - - - - -' 
-    ap operator_kind
-    p ''
     citycode = town.keys[0]
     cityname = town.values[0]
     prefix = operator_kind.include?("not") ? "Ne pas résider" : "Résider"  
