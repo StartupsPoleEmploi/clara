@@ -1,11 +1,14 @@
 class ListBrokenLinks
 
-  def call
-    f = Faraday.new do |faraday|
+  def call(faraday_stub=nil)
+
+    f = faraday_stub || Faraday.new do |faraday|
       faraday.ssl[:verify] = false
     end
-    l = ListAidLinks.new.call
-    a = l.reduce([]){|memo, e| memo.concat(e[:links])}
+    actual_timeout = Rails.env.test? ? 0 : 7
+
+    aid_links = ListAidLinks.new.call
+    a = aid_links.reduce([]){|memo, e| memo.concat(e[:links])}
     uniq_links = a.uniq
     links_not_to_check = uniq_links.filter do |e| 
       is_front_connection = e.start_with?('https://candidat.pole-emploi.fr') && e.size > 'https://candidat.pole-emploi.fr/'.size 
@@ -19,7 +22,7 @@ class ListBrokenLinks
       res = nil
       timestamp = DateTime.now.strftime('%H:%M:%S')
       begin
-        Timeout::timeout(7) do
+        Timeout::timeout(actual_timeout) do
           faraday_answer = f.head(e)
           ap "#{timestamp}, #{ix}, #{faraday_answer.status}, #{e}"
           if faraday_answer.status == 200
@@ -32,7 +35,7 @@ class ListBrokenLinks
       rescue Timeout::Error
         ap "#{timestamp}, #{ix}, #{e} timedout"
         res = {url: e, code: 408}
-      rescue Exception
+      rescue Exception => exx
         ap "#{timestamp}, #{ix}, #{e} has an unknown bug"
         res = {url: e, code: 520}
       end
@@ -41,10 +44,10 @@ class ListBrokenLinks
 
     broken_links = problematic_links.reject{|e| e == nil}
 
-    broken_links_with_aids = broken_links.map do |e|
-      aids_concerned = l.filter{|k| k[:links].include?(e[:url])}
-      e[:aids_slug] = aids_concerned.map{|y| y[:aid_slug]}
-      e
+    broken_links_with_aids = broken_links.map do |broken_link|
+      aids_concerned = aid_links.filter{|k| k[:links].include?(broken_link[:url])}
+      broken_link[:aids_slug] = aids_concerned.map{|aid_concerned| aid_concerned[:aid_slug]}
+      broken_link
     end
 
     broken_links_with_aids
