@@ -48,5 +48,15 @@ By default, it renders:
   <%= render "javascript" %>
   
   <%= yield :javascript_includes %>
+
+  <% if ENV['R7_MODE'] == 'true' %>
+    <script id="csrftoken"> 
+      // When running tests on CircleCI, X-CSRF-Token needs to be sent on each remote request
+      (function() {if ($) {var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );$.ajaxSetup( {beforeSend: function ( xhr ) {xhr.setRequestHeader( 'X-CSRF-Token', token );}});      }})();
+    </script>
+  <% end %>
+
+        
+
 </body>
 </html>
