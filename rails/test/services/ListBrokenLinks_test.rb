@@ -3,7 +3,7 @@ require "test_helper"
 class ListBrokenLinksTest < ActiveSupport::TestCase
   
 
-  test '.call creates a rule from Town, UUID, and operator_kind' do
+  test '.call is able to detect and track a redirection' do
     #given
     faraday_stub = double("faraday_stub")
     allow(faraday_stub).to receive(:head).with('http://example.com').and_return(OpenStruct.new(status: 301, env: OpenStruct.new(response_headers: {'location' => 'http://new_location'})))

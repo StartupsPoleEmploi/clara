@@ -103,17 +103,17 @@ jQuery.fn.extend({
   if ($) {
     var token = $( 'meta[name="csrf-token"]' ).attr( 'content' );
 
-    var enable_crsf_protection = $('body').data('env') === 'test' && $('.disable-crsf-wrapper').length === 0
+    var enable_crsf_header = $('body').data('env') === 'test' && $('.disable-crsf-header').length === 0
 
-    if (enable_crsf_protection) {
-      console.log('enable_crsf_protection')
+    if (enable_crsf_header) {
+      console.log('enable_crsf_header')
       $.ajaxSetup( {
         beforeSend: function ( xhr ) {
           xhr.setRequestHeader( 'X-CSRF-Token', token );
         }
       });      
     } else {
-      console.log('enable_crsf_protection : no')
+      console.log('enable_crsf_header : no')
     }
   }
 })();
