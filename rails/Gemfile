@@ -123,5 +123,4 @@ end
 # e2e tests with Cypress
 group :development, :test do
   gem 'cypress-rails'
-  gem 'rack-cors'
 end
