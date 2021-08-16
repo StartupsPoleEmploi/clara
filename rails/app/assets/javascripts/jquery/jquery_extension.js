@@ -106,7 +106,6 @@ jQuery.fn.extend({
     var enable_crsf_header = $('body').data('env') === 'test' && $('.disable-crsf-header').length === 0
 
     if (enable_crsf_header) {
-      console.log('enable_crsf_header')
       $.ajaxSetup( {
         beforeSend: function ( xhr ) {
           xhr.setRequestHeader( 'X-CSRF-Token', token );
