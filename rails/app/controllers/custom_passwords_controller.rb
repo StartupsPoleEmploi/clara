@@ -11,8 +11,6 @@ class CustomPasswordsController < Clearance::PasswordsController
   before_action :ensure_existing_user, only: [:edit, :update]
 
   def create
-    p '- - - - - - - - - - - - - - create- - - - - - - - - - - - - - - -' 
-    p ''
     if user = find_user_for_create
       user.forgot_password!
       deliver_email(user, request)
@@ -21,8 +19,6 @@ class CustomPasswordsController < Clearance::PasswordsController
   end
 
   def edit
-    p '- - - - - - - - - - - - - - edit- - - - - - - - - - - - - - - -' 
-    p ''
     @user = find_user_for_edit
 
     if params[:token]
@@ -34,14 +30,10 @@ class CustomPasswordsController < Clearance::PasswordsController
   end
 
   def new
-    p '- - - - - - - - - - - - - - new - - - - - - - - - - - - - - - -' 
-    p ''
     render template: 'custom_passwords/new'
   end
 
   def update
-    p '- - - - - - - - - - - - - - update- - - - - - - - - - - - - - - -' 
-    p ''
     @user = find_user_for_update
 
     password = password_reset_params
