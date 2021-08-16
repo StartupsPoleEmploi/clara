@@ -30,4 +30,21 @@ class ResetPasswordTest < ActionDispatch::IntegrationTest
     assert text_of('h1').include?("Consultez vos emails !")
   end
 
+  test "reset password : an admin can display a screen where changing password is possible" do
+    #given
+    #when
+    get new_custom_password_path
+    #then
+    assert text_of('h1').include?("Récupérer votre mot de passe")
+  end
+
+  test "edit password : an admin can ask to change its password" do
+    #given
+    user = User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
+    #when
+    get edit_custom_password_path(user.id)
+    #then
+    assert text_of('h1').include?("Nouveau mot de passe")
+  end
+
 end
