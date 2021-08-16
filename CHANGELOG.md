@@ -2,6 +2,10 @@
 
 
 
+## 40.1.3 (16/8/2021)
+[#126] google site verification (hardcoded)
+
+
 ## 40.1.2 (16/8/2021)
 [#125] google site verification
 
