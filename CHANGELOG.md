@@ -2,6 +2,10 @@
 
 
 
+## 40.1.2 (16/8/2021)
+[#125] google site verification
+
+
 ## 40.1.1 (19/7/2021)
 [#124] Fix sécurité : gem addressable
 
