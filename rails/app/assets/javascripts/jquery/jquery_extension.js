@@ -111,8 +111,6 @@ jQuery.fn.extend({
           xhr.setRequestHeader( 'X-CSRF-Token', token );
         }
       });      
-    } else {
-      console.log('enable_crsf_header : no')
     }
   }
 })();

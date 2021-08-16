@@ -6,9 +6,10 @@
 - is_result_page = view_service.result_page?
 - has_user = !!params[:for_id]
 - prime_url = request.scheme + '://' + request.host
+- google_site_verification = ENV['ARA_GOOGLE_SITE_VERIFICATION']
 
 %title= actual_title
-%meta{:name => 'google-site-verification', :content => "#{ENV['ARA_GOOGLE_SITE_VERIFICATION'] || 'neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q'}"}/
+%meta{:name => 'google-site-verification', :content => google_site_verification.present? ? google_site_verification : 'neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q'}/
 %meta{:name => "description", :content => "#{actual_description}"}/
 %meta{:content => "website", :property => "og:type", :class => "og-type"}/
 %meta{:content => image_url("clara_preview.png"), :property => "og:image", :class => "og-image"}/
@@ -20,3 +21,4 @@
 - if is_result_page && has_user
   %meta{:name => "robots", :content => "noindex"}/
   
+/ .present? ? google_site_verification || 'neOTrE-YKZ9LbgLlaX8UkYN6MJTPlWpeotPQqbrJ19Q'
