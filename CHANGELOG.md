@@ -2,6 +2,10 @@
 
 
 
+## 40.1.4 (16/8/2021)
+[#127] tests auto de la réinitialisation du mot de passe
+
+
 ## 40.1.3 (16/8/2021)
 [#126] google site verification (hardcoded)
 
