@@ -38,17 +38,24 @@ class ResetPasswordTest < ActionDispatch::IntegrationTest
     assert text_of('h1').include?("Récupérer votre mot de passe")
   end
 
-  # test "edit password : an admin can ask to change its password" do
-  #   #given
-  #   user = User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
-  #   p '- - - - - - - - - - - - - - user- - - - - - - - - - - - - - - -' 
-  #   ap user.id
-  #   p ''
-  #   #when
-  #   get edit_user_password_url(user.id) + '?token=22'
-  #   #then
-  #   ap Nokogiri::HTML(response.body).css('h1').text
-  #   # assert text_of('h1').include?("Nouveau mot de passe")
-  # end
+  test "edit password : an admin can ask to change its password" do
+    #given
+    user = User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
+    allow_any_instance_of(ClearanceFindByUserAndToken).to receive(:call).and_return(user)
+    #when
+    get edit_user_password_url(user.id)
+    #then
+    assert text_of('h1').include?("Nouveau mot de passe")
+  end
+
+  test "edit password : an admin can notice that password was changed" do
+    #given
+    user = User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
+    allow_any_instance_of(ClearanceFindByUserAndToken).to receive(:call).and_return(user)
+    #when
+    get edit_user_password_url(user.id) + '?token=22'
+    #then
+    assert_redirected_to edit_user_password_url
+  end
 
 end
