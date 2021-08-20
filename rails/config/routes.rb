@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     end
     resources :explicitations
     resources :conventions
-    resources :peids, only: [:index] do
+    resources :peids, only: [:index, :show] do
       get :export, on: :collection
     end
     resources :answers, only: [:index, :show, :destroy] do

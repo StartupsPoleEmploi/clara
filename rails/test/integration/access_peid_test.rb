@@ -81,16 +81,14 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
   ########################################################
   ############               READ           ##############
   ########################################################
-  test "Un superadmin ne peut pas lire un peid" do
+  test "Un superadmin peut lire un peid" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
     peid = Peid.create!(value: 'v')
+    get admin_peid_path(peid.id)
     #then
-    assert_raises NoMethodError do
-      #when
-      get admin_peid_path(peid.id)
-    end
+    assert_response :ok
   end
   
   test "Un relecteur ne peut pas lire un peid" do
@@ -99,7 +97,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises SecurityError do
       #when
       get admin_peid_path(peid.id)
     end
@@ -111,7 +109,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises SecurityError do
       #when
       get admin_peid_path(peid.id)
     end
@@ -120,7 +118,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
   ########################################################
   ############               EDIT             ############
   ########################################################
-  test "Un superadmin peut accéder à l'édition d'un peid" do
+  test "Un superadmin ne peut pas accéder à l'édition d'un peid" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
@@ -138,7 +136,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises SecurityError do
       #when
       get admin_peid_path(peid.id)
     end
@@ -161,13 +159,13 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
   ########################################################
   ############               UPDATE             ##########
   ########################################################
-  test "Un superadmin peut éditer un peid" do
+  test "Un superadmin ne peut pas éditer un peid" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       put admin_peid_path(peid.id)
     end
@@ -179,7 +177,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     post session_url, params: { session: { email: relecteur.email, password: relecteur.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       put admin_peid_path(peid.id)
     end
@@ -191,7 +189,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     post session_url, params: { session: { email: contributeur.email, password: contributeur.password }}
     peid = Peid.create!(value: 'v')
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       put admin_peid_path(peid.id)
     end
@@ -200,14 +198,14 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
   ########################################################
   ############               DELETE             ##########
   ########################################################
-  test "Un superadmin peut supprimer un peid" do
+  test "Un superadmin ne peut pas supprimer un peid" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
     peid = Peid.create!(value: 'v')
     count_before = Peid.count
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       delete admin_peid_path(peid.id)
     end
@@ -221,7 +219,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     peid = Peid.create!(value: 'v')
     count_before = Peid.count
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       delete admin_peid_path(peid.id)
     end
@@ -235,7 +233,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
     peid = Peid.create!(value: 'v')
     count_before = Peid.count
     #then
-    assert_raises NoMethodError do
+    assert_raises ActionController::RoutingError do
       #when
       delete admin_peid_path(peid.id)
     end
