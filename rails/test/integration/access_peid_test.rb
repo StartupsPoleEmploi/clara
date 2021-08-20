@@ -198,7 +198,7 @@ class AccessPeidTest < ActionDispatch::IntegrationTest
   ########################################################
   ############               DELETE             ##########
   ########################################################
-  test "Un superadmin peut supprimer un peid" do
+  test "Un superadmin ne peut pas supprimer un peid" do
     #given
     superadmin = User.create!(role: "superadmin", email:"a@b.c", password: "p")
     post session_url, params: { session: { email: superadmin.email, password: superadmin.password }}
