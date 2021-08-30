@@ -67,4 +67,17 @@ class AdminPagesTest < ActionDispatch::IntegrationTest
     assert_not_equal(superadmin.encrypted_password, modified_superadmin.encrypted_password)
   end
 
+  test "Destroy all existing answers" do
+    #given
+    connect_as_superadmin
+    Answer.new.tap(&:save!)
+    Answer.new.tap(&:save!)
+    assert_equal(2,  Answer.count)
+    #when
+    post admin_post_reset_answers_path
+    #then
+    assert_response :success
+    assert_equal(0,  Answer.count)
+  end
+
 end
