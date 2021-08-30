@@ -174,7 +174,7 @@ class NewAidFiveViewObjectTest < ActiveSupport::TestCase
     #when
     res = sut.stage_3_comment
     #then
-    assert_equal("Ni le <strong>résumé</strong>, ni les <strong>filtres</strong> n'ont été renseignés, mais ils ne sont pas obligatoires.", res)
+    assert_equal("Le <strong>résumé</strong> a été renseigné, mais pas le/les filtre(s). Ces champs ne sont pas obligatoires.", res)
   end
  
   test ".stage_3_comment : no descr" do
