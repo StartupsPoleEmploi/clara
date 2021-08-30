@@ -26,20 +26,20 @@
       <th>Aides concernées</th>
     </tr>
 
-    <% local_assigns[:broken_links].each do |e|   %>
+    <% local_assigns[:broken_links].each_with_index do |e, idx|   %>
       <tr>
-        <td>
+        <td class="c-relink-url-<%= idx %>">
           <%= link_to  e[:url], e[:url], target: '_blank'  %>
         </td>
-        <td style="max-width: 20px">
+        <td style="max-width: 20px" class="c-relink-code-<%= idx %>">
           <%= e[:code]  %>
         </td>
-        <td>
+        <td class="c-relink-newurl-<%= idx %>">
           <%= e[:new_url]  %>
         </td>
         <td>
-          <% (e.try(:[], :aids_slug) ? e[:aids_slug] : []).each do |aid_slug|   %>
-            <div>
+          <% (e.try(:[], :aids_slug) ? e[:aids_slug] : []).each_with_index do |aid_slug, ix|   %>
+            <div class="c-relink-slug-<%= idx %>-<%= ix %>">
               <%= link_to "/admin/aids/#{aid_slug}", "/admin/aids/#{aid_slug}", target: '_blank'  %>
             </div>
           <% end %>

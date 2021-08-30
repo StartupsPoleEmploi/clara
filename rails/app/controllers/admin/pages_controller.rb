@@ -29,10 +29,10 @@ module Admin
 
      last_time = last_broken ? Broken.last.created_at.strftime('%d %b %Y') : ''
 
-      render locals: {
-        broken_links: res.sort_by { |e| e[:aids_slug].size  },
-        last_time: last_time
-      }
+     render locals: {
+       broken_links: res.sort_by { |e| e[:aids_slug].size  },
+       last_time: last_time
+     }
       
     end
 
@@ -121,10 +121,6 @@ module Admin
       count = ActiveRecord::SessionStore::Session.count
       Mae::Application.load_tasks
       Rake::Task["db:sessions:clear"].invoke
-
-      # Rake::Task['db:schema:cache:clear'].invoke
-      # ap ActiveRecord::SessionStore::Session.count
-      # ActiveRecord::SessionStore::Session.delete_all
       render json: {status: "ok", count: count}
     end
 

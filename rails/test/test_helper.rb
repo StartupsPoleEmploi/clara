@@ -20,6 +20,11 @@ require 'mocha/minitest'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
+def connect_as_superadmin
+  user = User.create(email: "superadmin@clara.com", password: "bar", role: "superadmin")
+  post session_url, params: { session: { email: user.email, password: user.password }}
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
