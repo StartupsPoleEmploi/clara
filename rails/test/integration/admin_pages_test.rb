@@ -53,4 +53,18 @@ class AdminPagesTest < ActionDispatch::IntegrationTest
     assert_equal "L'enregistrement des réponses est actuellement activé", text_of('.c-get-switch-answer-text').strip
   end
 
+  test "Reinit password for existing user" do
+    #given
+    connect_as_superadmin
+    superadmin = User.last
+    #when
+    post admin_post_resetpwd_path({email: 'superadmin@clara.com', new_pwd: 'FooBar99+'})
+    #then
+    assert_response :success
+    json_response = JSON.parse(response.body)
+    modified_superadmin = User.find(superadmin.id)
+    assert_equal({"status"=>"ok"}, json_response)
+    assert_not_equal(superadmin.encrypted_password, modified_superadmin.encrypted_password)
+  end
+
 end
