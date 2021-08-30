@@ -29,10 +29,10 @@ module Admin
 
      last_time = last_broken ? Broken.last.created_at.strftime('%d %b %Y') : ''
 
-      render locals: {
-        broken_links: res.sort_by { |e| e[:aids_slug].size  },
-        last_time: last_time
-      }
+     render locals: {
+       broken_links: res.sort_by { |e| e[:aids_slug].size  },
+       last_time: last_time
+     }
       
     end
 
