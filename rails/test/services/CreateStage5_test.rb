@@ -2,7 +2,7 @@ require "test_helper"
     
 class CreateStage5Test < ActiveSupport::TestCase
 
-  test ".call, nominal" do
+  test ".call, archived" do
     #given
     slug = 'fake_aid'
     _create_aid_with_name(slug)
@@ -13,6 +13,19 @@ class CreateStage5Test < ActiveSupport::TestCase
     assert_equal("L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes.", res)
     aid = Aid.find_by(slug: slug)
     assert_not_nil aid.archived_at
+  end
+
+  test ".call, published" do
+    #given
+    slug = 'fake_aid'
+    _create_aid_with_name(slug)
+    action_asked = 'publish'
+    #when
+    res = CreateStage5.new.call(slug, action_asked)
+    #then
+    assert_equal("<strong>L'aide va être publiée sur le site web ! </strong><br> Cela peut prendre quelques secondes...", res)
+    aid = Aid.find_by(slug: slug)
+    assert_nil aid.archived_at
   end
 
   def _create_aid_with_name(the_name)
