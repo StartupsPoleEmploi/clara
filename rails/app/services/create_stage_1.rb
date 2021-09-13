@@ -1,6 +1,6 @@
 class CreateStage1
 
-  def call(slug, new_attributes, modify)
+  def call(slug, new_attributes)
     result = 
     notice_msg = ""
     new_ordre_affichage = new_attributes[:ordre_affichage] || 99 

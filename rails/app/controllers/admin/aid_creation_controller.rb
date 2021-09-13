@@ -24,7 +24,7 @@ module Admin
       new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
       modify = _hidden(:modify)
 
-      is_successfully_saved, aid, notice_msg = CreateStage1.new.call(slug, new_attributes, modify)
+      is_successfully_saved, aid, notice_msg = CreateStage1.new.call(slug, new_attributes)
 
       if is_successfully_saved
         redirect_to(
