@@ -20,36 +20,15 @@ module Admin
     end
 
     def create_stage_1
-      notice_msg = ""
-      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
-      new_ordre_affichage = new_attributes[:ordre_affichage] || 99 
-      new_attributes[:ordre_affichage] = new_ordre_affichage
       slug = _hidden(:slug)
-      if !slug.blank?
-        aid = Aid.find_by(slug: slug)
-        aid.assign_attributes(new_attributes)
-      else
-        aid = Aid.new(new_attributes)
-      end
+      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
+      modify = _hidden(:modify)
 
-      was_new = aid.id == nil
+      [is_successfully_saved, aid, notice_msg] = CreateStage1.new.call(slug, new_attributes, modify)
 
-      if aid.save
-        # Hack to consider it as a "draft"
-        if was_new
-          aid.archived_at = aid.created_at
-        end
-        # end of hack
-        aid.update_status;
-        if slug.blank?
-          notice_msg = "L'aide a bien été enregistrée en tant que brouillon."
-        elsif aid.status != "Publiée"
-          notice_msg = "Les modifications ont bien été enregistrées."
-        elsif aid.status == "Publiée"
-          notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
-        end
+      if is_successfully_saved
         redirect_to(
-          admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
+          admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: modify),
           notice: notice_msg
         )
       else
