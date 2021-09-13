@@ -12,8 +12,11 @@ class PeConnectExtractionTest < ActiveSupport::TestCase
     tokens = {access_token: 'an_access_token', id_token: 'an_id_token'}
     expect_any_instance_of(PeConnectToken).to receive(:call).with(base_url, code).and_return(tokens)
 
-    pe_connect = double
-    expect(PeConnectService).to receive(:new).and_return(pe_connect)
+    allow_any_instance_of(PeConnectService).to receive(:call).and_return('called')
+
+
+    # pe_connect = double
+    # expect(PeConnectService).to receive(:new).and_return(pe_connect)
     # expect(pe_connect).to receive(:call).with(_user_info, 'a_valid_token').and_return('an_info')
     # expect(pe_connect).to receive(:call).with(_statut, 'a_valid_token').and_return('a_statut')
     # expect(pe_connect).to receive(:call).with(_birth, 'a_valid_token').and_return('a_birth')
@@ -24,7 +27,8 @@ class PeConnectExtractionTest < ActiveSupport::TestCase
     #when
     res = PeConnectExtraction.new.call(session, base_url, code, fake)
     #then
-    assert_equal('foo', res)
+    assert_equal({:id_token=>"an_id_token"}, session)
+    assert_equal({:info=>"called", :statut=>"called", :birth=>"called", :formation=>"called", :coord=>"called", :alloc=>"called"}, res)
   end
 
 
