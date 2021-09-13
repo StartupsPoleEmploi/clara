@@ -66,8 +66,8 @@ class CreateStage5Test < ActiveSupport::TestCase
   end
 
   def _create_aid_with_name(the_name)
-    c = ContractType.new(name: the_name, ordre_affichage: 21).tap(&:save!)
-    Aid.new("name"=>"fake_aid", 
+    c = ContractType.new(name: 'fake_contract', ordre_affichage: 21).tap(&:save!)
+    Aid.new("name"=>the_name, 
         "what"=>"<p>https://example3.com</p><p>https://example4.com</p>\r\n", 
         "additionnal_conditions"=>"<p>conditions</p>\r\n", 
         "how_much"=>"<p>contenu</p>\r\n", 
