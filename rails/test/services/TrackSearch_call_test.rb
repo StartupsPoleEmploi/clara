@@ -5,21 +5,20 @@ class TrackSearchCallTest < ActiveSupport::TestCase
 
   test ".call nominal" do
     #given
-    ENV.expects(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").at_least_once.returns("ccc")
-    ENV.expects(:[]).with("ARA_GOOGLE_ANALYTICS_ID").returns("iii")
-    URI.expects(:parse).with("ccc").returns("uuu")
-    SecureRandom.expects(:hex).returns("rrr")
-    Net::HTTP
-    .expects(:post_form)
-    .with("uuu", 
-      {"v" => "1", 
-        "tid" => "iii", 
-        "uid" => "rrr", 
-        "t" => "event", 
-        "ec" => "aids", 
-        "ea" => "search", 
-        "el" => "my search"})
-    .returns("call_ok")
+    expect(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").twice.and_return("ccc")
+    expect(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_ID").and_return("iii")
+    expect(URI).to receive(:parse).with("ccc").and_return("uuu")
+    expect(SecureRandom).to receive(:hex).and_return("rrr")
+    expect(Net::HTTP).to receive(:post_form)
+      .with("uuu", 
+        {"v" => "1", 
+          "tid" => "iii", 
+          "uid" => "rrr", 
+          "t" => "event", 
+          "ec" => "aids", 
+          "ea" => "search", 
+          "el" => "my search"})
+      .and_return("call_ok")
 
     #when
     res = TrackSearch.new.call("my search")
@@ -46,7 +45,7 @@ class TrackSearchCallTest < ActiveSupport::TestCase
 
   test "tracking not called when ARA_GOOGLE_ANALYTICS_COLLECT is not defined" do
     #given
-    ENV.expects(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").once.returns(nil)
+    expect(ENV).to receive(:[]).with("ARA_GOOGLE_ANALYTICS_COLLECT").and_return(nil)
     #when
     res = TrackSearch.new.call("my search")
     #then
