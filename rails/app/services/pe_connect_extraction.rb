@@ -33,11 +33,6 @@ class PeConnectExtraction < PeConnectService
     res
   end
 
-  def to_hash_object(ruby_hash_text)
-    JSON.parse(ruby_hash_text).symbolize_keys
-  end
-
-
  end
 
 # res example
