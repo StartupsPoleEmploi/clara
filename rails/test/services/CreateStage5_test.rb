@@ -50,7 +50,19 @@ class CreateStage5Test < ActiveSupport::TestCase
     res = CreateStage5.new.call(slug, action_asked)
     #then
     assert_equal("L'aide a été conservée en tant que brouillon.", res)
-    aid = Aid.find_by(slug: slug)
+    assert_equal(1, Aid.count)
+  end
+
+  test ".call, discard" do
+    #given
+    slug = 'fake_aid'
+    _create_aid_with_name(slug)
+    action_asked = 'discard'
+    #when
+    res = CreateStage5.new.call(slug, action_asked)
+    #then
+    assert_equal("Le brouillon a été supprimé.", res)
+    assert_equal(0, Aid.count)
   end
 
   def _create_aid_with_name(the_name)
