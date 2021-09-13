@@ -41,6 +41,18 @@ class CreateStage5Test < ActiveSupport::TestCase
     assert aid.is_rereadable
   end
 
+  test ".call, keep" do
+    #given
+    slug = 'fake_aid'
+    _create_aid_with_name(slug)
+    action_asked = 'keep'
+    #when
+    res = CreateStage5.new.call(slug, action_asked)
+    #then
+    assert_equal("L'aide a été conservée en tant que brouillon.", res)
+    aid = Aid.find_by(slug: slug)
+  end
+
   def _create_aid_with_name(the_name)
     c = ContractType.new(name: the_name, ordre_affichage: 21).tap(&:save!)
     Aid.new("name"=>"fake_aid", 
