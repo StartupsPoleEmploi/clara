@@ -11,6 +11,8 @@ class CreateStage5Test < ActiveSupport::TestCase
     res = CreateStage5.new.call(slug, action_asked)
     #then
     assert_equal("L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes.", res)
+    aid = Aid.find_by(slug: slug)
+    assert_not_nil aid.archived_at
   end
 
   def _create_aid_with_name(the_name)
