@@ -1,4 +1,4 @@
-class PeConnectExtraction < PeConnectService
+class PeConnectExtraction
 
   def call(session, base_url, code, fake)
     res = {}
