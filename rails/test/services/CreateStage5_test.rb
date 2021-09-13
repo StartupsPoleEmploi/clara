@@ -28,6 +28,19 @@ class CreateStage5Test < ActiveSupport::TestCase
     assert_nil aid.archived_at
   end
 
+  test ".call, reread" do
+    #given
+    slug = 'fake_aid'
+    _create_aid_with_name(slug)
+    action_asked = 'reread'
+    #when
+    res = CreateStage5.new.call(slug, action_asked)
+    #then
+    assert_equal("L'aide a été demandée pour relecture.", res)
+    aid = Aid.find_by(slug: slug)
+    assert aid.is_rereadable
+  end
+
   def _create_aid_with_name(the_name)
     c = ContractType.new(name: the_name, ordre_affichage: 21).tap(&:save!)
     Aid.new("name"=>"fake_aid", 
