@@ -27,13 +27,13 @@ class RecallTest < ActionDispatch::IntegrationTest
     connect_as_superadmin
     recall_params = {
       aid_id: aid.id,
-      trigger_at: "14/09/2021",
+      trigger_at: "08/09/2021",
       hourmin: "07:30",
       email: "bdavidxyz@gmail.com"
     }
     job = double
-    expect(SendRecallJob).to receive(:set).and_return(job)
-    expect(job).to receive(:perform_later).with(instance_of(Integer), "http://www.example.com#{admin_recalls_path}")
+    expect(SendRecallJob).to receive(:set).with(wait_until: DateTime.new(2021,9,8,7,30,0)).and_return(job)
+    expect(job).to receive(:perform_later).with(instance_of(Integer), admin_recalls_url)
 
     #when
     post admin_recalls_path, params: {recall: recall_params}
