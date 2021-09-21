@@ -32,7 +32,6 @@ class ExtractGeoForAid
     elsif (kind == "region")
       res = rule["description"].split("la région ")[1]
     end
-    res
   end
 
   def _regions

@@ -1,4 +1,4 @@
-class PeConnectExtraction < PeConnectService
+class PeConnectExtraction
 
   def call(session, base_url, code, fake)
     res = {}
@@ -32,11 +32,6 @@ class PeConnectExtraction < PeConnectService
 
     res
   end
-
-  def to_hash_object(ruby_hash_text)
-    JSON.parse(ruby_hash_text).symbolize_keys
-  end
-
 
  end
 

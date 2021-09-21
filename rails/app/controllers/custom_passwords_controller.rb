@@ -109,18 +109,5 @@ class CustomPasswordsController < Clearance::PasswordsController
       default: t('flashes.failure_when_forbidden'))
   end
 
-  def flash_failure_after_update
-    flash.now[:notice] = translate(:blank_password,
-      scope: [:clearance, :controllers, :passwords],
-      default: t('flashes.failure_after_update'))
-  end
-
-  def url_after_create
-    sign_in_url
-  end
-
-  def url_after_update
-    Clearance.configuration.redirect_url
-  end
 end
 

@@ -20,36 +20,15 @@ module Admin
     end
 
     def create_stage_1
-      notice_msg = ""
-      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
-      new_ordre_affichage = new_attributes[:ordre_affichage] || 99 
-      new_attributes[:ordre_affichage] = new_ordre_affichage
       slug = _hidden(:slug)
-      if !slug.blank?
-        aid = Aid.find_by(slug: slug)
-        aid.assign_attributes(new_attributes)
-      else
-        aid = Aid.new(new_attributes)
-      end
+      new_attributes = params.require(:aid).permit(:source, :name, :contract_type_id, :ordre_affichage).to_h
+      modify = _hidden(:modify)
 
-      was_new = aid.id == nil
+      is_successfully_saved, aid, notice_msg = CreateStage1.new.call(slug, new_attributes)
 
-      if aid.save
-        # Hack to consider it as a "draft"
-        if was_new
-          aid.archived_at = aid.created_at
-        end
-        # end of hack
-        aid.update_status;
-        if slug.blank?
-          notice_msg = "L'aide a bien été enregistrée en tant que brouillon."
-        elsif aid.status != "Publiée"
-          notice_msg = "Les modifications ont bien été enregistrées."
-        elsif aid.status == "Publiée"
-          notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
-        end
+      if is_successfully_saved
         redirect_to(
-          admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: _hidden(:modify)),
+          admin_aid_creation_new_aid_stage_2_path(slug: aid.slug, modify: modify),
           notice: notice_msg
         )
       else
@@ -203,33 +182,8 @@ module Admin
     def create_stage_5
       slug = _hidden(:slug)
       action_asked = _hidden(:action_asked)
-      aid = Aid.find_by(slug: slug)
 
-      please_save_aid = true
-
-      notice_message = ""
-      if action_asked == "archive"
-        aid.archived_at = DateTime.now
-        notice_message = "L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes."
-      elsif action_asked == "publish"
-        aid.archived_at = nil
-        notice_message = "<strong>L'aide va être publiée sur le site web ! </strong><br> Cela peut prendre quelques secondes..."
-      elsif action_asked == "reread"
-        aid.is_rereadable = true
-        notice_message = "L'aide a été demandée pour relecture."
-      elsif action_asked == "keep"
-        notice_message = "L'aide a été conservée en tant que brouillon."
-      elsif action_asked == "discard"
-        please_save_aid = false
-        notice_message = "Le brouillon a été supprimé."
-      end
-
-      if please_save_aid
-        aid.save
-        aid.update_status
-      else
-        aid.destroy
-      end
+      notice_message = CreateStage5.new.call(slug, action_asked)
   
       redirect_to(
         admin_root_path("aid[direction]" => "desc", "aid[order]" => "updated_at"),

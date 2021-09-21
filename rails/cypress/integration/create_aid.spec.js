@@ -204,6 +204,16 @@ context("Superadmin : Création et publication d'une aide", () => {
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin')})
       })
     })
+    describe("Il peut archiver une aide", () => {
+      before(() => {
+        cy.visit('/admin/aids')
+      })
+      it("Il peut archiver l'aide", function() {
+        cy.get('.js-archive-aid').first().click() 
+        cy.get('.flash-notice').contains("L'aide a bien été archivée, elle n'apparaîtra plus sur le site d'ici quelques secondes.")
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aids')})
+      })
+    })
 
   })
 

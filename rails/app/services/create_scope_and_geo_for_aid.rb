@@ -160,15 +160,6 @@ class CreateScopeAndGeoForAid
     end
   end
 
-  def _remove_currently_editing_rules(obj)
-    array_of_candidates = []
-    track_editing = -> (obj, _p, _i) do 
-      obj[:is_editing] ? array_of_candidates.push({parent: _p, elt: obj}) : nil
-    end
-    _parse(obj, track_editing, nil, nil)
-    array_of_candidates
-  end
-
 
 end
 # l = -> (obj, _p, _i) { puts "Merci #{obj[:name]}" }
