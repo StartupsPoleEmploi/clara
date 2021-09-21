@@ -9,6 +9,9 @@ class ExtractGeoForAid
         res = _fill(JSON.parse(multi_geo_rule.slave_rules.to_json))
       else
         simple_geo_rule = aid.rule.slave_rules.detect{|r| r.name.include?("_citycode_") || r.name.include?("_department_") || r.name.include?("_region_") }
+        p '- - - - - - - - - - - - - - simple_geo_rule- - - - - - - - - - - - - - - -' 
+        ap simple_geo_rule
+        p ''
         res = _fill_simple(simple_geo_rule)
       end
     else
