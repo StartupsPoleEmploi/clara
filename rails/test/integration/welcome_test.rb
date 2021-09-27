@@ -27,6 +27,16 @@ class WelcomeTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "Welcome : start PE Connect" do
+    #given
+    allow_any_instance_of(PeConnectUrl).to receive(:call).and_return('url_of_peconnect')
+    #when
+    post welcome_start_peconnect_path
+    #then
+    assert_response :found
+    assert_redirected_to 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?url_of_peconnect'
+  end
+
   def create_fulfilled_aid
     Aid.new("name"=>"aaa", 
         "what"=>"<p>descr</p>\r\n", 
