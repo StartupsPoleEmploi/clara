@@ -5,8 +5,6 @@ class WelcomeController < ApplicationController
     view_params = Rails.cache.fetch("view_data_for_welcome_page", expires_in: 1.hour) do
       res = {
         nb_of_active_aids:  Aid.activated.count,
-        type_aides:         ContractType.aides.map{|e| e.attributes},
-        type_dispositifs:   ContractType.dispositifs.map{|e| e.attributes},
         all_home_filters:   all_home_filters,
         url_of_peconnect:   PeConnectUrl.new.call("https://#{request.host}"),
         is_peconnect_activated: PeconnectActivation.new.get_value
@@ -31,10 +29,6 @@ class WelcomeController < ApplicationController
   def disconnect_from_peconnect
     res = DisconnectFromPeconnect.new.call(request, session, params)
     public_send(res[:method], res[:arg])
-  end
-
-  def accept_all_cookies
-    CookiePreference.new(session).accept_all_cookies
   end
 
   def all_home_filters

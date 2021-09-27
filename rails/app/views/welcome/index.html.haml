@@ -1,7 +1,5 @@
 - title_data "Clara | Découvrez les aides de retour à l’emploi - un service Pôle emploi"
 - nb_of_active_aids = local_assigns[:nb_of_active_aids] || 0
-- type_aides = local_assigns[:type_aides] || []
-- type_dispositifs = local_assigns[:type_dispositifs] || []
 - all_home_filters = local_assigns[:all_home_filters] || []
 - larger_container "yes"
 
@@ -16,5 +14,5 @@
 
 
   - content_for :footer do
-    = render partial: 'shared/footer', locals: {larger_container: "yes", aides: type_aides, dispositifs: type_dispositifs, is_home: "yes"}
+    = render partial: 'shared/footer', locals: {larger_container: "yes", is_home: "yes"}
 

@@ -11,8 +11,6 @@ class WelcomeTest < ActionDispatch::IntegrationTest
     assert_response :success
     rendered = @controller.view_assigns['raw_rendered']
     assert_not_nil rendered[:nb_of_active_aids]
-    assert_not_nil rendered[:type_aides]
-    assert_not_nil rendered[:type_dispositifs]
     assert_not_nil rendered[:all_home_filters]
     assert_not_nil rendered[:url_of_peconnect]
     assert_not_nil rendered[:is_peconnect_activated]
@@ -35,6 +33,16 @@ class WelcomeTest < ActionDispatch::IntegrationTest
     #then
     assert_response :found
     assert_redirected_to 'https://authentification-candidat.pole-emploi.fr/connexion/oauth2/authorize?url_of_peconnect'
+  end
+
+  test "Welcome : disconnect PE Connect" do
+    #given
+    allow_any_instance_of(DisconnectFromPeconnect).to receive(:call).and_return({method: 'redirect_to', arg: '/'})
+    #when
+    post welcome_disconnect_from_peconnect_path
+    #then
+    assert_response :found
+    assert_redirected_to root_path
   end
 
   def create_fulfilled_aid

@@ -3,7 +3,7 @@
 - larger_container ||= "no"
 - is_home ||= "no"
 
-- v = view_object(:footer, {aides: aides, dispositifs: dispositifs})
+- v = view_object(:footer)
 
 .c-footer{"class" => "#{is_home == 'yes' ? 'is-home' : 'is-not-home' }"}
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
