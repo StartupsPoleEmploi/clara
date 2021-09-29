@@ -2,6 +2,16 @@ require "test_helper"
 
 class TypeShowTest < ActiveSupport::TestCase
   
+  test "._hacky_addition_for_ddct nominal" do
+    sut = TypeShow.new(
+      OpenStruct.new({params: {id: "financement-aide-a-la-formation"}}), 
+      nominal_args
+    )
+    aids = []
+    res = sut._hacky_addition_for_ddct(aids)
+    assert_equal(42, res)
+  end
+  
   test ".contract_type Returns the contract_type" do
     sut = TypeShow.new(nil, nominal_args)
     res = sut.contract_type
