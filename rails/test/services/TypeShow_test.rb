@@ -3,13 +3,22 @@ require "test_helper"
 class TypeShowTest < ActiveSupport::TestCase
   
   test "._hacky_addition_for_ddct nominal" do
+    _create_realistic_aid('aide-a-la-mobilite-frais-de-deplacement')
+    _create_realistic_aid('aide-a-la-mobilite-frais-d-hebergement')
+    _create_realistic_aid('aide-a-la-mobilite-frais-de-repas')
+    _create_realistic_aid('agepi')
     sut = TypeShow.new(
       OpenStruct.new({params: {id: "financement-aide-a-la-formation"}}), 
       nominal_args
     )
     aids = []
     res = sut._hacky_addition_for_ddct(aids)
-    assert_equal(42, res)
+    assert_equal(["aide-a-la-mobilite-frais-de-deplacement", 
+                  "aide-a-la-mobilite-frais-d-hebergement", 
+                  "aide-a-la-mobilite-frais-de-repas", 
+                  "agepi"], 
+                  res.pluck('name')
+                )
   end
   
   test ".contract_type Returns the contract_type" do
@@ -117,6 +126,13 @@ class TypeShowTest < ActiveSupport::TestCase
     )
   end
 
+  def _create_realistic_aid(aid_name)
+    variable_age = Variable.create!(name: "age_#{aid_name}", variable_kind: "integer")
+    contract = ContractType.create!(name: "mobilite_#{aid_name}", ordre_affichage: 42)
+    rule = Rule.create!({name: "r_majorite_#{aid_name}", value_eligible: "18", variable: variable_age, description: "descr", kind: "simple", operator_kind: "more_than"})
+    aid = Aid.create!(name: aid_name, contract_type: contract, rule: rule, ordre_affichage: 3, what: 'x', how_and_when: 'y', how_much: 'z')
+    filter = Filter.create!(name: "Se déplacer_#{aid_name}", aids: [aid])
+  end
 
   def nominal_args
     {
