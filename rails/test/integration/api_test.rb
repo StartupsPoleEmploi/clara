@@ -153,6 +153,26 @@ class ApiTest < ActionDispatch::IntegrationTest
     assert_equal({"spectacle"=>["foo n'est pas une valeur parmis celles possibles (true, false)"]}, JSON.parse(response.body))
   end
 
+  test "API : uncertain, but error in the filter" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_uncertain_path(spectacle: 'true', filters: 'foo'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"filters"=>["La valeur doit être le slug d'un filtre actif (voir la liste avec GET /filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule."]}, JSON.parse(response.body))
+  end
+
+  test "API : uncertain, but error in many filters" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_uncertain_path(spectacle: 'true', filters: 'foo,bar'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"filters"=>["foo n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)", "bar n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)"]}, JSON.parse(response.body))
+  end
+
   def _create_realistic_aid
     variable_age = Variable.create!(name: "age", variable_kind: "integer")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
