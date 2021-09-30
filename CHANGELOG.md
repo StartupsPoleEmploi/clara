@@ -1,7 +1,6 @@
 # CLARA Changelog
 
 
-
 ## 40.1.8 (21/9/2021)
 [#131] Increase coverage, continuing
 
