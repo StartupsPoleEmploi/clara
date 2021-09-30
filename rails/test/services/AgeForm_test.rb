@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AgeFormest < ActiveSupport::TestCase
+class AgeFormTest < ActiveSupport::TestCase
 
   test "nominal : valid age" do
     #given
