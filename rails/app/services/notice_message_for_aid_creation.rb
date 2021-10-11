@@ -3,7 +3,7 @@ class NoticeMessageForAidCreation
   def call(step, aid_status)
     res = ''
 
-    if step.in?['step_2', 'step_3']
+    if step.in?(['step_2', 'step_3'])
       if aid_status == "Publiée"
         res = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
       else
@@ -12,7 +12,7 @@ class NoticeMessageForAidCreation
     end
 
     if step == 'step_4'
-      if aid.status == "Publiée"
+      if aid_status == "Publiée"
         res = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
       else
         res = "Mise à jour du champ d'application effectué."
