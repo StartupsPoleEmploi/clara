@@ -52,7 +52,6 @@ module Admin
     end
 
     def create_stage_2
-      notice_msg = ""
       slug = _hidden(:slug)
       aid = Aid.find_by(slug: slug)
       old_attributes = aid.attributes.with_indifferent_access
@@ -62,15 +61,9 @@ module Admin
       aid.save
       aid.update_status;
 
-      if aid.status == "Publiée"
-        notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
-      else
-        notice_msg = "Le contenu a été mis à jour"
-      end
-
       redirect_to(
         admin_aid_creation_new_aid_stage_3_path(slug: aid.slug, modify: _hidden(:modify)),
-        notice: notice_msg
+        notice: NoticeMessageForAidCreation.new.call('step_2', aid.status)
       )
     end
 
@@ -89,7 +82,6 @@ module Admin
 
 
     def create_stage_3
-      notice_msg = ""
       slug = _hidden(:slug)
       new_attributes = params.require(:aid).permit(:short_description, filter_ids: []).to_h
       filters = []
@@ -104,15 +96,9 @@ module Admin
       aid.save
       aid.update_status;
       
-      if aid.status == "Publiée"
-        notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
-      else
-        notice_msg = "Le contenu a été mis à jour"
-      end
-
       redirect_to(
         admin_aid_creation_new_aid_stage_4_path(slug: aid.slug, modify: _hidden(:modify)),
-        notice: notice_msg
+        notice: NoticeMessageForAidCreation.new.call('step_3', aid.status)
       )
     end
 
@@ -137,7 +123,6 @@ module Admin
     end
 
     def create_stage_4
-      notice_msg = ""
       aid_slug = params["aid"]
       # Need to parse JSON in order to preserve arrays as correct arrays
       trundle = JSON.parse(params["trundle"], symbolize_names: true)
@@ -155,12 +140,7 @@ module Admin
         CreateScopeAndGeoForAid.new.call(trundle: trundle, aid: aid, geo: geo.with_indifferent_access)
         aid.update_status;
 
-        if aid.status == "Publiée"
-          notice_msg = "Les modifications vont être publiées sur le site web ! <br> Cela peut prendre quelques secondes."
-        else
-          notice_msg = "Mise à jour du champ d'application effectué."
-        end
-        flash[:notice] = notice_msg
+        flash[:notice] = NoticeMessageForAidCreation.new.call('step_4', aid.status)
         flash.keep(:notice)
         render js: "document.location = '#{url}'"        
       else
