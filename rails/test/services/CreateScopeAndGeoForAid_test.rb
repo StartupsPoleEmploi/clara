@@ -12,16 +12,6 @@ class CreateScopeAndGeoForAidTest < ActiveSupport::TestCase
     assert_nil aid.rule
   end
 
-  test ".call, if trundle is empty, please detach rule from aid" do
-    #given
-    aid = _create_realistic_aid('aid_name')
-    assert_not_nil aid.rule
-    #when
-    res = CreateScopeAndGeoForAid.new.call({trundle: {}, aid: aid})
-    #then
-    assert_nil aid.rule
-  end
-
   def _create_realistic_aid(aid_name)
     variable_age = Variable.create!(name: "age", variable_kind: "integer")
     contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
