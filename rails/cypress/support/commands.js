@@ -30,6 +30,10 @@ Cypress.Commands.add('connect_as_superadmin', () => {
   cy.request('POST', '/session', { email: 'superadmin@clara.com', password: 'bar', remember_me: '0' })
 });
 
+Cypress.Commands.add('connect_and_remember_as_superadmin', () => {
+  cy.request('POST', '/session', { email: 'superadmin@clara.com', password: 'bar', remember_me: '1' })
+});
+
 Cypress.Commands.add('connect_as_contributeur', () => {
   cy.request('POST', '/session', { email: 'contributeur1@clara.com', password: 'contributeur1' })
 });

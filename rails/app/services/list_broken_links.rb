@@ -3,7 +3,9 @@ class ListBrokenLinks
   def call(faraday_stub=nil)
 
     f = faraday_stub || Faraday.new do |faraday|
+      # :nocov:
       faraday.ssl[:verify] = false
+      # :nocov:
     end
     actual_timeout = Rails.env.test? ? 0 : 7
 

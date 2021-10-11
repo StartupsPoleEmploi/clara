@@ -3,7 +3,7 @@ context('Administrateur : tour des pages disponibles', () => {
 
   before(() => {
     cy.request('/cypress_rails_reset_state')
-    cy.connect_as_superadmin()
+    cy.connect_and_remember_as_superadmin()
   })
   beforeEach(() => {
     Cypress.Cookies.preserveOnce('clara', 'remember_token')
@@ -53,6 +53,13 @@ context('Administrateur : tour des pages disponibles', () => {
 
     })
 
+    it("On peut se déconnecter, il n'est alors plus possible d'accéder à l'interface d'administration", () => {
+      cy.get('.js-sign-out').click()
+      cy.visit('/admin')
+      cy.location().should((location) => {
+        expect(location.pathname).to.eq('/sign_in')
+      })
+    })
   })
 
 })

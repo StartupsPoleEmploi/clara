@@ -195,6 +195,14 @@ context("Superadmin : Création et publication d'une aide", () => {
 
         //then
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
+
+        // Modify against to check another case : tout sauf DOMTOM
+        cy.get('.js-link-to-modify-stage4').click()
+        cy.get('input#tout_sauf_domtom').click() 
+        cy.get('#record_root_rule').click()
+        cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_5')})
+
+
       })
     })
     describe("Il peut publier l'étape 4", () => {

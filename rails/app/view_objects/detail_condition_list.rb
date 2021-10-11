@@ -9,7 +9,10 @@ class DetailConditionList < ViewObject
     res = ""
     if @ability_tree.is_a?(Hash) && !@ability_tree.blank?
       if @ability_tree[:slave_rules].size == 0
-        res = "<span class='c-detail-condition-intro'>il faut remplir la condition suivante : </span>" + "<ul><li>" + _and_or(@ability_tree) + _eligibility(@ability_tree) + @ability_tree[:description] + "</li></ul>"
+        the_choice = _and_or(@ability_tree)
+        the_eligibility = _eligibility(@ability_tree)
+        the_descr = @ability_tree[:description]
+        res = "<span class='c-detail-condition-intro'>il faut remplir la condition suivante : </span><ul><li>#{the_choice}#{the_eligibility}#{the_descr}</li></ul>"
       else
         res = "<span class='c-detail-condition-intro'>il faut réunir " + _node_for(@ability_tree, {}, 0, true)
       end

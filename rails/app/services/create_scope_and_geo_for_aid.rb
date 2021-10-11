@@ -4,7 +4,6 @@ class CreateScopeAndGeoForAid
     trundle = h[:trundle]
     aid = h[:aid]
     geo = h[:geo]
-
     if _has_at_least_one_valid_rule(trundle)
       previous_rule      = aid.rule
       uuid               = _create_uuid
@@ -20,7 +19,6 @@ class CreateScopeAndGeoForAid
       aid.rule           = nil
       aid.save
     end
-
   end
 
   def _is_automatically_generated_rule(previous_rule)

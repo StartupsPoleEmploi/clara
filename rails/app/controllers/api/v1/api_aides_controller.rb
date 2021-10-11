@@ -96,7 +96,6 @@ module Api
       end
 
 
-
       def slug_param
         (params.permit(:aid_slug).to_h)[:aid_slug]
       end

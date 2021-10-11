@@ -57,6 +57,17 @@ class ApiTest < ActionDispatch::IntegrationTest
     assert_equal ({'aid'=>{'name'=>'aaa', 'slug'=>'aaa'}}), JSON.parse(response.body)
   end
   
+  test "API : aid-slug, not found" do
+    #given
+    contract = ContractType.create!(name: "mobilite", ordre_affichage: 42)
+    aid = Aid.create!(name: "aaa", contract_type: contract, ordre_affichage: 3)
+    #when
+    get api_v1_aid_slug_path('zzz'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :not_found
+    assert_equal ({"error"=>"not-found"}), JSON.parse(response.body)
+  end
+  
 
   test "API : eligible, refused if not authenticated" do
     #given
@@ -74,6 +85,16 @@ class ApiTest < ActionDispatch::IntegrationTest
     #then
     assert_response :success
     assert_equal ({'input'=>{'asker'=>{'age' => '22'}}, 'aids'=>[{'name'=>'aaa', 'slug'=>'aaa', 'filters'=>[], 'contract_type'=>'mobilite'}]}), JSON.parse(response.body)
+  end
+
+  test "API : eligible, but error as if authenticated" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_eligible_path(age: 0), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"age"=>["doit être supérieur ou égal à 16"]}, JSON.parse(response.body))
   end
 
   test "API : ineligible, refused if not authenticated" do
@@ -94,6 +115,16 @@ class ApiTest < ActionDispatch::IntegrationTest
     assert_equal ({'input'=>{'asker'=>{'age' => '17'}}, 'aids'=>[{'name'=>'aaa', 'slug'=>'aaa', 'filters'=>[], 'contract_type'=>'mobilite'}]}), JSON.parse(response.body)
   end
 
+  test "API : ineligible, but error as if authenticated" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_ineligible_path(age: -17), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"age"=>["doit être supérieur ou égal à 16"]}, JSON.parse(response.body))
+  end
+
   test "API : uncertain, refused if not authenticated" do
     #given
     #when
@@ -110,6 +141,36 @@ class ApiTest < ActionDispatch::IntegrationTest
     #then
     assert_response :success
     assert_equal ({'input'=>{'asker'=>{'spectacle' => 'true'}}, 'aids'=>[{'name'=>'aaa', 'slug'=>'aaa', 'filters'=>[], 'contract_type'=>'mobilite'}]}), JSON.parse(response.body)
+  end
+
+  test "API : uncertain, but error as if authenticated" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_uncertain_path(spectacle: 'foo'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"spectacle"=>["foo n'est pas une valeur parmis celles possibles (true, false)"]}, JSON.parse(response.body))
+  end
+
+  test "API : uncertain, but error in the filter" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_uncertain_path(spectacle: 'true', filters: 'foo'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"filters"=>["La valeur doit être le slug d'un filtre actif (voir la liste avec GET /filters). Pour spécifier plusieurs slugs, il faut les séparer par une virgule."]}, JSON.parse(response.body))
+  end
+
+  test "API : uncertain, but error in many filters" do
+    #given
+    _create_realistic_aid
+    #when
+    get api_v1_aids_uncertain_path(spectacle: 'true', filters: 'foo,bar'), headers: {:Authorization => "Bearer #{_jwt}"}
+    #then
+    assert_response :bad_request
+    assert_equal({"filters"=>["foo n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)", "bar n'est pas le slug d'un filtre actif (voir la liste avec GET /filters)"]}, JSON.parse(response.body))
   end
 
   def _create_realistic_aid
