@@ -103,7 +103,7 @@
         
         <div class="c-newaid-stage5title">
           Étape 4 : Champ d'application - 
-          <%= link_to "Modifier", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying) %>
+          <%= link_to "Modifier", admin_aid_creation_new_aid_stage_4_path(slug: params[:slug], modify: is_modifying), 'class' => 'js-link-to-modify-stage4' %>
         </div>
         <div class="c-newaid-stage5expl is-ok-<%= v.stage_4_ok? %> stage4-is-ok-<%= v.stage_4_ok? %>">
           <div class="c-newaid-stage5expl__img">

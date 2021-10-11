@@ -18,7 +18,7 @@ class JustificationServiceTest < ActiveSupport::TestCase
     res = JustificationService.new(aid).root_rules
     #then
     assert res.is_a?(Array)
-    assert_equal 1, res.size
+    assert_equal(1, res.size)
     assert res[0].is_a?(Rule)
     assert_equal res[0], aid.rule
   end
