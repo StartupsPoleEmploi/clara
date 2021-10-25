@@ -7,6 +7,7 @@ if ENV['COVERAGE_PLEASE'] == 'true'
     add_filter "bin/spring"
     add_filter "app/channels/application_cable/channel.rb"
     add_filter "app/channels/application_cable/connection.rb"
+    add_filter "app/services/fake_connection.rb"
   end
   puts "required simplecov for functional testing"
 end

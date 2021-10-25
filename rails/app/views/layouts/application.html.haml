@@ -27,7 +27,9 @@
         - else
           = render 'shared/footer', {larger_container: (yield :larger_container)}
     
-    = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
+    - if !Rails.env.test?
+      = javascript_tag "var gtcscript = document.createElement('script');gtcscript.src='#{ENV['ARA_GOOGLE_TAG_COMMANDER_SRC']}';gtcscript.async=true;document.body.appendChild(gtcscript);", id: "google-tag-commander-creation-script"
+
     - if from_pe?(request)
       = javascript_tag "if (typeof ga === 'function') ga('set', 'dimension1', 'true');", id: "ga-frompe", class: "ga-frompe-true"
     - else

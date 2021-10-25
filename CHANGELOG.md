@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 40.1.9 (21/9/2021)
+[#132] Change jQuery version
+
+
 ## 40.1.8 (21/9/2021)
 [#131] Increase coverage, continuing
 

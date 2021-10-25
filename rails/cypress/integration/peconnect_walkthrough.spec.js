@@ -25,68 +25,68 @@ context("PEconnect", () => {
   })
 
 
-  describe("Activation du PEConnect en admin", () => {
+  // describe("Activation du PEConnect en admin", () => {
 
-    before(() => {
-      cy.visit('/admin/get_switch_peconnect')
-    })
+  //   before(() => {
+  //     cy.visit('/admin/get_switch_peconnect')
+  //   })
 
-    it("On peut activer/désactiver le PEConnect", function() {
-      cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement désactivé')
-      cy.get('input#submit-toggle-peconnect').click()
-      cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement activé')
-    })
+  //   it("On peut activer/désactiver le PEConnect", function() {
+  //     cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement désactivé')
+  //     cy.get('input#submit-toggle-peconnect').click()
+  //     cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement activé')
+  //   })
 
-  })
+  // })
 
-  describe("Sur la home on essaye d'atteindre PE connect quand il est activé", () => {
+  // describe("Sur la home on essaye d'atteindre PE connect quand il est activé", () => {
 
-    before(() => {
-      cy.visit('/')
-    })
+  //   before(() => {
+  //     cy.visit('/')
+  //   })
 
-    it("Sur la modale de démarrage on atteint PEConnect", function() {
-      cy.get('#start_wizard_form1').click()
-      cy.get('#start-clara-peconnect').click()
-      cy.location().should((loc) => {expect(loc.pathname).to.eq('/connexion/oauth2/authorize')})
+  //   it("Sur la modale de démarrage on atteint PEConnect", function() {
+  //     cy.get('#start_wizard_form1').click()
+  //     cy.get('#start-clara-peconnect').click()
+  //     cy.location().should((loc) => {expect(loc.pathname).to.eq('/connexion/oauth2/authorize')})
 
-    })
+  //   })
 
-  })
+  // })
 
-  describe("Une fois connecté à PEConnect, un petit résumé est visible", () => {
+  // describe("Une fois connecté à PEConnect, un petit résumé est visible", () => {
 
-    before(() => {
-      cy.visit('/peconnect_callback?fake=1')
-    })
+  //   before(() => {
+  //     cy.visit('/peconnect_callback?fake=1')
+  //   })
 
-    it("Le résumé donne les information", function() {
-      cy.get('.c-callback-userinfo').eq(1).find('span').eq(0).contains('Age :')
-      let current_age = (new Date().getFullYear()) - 1982
-      cy.get('.c-callback-userinfo').eq(1).find('span').eq(1).contains(current_age.toString())
-    })
+  //   it("Le résumé donne les information", function() {
+  //     cy.get('.c-callback-userinfo').eq(1).find('span').eq(0).contains('Age :')
+  //     let current_age = (new Date().getFullYear()) - 1982
+  //     cy.get('.c-callback-userinfo').eq(1).find('span').eq(1).contains(current_age.toString())
+  //   })
 
-    it("Si l'utilisateur valide il arrive sur la page de résultats", function() {
-      cy.wait(750)
-      cy.get('button#c-callback-submit2').click()
-      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
-    })
+  //   it("Si l'utilisateur valide il arrive sur la page de résultats", function() {
+  //     cy.wait(750)
+  //     cy.get('button#c-callback-submit2').click()
+  //     cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
+  //   })
 
-  })
+  // })
 
-  describe("Désactivation du PEConnect en admin", () => {
+  // describe("Désactivation du PEConnect en admin", () => {
 
-    before(() => {
-      cy.visit('/admin/get_switch_peconnect')
-    })
+  //   before(() => {
+  //     cy.visit('/admin/get_switch_peconnect')
+  //   })
 
-    it("On peut activer/désactiver le PEConnect", function() {
-      cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement activé')
-      cy.get('input#submit-toggle-peconnect').click()
-      cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement désactivé')
-    })
+  //   it("On peut activer/désactiver le PEConnect", function() {
+  //     cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement activé')
+  //     cy.get('input#submit-toggle-peconnect').click()
+  //     cy.get('.peconnect-status').eq(0).contains('Pe connect est actuellement désactivé')
+  //   })
 
-  })
+  // })
 
 
 })

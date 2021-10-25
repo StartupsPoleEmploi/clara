@@ -60,6 +60,7 @@ context("Superadmin : Création et publication d'une aide", () => {
       })
       it("On peut cliquer pour revenir à l'étape 1, tous les champs sont pré-renseignés", function() {
         // when
+        // cy.get('button.js-tooltip-close').contains('brouillon', {timeout: 15000}).click()
         cy.get('.c-newaid-back2').eq(0).click()
         // then
         cy.location().should((loc) => {expect(loc.pathname).to.eq('/admin/aid_creation/new_aid_stage_1')})
@@ -125,7 +126,7 @@ context("Superadmin : Création et publication d'une aide", () => {
 
       it("On peut renseigner des filtres", function() {
         // given
-        cy.get("#aid_filter_ids").invoke("val").should('equal', null)
+        cy.get("#aid_filter_ids").invoke("val").should('be.empty')
 
         // when
         cy.get("#aid_filter_ids-selectized").click()
@@ -133,7 +134,7 @@ context("Superadmin : Création et publication d'une aide", () => {
         cy.get("#aid_filter_ids-selectized").type("{esc}")
 
         // then
-        cy.get("#aid_filter_ids").invoke("val").should('not.equal', null)
+        cy.get("#aid_filter_ids").invoke("val").should('not.be.empty')
       })
     })
     describe("Il rempli l'étape 4", () => {
