@@ -29,31 +29,26 @@ $.currentUrl = function () {
 }
 
 
-// jQuery-scoped replaceTag
-// See https://stackoverflow.com/a/20469901/2595513
-$.replaceTag = function (currentElem, newTagObj, keepProps) {
-  var $currentElem = $(currentElem);
-  var i, $newTag = $(newTagObj).clone();
-  if (keepProps) {
-    newTag = $newTag[0];
-    newTag.className = currentElem.className;
-    $.extend(newTag.classList, currentElem.classList);
-    $.extend(newTag.attributes, currentElem.attributes);
-  }
-  $currentElem.wrapAll($newTag);
-  $currentElem.contents().unwrap();
-  return this;
+$.renameElement = function ($element, newElement, keepProps) {
+
+    $element.wrap("<"+newElement+">");
+    $newElement = $element.parent();
+
+    if (keepProps) {
+      //Copying Attributes
+      $.each($element.prop('attributes'), function() {
+          $newElement.attr(this.name,this.value);
+      });      
+    }
+
+    $element.contents().unwrap();       
+
+    return $newElement;
 }
 
 
+
 jQuery.fn.extend({
-  // See https://stackoverflow.com/a/20469901/2595513
-  // element-based replaceTag, not as same above
-  replaceTag: function (newTagObj, keepProps) {
-    return this.each(function () {
-      jQuery.replaceTag(this, newTagObj, keepProps);
-    });
-  },
   datamap: function (dataext) {
     return this.map(function () { return $(this).data()[dataext] }).get();
   },

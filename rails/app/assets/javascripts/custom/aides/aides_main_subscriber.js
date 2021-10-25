@@ -119,10 +119,11 @@ clara.js_define("aides_main_subscriber", {
       
     if (has_no_positive_result) {
       $('#nothing').removeClass('u-hidden');
-      $('#ineligibles .c-result-youcan').html("Pour savoir pourquoi vous n'êtes pas éligible aux aides qui correspondent au(x) filtre(s) sélectionné(s), cliquez sur").replaceTag('<small>', true)
+      $.renameElement( $('#ineligibles .c-result-youcan').html("Pour savoir pourquoi vous n'êtes pas éligible aux aides qui correspondent au(x) filtre(s) sélectionné(s), cliquez sur"), 'small', true )
     } else {
       $('#nothing').addClass('u-hidden');
-      $('#ineligibles .c-result-youcan').html("Vous ne pouvez pas bénéficier de").replaceTag('<h1>', true)
+
+      $.renameElement( $("#ineligibles .c-result-youcan").html("Vous ne pouvez pas bénéficier de"), 'h1', true )
     }
 
   }

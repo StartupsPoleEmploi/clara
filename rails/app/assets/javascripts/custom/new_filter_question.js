@@ -45,7 +45,7 @@ clara.js_define("new_filter_question", {
     });
 
     $('form#filter_question_form').submit(function() {
-      if ($('.c-fieldset input[type="checkbox"]:checked').size() === 0) {
+      if ($('.c-fieldset input[type="checkbox"]:checked').length === 0) {
         clara.aides_track_filter.please("question__0");
       }
       return true;

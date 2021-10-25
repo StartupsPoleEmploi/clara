@@ -9,7 +9,7 @@ clara.js_define("admin_aids", {
       localStorage.clear();
 
       if ( $(".c-topbar__connect").attr("data-role") !== "superadmin" ) {
-        $(".cell-data--belongs-to a").replaceTag('<div>', false)
+        $.renameElement( $(".cell-data--belongs-to a"), 'div', false )
       }
 
     }
