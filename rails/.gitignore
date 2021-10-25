@@ -27,6 +27,7 @@ ara
 
 # Ignore node modules
 /node_modules/*
+yarn-error.log
 
 # Ignore env var
 .env

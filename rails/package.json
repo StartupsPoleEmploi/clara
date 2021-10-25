@@ -2,5 +2,8 @@
   "dependencies": {},
   "devDependencies": {
     "cypress": "7.0.0"
+  },
+  "resolutions": {
+    "ansi-regex": "5.0.1"
   }
 }
