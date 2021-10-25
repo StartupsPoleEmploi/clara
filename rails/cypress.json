@@ -6,5 +6,6 @@
   "blockHosts": "www.google-analytics.com",
   "baseUrl": "http://localhost:3000",
   "projectId": "z8r4w5",
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 8000
 }
