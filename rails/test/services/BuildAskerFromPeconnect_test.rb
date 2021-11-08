@@ -49,6 +49,24 @@ class BuildAskerFromPeconnectTest < ActiveSupport::TestCase
     assert_equal 'niveau_2', res
   end
 
+  test "._actual_alloc, input wrong" do
+    #given
+    val = ''
+    #when
+    res = BuildAskerFromPeconnect.new._actual_alloc(val)
+    #then
+    assert_equal '', res
+  end
+
+  test "._actual_alloc, alloc exists" do
+    #given
+    val = true
+    #when
+    res = BuildAskerFromPeconnect.new._actual_alloc(val)
+    #then
+    assert_equal 'ARE_ASP', res
+  end
+
 
 
 end
