@@ -54,25 +54,25 @@ context("PEconnect", () => {
 
   // })
 
-  // describe("Une fois connecté à PEConnect, un petit résumé est visible", () => {
+  describe("Une fois connecté à PEConnect, un petit résumé est visible", () => {
 
-  //   before(() => {
-  //     cy.visit('/peconnect_callback?fake=1')
-  //   })
+    before(() => {
+      cy.visit('/peconnect_callback?fake=1')
+    })
 
-  //   it("Le résumé donne les information", function() {
-  //     cy.get('.c-callback-userinfo').eq(1).find('span').eq(0).contains('Age :')
-  //     let current_age = (new Date().getFullYear()) - 1982
-  //     cy.get('.c-callback-userinfo').eq(1).find('span').eq(1).contains(current_age.toString())
-  //   })
+    it("Le résumé donne les information", function() {
+      cy.get('.c-callback-userinfo').eq(1).find('span').eq(0).contains('Age :')
+      let current_age = (new Date().getFullYear()) - 1982
+      cy.get('.c-callback-userinfo').eq(1).find('span').eq(1).contains(current_age.toString())
+    })
 
-  //   it("Si l'utilisateur valide il arrive sur la page de résultats", function() {
-  //     cy.wait(750)
-  //     cy.get('button#c-callback-submit2').click()
-  //     cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
-  //   })
+    it("Si l'utilisateur valide il arrive sur la page de résultats", function() {
+      cy.wait(750)
+      cy.get('button#c-callback-submit2').click()
+      cy.location().should((loc) => {expect(loc.pathname).to.eq('/aides')})
+    })
 
-  // })
+  })
 
   // describe("Désactivation du PEConnect en admin", () => {
 

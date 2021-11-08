@@ -31,6 +31,25 @@ class BuildAskerFromPeconnectTest < ActiveSupport::TestCase
   end
 
 
+  test "._actual_grade, wrong input" do
+    #given
+    val = ''
+    #when
+    res = BuildAskerFromPeconnect.new._actual_grade(val)
+    #then
+    assert_equal 'niveau_infra_5', res
+  end
+
+  test "._actual_grade, input realistic" do
+    #given
+    val = FakeConnection.new.fake_1[:formation]
+    #when
+    res = BuildAskerFromPeconnect.new._actual_grade(val)
+    #then
+    assert_equal 'niveau_2', res
+  end
+
+
 
 end
 
