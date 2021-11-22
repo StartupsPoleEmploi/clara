@@ -12,29 +12,29 @@ context('Simple visiteur : Parcours du formulaire', () => {
 
 
       // Inscription question : error scenario
-      cy.get('.c-label.is-error').should("not.exist")
-      cy.get('#moins_d_un_an').should("exist")
-      cy.get('.js-next').click()
-      cy.get('.c-label.is-error').should("exist")
-      // Inscription : Go back
-      cy.get('.c-back-question').click()
-      cy.get('#moins_d_un_an').should("not.exist")
-      cy.visit('/inscription_questions/new')  
+      // cy.get('.c-label.is-error').should("not.exist")
+      // cy.get('#moins_d_un_an').should("exist")
+      // cy.get('.js-next').click()
+      // cy.get('.c-label.is-error').should("exist")
+      // // Inscription : Go back
+      // cy.get('.c-back-question').click()
+      // cy.get('#moins_d_un_an').should("not.exist")
+      // cy.visit('/inscription_questions/new')  
       // Inscription: valid scenario
       cy.get('#moins_d_un_an').should("exist")
       cy.get('#moins_d_un_an').click()
       cy.get('.js-next').click()
 
       // Category : error case
-      cy.get('.c-label.is-error').should("not.exist")
-      cy.get('#cat_12345').should("exist")
-      cy.get('.js-next').click()
-      cy.get('.c-label.is-error').should("exist")
-      // Category : go back
-      cy.get('.c-back-question').click()
-      cy.get('#cat_12345').should("not.exist")
-      cy.get('.js-next').click()
-      cy.get('#cat_12345').should("exist")
+      // cy.get('.c-label.is-error').should("not.exist")
+      // cy.get('#cat_12345').should("exist")
+      // cy.get('.js-next').click()
+      // cy.get('.c-label.is-error').should("exist")
+      // // Category : go back
+      // cy.get('.c-back-question').click()
+      // cy.get('#cat_12345').should("not.exist")
+      // cy.get('.js-next').click()
+      // cy.get('#cat_12345').should("exist")
       // Category : nominal, valid scenario
       cy.get('#cat_12345').click()
       cy.get('.js-next').click()
@@ -85,9 +85,9 @@ context('Simple visiteur : Parcours du formulaire', () => {
       cy.get('.js-next').click()
       cy.get('#val_spectacle').should("exist")
       // Error case
-      cy.get('.c-label.is-error').should("not.exist")
-      cy.get('.js-next').click()
-      cy.get('.c-label.is-error').should("exist")
+      // cy.get('.c-label.is-error').should("not.exist")
+      // cy.get('.js-next').click()
+      // cy.get('.c-label.is-error').should("exist")
       // Nominal case
       cy.get('#val_spectacle').click()
       cy.get('.js-next').click()
