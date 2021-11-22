@@ -1,6 +1,10 @@
 # CLARA Changelog
 
 
+## 40.2.1 (22/11/2021)
+[#134] Stabilize CI
+
+
 ## 40.2.0 (8/11/2021)
 [#133] Increase coverage
 
