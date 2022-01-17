@@ -4,7 +4,7 @@ class FooterTest < ActiveSupport::TestCase
   
   test ".call, returns nil if not found" do
     res = SendRecall.new.call(nil, nil)
-    assert_equal(nil, res)
+    assert_nil(res)
   end
 
   test ".call, nominal" do

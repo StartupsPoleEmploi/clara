@@ -8,12 +8,6 @@
 .c-footer{"class" => "#{is_home == 'yes' ? 'is-home' : 'is-not-home' }"}
   .u-useful-width.u-margin-constraint{"class" => "#{larger_container == 'yes' ? 'u-useful-width--larger' : 'u-useful-width--normal' }"}
 
-
-
-
-
-
-
     - if is_home == "yes"
       .o-layout
         .o-layout__item{:class=>"u-1/4@desktop u-1/5@tablet"}
@@ -116,7 +110,6 @@
               = link_to "Conditions générales d'utilisation", conditions_generales_d_utilisation_path, class: "c-footer-link"
               = link_to "Nous contacter", contact_index_path, class: "c-footer-link"
               = link_to "Accessibilité", accessibilite_path, class: "c-footer-link"
-              = link_to "_", 'https://bootiful.org'
 
       .c-footer-bottom
         .o-layout
