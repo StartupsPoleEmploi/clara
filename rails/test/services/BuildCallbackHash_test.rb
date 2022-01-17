@@ -3,8 +3,8 @@ require "test_helper"
 class BuildCallbackHashTest < ActiveSupport::TestCase
 
   def years_since(dt)
-      delta = (Date.today - Date.parse(dt)) / 365
-      delta.to_i
+    delta = (Date.today - Date.parse(dt)) / 365
+    delta.to_i
   end
 
   test ".call renders {:meta, :asker, :filters}, fill session[:meta] and session[:asker]" do
