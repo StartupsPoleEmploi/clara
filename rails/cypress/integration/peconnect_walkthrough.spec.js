@@ -62,7 +62,6 @@ context("PEconnect", () => {
 
     it("Le résumé donne les information", function() {
       cy.get('.c-callback-userinfo').eq(2).find('span').eq(0).contains('Diplôme')
-      let current_age = (new Date().getFullYear()) - 1982
       cy.get('.c-callback-userinfo').eq(2).find('span').eq(1).contains('Bac')
     })
 
