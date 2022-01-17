@@ -1,5 +1,7 @@
 # CLARA Changelog
 
+## 40.2.2 (17/1/2022)
+[135] Syntax correction
 
 ## 40.2.1 (22/11/2021)
 [#134] Stabilize CI
