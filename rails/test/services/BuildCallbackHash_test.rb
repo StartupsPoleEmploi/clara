@@ -2,6 +2,11 @@ require "test_helper"
 
 class BuildCallbackHashTest < ActiveSupport::TestCase
 
+  def years_since(dt)
+      delta = (Date.today - Date.parse(dt)) / 365
+      delta.to_i
+  end
+
   test ".call renders {:meta, :asker, :filters}, fill session[:meta] and session[:asker]" do
     #given
     filter = Filter.create!(name: "Se déplacer")
@@ -10,7 +15,7 @@ class BuildCallbackHashTest < ActiveSupport::TestCase
     allow_any_instance_of(PeConnectExtraction).to receive(:call).and_return(extraction)
     session_h = {}
     params_h = {code: 'any'}
-    current_age = Date.today.year - 1976
+    current_age = years_since('1976-03-12T00:00:00+01:00')
     #when
     res = BuildCallbackHash.new.call(session_h, params_h, 'anyhost.com')
     #then
