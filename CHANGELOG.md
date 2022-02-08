@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 40.2.3 (8/1/2022)
+[136] Update Sidekiq
+
 ## 40.2.2 (17/1/2022)
 [135] Syntax correction
 
