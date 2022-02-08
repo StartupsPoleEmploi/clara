@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new { |user| user.role == 'superadmin' } do
     mount Logster::Web => '/logs'
+    mount Sidekiq::Web => '/sidekiq'
   end
-
-  mount Sidekiq::Web => '/sidekiq'
-
 
   resources :custom_passwords, controller: "custom_passwords", only: [:create, :new, :edit], as: nil
   resource :session, controller: "sessions", only: [:create]

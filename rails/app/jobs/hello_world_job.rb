@@ -3,7 +3,7 @@ class HelloWorldJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    p "hello from HelloWorldJob #{Aid.count}"
+    p "hello from HelloWorldJob #{Time.now().strftime('%F - %H:%M:%S.%L')}"
   end
 
 end
