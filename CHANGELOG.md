@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 40.2.4 (8/1/2022)
+[137] Security updates
+
 ## 40.2.3 (8/1/2022)
 [136] Update Sidekiq
 
