@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 41.0.0 (28/2/2022)
+[138] First redirections
+
 ## 40.2.4 (8/1/2022)
 [137] Security updates
 
