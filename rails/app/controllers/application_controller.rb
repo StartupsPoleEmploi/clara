@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
   end
   def _redirection_table
     {
+      "/aides/type/aide-a-la-mobilite" => "https://mes-aides.pole-emploi.fr/transport-et-mobilite",
       "/aides/detail/aide-au-financement-du-permis-b-pour-les-apprentis" => "https://mes-aides.pole-emploi.fr/etat/apprentis-majeurs",
       "/aides/detail/aides-a-la-mobilite-dans-la-region-hauts-de-france" => "https://mes-aides.pole-emploi.fr/region-hauts-de-france/aide-regionale-aide-au-permis-de-conduire-pour-l-insertion-professionnelle-des-jeunes-",
       "/aides/detail/pret-mobilite-de-l-adie" => "https://mes-aides.pole-emploi.fr/l-adie-et-l-etat/pret-mobilite-de-l-adie",
