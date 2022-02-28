@@ -142,7 +142,6 @@ GEM
     autoprefixer-rails (10.2.5.1)
       execjs (> 0)
     bcrypt (3.1.16)
-    bindex (0.8.1)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootsnap (1.4.8)
@@ -554,11 +553,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
-    web-console (4.0.4)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
-      bindex (>= 0.4.0)
-      railties (>= 6.0.0)
     webmock (3.9.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
@@ -664,7 +658,6 @@ DEPENDENCIES
   teaspoon-jasmine!
   tzinfo-data
   uglifier
-  web-console
   webmock
   whenever
 

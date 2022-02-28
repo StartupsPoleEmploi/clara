@@ -15,7 +15,6 @@ class CreateTownRuleTest < ActiveSupport::TestCase
     assert result.is_a?(Rule)
     assert result.name.start_with?('r_dpygzckqoerjsfuv_citycode_not_equal_44109_id_')
     assert_equal '44109', result.value_eligible
-    assert_equal result.variable_id, v_location_citycode.id
     assert_equal result.description, 'Ne pas résider à Nantes 44'
     assert_equal result.kind, 'simple'
     assert_equal result.operator_kind, 'not_equal'

@@ -24,14 +24,6 @@ context('Administrateur : tour des pages disponibles', () => {
       cy.get('.c-history-datetime').should('exist')
     })
 
-    it("On peut prévisualiser une aide", () => {
-      cy.get('.c-cutebutton.is-preview').invoke('removeAttr', 'target')
-      cy.get('.c-cutebutton.is-preview').click()
-      cy.location().should((location) => {
-        expect(location.pathname).to.eq('/aides/detail/aide-test-mobilite')
-      })
-    })
-
     it("On peut créer un nouvel administrateur, il apparaît alors en haut de la liste des administrateurs, en tant que simple contributeur", () => {
       cy.visit('/admin/get_hidden_admin')
       cy.contains('Créer un nouvel administrateur').click()
