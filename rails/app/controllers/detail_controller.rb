@@ -52,7 +52,6 @@ class DetailController < ApplicationController
     "/aides/detail/pret-mobilite-de-l-adie" => "https://mes-aides.pole-emploi.fr/l-adie-et-l-etat/pret-mobilite-de-l-adie",
     "/aides/detail/aide-au-parcours-vers-l-emploi" => "https://mes-aides.pole-emploi.fr/agefiph/aide-a-la-formation-dans-le-cadre-du-parcours-vers-l-emploi",
     "/aides/detail/aide-a-la-mobilite-agefiph" => "https://mes-aides.pole-emploi.fr/agefiph/aide-a-la-formation-dans-le-cadre-du-parcours-vers-l-emploi",
-    "/aides/type/aide-a-la-mobilite" => "https://mes-aides.pole-emploi.fr/transport-et-mobilite",
     "/aides/detail/aide-a-la-mobilite-frais-de-deplacement-bon-de-transport" => "https://mes-aides.pole-emploi.fr/transport-et-mobilite",
     "/aides/detail/aides-action-logement" => "https://mes-aides.pole-emploi.fr/transport-et-mobilite",
     "/aides/detail/aide-a-la-mobilite-frais-de-deplacement-bon-de-reservation" => "https://mes-aides.pole-emploi.fr/transport-et-mobilite",
