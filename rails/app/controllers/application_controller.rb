@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
 
   def check_redirect
     if request.get?
-      ap request.path
       if request.path.in?(_do_not_redirect)
         # Do nothing
       elsif request.path.include?('/admin')
