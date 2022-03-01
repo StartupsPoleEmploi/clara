@@ -33,9 +33,9 @@ class ApplicationController < ActionController::Base
       else
         redirection_url = _redirection_table[request.path]
         if redirection_url.present?
-          redirect_to redirection_url
+          redirect_to(redirection_url, status: 301)
         else
-          redirect_to "https://mes-aides.pole-emploi.fr/"
+          redirect_to("https://mes-aides.pole-emploi.fr/", status: 301)
         end
       end
 

@@ -1,5 +1,8 @@
 # CLARA Changelog
 
+## 41.0.2 (1/3/2022)
+[140] 301 redirections
+
 ## 41.0.1 (28/2/2022)
 [139] Full redirections
 
