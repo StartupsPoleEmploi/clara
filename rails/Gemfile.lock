@@ -405,7 +405,7 @@ GEM
       binding_of_caller (~> 0.7)
       pry (~> 0.13)
     public_suffix (4.0.6)
-    puma (4.3.11)
+    puma (4.3.12)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -632,7 +632,7 @@ DEPENDENCIES
   pry-rails
   pry-remote
   pry-stack_explorer
-  puma (= 4.3.11)
+  puma (= 4.3.12)
   rack
   rack-attack
   rack-cors
